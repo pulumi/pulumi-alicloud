@@ -5,6 +5,27 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.129.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eventbridge.getEventBuses({});
+ * export const eventBridgeEventBusId1 = ids.then(ids => ids.buses[0].id);
+ * const nameRegex = alicloud.eventbridge.getEventBuses({
+ *     nameRegex: "^my-EventBus",
+ * });
+ * export const eventBridgeEventBusId2 = nameRegex.then(nameRegex => nameRegex.buses[0].id);
+ * ```
+ */
 export function getEventBuses(args?: GetEventBusesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventBusesResult> {
     args = args || {};
     if (!opts) {
@@ -27,9 +48,21 @@ export function getEventBuses(args?: GetEventBusesArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getEventBuses.
  */
 export interface GetEventBusesArgs {
+    /**
+     * The event bus type.
+     */
     readonly eventBusType?: string;
+    /**
+     * A list of Event Bus IDs. Its element value is same as Event Bus Name.
+     */
     readonly ids?: string[];
+    /**
+     * The name prefix.
+     */
     readonly namePrefix?: string;
+    /**
+     * A regex string to filter results by Event Bus name.
+     */
     readonly nameRegex?: string;
     readonly outputFile?: string;
 }

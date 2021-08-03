@@ -29,6 +29,8 @@ type NodePool struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayOutput `pulumi:"dataDisks"`
+	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+	FormatDisk pulumi.BoolOutput `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
@@ -37,10 +39,14 @@ type NodePool struct {
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
+	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+	Instances pulumi.StringArrayOutput `pulumi:"instances"`
 	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
 	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
 	// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
 	InternetMaxBandwidthOut pulumi.IntOutput `pulumi:"internetMaxBandwidthOut"`
+	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+	KeepInstanceName pulumi.BoolOutput `pulumi:"keepInstanceName"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -48,7 +54,7 @@ type NodePool struct {
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels NodePoolLabelArrayOutput `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
-	Management NodePoolManagementPtrOutput `pulumi:"management"`
+	Management NodePoolManagementOutput `pulumi:"management"`
 	// The name of node pool.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
@@ -61,12 +67,16 @@ type NodePool struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
+	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	Platform pulumi.StringOutput `pulumi:"platform"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig NodePoolScalingConfigOutput `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
+	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+	ScalingPolicy pulumi.StringOutput `pulumi:"scalingPolicy"`
 	// The security group id for worker node.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
@@ -137,6 +147,8 @@ type nodePoolState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
+	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+	FormatDisk *bool `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
 	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
@@ -145,10 +157,14 @@ type nodePoolState struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The instance type of worker node.
 	InstanceTypes []string `pulumi:"instanceTypes"`
+	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+	Instances []string `pulumi:"instances"`
 	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
+	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+	KeepInstanceName *bool `pulumi:"keepInstanceName"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -169,12 +185,16 @@ type nodePoolState struct {
 	Period *int `pulumi:"period"`
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit *string `pulumi:"periodUnit"`
+	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	Platform *string `pulumi:"platform"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
+	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+	ScalingPolicy *string `pulumi:"scalingPolicy"`
 	// The security group id for worker node.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
@@ -208,6 +228,8 @@ type NodePoolState struct {
 	ClusterId pulumi.StringPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayInput
+	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+	FormatDisk pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
 	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
@@ -216,10 +238,14 @@ type NodePoolState struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayInput
+	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+	Instances pulumi.StringArrayInput
 	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
 	InternetChargeType pulumi.StringPtrInput
 	// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
+	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+	KeepInstanceName pulumi.BoolPtrInput
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -240,12 +266,16 @@ type NodePoolState struct {
 	Period pulumi.IntPtrInput
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit pulumi.StringPtrInput
+	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	Platform pulumi.StringPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig NodePoolScalingConfigPtrInput
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringPtrInput
+	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+	ScalingPolicy pulumi.StringPtrInput
 	// The security group id for worker node.
 	SecurityGroupId pulumi.StringPtrInput
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
@@ -283,6 +313,8 @@ type nodePoolArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
+	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+	FormatDisk *bool `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
 	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
@@ -291,10 +323,14 @@ type nodePoolArgs struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The instance type of worker node.
 	InstanceTypes []string `pulumi:"instanceTypes"`
+	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+	Instances []string `pulumi:"instances"`
 	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
+	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+	KeepInstanceName *bool `pulumi:"keepInstanceName"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -315,10 +351,14 @@ type nodePoolArgs struct {
 	Period *int `pulumi:"period"`
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit *string `pulumi:"periodUnit"`
+	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	Platform *string `pulumi:"platform"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
+	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+	ScalingPolicy *string `pulumi:"scalingPolicy"`
 	// The security group id for worker node.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
@@ -352,6 +392,8 @@ type NodePoolArgs struct {
 	ClusterId pulumi.StringInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayInput
+	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+	FormatDisk pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
 	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
@@ -360,10 +402,14 @@ type NodePoolArgs struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayInput
+	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+	Instances pulumi.StringArrayInput
 	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
 	InternetChargeType pulumi.StringPtrInput
 	// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
+	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+	KeepInstanceName pulumi.BoolPtrInput
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -384,10 +430,14 @@ type NodePoolArgs struct {
 	Period pulumi.IntPtrInput
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit pulumi.StringPtrInput
+	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	Platform pulumi.StringPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig NodePoolScalingConfigPtrInput
+	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+	ScalingPolicy pulumi.StringPtrInput
 	// The security group id for worker node.
 	SecurityGroupId pulumi.StringPtrInput
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.

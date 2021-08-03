@@ -13,9 +13,21 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     [OutputType]
     public sealed class GetEventBusesBusResult
     {
+        /// <summary>
+        /// The time of this bus was created.
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// The description of event bus.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The name of event bus.
+        /// </summary>
         public readonly string EventBusName;
+        /// <summary>
+        /// The ID of the Event Bus. Its value is same as Queue Name.
+        /// </summary>
         public readonly string Id;
 
         [OutputConstructor]

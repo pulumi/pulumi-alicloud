@@ -9,38 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cas
 {
+    [Obsolete(@"This resource has been deprecated in favour of getServiceCertificates")]
     public static class GetCertificates
     {
-        /// <summary>
-        /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var certs = Output.Create(AliCloud.Cas.GetCertificates.InvokeAsync(new AliCloud.Cas.GetCertificatesArgs
-        ///         {
-        ///             NameRegex = "^cas",
-        ///             OutputFile = $"{path.Module}/cas_certificates.json",
-        ///         }));
-        ///         this.Cert = certs.Apply(certs =&gt; certs.Certificates[0].Id);
-        ///     }
-        /// 
-        ///     [Output("cert")]
-        ///     public Output&lt;string&gt; Cert { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetCertificatesResult> InvokeAsync(GetCertificatesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? new GetCertificatesArgs(), options.WithVersion());
     }
@@ -48,6 +19,9 @@ namespace Pulumi.AliCloud.Cas
 
     public sealed class GetCertificatesArgs : Pulumi.InvokeArgs
     {
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -59,6 +33,9 @@ namespace Pulumi.AliCloud.Cas
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
+
+        [Input("lang")]
+        public string? Lang { get; set; }
 
         /// <summary>
         /// A regex string to filter results by the certificate name.
@@ -82,6 +59,7 @@ namespace Pulumi.AliCloud.Cas
         /// A list of apis. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCertificatesCertificateResult> Certificates;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -90,6 +68,7 @@ namespace Pulumi.AliCloud.Cas
         /// A list of cert IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly string? Lang;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of cert names.
@@ -101,9 +80,13 @@ namespace Pulumi.AliCloud.Cas
         private GetCertificatesResult(
             ImmutableArray<Outputs.GetCertificatesCertificateResult> certificates,
 
+            bool? enableDetails,
+
             string id,
 
             ImmutableArray<string> ids,
+
+            string? lang,
 
             string? nameRegex,
 
@@ -112,8 +95,10 @@ namespace Pulumi.AliCloud.Cas
             string? outputFile)
         {
             Certificates = certificates;
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
+            Lang = lang;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;

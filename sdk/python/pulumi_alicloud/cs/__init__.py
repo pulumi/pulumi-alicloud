@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .application import *
+from .autoscaling_config import *
 from .cluster import *
 from .edge_kubernetes import *
 from .get_ack_service import *
@@ -43,6 +44,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:cs/application:Application":
                 return Application(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cs/autoscalingConfig:AutoscalingConfig":
+                return AutoscalingConfig(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cs/cluster:Cluster":
                 return Cluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cs/edgeKubernetes:EdgeKubernetes":
@@ -73,6 +76,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "cs/application", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cs/autoscalingConfig", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/cluster", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/edgeKubernetes", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/kubernetes", _module_instance)

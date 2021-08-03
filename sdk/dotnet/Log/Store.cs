@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Log
         public Output<bool?> AppendMeta { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether to automatically split a shard. Default to `true`.
+        /// Determines whether to automatically split a shard. Default to `false`.
         /// </summary>
         [Output("autoSplit")]
         public Output<bool?> AutoSplit { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? AppendMeta { get; set; }
 
         /// <summary>
-        /// Determines whether to automatically split a shard. Default to `true`.
+        /// Determines whether to automatically split a shard. Default to `false`.
         /// </summary>
         [Input("autoSplit")]
         public Input<bool>? AutoSplit { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? AppendMeta { get; set; }
 
         /// <summary>
-        /// Determines whether to automatically split a shard. Default to `true`.
+        /// Determines whether to automatically split a shard. Default to `false`.
         /// </summary>
         [Input("autoSplit")]
         public Input<bool>? AutoSplit { get; set; }

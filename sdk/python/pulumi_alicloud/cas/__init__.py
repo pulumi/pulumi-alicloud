@@ -5,6 +5,8 @@
 # Export this package's modules as members:
 from .certificate import *
 from .get_certificates import *
+from .get_service_certificates import *
+from .service_certificate import *
 from . import outputs
 
 def _register_module():
@@ -21,11 +23,14 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:cas/certificate:Certificate":
                 return Certificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cas/serviceCertificate:ServiceCertificate":
+                return ServiceCertificate(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "cas/certificate", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cas/serviceCertificate", _module_instance)
 
 _register_module()

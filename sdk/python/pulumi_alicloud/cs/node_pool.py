@@ -21,11 +21,14 @@ class NodePoolArgs:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
+                 format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+                 keep_instance_name: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]] = None,
@@ -36,8 +39,10 @@ class NodePoolArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
+                 platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['NodePoolScalingConfigArgs']] = None,
+                 scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
@@ -56,11 +61,14 @@ class NodePoolArgs:
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
+        :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
         :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         :param pulumi.Input[int] internet_max_bandwidth_out: The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+        :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
@@ -71,8 +79,10 @@ class NodePoolArgs:
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
+        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`.
+        :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -92,16 +102,22 @@ class NodePoolArgs:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if format_disk is not None:
+            pulumi.set(__self__, "format_disk", format_disk)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if install_cloud_monitor is not None:
             pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instances is not None:
+            pulumi.set(__self__, "instances", instances)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_out is not None:
             pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+        if keep_instance_name is not None:
+            pulumi.set(__self__, "keep_instance_name", keep_instance_name)
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if kms_encrypted_password is not None:
@@ -122,10 +138,14 @@ class NodePoolArgs:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
+        if platform is not None:
+            pulumi.set(__self__, "platform", platform)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scaling_config is not None:
             pulumi.set(__self__, "scaling_config", scaling_config)
+        if scaling_policy is not None:
+            pulumi.set(__self__, "scaling_policy", scaling_policy)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if spot_price_limits is not None:
@@ -220,6 +240,18 @@ class NodePoolArgs:
         pulumi.set(self, "data_disks", value)
 
     @property
+    @pulumi.getter(name="formatDisk")
+    def format_disk(self) -> Optional[pulumi.Input[bool]]:
+        """
+        After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+        """
+        return pulumi.get(self, "format_disk")
+
+    @format_disk.setter
+    def format_disk(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "format_disk", value)
+
+    @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -256,6 +288,18 @@ class NodePoolArgs:
         pulumi.set(self, "instance_charge_type", value)
 
     @property
+    @pulumi.getter
+    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        """
+        return pulumi.get(self, "instances")
+
+    @instances.setter
+    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instances", value)
+
+    @property
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -278,6 +322,18 @@ class NodePoolArgs:
     @internet_max_bandwidth_out.setter
     def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "internet_max_bandwidth_out", value)
+
+    @property
+    @pulumi.getter(name="keepInstanceName")
+    def keep_instance_name(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+        """
+        return pulumi.get(self, "keep_instance_name")
+
+    @keep_instance_name.setter
+    def keep_instance_name(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keep_instance_name", value)
 
     @property
     @pulumi.getter(name="keyName")
@@ -400,6 +456,18 @@ class NodePoolArgs:
         pulumi.set(self, "period_unit", value)
 
     @property
+    @pulumi.getter
+    def platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        """
+        return pulumi.get(self, "platform")
+
+    @platform.setter
+    def platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "platform", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -422,6 +490,18 @@ class NodePoolArgs:
     @scaling_config.setter
     def scaling_config(self, value: Optional[pulumi.Input['NodePoolScalingConfigArgs']]):
         pulumi.set(self, "scaling_config", value)
+
+    @property
+    @pulumi.getter(name="scalingPolicy")
+    def scaling_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+        """
+        return pulumi.get(self, "scaling_policy")
+
+    @scaling_policy.setter
+    def scaling_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_policy", value)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -548,12 +628,15 @@ class _NodePoolState:
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
+                 format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+                 keep_instance_name: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]] = None,
@@ -564,9 +647,11 @@ class _NodePoolState:
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
+                 platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['NodePoolScalingConfigArgs']] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
@@ -585,12 +670,15 @@ class _NodePoolState:
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
+        :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The instance type of worker node.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
         :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         :param pulumi.Input[int] internet_max_bandwidth_out: The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+        :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
@@ -601,9 +689,11 @@ class _NodePoolState:
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
+        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`.
         :param pulumi.Input[str] scaling_group_id: (Available in 1.105.0+) Id of the Scaling Group.
+        :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -623,6 +713,8 @@ class _NodePoolState:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if format_disk is not None:
+            pulumi.set(__self__, "format_disk", format_disk)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if install_cloud_monitor is not None:
@@ -631,10 +723,14 @@ class _NodePoolState:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
+        if instances is not None:
+            pulumi.set(__self__, "instances", instances)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_out is not None:
             pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+        if keep_instance_name is not None:
+            pulumi.set(__self__, "keep_instance_name", keep_instance_name)
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if kms_encrypted_password is not None:
@@ -655,12 +751,16 @@ class _NodePoolState:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
+        if platform is not None:
+            pulumi.set(__self__, "platform", platform)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scaling_config is not None:
             pulumi.set(__self__, "scaling_config", scaling_config)
         if scaling_group_id is not None:
             pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if scaling_policy is not None:
+            pulumi.set(__self__, "scaling_policy", scaling_policy)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if spot_price_limits is not None:
@@ -735,6 +835,18 @@ class _NodePoolState:
         pulumi.set(self, "data_disks", value)
 
     @property
+    @pulumi.getter(name="formatDisk")
+    def format_disk(self) -> Optional[pulumi.Input[bool]]:
+        """
+        After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+        """
+        return pulumi.get(self, "format_disk")
+
+    @format_disk.setter
+    def format_disk(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "format_disk", value)
+
+    @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -783,6 +895,18 @@ class _NodePoolState:
         pulumi.set(self, "instance_types", value)
 
     @property
+    @pulumi.getter
+    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        """
+        return pulumi.get(self, "instances")
+
+    @instances.setter
+    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instances", value)
+
+    @property
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -805,6 +929,18 @@ class _NodePoolState:
     @internet_max_bandwidth_out.setter
     def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "internet_max_bandwidth_out", value)
+
+    @property
+    @pulumi.getter(name="keepInstanceName")
+    def keep_instance_name(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+        """
+        return pulumi.get(self, "keep_instance_name")
+
+    @keep_instance_name.setter
+    def keep_instance_name(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keep_instance_name", value)
 
     @property
     @pulumi.getter(name="keyName")
@@ -927,6 +1063,18 @@ class _NodePoolState:
         pulumi.set(self, "period_unit", value)
 
     @property
+    @pulumi.getter
+    def platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        """
+        return pulumi.get(self, "platform")
+
+    @platform.setter
+    def platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "platform", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -961,6 +1109,18 @@ class _NodePoolState:
     @scaling_group_id.setter
     def scaling_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scaling_group_id", value)
+
+    @property
+    @pulumi.getter(name="scalingPolicy")
+    def scaling_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+        """
+        return pulumi.get(self, "scaling_policy")
+
+    @scaling_policy.setter
+    def scaling_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_policy", value)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -1110,12 +1270,15 @@ class NodePool(pulumi.CustomResource):
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
+                 format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+                 keep_instance_name: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
@@ -1126,8 +1289,10 @@ class NodePool(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
+                 platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
+                 scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
@@ -1155,12 +1320,15 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
+        :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The instance type of worker node.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
         :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         :param pulumi.Input[int] internet_max_bandwidth_out: The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+        :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
@@ -1171,8 +1339,10 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
+        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`.
+        :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -1218,12 +1388,15 @@ class NodePool(pulumi.CustomResource):
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
+                 format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+                 keep_instance_name: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
@@ -1234,8 +1407,10 @@ class NodePool(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
+                 platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
+                 scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
@@ -1265,14 +1440,17 @@ class NodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["data_disks"] = data_disks
+            __props__.__dict__["format_disk"] = format_disk
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             if instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_types'")
             __props__.__dict__["instance_types"] = instance_types
+            __props__.__dict__["instances"] = instances
             __props__.__dict__["internet_charge_type"] = internet_charge_type
             __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
+            __props__.__dict__["keep_instance_name"] = keep_instance_name
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["labels"] = labels
@@ -1283,8 +1461,10 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["password"] = password
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
+            __props__.__dict__["platform"] = platform
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["scaling_config"] = scaling_config
+            __props__.__dict__["scaling_policy"] = scaling_policy
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["spot_price_limits"] = spot_price_limits
             __props__.__dict__["spot_strategy"] = spot_strategy
@@ -1314,12 +1494,15 @@ class NodePool(pulumi.CustomResource):
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
+            format_disk: Optional[pulumi.Input[bool]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+            keep_instance_name: Optional[pulumi.Input[bool]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
@@ -1330,9 +1513,11 @@ class NodePool(pulumi.CustomResource):
             password: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
+            platform: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None,
+            scaling_policy: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
@@ -1356,12 +1541,15 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
+        :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The instance type of worker node.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
         :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         :param pulumi.Input[int] internet_max_bandwidth_out: The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+        :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
@@ -1372,9 +1560,11 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
+        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`.
         :param pulumi.Input[str] scaling_group_id: (Available in 1.105.0+) Id of the Scaling Group.
+        :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -1394,12 +1584,15 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["data_disks"] = data_disks
+        __props__.__dict__["format_disk"] = format_disk
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["instance_types"] = instance_types
+        __props__.__dict__["instances"] = instances
         __props__.__dict__["internet_charge_type"] = internet_charge_type
         __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
+        __props__.__dict__["keep_instance_name"] = keep_instance_name
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["labels"] = labels
@@ -1410,9 +1603,11 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["password"] = password
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
+        __props__.__dict__["platform"] = platform
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["scaling_config"] = scaling_config
         __props__.__dict__["scaling_group_id"] = scaling_group_id
+        __props__.__dict__["scaling_policy"] = scaling_policy
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["spot_price_limits"] = spot_price_limits
         __props__.__dict__["spot_strategy"] = spot_strategy
@@ -1460,6 +1655,14 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "data_disks")
 
     @property
+    @pulumi.getter(name="formatDisk")
+    def format_disk(self) -> pulumi.Output[bool]:
+        """
+        After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+        """
+        return pulumi.get(self, "format_disk")
+
+    @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
         """
@@ -1492,6 +1695,14 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "instance_types")
 
     @property
+    @pulumi.getter
+    def instances(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        """
+        return pulumi.get(self, "instances")
+
+    @property
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[str]:
         """
@@ -1506,6 +1717,14 @@ class NodePool(pulumi.CustomResource):
         The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
+
+    @property
+    @pulumi.getter(name="keepInstanceName")
+    def keep_instance_name(self) -> pulumi.Output[bool]:
+        """
+        Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+        """
+        return pulumi.get(self, "keep_instance_name")
 
     @property
     @pulumi.getter(name="keyName")
@@ -1533,7 +1752,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def management(self) -> pulumi.Output[Optional['outputs.NodePoolManagement']]:
+    def management(self) -> pulumi.Output['outputs.NodePoolManagement']:
         """
         Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         """
@@ -1588,6 +1807,14 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "period_unit")
 
     @property
+    @pulumi.getter
+    def platform(self) -> pulumi.Output[str]:
+        """
+        The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        """
+        return pulumi.get(self, "platform")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
@@ -1610,6 +1837,14 @@ class NodePool(pulumi.CustomResource):
         (Available in 1.105.0+) Id of the Scaling Group.
         """
         return pulumi.get(self, "scaling_group_id")
+
+    @property
+    @pulumi.getter(name="scalingPolicy")
+    def scaling_policy(self) -> pulumi.Output[str]:
+        """
+        The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+        """
+        return pulumi.get(self, "scaling_policy")
 
     @property
     @pulumi.getter(name="securityGroupId")

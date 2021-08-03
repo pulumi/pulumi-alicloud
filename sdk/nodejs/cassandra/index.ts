@@ -5,13 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./backupPlan";
 export * from "./cluster";
 export * from "./dataCenter";
+export * from "./getBackupPlans";
 export * from "./getClusters";
 export * from "./getDataCenters";
 export * from "./getZones";
 
 // Import resources to register:
+import { BackupPlan } from "./backupPlan";
 import { Cluster } from "./cluster";
 import { DataCenter } from "./dataCenter";
 
@@ -19,6 +22,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:cassandra/backupPlan:BackupPlan":
+                return new BackupPlan(name, <any>undefined, { urn })
             case "alicloud:cassandra/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
             case "alicloud:cassandra/dataCenter:DataCenter":
@@ -28,5 +33,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "cassandra/backupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cassandra/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cassandra/dataCenter", _module)

@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./application";
+export * from "./autoscalingConfig";
 export * from "./cluster";
 export * from "./edgeKubernetes";
 export * from "./getAckService";
@@ -31,6 +32,7 @@ export * from "./swarm";
 
 // Import resources to register:
 import { Application } from "./application";
+import { AutoscalingConfig } from "./autoscalingConfig";
 import { Cluster } from "./cluster";
 import { EdgeKubernetes } from "./edgeKubernetes";
 import { Kubernetes } from "./kubernetes";
@@ -50,6 +52,8 @@ const _module = {
         switch (type) {
             case "alicloud:cs/application:Application":
                 return new Application(name, <any>undefined, { urn })
+            case "alicloud:cs/autoscalingConfig:AutoscalingConfig":
+                return new AutoscalingConfig(name, <any>undefined, { urn })
             case "alicloud:cs/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
             case "alicloud:cs/edgeKubernetes:EdgeKubernetes":
@@ -80,6 +84,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "cs/application", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cs/autoscalingConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/edgeKubernetes", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetes", _module)

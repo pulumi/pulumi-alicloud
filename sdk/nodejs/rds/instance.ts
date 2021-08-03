@@ -120,7 +120,7 @@ export class Instance extends pulumi.CustomResource {
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      */
-    public readonly acl!: pulumi.Output<string | undefined>;
+    public readonly acl!: pulumi.Output<string>;
     /**
      * Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
      */
@@ -140,7 +140,7 @@ export class Instance extends pulumi.CustomResource {
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
      */
-    public readonly caType!: pulumi.Output<string | undefined>;
+    public readonly caType!: pulumi.Output<string>;
     /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      */
@@ -200,6 +200,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly forceRestart!: pulumi.Output<boolean | undefined>;
     /**
+     * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+     * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+     * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+     */
+    public readonly haConfig!: pulumi.Output<string | undefined>;
+    /**
      * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
@@ -225,6 +231,10 @@ export class Instance extends pulumi.CustomResource {
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     public readonly maintainTime!: pulumi.Output<string>;
+    /**
+     * The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+     */
+    public readonly manualHaTime!: pulumi.Output<string | undefined>;
     /**
      * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
      * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
@@ -253,7 +263,7 @@ export class Instance extends pulumi.CustomResource {
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      */
-    public readonly replicationAcl!: pulumi.Output<string | undefined>;
+    public readonly replicationAcl!: pulumi.Output<string>;
     /**
      * The ID of resource group which the DB instance belongs.
      */
@@ -305,8 +315,26 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly sslStatus!: pulumi.Output<string>;
     /**
+     * Automatic storage space expansion switch. Valid values:
+     * - Enable
+     * - Disable
+     */
+    public readonly storageAutoScale!: pulumi.Output<string | undefined>;
+    /**
+     * The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+     * - 10
+     * - 20
+     * - 30
+     * - 40
+     * - 50
+     */
+    public readonly storageThreshold!: pulumi.Output<number | undefined>;
+    /**
+     * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+     */
+    public readonly storageUpperBound!: pulumi.Output<number | undefined>;
+    /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
-     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      */
     public readonly switchTime!: pulumi.Output<string | undefined>;
     /**
@@ -323,7 +351,6 @@ export class Instance extends pulumi.CustomResource {
      * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      */
     public readonly targetMinorVersion!: pulumi.Output<string>;
     /**
@@ -400,11 +427,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["engine"] = state ? state.engine : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
             inputs["forceRestart"] = state ? state.forceRestart : undefined;
+            inputs["haConfig"] = state ? state.haConfig : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["instanceStorage"] = state ? state.instanceStorage : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
             inputs["maintainTime"] = state ? state.maintainTime : undefined;
+            inputs["manualHaTime"] = state ? state.manualHaTime : undefined;
             inputs["modifyMode"] = state ? state.modifyMode : undefined;
             inputs["monitoringPeriod"] = state ? state.monitoringPeriod : undefined;
             inputs["parameters"] = state ? state.parameters : undefined;
@@ -424,6 +453,9 @@ export class Instance extends pulumi.CustomResource {
             inputs["sqlCollectorStatus"] = state ? state.sqlCollectorStatus : undefined;
             inputs["sslAction"] = state ? state.sslAction : undefined;
             inputs["sslStatus"] = state ? state.sslStatus : undefined;
+            inputs["storageAutoScale"] = state ? state.storageAutoScale : undefined;
+            inputs["storageThreshold"] = state ? state.storageThreshold : undefined;
+            inputs["storageUpperBound"] = state ? state.storageUpperBound : undefined;
             inputs["switchTime"] = state ? state.switchTime : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["targetMinorVersion"] = state ? state.targetMinorVersion : undefined;
@@ -466,11 +498,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["engine"] = args ? args.engine : undefined;
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
             inputs["forceRestart"] = args ? args.forceRestart : undefined;
+            inputs["haConfig"] = args ? args.haConfig : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             inputs["instanceName"] = args ? args.instanceName : undefined;
             inputs["instanceStorage"] = args ? args.instanceStorage : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["maintainTime"] = args ? args.maintainTime : undefined;
+            inputs["manualHaTime"] = args ? args.manualHaTime : undefined;
             inputs["modifyMode"] = args ? args.modifyMode : undefined;
             inputs["monitoringPeriod"] = args ? args.monitoringPeriod : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
@@ -489,6 +523,9 @@ export class Instance extends pulumi.CustomResource {
             inputs["sqlCollectorConfigValue"] = args ? args.sqlCollectorConfigValue : undefined;
             inputs["sqlCollectorStatus"] = args ? args.sqlCollectorStatus : undefined;
             inputs["sslAction"] = args ? args.sslAction : undefined;
+            inputs["storageAutoScale"] = args ? args.storageAutoScale : undefined;
+            inputs["storageThreshold"] = args ? args.storageThreshold : undefined;
+            inputs["storageUpperBound"] = args ? args.storageUpperBound : undefined;
             inputs["switchTime"] = args ? args.switchTime : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["targetMinorVersion"] = args ? args.targetMinorVersion : undefined;
@@ -601,6 +638,12 @@ export interface InstanceState {
      */
     readonly forceRestart?: pulumi.Input<boolean>;
     /**
+     * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+     * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+     * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+     */
+    readonly haConfig?: pulumi.Input<string>;
+    /**
      * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
@@ -626,6 +669,10 @@ export interface InstanceState {
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     readonly maintainTime?: pulumi.Input<string>;
+    /**
+     * The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+     */
+    readonly manualHaTime?: pulumi.Input<string>;
     /**
      * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
      * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
@@ -706,8 +753,26 @@ export interface InstanceState {
      */
     readonly sslStatus?: pulumi.Input<string>;
     /**
+     * Automatic storage space expansion switch. Valid values:
+     * - Enable
+     * - Disable
+     */
+    readonly storageAutoScale?: pulumi.Input<string>;
+    /**
+     * The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+     * - 10
+     * - 20
+     * - 30
+     * - 40
+     * - 50
+     */
+    readonly storageThreshold?: pulumi.Input<number>;
+    /**
+     * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+     */
+    readonly storageUpperBound?: pulumi.Input<number>;
+    /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
-     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      */
     readonly switchTime?: pulumi.Input<string>;
     /**
@@ -724,7 +789,6 @@ export interface InstanceState {
      * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      */
     readonly targetMinorVersion?: pulumi.Input<string>;
     /**
@@ -858,6 +922,12 @@ export interface InstanceArgs {
      */
     readonly forceRestart?: pulumi.Input<boolean>;
     /**
+     * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+     * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+     * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+     */
+    readonly haConfig?: pulumi.Input<string>;
+    /**
      * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
@@ -883,6 +953,10 @@ export interface InstanceArgs {
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     readonly maintainTime?: pulumi.Input<string>;
+    /**
+     * The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+     */
+    readonly manualHaTime?: pulumi.Input<string>;
     /**
      * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
      * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
@@ -959,8 +1033,26 @@ export interface InstanceArgs {
      */
     readonly sslAction?: pulumi.Input<string>;
     /**
+     * Automatic storage space expansion switch. Valid values:
+     * - Enable
+     * - Disable
+     */
+    readonly storageAutoScale?: pulumi.Input<string>;
+    /**
+     * The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+     * - 10
+     * - 20
+     * - 30
+     * - 40
+     * - 50
+     */
+    readonly storageThreshold?: pulumi.Input<number>;
+    /**
+     * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+     */
+    readonly storageUpperBound?: pulumi.Input<number>;
+    /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
-     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      */
     readonly switchTime?: pulumi.Input<string>;
     /**
@@ -977,7 +1069,6 @@ export interface InstanceArgs {
      * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      */
     readonly targetMinorVersion?: pulumi.Input<string>;
     /**

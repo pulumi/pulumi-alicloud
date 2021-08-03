@@ -18,13 +18,14 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Alidns;
         public readonly string? Alikafka;
         public readonly string? Apigateway;
+        public readonly string? Arms;
         public readonly string? BrainIndustrial;
         public readonly string? Bssopenapi;
         public readonly string? Cas;
         public readonly string? Cassandra;
         public readonly string? Cbn;
         public readonly string? Cdn;
-        public readonly string? Cen;
+        public readonly string? Cds;
         public readonly string? Cms;
         public readonly string? Config;
         public readonly string? Cr;
@@ -49,6 +50,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Fnf;
         public readonly string? Ga;
         public readonly string? Gpdb;
+        public readonly string? Hbr;
         public readonly string? Hitsdb;
         public readonly string? Ims;
         public readonly string? Kms;
@@ -75,6 +77,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Resourcemanager;
         public readonly string? Resourcesharing;
         public readonly string? Ros;
+        public readonly string? Serverless;
         public readonly string? Sgw;
         public readonly string? Slb;
         public readonly string? Sts;
@@ -93,6 +96,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? apigateway,
 
+            string? arms,
+
             string? brainIndustrial,
 
             string? bssopenapi,
@@ -105,7 +110,7 @@ namespace Pulumi.AliCloud.Outputs
 
             string? cdn,
 
-            string? cen,
+            string? cds,
 
             string? cms,
 
@@ -154,6 +159,8 @@ namespace Pulumi.AliCloud.Outputs
             string? ga,
 
             string? gpdb,
+
+            string? hbr,
 
             string? hitsdb,
 
@@ -207,6 +214,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? ros,
 
+            string? serverless,
+
             string? sgw,
 
             string? slb,
@@ -222,13 +231,14 @@ namespace Pulumi.AliCloud.Outputs
             Alidns = alidns;
             Alikafka = alikafka;
             Apigateway = apigateway;
+            Arms = arms;
             BrainIndustrial = brainIndustrial;
             Bssopenapi = bssopenapi;
             Cas = cas;
             Cassandra = cassandra;
             Cbn = cbn;
             Cdn = cdn;
-            Cen = cen;
+            Cds = cds;
             Cms = cms;
             Config = config;
             Cr = cr;
@@ -253,6 +263,7 @@ namespace Pulumi.AliCloud.Outputs
             Fnf = fnf;
             Ga = ga;
             Gpdb = gpdb;
+            Hbr = hbr;
             Hitsdb = hitsdb;
             Ims = ims;
             Kms = kms;
@@ -279,6 +290,7 @@ namespace Pulumi.AliCloud.Outputs
             Resourcemanager = resourcemanager;
             Resourcesharing = resourcesharing;
             Ros = ros;
+            Serverless = serverless;
             Sgw = sgw;
             Slb = slb;
             Sts = sts;

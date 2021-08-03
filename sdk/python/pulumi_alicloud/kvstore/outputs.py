@@ -348,6 +348,7 @@ class GetInstancesInstanceResult(dict):
                  replacate_id: str,
                  resource_group_id: str,
                  search_key: str,
+                 secondary_zone_id: str,
                  security_group_id: str,
                  security_ip_group_attribute: str,
                  security_ip_group_name: str,
@@ -396,6 +397,7 @@ class GetInstancesInstanceResult(dict):
         :param str replacate_id: The logical ID of the replica instance.
         :param str resource_group_id: The ID of the resource group.
         :param str search_key: The name of the instance.
+        :param str secondary_zone_id: (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
         :param str status: The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
         :param Mapping[str, Any] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         :param str user_name: The username of the instance.
@@ -443,6 +445,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "replacate_id", replacate_id)
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "search_key", search_key)
+        pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
         pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
@@ -753,6 +756,14 @@ class GetInstancesInstanceResult(dict):
         The name of the instance.
         """
         return pulumi.get(self, "search_key")
+
+    @property
+    @pulumi.getter(name="secondaryZoneId")
+    def secondary_zone_id(self) -> str:
+        """
+        (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        """
+        return pulumi.get(self, "secondary_zone_id")
 
     @property
     @pulumi.getter(name="securityGroupId")

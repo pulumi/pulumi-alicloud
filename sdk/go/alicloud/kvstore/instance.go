@@ -182,6 +182,10 @@ type Instance struct {
 	DbInstanceName pulumi.StringOutput `pulumi:"dbInstanceName"`
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrOutput `pulumi:"dedicatedHostGroupId"`
+	// Specifies whether to precheck the request. Valid values:
+	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+	// * false: checks the request. After the request passes the check, an instance is created.
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
 	EnableBackupLog pulumi.IntPtrOutput `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -251,6 +255,8 @@ type Instance struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The point in time of a backup file.
 	RestoreTime pulumi.StringPtrOutput `pulumi:"restoreTime"`
+	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
 	// The ID of security groups.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -343,6 +349,10 @@ type instanceState struct {
 	DbInstanceName *string `pulumi:"dbInstanceName"`
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
+	// Specifies whether to precheck the request. Valid values:
+	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+	// * false: checks the request. After the request passes the check, an instance is created.
+	DryRun *bool `pulumi:"dryRun"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -412,6 +422,8 @@ type instanceState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time of a backup file.
 	RestoreTime *string `pulumi:"restoreTime"`
+	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The ID of security groups.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -476,6 +488,10 @@ type InstanceState struct {
 	DbInstanceName pulumi.StringPtrInput
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrInput
+	// Specifies whether to precheck the request. Valid values:
+	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+	// * false: checks the request. After the request passes the check, an instance is created.
+	DryRun pulumi.BoolPtrInput
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
 	EnableBackupLog pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -545,6 +561,8 @@ type InstanceState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time of a backup file.
 	RestoreTime pulumi.StringPtrInput
+	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	SecondaryZoneId pulumi.StringPtrInput
 	// The ID of security groups.
 	SecurityGroupId pulumi.StringPtrInput
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -608,6 +626,10 @@ type instanceArgs struct {
 	DbInstanceName *string `pulumi:"dbInstanceName"`
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
+	// Specifies whether to precheck the request. Valid values:
+	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+	// * false: checks the request. After the request passes the check, an instance is created.
+	DryRun *bool `pulumi:"dryRun"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -673,6 +695,8 @@ type instanceArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time of a backup file.
 	RestoreTime *string `pulumi:"restoreTime"`
+	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The ID of security groups.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -730,6 +754,10 @@ type InstanceArgs struct {
 	DbInstanceName pulumi.StringPtrInput
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrInput
+	// Specifies whether to precheck the request. Valid values:
+	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+	// * false: checks the request. After the request passes the check, an instance is created.
+	DryRun pulumi.BoolPtrInput
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
 	EnableBackupLog pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -795,6 +823,8 @@ type InstanceArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time of a backup file.
 	RestoreTime pulumi.StringPtrInput
+	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	SecondaryZoneId pulumi.StringPtrInput
 	// The ID of security groups.
 	SecurityGroupId pulumi.StringPtrInput
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.

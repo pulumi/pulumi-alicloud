@@ -29,6 +29,7 @@ class InstanceArgs:
                  coupon_no: Optional[pulumi.Input[str]] = None,
                  db_instance_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  enable_backup_log: Optional[pulumi.Input[int]] = None,
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -57,6 +58,7 @@ class InstanceArgs:
                  private_ip: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restore_time: Optional[pulumi.Input[str]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_group_attribute: Optional[pulumi.Input[str]] = None,
                  security_ip_group_name: Optional[pulumi.Input[str]] = None,
@@ -83,6 +85,9 @@ class InstanceArgs:
         :param pulumi.Input[str] coupon_no: The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
+               * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+               * false: checks the request. After the request passes the check, an instance is created.
         :param pulumi.Input[int] enable_backup_log: Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         :param pulumi.Input[bool] enable_public: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
@@ -110,6 +115,7 @@ class InstanceArgs:
         :param pulumi.Input[str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] restore_time: The point in time of a backup file.
+        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
         :param pulumi.Input[str] security_group_id: The ID of security groups.
         :param pulumi.Input[str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
@@ -156,6 +162,8 @@ class InstanceArgs:
             pulumi.set(__self__, "db_instance_name", db_instance_name)
         if dedicated_host_group_id is not None:
             pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if enable_backup_log is not None:
             pulumi.set(__self__, "enable_backup_log", enable_backup_log)
         if enable_public is not None:
@@ -227,6 +235,8 @@ class InstanceArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restore_time is not None:
             pulumi.set(__self__, "restore_time", restore_time)
+        if secondary_zone_id is not None:
+            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_ip_group_attribute is not None:
@@ -415,6 +425,20 @@ class InstanceArgs:
     @dedicated_host_group_id.setter
     def dedicated_host_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dedicated_host_group_id", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to precheck the request. Valid values:
+        * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+        * false: checks the request. After the request passes the check, an instance is created.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
 
     @property
     @pulumi.getter(name="enableBackupLog")
@@ -750,6 +774,18 @@ class InstanceArgs:
         pulumi.set(self, "restore_time", value)
 
     @property
+    @pulumi.getter(name="secondaryZoneId")
+    def secondary_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        """
+        return pulumi.get(self, "secondary_zone_id")
+
+    @secondary_zone_id.setter
+    def secondary_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_zone_id", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -891,6 +927,7 @@ class _InstanceState:
                  coupon_no: Optional[pulumi.Input[str]] = None,
                  db_instance_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  enable_backup_log: Optional[pulumi.Input[int]] = None,
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
@@ -921,6 +958,7 @@ class _InstanceState:
                  qps: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restore_time: Optional[pulumi.Input[str]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_group_attribute: Optional[pulumi.Input[str]] = None,
                  security_ip_group_name: Optional[pulumi.Input[str]] = None,
@@ -949,6 +987,9 @@ class _InstanceState:
         :param pulumi.Input[str] coupon_no: The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
+               * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+               * false: checks the request. After the request passes the check, an instance is created.
         :param pulumi.Input[int] enable_backup_log: Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         :param pulumi.Input[bool] enable_public: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] end_time: The expiration time of the prepaid instance.
@@ -978,6 +1019,7 @@ class _InstanceState:
         :param pulumi.Input[int] qps: Theoretical maximum QPS value.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] restore_time: The point in time of a backup file.
+        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
         :param pulumi.Input[str] security_group_id: The ID of security groups.
         :param pulumi.Input[str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
@@ -1035,6 +1077,8 @@ class _InstanceState:
             pulumi.set(__self__, "db_instance_name", db_instance_name)
         if dedicated_host_group_id is not None:
             pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if enable_backup_log is not None:
             pulumi.set(__self__, "enable_backup_log", enable_backup_log)
         if enable_public is not None:
@@ -1110,6 +1154,8 @@ class _InstanceState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restore_time is not None:
             pulumi.set(__self__, "restore_time", restore_time)
+        if secondary_zone_id is not None:
+            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_ip_group_attribute is not None:
@@ -1330,6 +1376,20 @@ class _InstanceState:
     @dedicated_host_group_id.setter
     def dedicated_host_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dedicated_host_group_id", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to precheck the request. Valid values:
+        * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+        * false: checks the request. After the request passes the check, an instance is created.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
 
     @property
     @pulumi.getter(name="enableBackupLog")
@@ -1689,6 +1749,18 @@ class _InstanceState:
         pulumi.set(self, "restore_time", value)
 
     @property
+    @pulumi.getter(name="secondaryZoneId")
+    def secondary_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        """
+        return pulumi.get(self, "secondary_zone_id")
+
+    @secondary_zone_id.setter
+    def secondary_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_zone_id", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1842,6 +1914,7 @@ class Instance(pulumi.CustomResource):
                  coupon_no: Optional[pulumi.Input[str]] = None,
                  db_instance_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  enable_backup_log: Optional[pulumi.Input[int]] = None,
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -1870,6 +1943,7 @@ class Instance(pulumi.CustomResource):
                  private_ip: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restore_time: Optional[pulumi.Input[str]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_group_attribute: Optional[pulumi.Input[str]] = None,
                  security_ip_group_name: Optional[pulumi.Input[str]] = None,
@@ -1986,6 +2060,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] coupon_no: The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
+               * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+               * false: checks the request. After the request passes the check, an instance is created.
         :param pulumi.Input[int] enable_backup_log: Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         :param pulumi.Input[bool] enable_public: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
@@ -2013,6 +2090,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] restore_time: The point in time of a backup file.
+        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
         :param pulumi.Input[str] security_group_id: The ID of security groups.
         :param pulumi.Input[str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
@@ -2149,6 +2227,7 @@ class Instance(pulumi.CustomResource):
                  coupon_no: Optional[pulumi.Input[str]] = None,
                  db_instance_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  enable_backup_log: Optional[pulumi.Input[int]] = None,
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -2177,6 +2256,7 @@ class Instance(pulumi.CustomResource):
                  private_ip: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restore_time: Optional[pulumi.Input[str]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_group_attribute: Optional[pulumi.Input[str]] = None,
                  security_ip_group_name: Optional[pulumi.Input[str]] = None,
@@ -2219,6 +2299,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["coupon_no"] = coupon_no
             __props__.__dict__["db_instance_name"] = db_instance_name
             __props__.__dict__["dedicated_host_group_id"] = dedicated_host_group_id
+            __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["enable_backup_log"] = enable_backup_log
             if enable_public is not None and not opts.urn:
                 warnings.warn("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
@@ -2262,6 +2343,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["private_ip"] = private_ip
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["restore_time"] = restore_time
+            __props__.__dict__["secondary_zone_id"] = secondary_zone_id
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_ip_group_attribute"] = security_ip_group_attribute
             __props__.__dict__["security_ip_group_name"] = security_ip_group_name
@@ -2305,6 +2387,7 @@ class Instance(pulumi.CustomResource):
             coupon_no: Optional[pulumi.Input[str]] = None,
             db_instance_name: Optional[pulumi.Input[str]] = None,
             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+            dry_run: Optional[pulumi.Input[bool]] = None,
             enable_backup_log: Optional[pulumi.Input[int]] = None,
             enable_public: Optional[pulumi.Input[bool]] = None,
             end_time: Optional[pulumi.Input[str]] = None,
@@ -2335,6 +2418,7 @@ class Instance(pulumi.CustomResource):
             qps: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             restore_time: Optional[pulumi.Input[str]] = None,
+            secondary_zone_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_ip_group_attribute: Optional[pulumi.Input[str]] = None,
             security_ip_group_name: Optional[pulumi.Input[str]] = None,
@@ -2368,6 +2452,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] coupon_no: The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
+               * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+               * false: checks the request. After the request passes the check, an instance is created.
         :param pulumi.Input[int] enable_backup_log: Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         :param pulumi.Input[bool] enable_public: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] end_time: The expiration time of the prepaid instance.
@@ -2397,6 +2484,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] qps: Theoretical maximum QPS value.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] restore_time: The point in time of a backup file.
+        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
         :param pulumi.Input[str] security_group_id: The ID of security groups.
         :param pulumi.Input[str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
@@ -2432,6 +2520,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["coupon_no"] = coupon_no
         __props__.__dict__["db_instance_name"] = db_instance_name
         __props__.__dict__["dedicated_host_group_id"] = dedicated_host_group_id
+        __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["enable_backup_log"] = enable_backup_log
         __props__.__dict__["enable_public"] = enable_public
         __props__.__dict__["end_time"] = end_time
@@ -2462,6 +2551,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["qps"] = qps
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["restore_time"] = restore_time
+        __props__.__dict__["secondary_zone_id"] = secondary_zone_id
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_ip_group_attribute"] = security_ip_group_attribute
         __props__.__dict__["security_ip_group_name"] = security_ip_group_name
@@ -2604,6 +2694,16 @@ class Instance(pulumi.CustomResource):
         The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
         """
         return pulumi.get(self, "dedicated_host_group_id")
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to precheck the request. Valid values:
+        * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+        * false: checks the request. After the request passes the check, an instance is created.
+        """
+        return pulumi.get(self, "dry_run")
 
     @property
     @pulumi.getter(name="enableBackupLog")
@@ -2841,6 +2941,14 @@ class Instance(pulumi.CustomResource):
         The point in time of a backup file.
         """
         return pulumi.get(self, "restore_time")
+
+    @property
+    @pulumi.getter(name="secondaryZoneId")
+    def secondary_zone_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        """
+        return pulumi.get(self, "secondary_zone_id")
 
     @property
     @pulumi.getter(name="securityGroupId")

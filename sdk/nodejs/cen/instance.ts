@@ -76,7 +76,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
      */
-    public readonly protectionLevel!: pulumi.Output<string | undefined>;
+    public readonly protectionLevel!: pulumi.Output<string>;
     /**
      * The Cen Instance current status.
      */

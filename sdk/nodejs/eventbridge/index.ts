@@ -7,13 +7,15 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./eventBus";
 export * from "./getEventBuses";
-export * from "./getSchemaGroups";
+export * from "./getRules";
 export * from "./getService";
-export * from "./schemaGroup";
+export * from "./rule";
+export * from "./slr";
 
 // Import resources to register:
 import { EventBus } from "./eventBus";
-import { SchemaGroup } from "./schemaGroup";
+import { Rule } from "./rule";
+import { Slr } from "./slr";
 
 const _module = {
     version: utilities.getVersion(),
@@ -21,12 +23,15 @@ const _module = {
         switch (type) {
             case "alicloud:eventbridge/eventBus:EventBus":
                 return new EventBus(name, <any>undefined, { urn })
-            case "alicloud:eventbridge/schemaGroup:SchemaGroup":
-                return new SchemaGroup(name, <any>undefined, { urn })
+            case "alicloud:eventbridge/rule:Rule":
+                return new Rule(name, <any>undefined, { urn })
+            case "alicloud:eventbridge/slr:Slr":
+                return new Slr(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/eventBus", _module)
-pulumi.runtime.registerResourceModule("alicloud", "eventbridge/schemaGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eventbridge/rule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eventbridge/slr", _module)

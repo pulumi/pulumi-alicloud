@@ -10,6 +10,549 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetExchangesExchange struct {
+	// The attributes.
+	Attributes map[string]interface{} `pulumi:"attributes"`
+	// Indicates whether the Auto Delete attribute is configured.
+	AutoDeleteState bool `pulumi:"autoDeleteState"`
+	// The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The name of the exchange.
+	ExchangeName string `pulumi:"exchangeName"`
+	// The type of the exchange.
+	ExchangeType string `pulumi:"exchangeType"`
+	// The ID of the Exchange. Its value is same as Queue Name.
+	Id string `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of virtual host where an exchange resides.
+	VirtualHostName string `pulumi:"virtualHostName"`
+}
+
+// GetExchangesExchangeInput is an input type that accepts GetExchangesExchangeArgs and GetExchangesExchangeOutput values.
+// You can construct a concrete instance of `GetExchangesExchangeInput` via:
+//
+//          GetExchangesExchangeArgs{...}
+type GetExchangesExchangeInput interface {
+	pulumi.Input
+
+	ToGetExchangesExchangeOutput() GetExchangesExchangeOutput
+	ToGetExchangesExchangeOutputWithContext(context.Context) GetExchangesExchangeOutput
+}
+
+type GetExchangesExchangeArgs struct {
+	// The attributes.
+	Attributes pulumi.MapInput `pulumi:"attributes"`
+	// Indicates whether the Auto Delete attribute is configured.
+	AutoDeleteState pulumi.BoolInput `pulumi:"autoDeleteState"`
+	// The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The name of the exchange.
+	ExchangeName pulumi.StringInput `pulumi:"exchangeName"`
+	// The type of the exchange.
+	ExchangeType pulumi.StringInput `pulumi:"exchangeType"`
+	// The ID of the Exchange. Its value is same as Queue Name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of virtual host where an exchange resides.
+	VirtualHostName pulumi.StringInput `pulumi:"virtualHostName"`
+}
+
+func (GetExchangesExchangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExchangesExchange)(nil)).Elem()
+}
+
+func (i GetExchangesExchangeArgs) ToGetExchangesExchangeOutput() GetExchangesExchangeOutput {
+	return i.ToGetExchangesExchangeOutputWithContext(context.Background())
+}
+
+func (i GetExchangesExchangeArgs) ToGetExchangesExchangeOutputWithContext(ctx context.Context) GetExchangesExchangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExchangesExchangeOutput)
+}
+
+// GetExchangesExchangeArrayInput is an input type that accepts GetExchangesExchangeArray and GetExchangesExchangeArrayOutput values.
+// You can construct a concrete instance of `GetExchangesExchangeArrayInput` via:
+//
+//          GetExchangesExchangeArray{ GetExchangesExchangeArgs{...} }
+type GetExchangesExchangeArrayInput interface {
+	pulumi.Input
+
+	ToGetExchangesExchangeArrayOutput() GetExchangesExchangeArrayOutput
+	ToGetExchangesExchangeArrayOutputWithContext(context.Context) GetExchangesExchangeArrayOutput
+}
+
+type GetExchangesExchangeArray []GetExchangesExchangeInput
+
+func (GetExchangesExchangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExchangesExchange)(nil)).Elem()
+}
+
+func (i GetExchangesExchangeArray) ToGetExchangesExchangeArrayOutput() GetExchangesExchangeArrayOutput {
+	return i.ToGetExchangesExchangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetExchangesExchangeArray) ToGetExchangesExchangeArrayOutputWithContext(ctx context.Context) GetExchangesExchangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExchangesExchangeArrayOutput)
+}
+
+type GetExchangesExchangeOutput struct{ *pulumi.OutputState }
+
+func (GetExchangesExchangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExchangesExchange)(nil)).Elem()
+}
+
+func (o GetExchangesExchangeOutput) ToGetExchangesExchangeOutput() GetExchangesExchangeOutput {
+	return o
+}
+
+func (o GetExchangesExchangeOutput) ToGetExchangesExchangeOutputWithContext(ctx context.Context) GetExchangesExchangeOutput {
+	return o
+}
+
+// The attributes.
+func (o GetExchangesExchangeOutput) Attributes() pulumi.MapOutput {
+	return o.ApplyT(func(v GetExchangesExchange) map[string]interface{} { return v.Attributes }).(pulumi.MapOutput)
+}
+
+// Indicates whether the Auto Delete attribute is configured.
+func (o GetExchangesExchangeOutput) AutoDeleteState() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetExchangesExchange) bool { return v.AutoDeleteState }).(pulumi.BoolOutput)
+}
+
+// The creation time.
+func (o GetExchangesExchangeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExchangesExchange) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The name of the exchange.
+func (o GetExchangesExchangeOutput) ExchangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExchangesExchange) string { return v.ExchangeName }).(pulumi.StringOutput)
+}
+
+// The type of the exchange.
+func (o GetExchangesExchangeOutput) ExchangeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExchangesExchange) string { return v.ExchangeType }).(pulumi.StringOutput)
+}
+
+// The ID of the Exchange. Its value is same as Queue Name.
+func (o GetExchangesExchangeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExchangesExchange) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetExchangesExchangeOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExchangesExchange) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of virtual host where an exchange resides.
+func (o GetExchangesExchangeOutput) VirtualHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExchangesExchange) string { return v.VirtualHostName }).(pulumi.StringOutput)
+}
+
+type GetExchangesExchangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExchangesExchangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExchangesExchange)(nil)).Elem()
+}
+
+func (o GetExchangesExchangeArrayOutput) ToGetExchangesExchangeArrayOutput() GetExchangesExchangeArrayOutput {
+	return o
+}
+
+func (o GetExchangesExchangeArrayOutput) ToGetExchangesExchangeArrayOutputWithContext(ctx context.Context) GetExchangesExchangeArrayOutput {
+	return o
+}
+
+func (o GetExchangesExchangeArrayOutput) Index(i pulumi.IntInput) GetExchangesExchangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExchangesExchange {
+		return vs[0].([]GetExchangesExchange)[vs[1].(int)]
+	}).(GetExchangesExchangeOutput)
+}
+
+type GetInstancesInstance struct {
+	// OrderCreateTime.
+	CreateTime string `pulumi:"createTime"`
+	// ExpireTime.
+	ExpireTime string `pulumi:"expireTime"`
+	// The ID of the Instance.
+	Id string `pulumi:"id"`
+	// THe instance Id.
+	InstanceId string `pulumi:"instanceId"`
+	// THe instance name.
+	InstanceName string `pulumi:"instanceName"`
+	// The instance type.
+	InstanceType string `pulumi:"instanceType"`
+	// The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+	PaymentType string `pulumi:"paymentType"`
+	// The private endPoint.
+	PrivateEndPoint string `pulumi:"privateEndPoint"`
+	// The public dndpoint.
+	PublicEndpoint string `pulumi:"publicEndpoint"`
+	// Renewal duration.
+	RenewalDuration int `pulumi:"renewalDuration"`
+	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+	RenewalDurationUnit string `pulumi:"renewalDurationUnit"`
+	// Renew status.
+	RenewalStatus string `pulumi:"renewalStatus"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// Whether to support eip.
+	SupportEip bool `pulumi:"supportEip"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+//          GetInstancesInstanceArgs{...}
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	// OrderCreateTime.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// ExpireTime.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The ID of the Instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// THe instance Id.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// THe instance name.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The instance type.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The private endPoint.
+	PrivateEndPoint pulumi.StringInput `pulumi:"privateEndPoint"`
+	// The public dndpoint.
+	PublicEndpoint pulumi.StringInput `pulumi:"publicEndpoint"`
+	// Renewal duration.
+	RenewalDuration pulumi.IntInput `pulumi:"renewalDuration"`
+	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+	RenewalDurationUnit pulumi.StringInput `pulumi:"renewalDurationUnit"`
+	// Renew status.
+	RenewalStatus pulumi.StringInput `pulumi:"renewalStatus"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Whether to support eip.
+	SupportEip pulumi.BoolInput `pulumi:"supportEip"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+// OrderCreateTime.
+func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// ExpireTime.
+func (o GetInstancesInstanceOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Instance.
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// THe instance Id.
+func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// THe instance name.
+func (o GetInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The instance type.
+func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The private endPoint.
+func (o GetInstancesInstanceOutput) PrivateEndPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PrivateEndPoint }).(pulumi.StringOutput)
+}
+
+// The public dndpoint.
+func (o GetInstancesInstanceOutput) PublicEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PublicEndpoint }).(pulumi.StringOutput)
+}
+
+// Renewal duration.
+func (o GetInstancesInstanceOutput) RenewalDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.RenewalDuration }).(pulumi.IntOutput)
+}
+
+// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+func (o GetInstancesInstanceOutput) RenewalDurationUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RenewalDurationUnit }).(pulumi.StringOutput)
+}
+
+// Renew status.
+func (o GetInstancesInstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether to support eip.
+func (o GetInstancesInstanceOutput) SupportEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.SupportEip }).(pulumi.BoolOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
+type GetQueuesQueue struct {
+	// The attributes for the Queue.
+	Attributes map[string]interface{} `pulumi:"attributes"`
+	// Specifies whether the Auto Delete attribute is configured.
+	AutoDeleteState bool `pulumi:"autoDeleteState"`
+	// CreateTime.
+	CreateTime string `pulumi:"createTime"`
+	// Specifies whether the queue is an exclusive queue.
+	ExclusiveState bool `pulumi:"exclusiveState"`
+	// The ID of the Queue. Its value is same as Queue Name.
+	Id string `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The last consume time.
+	LastConsumeTime string `pulumi:"lastConsumeTime"`
+	// The queue name.
+	QueueName string `pulumi:"queueName"`
+	// The name of the virtual host.
+	VirtualHostName string `pulumi:"virtualHostName"`
+}
+
+// GetQueuesQueueInput is an input type that accepts GetQueuesQueueArgs and GetQueuesQueueOutput values.
+// You can construct a concrete instance of `GetQueuesQueueInput` via:
+//
+//          GetQueuesQueueArgs{...}
+type GetQueuesQueueInput interface {
+	pulumi.Input
+
+	ToGetQueuesQueueOutput() GetQueuesQueueOutput
+	ToGetQueuesQueueOutputWithContext(context.Context) GetQueuesQueueOutput
+}
+
+type GetQueuesQueueArgs struct {
+	// The attributes for the Queue.
+	Attributes pulumi.MapInput `pulumi:"attributes"`
+	// Specifies whether the Auto Delete attribute is configured.
+	AutoDeleteState pulumi.BoolInput `pulumi:"autoDeleteState"`
+	// CreateTime.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Specifies whether the queue is an exclusive queue.
+	ExclusiveState pulumi.BoolInput `pulumi:"exclusiveState"`
+	// The ID of the Queue. Its value is same as Queue Name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The last consume time.
+	LastConsumeTime pulumi.StringInput `pulumi:"lastConsumeTime"`
+	// The queue name.
+	QueueName pulumi.StringInput `pulumi:"queueName"`
+	// The name of the virtual host.
+	VirtualHostName pulumi.StringInput `pulumi:"virtualHostName"`
+}
+
+func (GetQueuesQueueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesQueue)(nil)).Elem()
+}
+
+func (i GetQueuesQueueArgs) ToGetQueuesQueueOutput() GetQueuesQueueOutput {
+	return i.ToGetQueuesQueueOutputWithContext(context.Background())
+}
+
+func (i GetQueuesQueueArgs) ToGetQueuesQueueOutputWithContext(ctx context.Context) GetQueuesQueueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesQueueOutput)
+}
+
+// GetQueuesQueueArrayInput is an input type that accepts GetQueuesQueueArray and GetQueuesQueueArrayOutput values.
+// You can construct a concrete instance of `GetQueuesQueueArrayInput` via:
+//
+//          GetQueuesQueueArray{ GetQueuesQueueArgs{...} }
+type GetQueuesQueueArrayInput interface {
+	pulumi.Input
+
+	ToGetQueuesQueueArrayOutput() GetQueuesQueueArrayOutput
+	ToGetQueuesQueueArrayOutputWithContext(context.Context) GetQueuesQueueArrayOutput
+}
+
+type GetQueuesQueueArray []GetQueuesQueueInput
+
+func (GetQueuesQueueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueuesQueue)(nil)).Elem()
+}
+
+func (i GetQueuesQueueArray) ToGetQueuesQueueArrayOutput() GetQueuesQueueArrayOutput {
+	return i.ToGetQueuesQueueArrayOutputWithContext(context.Background())
+}
+
+func (i GetQueuesQueueArray) ToGetQueuesQueueArrayOutputWithContext(ctx context.Context) GetQueuesQueueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesQueueArrayOutput)
+}
+
+type GetQueuesQueueOutput struct{ *pulumi.OutputState }
+
+func (GetQueuesQueueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesQueue)(nil)).Elem()
+}
+
+func (o GetQueuesQueueOutput) ToGetQueuesQueueOutput() GetQueuesQueueOutput {
+	return o
+}
+
+func (o GetQueuesQueueOutput) ToGetQueuesQueueOutputWithContext(ctx context.Context) GetQueuesQueueOutput {
+	return o
+}
+
+// The attributes for the Queue.
+func (o GetQueuesQueueOutput) Attributes() pulumi.MapOutput {
+	return o.ApplyT(func(v GetQueuesQueue) map[string]interface{} { return v.Attributes }).(pulumi.MapOutput)
+}
+
+// Specifies whether the Auto Delete attribute is configured.
+func (o GetQueuesQueueOutput) AutoDeleteState() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetQueuesQueue) bool { return v.AutoDeleteState }).(pulumi.BoolOutput)
+}
+
+// CreateTime.
+func (o GetQueuesQueueOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesQueue) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether the queue is an exclusive queue.
+func (o GetQueuesQueueOutput) ExclusiveState() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetQueuesQueue) bool { return v.ExclusiveState }).(pulumi.BoolOutput)
+}
+
+// The ID of the Queue. Its value is same as Queue Name.
+func (o GetQueuesQueueOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesQueue) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetQueuesQueueOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesQueue) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The last consume time.
+func (o GetQueuesQueueOutput) LastConsumeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesQueue) string { return v.LastConsumeTime }).(pulumi.StringOutput)
+}
+
+// The queue name.
+func (o GetQueuesQueueOutput) QueueName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesQueue) string { return v.QueueName }).(pulumi.StringOutput)
+}
+
+// The name of the virtual host.
+func (o GetQueuesQueueOutput) VirtualHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesQueue) string { return v.VirtualHostName }).(pulumi.StringOutput)
+}
+
+type GetQueuesQueueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQueuesQueueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueuesQueue)(nil)).Elem()
+}
+
+func (o GetQueuesQueueArrayOutput) ToGetQueuesQueueArrayOutput() GetQueuesQueueArrayOutput {
+	return o
+}
+
+func (o GetQueuesQueueArrayOutput) ToGetQueuesQueueArrayOutputWithContext(ctx context.Context) GetQueuesQueueArrayOutput {
+	return o
+}
+
+func (o GetQueuesQueueArrayOutput) Index(i pulumi.IntInput) GetQueuesQueueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQueuesQueue {
+		return vs[0].([]GetQueuesQueue)[vs[1].(int)]
+	}).(GetQueuesQueueOutput)
+}
+
 type GetVirtualHostsHost struct {
 	// The ID of the Virtual Host.
 	Id string `pulumi:"id"`
@@ -126,6 +669,12 @@ func (o GetVirtualHostsHostArrayOutput) Index(i pulumi.IntInput) GetVirtualHosts
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetExchangesExchangeOutput{})
+	pulumi.RegisterOutputType(GetExchangesExchangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetQueuesQueueOutput{})
+	pulumi.RegisterOutputType(GetQueuesQueueArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualHostsHostOutput{})
 	pulumi.RegisterOutputType(GetVirtualHostsHostArrayOutput{})
 }

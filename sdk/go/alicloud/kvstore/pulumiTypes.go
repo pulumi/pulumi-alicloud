@@ -733,7 +733,9 @@ type GetInstancesInstance struct {
 	// The ID of the resource group.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The name of the instance.
-	SearchKey                string   `pulumi:"searchKey"`
+	SearchKey string `pulumi:"searchKey"`
+	// (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	SecondaryZoneId          string   `pulumi:"secondaryZoneId"`
 	SecurityGroupId          string   `pulumi:"securityGroupId"`
 	SecurityIpGroupAttribute string   `pulumi:"securityIpGroupAttribute"`
 	SecurityIpGroupName      string   `pulumi:"securityIpGroupName"`
@@ -840,7 +842,9 @@ type GetInstancesInstanceArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The name of the instance.
-	SearchKey                pulumi.StringInput      `pulumi:"searchKey"`
+	SearchKey pulumi.StringInput `pulumi:"searchKey"`
+	// (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	SecondaryZoneId          pulumi.StringInput      `pulumi:"secondaryZoneId"`
 	SecurityGroupId          pulumi.StringInput      `pulumi:"securityGroupId"`
 	SecurityIpGroupAttribute pulumi.StringInput      `pulumi:"securityIpGroupAttribute"`
 	SecurityIpGroupName      pulumi.StringInput      `pulumi:"securityIpGroupName"`
@@ -1102,6 +1106,11 @@ func (o GetInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 // The name of the instance.
 func (o GetInstancesInstanceOutput) SearchKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SearchKey }).(pulumi.StringOutput)
+}
+
+// (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+func (o GetInstancesInstanceOutput) SecondaryZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecondaryZoneId }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) SecurityGroupId() pulumi.StringOutput {

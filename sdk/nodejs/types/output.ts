@@ -61,13 +61,14 @@ export interface ProviderEndpoint {
     alidns?: string;
     alikafka?: string;
     apigateway?: string;
+    arms?: string;
     brainIndustrial?: string;
     bssopenapi?: string;
     cas?: string;
     cassandra?: string;
     cbn?: string;
     cdn?: string;
-    cen?: string;
+    cds?: string;
     cms?: string;
     config?: string;
     cr?: string;
@@ -92,6 +93,7 @@ export interface ProviderEndpoint {
     fnf?: string;
     ga?: string;
     gpdb?: string;
+    hbr?: string;
     hitsdb?: string;
     ims?: string;
     kms?: string;
@@ -118,6 +120,7 @@ export interface ProviderEndpoint {
     resourcemanager?: string;
     resourcesharing?: string;
     ros?: string;
+    serverless?: string;
     sgw?: string;
     slb?: string;
     sts?: string;
@@ -688,6 +691,139 @@ export namespace adb {
 }
 
 export namespace amqp {
+    export interface GetExchangesExchange {
+        /**
+         * The attributes.
+         */
+        attributes: {[key: string]: any};
+        /**
+         * Indicates whether the Auto Delete attribute is configured.
+         */
+        autoDeleteState: boolean;
+        /**
+         * The creation time.
+         */
+        createTime: string;
+        /**
+         * The name of the exchange.
+         */
+        exchangeName: string;
+        /**
+         * The type of the exchange.
+         */
+        exchangeType: string;
+        /**
+         * The ID of the Exchange. Its value is same as Queue Name.
+         */
+        id: string;
+        /**
+         * The ID of the instance.
+         */
+        instanceId: string;
+        /**
+         * The name of virtual host where an exchange resides.
+         */
+        virtualHostName: string;
+    }
+
+    export interface GetInstancesInstance {
+        /**
+         * OrderCreateTime.
+         */
+        createTime: string;
+        /**
+         * ExpireTime.
+         */
+        expireTime: string;
+        /**
+         * The ID of the Instance.
+         */
+        id: string;
+        /**
+         * THe instance Id.
+         */
+        instanceId: string;
+        /**
+         * THe instance name.
+         */
+        instanceName: string;
+        /**
+         * The instance type.
+         */
+        instanceType: string;
+        /**
+         * The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+         */
+        paymentType: string;
+        /**
+         * The private endPoint.
+         */
+        privateEndPoint: string;
+        /**
+         * The public dndpoint.
+         */
+        publicEndpoint: string;
+        /**
+         * Renewal duration.
+         */
+        renewalDuration: number;
+        /**
+         * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+         */
+        renewalDurationUnit: string;
+        /**
+         * Renew status.
+         */
+        renewalStatus: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * Whether to support eip.
+         */
+        supportEip: boolean;
+    }
+
+    export interface GetQueuesQueue {
+        /**
+         * The attributes for the Queue.
+         */
+        attributes: {[key: string]: any};
+        /**
+         * Specifies whether the Auto Delete attribute is configured.
+         */
+        autoDeleteState: boolean;
+        /**
+         * CreateTime.
+         */
+        createTime: string;
+        /**
+         * Specifies whether the queue is an exclusive queue.
+         */
+        exclusiveState: boolean;
+        /**
+         * The ID of the Queue. Its value is same as Queue Name.
+         */
+        id: string;
+        /**
+         * The ID of the instance.
+         */
+        instanceId: string;
+        /**
+         * The last consume time.
+         */
+        lastConsumeTime: string;
+        /**
+         * The queue name.
+         */
+        queueName: string;
+        /**
+         * The name of the virtual host.
+         */
+        virtualHostName: string;
+    }
+
     export interface GetVirtualHostsHost {
         /**
          * The ID of the Virtual Host.
@@ -970,6 +1106,47 @@ export namespace apigateway {
     }
 }
 
+export namespace arms {
+    export interface GetAlertContactsContact {
+        /**
+         * Contact ID.
+         */
+        alertContactId: string;
+        /**
+         * The name of the alert contact.
+         */
+        alertContactName: string;
+        /**
+         * The Creation Time Timestamp.
+         */
+        createTime: string;
+        /**
+         * The webhook URL of the DingTalk chatbot.
+         */
+        dingRobotWebhookUrl: string;
+        /**
+         * The email address of the alert contact.
+         */
+        email: string;
+        /**
+         * The ID of the Alert Contact.
+         */
+        id: string;
+        /**
+         * The mobile number of the alert contact.
+         */
+        phoneNum: string;
+        /**
+         * Specifies whether the alert contact receives system notifications.
+         */
+        systemNoc: boolean;
+        /**
+         * Webhook Information.
+         */
+        webhook: string;
+    }
+}
+
 export namespace brain {
     export interface GetIndustrialPidLoopsLoop {
         /**
@@ -1061,6 +1238,80 @@ export namespace cas {
          * The cert is buy from aliyun or not.
          */
         buyInAliyun: boolean;
+        cert: string;
+        certId: string;
+        certificateName: string;
+        /**
+         * The cert's city.
+         */
+        city: string;
+        /**
+         * The cert's common name.
+         */
+        common: string;
+        /**
+         * The cert's country.
+         */
+        country: string;
+        /**
+         * The cert's not valid after time.
+         */
+        endDate: string;
+        /**
+         * The cert is expired or not.
+         */
+        expired: boolean;
+        fingerprint: string;
+        /**
+         * The cert's id.
+         */
+        id: string;
+        /**
+         * The cert's .
+         */
+        issuer: string;
+        key: string;
+        /**
+         * The cert's name.
+         *
+         * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+         */
+        name: string;
+        /**
+         * The cert's organization.
+         */
+        orgName: string;
+        /**
+         * The cert's province.
+         */
+        province: string;
+        /**
+         * The cert's subject alternative name.
+         */
+        sans: string;
+        /**
+         * The cert's not valid before time.
+         */
+        startDate: string;
+    }
+
+    export interface GetServiceCertificatesCertificate {
+        /**
+         * The cert is buy from aliyun or not.
+         */
+        buyInAliyun: boolean;
+        /**
+         * The cert's Cert.
+         */
+        cert: string;
+        /**
+         * The cert's id.
+         */
+        certId: string;
+        /**
+         * The cert's name.
+         */
+        certificateName: string;
         /**
          * The cert's city.
          */
@@ -1084,17 +1335,21 @@ export namespace cas {
         /**
          * The cert's finger.
          */
-        fingerPrint: string;
+        fingerprint: string;
         /**
          * The cert's id.
          */
-        id: number;
+        id: string;
         /**
-         * The cert's .
+         * The cert's Issuer.
          */
         issuer: string;
         /**
-         * The cert's name.
+         * The cert's Keye.
+         */
+        key: string;
+        /**
+         * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
          */
         name: string;
         /**
@@ -1117,6 +1372,41 @@ export namespace cas {
 }
 
 export namespace cassandra {
+    export interface GetBackupPlansPlan {
+        /**
+         * Specifies whether to activate the backup plan.
+         */
+        active: boolean;
+        /**
+         * The backup cycle. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
+         */
+        backupPeriod: string;
+        /**
+         * The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
+         */
+        backupTime: string;
+        /**
+         * The ID of the cluster for the backup.
+         */
+        clusterId: string;
+        /**
+         * The time when the backup plan was created.
+         */
+        createTime: string;
+        /**
+         * The ID of the data center for the backup in the cluster.
+         */
+        dataCenterId: string;
+        /**
+         * The ID of the Backup Plan.
+         */
+        id: string;
+        /**
+         * The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
+         */
+        retentionPeriod: number;
+    }
+
     export interface GetClustersCluster {
         /**
          * The ID of the Cassandra cluster.
@@ -1901,6 +2191,65 @@ export namespace cen {
          * The update interval. Default value: 5. The value cannot be modified.
          */
         updateInterval: string;
+    }
+
+    export interface GetTransitRouterPeerAttachmentsAttachment {
+        /**
+         * Auto publish route enabled.
+         */
+        autoPublishRouteEnabled: boolean;
+        /**
+         * The bandwidth of the bandwidth package.
+         */
+        bandwidth: number;
+        /**
+         * ID of the CEN bandwidth package.
+         */
+        cenBandwidthPackageId: string;
+        /**
+         * ID of the geographic.
+         */
+        geographicSpanId: string;
+        /**
+         * The ID of CEN Transit Router peer attachments.
+         */
+        id: string;
+        /**
+         * ID of the peer transit router.
+         */
+        peerTransitRouterId: string;
+        /**
+         * Owner ID of the peer transit router.
+         */
+        peerTransitRouterOwnerId: string;
+        /**
+         * Region ID of the peer transit router.
+         */
+        peerTransitRouterRegionId: string;
+        /**
+         * Type of the resource.
+         */
+        resourceType: string;
+        /**
+         * The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
+         */
+        status: string;
+        /**
+         * The description of CEN Transit Router peer attachments.
+         */
+        transitRouterAttachmentDescription: string;
+        /**
+         * The ID of CEN Transit Router peer attachments.
+         */
+        transitRouterAttachmentId: string;
+        /**
+         * Name of the transit router attachment.
+         */
+        transitRouterAttachmentName: string;
+        /**
+         * The ID of transit router.
+         */
+        transitRouterId: string;
     }
 
     export interface GetTransitRouterRouteEntriesEntry {
@@ -2701,6 +3050,81 @@ export namespace cloudconnect {
     }
 }
 
+export namespace cloudfirewall {
+    export interface GetControlPoliciesPolicy {
+        /**
+         * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+         */
+        aclAction: string;
+        /**
+         * The unique ID of the access control policy.
+         */
+        aclUuid: string;
+        applicationId: string;
+        /**
+         * The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+         */
+        applicationName: string;
+        /**
+         * The description of the access control policy.
+         */
+        description: string;
+        /**
+         * The destination port defined in the access control policy.
+         */
+        destPort: string;
+        /**
+         * The destination port address book defined in the access control policy.
+         */
+        destPortGroup: string;
+        destPortGroupPorts: string[];
+        /**
+         * The destination port type defined in the access control policy. Valid values: `group`, `port`.
+         */
+        destPortType: string;
+        /**
+         * The destination address defined in the access control policy.
+         */
+        destination: string;
+        destinationGroupCidrs: string[];
+        destinationGroupType: string;
+        /**
+         * The destination address type defined in the access control policy.Valid values: If `direction` is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+         */
+        destinationType: string;
+        /**
+         * The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+         */
+        direction: string;
+        dnsResult: string;
+        dnsResultTime: string;
+        hitTimes: string;
+        /**
+         * The ID of the Control Policy.
+         */
+        id: string;
+        order: number;
+        /**
+         * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+         */
+        proto: string;
+        /**
+         * Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+         */
+        release: boolean;
+        /**
+         * The source address defined in the access control policy.
+         */
+        source: string;
+        sourceGroupCidrs: string[];
+        sourceGroupType: string;
+        /**
+         * The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+         */
+        sourceType: string;
+    }
+}
+
 export namespace cloudstoragegateway {
     export interface GetStorageBundlesBundle {
         description: string;
@@ -3168,13 +3592,14 @@ export namespace config {
         alidns?: string;
         alikafka?: string;
         apigateway?: string;
+        arms?: string;
         brainIndustrial?: string;
         bssopenapi?: string;
         cas?: string;
         cassandra?: string;
         cbn?: string;
         cdn?: string;
-        cen?: string;
+        cds?: string;
         cms?: string;
         config?: string;
         cr?: string;
@@ -3199,6 +3624,7 @@ export namespace config {
         fnf?: string;
         ga?: string;
         gpdb?: string;
+        hbr?: string;
         hitsdb?: string;
         ims?: string;
         kms?: string;
@@ -3225,6 +3651,7 @@ export namespace config {
         resourcemanager?: string;
         resourcesharing?: string;
         ros?: string;
+        serverless?: string;
         sgw?: string;
         slb?: string;
         sts?: string;
@@ -9474,17 +9901,106 @@ export namespace ess {
 
 export namespace eventbridge {
     export interface GetEventBusesBus {
+        /**
+         * The time of this bus was created.
+         */
         createTime: string;
+        /**
+         * The description of event bus.
+         */
         description: string;
+        /**
+         * The name of event bus.
+         */
         eventBusName: string;
+        /**
+         * The ID of the Event Bus. Its value is same as Queue Name.
+         */
         id: string;
     }
 
-    export interface GetSchemaGroupsGroup {
+    export interface GetRulesRule {
+        /**
+         * The description of rule.
+         */
         description: string;
-        format: string;
-        groupId: string;
+        /**
+         * The name of event bus.
+         */
+        eventBusName: string;
+        /**
+         * The pattern to match interested events.
+         */
+        filterPattern: string;
+        /**
+         * The ID of the Rule.
+         */
         id: string;
+        /**
+         * The name of rule.
+         */
+        ruleName: string;
+        /**
+         * Rule status, either Enable or Disable.
+         */
+        status: string;
+        /**
+         * The target for rule.
+         */
+        targets: outputs.eventbridge.GetRulesRuleTarget[];
+    }
+
+    export interface GetRulesRuleTarget {
+        /**
+         * The endpoint.
+         */
+        endpoint: string;
+        /**
+         * The id of target.
+         */
+        targetId: string;
+        /**
+         * The type of target.
+         */
+        type: string;
+    }
+
+    export interface RuleTarget {
+        /**
+         * The endpoint of target.
+         */
+        endpoint: string;
+        /**
+         * A list of param.
+         */
+        paramLists: outputs.eventbridge.RuleTargetParamList[];
+        /**
+         * The ID of target.
+         */
+        targetId: string;
+        /**
+         * The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+         */
+        type: string;
+    }
+
+    export interface RuleTargetParamList {
+        /**
+         * The format of param.
+         */
+        form: string;
+        /**
+         * The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+         */
+        resourceKey: string;
+        /**
+         * The template of param.
+         */
+        template?: string;
+        /**
+         * The value of param.
+         */
+        value: string;
     }
 }
 
@@ -10752,6 +11268,108 @@ export namespace hbase {
     }
 }
 
+export namespace hbr {
+    export interface GetVaultsVault {
+        /**
+         * The name of the OSS bucket of the Vault.
+         */
+        bucketName: string;
+        /**
+         * The amount of backup data. The unit is Byte.
+         */
+        bytesDone: string;
+        /**
+         * The creation time of the Vault. UNIX time in seconds.
+         */
+        createTime: string;
+        /**
+         * Whether to enable the deduplication function for the database backup Vault.
+         */
+        dedup: boolean;
+        /**
+         * The description of the Vault.
+         */
+        description: string;
+        /**
+         * The ID of Vault.
+         */
+        id: string;
+        /**
+         * Index available.
+         */
+        indexAvailable: boolean;
+        /**
+         * Index level.
+         */
+        indexLevel: string;
+        /**
+         * Index update time.
+         */
+        indexUpdateTime: string;
+        /**
+         * The time of the last remote backup synchronization.
+         */
+        latestReplicationTime: string;
+        /**
+         * Billing model, possible values:
+         */
+        paymentType: string;
+        /**
+         * Whether it is a remote backup warehouse. It's a boolean value.
+         */
+        replication: boolean;
+        /**
+         * The region ID to which the remote backup Vault belongs.
+         */
+        replicationSourceRegionId: string;
+        /**
+         * The source vault ID of the remote backup Vault.
+         */
+        replicationSourceVaultId: string;
+        /**
+         * Warehouse-level data retention days, only valid for archive libraries.
+         */
+        retention: string;
+        /**
+         * Whether to enable the backup search function.
+         */
+        searchEnabled: boolean;
+        sourceTypes: string[];
+        /**
+         * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+         */
+        status: string;
+        /**
+         * Backup vault storage usage. The unit is Byte.
+         */
+        storageSize: string;
+        /**
+         * The update time of the Vault. UNIX time in seconds.
+         */
+        updatedTime: string;
+        /**
+         * The ID of Vault.
+         */
+        vaultId: string;
+        /**
+         * The name of Vault.
+         */
+        vaultName: string;
+        /**
+         * Error status information of Vault.
+         */
+        vaultStatusMessage: string;
+        /**
+         * The storage class of Vault. Valid values: `STANDARD`.
+         */
+        vaultStorageClass: string;
+        /**
+         * The type of Vault. Valid values: `STANDARD`.
+         */
+        vaultType: string;
+    }
+}
+
 export namespace kms {
     export interface GetAliasesAlias {
         /**
@@ -11157,6 +11775,10 @@ export namespace kvstore {
          * The name of the instance.
          */
         searchKey: string;
+        /**
+         * (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+         */
+        secondaryZoneId: string;
         securityGroupId: string;
         securityIpGroupAttribute: string;
         securityIpGroupName: string;
@@ -15199,6 +15821,27 @@ export namespace ros {
          * The parameter value.
          */
         parameterValue: string;
+    }
+}
+
+export namespace sae {
+    export interface GetNamespacesNamespace {
+        /**
+         * The ID of the Namespace.
+         */
+        id: string;
+        /**
+         * The Description of Namespace.
+         */
+        namespaceDescription: string;
+        /**
+         * The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+         */
+        namespaceId: string;
+        /**
+         * The Name of Namespace.
+         */
+        namespaceName: string;
     }
 }
 

@@ -3,8 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .backup_plan import *
 from .cluster import *
 from .data_center import *
+from .get_backup_plans import *
 from .get_clusters import *
 from .get_data_centers import *
 from .get_zones import *
@@ -22,7 +24,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:cassandra/cluster:Cluster":
+            if typ == "alicloud:cassandra/backupPlan:BackupPlan":
+                return BackupPlan(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cassandra/cluster:Cluster":
                 return Cluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cassandra/dataCenter:DataCenter":
                 return DataCenter(name, pulumi.ResourceOptions(urn=urn))
@@ -31,6 +35,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "cassandra/backupPlan", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cassandra/cluster", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cassandra/dataCenter", _module_instance)
 

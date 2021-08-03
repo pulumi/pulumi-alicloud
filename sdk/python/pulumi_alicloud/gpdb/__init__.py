@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .connection import *
+from .elastic_instance import *
 from .get_instances import *
 from .get_zones import *
 from .instance import *
@@ -23,6 +24,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:gpdb/connection:Connection":
                 return Connection(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:gpdb/elasticInstance:ElasticInstance":
+                return ElasticInstance(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:gpdb/instance:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -31,6 +34,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "gpdb/connection", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "gpdb/elasticInstance", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "gpdb/instance", _module_instance)
 
 _register_module()

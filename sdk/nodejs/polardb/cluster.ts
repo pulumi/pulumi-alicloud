@@ -142,6 +142,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
+     * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     */
+    public readonly securityGroupIds!: pulumi.Output<string[]>;
+    /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     public readonly securityIps!: pulumi.Output<string[]>;
@@ -195,6 +200,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["period"] = state ? state.period : undefined;
             inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["securityIps"] = state ? state.securityIps : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
@@ -226,6 +232,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["period"] = args ? args.period : undefined;
             inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["securityIps"] = args ? args.securityIps : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
@@ -308,6 +315,11 @@ export interface ClusterState {
      * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     */
+    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
@@ -398,6 +410,11 @@ export interface ClusterArgs {
      * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     */
+    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */

@@ -11,11 +11,51 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Event Bridge Event Bus resource.
+//
+// For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://help.aliyun.com/document_detail/167863.html).
+//
+// > **NOTE:** Available in v1.129.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := eventbridge.NewEventBus(ctx, "example", &eventbridge.EventBusArgs{
+// 			EventBusName: pulumi.String("my-EventBus"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Event Bridge Event Bus can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
+// ```
 type EventBus struct {
 	pulumi.CustomResourceState
 
-	Description  pulumi.StringPtrOutput `pulumi:"description"`
-	EventBusName pulumi.StringOutput    `pulumi:"eventBusName"`
+	// The description of event bus.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+	EventBusName pulumi.StringOutput `pulumi:"eventBusName"`
 }
 
 // NewEventBus registers a new resource with the given unique name, arguments, and options.
@@ -50,12 +90,16 @@ func GetEventBus(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EventBus resources.
 type eventBusState struct {
-	Description  *string `pulumi:"description"`
+	// The description of event bus.
+	Description *string `pulumi:"description"`
+	// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
 	EventBusName *string `pulumi:"eventBusName"`
 }
 
 type EventBusState struct {
-	Description  pulumi.StringPtrInput
+	// The description of event bus.
+	Description pulumi.StringPtrInput
+	// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
 	EventBusName pulumi.StringPtrInput
 }
 
@@ -64,13 +108,17 @@ func (EventBusState) ElementType() reflect.Type {
 }
 
 type eventBusArgs struct {
-	Description  *string `pulumi:"description"`
-	EventBusName string  `pulumi:"eventBusName"`
+	// The description of event bus.
+	Description *string `pulumi:"description"`
+	// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+	EventBusName string `pulumi:"eventBusName"`
 }
 
 // The set of arguments for constructing a EventBus resource.
 type EventBusArgs struct {
-	Description  pulumi.StringPtrInput
+	// The description of event bus.
+	Description pulumi.StringPtrInput
+	// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
 	EventBusName pulumi.StringInput
 }
 

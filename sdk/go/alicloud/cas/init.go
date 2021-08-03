@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:cas/certificate:Certificate":
 		r = &Certificate{}
+	case "alicloud:cas/serviceCertificate:ServiceCertificate":
+		r = &ServiceCertificate{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cas/certificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cas/serviceCertificate",
 		&module{version},
 	)
 }

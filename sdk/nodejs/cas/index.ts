@@ -7,9 +7,12 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./certificate";
 export * from "./getCertificates";
+export * from "./getServiceCertificates";
+export * from "./serviceCertificate";
 
 // Import resources to register:
 import { Certificate } from "./certificate";
+import { ServiceCertificate } from "./serviceCertificate";
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +20,12 @@ const _module = {
         switch (type) {
             case "alicloud:cas/certificate:Certificate":
                 return new Certificate(name, <any>undefined, { urn })
+            case "alicloud:cas/serviceCertificate:ServiceCertificate":
+                return new ServiceCertificate(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "cas/certificate", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cas/serviceCertificate", _module)

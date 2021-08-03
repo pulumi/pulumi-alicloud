@@ -11,21 +11,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CAS Certificate resource.
-//
-// > **NOTE:** The Certificate name which you want to add must be already registered and had not added by another account. Every Certificate name can only exist in a unique group.
-//
-// > **NOTE:** The Cas Certificate region only support cn-hangzhou, ap-south-1, me-east-1, eu-central-1, ap-northeast-1, ap-southeast-2.
-//
-// > **NOTE:** Available in 1.35.0+ .
+// Deprecated: This resource has been deprecated in favour of ServiceCertificate
 type Certificate struct {
 	pulumi.CustomResourceState
 
 	// Cert of the Certificate in which the Certificate will add.
-	Cert pulumi.StringOutput `pulumi:"cert"`
+	Cert            pulumi.StringOutput `pulumi:"cert"`
+	CertificateName pulumi.StringOutput `pulumi:"certificateName"`
 	// Key of the Certificate in which the Certificate will add.
-	Key pulumi.StringOutput `pulumi:"key"`
+	Key  pulumi.StringOutput    `pulumi:"key"`
+	Lang pulumi.StringPtrOutput `pulumi:"lang"`
 	// Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -65,19 +63,27 @@ func GetCertificate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Certificate resources.
 type certificateState struct {
 	// Cert of the Certificate in which the Certificate will add.
-	Cert *string `pulumi:"cert"`
+	Cert            *string `pulumi:"cert"`
+	CertificateName *string `pulumi:"certificateName"`
 	// Key of the Certificate in which the Certificate will add.
-	Key *string `pulumi:"key"`
+	Key  *string `pulumi:"key"`
+	Lang *string `pulumi:"lang"`
 	// Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
 	Name *string `pulumi:"name"`
 }
 
 type CertificateState struct {
 	// Cert of the Certificate in which the Certificate will add.
-	Cert pulumi.StringPtrInput
+	Cert            pulumi.StringPtrInput
+	CertificateName pulumi.StringPtrInput
 	// Key of the Certificate in which the Certificate will add.
-	Key pulumi.StringPtrInput
+	Key  pulumi.StringPtrInput
+	Lang pulumi.StringPtrInput
 	// Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
 	Name pulumi.StringPtrInput
 }
 
@@ -87,20 +93,28 @@ func (CertificateState) ElementType() reflect.Type {
 
 type certificateArgs struct {
 	// Cert of the Certificate in which the Certificate will add.
-	Cert string `pulumi:"cert"`
+	Cert            string  `pulumi:"cert"`
+	CertificateName *string `pulumi:"certificateName"`
 	// Key of the Certificate in which the Certificate will add.
-	Key string `pulumi:"key"`
+	Key  string  `pulumi:"key"`
+	Lang *string `pulumi:"lang"`
 	// Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
 	// Cert of the Certificate in which the Certificate will add.
-	Cert pulumi.StringInput
+	Cert            pulumi.StringInput
+	CertificateName pulumi.StringPtrInput
 	// Key of the Certificate in which the Certificate will add.
-	Key pulumi.StringInput
+	Key  pulumi.StringInput
+	Lang pulumi.StringPtrInput
 	// Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
 	Name pulumi.StringPtrInput
 }
 

@@ -13,6 +13,7 @@ export * from "./getConnections";
 export * from "./getInstanceClasses";
 export * from "./getInstanceEngines";
 export * from "./getInstances";
+export * from "./getPermission";
 export * from "./getZones";
 export * from "./instance";
 

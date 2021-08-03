@@ -23,7 +23,7 @@ type Store struct {
 
 	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
 	AppendMeta pulumi.BoolPtrOutput `pulumi:"appendMeta"`
-	// Determines whether to automatically split a shard. Default to `true`.
+	// Determines whether to automatically split a shard. Default to `false`.
 	AutoSplit pulumi.BoolPtrOutput `pulumi:"autoSplit"`
 	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking pulumi.BoolPtrOutput `pulumi:"enableWebTracking"`
@@ -76,7 +76,7 @@ func GetStore(ctx *pulumi.Context,
 type storeState struct {
 	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
 	AppendMeta *bool `pulumi:"appendMeta"`
-	// Determines whether to automatically split a shard. Default to `true`.
+	// Determines whether to automatically split a shard. Default to `false`.
 	AutoSplit *bool `pulumi:"autoSplit"`
 	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking *bool `pulumi:"enableWebTracking"`
@@ -98,7 +98,7 @@ type storeState struct {
 type StoreState struct {
 	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
 	AppendMeta pulumi.BoolPtrInput
-	// Determines whether to automatically split a shard. Default to `true`.
+	// Determines whether to automatically split a shard. Default to `false`.
 	AutoSplit pulumi.BoolPtrInput
 	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking pulumi.BoolPtrInput
@@ -124,7 +124,7 @@ func (StoreState) ElementType() reflect.Type {
 type storeArgs struct {
 	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
 	AppendMeta *bool `pulumi:"appendMeta"`
-	// Determines whether to automatically split a shard. Default to `true`.
+	// Determines whether to automatically split a shard. Default to `false`.
 	AutoSplit *bool `pulumi:"autoSplit"`
 	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking *bool `pulumi:"enableWebTracking"`
@@ -146,7 +146,7 @@ type storeArgs struct {
 type StoreArgs struct {
 	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
 	AppendMeta pulumi.BoolPtrInput
-	// Determines whether to automatically split a shard. Default to `true`.
+	// Determines whether to automatically split a shard. Default to `false`.
 	AutoSplit pulumi.BoolPtrInput
 	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking pulumi.BoolPtrInput

@@ -18,6 +18,7 @@ import * as adb from "./adb";
 import * as alikafka from "./alikafka";
 import * as amqp from "./amqp";
 import * as apigateway from "./apigateway";
+import * as arms from "./arms";
 import * as brain from "./brain";
 import * as cas from "./cas";
 import * as cassandra from "./cassandra";
@@ -25,6 +26,7 @@ import * as cdn from "./cdn";
 import * as cen from "./cen";
 import * as cfg from "./cfg";
 import * as cloudconnect from "./cloudconnect";
+import * as cloudfirewall from "./cloudfirewall";
 import * as cloudstoragegateway from "./cloudstoragegateway";
 import * as cms from "./cms";
 import * as config from "./config";
@@ -52,6 +54,7 @@ import * as fnf from "./fnf";
 import * as ga from "./ga";
 import * as gpdb from "./gpdb";
 import * as hbase from "./hbase";
+import * as hbr from "./hbr";
 import * as iot from "./iot";
 import * as kms from "./kms";
 import * as kvstore from "./kvstore";
@@ -91,6 +94,7 @@ export {
     alikafka,
     amqp,
     apigateway,
+    arms,
     brain,
     cas,
     cassandra,
@@ -98,6 +102,7 @@ export {
     cen,
     cfg,
     cloudconnect,
+    cloudfirewall,
     cloudstoragegateway,
     cms,
     config,
@@ -125,6 +130,7 @@ export {
     ga,
     gpdb,
     hbase,
+    hbr,
     iot,
     kms,
     kvstore,

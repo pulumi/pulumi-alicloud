@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:cassandra/backupPlan:BackupPlan":
+		r = &BackupPlan{}
 	case "alicloud:cassandra/cluster:Cluster":
 		r = &Cluster{}
 	case "alicloud:cassandra/dataCenter:DataCenter":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cassandra/backupPlan",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cassandra/cluster",

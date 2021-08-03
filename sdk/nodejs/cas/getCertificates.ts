@@ -5,24 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const certs = pulumi.output(alicloud.cas.getCertificates({
- *     nameRegex: "^cas",
- *     outputFile: `./cas_certificates.json`,
- * }, { async: true }));
- *
- * export const cert = certs.certificates[0].id;
- * ```
- */
+/** @deprecated This resource has been deprecated in favour of getServiceCertificates */
 export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
+    pulumi.log.warn("getCertificates is deprecated: This resource has been deprecated in favour of getServiceCertificates")
     args = args || {};
     if (!opts) {
         opts = {}
@@ -32,7 +17,9 @@ export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.Invoke
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:cas/getCertificates:getCertificates", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
+        "lang": args.lang,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
@@ -42,10 +29,12 @@ export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getCertificates.
  */
 export interface GetCertificatesArgs {
+    readonly enableDetails?: boolean;
     /**
      * A list of cert IDs.
      */
     readonly ids?: string[];
+    readonly lang?: string;
     /**
      * A regex string to filter results by the certificate name.
      */
@@ -61,6 +50,7 @@ export interface GetCertificatesResult {
      * A list of apis. Each element contains the following attributes:
      */
     readonly certificates: outputs.cas.GetCertificatesCertificate[];
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -69,6 +59,7 @@ export interface GetCertificatesResult {
      * A list of cert IDs.
      */
     readonly ids: string[];
+    readonly lang?: string;
     readonly nameRegex?: string;
     /**
      * A list of cert names.

@@ -47,7 +47,7 @@ export class Store extends pulumi.CustomResource {
      */
     public readonly appendMeta!: pulumi.Output<boolean | undefined>;
     /**
-     * Determines whether to automatically split a shard. Default to `true`.
+     * Determines whether to automatically split a shard. Default to `false`.
      */
     public readonly autoSplit!: pulumi.Output<boolean | undefined>;
     /**
@@ -135,7 +135,7 @@ export interface StoreState {
      */
     readonly appendMeta?: pulumi.Input<boolean>;
     /**
-     * Determines whether to automatically split a shard. Default to `true`.
+     * Determines whether to automatically split a shard. Default to `false`.
      */
     readonly autoSplit?: pulumi.Input<boolean>;
     /**
@@ -178,7 +178,7 @@ export interface StoreArgs {
      */
     readonly appendMeta?: pulumi.Input<boolean>;
     /**
-     * Determines whether to automatically split a shard. Default to `true`.
+     * Determines whether to automatically split a shard. Default to `false`.
      */
     readonly autoSplit?: pulumi.Input<boolean>;
     /**

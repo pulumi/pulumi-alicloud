@@ -22,6 +22,7 @@ __all__ = [
     'GetRouteEntriesEntryConflictResult',
     'GetRouteMapsMapResult',
     'GetRouteServicesServiceResult',
+    'GetTransitRouterPeerAttachmentsAttachmentResult',
     'GetTransitRouterRouteEntriesEntryResult',
     'GetTransitRouterRouteTableAssociationsAssociationResult',
     'GetTransitRouterRouteTablePropagationsPropagationResult',
@@ -1430,6 +1431,167 @@ class GetRouteServicesServiceResult(dict):
         The update interval. Default value: 5. The value cannot be modified.
         """
         return pulumi.get(self, "update_interval")
+
+
+@pulumi.output_type
+class GetTransitRouterPeerAttachmentsAttachmentResult(dict):
+    def __init__(__self__, *,
+                 auto_publish_route_enabled: bool,
+                 bandwidth: int,
+                 cen_bandwidth_package_id: str,
+                 geographic_span_id: str,
+                 id: str,
+                 peer_transit_router_id: str,
+                 peer_transit_router_owner_id: str,
+                 peer_transit_router_region_id: str,
+                 resource_type: str,
+                 status: str,
+                 transit_router_attachment_description: str,
+                 transit_router_attachment_id: str,
+                 transit_router_attachment_name: str,
+                 transit_router_id: str):
+        """
+        :param bool auto_publish_route_enabled: Auto publish route enabled.
+        :param int bandwidth: The bandwidth of the bandwidth package.
+        :param str cen_bandwidth_package_id: ID of the CEN bandwidth package.
+        :param str geographic_span_id: ID of the geographic.
+        :param str id: The ID of CEN Transit Router peer attachments.
+        :param str peer_transit_router_id: ID of the peer transit router.
+        :param str peer_transit_router_owner_id: Owner ID of the peer transit router.
+        :param str peer_transit_router_region_id: Region ID of the peer transit router.
+        :param str resource_type: Type of the resource.
+        :param str status: The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
+        :param str transit_router_attachment_description: The description of CEN Transit Router peer attachments.
+        :param str transit_router_attachment_id: The ID of CEN Transit Router peer attachments.
+        :param str transit_router_attachment_name: Name of the transit router attachment.
+        :param str transit_router_id: The ID of transit router.
+        """
+        pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
+        pulumi.set(__self__, "geographic_span_id", geographic_span_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "peer_transit_router_id", peer_transit_router_id)
+        pulumi.set(__self__, "peer_transit_router_owner_id", peer_transit_router_owner_id)
+        pulumi.set(__self__, "peer_transit_router_region_id", peer_transit_router_region_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+
+    @property
+    @pulumi.getter(name="autoPublishRouteEnabled")
+    def auto_publish_route_enabled(self) -> bool:
+        """
+        Auto publish route enabled.
+        """
+        return pulumi.get(self, "auto_publish_route_enabled")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The bandwidth of the bandwidth package.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="cenBandwidthPackageId")
+    def cen_bandwidth_package_id(self) -> str:
+        """
+        ID of the CEN bandwidth package.
+        """
+        return pulumi.get(self, "cen_bandwidth_package_id")
+
+    @property
+    @pulumi.getter(name="geographicSpanId")
+    def geographic_span_id(self) -> str:
+        """
+        ID of the geographic.
+        """
+        return pulumi.get(self, "geographic_span_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of CEN Transit Router peer attachments.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="peerTransitRouterId")
+    def peer_transit_router_id(self) -> str:
+        """
+        ID of the peer transit router.
+        """
+        return pulumi.get(self, "peer_transit_router_id")
+
+    @property
+    @pulumi.getter(name="peerTransitRouterOwnerId")
+    def peer_transit_router_owner_id(self) -> str:
+        """
+        Owner ID of the peer transit router.
+        """
+        return pulumi.get(self, "peer_transit_router_owner_id")
+
+    @property
+    @pulumi.getter(name="peerTransitRouterRegionId")
+    def peer_transit_router_region_id(self) -> str:
+        """
+        Region ID of the peer transit router.
+        """
+        return pulumi.get(self, "peer_transit_router_region_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        Type of the resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentDescription")
+    def transit_router_attachment_description(self) -> str:
+        """
+        The description of CEN Transit Router peer attachments.
+        """
+        return pulumi.get(self, "transit_router_attachment_description")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentId")
+    def transit_router_attachment_id(self) -> str:
+        """
+        The ID of CEN Transit Router peer attachments.
+        """
+        return pulumi.get(self, "transit_router_attachment_id")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentName")
+    def transit_router_attachment_name(self) -> str:
+        """
+        Name of the transit router attachment.
+        """
+        return pulumi.get(self, "transit_router_attachment_name")
+
+    @property
+    @pulumi.getter(name="transitRouterId")
+    def transit_router_id(self) -> str:
+        """
+        The ID of transit router.
+        """
+        return pulumi.get(self, "transit_router_id")
 
 
 @pulumi.output_type

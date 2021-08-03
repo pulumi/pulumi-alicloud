@@ -28,7 +28,7 @@ class StoreArgs:
         The set of arguments for constructing a Store resource.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
-        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `true`.
+        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
         :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
@@ -82,7 +82,7 @@ class StoreArgs:
     @pulumi.getter(name="autoSplit")
     def auto_split(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether to automatically split a shard. Default to `true`.
+        Determines whether to automatically split a shard. Default to `false`.
         """
         return pulumi.get(self, "auto_split")
 
@@ -179,7 +179,7 @@ class _StoreState:
         """
         Input properties used for looking up and filtering Store resources.
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
-        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `true`.
+        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
         :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
@@ -225,7 +225,7 @@ class _StoreState:
     @pulumi.getter(name="autoSplit")
     def auto_split(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether to automatically split a shard. Default to `true`.
+        Determines whether to automatically split a shard. Default to `false`.
         """
         return pulumi.get(self, "auto_split")
 
@@ -354,7 +354,7 @@ class Store(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
-        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `true`.
+        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
         :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
@@ -454,7 +454,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
-        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `true`.
+        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
         :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
@@ -491,7 +491,7 @@ class Store(pulumi.CustomResource):
     @pulumi.getter(name="autoSplit")
     def auto_split(self) -> pulumi.Output[Optional[bool]]:
         """
-        Determines whether to automatically split a shard. Default to `true`.
+        Determines whether to automatically split a shard. Default to `false`.
         """
         return pulumi.get(self, "auto_split")
 

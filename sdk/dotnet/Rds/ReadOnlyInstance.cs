@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Rds
         /// - custom: a custom certificate
         /// </summary>
         [Output("caType")]
-        public Output<string?> CaType { get; private set; } = null!;
+        public Output<string> CaType { get; private set; } = null!;
 
         /// <summary>
         /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
@@ -225,12 +225,47 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> SslEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        /// </summary>
+        [Output("switchTime")]
+        public Output<string?> SwitchTime { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        /// - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
+        /// - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+        /// - rds: The instance runs RDS Basic or High-availability Edition.
+        /// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+        /// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+        /// - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
+        /// </summary>
+        [Output("targetMinorVersion")]
+        public Output<string> TargetMinorVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to upgrade a minor version of the kernel. Valid values:
+        /// - true: upgrade
+        /// - false: not to upgrade
+        /// </summary>
+        [Output("upgradeDbInstanceKernelVersion")]
+        public Output<bool?> UpgradeDbInstanceKernelVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        /// - Immediate: The minor engine version is immediately updated.
+        /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+        /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        /// </summary>
+        [Output("upgradeTime")]
+        public Output<string?> UpgradeTime { get; private set; } = null!;
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
@@ -421,6 +456,12 @@ namespace Pulumi.AliCloud.Rds
         [Input("sslEnabled")]
         public Input<int>? SslEnabled { get; set; }
 
+        /// <summary>
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        /// </summary>
+        [Input("switchTime")]
+        public Input<string>? SwitchTime { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -434,6 +475,35 @@ namespace Pulumi.AliCloud.Rds
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        /// - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
+        /// - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+        /// - rds: The instance runs RDS Basic or High-availability Edition.
+        /// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+        /// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+        /// - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
+        /// </summary>
+        [Input("targetMinorVersion")]
+        public Input<string>? TargetMinorVersion { get; set; }
+
+        /// <summary>
+        /// Whether to upgrade a minor version of the kernel. Valid values:
+        /// - true: upgrade
+        /// - false: not to upgrade
+        /// </summary>
+        [Input("upgradeDbInstanceKernelVersion")]
+        public Input<bool>? UpgradeDbInstanceKernelVersion { get; set; }
+
+        /// <summary>
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        /// - Immediate: The minor engine version is immediately updated.
+        /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+        /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        /// </summary>
+        [Input("upgradeTime")]
+        public Input<string>? UpgradeTime { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
@@ -603,6 +673,12 @@ namespace Pulumi.AliCloud.Rds
         [Input("sslEnabled")]
         public Input<int>? SslEnabled { get; set; }
 
+        /// <summary>
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        /// </summary>
+        [Input("switchTime")]
+        public Input<string>? SwitchTime { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -616,6 +692,35 @@ namespace Pulumi.AliCloud.Rds
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        /// - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
+        /// - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+        /// - rds: The instance runs RDS Basic or High-availability Edition.
+        /// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+        /// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+        /// - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
+        /// </summary>
+        [Input("targetMinorVersion")]
+        public Input<string>? TargetMinorVersion { get; set; }
+
+        /// <summary>
+        /// Whether to upgrade a minor version of the kernel. Valid values:
+        /// - true: upgrade
+        /// - false: not to upgrade
+        /// </summary>
+        [Input("upgradeDbInstanceKernelVersion")]
+        public Input<bool>? UpgradeDbInstanceKernelVersion { get; set; }
+
+        /// <summary>
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        /// - Immediate: The minor engine version is immediately updated.
+        /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+        /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        /// </summary>
+        [Input("upgradeTime")]
+        public Input<string>? UpgradeTime { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.

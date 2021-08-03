@@ -27,6 +27,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("apigateway")]
         public Input<string>? Apigateway { get; set; }
 
+        [Input("arms")]
+        public Input<string>? Arms { get; set; }
+
         [Input("brainIndustrial")]
         public Input<string>? BrainIndustrial { get; set; }
 
@@ -45,8 +48,8 @@ namespace Pulumi.AliCloud.Inputs
         [Input("cdn")]
         public Input<string>? Cdn { get; set; }
 
-        [Input("cen")]
-        public Input<string>? Cen { get; set; }
+        [Input("cds")]
+        public Input<string>? Cds { get; set; }
 
         [Input("cms")]
         public Input<string>? Cms { get; set; }
@@ -119,6 +122,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("gpdb")]
         public Input<string>? Gpdb { get; set; }
+
+        [Input("hbr")]
+        public Input<string>? Hbr { get; set; }
 
         [Input("hitsdb")]
         public Input<string>? Hitsdb { get; set; }
@@ -197,6 +203,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("ros")]
         public Input<string>? Ros { get; set; }
+
+        [Input("serverless")]
+        public Input<string>? Serverless { get; set; }
 
         [Input("sgw")]
         public Input<string>? Sgw { get; set; }

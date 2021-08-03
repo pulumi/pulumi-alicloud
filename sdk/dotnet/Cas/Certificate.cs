@@ -9,37 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cas
 {
-    /// <summary>
-    /// Provides a CAS Certificate resource.
-    /// 
-    /// &gt; **NOTE:** The Certificate name which you want to add must be already registered and had not added by another account. Every Certificate name can only exist in a unique group.
-    /// 
-    /// &gt; **NOTE:** The Cas Certificate region only support cn-hangzhou, ap-south-1, me-east-1, eu-central-1, ap-northeast-1, ap-southeast-2.
-    /// 
-    /// &gt; **NOTE:** Available in 1.35.0+ .
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Add a new Certificate.
-    ///         var cert = new AliCloud.Cas.Certificate("cert", new AliCloud.Cas.CertificateArgs
-    ///         {
-    ///             Cert = File.ReadAllText($"{path.Module}/test.crt"),
-    ///             Key = File.ReadAllText($"{path.Module}/test.key"),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
+    [Obsolete(@"This resource has been deprecated in favour of ServiceCertificate")]
     [AliCloudResourceType("alicloud:cas/certificate:Certificate")]
     public partial class Certificate : Pulumi.CustomResource
     {
@@ -49,11 +19,17 @@ namespace Pulumi.AliCloud.Cas
         [Output("cert")]
         public Output<string> Cert { get; private set; } = null!;
 
+        [Output("certificateName")]
+        public Output<string> CertificateName { get; private set; } = null!;
+
         /// <summary>
         /// Key of the Certificate in which the Certificate will add.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
+
+        [Output("lang")]
+        public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
         /// Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -113,11 +89,17 @@ namespace Pulumi.AliCloud.Cas
         [Input("cert", required: true)]
         public Input<string> Cert { get; set; } = null!;
 
+        [Input("certificateName")]
+        public Input<string>? CertificateName { get; set; }
+
         /// <summary>
         /// Key of the Certificate in which the Certificate will add.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
+
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
 
         /// <summary>
         /// Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -138,11 +120,17 @@ namespace Pulumi.AliCloud.Cas
         [Input("cert")]
         public Input<string>? Cert { get; set; }
 
+        [Input("certificateName")]
+        public Input<string>? CertificateName { get; set; }
+
         /// <summary>
         /// Key of the Certificate in which the Certificate will add.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
+
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
 
         /// <summary>
         /// Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.

@@ -46,6 +46,12 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.NodePoolDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
+        /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+        /// </summary>
+        [Output("formatDisk")]
+        public Output<bool> FormatDisk { get; private set; } = null!;
+
+        /// <summary>
         /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
         /// </summary>
         [Output("imageId")]
@@ -70,6 +76,12 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
         /// <summary>
+        /// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        /// </summary>
+        [Output("instances")]
+        public Output<ImmutableArray<string>> Instances { get; private set; } = null!;
+
+        /// <summary>
         /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         /// </summary>
         [Output("internetChargeType")]
@@ -80,6 +92,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("internetMaxBandwidthOut")]
         public Output<int> InternetMaxBandwidthOut { get; private set; } = null!;
+
+        /// <summary>
+        /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+        /// </summary>
+        [Output("keepInstanceName")]
+        public Output<bool> KeepInstanceName { get; private set; } = null!;
 
         /// <summary>
         /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
@@ -103,7 +121,7 @@ namespace Pulumi.AliCloud.CS
         /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         /// </summary>
         [Output("management")]
-        public Output<Outputs.NodePoolManagement?> Management { get; private set; } = null!;
+        public Output<Outputs.NodePoolManagement> Management { get; private set; } = null!;
 
         /// <summary>
         /// The name of node pool.
@@ -142,6 +160,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
+        /// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        /// </summary>
+        [Output("platform")]
+        public Output<string> Platform { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         /// </summary>
         [Output("resourceGroupId")]
@@ -158,6 +182,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("scalingGroupId")]
         public Output<string> ScalingGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+        /// </summary>
+        [Output("scalingPolicy")]
+        public Output<string> ScalingPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The security group id for worker node.
@@ -302,6 +332,12 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+        /// </summary>
+        [Input("formatDisk")]
+        public Input<bool>? FormatDisk { get; set; }
+
+        /// <summary>
         /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
         /// </summary>
         [Input("imageId")]
@@ -331,6 +367,18 @@ namespace Pulumi.AliCloud.CS
             set => _instanceTypes = value;
         }
 
+        [Input("instances")]
+        private InputList<string>? _instances;
+
+        /// <summary>
+        /// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        /// </summary>
+        public InputList<string> Instances
+        {
+            get => _instances ?? (_instances = new InputList<string>());
+            set => _instances = value;
+        }
+
         /// <summary>
         /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         /// </summary>
@@ -342,6 +390,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
+
+        /// <summary>
+        /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+        /// </summary>
+        [Input("keepInstanceName")]
+        public Input<bool>? KeepInstanceName { get; set; }
 
         /// <summary>
         /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
@@ -410,6 +464,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
+        /// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        /// </summary>
+        [Input("platform")]
+        public Input<string>? Platform { get; set; }
+
+        /// <summary>
         /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         /// </summary>
         [Input("resourceGroupId")]
@@ -420,6 +480,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("scalingConfig")]
         public Input<Inputs.NodePoolScalingConfigArgs>? ScalingConfig { get; set; }
+
+        /// <summary>
+        /// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+        /// </summary>
+        [Input("scalingPolicy")]
+        public Input<string>? ScalingPolicy { get; set; }
 
         /// <summary>
         /// The security group id for worker node.
@@ -546,6 +612,12 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+        /// </summary>
+        [Input("formatDisk")]
+        public Input<bool>? FormatDisk { get; set; }
+
+        /// <summary>
         /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
         /// </summary>
         [Input("imageId")]
@@ -575,6 +647,18 @@ namespace Pulumi.AliCloud.CS
             set => _instanceTypes = value;
         }
 
+        [Input("instances")]
+        private InputList<string>? _instances;
+
+        /// <summary>
+        /// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        /// </summary>
+        public InputList<string> Instances
+        {
+            get => _instances ?? (_instances = new InputList<string>());
+            set => _instances = value;
+        }
+
         /// <summary>
         /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         /// </summary>
@@ -586,6 +670,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
+
+        /// <summary>
+        /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+        /// </summary>
+        [Input("keepInstanceName")]
+        public Input<bool>? KeepInstanceName { get; set; }
 
         /// <summary>
         /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
@@ -654,6 +744,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
+        /// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        /// </summary>
+        [Input("platform")]
+        public Input<string>? Platform { get; set; }
+
+        /// <summary>
         /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         /// </summary>
         [Input("resourceGroupId")]
@@ -670,6 +766,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("scalingGroupId")]
         public Input<string>? ScalingGroupId { get; set; }
+
+        /// <summary>
+        /// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+        /// </summary>
+        [Input("scalingPolicy")]
+        public Input<string>? ScalingPolicy { get; set; }
 
         /// <summary>
         /// The security group id for worker node.
