@@ -82,9 +82,13 @@ type GetInstanceClassesArgs struct {
 	//
 	// Deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.
 	PerformanceType *string `pulumi:"performanceType"`
+	ProductType     *string `pulumi:"productType"`
 	// The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
 	SeriesType *string `pulumi:"seriesType"`
 	// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
+	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+	// * Local: an ApsaraDB for Redis instance with a local disk.
+	// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
 	ShardNumber *int    `pulumi:"shardNumber"`
 	SortedBy    *string `pulumi:"sortedBy"`
 	// It has been deprecated from 1.68.0.
@@ -114,6 +118,7 @@ type GetInstanceClassesResult struct {
 	PackageType *string `pulumi:"packageType"`
 	// Deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.
 	PerformanceType *string `pulumi:"performanceType"`
+	ProductType     *string `pulumi:"productType"`
 	SeriesType      *string `pulumi:"seriesType"`
 	ShardNumber     *int    `pulumi:"shardNumber"`
 	SortedBy        *string `pulumi:"sortedBy"`

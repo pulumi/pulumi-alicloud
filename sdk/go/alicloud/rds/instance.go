@@ -144,7 +144,7 @@ type Instance struct {
 	// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
 	// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
 	// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
-	HaConfig pulumi.StringPtrOutput `pulumi:"haConfig"`
+	HaConfig pulumi.StringOutput `pulumi:"haConfig"`
 	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.

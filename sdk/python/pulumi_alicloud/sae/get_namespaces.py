@@ -106,7 +106,7 @@ def get_namespaces(ids: Optional[Sequence[str]] = None,
     import pulumi_alicloud as alicloud
 
     name_regex = alicloud.sae.get_namespaces(name_regex="^my-Namespace")
-    pulumi.export("saeNamespaceId2", name_regex.namespaces[0].id)
+    pulumi.export("saeNamespaceId", name_regex.namespaces[0].id)
     ```
 
 

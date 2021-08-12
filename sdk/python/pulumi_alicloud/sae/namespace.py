@@ -18,7 +18,7 @@ class NamespaceArgs:
                  namespace_description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
-        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         :param pulumi.Input[str] namespace_name: The Name of Namespace.
         :param pulumi.Input[str] namespace_description: The Description of Namespace.
         """
@@ -31,7 +31,7 @@ class NamespaceArgs:
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Input[str]:
         """
-        The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+        The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         """
         return pulumi.get(self, "namespace_id")
 
@@ -73,7 +73,7 @@ class _NamespaceState:
         """
         Input properties used for looking up and filtering Namespace resources.
         :param pulumi.Input[str] namespace_description: The Description of Namespace.
-        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         :param pulumi.Input[str] namespace_name: The Name of Namespace.
         """
         if namespace_description is not None:
@@ -99,7 +99,7 @@ class _NamespaceState:
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+        The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         """
         return pulumi.get(self, "namespace_id")
 
@@ -145,7 +145,8 @@ class Namespace(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.sae.Namespace("example",
-            namespace_id="cn-hangzhou:NamespaceName",
+            namespace_description="your_description",
+            namespace_id="cn-hangzhou:yourname",
             namespace_name="example_value")
         ```
 
@@ -160,7 +161,7 @@ class Namespace(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] namespace_description: The Description of Namespace.
-        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         :param pulumi.Input[str] namespace_name: The Name of Namespace.
         """
         ...
@@ -185,7 +186,8 @@ class Namespace(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.sae.Namespace("example",
-            namespace_id="cn-hangzhou:NamespaceName",
+            namespace_description="your_description",
+            namespace_id="cn-hangzhou:yourname",
             namespace_name="example_value")
         ```
 
@@ -255,7 +257,7 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] namespace_description: The Description of Namespace.
-        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         :param pulumi.Input[str] namespace_name: The Name of Namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -279,7 +281,7 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Output[str]:
         """
-        The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+        The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         """
         return pulumi.get(self, "namespace_id")
 

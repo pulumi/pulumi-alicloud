@@ -382,6 +382,154 @@ func (o GetEventBusesBusArrayOutput) Index(i pulumi.IntInput) GetEventBusesBusOu
 	}).(GetEventBusesBusOutput)
 }
 
+type GetEventSourcesSource struct {
+	// The detail describe of event source.
+	Description string `pulumi:"description"`
+	// The code name of event source.
+	EventSourceName string `pulumi:"eventSourceName"`
+	// The config of external data source.
+	ExternalSourceConfig map[string]interface{} `pulumi:"externalSourceConfig"`
+	// The type of external data source.
+	ExternalSourceType string `pulumi:"externalSourceType"`
+	// The ID of the Event Source.
+	Id string `pulumi:"id"`
+	// Whether to connect to an external data source.
+	LinkedExternalSource bool   `pulumi:"linkedExternalSource"`
+	Type                 string `pulumi:"type"`
+}
+
+// GetEventSourcesSourceInput is an input type that accepts GetEventSourcesSourceArgs and GetEventSourcesSourceOutput values.
+// You can construct a concrete instance of `GetEventSourcesSourceInput` via:
+//
+//          GetEventSourcesSourceArgs{...}
+type GetEventSourcesSourceInput interface {
+	pulumi.Input
+
+	ToGetEventSourcesSourceOutput() GetEventSourcesSourceOutput
+	ToGetEventSourcesSourceOutputWithContext(context.Context) GetEventSourcesSourceOutput
+}
+
+type GetEventSourcesSourceArgs struct {
+	// The detail describe of event source.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The code name of event source.
+	EventSourceName pulumi.StringInput `pulumi:"eventSourceName"`
+	// The config of external data source.
+	ExternalSourceConfig pulumi.MapInput `pulumi:"externalSourceConfig"`
+	// The type of external data source.
+	ExternalSourceType pulumi.StringInput `pulumi:"externalSourceType"`
+	// The ID of the Event Source.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether to connect to an external data source.
+	LinkedExternalSource pulumi.BoolInput   `pulumi:"linkedExternalSource"`
+	Type                 pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetEventSourcesSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventSourcesSource)(nil)).Elem()
+}
+
+func (i GetEventSourcesSourceArgs) ToGetEventSourcesSourceOutput() GetEventSourcesSourceOutput {
+	return i.ToGetEventSourcesSourceOutputWithContext(context.Background())
+}
+
+func (i GetEventSourcesSourceArgs) ToGetEventSourcesSourceOutputWithContext(ctx context.Context) GetEventSourcesSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventSourcesSourceOutput)
+}
+
+// GetEventSourcesSourceArrayInput is an input type that accepts GetEventSourcesSourceArray and GetEventSourcesSourceArrayOutput values.
+// You can construct a concrete instance of `GetEventSourcesSourceArrayInput` via:
+//
+//          GetEventSourcesSourceArray{ GetEventSourcesSourceArgs{...} }
+type GetEventSourcesSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetEventSourcesSourceArrayOutput() GetEventSourcesSourceArrayOutput
+	ToGetEventSourcesSourceArrayOutputWithContext(context.Context) GetEventSourcesSourceArrayOutput
+}
+
+type GetEventSourcesSourceArray []GetEventSourcesSourceInput
+
+func (GetEventSourcesSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventSourcesSource)(nil)).Elem()
+}
+
+func (i GetEventSourcesSourceArray) ToGetEventSourcesSourceArrayOutput() GetEventSourcesSourceArrayOutput {
+	return i.ToGetEventSourcesSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventSourcesSourceArray) ToGetEventSourcesSourceArrayOutputWithContext(ctx context.Context) GetEventSourcesSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventSourcesSourceArrayOutput)
+}
+
+type GetEventSourcesSourceOutput struct{ *pulumi.OutputState }
+
+func (GetEventSourcesSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventSourcesSource)(nil)).Elem()
+}
+
+func (o GetEventSourcesSourceOutput) ToGetEventSourcesSourceOutput() GetEventSourcesSourceOutput {
+	return o
+}
+
+func (o GetEventSourcesSourceOutput) ToGetEventSourcesSourceOutputWithContext(ctx context.Context) GetEventSourcesSourceOutput {
+	return o
+}
+
+// The detail describe of event source.
+func (o GetEventSourcesSourceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventSourcesSource) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The code name of event source.
+func (o GetEventSourcesSourceOutput) EventSourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventSourcesSource) string { return v.EventSourceName }).(pulumi.StringOutput)
+}
+
+// The config of external data source.
+func (o GetEventSourcesSourceOutput) ExternalSourceConfig() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEventSourcesSource) map[string]interface{} { return v.ExternalSourceConfig }).(pulumi.MapOutput)
+}
+
+// The type of external data source.
+func (o GetEventSourcesSourceOutput) ExternalSourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventSourcesSource) string { return v.ExternalSourceType }).(pulumi.StringOutput)
+}
+
+// The ID of the Event Source.
+func (o GetEventSourcesSourceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventSourcesSource) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether to connect to an external data source.
+func (o GetEventSourcesSourceOutput) LinkedExternalSource() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEventSourcesSource) bool { return v.LinkedExternalSource }).(pulumi.BoolOutput)
+}
+
+func (o GetEventSourcesSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventSourcesSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetEventSourcesSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventSourcesSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventSourcesSource)(nil)).Elem()
+}
+
+func (o GetEventSourcesSourceArrayOutput) ToGetEventSourcesSourceArrayOutput() GetEventSourcesSourceArrayOutput {
+	return o
+}
+
+func (o GetEventSourcesSourceArrayOutput) ToGetEventSourcesSourceArrayOutputWithContext(ctx context.Context) GetEventSourcesSourceArrayOutput {
+	return o
+}
+
+func (o GetEventSourcesSourceArrayOutput) Index(i pulumi.IntInput) GetEventSourcesSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventSourcesSource {
+		return vs[0].([]GetEventSourcesSource)[vs[1].(int)]
+	}).(GetEventSourcesSourceOutput)
+}
+
 type GetRulesRule struct {
 	// The description of rule.
 	Description string `pulumi:"description"`
@@ -655,6 +803,8 @@ func init() {
 	pulumi.RegisterOutputType(RuleTargetParamListArrayOutput{})
 	pulumi.RegisterOutputType(GetEventBusesBusOutput{})
 	pulumi.RegisterOutputType(GetEventBusesBusArrayOutput{})
+	pulumi.RegisterOutputType(GetEventSourcesSourceOutput{})
+	pulumi.RegisterOutputType(GetEventSourcesSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleTargetOutput{})

@@ -48,12 +48,17 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
+	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+	// * Local: an ApsaraDB for Redis instance with a local disk.
+	// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
 	Engine *string `pulumi:"engine"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
-	Multi      *bool   `pulumi:"multi"`
-	OutputFile *string `pulumi:"outputFile"`
+	Multi       *bool   `pulumi:"multi"`
+	OutputFile  *string `pulumi:"outputFile"`
+	ProductType *string `pulumi:"productType"`
 }
 
 // A collection of values returned by getZones.
@@ -66,6 +71,7 @@ type GetZonesResult struct {
 	InstanceChargeType *string  `pulumi:"instanceChargeType"`
 	Multi              *bool    `pulumi:"multi"`
 	OutputFile         *string  `pulumi:"outputFile"`
+	ProductType        *string  `pulumi:"productType"`
 	// A list of availability zones. Each element contains the following attributes:
 	Zones []GetZonesZone `pulumi:"zones"`
 }

@@ -15,6 +15,7 @@ namespace Pulumi.AliCloud.Outputs
     {
         public readonly string? Actiontrail;
         public readonly string? Adb;
+        public readonly string? Alb;
         public readonly string? Alidns;
         public readonly string? Alikafka;
         public readonly string? Apigateway;
@@ -26,6 +27,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Cbn;
         public readonly string? Cdn;
         public readonly string? Cds;
+        public readonly string? Cloudphone;
         public readonly string? Cms;
         public readonly string? Config;
         public readonly string? Cr;
@@ -50,6 +52,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Fnf;
         public readonly string? Ga;
         public readonly string? Gpdb;
+        public readonly string? Gwsecd;
         public readonly string? Hbr;
         public readonly string? Hitsdb;
         public readonly string? Ims;
@@ -74,6 +77,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? RKvstore;
         public readonly string? Ram;
         public readonly string? Rds;
+        public readonly string? Redisa;
         public readonly string? Resourcemanager;
         public readonly string? Resourcesharing;
         public readonly string? Ros;
@@ -89,6 +93,8 @@ namespace Pulumi.AliCloud.Outputs
             string? actiontrail,
 
             string? adb,
+
+            string? alb,
 
             string? alidns,
 
@@ -111,6 +117,8 @@ namespace Pulumi.AliCloud.Outputs
             string? cdn,
 
             string? cds,
+
+            string? cloudphone,
 
             string? cms,
 
@@ -160,6 +168,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? gpdb,
 
+            string? gwsecd,
+
             string? hbr,
 
             string? hitsdb,
@@ -208,6 +218,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? rds,
 
+            string? redisa,
+
             string? resourcemanager,
 
             string? resourcesharing,
@@ -228,6 +240,7 @@ namespace Pulumi.AliCloud.Outputs
         {
             Actiontrail = actiontrail;
             Adb = adb;
+            Alb = alb;
             Alidns = alidns;
             Alikafka = alikafka;
             Apigateway = apigateway;
@@ -239,6 +252,7 @@ namespace Pulumi.AliCloud.Outputs
             Cbn = cbn;
             Cdn = cdn;
             Cds = cds;
+            Cloudphone = cloudphone;
             Cms = cms;
             Config = config;
             Cr = cr;
@@ -263,6 +277,7 @@ namespace Pulumi.AliCloud.Outputs
             Fnf = fnf;
             Ga = ga;
             Gpdb = gpdb;
+            Gwsecd = gwsecd;
             Hbr = hbr;
             Hitsdb = hitsdb;
             Ims = ims;
@@ -287,6 +302,7 @@ namespace Pulumi.AliCloud.Outputs
             RKvstore = rKvstore;
             Ram = ram;
             Rds = rds;
+            Redisa = redisa;
             Resourcemanager = resourcemanager;
             Resourcesharing = resourcesharing;
             Ros = ros;

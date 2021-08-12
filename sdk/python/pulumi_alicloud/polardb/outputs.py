@@ -10,6 +10,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ClusterDbClusterIpArray',
     'ClusterParameter',
     'GetAccountsAccountResult',
     'GetAccountsAccountDatabasePrivilegeResult',
@@ -24,6 +25,72 @@ __all__ = [
     'GetNodeClassesClassSupportedEngineAvailableResourceResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class ClusterDbClusterIpArray(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dbClusterIpArrayName":
+            suggest = "db_cluster_ip_array_name"
+        elif key == "modifyMode":
+            suggest = "modify_mode"
+        elif key == "securityIps":
+            suggest = "security_ips"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterDbClusterIpArray. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterDbClusterIpArray.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterDbClusterIpArray.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 db_cluster_ip_array_name: Optional[str] = None,
+                 modify_mode: Optional[str] = None,
+                 security_ips: Optional[Sequence[str]] = None):
+        """
+        :param str db_cluster_ip_array_name: The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit. 
+               > **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+        :param str modify_mode: The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+        :param Sequence[str] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        """
+        if db_cluster_ip_array_name is not None:
+            pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
+        if modify_mode is not None:
+            pulumi.set(__self__, "modify_mode", modify_mode)
+        if security_ips is not None:
+            pulumi.set(__self__, "security_ips", security_ips)
+
+    @property
+    @pulumi.getter(name="dbClusterIpArrayName")
+    def db_cluster_ip_array_name(self) -> Optional[str]:
+        """
+        The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit. 
+        > **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+        """
+        return pulumi.get(self, "db_cluster_ip_array_name")
+
+    @property
+    @pulumi.getter(name="modifyMode")
+    def modify_mode(self) -> Optional[str]:
+        """
+        The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+        """
+        return pulumi.get(self, "modify_mode")
+
+    @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> Optional[Sequence[str]]:
+        """
+        List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        """
+        return pulumi.get(self, "security_ips")
+
 
 @pulumi.output_type
 class ClusterParameter(dict):

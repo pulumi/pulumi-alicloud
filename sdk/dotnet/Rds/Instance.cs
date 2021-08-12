@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Rds
         /// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
         /// </summary>
         [Output("haConfig")]
-        public Output<string?> HaConfig { get; private set; } = null!;
+        public Output<string> HaConfig { get; private set; } = null!;
 
         /// <summary>
         /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.

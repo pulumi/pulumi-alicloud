@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .control_policy import *
+from .control_policy_order import *
 from .get_control_policies import *
 from . import outputs
 
@@ -21,11 +22,14 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:cloudfirewall/controlPolicy:ControlPolicy":
                 return ControlPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder":
+                return ControlPolicyOrder(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "cloudfirewall/controlPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cloudfirewall/controlPolicyOrder", _module_instance)
 
 _register_module()

@@ -15,6 +15,7 @@ export * from "./provider";
 // Export sub-modules:
 import * as actiontrail from "./actiontrail";
 import * as adb from "./adb";
+import * as alb from "./alb";
 import * as alikafka from "./alikafka";
 import * as amqp from "./amqp";
 import * as apigateway from "./apigateway";
@@ -42,8 +43,10 @@ import * as dms from "./dms";
 import * as dns from "./dns";
 import * as drds from "./drds";
 import * as eci from "./eci";
+import * as ecp from "./ecp";
 import * as ecs from "./ecs";
 import * as edas from "./edas";
+import * as eds from "./eds";
 import * as eipanycast from "./eipanycast";
 import * as elasticsearch from "./elasticsearch";
 import * as emr from "./emr";
@@ -91,6 +94,7 @@ import * as yundun from "./yundun";
 export {
     actiontrail,
     adb,
+    alb,
     alikafka,
     amqp,
     apigateway,
@@ -118,8 +122,10 @@ export {
     dns,
     drds,
     eci,
+    ecp,
     ecs,
     edas,
+    eds,
     eipanycast,
     elasticsearch,
     emr,

@@ -4,7 +4,9 @@
 
 # Export this package's modules as members:
 from .event_bus import *
+from .event_source import *
 from .get_event_buses import *
+from .get_event_sources import *
 from .get_rules import *
 from .get_service import *
 from .rule import *
@@ -26,6 +28,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:eventbridge/eventBus:EventBus":
                 return EventBus(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:eventbridge/eventSource:EventSource":
+                return EventSource(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:eventbridge/rule:Rule":
                 return Rule(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:eventbridge/slr:Slr":
@@ -36,6 +40,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "eventbridge/eventBus", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "eventbridge/eventSource", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "eventbridge/rule", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "eventbridge/slr", _module_instance)
 

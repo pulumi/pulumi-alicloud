@@ -34,11 +34,11 @@ namespace Pulumi.AliCloud.Sae
         ///         {
         ///             NameRegex = "^my-Namespace",
         ///         }));
-        ///         this.SaeNamespaceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Namespaces[0].Id);
+        ///         this.SaeNamespaceId = nameRegex.Apply(nameRegex =&gt; nameRegex.Namespaces[0].Id);
         ///     }
         /// 
-        ///     [Output("saeNamespaceId2")]
-        ///     public Output&lt;string&gt; SaeNamespaceId2 { get; set; }
+        ///     [Output("saeNamespaceId")]
+        ///     public Output&lt;string&gt; SaeNamespaceId { get; set; }
         /// }
         /// ```
         /// {{% /example %}}

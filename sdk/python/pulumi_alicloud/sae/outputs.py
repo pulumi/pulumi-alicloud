@@ -9,8 +9,93 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetConfigMapsMapResult',
     'GetNamespacesNamespaceResult',
 ]
+
+@pulumi.output_type
+class GetConfigMapsMapResult(dict):
+    def __init__(__self__, *,
+                 config_map_id: str,
+                 create_time: str,
+                 data: str,
+                 description: str,
+                 id: str,
+                 name: str,
+                 namespace_id: str):
+        """
+        :param str config_map_id: The first ID of the resource.
+        :param str create_time: The Creation Time of the ConfigMap.
+        :param str data: ConfigMap instance data. The value's format is a `json` string
+        :param str description: The Description of Config Map.
+        :param str id: The ID of the Config Map.
+        :param str name: ConfigMap instance name.
+        :param str namespace_id: The NamespaceId of Config Maps.
+        """
+        pulumi.set(__self__, "config_map_id", config_map_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+
+    @property
+    @pulumi.getter(name="configMapId")
+    def config_map_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "config_map_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The Creation Time of the ConfigMap.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def data(self) -> str:
+        """
+        ConfigMap instance data. The value's format is a `json` string
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The Description of Config Map.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Config Map.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        ConfigMap instance name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
+        """
+        The NamespaceId of Config Maps.
+        """
+        return pulumi.get(self, "namespace_id")
+
 
 @pulumi.output_type
 class GetNamespacesNamespaceResult(dict):

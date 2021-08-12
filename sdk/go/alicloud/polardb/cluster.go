@@ -95,6 +95,8 @@ type Cluster struct {
 	CollectorStatus pulumi.StringOutput `pulumi:"collectorStatus"`
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
+	// db_cluster_ip_array defines how users can send requests to your API.
+	DbClusterIpArrays ClusterDbClusterIpArrayArrayOutput `pulumi:"dbClusterIpArrays"`
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
@@ -186,6 +188,8 @@ type clusterState struct {
 	CollectorStatus *string `pulumi:"collectorStatus"`
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString *string `pulumi:"connectionString"`
+	// db_cluster_ip_array defines how users can send requests to your API.
+	DbClusterIpArrays []ClusterDbClusterIpArray `pulumi:"dbClusterIpArrays"`
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	DbNodeClass *string `pulumi:"dbNodeClass"`
@@ -240,6 +244,8 @@ type ClusterState struct {
 	CollectorStatus pulumi.StringPtrInput
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString pulumi.StringPtrInput
+	// db_cluster_ip_array defines how users can send requests to your API.
+	DbClusterIpArrays ClusterDbClusterIpArrayArrayInput
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	DbNodeClass pulumi.StringPtrInput
@@ -296,6 +302,8 @@ type clusterArgs struct {
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus *string `pulumi:"collectorStatus"`
+	// db_cluster_ip_array defines how users can send requests to your API.
+	DbClusterIpArrays []ClusterDbClusterIpArray `pulumi:"dbClusterIpArrays"`
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	DbNodeClass string `pulumi:"dbNodeClass"`
@@ -349,6 +357,8 @@ type ClusterArgs struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringPtrInput
+	// db_cluster_ip_array defines how users can send requests to your API.
+	DbClusterIpArrays ClusterDbClusterIpArrayArrayInput
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	DbNodeClass pulumi.StringInput

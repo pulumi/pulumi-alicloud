@@ -6,7 +6,9 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./eventBus";
+export * from "./eventSource";
 export * from "./getEventBuses";
+export * from "./getEventSources";
 export * from "./getRules";
 export * from "./getService";
 export * from "./rule";
@@ -14,6 +16,7 @@ export * from "./slr";
 
 // Import resources to register:
 import { EventBus } from "./eventBus";
+import { EventSource } from "./eventSource";
 import { Rule } from "./rule";
 import { Slr } from "./slr";
 
@@ -23,6 +26,8 @@ const _module = {
         switch (type) {
             case "alicloud:eventbridge/eventBus:EventBus":
                 return new EventBus(name, <any>undefined, { urn })
+            case "alicloud:eventbridge/eventSource:EventSource":
+                return new EventSource(name, <any>undefined, { urn })
             case "alicloud:eventbridge/rule:Rule":
                 return new Rule(name, <any>undefined, { urn })
             case "alicloud:eventbridge/slr:Slr":
@@ -33,5 +38,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/eventBus", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eventbridge/eventSource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/rule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/slr", _module)

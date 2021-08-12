@@ -1128,7 +1128,7 @@ class GetNatGatewaysGatewayResult(dict):
         :param str name: Name of the NAT gateway.
         :param str nat_gateway_id: The ID of the NAT gateway.
         :param str nat_gateway_name: The name of NAT gateway.
-        :param str nat_type: The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+        :param str nat_type: The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
         :param str payment_type: The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
         :param str resource_group_id: The resource group id of NAT gateway.
         :param Sequence[str] snat_table_ids: The ID of the SNAT table that is associated with the NAT gateway.
@@ -1262,7 +1262,7 @@ class GetNatGatewaysGatewayResult(dict):
     @pulumi.getter(name="natType")
     def nat_type(self) -> str:
         """
-        The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+        The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
         """
         return pulumi.get(self, "nat_type")
 

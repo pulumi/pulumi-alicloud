@@ -13,6 +13,7 @@ __all__ = [
     'RuleTarget',
     'RuleTargetParamList',
     'GetEventBusesBusResult',
+    'GetEventSourcesSourceResult',
     'GetRulesRuleResult',
     'GetRulesRuleTargetResult',
 ]
@@ -205,6 +206,86 @@ class GetEventBusesBusResult(dict):
         The ID of the Event Bus. Its value is same as Queue Name.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetEventSourcesSourceResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 event_source_name: str,
+                 external_source_config: Mapping[str, Any],
+                 external_source_type: str,
+                 id: str,
+                 linked_external_source: bool,
+                 type: str):
+        """
+        :param str description: The detail describe of event source.
+        :param str event_source_name: The code name of event source.
+        :param Mapping[str, Any] external_source_config: The config of external data source.
+        :param str external_source_type: The type of external data source.
+        :param str id: The ID of the Event Source.
+        :param bool linked_external_source: Whether to connect to an external data source.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "event_source_name", event_source_name)
+        pulumi.set(__self__, "external_source_config", external_source_config)
+        pulumi.set(__self__, "external_source_type", external_source_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "linked_external_source", linked_external_source)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The detail describe of event source.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="eventSourceName")
+    def event_source_name(self) -> str:
+        """
+        The code name of event source.
+        """
+        return pulumi.get(self, "event_source_name")
+
+    @property
+    @pulumi.getter(name="externalSourceConfig")
+    def external_source_config(self) -> Mapping[str, Any]:
+        """
+        The config of external data source.
+        """
+        return pulumi.get(self, "external_source_config")
+
+    @property
+    @pulumi.getter(name="externalSourceType")
+    def external_source_type(self) -> str:
+        """
+        The type of external data source.
+        """
+        return pulumi.get(self, "external_source_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Event Source.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="linkedExternalSource")
+    def linked_external_source(self) -> bool:
+        """
+        Whether to connect to an external data source.
+        """
+        return pulumi.get(self, "linked_external_source")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

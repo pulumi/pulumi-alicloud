@@ -88,6 +88,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
+        /// db_cluster_ip_array defines how users can send requests to your API.
+        /// </summary>
+        [Output("dbClusterIpArrays")]
+        public Output<ImmutableArray<Outputs.ClusterDbClusterIpArray>> DbClusterIpArrays { get; private set; } = null!;
+
+        /// <summary>
         /// The db_node_class of cluster node.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// </summary>
@@ -264,6 +270,18 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("collectorStatus")]
         public Input<string>? CollectorStatus { get; set; }
 
+        [Input("dbClusterIpArrays")]
+        private InputList<Inputs.ClusterDbClusterIpArrayArgs>? _dbClusterIpArrays;
+
+        /// <summary>
+        /// db_cluster_ip_array defines how users can send requests to your API.
+        /// </summary>
+        public InputList<Inputs.ClusterDbClusterIpArrayArgs> DbClusterIpArrays
+        {
+            get => _dbClusterIpArrays ?? (_dbClusterIpArrays = new InputList<Inputs.ClusterDbClusterIpArrayArgs>());
+            set => _dbClusterIpArrays = value;
+        }
+
         /// <summary>
         /// The db_node_class of cluster node.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
@@ -431,6 +449,18 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
+
+        [Input("dbClusterIpArrays")]
+        private InputList<Inputs.ClusterDbClusterIpArrayGetArgs>? _dbClusterIpArrays;
+
+        /// <summary>
+        /// db_cluster_ip_array defines how users can send requests to your API.
+        /// </summary>
+        public InputList<Inputs.ClusterDbClusterIpArrayGetArgs> DbClusterIpArrays
+        {
+            get => _dbClusterIpArrays ?? (_dbClusterIpArrays = new InputList<Inputs.ClusterDbClusterIpArrayGetArgs>());
+            set => _dbClusterIpArrays = value;
+        }
 
         /// <summary>
         /// The db_node_class of cluster node.

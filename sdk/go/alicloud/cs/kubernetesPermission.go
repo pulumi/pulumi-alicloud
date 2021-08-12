@@ -16,7 +16,7 @@ type KubernetesPermission struct {
 
 	// A list of user permission.
 	Permissions KubernetesPermissionPermissionArrayOutput `pulumi:"permissions"`
-	// The ID of the RAM user.
+	// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
 
@@ -54,14 +54,14 @@ func GetKubernetesPermission(ctx *pulumi.Context,
 type kubernetesPermissionState struct {
 	// A list of user permission.
 	Permissions []KubernetesPermissionPermission `pulumi:"permissions"`
-	// The ID of the RAM user.
+	// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
 	Uid *string `pulumi:"uid"`
 }
 
 type KubernetesPermissionState struct {
 	// A list of user permission.
 	Permissions KubernetesPermissionPermissionArrayInput
-	// The ID of the RAM user.
+	// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
 	Uid pulumi.StringPtrInput
 }
 
@@ -72,7 +72,7 @@ func (KubernetesPermissionState) ElementType() reflect.Type {
 type kubernetesPermissionArgs struct {
 	// A list of user permission.
 	Permissions []KubernetesPermissionPermission `pulumi:"permissions"`
-	// The ID of the RAM user.
+	// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
 	Uid string `pulumi:"uid"`
 }
 
@@ -80,7 +80,7 @@ type kubernetesPermissionArgs struct {
 type KubernetesPermissionArgs struct {
 	// A list of user permission.
 	Permissions KubernetesPermissionPermissionArrayInput
-	// The ID of the RAM user.
+	// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
 	Uid pulumi.StringInput
 }
 

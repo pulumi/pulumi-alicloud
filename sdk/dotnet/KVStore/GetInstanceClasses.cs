@@ -108,6 +108,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("performanceType")]
         public string? PerformanceType { get; set; }
 
+        [Input("productType")]
+        public string? ProductType { get; set; }
+
         /// <summary>
         /// The KVStore instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
         /// </summary>
@@ -116,6 +119,9 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
+        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+        /// * Local: an ApsaraDB for Redis instance with a local disk.
+        /// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
         /// </summary>
         [Input("shardNumber")]
         public int? ShardNumber { get; set; }
@@ -165,6 +171,7 @@ namespace Pulumi.AliCloud.KVStore
         public readonly string? OutputFile;
         public readonly string? PackageType;
         public readonly string? PerformanceType;
+        public readonly string? ProductType;
         public readonly string? SeriesType;
         public readonly int? ShardNumber;
         public readonly string? SortedBy;
@@ -197,6 +204,8 @@ namespace Pulumi.AliCloud.KVStore
 
             string? performanceType,
 
+            string? productType,
+
             string? seriesType,
 
             int? shardNumber,
@@ -219,6 +228,7 @@ namespace Pulumi.AliCloud.KVStore
             OutputFile = outputFile;
             PackageType = packageType;
             PerformanceType = performanceType;
+            ProductType = productType;
             SeriesType = seriesType;
             ShardNumber = shardNumber;
             SortedBy = sortedBy;

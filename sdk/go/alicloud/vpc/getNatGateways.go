@@ -31,7 +31,7 @@ type GetNatGatewaysArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// The name of NAT gateway.
 	NatGatewayName *string `pulumi:"natGatewayName"`
-	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
 	NatType    *string `pulumi:"natType"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.

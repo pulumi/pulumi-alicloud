@@ -1797,7 +1797,7 @@ type KubernetesPermissionPermission struct {
 	Cluster string `pulumi:"cluster"`
 	// Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
 	IsCustom *bool `pulumi:"isCustom"`
-	// Specifies whether the permissions are granted to a RAM role.
+	// Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
 	IsRamRole *bool `pulumi:"isRamRole"`
 	// The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
 	Namespace *string `pulumi:"namespace"`
@@ -1823,7 +1823,7 @@ type KubernetesPermissionPermissionArgs struct {
 	Cluster pulumi.StringInput `pulumi:"cluster"`
 	// Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
 	IsCustom pulumi.BoolPtrInput `pulumi:"isCustom"`
-	// Specifies whether the permissions are granted to a RAM role.
+	// Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
 	IsRamRole pulumi.BoolPtrInput `pulumi:"isRamRole"`
 	// The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
@@ -1894,7 +1894,7 @@ func (o KubernetesPermissionPermissionOutput) IsCustom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KubernetesPermissionPermission) *bool { return v.IsCustom }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether the permissions are granted to a RAM role.
+// Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
 func (o KubernetesPermissionPermissionOutput) IsRamRole() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KubernetesPermissionPermission) *bool { return v.IsRamRole }).(pulumi.BoolPtrOutput)
 }

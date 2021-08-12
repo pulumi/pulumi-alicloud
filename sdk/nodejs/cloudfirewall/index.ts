@@ -6,10 +6,12 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./controlPolicy";
+export * from "./controlPolicyOrder";
 export * from "./getControlPolicies";
 
 // Import resources to register:
 import { ControlPolicy } from "./controlPolicy";
+import { ControlPolicyOrder } from "./controlPolicyOrder";
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +19,12 @@ const _module = {
         switch (type) {
             case "alicloud:cloudfirewall/controlPolicy:ControlPolicy":
                 return new ControlPolicy(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder":
+                return new ControlPolicyOrder(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/controlPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/controlPolicyOrder", _module)

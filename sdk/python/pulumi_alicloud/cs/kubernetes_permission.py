@@ -19,7 +19,7 @@ class KubernetesPermissionArgs:
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]] = None):
         """
         The set of arguments for constructing a KubernetesPermission resource.
-        :param pulumi.Input[str] uid: The ID of the RAM user.
+        :param pulumi.Input[str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]] permissions: A list of user permission.
         """
         pulumi.set(__self__, "uid", uid)
@@ -30,7 +30,7 @@ class KubernetesPermissionArgs:
     @pulumi.getter
     def uid(self) -> pulumi.Input[str]:
         """
-        The ID of the RAM user.
+        The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         return pulumi.get(self, "uid")
 
@@ -59,7 +59,7 @@ class _KubernetesPermissionState:
         """
         Input properties used for looking up and filtering KubernetesPermission resources.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]] permissions: A list of user permission.
-        :param pulumi.Input[str] uid: The ID of the RAM user.
+        :param pulumi.Input[str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         if permissions is not None:
             pulumi.set(__self__, "permissions", permissions)
@@ -82,7 +82,7 @@ class _KubernetesPermissionState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the RAM user.
+        The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         return pulumi.get(self, "uid")
 
@@ -104,7 +104,7 @@ class KubernetesPermission(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesPermissionPermissionArgs']]]] permissions: A list of user permission.
-        :param pulumi.Input[str] uid: The ID of the RAM user.
+        :param pulumi.Input[str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         ...
     @overload
@@ -167,7 +167,7 @@ class KubernetesPermission(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesPermissionPermissionArgs']]]] permissions: A list of user permission.
-        :param pulumi.Input[str] uid: The ID of the RAM user.
+        :param pulumi.Input[str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -189,7 +189,7 @@ class KubernetesPermission(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        The ID of the RAM user.
+        The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         return pulumi.get(self, "uid")
 

@@ -108,6 +108,7 @@ namespace Pulumi.AliCloud
              {
                 public string? Actiontrail { get; set; } = null!;
                 public string? Adb { get; set; } = null!;
+                public string? Alb { get; set; } = null!;
                 public string? Alidns { get; set; } = null!;
                 public string? Alikafka { get; set; } = null!;
                 public string? Apigateway { get; set; } = null!;
@@ -119,6 +120,7 @@ namespace Pulumi.AliCloud
                 public string? Cbn { get; set; } = null!;
                 public string? Cdn { get; set; } = null!;
                 public string? Cds { get; set; } = null!;
+                public string? Cloudphone { get; set; } = null!;
                 public string? Cms { get; set; } = null!;
                 public string? Config { get; set; } = null!;
                 public string? Cr { get; set; } = null!;
@@ -143,6 +145,7 @@ namespace Pulumi.AliCloud
                 public string? Fnf { get; set; } = null!;
                 public string? Ga { get; set; } = null!;
                 public string? Gpdb { get; set; } = null!;
+                public string? Gwsecd { get; set; } = null!;
                 public string? Hbr { get; set; } = null!;
                 public string? Hitsdb { get; set; } = null!;
                 public string? Ims { get; set; } = null!;
@@ -167,6 +170,7 @@ namespace Pulumi.AliCloud
                 public string? RKvstore { get; set; } = null!;
                 public string? Ram { get; set; } = null!;
                 public string? Rds { get; set; } = null!;
+                public string? Redisa { get; set; } = null!;
                 public string? Resourcemanager { get; set; } = null!;
                 public string? Resourcesharing { get; set; } = null!;
                 public string? Ros { get; set; } = null!;

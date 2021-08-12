@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const nameRegex = alicloud.sae.getNamespaces({
  *     nameRegex: "^my-Namespace",
  * });
- * export const saeNamespaceId2 = nameRegex.then(nameRegex => nameRegex.namespaces[0].id);
+ * export const saeNamespaceId = nameRegex.then(nameRegex => nameRegex.namespaces[0].id);
  * ```
  */
 export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespacesResult> {

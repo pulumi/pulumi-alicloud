@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly bool? IsCustom;
         /// <summary>
-        /// Specifies whether the permissions are granted to a RAM role.
+        /// Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
         /// </summary>
         public readonly bool? IsRamRole;
         /// <summary>

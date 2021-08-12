@@ -14,6 +14,7 @@ export interface ProviderAssumeRole {
 export interface ProviderEndpoint {
     actiontrail?: pulumi.Input<string>;
     adb?: pulumi.Input<string>;
+    alb?: pulumi.Input<string>;
     alidns?: pulumi.Input<string>;
     alikafka?: pulumi.Input<string>;
     apigateway?: pulumi.Input<string>;
@@ -25,6 +26,7 @@ export interface ProviderEndpoint {
     cbn?: pulumi.Input<string>;
     cdn?: pulumi.Input<string>;
     cds?: pulumi.Input<string>;
+    cloudphone?: pulumi.Input<string>;
     cms?: pulumi.Input<string>;
     config?: pulumi.Input<string>;
     cr?: pulumi.Input<string>;
@@ -49,6 +51,7 @@ export interface ProviderEndpoint {
     fnf?: pulumi.Input<string>;
     ga?: pulumi.Input<string>;
     gpdb?: pulumi.Input<string>;
+    gwsecd?: pulumi.Input<string>;
     hbr?: pulumi.Input<string>;
     hitsdb?: pulumi.Input<string>;
     ims?: pulumi.Input<string>;
@@ -73,6 +76,7 @@ export interface ProviderEndpoint {
     rKvstore?: pulumi.Input<string>;
     ram?: pulumi.Input<string>;
     rds?: pulumi.Input<string>;
+    redisa?: pulumi.Input<string>;
     resourcemanager?: pulumi.Input<string>;
     resourcesharing?: pulumi.Input<string>;
     ros?: pulumi.Input<string>;
@@ -87,6 +91,9 @@ export namespace actiontrail {
 }
 
 export namespace adb {
+}
+
+export namespace alb {
 }
 
 export namespace amqp {
@@ -892,7 +899,7 @@ export namespace cs {
          */
         isCustom?: pulumi.Input<boolean>;
         /**
-         * Specifies whether the permissions are granted to a RAM role.
+         * Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
          */
         isRamRole?: pulumi.Input<boolean>;
         /**
@@ -1609,6 +1616,9 @@ export namespace eci {
     }
 }
 
+export namespace ecp {
+}
+
 export namespace ecs {
     export interface AutoProvisioningGroupLaunchTemplateConfig {
         instanceType?: pulumi.Input<string>;
@@ -1936,6 +1946,51 @@ export namespace ecs {
 }
 
 export namespace edas {
+}
+
+export namespace eds {
+    export interface EcdPolicyGroupAuthorizeAccessPolicyRule {
+        /**
+         * The cidrip of authorize access rule.
+         */
+        cidrIp?: pulumi.Input<string>;
+        /**
+         * The description of authorize access rule.
+         */
+        description?: pulumi.Input<string>;
+    }
+
+    export interface EcdPolicyGroupAuthorizeSecurityPolicyRule {
+        /**
+         * The cidrip of authorize access rule.
+         */
+        cidrIp?: pulumi.Input<string>;
+        /**
+         * The description of authorize access rule.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The ip protocol of security rules.
+         */
+        ipProtocol?: pulumi.Input<string>;
+        /**
+         * The policy of security rules.
+         */
+        policy?: pulumi.Input<string>;
+        /**
+         * The port range of security rules.
+         */
+        portRange?: pulumi.Input<string>;
+        /**
+         * The priority of security rules.
+         */
+        priority?: pulumi.Input<string>;
+        /**
+         * The type of security rules.
+         */
+        type?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace eipanycast {
@@ -2833,6 +2888,22 @@ export namespace ots {
 }
 
 export namespace polardb {
+    export interface ClusterDbClusterIpArray {
+        /**
+         * The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit. 
+         * > **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+         */
+        dbClusterIpArrayName?: pulumi.Input<string>;
+        /**
+         * The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+         */
+        modifyMode?: pulumi.Input<string>;
+        /**
+         * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+         */
+        securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ClusterParameter {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;

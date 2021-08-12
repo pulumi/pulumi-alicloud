@@ -204,7 +204,7 @@ export class Instance extends pulumi.CustomResource {
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
      * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
      */
-    public readonly haConfig!: pulumi.Output<string | undefined>;
+    public readonly haConfig!: pulumi.Output<string>;
     /**
      * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */

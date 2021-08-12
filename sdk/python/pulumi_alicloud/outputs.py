@@ -100,6 +100,7 @@ class ProviderEndpoint(dict):
     def __init__(__self__, *,
                  actiontrail: Optional[str] = None,
                  adb: Optional[str] = None,
+                 alb: Optional[str] = None,
                  alidns: Optional[str] = None,
                  alikafka: Optional[str] = None,
                  apigateway: Optional[str] = None,
@@ -111,6 +112,7 @@ class ProviderEndpoint(dict):
                  cbn: Optional[str] = None,
                  cdn: Optional[str] = None,
                  cds: Optional[str] = None,
+                 cloudphone: Optional[str] = None,
                  cms: Optional[str] = None,
                  config: Optional[str] = None,
                  cr: Optional[str] = None,
@@ -135,6 +137,7 @@ class ProviderEndpoint(dict):
                  fnf: Optional[str] = None,
                  ga: Optional[str] = None,
                  gpdb: Optional[str] = None,
+                 gwsecd: Optional[str] = None,
                  hbr: Optional[str] = None,
                  hitsdb: Optional[str] = None,
                  ims: Optional[str] = None,
@@ -159,6 +162,7 @@ class ProviderEndpoint(dict):
                  r_kvstore: Optional[str] = None,
                  ram: Optional[str] = None,
                  rds: Optional[str] = None,
+                 redisa: Optional[str] = None,
                  resourcemanager: Optional[str] = None,
                  resourcesharing: Optional[str] = None,
                  ros: Optional[str] = None,
@@ -172,6 +176,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "actiontrail", actiontrail)
         if adb is not None:
             pulumi.set(__self__, "adb", adb)
+        if alb is not None:
+            pulumi.set(__self__, "alb", alb)
         if alidns is not None:
             pulumi.set(__self__, "alidns", alidns)
         if alikafka is not None:
@@ -194,6 +200,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "cdn", cdn)
         if cds is not None:
             pulumi.set(__self__, "cds", cds)
+        if cloudphone is not None:
+            pulumi.set(__self__, "cloudphone", cloudphone)
         if cms is not None:
             pulumi.set(__self__, "cms", cms)
         if config is not None:
@@ -242,6 +250,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "ga", ga)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
+        if gwsecd is not None:
+            pulumi.set(__self__, "gwsecd", gwsecd)
         if hbr is not None:
             pulumi.set(__self__, "hbr", hbr)
         if hitsdb is not None:
@@ -290,6 +300,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "ram", ram)
         if rds is not None:
             pulumi.set(__self__, "rds", rds)
+        if redisa is not None:
+            pulumi.set(__self__, "redisa", redisa)
         if resourcemanager is not None:
             pulumi.set(__self__, "resourcemanager", resourcemanager)
         if resourcesharing is not None:
@@ -318,6 +330,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def adb(self) -> Optional[str]:
         return pulumi.get(self, "adb")
+
+    @property
+    @pulumi.getter
+    def alb(self) -> Optional[str]:
+        return pulumi.get(self, "alb")
 
     @property
     @pulumi.getter
@@ -373,6 +390,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def cds(self) -> Optional[str]:
         return pulumi.get(self, "cds")
+
+    @property
+    @pulumi.getter
+    def cloudphone(self) -> Optional[str]:
+        return pulumi.get(self, "cloudphone")
 
     @property
     @pulumi.getter
@@ -496,6 +518,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def gwsecd(self) -> Optional[str]:
+        return pulumi.get(self, "gwsecd")
+
+    @property
+    @pulumi.getter
     def hbr(self) -> Optional[str]:
         return pulumi.get(self, "hbr")
 
@@ -613,6 +640,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def rds(self) -> Optional[str]:
         return pulumi.get(self, "rds")
+
+    @property
+    @pulumi.getter
+    def redisa(self) -> Optional[str]:
+        return pulumi.get(self, "redisa")
 
     @property
     @pulumi.getter

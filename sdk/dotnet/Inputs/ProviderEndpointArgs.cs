@@ -18,6 +18,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("adb")]
         public Input<string>? Adb { get; set; }
 
+        [Input("alb")]
+        public Input<string>? Alb { get; set; }
+
         [Input("alidns")]
         public Input<string>? Alidns { get; set; }
 
@@ -50,6 +53,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("cds")]
         public Input<string>? Cds { get; set; }
+
+        [Input("cloudphone")]
+        public Input<string>? Cloudphone { get; set; }
 
         [Input("cms")]
         public Input<string>? Cms { get; set; }
@@ -123,6 +129,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("gpdb")]
         public Input<string>? Gpdb { get; set; }
 
+        [Input("gwsecd")]
+        public Input<string>? Gwsecd { get; set; }
+
         [Input("hbr")]
         public Input<string>? Hbr { get; set; }
 
@@ -194,6 +203,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("rds")]
         public Input<string>? Rds { get; set; }
+
+        [Input("redisa")]
+        public Input<string>? Redisa { get; set; }
 
         [Input("resourcemanager")]
         public Input<string>? Resourcemanager { get; set; }

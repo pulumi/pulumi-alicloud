@@ -20,7 +20,7 @@ class GetInstanceClassesResult:
     """
     A collection of values returned by getInstanceClasses.
     """
-    def __init__(__self__, architecture=None, classes=None, edition_type=None, engine=None, engine_version=None, id=None, instance_charge_type=None, instance_classes=None, node_type=None, output_file=None, package_type=None, performance_type=None, series_type=None, shard_number=None, sorted_by=None, storage_type=None, zone_id=None):
+    def __init__(__self__, architecture=None, classes=None, edition_type=None, engine=None, engine_version=None, id=None, instance_charge_type=None, instance_classes=None, node_type=None, output_file=None, package_type=None, performance_type=None, product_type=None, series_type=None, shard_number=None, sorted_by=None, storage_type=None, zone_id=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -65,6 +65,9 @@ class GetInstanceClassesResult:
             pulumi.log.warn("""performance_type is deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.""")
 
         pulumi.set(__self__, "performance_type", performance_type)
+        if product_type and not isinstance(product_type, str):
+            raise TypeError("Expected argument 'product_type' to be a str")
+        pulumi.set(__self__, "product_type", product_type)
         if series_type and not isinstance(series_type, str):
             raise TypeError("Expected argument 'series_type' to be a str")
         pulumi.set(__self__, "series_type", series_type)
@@ -155,6 +158,11 @@ class GetInstanceClassesResult:
         return pulumi.get(self, "performance_type")
 
     @property
+    @pulumi.getter(name="productType")
+    def product_type(self) -> Optional[str]:
+        return pulumi.get(self, "product_type")
+
+    @property
     @pulumi.getter(name="seriesType")
     def series_type(self) -> Optional[str]:
         return pulumi.get(self, "series_type")
@@ -198,6 +206,7 @@ class AwaitableGetInstanceClassesResult(GetInstanceClassesResult):
             output_file=self.output_file,
             package_type=self.package_type,
             performance_type=self.performance_type,
+            product_type=self.product_type,
             series_type=self.series_type,
             shard_number=self.shard_number,
             sorted_by=self.sorted_by,
@@ -214,6 +223,7 @@ def get_instance_classes(architecture: Optional[str] = None,
                          output_file: Optional[str] = None,
                          package_type: Optional[str] = None,
                          performance_type: Optional[str] = None,
+                         product_type: Optional[str] = None,
                          series_type: Optional[str] = None,
                          shard_number: Optional[int] = None,
                          sorted_by: Optional[str] = None,
@@ -251,6 +261,9 @@ def get_instance_classes(architecture: Optional[str] = None,
     :param str performance_type: It has been deprecated from 1.68.0.
     :param str series_type: The KVStore instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
     :param int shard_number: The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
+           * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+           * Local: an ApsaraDB for Redis instance with a local disk.
+           * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
     :param str storage_type: It has been deprecated from 1.68.0.
     :param str zone_id: The Zone to launch the KVStore instance.
     """
@@ -264,6 +277,7 @@ def get_instance_classes(architecture: Optional[str] = None,
     __args__['outputFile'] = output_file
     __args__['packageType'] = package_type
     __args__['performanceType'] = performance_type
+    __args__['productType'] = product_type
     __args__['seriesType'] = series_type
     __args__['shardNumber'] = shard_number
     __args__['sortedBy'] = sorted_by
@@ -288,6 +302,7 @@ def get_instance_classes(architecture: Optional[str] = None,
         output_file=__ret__.output_file,
         package_type=__ret__.package_type,
         performance_type=__ret__.performance_type,
+        product_type=__ret__.product_type,
         series_type=__ret__.series_type,
         shard_number=__ret__.shard_number,
         sorted_by=__ret__.sorted_by,

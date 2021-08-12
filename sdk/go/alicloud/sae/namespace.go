@@ -32,8 +32,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := sae.NewNamespace(ctx, "example", &sae.NamespaceArgs{
-// 			NamespaceId:   pulumi.String("cn-hangzhou:NamespaceName"),
-// 			NamespaceName: pulumi.String("example_value"),
+// 			NamespaceDescription: pulumi.String("your_description"),
+// 			NamespaceId:          pulumi.String("cn-hangzhou:yourname"),
+// 			NamespaceName:        pulumi.String("example_value"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -55,7 +56,7 @@ type Namespace struct {
 
 	// The Description of Namespace.
 	NamespaceDescription pulumi.StringPtrOutput `pulumi:"namespaceDescription"`
-	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 	// The Name of Namespace.
 	NamespaceName pulumi.StringOutput `pulumi:"namespaceName"`
@@ -98,7 +99,7 @@ func GetNamespace(ctx *pulumi.Context,
 type namespaceState struct {
 	// The Description of Namespace.
 	NamespaceDescription *string `pulumi:"namespaceDescription"`
-	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
 	NamespaceId *string `pulumi:"namespaceId"`
 	// The Name of Namespace.
 	NamespaceName *string `pulumi:"namespaceName"`
@@ -107,7 +108,7 @@ type namespaceState struct {
 type NamespaceState struct {
 	// The Description of Namespace.
 	NamespaceDescription pulumi.StringPtrInput
-	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
 	NamespaceId pulumi.StringPtrInput
 	// The Name of Namespace.
 	NamespaceName pulumi.StringPtrInput
@@ -120,7 +121,7 @@ func (NamespaceState) ElementType() reflect.Type {
 type namespaceArgs struct {
 	// The Description of Namespace.
 	NamespaceDescription *string `pulumi:"namespaceDescription"`
-	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
 	NamespaceId string `pulumi:"namespaceId"`
 	// The Name of Namespace.
 	NamespaceName string `pulumi:"namespaceName"`
@@ -130,7 +131,7 @@ type namespaceArgs struct {
 type NamespaceArgs struct {
 	// The Description of Namespace.
 	NamespaceDescription pulumi.StringPtrInput
-	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
 	NamespaceId pulumi.StringInput
 	// The Name of Namespace.
 	NamespaceName pulumi.StringInput

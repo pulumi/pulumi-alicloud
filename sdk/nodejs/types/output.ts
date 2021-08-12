@@ -58,6 +58,7 @@ export interface ProviderAssumeRole {
 export interface ProviderEndpoint {
     actiontrail?: string;
     adb?: string;
+    alb?: string;
     alidns?: string;
     alikafka?: string;
     apigateway?: string;
@@ -69,6 +70,7 @@ export interface ProviderEndpoint {
     cbn?: string;
     cdn?: string;
     cds?: string;
+    cloudphone?: string;
     cms?: string;
     config?: string;
     cr?: string;
@@ -93,6 +95,7 @@ export interface ProviderEndpoint {
     fnf?: string;
     ga?: string;
     gpdb?: string;
+    gwsecd?: string;
     hbr?: string;
     hitsdb?: string;
     ims?: string;
@@ -117,6 +120,7 @@ export interface ProviderEndpoint {
     rKvstore?: string;
     ram?: string;
     rds?: string;
+    redisa?: string;
     resourcemanager?: string;
     resourcesharing?: string;
     ros?: string;
@@ -687,6 +691,39 @@ export namespace adb {
          * A list of zone ids in which the multi zone.
          */
         multiZoneIds: string[];
+    }
+}
+
+export namespace alb {
+    export interface GetSecurityPoliciesPolicy {
+        /**
+         * The supported cipher suites, which are determined by the TLS protocol version.
+         */
+        ciphers: string[];
+        /**
+         * The ID of the Security Policy.
+         */
+        id: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The first ID of the resource.
+         */
+        securityPolicyId: string;
+        /**
+         * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+         */
+        securityPolicyName: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
+         */
+        tlsVersions: string[];
     }
 }
 
@@ -3589,6 +3626,7 @@ export namespace config {
     export interface Endpoints {
         actiontrail?: string;
         adb?: string;
+        alb?: string;
         alidns?: string;
         alikafka?: string;
         apigateway?: string;
@@ -3600,6 +3638,7 @@ export namespace config {
         cbn?: string;
         cdn?: string;
         cds?: string;
+        cloudphone?: string;
         cms?: string;
         config?: string;
         cr?: string;
@@ -3624,6 +3663,7 @@ export namespace config {
         fnf?: string;
         ga?: string;
         gpdb?: string;
+        gwsecd?: string;
         hbr?: string;
         hitsdb?: string;
         ims?: string;
@@ -3648,6 +3688,7 @@ export namespace config {
         rKvstore?: string;
         ram?: string;
         rds?: string;
+        redisa?: string;
         resourcemanager?: string;
         resourcesharing?: string;
         ros?: string;
@@ -4544,7 +4585,7 @@ export namespace cs {
          */
         isCustom?: boolean;
         /**
-         * Specifies whether the permissions are granted to a RAM role.
+         * Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
          */
         isRamRole?: boolean;
         /**
@@ -6678,6 +6719,23 @@ export namespace eci {
         password?: string;
         server?: string;
         userName?: string;
+    }
+}
+
+export namespace ecp {
+    export interface GetKeyPairsPair {
+        /**
+         * The ID of the Key Pair. Its value is same as Queue Name.
+         */
+        id: string;
+        /**
+         * The Private Key of the Fingerprint.
+         */
+        keyPairFingerPrint: string;
+        /**
+         * The Key Name.
+         */
+        keyPairName: string;
     }
 }
 
@@ -9263,6 +9321,167 @@ export namespace edas {
     }
 }
 
+export namespace eds {
+    export interface EcdPolicyGroupAuthorizeAccessPolicyRule {
+        /**
+         * The cidrip of authorize access rule.
+         */
+        cidrIp?: string;
+        /**
+         * The description of authorize access rule.
+         */
+        description?: string;
+    }
+
+    export interface EcdPolicyGroupAuthorizeSecurityPolicyRule {
+        /**
+         * The cidrip of authorize access rule.
+         */
+        cidrIp?: string;
+        /**
+         * The description of authorize access rule.
+         */
+        description?: string;
+        /**
+         * The ip protocol of security rules.
+         */
+        ipProtocol?: string;
+        /**
+         * The policy of security rules.
+         */
+        policy?: string;
+        /**
+         * The port range of security rules.
+         */
+        portRange?: string;
+        /**
+         * The priority of security rules.
+         */
+        priority?: string;
+        /**
+         * The type of security rules.
+         */
+        type?: string;
+    }
+
+    export interface GetPolicyGroupsGroup {
+        /**
+         * The rule of authorize access rule.
+         */
+        authorizeAccessPolicyRules: outputs.eds.GetPolicyGroupsGroupAuthorizeAccessPolicyRule[];
+        /**
+         * The policy rule.
+         */
+        authorizeSecurityPolicyRules: outputs.eds.GetPolicyGroupsGroupAuthorizeSecurityPolicyRule[];
+        /**
+         * The clipboard policy.
+         */
+        clipboard: string;
+        /**
+         * The list of domain.
+         */
+        domainList: string;
+        /**
+         * The count of eds.
+         */
+        edsCount: number;
+        /**
+         * The access of html5.
+         */
+        htmlAccess: string;
+        /**
+         * The html5 file transfer.
+         */
+        htmlFileTransfer: string;
+        /**
+         * The ID of the Policy Group.
+         */
+        id: string;
+        /**
+         * Local drive redirect policy.
+         */
+        localDrive: string;
+        /**
+         * The policy group id.
+         */
+        policyGroupId: string;
+        /**
+         * The name of policy group.
+         */
+        policyGroupName: string;
+        /**
+         * The type of policy group.
+         */
+        policyGroupType: string;
+        /**
+         * The status of policy.
+         */
+        status: string;
+        /**
+         * The usb redirect policy.
+         */
+        usbRedirect: string;
+        /**
+         * The quality of visual.sae_ecdsae_nameecd_po
+         */
+        visualQuality: string;
+        /**
+         * The watermark policy.
+         */
+        watermark: string;
+        /**
+         * The watermark transparency.
+         */
+        watermarkTransparency: string;
+        /**
+         * The type of watemark.
+         */
+        watermarkType: string;
+    }
+
+    export interface GetPolicyGroupsGroupAuthorizeAccessPolicyRule {
+        /**
+         * The cidrip of security rules.
+         */
+        cidrIp: string;
+        /**
+         * The description of security rules.
+         */
+        description: string;
+    }
+
+    export interface GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
+        /**
+         * The cidrip of security rules.
+         */
+        cidrIp: string;
+        /**
+         * The description of security rules.
+         */
+        description: string;
+        /**
+         * The ip protocol of security rules.
+         */
+        ipProtocol: string;
+        /**
+         * The policy of security rules.
+         */
+        policy: string;
+        /**
+         * The port range of security rules.
+         */
+        portRange: string;
+        /**
+         * The priority of security rules.
+         */
+        priority: string;
+        /**
+         * The type of security rules.
+         */
+        type: string;
+    }
+}
+
 export namespace eipanycast {
     export interface GetAnycastEipAddressesAddress {
         /**
@@ -9917,6 +10136,34 @@ export namespace eventbridge {
          * The ID of the Event Bus. Its value is same as Queue Name.
          */
         id: string;
+    }
+
+    export interface GetEventSourcesSource {
+        /**
+         * The detail describe of event source.
+         */
+        description: string;
+        /**
+         * The code name of event source.
+         */
+        eventSourceName: string;
+        /**
+         * The config of external data source.
+         */
+        externalSourceConfig: {[key: string]: any};
+        /**
+         * The type of external data source.
+         */
+        externalSourceType: string;
+        /**
+         * The ID of the Event Source.
+         */
+        id: string;
+        /**
+         * Whether to connect to an external data source.
+         */
+        linkedExternalSource: boolean;
+        type: string;
     }
 
     export interface GetRulesRule {
@@ -13525,6 +13772,22 @@ export namespace ots {
 }
 
 export namespace polardb {
+    export interface ClusterDbClusterIpArray {
+        /**
+         * The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit. 
+         * > **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+         */
+        dbClusterIpArrayName?: string;
+        /**
+         * The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+         */
+        modifyMode?: string;
+        /**
+         * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+         */
+        securityIps?: string[];
+    }
+
     export interface ClusterParameter {
         name: string;
         value: string;
@@ -15825,6 +16088,37 @@ export namespace ros {
 }
 
 export namespace sae {
+    export interface GetConfigMapsMap {
+        /**
+         * The first ID of the resource.
+         */
+        configMapId: string;
+        /**
+         * The Creation Time of the ConfigMap.
+         */
+        createTime: string;
+        /**
+         * ConfigMap instance data. The value's format is a `json` string
+         */
+        data: string;
+        /**
+         * The Description of Config Map.
+         */
+        description: string;
+        /**
+         * The ID of the Config Map.
+         */
+        id: string;
+        /**
+         * ConfigMap instance name.
+         */
+        name: string;
+        /**
+         * The NamespaceId of Config Maps.
+         */
+        namespaceId: string;
+    }
+
     export interface GetNamespacesNamespace {
         /**
          * The ID of the Namespace.
@@ -17053,7 +17347,7 @@ export namespace vpc {
          */
         natGatewayName: string;
         /**
-         * The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+         * The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
          */
         natType: string;
         /**
