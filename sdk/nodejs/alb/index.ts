@@ -6,10 +6,13 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./getSecurityPolicies";
+export * from "./getServerGroups";
 export * from "./securityPolicy";
+export * from "./serverGroup";
 
 // Import resources to register:
 import { SecurityPolicy } from "./securityPolicy";
+import { ServerGroup } from "./serverGroup";
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +20,12 @@ const _module = {
         switch (type) {
             case "alicloud:alb/securityPolicy:SecurityPolicy":
                 return new SecurityPolicy(name, <any>undefined, { urn })
+            case "alicloud:alb/serverGroup:ServerGroup":
+                return new ServerGroup(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "alb/securityPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "alb/serverGroup", _module)

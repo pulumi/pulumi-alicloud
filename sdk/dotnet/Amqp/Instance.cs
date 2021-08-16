@@ -66,6 +66,12 @@ namespace Pulumi.AliCloud.Amqp
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// The instance name.
+        /// </summary>
+        [Output("instanceName")]
+        public Output<string?> InstanceName { get; private set; } = null!;
+
+        /// <summary>
         /// The Instance Type. Valid values: `professional`, `vip`.
         /// </summary>
         [Output("instanceType")]
@@ -196,6 +202,12 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The instance name.
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
+        /// <summary>
         /// The Instance Type. Valid values: `professional`, `vip`.
         /// </summary>
         [Input("instanceType", required: true)]
@@ -280,6 +292,12 @@ namespace Pulumi.AliCloud.Amqp
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The instance name.
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
         /// <summary>
         /// The Instance Type. Valid values: `professional`, `vip`.
         /// </summary>

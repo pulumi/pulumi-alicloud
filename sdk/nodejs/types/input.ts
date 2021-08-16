@@ -32,6 +32,7 @@ export interface ProviderEndpoint {
     cr?: pulumi.Input<string>;
     cs?: pulumi.Input<string>;
     datahub?: pulumi.Input<string>;
+    dataworkspublic?: pulumi.Input<string>;
     dcdn?: pulumi.Input<string>;
     ddosbgp?: pulumi.Input<string>;
     ddoscoo?: pulumi.Input<string>;
@@ -80,6 +81,7 @@ export interface ProviderEndpoint {
     resourcemanager?: pulumi.Input<string>;
     resourcesharing?: pulumi.Input<string>;
     ros?: pulumi.Input<string>;
+    scdn?: pulumi.Input<string>;
     serverless?: pulumi.Input<string>;
     sgw?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
@@ -94,6 +96,106 @@ export namespace adb {
 }
 
 export namespace alb {
+    export interface ServerGroupHealthCheckConfig {
+        /**
+         * The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+         */
+        healthCheckConnectPort?: pulumi.Input<number>;
+        /**
+         * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+         */
+        healthCheckEnabled?: pulumi.Input<boolean>;
+        /**
+         * The domain name that is used for health checks.
+         */
+        healthCheckHost?: pulumi.Input<string>;
+        /**
+         * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckHttpVersion?: pulumi.Input<string>;
+        /**
+         * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+         */
+        healthCheckInterval?: pulumi.Input<number>;
+        /**
+         * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckMethod?: pulumi.Input<string>;
+        /**
+         * The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckPath?: pulumi.Input<string>;
+        /**
+         * Health check protocol. Valid values: `HTTP` and `TCP`.
+         */
+        healthCheckProtocol?: pulumi.Input<string>;
+        /**
+         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+         */
+        healthCheckTimeout?: pulumi.Input<number>;
+        /**
+         * The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+         */
+        healthyThreshold?: pulumi.Input<number>;
+        /**
+         * The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+         */
+        unhealthyThreshold?: pulumi.Input<number>;
+    }
+
+    export interface ServerGroupServer {
+        /**
+         * The description of the server.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The port that is used by the server. Valid values: `1` to `65535`.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The ID of the ECS instance, ENI instance or ECI instance.
+         */
+        serverId?: pulumi.Input<string>;
+        /**
+         * The IP address of the ENI instance when it is in the inclusive ENI mode.
+         */
+        serverIp?: pulumi.Input<string>;
+        /**
+         * The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+         */
+        serverType?: pulumi.Input<string>;
+        /**
+         * The status of the resource.
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+         */
+        weight?: pulumi.Input<number>;
+    }
+
+    export interface ServerGroupStickySessionConfig {
+        /**
+         * the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+         */
+        cookie?: pulumi.Input<string>;
+        /**
+         * The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+         */
+        cookieTimeout?: pulumi.Input<number>;
+        /**
+         * Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+         */
+        stickySessionEnabled?: pulumi.Input<boolean>;
+        /**
+         * The method that is used to handle a cookie. Values: `Server` and `Insert`.
+         */
+        stickySessionType?: pulumi.Input<string>;
+    }
 }
 
 export namespace amqp {
@@ -1237,7 +1339,21 @@ export namespace cs {
     }
 }
 
+export namespace dataworks {
+}
+
 export namespace dcdn {
+    export interface DomainConfigFunctionArg {
+        /**
+         * The name of arg.
+         */
+        argName: pulumi.Input<string>;
+        /**
+         * The value of arg.
+         */
+        argValue: pulumi.Input<string>;
+    }
+
     export interface DomainSource {
         /**
          * The origin address.
@@ -2131,11 +2247,11 @@ export namespace eventbridge {
 
     export interface RuleTargetParamList {
         /**
-         * The format of param.
+         * The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
          */
         form: pulumi.Input<string>;
         /**
-         * The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+         * The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
          */
         resourceKey: pulumi.Input<string>;
         /**
@@ -2145,7 +2261,7 @@ export namespace eventbridge {
         /**
          * The value of param.
          */
-        value: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
     }
 }
 
@@ -3089,6 +3205,72 @@ export namespace sae {
 }
 
 export namespace sag {
+}
+
+export namespace scdn {
+    export interface DomainCertInfo {
+        /**
+         * If You Enable HTTPS Here Certificate Name.
+         */
+        certName?: pulumi.Input<string>;
+        /**
+         * Certificate Type. Value Range: 
+         * * upload: Certificate
+         * * cas: Certificate Authority Certificate.
+         * * free: Free Certificate.
+         */
+        certType?: pulumi.Input<string>;
+        /**
+         * Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+         */
+        sslPri?: pulumi.Input<string>;
+        /**
+         * Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+         */
+        sslProtocol?: pulumi.Input<string>;
+        /**
+         * If You Enable HTTPS Here Key.
+         */
+        sslPub?: pulumi.Input<string>;
+    }
+
+    export interface DomainConfigFunctionArg {
+        /**
+         * The name of arg.
+         */
+        argName: pulumi.Input<string>;
+        /**
+         * The value of arg.
+         */
+        argValue: pulumi.Input<string>;
+    }
+
+    export interface DomainSource {
+        /**
+         * The Back-to-Source Address.
+         */
+        content: pulumi.Input<string>;
+        /**
+         * The source status. Valid values: online, offline.
+         */
+        enabled?: pulumi.Input<string>;
+        /**
+         * Port.
+         */
+        port: pulumi.Input<number>;
+        /**
+         * Priority.
+         */
+        priority: pulumi.Input<string>;
+        /**
+         * The Origin Server Type. Valid Values: 
+         * * ipaddr: IP Source Station
+         * * domain: the Domain Name
+         * * oss: OSS Bucket as a Source Station.
+         */
+        type: pulumi.Input<string>;
+    }
+
 }
 
 export namespace slb {

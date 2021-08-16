@@ -135,14 +135,14 @@ func (o RuleTargetArrayOutput) Index(i pulumi.IntInput) RuleTargetOutput {
 }
 
 type RuleTargetParamList struct {
-	// The format of param.
+	// The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
 	Form string `pulumi:"form"`
-	// The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+	// The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
 	ResourceKey string `pulumi:"resourceKey"`
 	// The template of param.
 	Template *string `pulumi:"template"`
 	// The value of param.
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // RuleTargetParamListInput is an input type that accepts RuleTargetParamListArgs and RuleTargetParamListOutput values.
@@ -157,14 +157,14 @@ type RuleTargetParamListInput interface {
 }
 
 type RuleTargetParamListArgs struct {
-	// The format of param.
+	// The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
 	Form pulumi.StringInput `pulumi:"form"`
-	// The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+	// The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
 	ResourceKey pulumi.StringInput `pulumi:"resourceKey"`
 	// The template of param.
 	Template pulumi.StringPtrInput `pulumi:"template"`
 	// The value of param.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (RuleTargetParamListArgs) ElementType() reflect.Type {
@@ -218,12 +218,12 @@ func (o RuleTargetParamListOutput) ToRuleTargetParamListOutputWithContext(ctx co
 	return o
 }
 
-// The format of param.
+// The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
 func (o RuleTargetParamListOutput) Form() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleTargetParamList) string { return v.Form }).(pulumi.StringOutput)
 }
 
-// The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+// The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
 func (o RuleTargetParamListOutput) ResourceKey() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleTargetParamList) string { return v.ResourceKey }).(pulumi.StringOutput)
 }
@@ -234,8 +234,8 @@ func (o RuleTargetParamListOutput) Template() pulumi.StringPtrOutput {
 }
 
 // The value of param.
-func (o RuleTargetParamListOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v RuleTargetParamList) string { return v.Value }).(pulumi.StringOutput)
+func (o RuleTargetParamListOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleTargetParamList) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type RuleTargetParamListArrayOutput struct{ *pulumi.OutputState }

@@ -73,7 +73,7 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly activityId!: pulumi.Output<string | undefined>;
     /**
-     * The name of the EIP.
+     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
     public readonly addressName!: pulumi.Output<string>;
     /**
@@ -93,7 +93,8 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
-     * The metering method of the EIP. Valid values: `PayByBandwidth` This is the default value. `PayByTraffic`. If `paymentType` is set to `Subscription`, `internetChargeType` must be set to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, `internetChargeType` can be set to `PayByBandwidth` or `PayByTraffic`.
+     * The metering method of the EIP. 
+     * Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
      */
     public readonly internetChargeType!: pulumi.Output<string>;
     /**
@@ -197,7 +198,7 @@ export interface EipAddressState {
      */
     readonly activityId?: pulumi.Input<string>;
     /**
-     * The name of the EIP.
+     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
     readonly addressName?: pulumi.Input<string>;
     /**
@@ -217,7 +218,8 @@ export interface EipAddressState {
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
-     * The metering method of the EIP. Valid values: `PayByBandwidth` This is the default value. `PayByTraffic`. If `paymentType` is set to `Subscription`, `internetChargeType` must be set to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, `internetChargeType` can be set to `PayByBandwidth` or `PayByTraffic`.
+     * The metering method of the EIP. 
+     * Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
      */
     readonly internetChargeType?: pulumi.Input<string>;
     /**
@@ -267,7 +269,7 @@ export interface EipAddressArgs {
      */
     readonly activityId?: pulumi.Input<string>;
     /**
-     * The name of the EIP.
+     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
     readonly addressName?: pulumi.Input<string>;
     /**
@@ -287,7 +289,8 @@ export interface EipAddressArgs {
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
-     * The metering method of the EIP. Valid values: `PayByBandwidth` This is the default value. `PayByTraffic`. If `paymentType` is set to `Subscription`, `internetChargeType` must be set to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, `internetChargeType` can be set to `PayByBandwidth` or `PayByTraffic`.
+     * The metering method of the EIP. 
+     * Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
      */
     readonly internetChargeType?: pulumi.Input<string>;
     /**

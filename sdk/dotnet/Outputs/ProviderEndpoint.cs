@@ -33,6 +33,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Cr;
         public readonly string? Cs;
         public readonly string? Datahub;
+        public readonly string? Dataworkspublic;
         public readonly string? Dcdn;
         public readonly string? Ddosbgp;
         public readonly string? Ddoscoo;
@@ -81,6 +82,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Resourcemanager;
         public readonly string? Resourcesharing;
         public readonly string? Ros;
+        public readonly string? Scdn;
         public readonly string? Serverless;
         public readonly string? Sgw;
         public readonly string? Slb;
@@ -129,6 +131,8 @@ namespace Pulumi.AliCloud.Outputs
             string? cs,
 
             string? datahub,
+
+            string? dataworkspublic,
 
             string? dcdn,
 
@@ -226,6 +230,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? ros,
 
+            string? scdn,
+
             string? serverless,
 
             string? sgw,
@@ -258,6 +264,7 @@ namespace Pulumi.AliCloud.Outputs
             Cr = cr;
             Cs = cs;
             Datahub = datahub;
+            Dataworkspublic = dataworkspublic;
             Dcdn = dcdn;
             Ddosbgp = ddosbgp;
             Ddoscoo = ddoscoo;
@@ -306,6 +313,7 @@ namespace Pulumi.AliCloud.Outputs
             Resourcemanager = resourcemanager;
             Resourcesharing = resourcesharing;
             Ros = ros;
+            Scdn = scdn;
             Serverless = serverless;
             Sgw = sgw;
             Slb = slb;

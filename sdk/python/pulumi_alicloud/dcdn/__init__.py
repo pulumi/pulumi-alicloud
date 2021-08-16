@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .domain import *
+from .domain_config import *
 from .get_domains import *
 from .get_service import *
 from ._inputs import *
@@ -23,11 +24,14 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:dcdn/domain:Domain":
                 return Domain(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dcdn/domainConfig:DomainConfig":
+                return DomainConfig(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "dcdn/domain", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dcdn/domainConfig", _module_instance)
 
 _register_module()

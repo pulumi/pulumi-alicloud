@@ -118,6 +118,7 @@ class ProviderEndpoint(dict):
                  cr: Optional[str] = None,
                  cs: Optional[str] = None,
                  datahub: Optional[str] = None,
+                 dataworkspublic: Optional[str] = None,
                  dcdn: Optional[str] = None,
                  ddosbgp: Optional[str] = None,
                  ddoscoo: Optional[str] = None,
@@ -166,6 +167,7 @@ class ProviderEndpoint(dict):
                  resourcemanager: Optional[str] = None,
                  resourcesharing: Optional[str] = None,
                  ros: Optional[str] = None,
+                 scdn: Optional[str] = None,
                  serverless: Optional[str] = None,
                  sgw: Optional[str] = None,
                  slb: Optional[str] = None,
@@ -212,6 +214,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "cs", cs)
         if datahub is not None:
             pulumi.set(__self__, "datahub", datahub)
+        if dataworkspublic is not None:
+            pulumi.set(__self__, "dataworkspublic", dataworkspublic)
         if dcdn is not None:
             pulumi.set(__self__, "dcdn", dcdn)
         if ddosbgp is not None:
@@ -308,6 +312,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
+        if scdn is not None:
+            pulumi.set(__self__, "scdn", scdn)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
         if sgw is not None:
@@ -420,6 +426,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def datahub(self) -> Optional[str]:
         return pulumi.get(self, "datahub")
+
+    @property
+    @pulumi.getter
+    def dataworkspublic(self) -> Optional[str]:
+        return pulumi.get(self, "dataworkspublic")
 
     @property
     @pulumi.getter
@@ -660,6 +671,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def ros(self) -> Optional[str]:
         return pulumi.get(self, "ros")
+
+    @property
+    @pulumi.getter
+    def scdn(self) -> Optional[str]:
+        return pulumi.get(self, "scdn")
 
     @property
     @pulumi.getter

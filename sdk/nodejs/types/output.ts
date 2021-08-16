@@ -76,6 +76,7 @@ export interface ProviderEndpoint {
     cr?: string;
     cs?: string;
     datahub?: string;
+    dataworkspublic?: string;
     dcdn?: string;
     ddosbgp?: string;
     ddoscoo?: string;
@@ -124,6 +125,7 @@ export interface ProviderEndpoint {
     resourcemanager?: string;
     resourcesharing?: string;
     ros?: string;
+    scdn?: string;
     serverless?: string;
     sgw?: string;
     slb?: string;
@@ -725,6 +727,251 @@ export namespace alb {
          */
         tlsVersions: string[];
     }
+
+    export interface GetServerGroupsGroup {
+        /**
+         * The configuration of health checks.
+         */
+        healthCheckConfigs: outputs.alb.GetServerGroupsGroupHealthCheckConfig[];
+        /**
+         * The ID of the Server Group.
+         */
+        id: string;
+        /**
+         * The server protocol. Valid values: `HTTP` and `HTTPS`. Default value: `HTTP`.
+         */
+        protocol: string;
+        /**
+         * The scheduling algorithm. Valid values: `Wrr`, `Wlc` and `Sch`.
+         */
+        scheduler: string;
+        /**
+         * The first ID of the res ource.
+         */
+        serverGroupId: string;
+        /**
+         * The name of the resource.
+         */
+        serverGroupName: string;
+        /**
+         * The backend server.
+         */
+        servers: outputs.alb.GetServerGroupsGroupServer[];
+        /**
+         * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+         */
+        status: string;
+        /**
+         * The configuration of the sticky session.
+         */
+        stickySessionConfigs: outputs.alb.GetServerGroupsGroupStickySessionConfig[];
+        /**
+         * The ID of the VPC that you want to access.
+         */
+        vpcId: string;
+    }
+
+    export interface GetServerGroupsGroupHealthCheckConfig {
+        /**
+         * The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckCodes: string[];
+        /**
+         * The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of `0` indicates that a backend server port is used for health checks.
+         */
+        healthCheckConnectPort: number;
+        /**
+         * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+         */
+        healthCheckEnabled: boolean;
+        /**
+         * The domain name that is used for health checks.
+         */
+        healthCheckHost: string;
+        /**
+         * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckHttpVersion: string;
+        /**
+         * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+         */
+        healthCheckInterval: number;
+        /**
+         * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckMethod: string;
+        /**
+         * The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckPath: string;
+        /**
+         * Health check protocol. Valid values: `HTTP` and `TCP`.
+         */
+        healthCheckProtocol: string;
+        /**
+         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: `1` to `300`. Default value: `5`. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+         */
+        healthCheckTimeout: number;
+        /**
+         * The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: `2` to `10`. Default value: `3`.
+         */
+        healthyThreshold: number;
+        /**
+         * The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+         */
+        unhealthyThreshold: number;
+    }
+
+    export interface GetServerGroupsGroupServer {
+        /**
+         * The description of the server.
+         */
+        description: string;
+        /**
+         * The port that is used by the server. Valid values: `1` to `65535`.
+         */
+        port: number;
+        /**
+         * The ID of the ECS instance, ENI instance or ECI instance.
+         */
+        serverId: string;
+        /**
+         * The IP address of the ENI instance when it is in the inclusive ENI mode.
+         */
+        serverIp: string;
+        /**
+         * The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+         */
+        serverType: string;
+        /**
+         * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+         */
+        status: string;
+        /**
+         * The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+         */
+        weight: number;
+    }
+
+    export interface GetServerGroupsGroupStickySessionConfig {
+        /**
+         * the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+         */
+        cookie: string;
+        /**
+         * The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+         */
+        cookieTimeout: number;
+        /**
+         * Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+         */
+        stickySessionEnabled: boolean;
+        /**
+         * The method that is used to handle a cookie. Values: `Server` and `Insert`.
+         */
+        stickySessionType: string;
+    }
+
+    export interface ServerGroupHealthCheckConfig {
+        /**
+         * The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckCodes: string[];
+        /**
+         * The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+         */
+        healthCheckConnectPort: number;
+        /**
+         * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+         */
+        healthCheckEnabled?: boolean;
+        /**
+         * The domain name that is used for health checks.
+         */
+        healthCheckHost: string;
+        /**
+         * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckHttpVersion: string;
+        /**
+         * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+         */
+        healthCheckInterval: number;
+        /**
+         * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckMethod: string;
+        /**
+         * The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         */
+        healthCheckPath: string;
+        /**
+         * Health check protocol. Valid values: `HTTP` and `TCP`.
+         */
+        healthCheckProtocol: string;
+        /**
+         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+         */
+        healthCheckTimeout: number;
+        /**
+         * The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+         */
+        healthyThreshold: number;
+        /**
+         * The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+         */
+        unhealthyThreshold: number;
+    }
+
+    export interface ServerGroupServer {
+        /**
+         * The description of the server.
+         */
+        description?: string;
+        /**
+         * The port that is used by the server. Valid values: `1` to `65535`.
+         */
+        port?: number;
+        /**
+         * The ID of the ECS instance, ENI instance or ECI instance.
+         */
+        serverId?: string;
+        /**
+         * The IP address of the ENI instance when it is in the inclusive ENI mode.
+         */
+        serverIp: string;
+        /**
+         * The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+         */
+        serverType?: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+         */
+        weight: number;
+    }
+
+    export interface ServerGroupStickySessionConfig {
+        /**
+         * the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+         */
+        cookie: string;
+        /**
+         * The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+         */
+        cookieTimeout: number;
+        /**
+         * Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+         */
+        stickySessionEnabled?: boolean;
+        /**
+         * The method that is used to handle a cookie. Values: `Server` and `Insert`.
+         */
+        stickySessionType: string;
+    }
 }
 
 export namespace amqp {
@@ -1144,6 +1391,29 @@ export namespace apigateway {
 }
 
 export namespace arms {
+    export interface GetAlertContactGroupsGroup {
+        /**
+         * The first ID of the resource.
+         */
+        alertContactGroupId: string;
+        /**
+         * The name of the resource.
+         */
+        alertContactGroupName: string;
+        /**
+         * contact ids.
+         */
+        contactIds: string[];
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The ID of the Alert Contact Group.
+         */
+        id: string;
+    }
+
     export interface GetAlertContactsContact {
         /**
          * Contact ID.
@@ -3644,6 +3914,7 @@ export namespace config {
         cr?: string;
         cs?: string;
         datahub?: string;
+        dataworkspublic?: string;
         dcdn?: string;
         ddosbgp?: string;
         ddoscoo?: string;
@@ -3692,6 +3963,7 @@ export namespace config {
         resourcemanager?: string;
         resourcesharing?: string;
         ros?: string;
+        scdn?: string;
         serverless?: string;
         sgw?: string;
         slb?: string;
@@ -4923,7 +5195,36 @@ export namespace cs {
     }
 }
 
+export namespace dataworks {
+    export interface GetFoldersFolder {
+        folderId: string;
+        /**
+         * Folder Path.
+         */
+        folderPath: string;
+        /**
+         * The Folder ID.
+         */
+        id: string;
+        /**
+         * The ID of the project.
+         */
+        projectId: string;
+    }
+}
+
 export namespace dcdn {
+    export interface DomainConfigFunctionArg {
+        /**
+         * The name of arg.
+         */
+        argName: string;
+        /**
+         * The value of arg.
+         */
+        argValue: string;
+    }
+
     export interface DomainSource {
         /**
          * The origin address.
@@ -10233,11 +10534,11 @@ export namespace eventbridge {
 
     export interface RuleTargetParamList {
         /**
-         * The format of param.
+         * The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
          */
         form: string;
         /**
-         * The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+         * The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
          */
         resourceKey: string;
         /**
@@ -10247,7 +10548,7 @@ export namespace eventbridge {
         /**
          * The value of param.
          */
-        value: string;
+        value?: string;
     }
 }
 
@@ -11516,6 +11817,37 @@ export namespace hbase {
 }
 
 export namespace hbr {
+    export interface GetOssBackupPlansPlan {
+        /**
+         * Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+         */
+        backupType: string;
+        /**
+         * The OSS Bucket Name.
+         */
+        bucket: string;
+        disabled: boolean;
+        id: string;
+        ossBackupPlanId: string;
+        /**
+         * The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+         */
+        ossBackupPlanName: string;
+        prefix: string;
+        /**
+         * Backup Retention Period, the Minimum Value of 1.
+         */
+        retention: string;
+        /**
+         * Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+         */
+        schedule: string;
+        /**
+         * Vault ID.
+         */
+        vaultId: string;
+    }
+
     export interface GetVaultsVault {
         /**
          * The name of the OSS bucket of the Vault.
@@ -16149,6 +16481,156 @@ export namespace sag {
          * The name of the Acl.
          */
         name: string;
+    }
+}
+
+export namespace scdn {
+    export interface DomainCertInfo {
+        /**
+         * If You Enable HTTPS Here Certificate Name.
+         */
+        certName?: string;
+        /**
+         * Certificate Type. Value Range: 
+         * * upload: Certificate
+         * * cas: Certificate Authority Certificate.
+         * * free: Free Certificate.
+         */
+        certType?: string;
+        /**
+         * Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+         */
+        sslPri?: string;
+        /**
+         * Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+         */
+        sslProtocol?: string;
+        /**
+         * If You Enable HTTPS Here Key.
+         */
+        sslPub?: string;
+    }
+
+    export interface DomainConfigFunctionArg {
+        /**
+         * The name of arg.
+         */
+        argName: string;
+        /**
+         * The value of arg.
+         */
+        argValue: string;
+    }
+
+    export interface DomainSource {
+        /**
+         * The Back-to-Source Address.
+         */
+        content: string;
+        /**
+         * The source status. Valid values: online, offline.
+         */
+        enabled: string;
+        /**
+         * Port.
+         */
+        port: number;
+        /**
+         * Priority.
+         */
+        priority: string;
+        /**
+         * The Origin Server Type. Valid Values: 
+         * * ipaddr: IP Source Station
+         * * domain: the Domain Name
+         * * oss: OSS Bucket as a Source Station.
+         */
+        type: string;
+    }
+
+    export interface GetDomainsDomain {
+        /**
+         * Certificate Information.
+         */
+        certInfos: outputs.scdn.GetDomainsDomainCertInfo[];
+        /**
+         * In Order to Link the CDN Domain Name to Generate a CNAME Domain Name, in the Domain Name Resolution Service Provider at the Acceleration Domain Name CNAME Resolution to the Domain.
+         */
+        cname: string;
+        /**
+         * Creation Time.
+         */
+        createTime: string;
+        /**
+         * Review the Reason for the Failure Is Displayed.
+         */
+        description: string;
+        /**
+         * Your Domain Name.
+         */
+        domainName: string;
+        /**
+         * Last Modified Date.
+         */
+        gmtModified: string;
+        /**
+         * The ID of the Domain. Its value is same as Queue Name.
+         */
+        id: string;
+        /**
+         * The Resource Group ID.
+         */
+        resourceGroupId: string;
+        /**
+         * the Origin Server Information.
+         */
+        sources: outputs.scdn.GetDomainsDomainSource[];
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
+    export interface GetDomainsDomainCertInfo {
+        /**
+         * If You Enable HTTPS Here Certificate Name.
+         */
+        certName: string;
+        /**
+         * Certificate Type. Value Range: Upload: Certificate. CAS: Certificate Authority Certificate. Free: Free Certificate.
+         */
+        certType: string;
+        /**
+         * Whether to Enable SSL Certificate. Valid Values: on, off.
+         */
+        sslProtocol: string;
+        /**
+         * If You Enable HTTPS Here Key.
+         */
+        sslPub: string;
+    }
+
+    export interface GetDomainsDomainSource {
+        /**
+         * The Back-to-Source Address.
+         */
+        content: string;
+        /**
+         * State.
+         */
+        enabled: string;
+        /**
+         * Port.
+         */
+        port: number;
+        /**
+         * Priority.
+         */
+        priority: string;
+        /**
+         * the Origin Server Type. Valid Values: Ipaddr: IP Source Station Domain: the Domain Name, See Extra Domain Quota OSS: OSS Bucket as a Source Station.
+         */
+        type: string;
     }
 }
 

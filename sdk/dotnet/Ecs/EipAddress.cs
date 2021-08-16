@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> ActivityId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the EIP.
+        /// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         /// </summary>
         [Output("addressName")]
         public Output<string> AddressName { get; private set; } = null!;
@@ -90,7 +90,8 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The metering method of the EIP. Valid values: `PayByBandwidth` This is the default value. `PayByTraffic`. If `payment_type` is set to `Subscription`, `internet_charge_type` must be set to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, `internet_charge_type` can be set to `PayByBandwidth` or `PayByTraffic`.
+        /// The metering method of the EIP. 
+        /// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         /// </summary>
         [Output("internetChargeType")]
         public Output<string> InternetChargeType { get; private set; } = null!;
@@ -199,7 +200,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ActivityId { get; set; }
 
         /// <summary>
-        /// The name of the EIP.
+        /// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         /// </summary>
         [Input("addressName")]
         public Input<string>? AddressName { get; set; }
@@ -226,7 +227,8 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The metering method of the EIP. Valid values: `PayByBandwidth` This is the default value. `PayByTraffic`. If `payment_type` is set to `Subscription`, `internet_charge_type` must be set to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, `internet_charge_type` can be set to `PayByBandwidth` or `PayByTraffic`.
+        /// The metering method of the EIP. 
+        /// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -290,7 +292,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ActivityId { get; set; }
 
         /// <summary>
-        /// The name of the EIP.
+        /// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         /// </summary>
         [Input("addressName")]
         public Input<string>? AddressName { get; set; }
@@ -317,7 +319,8 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The metering method of the EIP. Valid values: `PayByBandwidth` This is the default value. `PayByTraffic`. If `payment_type` is set to `Subscription`, `internet_charge_type` must be set to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, `internet_charge_type` can be set to `PayByBandwidth` or `PayByTraffic`.
+        /// The metering method of the EIP. 
+        /// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }

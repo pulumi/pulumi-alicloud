@@ -5,16 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./getOssBackupPlans";
 export * from "./getVaults";
+export * from "./ossBackupPlan";
 export * from "./vault";
 
 // Import resources to register:
+import { OssBackupPlan } from "./ossBackupPlan";
 import { Vault } from "./vault";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:hbr/ossBackupPlan:OssBackupPlan":
+                return new OssBackupPlan(name, <any>undefined, { urn })
             case "alicloud:hbr/vault:Vault":
                 return new Vault(name, <any>undefined, { urn })
             default:
@@ -22,4 +27,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "hbr/ossBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/vault", _module)

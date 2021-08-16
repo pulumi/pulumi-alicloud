@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  *             {
  *                 resourceKey: "Body",
  *                 form: "ORIGINAL",
- *                 value: "tf-testAcc",
  *             },
  *         ],
  *     }],

@@ -102,6 +102,7 @@ const (
 	rdsMod                 = "Rds"
 	saeMod                 = "Sae"
 	sagMod                 = "Sag"
+	scdnMod                = "Scdn"
 	slbMod                 = "Slb"
 	tsdbMod                = "Tsdb"
 	vpcMod                 = "Vpc"
@@ -196,6 +197,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Alb
 			"alicloud_alb_security_policy": {Tok: resource(albMod, "SecurityPolicy")},
+			"alicloud_alb_server_group":    {Tok: resource(albMod, "ServerGroup")},
 
 			// AliKafka
 			"alicloud_alikafka_consumer_group": {Tok: resource(aliKafaMod, "ConsumerGroup")},
@@ -225,7 +227,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_api_gateway_vpc_access":     {Tok: resource(apiGatewayMod, "VpcAccess")},
 
 			// Arms
-			"alicloud_arms_alert_contact": {Tok: resource(armsMod, "AlertContact")},
+			"alicloud_arms_alert_contact":       {Tok: resource(armsMod, "AlertContact")},
+			"alicloud_arms_alert_contact_group": {Tok: resource(armsMod, "AlertContactGroup")},
 
 			// Brain
 			"alicloud_brain_industrial_pid_project":      {Tok: resource(brainMod, "IndustrialPidProject")},
@@ -343,6 +346,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_datahub_subscription": {Tok: resource(datahubMod, "Subscription")},
 			"alicloud_datahub_topic":        {Tok: resource(datahubMod, "Topic")},
 
+			// Dataworks
+			"alicloud_data_works_folder": {Tok: resource(dataWorksMod, "Folder")},
+
 			// DB
 			"alicloud_db_account":                         {Tok: resource(rdsMod, "Account")},
 			"alicloud_db_account_privilege":               {Tok: resource(rdsMod, "AccountPrivilege")},
@@ -356,7 +362,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_rds_account":                        {Tok: resource(rdsMod, "RdsAccount")},
 
 			// DCDN
-			"alicloud_dcdn_domain": {Tok: resource(dcdnMod, "Domain")},
+			"alicloud_dcdn_domain":        {Tok: resource(dcdnMod, "Domain")},
+			"alicloud_dcdn_domain_config": {Tok: resource(dcdnMod, "DomainConfig")},
 
 			// DDOS
 			"alicloud_ddoscoo_scheduler_rule":  {Tok: resource(ddosMod, "SchedulerRule")},
@@ -527,7 +534,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbase_instance": {Tok: resource(hbaseMod, "Instance")},
 
 			// Hbr
-			"alicloud_hbr_vault": {Tok: resource(hbrMod, "Vault")},
+			"alicloud_hbr_vault":           {Tok: resource(hbrMod, "Vault")},
+			"alicloud_hbr_oss_backup_plan": {Tok: resource(hbrMod, "OssBackupPlan")},
 
 			// KMS
 			"alicloud_kms_key": {
@@ -719,6 +727,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_sag_qos_policy":  {Tok: resource(rocketMqMod, "QosPolicy")},
 			"alicloud_sag_snat_entry":  {Tok: resource(rocketMqMod, "SnatEntry")},
 
+			// Scdn
+			"alicloud_scdn_domain_config": {Tok: resource(scdnMod, "DomainConfig")},
+			"alicloud_scdn_domain":        {Tok: resource(scdnMod, "Domain")},
+
 			// Slb
 			"alicloud_slb": {
 				Tok:                resource(slbMod, "LoadBalancer"),
@@ -827,6 +839,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Alb
 			"alicloud_alb_security_policies": {Tok: dataSource(albMod, "getSecurityPolicies")},
+			"alicloud_alb_server_groups":     {Tok: dataSource(albMod, "getServerGroups")},
 
 			// amqp
 			"alicloud_amqp_virtual_hosts": {Tok: dataSource(amqpMod, "getVirtualHosts")},
@@ -841,7 +854,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_api_gateway_service": {Tok: dataSource(apiGatewayMod, "getService")},
 
 			// Arms
-			"alicloud_arms_alert_contacts": {Tok: dataSource(armsMod, "getAlertContacts")},
+			"alicloud_arms_alert_contacts":       {Tok: dataSource(armsMod, "getAlertContacts")},
+			"alicloud_arms_alert_contact_groups": {Tok: dataSource(armsMod, "getAlertContactGroups")},
 
 			// Brain
 			"alicloud_brain_industrial_pid_projects":      {Tok: dataSource(brainMod, "getIndustrialPidProjects")},
@@ -940,7 +954,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_datahub_service": {Tok: dataSource(datahubMod, "getService")},
 
 			// DataWorks
-			"alicloud_dataworks_service": {Tok: dataSource(dataWorksMod, "getService")},
+			"alicloud_dataworks_service":  {Tok: dataSource(dataWorksMod, "getService")},
+			"alicloud_data_works_folders": {Tok: dataSource(dataWorksMod, "getFolders")},
 
 			// Dcdn
 			"alicloud_dcdn_domains": {Tok: dataSource(dcdnMod, "getDomains")},
@@ -1079,7 +1094,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbase_instance_types": {Tok: dataSource(hbaseMod, "getInstanceTypes")},
 
 			// hbr
-			"alicloud_hbr_vaults": {Tok: dataSource(hbrMod, "getVaults")},
+			"alicloud_hbr_vaults":           {Tok: dataSource(hbrMod, "getVaults")},
+			"alicloud_hbr_oss_backup_plans": {Tok: dataSource(hbrMod, "getOssBackupPlans")},
 
 			// iot
 			"alicloud_iot_service": {Tok: dataSource(iotMod, "getService")},
@@ -1242,6 +1258,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Sag
 			"alicloud_sag_acls": {Tok: dataSource(sagMod, "getAcls")},
+
+			// Scdn
+			"alicloud_scdn_domains": {Tok: dataSource(scdnMod, "getDomains")},
 
 			// Slb
 			"alicloud_slb_attachments":                {Tok: dataSource(slbMod, "getAttachments")},

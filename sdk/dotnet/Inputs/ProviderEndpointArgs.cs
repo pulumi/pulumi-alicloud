@@ -72,6 +72,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("datahub")]
         public Input<string>? Datahub { get; set; }
 
+        [Input("dataworkspublic")]
+        public Input<string>? Dataworkspublic { get; set; }
+
         [Input("dcdn")]
         public Input<string>? Dcdn { get; set; }
 
@@ -215,6 +218,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("ros")]
         public Input<string>? Ros { get; set; }
+
+        [Input("scdn")]
+        public Input<string>? Scdn { get; set; }
 
         [Input("serverless")]
         public Input<string>? Serverless { get; set; }

@@ -83,6 +83,10 @@ namespace Pulumi.AliCloud.Amqp
         /// * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
         /// * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
         /// * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
+        /// * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
+        /// When binding Headers Exchange and Queue, set the key-value pair of the binding property;
+        /// when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
+        /// The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
         /// </summary>
         [Output("exchangeType")]
         public Output<string> ExchangeType { get; private set; } = null!;
@@ -178,6 +182,10 @@ namespace Pulumi.AliCloud.Amqp
         /// * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
         /// * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
         /// * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
+        /// * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
+        /// When binding Headers Exchange and Queue, set the key-value pair of the binding property;
+        /// when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
+        /// The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
         /// </summary>
         [Input("exchangeType", required: true)]
         public Input<string> ExchangeType { get; set; } = null!;
@@ -234,6 +242,10 @@ namespace Pulumi.AliCloud.Amqp
         /// * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
         /// * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
         /// * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
+        /// * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
+        /// When binding Headers Exchange and Queue, set the key-value pair of the binding property;
+        /// when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
+        /// The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
         /// </summary>
         [Input("exchangeType")]
         public Input<string>? ExchangeType { get; set; }

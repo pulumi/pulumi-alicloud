@@ -88,6 +88,7 @@ class ProviderEndpointArgs:
                  cr: Optional[pulumi.Input[str]] = None,
                  cs: Optional[pulumi.Input[str]] = None,
                  datahub: Optional[pulumi.Input[str]] = None,
+                 dataworkspublic: Optional[pulumi.Input[str]] = None,
                  dcdn: Optional[pulumi.Input[str]] = None,
                  ddosbgp: Optional[pulumi.Input[str]] = None,
                  ddoscoo: Optional[pulumi.Input[str]] = None,
@@ -136,6 +137,7 @@ class ProviderEndpointArgs:
                  resourcemanager: Optional[pulumi.Input[str]] = None,
                  resourcesharing: Optional[pulumi.Input[str]] = None,
                  ros: Optional[pulumi.Input[str]] = None,
+                 scdn: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[str]] = None,
                  sgw: Optional[pulumi.Input[str]] = None,
                  slb: Optional[pulumi.Input[str]] = None,
@@ -182,6 +184,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "cs", cs)
         if datahub is not None:
             pulumi.set(__self__, "datahub", datahub)
+        if dataworkspublic is not None:
+            pulumi.set(__self__, "dataworkspublic", dataworkspublic)
         if dcdn is not None:
             pulumi.set(__self__, "dcdn", dcdn)
         if ddosbgp is not None:
@@ -278,6 +282,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
+        if scdn is not None:
+            pulumi.set(__self__, "scdn", scdn)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
         if sgw is not None:
@@ -470,6 +476,15 @@ class ProviderEndpointArgs:
     @datahub.setter
     def datahub(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "datahub", value)
+
+    @property
+    @pulumi.getter
+    def dataworkspublic(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataworkspublic")
+
+    @dataworkspublic.setter
+    def dataworkspublic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataworkspublic", value)
 
     @property
     @pulumi.getter
@@ -902,6 +917,15 @@ class ProviderEndpointArgs:
     @ros.setter
     def ros(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ros", value)
+
+    @property
+    @pulumi.getter
+    def scdn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scdn")
+
+    @scdn.setter
+    def scdn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scdn", value)
 
     @property
     @pulumi.getter

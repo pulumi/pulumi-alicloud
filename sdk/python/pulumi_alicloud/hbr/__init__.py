@@ -3,7 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .get_oss_backup_plans import *
 from .get_vaults import *
+from .oss_backup_plan import *
 from .vault import *
 from . import outputs
 
@@ -19,13 +21,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:hbr/vault:Vault":
+            if typ == "alicloud:hbr/ossBackupPlan:OssBackupPlan":
+                return OssBackupPlan(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:hbr/vault:Vault":
                 return Vault(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "hbr/ossBackupPlan", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "hbr/vault", _module_instance)
 
 _register_module()

@@ -126,6 +126,7 @@ namespace Pulumi.AliCloud
                 public string? Cr { get; set; } = null!;
                 public string? Cs { get; set; } = null!;
                 public string? Datahub { get; set; } = null!;
+                public string? Dataworkspublic { get; set; } = null!;
                 public string? Dcdn { get; set; } = null!;
                 public string? Ddosbgp { get; set; } = null!;
                 public string? Ddoscoo { get; set; } = null!;
@@ -174,6 +175,7 @@ namespace Pulumi.AliCloud
                 public string? Resourcemanager { get; set; } = null!;
                 public string? Resourcesharing { get; set; } = null!;
                 public string? Ros { get; set; } = null!;
+                public string? Scdn { get; set; } = null!;
                 public string? Serverless { get; set; } = null!;
                 public string? Sgw { get; set; } = null!;
                 public string? Slb { get; set; } = null!;

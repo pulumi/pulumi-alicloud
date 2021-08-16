@@ -98,6 +98,7 @@ type Endpoints struct {
 	Cr              *string `pulumi:"cr"`
 	Cs              *string `pulumi:"cs"`
 	Datahub         *string `pulumi:"datahub"`
+	Dataworkspublic *string `pulumi:"dataworkspublic"`
 	Dcdn            *string `pulumi:"dcdn"`
 	Ddosbgp         *string `pulumi:"ddosbgp"`
 	Ddoscoo         *string `pulumi:"ddoscoo"`
@@ -146,6 +147,7 @@ type Endpoints struct {
 	Resourcemanager *string `pulumi:"resourcemanager"`
 	Resourcesharing *string `pulumi:"resourcesharing"`
 	Ros             *string `pulumi:"ros"`
+	Scdn            *string `pulumi:"scdn"`
 	Serverless      *string `pulumi:"serverless"`
 	Sgw             *string `pulumi:"sgw"`
 	Slb             *string `pulumi:"slb"`
@@ -186,6 +188,7 @@ type EndpointsArgs struct {
 	Cr              pulumi.StringPtrInput `pulumi:"cr"`
 	Cs              pulumi.StringPtrInput `pulumi:"cs"`
 	Datahub         pulumi.StringPtrInput `pulumi:"datahub"`
+	Dataworkspublic pulumi.StringPtrInput `pulumi:"dataworkspublic"`
 	Dcdn            pulumi.StringPtrInput `pulumi:"dcdn"`
 	Ddosbgp         pulumi.StringPtrInput `pulumi:"ddosbgp"`
 	Ddoscoo         pulumi.StringPtrInput `pulumi:"ddoscoo"`
@@ -234,6 +237,7 @@ type EndpointsArgs struct {
 	Resourcemanager pulumi.StringPtrInput `pulumi:"resourcemanager"`
 	Resourcesharing pulumi.StringPtrInput `pulumi:"resourcesharing"`
 	Ros             pulumi.StringPtrInput `pulumi:"ros"`
+	Scdn            pulumi.StringPtrInput `pulumi:"scdn"`
 	Serverless      pulumi.StringPtrInput `pulumi:"serverless"`
 	Sgw             pulumi.StringPtrInput `pulumi:"sgw"`
 	Slb             pulumi.StringPtrInput `pulumi:"slb"`
@@ -371,6 +375,10 @@ func (o EndpointsOutput) Cs() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Datahub() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Datahub }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Dataworkspublic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Dataworkspublic }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Dcdn() pulumi.StringPtrOutput {
@@ -563,6 +571,10 @@ func (o EndpointsOutput) Resourcesharing() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Ros() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Ros }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Scdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Scdn }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Serverless() pulumi.StringPtrOutput {

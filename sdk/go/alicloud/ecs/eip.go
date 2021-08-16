@@ -22,8 +22,9 @@ import (
 type Eip struct {
 	pulumi.CustomResourceState
 
-	ActivityId  pulumi.StringPtrOutput `pulumi:"activityId"`
-	AddressName pulumi.StringOutput    `pulumi:"addressName"`
+	ActivityId pulumi.StringPtrOutput `pulumi:"activityId"`
+	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	AddressName pulumi.StringOutput `pulumi:"addressName"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -32,23 +33,24 @@ type Eip struct {
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
-	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instanceChargeType` is PrePaid.
+	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
 	// The elastic ip address
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp pulumi.StringOutput `pulumi:"isp"`
-	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
-	Name        pulumi.StringOutput    `pulumi:"name"`
-	Netmode     pulumi.StringPtrOutput `pulumi:"netmode"`
-	PaymentType pulumi.StringOutput    `pulumi:"paymentType"`
-	Period      pulumi.IntPtrOutput    `pulumi:"period"`
+	Name    pulumi.StringOutput    `pulumi:"name"`
+	Netmode pulumi.StringPtrOutput `pulumi:"netmode"`
+	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
+	Period      pulumi.IntPtrOutput `pulumi:"period"`
 	// The Id of resource group which the eip belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The EIP current status.
@@ -86,7 +88,8 @@ func GetEip(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Eip resources.
 type eipState struct {
-	ActivityId  *string `pulumi:"activityId"`
+	ActivityId *string `pulumi:"activityId"`
+	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName *string `pulumi:"addressName"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth *string `pulumi:"bandwidth"`
@@ -96,21 +99,22 @@ type eipState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
-	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instanceChargeType` is PrePaid.
+	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The elastic ip address
 	IpAddress *string `pulumi:"ipAddress"`
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp *string `pulumi:"isp"`
-	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
-	Name        *string `pulumi:"name"`
-	Netmode     *string `pulumi:"netmode"`
+	Name    *string `pulumi:"name"`
+	Netmode *string `pulumi:"netmode"`
+	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
 	// The Id of resource group which the eip belongs.
@@ -122,7 +126,8 @@ type eipState struct {
 }
 
 type EipState struct {
-	ActivityId  pulumi.StringPtrInput
+	ActivityId pulumi.StringPtrInput
+	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringPtrInput
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth pulumi.StringPtrInput
@@ -132,21 +137,22 @@ type EipState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
-	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instanceChargeType` is PrePaid.
+	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType pulumi.StringPtrInput
 	// The elastic ip address
 	IpAddress pulumi.StringPtrInput
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp pulumi.StringPtrInput
-	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
-	Name        pulumi.StringPtrInput
-	Netmode     pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Netmode pulumi.StringPtrInput
+	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
 	// The Id of resource group which the eip belongs.
@@ -162,7 +168,8 @@ func (EipState) ElementType() reflect.Type {
 }
 
 type eipArgs struct {
-	ActivityId  *string `pulumi:"activityId"`
+	ActivityId *string `pulumi:"activityId"`
+	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName *string `pulumi:"addressName"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth *string `pulumi:"bandwidth"`
@@ -172,19 +179,20 @@ type eipArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
-	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instanceChargeType` is PrePaid.
+	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp *string `pulumi:"isp"`
-	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
-	Name        *string `pulumi:"name"`
-	Netmode     *string `pulumi:"netmode"`
+	Name    *string `pulumi:"name"`
+	Netmode *string `pulumi:"netmode"`
+	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
 	// The Id of resource group which the eip belongs.
@@ -195,7 +203,8 @@ type eipArgs struct {
 
 // The set of arguments for constructing a Eip resource.
 type EipArgs struct {
-	ActivityId  pulumi.StringPtrInput
+	ActivityId pulumi.StringPtrInput
+	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringPtrInput
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth pulumi.StringPtrInput
@@ -205,19 +214,20 @@ type EipArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
-	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instanceChargeType` is PrePaid.
+	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType pulumi.StringPtrInput
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp pulumi.StringPtrInput
-	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
-	Name        pulumi.StringPtrInput
-	Netmode     pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Netmode pulumi.StringPtrInput
+	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
 	// The Id of resource group which the eip belongs.

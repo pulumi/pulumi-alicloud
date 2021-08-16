@@ -83,6 +83,7 @@ from . import (
     ros,
     sae,
     sag,
+    scdn,
     slb,
     tsdb,
     videosurveillance,

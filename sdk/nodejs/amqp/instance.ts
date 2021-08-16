@@ -77,6 +77,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * The instance name.
+     */
+    public readonly instanceName!: pulumi.Output<string | undefined>;
+    /**
      * The Instance Type. Valid values: `professional`, `vip`.
      */
     public readonly instanceType!: pulumi.Output<string>;
@@ -146,6 +150,7 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
             inputs["logistics"] = state ? state.logistics : undefined;
             inputs["maxEipTps"] = state ? state.maxEipTps : undefined;
@@ -177,6 +182,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.supportEip === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'supportEip'");
             }
+            inputs["instanceName"] = args ? args.instanceName : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["logistics"] = args ? args.logistics : undefined;
             inputs["maxEipTps"] = args ? args.maxEipTps : undefined;
@@ -203,6 +209,10 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * The instance name.
+     */
+    readonly instanceName?: pulumi.Input<string>;
     /**
      * The Instance Type. Valid values: `professional`, `vip`.
      */
@@ -265,6 +275,10 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * The instance name.
+     */
+    readonly instanceName?: pulumi.Input<string>;
     /**
      * The Instance Type. Valid values: `professional`, `vip`.
      */

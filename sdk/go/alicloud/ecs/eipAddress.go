@@ -61,7 +61,7 @@ type EipAddress struct {
 
 	// The activity id.
 	ActivityId pulumi.StringPtrOutput `pulumi:"activityId"`
-	// The name of the EIP.
+	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringOutput `pulumi:"addressName"`
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
@@ -71,7 +71,8 @@ type EipAddress struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
-	// The metering method of the EIP. Valid values: `PayByBandwidth` This is the default value. `PayByTraffic`. If `paymentType` is set to `Subscription`, `internetChargeType` must be set to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, `internetChargeType` can be set to `PayByBandwidth` or `PayByTraffic`.
+	// The metering method of the EIP.
+	// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
 	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
 	// The address of the EIP.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
@@ -124,7 +125,7 @@ func GetEipAddress(ctx *pulumi.Context,
 type eipAddressState struct {
 	// The activity id.
 	ActivityId *string `pulumi:"activityId"`
-	// The name of the EIP.
+	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName *string `pulumi:"addressName"`
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
 	Bandwidth *string `pulumi:"bandwidth"`
@@ -134,7 +135,8 @@ type eipAddressState struct {
 	Description *string `pulumi:"description"`
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// The metering method of the EIP. Valid values: `PayByBandwidth` This is the default value. `PayByTraffic`. If `paymentType` is set to `Subscription`, `internetChargeType` must be set to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, `internetChargeType` can be set to `PayByBandwidth` or `PayByTraffic`.
+	// The metering method of the EIP.
+	// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The address of the EIP.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -159,7 +161,7 @@ type eipAddressState struct {
 type EipAddressState struct {
 	// The activity id.
 	ActivityId pulumi.StringPtrInput
-	// The name of the EIP.
+	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringPtrInput
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
 	Bandwidth pulumi.StringPtrInput
@@ -169,7 +171,8 @@ type EipAddressState struct {
 	Description pulumi.StringPtrInput
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// The metering method of the EIP. Valid values: `PayByBandwidth` This is the default value. `PayByTraffic`. If `paymentType` is set to `Subscription`, `internetChargeType` must be set to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, `internetChargeType` can be set to `PayByBandwidth` or `PayByTraffic`.
+	// The metering method of the EIP.
+	// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
 	InternetChargeType pulumi.StringPtrInput
 	// The address of the EIP.
 	IpAddress pulumi.StringPtrInput
@@ -198,7 +201,7 @@ func (EipAddressState) ElementType() reflect.Type {
 type eipAddressArgs struct {
 	// The activity id.
 	ActivityId *string `pulumi:"activityId"`
-	// The name of the EIP.
+	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName *string `pulumi:"addressName"`
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
 	Bandwidth *string `pulumi:"bandwidth"`
@@ -208,7 +211,8 @@ type eipAddressArgs struct {
 	Description *string `pulumi:"description"`
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// The metering method of the EIP. Valid values: `PayByBandwidth` This is the default value. `PayByTraffic`. If `paymentType` is set to `Subscription`, `internetChargeType` must be set to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, `internetChargeType` can be set to `PayByBandwidth` or `PayByTraffic`.
+	// The metering method of the EIP.
+	// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
 	Isp *string `pulumi:"isp"`
@@ -230,7 +234,7 @@ type eipAddressArgs struct {
 type EipAddressArgs struct {
 	// The activity id.
 	ActivityId pulumi.StringPtrInput
-	// The name of the EIP.
+	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringPtrInput
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
 	Bandwidth pulumi.StringPtrInput
@@ -240,7 +244,8 @@ type EipAddressArgs struct {
 	Description pulumi.StringPtrInput
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// The metering method of the EIP. Valid values: `PayByBandwidth` This is the default value. `PayByTraffic`. If `paymentType` is set to `Subscription`, `internetChargeType` must be set to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, `internetChargeType` can be set to `PayByBandwidth` or `PayByTraffic`.
+	// The metering method of the EIP.
+	// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
 	InternetChargeType pulumi.StringPtrInput
 	// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
 	Isp pulumi.StringPtrInput

@@ -262,7 +262,6 @@ class Rule(pulumi.CustomResource):
                     alicloud.eventbridge.RuleTargetParamListArgs(
                         resource_key="Body",
                         form="ORIGINAL",
-                        value="tf-testAcc",
                     ),
                 ],
             )])
@@ -325,7 +324,6 @@ class Rule(pulumi.CustomResource):
                     alicloud.eventbridge.RuleTargetParamListArgs(
                         resource_key="Body",
                         form="ORIGINAL",
-                        value="tf-testAcc",
                     ),
                 ],
             )])

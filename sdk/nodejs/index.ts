@@ -82,6 +82,7 @@ import * as rocketmq from "./rocketmq";
 import * as ros from "./ros";
 import * as sae from "./sae";
 import * as sag from "./sag";
+import * as scdn from "./scdn";
 import * as slb from "./slb";
 import * as tsdb from "./tsdb";
 import * as types from "./types";
@@ -161,6 +162,7 @@ export {
     ros,
     sae,
     sag,
+    scdn,
     slb,
     tsdb,
     types,

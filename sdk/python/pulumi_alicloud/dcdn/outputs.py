@@ -10,10 +10,59 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'DomainConfigFunctionArg',
     'DomainSource',
     'GetDomainsDomainResult',
     'GetDomainsDomainSourceResult',
 ]
+
+@pulumi.output_type
+class DomainConfigFunctionArg(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "argName":
+            suggest = "arg_name"
+        elif key == "argValue":
+            suggest = "arg_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainConfigFunctionArg. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainConfigFunctionArg.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainConfigFunctionArg.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arg_name: str,
+                 arg_value: str):
+        """
+        :param str arg_name: The name of arg.
+        :param str arg_value: The value of arg.
+        """
+        pulumi.set(__self__, "arg_name", arg_name)
+        pulumi.set(__self__, "arg_value", arg_value)
+
+    @property
+    @pulumi.getter(name="argName")
+    def arg_name(self) -> str:
+        """
+        The name of arg.
+        """
+        return pulumi.get(self, "arg_name")
+
+    @property
+    @pulumi.getter(name="argValue")
+    def arg_value(self) -> str:
+        """
+        The value of arg.
+        """
+        return pulumi.get(self, "arg_value")
+
 
 @pulumi.output_type
 class DomainSource(dict):
