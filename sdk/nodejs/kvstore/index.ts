@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./account";
+export * from "./auditLogConfig";
 export * from "./backupPolicy";
 export * from "./connection";
 export * from "./getAccounts";
@@ -19,6 +20,7 @@ export * from "./instance";
 
 // Import resources to register:
 import { Account } from "./account";
+import { AuditLogConfig } from "./auditLogConfig";
 import { BackupPolicy } from "./backupPolicy";
 import { Connection } from "./connection";
 import { Instance } from "./instance";
@@ -29,6 +31,8 @@ const _module = {
         switch (type) {
             case "alicloud:kvstore/account:Account":
                 return new Account(name, <any>undefined, { urn })
+            case "alicloud:kvstore/auditLogConfig:AuditLogConfig":
+                return new AuditLogConfig(name, <any>undefined, { urn })
             case "alicloud:kvstore/backupPolicy:BackupPolicy":
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:kvstore/connection:Connection":
@@ -41,6 +45,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "kvstore/account", _module)
+pulumi.runtime.registerResourceModule("alicloud", "kvstore/auditLogConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "kvstore/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "kvstore/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "kvstore/instance", _module)

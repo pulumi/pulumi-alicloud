@@ -9,8 +9,71 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetAlertContactGroupsGroupResult',
     'GetAlertContactsContactResult',
 ]
+
+@pulumi.output_type
+class GetAlertContactGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 alert_contact_group_id: str,
+                 alert_contact_group_name: str,
+                 contact_ids: Sequence[str],
+                 create_time: str,
+                 id: str):
+        """
+        :param str alert_contact_group_id: The first ID of the resource.
+        :param str alert_contact_group_name: The name of the resource.
+        :param Sequence[str] contact_ids: contact ids.
+        :param str create_time: The creation time of the resource.
+        :param str id: The ID of the Alert Contact Group.
+        """
+        pulumi.set(__self__, "alert_contact_group_id", alert_contact_group_id)
+        pulumi.set(__self__, "alert_contact_group_name", alert_contact_group_name)
+        pulumi.set(__self__, "contact_ids", contact_ids)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="alertContactGroupId")
+    def alert_contact_group_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "alert_contact_group_id")
+
+    @property
+    @pulumi.getter(name="alertContactGroupName")
+    def alert_contact_group_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "alert_contact_group_name")
+
+    @property
+    @pulumi.getter(name="contactIds")
+    def contact_ids(self) -> Sequence[str]:
+        """
+        contact ids.
+        """
+        return pulumi.get(self, "contact_ids")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Alert Contact Group.
+        """
+        return pulumi.get(self, "id")
+
 
 @pulumi.output_type
 class GetAlertContactsContactResult(dict):

@@ -49,6 +49,12 @@ namespace Pulumi.AliCloud.KVStore
 
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+        /// * Local: an ApsaraDB for Redis instance with a local disk.
+        /// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+        /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
 
@@ -66,6 +72,9 @@ namespace Pulumi.AliCloud.KVStore
 
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        [Input("productType")]
+        public string? ProductType { get; set; }
 
         public GetZonesArgs()
         {
@@ -88,6 +97,7 @@ namespace Pulumi.AliCloud.KVStore
         public readonly string? InstanceChargeType;
         public readonly bool? Multi;
         public readonly string? OutputFile;
+        public readonly string? ProductType;
         /// <summary>
         /// A list of availability zones. Each element contains the following attributes:
         /// </summary>
@@ -107,6 +117,8 @@ namespace Pulumi.AliCloud.KVStore
 
             string? outputFile,
 
+            string? productType,
+
             ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
             Engine = engine;
@@ -115,6 +127,7 @@ namespace Pulumi.AliCloud.KVStore
             InstanceChargeType = instanceChargeType;
             Multi = multi;
             OutputFile = outputFile;
+            ProductType = productType;
             Zones = zones;
         }
     }

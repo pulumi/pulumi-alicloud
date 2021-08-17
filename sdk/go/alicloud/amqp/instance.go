@@ -71,6 +71,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The instance name.
+	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
 	// The Instance Type. Valid values: `professional`, `vip`.
 	InstanceType pulumi.StringOutput    `pulumi:"instanceType"`
 	Logistics    pulumi.StringPtrOutput `pulumi:"logistics"`
@@ -147,6 +149,8 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// The instance name.
+	InstanceName *string `pulumi:"instanceName"`
 	// The Instance Type. Valid values: `professional`, `vip`.
 	InstanceType *string `pulumi:"instanceType"`
 	Logistics    *string `pulumi:"logistics"`
@@ -180,6 +184,8 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// The instance name.
+	InstanceName pulumi.StringPtrInput
 	// The Instance Type. Valid values: `professional`, `vip`.
 	InstanceType pulumi.StringPtrInput
 	Logistics    pulumi.StringPtrInput
@@ -217,6 +223,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// The instance name.
+	InstanceName *string `pulumi:"instanceName"`
 	// The Instance Type. Valid values: `professional`, `vip`.
 	InstanceType string  `pulumi:"instanceType"`
 	Logistics    *string `pulumi:"logistics"`
@@ -249,6 +257,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// The instance name.
+	InstanceName pulumi.StringPtrInput
 	// The Instance Type. Valid values: `professional`, `vip`.
 	InstanceType pulumi.StringInput
 	Logistics    pulumi.StringPtrInput

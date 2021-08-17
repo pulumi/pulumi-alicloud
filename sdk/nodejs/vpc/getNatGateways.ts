@@ -89,7 +89,7 @@ export interface GetNatGatewaysArgs {
      */
     readonly natGatewayName?: string;
     /**
-     * The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+     * The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
      */
     readonly natType?: string;
     readonly outputFile?: string;

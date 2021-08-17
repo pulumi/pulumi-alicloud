@@ -32,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("saeNamespaceId2", nameRegex.Namespaces[0].Id)
+// 		ctx.Export("saeNamespaceId", nameRegex.Namespaces[0].Id)
 // 		return nil
 // 	})
 // }

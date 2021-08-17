@@ -20,6 +20,7 @@ class ClusterArgs:
                  db_version: pulumi.Input[str],
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
+                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
@@ -44,6 +45,7 @@ class ClusterArgs:
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] description: The description of cluster.
@@ -74,6 +76,8 @@ class ClusterArgs:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if collector_status is not None:
             pulumi.set(__self__, "collector_status", collector_status)
+        if db_cluster_ip_arrays is not None:
+            pulumi.set(__self__, "db_cluster_ip_arrays", db_cluster_ip_arrays)
         if db_node_count is not None:
             pulumi.set(__self__, "db_node_count", db_node_count)
         if description is not None:
@@ -167,6 +171,18 @@ class ClusterArgs:
     @collector_status.setter
     def collector_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "collector_status", value)
+
+    @property
+    @pulumi.getter(name="dbClusterIpArrays")
+    def db_cluster_ip_arrays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]:
+        """
+        db_cluster_ip_array defines how users can send requests to your API.
+        """
+        return pulumi.get(self, "db_cluster_ip_arrays")
+
+    @db_cluster_ip_arrays.setter
+    def db_cluster_ip_arrays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]):
+        pulumi.set(self, "db_cluster_ip_arrays", value)
 
     @property
     @pulumi.getter(name="dbNodeCount")
@@ -371,6 +387,7 @@ class _ClusterState:
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
+                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
@@ -395,6 +412,7 @@ class _ClusterState:
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
@@ -428,6 +446,8 @@ class _ClusterState:
             pulumi.set(__self__, "collector_status", collector_status)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
+        if db_cluster_ip_arrays is not None:
+            pulumi.set(__self__, "db_cluster_ip_arrays", db_cluster_ip_arrays)
         if db_node_class is not None:
             pulumi.set(__self__, "db_node_class", db_node_class)
         if db_node_count is not None:
@@ -502,6 +522,18 @@ class _ClusterState:
     @connection_string.setter
     def connection_string(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_string", value)
+
+    @property
+    @pulumi.getter(name="dbClusterIpArrays")
+    def db_cluster_ip_arrays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]:
+        """
+        db_cluster_ip_array defines how users can send requests to your API.
+        """
+        return pulumi.get(self, "db_cluster_ip_arrays")
+
+    @db_cluster_ip_arrays.setter
+    def db_cluster_ip_arrays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]):
+        pulumi.set(self, "db_cluster_ip_arrays", value)
 
     @property
     @pulumi.getter(name="dbNodeClass")
@@ -744,6 +776,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
+                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
@@ -812,6 +845,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
@@ -906,6 +940,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
+                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
@@ -939,6 +974,7 @@ class Cluster(pulumi.CustomResource):
 
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["collector_status"] = collector_status
+            __props__.__dict__["db_cluster_ip_arrays"] = db_cluster_ip_arrays
             if db_node_class is None and not opts.urn:
                 raise TypeError("Missing required property 'db_node_class'")
             __props__.__dict__["db_node_class"] = db_node_class
@@ -978,6 +1014,7 @@ class Cluster(pulumi.CustomResource):
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             collector_status: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
+            db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
             db_node_class: Optional[pulumi.Input[str]] = None,
             db_node_count: Optional[pulumi.Input[int]] = None,
             db_type: Optional[pulumi.Input[str]] = None,
@@ -1007,6 +1044,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
@@ -1041,6 +1079,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["collector_status"] = collector_status
         __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["db_cluster_ip_arrays"] = db_cluster_ip_arrays
         __props__.__dict__["db_node_class"] = db_node_class
         __props__.__dict__["db_node_count"] = db_node_count
         __props__.__dict__["db_type"] = db_type
@@ -1085,6 +1124,14 @@ class Cluster(pulumi.CustomResource):
         (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
         """
         return pulumi.get(self, "connection_string")
+
+    @property
+    @pulumi.getter(name="dbClusterIpArrays")
+    def db_cluster_ip_arrays(self) -> pulumi.Output[Sequence['outputs.ClusterDbClusterIpArray']]:
+        """
+        db_cluster_ip_array defines how users can send requests to your API.
+        """
+        return pulumi.get(self, "db_cluster_ip_arrays")
 
     @property
     @pulumi.getter(name="dbNodeClass")

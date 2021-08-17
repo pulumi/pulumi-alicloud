@@ -36,6 +36,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
         "instanceChargeType": args.instanceChargeType,
         "multi": args.multi,
         "outputFile": args.outputFile,
+        "productType": args.productType,
     }, opts);
 }
 
@@ -43,6 +44,12 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
+    /**
+     * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+     * * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+     * * Local: an ApsaraDB for Redis instance with a local disk.
+     * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+     */
     readonly engine?: string;
     /**
      * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
@@ -53,6 +60,7 @@ export interface GetZonesArgs {
      */
     readonly multi?: boolean;
     readonly outputFile?: string;
+    readonly productType?: string;
 }
 
 /**
@@ -71,6 +79,7 @@ export interface GetZonesResult {
     readonly instanceChargeType?: string;
     readonly multi?: boolean;
     readonly outputFile?: string;
+    readonly productType?: string;
     /**
      * A list of availability zones. Each element contains the following attributes:
      */

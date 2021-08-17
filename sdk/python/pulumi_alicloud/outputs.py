@@ -100,6 +100,7 @@ class ProviderEndpoint(dict):
     def __init__(__self__, *,
                  actiontrail: Optional[str] = None,
                  adb: Optional[str] = None,
+                 alb: Optional[str] = None,
                  alidns: Optional[str] = None,
                  alikafka: Optional[str] = None,
                  apigateway: Optional[str] = None,
@@ -111,11 +112,13 @@ class ProviderEndpoint(dict):
                  cbn: Optional[str] = None,
                  cdn: Optional[str] = None,
                  cds: Optional[str] = None,
+                 cloudphone: Optional[str] = None,
                  cms: Optional[str] = None,
                  config: Optional[str] = None,
                  cr: Optional[str] = None,
                  cs: Optional[str] = None,
                  datahub: Optional[str] = None,
+                 dataworkspublic: Optional[str] = None,
                  dcdn: Optional[str] = None,
                  ddosbgp: Optional[str] = None,
                  ddoscoo: Optional[str] = None,
@@ -135,6 +138,7 @@ class ProviderEndpoint(dict):
                  fnf: Optional[str] = None,
                  ga: Optional[str] = None,
                  gpdb: Optional[str] = None,
+                 gwsecd: Optional[str] = None,
                  hbr: Optional[str] = None,
                  hitsdb: Optional[str] = None,
                  ims: Optional[str] = None,
@@ -159,9 +163,11 @@ class ProviderEndpoint(dict):
                  r_kvstore: Optional[str] = None,
                  ram: Optional[str] = None,
                  rds: Optional[str] = None,
+                 redisa: Optional[str] = None,
                  resourcemanager: Optional[str] = None,
                  resourcesharing: Optional[str] = None,
                  ros: Optional[str] = None,
+                 scdn: Optional[str] = None,
                  serverless: Optional[str] = None,
                  sgw: Optional[str] = None,
                  slb: Optional[str] = None,
@@ -172,6 +178,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "actiontrail", actiontrail)
         if adb is not None:
             pulumi.set(__self__, "adb", adb)
+        if alb is not None:
+            pulumi.set(__self__, "alb", alb)
         if alidns is not None:
             pulumi.set(__self__, "alidns", alidns)
         if alikafka is not None:
@@ -194,6 +202,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "cdn", cdn)
         if cds is not None:
             pulumi.set(__self__, "cds", cds)
+        if cloudphone is not None:
+            pulumi.set(__self__, "cloudphone", cloudphone)
         if cms is not None:
             pulumi.set(__self__, "cms", cms)
         if config is not None:
@@ -204,6 +214,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "cs", cs)
         if datahub is not None:
             pulumi.set(__self__, "datahub", datahub)
+        if dataworkspublic is not None:
+            pulumi.set(__self__, "dataworkspublic", dataworkspublic)
         if dcdn is not None:
             pulumi.set(__self__, "dcdn", dcdn)
         if ddosbgp is not None:
@@ -242,6 +254,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "ga", ga)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
+        if gwsecd is not None:
+            pulumi.set(__self__, "gwsecd", gwsecd)
         if hbr is not None:
             pulumi.set(__self__, "hbr", hbr)
         if hitsdb is not None:
@@ -290,12 +304,16 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "ram", ram)
         if rds is not None:
             pulumi.set(__self__, "rds", rds)
+        if redisa is not None:
+            pulumi.set(__self__, "redisa", redisa)
         if resourcemanager is not None:
             pulumi.set(__self__, "resourcemanager", resourcemanager)
         if resourcesharing is not None:
             pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
+        if scdn is not None:
+            pulumi.set(__self__, "scdn", scdn)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
         if sgw is not None:
@@ -318,6 +336,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def adb(self) -> Optional[str]:
         return pulumi.get(self, "adb")
+
+    @property
+    @pulumi.getter
+    def alb(self) -> Optional[str]:
+        return pulumi.get(self, "alb")
 
     @property
     @pulumi.getter
@@ -376,6 +399,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def cloudphone(self) -> Optional[str]:
+        return pulumi.get(self, "cloudphone")
+
+    @property
+    @pulumi.getter
     def cms(self) -> Optional[str]:
         return pulumi.get(self, "cms")
 
@@ -398,6 +426,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def datahub(self) -> Optional[str]:
         return pulumi.get(self, "datahub")
+
+    @property
+    @pulumi.getter
+    def dataworkspublic(self) -> Optional[str]:
+        return pulumi.get(self, "dataworkspublic")
 
     @property
     @pulumi.getter
@@ -493,6 +526,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def gpdb(self) -> Optional[str]:
         return pulumi.get(self, "gpdb")
+
+    @property
+    @pulumi.getter
+    def gwsecd(self) -> Optional[str]:
+        return pulumi.get(self, "gwsecd")
 
     @property
     @pulumi.getter
@@ -616,6 +654,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def redisa(self) -> Optional[str]:
+        return pulumi.get(self, "redisa")
+
+    @property
+    @pulumi.getter
     def resourcemanager(self) -> Optional[str]:
         return pulumi.get(self, "resourcemanager")
 
@@ -628,6 +671,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def ros(self) -> Optional[str]:
         return pulumi.get(self, "ros")
+
+    @property
+    @pulumi.getter
+    def scdn(self) -> Optional[str]:
+        return pulumi.get(self, "scdn")
 
     @property
     @pulumi.getter

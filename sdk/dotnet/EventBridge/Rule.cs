@@ -57,7 +57,6 @@ namespace Pulumi.AliCloud.EventBridge
     ///                         {
     ///                             ResourceKey = "Body",
     ///                             Form = "ORIGINAL",
-    ///                             Value = "tf-testAcc",
     ///                         },
     ///                     },
     ///                 },

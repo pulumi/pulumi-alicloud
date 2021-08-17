@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string NatGatewayName;
         /// <summary>
-        /// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+        /// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
         /// </summary>
         public readonly string NatType;
         /// <summary>

@@ -10,6 +10,157 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetConfigMapsMap struct {
+	// The first ID of the resource.
+	ConfigMapId string `pulumi:"configMapId"`
+	// The Creation Time of the ConfigMap.
+	CreateTime string `pulumi:"createTime"`
+	// ConfigMap instance data. The value's format is a `json` string
+	Data string `pulumi:"data"`
+	// The Description of Config Map.
+	Description string `pulumi:"description"`
+	// The ID of the Config Map.
+	Id string `pulumi:"id"`
+	// ConfigMap instance name.
+	Name string `pulumi:"name"`
+	// The NamespaceId of Config Maps.
+	NamespaceId string `pulumi:"namespaceId"`
+}
+
+// GetConfigMapsMapInput is an input type that accepts GetConfigMapsMap and GetConfigMapsMapOutput values.
+// You can construct a concrete instance of `GetConfigMapsMapInput` via:
+//
+//          GetConfigMapsMap{ "key": GetConfigMapsArgs{...} }
+type GetConfigMapsMapInput interface {
+	pulumi.Input
+
+	ToGetConfigMapsMapOutput() GetConfigMapsMapOutput
+	ToGetConfigMapsMapOutputWithContext(context.Context) GetConfigMapsMapOutput
+}
+
+type GetConfigMapsMapArgs struct {
+	// The first ID of the resource.
+	ConfigMapId pulumi.StringInput `pulumi:"configMapId"`
+	// The Creation Time of the ConfigMap.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// ConfigMap instance data. The value's format is a `json` string
+	Data pulumi.StringInput `pulumi:"data"`
+	// The Description of Config Map.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Config Map.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ConfigMap instance name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The NamespaceId of Config Maps.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+}
+
+func (GetConfigMapsMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigMapsMap)(nil)).Elem()
+}
+
+func (i GetConfigMapsMapArgs) ToGetConfigMapsMapOutput() GetConfigMapsMapOutput {
+	return i.ToGetConfigMapsMapOutputWithContext(context.Background())
+}
+
+func (i GetConfigMapsMapArgs) ToGetConfigMapsMapOutputWithContext(ctx context.Context) GetConfigMapsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConfigMapsMapOutput)
+}
+
+// GetConfigMapsMapArrayInput is an input type that accepts GetConfigMapsMapArray and GetConfigMapsMapArrayOutput values.
+// You can construct a concrete instance of `GetConfigMapsMapArrayInput` via:
+//
+//          GetConfigMapsMapArray{ GetConfigMapsMap{ "key": GetConfigMapsArgs{...} } }
+type GetConfigMapsMapArrayInput interface {
+	pulumi.Input
+
+	ToGetConfigMapsMapArrayOutput() GetConfigMapsMapArrayOutput
+	ToGetConfigMapsMapArrayOutputWithContext(context.Context) GetConfigMapsMapArrayOutput
+}
+
+type GetConfigMapsMapArray []GetConfigMapsMapInput
+
+func (GetConfigMapsMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConfigMapsMap)(nil)).Elem()
+}
+
+func (i GetConfigMapsMapArray) ToGetConfigMapsMapArrayOutput() GetConfigMapsMapArrayOutput {
+	return i.ToGetConfigMapsMapArrayOutputWithContext(context.Background())
+}
+
+func (i GetConfigMapsMapArray) ToGetConfigMapsMapArrayOutputWithContext(ctx context.Context) GetConfigMapsMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConfigMapsMapArrayOutput)
+}
+
+type GetConfigMapsMapOutput struct{ *pulumi.OutputState }
+
+func (GetConfigMapsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigMapsMap)(nil)).Elem()
+}
+
+func (o GetConfigMapsMapOutput) ToGetConfigMapsMapOutput() GetConfigMapsMapOutput {
+	return o
+}
+
+func (o GetConfigMapsMapOutput) ToGetConfigMapsMapOutputWithContext(ctx context.Context) GetConfigMapsMapOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetConfigMapsMapOutput) ConfigMapId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigMapsMap) string { return v.ConfigMapId }).(pulumi.StringOutput)
+}
+
+// The Creation Time of the ConfigMap.
+func (o GetConfigMapsMapOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigMapsMap) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// ConfigMap instance data. The value's format is a `json` string
+func (o GetConfigMapsMapOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigMapsMap) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// The Description of Config Map.
+func (o GetConfigMapsMapOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigMapsMap) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Config Map.
+func (o GetConfigMapsMapOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigMapsMap) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ConfigMap instance name.
+func (o GetConfigMapsMapOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigMapsMap) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The NamespaceId of Config Maps.
+func (o GetConfigMapsMapOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigMapsMap) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+type GetConfigMapsMapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConfigMapsMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConfigMapsMap)(nil)).Elem()
+}
+
+func (o GetConfigMapsMapArrayOutput) ToGetConfigMapsMapArrayOutput() GetConfigMapsMapArrayOutput {
+	return o
+}
+
+func (o GetConfigMapsMapArrayOutput) ToGetConfigMapsMapArrayOutputWithContext(ctx context.Context) GetConfigMapsMapArrayOutput {
+	return o
+}
+
+func (o GetConfigMapsMapArrayOutput) Index(i pulumi.IntInput) GetConfigMapsMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConfigMapsMap {
+		return vs[0].([]GetConfigMapsMap)[vs[1].(int)]
+	}).(GetConfigMapsMapOutput)
+}
+
 type GetNamespacesNamespace struct {
 	// The ID of the Namespace.
 	Id string `pulumi:"id"`
@@ -135,6 +286,8 @@ func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespace
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetConfigMapsMapOutput{})
+	pulumi.RegisterOutputType(GetConfigMapsMapArrayOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceArrayOutput{})
 }

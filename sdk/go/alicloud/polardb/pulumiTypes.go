@@ -10,6 +10,124 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ClusterDbClusterIpArray struct {
+	// The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
+	// > **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+	DbClusterIpArrayName *string `pulumi:"dbClusterIpArrayName"`
+	// The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+	ModifyMode *string `pulumi:"modifyMode"`
+	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+	SecurityIps []string `pulumi:"securityIps"`
+}
+
+// ClusterDbClusterIpArrayInput is an input type that accepts ClusterDbClusterIpArray and ClusterDbClusterIpArrayOutput values.
+// You can construct a concrete instance of `ClusterDbClusterIpArrayInput` via:
+//
+//          ClusterDbClusterIpArray{ ClusterDbClusterIpArgs{...} }
+type ClusterDbClusterIpArrayInput interface {
+	pulumi.Input
+
+	ToClusterDbClusterIpArrayOutput() ClusterDbClusterIpArrayOutput
+	ToClusterDbClusterIpArrayOutputWithContext(context.Context) ClusterDbClusterIpArrayOutput
+}
+
+type ClusterDbClusterIpArrayArgs struct {
+	// The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
+	// > **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+	DbClusterIpArrayName pulumi.StringPtrInput `pulumi:"dbClusterIpArrayName"`
+	// The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+	ModifyMode pulumi.StringPtrInput `pulumi:"modifyMode"`
+	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+	SecurityIps pulumi.StringArrayInput `pulumi:"securityIps"`
+}
+
+func (ClusterDbClusterIpArrayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDbClusterIpArray)(nil)).Elem()
+}
+
+func (i ClusterDbClusterIpArrayArgs) ToClusterDbClusterIpArrayOutput() ClusterDbClusterIpArrayOutput {
+	return i.ToClusterDbClusterIpArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterDbClusterIpArrayArgs) ToClusterDbClusterIpArrayOutputWithContext(ctx context.Context) ClusterDbClusterIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDbClusterIpArrayOutput)
+}
+
+// ClusterDbClusterIpArrayArrayInput is an input type that accepts ClusterDbClusterIpArrayArray and ClusterDbClusterIpArrayArrayOutput values.
+// You can construct a concrete instance of `ClusterDbClusterIpArrayArrayInput` via:
+//
+//          ClusterDbClusterIpArrayArray{ ClusterDbClusterIpArrayArgs{...} }
+type ClusterDbClusterIpArrayArrayInput interface {
+	pulumi.Input
+
+	ToClusterDbClusterIpArrayArrayOutput() ClusterDbClusterIpArrayArrayOutput
+	ToClusterDbClusterIpArrayArrayOutputWithContext(context.Context) ClusterDbClusterIpArrayArrayOutput
+}
+
+type ClusterDbClusterIpArrayArray []ClusterDbClusterIpArrayInput
+
+func (ClusterDbClusterIpArrayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDbClusterIpArray)(nil)).Elem()
+}
+
+func (i ClusterDbClusterIpArrayArray) ToClusterDbClusterIpArrayArrayOutput() ClusterDbClusterIpArrayArrayOutput {
+	return i.ToClusterDbClusterIpArrayArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterDbClusterIpArrayArray) ToClusterDbClusterIpArrayArrayOutputWithContext(ctx context.Context) ClusterDbClusterIpArrayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDbClusterIpArrayArrayOutput)
+}
+
+type ClusterDbClusterIpArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterDbClusterIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDbClusterIpArray)(nil)).Elem()
+}
+
+func (o ClusterDbClusterIpArrayOutput) ToClusterDbClusterIpArrayOutput() ClusterDbClusterIpArrayOutput {
+	return o
+}
+
+func (o ClusterDbClusterIpArrayOutput) ToClusterDbClusterIpArrayOutputWithContext(ctx context.Context) ClusterDbClusterIpArrayOutput {
+	return o
+}
+
+// The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
+// > **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+func (o ClusterDbClusterIpArrayOutput) DbClusterIpArrayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDbClusterIpArray) *string { return v.DbClusterIpArrayName }).(pulumi.StringPtrOutput)
+}
+
+// The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+func (o ClusterDbClusterIpArrayOutput) ModifyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDbClusterIpArray) *string { return v.ModifyMode }).(pulumi.StringPtrOutput)
+}
+
+// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+func (o ClusterDbClusterIpArrayOutput) SecurityIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterDbClusterIpArray) []string { return v.SecurityIps }).(pulumi.StringArrayOutput)
+}
+
+type ClusterDbClusterIpArrayArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterDbClusterIpArrayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDbClusterIpArray)(nil)).Elem()
+}
+
+func (o ClusterDbClusterIpArrayArrayOutput) ToClusterDbClusterIpArrayArrayOutput() ClusterDbClusterIpArrayArrayOutput {
+	return o
+}
+
+func (o ClusterDbClusterIpArrayArrayOutput) ToClusterDbClusterIpArrayArrayOutputWithContext(ctx context.Context) ClusterDbClusterIpArrayArrayOutput {
+	return o
+}
+
+func (o ClusterDbClusterIpArrayArrayOutput) Index(i pulumi.IntInput) ClusterDbClusterIpArrayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterDbClusterIpArray {
+		return vs[0].([]ClusterDbClusterIpArray)[vs[1].(int)]
+	}).(ClusterDbClusterIpArrayOutput)
+}
+
 type ClusterParameter struct {
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
@@ -1763,6 +1881,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(ClusterDbClusterIpArrayOutput{})
+	pulumi.RegisterOutputType(ClusterDbClusterIpArrayArrayOutput{})
 	pulumi.RegisterOutputType(ClusterParameterOutput{})
 	pulumi.RegisterOutputType(ClusterParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})

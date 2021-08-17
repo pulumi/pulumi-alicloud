@@ -56,7 +56,6 @@ import (
 // 						&eventbridge.RuleTargetParamListArgs{
 // 							ResourceKey: pulumi.String("Body"),
 // 							Form:        pulumi.String("ORIGINAL"),
-// 							Value:       pulumi.String("tf-testAcc"),
 // 						},
 // 					},
 // 				},

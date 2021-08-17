@@ -48,6 +48,7 @@ export function getInstanceClasses(args: GetInstanceClassesArgs, opts?: pulumi.I
         "outputFile": args.outputFile,
         "packageType": args.packageType,
         "performanceType": args.performanceType,
+        "productType": args.productType,
         "seriesType": args.seriesType,
         "shardNumber": args.shardNumber,
         "sortedBy": args.sortedBy,
@@ -97,12 +98,16 @@ export interface GetInstanceClassesArgs {
      * @deprecated The parameter 'performance_type' has been deprecated from 1.68.0.
      */
     readonly performanceType?: string;
+    readonly productType?: string;
     /**
      * The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
      */
     readonly seriesType?: string;
     /**
      * The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
+     * * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+     * * Local: an ApsaraDB for Redis instance with a local disk.
+     * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
      */
     readonly shardNumber?: number;
     readonly sortedBy?: string;
@@ -149,6 +154,7 @@ export interface GetInstanceClassesResult {
      * @deprecated The parameter 'performance_type' has been deprecated from 1.68.0.
      */
     readonly performanceType?: string;
+    readonly productType?: string;
     readonly seriesType?: string;
     readonly shardNumber?: number;
     readonly sortedBy?: string;

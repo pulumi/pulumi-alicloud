@@ -85,25 +85,26 @@ class RuleTargetParamListArgs:
     def __init__(__self__, *,
                  form: pulumi.Input[str],
                  resource_key: pulumi.Input[str],
-                 value: pulumi.Input[str],
-                 template: Optional[pulumi.Input[str]] = None):
+                 template: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] form: The format of param.
-        :param pulumi.Input[str] resource_key: The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
-        :param pulumi.Input[str] value: The value of param.
+        :param pulumi.Input[str] form: The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+        :param pulumi.Input[str] resource_key: The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
         :param pulumi.Input[str] template: The template of param.
+        :param pulumi.Input[str] value: The value of param.
         """
         pulumi.set(__self__, "form", form)
         pulumi.set(__self__, "resource_key", resource_key)
-        pulumi.set(__self__, "value", value)
         if template is not None:
             pulumi.set(__self__, "template", template)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def form(self) -> pulumi.Input[str]:
         """
-        The format of param.
+        The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
         """
         return pulumi.get(self, "form")
 
@@ -115,25 +116,13 @@ class RuleTargetParamListArgs:
     @pulumi.getter(name="resourceKey")
     def resource_key(self) -> pulumi.Input[str]:
         """
-        The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+        The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
         """
         return pulumi.get(self, "resource_key")
 
     @resource_key.setter
     def resource_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_key", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
-        """
-        The value of param.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[str]):
-        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -146,5 +135,17 @@ class RuleTargetParamListArgs:
     @template.setter
     def template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "template", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of param.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 

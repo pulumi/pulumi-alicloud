@@ -9,8 +9,110 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetOssBackupPlansPlanResult',
     'GetVaultsVaultResult',
 ]
+
+@pulumi.output_type
+class GetOssBackupPlansPlanResult(dict):
+    def __init__(__self__, *,
+                 backup_type: str,
+                 bucket: str,
+                 disabled: bool,
+                 id: str,
+                 oss_backup_plan_id: str,
+                 oss_backup_plan_name: str,
+                 prefix: str,
+                 retention: str,
+                 schedule: str,
+                 vault_id: str):
+        """
+        :param str backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        :param str bucket: The OSS Bucket Name.
+        :param str oss_backup_plan_name: The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        :param str retention: Backup Retention Period, the Minimum Value of 1.
+        :param str schedule: Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        :param str vault_id: Vault ID.
+        """
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "oss_backup_plan_id", oss_backup_plan_id)
+        pulumi.set(__self__, "oss_backup_plan_name", oss_backup_plan_name)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> str:
+        """
+        Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        The OSS Bucket Name.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ossBackupPlanId")
+    def oss_backup_plan_id(self) -> str:
+        return pulumi.get(self, "oss_backup_plan_id")
+
+    @property
+    @pulumi.getter(name="ossBackupPlanName")
+    def oss_backup_plan_name(self) -> str:
+        """
+        The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        """
+        return pulumi.get(self, "oss_backup_plan_name")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> str:
+        """
+        Backup Retention Period, the Minimum Value of 1.
+        """
+        return pulumi.get(self, "retention")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> str:
+        """
+        Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> str:
+        """
+        Vault ID.
+        """
+        return pulumi.get(self, "vault_id")
+
 
 @pulumi.output_type
 class GetVaultsVaultResult(dict):

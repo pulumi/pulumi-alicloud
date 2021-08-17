@@ -9,8 +9,46 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'DomainConfigFunctionArgArgs',
     'DomainSourceArgs',
 ]
+
+@pulumi.input_type
+class DomainConfigFunctionArgArgs:
+    def __init__(__self__, *,
+                 arg_name: pulumi.Input[str],
+                 arg_value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] arg_name: The name of arg.
+        :param pulumi.Input[str] arg_value: The value of arg.
+        """
+        pulumi.set(__self__, "arg_name", arg_name)
+        pulumi.set(__self__, "arg_value", arg_value)
+
+    @property
+    @pulumi.getter(name="argName")
+    def arg_name(self) -> pulumi.Input[str]:
+        """
+        The name of arg.
+        """
+        return pulumi.get(self, "arg_name")
+
+    @arg_name.setter
+    def arg_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "arg_name", value)
+
+    @property
+    @pulumi.getter(name="argValue")
+    def arg_value(self) -> pulumi.Input[str]:
+        """
+        The value of arg.
+        """
+        return pulumi.get(self, "arg_value")
+
+    @arg_value.setter
+    def arg_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "arg_value", value)
+
 
 @pulumi.input_type
 class DomainSourceArgs:

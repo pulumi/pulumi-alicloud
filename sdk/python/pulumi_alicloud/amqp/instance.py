@@ -18,6 +18,7 @@ class InstanceArgs:
                  payment_type: pulumi.Input[str],
                  queue_capacity: pulumi.Input[str],
                  support_eip: pulumi.Input[bool],
+                 instance_name: Optional[pulumi.Input[str]] = None,
                  logistics: Optional[pulumi.Input[str]] = None,
                  max_eip_tps: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,7 @@ class InstanceArgs:
         :param pulumi.Input[str] payment_type: The payment type. Valid values: `Subscription`.
         :param pulumi.Input[str] queue_capacity: The queue capacity. The smallest value is 50 and the step size 5.
         :param pulumi.Input[bool] support_eip: Whether to support EIP.
+        :param pulumi.Input[str] instance_name: The instance name.
         :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
         :param pulumi.Input[int] period: The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
@@ -49,6 +51,8 @@ class InstanceArgs:
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "queue_capacity", queue_capacity)
         pulumi.set(__self__, "support_eip", support_eip)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
         if logistics is not None:
             pulumi.set(__self__, "logistics", logistics)
         if max_eip_tps is not None:
@@ -125,6 +129,18 @@ class InstanceArgs:
     @support_eip.setter
     def support_eip(self, value: pulumi.Input[bool]):
         pulumi.set(self, "support_eip", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance name.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
 
     @property
     @pulumi.getter
@@ -226,6 +242,7 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  logistics: Optional[pulumi.Input[str]] = None,
                  max_eip_tps: Optional[pulumi.Input[str]] = None,
@@ -242,6 +259,7 @@ class _InstanceState:
                  support_eip: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[str] instance_name: The instance name.
         :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `vip`.
         :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
         :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
@@ -259,6 +277,8 @@ class _InstanceState:
         :param pulumi.Input[str] storage_size: The storage size. It is valid when `instance_type` is vip.
         :param pulumi.Input[bool] support_eip: Whether to support EIP.
         """
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if logistics is not None:
@@ -287,6 +307,18 @@ class _InstanceState:
             pulumi.set(__self__, "storage_size", storage_size)
         if support_eip is not None:
             pulumi.set(__self__, "support_eip", support_eip)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance name.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -462,6 +494,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  logistics: Optional[pulumi.Input[str]] = None,
                  max_eip_tps: Optional[pulumi.Input[str]] = None,
@@ -520,6 +553,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] instance_name: The instance name.
         :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `vip`.
         :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
         :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
@@ -599,6 +633,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  logistics: Optional[pulumi.Input[str]] = None,
                  max_eip_tps: Optional[pulumi.Input[str]] = None,
@@ -624,6 +659,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["instance_name"] = instance_name
             if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
@@ -658,6 +694,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            instance_name: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             logistics: Optional[pulumi.Input[str]] = None,
             max_eip_tps: Optional[pulumi.Input[str]] = None,
@@ -679,6 +716,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] instance_name: The instance name.
         :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `vip`.
         :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
         :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
@@ -700,6 +738,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["logistics"] = logistics
         __props__.__dict__["max_eip_tps"] = max_eip_tps
@@ -715,6 +754,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["storage_size"] = storage_size
         __props__.__dict__["support_eip"] = support_eip
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The instance name.
+        """
+        return pulumi.get(self, "instance_name")
 
     @property
     @pulumi.getter(name="instanceType")

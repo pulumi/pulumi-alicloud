@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.KubernetesPermissionPermission>> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the RAM user.
+        /// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The ID of the RAM user.
+        /// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         /// </summary>
         [Input("uid", required: true)]
         public Input<string> Uid { get; set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The ID of the RAM user.
+        /// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

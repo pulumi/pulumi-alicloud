@@ -2891,7 +2891,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haConfig")
-    def ha_config(self) -> pulumi.Output[Optional[str]]:
+    def ha_config(self) -> pulumi.Output[str]:
         """
         The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
         - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.

@@ -574,6 +574,26 @@ class ControlPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.129.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cloudfirewall.ControlPolicy("example",
+            acl_action="accept",
+            application_name="ANY",
+            description="example",
+            destination="100.1.1.0/24",
+            destination_type="net",
+            direction="out",
+            proto="ANY",
+            source="1.2.3.0/24",
+            source_type="net")
+        ```
+
         ## Import
 
         Cloud Firewall Control Policy can be imported using the id, e.g.
@@ -613,6 +633,26 @@ class ControlPolicy(pulumi.CustomResource):
         For information about Cloud Firewall Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/doc-detail/138867.htm).
 
         > **NOTE:** Available in v1.129.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cloudfirewall.ControlPolicy("example",
+            acl_action="accept",
+            application_name="ANY",
+            description="example",
+            destination="100.1.1.0/24",
+            destination_type="net",
+            direction="out",
+            proto="ANY",
+            source="1.2.3.0/24",
+            source_type="net")
+        ```
 
         ## Import
 

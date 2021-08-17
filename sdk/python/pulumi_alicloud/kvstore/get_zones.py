@@ -20,7 +20,7 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, engine=None, id=None, ids=None, instance_charge_type=None, multi=None, output_file=None, zones=None):
+    def __init__(__self__, engine=None, id=None, ids=None, instance_charge_type=None, multi=None, output_file=None, product_type=None, zones=None):
         if engine and not isinstance(engine, str):
             raise TypeError("Expected argument 'engine' to be a str")
         pulumi.set(__self__, "engine", engine)
@@ -39,6 +39,9 @@ class GetZonesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if product_type and not isinstance(product_type, str):
+            raise TypeError("Expected argument 'product_type' to be a str")
+        pulumi.set(__self__, "product_type", product_type)
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         pulumi.set(__self__, "zones", zones)
@@ -80,6 +83,11 @@ class GetZonesResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="productType")
+    def product_type(self) -> Optional[str]:
+        return pulumi.get(self, "product_type")
+
+    @property
     @pulumi.getter
     def zones(self) -> Sequence['outputs.GetZonesZoneResult']:
         """
@@ -100,6 +108,7 @@ class AwaitableGetZonesResult(GetZonesResult):
             instance_charge_type=self.instance_charge_type,
             multi=self.multi,
             output_file=self.output_file,
+            product_type=self.product_type,
             zones=self.zones)
 
 
@@ -107,6 +116,7 @@ def get_zones(engine: Optional[str] = None,
               instance_charge_type: Optional[str] = None,
               multi: Optional[bool] = None,
               output_file: Optional[str] = None,
+              product_type: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
     This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -126,6 +136,10 @@ def get_zones(engine: Optional[str] = None,
     ```
 
 
+    :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+           * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+           * Local: an ApsaraDB for Redis instance with a local disk.
+           * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
     :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
     """
@@ -134,6 +148,7 @@ def get_zones(engine: Optional[str] = None,
     __args__['instanceChargeType'] = instance_charge_type
     __args__['multi'] = multi
     __args__['outputFile'] = output_file
+    __args__['productType'] = product_type
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -147,4 +162,5 @@ def get_zones(engine: Optional[str] = None,
         instance_charge_type=__ret__.instance_charge_type,
         multi=__ret__.multi,
         output_file=__ret__.output_file,
+        product_type=__ret__.product_type,
         zones=__ret__.zones)

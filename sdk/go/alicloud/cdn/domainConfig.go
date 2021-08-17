@@ -25,8 +25,6 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
-//
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
@@ -34,7 +32,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		domain, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
-// 			DomainName: pulumi.String(fmt.Sprintf("%v%v%v", "tf-testacc", "%", "d.xiaozhu.com")),
+// 			DomainName: pulumi.String("mycdndomain.xiaozhu.com"),
 // 			CdnType:    pulumi.String("web"),
 // 			Scope:      pulumi.String("overseas"),
 // 			Sources: cdn.DomainNewSourceArray{

@@ -20,7 +20,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.sae.Namespace("example", {
- *     namespaceId: "cn-hangzhou:NamespaceName",
+ *     namespaceDescription: "your_description",
+ *     namespaceId: "cn-hangzhou:yourname",
  *     namespaceName: "example_value",
  * });
  * ```
@@ -66,7 +67,7 @@ export class Namespace extends pulumi.CustomResource {
      */
     public readonly namespaceDescription!: pulumi.Output<string | undefined>;
     /**
-     * The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+     * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
     public readonly namespaceId!: pulumi.Output<string>;
     /**
@@ -118,7 +119,7 @@ export interface NamespaceState {
      */
     readonly namespaceDescription?: pulumi.Input<string>;
     /**
-     * The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+     * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
     readonly namespaceId?: pulumi.Input<string>;
     /**
@@ -136,7 +137,7 @@ export interface NamespaceArgs {
      */
     readonly namespaceDescription?: pulumi.Input<string>;
     /**
-     * The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+     * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
     readonly namespaceId: pulumi.Input<string>;
     /**

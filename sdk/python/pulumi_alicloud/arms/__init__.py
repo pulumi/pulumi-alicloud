@@ -4,6 +4,8 @@
 
 # Export this package's modules as members:
 from .alert_contact import *
+from .alert_contact_group import *
+from .get_alert_contact_groups import *
 from .get_alert_contacts import *
 from . import outputs
 
@@ -21,11 +23,14 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:arms/alertContact:AlertContact":
                 return AlertContact(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:arms/alertContactGroup:AlertContactGroup":
+                return AlertContactGroup(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "arms/alertContact", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "arms/alertContactGroup", _module_instance)
 
 _register_module()

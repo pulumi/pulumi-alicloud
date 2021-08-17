@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     public sealed class RuleTargetParamList
     {
         /// <summary>
-        /// The format of param.
+        /// The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
         /// </summary>
         public readonly string Form;
         /// <summary>
-        /// The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+        /// The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
         /// </summary>
         public readonly string ResourceKey;
         /// <summary>
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
         /// <summary>
         /// The value of param.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private RuleTargetParamList(
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
 
             string? template,
 
-            string value)
+            string? value)
         {
             Form = form;
             ResourceKey = resourceKey;

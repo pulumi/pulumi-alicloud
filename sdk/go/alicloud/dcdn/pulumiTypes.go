@@ -10,6 +10,112 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DomainConfigFunctionArg struct {
+	// The name of arg.
+	ArgName string `pulumi:"argName"`
+	// The value of arg.
+	ArgValue string `pulumi:"argValue"`
+}
+
+// DomainConfigFunctionArgInput is an input type that accepts DomainConfigFunctionArgArgs and DomainConfigFunctionArgOutput values.
+// You can construct a concrete instance of `DomainConfigFunctionArgInput` via:
+//
+//          DomainConfigFunctionArgArgs{...}
+type DomainConfigFunctionArgInput interface {
+	pulumi.Input
+
+	ToDomainConfigFunctionArgOutput() DomainConfigFunctionArgOutput
+	ToDomainConfigFunctionArgOutputWithContext(context.Context) DomainConfigFunctionArgOutput
+}
+
+type DomainConfigFunctionArgArgs struct {
+	// The name of arg.
+	ArgName pulumi.StringInput `pulumi:"argName"`
+	// The value of arg.
+	ArgValue pulumi.StringInput `pulumi:"argValue"`
+}
+
+func (DomainConfigFunctionArgArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainConfigFunctionArg)(nil)).Elem()
+}
+
+func (i DomainConfigFunctionArgArgs) ToDomainConfigFunctionArgOutput() DomainConfigFunctionArgOutput {
+	return i.ToDomainConfigFunctionArgOutputWithContext(context.Background())
+}
+
+func (i DomainConfigFunctionArgArgs) ToDomainConfigFunctionArgOutputWithContext(ctx context.Context) DomainConfigFunctionArgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigFunctionArgOutput)
+}
+
+// DomainConfigFunctionArgArrayInput is an input type that accepts DomainConfigFunctionArgArray and DomainConfigFunctionArgArrayOutput values.
+// You can construct a concrete instance of `DomainConfigFunctionArgArrayInput` via:
+//
+//          DomainConfigFunctionArgArray{ DomainConfigFunctionArgArgs{...} }
+type DomainConfigFunctionArgArrayInput interface {
+	pulumi.Input
+
+	ToDomainConfigFunctionArgArrayOutput() DomainConfigFunctionArgArrayOutput
+	ToDomainConfigFunctionArgArrayOutputWithContext(context.Context) DomainConfigFunctionArgArrayOutput
+}
+
+type DomainConfigFunctionArgArray []DomainConfigFunctionArgInput
+
+func (DomainConfigFunctionArgArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainConfigFunctionArg)(nil)).Elem()
+}
+
+func (i DomainConfigFunctionArgArray) ToDomainConfigFunctionArgArrayOutput() DomainConfigFunctionArgArrayOutput {
+	return i.ToDomainConfigFunctionArgArrayOutputWithContext(context.Background())
+}
+
+func (i DomainConfigFunctionArgArray) ToDomainConfigFunctionArgArrayOutputWithContext(ctx context.Context) DomainConfigFunctionArgArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigFunctionArgArrayOutput)
+}
+
+type DomainConfigFunctionArgOutput struct{ *pulumi.OutputState }
+
+func (DomainConfigFunctionArgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainConfigFunctionArg)(nil)).Elem()
+}
+
+func (o DomainConfigFunctionArgOutput) ToDomainConfigFunctionArgOutput() DomainConfigFunctionArgOutput {
+	return o
+}
+
+func (o DomainConfigFunctionArgOutput) ToDomainConfigFunctionArgOutputWithContext(ctx context.Context) DomainConfigFunctionArgOutput {
+	return o
+}
+
+// The name of arg.
+func (o DomainConfigFunctionArgOutput) ArgName() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainConfigFunctionArg) string { return v.ArgName }).(pulumi.StringOutput)
+}
+
+// The value of arg.
+func (o DomainConfigFunctionArgOutput) ArgValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainConfigFunctionArg) string { return v.ArgValue }).(pulumi.StringOutput)
+}
+
+type DomainConfigFunctionArgArrayOutput struct{ *pulumi.OutputState }
+
+func (DomainConfigFunctionArgArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainConfigFunctionArg)(nil)).Elem()
+}
+
+func (o DomainConfigFunctionArgArrayOutput) ToDomainConfigFunctionArgArrayOutput() DomainConfigFunctionArgArrayOutput {
+	return o
+}
+
+func (o DomainConfigFunctionArgArrayOutput) ToDomainConfigFunctionArgArrayOutputWithContext(ctx context.Context) DomainConfigFunctionArgArrayOutput {
+	return o
+}
+
+func (o DomainConfigFunctionArgArrayOutput) Index(i pulumi.IntInput) DomainConfigFunctionArgOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainConfigFunctionArg {
+		return vs[0].([]DomainConfigFunctionArg)[vs[1].(int)]
+	}).(DomainConfigFunctionArgOutput)
+}
+
 type DomainSource struct {
 	// The origin address.
 	Content string `pulumi:"content"`
@@ -491,6 +597,8 @@ func (o GetDomainsDomainSourceArrayOutput) Index(i pulumi.IntInput) GetDomainsDo
 }
 
 func init() {
+	pulumi.RegisterOutputType(DomainConfigFunctionArgOutput{})
+	pulumi.RegisterOutputType(DomainConfigFunctionArgArrayOutput{})
 	pulumi.RegisterOutputType(DomainSourceOutput{})
 	pulumi.RegisterOutputType(DomainSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})

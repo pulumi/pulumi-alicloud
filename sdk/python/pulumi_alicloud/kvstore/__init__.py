@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .account import *
+from .audit_log_config import *
 from .backup_policy import *
 from .connection import *
 from .get_accounts import *
@@ -31,6 +32,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:kvstore/account:Account":
                 return Account(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:kvstore/auditLogConfig:AuditLogConfig":
+                return AuditLogConfig(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:kvstore/backupPolicy:BackupPolicy":
                 return BackupPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:kvstore/connection:Connection":
@@ -43,6 +46,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "kvstore/account", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "kvstore/auditLogConfig", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "kvstore/backupPolicy", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "kvstore/connection", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "kvstore/instance", _module_instance)

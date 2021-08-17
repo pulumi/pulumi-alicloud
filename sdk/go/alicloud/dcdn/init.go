@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:dcdn/domain:Domain":
 		r = &Domain{}
+	case "alicloud:dcdn/domainConfig:DomainConfig":
+		r = &DomainConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dcdn/domain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dcdn/domainConfig",
 		&module{version},
 	)
 }

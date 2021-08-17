@@ -90,6 +90,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
+     * db_cluster_ip_array defines how users can send requests to your API.
+     */
+    public readonly dbClusterIpArrays!: pulumi.Output<outputs.polardb.ClusterDbClusterIpArray[]>;
+    /**
      * The dbNodeClass of cluster node.
      * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      */
@@ -187,6 +191,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             inputs["collectorStatus"] = state ? state.collectorStatus : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
+            inputs["dbClusterIpArrays"] = state ? state.dbClusterIpArrays : undefined;
             inputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
             inputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
             inputs["dbType"] = state ? state.dbType : undefined;
@@ -219,6 +224,7 @@ export class Cluster extends pulumi.CustomResource {
             }
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["collectorStatus"] = args ? args.collectorStatus : undefined;
+            inputs["dbClusterIpArrays"] = args ? args.dbClusterIpArrays : undefined;
             inputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
             inputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
             inputs["dbType"] = args ? args.dbType : undefined;
@@ -263,6 +269,10 @@ export interface ClusterState {
      * (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
      */
     readonly connectionString?: pulumi.Input<string>;
+    /**
+     * db_cluster_ip_array defines how users can send requests to your API.
+     */
+    readonly dbClusterIpArrays?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterDbClusterIpArray>[]>;
     /**
      * The dbNodeClass of cluster node.
      * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
@@ -358,6 +368,10 @@ export interface ClusterArgs {
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */
     readonly collectorStatus?: pulumi.Input<string>;
+    /**
+     * db_cluster_ip_array defines how users can send requests to your API.
+     */
+    readonly dbClusterIpArrays?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterDbClusterIpArray>[]>;
     /**
      * The dbNodeClass of cluster node.
      * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.

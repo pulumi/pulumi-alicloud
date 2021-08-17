@@ -10,6 +10,139 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetAlertContactGroupsGroup struct {
+	// The first ID of the resource.
+	AlertContactGroupId string `pulumi:"alertContactGroupId"`
+	// The name of the resource.
+	AlertContactGroupName string `pulumi:"alertContactGroupName"`
+	// contact ids.
+	ContactIds []string `pulumi:"contactIds"`
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Alert Contact Group.
+	Id string `pulumi:"id"`
+}
+
+// GetAlertContactGroupsGroupInput is an input type that accepts GetAlertContactGroupsGroupArgs and GetAlertContactGroupsGroupOutput values.
+// You can construct a concrete instance of `GetAlertContactGroupsGroupInput` via:
+//
+//          GetAlertContactGroupsGroupArgs{...}
+type GetAlertContactGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetAlertContactGroupsGroupOutput() GetAlertContactGroupsGroupOutput
+	ToGetAlertContactGroupsGroupOutputWithContext(context.Context) GetAlertContactGroupsGroupOutput
+}
+
+type GetAlertContactGroupsGroupArgs struct {
+	// The first ID of the resource.
+	AlertContactGroupId pulumi.StringInput `pulumi:"alertContactGroupId"`
+	// The name of the resource.
+	AlertContactGroupName pulumi.StringInput `pulumi:"alertContactGroupName"`
+	// contact ids.
+	ContactIds pulumi.StringArrayInput `pulumi:"contactIds"`
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Alert Contact Group.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetAlertContactGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertContactGroupsGroup)(nil)).Elem()
+}
+
+func (i GetAlertContactGroupsGroupArgs) ToGetAlertContactGroupsGroupOutput() GetAlertContactGroupsGroupOutput {
+	return i.ToGetAlertContactGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetAlertContactGroupsGroupArgs) ToGetAlertContactGroupsGroupOutputWithContext(ctx context.Context) GetAlertContactGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertContactGroupsGroupOutput)
+}
+
+// GetAlertContactGroupsGroupArrayInput is an input type that accepts GetAlertContactGroupsGroupArray and GetAlertContactGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetAlertContactGroupsGroupArrayInput` via:
+//
+//          GetAlertContactGroupsGroupArray{ GetAlertContactGroupsGroupArgs{...} }
+type GetAlertContactGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertContactGroupsGroupArrayOutput() GetAlertContactGroupsGroupArrayOutput
+	ToGetAlertContactGroupsGroupArrayOutputWithContext(context.Context) GetAlertContactGroupsGroupArrayOutput
+}
+
+type GetAlertContactGroupsGroupArray []GetAlertContactGroupsGroupInput
+
+func (GetAlertContactGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertContactGroupsGroup)(nil)).Elem()
+}
+
+func (i GetAlertContactGroupsGroupArray) ToGetAlertContactGroupsGroupArrayOutput() GetAlertContactGroupsGroupArrayOutput {
+	return i.ToGetAlertContactGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertContactGroupsGroupArray) ToGetAlertContactGroupsGroupArrayOutputWithContext(ctx context.Context) GetAlertContactGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertContactGroupsGroupArrayOutput)
+}
+
+type GetAlertContactGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetAlertContactGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertContactGroupsGroup)(nil)).Elem()
+}
+
+func (o GetAlertContactGroupsGroupOutput) ToGetAlertContactGroupsGroupOutput() GetAlertContactGroupsGroupOutput {
+	return o
+}
+
+func (o GetAlertContactGroupsGroupOutput) ToGetAlertContactGroupsGroupOutputWithContext(ctx context.Context) GetAlertContactGroupsGroupOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetAlertContactGroupsGroupOutput) AlertContactGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsGroup) string { return v.AlertContactGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetAlertContactGroupsGroupOutput) AlertContactGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsGroup) string { return v.AlertContactGroupName }).(pulumi.StringOutput)
+}
+
+// contact ids.
+func (o GetAlertContactGroupsGroupOutput) ContactIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsGroup) []string { return v.ContactIds }).(pulumi.StringArrayOutput)
+}
+
+// The creation time of the resource.
+func (o GetAlertContactGroupsGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Alert Contact Group.
+func (o GetAlertContactGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetAlertContactGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertContactGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertContactGroupsGroup)(nil)).Elem()
+}
+
+func (o GetAlertContactGroupsGroupArrayOutput) ToGetAlertContactGroupsGroupArrayOutput() GetAlertContactGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetAlertContactGroupsGroupArrayOutput) ToGetAlertContactGroupsGroupArrayOutputWithContext(ctx context.Context) GetAlertContactGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetAlertContactGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetAlertContactGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertContactGroupsGroup {
+		return vs[0].([]GetAlertContactGroupsGroup)[vs[1].(int)]
+	}).(GetAlertContactGroupsGroupOutput)
+}
+
 type GetAlertContactsContact struct {
 	// Contact ID.
 	AlertContactId string `pulumi:"alertContactId"`
@@ -180,6 +313,8 @@ func (o GetAlertContactsContactArrayOutput) Index(i pulumi.IntInput) GetAlertCon
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetAlertContactGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetAlertContactGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAlertContactsContactOutput{})
 	pulumi.RegisterOutputType(GetAlertContactsContactArrayOutput{})
 }

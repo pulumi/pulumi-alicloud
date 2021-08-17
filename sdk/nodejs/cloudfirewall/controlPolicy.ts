@@ -22,14 +22,13 @@ import * as utilities from "../utilities";
  * const example = new alicloud.cloudfirewall.ControlPolicy("example", {
  *     aclAction: "accept",
  *     applicationName: "ANY",
- *     description: "example_value",
- *     destination: "example_value",
- *     destinationType: " group",
- *     direction: "in",
- *     order: 1,
- *     proto: " TCP",
- *     source: "example_value",
- *     sourceType: " group",
+ *     description: "example",
+ *     destination: "100.1.1.0/24",
+ *     destinationType: "net",
+ *     direction: "out",
+ *     proto: "ANY",
+ *     source: "1.2.3.0/24",
+ *     sourceType: "net",
  * });
  * ```
  *

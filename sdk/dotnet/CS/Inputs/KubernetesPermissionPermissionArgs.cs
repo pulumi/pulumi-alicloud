@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<bool>? IsCustom { get; set; }
 
         /// <summary>
-        /// Specifies whether the permissions are granted to a RAM role.
+        /// Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
         /// </summary>
         [Input("isRamRole")]
         public Input<bool>? IsRamRole { get; set; }

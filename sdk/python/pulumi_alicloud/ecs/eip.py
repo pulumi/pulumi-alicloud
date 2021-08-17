@@ -29,15 +29,17 @@ class EipArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Eip resource.
+        :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] instance_charge_type: Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[str] name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -88,6 +90,9 @@ class EipArgs:
     @property
     @pulumi.getter(name="addressName")
     def address_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        """
         return pulumi.get(self, "address_name")
 
     @address_name.setter
@@ -136,7 +141,7 @@ class EipArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -148,7 +153,7 @@ class EipArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
+        Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -172,7 +177,7 @@ class EipArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -192,6 +197,9 @@ class EipArgs:
     @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
@@ -253,16 +261,18 @@ class _EipState:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Eip resources.
+        :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] instance_charge_type: Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
         :param pulumi.Input[str] ip_address: The elastic ip address
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[str] name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[str] status: The EIP current status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -318,6 +328,9 @@ class _EipState:
     @property
     @pulumi.getter(name="addressName")
     def address_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        """
         return pulumi.get(self, "address_name")
 
     @address_name.setter
@@ -366,7 +379,7 @@ class _EipState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -378,7 +391,7 @@ class _EipState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
+        Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -414,7 +427,7 @@ class _EipState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -434,6 +447,9 @@ class _EipState:
     @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
@@ -522,15 +538,17 @@ class Eip(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] instance_charge_type: Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[str] name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -646,16 +664,18 @@ class Eip(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] instance_charge_type: Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
         :param pulumi.Input[str] ip_address: The elastic ip address
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[str] name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[str] status: The EIP current status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -690,6 +710,9 @@ class Eip(pulumi.CustomResource):
     @property
     @pulumi.getter(name="addressName")
     def address_name(self) -> pulumi.Output[str]:
+        """
+        The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        """
         return pulumi.get(self, "address_name")
 
     @property
@@ -722,7 +745,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
-        Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -730,7 +753,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[str]:
         """
-        Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
+        Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -754,7 +777,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -766,6 +789,9 @@ class Eip(pulumi.CustomResource):
     @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
+        """
+        The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        """
         return pulumi.get(self, "payment_type")
 
     @property

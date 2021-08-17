@@ -824,7 +824,7 @@ class KubernetesPermissionPermissionArgs:
         :param pulumi.Input[str] role_name: Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
         :param pulumi.Input[str] role_type: The authorization type. Valid values `cluster`, `namespace`.
         :param pulumi.Input[bool] is_custom: Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
-        :param pulumi.Input[bool] is_ram_role: Specifies whether the permissions are granted to a RAM role.
+        :param pulumi.Input[bool] is_ram_role: Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
         :param pulumi.Input[str] namespace: The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
         """
         pulumi.set(__self__, "cluster", cluster)
@@ -889,7 +889,7 @@ class KubernetesPermissionPermissionArgs:
     @pulumi.getter(name="isRamRole")
     def is_ram_role(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether the permissions are granted to a RAM role.
+        Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
         """
         return pulumi.get(self, "is_ram_role")
 

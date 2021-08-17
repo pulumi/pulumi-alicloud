@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:eventbridge/eventBus:EventBus":
 		r = &EventBus{}
+	case "alicloud:eventbridge/eventSource:EventSource":
+		r = &EventSource{}
 	case "alicloud:eventbridge/rule:Rule":
 		r = &Rule{}
 	case "alicloud:eventbridge/slr:Slr":
@@ -43,6 +45,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eventbridge/eventBus",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eventbridge/eventSource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

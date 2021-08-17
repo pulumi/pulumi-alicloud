@@ -10,6 +10,172 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetOssBackupPlansPlan struct {
+	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	BackupType string `pulumi:"backupType"`
+	// The OSS Bucket Name.
+	Bucket          string `pulumi:"bucket"`
+	Disabled        bool   `pulumi:"disabled"`
+	Id              string `pulumi:"id"`
+	OssBackupPlanId string `pulumi:"ossBackupPlanId"`
+	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	OssBackupPlanName string `pulumi:"ossBackupPlanName"`
+	Prefix            string `pulumi:"prefix"`
+	// Backup Retention Period, the Minimum Value of 1.
+	Retention string `pulumi:"retention"`
+	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	Schedule string `pulumi:"schedule"`
+	// Vault ID.
+	VaultId string `pulumi:"vaultId"`
+}
+
+// GetOssBackupPlansPlanInput is an input type that accepts GetOssBackupPlansPlanArgs and GetOssBackupPlansPlanOutput values.
+// You can construct a concrete instance of `GetOssBackupPlansPlanInput` via:
+//
+//          GetOssBackupPlansPlanArgs{...}
+type GetOssBackupPlansPlanInput interface {
+	pulumi.Input
+
+	ToGetOssBackupPlansPlanOutput() GetOssBackupPlansPlanOutput
+	ToGetOssBackupPlansPlanOutputWithContext(context.Context) GetOssBackupPlansPlanOutput
+}
+
+type GetOssBackupPlansPlanArgs struct {
+	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	BackupType pulumi.StringInput `pulumi:"backupType"`
+	// The OSS Bucket Name.
+	Bucket          pulumi.StringInput `pulumi:"bucket"`
+	Disabled        pulumi.BoolInput   `pulumi:"disabled"`
+	Id              pulumi.StringInput `pulumi:"id"`
+	OssBackupPlanId pulumi.StringInput `pulumi:"ossBackupPlanId"`
+	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	OssBackupPlanName pulumi.StringInput `pulumi:"ossBackupPlanName"`
+	Prefix            pulumi.StringInput `pulumi:"prefix"`
+	// Backup Retention Period, the Minimum Value of 1.
+	Retention pulumi.StringInput `pulumi:"retention"`
+	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+	// Vault ID.
+	VaultId pulumi.StringInput `pulumi:"vaultId"`
+}
+
+func (GetOssBackupPlansPlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOssBackupPlansPlan)(nil)).Elem()
+}
+
+func (i GetOssBackupPlansPlanArgs) ToGetOssBackupPlansPlanOutput() GetOssBackupPlansPlanOutput {
+	return i.ToGetOssBackupPlansPlanOutputWithContext(context.Background())
+}
+
+func (i GetOssBackupPlansPlanArgs) ToGetOssBackupPlansPlanOutputWithContext(ctx context.Context) GetOssBackupPlansPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOssBackupPlansPlanOutput)
+}
+
+// GetOssBackupPlansPlanArrayInput is an input type that accepts GetOssBackupPlansPlanArray and GetOssBackupPlansPlanArrayOutput values.
+// You can construct a concrete instance of `GetOssBackupPlansPlanArrayInput` via:
+//
+//          GetOssBackupPlansPlanArray{ GetOssBackupPlansPlanArgs{...} }
+type GetOssBackupPlansPlanArrayInput interface {
+	pulumi.Input
+
+	ToGetOssBackupPlansPlanArrayOutput() GetOssBackupPlansPlanArrayOutput
+	ToGetOssBackupPlansPlanArrayOutputWithContext(context.Context) GetOssBackupPlansPlanArrayOutput
+}
+
+type GetOssBackupPlansPlanArray []GetOssBackupPlansPlanInput
+
+func (GetOssBackupPlansPlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOssBackupPlansPlan)(nil)).Elem()
+}
+
+func (i GetOssBackupPlansPlanArray) ToGetOssBackupPlansPlanArrayOutput() GetOssBackupPlansPlanArrayOutput {
+	return i.ToGetOssBackupPlansPlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetOssBackupPlansPlanArray) ToGetOssBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetOssBackupPlansPlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOssBackupPlansPlanArrayOutput)
+}
+
+type GetOssBackupPlansPlanOutput struct{ *pulumi.OutputState }
+
+func (GetOssBackupPlansPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOssBackupPlansPlan)(nil)).Elem()
+}
+
+func (o GetOssBackupPlansPlanOutput) ToGetOssBackupPlansPlanOutput() GetOssBackupPlansPlanOutput {
+	return o
+}
+
+func (o GetOssBackupPlansPlanOutput) ToGetOssBackupPlansPlanOutputWithContext(ctx context.Context) GetOssBackupPlansPlanOutput {
+	return o
+}
+
+// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+func (o GetOssBackupPlansPlanOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The OSS Bucket Name.
+func (o GetOssBackupPlansPlanOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o GetOssBackupPlansPlanOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOssBackupPlansPlan) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+func (o GetOssBackupPlansPlanOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetOssBackupPlansPlanOutput) OssBackupPlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.OssBackupPlanId }).(pulumi.StringOutput)
+}
+
+// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+func (o GetOssBackupPlansPlanOutput) OssBackupPlanName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.OssBackupPlanName }).(pulumi.StringOutput)
+}
+
+func (o GetOssBackupPlansPlanOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// Backup Retention Period, the Minimum Value of 1.
+func (o GetOssBackupPlansPlanOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.Retention }).(pulumi.StringOutput)
+}
+
+// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+func (o GetOssBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// Vault ID.
+func (o GetOssBackupPlansPlanOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.VaultId }).(pulumi.StringOutput)
+}
+
+type GetOssBackupPlansPlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOssBackupPlansPlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOssBackupPlansPlan)(nil)).Elem()
+}
+
+func (o GetOssBackupPlansPlanArrayOutput) ToGetOssBackupPlansPlanArrayOutput() GetOssBackupPlansPlanArrayOutput {
+	return o
+}
+
+func (o GetOssBackupPlansPlanArrayOutput) ToGetOssBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetOssBackupPlansPlanArrayOutput {
+	return o
+}
+
+func (o GetOssBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetOssBackupPlansPlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOssBackupPlansPlan {
+		return vs[0].([]GetOssBackupPlansPlan)[vs[1].(int)]
+	}).(GetOssBackupPlansPlanOutput)
+}
+
 type GetVaultsVault struct {
 	// The name of the OSS bucket of the Vault.
 	BucketName string `pulumi:"bucketName"`
@@ -321,6 +487,8 @@ func (o GetVaultsVaultArrayOutput) Index(i pulumi.IntInput) GetVaultsVaultOutput
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetOssBackupPlansPlanOutput{})
+	pulumi.RegisterOutputType(GetOssBackupPlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetVaultsVaultOutput{})
 	pulumi.RegisterOutputType(GetVaultsVaultArrayOutput{})
 }

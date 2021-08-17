@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:kvstore/account:Account":
 		r = &Account{}
+	case "alicloud:kvstore/auditLogConfig:AuditLogConfig":
+		r = &AuditLogConfig{}
 	case "alicloud:kvstore/backupPolicy:BackupPolicy":
 		r = &BackupPolicy{}
 	case "alicloud:kvstore/connection:Connection":
@@ -45,6 +47,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"kvstore/account",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"kvstore/auditLogConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

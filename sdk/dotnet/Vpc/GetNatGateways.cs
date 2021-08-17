@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? NatGatewayName { get; set; }
 
         /// <summary>
-        /// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+        /// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
         /// </summary>
         [Input("natType")]
         public string? NatType { get; set; }

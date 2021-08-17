@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:arms/alertContact:AlertContact":
 		r = &AlertContact{}
+	case "alicloud:arms/alertContactGroup:AlertContactGroup":
+		r = &AlertContactGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"arms/alertContact",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/alertContactGroup",
 		&module{version},
 	)
 }

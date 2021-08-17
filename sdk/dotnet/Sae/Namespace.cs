@@ -30,7 +30,8 @@ namespace Pulumi.AliCloud.Sae
     ///     {
     ///         var example = new AliCloud.Sae.Namespace("example", new AliCloud.Sae.NamespaceArgs
     ///         {
-    ///             NamespaceId = "cn-hangzhou:NamespaceName",
+    ///             NamespaceDescription = "your_description",
+    ///             NamespaceId = "cn-hangzhou:yourname",
     ///             NamespaceName = "example_value",
     ///         });
     ///     }
@@ -56,7 +57,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> NamespaceDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+        /// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         /// </summary>
         [Output("namespaceId")]
         public Output<string> NamespaceId { get; private set; } = null!;
@@ -120,7 +121,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? NamespaceDescription { get; set; }
 
         /// <summary>
-        /// The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+        /// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
@@ -145,7 +146,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? NamespaceDescription { get; set; }
 
         /// <summary>
-        /// The Id of Namespace.It can contain 2 to 32 characters.The value is in format `{RegionId}:{namespace}`
+        /// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }

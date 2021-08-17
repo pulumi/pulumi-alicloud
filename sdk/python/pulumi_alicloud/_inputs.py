@@ -70,6 +70,7 @@ class ProviderEndpointArgs:
     def __init__(__self__, *,
                  actiontrail: Optional[pulumi.Input[str]] = None,
                  adb: Optional[pulumi.Input[str]] = None,
+                 alb: Optional[pulumi.Input[str]] = None,
                  alidns: Optional[pulumi.Input[str]] = None,
                  alikafka: Optional[pulumi.Input[str]] = None,
                  apigateway: Optional[pulumi.Input[str]] = None,
@@ -81,11 +82,13 @@ class ProviderEndpointArgs:
                  cbn: Optional[pulumi.Input[str]] = None,
                  cdn: Optional[pulumi.Input[str]] = None,
                  cds: Optional[pulumi.Input[str]] = None,
+                 cloudphone: Optional[pulumi.Input[str]] = None,
                  cms: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  cr: Optional[pulumi.Input[str]] = None,
                  cs: Optional[pulumi.Input[str]] = None,
                  datahub: Optional[pulumi.Input[str]] = None,
+                 dataworkspublic: Optional[pulumi.Input[str]] = None,
                  dcdn: Optional[pulumi.Input[str]] = None,
                  ddosbgp: Optional[pulumi.Input[str]] = None,
                  ddoscoo: Optional[pulumi.Input[str]] = None,
@@ -105,6 +108,7 @@ class ProviderEndpointArgs:
                  fnf: Optional[pulumi.Input[str]] = None,
                  ga: Optional[pulumi.Input[str]] = None,
                  gpdb: Optional[pulumi.Input[str]] = None,
+                 gwsecd: Optional[pulumi.Input[str]] = None,
                  hbr: Optional[pulumi.Input[str]] = None,
                  hitsdb: Optional[pulumi.Input[str]] = None,
                  ims: Optional[pulumi.Input[str]] = None,
@@ -129,9 +133,11 @@ class ProviderEndpointArgs:
                  r_kvstore: Optional[pulumi.Input[str]] = None,
                  ram: Optional[pulumi.Input[str]] = None,
                  rds: Optional[pulumi.Input[str]] = None,
+                 redisa: Optional[pulumi.Input[str]] = None,
                  resourcemanager: Optional[pulumi.Input[str]] = None,
                  resourcesharing: Optional[pulumi.Input[str]] = None,
                  ros: Optional[pulumi.Input[str]] = None,
+                 scdn: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[str]] = None,
                  sgw: Optional[pulumi.Input[str]] = None,
                  slb: Optional[pulumi.Input[str]] = None,
@@ -142,6 +148,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "actiontrail", actiontrail)
         if adb is not None:
             pulumi.set(__self__, "adb", adb)
+        if alb is not None:
+            pulumi.set(__self__, "alb", alb)
         if alidns is not None:
             pulumi.set(__self__, "alidns", alidns)
         if alikafka is not None:
@@ -164,6 +172,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "cdn", cdn)
         if cds is not None:
             pulumi.set(__self__, "cds", cds)
+        if cloudphone is not None:
+            pulumi.set(__self__, "cloudphone", cloudphone)
         if cms is not None:
             pulumi.set(__self__, "cms", cms)
         if config is not None:
@@ -174,6 +184,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "cs", cs)
         if datahub is not None:
             pulumi.set(__self__, "datahub", datahub)
+        if dataworkspublic is not None:
+            pulumi.set(__self__, "dataworkspublic", dataworkspublic)
         if dcdn is not None:
             pulumi.set(__self__, "dcdn", dcdn)
         if ddosbgp is not None:
@@ -212,6 +224,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "ga", ga)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
+        if gwsecd is not None:
+            pulumi.set(__self__, "gwsecd", gwsecd)
         if hbr is not None:
             pulumi.set(__self__, "hbr", hbr)
         if hitsdb is not None:
@@ -260,12 +274,16 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "ram", ram)
         if rds is not None:
             pulumi.set(__self__, "rds", rds)
+        if redisa is not None:
+            pulumi.set(__self__, "redisa", redisa)
         if resourcemanager is not None:
             pulumi.set(__self__, "resourcemanager", resourcemanager)
         if resourcesharing is not None:
             pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
+        if scdn is not None:
+            pulumi.set(__self__, "scdn", scdn)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
         if sgw is not None:
@@ -296,6 +314,15 @@ class ProviderEndpointArgs:
     @adb.setter
     def adb(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "adb", value)
+
+    @property
+    @pulumi.getter
+    def alb(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "alb")
+
+    @alb.setter
+    def alb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alb", value)
 
     @property
     @pulumi.getter
@@ -398,6 +425,15 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
+    def cloudphone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloudphone")
+
+    @cloudphone.setter
+    def cloudphone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloudphone", value)
+
+    @property
+    @pulumi.getter
     def cms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cms")
 
@@ -440,6 +476,15 @@ class ProviderEndpointArgs:
     @datahub.setter
     def datahub(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "datahub", value)
+
+    @property
+    @pulumi.getter
+    def dataworkspublic(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataworkspublic")
+
+    @dataworkspublic.setter
+    def dataworkspublic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataworkspublic", value)
 
     @property
     @pulumi.getter
@@ -611,6 +656,15 @@ class ProviderEndpointArgs:
     @gpdb.setter
     def gpdb(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gpdb", value)
+
+    @property
+    @pulumi.getter
+    def gwsecd(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gwsecd")
+
+    @gwsecd.setter
+    def gwsecd(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gwsecd", value)
 
     @property
     @pulumi.getter
@@ -830,6 +884,15 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
+    def redisa(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "redisa")
+
+    @redisa.setter
+    def redisa(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redisa", value)
+
+    @property
+    @pulumi.getter
     def resourcemanager(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "resourcemanager")
 
@@ -854,6 +917,15 @@ class ProviderEndpointArgs:
     @ros.setter
     def ros(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ros", value)
+
+    @property
+    @pulumi.getter
+    def scdn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scdn")
+
+    @scdn.setter
+    def scdn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scdn", value)
 
     @property
     @pulumi.getter
