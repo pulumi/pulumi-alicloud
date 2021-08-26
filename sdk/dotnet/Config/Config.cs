@@ -113,11 +113,13 @@ namespace Pulumi.AliCloud
                 public string? Alikafka { get; set; } = null!;
                 public string? Apigateway { get; set; } = null!;
                 public string? Arms { get; set; } = null!;
+                public string? Bastionhost { get; set; } = null!;
                 public string? BrainIndustrial { get; set; } = null!;
                 public string? Bssopenapi { get; set; } = null!;
                 public string? Cas { get; set; } = null!;
                 public string? Cassandra { get; set; } = null!;
                 public string? Cbn { get; set; } = null!;
+                public string? Cddc { get; set; } = null!;
                 public string? Cdn { get; set; } = null!;
                 public string? Cds { get; set; } = null!;
                 public string? Cloudphone { get; set; } = null!;
@@ -148,6 +150,7 @@ namespace Pulumi.AliCloud
                 public string? Gpdb { get; set; } = null!;
                 public string? Gwsecd { get; set; } = null!;
                 public string? Hbr { get; set; } = null!;
+                public string? HcsSgw { get; set; } = null!;
                 public string? Hitsdb { get; set; } = null!;
                 public string? Ims { get; set; } = null!;
                 public string? Kms { get; set; } = null!;
@@ -157,6 +160,7 @@ namespace Pulumi.AliCloud
                 public string? Market { get; set; } = null!;
                 public string? Maxcompute { get; set; } = null!;
                 public string? Mns { get; set; } = null!;
+                public string? Mscopensubscription { get; set; } = null!;
                 public string? Mse { get; set; } = null!;
                 public string? Nas { get; set; } = null!;
                 public string? Ons { get; set; } = null!;
@@ -176,6 +180,7 @@ namespace Pulumi.AliCloud
                 public string? Resourcesharing { get; set; } = null!;
                 public string? Ros { get; set; } = null!;
                 public string? Scdn { get; set; } = null!;
+                public string? Sddp { get; set; } = null!;
                 public string? Serverless { get; set; } = null!;
                 public string? Sgw { get; set; } = null!;
                 public string? Slb { get; set; } = null!;

@@ -11,47 +11,16 @@ import (
 )
 
 type GetBastionHostInstancesInstance struct {
-	// The instance's remark.
-	Description string `pulumi:"description"`
-	// The instance's id.
-	Id string `pulumi:"id"`
-	// The instance's status.
-	InstanceStatus string `pulumi:"instanceStatus"`
-	LicenseCode    string `pulumi:"licenseCode"`
-	// The instance's private domain name.
-	PrivateDomain string `pulumi:"privateDomain"`
-	// The instance's public domain name.
-	PublicDomain string `pulumi:"publicDomain"`
-	// The instance's public network access configuration.
-	PublicNetworkAccess bool `pulumi:"publicNetworkAccess"`
-	// The instance's security group configuration.
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// A map of tags assigned to the bastionhost instance. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/yundun"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := yundun.GetBastionHostInstances(ctx, &yundun.GetBastionHostInstancesArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
-	// The instance's vSwitch ID.
-	UserVswitchId string `pulumi:"userVswitchId"`
+	Description         string                 `pulumi:"description"`
+	Id                  string                 `pulumi:"id"`
+	InstanceStatus      string                 `pulumi:"instanceStatus"`
+	LicenseCode         string                 `pulumi:"licenseCode"`
+	PrivateDomain       string                 `pulumi:"privateDomain"`
+	PublicDomain        string                 `pulumi:"publicDomain"`
+	PublicNetworkAccess bool                   `pulumi:"publicNetworkAccess"`
+	SecurityGroupIds    []string               `pulumi:"securityGroupIds"`
+	Tags                map[string]interface{} `pulumi:"tags"`
+	UserVswitchId       string                 `pulumi:"userVswitchId"`
 }
 
 // GetBastionHostInstancesInstanceInput is an input type that accepts GetBastionHostInstancesInstanceArgs and GetBastionHostInstancesInstanceOutput values.
@@ -66,47 +35,16 @@ type GetBastionHostInstancesInstanceInput interface {
 }
 
 type GetBastionHostInstancesInstanceArgs struct {
-	// The instance's remark.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The instance's id.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The instance's status.
-	InstanceStatus pulumi.StringInput `pulumi:"instanceStatus"`
-	LicenseCode    pulumi.StringInput `pulumi:"licenseCode"`
-	// The instance's private domain name.
-	PrivateDomain pulumi.StringInput `pulumi:"privateDomain"`
-	// The instance's public domain name.
-	PublicDomain pulumi.StringInput `pulumi:"publicDomain"`
-	// The instance's public network access configuration.
-	PublicNetworkAccess pulumi.BoolInput `pulumi:"publicNetworkAccess"`
-	// The instance's security group configuration.
-	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// A map of tags assigned to the bastionhost instance. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/yundun"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := yundun.GetBastionHostInstances(ctx, &yundun.GetBastionHostInstancesArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
-	// The instance's vSwitch ID.
-	UserVswitchId pulumi.StringInput `pulumi:"userVswitchId"`
+	Description         pulumi.StringInput      `pulumi:"description"`
+	Id                  pulumi.StringInput      `pulumi:"id"`
+	InstanceStatus      pulumi.StringInput      `pulumi:"instanceStatus"`
+	LicenseCode         pulumi.StringInput      `pulumi:"licenseCode"`
+	PrivateDomain       pulumi.StringInput      `pulumi:"privateDomain"`
+	PublicDomain        pulumi.StringInput      `pulumi:"publicDomain"`
+	PublicNetworkAccess pulumi.BoolInput        `pulumi:"publicNetworkAccess"`
+	SecurityGroupIds    pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	Tags                pulumi.MapInput         `pulumi:"tags"`
+	UserVswitchId       pulumi.StringInput      `pulumi:"userVswitchId"`
 }
 
 func (GetBastionHostInstancesInstanceArgs) ElementType() reflect.Type {
@@ -160,17 +98,14 @@ func (o GetBastionHostInstancesInstanceOutput) ToGetBastionHostInstancesInstance
 	return o
 }
 
-// The instance's remark.
 func (o GetBastionHostInstancesInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The instance's id.
 func (o GetBastionHostInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The instance's status.
 func (o GetBastionHostInstancesInstanceOutput) InstanceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.InstanceStatus }).(pulumi.StringOutput)
 }
@@ -179,54 +114,26 @@ func (o GetBastionHostInstancesInstanceOutput) LicenseCode() pulumi.StringOutput
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.LicenseCode }).(pulumi.StringOutput)
 }
 
-// The instance's private domain name.
 func (o GetBastionHostInstancesInstanceOutput) PrivateDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.PrivateDomain }).(pulumi.StringOutput)
 }
 
-// The instance's public domain name.
 func (o GetBastionHostInstancesInstanceOutput) PublicDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.PublicDomain }).(pulumi.StringOutput)
 }
 
-// The instance's public network access configuration.
 func (o GetBastionHostInstancesInstanceOutput) PublicNetworkAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) bool { return v.PublicNetworkAccess }).(pulumi.BoolOutput)
 }
 
-// The instance's security group configuration.
 func (o GetBastionHostInstancesInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// A map of tags assigned to the bastionhost instance. It must be in the format:
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/yundun"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yundun.GetBastionHostInstances(ctx, &yundun.GetBastionHostInstancesArgs{
-// 			Tags: map[string]interface{}{
-// 				"tagKey1": "tagValue1",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func (o GetBastionHostInstancesInstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The instance's vSwitch ID.
 func (o GetBastionHostInstancesInstanceOutput) UserVswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.UserVswitchId }).(pulumi.StringOutput)
 }

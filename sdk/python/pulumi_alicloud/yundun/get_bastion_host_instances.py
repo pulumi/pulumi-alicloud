@@ -69,9 +69,6 @@ class GetBastionHostInstancesResult:
     @property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetBastionHostInstancesInstanceResult']:
-        """
-        A list of apis. Each element contains the following attributes:
-        """
         return pulumi.get(self, "instances")
 
     @property
@@ -82,9 +79,6 @@ class GetBastionHostInstancesResult:
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
-        """
-        A map of tags assigned to the bastionhost instance.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -109,33 +103,7 @@ def get_bastion_host_instances(description_regex: Optional[str] = None,
                                tags: Optional[Mapping[str, Any]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBastionHostInstancesResult:
     """
-    This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
-
-    > **NOTE:** Available in 1.63.0+ .
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    instance_bastion_host_instances = alicloud.yundun.get_bastion_host_instances(name_regex="^bastionhost")
-    pulumi.export("instance", [__item["id"] for __item in alicloud_yundun_bastionhost_instances["instance"]])
-    ```
-
-
-    :param str description_regex: A regex string to filter results by the instance description.
-    :param Sequence[str] ids: Matched instance IDs to filter data source result.
-    :param str output_file: File name to persist data source output.
-    :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
-           ```python
-           import pulumi
-           import pulumi_alicloud as alicloud
-           
-           instance = alicloud.yundun.get_bastion_host_instances(tags={
-               "tagKey1": "tagValue1",
-           })
-           ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['descriptionRegex'] = description_regex

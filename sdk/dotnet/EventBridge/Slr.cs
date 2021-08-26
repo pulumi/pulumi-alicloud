@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.EventBridge
     ///     {
     ///         var slr = new AliCloud.EventBridge.Slr("slr", new AliCloud.EventBridge.SlrArgs
     ///         {
-    ///             ProductName = "AliyunServiceRoleForEventBridgeSourceRocketMQ",
+    ///             ProductName = "AliyunServiceRoleForEventBridgeSendToMNS",
     ///         });
     ///     }
     /// 
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.EventBridge
     {
         /// <summary>
         /// The product name for SLR. EventBridge can automatically create the following service-linked roles:
-        /// Event source related: `AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
+        /// Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
         /// Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
         /// </summary>
         [Output("productName")]
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.EventBridge
     {
         /// <summary>
         /// The product name for SLR. EventBridge can automatically create the following service-linked roles:
-        /// Event source related: `AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
+        /// Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
         /// Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
         /// </summary>
         [Input("productName", required: true)]
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.EventBridge
     {
         /// <summary>
         /// The product name for SLR. EventBridge can automatically create the following service-linked roles:
-        /// Event source related: `AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
+        /// Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
         /// Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
         /// </summary>
         [Input("productName")]

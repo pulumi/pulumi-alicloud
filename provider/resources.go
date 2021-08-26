@@ -41,9 +41,11 @@ const (
 	amqpMod                = "Amqp"
 	apiGatewayMod          = "ApiGateway"
 	armsMod                = "Arms"
+	bastionHostMod         = "BastionHost"
 	brainMod               = "Brain"
 	casMod                 = "Cas"
 	cassandraMod           = "Cassandra"
+	cddcMod                = "Cddc"
 	cdnMod                 = "Cdn"
 	cenMod                 = "Cen"
 	cloudConnectMod        = "CloudConnect"
@@ -72,6 +74,7 @@ const (
 	emrMod                 = "Emr"
 	essMod                 = "Ess"
 	eventBridgeMod         = "EventBridge"
+	expressConnect         = "ExpressConnect"
 	fcMod                  = "FC"
 	fnfMod                 = "FNF"
 	gaMod                  = "Ga"
@@ -81,6 +84,7 @@ const (
 	iotMod                 = "Iot"
 	kmsMod                 = "Kms"
 	kvstoreMod             = "KVStore"
+	lindormMod             = "Lindorm"
 	logMod                 = "Log"
 	marketPlaceMod         = "MarketPlace"
 	maxComputeMod          = "MaxCompute"
@@ -103,6 +107,7 @@ const (
 	saeMod                 = "Sae"
 	sagMod                 = "Sag"
 	scdnMod                = "Scdn"
+	sddpMod                = "Sddp"
 	slbMod                 = "Slb"
 	tsdbMod                = "Tsdb"
 	vpcMod                 = "Vpc"
@@ -181,6 +186,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
+			// Mainmod
+			"alicloud_msc_sub_contact": {Tok: resource(alicloudMod, "MscSubContract")},
+
 			// ActionTrail
 			"alicloud_actiontrail_trail": {Tok: resource(actionTrailMod, "Trail")},
 			"alicloud_actiontrail": {
@@ -198,6 +206,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Alb
 			"alicloud_alb_security_policy": {Tok: resource(albMod, "SecurityPolicy")},
 			"alicloud_alb_server_group":    {Tok: resource(albMod, "ServerGroup")},
+			"alicloud_alb_load_balancer":   {Tok: resource(albMod, "LoadBalancer")},
 
 			// AliKafka
 			"alicloud_alikafka_consumer_group": {Tok: resource(aliKafaMod, "ConsumerGroup")},
@@ -230,6 +239,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_arms_alert_contact":       {Tok: resource(armsMod, "AlertContact")},
 			"alicloud_arms_alert_contact_group": {Tok: resource(armsMod, "AlertContactGroup")},
 
+			// BastionHost
+			"alicloud_bastionhost_user_group": {Tok: resource(bastionHostMod, "UserGroup")},
+			"alicloud_bastionhost_instance":   {Tok: resource(bastionHostMod, "Instance")},
+
 			// Brain
 			"alicloud_brain_industrial_pid_project":      {Tok: resource(brainMod, "IndustrialPidProject")},
 			"alicloud_brain_industrial_pid_organization": {Tok: resource(brainMod, "IndustrialPidOrganization")},
@@ -246,6 +259,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cassandra_cluster":     {Tok: resource(cassandraMod, "Cluster")},
 			"alicloud_cassandra_data_center": {Tok: resource(cassandraMod, "DataCenter")},
 			"alicloud_cassandra_backup_plan": {Tok: resource(cassandraMod, "BackupPlan")},
+
+			// CDDC
+			"alicloud_cddc_dedicated_host_group": {Tok: resource(cddcMod, "DedicatedHostGroup")},
 
 			//CDN
 			"alicloud_cdn_domain":        {Tok: resource(cdnMod, "Domain")},
@@ -296,6 +312,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// CloudStorageGateway
 			"alicloud_cloud_storage_gateway_storage_bundle": {Tok: resource(cloudStorageGatewayMod, "StorageBundle")},
+			"alicloud_cloud_storage_gateway_gateway":        {Tok: resource(cloudStorageGatewayMod, "Gateway")},
 
 			// CMS
 			"alicloud_cms_alarm":               {Tok: resource(cmsMod, "Alarm")},
@@ -504,6 +521,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_event_bridge_slr":          {Tok: resource(eventBridgeMod, "Slr")},
 			"alicloud_event_bridge_event_source": {Tok: resource(eventBridgeMod, "EventSource")},
 
+			// ExpressConnect
+			"alicloud_express_connect_physical_connection": {Tok: resource(expressConnect, "PhysicalConnection")},
+
 			// FC
 			"alicloud_fc_function":                     {Tok: resource(fcMod, "Function")},
 			"alicloud_fc_service":                      {Tok: resource(fcMod, "Service")},
@@ -534,8 +554,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbase_instance": {Tok: resource(hbaseMod, "Instance")},
 
 			// Hbr
-			"alicloud_hbr_vault":           {Tok: resource(hbrMod, "Vault")},
-			"alicloud_hbr_oss_backup_plan": {Tok: resource(hbrMod, "OssBackupPlan")},
+			"alicloud_hbr_vault":             {Tok: resource(hbrMod, "Vault")},
+			"alicloud_hbr_oss_backup_plan":   {Tok: resource(hbrMod, "OssBackupPlan")},
+			"alicloud_hbr_nas_backup_plan":   {Tok: resource(hbrMod, "NasBackupPlan")},
+			"alicloud_hbr_ecs_backup_plan":   {Tok: resource(hbrMod, "EcsBackupPlan")},
+			"alicloud_hbr_ecs_backup_client": {Tok: resource(hbrMod, "EcsBackupClient")},
 
 			// KMS
 			"alicloud_kms_key": {
@@ -557,6 +580,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kvstore_account":          {Tok: resource(kvstoreMod, "Account")},
 			"alicloud_kvstore_connection":       {Tok: resource(kvstoreMod, "Connection")},
 			"alicloud_kvstore_audit_log_config": {Tok: resource(kvstoreMod, "AuditLogConfig")},
+
+			// Lindorm
+			"alicloud_lindorm_instance": {Tok: resource(lindormMod, "Instance")},
 
 			// Log
 			"alicloud_log_machine_group":  {Tok: resource(logMod, "MachineGroup")},
@@ -731,6 +757,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_scdn_domain_config": {Tok: resource(scdnMod, "DomainConfig")},
 			"alicloud_scdn_domain":        {Tok: resource(scdnMod, "Domain")},
 
+			// Sddp
+			"alicloud_sddp_rule": {Tok: resource(sddpMod, "Rule")},
+
 			// Slb
 			"alicloud_slb": {
 				Tok:                resource(slbMod, "LoadBalancer"),
@@ -822,6 +851,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_regions":             {Tok: dataSource(alicloudMod, "getRegions")},
 			"alicloud_caller_identity":     {Tok: dataSource(alicloudMod, "getCallerIdentity")},
 			"alicloud_file_crc64_checksum": {Tok: dataSource(alicloudMod, "getFileCrc64Checksum")},
+			"alicloud_msc_sub_contacts":    {Tok: dataSource(alicloudMod, "getMscSubContracts")},
 
 			// ActionTrail
 			"alicloud_actiontrails": {
@@ -840,6 +870,8 @@ func Provider() tfbridge.ProviderInfo {
 			// Alb
 			"alicloud_alb_security_policies": {Tok: dataSource(albMod, "getSecurityPolicies")},
 			"alicloud_alb_server_groups":     {Tok: dataSource(albMod, "getServerGroups")},
+			"alicloud_alb_load_balancers":    {Tok: dataSource(albMod, "getLoadBalancers")},
+			"alicloud_alb_zones":             {Tok: dataSource(albMod, "getZones")},
 
 			// amqp
 			"alicloud_amqp_virtual_hosts": {Tok: dataSource(amqpMod, "getVirtualHosts")},
@@ -856,6 +888,10 @@ func Provider() tfbridge.ProviderInfo {
 			// Arms
 			"alicloud_arms_alert_contacts":       {Tok: dataSource(armsMod, "getAlertContacts")},
 			"alicloud_arms_alert_contact_groups": {Tok: dataSource(armsMod, "getAlertContactGroups")},
+
+			// BastionHost
+			"alicloud_bastionhost_user_groups": {Tok: dataSource(bastionHostMod, "getUserGroups")},
+			"alicloud_bastionhost_instances":   {Tok: dataSource(bastionHostMod, "getInstances")},
 
 			// Brain
 			"alicloud_brain_industrial_pid_projects":      {Tok: dataSource(brainMod, "getIndustrialPidProjects")},
@@ -875,6 +911,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cassandra_data_centers": {Tok: dataSource(cassandraMod, "getDataCenters")},
 			"alicloud_cassandra_zones":        {Tok: dataSource(cassandraMod, "getZones")},
 			"alicloud_cassandra_backup_plans": {Tok: dataSource(cassandraMod, "getBackupPlans")},
+
+			// Cddc
+			"alicloud_cddc_dedicated_host_groups": {Tok: dataSource(cddcMod, "getDedicatedHostGroups")},
 
 			// Cdn
 			"alicloud_cdn_service": {Tok: dataSource(cdnMod, "getService")},
@@ -914,7 +953,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cloud_storage_gateway_storage_bundles": {
 				Tok: dataSource(cloudStorageGatewayMod, "getStorageBundles"),
 			},
-			"alicloud_cloud_storage_gateway_service": {Tok: dataSource(cloudStorageGatewayMod, "getService")},
+			"alicloud_cloud_storage_gateway_service":  {Tok: dataSource(cloudStorageGatewayMod, "getService")},
+			"alicloud_cloud_storage_gateway_gateways": {Tok: dataSource(cloudStorageGatewayMod, "getGateways")},
 
 			// CMS
 			"alicloud_cms_alarm_contacts":            {Tok: dataSource(cmsMod, "getAlarmContacts")},
@@ -1063,6 +1103,13 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_event_bridge_rules":         {Tok: dataSource(eventBridgeMod, "getRules")},
 			"alicloud_event_bridge_event_sources": {Tok: dataSource(eventBridgeMod, "getEventSources")},
 
+			// Express Connect
+			"alicloud_express_connect_access_points": {Tok: dataSource(expressConnect, "getAccessPoints")},
+			"alicloud_express_connect_physical_connection_service": {
+				Tok: dataSource(expressConnect, "getPhysicalConnectionService"),
+			},
+			"alicloud_express_connect_physical_connections": {Tok: dataSource(expressConnect, "getPhysicalConnections")},
+
 			// Fc
 			"alicloud_fc_functions":      {Tok: dataSource(fcMod, "getFunctions")},
 			"alicloud_fc_services":       {Tok: dataSource(fcMod, "getServices")},
@@ -1094,8 +1141,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbase_instance_types": {Tok: dataSource(hbaseMod, "getInstanceTypes")},
 
 			// hbr
-			"alicloud_hbr_vaults":           {Tok: dataSource(hbrMod, "getVaults")},
-			"alicloud_hbr_oss_backup_plans": {Tok: dataSource(hbrMod, "getOssBackupPlans")},
+			"alicloud_hbr_vaults":             {Tok: dataSource(hbrMod, "getVaults")},
+			"alicloud_hbr_oss_backup_plans":   {Tok: dataSource(hbrMod, "getOssBackupPlans")},
+			"alicloud_hbr_ecs_backup_plans":   {Tok: dataSource(hbrMod, "getEcsBackupPlans")},
+			"alicloud_hbr_nas_backup_plans":   {Tok: dataSource(hbrMod, "getNasBackupPlans")},
+			"alicloud_hbr_ecs_backup_clients": {Tok: dataSource(hbrMod, "getEcsBackupClients")},
 
 			// iot
 			"alicloud_iot_service": {Tok: dataSource(iotMod, "getService")},
@@ -1118,6 +1168,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kvstore_connections":      {Tok: dataSource(kvstoreMod, "getConnections")},
 			"alicloud_kvstore_accounts":         {Tok: dataSource(kvstoreMod, "getAccounts")},
 			"alicloud_kvstore_permission":       {Tok: dataSource(kvstoreMod, "getPermission")},
+
+			// Lindorm
+			"alicloud_lindorm_instances": {Tok: dataSource(lindormMod, "getInstances")},
 
 			// Log
 			"alicloud_log_service":  {Tok: dataSource(logMod, "getService")},
@@ -1261,6 +1314,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Scdn
 			"alicloud_scdn_domains": {Tok: dataSource(scdnMod, "getDomains")},
+
+			// sddp
+			"alicloud_sddp_rules": {Tok: dataSource(sddpMod, "getRules")},
 
 			// Slb
 			"alicloud_slb_attachments":                {Tok: dataSource(slbMod, "getAttachments")},

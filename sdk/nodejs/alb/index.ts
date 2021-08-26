@@ -5,12 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./getLoadBalancers";
 export * from "./getSecurityPolicies";
 export * from "./getServerGroups";
+export * from "./getZones";
+export * from "./loadBalancer";
 export * from "./securityPolicy";
 export * from "./serverGroup";
 
 // Import resources to register:
+import { LoadBalancer } from "./loadBalancer";
 import { SecurityPolicy } from "./securityPolicy";
 import { ServerGroup } from "./serverGroup";
 
@@ -18,6 +22,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:alb/loadBalancer:LoadBalancer":
+                return new LoadBalancer(name, <any>undefined, { urn })
             case "alicloud:alb/securityPolicy:SecurityPolicy":
                 return new SecurityPolicy(name, <any>undefined, { urn })
             case "alicloud:alb/serverGroup:ServerGroup":
@@ -27,5 +33,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/securityPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/serverGroup", _module)

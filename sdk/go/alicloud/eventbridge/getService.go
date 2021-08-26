@@ -14,30 +14,6 @@ import (
 // > **NOTE:** Available in v1.126.0+
 //
 // > **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "On"
-// 		_, err := eventbridge.GetService(ctx, &eventbridge.GetServiceArgs{
-// 			Enable: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.InvokeOption) (*GetServiceResult, error) {
 	var rv GetServiceResult
 	err := ctx.Invoke("alicloud:eventbridge/getService:getService", args, &rv, opts...)
@@ -49,12 +25,14 @@ func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getService.
 type GetServiceArgs struct {
+	Code string `pulumi:"code"`
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
 	Enable *string `pulumi:"enable"`
 }
 
 // A collection of values returned by getService.
 type GetServiceResult struct {
+	Code   string  `pulumi:"code"`
 	Enable *string `pulumi:"enable"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`

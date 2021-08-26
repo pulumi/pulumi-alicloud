@@ -68,21 +68,41 @@ class DomainConfigArgs:
 @pulumi.input_type
 class _DomainConfigState:
     def __init__(__self__, *,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  function_args: Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]] = None,
-                 function_name: Optional[pulumi.Input[str]] = None):
+                 function_name: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DomainConfig resources.
+        :param pulumi.Input[str] config_id: The ID of the function.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config.
         :param pulumi.Input[str] function_name: The name of the domain config.
+        :param pulumi.Input[str] status: The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
         """
+        if config_id is not None:
+            pulumi.set(__self__, "config_id", config_id)
         if domain_name is not None:
             pulumi.set(__self__, "domain_name", domain_name)
         if function_args is not None:
             pulumi.set(__self__, "function_args", function_args)
         if function_name is not None:
             pulumi.set(__self__, "function_name", function_name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the function.
+        """
+        return pulumi.get(self, "config_id")
+
+    @config_id.setter
+    def config_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_id", value)
 
     @property
     @pulumi.getter(name="domainName")
@@ -119,6 +139,18 @@ class _DomainConfigState:
     @function_name.setter
     def function_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "function_name", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class DomainConfig(pulumi.CustomResource):
@@ -171,7 +203,11 @@ class DomainConfig(pulumi.CustomResource):
         CDN domain config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example cdn:config-abc123456
+         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
+        ```
+
+        ```sh
+         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -227,7 +263,11 @@ class DomainConfig(pulumi.CustomResource):
         CDN domain config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example cdn:config-abc123456
+         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
+        ```
+
+        ```sh
+         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -269,6 +309,8 @@ class DomainConfig(pulumi.CustomResource):
             if function_name is None and not opts.urn:
                 raise TypeError("Missing required property 'function_name'")
             __props__.__dict__["function_name"] = function_name
+            __props__.__dict__["config_id"] = None
+            __props__.__dict__["status"] = None
         super(DomainConfig, __self__).__init__(
             'alicloud:cdn/domainConfig:DomainConfig',
             resource_name,
@@ -279,9 +321,11 @@ class DomainConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            config_id: Optional[pulumi.Input[str]] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
             function_args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
-            function_name: Optional[pulumi.Input[str]] = None) -> 'DomainConfig':
+            function_name: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None) -> 'DomainConfig':
         """
         Get an existing DomainConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -289,18 +333,30 @@ class DomainConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] config_id: The ID of the function.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config.
         :param pulumi.Input[str] function_name: The name of the domain config.
+        :param pulumi.Input[str] status: The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DomainConfigState.__new__(_DomainConfigState)
 
+        __props__.__dict__["config_id"] = config_id
         __props__.__dict__["domain_name"] = domain_name
         __props__.__dict__["function_args"] = function_args
         __props__.__dict__["function_name"] = function_name
+        __props__.__dict__["status"] = status
         return DomainConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the function.
+        """
+        return pulumi.get(self, "config_id")
 
     @property
     @pulumi.getter(name="domainName")
@@ -325,4 +381,12 @@ class DomainConfig(pulumi.CustomResource):
         The name of the domain config.
         """
         return pulumi.get(self, "function_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        """
+        return pulumi.get(self, "status")
 

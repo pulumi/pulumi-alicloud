@@ -19,11 +19,13 @@ export interface ProviderEndpoint {
     alikafka?: pulumi.Input<string>;
     apigateway?: pulumi.Input<string>;
     arms?: pulumi.Input<string>;
+    bastionhost?: pulumi.Input<string>;
     brainIndustrial?: pulumi.Input<string>;
     bssopenapi?: pulumi.Input<string>;
     cas?: pulumi.Input<string>;
     cassandra?: pulumi.Input<string>;
     cbn?: pulumi.Input<string>;
+    cddc?: pulumi.Input<string>;
     cdn?: pulumi.Input<string>;
     cds?: pulumi.Input<string>;
     cloudphone?: pulumi.Input<string>;
@@ -54,6 +56,7 @@ export interface ProviderEndpoint {
     gpdb?: pulumi.Input<string>;
     gwsecd?: pulumi.Input<string>;
     hbr?: pulumi.Input<string>;
+    hcsSgw?: pulumi.Input<string>;
     hitsdb?: pulumi.Input<string>;
     ims?: pulumi.Input<string>;
     kms?: pulumi.Input<string>;
@@ -63,6 +66,7 @@ export interface ProviderEndpoint {
     market?: pulumi.Input<string>;
     maxcompute?: pulumi.Input<string>;
     mns?: pulumi.Input<string>;
+    mscopensubscription?: pulumi.Input<string>;
     mse?: pulumi.Input<string>;
     nas?: pulumi.Input<string>;
     ons?: pulumi.Input<string>;
@@ -82,6 +86,7 @@ export interface ProviderEndpoint {
     resourcesharing?: pulumi.Input<string>;
     ros?: pulumi.Input<string>;
     scdn?: pulumi.Input<string>;
+    sddp?: pulumi.Input<string>;
     serverless?: pulumi.Input<string>;
     sgw?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
@@ -96,6 +101,46 @@ export namespace adb {
 }
 
 export namespace alb {
+    export interface LoadBalancerAccessLogConfig {
+        /**
+         * The log service that access logs are shipped to.
+         */
+        logProject?: pulumi.Input<string>;
+        /**
+         * The log service that access logs are shipped to.
+         */
+        logStore?: pulumi.Input<string>;
+    }
+
+    export interface LoadBalancerLoadBalancerBillingConfig {
+        /**
+         * The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+         */
+        payType: pulumi.Input<string>;
+    }
+
+    export interface LoadBalancerModificationProtectionConfig {
+        /**
+         * The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+         */
+        reason?: pulumi.Input<string>;
+        /**
+         * Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    export interface LoadBalancerZoneMapping {
+        /**
+         * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+         */
+        vswitchId: pulumi.Input<string>;
+        /**
+         * The ID of the zone to which the ALB instance belongs.
+         */
+        zoneId: pulumi.Input<string>;
+    }
+
     export interface ServerGroupHealthCheckConfig {
         /**
          * The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
@@ -370,6 +415,9 @@ export namespace apigateway {
 export namespace arms {
 }
 
+export namespace bastionhost {
+}
+
 export namespace brain {
 }
 
@@ -377,6 +425,9 @@ export namespace cas {
 }
 
 export namespace cassandra {
+}
+
+export namespace cddc {
 }
 
 export namespace cdn {
@@ -637,7 +688,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -656,7 +707,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -675,7 +726,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -2265,6 +2316,9 @@ export namespace eventbridge {
     }
 }
 
+export namespace expressconnect {
+}
+
 export namespace fc {
     export interface AliasRoutingConfig {
         /**
@@ -2543,6 +2597,9 @@ export namespace kvstore {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
     }
+}
+
+export namespace lindorm {
 }
 
 export namespace log {
@@ -3271,6 +3328,9 @@ export namespace scdn {
         type: pulumi.Input<string>;
     }
 
+}
+
+export namespace sddp {
 }
 
 export namespace slb {

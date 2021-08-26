@@ -3297,6 +3297,7 @@ class GetManagedKubernetesClustersClusterWorkerNodeResult(dict):
 @pulumi.output_type
 class GetRegistryEnterpriseInstancesInstanceResult(dict):
     def __init__(__self__, *,
+                 authorization_token: str,
                  id: str,
                  name: str,
                  namespace_quota: str,
@@ -3306,8 +3307,10 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
                  repo_quota: str,
                  repo_usage: str,
                  specification: str,
+                 temp_username: str,
                  vpc_endpoints: Sequence[str]):
         """
+        :param str authorization_token: The password that was used to log on to the registry.
         :param str id: ID of Container Registry Enterprise Edition instance.
         :param str name: Name of Container Registry Enterprise Edition instance.
         :param str namespace_quota: The max number of namespaces that an instance can create.
@@ -3317,8 +3320,10 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
         :param str repo_quota: The max number of repos that an instance can create.
         :param str repo_usage: The number of repos already created.
         :param str specification: Specification of Container Registry Enterprise Edition instance.
+        :param str temp_username: The username that was used to log on to the registry.
         :param Sequence[str] vpc_endpoints: A list of domains for access on vpc network.
         """
+        pulumi.set(__self__, "authorization_token", authorization_token)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "namespace_quota", namespace_quota)
@@ -3328,7 +3333,16 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
         pulumi.set(__self__, "repo_quota", repo_quota)
         pulumi.set(__self__, "repo_usage", repo_usage)
         pulumi.set(__self__, "specification", specification)
+        pulumi.set(__self__, "temp_username", temp_username)
         pulumi.set(__self__, "vpc_endpoints", vpc_endpoints)
+
+    @property
+    @pulumi.getter(name="authorizationToken")
+    def authorization_token(self) -> str:
+        """
+        The password that was used to log on to the registry.
+        """
+        return pulumi.get(self, "authorization_token")
 
     @property
     @pulumi.getter
@@ -3401,6 +3415,14 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
         Specification of Container Registry Enterprise Edition instance.
         """
         return pulumi.get(self, "specification")
+
+    @property
+    @pulumi.getter(name="tempUsername")
+    def temp_username(self) -> str:
+        """
+        The username that was used to log on to the registry.
+        """
+        return pulumi.get(self, "temp_username")
 
     @property
     @pulumi.getter(name="vpcEndpoints")

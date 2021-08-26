@@ -69,12 +69,22 @@ namespace Pulumi.AliCloud.Cdn
     /// CDN domain config can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example cdn:config-abc123456
+    ///  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example &lt;domain_name&gt;:&lt;function_name&gt;:&lt;config_id&gt;
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example &lt;domain_name&gt;:&lt;function_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cdn/domainConfig:DomainConfig")]
     public partial class DomainConfig : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The ID of the function.
+        /// </summary>
+        [Output("configId")]
+        public Output<string> ConfigId { get; private set; } = null!;
+
         /// <summary>
         /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         /// </summary>
@@ -92,6 +102,12 @@ namespace Pulumi.AliCloud.Cdn
         /// </summary>
         [Output("functionName")]
         public Output<string> FunctionName { get; private set; } = null!;
+
+        /// <summary>
+        /// The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -171,6 +187,12 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class DomainConfigState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ID of the function.
+        /// </summary>
+        [Input("configId")]
+        public Input<string>? ConfigId { get; set; }
+
+        /// <summary>
         /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         /// </summary>
         [Input("domainName")]
@@ -193,6 +215,12 @@ namespace Pulumi.AliCloud.Cdn
         /// </summary>
         [Input("functionName")]
         public Input<string>? FunctionName { get; set; }
+
+        /// <summary>
+        /// The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public DomainConfigState()
         {

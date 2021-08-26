@@ -6,8 +6,10 @@
 from .get_account import *
 from .get_caller_identity import *
 from .get_file_crc64_checksum import *
+from .get_msc_sub_contracts import *
 from .get_regions import *
 from .get_zones import *
+from .msc_sub_contract import *
 from .provider import *
 from ._inputs import *
 from . import outputs
@@ -21,9 +23,11 @@ from . import (
     amqp,
     apigateway,
     arms,
+    bastionhost,
     brain,
     cas,
     cassandra,
+    cddc,
     cdn,
     cen,
     cfg,
@@ -53,6 +57,7 @@ from . import (
     emr,
     ess,
     eventbridge,
+    expressconnect,
     fc,
     fnf,
     ga,
@@ -62,6 +67,7 @@ from . import (
     iot,
     kms,
     kvstore,
+    lindorm,
     log,
     marketplace,
     maxcompute,
@@ -84,6 +90,7 @@ from . import (
     sae,
     sag,
     scdn,
+    sddp,
     slb,
     tsdb,
     videosurveillance,
@@ -96,6 +103,23 @@ from . import (
 def _register_module():
     import pulumi
     from . import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:index/mscSubContract:MscSubContract":
+                return MscSubContract(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "index/mscSubContract", _module_instance)
 
 
     class Package(pulumi.runtime.ResourcePackage):

@@ -86,6 +86,18 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+     */
+    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    /**
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+     */
+    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+     */
+    public readonly password!: pulumi.Output<string | undefined>;
+    /**
      * Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
      */
     public readonly paymentType!: pulumi.Output<string | undefined>;
@@ -124,6 +136,9 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             inputs["endTime"] = state ? state.endTime : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
+            inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            inputs["password"] = state ? state.password : undefined;
             inputs["paymentType"] = state ? state.paymentType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["renewPeriod"] = state ? state.renewPeriod : undefined;
@@ -140,6 +155,9 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             inputs["customOssBucket"] = args ? args.customOssBucket : undefined;
             inputs["instanceName"] = args ? args.instanceName : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
+            inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
+            inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            inputs["password"] = args ? args.password : undefined;
             inputs["paymentType"] = args ? args.paymentType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["renewPeriod"] = args ? args.renewPeriod : undefined;
@@ -180,6 +198,18 @@ export interface RegistryEnterpriseInstanceState {
      */
     readonly instanceType?: pulumi.Input<string>;
     /**
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+     */
+    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    /**
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+     */
+    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+     */
+    readonly password?: pulumi.Input<string>;
+    /**
      * Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
      */
     readonly paymentType?: pulumi.Input<string>;
@@ -217,6 +247,18 @@ export interface RegistryEnterpriseInstanceArgs {
      * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
      */
     readonly instanceType: pulumi.Input<string>;
+    /**
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+     */
+    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    /**
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+     */
+    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+     */
+    readonly password?: pulumi.Input<string>;
     /**
      * Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
      */

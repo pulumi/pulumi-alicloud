@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Auto scaling node pool configuration. For more details, see `scaling_config`.
+        /// Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         /// </summary>
         [Output("scalingConfig")]
         public Output<Outputs.NodePoolScalingConfig> ScalingConfig { get; private set; } = null!;
@@ -476,7 +476,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Auto scaling node pool configuration. For more details, see `scaling_config`.
+        /// Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         /// </summary>
         [Input("scalingConfig")]
         public Input<Inputs.NodePoolScalingConfigArgs>? ScalingConfig { get; set; }
@@ -756,7 +756,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Auto scaling node pool configuration. For more details, see `scaling_config`.
+        /// Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         /// </summary>
         [Input("scalingConfig")]
         public Input<Inputs.NodePoolScalingConfigGetArgs>? ScalingConfig { get; set; }

@@ -25,8 +25,7 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * ```
  */
-export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
-    args = args || {};
+export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     if (!opts) {
         opts = {}
     }
@@ -35,6 +34,7 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:eventbridge/getService:getService", {
+        "code": args.code,
         "enable": args.enable,
     }, opts);
 }
@@ -43,6 +43,7 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceArgs {
+    readonly code: string;
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
      */
@@ -53,6 +54,7 @@ export interface GetServiceArgs {
  * A collection of values returned by getService.
  */
 export interface GetServiceResult {
+    readonly code: string;
     readonly enable?: string;
     /**
      * The provider-assigned unique ID for this managed resource.

@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableDictionary<string, object>> Dimensions { get; private set; } = null!;
 
         /// <summary>
-        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        /// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         /// </summary>
         [Output("effectiveInterval")]
         public Output<string?> EffectiveInterval { get; private set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+        /// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
         /// </summary>
         [Output("statistics")]
         public Output<string> Statistics { get; private set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        /// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         /// </summary>
         [Input("effectiveInterval")]
         public Input<string>? EffectiveInterval { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+        /// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
         /// </summary>
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }
@@ -389,7 +389,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        /// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         /// </summary>
         [Input("effectiveInterval")]
         public Input<string>? EffectiveInterval { get; set; }
@@ -467,7 +467,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+        /// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
         /// </summary>
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }

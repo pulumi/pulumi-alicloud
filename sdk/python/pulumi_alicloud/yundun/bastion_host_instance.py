@@ -22,12 +22,6 @@ class BastionHostInstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a BastionHostInstance resource.
-        :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
-        :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "license_code", license_code)
@@ -43,9 +37,6 @@ class BastionHostInstanceArgs:
     @property
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
-        """
-        Description of the instance. This name can have a string of 1 to 63 characters.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -55,9 +46,6 @@ class BastionHostInstanceArgs:
     @property
     @pulumi.getter(name="licenseCode")
     def license_code(self) -> pulumi.Input[str]:
-        """
-        The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        """
         return pulumi.get(self, "license_code")
 
     @license_code.setter
@@ -67,9 +55,6 @@ class BastionHostInstanceArgs:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        security group IDs configured to Bastionhost.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -79,9 +64,6 @@ class BastionHostInstanceArgs:
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
-        """
-        VSwitch ID configured to Bastionhost.
-        """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -100,9 +82,6 @@ class BastionHostInstanceArgs:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -112,9 +91,6 @@ class BastionHostInstanceArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        A mapping of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -134,12 +110,6 @@ class _BastionHostInstanceState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BastionHostInstance resources.
-        :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -159,9 +129,6 @@ class _BastionHostInstanceState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description of the instance. This name can have a string of 1 to 63 characters.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -171,9 +138,6 @@ class _BastionHostInstanceState:
     @property
     @pulumi.getter(name="licenseCode")
     def license_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        """
         return pulumi.get(self, "license_code")
 
     @license_code.setter
@@ -192,9 +156,6 @@ class _BastionHostInstanceState:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -204,9 +165,6 @@ class _BastionHostInstanceState:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        security group IDs configured to Bastionhost.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -216,9 +174,6 @@ class _BastionHostInstanceState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        A mapping of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -228,9 +183,6 @@ class _BastionHostInstanceState:
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        VSwitch ID configured to Bastionhost.
-        """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -252,47 +204,9 @@ class BastionHostInstance(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Cloud Bastionhost instance resource ("Yundun_bastionhost" is the short term of this product).
-        For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
-
-        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-
-        > **NOTE:** Available in 1.63.0+ .
-
-        > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.yundun.BastionHostInstance("default",
-            description="Terraform-test",
-            license_code="bhah_ent_50_asset",
-            period=1,
-            security_group_ids="sg-test",
-            vswitch_id="v-testVswitch")
-        ```
-
-        ## Import
-
-        Yundun_bastionhost instance can be imported using the id, e.g.
-
-        ```sh
-         $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
-        ```
-
+        Create a BastionHostInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
         ...
     @overload
@@ -301,39 +215,7 @@ class BastionHostInstance(pulumi.CustomResource):
                  args: BastionHostInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Cloud Bastionhost instance resource ("Yundun_bastionhost" is the short term of this product).
-        For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
-
-        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-
-        > **NOTE:** Available in 1.63.0+ .
-
-        > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.yundun.BastionHostInstance("default",
-            description="Terraform-test",
-            license_code="bhah_ent_50_asset",
-            period=1,
-            security_group_ids="sg-test",
-            vswitch_id="v-testVswitch")
-        ```
-
-        ## Import
-
-        Yundun_bastionhost instance can be imported using the id, e.g.
-
-        ```sh
-         $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
-        ```
-
+        Create a BastionHostInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BastionHostInstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -407,12 +289,6 @@ class BastionHostInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -430,17 +306,11 @@ class BastionHostInstance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
-        """
-        Description of the instance. This name can have a string of 1 to 63 characters.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="licenseCode")
     def license_code(self) -> pulumi.Output[str]:
-        """
-        The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        """
         return pulumi.get(self, "license_code")
 
     @property
@@ -451,32 +321,20 @@ class BastionHostInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
-        """
-        security group IDs configured to Bastionhost.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        A mapping of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
-        """
-        VSwitch ID configured to Bastionhost.
-        """
         return pulumi.get(self, "vswitch_id")
 

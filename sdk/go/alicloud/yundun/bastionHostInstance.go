@@ -11,67 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Cloud Bastionhost instance resource ("Yundun_bastionhost" is the short term of this product).
-// For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
-//
-// > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-//
-// > **NOTE:** Available in 1.63.0+ .
-//
-// > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/yundun"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yundun.NewBastionHostInstance(ctx, "_default", &yundun.BastionHostInstanceArgs{
-// 			Description:      pulumi.String("Terraform-test"),
-// 			LicenseCode:      pulumi.String("bhah_ent_50_asset"),
-// 			Period:           pulumi.Int(1),
-// 			SecurityGroupIds: "sg-test",
-// 			VswitchId:        pulumi.String("v-testVswitch"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ## Import
-//
-// Yundun_bastionhost instance can be imported using the id, e.g.
-//
-// ```sh
-//  $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
-// ```
 type BastionHostInstance struct {
 	pulumi.CustomResourceState
 
-	// Description of the instance. This name can have a string of 1 to 63 characters.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
-	Period      pulumi.IntPtrOutput `pulumi:"period"`
-	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// security group IDs configured to Bastionhost.
+	Description      pulumi.StringOutput      `pulumi:"description"`
+	LicenseCode      pulumi.StringOutput      `pulumi:"licenseCode"`
+	Period           pulumi.IntPtrOutput      `pulumi:"period"`
+	ResourceGroupId  pulumi.StringPtrOutput   `pulumi:"resourceGroupId"`
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
-	// VSwitch ID configured to Bastionhost.
-	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
+	Tags             pulumi.MapOutput         `pulumi:"tags"`
+	VswitchId        pulumi.StringOutput      `pulumi:"vswitchId"`
 }
 
 // NewBastionHostInstance registers a new resource with the given unique name, arguments, and options.
@@ -115,35 +64,23 @@ func GetBastionHostInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BastionHostInstance resources.
 type bastionHostInstanceState struct {
-	// Description of the instance. This name can have a string of 1 to 63 characters.
-	Description *string `pulumi:"description"`
-	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-	LicenseCode *string `pulumi:"licenseCode"`
-	Period      *int    `pulumi:"period"`
-	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// security group IDs configured to Bastionhost.
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
-	// VSwitch ID configured to Bastionhost.
-	VswitchId *string `pulumi:"vswitchId"`
+	Description      *string                `pulumi:"description"`
+	LicenseCode      *string                `pulumi:"licenseCode"`
+	Period           *int                   `pulumi:"period"`
+	ResourceGroupId  *string                `pulumi:"resourceGroupId"`
+	SecurityGroupIds []string               `pulumi:"securityGroupIds"`
+	Tags             map[string]interface{} `pulumi:"tags"`
+	VswitchId        *string                `pulumi:"vswitchId"`
 }
 
 type BastionHostInstanceState struct {
-	// Description of the instance. This name can have a string of 1 to 63 characters.
-	Description pulumi.StringPtrInput
-	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-	LicenseCode pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
-	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId pulumi.StringPtrInput
-	// security group IDs configured to Bastionhost.
+	Description      pulumi.StringPtrInput
+	LicenseCode      pulumi.StringPtrInput
+	Period           pulumi.IntPtrInput
+	ResourceGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
-	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
-	// VSwitch ID configured to Bastionhost.
-	VswitchId pulumi.StringPtrInput
+	Tags             pulumi.MapInput
+	VswitchId        pulumi.StringPtrInput
 }
 
 func (BastionHostInstanceState) ElementType() reflect.Type {
@@ -151,36 +88,24 @@ func (BastionHostInstanceState) ElementType() reflect.Type {
 }
 
 type bastionHostInstanceArgs struct {
-	// Description of the instance. This name can have a string of 1 to 63 characters.
-	Description string `pulumi:"description"`
-	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-	LicenseCode string `pulumi:"licenseCode"`
-	Period      *int   `pulumi:"period"`
-	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// security group IDs configured to Bastionhost.
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
-	// VSwitch ID configured to Bastionhost.
-	VswitchId string `pulumi:"vswitchId"`
+	Description      string                 `pulumi:"description"`
+	LicenseCode      string                 `pulumi:"licenseCode"`
+	Period           *int                   `pulumi:"period"`
+	ResourceGroupId  *string                `pulumi:"resourceGroupId"`
+	SecurityGroupIds []string               `pulumi:"securityGroupIds"`
+	Tags             map[string]interface{} `pulumi:"tags"`
+	VswitchId        string                 `pulumi:"vswitchId"`
 }
 
 // The set of arguments for constructing a BastionHostInstance resource.
 type BastionHostInstanceArgs struct {
-	// Description of the instance. This name can have a string of 1 to 63 characters.
-	Description pulumi.StringInput
-	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-	LicenseCode pulumi.StringInput
-	Period      pulumi.IntPtrInput
-	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId pulumi.StringPtrInput
-	// security group IDs configured to Bastionhost.
+	Description      pulumi.StringInput
+	LicenseCode      pulumi.StringInput
+	Period           pulumi.IntPtrInput
+	ResourceGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
-	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
-	// VSwitch ID configured to Bastionhost.
-	VswitchId pulumi.StringInput
+	Tags             pulumi.MapInput
+	VswitchId        pulumi.StringInput
 }
 
 func (BastionHostInstanceArgs) ElementType() reflect.Type {

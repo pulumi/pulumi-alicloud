@@ -7,37 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
-//
-// > **NOTE:** Available in 1.63.0+ .
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/yundun"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yundun.GetBastionHostInstances(ctx, &yundun.GetBastionHostInstancesArgs{
-// 			NameRegex: "^bastionhost",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var splat0 []interface{}
-// 		for _, val0 := range alicloud_yundun_bastionhost_instances.Instance {
-// 			splat0 = append(splat0, val0.Id)
-// 		}
-// 		ctx.Export("instance", splat0)
-// 		return nil
-// 	})
-// }
-// ```
 func GetBastionHostInstances(ctx *pulumi.Context, args *GetBastionHostInstancesArgs, opts ...pulumi.InvokeOption) (*GetBastionHostInstancesResult, error) {
 	var rv GetBastionHostInstancesResult
 	err := ctx.Invoke("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args, &rv, opts...)
@@ -49,36 +18,10 @@ func GetBastionHostInstances(ctx *pulumi.Context, args *GetBastionHostInstancesA
 
 // A collection of arguments for invoking getBastionHostInstances.
 type GetBastionHostInstancesArgs struct {
-	// A regex string to filter results by the instance description.
-	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	// Matched instance IDs to filter data source result.
-	Ids []string `pulumi:"ids"`
-	// File name to persist data source output.
-	OutputFile *string `pulumi:"outputFile"`
-	// A map of tags assigned to the bastionhost instance. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/yundun"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := yundun.GetBastionHostInstances(ctx, &yundun.GetBastionHostInstancesArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	DescriptionRegex *string                `pulumi:"descriptionRegex"`
+	Ids              []string               `pulumi:"ids"`
+	OutputFile       *string                `pulumi:"outputFile"`
+	Tags             map[string]interface{} `pulumi:"tags"`
 }
 
 // A collection of values returned by getBastionHostInstances.
@@ -86,11 +29,9 @@ type GetBastionHostInstancesResult struct {
 	DescriptionRegex *string  `pulumi:"descriptionRegex"`
 	Descriptions     []string `pulumi:"descriptions"`
 	// The provider-assigned unique ID for this managed resource.
-	Id  string   `pulumi:"id"`
-	Ids []string `pulumi:"ids"`
-	// A list of apis. Each element contains the following attributes:
+	Id         string                            `pulumi:"id"`
+	Ids        []string                          `pulumi:"ids"`
 	Instances  []GetBastionHostInstancesInstance `pulumi:"instances"`
 	OutputFile *string                           `pulumi:"outputFile"`
-	// A map of tags assigned to the bastionhost instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags       map[string]interface{}            `pulumi:"tags"`
 }

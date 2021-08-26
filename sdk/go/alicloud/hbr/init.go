@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:hbr/ecsBackupClient:EcsBackupClient":
+		r = &EcsBackupClient{}
+	case "alicloud:hbr/ecsBackupPlan:EcsBackupPlan":
+		r = &EcsBackupPlan{}
+	case "alicloud:hbr/nasBackupPlan:NasBackupPlan":
+		r = &NasBackupPlan{}
 	case "alicloud:hbr/ossBackupPlan:OssBackupPlan":
 		r = &OssBackupPlan{}
 	case "alicloud:hbr/vault:Vault":
@@ -38,6 +44,21 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"hbr/ecsBackupClient",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"hbr/ecsBackupPlan",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"hbr/nasBackupPlan",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"hbr/ossBackupPlan",

@@ -9,88 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Yundun
 {
-    /// <summary>
-    /// Cloud Bastionhost instance resource ("Yundun_bastionhost" is the short term of this product).
-    /// For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
-    /// 
-    /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-    /// 
-    /// &gt; **NOTE:** Available in 1.63.0+ .
-    /// 
-    /// &gt; **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new AliCloud.Yundun.BastionHostInstance("default", new AliCloud.Yundun.BastionHostInstanceArgs
-    ///         {
-    ///             Description = "Terraform-test",
-    ///             LicenseCode = "bhah_ent_50_asset",
-    ///             Period = 1,
-    ///             SecurityGroupIds = "sg-test",
-    ///             VswitchId = "v-testVswitch",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Yundun_bastionhost instance can be imported using the id, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
-    /// ```
-    /// </summary>
     [AliCloudResourceType("alicloud:yundun/bastionHostInstance:BastionHostInstance")]
     public partial class BastionHostInstance : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Description of the instance. This name can have a string of 1 to 63 characters.
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        /// </summary>
         [Output("licenseCode")]
         public Output<string> LicenseCode { get; private set; } = null!;
 
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
-        /// <summary>
-        /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
-        /// <summary>
-        /// security group IDs configured to Bastionhost.
-        /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// VSwitch ID configured to Bastionhost.
-        /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
 
@@ -140,33 +79,20 @@ namespace Pulumi.AliCloud.Yundun
 
     public sealed class BastionHostInstanceArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Description of the instance. This name can have a string of 1 to 63 characters.
-        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
-        /// <summary>
-        /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        /// </summary>
         [Input("licenseCode", required: true)]
         public Input<string> LicenseCode { get; set; } = null!;
 
         [Input("period")]
         public Input<int>? Period { get; set; }
 
-        /// <summary>
-        /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("securityGroupIds", required: true)]
         private InputList<string>? _securityGroupIds;
-
-        /// <summary>
-        /// security group IDs configured to Bastionhost.
-        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
@@ -175,19 +101,12 @@ namespace Pulumi.AliCloud.Yundun
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// VSwitch ID configured to Bastionhost.
-        /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
@@ -198,33 +117,20 @@ namespace Pulumi.AliCloud.Yundun
 
     public sealed class BastionHostInstanceState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Description of the instance. This name can have a string of 1 to 63 characters.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        /// </summary>
         [Input("licenseCode")]
         public Input<string>? LicenseCode { get; set; }
 
         [Input("period")]
         public Input<int>? Period { get; set; }
 
-        /// <summary>
-        /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
-
-        /// <summary>
-        /// security group IDs configured to Bastionhost.
-        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
@@ -233,19 +139,12 @@ namespace Pulumi.AliCloud.Yundun
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// VSwitch ID configured to Bastionhost.
-        /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 

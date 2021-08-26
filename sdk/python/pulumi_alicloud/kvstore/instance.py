@@ -98,7 +98,7 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
@@ -573,7 +573,7 @@ class InstanceArgs:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
         """
-        An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -1001,7 +1001,7 @@ class _InstanceState:
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
@@ -1536,7 +1536,7 @@ class _InstanceState:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
         """
-        An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -2073,7 +2073,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
@@ -2466,7 +2466,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
@@ -2802,7 +2802,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
         """
-        An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 

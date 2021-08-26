@@ -9,10 +9,151 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'LoadBalancerAccessLogConfigArgs',
+    'LoadBalancerLoadBalancerBillingConfigArgs',
+    'LoadBalancerModificationProtectionConfigArgs',
+    'LoadBalancerZoneMappingArgs',
     'ServerGroupHealthCheckConfigArgs',
     'ServerGroupServerArgs',
     'ServerGroupStickySessionConfigArgs',
 ]
+
+@pulumi.input_type
+class LoadBalancerAccessLogConfigArgs:
+    def __init__(__self__, *,
+                 log_project: Optional[pulumi.Input[str]] = None,
+                 log_store: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] log_project: The log service that access logs are shipped to.
+        :param pulumi.Input[str] log_store: The log service that access logs are shipped to.
+        """
+        if log_project is not None:
+            pulumi.set(__self__, "log_project", log_project)
+        if log_store is not None:
+            pulumi.set(__self__, "log_store", log_store)
+
+    @property
+    @pulumi.getter(name="logProject")
+    def log_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The log service that access logs are shipped to.
+        """
+        return pulumi.get(self, "log_project")
+
+    @log_project.setter
+    def log_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_project", value)
+
+    @property
+    @pulumi.getter(name="logStore")
+    def log_store(self) -> Optional[pulumi.Input[str]]:
+        """
+        The log service that access logs are shipped to.
+        """
+        return pulumi.get(self, "log_store")
+
+    @log_store.setter
+    def log_store(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_store", value)
+
+
+@pulumi.input_type
+class LoadBalancerLoadBalancerBillingConfigArgs:
+    def __init__(__self__, *,
+                 pay_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] pay_type: The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        """
+        pulumi.set(__self__, "pay_type", pay_type)
+
+    @property
+    @pulumi.getter(name="payType")
+    def pay_type(self) -> pulumi.Input[str]:
+        """
+        The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        """
+        return pulumi.get(self, "pay_type")
+
+    @pay_type.setter
+    def pay_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pay_type", value)
+
+
+@pulumi.input_type
+class LoadBalancerModificationProtectionConfigArgs:
+    def __init__(__self__, *,
+                 reason: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] reason: The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        :param pulumi.Input[str] status: Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+        """
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class LoadBalancerZoneMappingArgs:
+    def __init__(__self__, *,
+                 vswitch_id: pulumi.Input[str],
+                 zone_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the ALB instance belongs.
+        """
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the zone to which the ALB instance belongs.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.input_type
 class ServerGroupHealthCheckConfigArgs:

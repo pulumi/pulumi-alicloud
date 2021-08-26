@@ -3,6 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .gateway import *
+from .get_gateways import *
 from .get_service import *
 from .get_storage_bundles import *
 from .storage_bundle import *
@@ -20,13 +22,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:cloudstoragegateway/storageBundle:StorageBundle":
+            if typ == "alicloud:cloudstoragegateway/gateway:Gateway":
+                return Gateway(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cloudstoragegateway/storageBundle:StorageBundle":
                 return StorageBundle(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "cloudstoragegateway/gateway", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cloudstoragegateway/storageBundle", _module_instance)
 
 _register_module()

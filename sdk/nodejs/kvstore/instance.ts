@@ -252,7 +252,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceType!: pulumi.Output<string | undefined>;
     /**
-     * An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */
     public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
     /**
@@ -652,7 +652,7 @@ export interface InstanceState {
      */
     readonly instanceType?: pulumi.Input<string>;
     /**
-     * An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */
     readonly kmsEncryptedPassword?: pulumi.Input<string>;
     /**
@@ -897,7 +897,7 @@ export interface InstanceArgs {
      */
     readonly instanceType?: pulumi.Input<string>;
     /**
-     * An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */
     readonly kmsEncryptedPassword?: pulumi.Input<string>;
     /**

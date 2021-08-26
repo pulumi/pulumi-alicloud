@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:alb/loadBalancer:LoadBalancer":
+		r = &LoadBalancer{}
 	case "alicloud:alb/securityPolicy:SecurityPolicy":
 		r = &SecurityPolicy{}
 	case "alicloud:alb/serverGroup:ServerGroup":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"alb/loadBalancer",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"alb/securityPolicy",

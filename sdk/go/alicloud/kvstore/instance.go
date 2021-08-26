@@ -215,7 +215,7 @@ type Instance struct {
 	InstanceReleaseProtection pulumi.BoolOutput `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
-	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
@@ -382,7 +382,7 @@ type instanceState struct {
 	InstanceReleaseProtection *bool `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
 	InstanceType *string `pulumi:"instanceType"`
-	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
@@ -521,7 +521,7 @@ type InstanceState struct {
 	InstanceReleaseProtection pulumi.BoolPtrInput
 	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
 	InstanceType pulumi.StringPtrInput
-	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
@@ -657,7 +657,7 @@ type instanceArgs struct {
 	InstanceReleaseProtection *bool `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
 	InstanceType *string `pulumi:"instanceType"`
-	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
@@ -785,7 +785,7 @@ type InstanceArgs struct {
 	InstanceReleaseProtection pulumi.BoolPtrInput
 	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
 	InstanceType pulumi.StringPtrInput
-	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput

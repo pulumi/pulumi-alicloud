@@ -3,8 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .get_load_balancers import *
 from .get_security_policies import *
 from .get_server_groups import *
+from .get_zones import *
+from .load_balancer import *
 from .security_policy import *
 from .server_group import *
 from ._inputs import *
@@ -22,7 +25,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:alb/securityPolicy:SecurityPolicy":
+            if typ == "alicloud:alb/loadBalancer:LoadBalancer":
+                return LoadBalancer(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:alb/securityPolicy:SecurityPolicy":
                 return SecurityPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:alb/serverGroup:ServerGroup":
                 return ServerGroup(name, pulumi.ResourceOptions(urn=urn))
@@ -31,6 +36,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "alb/loadBalancer", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "alb/securityPolicy", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "alb/serverGroup", _module_instance)
 

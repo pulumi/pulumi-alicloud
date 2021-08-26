@@ -10,15 +10,192 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'LoadBalancerAccessLogConfig',
+    'LoadBalancerLoadBalancerBillingConfig',
+    'LoadBalancerModificationProtectionConfig',
+    'LoadBalancerZoneMapping',
     'ServerGroupHealthCheckConfig',
     'ServerGroupServer',
     'ServerGroupStickySessionConfig',
+    'GetLoadBalancersBalancerResult',
+    'GetLoadBalancersBalancerAccessLogConfigResult',
+    'GetLoadBalancersBalancerDeletionProtectionConfigResult',
+    'GetLoadBalancersBalancerLoadBalancerBillingConfigResult',
+    'GetLoadBalancersBalancerLoadBalancerOperationLockResult',
+    'GetLoadBalancersBalancerModificationProtectionConfigResult',
+    'GetLoadBalancersBalancerZoneMappingResult',
+    'GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult',
     'GetSecurityPoliciesPolicyResult',
     'GetServerGroupsGroupResult',
     'GetServerGroupsGroupHealthCheckConfigResult',
     'GetServerGroupsGroupServerResult',
     'GetServerGroupsGroupStickySessionConfigResult',
+    'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class LoadBalancerAccessLogConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logProject":
+            suggest = "log_project"
+        elif key == "logStore":
+            suggest = "log_store"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerAccessLogConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerAccessLogConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerAccessLogConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_project: Optional[str] = None,
+                 log_store: Optional[str] = None):
+        """
+        :param str log_project: The log service that access logs are shipped to.
+        :param str log_store: The log service that access logs are shipped to.
+        """
+        if log_project is not None:
+            pulumi.set(__self__, "log_project", log_project)
+        if log_store is not None:
+            pulumi.set(__self__, "log_store", log_store)
+
+    @property
+    @pulumi.getter(name="logProject")
+    def log_project(self) -> Optional[str]:
+        """
+        The log service that access logs are shipped to.
+        """
+        return pulumi.get(self, "log_project")
+
+    @property
+    @pulumi.getter(name="logStore")
+    def log_store(self) -> Optional[str]:
+        """
+        The log service that access logs are shipped to.
+        """
+        return pulumi.get(self, "log_store")
+
+
+@pulumi.output_type
+class LoadBalancerLoadBalancerBillingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "payType":
+            suggest = "pay_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerLoadBalancerBillingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerLoadBalancerBillingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerLoadBalancerBillingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pay_type: str):
+        """
+        :param str pay_type: The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        """
+        pulumi.set(__self__, "pay_type", pay_type)
+
+    @property
+    @pulumi.getter(name="payType")
+    def pay_type(self) -> str:
+        """
+        The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        """
+        return pulumi.get(self, "pay_type")
+
+
+@pulumi.output_type
+class LoadBalancerModificationProtectionConfig(dict):
+    def __init__(__self__, *,
+                 reason: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        :param str reason: The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        :param str status: Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+        """
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        """
+        The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class LoadBalancerZoneMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vswitchId":
+            suggest = "vswitch_id"
+        elif key == "zoneId":
+            suggest = "zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerZoneMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerZoneMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerZoneMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param str vswitch_id: The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        :param str zone_id: The ID of the zone to which the ALB instance belongs.
+        """
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The ID of the zone to which the ALB instance belongs.
+        """
+        return pulumi.get(self, "zone_id")
+
 
 @pulumi.output_type
 class ServerGroupHealthCheckConfig(dict):
@@ -396,6 +573,421 @@ class ServerGroupStickySessionConfig(dict):
         The method that is used to handle a cookie. Values: `Server` and `Insert`.
         """
         return pulumi.get(self, "sticky_session_type")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerResult(dict):
+    def __init__(__self__, *,
+                 access_log_configs: Sequence['outputs.GetLoadBalancersBalancerAccessLogConfigResult'],
+                 address_allocated_mode: str,
+                 address_type: str,
+                 bandwidth_package_id: str,
+                 create_time: str,
+                 deletion_protection_configs: Sequence['outputs.GetLoadBalancersBalancerDeletionProtectionConfigResult'],
+                 dns_name: str,
+                 id: str,
+                 load_balancer_billing_configs: Sequence['outputs.GetLoadBalancersBalancerLoadBalancerBillingConfigResult'],
+                 load_balancer_bussiness_status: str,
+                 load_balancer_edition: str,
+                 load_balancer_id: str,
+                 load_balancer_name: str,
+                 load_balancer_operation_locks: Sequence['outputs.GetLoadBalancersBalancerLoadBalancerOperationLockResult'],
+                 modification_protection_configs: Sequence['outputs.GetLoadBalancersBalancerModificationProtectionConfigResult'],
+                 resource_group_id: str,
+                 status: str,
+                 tags: Mapping[str, Any],
+                 vpc_id: str,
+                 zone_mappings: Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult']):
+        """
+        :param Sequence['GetLoadBalancersBalancerAccessLogConfigArgs'] access_log_configs: The Access Logging Configuration Structure.
+        :param str address_allocated_mode: The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
+               uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
+               instance.
+        :param str address_type: The type of IP address that the ALB instance uses to provide services.
+        :param str bandwidth_package_id: The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a
+               public IP address.
+        :param str create_time: The creation time of the resource.
+        :param Sequence['GetLoadBalancersBalancerDeletionProtectionConfigArgs'] deletion_protection_configs: Remove the Protection Configuration.
+        :param str dns_name: DNS Domain Name.
+        :param str id: The ID of the Load Balancer.
+        :param Sequence['GetLoadBalancersBalancerLoadBalancerBillingConfigArgs'] load_balancer_billing_configs: The configuration of the billing method.
+        :param str load_balancer_bussiness_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+        :param str load_balancer_edition: The edition of the ALB instance.
+        :param str load_balancer_id: The first ID of the resource.
+        :param str load_balancer_name: The name of the resource.
+        :param Sequence['GetLoadBalancersBalancerLoadBalancerOperationLockArgs'] load_balancer_operation_locks: The Load Balancing Operations Lock Configuration.
+        :param Sequence['GetLoadBalancersBalancerModificationProtectionConfigArgs'] modification_protection_configs: Modify the Protection Configuration.
+        :param str resource_group_id: The ID of the resource group.
+        :param str status: The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        :param Mapping[str, Any] tags: The tag of the resource.
+        :param str vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+        :param Sequence['GetLoadBalancersBalancerZoneMappingArgs'] zone_mappings: The zones and vSwitches. You must specify at least two zones.
+        """
+        pulumi.set(__self__, "access_log_configs", access_log_configs)
+        pulumi.set(__self__, "address_allocated_mode", address_allocated_mode)
+        pulumi.set(__self__, "address_type", address_type)
+        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_protection_configs", deletion_protection_configs)
+        pulumi.set(__self__, "dns_name", dns_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "load_balancer_billing_configs", load_balancer_billing_configs)
+        pulumi.set(__self__, "load_balancer_bussiness_status", load_balancer_bussiness_status)
+        pulumi.set(__self__, "load_balancer_edition", load_balancer_edition)
+        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        pulumi.set(__self__, "load_balancer_name", load_balancer_name)
+        pulumi.set(__self__, "load_balancer_operation_locks", load_balancer_operation_locks)
+        pulumi.set(__self__, "modification_protection_configs", modification_protection_configs)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "zone_mappings", zone_mappings)
+
+    @property
+    @pulumi.getter(name="accessLogConfigs")
+    def access_log_configs(self) -> Sequence['outputs.GetLoadBalancersBalancerAccessLogConfigResult']:
+        """
+        The Access Logging Configuration Structure.
+        """
+        return pulumi.get(self, "access_log_configs")
+
+    @property
+    @pulumi.getter(name="addressAllocatedMode")
+    def address_allocated_mode(self) -> str:
+        """
+        The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
+        uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
+        instance.
+        """
+        return pulumi.get(self, "address_allocated_mode")
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> str:
+        """
+        The type of IP address that the ALB instance uses to provide services.
+        """
+        return pulumi.get(self, "address_type")
+
+    @property
+    @pulumi.getter(name="bandwidthPackageId")
+    def bandwidth_package_id(self) -> str:
+        """
+        The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a
+        public IP address.
+        """
+        return pulumi.get(self, "bandwidth_package_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtectionConfigs")
+    def deletion_protection_configs(self) -> Sequence['outputs.GetLoadBalancersBalancerDeletionProtectionConfigResult']:
+        """
+        Remove the Protection Configuration.
+        """
+        return pulumi.get(self, "deletion_protection_configs")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> str:
+        """
+        DNS Domain Name.
+        """
+        return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Load Balancer.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="loadBalancerBillingConfigs")
+    def load_balancer_billing_configs(self) -> Sequence['outputs.GetLoadBalancersBalancerLoadBalancerBillingConfigResult']:
+        """
+        The configuration of the billing method.
+        """
+        return pulumi.get(self, "load_balancer_billing_configs")
+
+    @property
+    @pulumi.getter(name="loadBalancerBussinessStatus")
+    def load_balancer_bussiness_status(self) -> str:
+        """
+        Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+        """
+        return pulumi.get(self, "load_balancer_bussiness_status")
+
+    @property
+    @pulumi.getter(name="loadBalancerEdition")
+    def load_balancer_edition(self) -> str:
+        """
+        The edition of the ALB instance.
+        """
+        return pulumi.get(self, "load_balancer_edition")
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @property
+    @pulumi.getter(name="loadBalancerName")
+    def load_balancer_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "load_balancer_name")
+
+    @property
+    @pulumi.getter(name="loadBalancerOperationLocks")
+    def load_balancer_operation_locks(self) -> Sequence['outputs.GetLoadBalancersBalancerLoadBalancerOperationLockResult']:
+        """
+        The Load Balancing Operations Lock Configuration.
+        """
+        return pulumi.get(self, "load_balancer_operation_locks")
+
+    @property
+    @pulumi.getter(name="modificationProtectionConfigs")
+    def modification_protection_configs(self) -> Sequence['outputs.GetLoadBalancersBalancerModificationProtectionConfigResult']:
+        """
+        Modify the Protection Configuration.
+        """
+        return pulumi.get(self, "modification_protection_configs")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="zoneMappings")
+    def zone_mappings(self) -> Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult']:
+        """
+        The zones and vSwitches. You must specify at least two zones.
+        """
+        return pulumi.get(self, "zone_mappings")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerAccessLogConfigResult(dict):
+    def __init__(__self__, *,
+                 log_project: str,
+                 log_store: str):
+        """
+        :param str log_project: The log service that access logs are shipped to.
+        :param str log_store: The logstore that access logs are shipped to.
+        """
+        pulumi.set(__self__, "log_project", log_project)
+        pulumi.set(__self__, "log_store", log_store)
+
+    @property
+    @pulumi.getter(name="logProject")
+    def log_project(self) -> str:
+        """
+        The log service that access logs are shipped to.
+        """
+        return pulumi.get(self, "log_project")
+
+    @property
+    @pulumi.getter(name="logStore")
+    def log_store(self) -> str:
+        """
+        The logstore that access logs are shipped to.
+        """
+        return pulumi.get(self, "log_store")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerDeletionProtectionConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 enabled_time: str):
+        """
+        :param bool enabled: Remove the Protection Status.
+        :param str enabled_time: Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "enabled_time", enabled_time)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Remove the Protection Status.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="enabledTime")
+    def enabled_time(self) -> str:
+        """
+        Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
+        """
+        return pulumi.get(self, "enabled_time")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerLoadBalancerBillingConfigResult(dict):
+    def __init__(__self__, *,
+                 pay_type: str):
+        """
+        :param str pay_type: The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        """
+        pulumi.set(__self__, "pay_type", pay_type)
+
+    @property
+    @pulumi.getter(name="payType")
+    def pay_type(self) -> str:
+        """
+        The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        """
+        return pulumi.get(self, "pay_type")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerLoadBalancerOperationLockResult(dict):
+    def __init__(__self__, *,
+                 lock_reason: str,
+                 lock_type: str):
+        """
+        :param str lock_reason: The Locking of the Reasons. In 'loadbalancerbussinessstatus' **Exception When Effective,.
+        :param str lock_type: The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+        """
+        pulumi.set(__self__, "lock_reason", lock_reason)
+        pulumi.set(__self__, "lock_type", lock_type)
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> str:
+        """
+        The Locking of the Reasons. In 'loadbalancerbussinessstatus' **Exception When Effective,.
+        """
+        return pulumi.get(self, "lock_reason")
+
+    @property
+    @pulumi.getter(name="lockType")
+    def lock_type(self) -> str:
+        """
+        The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+        """
+        return pulumi.get(self, "lock_type")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerModificationProtectionConfigResult(dict):
+    def __init__(__self__, *,
+                 reason: str,
+                 status: str):
+        """
+        :param str reason: The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        :param str status: The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        """
+        pulumi.set(__self__, "reason", reason)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerZoneMappingResult(dict):
+    def __init__(__self__, *,
+                 load_balancer_addresses: Sequence['outputs.GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult'],
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param str vswitch_id: The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        :param str zone_id: The ID of the zone to which the ALB instance belongs.
+        """
+        pulumi.set(__self__, "load_balancer_addresses", load_balancer_addresses)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="loadBalancerAddresses")
+    def load_balancer_addresses(self) -> Sequence['outputs.GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult']:
+        return pulumi.get(self, "load_balancer_addresses")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The ID of the zone to which the ALB instance belongs.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult(dict):
+    def __init__(__self__, *,
+                 address: str):
+        pulumi.set(__self__, "address", address)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        return pulumi.get(self, "address")
 
 
 @pulumi.output_type
@@ -871,5 +1463,45 @@ class GetServerGroupsGroupStickySessionConfigResult(dict):
         The method that is used to handle a cookie. Values: `Server` and `Insert`.
         """
         return pulumi.get(self, "sticky_session_type")
+
+
+@pulumi.output_type
+class GetZonesZoneResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 local_name: str,
+                 zone_id: str):
+        """
+        :param str id: The ID of zone.
+        :param str local_name: The local name.
+        :param str zone_id: The zone ID.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_name", local_name)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of zone.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> str:
+        """
+        The local name.
+        """
+        return pulumi.get(self, "local_name")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
 
 

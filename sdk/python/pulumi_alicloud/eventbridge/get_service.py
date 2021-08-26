@@ -19,7 +19,10 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, enable=None, id=None, status=None):
+    def __init__(__self__, code=None, enable=None, id=None, status=None):
+        if code and not isinstance(code, str):
+            raise TypeError("Expected argument 'code' to be a str")
+        pulumi.set(__self__, "code", code)
         if enable and not isinstance(enable, str):
             raise TypeError("Expected argument 'enable' to be a str")
         pulumi.set(__self__, "enable", enable)
@@ -29,6 +32,11 @@ class GetServiceResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        return pulumi.get(self, "code")
 
     @property
     @pulumi.getter
@@ -58,12 +66,14 @@ class AwaitableGetServiceResult(GetServiceResult):
         if False:
             yield self
         return GetServiceResult(
+            code=self.code,
             enable=self.enable,
             id=self.id,
             status=self.status)
 
 
-def get_service(enable: Optional[str] = None,
+def get_service(code: Optional[str] = None,
+                enable: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
     Using this data source can open Event Bridge service automatically. If the service has been opened, it will return opened.
@@ -74,19 +84,11 @@ def get_service(enable: Optional[str] = None,
 
     > **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.eventbridge.get_service(enable="On")
-    ```
-
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
     """
     __args__ = dict()
+    __args__['code'] = code
     __args__['enable'] = enable
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -95,6 +97,7 @@ def get_service(enable: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eventbridge/getService:getService', __args__, opts=opts, typ=GetServiceResult).value
 
     return AwaitableGetServiceResult(
+        code=__ret__.code,
         enable=__ret__.enable,
         id=__ret__.id,
         status=__ret__.status)

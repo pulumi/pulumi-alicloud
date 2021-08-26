@@ -48,6 +48,8 @@ func GetRegistryEnterpriseInstances(ctx *pulumi.Context, args *GetRegistryEnterp
 
 // A collection of arguments for invoking getRegistryEnterpriseInstances.
 type GetRegistryEnterpriseInstancesArgs struct {
+	// Default to `true`. Set it to true can output instance authorization token.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of ids to filter results by instance id.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by instance name.
@@ -57,6 +59,7 @@ type GetRegistryEnterpriseInstancesArgs struct {
 
 // A collection of values returned by getRegistryEnterpriseInstances.
 type GetRegistryEnterpriseInstancesResult struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of matched Container Registry Enterprise Edition instances. Its element is an instance uuid.

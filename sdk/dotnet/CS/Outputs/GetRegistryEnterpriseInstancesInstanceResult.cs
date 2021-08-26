@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class GetRegistryEnterpriseInstancesInstanceResult
     {
         /// <summary>
+        /// The password that was used to log on to the registry.
+        /// </summary>
+        public readonly string AuthorizationToken;
+        /// <summary>
         /// ID of Container Registry Enterprise Edition instance.
         /// </summary>
         public readonly string Id;
@@ -50,12 +54,18 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string Specification;
         /// <summary>
+        /// The username that was used to log on to the registry.
+        /// </summary>
+        public readonly string TempUsername;
+        /// <summary>
         /// A list of domains for access on vpc network.
         /// </summary>
         public readonly ImmutableArray<string> VpcEndpoints;
 
         [OutputConstructor]
         private GetRegistryEnterpriseInstancesInstanceResult(
+            string authorizationToken,
+
             string id,
 
             string name,
@@ -74,8 +84,11 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string specification,
 
+            string tempUsername,
+
             ImmutableArray<string> vpcEndpoints)
         {
+            AuthorizationToken = authorizationToken;
             Id = id;
             Name = name;
             NamespaceQuota = namespaceQuota;
@@ -85,6 +98,7 @@ namespace Pulumi.AliCloud.CS.Outputs
             RepoQuota = repoQuota;
             RepoUsage = repoUsage;
             Specification = specification;
+            TempUsername = tempUsername;
             VpcEndpoints = vpcEndpoints;
         }
     }

@@ -50,6 +50,12 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class GetRegistryEnterpriseInstancesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `true`. Set it to true can output instance authorization token.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -80,6 +86,7 @@ namespace Pulumi.AliCloud.CS
     [OutputType]
     public sealed class GetRegistryEnterpriseInstancesResult
     {
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -101,6 +108,8 @@ namespace Pulumi.AliCloud.CS
 
         [OutputConstructor]
         private GetRegistryEnterpriseInstancesResult(
+            bool? enableDetails,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -113,6 +122,7 @@ namespace Pulumi.AliCloud.CS
 
             string? outputFile)
         {
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             Instances = instances;

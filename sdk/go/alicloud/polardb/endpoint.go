@@ -95,7 +95,9 @@ import (
 // * `autoAddNewNodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
 // * `endpointConfig` - (Optional) The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
 // * `sslEnabled` - (Optional, Available in v1.121.0+) Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
-// * `netType` - (Optional, Available in v1.121.0+) The network type of the endpoint address.\
+// * `netType` - (Optional, Available in v1.121.0+) The network type of the endpoint address.
+// * `sslAutoRotate` - (Available in v1.132.0+) Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+// * `sslCertificateUrl` - (Available in v1.132.0+) Specifies SSL certificate download link.\
 //     **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\
 //     For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
 //
@@ -113,10 +115,12 @@ type Endpoint struct {
 	DbClusterId     pulumi.StringOutput `pulumi:"dbClusterId"`
 	EndpointConfig  pulumi.MapOutput    `pulumi:"endpointConfig"`
 	// Type of endpoint.
-	EndpointType  pulumi.StringPtrOutput   `pulumi:"endpointType"`
-	NetType       pulumi.StringPtrOutput   `pulumi:"netType"`
-	Nodes         pulumi.StringArrayOutput `pulumi:"nodes"`
-	ReadWriteMode pulumi.StringOutput      `pulumi:"readWriteMode"`
+	EndpointType      pulumi.StringPtrOutput   `pulumi:"endpointType"`
+	NetType           pulumi.StringPtrOutput   `pulumi:"netType"`
+	Nodes             pulumi.StringArrayOutput `pulumi:"nodes"`
+	ReadWriteMode     pulumi.StringOutput      `pulumi:"readWriteMode"`
+	SslAutoRotate     pulumi.StringPtrOutput   `pulumi:"sslAutoRotate"`
+	SslCertificateUrl pulumi.StringOutput      `pulumi:"sslCertificateUrl"`
 	// (Available in v1.121.0+) The SSL connection string.
 	SslConnectionString pulumi.StringOutput    `pulumi:"sslConnectionString"`
 	SslEnabled          pulumi.StringPtrOutput `pulumi:"sslEnabled"`
@@ -160,10 +164,12 @@ type endpointState struct {
 	DbClusterId     *string                `pulumi:"dbClusterId"`
 	EndpointConfig  map[string]interface{} `pulumi:"endpointConfig"`
 	// Type of endpoint.
-	EndpointType  *string  `pulumi:"endpointType"`
-	NetType       *string  `pulumi:"netType"`
-	Nodes         []string `pulumi:"nodes"`
-	ReadWriteMode *string  `pulumi:"readWriteMode"`
+	EndpointType      *string  `pulumi:"endpointType"`
+	NetType           *string  `pulumi:"netType"`
+	Nodes             []string `pulumi:"nodes"`
+	ReadWriteMode     *string  `pulumi:"readWriteMode"`
+	SslAutoRotate     *string  `pulumi:"sslAutoRotate"`
+	SslCertificateUrl *string  `pulumi:"sslCertificateUrl"`
 	// (Available in v1.121.0+) The SSL connection string.
 	SslConnectionString *string `pulumi:"sslConnectionString"`
 	SslEnabled          *string `pulumi:"sslEnabled"`
@@ -176,10 +182,12 @@ type EndpointState struct {
 	DbClusterId     pulumi.StringPtrInput
 	EndpointConfig  pulumi.MapInput
 	// Type of endpoint.
-	EndpointType  pulumi.StringPtrInput
-	NetType       pulumi.StringPtrInput
-	Nodes         pulumi.StringArrayInput
-	ReadWriteMode pulumi.StringPtrInput
+	EndpointType      pulumi.StringPtrInput
+	NetType           pulumi.StringPtrInput
+	Nodes             pulumi.StringArrayInput
+	ReadWriteMode     pulumi.StringPtrInput
+	SslAutoRotate     pulumi.StringPtrInput
+	SslCertificateUrl pulumi.StringPtrInput
 	// (Available in v1.121.0+) The SSL connection string.
 	SslConnectionString pulumi.StringPtrInput
 	SslEnabled          pulumi.StringPtrInput
@@ -200,6 +208,7 @@ type endpointArgs struct {
 	NetType       *string  `pulumi:"netType"`
 	Nodes         []string `pulumi:"nodes"`
 	ReadWriteMode *string  `pulumi:"readWriteMode"`
+	SslAutoRotate *string  `pulumi:"sslAutoRotate"`
 	SslEnabled    *string  `pulumi:"sslEnabled"`
 }
 
@@ -213,6 +222,7 @@ type EndpointArgs struct {
 	NetType       pulumi.StringPtrInput
 	Nodes         pulumi.StringArrayInput
 	ReadWriteMode pulumi.StringPtrInput
+	SslAutoRotate pulumi.StringPtrInput
 	SslEnabled    pulumi.StringPtrInput
 }
 

@@ -16,6 +16,9 @@ class RegistryEnterpriseInstanceArgs:
                  instance_name: pulumi.Input[str],
                  instance_type: pulumi.Input[str],
                  custom_oss_bucket: Optional[pulumi.Input[str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
@@ -25,6 +28,9 @@ class RegistryEnterpriseInstanceArgs:
         :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
         :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
         :param pulumi.Input[str] custom_oss_bucket: Name of your customized oss bucket. Use this bucket as instance storage if set.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] password: The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
         :param pulumi.Input[str] payment_type: Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
         :param pulumi.Input[int] period: Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
         :param pulumi.Input[int] renew_period: Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
@@ -34,6 +40,12 @@ class RegistryEnterpriseInstanceArgs:
         pulumi.set(__self__, "instance_type", instance_type)
         if custom_oss_bucket is not None:
             pulumi.set(__self__, "custom_oss_bucket", custom_oss_bucket)
+        if kms_encrypted_password is not None:
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+        if kms_encryption_context is not None:
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
@@ -78,6 +90,42 @@ class RegistryEnterpriseInstanceArgs:
     @custom_oss_bucket.setter
     def custom_oss_bucket(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_oss_bucket", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptedPassword")
+    def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        """
+        return pulumi.get(self, "kms_encrypted_password")
+
+    @kms_encrypted_password.setter
+    def kms_encrypted_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_encrypted_password", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @kms_encryption_context.setter
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter(name="paymentType")
@@ -136,6 +184,9 @@ class _RegistryEnterpriseInstanceState:
                  end_time: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
@@ -148,6 +199,9 @@ class _RegistryEnterpriseInstanceState:
         :param pulumi.Input[str] end_time: Time of Container Registry Enterprise Edition instance expiration.
         :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
         :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] password: The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
         :param pulumi.Input[str] payment_type: Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
         :param pulumi.Input[int] period: Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
         :param pulumi.Input[int] renew_period: Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
@@ -164,6 +218,12 @@ class _RegistryEnterpriseInstanceState:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if kms_encrypted_password is not None:
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+        if kms_encryption_context is not None:
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
@@ -236,6 +296,42 @@ class _RegistryEnterpriseInstanceState:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter(name="kmsEncryptedPassword")
+    def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        """
+        return pulumi.get(self, "kms_encrypted_password")
+
+    @kms_encrypted_password.setter
+    def kms_encrypted_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_encrypted_password", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @kms_encryption_context.setter
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -304,6 +400,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  custom_oss_bucket: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
@@ -346,6 +445,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] custom_oss_bucket: Name of your customized oss bucket. Use this bucket as instance storage if set.
         :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
         :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] password: The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
         :param pulumi.Input[str] payment_type: Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
         :param pulumi.Input[int] period: Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
         :param pulumi.Input[int] renew_period: Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
@@ -407,6 +509,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  custom_oss_bucket: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
@@ -430,6 +535,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+            __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["password"] = password
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["renew_period"] = renew_period
@@ -452,6 +560,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             end_time: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
+            kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+            kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            password: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             renew_period: Optional[pulumi.Input[int]] = None,
@@ -469,6 +580,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] end_time: Time of Container Registry Enterprise Edition instance expiration.
         :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
         :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] password: The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
         :param pulumi.Input[str] payment_type: Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
         :param pulumi.Input[int] period: Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
         :param pulumi.Input[int] renew_period: Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
@@ -484,6 +598,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         __props__.__dict__["end_time"] = end_time
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+        __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["password"] = password
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["renew_period"] = renew_period
@@ -530,6 +647,30 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
         """
         return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="kmsEncryptedPassword")
+    def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
+        """
+        An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        """
+        return pulumi.get(self, "kms_encrypted_password")
+
+    @property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        """
+        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="paymentType")

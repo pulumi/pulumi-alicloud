@@ -6669,6 +6669,8 @@ func (o GetManagedKubernetesClustersClusterWorkerNodeArrayOutput) Index(i pulumi
 }
 
 type GetRegistryEnterpriseInstancesInstance struct {
+	// The password that was used to log on to the registry.
+	AuthorizationToken string `pulumi:"authorizationToken"`
 	// ID of Container Registry Enterprise Edition instance.
 	Id string `pulumi:"id"`
 	// Name of Container Registry Enterprise Edition instance.
@@ -6687,6 +6689,8 @@ type GetRegistryEnterpriseInstancesInstance struct {
 	RepoUsage string `pulumi:"repoUsage"`
 	// Specification of Container Registry Enterprise Edition instance.
 	Specification string `pulumi:"specification"`
+	// The username that was used to log on to the registry.
+	TempUsername string `pulumi:"tempUsername"`
 	// A list of domains for access on vpc network.
 	VpcEndpoints []string `pulumi:"vpcEndpoints"`
 }
@@ -6703,6 +6707,8 @@ type GetRegistryEnterpriseInstancesInstanceInput interface {
 }
 
 type GetRegistryEnterpriseInstancesInstanceArgs struct {
+	// The password that was used to log on to the registry.
+	AuthorizationToken pulumi.StringInput `pulumi:"authorizationToken"`
 	// ID of Container Registry Enterprise Edition instance.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Name of Container Registry Enterprise Edition instance.
@@ -6721,6 +6727,8 @@ type GetRegistryEnterpriseInstancesInstanceArgs struct {
 	RepoUsage pulumi.StringInput `pulumi:"repoUsage"`
 	// Specification of Container Registry Enterprise Edition instance.
 	Specification pulumi.StringInput `pulumi:"specification"`
+	// The username that was used to log on to the registry.
+	TempUsername pulumi.StringInput `pulumi:"tempUsername"`
 	// A list of domains for access on vpc network.
 	VpcEndpoints pulumi.StringArrayInput `pulumi:"vpcEndpoints"`
 }
@@ -6776,6 +6784,11 @@ func (o GetRegistryEnterpriseInstancesInstanceOutput) ToGetRegistryEnterpriseIns
 	return o
 }
 
+// The password that was used to log on to the registry.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) AuthorizationToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.AuthorizationToken }).(pulumi.StringOutput)
+}
+
 // ID of Container Registry Enterprise Edition instance.
 func (o GetRegistryEnterpriseInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
@@ -6819,6 +6832,11 @@ func (o GetRegistryEnterpriseInstancesInstanceOutput) RepoUsage() pulumi.StringO
 // Specification of Container Registry Enterprise Edition instance.
 func (o GetRegistryEnterpriseInstancesInstanceOutput) Specification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.Specification }).(pulumi.StringOutput)
+}
+
+// The username that was used to log on to the registry.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) TempUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.TempUsername }).(pulumi.StringOutput)
 }
 
 // A list of domains for access on vpc network.

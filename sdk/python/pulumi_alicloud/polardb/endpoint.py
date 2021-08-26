@@ -20,6 +20,7 @@ class EndpointArgs:
                  net_type: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  read_write_mode: Optional[pulumi.Input[str]] = None,
+                 ssl_auto_rotate: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Endpoint resource.
@@ -38,6 +39,8 @@ class EndpointArgs:
             pulumi.set(__self__, "nodes", nodes)
         if read_write_mode is not None:
             pulumi.set(__self__, "read_write_mode", read_write_mode)
+        if ssl_auto_rotate is not None:
+            pulumi.set(__self__, "ssl_auto_rotate", ssl_auto_rotate)
         if ssl_enabled is not None:
             pulumi.set(__self__, "ssl_enabled", ssl_enabled)
 
@@ -108,6 +111,15 @@ class EndpointArgs:
         pulumi.set(self, "read_write_mode", value)
 
     @property
+    @pulumi.getter(name="sslAutoRotate")
+    def ssl_auto_rotate(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ssl_auto_rotate")
+
+    @ssl_auto_rotate.setter
+    def ssl_auto_rotate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_auto_rotate", value)
+
+    @property
     @pulumi.getter(name="sslEnabled")
     def ssl_enabled(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ssl_enabled")
@@ -127,6 +139,8 @@ class _EndpointState:
                  net_type: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  read_write_mode: Optional[pulumi.Input[str]] = None,
+                 ssl_auto_rotate: Optional[pulumi.Input[str]] = None,
+                 ssl_certificate_url: Optional[pulumi.Input[str]] = None,
                  ssl_connection_string: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[str]] = None,
                  ssl_expire_time: Optional[pulumi.Input[str]] = None):
@@ -150,6 +164,10 @@ class _EndpointState:
             pulumi.set(__self__, "nodes", nodes)
         if read_write_mode is not None:
             pulumi.set(__self__, "read_write_mode", read_write_mode)
+        if ssl_auto_rotate is not None:
+            pulumi.set(__self__, "ssl_auto_rotate", ssl_auto_rotate)
+        if ssl_certificate_url is not None:
+            pulumi.set(__self__, "ssl_certificate_url", ssl_certificate_url)
         if ssl_connection_string is not None:
             pulumi.set(__self__, "ssl_connection_string", ssl_connection_string)
         if ssl_enabled is not None:
@@ -224,6 +242,24 @@ class _EndpointState:
         pulumi.set(self, "read_write_mode", value)
 
     @property
+    @pulumi.getter(name="sslAutoRotate")
+    def ssl_auto_rotate(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ssl_auto_rotate")
+
+    @ssl_auto_rotate.setter
+    def ssl_auto_rotate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_auto_rotate", value)
+
+    @property
+    @pulumi.getter(name="sslCertificateUrl")
+    def ssl_certificate_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ssl_certificate_url")
+
+    @ssl_certificate_url.setter
+    def ssl_certificate_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_certificate_url", value)
+
+    @property
     @pulumi.getter(name="sslConnectionString")
     def ssl_connection_string(self) -> Optional[pulumi.Input[str]]:
         """
@@ -269,6 +305,7 @@ class Endpoint(pulumi.CustomResource):
                  net_type: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  read_write_mode: Optional[pulumi.Input[str]] = None,
+                 ssl_auto_rotate: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -319,7 +356,9 @@ class Endpoint(pulumi.CustomResource):
         * `auto_add_new_nodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
         * `endpoint_config` - (Optional) The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         * `ssl_enabled` - (Optional, Available in v1.121.0+) Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
-        * `net_type` - (Optional, Available in v1.121.0+) The network type of the endpoint address.\
+        * `net_type` - (Optional, Available in v1.121.0+) The network type of the endpoint address.
+        * `ssl_auto_rotate` - (Available in v1.132.0+) Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+        * `ssl_certificate_url` - (Available in v1.132.0+) Specifies SSL certificate download link.\
             **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\
             For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
 
@@ -389,7 +428,9 @@ class Endpoint(pulumi.CustomResource):
         * `auto_add_new_nodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
         * `endpoint_config` - (Optional) The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         * `ssl_enabled` - (Optional, Available in v1.121.0+) Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
-        * `net_type` - (Optional, Available in v1.121.0+) The network type of the endpoint address.\
+        * `net_type` - (Optional, Available in v1.121.0+) The network type of the endpoint address.
+        * `ssl_auto_rotate` - (Available in v1.132.0+) Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+        * `ssl_certificate_url` - (Available in v1.132.0+) Specifies SSL certificate download link.\
             **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\
             For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
 
@@ -423,6 +464,7 @@ class Endpoint(pulumi.CustomResource):
                  net_type: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  read_write_mode: Optional[pulumi.Input[str]] = None,
+                 ssl_auto_rotate: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -445,7 +487,9 @@ class Endpoint(pulumi.CustomResource):
             __props__.__dict__["net_type"] = net_type
             __props__.__dict__["nodes"] = nodes
             __props__.__dict__["read_write_mode"] = read_write_mode
+            __props__.__dict__["ssl_auto_rotate"] = ssl_auto_rotate
             __props__.__dict__["ssl_enabled"] = ssl_enabled
+            __props__.__dict__["ssl_certificate_url"] = None
             __props__.__dict__["ssl_connection_string"] = None
             __props__.__dict__["ssl_expire_time"] = None
         super(Endpoint, __self__).__init__(
@@ -465,6 +509,8 @@ class Endpoint(pulumi.CustomResource):
             net_type: Optional[pulumi.Input[str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             read_write_mode: Optional[pulumi.Input[str]] = None,
+            ssl_auto_rotate: Optional[pulumi.Input[str]] = None,
+            ssl_certificate_url: Optional[pulumi.Input[str]] = None,
             ssl_connection_string: Optional[pulumi.Input[str]] = None,
             ssl_enabled: Optional[pulumi.Input[str]] = None,
             ssl_expire_time: Optional[pulumi.Input[str]] = None) -> 'Endpoint':
@@ -490,6 +536,8 @@ class Endpoint(pulumi.CustomResource):
         __props__.__dict__["net_type"] = net_type
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["read_write_mode"] = read_write_mode
+        __props__.__dict__["ssl_auto_rotate"] = ssl_auto_rotate
+        __props__.__dict__["ssl_certificate_url"] = ssl_certificate_url
         __props__.__dict__["ssl_connection_string"] = ssl_connection_string
         __props__.__dict__["ssl_enabled"] = ssl_enabled
         __props__.__dict__["ssl_expire_time"] = ssl_expire_time
@@ -532,6 +580,16 @@ class Endpoint(pulumi.CustomResource):
     @pulumi.getter(name="readWriteMode")
     def read_write_mode(self) -> pulumi.Output[str]:
         return pulumi.get(self, "read_write_mode")
+
+    @property
+    @pulumi.getter(name="sslAutoRotate")
+    def ssl_auto_rotate(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "ssl_auto_rotate")
+
+    @property
+    @pulumi.getter(name="sslCertificateUrl")
+    def ssl_certificate_url(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "ssl_certificate_url")
 
     @property
     @pulumi.getter(name="sslConnectionString")

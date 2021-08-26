@@ -72,7 +72,7 @@ type Alarm struct {
 	ContactGroups pulumi.StringArrayOutput `pulumi:"contactGroups"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions pulumi.MapOutput `pulumi:"dimensions"`
-	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -104,7 +104,7 @@ type Alarm struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringOutput `pulumi:"statistics"`
@@ -167,7 +167,7 @@ type alarmState struct {
 	ContactGroups []string `pulumi:"contactGroups"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
-	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
 	Enabled *bool `pulumi:"enabled"`
@@ -199,7 +199,7 @@ type alarmState struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
-	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics *string `pulumi:"statistics"`
@@ -222,7 +222,7 @@ type AlarmState struct {
 	ContactGroups pulumi.StringArrayInput
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions pulumi.MapInput
-	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default to true.
 	Enabled pulumi.BoolPtrInput
@@ -254,7 +254,7 @@ type AlarmState struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
-	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringPtrInput
@@ -281,7 +281,7 @@ type alarmArgs struct {
 	ContactGroups []string `pulumi:"contactGroups"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
-	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
 	Enabled *bool `pulumi:"enabled"`
@@ -313,7 +313,7 @@ type alarmArgs struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
-	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics *string `pulumi:"statistics"`
@@ -335,7 +335,7 @@ type AlarmArgs struct {
 	ContactGroups pulumi.StringArrayInput
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions pulumi.MapInput
-	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default to true.
 	Enabled pulumi.BoolPtrInput
@@ -367,7 +367,7 @@ type AlarmArgs struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
-	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringPtrInput
