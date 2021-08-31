@@ -78,13 +78,14 @@ type providerArgs struct {
 	SecretKey *string `pulumi:"secretKey"`
 	// security token. A security token is only required if you are using Security Token Service.
 	SecurityToken *string `pulumi:"securityToken"`
+	// The security transport for the assume role invoking.
+	SecurityTransport *string `pulumi:"securityTransport"`
 	// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 	SharedCredentialsFile *string `pulumi:"sharedCredentialsFile"`
 	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
 	// that are not public (yet).
 	SkipRegionValidation *bool `pulumi:"skipRegionValidation"`
-	// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-	// console.
+	// The source ip for the assume role invoking.
 	SourceIp *string `pulumi:"sourceIp"`
 }
 
@@ -125,13 +126,14 @@ type ProviderArgs struct {
 	SecretKey pulumi.StringPtrInput
 	// security token. A security token is only required if you are using Security Token Service.
 	SecurityToken pulumi.StringPtrInput
+	// The security transport for the assume role invoking.
+	SecurityTransport pulumi.StringPtrInput
 	// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 	SharedCredentialsFile pulumi.StringPtrInput
 	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
 	// that are not public (yet).
 	SkipRegionValidation pulumi.BoolPtrInput
-	// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-	// console.
+	// The source ip for the assume role invoking.
 	SourceIp pulumi.StringPtrInput
 }
 

@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Slb
     /// frontend_port | http &amp; https &amp; tcp &amp; udp | 1-65535 |
     /// protocol | http &amp; https &amp; tcp &amp; udp |
     /// bandwidth | http &amp; https &amp; tcp &amp; udp | -1 / 1-1000 |
-    /// scheduler | http &amp; https &amp; tcp &amp; udp | wrr rr or wlc |
+    /// scheduler | http &amp; https &amp; tcp &amp; udp | wrr, rr, wlc, tch, qch |
     /// sticky_session | http &amp; https | on or off |
     /// sticky_session_type | http &amp; https | insert or server |
     /// cookie_timeout | http &amp; https | 1-86400  |
@@ -273,7 +273,8 @@ namespace Pulumi.AliCloud.Slb
         public Output<int?> RequestTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+        /// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         /// </summary>
         [Output("scheduler")]
         public Output<string?> Scheduler { get; private set; } = null!;
@@ -571,7 +572,8 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? RequestTimeout { get; set; }
 
         /// <summary>
-        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+        /// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
@@ -830,7 +832,8 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? RequestTimeout { get; set; }
 
         /// <summary>
-        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+        /// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }

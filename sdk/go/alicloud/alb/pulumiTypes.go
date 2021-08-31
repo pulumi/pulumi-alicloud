@@ -10,6 +10,1150 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AclAclEntry struct {
+	// The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+	Description *string `pulumi:"description"`
+	// The IP address for the ACL entry.
+	Entry *string `pulumi:"entry"`
+	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	Status *string `pulumi:"status"`
+}
+
+// AclAclEntryInput is an input type that accepts AclAclEntryArgs and AclAclEntryOutput values.
+// You can construct a concrete instance of `AclAclEntryInput` via:
+//
+//          AclAclEntryArgs{...}
+type AclAclEntryInput interface {
+	pulumi.Input
+
+	ToAclAclEntryOutput() AclAclEntryOutput
+	ToAclAclEntryOutputWithContext(context.Context) AclAclEntryOutput
+}
+
+type AclAclEntryArgs struct {
+	// The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The IP address for the ACL entry.
+	Entry pulumi.StringPtrInput `pulumi:"entry"`
+	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (AclAclEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclAclEntry)(nil)).Elem()
+}
+
+func (i AclAclEntryArgs) ToAclAclEntryOutput() AclAclEntryOutput {
+	return i.ToAclAclEntryOutputWithContext(context.Background())
+}
+
+func (i AclAclEntryArgs) ToAclAclEntryOutputWithContext(ctx context.Context) AclAclEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclAclEntryOutput)
+}
+
+// AclAclEntryArrayInput is an input type that accepts AclAclEntryArray and AclAclEntryArrayOutput values.
+// You can construct a concrete instance of `AclAclEntryArrayInput` via:
+//
+//          AclAclEntryArray{ AclAclEntryArgs{...} }
+type AclAclEntryArrayInput interface {
+	pulumi.Input
+
+	ToAclAclEntryArrayOutput() AclAclEntryArrayOutput
+	ToAclAclEntryArrayOutputWithContext(context.Context) AclAclEntryArrayOutput
+}
+
+type AclAclEntryArray []AclAclEntryInput
+
+func (AclAclEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclAclEntry)(nil)).Elem()
+}
+
+func (i AclAclEntryArray) ToAclAclEntryArrayOutput() AclAclEntryArrayOutput {
+	return i.ToAclAclEntryArrayOutputWithContext(context.Background())
+}
+
+func (i AclAclEntryArray) ToAclAclEntryArrayOutputWithContext(ctx context.Context) AclAclEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclAclEntryArrayOutput)
+}
+
+type AclAclEntryOutput struct{ *pulumi.OutputState }
+
+func (AclAclEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclAclEntry)(nil)).Elem()
+}
+
+func (o AclAclEntryOutput) ToAclAclEntryOutput() AclAclEntryOutput {
+	return o
+}
+
+func (o AclAclEntryOutput) ToAclAclEntryOutputWithContext(ctx context.Context) AclAclEntryOutput {
+	return o
+}
+
+// The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+func (o AclAclEntryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The IP address for the ACL entry.
+func (o AclAclEntryOutput) Entry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclAclEntry) *string { return v.Entry }).(pulumi.StringPtrOutput)
+}
+
+// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+func (o AclAclEntryOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclAclEntry) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type AclAclEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (AclAclEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclAclEntry)(nil)).Elem()
+}
+
+func (o AclAclEntryArrayOutput) ToAclAclEntryArrayOutput() AclAclEntryArrayOutput {
+	return o
+}
+
+func (o AclAclEntryArrayOutput) ToAclAclEntryArrayOutputWithContext(ctx context.Context) AclAclEntryArrayOutput {
+	return o
+}
+
+func (o AclAclEntryArrayOutput) Index(i pulumi.IntInput) AclAclEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclAclEntry {
+		return vs[0].([]AclAclEntry)[vs[1].(int)]
+	}).(AclAclEntryOutput)
+}
+
+type ListenerAccessLogTracingConfig struct {
+	// Xtrace Function. Value: True Or False . Default Value: False.
+	TracingEnabled *bool `pulumi:"tracingEnabled"`
+	// Xtrace Sampling Rate. Value: **1~10000**.
+	TracingSample *int `pulumi:"tracingSample"`
+	// Xtrace Type Value Is **Zipkin**.
+	TracingType *string `pulumi:"tracingType"`
+}
+
+// ListenerAccessLogTracingConfigInput is an input type that accepts ListenerAccessLogTracingConfigArgs and ListenerAccessLogTracingConfigOutput values.
+// You can construct a concrete instance of `ListenerAccessLogTracingConfigInput` via:
+//
+//          ListenerAccessLogTracingConfigArgs{...}
+type ListenerAccessLogTracingConfigInput interface {
+	pulumi.Input
+
+	ToListenerAccessLogTracingConfigOutput() ListenerAccessLogTracingConfigOutput
+	ToListenerAccessLogTracingConfigOutputWithContext(context.Context) ListenerAccessLogTracingConfigOutput
+}
+
+type ListenerAccessLogTracingConfigArgs struct {
+	// Xtrace Function. Value: True Or False . Default Value: False.
+	TracingEnabled pulumi.BoolPtrInput `pulumi:"tracingEnabled"`
+	// Xtrace Sampling Rate. Value: **1~10000**.
+	TracingSample pulumi.IntPtrInput `pulumi:"tracingSample"`
+	// Xtrace Type Value Is **Zipkin**.
+	TracingType pulumi.StringPtrInput `pulumi:"tracingType"`
+}
+
+func (ListenerAccessLogTracingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerAccessLogTracingConfig)(nil)).Elem()
+}
+
+func (i ListenerAccessLogTracingConfigArgs) ToListenerAccessLogTracingConfigOutput() ListenerAccessLogTracingConfigOutput {
+	return i.ToListenerAccessLogTracingConfigOutputWithContext(context.Background())
+}
+
+func (i ListenerAccessLogTracingConfigArgs) ToListenerAccessLogTracingConfigOutputWithContext(ctx context.Context) ListenerAccessLogTracingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerAccessLogTracingConfigOutput)
+}
+
+func (i ListenerAccessLogTracingConfigArgs) ToListenerAccessLogTracingConfigPtrOutput() ListenerAccessLogTracingConfigPtrOutput {
+	return i.ToListenerAccessLogTracingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListenerAccessLogTracingConfigArgs) ToListenerAccessLogTracingConfigPtrOutputWithContext(ctx context.Context) ListenerAccessLogTracingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerAccessLogTracingConfigOutput).ToListenerAccessLogTracingConfigPtrOutputWithContext(ctx)
+}
+
+// ListenerAccessLogTracingConfigPtrInput is an input type that accepts ListenerAccessLogTracingConfigArgs, ListenerAccessLogTracingConfigPtr and ListenerAccessLogTracingConfigPtrOutput values.
+// You can construct a concrete instance of `ListenerAccessLogTracingConfigPtrInput` via:
+//
+//          ListenerAccessLogTracingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ListenerAccessLogTracingConfigPtrInput interface {
+	pulumi.Input
+
+	ToListenerAccessLogTracingConfigPtrOutput() ListenerAccessLogTracingConfigPtrOutput
+	ToListenerAccessLogTracingConfigPtrOutputWithContext(context.Context) ListenerAccessLogTracingConfigPtrOutput
+}
+
+type listenerAccessLogTracingConfigPtrType ListenerAccessLogTracingConfigArgs
+
+func ListenerAccessLogTracingConfigPtr(v *ListenerAccessLogTracingConfigArgs) ListenerAccessLogTracingConfigPtrInput {
+	return (*listenerAccessLogTracingConfigPtrType)(v)
+}
+
+func (*listenerAccessLogTracingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerAccessLogTracingConfig)(nil)).Elem()
+}
+
+func (i *listenerAccessLogTracingConfigPtrType) ToListenerAccessLogTracingConfigPtrOutput() ListenerAccessLogTracingConfigPtrOutput {
+	return i.ToListenerAccessLogTracingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listenerAccessLogTracingConfigPtrType) ToListenerAccessLogTracingConfigPtrOutputWithContext(ctx context.Context) ListenerAccessLogTracingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerAccessLogTracingConfigPtrOutput)
+}
+
+type ListenerAccessLogTracingConfigOutput struct{ *pulumi.OutputState }
+
+func (ListenerAccessLogTracingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerAccessLogTracingConfig)(nil)).Elem()
+}
+
+func (o ListenerAccessLogTracingConfigOutput) ToListenerAccessLogTracingConfigOutput() ListenerAccessLogTracingConfigOutput {
+	return o
+}
+
+func (o ListenerAccessLogTracingConfigOutput) ToListenerAccessLogTracingConfigOutputWithContext(ctx context.Context) ListenerAccessLogTracingConfigOutput {
+	return o
+}
+
+func (o ListenerAccessLogTracingConfigOutput) ToListenerAccessLogTracingConfigPtrOutput() ListenerAccessLogTracingConfigPtrOutput {
+	return o.ToListenerAccessLogTracingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListenerAccessLogTracingConfigOutput) ToListenerAccessLogTracingConfigPtrOutputWithContext(ctx context.Context) ListenerAccessLogTracingConfigPtrOutput {
+	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *ListenerAccessLogTracingConfig {
+		return &v
+	}).(ListenerAccessLogTracingConfigPtrOutput)
+}
+
+// Xtrace Function. Value: True Or False . Default Value: False.
+func (o ListenerAccessLogTracingConfigOutput) TracingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *bool { return v.TracingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Xtrace Sampling Rate. Value: **1~10000**.
+func (o ListenerAccessLogTracingConfigOutput) TracingSample() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *int { return v.TracingSample }).(pulumi.IntPtrOutput)
+}
+
+// Xtrace Type Value Is **Zipkin**.
+func (o ListenerAccessLogTracingConfigOutput) TracingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *string { return v.TracingType }).(pulumi.StringPtrOutput)
+}
+
+type ListenerAccessLogTracingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListenerAccessLogTracingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerAccessLogTracingConfig)(nil)).Elem()
+}
+
+func (o ListenerAccessLogTracingConfigPtrOutput) ToListenerAccessLogTracingConfigPtrOutput() ListenerAccessLogTracingConfigPtrOutput {
+	return o
+}
+
+func (o ListenerAccessLogTracingConfigPtrOutput) ToListenerAccessLogTracingConfigPtrOutputWithContext(ctx context.Context) ListenerAccessLogTracingConfigPtrOutput {
+	return o
+}
+
+func (o ListenerAccessLogTracingConfigPtrOutput) Elem() ListenerAccessLogTracingConfigOutput {
+	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) ListenerAccessLogTracingConfig { return *v }).(ListenerAccessLogTracingConfigOutput)
+}
+
+// Xtrace Function. Value: True Or False . Default Value: False.
+func (o ListenerAccessLogTracingConfigPtrOutput) TracingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TracingEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Xtrace Sampling Rate. Value: **1~10000**.
+func (o ListenerAccessLogTracingConfigPtrOutput) TracingSample() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TracingSample
+	}).(pulumi.IntPtrOutput)
+}
+
+// Xtrace Type Value Is **Zipkin**.
+func (o ListenerAccessLogTracingConfigPtrOutput) TracingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TracingType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListenerCertificate struct {
+	CertificateId *string `pulumi:"certificateId"`
+}
+
+// ListenerCertificateInput is an input type that accepts ListenerCertificateArgs and ListenerCertificateOutput values.
+// You can construct a concrete instance of `ListenerCertificateInput` via:
+//
+//          ListenerCertificateArgs{...}
+type ListenerCertificateInput interface {
+	pulumi.Input
+
+	ToListenerCertificateOutput() ListenerCertificateOutput
+	ToListenerCertificateOutputWithContext(context.Context) ListenerCertificateOutput
+}
+
+type ListenerCertificateArgs struct {
+	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
+}
+
+func (ListenerCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerCertificate)(nil)).Elem()
+}
+
+func (i ListenerCertificateArgs) ToListenerCertificateOutput() ListenerCertificateOutput {
+	return i.ToListenerCertificateOutputWithContext(context.Background())
+}
+
+func (i ListenerCertificateArgs) ToListenerCertificateOutputWithContext(ctx context.Context) ListenerCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerCertificateOutput)
+}
+
+// ListenerCertificateArrayInput is an input type that accepts ListenerCertificateArray and ListenerCertificateArrayOutput values.
+// You can construct a concrete instance of `ListenerCertificateArrayInput` via:
+//
+//          ListenerCertificateArray{ ListenerCertificateArgs{...} }
+type ListenerCertificateArrayInput interface {
+	pulumi.Input
+
+	ToListenerCertificateArrayOutput() ListenerCertificateArrayOutput
+	ToListenerCertificateArrayOutputWithContext(context.Context) ListenerCertificateArrayOutput
+}
+
+type ListenerCertificateArray []ListenerCertificateInput
+
+func (ListenerCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerCertificate)(nil)).Elem()
+}
+
+func (i ListenerCertificateArray) ToListenerCertificateArrayOutput() ListenerCertificateArrayOutput {
+	return i.ToListenerCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i ListenerCertificateArray) ToListenerCertificateArrayOutputWithContext(ctx context.Context) ListenerCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerCertificateArrayOutput)
+}
+
+type ListenerCertificateOutput struct{ *pulumi.OutputState }
+
+func (ListenerCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerCertificate)(nil)).Elem()
+}
+
+func (o ListenerCertificateOutput) ToListenerCertificateOutput() ListenerCertificateOutput {
+	return o
+}
+
+func (o ListenerCertificateOutput) ToListenerCertificateOutputWithContext(ctx context.Context) ListenerCertificateOutput {
+	return o
+}
+
+func (o ListenerCertificateOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerCertificate) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+}
+
+type ListenerCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (ListenerCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerCertificate)(nil)).Elem()
+}
+
+func (o ListenerCertificateArrayOutput) ToListenerCertificateArrayOutput() ListenerCertificateArrayOutput {
+	return o
+}
+
+func (o ListenerCertificateArrayOutput) ToListenerCertificateArrayOutputWithContext(ctx context.Context) ListenerCertificateArrayOutput {
+	return o
+}
+
+func (o ListenerCertificateArrayOutput) Index(i pulumi.IntInput) ListenerCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListenerCertificate {
+		return vs[0].([]ListenerCertificate)[vs[1].(int)]
+	}).(ListenerCertificateOutput)
+}
+
+type ListenerDefaultAction struct {
+	// The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+	ForwardGroupConfig ListenerDefaultActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
+	// Action Type.
+	Type string `pulumi:"type"`
+}
+
+// ListenerDefaultActionInput is an input type that accepts ListenerDefaultActionArgs and ListenerDefaultActionOutput values.
+// You can construct a concrete instance of `ListenerDefaultActionInput` via:
+//
+//          ListenerDefaultActionArgs{...}
+type ListenerDefaultActionInput interface {
+	pulumi.Input
+
+	ToListenerDefaultActionOutput() ListenerDefaultActionOutput
+	ToListenerDefaultActionOutputWithContext(context.Context) ListenerDefaultActionOutput
+}
+
+type ListenerDefaultActionArgs struct {
+	// The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+	ForwardGroupConfig ListenerDefaultActionForwardGroupConfigInput `pulumi:"forwardGroupConfig"`
+	// Action Type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ListenerDefaultActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerDefaultAction)(nil)).Elem()
+}
+
+func (i ListenerDefaultActionArgs) ToListenerDefaultActionOutput() ListenerDefaultActionOutput {
+	return i.ToListenerDefaultActionOutputWithContext(context.Background())
+}
+
+func (i ListenerDefaultActionArgs) ToListenerDefaultActionOutputWithContext(ctx context.Context) ListenerDefaultActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionOutput)
+}
+
+// ListenerDefaultActionArrayInput is an input type that accepts ListenerDefaultActionArray and ListenerDefaultActionArrayOutput values.
+// You can construct a concrete instance of `ListenerDefaultActionArrayInput` via:
+//
+//          ListenerDefaultActionArray{ ListenerDefaultActionArgs{...} }
+type ListenerDefaultActionArrayInput interface {
+	pulumi.Input
+
+	ToListenerDefaultActionArrayOutput() ListenerDefaultActionArrayOutput
+	ToListenerDefaultActionArrayOutputWithContext(context.Context) ListenerDefaultActionArrayOutput
+}
+
+type ListenerDefaultActionArray []ListenerDefaultActionInput
+
+func (ListenerDefaultActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerDefaultAction)(nil)).Elem()
+}
+
+func (i ListenerDefaultActionArray) ToListenerDefaultActionArrayOutput() ListenerDefaultActionArrayOutput {
+	return i.ToListenerDefaultActionArrayOutputWithContext(context.Background())
+}
+
+func (i ListenerDefaultActionArray) ToListenerDefaultActionArrayOutputWithContext(ctx context.Context) ListenerDefaultActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionArrayOutput)
+}
+
+type ListenerDefaultActionOutput struct{ *pulumi.OutputState }
+
+func (ListenerDefaultActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerDefaultAction)(nil)).Elem()
+}
+
+func (o ListenerDefaultActionOutput) ToListenerDefaultActionOutput() ListenerDefaultActionOutput {
+	return o
+}
+
+func (o ListenerDefaultActionOutput) ToListenerDefaultActionOutputWithContext(ctx context.Context) ListenerDefaultActionOutput {
+	return o
+}
+
+// The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+func (o ListenerDefaultActionOutput) ForwardGroupConfig() ListenerDefaultActionForwardGroupConfigOutput {
+	return o.ApplyT(func(v ListenerDefaultAction) ListenerDefaultActionForwardGroupConfig { return v.ForwardGroupConfig }).(ListenerDefaultActionForwardGroupConfigOutput)
+}
+
+// Action Type.
+func (o ListenerDefaultActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ListenerDefaultAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ListenerDefaultActionArrayOutput struct{ *pulumi.OutputState }
+
+func (ListenerDefaultActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerDefaultAction)(nil)).Elem()
+}
+
+func (o ListenerDefaultActionArrayOutput) ToListenerDefaultActionArrayOutput() ListenerDefaultActionArrayOutput {
+	return o
+}
+
+func (o ListenerDefaultActionArrayOutput) ToListenerDefaultActionArrayOutputWithContext(ctx context.Context) ListenerDefaultActionArrayOutput {
+	return o
+}
+
+func (o ListenerDefaultActionArrayOutput) Index(i pulumi.IntInput) ListenerDefaultActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListenerDefaultAction {
+		return vs[0].([]ListenerDefaultAction)[vs[1].(int)]
+	}).(ListenerDefaultActionOutput)
+}
+
+type ListenerDefaultActionForwardGroupConfig struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples []ListenerDefaultActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
+}
+
+// ListenerDefaultActionForwardGroupConfigInput is an input type that accepts ListenerDefaultActionForwardGroupConfigArgs and ListenerDefaultActionForwardGroupConfigOutput values.
+// You can construct a concrete instance of `ListenerDefaultActionForwardGroupConfigInput` via:
+//
+//          ListenerDefaultActionForwardGroupConfigArgs{...}
+type ListenerDefaultActionForwardGroupConfigInput interface {
+	pulumi.Input
+
+	ToListenerDefaultActionForwardGroupConfigOutput() ListenerDefaultActionForwardGroupConfigOutput
+	ToListenerDefaultActionForwardGroupConfigOutputWithContext(context.Context) ListenerDefaultActionForwardGroupConfigOutput
+}
+
+type ListenerDefaultActionForwardGroupConfigArgs struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
+}
+
+func (ListenerDefaultActionForwardGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerDefaultActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i ListenerDefaultActionForwardGroupConfigArgs) ToListenerDefaultActionForwardGroupConfigOutput() ListenerDefaultActionForwardGroupConfigOutput {
+	return i.ToListenerDefaultActionForwardGroupConfigOutputWithContext(context.Background())
+}
+
+func (i ListenerDefaultActionForwardGroupConfigArgs) ToListenerDefaultActionForwardGroupConfigOutputWithContext(ctx context.Context) ListenerDefaultActionForwardGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardGroupConfigOutput)
+}
+
+type ListenerDefaultActionForwardGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (ListenerDefaultActionForwardGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerDefaultActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o ListenerDefaultActionForwardGroupConfigOutput) ToListenerDefaultActionForwardGroupConfigOutput() ListenerDefaultActionForwardGroupConfigOutput {
+	return o
+}
+
+func (o ListenerDefaultActionForwardGroupConfigOutput) ToListenerDefaultActionForwardGroupConfigOutputWithContext(ctx context.Context) ListenerDefaultActionForwardGroupConfigOutput {
+	return o
+}
+
+// The destination server group to which requests are forwarded.
+func (o ListenerDefaultActionForwardGroupConfigOutput) ServerGroupTuples() ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v ListenerDefaultActionForwardGroupConfig) []ListenerDefaultActionForwardGroupConfigServerGroupTuple {
+		return v.ServerGroupTuples
+	}).(ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type ListenerDefaultActionForwardGroupConfigServerGroupTuple struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId string `pulumi:"serverGroupId"`
+}
+
+// ListenerDefaultActionForwardGroupConfigServerGroupTupleInput is an input type that accepts ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs and ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput values.
+// You can construct a concrete instance of `ListenerDefaultActionForwardGroupConfigServerGroupTupleInput` via:
+//
+//          ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{...}
+type ListenerDefaultActionForwardGroupConfigServerGroupTupleInput interface {
+	pulumi.Input
+
+	ToListenerDefaultActionForwardGroupConfigServerGroupTupleOutput() ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput
+	ToListenerDefaultActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Context) ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput
+}
+
+type ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
+}
+
+func (ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerDefaultActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs) ToListenerDefaultActionForwardGroupConfigServerGroupTupleOutput() ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput {
+	return i.ToListenerDefaultActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Background())
+}
+
+func (i ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs) ToListenerDefaultActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+// ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput is an input type that accepts ListenerDefaultActionForwardGroupConfigServerGroupTupleArray and ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput values.
+// You can construct a concrete instance of `ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput` via:
+//
+//          ListenerDefaultActionForwardGroupConfigServerGroupTupleArray{ ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{...} }
+type ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput interface {
+	pulumi.Input
+
+	ToListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput() ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput
+	ToListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Context) ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput
+}
+
+type ListenerDefaultActionForwardGroupConfigServerGroupTupleArray []ListenerDefaultActionForwardGroupConfigServerGroupTupleInput
+
+func (ListenerDefaultActionForwardGroupConfigServerGroupTupleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerDefaultActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i ListenerDefaultActionForwardGroupConfigServerGroupTupleArray) ToListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput() ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return i.ToListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Background())
+}
+
+func (i ListenerDefaultActionForwardGroupConfigServerGroupTupleArray) ToListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput struct{ *pulumi.OutputState }
+
+func (ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerDefaultActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ToListenerDefaultActionForwardGroupConfigServerGroupTupleOutput() ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ToListenerDefaultActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+// The ID of the destination server group to which requests are forwarded.
+func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v ListenerDefaultActionForwardGroupConfigServerGroupTuple) string { return v.ServerGroupId }).(pulumi.StringOutput)
+}
+
+type ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput struct{ *pulumi.OutputState }
+
+func (ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerDefaultActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput) ToListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput() ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput) ToListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput) Index(i pulumi.IntInput) ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListenerDefaultActionForwardGroupConfigServerGroupTuple {
+		return vs[0].([]ListenerDefaultActionForwardGroupConfigServerGroupTuple)[vs[1].(int)]
+	}).(ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+type ListenerQuicConfig struct {
+	// There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
+	QuicListenerId *string `pulumi:"quicListenerId"`
+	// Indicates Whether to Enable the QuIC Upgrade.
+	QuicUpgradeEnabled *bool `pulumi:"quicUpgradeEnabled"`
+}
+
+// ListenerQuicConfigInput is an input type that accepts ListenerQuicConfigArgs and ListenerQuicConfigOutput values.
+// You can construct a concrete instance of `ListenerQuicConfigInput` via:
+//
+//          ListenerQuicConfigArgs{...}
+type ListenerQuicConfigInput interface {
+	pulumi.Input
+
+	ToListenerQuicConfigOutput() ListenerQuicConfigOutput
+	ToListenerQuicConfigOutputWithContext(context.Context) ListenerQuicConfigOutput
+}
+
+type ListenerQuicConfigArgs struct {
+	// There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
+	QuicListenerId pulumi.StringPtrInput `pulumi:"quicListenerId"`
+	// Indicates Whether to Enable the QuIC Upgrade.
+	QuicUpgradeEnabled pulumi.BoolPtrInput `pulumi:"quicUpgradeEnabled"`
+}
+
+func (ListenerQuicConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerQuicConfig)(nil)).Elem()
+}
+
+func (i ListenerQuicConfigArgs) ToListenerQuicConfigOutput() ListenerQuicConfigOutput {
+	return i.ToListenerQuicConfigOutputWithContext(context.Background())
+}
+
+func (i ListenerQuicConfigArgs) ToListenerQuicConfigOutputWithContext(ctx context.Context) ListenerQuicConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerQuicConfigOutput)
+}
+
+func (i ListenerQuicConfigArgs) ToListenerQuicConfigPtrOutput() ListenerQuicConfigPtrOutput {
+	return i.ToListenerQuicConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListenerQuicConfigArgs) ToListenerQuicConfigPtrOutputWithContext(ctx context.Context) ListenerQuicConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerQuicConfigOutput).ToListenerQuicConfigPtrOutputWithContext(ctx)
+}
+
+// ListenerQuicConfigPtrInput is an input type that accepts ListenerQuicConfigArgs, ListenerQuicConfigPtr and ListenerQuicConfigPtrOutput values.
+// You can construct a concrete instance of `ListenerQuicConfigPtrInput` via:
+//
+//          ListenerQuicConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ListenerQuicConfigPtrInput interface {
+	pulumi.Input
+
+	ToListenerQuicConfigPtrOutput() ListenerQuicConfigPtrOutput
+	ToListenerQuicConfigPtrOutputWithContext(context.Context) ListenerQuicConfigPtrOutput
+}
+
+type listenerQuicConfigPtrType ListenerQuicConfigArgs
+
+func ListenerQuicConfigPtr(v *ListenerQuicConfigArgs) ListenerQuicConfigPtrInput {
+	return (*listenerQuicConfigPtrType)(v)
+}
+
+func (*listenerQuicConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerQuicConfig)(nil)).Elem()
+}
+
+func (i *listenerQuicConfigPtrType) ToListenerQuicConfigPtrOutput() ListenerQuicConfigPtrOutput {
+	return i.ToListenerQuicConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listenerQuicConfigPtrType) ToListenerQuicConfigPtrOutputWithContext(ctx context.Context) ListenerQuicConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerQuicConfigPtrOutput)
+}
+
+type ListenerQuicConfigOutput struct{ *pulumi.OutputState }
+
+func (ListenerQuicConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerQuicConfig)(nil)).Elem()
+}
+
+func (o ListenerQuicConfigOutput) ToListenerQuicConfigOutput() ListenerQuicConfigOutput {
+	return o
+}
+
+func (o ListenerQuicConfigOutput) ToListenerQuicConfigOutputWithContext(ctx context.Context) ListenerQuicConfigOutput {
+	return o
+}
+
+func (o ListenerQuicConfigOutput) ToListenerQuicConfigPtrOutput() ListenerQuicConfigPtrOutput {
+	return o.ToListenerQuicConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListenerQuicConfigOutput) ToListenerQuicConfigPtrOutputWithContext(ctx context.Context) ListenerQuicConfigPtrOutput {
+	return o.ApplyT(func(v ListenerQuicConfig) *ListenerQuicConfig {
+		return &v
+	}).(ListenerQuicConfigPtrOutput)
+}
+
+// There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
+func (o ListenerQuicConfigOutput) QuicListenerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerQuicConfig) *string { return v.QuicListenerId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether to Enable the QuIC Upgrade.
+func (o ListenerQuicConfigOutput) QuicUpgradeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerQuicConfig) *bool { return v.QuicUpgradeEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ListenerQuicConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListenerQuicConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerQuicConfig)(nil)).Elem()
+}
+
+func (o ListenerQuicConfigPtrOutput) ToListenerQuicConfigPtrOutput() ListenerQuicConfigPtrOutput {
+	return o
+}
+
+func (o ListenerQuicConfigPtrOutput) ToListenerQuicConfigPtrOutputWithContext(ctx context.Context) ListenerQuicConfigPtrOutput {
+	return o
+}
+
+func (o ListenerQuicConfigPtrOutput) Elem() ListenerQuicConfigOutput {
+	return o.ApplyT(func(v *ListenerQuicConfig) ListenerQuicConfig { return *v }).(ListenerQuicConfigOutput)
+}
+
+// There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
+func (o ListenerQuicConfigPtrOutput) QuicListenerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerQuicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QuicListenerId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether to Enable the QuIC Upgrade.
+func (o ListenerQuicConfigPtrOutput) QuicUpgradeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerQuicConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QuicUpgradeEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ListenerXforwardedForConfig struct {
+	// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+	XforwardedforclientcertIssuerdnalias *string `pulumi:"xforwardedforclientcertIssuerdnalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+	XforwardedforclientcertIssuerdnenabled *bool `pulumi:"xforwardedforclientcertIssuerdnenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertclientverifyalias *string `pulumi:"xforwardedforclientcertclientverifyalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+	Xforwardedforclientcertclientverifyenabled *bool `pulumi:"xforwardedforclientcertclientverifyenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertfingerprintalias *string `pulumi:"xforwardedforclientcertfingerprintalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+	Xforwardedforclientcertfingerprintenabled *bool `pulumi:"xforwardedforclientcertfingerprintenabled"`
+	// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertsubjectdnalias *string `pulumi:"xforwardedforclientcertsubjectdnalias"`
+	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+	Xforwardedforclientcertsubjectdnenabled *bool `pulumi:"xforwardedforclientcertsubjectdnenabled"`
+	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+	Xforwardedforclientsrcportenabled *bool `pulumi:"xforwardedforclientsrcportenabled"`
+	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+	Xforwardedforenabled *bool `pulumi:"xforwardedforenabled"`
+	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+	Xforwardedforprotoenabled *bool `pulumi:"xforwardedforprotoenabled"`
+	// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+	Xforwardedforslbidenabled *bool `pulumi:"xforwardedforslbidenabled"`
+	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+	Xforwardedforslbportenabled *bool `pulumi:"xforwardedforslbportenabled"`
+}
+
+// ListenerXforwardedForConfigInput is an input type that accepts ListenerXforwardedForConfigArgs and ListenerXforwardedForConfigOutput values.
+// You can construct a concrete instance of `ListenerXforwardedForConfigInput` via:
+//
+//          ListenerXforwardedForConfigArgs{...}
+type ListenerXforwardedForConfigInput interface {
+	pulumi.Input
+
+	ToListenerXforwardedForConfigOutput() ListenerXforwardedForConfigOutput
+	ToListenerXforwardedForConfigOutputWithContext(context.Context) ListenerXforwardedForConfigOutput
+}
+
+type ListenerXforwardedForConfigArgs struct {
+	// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+	XforwardedforclientcertIssuerdnalias pulumi.StringPtrInput `pulumi:"xforwardedforclientcertIssuerdnalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+	XforwardedforclientcertIssuerdnenabled pulumi.BoolPtrInput `pulumi:"xforwardedforclientcertIssuerdnenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertclientverifyalias pulumi.StringPtrInput `pulumi:"xforwardedforclientcertclientverifyalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+	Xforwardedforclientcertclientverifyenabled pulumi.BoolPtrInput `pulumi:"xforwardedforclientcertclientverifyenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertfingerprintalias pulumi.StringPtrInput `pulumi:"xforwardedforclientcertfingerprintalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+	Xforwardedforclientcertfingerprintenabled pulumi.BoolPtrInput `pulumi:"xforwardedforclientcertfingerprintenabled"`
+	// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertsubjectdnalias pulumi.StringPtrInput `pulumi:"xforwardedforclientcertsubjectdnalias"`
+	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+	Xforwardedforclientcertsubjectdnenabled pulumi.BoolPtrInput `pulumi:"xforwardedforclientcertsubjectdnenabled"`
+	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+	Xforwardedforclientsrcportenabled pulumi.BoolPtrInput `pulumi:"xforwardedforclientsrcportenabled"`
+	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+	Xforwardedforenabled pulumi.BoolPtrInput `pulumi:"xforwardedforenabled"`
+	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+	Xforwardedforprotoenabled pulumi.BoolPtrInput `pulumi:"xforwardedforprotoenabled"`
+	// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+	Xforwardedforslbidenabled pulumi.BoolPtrInput `pulumi:"xforwardedforslbidenabled"`
+	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+	Xforwardedforslbportenabled pulumi.BoolPtrInput `pulumi:"xforwardedforslbportenabled"`
+}
+
+func (ListenerXforwardedForConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerXforwardedForConfig)(nil)).Elem()
+}
+
+func (i ListenerXforwardedForConfigArgs) ToListenerXforwardedForConfigOutput() ListenerXforwardedForConfigOutput {
+	return i.ToListenerXforwardedForConfigOutputWithContext(context.Background())
+}
+
+func (i ListenerXforwardedForConfigArgs) ToListenerXforwardedForConfigOutputWithContext(ctx context.Context) ListenerXforwardedForConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerXforwardedForConfigOutput)
+}
+
+func (i ListenerXforwardedForConfigArgs) ToListenerXforwardedForConfigPtrOutput() ListenerXforwardedForConfigPtrOutput {
+	return i.ToListenerXforwardedForConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListenerXforwardedForConfigArgs) ToListenerXforwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXforwardedForConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerXforwardedForConfigOutput).ToListenerXforwardedForConfigPtrOutputWithContext(ctx)
+}
+
+// ListenerXforwardedForConfigPtrInput is an input type that accepts ListenerXforwardedForConfigArgs, ListenerXforwardedForConfigPtr and ListenerXforwardedForConfigPtrOutput values.
+// You can construct a concrete instance of `ListenerXforwardedForConfigPtrInput` via:
+//
+//          ListenerXforwardedForConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ListenerXforwardedForConfigPtrInput interface {
+	pulumi.Input
+
+	ToListenerXforwardedForConfigPtrOutput() ListenerXforwardedForConfigPtrOutput
+	ToListenerXforwardedForConfigPtrOutputWithContext(context.Context) ListenerXforwardedForConfigPtrOutput
+}
+
+type listenerXforwardedForConfigPtrType ListenerXforwardedForConfigArgs
+
+func ListenerXforwardedForConfigPtr(v *ListenerXforwardedForConfigArgs) ListenerXforwardedForConfigPtrInput {
+	return (*listenerXforwardedForConfigPtrType)(v)
+}
+
+func (*listenerXforwardedForConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerXforwardedForConfig)(nil)).Elem()
+}
+
+func (i *listenerXforwardedForConfigPtrType) ToListenerXforwardedForConfigPtrOutput() ListenerXforwardedForConfigPtrOutput {
+	return i.ToListenerXforwardedForConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listenerXforwardedForConfigPtrType) ToListenerXforwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXforwardedForConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerXforwardedForConfigPtrOutput)
+}
+
+type ListenerXforwardedForConfigOutput struct{ *pulumi.OutputState }
+
+func (ListenerXforwardedForConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerXforwardedForConfig)(nil)).Elem()
+}
+
+func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigOutput() ListenerXforwardedForConfigOutput {
+	return o
+}
+
+func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigOutputWithContext(ctx context.Context) ListenerXforwardedForConfigOutput {
+	return o
+}
+
+func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigPtrOutput() ListenerXforwardedForConfigPtrOutput {
+	return o.ToListenerXforwardedForConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXforwardedForConfigPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *ListenerXforwardedForConfig {
+		return &v
+	}).(ListenerXforwardedForConfigPtrOutput)
+}
+
+// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+func (o ListenerXforwardedForConfigOutput) XforwardedforclientcertIssuerdnalias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *string { return v.XforwardedforclientcertIssuerdnalias }).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+func (o ListenerXforwardedForConfigOutput) XforwardedforclientcertIssuerdnenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.XforwardedforclientcertIssuerdnenabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertclientverifyalias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *string { return v.Xforwardedforclientcertclientverifyalias }).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertclientverifyenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforclientcertclientverifyenabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertfingerprintalias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *string { return v.Xforwardedforclientcertfingerprintalias }).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertfingerprintenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforclientcertfingerprintenabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertsubjectdnalias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *string { return v.Xforwardedforclientcertsubjectdnalias }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertsubjectdnenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforclientcertsubjectdnenabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+func (o ListenerXforwardedForConfigOutput) Xforwardedforclientsrcportenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforclientsrcportenabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+func (o ListenerXforwardedForConfigOutput) Xforwardedforenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforenabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+func (o ListenerXforwardedForConfigOutput) Xforwardedforprotoenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforprotoenabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+func (o ListenerXforwardedForConfigOutput) Xforwardedforslbidenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforslbidenabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+func (o ListenerXforwardedForConfigOutput) Xforwardedforslbportenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforslbportenabled }).(pulumi.BoolPtrOutput)
+}
+
+type ListenerXforwardedForConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListenerXforwardedForConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerXforwardedForConfig)(nil)).Elem()
+}
+
+func (o ListenerXforwardedForConfigPtrOutput) ToListenerXforwardedForConfigPtrOutput() ListenerXforwardedForConfigPtrOutput {
+	return o
+}
+
+func (o ListenerXforwardedForConfigPtrOutput) ToListenerXforwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXforwardedForConfigPtrOutput {
+	return o
+}
+
+func (o ListenerXforwardedForConfigPtrOutput) Elem() ListenerXforwardedForConfigOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) ListenerXforwardedForConfig { return *v }).(ListenerXforwardedForConfigOutput)
+}
+
+// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+func (o ListenerXforwardedForConfigPtrOutput) XforwardedforclientcertIssuerdnalias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.XforwardedforclientcertIssuerdnalias
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+func (o ListenerXforwardedForConfigPtrOutput) XforwardedforclientcertIssuerdnenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XforwardedforclientcertIssuerdnenabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertclientverifyalias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Xforwardedforclientcertclientverifyalias
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertclientverifyenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Xforwardedforclientcertclientverifyenabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertfingerprintalias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Xforwardedforclientcertfingerprintalias
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertfingerprintenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Xforwardedforclientcertfingerprintenabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertsubjectdnalias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Xforwardedforclientcertsubjectdnalias
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertsubjectdnenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Xforwardedforclientcertsubjectdnenabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientsrcportenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Xforwardedforclientsrcportenabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Xforwardedforenabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforprotoenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Xforwardedforprotoenabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforslbidenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Xforwardedforslbidenabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforslbportenabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Xforwardedforslbportenabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type LoadBalancerAccessLogConfig struct {
 	// The log service that access logs are shipped to.
 	LogProject *string `pulumi:"logProject"`
@@ -547,30 +1691,2328 @@ func (o LoadBalancerZoneMappingArrayOutput) Index(i pulumi.IntInput) LoadBalance
 	}).(LoadBalancerZoneMappingOutput)
 }
 
+type RuleRuleAction struct {
+	// The configuration of the fixed response. See the following `Block fixedResponseConfig`.
+	FixedResponseConfig *RuleRuleActionFixedResponseConfig `pulumi:"fixedResponseConfig"`
+	// The forward response action within ALB. See the following `Block forwardGroupConfig`.
+	ForwardGroupConfig *RuleRuleActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
+	// The configuration of the inserted header field. See the following `Block insertHeaderConfig`.
+	InsertHeaderConfig *RuleRuleActionInsertHeaderConfig `pulumi:"insertHeaderConfig"`
+	// The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+	Order int `pulumi:"order"`
+	// The configuration of the external redirect action. See the following `Block redirectConfig`.
+	RedirectConfig *RuleRuleActionRedirectConfig `pulumi:"redirectConfig"`
+	// The redirect action within ALB. See the following `Block rewriteConfig`.
+	RewriteConfig *RuleRuleActionRewriteConfig `pulumi:"rewriteConfig"`
+	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	Type string `pulumi:"type"`
+}
+
+// RuleRuleActionInput is an input type that accepts RuleRuleActionArgs and RuleRuleActionOutput values.
+// You can construct a concrete instance of `RuleRuleActionInput` via:
+//
+//          RuleRuleActionArgs{...}
+type RuleRuleActionInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionOutput() RuleRuleActionOutput
+	ToRuleRuleActionOutputWithContext(context.Context) RuleRuleActionOutput
+}
+
+type RuleRuleActionArgs struct {
+	// The configuration of the fixed response. See the following `Block fixedResponseConfig`.
+	FixedResponseConfig RuleRuleActionFixedResponseConfigPtrInput `pulumi:"fixedResponseConfig"`
+	// The forward response action within ALB. See the following `Block forwardGroupConfig`.
+	ForwardGroupConfig RuleRuleActionForwardGroupConfigPtrInput `pulumi:"forwardGroupConfig"`
+	// The configuration of the inserted header field. See the following `Block insertHeaderConfig`.
+	InsertHeaderConfig RuleRuleActionInsertHeaderConfigPtrInput `pulumi:"insertHeaderConfig"`
+	// The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+	Order pulumi.IntInput `pulumi:"order"`
+	// The configuration of the external redirect action. See the following `Block redirectConfig`.
+	RedirectConfig RuleRuleActionRedirectConfigPtrInput `pulumi:"redirectConfig"`
+	// The redirect action within ALB. See the following `Block rewriteConfig`.
+	RewriteConfig RuleRuleActionRewriteConfigPtrInput `pulumi:"rewriteConfig"`
+	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RuleRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleAction)(nil)).Elem()
+}
+
+func (i RuleRuleActionArgs) ToRuleRuleActionOutput() RuleRuleActionOutput {
+	return i.ToRuleRuleActionOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionArgs) ToRuleRuleActionOutputWithContext(ctx context.Context) RuleRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionOutput)
+}
+
+// RuleRuleActionArrayInput is an input type that accepts RuleRuleActionArray and RuleRuleActionArrayOutput values.
+// You can construct a concrete instance of `RuleRuleActionArrayInput` via:
+//
+//          RuleRuleActionArray{ RuleRuleActionArgs{...} }
+type RuleRuleActionArrayInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionArrayOutput() RuleRuleActionArrayOutput
+	ToRuleRuleActionArrayOutputWithContext(context.Context) RuleRuleActionArrayOutput
+}
+
+type RuleRuleActionArray []RuleRuleActionInput
+
+func (RuleRuleActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleAction)(nil)).Elem()
+}
+
+func (i RuleRuleActionArray) ToRuleRuleActionArrayOutput() RuleRuleActionArrayOutput {
+	return i.ToRuleRuleActionArrayOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionArray) ToRuleRuleActionArrayOutputWithContext(ctx context.Context) RuleRuleActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionArrayOutput)
+}
+
+type RuleRuleActionOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleAction)(nil)).Elem()
+}
+
+func (o RuleRuleActionOutput) ToRuleRuleActionOutput() RuleRuleActionOutput {
+	return o
+}
+
+func (o RuleRuleActionOutput) ToRuleRuleActionOutputWithContext(ctx context.Context) RuleRuleActionOutput {
+	return o
+}
+
+// The configuration of the fixed response. See the following `Block fixedResponseConfig`.
+func (o RuleRuleActionOutput) FixedResponseConfig() RuleRuleActionFixedResponseConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionFixedResponseConfig { return v.FixedResponseConfig }).(RuleRuleActionFixedResponseConfigPtrOutput)
+}
+
+// The forward response action within ALB. See the following `Block forwardGroupConfig`.
+func (o RuleRuleActionOutput) ForwardGroupConfig() RuleRuleActionForwardGroupConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionForwardGroupConfig { return v.ForwardGroupConfig }).(RuleRuleActionForwardGroupConfigPtrOutput)
+}
+
+// The configuration of the inserted header field. See the following `Block insertHeaderConfig`.
+func (o RuleRuleActionOutput) InsertHeaderConfig() RuleRuleActionInsertHeaderConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionInsertHeaderConfig { return v.InsertHeaderConfig }).(RuleRuleActionInsertHeaderConfigPtrOutput)
+}
+
+// The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+func (o RuleRuleActionOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v RuleRuleAction) int { return v.Order }).(pulumi.IntOutput)
+}
+
+// The configuration of the external redirect action. See the following `Block redirectConfig`.
+func (o RuleRuleActionOutput) RedirectConfig() RuleRuleActionRedirectConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionRedirectConfig { return v.RedirectConfig }).(RuleRuleActionRedirectConfigPtrOutput)
+}
+
+// The redirect action within ALB. See the following `Block rewriteConfig`.
+func (o RuleRuleActionOutput) RewriteConfig() RuleRuleActionRewriteConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionRewriteConfig { return v.RewriteConfig }).(RuleRuleActionRewriteConfigPtrOutput)
+}
+
+// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+func (o RuleRuleActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleRuleAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RuleRuleActionArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleAction)(nil)).Elem()
+}
+
+func (o RuleRuleActionArrayOutput) ToRuleRuleActionArrayOutput() RuleRuleActionArrayOutput {
+	return o
+}
+
+func (o RuleRuleActionArrayOutput) ToRuleRuleActionArrayOutputWithContext(ctx context.Context) RuleRuleActionArrayOutput {
+	return o
+}
+
+func (o RuleRuleActionArrayOutput) Index(i pulumi.IntInput) RuleRuleActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleRuleAction {
+		return vs[0].([]RuleRuleAction)[vs[1].(int)]
+	}).(RuleRuleActionOutput)
+}
+
+type RuleRuleActionFixedResponseConfig struct {
+	// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+	Content string `pulumi:"content"`
+	// The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+	ContentType *string `pulumi:"contentType"`
+	// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+	HttpCode *string `pulumi:"httpCode"`
+}
+
+// RuleRuleActionFixedResponseConfigInput is an input type that accepts RuleRuleActionFixedResponseConfigArgs and RuleRuleActionFixedResponseConfigOutput values.
+// You can construct a concrete instance of `RuleRuleActionFixedResponseConfigInput` via:
+//
+//          RuleRuleActionFixedResponseConfigArgs{...}
+type RuleRuleActionFixedResponseConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionFixedResponseConfigOutput() RuleRuleActionFixedResponseConfigOutput
+	ToRuleRuleActionFixedResponseConfigOutputWithContext(context.Context) RuleRuleActionFixedResponseConfigOutput
+}
+
+type RuleRuleActionFixedResponseConfigArgs struct {
+	// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
+	// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+	HttpCode pulumi.StringPtrInput `pulumi:"httpCode"`
+}
+
+func (RuleRuleActionFixedResponseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionFixedResponseConfig)(nil)).Elem()
+}
+
+func (i RuleRuleActionFixedResponseConfigArgs) ToRuleRuleActionFixedResponseConfigOutput() RuleRuleActionFixedResponseConfigOutput {
+	return i.ToRuleRuleActionFixedResponseConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionFixedResponseConfigArgs) ToRuleRuleActionFixedResponseConfigOutputWithContext(ctx context.Context) RuleRuleActionFixedResponseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionFixedResponseConfigOutput)
+}
+
+func (i RuleRuleActionFixedResponseConfigArgs) ToRuleRuleActionFixedResponseConfigPtrOutput() RuleRuleActionFixedResponseConfigPtrOutput {
+	return i.ToRuleRuleActionFixedResponseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionFixedResponseConfigArgs) ToRuleRuleActionFixedResponseConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionFixedResponseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionFixedResponseConfigOutput).ToRuleRuleActionFixedResponseConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleActionFixedResponseConfigPtrInput is an input type that accepts RuleRuleActionFixedResponseConfigArgs, RuleRuleActionFixedResponseConfigPtr and RuleRuleActionFixedResponseConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleActionFixedResponseConfigPtrInput` via:
+//
+//          RuleRuleActionFixedResponseConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleActionFixedResponseConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionFixedResponseConfigPtrOutput() RuleRuleActionFixedResponseConfigPtrOutput
+	ToRuleRuleActionFixedResponseConfigPtrOutputWithContext(context.Context) RuleRuleActionFixedResponseConfigPtrOutput
+}
+
+type ruleRuleActionFixedResponseConfigPtrType RuleRuleActionFixedResponseConfigArgs
+
+func RuleRuleActionFixedResponseConfigPtr(v *RuleRuleActionFixedResponseConfigArgs) RuleRuleActionFixedResponseConfigPtrInput {
+	return (*ruleRuleActionFixedResponseConfigPtrType)(v)
+}
+
+func (*ruleRuleActionFixedResponseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionFixedResponseConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleActionFixedResponseConfigPtrType) ToRuleRuleActionFixedResponseConfigPtrOutput() RuleRuleActionFixedResponseConfigPtrOutput {
+	return i.ToRuleRuleActionFixedResponseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleActionFixedResponseConfigPtrType) ToRuleRuleActionFixedResponseConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionFixedResponseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionFixedResponseConfigPtrOutput)
+}
+
+type RuleRuleActionFixedResponseConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionFixedResponseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionFixedResponseConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionFixedResponseConfigOutput) ToRuleRuleActionFixedResponseConfigOutput() RuleRuleActionFixedResponseConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionFixedResponseConfigOutput) ToRuleRuleActionFixedResponseConfigOutputWithContext(ctx context.Context) RuleRuleActionFixedResponseConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionFixedResponseConfigOutput) ToRuleRuleActionFixedResponseConfigPtrOutput() RuleRuleActionFixedResponseConfigPtrOutput {
+	return o.ToRuleRuleActionFixedResponseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleActionFixedResponseConfigOutput) ToRuleRuleActionFixedResponseConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionFixedResponseConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) *RuleRuleActionFixedResponseConfig {
+		return &v
+	}).(RuleRuleActionFixedResponseConfigPtrOutput)
+}
+
+// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+func (o RuleRuleActionFixedResponseConfigOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+func (o RuleRuleActionFixedResponseConfigOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+func (o RuleRuleActionFixedResponseConfigOutput) HttpCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) *string { return v.HttpCode }).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionFixedResponseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionFixedResponseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionFixedResponseConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionFixedResponseConfigPtrOutput) ToRuleRuleActionFixedResponseConfigPtrOutput() RuleRuleActionFixedResponseConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionFixedResponseConfigPtrOutput) ToRuleRuleActionFixedResponseConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionFixedResponseConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionFixedResponseConfigPtrOutput) Elem() RuleRuleActionFixedResponseConfigOutput {
+	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) RuleRuleActionFixedResponseConfig { return *v }).(RuleRuleActionFixedResponseConfigOutput)
+}
+
+// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+func (o RuleRuleActionFixedResponseConfigPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+func (o RuleRuleActionFixedResponseConfigPtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+func (o RuleRuleActionFixedResponseConfigPtrOutput) HttpCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpCode
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionForwardGroupConfig struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples []RuleRuleActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
+}
+
+// RuleRuleActionForwardGroupConfigInput is an input type that accepts RuleRuleActionForwardGroupConfigArgs and RuleRuleActionForwardGroupConfigOutput values.
+// You can construct a concrete instance of `RuleRuleActionForwardGroupConfigInput` via:
+//
+//          RuleRuleActionForwardGroupConfigArgs{...}
+type RuleRuleActionForwardGroupConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionForwardGroupConfigOutput() RuleRuleActionForwardGroupConfigOutput
+	ToRuleRuleActionForwardGroupConfigOutputWithContext(context.Context) RuleRuleActionForwardGroupConfigOutput
+}
+
+type RuleRuleActionForwardGroupConfigArgs struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
+}
+
+func (RuleRuleActionForwardGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i RuleRuleActionForwardGroupConfigArgs) ToRuleRuleActionForwardGroupConfigOutput() RuleRuleActionForwardGroupConfigOutput {
+	return i.ToRuleRuleActionForwardGroupConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionForwardGroupConfigArgs) ToRuleRuleActionForwardGroupConfigOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionForwardGroupConfigOutput)
+}
+
+func (i RuleRuleActionForwardGroupConfigArgs) ToRuleRuleActionForwardGroupConfigPtrOutput() RuleRuleActionForwardGroupConfigPtrOutput {
+	return i.ToRuleRuleActionForwardGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionForwardGroupConfigArgs) ToRuleRuleActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionForwardGroupConfigOutput).ToRuleRuleActionForwardGroupConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleActionForwardGroupConfigPtrInput is an input type that accepts RuleRuleActionForwardGroupConfigArgs, RuleRuleActionForwardGroupConfigPtr and RuleRuleActionForwardGroupConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleActionForwardGroupConfigPtrInput` via:
+//
+//          RuleRuleActionForwardGroupConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleActionForwardGroupConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionForwardGroupConfigPtrOutput() RuleRuleActionForwardGroupConfigPtrOutput
+	ToRuleRuleActionForwardGroupConfigPtrOutputWithContext(context.Context) RuleRuleActionForwardGroupConfigPtrOutput
+}
+
+type ruleRuleActionForwardGroupConfigPtrType RuleRuleActionForwardGroupConfigArgs
+
+func RuleRuleActionForwardGroupConfigPtr(v *RuleRuleActionForwardGroupConfigArgs) RuleRuleActionForwardGroupConfigPtrInput {
+	return (*ruleRuleActionForwardGroupConfigPtrType)(v)
+}
+
+func (*ruleRuleActionForwardGroupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleActionForwardGroupConfigPtrType) ToRuleRuleActionForwardGroupConfigPtrOutput() RuleRuleActionForwardGroupConfigPtrOutput {
+	return i.ToRuleRuleActionForwardGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleActionForwardGroupConfigPtrType) ToRuleRuleActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionForwardGroupConfigPtrOutput)
+}
+
+type RuleRuleActionForwardGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionForwardGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionForwardGroupConfigOutput) ToRuleRuleActionForwardGroupConfigOutput() RuleRuleActionForwardGroupConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionForwardGroupConfigOutput) ToRuleRuleActionForwardGroupConfigOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionForwardGroupConfigOutput) ToRuleRuleActionForwardGroupConfigPtrOutput() RuleRuleActionForwardGroupConfigPtrOutput {
+	return o.ToRuleRuleActionForwardGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleActionForwardGroupConfigOutput) ToRuleRuleActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionForwardGroupConfig) *RuleRuleActionForwardGroupConfig {
+		return &v
+	}).(RuleRuleActionForwardGroupConfigPtrOutput)
+}
+
+// The destination server group to which requests are forwarded.
+func (o RuleRuleActionForwardGroupConfigOutput) ServerGroupTuples() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v RuleRuleActionForwardGroupConfig) []RuleRuleActionForwardGroupConfigServerGroupTuple {
+		return v.ServerGroupTuples
+	}).(RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type RuleRuleActionForwardGroupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionForwardGroupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionForwardGroupConfigPtrOutput) ToRuleRuleActionForwardGroupConfigPtrOutput() RuleRuleActionForwardGroupConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionForwardGroupConfigPtrOutput) ToRuleRuleActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionForwardGroupConfigPtrOutput) Elem() RuleRuleActionForwardGroupConfigOutput {
+	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) RuleRuleActionForwardGroupConfig { return *v }).(RuleRuleActionForwardGroupConfigOutput)
+}
+
+// The destination server group to which requests are forwarded.
+func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) []RuleRuleActionForwardGroupConfigServerGroupTuple {
+		if v == nil {
+			return nil
+		}
+		return v.ServerGroupTuples
+	}).(RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type RuleRuleActionForwardGroupConfigServerGroupTuple struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId *string `pulumi:"serverGroupId"`
+}
+
+// RuleRuleActionForwardGroupConfigServerGroupTupleInput is an input type that accepts RuleRuleActionForwardGroupConfigServerGroupTupleArgs and RuleRuleActionForwardGroupConfigServerGroupTupleOutput values.
+// You can construct a concrete instance of `RuleRuleActionForwardGroupConfigServerGroupTupleInput` via:
+//
+//          RuleRuleActionForwardGroupConfigServerGroupTupleArgs{...}
+type RuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionForwardGroupConfigServerGroupTupleOutput() RuleRuleActionForwardGroupConfigServerGroupTupleOutput
+	ToRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Context) RuleRuleActionForwardGroupConfigServerGroupTupleOutput
+}
+
+type RuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
+}
+
+func (RuleRuleActionForwardGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i RuleRuleActionForwardGroupConfigServerGroupTupleArgs) ToRuleRuleActionForwardGroupConfigServerGroupTupleOutput() RuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return i.ToRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionForwardGroupConfigServerGroupTupleArgs) ToRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+// RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput is an input type that accepts RuleRuleActionForwardGroupConfigServerGroupTupleArray and RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput values.
+// You can construct a concrete instance of `RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput` via:
+//
+//          RuleRuleActionForwardGroupConfigServerGroupTupleArray{ RuleRuleActionForwardGroupConfigServerGroupTupleArgs{...} }
+type RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput
+	ToRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Context) RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput
+}
+
+type RuleRuleActionForwardGroupConfigServerGroupTupleArray []RuleRuleActionForwardGroupConfigServerGroupTupleInput
+
+func (RuleRuleActionForwardGroupConfigServerGroupTupleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i RuleRuleActionForwardGroupConfigServerGroupTupleArray) ToRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return i.ToRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionForwardGroupConfigServerGroupTupleArray) ToRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type RuleRuleActionForwardGroupConfigServerGroupTupleOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionForwardGroupConfigServerGroupTupleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToRuleRuleActionForwardGroupConfigServerGroupTupleOutput() RuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+// The ID of the destination server group to which requests are forwarded.
+func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupTuple) *string { return v.ServerGroupId }).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ToRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ToRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) Index(i pulumi.IntInput) RuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleRuleActionForwardGroupConfigServerGroupTuple {
+		return vs[0].([]RuleRuleActionForwardGroupConfigServerGroupTuple)[vs[1].(int)]
+	}).(RuleRuleActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+type RuleRuleActionInsertHeaderConfig struct {
+	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+	Key *string `pulumi:"key"`
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+	Value *string `pulumi:"value"`
+	// Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+	ValueType *string `pulumi:"valueType"`
+}
+
+// RuleRuleActionInsertHeaderConfigInput is an input type that accepts RuleRuleActionInsertHeaderConfigArgs and RuleRuleActionInsertHeaderConfigOutput values.
+// You can construct a concrete instance of `RuleRuleActionInsertHeaderConfigInput` via:
+//
+//          RuleRuleActionInsertHeaderConfigArgs{...}
+type RuleRuleActionInsertHeaderConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionInsertHeaderConfigOutput() RuleRuleActionInsertHeaderConfigOutput
+	ToRuleRuleActionInsertHeaderConfigOutputWithContext(context.Context) RuleRuleActionInsertHeaderConfigOutput
+}
+
+type RuleRuleActionInsertHeaderConfigArgs struct {
+	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
+}
+
+func (RuleRuleActionInsertHeaderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionInsertHeaderConfig)(nil)).Elem()
+}
+
+func (i RuleRuleActionInsertHeaderConfigArgs) ToRuleRuleActionInsertHeaderConfigOutput() RuleRuleActionInsertHeaderConfigOutput {
+	return i.ToRuleRuleActionInsertHeaderConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionInsertHeaderConfigArgs) ToRuleRuleActionInsertHeaderConfigOutputWithContext(ctx context.Context) RuleRuleActionInsertHeaderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionInsertHeaderConfigOutput)
+}
+
+func (i RuleRuleActionInsertHeaderConfigArgs) ToRuleRuleActionInsertHeaderConfigPtrOutput() RuleRuleActionInsertHeaderConfigPtrOutput {
+	return i.ToRuleRuleActionInsertHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionInsertHeaderConfigArgs) ToRuleRuleActionInsertHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionInsertHeaderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionInsertHeaderConfigOutput).ToRuleRuleActionInsertHeaderConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleActionInsertHeaderConfigPtrInput is an input type that accepts RuleRuleActionInsertHeaderConfigArgs, RuleRuleActionInsertHeaderConfigPtr and RuleRuleActionInsertHeaderConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleActionInsertHeaderConfigPtrInput` via:
+//
+//          RuleRuleActionInsertHeaderConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleActionInsertHeaderConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionInsertHeaderConfigPtrOutput() RuleRuleActionInsertHeaderConfigPtrOutput
+	ToRuleRuleActionInsertHeaderConfigPtrOutputWithContext(context.Context) RuleRuleActionInsertHeaderConfigPtrOutput
+}
+
+type ruleRuleActionInsertHeaderConfigPtrType RuleRuleActionInsertHeaderConfigArgs
+
+func RuleRuleActionInsertHeaderConfigPtr(v *RuleRuleActionInsertHeaderConfigArgs) RuleRuleActionInsertHeaderConfigPtrInput {
+	return (*ruleRuleActionInsertHeaderConfigPtrType)(v)
+}
+
+func (*ruleRuleActionInsertHeaderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionInsertHeaderConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleActionInsertHeaderConfigPtrType) ToRuleRuleActionInsertHeaderConfigPtrOutput() RuleRuleActionInsertHeaderConfigPtrOutput {
+	return i.ToRuleRuleActionInsertHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleActionInsertHeaderConfigPtrType) ToRuleRuleActionInsertHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionInsertHeaderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionInsertHeaderConfigPtrOutput)
+}
+
+type RuleRuleActionInsertHeaderConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionInsertHeaderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionInsertHeaderConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionInsertHeaderConfigOutput) ToRuleRuleActionInsertHeaderConfigOutput() RuleRuleActionInsertHeaderConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionInsertHeaderConfigOutput) ToRuleRuleActionInsertHeaderConfigOutputWithContext(ctx context.Context) RuleRuleActionInsertHeaderConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionInsertHeaderConfigOutput) ToRuleRuleActionInsertHeaderConfigPtrOutput() RuleRuleActionInsertHeaderConfigPtrOutput {
+	return o.ToRuleRuleActionInsertHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleActionInsertHeaderConfigOutput) ToRuleRuleActionInsertHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionInsertHeaderConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *RuleRuleActionInsertHeaderConfig {
+		return &v
+	}).(RuleRuleActionInsertHeaderConfigPtrOutput)
+}
+
+// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+func (o RuleRuleActionInsertHeaderConfigOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+func (o RuleRuleActionInsertHeaderConfigOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+func (o RuleRuleActionInsertHeaderConfigOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionInsertHeaderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionInsertHeaderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionInsertHeaderConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionInsertHeaderConfigPtrOutput) ToRuleRuleActionInsertHeaderConfigPtrOutput() RuleRuleActionInsertHeaderConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionInsertHeaderConfigPtrOutput) ToRuleRuleActionInsertHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionInsertHeaderConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionInsertHeaderConfigPtrOutput) Elem() RuleRuleActionInsertHeaderConfigOutput {
+	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) RuleRuleActionInsertHeaderConfig { return *v }).(RuleRuleActionInsertHeaderConfigOutput)
+}
+
+// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+func (o RuleRuleActionInsertHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+func (o RuleRuleActionInsertHeaderConfigPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+func (o RuleRuleActionInsertHeaderConfigPtrOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValueType
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionRedirectConfig struct {
+	// The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host *string `pulumi:"host"`
+	// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+	HttpCode *string `pulumi:"httpCode"`
+	// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+	Path *string `pulumi:"path"`
+	// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+	Port *int `pulumi:"port"`
+	// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+	Protocol *string `pulumi:"protocol"`
+	// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+	Query *string `pulumi:"query"`
+}
+
+// RuleRuleActionRedirectConfigInput is an input type that accepts RuleRuleActionRedirectConfigArgs and RuleRuleActionRedirectConfigOutput values.
+// You can construct a concrete instance of `RuleRuleActionRedirectConfigInput` via:
+//
+//          RuleRuleActionRedirectConfigArgs{...}
+type RuleRuleActionRedirectConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionRedirectConfigOutput() RuleRuleActionRedirectConfigOutput
+	ToRuleRuleActionRedirectConfigOutputWithContext(context.Context) RuleRuleActionRedirectConfigOutput
+}
+
+type RuleRuleActionRedirectConfigArgs struct {
+	// The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+	HttpCode pulumi.StringPtrInput `pulumi:"httpCode"`
+	// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+	Query pulumi.StringPtrInput `pulumi:"query"`
+}
+
+func (RuleRuleActionRedirectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionRedirectConfig)(nil)).Elem()
+}
+
+func (i RuleRuleActionRedirectConfigArgs) ToRuleRuleActionRedirectConfigOutput() RuleRuleActionRedirectConfigOutput {
+	return i.ToRuleRuleActionRedirectConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionRedirectConfigArgs) ToRuleRuleActionRedirectConfigOutputWithContext(ctx context.Context) RuleRuleActionRedirectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionRedirectConfigOutput)
+}
+
+func (i RuleRuleActionRedirectConfigArgs) ToRuleRuleActionRedirectConfigPtrOutput() RuleRuleActionRedirectConfigPtrOutput {
+	return i.ToRuleRuleActionRedirectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionRedirectConfigArgs) ToRuleRuleActionRedirectConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRedirectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionRedirectConfigOutput).ToRuleRuleActionRedirectConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleActionRedirectConfigPtrInput is an input type that accepts RuleRuleActionRedirectConfigArgs, RuleRuleActionRedirectConfigPtr and RuleRuleActionRedirectConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleActionRedirectConfigPtrInput` via:
+//
+//          RuleRuleActionRedirectConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleActionRedirectConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionRedirectConfigPtrOutput() RuleRuleActionRedirectConfigPtrOutput
+	ToRuleRuleActionRedirectConfigPtrOutputWithContext(context.Context) RuleRuleActionRedirectConfigPtrOutput
+}
+
+type ruleRuleActionRedirectConfigPtrType RuleRuleActionRedirectConfigArgs
+
+func RuleRuleActionRedirectConfigPtr(v *RuleRuleActionRedirectConfigArgs) RuleRuleActionRedirectConfigPtrInput {
+	return (*ruleRuleActionRedirectConfigPtrType)(v)
+}
+
+func (*ruleRuleActionRedirectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionRedirectConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleActionRedirectConfigPtrType) ToRuleRuleActionRedirectConfigPtrOutput() RuleRuleActionRedirectConfigPtrOutput {
+	return i.ToRuleRuleActionRedirectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleActionRedirectConfigPtrType) ToRuleRuleActionRedirectConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRedirectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionRedirectConfigPtrOutput)
+}
+
+type RuleRuleActionRedirectConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionRedirectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionRedirectConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionRedirectConfigOutput) ToRuleRuleActionRedirectConfigOutput() RuleRuleActionRedirectConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionRedirectConfigOutput) ToRuleRuleActionRedirectConfigOutputWithContext(ctx context.Context) RuleRuleActionRedirectConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionRedirectConfigOutput) ToRuleRuleActionRedirectConfigPtrOutput() RuleRuleActionRedirectConfigPtrOutput {
+	return o.ToRuleRuleActionRedirectConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleActionRedirectConfigOutput) ToRuleRuleActionRedirectConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRedirectConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *RuleRuleActionRedirectConfig {
+		return &v
+	}).(RuleRuleActionRedirectConfigPtrOutput)
+}
+
+// The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+func (o RuleRuleActionRedirectConfigOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+func (o RuleRuleActionRedirectConfigOutput) HttpCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.HttpCode }).(pulumi.StringPtrOutput)
+}
+
+// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+func (o RuleRuleActionRedirectConfigOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+func (o RuleRuleActionRedirectConfigOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+func (o RuleRuleActionRedirectConfigOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+func (o RuleRuleActionRedirectConfigOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionRedirectConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionRedirectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionRedirectConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionRedirectConfigPtrOutput) ToRuleRuleActionRedirectConfigPtrOutput() RuleRuleActionRedirectConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionRedirectConfigPtrOutput) ToRuleRuleActionRedirectConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRedirectConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionRedirectConfigPtrOutput) Elem() RuleRuleActionRedirectConfigOutput {
+	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) RuleRuleActionRedirectConfig { return *v }).(RuleRuleActionRedirectConfigOutput)
+}
+
+// The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+func (o RuleRuleActionRedirectConfigPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+func (o RuleRuleActionRedirectConfigPtrOutput) HttpCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+func (o RuleRuleActionRedirectConfigPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+func (o RuleRuleActionRedirectConfigPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+func (o RuleRuleActionRedirectConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+func (o RuleRuleActionRedirectConfigPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionRewriteConfig struct {
+	// The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host *string `pulumi:"host"`
+	// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+	Path *string `pulumi:"path"`
+	// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+	Query *string `pulumi:"query"`
+}
+
+// RuleRuleActionRewriteConfigInput is an input type that accepts RuleRuleActionRewriteConfigArgs and RuleRuleActionRewriteConfigOutput values.
+// You can construct a concrete instance of `RuleRuleActionRewriteConfigInput` via:
+//
+//          RuleRuleActionRewriteConfigArgs{...}
+type RuleRuleActionRewriteConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionRewriteConfigOutput() RuleRuleActionRewriteConfigOutput
+	ToRuleRuleActionRewriteConfigOutputWithContext(context.Context) RuleRuleActionRewriteConfigOutput
+}
+
+type RuleRuleActionRewriteConfigArgs struct {
+	// The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+	Query pulumi.StringPtrInput `pulumi:"query"`
+}
+
+func (RuleRuleActionRewriteConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionRewriteConfig)(nil)).Elem()
+}
+
+func (i RuleRuleActionRewriteConfigArgs) ToRuleRuleActionRewriteConfigOutput() RuleRuleActionRewriteConfigOutput {
+	return i.ToRuleRuleActionRewriteConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionRewriteConfigArgs) ToRuleRuleActionRewriteConfigOutputWithContext(ctx context.Context) RuleRuleActionRewriteConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionRewriteConfigOutput)
+}
+
+func (i RuleRuleActionRewriteConfigArgs) ToRuleRuleActionRewriteConfigPtrOutput() RuleRuleActionRewriteConfigPtrOutput {
+	return i.ToRuleRuleActionRewriteConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionRewriteConfigArgs) ToRuleRuleActionRewriteConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRewriteConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionRewriteConfigOutput).ToRuleRuleActionRewriteConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleActionRewriteConfigPtrInput is an input type that accepts RuleRuleActionRewriteConfigArgs, RuleRuleActionRewriteConfigPtr and RuleRuleActionRewriteConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleActionRewriteConfigPtrInput` via:
+//
+//          RuleRuleActionRewriteConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleActionRewriteConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionRewriteConfigPtrOutput() RuleRuleActionRewriteConfigPtrOutput
+	ToRuleRuleActionRewriteConfigPtrOutputWithContext(context.Context) RuleRuleActionRewriteConfigPtrOutput
+}
+
+type ruleRuleActionRewriteConfigPtrType RuleRuleActionRewriteConfigArgs
+
+func RuleRuleActionRewriteConfigPtr(v *RuleRuleActionRewriteConfigArgs) RuleRuleActionRewriteConfigPtrInput {
+	return (*ruleRuleActionRewriteConfigPtrType)(v)
+}
+
+func (*ruleRuleActionRewriteConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionRewriteConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleActionRewriteConfigPtrType) ToRuleRuleActionRewriteConfigPtrOutput() RuleRuleActionRewriteConfigPtrOutput {
+	return i.ToRuleRuleActionRewriteConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleActionRewriteConfigPtrType) ToRuleRuleActionRewriteConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRewriteConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionRewriteConfigPtrOutput)
+}
+
+type RuleRuleActionRewriteConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionRewriteConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionRewriteConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionRewriteConfigOutput) ToRuleRuleActionRewriteConfigOutput() RuleRuleActionRewriteConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionRewriteConfigOutput) ToRuleRuleActionRewriteConfigOutputWithContext(ctx context.Context) RuleRuleActionRewriteConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionRewriteConfigOutput) ToRuleRuleActionRewriteConfigPtrOutput() RuleRuleActionRewriteConfigPtrOutput {
+	return o.ToRuleRuleActionRewriteConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleActionRewriteConfigOutput) ToRuleRuleActionRewriteConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRewriteConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *RuleRuleActionRewriteConfig {
+		return &v
+	}).(RuleRuleActionRewriteConfigPtrOutput)
+}
+
+// The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+func (o RuleRuleActionRewriteConfigOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+func (o RuleRuleActionRewriteConfigOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+func (o RuleRuleActionRewriteConfigOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionRewriteConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionRewriteConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionRewriteConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionRewriteConfigPtrOutput) ToRuleRuleActionRewriteConfigPtrOutput() RuleRuleActionRewriteConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionRewriteConfigPtrOutput) ToRuleRuleActionRewriteConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRewriteConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionRewriteConfigPtrOutput) Elem() RuleRuleActionRewriteConfigOutput {
+	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) RuleRuleActionRewriteConfig { return *v }).(RuleRuleActionRewriteConfigOutput)
+}
+
+// The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+func (o RuleRuleActionRewriteConfigPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+func (o RuleRuleActionRewriteConfigPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+func (o RuleRuleActionRewriteConfigPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleCondition struct {
+	// The configuration of the cookie. See the following `Block cookieConfig`.
+	CookieConfig *RuleRuleConditionCookieConfig `pulumi:"cookieConfig"`
+	// The configuration of the header field. See the following `Block headerConfig`.
+	HeaderConfig *RuleRuleConditionHeaderConfig `pulumi:"headerConfig"`
+	// The configuration of the host field. See the following `Block hostConfig`.
+	HostConfig *RuleRuleConditionHostConfig `pulumi:"hostConfig"`
+	// The configuration of the request method. See the following `Block methodConfig`.
+	MethodConfig *RuleRuleConditionMethodConfig `pulumi:"methodConfig"`
+	// The configuration of the path for the request to be forwarded. See the following `Block pathConfig`.
+	PathConfig *RuleRuleConditionPathConfig `pulumi:"pathConfig"`
+	// The configuration of the query string. See the following `Block queryStringConfig`.
+	QueryStringConfig *RuleRuleConditionQueryStringConfig `pulumi:"queryStringConfig"`
+	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	Type string `pulumi:"type"`
+}
+
+// RuleRuleConditionInput is an input type that accepts RuleRuleConditionArgs and RuleRuleConditionOutput values.
+// You can construct a concrete instance of `RuleRuleConditionInput` via:
+//
+//          RuleRuleConditionArgs{...}
+type RuleRuleConditionInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionOutput() RuleRuleConditionOutput
+	ToRuleRuleConditionOutputWithContext(context.Context) RuleRuleConditionOutput
+}
+
+type RuleRuleConditionArgs struct {
+	// The configuration of the cookie. See the following `Block cookieConfig`.
+	CookieConfig RuleRuleConditionCookieConfigPtrInput `pulumi:"cookieConfig"`
+	// The configuration of the header field. See the following `Block headerConfig`.
+	HeaderConfig RuleRuleConditionHeaderConfigPtrInput `pulumi:"headerConfig"`
+	// The configuration of the host field. See the following `Block hostConfig`.
+	HostConfig RuleRuleConditionHostConfigPtrInput `pulumi:"hostConfig"`
+	// The configuration of the request method. See the following `Block methodConfig`.
+	MethodConfig RuleRuleConditionMethodConfigPtrInput `pulumi:"methodConfig"`
+	// The configuration of the path for the request to be forwarded. See the following `Block pathConfig`.
+	PathConfig RuleRuleConditionPathConfigPtrInput `pulumi:"pathConfig"`
+	// The configuration of the query string. See the following `Block queryStringConfig`.
+	QueryStringConfig RuleRuleConditionQueryStringConfigPtrInput `pulumi:"queryStringConfig"`
+	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RuleRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleCondition)(nil)).Elem()
+}
+
+func (i RuleRuleConditionArgs) ToRuleRuleConditionOutput() RuleRuleConditionOutput {
+	return i.ToRuleRuleConditionOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionArgs) ToRuleRuleConditionOutputWithContext(ctx context.Context) RuleRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionOutput)
+}
+
+// RuleRuleConditionArrayInput is an input type that accepts RuleRuleConditionArray and RuleRuleConditionArrayOutput values.
+// You can construct a concrete instance of `RuleRuleConditionArrayInput` via:
+//
+//          RuleRuleConditionArray{ RuleRuleConditionArgs{...} }
+type RuleRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionArrayOutput() RuleRuleConditionArrayOutput
+	ToRuleRuleConditionArrayOutputWithContext(context.Context) RuleRuleConditionArrayOutput
+}
+
+type RuleRuleConditionArray []RuleRuleConditionInput
+
+func (RuleRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleCondition)(nil)).Elem()
+}
+
+func (i RuleRuleConditionArray) ToRuleRuleConditionArrayOutput() RuleRuleConditionArrayOutput {
+	return i.ToRuleRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionArray) ToRuleRuleConditionArrayOutputWithContext(ctx context.Context) RuleRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionArrayOutput)
+}
+
+type RuleRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleCondition)(nil)).Elem()
+}
+
+func (o RuleRuleConditionOutput) ToRuleRuleConditionOutput() RuleRuleConditionOutput {
+	return o
+}
+
+func (o RuleRuleConditionOutput) ToRuleRuleConditionOutputWithContext(ctx context.Context) RuleRuleConditionOutput {
+	return o
+}
+
+// The configuration of the cookie. See the following `Block cookieConfig`.
+func (o RuleRuleConditionOutput) CookieConfig() RuleRuleConditionCookieConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionCookieConfig { return v.CookieConfig }).(RuleRuleConditionCookieConfigPtrOutput)
+}
+
+// The configuration of the header field. See the following `Block headerConfig`.
+func (o RuleRuleConditionOutput) HeaderConfig() RuleRuleConditionHeaderConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionHeaderConfig { return v.HeaderConfig }).(RuleRuleConditionHeaderConfigPtrOutput)
+}
+
+// The configuration of the host field. See the following `Block hostConfig`.
+func (o RuleRuleConditionOutput) HostConfig() RuleRuleConditionHostConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionHostConfig { return v.HostConfig }).(RuleRuleConditionHostConfigPtrOutput)
+}
+
+// The configuration of the request method. See the following `Block methodConfig`.
+func (o RuleRuleConditionOutput) MethodConfig() RuleRuleConditionMethodConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionMethodConfig { return v.MethodConfig }).(RuleRuleConditionMethodConfigPtrOutput)
+}
+
+// The configuration of the path for the request to be forwarded. See the following `Block pathConfig`.
+func (o RuleRuleConditionOutput) PathConfig() RuleRuleConditionPathConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionPathConfig { return v.PathConfig }).(RuleRuleConditionPathConfigPtrOutput)
+}
+
+// The configuration of the query string. See the following `Block queryStringConfig`.
+func (o RuleRuleConditionOutput) QueryStringConfig() RuleRuleConditionQueryStringConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionQueryStringConfig { return v.QueryStringConfig }).(RuleRuleConditionQueryStringConfigPtrOutput)
+}
+
+// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+func (o RuleRuleConditionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleRuleCondition) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RuleRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleCondition)(nil)).Elem()
+}
+
+func (o RuleRuleConditionArrayOutput) ToRuleRuleConditionArrayOutput() RuleRuleConditionArrayOutput {
+	return o
+}
+
+func (o RuleRuleConditionArrayOutput) ToRuleRuleConditionArrayOutputWithContext(ctx context.Context) RuleRuleConditionArrayOutput {
+	return o
+}
+
+func (o RuleRuleConditionArrayOutput) Index(i pulumi.IntInput) RuleRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleRuleCondition {
+		return vs[0].([]RuleRuleCondition)[vs[1].(int)]
+	}).(RuleRuleConditionOutput)
+}
+
+type RuleRuleConditionCookieConfig struct {
+	// The query string.
+	Values []RuleRuleConditionCookieConfigValue `pulumi:"values"`
+}
+
+// RuleRuleConditionCookieConfigInput is an input type that accepts RuleRuleConditionCookieConfigArgs and RuleRuleConditionCookieConfigOutput values.
+// You can construct a concrete instance of `RuleRuleConditionCookieConfigInput` via:
+//
+//          RuleRuleConditionCookieConfigArgs{...}
+type RuleRuleConditionCookieConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionCookieConfigOutput() RuleRuleConditionCookieConfigOutput
+	ToRuleRuleConditionCookieConfigOutputWithContext(context.Context) RuleRuleConditionCookieConfigOutput
+}
+
+type RuleRuleConditionCookieConfigArgs struct {
+	// The query string.
+	Values RuleRuleConditionCookieConfigValueArrayInput `pulumi:"values"`
+}
+
+func (RuleRuleConditionCookieConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionCookieConfig)(nil)).Elem()
+}
+
+func (i RuleRuleConditionCookieConfigArgs) ToRuleRuleConditionCookieConfigOutput() RuleRuleConditionCookieConfigOutput {
+	return i.ToRuleRuleConditionCookieConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionCookieConfigArgs) ToRuleRuleConditionCookieConfigOutputWithContext(ctx context.Context) RuleRuleConditionCookieConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionCookieConfigOutput)
+}
+
+func (i RuleRuleConditionCookieConfigArgs) ToRuleRuleConditionCookieConfigPtrOutput() RuleRuleConditionCookieConfigPtrOutput {
+	return i.ToRuleRuleConditionCookieConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionCookieConfigArgs) ToRuleRuleConditionCookieConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionCookieConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionCookieConfigOutput).ToRuleRuleConditionCookieConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleConditionCookieConfigPtrInput is an input type that accepts RuleRuleConditionCookieConfigArgs, RuleRuleConditionCookieConfigPtr and RuleRuleConditionCookieConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleConditionCookieConfigPtrInput` via:
+//
+//          RuleRuleConditionCookieConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleConditionCookieConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionCookieConfigPtrOutput() RuleRuleConditionCookieConfigPtrOutput
+	ToRuleRuleConditionCookieConfigPtrOutputWithContext(context.Context) RuleRuleConditionCookieConfigPtrOutput
+}
+
+type ruleRuleConditionCookieConfigPtrType RuleRuleConditionCookieConfigArgs
+
+func RuleRuleConditionCookieConfigPtr(v *RuleRuleConditionCookieConfigArgs) RuleRuleConditionCookieConfigPtrInput {
+	return (*ruleRuleConditionCookieConfigPtrType)(v)
+}
+
+func (*ruleRuleConditionCookieConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionCookieConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleConditionCookieConfigPtrType) ToRuleRuleConditionCookieConfigPtrOutput() RuleRuleConditionCookieConfigPtrOutput {
+	return i.ToRuleRuleConditionCookieConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleConditionCookieConfigPtrType) ToRuleRuleConditionCookieConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionCookieConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionCookieConfigPtrOutput)
+}
+
+type RuleRuleConditionCookieConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionCookieConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionCookieConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionCookieConfigOutput) ToRuleRuleConditionCookieConfigOutput() RuleRuleConditionCookieConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionCookieConfigOutput) ToRuleRuleConditionCookieConfigOutputWithContext(ctx context.Context) RuleRuleConditionCookieConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionCookieConfigOutput) ToRuleRuleConditionCookieConfigPtrOutput() RuleRuleConditionCookieConfigPtrOutput {
+	return o.ToRuleRuleConditionCookieConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleConditionCookieConfigOutput) ToRuleRuleConditionCookieConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionCookieConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionCookieConfig) *RuleRuleConditionCookieConfig {
+		return &v
+	}).(RuleRuleConditionCookieConfigPtrOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionCookieConfigOutput) Values() RuleRuleConditionCookieConfigValueArrayOutput {
+	return o.ApplyT(func(v RuleRuleConditionCookieConfig) []RuleRuleConditionCookieConfigValue { return v.Values }).(RuleRuleConditionCookieConfigValueArrayOutput)
+}
+
+type RuleRuleConditionCookieConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionCookieConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionCookieConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionCookieConfigPtrOutput) ToRuleRuleConditionCookieConfigPtrOutput() RuleRuleConditionCookieConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionCookieConfigPtrOutput) ToRuleRuleConditionCookieConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionCookieConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionCookieConfigPtrOutput) Elem() RuleRuleConditionCookieConfigOutput {
+	return o.ApplyT(func(v *RuleRuleConditionCookieConfig) RuleRuleConditionCookieConfig { return *v }).(RuleRuleConditionCookieConfigOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionCookieConfigPtrOutput) Values() RuleRuleConditionCookieConfigValueArrayOutput {
+	return o.ApplyT(func(v *RuleRuleConditionCookieConfig) []RuleRuleConditionCookieConfigValue {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(RuleRuleConditionCookieConfigValueArrayOutput)
+}
+
+type RuleRuleConditionCookieConfigValue struct {
+	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+	Key *string `pulumi:"key"`
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+	Value *string `pulumi:"value"`
+}
+
+// RuleRuleConditionCookieConfigValueInput is an input type that accepts RuleRuleConditionCookieConfigValueArgs and RuleRuleConditionCookieConfigValueOutput values.
+// You can construct a concrete instance of `RuleRuleConditionCookieConfigValueInput` via:
+//
+//          RuleRuleConditionCookieConfigValueArgs{...}
+type RuleRuleConditionCookieConfigValueInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionCookieConfigValueOutput() RuleRuleConditionCookieConfigValueOutput
+	ToRuleRuleConditionCookieConfigValueOutputWithContext(context.Context) RuleRuleConditionCookieConfigValueOutput
+}
+
+type RuleRuleConditionCookieConfigValueArgs struct {
+	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RuleRuleConditionCookieConfigValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionCookieConfigValue)(nil)).Elem()
+}
+
+func (i RuleRuleConditionCookieConfigValueArgs) ToRuleRuleConditionCookieConfigValueOutput() RuleRuleConditionCookieConfigValueOutput {
+	return i.ToRuleRuleConditionCookieConfigValueOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionCookieConfigValueArgs) ToRuleRuleConditionCookieConfigValueOutputWithContext(ctx context.Context) RuleRuleConditionCookieConfigValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionCookieConfigValueOutput)
+}
+
+// RuleRuleConditionCookieConfigValueArrayInput is an input type that accepts RuleRuleConditionCookieConfigValueArray and RuleRuleConditionCookieConfigValueArrayOutput values.
+// You can construct a concrete instance of `RuleRuleConditionCookieConfigValueArrayInput` via:
+//
+//          RuleRuleConditionCookieConfigValueArray{ RuleRuleConditionCookieConfigValueArgs{...} }
+type RuleRuleConditionCookieConfigValueArrayInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionCookieConfigValueArrayOutput() RuleRuleConditionCookieConfigValueArrayOutput
+	ToRuleRuleConditionCookieConfigValueArrayOutputWithContext(context.Context) RuleRuleConditionCookieConfigValueArrayOutput
+}
+
+type RuleRuleConditionCookieConfigValueArray []RuleRuleConditionCookieConfigValueInput
+
+func (RuleRuleConditionCookieConfigValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleConditionCookieConfigValue)(nil)).Elem()
+}
+
+func (i RuleRuleConditionCookieConfigValueArray) ToRuleRuleConditionCookieConfigValueArrayOutput() RuleRuleConditionCookieConfigValueArrayOutput {
+	return i.ToRuleRuleConditionCookieConfigValueArrayOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionCookieConfigValueArray) ToRuleRuleConditionCookieConfigValueArrayOutputWithContext(ctx context.Context) RuleRuleConditionCookieConfigValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionCookieConfigValueArrayOutput)
+}
+
+type RuleRuleConditionCookieConfigValueOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionCookieConfigValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionCookieConfigValue)(nil)).Elem()
+}
+
+func (o RuleRuleConditionCookieConfigValueOutput) ToRuleRuleConditionCookieConfigValueOutput() RuleRuleConditionCookieConfigValueOutput {
+	return o
+}
+
+func (o RuleRuleConditionCookieConfigValueOutput) ToRuleRuleConditionCookieConfigValueOutputWithContext(ctx context.Context) RuleRuleConditionCookieConfigValueOutput {
+	return o
+}
+
+// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+func (o RuleRuleConditionCookieConfigValueOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionCookieConfigValue) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+func (o RuleRuleConditionCookieConfigValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionCookieConfigValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleConditionCookieConfigValueArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionCookieConfigValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleConditionCookieConfigValue)(nil)).Elem()
+}
+
+func (o RuleRuleConditionCookieConfigValueArrayOutput) ToRuleRuleConditionCookieConfigValueArrayOutput() RuleRuleConditionCookieConfigValueArrayOutput {
+	return o
+}
+
+func (o RuleRuleConditionCookieConfigValueArrayOutput) ToRuleRuleConditionCookieConfigValueArrayOutputWithContext(ctx context.Context) RuleRuleConditionCookieConfigValueArrayOutput {
+	return o
+}
+
+func (o RuleRuleConditionCookieConfigValueArrayOutput) Index(i pulumi.IntInput) RuleRuleConditionCookieConfigValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleRuleConditionCookieConfigValue {
+		return vs[0].([]RuleRuleConditionCookieConfigValue)[vs[1].(int)]
+	}).(RuleRuleConditionCookieConfigValueOutput)
+}
+
+type RuleRuleConditionHeaderConfig struct {
+	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+	Key *string `pulumi:"key"`
+	// The query string.
+	Values []string `pulumi:"values"`
+}
+
+// RuleRuleConditionHeaderConfigInput is an input type that accepts RuleRuleConditionHeaderConfigArgs and RuleRuleConditionHeaderConfigOutput values.
+// You can construct a concrete instance of `RuleRuleConditionHeaderConfigInput` via:
+//
+//          RuleRuleConditionHeaderConfigArgs{...}
+type RuleRuleConditionHeaderConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionHeaderConfigOutput() RuleRuleConditionHeaderConfigOutput
+	ToRuleRuleConditionHeaderConfigOutputWithContext(context.Context) RuleRuleConditionHeaderConfigOutput
+}
+
+type RuleRuleConditionHeaderConfigArgs struct {
+	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The query string.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (RuleRuleConditionHeaderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionHeaderConfig)(nil)).Elem()
+}
+
+func (i RuleRuleConditionHeaderConfigArgs) ToRuleRuleConditionHeaderConfigOutput() RuleRuleConditionHeaderConfigOutput {
+	return i.ToRuleRuleConditionHeaderConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionHeaderConfigArgs) ToRuleRuleConditionHeaderConfigOutputWithContext(ctx context.Context) RuleRuleConditionHeaderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionHeaderConfigOutput)
+}
+
+func (i RuleRuleConditionHeaderConfigArgs) ToRuleRuleConditionHeaderConfigPtrOutput() RuleRuleConditionHeaderConfigPtrOutput {
+	return i.ToRuleRuleConditionHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionHeaderConfigArgs) ToRuleRuleConditionHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionHeaderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionHeaderConfigOutput).ToRuleRuleConditionHeaderConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleConditionHeaderConfigPtrInput is an input type that accepts RuleRuleConditionHeaderConfigArgs, RuleRuleConditionHeaderConfigPtr and RuleRuleConditionHeaderConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleConditionHeaderConfigPtrInput` via:
+//
+//          RuleRuleConditionHeaderConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleConditionHeaderConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionHeaderConfigPtrOutput() RuleRuleConditionHeaderConfigPtrOutput
+	ToRuleRuleConditionHeaderConfigPtrOutputWithContext(context.Context) RuleRuleConditionHeaderConfigPtrOutput
+}
+
+type ruleRuleConditionHeaderConfigPtrType RuleRuleConditionHeaderConfigArgs
+
+func RuleRuleConditionHeaderConfigPtr(v *RuleRuleConditionHeaderConfigArgs) RuleRuleConditionHeaderConfigPtrInput {
+	return (*ruleRuleConditionHeaderConfigPtrType)(v)
+}
+
+func (*ruleRuleConditionHeaderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionHeaderConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleConditionHeaderConfigPtrType) ToRuleRuleConditionHeaderConfigPtrOutput() RuleRuleConditionHeaderConfigPtrOutput {
+	return i.ToRuleRuleConditionHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleConditionHeaderConfigPtrType) ToRuleRuleConditionHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionHeaderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionHeaderConfigPtrOutput)
+}
+
+type RuleRuleConditionHeaderConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionHeaderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionHeaderConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionHeaderConfigOutput) ToRuleRuleConditionHeaderConfigOutput() RuleRuleConditionHeaderConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionHeaderConfigOutput) ToRuleRuleConditionHeaderConfigOutputWithContext(ctx context.Context) RuleRuleConditionHeaderConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionHeaderConfigOutput) ToRuleRuleConditionHeaderConfigPtrOutput() RuleRuleConditionHeaderConfigPtrOutput {
+	return o.ToRuleRuleConditionHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleConditionHeaderConfigOutput) ToRuleRuleConditionHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionHeaderConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionHeaderConfig) *RuleRuleConditionHeaderConfig {
+		return &v
+	}).(RuleRuleConditionHeaderConfigPtrOutput)
+}
+
+// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+func (o RuleRuleConditionHeaderConfigOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionHeaderConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleRuleConditionHeaderConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionHeaderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionHeaderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionHeaderConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionHeaderConfigPtrOutput) ToRuleRuleConditionHeaderConfigPtrOutput() RuleRuleConditionHeaderConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionHeaderConfigPtrOutput) ToRuleRuleConditionHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionHeaderConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionHeaderConfigPtrOutput) Elem() RuleRuleConditionHeaderConfigOutput {
+	return o.ApplyT(func(v *RuleRuleConditionHeaderConfig) RuleRuleConditionHeaderConfig { return *v }).(RuleRuleConditionHeaderConfigOutput)
+}
+
+// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+func (o RuleRuleConditionHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleConditionHeaderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionHeaderConfigPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleRuleConditionHeaderConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionHostConfig struct {
+	// The query string.
+	Values []string `pulumi:"values"`
+}
+
+// RuleRuleConditionHostConfigInput is an input type that accepts RuleRuleConditionHostConfigArgs and RuleRuleConditionHostConfigOutput values.
+// You can construct a concrete instance of `RuleRuleConditionHostConfigInput` via:
+//
+//          RuleRuleConditionHostConfigArgs{...}
+type RuleRuleConditionHostConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionHostConfigOutput() RuleRuleConditionHostConfigOutput
+	ToRuleRuleConditionHostConfigOutputWithContext(context.Context) RuleRuleConditionHostConfigOutput
+}
+
+type RuleRuleConditionHostConfigArgs struct {
+	// The query string.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (RuleRuleConditionHostConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (i RuleRuleConditionHostConfigArgs) ToRuleRuleConditionHostConfigOutput() RuleRuleConditionHostConfigOutput {
+	return i.ToRuleRuleConditionHostConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionHostConfigArgs) ToRuleRuleConditionHostConfigOutputWithContext(ctx context.Context) RuleRuleConditionHostConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionHostConfigOutput)
+}
+
+func (i RuleRuleConditionHostConfigArgs) ToRuleRuleConditionHostConfigPtrOutput() RuleRuleConditionHostConfigPtrOutput {
+	return i.ToRuleRuleConditionHostConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionHostConfigArgs) ToRuleRuleConditionHostConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionHostConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionHostConfigOutput).ToRuleRuleConditionHostConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleConditionHostConfigPtrInput is an input type that accepts RuleRuleConditionHostConfigArgs, RuleRuleConditionHostConfigPtr and RuleRuleConditionHostConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleConditionHostConfigPtrInput` via:
+//
+//          RuleRuleConditionHostConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleConditionHostConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionHostConfigPtrOutput() RuleRuleConditionHostConfigPtrOutput
+	ToRuleRuleConditionHostConfigPtrOutputWithContext(context.Context) RuleRuleConditionHostConfigPtrOutput
+}
+
+type ruleRuleConditionHostConfigPtrType RuleRuleConditionHostConfigArgs
+
+func RuleRuleConditionHostConfigPtr(v *RuleRuleConditionHostConfigArgs) RuleRuleConditionHostConfigPtrInput {
+	return (*ruleRuleConditionHostConfigPtrType)(v)
+}
+
+func (*ruleRuleConditionHostConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleConditionHostConfigPtrType) ToRuleRuleConditionHostConfigPtrOutput() RuleRuleConditionHostConfigPtrOutput {
+	return i.ToRuleRuleConditionHostConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleConditionHostConfigPtrType) ToRuleRuleConditionHostConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionHostConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionHostConfigPtrOutput)
+}
+
+type RuleRuleConditionHostConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionHostConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionHostConfigOutput) ToRuleRuleConditionHostConfigOutput() RuleRuleConditionHostConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionHostConfigOutput) ToRuleRuleConditionHostConfigOutputWithContext(ctx context.Context) RuleRuleConditionHostConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionHostConfigOutput) ToRuleRuleConditionHostConfigPtrOutput() RuleRuleConditionHostConfigPtrOutput {
+	return o.ToRuleRuleConditionHostConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleConditionHostConfigOutput) ToRuleRuleConditionHostConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionHostConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionHostConfig) *RuleRuleConditionHostConfig {
+		return &v
+	}).(RuleRuleConditionHostConfigPtrOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionHostConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionHostConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionHostConfigPtrOutput) ToRuleRuleConditionHostConfigPtrOutput() RuleRuleConditionHostConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionHostConfigPtrOutput) ToRuleRuleConditionHostConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionHostConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionHostConfigPtrOutput) Elem() RuleRuleConditionHostConfigOutput {
+	return o.ApplyT(func(v *RuleRuleConditionHostConfig) RuleRuleConditionHostConfig { return *v }).(RuleRuleConditionHostConfigOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionHostConfigPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleRuleConditionHostConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionMethodConfig struct {
+	// The query string.
+	Values []string `pulumi:"values"`
+}
+
+// RuleRuleConditionMethodConfigInput is an input type that accepts RuleRuleConditionMethodConfigArgs and RuleRuleConditionMethodConfigOutput values.
+// You can construct a concrete instance of `RuleRuleConditionMethodConfigInput` via:
+//
+//          RuleRuleConditionMethodConfigArgs{...}
+type RuleRuleConditionMethodConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionMethodConfigOutput() RuleRuleConditionMethodConfigOutput
+	ToRuleRuleConditionMethodConfigOutputWithContext(context.Context) RuleRuleConditionMethodConfigOutput
+}
+
+type RuleRuleConditionMethodConfigArgs struct {
+	// The query string.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (RuleRuleConditionMethodConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionMethodConfig)(nil)).Elem()
+}
+
+func (i RuleRuleConditionMethodConfigArgs) ToRuleRuleConditionMethodConfigOutput() RuleRuleConditionMethodConfigOutput {
+	return i.ToRuleRuleConditionMethodConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionMethodConfigArgs) ToRuleRuleConditionMethodConfigOutputWithContext(ctx context.Context) RuleRuleConditionMethodConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionMethodConfigOutput)
+}
+
+func (i RuleRuleConditionMethodConfigArgs) ToRuleRuleConditionMethodConfigPtrOutput() RuleRuleConditionMethodConfigPtrOutput {
+	return i.ToRuleRuleConditionMethodConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionMethodConfigArgs) ToRuleRuleConditionMethodConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionMethodConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionMethodConfigOutput).ToRuleRuleConditionMethodConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleConditionMethodConfigPtrInput is an input type that accepts RuleRuleConditionMethodConfigArgs, RuleRuleConditionMethodConfigPtr and RuleRuleConditionMethodConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleConditionMethodConfigPtrInput` via:
+//
+//          RuleRuleConditionMethodConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleConditionMethodConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionMethodConfigPtrOutput() RuleRuleConditionMethodConfigPtrOutput
+	ToRuleRuleConditionMethodConfigPtrOutputWithContext(context.Context) RuleRuleConditionMethodConfigPtrOutput
+}
+
+type ruleRuleConditionMethodConfigPtrType RuleRuleConditionMethodConfigArgs
+
+func RuleRuleConditionMethodConfigPtr(v *RuleRuleConditionMethodConfigArgs) RuleRuleConditionMethodConfigPtrInput {
+	return (*ruleRuleConditionMethodConfigPtrType)(v)
+}
+
+func (*ruleRuleConditionMethodConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionMethodConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleConditionMethodConfigPtrType) ToRuleRuleConditionMethodConfigPtrOutput() RuleRuleConditionMethodConfigPtrOutput {
+	return i.ToRuleRuleConditionMethodConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleConditionMethodConfigPtrType) ToRuleRuleConditionMethodConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionMethodConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionMethodConfigPtrOutput)
+}
+
+type RuleRuleConditionMethodConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionMethodConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionMethodConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionMethodConfigOutput) ToRuleRuleConditionMethodConfigOutput() RuleRuleConditionMethodConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionMethodConfigOutput) ToRuleRuleConditionMethodConfigOutputWithContext(ctx context.Context) RuleRuleConditionMethodConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionMethodConfigOutput) ToRuleRuleConditionMethodConfigPtrOutput() RuleRuleConditionMethodConfigPtrOutput {
+	return o.ToRuleRuleConditionMethodConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleConditionMethodConfigOutput) ToRuleRuleConditionMethodConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionMethodConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionMethodConfig) *RuleRuleConditionMethodConfig {
+		return &v
+	}).(RuleRuleConditionMethodConfigPtrOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionMethodConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleRuleConditionMethodConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionMethodConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionMethodConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionMethodConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionMethodConfigPtrOutput) ToRuleRuleConditionMethodConfigPtrOutput() RuleRuleConditionMethodConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionMethodConfigPtrOutput) ToRuleRuleConditionMethodConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionMethodConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionMethodConfigPtrOutput) Elem() RuleRuleConditionMethodConfigOutput {
+	return o.ApplyT(func(v *RuleRuleConditionMethodConfig) RuleRuleConditionMethodConfig { return *v }).(RuleRuleConditionMethodConfigOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionMethodConfigPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleRuleConditionMethodConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionPathConfig struct {
+	// The query string.
+	Values []string `pulumi:"values"`
+}
+
+// RuleRuleConditionPathConfigInput is an input type that accepts RuleRuleConditionPathConfigArgs and RuleRuleConditionPathConfigOutput values.
+// You can construct a concrete instance of `RuleRuleConditionPathConfigInput` via:
+//
+//          RuleRuleConditionPathConfigArgs{...}
+type RuleRuleConditionPathConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionPathConfigOutput() RuleRuleConditionPathConfigOutput
+	ToRuleRuleConditionPathConfigOutputWithContext(context.Context) RuleRuleConditionPathConfigOutput
+}
+
+type RuleRuleConditionPathConfigArgs struct {
+	// The query string.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (RuleRuleConditionPathConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (i RuleRuleConditionPathConfigArgs) ToRuleRuleConditionPathConfigOutput() RuleRuleConditionPathConfigOutput {
+	return i.ToRuleRuleConditionPathConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionPathConfigArgs) ToRuleRuleConditionPathConfigOutputWithContext(ctx context.Context) RuleRuleConditionPathConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionPathConfigOutput)
+}
+
+func (i RuleRuleConditionPathConfigArgs) ToRuleRuleConditionPathConfigPtrOutput() RuleRuleConditionPathConfigPtrOutput {
+	return i.ToRuleRuleConditionPathConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionPathConfigArgs) ToRuleRuleConditionPathConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionPathConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionPathConfigOutput).ToRuleRuleConditionPathConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleConditionPathConfigPtrInput is an input type that accepts RuleRuleConditionPathConfigArgs, RuleRuleConditionPathConfigPtr and RuleRuleConditionPathConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleConditionPathConfigPtrInput` via:
+//
+//          RuleRuleConditionPathConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleConditionPathConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionPathConfigPtrOutput() RuleRuleConditionPathConfigPtrOutput
+	ToRuleRuleConditionPathConfigPtrOutputWithContext(context.Context) RuleRuleConditionPathConfigPtrOutput
+}
+
+type ruleRuleConditionPathConfigPtrType RuleRuleConditionPathConfigArgs
+
+func RuleRuleConditionPathConfigPtr(v *RuleRuleConditionPathConfigArgs) RuleRuleConditionPathConfigPtrInput {
+	return (*ruleRuleConditionPathConfigPtrType)(v)
+}
+
+func (*ruleRuleConditionPathConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleConditionPathConfigPtrType) ToRuleRuleConditionPathConfigPtrOutput() RuleRuleConditionPathConfigPtrOutput {
+	return i.ToRuleRuleConditionPathConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleConditionPathConfigPtrType) ToRuleRuleConditionPathConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionPathConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionPathConfigPtrOutput)
+}
+
+type RuleRuleConditionPathConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionPathConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionPathConfigOutput) ToRuleRuleConditionPathConfigOutput() RuleRuleConditionPathConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionPathConfigOutput) ToRuleRuleConditionPathConfigOutputWithContext(ctx context.Context) RuleRuleConditionPathConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionPathConfigOutput) ToRuleRuleConditionPathConfigPtrOutput() RuleRuleConditionPathConfigPtrOutput {
+	return o.ToRuleRuleConditionPathConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleConditionPathConfigOutput) ToRuleRuleConditionPathConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionPathConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionPathConfig) *RuleRuleConditionPathConfig {
+		return &v
+	}).(RuleRuleConditionPathConfigPtrOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionPathConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionPathConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionPathConfigPtrOutput) ToRuleRuleConditionPathConfigPtrOutput() RuleRuleConditionPathConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionPathConfigPtrOutput) ToRuleRuleConditionPathConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionPathConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionPathConfigPtrOutput) Elem() RuleRuleConditionPathConfigOutput {
+	return o.ApplyT(func(v *RuleRuleConditionPathConfig) RuleRuleConditionPathConfig { return *v }).(RuleRuleConditionPathConfigOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionPathConfigPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleRuleConditionPathConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionQueryStringConfig struct {
+	// The query string.
+	Values []RuleRuleConditionQueryStringConfigValue `pulumi:"values"`
+}
+
+// RuleRuleConditionQueryStringConfigInput is an input type that accepts RuleRuleConditionQueryStringConfigArgs and RuleRuleConditionQueryStringConfigOutput values.
+// You can construct a concrete instance of `RuleRuleConditionQueryStringConfigInput` via:
+//
+//          RuleRuleConditionQueryStringConfigArgs{...}
+type RuleRuleConditionQueryStringConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionQueryStringConfigOutput() RuleRuleConditionQueryStringConfigOutput
+	ToRuleRuleConditionQueryStringConfigOutputWithContext(context.Context) RuleRuleConditionQueryStringConfigOutput
+}
+
+type RuleRuleConditionQueryStringConfigArgs struct {
+	// The query string.
+	Values RuleRuleConditionQueryStringConfigValueArrayInput `pulumi:"values"`
+}
+
+func (RuleRuleConditionQueryStringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionQueryStringConfig)(nil)).Elem()
+}
+
+func (i RuleRuleConditionQueryStringConfigArgs) ToRuleRuleConditionQueryStringConfigOutput() RuleRuleConditionQueryStringConfigOutput {
+	return i.ToRuleRuleConditionQueryStringConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionQueryStringConfigArgs) ToRuleRuleConditionQueryStringConfigOutputWithContext(ctx context.Context) RuleRuleConditionQueryStringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionQueryStringConfigOutput)
+}
+
+func (i RuleRuleConditionQueryStringConfigArgs) ToRuleRuleConditionQueryStringConfigPtrOutput() RuleRuleConditionQueryStringConfigPtrOutput {
+	return i.ToRuleRuleConditionQueryStringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionQueryStringConfigArgs) ToRuleRuleConditionQueryStringConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionQueryStringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionQueryStringConfigOutput).ToRuleRuleConditionQueryStringConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleConditionQueryStringConfigPtrInput is an input type that accepts RuleRuleConditionQueryStringConfigArgs, RuleRuleConditionQueryStringConfigPtr and RuleRuleConditionQueryStringConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleConditionQueryStringConfigPtrInput` via:
+//
+//          RuleRuleConditionQueryStringConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleConditionQueryStringConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionQueryStringConfigPtrOutput() RuleRuleConditionQueryStringConfigPtrOutput
+	ToRuleRuleConditionQueryStringConfigPtrOutputWithContext(context.Context) RuleRuleConditionQueryStringConfigPtrOutput
+}
+
+type ruleRuleConditionQueryStringConfigPtrType RuleRuleConditionQueryStringConfigArgs
+
+func RuleRuleConditionQueryStringConfigPtr(v *RuleRuleConditionQueryStringConfigArgs) RuleRuleConditionQueryStringConfigPtrInput {
+	return (*ruleRuleConditionQueryStringConfigPtrType)(v)
+}
+
+func (*ruleRuleConditionQueryStringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionQueryStringConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleConditionQueryStringConfigPtrType) ToRuleRuleConditionQueryStringConfigPtrOutput() RuleRuleConditionQueryStringConfigPtrOutput {
+	return i.ToRuleRuleConditionQueryStringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleConditionQueryStringConfigPtrType) ToRuleRuleConditionQueryStringConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionQueryStringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionQueryStringConfigPtrOutput)
+}
+
+type RuleRuleConditionQueryStringConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionQueryStringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionQueryStringConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionQueryStringConfigOutput) ToRuleRuleConditionQueryStringConfigOutput() RuleRuleConditionQueryStringConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionQueryStringConfigOutput) ToRuleRuleConditionQueryStringConfigOutputWithContext(ctx context.Context) RuleRuleConditionQueryStringConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionQueryStringConfigOutput) ToRuleRuleConditionQueryStringConfigPtrOutput() RuleRuleConditionQueryStringConfigPtrOutput {
+	return o.ToRuleRuleConditionQueryStringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleConditionQueryStringConfigOutput) ToRuleRuleConditionQueryStringConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionQueryStringConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionQueryStringConfig) *RuleRuleConditionQueryStringConfig {
+		return &v
+	}).(RuleRuleConditionQueryStringConfigPtrOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionQueryStringConfigOutput) Values() RuleRuleConditionQueryStringConfigValueArrayOutput {
+	return o.ApplyT(func(v RuleRuleConditionQueryStringConfig) []RuleRuleConditionQueryStringConfigValue { return v.Values }).(RuleRuleConditionQueryStringConfigValueArrayOutput)
+}
+
+type RuleRuleConditionQueryStringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionQueryStringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionQueryStringConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionQueryStringConfigPtrOutput) ToRuleRuleConditionQueryStringConfigPtrOutput() RuleRuleConditionQueryStringConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionQueryStringConfigPtrOutput) ToRuleRuleConditionQueryStringConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionQueryStringConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionQueryStringConfigPtrOutput) Elem() RuleRuleConditionQueryStringConfigOutput {
+	return o.ApplyT(func(v *RuleRuleConditionQueryStringConfig) RuleRuleConditionQueryStringConfig { return *v }).(RuleRuleConditionQueryStringConfigOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionQueryStringConfigPtrOutput) Values() RuleRuleConditionQueryStringConfigValueArrayOutput {
+	return o.ApplyT(func(v *RuleRuleConditionQueryStringConfig) []RuleRuleConditionQueryStringConfigValue {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(RuleRuleConditionQueryStringConfigValueArrayOutput)
+}
+
+type RuleRuleConditionQueryStringConfigValue struct {
+	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+	Key *string `pulumi:"key"`
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+	Value *string `pulumi:"value"`
+}
+
+// RuleRuleConditionQueryStringConfigValueInput is an input type that accepts RuleRuleConditionQueryStringConfigValueArgs and RuleRuleConditionQueryStringConfigValueOutput values.
+// You can construct a concrete instance of `RuleRuleConditionQueryStringConfigValueInput` via:
+//
+//          RuleRuleConditionQueryStringConfigValueArgs{...}
+type RuleRuleConditionQueryStringConfigValueInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionQueryStringConfigValueOutput() RuleRuleConditionQueryStringConfigValueOutput
+	ToRuleRuleConditionQueryStringConfigValueOutputWithContext(context.Context) RuleRuleConditionQueryStringConfigValueOutput
+}
+
+type RuleRuleConditionQueryStringConfigValueArgs struct {
+	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RuleRuleConditionQueryStringConfigValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionQueryStringConfigValue)(nil)).Elem()
+}
+
+func (i RuleRuleConditionQueryStringConfigValueArgs) ToRuleRuleConditionQueryStringConfigValueOutput() RuleRuleConditionQueryStringConfigValueOutput {
+	return i.ToRuleRuleConditionQueryStringConfigValueOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionQueryStringConfigValueArgs) ToRuleRuleConditionQueryStringConfigValueOutputWithContext(ctx context.Context) RuleRuleConditionQueryStringConfigValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionQueryStringConfigValueOutput)
+}
+
+// RuleRuleConditionQueryStringConfigValueArrayInput is an input type that accepts RuleRuleConditionQueryStringConfigValueArray and RuleRuleConditionQueryStringConfigValueArrayOutput values.
+// You can construct a concrete instance of `RuleRuleConditionQueryStringConfigValueArrayInput` via:
+//
+//          RuleRuleConditionQueryStringConfigValueArray{ RuleRuleConditionQueryStringConfigValueArgs{...} }
+type RuleRuleConditionQueryStringConfigValueArrayInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionQueryStringConfigValueArrayOutput() RuleRuleConditionQueryStringConfigValueArrayOutput
+	ToRuleRuleConditionQueryStringConfigValueArrayOutputWithContext(context.Context) RuleRuleConditionQueryStringConfigValueArrayOutput
+}
+
+type RuleRuleConditionQueryStringConfigValueArray []RuleRuleConditionQueryStringConfigValueInput
+
+func (RuleRuleConditionQueryStringConfigValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleConditionQueryStringConfigValue)(nil)).Elem()
+}
+
+func (i RuleRuleConditionQueryStringConfigValueArray) ToRuleRuleConditionQueryStringConfigValueArrayOutput() RuleRuleConditionQueryStringConfigValueArrayOutput {
+	return i.ToRuleRuleConditionQueryStringConfigValueArrayOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionQueryStringConfigValueArray) ToRuleRuleConditionQueryStringConfigValueArrayOutputWithContext(ctx context.Context) RuleRuleConditionQueryStringConfigValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionQueryStringConfigValueArrayOutput)
+}
+
+type RuleRuleConditionQueryStringConfigValueOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionQueryStringConfigValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionQueryStringConfigValue)(nil)).Elem()
+}
+
+func (o RuleRuleConditionQueryStringConfigValueOutput) ToRuleRuleConditionQueryStringConfigValueOutput() RuleRuleConditionQueryStringConfigValueOutput {
+	return o
+}
+
+func (o RuleRuleConditionQueryStringConfigValueOutput) ToRuleRuleConditionQueryStringConfigValueOutputWithContext(ctx context.Context) RuleRuleConditionQueryStringConfigValueOutput {
+	return o
+}
+
+// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+func (o RuleRuleConditionQueryStringConfigValueOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionQueryStringConfigValue) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+func (o RuleRuleConditionQueryStringConfigValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionQueryStringConfigValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleConditionQueryStringConfigValueArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionQueryStringConfigValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleConditionQueryStringConfigValue)(nil)).Elem()
+}
+
+func (o RuleRuleConditionQueryStringConfigValueArrayOutput) ToRuleRuleConditionQueryStringConfigValueArrayOutput() RuleRuleConditionQueryStringConfigValueArrayOutput {
+	return o
+}
+
+func (o RuleRuleConditionQueryStringConfigValueArrayOutput) ToRuleRuleConditionQueryStringConfigValueArrayOutputWithContext(ctx context.Context) RuleRuleConditionQueryStringConfigValueArrayOutput {
+	return o
+}
+
+func (o RuleRuleConditionQueryStringConfigValueArrayOutput) Index(i pulumi.IntInput) RuleRuleConditionQueryStringConfigValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleRuleConditionQueryStringConfigValue {
+		return vs[0].([]RuleRuleConditionQueryStringConfigValue)[vs[1].(int)]
+	}).(RuleRuleConditionQueryStringConfigValueOutput)
+}
+
 type ServerGroupHealthCheckConfig struct {
-	// The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The status code for a successful health check. Multiple status codes can be specified as a
+	// list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
+	// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckCodes []string `pulumi:"healthCheckCodes"`
-	// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+	// The port of the backend server that is used for health checks. Valid values: `0`
+	// to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
-	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
+	// value: `true`.
 	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
 	// The domain name that is used for health checks.
 	HealthCheckHost *string `pulumi:"healthCheckHost"`
-	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
+	// . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckHttpVersion *string `pulumi:"healthCheckHttpVersion"`
-	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
+	// to `50`. Default value: `2`.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
-	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
+	// exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckMethod *string `pulumi:"healthCheckMethod"`
-	// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The forwarding rule path of health checks. **NOTE:** This parameter exists if
+	// the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
 	// Health check protocol. Valid values: `HTTP` and `TCP`.
 	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
-	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
+	// instance does not send an expected response within the specified period of time, the ECS instance is considered
+	// unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
+	// parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
+	// is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
-	// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+	// The number of health checks that an unhealthy backend server must pass consecutively before it
+	// is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
+	// Default value: 3.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+	// The number of consecutive health checks that a healthy backend server must consecutively fail
+	// before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
+	// values: `2` to `10`. Default value: `3`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 }
 
@@ -586,29 +4028,45 @@ type ServerGroupHealthCheckConfigInput interface {
 }
 
 type ServerGroupHealthCheckConfigArgs struct {
-	// The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The status code for a successful health check. Multiple status codes can be specified as a
+	// list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
+	// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckCodes pulumi.StringArrayInput `pulumi:"healthCheckCodes"`
-	// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+	// The port of the backend server that is used for health checks. Valid values: `0`
+	// to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
 	HealthCheckConnectPort pulumi.IntPtrInput `pulumi:"healthCheckConnectPort"`
-	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
+	// value: `true`.
 	HealthCheckEnabled pulumi.BoolPtrInput `pulumi:"healthCheckEnabled"`
 	// The domain name that is used for health checks.
 	HealthCheckHost pulumi.StringPtrInput `pulumi:"healthCheckHost"`
-	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
+	// . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckHttpVersion pulumi.StringPtrInput `pulumi:"healthCheckHttpVersion"`
-	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
+	// to `50`. Default value: `2`.
 	HealthCheckInterval pulumi.IntPtrInput `pulumi:"healthCheckInterval"`
-	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
+	// exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckMethod pulumi.StringPtrInput `pulumi:"healthCheckMethod"`
-	// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The forwarding rule path of health checks. **NOTE:** This parameter exists if
+	// the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckPath pulumi.StringPtrInput `pulumi:"healthCheckPath"`
 	// Health check protocol. Valid values: `HTTP` and `TCP`.
 	HealthCheckProtocol pulumi.StringPtrInput `pulumi:"healthCheckProtocol"`
-	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
+	// instance does not send an expected response within the specified period of time, the ECS instance is considered
+	// unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
+	// parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
+	// is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
 	HealthCheckTimeout pulumi.IntPtrInput `pulumi:"healthCheckTimeout"`
-	// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+	// The number of health checks that an unhealthy backend server must pass consecutively before it
+	// is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
+	// Default value: 3.
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
-	// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+	// The number of consecutive health checks that a healthy backend server must consecutively fail
+	// before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
+	// values: `2` to `10`. Default value: `3`.
 	UnhealthyThreshold pulumi.IntPtrInput `pulumi:"unhealthyThreshold"`
 }
 
@@ -689,17 +4147,21 @@ func (o ServerGroupHealthCheckConfigOutput) ToServerGroupHealthCheckConfigPtrOut
 	}).(ServerGroupHealthCheckConfigPtrOutput)
 }
 
-// The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The status code for a successful health check. Multiple status codes can be specified as a
+// list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
+// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) []string { return v.HealthCheckCodes }).(pulumi.StringArrayOutput)
 }
 
-// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+// The port of the backend server that is used for health checks. Valid values: `0`
+// to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckConnectPort }).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
+// value: `true`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *bool { return v.HealthCheckEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -709,22 +4171,26 @@ func (o ServerGroupHealthCheckConfigOutput) HealthCheckHost() pulumi.StringPtrOu
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckHost }).(pulumi.StringPtrOutput)
 }
 
-// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
+// . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckHttpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckHttpVersion }).(pulumi.StringPtrOutput)
 }
 
-// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
+// to `50`. Default value: `2`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
 }
 
-// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
+// exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckMethod }).(pulumi.StringPtrOutput)
 }
 
-// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The forwarding rule path of health checks. **NOTE:** This parameter exists if
+// the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckPath }).(pulumi.StringPtrOutput)
 }
@@ -734,17 +4200,25 @@ func (o ServerGroupHealthCheckConfigOutput) HealthCheckProtocol() pulumi.StringP
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckProtocol }).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+// The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
+// instance does not send an expected response within the specified period of time, the ECS instance is considered
+// unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
+// parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
+// is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+// The number of health checks that an unhealthy backend server must pass consecutively before it
+// is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
+// Default value: 3.
 func (o ServerGroupHealthCheckConfigOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+// The number of consecutive health checks that a healthy backend server must consecutively fail
+// before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
+// values: `2` to `10`. Default value: `3`.
 func (o ServerGroupHealthCheckConfigOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
 }
@@ -767,7 +4241,9 @@ func (o ServerGroupHealthCheckConfigPtrOutput) Elem() ServerGroupHealthCheckConf
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) ServerGroupHealthCheckConfig { return *v }).(ServerGroupHealthCheckConfigOutput)
 }
 
-// The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The status code for a successful health check. Multiple status codes can be specified as a
+// list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
+// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) []string {
 		if v == nil {
@@ -777,7 +4253,8 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckCodes() pulumi.StringA
 	}).(pulumi.StringArrayOutput)
 }
 
-// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+// The port of the backend server that is used for health checks. Valid values: `0`
+// to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -787,7 +4264,8 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectPort() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
+// value: `true`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *bool {
 		if v == nil {
@@ -807,7 +4285,8 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHost() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
+// . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHttpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -817,7 +4296,8 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHttpVersion() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
+// to `50`. Default value: `2`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -827,7 +4307,8 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckInterval() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
+// exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -837,7 +4318,8 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckMethod() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The forwarding rule path of health checks. **NOTE:** This parameter exists if
+// the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -857,7 +4339,11 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckProtocol() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+// The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
+// instance does not send an expected response within the specified period of time, the ECS instance is considered
+// unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
+// parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
+// is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -867,7 +4353,9 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckTimeout() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+// The number of health checks that an unhealthy backend server must pass consecutively before it
+// is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
+// Default value: 3.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -877,7 +4365,9 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthyThreshold() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+// The number of consecutive health checks that a healthy backend server must consecutively fail
+// before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
+// values: `2` to `10`. Default value: `3`.
 func (o ServerGroupHealthCheckConfigPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -900,7 +4390,8 @@ type ServerGroupServer struct {
 	ServerType *string `pulumi:"serverType"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+	// The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
+	// requests are forwarded to the server.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -928,7 +4419,8 @@ type ServerGroupServerArgs struct {
 	ServerType pulumi.StringPtrInput `pulumi:"serverType"`
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+	// The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
+	// requests are forwarded to the server.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -1013,7 +4505,8 @@ func (o ServerGroupServerOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+// The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
+// requests are forwarded to the server.
 func (o ServerGroupServerOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -1039,11 +4532,14 @@ func (o ServerGroupServerArrayOutput) Index(i pulumi.IntInput) ServerGroupServer
 }
 
 type ServerGroupStickySessionConfig struct {
-	// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+	// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
+	// parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
 	Cookie *string `pulumi:"cookie"`
-	// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+	// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
+	// to `86400`. Default value: `1000`.
 	CookieTimeout *int `pulumi:"cookieTimeout"`
-	// Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+	// Indicates whether sticky session is enabled. Values: `true` and `false`. Default
+	// value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
 	StickySessionEnabled *bool `pulumi:"stickySessionEnabled"`
 	// The method that is used to handle a cookie. Values: `Server` and `Insert`.
 	StickySessionType *string `pulumi:"stickySessionType"`
@@ -1061,11 +4557,14 @@ type ServerGroupStickySessionConfigInput interface {
 }
 
 type ServerGroupStickySessionConfigArgs struct {
-	// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+	// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
+	// parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
 	Cookie pulumi.StringPtrInput `pulumi:"cookie"`
-	// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+	// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
+	// to `86400`. Default value: `1000`.
 	CookieTimeout pulumi.IntPtrInput `pulumi:"cookieTimeout"`
-	// Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+	// Indicates whether sticky session is enabled. Values: `true` and `false`. Default
+	// value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
 	StickySessionEnabled pulumi.BoolPtrInput `pulumi:"stickySessionEnabled"`
 	// The method that is used to handle a cookie. Values: `Server` and `Insert`.
 	StickySessionType pulumi.StringPtrInput `pulumi:"stickySessionType"`
@@ -1148,17 +4647,20 @@ func (o ServerGroupStickySessionConfigOutput) ToServerGroupStickySessionConfigPt
 	}).(ServerGroupStickySessionConfigPtrOutput)
 }
 
-// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
+// parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
 func (o ServerGroupStickySessionConfigOutput) Cookie() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupStickySessionConfig) *string { return v.Cookie }).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
+// to `86400`. Default value: `1000`.
 func (o ServerGroupStickySessionConfigOutput) CookieTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupStickySessionConfig) *int { return v.CookieTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+// Indicates whether sticky session is enabled. Values: `true` and `false`. Default
+// value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
 func (o ServerGroupStickySessionConfigOutput) StickySessionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerGroupStickySessionConfig) *bool { return v.StickySessionEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1186,7 +4688,8 @@ func (o ServerGroupStickySessionConfigPtrOutput) Elem() ServerGroupStickySession
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) ServerGroupStickySessionConfig { return *v }).(ServerGroupStickySessionConfigOutput)
 }
 
-// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
+// parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
 func (o ServerGroupStickySessionConfigPtrOutput) Cookie() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) *string {
 		if v == nil {
@@ -1196,7 +4699,8 @@ func (o ServerGroupStickySessionConfigPtrOutput) Cookie() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
+// to `86400`. Default value: `1000`.
 func (o ServerGroupStickySessionConfigPtrOutput) CookieTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) *int {
 		if v == nil {
@@ -1206,7 +4710,8 @@ func (o ServerGroupStickySessionConfigPtrOutput) CookieTimeout() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+// Indicates whether sticky session is enabled. Values: `true` and `false`. Default
+// value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
 func (o ServerGroupStickySessionConfigPtrOutput) StickySessionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) *bool {
 		if v == nil {
@@ -1224,6 +4729,1388 @@ func (o ServerGroupStickySessionConfigPtrOutput) StickySessionType() pulumi.Stri
 		}
 		return v.StickySessionType
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetAclsAcl struct {
+	// ACL Entries.
+	AclEntries []GetAclsAclAclEntry `pulumi:"aclEntries"`
+	// Access Control Policy ID.
+	AclId string `pulumi:"aclId"`
+	// The ACL Name.
+	AclName string `pulumi:"aclName"`
+	// Address Protocol Version.
+	AddressIpVersion string `pulumi:"addressIpVersion"`
+	// The ID of the Acl.
+	Id string `pulumi:"id"`
+	// Resource Group to Which the Number.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	Status string `pulumi:"status"`
+}
+
+// GetAclsAclInput is an input type that accepts GetAclsAclArgs and GetAclsAclOutput values.
+// You can construct a concrete instance of `GetAclsAclInput` via:
+//
+//          GetAclsAclArgs{...}
+type GetAclsAclInput interface {
+	pulumi.Input
+
+	ToGetAclsAclOutput() GetAclsAclOutput
+	ToGetAclsAclOutputWithContext(context.Context) GetAclsAclOutput
+}
+
+type GetAclsAclArgs struct {
+	// ACL Entries.
+	AclEntries GetAclsAclAclEntryArrayInput `pulumi:"aclEntries"`
+	// Access Control Policy ID.
+	AclId pulumi.StringInput `pulumi:"aclId"`
+	// The ACL Name.
+	AclName pulumi.StringInput `pulumi:"aclName"`
+	// Address Protocol Version.
+	AddressIpVersion pulumi.StringInput `pulumi:"addressIpVersion"`
+	// The ID of the Acl.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource Group to Which the Number.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAclsAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsAcl)(nil)).Elem()
+}
+
+func (i GetAclsAclArgs) ToGetAclsAclOutput() GetAclsAclOutput {
+	return i.ToGetAclsAclOutputWithContext(context.Background())
+}
+
+func (i GetAclsAclArgs) ToGetAclsAclOutputWithContext(ctx context.Context) GetAclsAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclOutput)
+}
+
+// GetAclsAclArrayInput is an input type that accepts GetAclsAclArray and GetAclsAclArrayOutput values.
+// You can construct a concrete instance of `GetAclsAclArrayInput` via:
+//
+//          GetAclsAclArray{ GetAclsAclArgs{...} }
+type GetAclsAclArrayInput interface {
+	pulumi.Input
+
+	ToGetAclsAclArrayOutput() GetAclsAclArrayOutput
+	ToGetAclsAclArrayOutputWithContext(context.Context) GetAclsAclArrayOutput
+}
+
+type GetAclsAclArray []GetAclsAclInput
+
+func (GetAclsAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclsAcl)(nil)).Elem()
+}
+
+func (i GetAclsAclArray) ToGetAclsAclArrayOutput() GetAclsAclArrayOutput {
+	return i.ToGetAclsAclArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclsAclArray) ToGetAclsAclArrayOutputWithContext(ctx context.Context) GetAclsAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclArrayOutput)
+}
+
+type GetAclsAclOutput struct{ *pulumi.OutputState }
+
+func (GetAclsAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsAcl)(nil)).Elem()
+}
+
+func (o GetAclsAclOutput) ToGetAclsAclOutput() GetAclsAclOutput {
+	return o
+}
+
+func (o GetAclsAclOutput) ToGetAclsAclOutputWithContext(ctx context.Context) GetAclsAclOutput {
+	return o
+}
+
+// ACL Entries.
+func (o GetAclsAclOutput) AclEntries() GetAclsAclAclEntryArrayOutput {
+	return o.ApplyT(func(v GetAclsAcl) []GetAclsAclAclEntry { return v.AclEntries }).(GetAclsAclAclEntryArrayOutput)
+}
+
+// Access Control Policy ID.
+func (o GetAclsAclOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAcl) string { return v.AclId }).(pulumi.StringOutput)
+}
+
+// The ACL Name.
+func (o GetAclsAclOutput) AclName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAcl) string { return v.AclName }).(pulumi.StringOutput)
+}
+
+// Address Protocol Version.
+func (o GetAclsAclOutput) AddressIpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAcl) string { return v.AddressIpVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the Acl.
+func (o GetAclsAclOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAcl) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource Group to Which the Number.
+func (o GetAclsAclOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAcl) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+func (o GetAclsAclOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAcl) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAclsAclArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclsAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclsAcl)(nil)).Elem()
+}
+
+func (o GetAclsAclArrayOutput) ToGetAclsAclArrayOutput() GetAclsAclArrayOutput {
+	return o
+}
+
+func (o GetAclsAclArrayOutput) ToGetAclsAclArrayOutputWithContext(ctx context.Context) GetAclsAclArrayOutput {
+	return o
+}
+
+func (o GetAclsAclArrayOutput) Index(i pulumi.IntInput) GetAclsAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclsAcl {
+		return vs[0].([]GetAclsAcl)[vs[1].(int)]
+	}).(GetAclsAclOutput)
+}
+
+type GetAclsAclAclEntry struct {
+	// Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
+	Description string `pulumi:"description"`
+	Entry       string `pulumi:"entry"`
+	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	Status string `pulumi:"status"`
+}
+
+// GetAclsAclAclEntryInput is an input type that accepts GetAclsAclAclEntryArgs and GetAclsAclAclEntryOutput values.
+// You can construct a concrete instance of `GetAclsAclAclEntryInput` via:
+//
+//          GetAclsAclAclEntryArgs{...}
+type GetAclsAclAclEntryInput interface {
+	pulumi.Input
+
+	ToGetAclsAclAclEntryOutput() GetAclsAclAclEntryOutput
+	ToGetAclsAclAclEntryOutputWithContext(context.Context) GetAclsAclAclEntryOutput
+}
+
+type GetAclsAclAclEntryArgs struct {
+	// Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
+	Description pulumi.StringInput `pulumi:"description"`
+	Entry       pulumi.StringInput `pulumi:"entry"`
+	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAclsAclAclEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsAclAclEntry)(nil)).Elem()
+}
+
+func (i GetAclsAclAclEntryArgs) ToGetAclsAclAclEntryOutput() GetAclsAclAclEntryOutput {
+	return i.ToGetAclsAclAclEntryOutputWithContext(context.Background())
+}
+
+func (i GetAclsAclAclEntryArgs) ToGetAclsAclAclEntryOutputWithContext(ctx context.Context) GetAclsAclAclEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclAclEntryOutput)
+}
+
+// GetAclsAclAclEntryArrayInput is an input type that accepts GetAclsAclAclEntryArray and GetAclsAclAclEntryArrayOutput values.
+// You can construct a concrete instance of `GetAclsAclAclEntryArrayInput` via:
+//
+//          GetAclsAclAclEntryArray{ GetAclsAclAclEntryArgs{...} }
+type GetAclsAclAclEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetAclsAclAclEntryArrayOutput() GetAclsAclAclEntryArrayOutput
+	ToGetAclsAclAclEntryArrayOutputWithContext(context.Context) GetAclsAclAclEntryArrayOutput
+}
+
+type GetAclsAclAclEntryArray []GetAclsAclAclEntryInput
+
+func (GetAclsAclAclEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclsAclAclEntry)(nil)).Elem()
+}
+
+func (i GetAclsAclAclEntryArray) ToGetAclsAclAclEntryArrayOutput() GetAclsAclAclEntryArrayOutput {
+	return i.ToGetAclsAclAclEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclsAclAclEntryArray) ToGetAclsAclAclEntryArrayOutputWithContext(ctx context.Context) GetAclsAclAclEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclAclEntryArrayOutput)
+}
+
+type GetAclsAclAclEntryOutput struct{ *pulumi.OutputState }
+
+func (GetAclsAclAclEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsAclAclEntry)(nil)).Elem()
+}
+
+func (o GetAclsAclAclEntryOutput) ToGetAclsAclAclEntryOutput() GetAclsAclAclEntryOutput {
+	return o
+}
+
+func (o GetAclsAclAclEntryOutput) ToGetAclsAclAclEntryOutputWithContext(ctx context.Context) GetAclsAclAclEntryOutput {
+	return o
+}
+
+// Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
+func (o GetAclsAclAclEntryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAclAclEntry) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetAclsAclAclEntryOutput) Entry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAclAclEntry) string { return v.Entry }).(pulumi.StringOutput)
+}
+
+// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+func (o GetAclsAclAclEntryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAclAclEntry) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAclsAclAclEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclsAclAclEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclsAclAclEntry)(nil)).Elem()
+}
+
+func (o GetAclsAclAclEntryArrayOutput) ToGetAclsAclAclEntryArrayOutput() GetAclsAclAclEntryArrayOutput {
+	return o
+}
+
+func (o GetAclsAclAclEntryArrayOutput) ToGetAclsAclAclEntryArrayOutputWithContext(ctx context.Context) GetAclsAclAclEntryArrayOutput {
+	return o
+}
+
+func (o GetAclsAclAclEntryArrayOutput) Index(i pulumi.IntInput) GetAclsAclAclEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclsAclAclEntry {
+		return vs[0].([]GetAclsAclAclEntry)[vs[1].(int)]
+	}).(GetAclsAclAclEntryOutput)
+}
+
+type GetListenersListener struct {
+	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+	AccessLogRecordCustomizedHeadersEnabled bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
+	// Xtrace Configuration Information.
+	AccessLogTracingConfigs []GetListenersListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfigs"`
+	// Snooping Binding of the Access Policy Group ID List.
+	AclId string `pulumi:"aclId"`
+	// The type of the ACL. Valid values: White: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. Black: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+	AclType string `pulumi:"aclType"`
+	// Certificate.
+	Certificates []GetListenersListenerCertificate `pulumi:"certificates"`
+	// The Default Rule Action List.
+	DefaultActions []GetListenersListenerDefaultAction `pulumi:"defaultActions"`
+	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
+	GzipEnabled bool `pulumi:"gzipEnabled"`
+	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+	Http2Enabled bool `pulumi:"http2Enabled"`
+	// The ID of the Listener.
+	Id string `pulumi:"id"`
+	// Specify the Connection Idle Timeout Value: 1 to 60.
+	IdleTimeout int `pulumi:"idleTimeout"`
+	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters. 	* `listenerId` - on Behalf of the Resource Level Id of the Resources Property Fields.
+	ListenerDescription string `pulumi:"listenerDescription"`
+	ListenerId          string `pulumi:"listenerId"`
+	// The SLB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
+	ListenerPort int `pulumi:"listenerPort"`
+	// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+	ListenerProtocol string `pulumi:"listenerProtocol"`
+	// The SLB Instance Id.
+	LoadBalancerId string `pulumi:"loadBalancerId"`
+	// This Request Returned by the Maximum Number of Records.
+	MaxResults string `pulumi:"maxResults"`
+	// The Current Call Returns to the Position of the Set to Null Represents the Data Has Been Read to the End of.
+	NextToken string `pulumi:"nextToken"`
+	// Configuration Associated with the QuIC Listening.
+	QuicConfigs []GetListenersListenerQuicConfig `pulumi:"quicConfigs"`
+	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	RequestTimeout int `pulumi:"requestTimeout"`
+	// Security Policy.
+	SecurityPolicyId string `pulumi:"securityPolicyId"`
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+	Status string `pulumi:"status"`
+	// xforwardfor Related Attribute Configuration.
+	XforwardedForConfigs []GetListenersListenerXforwardedForConfig `pulumi:"xforwardedForConfigs"`
+}
+
+// GetListenersListenerInput is an input type that accepts GetListenersListenerArgs and GetListenersListenerOutput values.
+// You can construct a concrete instance of `GetListenersListenerInput` via:
+//
+//          GetListenersListenerArgs{...}
+type GetListenersListenerInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerOutput() GetListenersListenerOutput
+	ToGetListenersListenerOutputWithContext(context.Context) GetListenersListenerOutput
+}
+
+type GetListenersListenerArgs struct {
+	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolInput `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
+	// Xtrace Configuration Information.
+	AccessLogTracingConfigs GetListenersListenerAccessLogTracingConfigArrayInput `pulumi:"accessLogTracingConfigs"`
+	// Snooping Binding of the Access Policy Group ID List.
+	AclId pulumi.StringInput `pulumi:"aclId"`
+	// The type of the ACL. Valid values: White: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. Black: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+	AclType pulumi.StringInput `pulumi:"aclType"`
+	// Certificate.
+	Certificates GetListenersListenerCertificateArrayInput `pulumi:"certificates"`
+	// The Default Rule Action List.
+	DefaultActions GetListenersListenerDefaultActionArrayInput `pulumi:"defaultActions"`
+	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
+	GzipEnabled pulumi.BoolInput `pulumi:"gzipEnabled"`
+	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+	Http2Enabled pulumi.BoolInput `pulumi:"http2Enabled"`
+	// The ID of the Listener.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specify the Connection Idle Timeout Value: 1 to 60.
+	IdleTimeout pulumi.IntInput `pulumi:"idleTimeout"`
+	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters. 	* `listenerId` - on Behalf of the Resource Level Id of the Resources Property Fields.
+	ListenerDescription pulumi.StringInput `pulumi:"listenerDescription"`
+	ListenerId          pulumi.StringInput `pulumi:"listenerId"`
+	// The SLB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
+	ListenerPort pulumi.IntInput `pulumi:"listenerPort"`
+	// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+	ListenerProtocol pulumi.StringInput `pulumi:"listenerProtocol"`
+	// The SLB Instance Id.
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// This Request Returned by the Maximum Number of Records.
+	MaxResults pulumi.StringInput `pulumi:"maxResults"`
+	// The Current Call Returns to the Position of the Set to Null Represents the Data Has Been Read to the End of.
+	NextToken pulumi.StringInput `pulumi:"nextToken"`
+	// Configuration Associated with the QuIC Listening.
+	QuicConfigs GetListenersListenerQuicConfigArrayInput `pulumi:"quicConfigs"`
+	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	RequestTimeout pulumi.IntInput `pulumi:"requestTimeout"`
+	// Security Policy.
+	SecurityPolicyId pulumi.StringInput `pulumi:"securityPolicyId"`
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+	Status pulumi.StringInput `pulumi:"status"`
+	// xforwardfor Related Attribute Configuration.
+	XforwardedForConfigs GetListenersListenerXforwardedForConfigArrayInput `pulumi:"xforwardedForConfigs"`
+}
+
+func (GetListenersListenerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListener)(nil)).Elem()
+}
+
+func (i GetListenersListenerArgs) ToGetListenersListenerOutput() GetListenersListenerOutput {
+	return i.ToGetListenersListenerOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerArgs) ToGetListenersListenerOutputWithContext(ctx context.Context) GetListenersListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerOutput)
+}
+
+// GetListenersListenerArrayInput is an input type that accepts GetListenersListenerArray and GetListenersListenerArrayOutput values.
+// You can construct a concrete instance of `GetListenersListenerArrayInput` via:
+//
+//          GetListenersListenerArray{ GetListenersListenerArgs{...} }
+type GetListenersListenerArrayInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerArrayOutput() GetListenersListenerArrayOutput
+	ToGetListenersListenerArrayOutputWithContext(context.Context) GetListenersListenerArrayOutput
+}
+
+type GetListenersListenerArray []GetListenersListenerInput
+
+func (GetListenersListenerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListener)(nil)).Elem()
+}
+
+func (i GetListenersListenerArray) ToGetListenersListenerArrayOutput() GetListenersListenerArrayOutput {
+	return i.ToGetListenersListenerArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerArray) ToGetListenersListenerArrayOutputWithContext(ctx context.Context) GetListenersListenerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerArrayOutput)
+}
+
+type GetListenersListenerOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListener)(nil)).Elem()
+}
+
+func (o GetListenersListenerOutput) ToGetListenersListenerOutput() GetListenersListenerOutput {
+	return o
+}
+
+func (o GetListenersListenerOutput) ToGetListenersListenerOutputWithContext(ctx context.Context) GetListenersListenerOutput {
+	return o
+}
+
+// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+func (o GetListenersListenerOutput) AccessLogRecordCustomizedHeadersEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListener) bool { return v.AccessLogRecordCustomizedHeadersEnabled }).(pulumi.BoolOutput)
+}
+
+// Xtrace Configuration Information.
+func (o GetListenersListenerOutput) AccessLogTracingConfigs() GetListenersListenerAccessLogTracingConfigArrayOutput {
+	return o.ApplyT(func(v GetListenersListener) []GetListenersListenerAccessLogTracingConfig {
+		return v.AccessLogTracingConfigs
+	}).(GetListenersListenerAccessLogTracingConfigArrayOutput)
+}
+
+// Snooping Binding of the Access Policy Group ID List.
+func (o GetListenersListenerOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListener) string { return v.AclId }).(pulumi.StringOutput)
+}
+
+// The type of the ACL. Valid values: White: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. Black: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+func (o GetListenersListenerOutput) AclType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListener) string { return v.AclType }).(pulumi.StringOutput)
+}
+
+// Certificate.
+func (o GetListenersListenerOutput) Certificates() GetListenersListenerCertificateArrayOutput {
+	return o.ApplyT(func(v GetListenersListener) []GetListenersListenerCertificate { return v.Certificates }).(GetListenersListenerCertificateArrayOutput)
+}
+
+// The Default Rule Action List.
+func (o GetListenersListenerOutput) DefaultActions() GetListenersListenerDefaultActionArrayOutput {
+	return o.ApplyT(func(v GetListenersListener) []GetListenersListenerDefaultAction { return v.DefaultActions }).(GetListenersListenerDefaultActionArrayOutput)
+}
+
+// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
+func (o GetListenersListenerOutput) GzipEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListener) bool { return v.GzipEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+func (o GetListenersListenerOutput) Http2Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListener) bool { return v.Http2Enabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the Listener.
+func (o GetListenersListenerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListener) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specify the Connection Idle Timeout Value: 1 to 60.
+func (o GetListenersListenerOutput) IdleTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetListenersListener) int { return v.IdleTimeout }).(pulumi.IntOutput)
+}
+
+// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters. 	* `listenerId` - on Behalf of the Resource Level Id of the Resources Property Fields.
+func (o GetListenersListenerOutput) ListenerDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListener) string { return v.ListenerDescription }).(pulumi.StringOutput)
+}
+
+func (o GetListenersListenerOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListener) string { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// The SLB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
+func (o GetListenersListenerOutput) ListenerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetListenersListener) int { return v.ListenerPort }).(pulumi.IntOutput)
+}
+
+// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+func (o GetListenersListenerOutput) ListenerProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListener) string { return v.ListenerProtocol }).(pulumi.StringOutput)
+}
+
+// The SLB Instance Id.
+func (o GetListenersListenerOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListener) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// This Request Returned by the Maximum Number of Records.
+func (o GetListenersListenerOutput) MaxResults() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListener) string { return v.MaxResults }).(pulumi.StringOutput)
+}
+
+// The Current Call Returns to the Position of the Set to Null Represents the Data Has Been Read to the End of.
+func (o GetListenersListenerOutput) NextToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListener) string { return v.NextToken }).(pulumi.StringOutput)
+}
+
+// Configuration Associated with the QuIC Listening.
+func (o GetListenersListenerOutput) QuicConfigs() GetListenersListenerQuicConfigArrayOutput {
+	return o.ApplyT(func(v GetListenersListener) []GetListenersListenerQuicConfig { return v.QuicConfigs }).(GetListenersListenerQuicConfigArrayOutput)
+}
+
+// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+func (o GetListenersListenerOutput) RequestTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetListenersListener) int { return v.RequestTimeout }).(pulumi.IntOutput)
+}
+
+// Security Policy.
+func (o GetListenersListenerOutput) SecurityPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListener) string { return v.SecurityPolicyId }).(pulumi.StringOutput)
+}
+
+// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+func (o GetListenersListenerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListener) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// xforwardfor Related Attribute Configuration.
+func (o GetListenersListenerOutput) XforwardedForConfigs() GetListenersListenerXforwardedForConfigArrayOutput {
+	return o.ApplyT(func(v GetListenersListener) []GetListenersListenerXforwardedForConfig { return v.XforwardedForConfigs }).(GetListenersListenerXforwardedForConfigArrayOutput)
+}
+
+type GetListenersListenerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListener)(nil)).Elem()
+}
+
+func (o GetListenersListenerArrayOutput) ToGetListenersListenerArrayOutput() GetListenersListenerArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerArrayOutput) ToGetListenersListenerArrayOutputWithContext(ctx context.Context) GetListenersListenerArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerArrayOutput) Index(i pulumi.IntInput) GetListenersListenerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersListener {
+		return vs[0].([]GetListenersListener)[vs[1].(int)]
+	}).(GetListenersListenerOutput)
+}
+
+type GetListenersListenerAccessLogTracingConfig struct {
+	// Xtrace Function. Value: True Or False. Default Value: False.
+	TracingEnabled bool `pulumi:"tracingEnabled"`
+	// Xtrace Sampling Rate. Value: **1~10000**.
+	TracingSample int `pulumi:"tracingSample"`
+	// Xtrace Type Value Is **Zipkin**.
+	TracingType string `pulumi:"tracingType"`
+}
+
+// GetListenersListenerAccessLogTracingConfigInput is an input type that accepts GetListenersListenerAccessLogTracingConfigArgs and GetListenersListenerAccessLogTracingConfigOutput values.
+// You can construct a concrete instance of `GetListenersListenerAccessLogTracingConfigInput` via:
+//
+//          GetListenersListenerAccessLogTracingConfigArgs{...}
+type GetListenersListenerAccessLogTracingConfigInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerAccessLogTracingConfigOutput() GetListenersListenerAccessLogTracingConfigOutput
+	ToGetListenersListenerAccessLogTracingConfigOutputWithContext(context.Context) GetListenersListenerAccessLogTracingConfigOutput
+}
+
+type GetListenersListenerAccessLogTracingConfigArgs struct {
+	// Xtrace Function. Value: True Or False. Default Value: False.
+	TracingEnabled pulumi.BoolInput `pulumi:"tracingEnabled"`
+	// Xtrace Sampling Rate. Value: **1~10000**.
+	TracingSample pulumi.IntInput `pulumi:"tracingSample"`
+	// Xtrace Type Value Is **Zipkin**.
+	TracingType pulumi.StringInput `pulumi:"tracingType"`
+}
+
+func (GetListenersListenerAccessLogTracingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerAccessLogTracingConfig)(nil)).Elem()
+}
+
+func (i GetListenersListenerAccessLogTracingConfigArgs) ToGetListenersListenerAccessLogTracingConfigOutput() GetListenersListenerAccessLogTracingConfigOutput {
+	return i.ToGetListenersListenerAccessLogTracingConfigOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerAccessLogTracingConfigArgs) ToGetListenersListenerAccessLogTracingConfigOutputWithContext(ctx context.Context) GetListenersListenerAccessLogTracingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerAccessLogTracingConfigOutput)
+}
+
+// GetListenersListenerAccessLogTracingConfigArrayInput is an input type that accepts GetListenersListenerAccessLogTracingConfigArray and GetListenersListenerAccessLogTracingConfigArrayOutput values.
+// You can construct a concrete instance of `GetListenersListenerAccessLogTracingConfigArrayInput` via:
+//
+//          GetListenersListenerAccessLogTracingConfigArray{ GetListenersListenerAccessLogTracingConfigArgs{...} }
+type GetListenersListenerAccessLogTracingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerAccessLogTracingConfigArrayOutput() GetListenersListenerAccessLogTracingConfigArrayOutput
+	ToGetListenersListenerAccessLogTracingConfigArrayOutputWithContext(context.Context) GetListenersListenerAccessLogTracingConfigArrayOutput
+}
+
+type GetListenersListenerAccessLogTracingConfigArray []GetListenersListenerAccessLogTracingConfigInput
+
+func (GetListenersListenerAccessLogTracingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerAccessLogTracingConfig)(nil)).Elem()
+}
+
+func (i GetListenersListenerAccessLogTracingConfigArray) ToGetListenersListenerAccessLogTracingConfigArrayOutput() GetListenersListenerAccessLogTracingConfigArrayOutput {
+	return i.ToGetListenersListenerAccessLogTracingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerAccessLogTracingConfigArray) ToGetListenersListenerAccessLogTracingConfigArrayOutputWithContext(ctx context.Context) GetListenersListenerAccessLogTracingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerAccessLogTracingConfigArrayOutput)
+}
+
+type GetListenersListenerAccessLogTracingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerAccessLogTracingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerAccessLogTracingConfig)(nil)).Elem()
+}
+
+func (o GetListenersListenerAccessLogTracingConfigOutput) ToGetListenersListenerAccessLogTracingConfigOutput() GetListenersListenerAccessLogTracingConfigOutput {
+	return o
+}
+
+func (o GetListenersListenerAccessLogTracingConfigOutput) ToGetListenersListenerAccessLogTracingConfigOutputWithContext(ctx context.Context) GetListenersListenerAccessLogTracingConfigOutput {
+	return o
+}
+
+// Xtrace Function. Value: True Or False. Default Value: False.
+func (o GetListenersListenerAccessLogTracingConfigOutput) TracingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) bool { return v.TracingEnabled }).(pulumi.BoolOutput)
+}
+
+// Xtrace Sampling Rate. Value: **1~10000**.
+func (o GetListenersListenerAccessLogTracingConfigOutput) TracingSample() pulumi.IntOutput {
+	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) int { return v.TracingSample }).(pulumi.IntOutput)
+}
+
+// Xtrace Type Value Is **Zipkin**.
+func (o GetListenersListenerAccessLogTracingConfigOutput) TracingType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) string { return v.TracingType }).(pulumi.StringOutput)
+}
+
+type GetListenersListenerAccessLogTracingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerAccessLogTracingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerAccessLogTracingConfig)(nil)).Elem()
+}
+
+func (o GetListenersListenerAccessLogTracingConfigArrayOutput) ToGetListenersListenerAccessLogTracingConfigArrayOutput() GetListenersListenerAccessLogTracingConfigArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerAccessLogTracingConfigArrayOutput) ToGetListenersListenerAccessLogTracingConfigArrayOutputWithContext(ctx context.Context) GetListenersListenerAccessLogTracingConfigArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerAccessLogTracingConfigArrayOutput) Index(i pulumi.IntInput) GetListenersListenerAccessLogTracingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersListenerAccessLogTracingConfig {
+		return vs[0].([]GetListenersListenerAccessLogTracingConfig)[vs[1].(int)]
+	}).(GetListenersListenerAccessLogTracingConfigOutput)
+}
+
+type GetListenersListenerCertificate struct {
+	CertificateId string `pulumi:"certificateId"`
+}
+
+// GetListenersListenerCertificateInput is an input type that accepts GetListenersListenerCertificateArgs and GetListenersListenerCertificateOutput values.
+// You can construct a concrete instance of `GetListenersListenerCertificateInput` via:
+//
+//          GetListenersListenerCertificateArgs{...}
+type GetListenersListenerCertificateInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerCertificateOutput() GetListenersListenerCertificateOutput
+	ToGetListenersListenerCertificateOutputWithContext(context.Context) GetListenersListenerCertificateOutput
+}
+
+type GetListenersListenerCertificateArgs struct {
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+}
+
+func (GetListenersListenerCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerCertificate)(nil)).Elem()
+}
+
+func (i GetListenersListenerCertificateArgs) ToGetListenersListenerCertificateOutput() GetListenersListenerCertificateOutput {
+	return i.ToGetListenersListenerCertificateOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerCertificateArgs) ToGetListenersListenerCertificateOutputWithContext(ctx context.Context) GetListenersListenerCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerCertificateOutput)
+}
+
+// GetListenersListenerCertificateArrayInput is an input type that accepts GetListenersListenerCertificateArray and GetListenersListenerCertificateArrayOutput values.
+// You can construct a concrete instance of `GetListenersListenerCertificateArrayInput` via:
+//
+//          GetListenersListenerCertificateArray{ GetListenersListenerCertificateArgs{...} }
+type GetListenersListenerCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerCertificateArrayOutput() GetListenersListenerCertificateArrayOutput
+	ToGetListenersListenerCertificateArrayOutputWithContext(context.Context) GetListenersListenerCertificateArrayOutput
+}
+
+type GetListenersListenerCertificateArray []GetListenersListenerCertificateInput
+
+func (GetListenersListenerCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerCertificate)(nil)).Elem()
+}
+
+func (i GetListenersListenerCertificateArray) ToGetListenersListenerCertificateArrayOutput() GetListenersListenerCertificateArrayOutput {
+	return i.ToGetListenersListenerCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerCertificateArray) ToGetListenersListenerCertificateArrayOutputWithContext(ctx context.Context) GetListenersListenerCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerCertificateArrayOutput)
+}
+
+type GetListenersListenerCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerCertificate)(nil)).Elem()
+}
+
+func (o GetListenersListenerCertificateOutput) ToGetListenersListenerCertificateOutput() GetListenersListenerCertificateOutput {
+	return o
+}
+
+func (o GetListenersListenerCertificateOutput) ToGetListenersListenerCertificateOutputWithContext(ctx context.Context) GetListenersListenerCertificateOutput {
+	return o
+}
+
+func (o GetListenersListenerCertificateOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerCertificate) string { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+type GetListenersListenerCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerCertificate)(nil)).Elem()
+}
+
+func (o GetListenersListenerCertificateArrayOutput) ToGetListenersListenerCertificateArrayOutput() GetListenersListenerCertificateArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerCertificateArrayOutput) ToGetListenersListenerCertificateArrayOutputWithContext(ctx context.Context) GetListenersListenerCertificateArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerCertificateArrayOutput) Index(i pulumi.IntInput) GetListenersListenerCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersListenerCertificate {
+		return vs[0].([]GetListenersListenerCertificate)[vs[1].(int)]
+	}).(GetListenersListenerCertificateOutput)
+}
+
+type GetListenersListenerDefaultAction struct {
+	// The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
+	ForwardGroupConfigs []GetListenersListenerDefaultActionForwardGroupConfig `pulumi:"forwardGroupConfigs"`
+	// Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
+	Type string `pulumi:"type"`
+}
+
+// GetListenersListenerDefaultActionInput is an input type that accepts GetListenersListenerDefaultActionArgs and GetListenersListenerDefaultActionOutput values.
+// You can construct a concrete instance of `GetListenersListenerDefaultActionInput` via:
+//
+//          GetListenersListenerDefaultActionArgs{...}
+type GetListenersListenerDefaultActionInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerDefaultActionOutput() GetListenersListenerDefaultActionOutput
+	ToGetListenersListenerDefaultActionOutputWithContext(context.Context) GetListenersListenerDefaultActionOutput
+}
+
+type GetListenersListenerDefaultActionArgs struct {
+	// The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
+	ForwardGroupConfigs GetListenersListenerDefaultActionForwardGroupConfigArrayInput `pulumi:"forwardGroupConfigs"`
+	// Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetListenersListenerDefaultActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerDefaultAction)(nil)).Elem()
+}
+
+func (i GetListenersListenerDefaultActionArgs) ToGetListenersListenerDefaultActionOutput() GetListenersListenerDefaultActionOutput {
+	return i.ToGetListenersListenerDefaultActionOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerDefaultActionArgs) ToGetListenersListenerDefaultActionOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerDefaultActionOutput)
+}
+
+// GetListenersListenerDefaultActionArrayInput is an input type that accepts GetListenersListenerDefaultActionArray and GetListenersListenerDefaultActionArrayOutput values.
+// You can construct a concrete instance of `GetListenersListenerDefaultActionArrayInput` via:
+//
+//          GetListenersListenerDefaultActionArray{ GetListenersListenerDefaultActionArgs{...} }
+type GetListenersListenerDefaultActionArrayInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerDefaultActionArrayOutput() GetListenersListenerDefaultActionArrayOutput
+	ToGetListenersListenerDefaultActionArrayOutputWithContext(context.Context) GetListenersListenerDefaultActionArrayOutput
+}
+
+type GetListenersListenerDefaultActionArray []GetListenersListenerDefaultActionInput
+
+func (GetListenersListenerDefaultActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerDefaultAction)(nil)).Elem()
+}
+
+func (i GetListenersListenerDefaultActionArray) ToGetListenersListenerDefaultActionArrayOutput() GetListenersListenerDefaultActionArrayOutput {
+	return i.ToGetListenersListenerDefaultActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerDefaultActionArray) ToGetListenersListenerDefaultActionArrayOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerDefaultActionArrayOutput)
+}
+
+type GetListenersListenerDefaultActionOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerDefaultActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerDefaultAction)(nil)).Elem()
+}
+
+func (o GetListenersListenerDefaultActionOutput) ToGetListenersListenerDefaultActionOutput() GetListenersListenerDefaultActionOutput {
+	return o
+}
+
+func (o GetListenersListenerDefaultActionOutput) ToGetListenersListenerDefaultActionOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionOutput {
+	return o
+}
+
+// The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
+func (o GetListenersListenerDefaultActionOutput) ForwardGroupConfigs() GetListenersListenerDefaultActionForwardGroupConfigArrayOutput {
+	return o.ApplyT(func(v GetListenersListenerDefaultAction) []GetListenersListenerDefaultActionForwardGroupConfig {
+		return v.ForwardGroupConfigs
+	}).(GetListenersListenerDefaultActionForwardGroupConfigArrayOutput)
+}
+
+// Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
+func (o GetListenersListenerDefaultActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerDefaultAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetListenersListenerDefaultActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerDefaultActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerDefaultAction)(nil)).Elem()
+}
+
+func (o GetListenersListenerDefaultActionArrayOutput) ToGetListenersListenerDefaultActionArrayOutput() GetListenersListenerDefaultActionArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerDefaultActionArrayOutput) ToGetListenersListenerDefaultActionArrayOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerDefaultActionArrayOutput) Index(i pulumi.IntInput) GetListenersListenerDefaultActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersListenerDefaultAction {
+		return vs[0].([]GetListenersListenerDefaultAction)[vs[1].(int)]
+	}).(GetListenersListenerDefaultActionOutput)
+}
+
+type GetListenersListenerDefaultActionForwardGroupConfig struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples []GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
+}
+
+// GetListenersListenerDefaultActionForwardGroupConfigInput is an input type that accepts GetListenersListenerDefaultActionForwardGroupConfigArgs and GetListenersListenerDefaultActionForwardGroupConfigOutput values.
+// You can construct a concrete instance of `GetListenersListenerDefaultActionForwardGroupConfigInput` via:
+//
+//          GetListenersListenerDefaultActionForwardGroupConfigArgs{...}
+type GetListenersListenerDefaultActionForwardGroupConfigInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerDefaultActionForwardGroupConfigOutput() GetListenersListenerDefaultActionForwardGroupConfigOutput
+	ToGetListenersListenerDefaultActionForwardGroupConfigOutputWithContext(context.Context) GetListenersListenerDefaultActionForwardGroupConfigOutput
+}
+
+type GetListenersListenerDefaultActionForwardGroupConfigArgs struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
+}
+
+func (GetListenersListenerDefaultActionForwardGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerDefaultActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i GetListenersListenerDefaultActionForwardGroupConfigArgs) ToGetListenersListenerDefaultActionForwardGroupConfigOutput() GetListenersListenerDefaultActionForwardGroupConfigOutput {
+	return i.ToGetListenersListenerDefaultActionForwardGroupConfigOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerDefaultActionForwardGroupConfigArgs) ToGetListenersListenerDefaultActionForwardGroupConfigOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionForwardGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerDefaultActionForwardGroupConfigOutput)
+}
+
+// GetListenersListenerDefaultActionForwardGroupConfigArrayInput is an input type that accepts GetListenersListenerDefaultActionForwardGroupConfigArray and GetListenersListenerDefaultActionForwardGroupConfigArrayOutput values.
+// You can construct a concrete instance of `GetListenersListenerDefaultActionForwardGroupConfigArrayInput` via:
+//
+//          GetListenersListenerDefaultActionForwardGroupConfigArray{ GetListenersListenerDefaultActionForwardGroupConfigArgs{...} }
+type GetListenersListenerDefaultActionForwardGroupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerDefaultActionForwardGroupConfigArrayOutput() GetListenersListenerDefaultActionForwardGroupConfigArrayOutput
+	ToGetListenersListenerDefaultActionForwardGroupConfigArrayOutputWithContext(context.Context) GetListenersListenerDefaultActionForwardGroupConfigArrayOutput
+}
+
+type GetListenersListenerDefaultActionForwardGroupConfigArray []GetListenersListenerDefaultActionForwardGroupConfigInput
+
+func (GetListenersListenerDefaultActionForwardGroupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerDefaultActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i GetListenersListenerDefaultActionForwardGroupConfigArray) ToGetListenersListenerDefaultActionForwardGroupConfigArrayOutput() GetListenersListenerDefaultActionForwardGroupConfigArrayOutput {
+	return i.ToGetListenersListenerDefaultActionForwardGroupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerDefaultActionForwardGroupConfigArray) ToGetListenersListenerDefaultActionForwardGroupConfigArrayOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionForwardGroupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerDefaultActionForwardGroupConfigArrayOutput)
+}
+
+type GetListenersListenerDefaultActionForwardGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerDefaultActionForwardGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerDefaultActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o GetListenersListenerDefaultActionForwardGroupConfigOutput) ToGetListenersListenerDefaultActionForwardGroupConfigOutput() GetListenersListenerDefaultActionForwardGroupConfigOutput {
+	return o
+}
+
+func (o GetListenersListenerDefaultActionForwardGroupConfigOutput) ToGetListenersListenerDefaultActionForwardGroupConfigOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionForwardGroupConfigOutput {
+	return o
+}
+
+// The destination server group to which requests are forwarded.
+func (o GetListenersListenerDefaultActionForwardGroupConfigOutput) ServerGroupTuples() GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v GetListenersListenerDefaultActionForwardGroupConfig) []GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple {
+		return v.ServerGroupTuples
+	}).(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type GetListenersListenerDefaultActionForwardGroupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerDefaultActionForwardGroupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerDefaultActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o GetListenersListenerDefaultActionForwardGroupConfigArrayOutput) ToGetListenersListenerDefaultActionForwardGroupConfigArrayOutput() GetListenersListenerDefaultActionForwardGroupConfigArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerDefaultActionForwardGroupConfigArrayOutput) ToGetListenersListenerDefaultActionForwardGroupConfigArrayOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionForwardGroupConfigArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerDefaultActionForwardGroupConfigArrayOutput) Index(i pulumi.IntInput) GetListenersListenerDefaultActionForwardGroupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersListenerDefaultActionForwardGroupConfig {
+		return vs[0].([]GetListenersListenerDefaultActionForwardGroupConfig)[vs[1].(int)]
+	}).(GetListenersListenerDefaultActionForwardGroupConfigOutput)
+}
+
+type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId string `pulumi:"serverGroupId"`
+}
+
+// GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleInput is an input type that accepts GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArgs and GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput values.
+// You can construct a concrete instance of `GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleInput` via:
+//
+//          GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{...}
+type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput() GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput
+	ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Context) GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput
+}
+
+type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArgs struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
+}
+
+func (GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArgs) ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput() GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput {
+	return i.ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArgs) ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+// GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput is an input type that accepts GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArray and GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput values.
+// You can construct a concrete instance of `GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput` via:
+//
+//          GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArray{ GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{...} }
+type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput() GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput
+	ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Context) GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput
+}
+
+type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArray []GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleInput
+
+func (GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArray) ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput() GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return i.ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArray) ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput() GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+// The ID of the destination server group to which requests are forwarded.
+func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple) string {
+		return v.ServerGroupId
+	}).(pulumi.StringOutput)
+}
+
+type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput) ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput() GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput) ToGetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput) Index(i pulumi.IntInput) GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple {
+		return vs[0].([]GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple)[vs[1].(int)]
+	}).(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+type GetListenersListenerQuicConfig struct {
+	// The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
+	QuicListenerId string `pulumi:"quicListenerId"`
+	// Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
+	QuicUpgradeEnabled bool `pulumi:"quicUpgradeEnabled"`
+}
+
+// GetListenersListenerQuicConfigInput is an input type that accepts GetListenersListenerQuicConfigArgs and GetListenersListenerQuicConfigOutput values.
+// You can construct a concrete instance of `GetListenersListenerQuicConfigInput` via:
+//
+//          GetListenersListenerQuicConfigArgs{...}
+type GetListenersListenerQuicConfigInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerQuicConfigOutput() GetListenersListenerQuicConfigOutput
+	ToGetListenersListenerQuicConfigOutputWithContext(context.Context) GetListenersListenerQuicConfigOutput
+}
+
+type GetListenersListenerQuicConfigArgs struct {
+	// The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
+	QuicListenerId pulumi.StringInput `pulumi:"quicListenerId"`
+	// Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
+	QuicUpgradeEnabled pulumi.BoolInput `pulumi:"quicUpgradeEnabled"`
+}
+
+func (GetListenersListenerQuicConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerQuicConfig)(nil)).Elem()
+}
+
+func (i GetListenersListenerQuicConfigArgs) ToGetListenersListenerQuicConfigOutput() GetListenersListenerQuicConfigOutput {
+	return i.ToGetListenersListenerQuicConfigOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerQuicConfigArgs) ToGetListenersListenerQuicConfigOutputWithContext(ctx context.Context) GetListenersListenerQuicConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerQuicConfigOutput)
+}
+
+// GetListenersListenerQuicConfigArrayInput is an input type that accepts GetListenersListenerQuicConfigArray and GetListenersListenerQuicConfigArrayOutput values.
+// You can construct a concrete instance of `GetListenersListenerQuicConfigArrayInput` via:
+//
+//          GetListenersListenerQuicConfigArray{ GetListenersListenerQuicConfigArgs{...} }
+type GetListenersListenerQuicConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerQuicConfigArrayOutput() GetListenersListenerQuicConfigArrayOutput
+	ToGetListenersListenerQuicConfigArrayOutputWithContext(context.Context) GetListenersListenerQuicConfigArrayOutput
+}
+
+type GetListenersListenerQuicConfigArray []GetListenersListenerQuicConfigInput
+
+func (GetListenersListenerQuicConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerQuicConfig)(nil)).Elem()
+}
+
+func (i GetListenersListenerQuicConfigArray) ToGetListenersListenerQuicConfigArrayOutput() GetListenersListenerQuicConfigArrayOutput {
+	return i.ToGetListenersListenerQuicConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerQuicConfigArray) ToGetListenersListenerQuicConfigArrayOutputWithContext(ctx context.Context) GetListenersListenerQuicConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerQuicConfigArrayOutput)
+}
+
+type GetListenersListenerQuicConfigOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerQuicConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerQuicConfig)(nil)).Elem()
+}
+
+func (o GetListenersListenerQuicConfigOutput) ToGetListenersListenerQuicConfigOutput() GetListenersListenerQuicConfigOutput {
+	return o
+}
+
+func (o GetListenersListenerQuicConfigOutput) ToGetListenersListenerQuicConfigOutputWithContext(ctx context.Context) GetListenersListenerQuicConfigOutput {
+	return o
+}
+
+// The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
+func (o GetListenersListenerQuicConfigOutput) QuicListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerQuicConfig) string { return v.QuicListenerId }).(pulumi.StringOutput)
+}
+
+// Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
+func (o GetListenersListenerQuicConfigOutput) QuicUpgradeEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListenerQuicConfig) bool { return v.QuicUpgradeEnabled }).(pulumi.BoolOutput)
+}
+
+type GetListenersListenerQuicConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerQuicConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerQuicConfig)(nil)).Elem()
+}
+
+func (o GetListenersListenerQuicConfigArrayOutput) ToGetListenersListenerQuicConfigArrayOutput() GetListenersListenerQuicConfigArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerQuicConfigArrayOutput) ToGetListenersListenerQuicConfigArrayOutputWithContext(ctx context.Context) GetListenersListenerQuicConfigArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerQuicConfigArrayOutput) Index(i pulumi.IntInput) GetListenersListenerQuicConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersListenerQuicConfig {
+		return vs[0].([]GetListenersListenerQuicConfig)[vs[1].(int)]
+	}).(GetListenersListenerQuicConfigOutput)
+}
+
+type GetListenersListenerXforwardedForConfig struct {
+	// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+	XforwardedforclientcertIssuerdnalias string `pulumi:"xforwardedforclientcertIssuerdnalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+	XforwardedforclientcertIssuerdnenabled bool `pulumi:"xforwardedforclientcertIssuerdnenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertclientverifyalias string `pulumi:"xforwardedforclientcertclientverifyalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+	Xforwardedforclientcertclientverifyenabled bool `pulumi:"xforwardedforclientcertclientverifyenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertfingerprintalias string `pulumi:"xforwardedforclientcertfingerprintalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+	Xforwardedforclientcertfingerprintenabled bool `pulumi:"xforwardedforclientcertfingerprintenabled"`
+	// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertsubjectdnalias string `pulumi:"xforwardedforclientcertsubjectdnalias"`
+	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+	Xforwardedforclientcertsubjectdnenabled bool `pulumi:"xforwardedforclientcertsubjectdnenabled"`
+	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+	Xforwardedforclientsrcportenabled bool `pulumi:"xforwardedforclientsrcportenabled"`
+	// Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
+	Xforwardedforenabled bool `pulumi:"xforwardedforenabled"`
+	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+	Xforwardedforprotoenabled bool `pulumi:"xforwardedforprotoenabled"`
+	// Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
+	Xforwardedforslbidenabled bool `pulumi:"xforwardedforslbidenabled"`
+	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+	Xforwardedforslbportenabled bool `pulumi:"xforwardedforslbportenabled"`
+}
+
+// GetListenersListenerXforwardedForConfigInput is an input type that accepts GetListenersListenerXforwardedForConfigArgs and GetListenersListenerXforwardedForConfigOutput values.
+// You can construct a concrete instance of `GetListenersListenerXforwardedForConfigInput` via:
+//
+//          GetListenersListenerXforwardedForConfigArgs{...}
+type GetListenersListenerXforwardedForConfigInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerXforwardedForConfigOutput() GetListenersListenerXforwardedForConfigOutput
+	ToGetListenersListenerXforwardedForConfigOutputWithContext(context.Context) GetListenersListenerXforwardedForConfigOutput
+}
+
+type GetListenersListenerXforwardedForConfigArgs struct {
+	// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+	XforwardedforclientcertIssuerdnalias pulumi.StringInput `pulumi:"xforwardedforclientcertIssuerdnalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+	XforwardedforclientcertIssuerdnenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertIssuerdnenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertclientverifyalias pulumi.StringInput `pulumi:"xforwardedforclientcertclientverifyalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+	Xforwardedforclientcertclientverifyenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertclientverifyenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertfingerprintalias pulumi.StringInput `pulumi:"xforwardedforclientcertfingerprintalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+	Xforwardedforclientcertfingerprintenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertfingerprintenabled"`
+	// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertsubjectdnalias pulumi.StringInput `pulumi:"xforwardedforclientcertsubjectdnalias"`
+	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+	Xforwardedforclientcertsubjectdnenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertsubjectdnenabled"`
+	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+	Xforwardedforclientsrcportenabled pulumi.BoolInput `pulumi:"xforwardedforclientsrcportenabled"`
+	// Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
+	Xforwardedforenabled pulumi.BoolInput `pulumi:"xforwardedforenabled"`
+	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+	Xforwardedforprotoenabled pulumi.BoolInput `pulumi:"xforwardedforprotoenabled"`
+	// Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
+	Xforwardedforslbidenabled pulumi.BoolInput `pulumi:"xforwardedforslbidenabled"`
+	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+	Xforwardedforslbportenabled pulumi.BoolInput `pulumi:"xforwardedforslbportenabled"`
+}
+
+func (GetListenersListenerXforwardedForConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerXforwardedForConfig)(nil)).Elem()
+}
+
+func (i GetListenersListenerXforwardedForConfigArgs) ToGetListenersListenerXforwardedForConfigOutput() GetListenersListenerXforwardedForConfigOutput {
+	return i.ToGetListenersListenerXforwardedForConfigOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerXforwardedForConfigArgs) ToGetListenersListenerXforwardedForConfigOutputWithContext(ctx context.Context) GetListenersListenerXforwardedForConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerXforwardedForConfigOutput)
+}
+
+// GetListenersListenerXforwardedForConfigArrayInput is an input type that accepts GetListenersListenerXforwardedForConfigArray and GetListenersListenerXforwardedForConfigArrayOutput values.
+// You can construct a concrete instance of `GetListenersListenerXforwardedForConfigArrayInput` via:
+//
+//          GetListenersListenerXforwardedForConfigArray{ GetListenersListenerXforwardedForConfigArgs{...} }
+type GetListenersListenerXforwardedForConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerXforwardedForConfigArrayOutput() GetListenersListenerXforwardedForConfigArrayOutput
+	ToGetListenersListenerXforwardedForConfigArrayOutputWithContext(context.Context) GetListenersListenerXforwardedForConfigArrayOutput
+}
+
+type GetListenersListenerXforwardedForConfigArray []GetListenersListenerXforwardedForConfigInput
+
+func (GetListenersListenerXforwardedForConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerXforwardedForConfig)(nil)).Elem()
+}
+
+func (i GetListenersListenerXforwardedForConfigArray) ToGetListenersListenerXforwardedForConfigArrayOutput() GetListenersListenerXforwardedForConfigArrayOutput {
+	return i.ToGetListenersListenerXforwardedForConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerXforwardedForConfigArray) ToGetListenersListenerXforwardedForConfigArrayOutputWithContext(ctx context.Context) GetListenersListenerXforwardedForConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerXforwardedForConfigArrayOutput)
+}
+
+type GetListenersListenerXforwardedForConfigOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerXforwardedForConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerXforwardedForConfig)(nil)).Elem()
+}
+
+func (o GetListenersListenerXforwardedForConfigOutput) ToGetListenersListenerXforwardedForConfigOutput() GetListenersListenerXforwardedForConfigOutput {
+	return o
+}
+
+func (o GetListenersListenerXforwardedForConfigOutput) ToGetListenersListenerXforwardedForConfigOutputWithContext(ctx context.Context) GetListenersListenerXforwardedForConfigOutput {
+	return o
+}
+
+// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+func (o GetListenersListenerXforwardedForConfigOutput) XforwardedforclientcertIssuerdnalias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string { return v.XforwardedforclientcertIssuerdnalias }).(pulumi.StringOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+func (o GetListenersListenerXforwardedForConfigOutput) XforwardedforclientcertIssuerdnenabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.XforwardedforclientcertIssuerdnenabled }).(pulumi.BoolOutput)
+}
+
+// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertclientverifyalias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string {
+		return v.Xforwardedforclientcertclientverifyalias
+	}).(pulumi.StringOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertclientverifyenabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool {
+		return v.Xforwardedforclientcertclientverifyenabled
+	}).(pulumi.BoolOutput)
+}
+
+// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertfingerprintalias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string {
+		return v.Xforwardedforclientcertfingerprintalias
+	}).(pulumi.StringOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertfingerprintenabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool {
+		return v.Xforwardedforclientcertfingerprintenabled
+	}).(pulumi.BoolOutput)
+}
+
+// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertsubjectdnalias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string { return v.Xforwardedforclientcertsubjectdnalias }).(pulumi.StringOutput)
+}
+
+// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertsubjectdnenabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforclientcertsubjectdnenabled }).(pulumi.BoolOutput)
+}
+
+// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientsrcportenabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforclientsrcportenabled }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
+func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforenabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforenabled }).(pulumi.BoolOutput)
+}
+
+// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforprotoenabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforprotoenabled }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
+func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforslbidenabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforslbidenabled }).(pulumi.BoolOutput)
+}
+
+// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforslbportenabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforslbportenabled }).(pulumi.BoolOutput)
+}
+
+type GetListenersListenerXforwardedForConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerXforwardedForConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerXforwardedForConfig)(nil)).Elem()
+}
+
+func (o GetListenersListenerXforwardedForConfigArrayOutput) ToGetListenersListenerXforwardedForConfigArrayOutput() GetListenersListenerXforwardedForConfigArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerXforwardedForConfigArrayOutput) ToGetListenersListenerXforwardedForConfigArrayOutputWithContext(ctx context.Context) GetListenersListenerXforwardedForConfigArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerXforwardedForConfigArrayOutput) Index(i pulumi.IntInput) GetListenersListenerXforwardedForConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersListenerXforwardedForConfig {
+		return vs[0].([]GetListenersListenerXforwardedForConfig)[vs[1].(int)]
+	}).(GetListenersListenerXforwardedForConfigOutput)
 }
 
 type GetLoadBalancersBalancer struct {
@@ -2240,6 +7127,1975 @@ func (o GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArrayOutput) Index
 	}).(GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput)
 }
 
+type GetRulesRule struct {
+	// The ID of the Rule.
+	Id string `pulumi:"id"`
+	// The ID of the listener to which the forwarding rule belongs.
+	ListenerId string `pulumi:"listenerId"`
+	// The ID of the Application Load Balancer (ALB) instance to which the forwarding rule belongs.
+	LoadBalancerId string `pulumi:"loadBalancerId"`
+	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority.  Note The priority of each rule within the same listener must be unique.
+	Priority int `pulumi:"priority"`
+	// The actions of the forwarding rules.
+	RuleActions []GetRulesRuleRuleAction `pulumi:"ruleActions"`
+	// The conditions of the forwarding rule.
+	RuleConditions []GetRulesRuleRuleCondition `pulumi:"ruleConditions"`
+	// The first ID of the resource.
+	RuleId string `pulumi:"ruleId"`
+	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	RuleName string `pulumi:"ruleName"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// GetRulesRuleInput is an input type that accepts GetRulesRuleArgs and GetRulesRuleOutput values.
+// You can construct a concrete instance of `GetRulesRuleInput` via:
+//
+//          GetRulesRuleArgs{...}
+type GetRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleOutput() GetRulesRuleOutput
+	ToGetRulesRuleOutputWithContext(context.Context) GetRulesRuleOutput
+}
+
+type GetRulesRuleArgs struct {
+	// The ID of the Rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the listener to which the forwarding rule belongs.
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// The ID of the Application Load Balancer (ALB) instance to which the forwarding rule belongs.
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority.  Note The priority of each rule within the same listener must be unique.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The actions of the forwarding rules.
+	RuleActions GetRulesRuleRuleActionArrayInput `pulumi:"ruleActions"`
+	// The conditions of the forwarding rule.
+	RuleConditions GetRulesRuleRuleConditionArrayInput `pulumi:"ruleConditions"`
+	// The first ID of the resource.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRule)(nil)).Elem()
+}
+
+func (i GetRulesRuleArgs) ToGetRulesRuleOutput() GetRulesRuleOutput {
+	return i.ToGetRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleOutput)
+}
+
+// GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleArrayInput` via:
+//
+//          GetRulesRuleArray{ GetRulesRuleArgs{...} }
+type GetRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput
+	ToGetRulesRuleArrayOutputWithContext(context.Context) GetRulesRuleArrayOutput
+}
+
+type GetRulesRuleArray []GetRulesRuleInput
+
+func (GetRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRule)(nil)).Elem()
+}
+
+func (i GetRulesRuleArray) ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput {
+	return i.ToGetRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleArray) ToGetRulesRuleArrayOutputWithContext(ctx context.Context) GetRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleArrayOutput)
+}
+
+type GetRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRule)(nil)).Elem()
+}
+
+func (o GetRulesRuleOutput) ToGetRulesRuleOutput() GetRulesRuleOutput {
+	return o
+}
+
+func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
+	return o
+}
+
+// The ID of the Rule.
+func (o GetRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the listener to which the forwarding rule belongs.
+func (o GetRulesRuleOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// The ID of the Application Load Balancer (ALB) instance to which the forwarding rule belongs.
+func (o GetRulesRuleOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority.  Note The priority of each rule within the same listener must be unique.
+func (o GetRulesRuleOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesRule) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The actions of the forwarding rules.
+func (o GetRulesRuleOutput) RuleActions() GetRulesRuleRuleActionArrayOutput {
+	return o.ApplyT(func(v GetRulesRule) []GetRulesRuleRuleAction { return v.RuleActions }).(GetRulesRuleRuleActionArrayOutput)
+}
+
+// The conditions of the forwarding rule.
+func (o GetRulesRuleOutput) RuleConditions() GetRulesRuleRuleConditionArrayOutput {
+	return o.ApplyT(func(v GetRulesRule) []GetRulesRuleRuleCondition { return v.RuleConditions }).(GetRulesRuleRuleConditionArrayOutput)
+}
+
+// The first ID of the resource.
+func (o GetRulesRuleOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+func (o GetRulesRuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetRulesRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRule)(nil)).Elem()
+}
+
+func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutputWithContext(ctx context.Context) GetRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRule {
+		return vs[0].([]GetRulesRule)[vs[1].(int)]
+	}).(GetRulesRuleOutput)
+}
+
+type GetRulesRuleRuleAction struct {
+	// The configuration of the fixed response.
+	FixedResponseConfigs []GetRulesRuleRuleActionFixedResponseConfig `pulumi:"fixedResponseConfigs"`
+	// The configurations of the destination server groups.
+	ForwardGroupConfigs []GetRulesRuleRuleActionForwardGroupConfig `pulumi:"forwardGroupConfigs"`
+	// The configuration of the inserted header field.
+	InsertHeaderConfigs []GetRulesRuleRuleActionInsertHeaderConfig `pulumi:"insertHeaderConfigs"`
+	// The order of the forwarding rule actions. Valid values:1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+	Order int `pulumi:"order"`
+	// The configuration of the external redirect action.
+	RedirectConfigs []GetRulesRuleRuleActionRedirectConfig `pulumi:"redirectConfigs"`
+	// The redirect action within ALB.
+	RewriteConfigs []GetRulesRuleRuleActionRewriteConfig `pulumi:"rewriteConfigs"`
+	// The type of the forwarding rule.
+	Type string `pulumi:"type"`
+}
+
+// GetRulesRuleRuleActionInput is an input type that accepts GetRulesRuleRuleActionArgs and GetRulesRuleRuleActionOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionInput` via:
+//
+//          GetRulesRuleRuleActionArgs{...}
+type GetRulesRuleRuleActionInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionOutput() GetRulesRuleRuleActionOutput
+	ToGetRulesRuleRuleActionOutputWithContext(context.Context) GetRulesRuleRuleActionOutput
+}
+
+type GetRulesRuleRuleActionArgs struct {
+	// The configuration of the fixed response.
+	FixedResponseConfigs GetRulesRuleRuleActionFixedResponseConfigArrayInput `pulumi:"fixedResponseConfigs"`
+	// The configurations of the destination server groups.
+	ForwardGroupConfigs GetRulesRuleRuleActionForwardGroupConfigArrayInput `pulumi:"forwardGroupConfigs"`
+	// The configuration of the inserted header field.
+	InsertHeaderConfigs GetRulesRuleRuleActionInsertHeaderConfigArrayInput `pulumi:"insertHeaderConfigs"`
+	// The order of the forwarding rule actions. Valid values:1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+	Order pulumi.IntInput `pulumi:"order"`
+	// The configuration of the external redirect action.
+	RedirectConfigs GetRulesRuleRuleActionRedirectConfigArrayInput `pulumi:"redirectConfigs"`
+	// The redirect action within ALB.
+	RewriteConfigs GetRulesRuleRuleActionRewriteConfigArrayInput `pulumi:"rewriteConfigs"`
+	// The type of the forwarding rule.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRulesRuleRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleAction)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionArgs) ToGetRulesRuleRuleActionOutput() GetRulesRuleRuleActionOutput {
+	return i.ToGetRulesRuleRuleActionOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionArgs) ToGetRulesRuleRuleActionOutputWithContext(ctx context.Context) GetRulesRuleRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionOutput)
+}
+
+// GetRulesRuleRuleActionArrayInput is an input type that accepts GetRulesRuleRuleActionArray and GetRulesRuleRuleActionArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionArrayInput` via:
+//
+//          GetRulesRuleRuleActionArray{ GetRulesRuleRuleActionArgs{...} }
+type GetRulesRuleRuleActionArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionArrayOutput() GetRulesRuleRuleActionArrayOutput
+	ToGetRulesRuleRuleActionArrayOutputWithContext(context.Context) GetRulesRuleRuleActionArrayOutput
+}
+
+type GetRulesRuleRuleActionArray []GetRulesRuleRuleActionInput
+
+func (GetRulesRuleRuleActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleAction)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionArray) ToGetRulesRuleRuleActionArrayOutput() GetRulesRuleRuleActionArrayOutput {
+	return i.ToGetRulesRuleRuleActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionArray) ToGetRulesRuleRuleActionArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionArrayOutput)
+}
+
+type GetRulesRuleRuleActionOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleAction)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionOutput) ToGetRulesRuleRuleActionOutput() GetRulesRuleRuleActionOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionOutput) ToGetRulesRuleRuleActionOutputWithContext(ctx context.Context) GetRulesRuleRuleActionOutput {
+	return o
+}
+
+// The configuration of the fixed response.
+func (o GetRulesRuleRuleActionOutput) FixedResponseConfigs() GetRulesRuleRuleActionFixedResponseConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleAction) []GetRulesRuleRuleActionFixedResponseConfig {
+		return v.FixedResponseConfigs
+	}).(GetRulesRuleRuleActionFixedResponseConfigArrayOutput)
+}
+
+// The configurations of the destination server groups.
+func (o GetRulesRuleRuleActionOutput) ForwardGroupConfigs() GetRulesRuleRuleActionForwardGroupConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleAction) []GetRulesRuleRuleActionForwardGroupConfig {
+		return v.ForwardGroupConfigs
+	}).(GetRulesRuleRuleActionForwardGroupConfigArrayOutput)
+}
+
+// The configuration of the inserted header field.
+func (o GetRulesRuleRuleActionOutput) InsertHeaderConfigs() GetRulesRuleRuleActionInsertHeaderConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleAction) []GetRulesRuleRuleActionInsertHeaderConfig {
+		return v.InsertHeaderConfigs
+	}).(GetRulesRuleRuleActionInsertHeaderConfigArrayOutput)
+}
+
+// The order of the forwarding rule actions. Valid values:1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+func (o GetRulesRuleRuleActionOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleAction) int { return v.Order }).(pulumi.IntOutput)
+}
+
+// The configuration of the external redirect action.
+func (o GetRulesRuleRuleActionOutput) RedirectConfigs() GetRulesRuleRuleActionRedirectConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleAction) []GetRulesRuleRuleActionRedirectConfig { return v.RedirectConfigs }).(GetRulesRuleRuleActionRedirectConfigArrayOutput)
+}
+
+// The redirect action within ALB.
+func (o GetRulesRuleRuleActionOutput) RewriteConfigs() GetRulesRuleRuleActionRewriteConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleAction) []GetRulesRuleRuleActionRewriteConfig { return v.RewriteConfigs }).(GetRulesRuleRuleActionRewriteConfigArrayOutput)
+}
+
+// The type of the forwarding rule.
+func (o GetRulesRuleRuleActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleRuleActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleAction)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionArrayOutput) ToGetRulesRuleRuleActionArrayOutput() GetRulesRuleRuleActionArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionArrayOutput) ToGetRulesRuleRuleActionArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleAction {
+		return vs[0].([]GetRulesRuleRuleAction)[vs[1].(int)]
+	}).(GetRulesRuleRuleActionOutput)
+}
+
+type GetRulesRuleRuleActionFixedResponseConfig struct {
+	// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+	Content string `pulumi:"content"`
+	// The format of the fixed response.  Valid values: text/plain, text/css, text/html, application/javascript, and application/json.
+	ContentType string `pulumi:"contentType"`
+	// The redirect method. Valid values:301, 302, 303, 307, and 308.
+	HttpCode string `pulumi:"httpCode"`
+}
+
+// GetRulesRuleRuleActionFixedResponseConfigInput is an input type that accepts GetRulesRuleRuleActionFixedResponseConfigArgs and GetRulesRuleRuleActionFixedResponseConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionFixedResponseConfigInput` via:
+//
+//          GetRulesRuleRuleActionFixedResponseConfigArgs{...}
+type GetRulesRuleRuleActionFixedResponseConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionFixedResponseConfigOutput() GetRulesRuleRuleActionFixedResponseConfigOutput
+	ToGetRulesRuleRuleActionFixedResponseConfigOutputWithContext(context.Context) GetRulesRuleRuleActionFixedResponseConfigOutput
+}
+
+type GetRulesRuleRuleActionFixedResponseConfigArgs struct {
+	// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The format of the fixed response.  Valid values: text/plain, text/css, text/html, application/javascript, and application/json.
+	ContentType pulumi.StringInput `pulumi:"contentType"`
+	// The redirect method. Valid values:301, 302, 303, 307, and 308.
+	HttpCode pulumi.StringInput `pulumi:"httpCode"`
+}
+
+func (GetRulesRuleRuleActionFixedResponseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionFixedResponseConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionFixedResponseConfigArgs) ToGetRulesRuleRuleActionFixedResponseConfigOutput() GetRulesRuleRuleActionFixedResponseConfigOutput {
+	return i.ToGetRulesRuleRuleActionFixedResponseConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionFixedResponseConfigArgs) ToGetRulesRuleRuleActionFixedResponseConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionFixedResponseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionFixedResponseConfigOutput)
+}
+
+// GetRulesRuleRuleActionFixedResponseConfigArrayInput is an input type that accepts GetRulesRuleRuleActionFixedResponseConfigArray and GetRulesRuleRuleActionFixedResponseConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionFixedResponseConfigArrayInput` via:
+//
+//          GetRulesRuleRuleActionFixedResponseConfigArray{ GetRulesRuleRuleActionFixedResponseConfigArgs{...} }
+type GetRulesRuleRuleActionFixedResponseConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionFixedResponseConfigArrayOutput() GetRulesRuleRuleActionFixedResponseConfigArrayOutput
+	ToGetRulesRuleRuleActionFixedResponseConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleActionFixedResponseConfigArrayOutput
+}
+
+type GetRulesRuleRuleActionFixedResponseConfigArray []GetRulesRuleRuleActionFixedResponseConfigInput
+
+func (GetRulesRuleRuleActionFixedResponseConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionFixedResponseConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionFixedResponseConfigArray) ToGetRulesRuleRuleActionFixedResponseConfigArrayOutput() GetRulesRuleRuleActionFixedResponseConfigArrayOutput {
+	return i.ToGetRulesRuleRuleActionFixedResponseConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionFixedResponseConfigArray) ToGetRulesRuleRuleActionFixedResponseConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionFixedResponseConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionFixedResponseConfigArrayOutput)
+}
+
+type GetRulesRuleRuleActionFixedResponseConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionFixedResponseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionFixedResponseConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionFixedResponseConfigOutput) ToGetRulesRuleRuleActionFixedResponseConfigOutput() GetRulesRuleRuleActionFixedResponseConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionFixedResponseConfigOutput) ToGetRulesRuleRuleActionFixedResponseConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionFixedResponseConfigOutput {
+	return o
+}
+
+// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+func (o GetRulesRuleRuleActionFixedResponseConfigOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionFixedResponseConfig) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The format of the fixed response.  Valid values: text/plain, text/css, text/html, application/javascript, and application/json.
+func (o GetRulesRuleRuleActionFixedResponseConfigOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionFixedResponseConfig) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The redirect method. Valid values:301, 302, 303, 307, and 308.
+func (o GetRulesRuleRuleActionFixedResponseConfigOutput) HttpCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionFixedResponseConfig) string { return v.HttpCode }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleRuleActionFixedResponseConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionFixedResponseConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionFixedResponseConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionFixedResponseConfigArrayOutput) ToGetRulesRuleRuleActionFixedResponseConfigArrayOutput() GetRulesRuleRuleActionFixedResponseConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionFixedResponseConfigArrayOutput) ToGetRulesRuleRuleActionFixedResponseConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionFixedResponseConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionFixedResponseConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleActionFixedResponseConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleActionFixedResponseConfig {
+		return vs[0].([]GetRulesRuleRuleActionFixedResponseConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleActionFixedResponseConfigOutput)
+}
+
+type GetRulesRuleRuleActionForwardGroupConfig struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples []GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
+}
+
+// GetRulesRuleRuleActionForwardGroupConfigInput is an input type that accepts GetRulesRuleRuleActionForwardGroupConfigArgs and GetRulesRuleRuleActionForwardGroupConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionForwardGroupConfigInput` via:
+//
+//          GetRulesRuleRuleActionForwardGroupConfigArgs{...}
+type GetRulesRuleRuleActionForwardGroupConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionForwardGroupConfigOutput() GetRulesRuleRuleActionForwardGroupConfigOutput
+	ToGetRulesRuleRuleActionForwardGroupConfigOutputWithContext(context.Context) GetRulesRuleRuleActionForwardGroupConfigOutput
+}
+
+type GetRulesRuleRuleActionForwardGroupConfigArgs struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
+}
+
+func (GetRulesRuleRuleActionForwardGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionForwardGroupConfigArgs) ToGetRulesRuleRuleActionForwardGroupConfigOutput() GetRulesRuleRuleActionForwardGroupConfigOutput {
+	return i.ToGetRulesRuleRuleActionForwardGroupConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionForwardGroupConfigArgs) ToGetRulesRuleRuleActionForwardGroupConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionForwardGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionForwardGroupConfigOutput)
+}
+
+// GetRulesRuleRuleActionForwardGroupConfigArrayInput is an input type that accepts GetRulesRuleRuleActionForwardGroupConfigArray and GetRulesRuleRuleActionForwardGroupConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionForwardGroupConfigArrayInput` via:
+//
+//          GetRulesRuleRuleActionForwardGroupConfigArray{ GetRulesRuleRuleActionForwardGroupConfigArgs{...} }
+type GetRulesRuleRuleActionForwardGroupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionForwardGroupConfigArrayOutput() GetRulesRuleRuleActionForwardGroupConfigArrayOutput
+	ToGetRulesRuleRuleActionForwardGroupConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleActionForwardGroupConfigArrayOutput
+}
+
+type GetRulesRuleRuleActionForwardGroupConfigArray []GetRulesRuleRuleActionForwardGroupConfigInput
+
+func (GetRulesRuleRuleActionForwardGroupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionForwardGroupConfigArray) ToGetRulesRuleRuleActionForwardGroupConfigArrayOutput() GetRulesRuleRuleActionForwardGroupConfigArrayOutput {
+	return i.ToGetRulesRuleRuleActionForwardGroupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionForwardGroupConfigArray) ToGetRulesRuleRuleActionForwardGroupConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionForwardGroupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionForwardGroupConfigArrayOutput)
+}
+
+type GetRulesRuleRuleActionForwardGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionForwardGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionForwardGroupConfigOutput) ToGetRulesRuleRuleActionForwardGroupConfigOutput() GetRulesRuleRuleActionForwardGroupConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionForwardGroupConfigOutput) ToGetRulesRuleRuleActionForwardGroupConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionForwardGroupConfigOutput {
+	return o
+}
+
+// The destination server group to which requests are forwarded.
+func (o GetRulesRuleRuleActionForwardGroupConfigOutput) ServerGroupTuples() GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionForwardGroupConfig) []GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple {
+		return v.ServerGroupTuples
+	}).(GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type GetRulesRuleRuleActionForwardGroupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionForwardGroupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionForwardGroupConfigArrayOutput) ToGetRulesRuleRuleActionForwardGroupConfigArrayOutput() GetRulesRuleRuleActionForwardGroupConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionForwardGroupConfigArrayOutput) ToGetRulesRuleRuleActionForwardGroupConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionForwardGroupConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionForwardGroupConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleActionForwardGroupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleActionForwardGroupConfig {
+		return vs[0].([]GetRulesRuleRuleActionForwardGroupConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleActionForwardGroupConfigOutput)
+}
+
+type GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId string `pulumi:"serverGroupId"`
+}
+
+// GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleInput is an input type that accepts GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArgs and GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleInput` via:
+//
+//          GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...}
+type GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput() GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput
+	ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Context) GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput
+}
+
+type GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
+}
+
+func (GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArgs) ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput() GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return i.ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArgs) ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+// GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput is an input type that accepts GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArray and GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput` via:
+//
+//          GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArray{ GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...} }
+type GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput
+	ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Context) GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput
+}
+
+type GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArray []GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleInput
+
+func (GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArray) ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return i.ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArray) ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput() GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+// The ID of the destination server group to which requests are forwarded.
+func (o GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple) string { return v.ServerGroupId }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ToGetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple {
+		return vs[0].([]GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple)[vs[1].(int)]
+	}).(GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+type GetRulesRuleRuleActionInsertHeaderConfig struct {
+	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+	Key string `pulumi:"key"`
+	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	Value string `pulumi:"value"`
+	// Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+	ValueType string `pulumi:"valueType"`
+}
+
+// GetRulesRuleRuleActionInsertHeaderConfigInput is an input type that accepts GetRulesRuleRuleActionInsertHeaderConfigArgs and GetRulesRuleRuleActionInsertHeaderConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionInsertHeaderConfigInput` via:
+//
+//          GetRulesRuleRuleActionInsertHeaderConfigArgs{...}
+type GetRulesRuleRuleActionInsertHeaderConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionInsertHeaderConfigOutput() GetRulesRuleRuleActionInsertHeaderConfigOutput
+	ToGetRulesRuleRuleActionInsertHeaderConfigOutputWithContext(context.Context) GetRulesRuleRuleActionInsertHeaderConfigOutput
+}
+
+type GetRulesRuleRuleActionInsertHeaderConfigArgs struct {
+	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (GetRulesRuleRuleActionInsertHeaderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionInsertHeaderConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionInsertHeaderConfigArgs) ToGetRulesRuleRuleActionInsertHeaderConfigOutput() GetRulesRuleRuleActionInsertHeaderConfigOutput {
+	return i.ToGetRulesRuleRuleActionInsertHeaderConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionInsertHeaderConfigArgs) ToGetRulesRuleRuleActionInsertHeaderConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionInsertHeaderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionInsertHeaderConfigOutput)
+}
+
+// GetRulesRuleRuleActionInsertHeaderConfigArrayInput is an input type that accepts GetRulesRuleRuleActionInsertHeaderConfigArray and GetRulesRuleRuleActionInsertHeaderConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionInsertHeaderConfigArrayInput` via:
+//
+//          GetRulesRuleRuleActionInsertHeaderConfigArray{ GetRulesRuleRuleActionInsertHeaderConfigArgs{...} }
+type GetRulesRuleRuleActionInsertHeaderConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionInsertHeaderConfigArrayOutput() GetRulesRuleRuleActionInsertHeaderConfigArrayOutput
+	ToGetRulesRuleRuleActionInsertHeaderConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleActionInsertHeaderConfigArrayOutput
+}
+
+type GetRulesRuleRuleActionInsertHeaderConfigArray []GetRulesRuleRuleActionInsertHeaderConfigInput
+
+func (GetRulesRuleRuleActionInsertHeaderConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionInsertHeaderConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionInsertHeaderConfigArray) ToGetRulesRuleRuleActionInsertHeaderConfigArrayOutput() GetRulesRuleRuleActionInsertHeaderConfigArrayOutput {
+	return i.ToGetRulesRuleRuleActionInsertHeaderConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionInsertHeaderConfigArray) ToGetRulesRuleRuleActionInsertHeaderConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionInsertHeaderConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionInsertHeaderConfigArrayOutput)
+}
+
+type GetRulesRuleRuleActionInsertHeaderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionInsertHeaderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionInsertHeaderConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionInsertHeaderConfigOutput) ToGetRulesRuleRuleActionInsertHeaderConfigOutput() GetRulesRuleRuleActionInsertHeaderConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionInsertHeaderConfigOutput) ToGetRulesRuleRuleActionInsertHeaderConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionInsertHeaderConfigOutput {
+	return o
+}
+
+// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+func (o GetRulesRuleRuleActionInsertHeaderConfigOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionInsertHeaderConfig) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+func (o GetRulesRuleRuleActionInsertHeaderConfigOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionInsertHeaderConfig) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+func (o GetRulesRuleRuleActionInsertHeaderConfigOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionInsertHeaderConfig) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleRuleActionInsertHeaderConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionInsertHeaderConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionInsertHeaderConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionInsertHeaderConfigArrayOutput) ToGetRulesRuleRuleActionInsertHeaderConfigArrayOutput() GetRulesRuleRuleActionInsertHeaderConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionInsertHeaderConfigArrayOutput) ToGetRulesRuleRuleActionInsertHeaderConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionInsertHeaderConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionInsertHeaderConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleActionInsertHeaderConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleActionInsertHeaderConfig {
+		return vs[0].([]GetRulesRuleRuleActionInsertHeaderConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleActionInsertHeaderConfigOutput)
+}
+
+type GetRulesRuleRuleActionRedirectConfig struct {
+	// The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host string `pulumi:"host"`
+	// The redirect method. Valid values:301, 302, 303, 307, and 308.
+	HttpCode string `pulumi:"httpCode"`
+	// The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+	Path string `pulumi:"path"`
+	// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+	Port string `pulumi:"port"`
+	// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+	Protocol string `pulumi:"protocol"`
+	// The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+	Query string `pulumi:"query"`
+}
+
+// GetRulesRuleRuleActionRedirectConfigInput is an input type that accepts GetRulesRuleRuleActionRedirectConfigArgs and GetRulesRuleRuleActionRedirectConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionRedirectConfigInput` via:
+//
+//          GetRulesRuleRuleActionRedirectConfigArgs{...}
+type GetRulesRuleRuleActionRedirectConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionRedirectConfigOutput() GetRulesRuleRuleActionRedirectConfigOutput
+	ToGetRulesRuleRuleActionRedirectConfigOutputWithContext(context.Context) GetRulesRuleRuleActionRedirectConfigOutput
+}
+
+type GetRulesRuleRuleActionRedirectConfigArgs struct {
+	// The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The redirect method. Valid values:301, 302, 303, 307, and 308.
+	HttpCode pulumi.StringInput `pulumi:"httpCode"`
+	// The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+	Port pulumi.StringInput `pulumi:"port"`
+	// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+	Query pulumi.StringInput `pulumi:"query"`
+}
+
+func (GetRulesRuleRuleActionRedirectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionRedirectConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionRedirectConfigArgs) ToGetRulesRuleRuleActionRedirectConfigOutput() GetRulesRuleRuleActionRedirectConfigOutput {
+	return i.ToGetRulesRuleRuleActionRedirectConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionRedirectConfigArgs) ToGetRulesRuleRuleActionRedirectConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionRedirectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionRedirectConfigOutput)
+}
+
+// GetRulesRuleRuleActionRedirectConfigArrayInput is an input type that accepts GetRulesRuleRuleActionRedirectConfigArray and GetRulesRuleRuleActionRedirectConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionRedirectConfigArrayInput` via:
+//
+//          GetRulesRuleRuleActionRedirectConfigArray{ GetRulesRuleRuleActionRedirectConfigArgs{...} }
+type GetRulesRuleRuleActionRedirectConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionRedirectConfigArrayOutput() GetRulesRuleRuleActionRedirectConfigArrayOutput
+	ToGetRulesRuleRuleActionRedirectConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleActionRedirectConfigArrayOutput
+}
+
+type GetRulesRuleRuleActionRedirectConfigArray []GetRulesRuleRuleActionRedirectConfigInput
+
+func (GetRulesRuleRuleActionRedirectConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionRedirectConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionRedirectConfigArray) ToGetRulesRuleRuleActionRedirectConfigArrayOutput() GetRulesRuleRuleActionRedirectConfigArrayOutput {
+	return i.ToGetRulesRuleRuleActionRedirectConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionRedirectConfigArray) ToGetRulesRuleRuleActionRedirectConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionRedirectConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionRedirectConfigArrayOutput)
+}
+
+type GetRulesRuleRuleActionRedirectConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionRedirectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionRedirectConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionRedirectConfigOutput) ToGetRulesRuleRuleActionRedirectConfigOutput() GetRulesRuleRuleActionRedirectConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionRedirectConfigOutput) ToGetRulesRuleRuleActionRedirectConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionRedirectConfigOutput {
+	return o
+}
+
+// The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+func (o GetRulesRuleRuleActionRedirectConfigOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionRedirectConfig) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The redirect method. Valid values:301, 302, 303, 307, and 308.
+func (o GetRulesRuleRuleActionRedirectConfigOutput) HttpCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionRedirectConfig) string { return v.HttpCode }).(pulumi.StringOutput)
+}
+
+// The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+func (o GetRulesRuleRuleActionRedirectConfigOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionRedirectConfig) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+func (o GetRulesRuleRuleActionRedirectConfigOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionRedirectConfig) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+func (o GetRulesRuleRuleActionRedirectConfigOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionRedirectConfig) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+func (o GetRulesRuleRuleActionRedirectConfigOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionRedirectConfig) string { return v.Query }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleRuleActionRedirectConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionRedirectConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionRedirectConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionRedirectConfigArrayOutput) ToGetRulesRuleRuleActionRedirectConfigArrayOutput() GetRulesRuleRuleActionRedirectConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionRedirectConfigArrayOutput) ToGetRulesRuleRuleActionRedirectConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionRedirectConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionRedirectConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleActionRedirectConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleActionRedirectConfig {
+		return vs[0].([]GetRulesRuleRuleActionRedirectConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleActionRedirectConfigOutput)
+}
+
+type GetRulesRuleRuleActionRewriteConfig struct {
+	// The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host string `pulumi:"host"`
+	// The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+	Path string `pulumi:"path"`
+	// The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+	Query string `pulumi:"query"`
+}
+
+// GetRulesRuleRuleActionRewriteConfigInput is an input type that accepts GetRulesRuleRuleActionRewriteConfigArgs and GetRulesRuleRuleActionRewriteConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionRewriteConfigInput` via:
+//
+//          GetRulesRuleRuleActionRewriteConfigArgs{...}
+type GetRulesRuleRuleActionRewriteConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionRewriteConfigOutput() GetRulesRuleRuleActionRewriteConfigOutput
+	ToGetRulesRuleRuleActionRewriteConfigOutputWithContext(context.Context) GetRulesRuleRuleActionRewriteConfigOutput
+}
+
+type GetRulesRuleRuleActionRewriteConfigArgs struct {
+	// The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+	Query pulumi.StringInput `pulumi:"query"`
+}
+
+func (GetRulesRuleRuleActionRewriteConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionRewriteConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionRewriteConfigArgs) ToGetRulesRuleRuleActionRewriteConfigOutput() GetRulesRuleRuleActionRewriteConfigOutput {
+	return i.ToGetRulesRuleRuleActionRewriteConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionRewriteConfigArgs) ToGetRulesRuleRuleActionRewriteConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionRewriteConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionRewriteConfigOutput)
+}
+
+// GetRulesRuleRuleActionRewriteConfigArrayInput is an input type that accepts GetRulesRuleRuleActionRewriteConfigArray and GetRulesRuleRuleActionRewriteConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionRewriteConfigArrayInput` via:
+//
+//          GetRulesRuleRuleActionRewriteConfigArray{ GetRulesRuleRuleActionRewriteConfigArgs{...} }
+type GetRulesRuleRuleActionRewriteConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionRewriteConfigArrayOutput() GetRulesRuleRuleActionRewriteConfigArrayOutput
+	ToGetRulesRuleRuleActionRewriteConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleActionRewriteConfigArrayOutput
+}
+
+type GetRulesRuleRuleActionRewriteConfigArray []GetRulesRuleRuleActionRewriteConfigInput
+
+func (GetRulesRuleRuleActionRewriteConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionRewriteConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionRewriteConfigArray) ToGetRulesRuleRuleActionRewriteConfigArrayOutput() GetRulesRuleRuleActionRewriteConfigArrayOutput {
+	return i.ToGetRulesRuleRuleActionRewriteConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionRewriteConfigArray) ToGetRulesRuleRuleActionRewriteConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionRewriteConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionRewriteConfigArrayOutput)
+}
+
+type GetRulesRuleRuleActionRewriteConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionRewriteConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionRewriteConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionRewriteConfigOutput) ToGetRulesRuleRuleActionRewriteConfigOutput() GetRulesRuleRuleActionRewriteConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionRewriteConfigOutput) ToGetRulesRuleRuleActionRewriteConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionRewriteConfigOutput {
+	return o
+}
+
+// The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+func (o GetRulesRuleRuleActionRewriteConfigOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionRewriteConfig) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+func (o GetRulesRuleRuleActionRewriteConfigOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionRewriteConfig) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+func (o GetRulesRuleRuleActionRewriteConfigOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionRewriteConfig) string { return v.Query }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleRuleActionRewriteConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionRewriteConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionRewriteConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionRewriteConfigArrayOutput) ToGetRulesRuleRuleActionRewriteConfigArrayOutput() GetRulesRuleRuleActionRewriteConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionRewriteConfigArrayOutput) ToGetRulesRuleRuleActionRewriteConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionRewriteConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionRewriteConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleActionRewriteConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleActionRewriteConfig {
+		return vs[0].([]GetRulesRuleRuleActionRewriteConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleActionRewriteConfigOutput)
+}
+
+type GetRulesRuleRuleCondition struct {
+	// The configuration of the cookie.
+	CookieConfigs []GetRulesRuleRuleConditionCookieConfig `pulumi:"cookieConfigs"`
+	// The configuration of the header field.
+	HeaderConfigs []GetRulesRuleRuleConditionHeaderConfig `pulumi:"headerConfigs"`
+	// The configuration of the host.
+	HostConfigs []GetRulesRuleRuleConditionHostConfig `pulumi:"hostConfigs"`
+	// The configuration of the request method.
+	MethodConfigs []GetRulesRuleRuleConditionMethodConfig `pulumi:"methodConfigs"`
+	// The configuration of the path for the request to be forwarded.
+	PathConfigs []GetRulesRuleRuleConditionPathConfig `pulumi:"pathConfigs"`
+	// The configuration of the query string.
+	QueryStringConfigs []GetRulesRuleRuleConditionQueryStringConfig `pulumi:"queryStringConfigs"`
+	// The type of the forwarding rule.
+	Type string `pulumi:"type"`
+}
+
+// GetRulesRuleRuleConditionInput is an input type that accepts GetRulesRuleRuleConditionArgs and GetRulesRuleRuleConditionOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionInput` via:
+//
+//          GetRulesRuleRuleConditionArgs{...}
+type GetRulesRuleRuleConditionInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionOutput() GetRulesRuleRuleConditionOutput
+	ToGetRulesRuleRuleConditionOutputWithContext(context.Context) GetRulesRuleRuleConditionOutput
+}
+
+type GetRulesRuleRuleConditionArgs struct {
+	// The configuration of the cookie.
+	CookieConfigs GetRulesRuleRuleConditionCookieConfigArrayInput `pulumi:"cookieConfigs"`
+	// The configuration of the header field.
+	HeaderConfigs GetRulesRuleRuleConditionHeaderConfigArrayInput `pulumi:"headerConfigs"`
+	// The configuration of the host.
+	HostConfigs GetRulesRuleRuleConditionHostConfigArrayInput `pulumi:"hostConfigs"`
+	// The configuration of the request method.
+	MethodConfigs GetRulesRuleRuleConditionMethodConfigArrayInput `pulumi:"methodConfigs"`
+	// The configuration of the path for the request to be forwarded.
+	PathConfigs GetRulesRuleRuleConditionPathConfigArrayInput `pulumi:"pathConfigs"`
+	// The configuration of the query string.
+	QueryStringConfigs GetRulesRuleRuleConditionQueryStringConfigArrayInput `pulumi:"queryStringConfigs"`
+	// The type of the forwarding rule.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRulesRuleRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleCondition)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionArgs) ToGetRulesRuleRuleConditionOutput() GetRulesRuleRuleConditionOutput {
+	return i.ToGetRulesRuleRuleConditionOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionArgs) ToGetRulesRuleRuleConditionOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionOutput)
+}
+
+// GetRulesRuleRuleConditionArrayInput is an input type that accepts GetRulesRuleRuleConditionArray and GetRulesRuleRuleConditionArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionArrayInput` via:
+//
+//          GetRulesRuleRuleConditionArray{ GetRulesRuleRuleConditionArgs{...} }
+type GetRulesRuleRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionArrayOutput() GetRulesRuleRuleConditionArrayOutput
+	ToGetRulesRuleRuleConditionArrayOutputWithContext(context.Context) GetRulesRuleRuleConditionArrayOutput
+}
+
+type GetRulesRuleRuleConditionArray []GetRulesRuleRuleConditionInput
+
+func (GetRulesRuleRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleCondition)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionArray) ToGetRulesRuleRuleConditionArrayOutput() GetRulesRuleRuleConditionArrayOutput {
+	return i.ToGetRulesRuleRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionArray) ToGetRulesRuleRuleConditionArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionArrayOutput)
+}
+
+type GetRulesRuleRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleCondition)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionOutput) ToGetRulesRuleRuleConditionOutput() GetRulesRuleRuleConditionOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionOutput) ToGetRulesRuleRuleConditionOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionOutput {
+	return o
+}
+
+// The configuration of the cookie.
+func (o GetRulesRuleRuleConditionOutput) CookieConfigs() GetRulesRuleRuleConditionCookieConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleCondition) []GetRulesRuleRuleConditionCookieConfig { return v.CookieConfigs }).(GetRulesRuleRuleConditionCookieConfigArrayOutput)
+}
+
+// The configuration of the header field.
+func (o GetRulesRuleRuleConditionOutput) HeaderConfigs() GetRulesRuleRuleConditionHeaderConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleCondition) []GetRulesRuleRuleConditionHeaderConfig { return v.HeaderConfigs }).(GetRulesRuleRuleConditionHeaderConfigArrayOutput)
+}
+
+// The configuration of the host.
+func (o GetRulesRuleRuleConditionOutput) HostConfigs() GetRulesRuleRuleConditionHostConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleCondition) []GetRulesRuleRuleConditionHostConfig { return v.HostConfigs }).(GetRulesRuleRuleConditionHostConfigArrayOutput)
+}
+
+// The configuration of the request method.
+func (o GetRulesRuleRuleConditionOutput) MethodConfigs() GetRulesRuleRuleConditionMethodConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleCondition) []GetRulesRuleRuleConditionMethodConfig { return v.MethodConfigs }).(GetRulesRuleRuleConditionMethodConfigArrayOutput)
+}
+
+// The configuration of the path for the request to be forwarded.
+func (o GetRulesRuleRuleConditionOutput) PathConfigs() GetRulesRuleRuleConditionPathConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleCondition) []GetRulesRuleRuleConditionPathConfig { return v.PathConfigs }).(GetRulesRuleRuleConditionPathConfigArrayOutput)
+}
+
+// The configuration of the query string.
+func (o GetRulesRuleRuleConditionOutput) QueryStringConfigs() GetRulesRuleRuleConditionQueryStringConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleCondition) []GetRulesRuleRuleConditionQueryStringConfig {
+		return v.QueryStringConfigs
+	}).(GetRulesRuleRuleConditionQueryStringConfigArrayOutput)
+}
+
+// The type of the forwarding rule.
+func (o GetRulesRuleRuleConditionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleCondition) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleCondition)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionArrayOutput) ToGetRulesRuleRuleConditionArrayOutput() GetRulesRuleRuleConditionArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionArrayOutput) ToGetRulesRuleRuleConditionArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleCondition {
+		return vs[0].([]GetRulesRuleRuleCondition)[vs[1].(int)]
+	}).(GetRulesRuleRuleConditionOutput)
+}
+
+type GetRulesRuleRuleConditionCookieConfig struct {
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values []GetRulesRuleRuleConditionCookieConfigValue `pulumi:"values"`
+}
+
+// GetRulesRuleRuleConditionCookieConfigInput is an input type that accepts GetRulesRuleRuleConditionCookieConfigArgs and GetRulesRuleRuleConditionCookieConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionCookieConfigInput` via:
+//
+//          GetRulesRuleRuleConditionCookieConfigArgs{...}
+type GetRulesRuleRuleConditionCookieConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionCookieConfigOutput() GetRulesRuleRuleConditionCookieConfigOutput
+	ToGetRulesRuleRuleConditionCookieConfigOutputWithContext(context.Context) GetRulesRuleRuleConditionCookieConfigOutput
+}
+
+type GetRulesRuleRuleConditionCookieConfigArgs struct {
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values GetRulesRuleRuleConditionCookieConfigValueArrayInput `pulumi:"values"`
+}
+
+func (GetRulesRuleRuleConditionCookieConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionCookieConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionCookieConfigArgs) ToGetRulesRuleRuleConditionCookieConfigOutput() GetRulesRuleRuleConditionCookieConfigOutput {
+	return i.ToGetRulesRuleRuleConditionCookieConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionCookieConfigArgs) ToGetRulesRuleRuleConditionCookieConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionCookieConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionCookieConfigOutput)
+}
+
+// GetRulesRuleRuleConditionCookieConfigArrayInput is an input type that accepts GetRulesRuleRuleConditionCookieConfigArray and GetRulesRuleRuleConditionCookieConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionCookieConfigArrayInput` via:
+//
+//          GetRulesRuleRuleConditionCookieConfigArray{ GetRulesRuleRuleConditionCookieConfigArgs{...} }
+type GetRulesRuleRuleConditionCookieConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionCookieConfigArrayOutput() GetRulesRuleRuleConditionCookieConfigArrayOutput
+	ToGetRulesRuleRuleConditionCookieConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleConditionCookieConfigArrayOutput
+}
+
+type GetRulesRuleRuleConditionCookieConfigArray []GetRulesRuleRuleConditionCookieConfigInput
+
+func (GetRulesRuleRuleConditionCookieConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionCookieConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionCookieConfigArray) ToGetRulesRuleRuleConditionCookieConfigArrayOutput() GetRulesRuleRuleConditionCookieConfigArrayOutput {
+	return i.ToGetRulesRuleRuleConditionCookieConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionCookieConfigArray) ToGetRulesRuleRuleConditionCookieConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionCookieConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionCookieConfigArrayOutput)
+}
+
+type GetRulesRuleRuleConditionCookieConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionCookieConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionCookieConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionCookieConfigOutput) ToGetRulesRuleRuleConditionCookieConfigOutput() GetRulesRuleRuleConditionCookieConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionCookieConfigOutput) ToGetRulesRuleRuleConditionCookieConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionCookieConfigOutput {
+	return o
+}
+
+// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+func (o GetRulesRuleRuleConditionCookieConfigOutput) Values() GetRulesRuleRuleConditionCookieConfigValueArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionCookieConfig) []GetRulesRuleRuleConditionCookieConfigValue {
+		return v.Values
+	}).(GetRulesRuleRuleConditionCookieConfigValueArrayOutput)
+}
+
+type GetRulesRuleRuleConditionCookieConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionCookieConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionCookieConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionCookieConfigArrayOutput) ToGetRulesRuleRuleConditionCookieConfigArrayOutput() GetRulesRuleRuleConditionCookieConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionCookieConfigArrayOutput) ToGetRulesRuleRuleConditionCookieConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionCookieConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionCookieConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleConditionCookieConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleConditionCookieConfig {
+		return vs[0].([]GetRulesRuleRuleConditionCookieConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleConditionCookieConfigOutput)
+}
+
+type GetRulesRuleRuleConditionCookieConfigValue struct {
+	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+	Key string `pulumi:"key"`
+	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	Value string `pulumi:"value"`
+}
+
+// GetRulesRuleRuleConditionCookieConfigValueInput is an input type that accepts GetRulesRuleRuleConditionCookieConfigValueArgs and GetRulesRuleRuleConditionCookieConfigValueOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionCookieConfigValueInput` via:
+//
+//          GetRulesRuleRuleConditionCookieConfigValueArgs{...}
+type GetRulesRuleRuleConditionCookieConfigValueInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionCookieConfigValueOutput() GetRulesRuleRuleConditionCookieConfigValueOutput
+	ToGetRulesRuleRuleConditionCookieConfigValueOutputWithContext(context.Context) GetRulesRuleRuleConditionCookieConfigValueOutput
+}
+
+type GetRulesRuleRuleConditionCookieConfigValueArgs struct {
+	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRulesRuleRuleConditionCookieConfigValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionCookieConfigValue)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionCookieConfigValueArgs) ToGetRulesRuleRuleConditionCookieConfigValueOutput() GetRulesRuleRuleConditionCookieConfigValueOutput {
+	return i.ToGetRulesRuleRuleConditionCookieConfigValueOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionCookieConfigValueArgs) ToGetRulesRuleRuleConditionCookieConfigValueOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionCookieConfigValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionCookieConfigValueOutput)
+}
+
+// GetRulesRuleRuleConditionCookieConfigValueArrayInput is an input type that accepts GetRulesRuleRuleConditionCookieConfigValueArray and GetRulesRuleRuleConditionCookieConfigValueArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionCookieConfigValueArrayInput` via:
+//
+//          GetRulesRuleRuleConditionCookieConfigValueArray{ GetRulesRuleRuleConditionCookieConfigValueArgs{...} }
+type GetRulesRuleRuleConditionCookieConfigValueArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionCookieConfigValueArrayOutput() GetRulesRuleRuleConditionCookieConfigValueArrayOutput
+	ToGetRulesRuleRuleConditionCookieConfigValueArrayOutputWithContext(context.Context) GetRulesRuleRuleConditionCookieConfigValueArrayOutput
+}
+
+type GetRulesRuleRuleConditionCookieConfigValueArray []GetRulesRuleRuleConditionCookieConfigValueInput
+
+func (GetRulesRuleRuleConditionCookieConfigValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionCookieConfigValue)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionCookieConfigValueArray) ToGetRulesRuleRuleConditionCookieConfigValueArrayOutput() GetRulesRuleRuleConditionCookieConfigValueArrayOutput {
+	return i.ToGetRulesRuleRuleConditionCookieConfigValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionCookieConfigValueArray) ToGetRulesRuleRuleConditionCookieConfigValueArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionCookieConfigValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionCookieConfigValueArrayOutput)
+}
+
+type GetRulesRuleRuleConditionCookieConfigValueOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionCookieConfigValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionCookieConfigValue)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionCookieConfigValueOutput) ToGetRulesRuleRuleConditionCookieConfigValueOutput() GetRulesRuleRuleConditionCookieConfigValueOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionCookieConfigValueOutput) ToGetRulesRuleRuleConditionCookieConfigValueOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionCookieConfigValueOutput {
+	return o
+}
+
+// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+func (o GetRulesRuleRuleConditionCookieConfigValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionCookieConfigValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+func (o GetRulesRuleRuleConditionCookieConfigValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionCookieConfigValue) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleRuleConditionCookieConfigValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionCookieConfigValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionCookieConfigValue)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionCookieConfigValueArrayOutput) ToGetRulesRuleRuleConditionCookieConfigValueArrayOutput() GetRulesRuleRuleConditionCookieConfigValueArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionCookieConfigValueArrayOutput) ToGetRulesRuleRuleConditionCookieConfigValueArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionCookieConfigValueArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionCookieConfigValueArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleConditionCookieConfigValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleConditionCookieConfigValue {
+		return vs[0].([]GetRulesRuleRuleConditionCookieConfigValue)[vs[1].(int)]
+	}).(GetRulesRuleRuleConditionCookieConfigValueOutput)
+}
+
+type GetRulesRuleRuleConditionHeaderConfig struct {
+	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+	Key string `pulumi:"key"`
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values []string `pulumi:"values"`
+}
+
+// GetRulesRuleRuleConditionHeaderConfigInput is an input type that accepts GetRulesRuleRuleConditionHeaderConfigArgs and GetRulesRuleRuleConditionHeaderConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionHeaderConfigInput` via:
+//
+//          GetRulesRuleRuleConditionHeaderConfigArgs{...}
+type GetRulesRuleRuleConditionHeaderConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionHeaderConfigOutput() GetRulesRuleRuleConditionHeaderConfigOutput
+	ToGetRulesRuleRuleConditionHeaderConfigOutputWithContext(context.Context) GetRulesRuleRuleConditionHeaderConfigOutput
+}
+
+type GetRulesRuleRuleConditionHeaderConfigArgs struct {
+	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRulesRuleRuleConditionHeaderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionHeaderConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionHeaderConfigArgs) ToGetRulesRuleRuleConditionHeaderConfigOutput() GetRulesRuleRuleConditionHeaderConfigOutput {
+	return i.ToGetRulesRuleRuleConditionHeaderConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionHeaderConfigArgs) ToGetRulesRuleRuleConditionHeaderConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionHeaderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionHeaderConfigOutput)
+}
+
+// GetRulesRuleRuleConditionHeaderConfigArrayInput is an input type that accepts GetRulesRuleRuleConditionHeaderConfigArray and GetRulesRuleRuleConditionHeaderConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionHeaderConfigArrayInput` via:
+//
+//          GetRulesRuleRuleConditionHeaderConfigArray{ GetRulesRuleRuleConditionHeaderConfigArgs{...} }
+type GetRulesRuleRuleConditionHeaderConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionHeaderConfigArrayOutput() GetRulesRuleRuleConditionHeaderConfigArrayOutput
+	ToGetRulesRuleRuleConditionHeaderConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleConditionHeaderConfigArrayOutput
+}
+
+type GetRulesRuleRuleConditionHeaderConfigArray []GetRulesRuleRuleConditionHeaderConfigInput
+
+func (GetRulesRuleRuleConditionHeaderConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionHeaderConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionHeaderConfigArray) ToGetRulesRuleRuleConditionHeaderConfigArrayOutput() GetRulesRuleRuleConditionHeaderConfigArrayOutput {
+	return i.ToGetRulesRuleRuleConditionHeaderConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionHeaderConfigArray) ToGetRulesRuleRuleConditionHeaderConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionHeaderConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionHeaderConfigArrayOutput)
+}
+
+type GetRulesRuleRuleConditionHeaderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionHeaderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionHeaderConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionHeaderConfigOutput) ToGetRulesRuleRuleConditionHeaderConfigOutput() GetRulesRuleRuleConditionHeaderConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionHeaderConfigOutput) ToGetRulesRuleRuleConditionHeaderConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionHeaderConfigOutput {
+	return o
+}
+
+// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+func (o GetRulesRuleRuleConditionHeaderConfigOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionHeaderConfig) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+func (o GetRulesRuleRuleConditionHeaderConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionHeaderConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRulesRuleRuleConditionHeaderConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionHeaderConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionHeaderConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionHeaderConfigArrayOutput) ToGetRulesRuleRuleConditionHeaderConfigArrayOutput() GetRulesRuleRuleConditionHeaderConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionHeaderConfigArrayOutput) ToGetRulesRuleRuleConditionHeaderConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionHeaderConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionHeaderConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleConditionHeaderConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleConditionHeaderConfig {
+		return vs[0].([]GetRulesRuleRuleConditionHeaderConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleConditionHeaderConfigOutput)
+}
+
+type GetRulesRuleRuleConditionHostConfig struct {
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values []string `pulumi:"values"`
+}
+
+// GetRulesRuleRuleConditionHostConfigInput is an input type that accepts GetRulesRuleRuleConditionHostConfigArgs and GetRulesRuleRuleConditionHostConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionHostConfigInput` via:
+//
+//          GetRulesRuleRuleConditionHostConfigArgs{...}
+type GetRulesRuleRuleConditionHostConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionHostConfigOutput() GetRulesRuleRuleConditionHostConfigOutput
+	ToGetRulesRuleRuleConditionHostConfigOutputWithContext(context.Context) GetRulesRuleRuleConditionHostConfigOutput
+}
+
+type GetRulesRuleRuleConditionHostConfigArgs struct {
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRulesRuleRuleConditionHostConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionHostConfigArgs) ToGetRulesRuleRuleConditionHostConfigOutput() GetRulesRuleRuleConditionHostConfigOutput {
+	return i.ToGetRulesRuleRuleConditionHostConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionHostConfigArgs) ToGetRulesRuleRuleConditionHostConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionHostConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionHostConfigOutput)
+}
+
+// GetRulesRuleRuleConditionHostConfigArrayInput is an input type that accepts GetRulesRuleRuleConditionHostConfigArray and GetRulesRuleRuleConditionHostConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionHostConfigArrayInput` via:
+//
+//          GetRulesRuleRuleConditionHostConfigArray{ GetRulesRuleRuleConditionHostConfigArgs{...} }
+type GetRulesRuleRuleConditionHostConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionHostConfigArrayOutput() GetRulesRuleRuleConditionHostConfigArrayOutput
+	ToGetRulesRuleRuleConditionHostConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleConditionHostConfigArrayOutput
+}
+
+type GetRulesRuleRuleConditionHostConfigArray []GetRulesRuleRuleConditionHostConfigInput
+
+func (GetRulesRuleRuleConditionHostConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionHostConfigArray) ToGetRulesRuleRuleConditionHostConfigArrayOutput() GetRulesRuleRuleConditionHostConfigArrayOutput {
+	return i.ToGetRulesRuleRuleConditionHostConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionHostConfigArray) ToGetRulesRuleRuleConditionHostConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionHostConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionHostConfigArrayOutput)
+}
+
+type GetRulesRuleRuleConditionHostConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionHostConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionHostConfigOutput) ToGetRulesRuleRuleConditionHostConfigOutput() GetRulesRuleRuleConditionHostConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionHostConfigOutput) ToGetRulesRuleRuleConditionHostConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionHostConfigOutput {
+	return o
+}
+
+// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+func (o GetRulesRuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRulesRuleRuleConditionHostConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionHostConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionHostConfigArrayOutput) ToGetRulesRuleRuleConditionHostConfigArrayOutput() GetRulesRuleRuleConditionHostConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionHostConfigArrayOutput) ToGetRulesRuleRuleConditionHostConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionHostConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionHostConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleConditionHostConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleConditionHostConfig {
+		return vs[0].([]GetRulesRuleRuleConditionHostConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleConditionHostConfigOutput)
+}
+
+type GetRulesRuleRuleConditionMethodConfig struct {
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values []string `pulumi:"values"`
+}
+
+// GetRulesRuleRuleConditionMethodConfigInput is an input type that accepts GetRulesRuleRuleConditionMethodConfigArgs and GetRulesRuleRuleConditionMethodConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionMethodConfigInput` via:
+//
+//          GetRulesRuleRuleConditionMethodConfigArgs{...}
+type GetRulesRuleRuleConditionMethodConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionMethodConfigOutput() GetRulesRuleRuleConditionMethodConfigOutput
+	ToGetRulesRuleRuleConditionMethodConfigOutputWithContext(context.Context) GetRulesRuleRuleConditionMethodConfigOutput
+}
+
+type GetRulesRuleRuleConditionMethodConfigArgs struct {
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRulesRuleRuleConditionMethodConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionMethodConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionMethodConfigArgs) ToGetRulesRuleRuleConditionMethodConfigOutput() GetRulesRuleRuleConditionMethodConfigOutput {
+	return i.ToGetRulesRuleRuleConditionMethodConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionMethodConfigArgs) ToGetRulesRuleRuleConditionMethodConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionMethodConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionMethodConfigOutput)
+}
+
+// GetRulesRuleRuleConditionMethodConfigArrayInput is an input type that accepts GetRulesRuleRuleConditionMethodConfigArray and GetRulesRuleRuleConditionMethodConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionMethodConfigArrayInput` via:
+//
+//          GetRulesRuleRuleConditionMethodConfigArray{ GetRulesRuleRuleConditionMethodConfigArgs{...} }
+type GetRulesRuleRuleConditionMethodConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionMethodConfigArrayOutput() GetRulesRuleRuleConditionMethodConfigArrayOutput
+	ToGetRulesRuleRuleConditionMethodConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleConditionMethodConfigArrayOutput
+}
+
+type GetRulesRuleRuleConditionMethodConfigArray []GetRulesRuleRuleConditionMethodConfigInput
+
+func (GetRulesRuleRuleConditionMethodConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionMethodConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionMethodConfigArray) ToGetRulesRuleRuleConditionMethodConfigArrayOutput() GetRulesRuleRuleConditionMethodConfigArrayOutput {
+	return i.ToGetRulesRuleRuleConditionMethodConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionMethodConfigArray) ToGetRulesRuleRuleConditionMethodConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionMethodConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionMethodConfigArrayOutput)
+}
+
+type GetRulesRuleRuleConditionMethodConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionMethodConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionMethodConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionMethodConfigOutput) ToGetRulesRuleRuleConditionMethodConfigOutput() GetRulesRuleRuleConditionMethodConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionMethodConfigOutput) ToGetRulesRuleRuleConditionMethodConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionMethodConfigOutput {
+	return o
+}
+
+// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+func (o GetRulesRuleRuleConditionMethodConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionMethodConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRulesRuleRuleConditionMethodConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionMethodConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionMethodConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionMethodConfigArrayOutput) ToGetRulesRuleRuleConditionMethodConfigArrayOutput() GetRulesRuleRuleConditionMethodConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionMethodConfigArrayOutput) ToGetRulesRuleRuleConditionMethodConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionMethodConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionMethodConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleConditionMethodConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleConditionMethodConfig {
+		return vs[0].([]GetRulesRuleRuleConditionMethodConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleConditionMethodConfigOutput)
+}
+
+type GetRulesRuleRuleConditionPathConfig struct {
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values []string `pulumi:"values"`
+}
+
+// GetRulesRuleRuleConditionPathConfigInput is an input type that accepts GetRulesRuleRuleConditionPathConfigArgs and GetRulesRuleRuleConditionPathConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionPathConfigInput` via:
+//
+//          GetRulesRuleRuleConditionPathConfigArgs{...}
+type GetRulesRuleRuleConditionPathConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionPathConfigOutput() GetRulesRuleRuleConditionPathConfigOutput
+	ToGetRulesRuleRuleConditionPathConfigOutputWithContext(context.Context) GetRulesRuleRuleConditionPathConfigOutput
+}
+
+type GetRulesRuleRuleConditionPathConfigArgs struct {
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRulesRuleRuleConditionPathConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionPathConfigArgs) ToGetRulesRuleRuleConditionPathConfigOutput() GetRulesRuleRuleConditionPathConfigOutput {
+	return i.ToGetRulesRuleRuleConditionPathConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionPathConfigArgs) ToGetRulesRuleRuleConditionPathConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionPathConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionPathConfigOutput)
+}
+
+// GetRulesRuleRuleConditionPathConfigArrayInput is an input type that accepts GetRulesRuleRuleConditionPathConfigArray and GetRulesRuleRuleConditionPathConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionPathConfigArrayInput` via:
+//
+//          GetRulesRuleRuleConditionPathConfigArray{ GetRulesRuleRuleConditionPathConfigArgs{...} }
+type GetRulesRuleRuleConditionPathConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionPathConfigArrayOutput() GetRulesRuleRuleConditionPathConfigArrayOutput
+	ToGetRulesRuleRuleConditionPathConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleConditionPathConfigArrayOutput
+}
+
+type GetRulesRuleRuleConditionPathConfigArray []GetRulesRuleRuleConditionPathConfigInput
+
+func (GetRulesRuleRuleConditionPathConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionPathConfigArray) ToGetRulesRuleRuleConditionPathConfigArrayOutput() GetRulesRuleRuleConditionPathConfigArrayOutput {
+	return i.ToGetRulesRuleRuleConditionPathConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionPathConfigArray) ToGetRulesRuleRuleConditionPathConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionPathConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionPathConfigArrayOutput)
+}
+
+type GetRulesRuleRuleConditionPathConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionPathConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionPathConfigOutput) ToGetRulesRuleRuleConditionPathConfigOutput() GetRulesRuleRuleConditionPathConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionPathConfigOutput) ToGetRulesRuleRuleConditionPathConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionPathConfigOutput {
+	return o
+}
+
+// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+func (o GetRulesRuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRulesRuleRuleConditionPathConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionPathConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionPathConfigArrayOutput) ToGetRulesRuleRuleConditionPathConfigArrayOutput() GetRulesRuleRuleConditionPathConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionPathConfigArrayOutput) ToGetRulesRuleRuleConditionPathConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionPathConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionPathConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleConditionPathConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleConditionPathConfig {
+		return vs[0].([]GetRulesRuleRuleConditionPathConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleConditionPathConfigOutput)
+}
+
+type GetRulesRuleRuleConditionQueryStringConfig struct {
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values []GetRulesRuleRuleConditionQueryStringConfigValue `pulumi:"values"`
+}
+
+// GetRulesRuleRuleConditionQueryStringConfigInput is an input type that accepts GetRulesRuleRuleConditionQueryStringConfigArgs and GetRulesRuleRuleConditionQueryStringConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionQueryStringConfigInput` via:
+//
+//          GetRulesRuleRuleConditionQueryStringConfigArgs{...}
+type GetRulesRuleRuleConditionQueryStringConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionQueryStringConfigOutput() GetRulesRuleRuleConditionQueryStringConfigOutput
+	ToGetRulesRuleRuleConditionQueryStringConfigOutputWithContext(context.Context) GetRulesRuleRuleConditionQueryStringConfigOutput
+}
+
+type GetRulesRuleRuleConditionQueryStringConfigArgs struct {
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	Values GetRulesRuleRuleConditionQueryStringConfigValueArrayInput `pulumi:"values"`
+}
+
+func (GetRulesRuleRuleConditionQueryStringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionQueryStringConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionQueryStringConfigArgs) ToGetRulesRuleRuleConditionQueryStringConfigOutput() GetRulesRuleRuleConditionQueryStringConfigOutput {
+	return i.ToGetRulesRuleRuleConditionQueryStringConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionQueryStringConfigArgs) ToGetRulesRuleRuleConditionQueryStringConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionQueryStringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionQueryStringConfigOutput)
+}
+
+// GetRulesRuleRuleConditionQueryStringConfigArrayInput is an input type that accepts GetRulesRuleRuleConditionQueryStringConfigArray and GetRulesRuleRuleConditionQueryStringConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionQueryStringConfigArrayInput` via:
+//
+//          GetRulesRuleRuleConditionQueryStringConfigArray{ GetRulesRuleRuleConditionQueryStringConfigArgs{...} }
+type GetRulesRuleRuleConditionQueryStringConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionQueryStringConfigArrayOutput() GetRulesRuleRuleConditionQueryStringConfigArrayOutput
+	ToGetRulesRuleRuleConditionQueryStringConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleConditionQueryStringConfigArrayOutput
+}
+
+type GetRulesRuleRuleConditionQueryStringConfigArray []GetRulesRuleRuleConditionQueryStringConfigInput
+
+func (GetRulesRuleRuleConditionQueryStringConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionQueryStringConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionQueryStringConfigArray) ToGetRulesRuleRuleConditionQueryStringConfigArrayOutput() GetRulesRuleRuleConditionQueryStringConfigArrayOutput {
+	return i.ToGetRulesRuleRuleConditionQueryStringConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionQueryStringConfigArray) ToGetRulesRuleRuleConditionQueryStringConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionQueryStringConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionQueryStringConfigArrayOutput)
+}
+
+type GetRulesRuleRuleConditionQueryStringConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionQueryStringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionQueryStringConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionQueryStringConfigOutput) ToGetRulesRuleRuleConditionQueryStringConfigOutput() GetRulesRuleRuleConditionQueryStringConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionQueryStringConfigOutput) ToGetRulesRuleRuleConditionQueryStringConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionQueryStringConfigOutput {
+	return o
+}
+
+// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+func (o GetRulesRuleRuleConditionQueryStringConfigOutput) Values() GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionQueryStringConfig) []GetRulesRuleRuleConditionQueryStringConfigValue {
+		return v.Values
+	}).(GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput)
+}
+
+type GetRulesRuleRuleConditionQueryStringConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionQueryStringConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionQueryStringConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionQueryStringConfigArrayOutput) ToGetRulesRuleRuleConditionQueryStringConfigArrayOutput() GetRulesRuleRuleConditionQueryStringConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionQueryStringConfigArrayOutput) ToGetRulesRuleRuleConditionQueryStringConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionQueryStringConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionQueryStringConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleConditionQueryStringConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleConditionQueryStringConfig {
+		return vs[0].([]GetRulesRuleRuleConditionQueryStringConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleConditionQueryStringConfigOutput)
+}
+
+type GetRulesRuleRuleConditionQueryStringConfigValue struct {
+	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+	Key string `pulumi:"key"`
+	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	Value string `pulumi:"value"`
+}
+
+// GetRulesRuleRuleConditionQueryStringConfigValueInput is an input type that accepts GetRulesRuleRuleConditionQueryStringConfigValueArgs and GetRulesRuleRuleConditionQueryStringConfigValueOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionQueryStringConfigValueInput` via:
+//
+//          GetRulesRuleRuleConditionQueryStringConfigValueArgs{...}
+type GetRulesRuleRuleConditionQueryStringConfigValueInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionQueryStringConfigValueOutput() GetRulesRuleRuleConditionQueryStringConfigValueOutput
+	ToGetRulesRuleRuleConditionQueryStringConfigValueOutputWithContext(context.Context) GetRulesRuleRuleConditionQueryStringConfigValueOutput
+}
+
+type GetRulesRuleRuleConditionQueryStringConfigValueArgs struct {
+	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRulesRuleRuleConditionQueryStringConfigValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionQueryStringConfigValue)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionQueryStringConfigValueArgs) ToGetRulesRuleRuleConditionQueryStringConfigValueOutput() GetRulesRuleRuleConditionQueryStringConfigValueOutput {
+	return i.ToGetRulesRuleRuleConditionQueryStringConfigValueOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionQueryStringConfigValueArgs) ToGetRulesRuleRuleConditionQueryStringConfigValueOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionQueryStringConfigValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionQueryStringConfigValueOutput)
+}
+
+// GetRulesRuleRuleConditionQueryStringConfigValueArrayInput is an input type that accepts GetRulesRuleRuleConditionQueryStringConfigValueArray and GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionQueryStringConfigValueArrayInput` via:
+//
+//          GetRulesRuleRuleConditionQueryStringConfigValueArray{ GetRulesRuleRuleConditionQueryStringConfigValueArgs{...} }
+type GetRulesRuleRuleConditionQueryStringConfigValueArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionQueryStringConfigValueArrayOutput() GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput
+	ToGetRulesRuleRuleConditionQueryStringConfigValueArrayOutputWithContext(context.Context) GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput
+}
+
+type GetRulesRuleRuleConditionQueryStringConfigValueArray []GetRulesRuleRuleConditionQueryStringConfigValueInput
+
+func (GetRulesRuleRuleConditionQueryStringConfigValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionQueryStringConfigValue)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionQueryStringConfigValueArray) ToGetRulesRuleRuleConditionQueryStringConfigValueArrayOutput() GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput {
+	return i.ToGetRulesRuleRuleConditionQueryStringConfigValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionQueryStringConfigValueArray) ToGetRulesRuleRuleConditionQueryStringConfigValueArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput)
+}
+
+type GetRulesRuleRuleConditionQueryStringConfigValueOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionQueryStringConfigValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionQueryStringConfigValue)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionQueryStringConfigValueOutput) ToGetRulesRuleRuleConditionQueryStringConfigValueOutput() GetRulesRuleRuleConditionQueryStringConfigValueOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionQueryStringConfigValueOutput) ToGetRulesRuleRuleConditionQueryStringConfigValueOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionQueryStringConfigValueOutput {
+	return o
+}
+
+// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+func (o GetRulesRuleRuleConditionQueryStringConfigValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionQueryStringConfigValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+func (o GetRulesRuleRuleConditionQueryStringConfigValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionQueryStringConfigValue) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionQueryStringConfigValue)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput) ToGetRulesRuleRuleConditionQueryStringConfigValueArrayOutput() GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput) ToGetRulesRuleRuleConditionQueryStringConfigValueArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleConditionQueryStringConfigValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleConditionQueryStringConfigValue {
+		return vs[0].([]GetRulesRuleRuleConditionQueryStringConfigValue)[vs[1].(int)]
+	}).(GetRulesRuleRuleConditionQueryStringConfigValueOutput)
+}
+
 type GetSecurityPoliciesPolicy struct {
 	// The supported cipher suites, which are determined by the TLS protocol version.
 	Ciphers []string `pulumi:"ciphers"`
@@ -3156,6 +10012,21 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(AclAclEntryOutput{})
+	pulumi.RegisterOutputType(AclAclEntryArrayOutput{})
+	pulumi.RegisterOutputType(ListenerAccessLogTracingConfigOutput{})
+	pulumi.RegisterOutputType(ListenerAccessLogTracingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ListenerCertificateOutput{})
+	pulumi.RegisterOutputType(ListenerCertificateArrayOutput{})
+	pulumi.RegisterOutputType(ListenerDefaultActionOutput{})
+	pulumi.RegisterOutputType(ListenerDefaultActionArrayOutput{})
+	pulumi.RegisterOutputType(ListenerDefaultActionForwardGroupConfigOutput{})
+	pulumi.RegisterOutputType(ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput{})
+	pulumi.RegisterOutputType(ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput{})
+	pulumi.RegisterOutputType(ListenerQuicConfigOutput{})
+	pulumi.RegisterOutputType(ListenerQuicConfigPtrOutput{})
+	pulumi.RegisterOutputType(ListenerXforwardedForConfigOutput{})
+	pulumi.RegisterOutputType(ListenerXforwardedForConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerAccessLogConfigOutput{})
 	pulumi.RegisterOutputType(LoadBalancerAccessLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerLoadBalancerBillingConfigOutput{})
@@ -3164,12 +10035,64 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerModificationProtectionConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerZoneMappingOutput{})
 	pulumi.RegisterOutputType(LoadBalancerZoneMappingArrayOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionFixedResponseConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionFixedResponseConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionForwardGroupConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionForwardGroupConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionForwardGroupConfigServerGroupTupleOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionInsertHeaderConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionInsertHeaderConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionRedirectConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionRedirectConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionRewriteConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionRewriteConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionCookieConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionCookieConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionCookieConfigValueOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionCookieConfigValueArrayOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionHeaderConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionHeaderConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionHostConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionHostConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionMethodConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionMethodConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionPathConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionPathConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionQueryStringConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionQueryStringConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionQueryStringConfigValueOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionQueryStringConfigValueArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupHealthCheckConfigOutput{})
 	pulumi.RegisterOutputType(ServerGroupHealthCheckConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupStickySessionConfigOutput{})
 	pulumi.RegisterOutputType(ServerGroupStickySessionConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetAclsAclOutput{})
+	pulumi.RegisterOutputType(GetAclsAclArrayOutput{})
+	pulumi.RegisterOutputType(GetAclsAclAclEntryOutput{})
+	pulumi.RegisterOutputType(GetAclsAclAclEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerArrayOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerAccessLogTracingConfigOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerAccessLogTracingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerCertificateOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerCertificateArrayOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerDefaultActionOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerDefaultActionArrayOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerDefaultActionForwardGroupConfigOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerDefaultActionForwardGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerQuicConfigOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerQuicConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerXforwardedForConfigOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerXforwardedForConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersBalancerOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersBalancerArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersBalancerAccessLogConfigOutput{})
@@ -3186,6 +10109,40 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadBalancersBalancerZoneMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionFixedResponseConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionFixedResponseConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionForwardGroupConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionForwardGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionInsertHeaderConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionInsertHeaderConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionRedirectConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionRedirectConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionRewriteConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionRewriteConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionCookieConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionCookieConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionCookieConfigValueOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionCookieConfigValueArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionHeaderConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionHeaderConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionHostConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionHostConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionMethodConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionMethodConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionPathConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionPathConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionQueryStringConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionQueryStringConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionQueryStringConfigValueOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetSecurityPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetServerGroupsGroupOutput{})

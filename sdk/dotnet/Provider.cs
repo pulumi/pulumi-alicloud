@@ -136,6 +136,12 @@ namespace Pulumi.AliCloud
         public Input<string>? SecurityToken { get; set; }
 
         /// <summary>
+        /// The security transport for the assume role invoking.
+        /// </summary>
+        [Input("securityTransport")]
+        public Input<string>? SecurityTransport { get; set; }
+
+        /// <summary>
         /// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
         /// </summary>
         [Input("sharedCredentialsFile")]
@@ -149,8 +155,7 @@ namespace Pulumi.AliCloud
         public Input<bool>? SkipRegionValidation { get; set; }
 
         /// <summary>
-        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        /// console.
+        /// The source ip for the assume role invoking.
         /// </summary>
         [Input("sourceIp")]
         public Input<string>? SourceIp { get; set; }

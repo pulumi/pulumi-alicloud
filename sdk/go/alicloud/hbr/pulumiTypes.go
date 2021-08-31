@@ -11,19 +11,19 @@ import (
 )
 
 type GetEcsBackupClientsClient struct {
-	// The Client System Architecture (Only the ECS File Backup Client Is Available. Possible Values: * AMD64 * 386.
+	// The Client System Architecture (Only the ECS File Backup Client Is Available. Valid Values: `AMD64` , `386`.
 	ArchType string `pulumi:"archType"`
 	// Client protected status.
 	BackupStatus string `pulumi:"backupStatus"`
-	// The Client Type. Possible Values: * ECS_CLIENT (ECS File Backup Client).
+	// The Client Type. Valid Values: `ECS_CLIENT` (ECS File Backup Client).
 	ClientType string `pulumi:"clientType"`
 	// Client Version.
 	ClientVersion string `pulumi:"clientVersion"`
 	// The Client Creates a Time. Unix Time Seconds.
 	CreateTime string `pulumi:"createTime"`
-	// The Data Plane Data Access Point Type. Valid Values: * Public Internet * VPC VPC * Classic Network.
+	// The Data Plane Data Access Point Type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
 	DataNetworkType string `pulumi:"dataNetworkType"`
-	// The Data Plane Proxy Settings. Valid Values: * DISABLE  * USE_CONTROL_PROXY (Default, the same with Control Plane) * CUSTOM (Custom Configuration Items for the HTTP Protocol).
+	// The Data Plane Proxy Settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`. **Note**: `USE_CONTROL_PROXY` (Default, the same with Control Plane), `CUSTOM` (Custom Configuration Items for the HTTP Protocol).
 	DataProxySetting string `pulumi:"dataProxySetting"`
 	// The first ID of the resource.
 	EcsBackupClientId string `pulumi:"ecsBackupClientId"`
@@ -77,19 +77,19 @@ type GetEcsBackupClientsClientInput interface {
 }
 
 type GetEcsBackupClientsClientArgs struct {
-	// The Client System Architecture (Only the ECS File Backup Client Is Available. Possible Values: * AMD64 * 386.
+	// The Client System Architecture (Only the ECS File Backup Client Is Available. Valid Values: `AMD64` , `386`.
 	ArchType pulumi.StringInput `pulumi:"archType"`
 	// Client protected status.
 	BackupStatus pulumi.StringInput `pulumi:"backupStatus"`
-	// The Client Type. Possible Values: * ECS_CLIENT (ECS File Backup Client).
+	// The Client Type. Valid Values: `ECS_CLIENT` (ECS File Backup Client).
 	ClientType pulumi.StringInput `pulumi:"clientType"`
 	// Client Version.
 	ClientVersion pulumi.StringInput `pulumi:"clientVersion"`
 	// The Client Creates a Time. Unix Time Seconds.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The Data Plane Data Access Point Type. Valid Values: * Public Internet * VPC VPC * Classic Network.
+	// The Data Plane Data Access Point Type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
 	DataNetworkType pulumi.StringInput `pulumi:"dataNetworkType"`
-	// The Data Plane Proxy Settings. Valid Values: * DISABLE  * USE_CONTROL_PROXY (Default, the same with Control Plane) * CUSTOM (Custom Configuration Items for the HTTP Protocol).
+	// The Data Plane Proxy Settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`. **Note**: `USE_CONTROL_PROXY` (Default, the same with Control Plane), `CUSTOM` (Custom Configuration Items for the HTTP Protocol).
 	DataProxySetting pulumi.StringInput `pulumi:"dataProxySetting"`
 	// The first ID of the resource.
 	EcsBackupClientId pulumi.StringInput `pulumi:"ecsBackupClientId"`
@@ -182,7 +182,7 @@ func (o GetEcsBackupClientsClientOutput) ToGetEcsBackupClientsClientOutputWithCo
 	return o
 }
 
-// The Client System Architecture (Only the ECS File Backup Client Is Available. Possible Values: * AMD64 * 386.
+// The Client System Architecture (Only the ECS File Backup Client Is Available. Valid Values: `AMD64` , `386`.
 func (o GetEcsBackupClientsClientOutput) ArchType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.ArchType }).(pulumi.StringOutput)
 }
@@ -192,7 +192,7 @@ func (o GetEcsBackupClientsClientOutput) BackupStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.BackupStatus }).(pulumi.StringOutput)
 }
 
-// The Client Type. Possible Values: * ECS_CLIENT (ECS File Backup Client).
+// The Client Type. Valid Values: `ECS_CLIENT` (ECS File Backup Client).
 func (o GetEcsBackupClientsClientOutput) ClientType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.ClientType }).(pulumi.StringOutput)
 }
@@ -207,12 +207,12 @@ func (o GetEcsBackupClientsClientOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The Data Plane Data Access Point Type. Valid Values: * Public Internet * VPC VPC * Classic Network.
+// The Data Plane Data Access Point Type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
 func (o GetEcsBackupClientsClientOutput) DataNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.DataNetworkType }).(pulumi.StringOutput)
 }
 
-// The Data Plane Proxy Settings. Valid Values: * DISABLE  * USE_CONTROL_PROXY (Default, the same with Control Plane) * CUSTOM (Custom Configuration Items for the HTTP Protocol).
+// The Data Plane Proxy Settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`. **Note**: `USE_CONTROL_PROXY` (Default, the same with Control Plane), `CUSTOM` (Custom Configuration Items for the HTTP Protocol).
 func (o GetEcsBackupClientsClientOutput) DataProxySetting() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.DataProxySetting }).(pulumi.StringOutput)
 }
@@ -552,7 +552,7 @@ func (o GetEcsBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetEcsBackupP
 type GetNasBackupPlansPlan struct {
 	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
 	BackupType string `pulumi:"backupType"`
-	// File System Creation Time. Unix Time Seconds.
+	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime string `pulumi:"createTime"`
 	Disabled   bool   `pulumi:"disabled"`
 	// The File System ID.
@@ -587,7 +587,7 @@ type GetNasBackupPlansPlanInput interface {
 type GetNasBackupPlansPlanArgs struct {
 	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
 	BackupType pulumi.StringInput `pulumi:"backupType"`
-	// File System Creation Time. Unix Time Seconds.
+	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	Disabled   pulumi.BoolInput   `pulumi:"disabled"`
 	// The File System ID.
@@ -664,7 +664,7 @@ func (o GetNasBackupPlansPlanOutput) BackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.BackupType }).(pulumi.StringOutput)
 }
 
-// File System Creation Time. Unix Time Seconds.
+// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 func (o GetNasBackupPlansPlanOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -900,6 +900,698 @@ func (o GetOssBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetOssBackupP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOssBackupPlansPlan {
 		return vs[0].([]GetOssBackupPlansPlan)[vs[1].(int)]
 	}).(GetOssBackupPlansPlanOutput)
+}
+
+type GetRestoreJobsJob struct {
+	// The Actual Size of Snapshot.
+	ActualBytes string `pulumi:"actualBytes"`
+	// The Actual Number of Files.
+	ActualItems string `pulumi:"actualItems"`
+	// Recovery Is Successful, Size.
+	BytesDone string `pulumi:"bytesDone"`
+	// The Restored Total.
+	BytesTotal string `pulumi:"bytesTotal"`
+	// Restore Completion Time.
+	CompleteTime string `pulumi:"completeTime"`
+	// The Restore Job Creation Time.
+	CreateTime string `pulumi:"createTime"`
+	ErrorFile  string `pulumi:"errorFile"`
+	// The Recovery Task Execution Error Message.
+	ErrorMessage string `pulumi:"errorMessage"`
+	// Restore the Expiration Time. Unix Time in Seconds.
+	ExpireTime string `pulumi:"expireTime"`
+	// The ID of the Restore Job.
+	Id string `pulumi:"id"`
+	// Log of Files Successfully Recovered the Number.
+	ItemsDone string `pulumi:"itemsDone"`
+	// File the Total Number.
+	ItemsTotal string `pulumi:"itemsTotal"`
+	// Recovery Options.
+	Options string `pulumi:"options"`
+	// The Parent Node.
+	ParentId string `pulumi:"parentId"`
+	// The Recovery Progress 100% * 100.
+	Progress int `pulumi:"progress"`
+	// Restore Job ID.
+	RestoreJobId string `pulumi:"restoreJobId"`
+	// The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	RestoreType string `pulumi:"restoreType"`
+	// Restore Snapshot of HashCode.
+	SnapshotHash string `pulumi:"snapshotHash"`
+	// The ID of Snapshot.
+	SnapshotId string `pulumi:"snapshotId"`
+	// The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	SourceType string `pulumi:"sourceType"`
+	// Restoring the Start Time. Unix Time in Seconds.
+	StartTime string `pulumi:"startTime"`
+	// The Restore Job Status.
+	Status string `pulumi:"status"`
+	// The Target ofo OSS Bucket Name.
+	TargetBucket string `pulumi:"targetBucket"`
+	// The ID of Target Client.
+	TargetClientId string `pulumi:"targetClientId"`
+	// The Destination File System Creation Time.
+	TargetCreateTime string `pulumi:"targetCreateTime"`
+	// The Destination ID.
+	TargetDataSourceId string `pulumi:"targetDataSourceId"`
+	// The Destination File System ID.
+	TargetFileSystemId string `pulumi:"targetFileSystemId"`
+	// Objective to ECS Instance Id.
+	TargetInstanceId string `pulumi:"targetInstanceId"`
+	// The Target of (ECS) Instance Changes the ECS File Path.
+	TargetPath string `pulumi:"targetPath"`
+	// The Target of the OSS Object Prefix.
+	TargetPrefix string `pulumi:"targetPrefix"`
+	// Update Time.
+	UpdatedTime string `pulumi:"updatedTime"`
+	// The ID of Vault.
+	VaultId string `pulumi:"vaultId"`
+}
+
+// GetRestoreJobsJobInput is an input type that accepts GetRestoreJobsJobArgs and GetRestoreJobsJobOutput values.
+// You can construct a concrete instance of `GetRestoreJobsJobInput` via:
+//
+//          GetRestoreJobsJobArgs{...}
+type GetRestoreJobsJobInput interface {
+	pulumi.Input
+
+	ToGetRestoreJobsJobOutput() GetRestoreJobsJobOutput
+	ToGetRestoreJobsJobOutputWithContext(context.Context) GetRestoreJobsJobOutput
+}
+
+type GetRestoreJobsJobArgs struct {
+	// The Actual Size of Snapshot.
+	ActualBytes pulumi.StringInput `pulumi:"actualBytes"`
+	// The Actual Number of Files.
+	ActualItems pulumi.StringInput `pulumi:"actualItems"`
+	// Recovery Is Successful, Size.
+	BytesDone pulumi.StringInput `pulumi:"bytesDone"`
+	// The Restored Total.
+	BytesTotal pulumi.StringInput `pulumi:"bytesTotal"`
+	// Restore Completion Time.
+	CompleteTime pulumi.StringInput `pulumi:"completeTime"`
+	// The Restore Job Creation Time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	ErrorFile  pulumi.StringInput `pulumi:"errorFile"`
+	// The Recovery Task Execution Error Message.
+	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
+	// Restore the Expiration Time. Unix Time in Seconds.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The ID of the Restore Job.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Log of Files Successfully Recovered the Number.
+	ItemsDone pulumi.StringInput `pulumi:"itemsDone"`
+	// File the Total Number.
+	ItemsTotal pulumi.StringInput `pulumi:"itemsTotal"`
+	// Recovery Options.
+	Options pulumi.StringInput `pulumi:"options"`
+	// The Parent Node.
+	ParentId pulumi.StringInput `pulumi:"parentId"`
+	// The Recovery Progress 100% * 100.
+	Progress pulumi.IntInput `pulumi:"progress"`
+	// Restore Job ID.
+	RestoreJobId pulumi.StringInput `pulumi:"restoreJobId"`
+	// The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	RestoreType pulumi.StringInput `pulumi:"restoreType"`
+	// Restore Snapshot of HashCode.
+	SnapshotHash pulumi.StringInput `pulumi:"snapshotHash"`
+	// The ID of Snapshot.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+	// The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// Restoring the Start Time. Unix Time in Seconds.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The Restore Job Status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The Target ofo OSS Bucket Name.
+	TargetBucket pulumi.StringInput `pulumi:"targetBucket"`
+	// The ID of Target Client.
+	TargetClientId pulumi.StringInput `pulumi:"targetClientId"`
+	// The Destination File System Creation Time.
+	TargetCreateTime pulumi.StringInput `pulumi:"targetCreateTime"`
+	// The Destination ID.
+	TargetDataSourceId pulumi.StringInput `pulumi:"targetDataSourceId"`
+	// The Destination File System ID.
+	TargetFileSystemId pulumi.StringInput `pulumi:"targetFileSystemId"`
+	// Objective to ECS Instance Id.
+	TargetInstanceId pulumi.StringInput `pulumi:"targetInstanceId"`
+	// The Target of (ECS) Instance Changes the ECS File Path.
+	TargetPath pulumi.StringInput `pulumi:"targetPath"`
+	// The Target of the OSS Object Prefix.
+	TargetPrefix pulumi.StringInput `pulumi:"targetPrefix"`
+	// Update Time.
+	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
+	// The ID of Vault.
+	VaultId pulumi.StringInput `pulumi:"vaultId"`
+}
+
+func (GetRestoreJobsJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRestoreJobsJob)(nil)).Elem()
+}
+
+func (i GetRestoreJobsJobArgs) ToGetRestoreJobsJobOutput() GetRestoreJobsJobOutput {
+	return i.ToGetRestoreJobsJobOutputWithContext(context.Background())
+}
+
+func (i GetRestoreJobsJobArgs) ToGetRestoreJobsJobOutputWithContext(ctx context.Context) GetRestoreJobsJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRestoreJobsJobOutput)
+}
+
+// GetRestoreJobsJobArrayInput is an input type that accepts GetRestoreJobsJobArray and GetRestoreJobsJobArrayOutput values.
+// You can construct a concrete instance of `GetRestoreJobsJobArrayInput` via:
+//
+//          GetRestoreJobsJobArray{ GetRestoreJobsJobArgs{...} }
+type GetRestoreJobsJobArrayInput interface {
+	pulumi.Input
+
+	ToGetRestoreJobsJobArrayOutput() GetRestoreJobsJobArrayOutput
+	ToGetRestoreJobsJobArrayOutputWithContext(context.Context) GetRestoreJobsJobArrayOutput
+}
+
+type GetRestoreJobsJobArray []GetRestoreJobsJobInput
+
+func (GetRestoreJobsJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRestoreJobsJob)(nil)).Elem()
+}
+
+func (i GetRestoreJobsJobArray) ToGetRestoreJobsJobArrayOutput() GetRestoreJobsJobArrayOutput {
+	return i.ToGetRestoreJobsJobArrayOutputWithContext(context.Background())
+}
+
+func (i GetRestoreJobsJobArray) ToGetRestoreJobsJobArrayOutputWithContext(ctx context.Context) GetRestoreJobsJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRestoreJobsJobArrayOutput)
+}
+
+type GetRestoreJobsJobOutput struct{ *pulumi.OutputState }
+
+func (GetRestoreJobsJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRestoreJobsJob)(nil)).Elem()
+}
+
+func (o GetRestoreJobsJobOutput) ToGetRestoreJobsJobOutput() GetRestoreJobsJobOutput {
+	return o
+}
+
+func (o GetRestoreJobsJobOutput) ToGetRestoreJobsJobOutputWithContext(ctx context.Context) GetRestoreJobsJobOutput {
+	return o
+}
+
+// The Actual Size of Snapshot.
+func (o GetRestoreJobsJobOutput) ActualBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ActualBytes }).(pulumi.StringOutput)
+}
+
+// The Actual Number of Files.
+func (o GetRestoreJobsJobOutput) ActualItems() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ActualItems }).(pulumi.StringOutput)
+}
+
+// Recovery Is Successful, Size.
+func (o GetRestoreJobsJobOutput) BytesDone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.BytesDone }).(pulumi.StringOutput)
+}
+
+// The Restored Total.
+func (o GetRestoreJobsJobOutput) BytesTotal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.BytesTotal }).(pulumi.StringOutput)
+}
+
+// Restore Completion Time.
+func (o GetRestoreJobsJobOutput) CompleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.CompleteTime }).(pulumi.StringOutput)
+}
+
+// The Restore Job Creation Time.
+func (o GetRestoreJobsJobOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o GetRestoreJobsJobOutput) ErrorFile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ErrorFile }).(pulumi.StringOutput)
+}
+
+// The Recovery Task Execution Error Message.
+func (o GetRestoreJobsJobOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// Restore the Expiration Time. Unix Time in Seconds.
+func (o GetRestoreJobsJobOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Restore Job.
+func (o GetRestoreJobsJobOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Log of Files Successfully Recovered the Number.
+func (o GetRestoreJobsJobOutput) ItemsDone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ItemsDone }).(pulumi.StringOutput)
+}
+
+// File the Total Number.
+func (o GetRestoreJobsJobOutput) ItemsTotal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ItemsTotal }).(pulumi.StringOutput)
+}
+
+// Recovery Options.
+func (o GetRestoreJobsJobOutput) Options() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.Options }).(pulumi.StringOutput)
+}
+
+// The Parent Node.
+func (o GetRestoreJobsJobOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ParentId }).(pulumi.StringOutput)
+}
+
+// The Recovery Progress 100% * 100.
+func (o GetRestoreJobsJobOutput) Progress() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) int { return v.Progress }).(pulumi.IntOutput)
+}
+
+// Restore Job ID.
+func (o GetRestoreJobsJobOutput) RestoreJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.RestoreJobId }).(pulumi.StringOutput)
+}
+
+// The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+func (o GetRestoreJobsJobOutput) RestoreType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.RestoreType }).(pulumi.StringOutput)
+}
+
+// Restore Snapshot of HashCode.
+func (o GetRestoreJobsJobOutput) SnapshotHash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.SnapshotHash }).(pulumi.StringOutput)
+}
+
+// The ID of Snapshot.
+func (o GetRestoreJobsJobOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+func (o GetRestoreJobsJobOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// Restoring the Start Time. Unix Time in Seconds.
+func (o GetRestoreJobsJobOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The Restore Job Status.
+func (o GetRestoreJobsJobOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The Target ofo OSS Bucket Name.
+func (o GetRestoreJobsJobOutput) TargetBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetBucket }).(pulumi.StringOutput)
+}
+
+// The ID of Target Client.
+func (o GetRestoreJobsJobOutput) TargetClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetClientId }).(pulumi.StringOutput)
+}
+
+// The Destination File System Creation Time.
+func (o GetRestoreJobsJobOutput) TargetCreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetCreateTime }).(pulumi.StringOutput)
+}
+
+// The Destination ID.
+func (o GetRestoreJobsJobOutput) TargetDataSourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetDataSourceId }).(pulumi.StringOutput)
+}
+
+// The Destination File System ID.
+func (o GetRestoreJobsJobOutput) TargetFileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetFileSystemId }).(pulumi.StringOutput)
+}
+
+// Objective to ECS Instance Id.
+func (o GetRestoreJobsJobOutput) TargetInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetInstanceId }).(pulumi.StringOutput)
+}
+
+// The Target of (ECS) Instance Changes the ECS File Path.
+func (o GetRestoreJobsJobOutput) TargetPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetPath }).(pulumi.StringOutput)
+}
+
+// The Target of the OSS Object Prefix.
+func (o GetRestoreJobsJobOutput) TargetPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetPrefix }).(pulumi.StringOutput)
+}
+
+// Update Time.
+func (o GetRestoreJobsJobOutput) UpdatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.UpdatedTime }).(pulumi.StringOutput)
+}
+
+// The ID of Vault.
+func (o GetRestoreJobsJobOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.VaultId }).(pulumi.StringOutput)
+}
+
+type GetRestoreJobsJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRestoreJobsJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRestoreJobsJob)(nil)).Elem()
+}
+
+func (o GetRestoreJobsJobArrayOutput) ToGetRestoreJobsJobArrayOutput() GetRestoreJobsJobArrayOutput {
+	return o
+}
+
+func (o GetRestoreJobsJobArrayOutput) ToGetRestoreJobsJobArrayOutputWithContext(ctx context.Context) GetRestoreJobsJobArrayOutput {
+	return o
+}
+
+func (o GetRestoreJobsJobArrayOutput) Index(i pulumi.IntInput) GetRestoreJobsJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRestoreJobsJob {
+		return vs[0].([]GetRestoreJobsJob)[vs[1].(int)]
+	}).(GetRestoreJobsJobOutput)
+}
+
+type GetSnapshotsSnapshot struct {
+	// The actual data volume of the snapshot. Unit byte.
+	ActualBytes string `pulumi:"actualBytes"`
+	// The actual number of items in the snapshot. (Currently only file backup is available).
+	ActualItems string `pulumi:"actualItems"`
+	// Backup type. Possible values: `COMPLETE` (full backup).
+	BackupType string `pulumi:"backupType"`
+	// The name of OSS bucket.
+	Bucket string `pulumi:"bucket"`
+	// The incremental amount of backup data. Unit byte.
+	BytesDone string `pulumi:"bytesDone"`
+	// The total amount of data sources. Unit byte.
+	BytesTotal string `pulumi:"bytesTotal"`
+	// The time when the snapshot was completed. UNIX time in seconds.
+	CompleteTime string `pulumi:"completeTime"`
+	// File System Creation Time of Nas. Unix Time Seconds.
+	CreateTime string `pulumi:"createTime"`
+	// Snapshot creation time. UNIX time in seconds.
+	CreatedTime string `pulumi:"createdTime"`
+	ErrorFile   string `pulumi:"errorFile"`
+	// The ID of NAS File system.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The ID of the Snapshot.
+	Id string `pulumi:"id"`
+	// InstanceId.
+	InstanceId string `pulumi:"instanceId"`
+	// The number of backup items. (Currently only file backup is available).
+	ItemsDone string `pulumi:"itemsDone"`
+	// The total number of data source items. (Currently only file backup is available).
+	ItemsTotal string `pulumi:"itemsTotal"`
+	// The job ID of backup task.
+	JobId string `pulumi:"jobId"`
+	// The hashcode of parent backup snapshot.
+	ParentSnapshotHash string `pulumi:"parentSnapshotHash"`
+	// Backup Path.
+	Path string `pulumi:"path"`
+	// Backup file prefix.
+	Prefix string `pulumi:"prefix"`
+	// The number of days to keep.
+	Retention string `pulumi:"retention"`
+	// The hashcode of Snapshot.
+	SnapshotHash string `pulumi:"snapshotHash"`
+	// The ID of the Snapshot.
+	SnapshotId string `pulumi:"snapshotId"`
+	// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+	SourceType string `pulumi:"sourceType"`
+	// The start time of the snapshot. UNIX time in seconds.
+	StartTime string `pulumi:"startTime"`
+	// The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+	Status string `pulumi:"status"`
+	// The update time of snapshot. UNIX time in seconds.
+	UpdatedTime string `pulumi:"updatedTime"`
+}
+
+// GetSnapshotsSnapshotInput is an input type that accepts GetSnapshotsSnapshotArgs and GetSnapshotsSnapshotOutput values.
+// You can construct a concrete instance of `GetSnapshotsSnapshotInput` via:
+//
+//          GetSnapshotsSnapshotArgs{...}
+type GetSnapshotsSnapshotInput interface {
+	pulumi.Input
+
+	ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput
+	ToGetSnapshotsSnapshotOutputWithContext(context.Context) GetSnapshotsSnapshotOutput
+}
+
+type GetSnapshotsSnapshotArgs struct {
+	// The actual data volume of the snapshot. Unit byte.
+	ActualBytes pulumi.StringInput `pulumi:"actualBytes"`
+	// The actual number of items in the snapshot. (Currently only file backup is available).
+	ActualItems pulumi.StringInput `pulumi:"actualItems"`
+	// Backup type. Possible values: `COMPLETE` (full backup).
+	BackupType pulumi.StringInput `pulumi:"backupType"`
+	// The name of OSS bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The incremental amount of backup data. Unit byte.
+	BytesDone pulumi.StringInput `pulumi:"bytesDone"`
+	// The total amount of data sources. Unit byte.
+	BytesTotal pulumi.StringInput `pulumi:"bytesTotal"`
+	// The time when the snapshot was completed. UNIX time in seconds.
+	CompleteTime pulumi.StringInput `pulumi:"completeTime"`
+	// File System Creation Time of Nas. Unix Time Seconds.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Snapshot creation time. UNIX time in seconds.
+	CreatedTime pulumi.StringInput `pulumi:"createdTime"`
+	ErrorFile   pulumi.StringInput `pulumi:"errorFile"`
+	// The ID of NAS File system.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The ID of the Snapshot.
+	Id pulumi.StringInput `pulumi:"id"`
+	// InstanceId.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The number of backup items. (Currently only file backup is available).
+	ItemsDone pulumi.StringInput `pulumi:"itemsDone"`
+	// The total number of data source items. (Currently only file backup is available).
+	ItemsTotal pulumi.StringInput `pulumi:"itemsTotal"`
+	// The job ID of backup task.
+	JobId pulumi.StringInput `pulumi:"jobId"`
+	// The hashcode of parent backup snapshot.
+	ParentSnapshotHash pulumi.StringInput `pulumi:"parentSnapshotHash"`
+	// Backup Path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Backup file prefix.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// The number of days to keep.
+	Retention pulumi.StringInput `pulumi:"retention"`
+	// The hashcode of Snapshot.
+	SnapshotHash pulumi.StringInput `pulumi:"snapshotHash"`
+	// The ID of the Snapshot.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+	// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// The start time of the snapshot. UNIX time in seconds.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The update time of snapshot. UNIX time in seconds.
+	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
+}
+
+func (GetSnapshotsSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput {
+	return i.ToGetSnapshotsSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutputWithContext(ctx context.Context) GetSnapshotsSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotOutput)
+}
+
+// GetSnapshotsSnapshotArrayInput is an input type that accepts GetSnapshotsSnapshotArray and GetSnapshotsSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetSnapshotsSnapshotArrayInput` via:
+//
+//          GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
+type GetSnapshotsSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput
+	ToGetSnapshotsSnapshotArrayOutputWithContext(context.Context) GetSnapshotsSnapshotArrayOutput
+}
+
+type GetSnapshotsSnapshotArray []GetSnapshotsSnapshotInput
+
+func (GetSnapshotsSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetSnapshotsSnapshotArray) ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput {
+	return i.ToGetSnapshotsSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotsSnapshotArray) ToGetSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetSnapshotsSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotArrayOutput)
+}
+
+type GetSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotsSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutputWithContext(ctx context.Context) GetSnapshotsSnapshotOutput {
+	return o
+}
+
+// The actual data volume of the snapshot. Unit byte.
+func (o GetSnapshotsSnapshotOutput) ActualBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ActualBytes }).(pulumi.StringOutput)
+}
+
+// The actual number of items in the snapshot. (Currently only file backup is available).
+func (o GetSnapshotsSnapshotOutput) ActualItems() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ActualItems }).(pulumi.StringOutput)
+}
+
+// Backup type. Possible values: `COMPLETE` (full backup).
+func (o GetSnapshotsSnapshotOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The name of OSS bucket.
+func (o GetSnapshotsSnapshotOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The incremental amount of backup data. Unit byte.
+func (o GetSnapshotsSnapshotOutput) BytesDone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.BytesDone }).(pulumi.StringOutput)
+}
+
+// The total amount of data sources. Unit byte.
+func (o GetSnapshotsSnapshotOutput) BytesTotal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.BytesTotal }).(pulumi.StringOutput)
+}
+
+// The time when the snapshot was completed. UNIX time in seconds.
+func (o GetSnapshotsSnapshotOutput) CompleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.CompleteTime }).(pulumi.StringOutput)
+}
+
+// File System Creation Time of Nas. Unix Time Seconds.
+func (o GetSnapshotsSnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Snapshot creation time. UNIX time in seconds.
+func (o GetSnapshotsSnapshotOutput) CreatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.CreatedTime }).(pulumi.StringOutput)
+}
+
+func (o GetSnapshotsSnapshotOutput) ErrorFile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ErrorFile }).(pulumi.StringOutput)
+}
+
+// The ID of NAS File system.
+func (o GetSnapshotsSnapshotOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The ID of the Snapshot.
+func (o GetSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// InstanceId.
+func (o GetSnapshotsSnapshotOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The number of backup items. (Currently only file backup is available).
+func (o GetSnapshotsSnapshotOutput) ItemsDone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ItemsDone }).(pulumi.StringOutput)
+}
+
+// The total number of data source items. (Currently only file backup is available).
+func (o GetSnapshotsSnapshotOutput) ItemsTotal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ItemsTotal }).(pulumi.StringOutput)
+}
+
+// The job ID of backup task.
+func (o GetSnapshotsSnapshotOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// The hashcode of parent backup snapshot.
+func (o GetSnapshotsSnapshotOutput) ParentSnapshotHash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ParentSnapshotHash }).(pulumi.StringOutput)
+}
+
+// Backup Path.
+func (o GetSnapshotsSnapshotOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Backup file prefix.
+func (o GetSnapshotsSnapshotOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// The number of days to keep.
+func (o GetSnapshotsSnapshotOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Retention }).(pulumi.StringOutput)
+}
+
+// The hashcode of Snapshot.
+func (o GetSnapshotsSnapshotOutput) SnapshotHash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotHash }).(pulumi.StringOutput)
+}
+
+// The ID of the Snapshot.
+func (o GetSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+func (o GetSnapshotsSnapshotOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// The start time of the snapshot. UNIX time in seconds.
+func (o GetSnapshotsSnapshotOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The update time of snapshot. UNIX time in seconds.
+func (o GetSnapshotsSnapshotOutput) UpdatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.UpdatedTime }).(pulumi.StringOutput)
+}
+
+type GetSnapshotsSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotsSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) ToGetSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotsSnapshot {
+		return vs[0].([]GetSnapshotsSnapshot)[vs[1].(int)]
+	}).(GetSnapshotsSnapshotOutput)
 }
 
 type GetVaultsVault struct {
@@ -1221,6 +1913,10 @@ func init() {
 	pulumi.RegisterOutputType(GetNasBackupPlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetOssBackupPlansPlanOutput{})
 	pulumi.RegisterOutputType(GetOssBackupPlansPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetRestoreJobsJobOutput{})
+	pulumi.RegisterOutputType(GetRestoreJobsJobArrayOutput{})
+	pulumi.RegisterOutputType(GetSnapshotsSnapshotOutput{})
+	pulumi.RegisterOutputType(GetSnapshotsSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(GetVaultsVaultOutput{})
 	pulumi.RegisterOutputType(GetVaultsVaultArrayOutput{})
 }

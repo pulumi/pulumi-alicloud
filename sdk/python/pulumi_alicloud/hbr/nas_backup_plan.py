@@ -30,7 +30,7 @@ class NasBackupPlanArgs:
                  vault_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NasBackupPlan resource.
-        :param pulumi.Input[str] create_time: File System Creation Time. Unix Time Seconds.
+        :param pulumi.Input[str] create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param pulumi.Input[str] nas_backup_plan_name: The name of the resource.
         :param pulumi.Input[str] retention: Backup Retention Period, the Minimum Value of 1.
         :param pulumi.Input[str] schedule: The Backup Policy. Formats: I | {Range Specified by the StartTime }|{ Interval}\n* The Time Range Specified by the StartTime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
@@ -74,7 +74,7 @@ class NasBackupPlanArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[str]:
         """
-        File System Creation Time. Unix Time Seconds.
+        File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "create_time")
 
@@ -263,7 +263,7 @@ class _NasBackupPlanState:
         """
         Input properties used for looking up and filtering NasBackupPlan resources.
         :param pulumi.Input[str] backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-        :param pulumi.Input[str] create_time: File System Creation Time. Unix Time Seconds.
+        :param pulumi.Input[str] create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param pulumi.Input[bool] disabled: Whether to Disable the Backup Task. Valid Values: true, false.
         :param pulumi.Input[str] exclude: The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
         :param pulumi.Input[str] file_system_id: The File System ID.
@@ -322,7 +322,7 @@ class _NasBackupPlanState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        File System Creation Time. Unix Time Seconds.
+        File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "create_time")
 
@@ -546,7 +546,7 @@ class NasBackupPlan(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-        :param pulumi.Input[str] create_time: File System Creation Time. Unix Time Seconds.
+        :param pulumi.Input[str] create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param pulumi.Input[bool] disabled: Whether to Disable the Backup Task. Valid Values: true, false.
         :param pulumi.Input[str] exclude: The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
         :param pulumi.Input[str] file_system_id: The File System ID.
@@ -706,7 +706,7 @@ class NasBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-        :param pulumi.Input[str] create_time: File System Creation Time. Unix Time Seconds.
+        :param pulumi.Input[str] create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param pulumi.Input[bool] disabled: Whether to Disable the Backup Task. Valid Values: true, false.
         :param pulumi.Input[str] exclude: The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
         :param pulumi.Input[str] file_system_id: The File System ID.
@@ -751,7 +751,7 @@ class NasBackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        File System Creation Time. Unix Time Seconds.
+        File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "create_time")
 

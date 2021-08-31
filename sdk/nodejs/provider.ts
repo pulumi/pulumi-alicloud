@@ -55,6 +55,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("ALICLOUD_REGION");
             inputs["secretKey"] = args ? args.secretKey : undefined;
             inputs["securityToken"] = args ? args.securityToken : undefined;
+            inputs["securityTransport"] = args ? args.securityTransport : undefined;
             inputs["sharedCredentialsFile"] = args ? args.sharedCredentialsFile : undefined;
             inputs["skipRegionValidation"] = pulumi.output(args ? args.skipRegionValidation : undefined).apply(JSON.stringify);
             inputs["sourceIp"] = args ? args.sourceIp : undefined;
@@ -134,6 +135,10 @@ export interface ProviderArgs {
      */
     readonly securityToken?: pulumi.Input<string>;
     /**
+     * The security transport for the assume role invoking.
+     */
+    readonly securityTransport?: pulumi.Input<string>;
+    /**
      * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
      */
     readonly sharedCredentialsFile?: pulumi.Input<string>;
@@ -143,8 +148,7 @@ export interface ProviderArgs {
      */
     readonly skipRegionValidation?: pulumi.Input<boolean>;
     /**
-     * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-     * console.
+     * The source ip for the assume role invoking.
      */
     readonly sourceIp?: pulumi.Input<string>;
 }

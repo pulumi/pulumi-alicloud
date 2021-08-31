@@ -80,7 +80,7 @@ export class NasBackupPlan extends pulumi.CustomResource {
      */
     public readonly backupType!: pulumi.Output<string>;
     /**
-     * File System Creation Time. Unix Time Seconds.
+     * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
     public readonly createTime!: pulumi.Output<string>;
     public readonly detail!: pulumi.Output<string | undefined>;
@@ -201,7 +201,7 @@ export interface NasBackupPlanState {
      */
     readonly backupType?: pulumi.Input<string>;
     /**
-     * File System Creation Time. Unix Time Seconds.
+     * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
     readonly createTime?: pulumi.Input<string>;
     readonly detail?: pulumi.Input<string>;
@@ -258,7 +258,7 @@ export interface NasBackupPlanArgs {
      */
     readonly backupType?: pulumi.Input<string>;
     /**
-     * File System Creation Time. Unix Time Seconds.
+     * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
     readonly createTime: pulumi.Input<string>;
     readonly detail?: pulumi.Input<string>;

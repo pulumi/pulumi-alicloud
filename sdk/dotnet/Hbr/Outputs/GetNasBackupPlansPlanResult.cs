@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BackupType;
         /// <summary>
-        /// File System Creation Time. Unix Time Seconds.
+        /// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         public readonly string CreateTime;
         public readonly bool Disabled;

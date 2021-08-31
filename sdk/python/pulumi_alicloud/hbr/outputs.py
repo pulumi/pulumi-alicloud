@@ -13,6 +13,8 @@ __all__ = [
     'GetEcsBackupPlansPlanResult',
     'GetNasBackupPlansPlanResult',
     'GetOssBackupPlansPlanResult',
+    'GetRestoreJobsJobResult',
+    'GetSnapshotsSnapshotResult',
     'GetVaultsVaultResult',
 ]
 
@@ -46,13 +48,13 @@ class GetEcsBackupClientsClientResult(dict):
                  use_https: bool,
                  zone_id: str):
         """
-        :param str arch_type: The Client System Architecture (Only the ECS File Backup Client Is Available. Possible Values: * AMD64 * 386.
+        :param str arch_type: The Client System Architecture (Only the ECS File Backup Client Is Available. Valid Values: `AMD64` , `386`.
         :param str backup_status: Client protected status.
-        :param str client_type: The Client Type. Possible Values: * ECS_CLIENT (ECS File Backup Client).
+        :param str client_type: The Client Type. Valid Values: `ECS_CLIENT` (ECS File Backup Client).
         :param str client_version: Client Version.
         :param str create_time: The Client Creates a Time. Unix Time Seconds.
-        :param str data_network_type: The Data Plane Data Access Point Type. Valid Values: * Public Internet * VPC VPC * Classic Network.
-        :param str data_proxy_setting: The Data Plane Proxy Settings. Valid Values: * DISABLE  * USE_CONTROL_PROXY (Default, the same with Control Plane) * CUSTOM (Custom Configuration Items for the HTTP Protocol).
+        :param str data_network_type: The Data Plane Data Access Point Type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
+        :param str data_proxy_setting: The Data Plane Proxy Settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`. **Note**: `USE_CONTROL_PROXY` (Default, the same with Control Plane), `CUSTOM` (Custom Configuration Items for the HTTP Protocol).
         :param str ecs_backup_client_id: The first ID of the resource.
         :param str hostname: The ECS Host Name.
         :param str id: The ID of the Ecs Backup Client.
@@ -104,7 +106,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="archType")
     def arch_type(self) -> str:
         """
-        The Client System Architecture (Only the ECS File Backup Client Is Available. Possible Values: * AMD64 * 386.
+        The Client System Architecture (Only the ECS File Backup Client Is Available. Valid Values: `AMD64` , `386`.
         """
         return pulumi.get(self, "arch_type")
 
@@ -120,7 +122,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="clientType")
     def client_type(self) -> str:
         """
-        The Client Type. Possible Values: * ECS_CLIENT (ECS File Backup Client).
+        The Client Type. Valid Values: `ECS_CLIENT` (ECS File Backup Client).
         """
         return pulumi.get(self, "client_type")
 
@@ -144,7 +146,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="dataNetworkType")
     def data_network_type(self) -> str:
         """
-        The Data Plane Data Access Point Type. Valid Values: * Public Internet * VPC VPC * Classic Network.
+        The Data Plane Data Access Point Type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
         """
         return pulumi.get(self, "data_network_type")
 
@@ -152,7 +154,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="dataProxySetting")
     def data_proxy_setting(self) -> str:
         """
-        The Data Plane Proxy Settings. Valid Values: * DISABLE  * USE_CONTROL_PROXY (Default, the same with Control Plane) * CUSTOM (Custom Configuration Items for the HTTP Protocol).
+        The Data Plane Proxy Settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`. **Note**: `USE_CONTROL_PROXY` (Default, the same with Control Plane), `CUSTOM` (Custom Configuration Items for the HTTP Protocol).
         """
         return pulumi.get(self, "data_proxy_setting")
 
@@ -489,7 +491,7 @@ class GetNasBackupPlansPlanResult(dict):
                  vault_id: str):
         """
         :param str backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-        :param str create_time: File System Creation Time. Unix Time Seconds.
+        :param str create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param str file_system_id: The File System ID.
         :param str nas_backup_plan_name: The name of the resource.
         :param str options: Options. NAS Backup Plan Does Not Support Yet.
@@ -523,7 +525,7 @@ class GetNasBackupPlansPlanResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        File System Creation Time. Unix Time Seconds.
+        File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "create_time")
 
@@ -698,6 +700,650 @@ class GetOssBackupPlansPlanResult(dict):
         Vault ID.
         """
         return pulumi.get(self, "vault_id")
+
+
+@pulumi.output_type
+class GetRestoreJobsJobResult(dict):
+    def __init__(__self__, *,
+                 actual_bytes: str,
+                 actual_items: str,
+                 bytes_done: str,
+                 bytes_total: str,
+                 complete_time: str,
+                 create_time: str,
+                 error_file: str,
+                 error_message: str,
+                 expire_time: str,
+                 id: str,
+                 items_done: str,
+                 items_total: str,
+                 options: str,
+                 parent_id: str,
+                 progress: int,
+                 restore_job_id: str,
+                 restore_type: str,
+                 snapshot_hash: str,
+                 snapshot_id: str,
+                 source_type: str,
+                 start_time: str,
+                 status: str,
+                 target_bucket: str,
+                 target_client_id: str,
+                 target_create_time: str,
+                 target_data_source_id: str,
+                 target_file_system_id: str,
+                 target_instance_id: str,
+                 target_path: str,
+                 target_prefix: str,
+                 updated_time: str,
+                 vault_id: str):
+        """
+        :param str actual_bytes: The Actual Size of Snapshot.
+        :param str actual_items: The Actual Number of Files.
+        :param str bytes_done: Recovery Is Successful, Size.
+        :param str bytes_total: The Restored Total.
+        :param str complete_time: Restore Completion Time.
+        :param str create_time: The Restore Job Creation Time.
+        :param str error_message: The Recovery Task Execution Error Message.
+        :param str expire_time: Restore the Expiration Time. Unix Time in Seconds.
+        :param str id: The ID of the Restore Job.
+        :param str items_done: Log of Files Successfully Recovered the Number.
+        :param str items_total: File the Total Number.
+        :param str options: Recovery Options.
+        :param str parent_id: The Parent Node.
+        :param int progress: The Recovery Progress 100% * 100.
+        :param str restore_job_id: Restore Job ID.
+        :param str restore_type: The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        :param str snapshot_hash: Restore Snapshot of HashCode.
+        :param str snapshot_id: The ID of Snapshot.
+        :param str source_type: The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        :param str start_time: Restoring the Start Time. Unix Time in Seconds.
+        :param str status: The Restore Job Status.
+        :param str target_bucket: The Target ofo OSS Bucket Name.
+        :param str target_client_id: The ID of Target Client.
+        :param str target_create_time: The Destination File System Creation Time.
+        :param str target_data_source_id: The Destination ID.
+        :param str target_file_system_id: The Destination File System ID.
+        :param str target_instance_id: Objective to ECS Instance Id.
+        :param str target_path: The Target of (ECS) Instance Changes the ECS File Path.
+        :param str target_prefix: The Target of the OSS Object Prefix.
+        :param str updated_time: Update Time.
+        :param str vault_id: The ID of Vault.
+        """
+        pulumi.set(__self__, "actual_bytes", actual_bytes)
+        pulumi.set(__self__, "actual_items", actual_items)
+        pulumi.set(__self__, "bytes_done", bytes_done)
+        pulumi.set(__self__, "bytes_total", bytes_total)
+        pulumi.set(__self__, "complete_time", complete_time)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "error_file", error_file)
+        pulumi.set(__self__, "error_message", error_message)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "items_done", items_done)
+        pulumi.set(__self__, "items_total", items_total)
+        pulumi.set(__self__, "options", options)
+        pulumi.set(__self__, "parent_id", parent_id)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "restore_job_id", restore_job_id)
+        pulumi.set(__self__, "restore_type", restore_type)
+        pulumi.set(__self__, "snapshot_hash", snapshot_hash)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "target_bucket", target_bucket)
+        pulumi.set(__self__, "target_client_id", target_client_id)
+        pulumi.set(__self__, "target_create_time", target_create_time)
+        pulumi.set(__self__, "target_data_source_id", target_data_source_id)
+        pulumi.set(__self__, "target_file_system_id", target_file_system_id)
+        pulumi.set(__self__, "target_instance_id", target_instance_id)
+        pulumi.set(__self__, "target_path", target_path)
+        pulumi.set(__self__, "target_prefix", target_prefix)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="actualBytes")
+    def actual_bytes(self) -> str:
+        """
+        The Actual Size of Snapshot.
+        """
+        return pulumi.get(self, "actual_bytes")
+
+    @property
+    @pulumi.getter(name="actualItems")
+    def actual_items(self) -> str:
+        """
+        The Actual Number of Files.
+        """
+        return pulumi.get(self, "actual_items")
+
+    @property
+    @pulumi.getter(name="bytesDone")
+    def bytes_done(self) -> str:
+        """
+        Recovery Is Successful, Size.
+        """
+        return pulumi.get(self, "bytes_done")
+
+    @property
+    @pulumi.getter(name="bytesTotal")
+    def bytes_total(self) -> str:
+        """
+        The Restored Total.
+        """
+        return pulumi.get(self, "bytes_total")
+
+    @property
+    @pulumi.getter(name="completeTime")
+    def complete_time(self) -> str:
+        """
+        Restore Completion Time.
+        """
+        return pulumi.get(self, "complete_time")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The Restore Job Creation Time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="errorFile")
+    def error_file(self) -> str:
+        return pulumi.get(self, "error_file")
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> str:
+        """
+        The Recovery Task Execution Error Message.
+        """
+        return pulumi.get(self, "error_message")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        Restore the Expiration Time. Unix Time in Seconds.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Restore Job.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="itemsDone")
+    def items_done(self) -> str:
+        """
+        Log of Files Successfully Recovered the Number.
+        """
+        return pulumi.get(self, "items_done")
+
+    @property
+    @pulumi.getter(name="itemsTotal")
+    def items_total(self) -> str:
+        """
+        File the Total Number.
+        """
+        return pulumi.get(self, "items_total")
+
+    @property
+    @pulumi.getter
+    def options(self) -> str:
+        """
+        Recovery Options.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> str:
+        """
+        The Parent Node.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @property
+    @pulumi.getter
+    def progress(self) -> int:
+        """
+        The Recovery Progress 100% * 100.
+        """
+        return pulumi.get(self, "progress")
+
+    @property
+    @pulumi.getter(name="restoreJobId")
+    def restore_job_id(self) -> str:
+        """
+        Restore Job ID.
+        """
+        return pulumi.get(self, "restore_job_id")
+
+    @property
+    @pulumi.getter(name="restoreType")
+    def restore_type(self) -> str:
+        """
+        The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        """
+        return pulumi.get(self, "restore_type")
+
+    @property
+    @pulumi.getter(name="snapshotHash")
+    def snapshot_hash(self) -> str:
+        """
+        Restore Snapshot of HashCode.
+        """
+        return pulumi.get(self, "snapshot_hash")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> str:
+        """
+        The ID of Snapshot.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> str:
+        """
+        The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        """
+        return pulumi.get(self, "source_type")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Restoring the Start Time. Unix Time in Seconds.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The Restore Job Status.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="targetBucket")
+    def target_bucket(self) -> str:
+        """
+        The Target ofo OSS Bucket Name.
+        """
+        return pulumi.get(self, "target_bucket")
+
+    @property
+    @pulumi.getter(name="targetClientId")
+    def target_client_id(self) -> str:
+        """
+        The ID of Target Client.
+        """
+        return pulumi.get(self, "target_client_id")
+
+    @property
+    @pulumi.getter(name="targetCreateTime")
+    def target_create_time(self) -> str:
+        """
+        The Destination File System Creation Time.
+        """
+        return pulumi.get(self, "target_create_time")
+
+    @property
+    @pulumi.getter(name="targetDataSourceId")
+    def target_data_source_id(self) -> str:
+        """
+        The Destination ID.
+        """
+        return pulumi.get(self, "target_data_source_id")
+
+    @property
+    @pulumi.getter(name="targetFileSystemId")
+    def target_file_system_id(self) -> str:
+        """
+        The Destination File System ID.
+        """
+        return pulumi.get(self, "target_file_system_id")
+
+    @property
+    @pulumi.getter(name="targetInstanceId")
+    def target_instance_id(self) -> str:
+        """
+        Objective to ECS Instance Id.
+        """
+        return pulumi.get(self, "target_instance_id")
+
+    @property
+    @pulumi.getter(name="targetPath")
+    def target_path(self) -> str:
+        """
+        The Target of (ECS) Instance Changes the ECS File Path.
+        """
+        return pulumi.get(self, "target_path")
+
+    @property
+    @pulumi.getter(name="targetPrefix")
+    def target_prefix(self) -> str:
+        """
+        The Target of the OSS Object Prefix.
+        """
+        return pulumi.get(self, "target_prefix")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> str:
+        """
+        Update Time.
+        """
+        return pulumi.get(self, "updated_time")
+
+    @property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> str:
+        """
+        The ID of Vault.
+        """
+        return pulumi.get(self, "vault_id")
+
+
+@pulumi.output_type
+class GetSnapshotsSnapshotResult(dict):
+    def __init__(__self__, *,
+                 actual_bytes: str,
+                 actual_items: str,
+                 backup_type: str,
+                 bucket: str,
+                 bytes_done: str,
+                 bytes_total: str,
+                 complete_time: str,
+                 create_time: str,
+                 created_time: str,
+                 error_file: str,
+                 file_system_id: str,
+                 id: str,
+                 instance_id: str,
+                 items_done: str,
+                 items_total: str,
+                 job_id: str,
+                 parent_snapshot_hash: str,
+                 path: str,
+                 prefix: str,
+                 retention: str,
+                 snapshot_hash: str,
+                 snapshot_id: str,
+                 source_type: str,
+                 start_time: str,
+                 status: str,
+                 updated_time: str):
+        """
+        :param str actual_bytes: The actual data volume of the snapshot. Unit byte.
+        :param str actual_items: The actual number of items in the snapshot. (Currently only file backup is available).
+        :param str backup_type: Backup type. Possible values: `COMPLETE` (full backup).
+        :param str bucket: The name of OSS bucket.
+        :param str bytes_done: The incremental amount of backup data. Unit byte.
+        :param str bytes_total: The total amount of data sources. Unit byte.
+        :param str complete_time: The time when the snapshot was completed. UNIX time in seconds.
+        :param str create_time: File System Creation Time of Nas. Unix Time Seconds.
+        :param str created_time: Snapshot creation time. UNIX time in seconds.
+        :param str file_system_id: The ID of NAS File system.
+        :param str id: The ID of the Snapshot.
+        :param str instance_id: InstanceId.
+        :param str items_done: The number of backup items. (Currently only file backup is available).
+        :param str items_total: The total number of data source items. (Currently only file backup is available).
+        :param str job_id: The job ID of backup task.
+        :param str parent_snapshot_hash: The hashcode of parent backup snapshot.
+        :param str path: Backup Path.
+        :param str prefix: Backup file prefix.
+        :param str retention: The number of days to keep.
+        :param str snapshot_hash: The hashcode of Snapshot.
+        :param str snapshot_id: The ID of the Snapshot.
+        :param str source_type: Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+        :param str start_time: The start time of the snapshot. UNIX time in seconds.
+        :param str status: The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+        :param str updated_time: The update time of snapshot. UNIX time in seconds.
+        """
+        pulumi.set(__self__, "actual_bytes", actual_bytes)
+        pulumi.set(__self__, "actual_items", actual_items)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "bytes_done", bytes_done)
+        pulumi.set(__self__, "bytes_total", bytes_total)
+        pulumi.set(__self__, "complete_time", complete_time)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "error_file", error_file)
+        pulumi.set(__self__, "file_system_id", file_system_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "items_done", items_done)
+        pulumi.set(__self__, "items_total", items_total)
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "parent_snapshot_hash", parent_snapshot_hash)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "snapshot_hash", snapshot_hash)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated_time", updated_time)
+
+    @property
+    @pulumi.getter(name="actualBytes")
+    def actual_bytes(self) -> str:
+        """
+        The actual data volume of the snapshot. Unit byte.
+        """
+        return pulumi.get(self, "actual_bytes")
+
+    @property
+    @pulumi.getter(name="actualItems")
+    def actual_items(self) -> str:
+        """
+        The actual number of items in the snapshot. (Currently only file backup is available).
+        """
+        return pulumi.get(self, "actual_items")
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> str:
+        """
+        Backup type. Possible values: `COMPLETE` (full backup).
+        """
+        return pulumi.get(self, "backup_type")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        The name of OSS bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="bytesDone")
+    def bytes_done(self) -> str:
+        """
+        The incremental amount of backup data. Unit byte.
+        """
+        return pulumi.get(self, "bytes_done")
+
+    @property
+    @pulumi.getter(name="bytesTotal")
+    def bytes_total(self) -> str:
+        """
+        The total amount of data sources. Unit byte.
+        """
+        return pulumi.get(self, "bytes_total")
+
+    @property
+    @pulumi.getter(name="completeTime")
+    def complete_time(self) -> str:
+        """
+        The time when the snapshot was completed. UNIX time in seconds.
+        """
+        return pulumi.get(self, "complete_time")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        File System Creation Time of Nas. Unix Time Seconds.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> str:
+        """
+        Snapshot creation time. UNIX time in seconds.
+        """
+        return pulumi.get(self, "created_time")
+
+    @property
+    @pulumi.getter(name="errorFile")
+    def error_file(self) -> str:
+        return pulumi.get(self, "error_file")
+
+    @property
+    @pulumi.getter(name="fileSystemId")
+    def file_system_id(self) -> str:
+        """
+        The ID of NAS File system.
+        """
+        return pulumi.get(self, "file_system_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Snapshot.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        InstanceId.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="itemsDone")
+    def items_done(self) -> str:
+        """
+        The number of backup items. (Currently only file backup is available).
+        """
+        return pulumi.get(self, "items_done")
+
+    @property
+    @pulumi.getter(name="itemsTotal")
+    def items_total(self) -> str:
+        """
+        The total number of data source items. (Currently only file backup is available).
+        """
+        return pulumi.get(self, "items_total")
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> str:
+        """
+        The job ID of backup task.
+        """
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="parentSnapshotHash")
+    def parent_snapshot_hash(self) -> str:
+        """
+        The hashcode of parent backup snapshot.
+        """
+        return pulumi.get(self, "parent_snapshot_hash")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Backup Path.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        Backup file prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> str:
+        """
+        The number of days to keep.
+        """
+        return pulumi.get(self, "retention")
+
+    @property
+    @pulumi.getter(name="snapshotHash")
+    def snapshot_hash(self) -> str:
+        """
+        The hashcode of Snapshot.
+        """
+        return pulumi.get(self, "snapshot_hash")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> str:
+        """
+        The ID of the Snapshot.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> str:
+        """
+        Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+        """
+        return pulumi.get(self, "source_type")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The start time of the snapshot. UNIX time in seconds.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> str:
+        """
+        The update time of snapshot. UNIX time in seconds.
+        """
+        return pulumi.get(self, "updated_time")
 
 
 @pulumi.output_type

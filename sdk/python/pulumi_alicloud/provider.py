@@ -31,6 +31,7 @@ class ProviderArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  security_token: Optional[pulumi.Input[str]] = None,
+                 security_transport: Optional[pulumi.Input[str]] = None,
                  shared_credentials_file: Optional[pulumi.Input[str]] = None,
                  skip_region_validation: Optional[pulumi.Input[bool]] = None,
                  source_ip: Optional[pulumi.Input[str]] = None):
@@ -50,11 +51,11 @@ class ProviderArgs:
         :param pulumi.Input[str] secret_key: The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
                console.
         :param pulumi.Input[str] security_token: security token. A security token is only required if you are using Security Token Service.
+        :param pulumi.Input[str] security_transport: The security transport for the assume role invoking.
         :param pulumi.Input[str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
         :param pulumi.Input[bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
                that are not public (yet).
-        :param pulumi.Input[str] source_ip: The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-               console.
+        :param pulumi.Input[str] source_ip: The source ip for the assume role invoking.
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -108,6 +109,8 @@ class ProviderArgs:
             pulumi.set(__self__, "secret_key", secret_key)
         if security_token is not None:
             pulumi.set(__self__, "security_token", security_token)
+        if security_transport is not None:
+            pulumi.set(__self__, "security_transport", security_transport)
         if shared_credentials_file is not None:
             pulumi.set(__self__, "shared_credentials_file", shared_credentials_file)
         if skip_region_validation is not None:
@@ -303,6 +306,18 @@ class ProviderArgs:
         pulumi.set(self, "security_token", value)
 
     @property
+    @pulumi.getter(name="securityTransport")
+    def security_transport(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security transport for the assume role invoking.
+        """
+        return pulumi.get(self, "security_transport")
+
+    @security_transport.setter
+    def security_transport(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_transport", value)
+
+    @property
     @pulumi.getter(name="sharedCredentialsFile")
     def shared_credentials_file(self) -> Optional[pulumi.Input[str]]:
         """
@@ -331,8 +346,7 @@ class ProviderArgs:
     @pulumi.getter(name="sourceIp")
     def source_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        console.
+        The source ip for the assume role invoking.
         """
         return pulumi.get(self, "source_ip")
 
@@ -363,6 +377,7 @@ class Provider(pulumi.ProviderResource):
                  region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  security_token: Optional[pulumi.Input[str]] = None,
+                 security_transport: Optional[pulumi.Input[str]] = None,
                  shared_credentials_file: Optional[pulumi.Input[str]] = None,
                  skip_region_validation: Optional[pulumi.Input[bool]] = None,
                  source_ip: Optional[pulumi.Input[str]] = None,
@@ -389,11 +404,11 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] secret_key: The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
                console.
         :param pulumi.Input[str] security_token: security token. A security token is only required if you are using Security Token Service.
+        :param pulumi.Input[str] security_transport: The security transport for the assume role invoking.
         :param pulumi.Input[str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
         :param pulumi.Input[bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
                that are not public (yet).
-        :param pulumi.Input[str] source_ip: The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-               console.
+        :param pulumi.Input[str] source_ip: The source ip for the assume role invoking.
         """
         ...
     @overload
@@ -439,6 +454,7 @@ class Provider(pulumi.ProviderResource):
                  region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  security_token: Optional[pulumi.Input[str]] = None,
+                 security_transport: Optional[pulumi.Input[str]] = None,
                  shared_credentials_file: Optional[pulumi.Input[str]] = None,
                  skip_region_validation: Optional[pulumi.Input[bool]] = None,
                  source_ip: Optional[pulumi.Input[str]] = None,
@@ -489,6 +505,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["secret_key"] = secret_key
             __props__.__dict__["security_token"] = security_token
+            __props__.__dict__["security_transport"] = security_transport
             __props__.__dict__["shared_credentials_file"] = shared_credentials_file
             __props__.__dict__["skip_region_validation"] = pulumi.Output.from_input(skip_region_validation).apply(pulumi.runtime.to_json) if skip_region_validation is not None else None
             __props__.__dict__["source_ip"] = source_ip

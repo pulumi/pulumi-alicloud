@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:bastionhost/instance:Instance":
 		r = &Instance{}
+	case "alicloud:bastionhost/user:User":
+		r = &User{}
 	case "alicloud:bastionhost/userGroup:UserGroup":
 		r = &UserGroup{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"bastionhost/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"bastionhost/user",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -10,6 +10,157 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetConfigsConfig struct {
+	// Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
+	Code string `pulumi:"code"`
+	// Configure the Number.
+	ConfigId string `pulumi:"configId"`
+	// Default Value.
+	DefaultValue string `pulumi:"defaultValue"`
+	// Abnormal Alarm General Description of the Configuration Item.
+	Description string `pulumi:"description"`
+	// The ID of the Config.
+	Id string `pulumi:"id"`
+	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
+	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+	// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
+	Value string `pulumi:"value"`
+}
+
+// GetConfigsConfigInput is an input type that accepts GetConfigsConfigArgs and GetConfigsConfigOutput values.
+// You can construct a concrete instance of `GetConfigsConfigInput` via:
+//
+//          GetConfigsConfigArgs{...}
+type GetConfigsConfigInput interface {
+	pulumi.Input
+
+	ToGetConfigsConfigOutput() GetConfigsConfigOutput
+	ToGetConfigsConfigOutputWithContext(context.Context) GetConfigsConfigOutput
+}
+
+type GetConfigsConfigArgs struct {
+	// Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
+	Code pulumi.StringInput `pulumi:"code"`
+	// Configure the Number.
+	ConfigId pulumi.StringInput `pulumi:"configId"`
+	// Default Value.
+	DefaultValue pulumi.StringInput `pulumi:"defaultValue"`
+	// Abnormal Alarm General Description of the Configuration Item.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Config.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
+	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+	// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetConfigsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigsConfig)(nil)).Elem()
+}
+
+func (i GetConfigsConfigArgs) ToGetConfigsConfigOutput() GetConfigsConfigOutput {
+	return i.ToGetConfigsConfigOutputWithContext(context.Background())
+}
+
+func (i GetConfigsConfigArgs) ToGetConfigsConfigOutputWithContext(ctx context.Context) GetConfigsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConfigsConfigOutput)
+}
+
+// GetConfigsConfigArrayInput is an input type that accepts GetConfigsConfigArray and GetConfigsConfigArrayOutput values.
+// You can construct a concrete instance of `GetConfigsConfigArrayInput` via:
+//
+//          GetConfigsConfigArray{ GetConfigsConfigArgs{...} }
+type GetConfigsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetConfigsConfigArrayOutput() GetConfigsConfigArrayOutput
+	ToGetConfigsConfigArrayOutputWithContext(context.Context) GetConfigsConfigArrayOutput
+}
+
+type GetConfigsConfigArray []GetConfigsConfigInput
+
+func (GetConfigsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConfigsConfig)(nil)).Elem()
+}
+
+func (i GetConfigsConfigArray) ToGetConfigsConfigArrayOutput() GetConfigsConfigArrayOutput {
+	return i.ToGetConfigsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetConfigsConfigArray) ToGetConfigsConfigArrayOutputWithContext(ctx context.Context) GetConfigsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConfigsConfigArrayOutput)
+}
+
+type GetConfigsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConfigsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigsConfig)(nil)).Elem()
+}
+
+func (o GetConfigsConfigOutput) ToGetConfigsConfigOutput() GetConfigsConfigOutput {
+	return o
+}
+
+func (o GetConfigsConfigOutput) ToGetConfigsConfigOutputWithContext(ctx context.Context) GetConfigsConfigOutput {
+	return o
+}
+
+// Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
+func (o GetConfigsConfigOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigsConfig) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Configure the Number.
+func (o GetConfigsConfigOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigsConfig) string { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// Default Value.
+func (o GetConfigsConfigOutput) DefaultValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigsConfig) string { return v.DefaultValue }).(pulumi.StringOutput)
+}
+
+// Abnormal Alarm General Description of the Configuration Item.
+func (o GetConfigsConfigOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigsConfig) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Config.
+func (o GetConfigsConfigOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigsConfig) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
+// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
+func (o GetConfigsConfigOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigsConfig) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetConfigsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConfigsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConfigsConfig)(nil)).Elem()
+}
+
+func (o GetConfigsConfigArrayOutput) ToGetConfigsConfigArrayOutput() GetConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetConfigsConfigArrayOutput) ToGetConfigsConfigArrayOutputWithContext(ctx context.Context) GetConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetConfigsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConfigsConfig {
+		return vs[0].([]GetConfigsConfig)[vs[1].(int)]
+	}).(GetConfigsConfigOutput)
+}
+
 type GetRulesRule struct {
 	// Sensitive Data Identification Rules for the Type of.
 	Category int `pulumi:"category"`
@@ -306,6 +457,8 @@ func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetConfigsConfigOutput{})
+	pulumi.RegisterOutputType(GetConfigsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleArrayOutput{})
 }

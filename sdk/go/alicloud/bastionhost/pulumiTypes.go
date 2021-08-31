@@ -384,9 +384,207 @@ func (o GetUserGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetUserGroupsGro
 	}).(GetUserGroupsGroupOutput)
 }
 
+type GetUsersUser struct {
+	// Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
+	Comment string `pulumi:"comment"`
+	// Specify the New Created the User's Display Name. Supports up to 128 Characters.
+	DisplayName string `pulumi:"displayName"`
+	// Specify the New User's Mailbox.
+	Email string `pulumi:"email"`
+	// The ID of the User.
+	Id string `pulumi:"id"`
+	// You Want to Query the User the Bastion Host ID of.
+	InstanceId string `pulumi:"instanceId"`
+	// Specify the New of the User That Created a Different Mobile Phone Number from Your.
+	Mobile string `pulumi:"mobile"`
+	// Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN Value: CN: Mainland China (+86) HK: hong Kong, China (+852) Mo: Macau, China (+853) TW: Taiwan, China (+886) ru: Russian (+7) SG: Singapore (+65) My: malaysia (+60) ID: Indonesia (+62) De: Germany (+49) AU: Australia (+61) US: United States (+1) AE: dubai (+971) JP: Japan (+81) Introducing the Long-Range GB: United Kingdom (+44) in: India (+91) KR: South Korea (+82) Ph: philippines (+63) Ch: Switzerland (+41) Se: Sweden (+46).
+	MobileCountryCode string `pulumi:"mobileCountryCode"`
+	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+	Source string `pulumi:"source"`
+	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+	SourceUserId string `pulumi:"sourceUserId"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The User ID.
+	UserId string `pulumi:"userId"`
+	// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+	UserName string `pulumi:"userName"`
+}
+
+// GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
+// You can construct a concrete instance of `GetUsersUserInput` via:
+//
+//          GetUsersUserArgs{...}
+type GetUsersUserInput interface {
+	pulumi.Input
+
+	ToGetUsersUserOutput() GetUsersUserOutput
+	ToGetUsersUserOutputWithContext(context.Context) GetUsersUserOutput
+}
+
+type GetUsersUserArgs struct {
+	// Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// Specify the New Created the User's Display Name. Supports up to 128 Characters.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Specify the New User's Mailbox.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The ID of the User.
+	Id pulumi.StringInput `pulumi:"id"`
+	// You Want to Query the User the Bastion Host ID of.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Specify the New of the User That Created a Different Mobile Phone Number from Your.
+	Mobile pulumi.StringInput `pulumi:"mobile"`
+	// Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN Value: CN: Mainland China (+86) HK: hong Kong, China (+852) Mo: Macau, China (+853) TW: Taiwan, China (+886) ru: Russian (+7) SG: Singapore (+65) My: malaysia (+60) ID: Indonesia (+62) De: Germany (+49) AU: Australia (+61) US: United States (+1) AE: dubai (+971) JP: Japan (+81) Introducing the Long-Range GB: United Kingdom (+44) in: India (+91) KR: South Korea (+82) Ph: philippines (+63) Ch: Switzerland (+41) Se: Sweden (+46).
+	MobileCountryCode pulumi.StringInput `pulumi:"mobileCountryCode"`
+	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+	Source pulumi.StringInput `pulumi:"source"`
+	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+	SourceUserId pulumi.StringInput `pulumi:"sourceUserId"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The User ID.
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+	UserName pulumi.StringInput `pulumi:"userName"`
+}
+
+func (GetUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutput() GetUsersUserOutput {
+	return i.ToGetUsersUserOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
+}
+
+// GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserArrayInput` via:
+//
+//          GetUsersUserArray{ GetUsersUserArgs{...} }
+type GetUsersUserArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersUserArrayOutput() GetUsersUserArrayOutput
+	ToGetUsersUserArrayOutputWithContext(context.Context) GetUsersUserArrayOutput
+}
+
+type GetUsersUserArray []GetUsersUserInput
+
+func (GetUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return i.ToGetUsersUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
+}
+
+type GetUsersUserOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
+	return o
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return o
+}
+
+// Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
+func (o GetUsersUserOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// Specify the New Created the User's Display Name. Supports up to 128 Characters.
+func (o GetUsersUserOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Specify the New User's Mailbox.
+func (o GetUsersUserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The ID of the User.
+func (o GetUsersUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// You Want to Query the User the Bastion Host ID of.
+func (o GetUsersUserOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Specify the New of the User That Created a Different Mobile Phone Number from Your.
+func (o GetUsersUserOutput) Mobile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Mobile }).(pulumi.StringOutput)
+}
+
+// Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN Value: CN: Mainland China (+86) HK: hong Kong, China (+852) Mo: Macau, China (+853) TW: Taiwan, China (+886) ru: Russian (+7) SG: Singapore (+65) My: malaysia (+60) ID: Indonesia (+62) De: Germany (+49) AU: Australia (+61) US: United States (+1) AE: dubai (+971) JP: Japan (+81) Introducing the Long-Range GB: United Kingdom (+44) in: India (+91) KR: South Korea (+82) Ph: philippines (+63) Ch: Switzerland (+41) Se: Sweden (+46).
+func (o GetUsersUserOutput) MobileCountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.MobileCountryCode }).(pulumi.StringOutput)
+}
+
+// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+func (o GetUsersUserOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+func (o GetUsersUserOutput) SourceUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.SourceUserId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetUsersUserOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The User ID.
+func (o GetUsersUserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+func (o GetUsersUserOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type GetUsersUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
+		return vs[0].([]GetUsersUser)[vs[1].(int)]
+	}).(GetUsersUserOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetUserGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetUserGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetUsersUserOutput{})
+	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }

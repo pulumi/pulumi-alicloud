@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> BackupType { get; private set; } = null!;
 
         /// <summary>
-        /// File System Creation Time. Unix Time Seconds.
+        /// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// File System Creation Time. Unix Time Seconds.
+        /// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Input("createTime", required: true)]
         public Input<string> CreateTime { get; set; } = null!;
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// File System Creation Time. Unix Time Seconds.
+        /// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }

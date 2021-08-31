@@ -9,8 +9,88 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetConfigsConfigResult',
     'GetRulesRuleResult',
 ]
+
+@pulumi.output_type
+class GetConfigsConfigResult(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 config_id: str,
+                 default_value: str,
+                 description: str,
+                 id: str,
+                 value: str):
+        """
+        :param str code: Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+        :param str config_id: Configure the Number.
+        :param str default_value: Default Value.
+        :param str description: Abnormal Alarm General Description of the Configuration Item.
+        :param str id: The ID of the Config.
+        :param str value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
+               * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+               * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+               * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "default_value", default_value)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> str:
+        """
+        Configure the Number.
+        """
+        return pulumi.get(self, "config_id")
+
+    @property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> str:
+        """
+        Default Value.
+        """
+        return pulumi.get(self, "default_value")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Abnormal Alarm General Description of the Configuration Item.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Config.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
+        * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+        * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+        * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class GetRulesRuleResult(dict):

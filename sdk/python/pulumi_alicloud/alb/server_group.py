@@ -375,7 +375,8 @@ class ServerGroup(pulumi.CustomResource):
         """
         Provides a ALB Server Group resource.
 
-        For information about ALB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/doc-detail/213627.htm).
+        For information about ALB Server Group and how to use it,
+        see [What is Server Group](https://www.alibabacloud.com/help/doc-detail/213627.htm).
 
         > **NOTE:** Available in v1.131.0+.
 
@@ -387,7 +388,60 @@ class ServerGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.alb.ServerGroup("example", server_group_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example_value"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/16",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            instance_name=name,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_zones.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id)
+        default_server_group = alicloud.alb.ServerGroup("defaultServerGroup",
+            protocol="HTTP",
+            vpc_id=alicloud_vpc["vpcs"][0]["id"],
+            server_group_name=name,
+            resource_group_id=data["alicloud_resource_manager_resource_groups"]["default"]["groups"][0]["id"],
+            health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
+                health_check_enabled=False,
+            ),
+            sticky_session_config=alicloud.alb.ServerGroupStickySessionConfigArgs(
+                sticky_session_enabled=False,
+            ),
+            tags={
+                "Created": "TF",
+            },
+            servers=[alicloud.alb.ServerGroupServerArgs(
+                description=name,
+                port=80,
+                server_id=default_instance.id,
+                server_ip=default_instance.private_ip,
+                server_type="Ecs",
+                weight=10,
+            )])
         ```
 
         ## Import
@@ -419,7 +473,8 @@ class ServerGroup(pulumi.CustomResource):
         """
         Provides a ALB Server Group resource.
 
-        For information about ALB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/doc-detail/213627.htm).
+        For information about ALB Server Group and how to use it,
+        see [What is Server Group](https://www.alibabacloud.com/help/doc-detail/213627.htm).
 
         > **NOTE:** Available in v1.131.0+.
 
@@ -431,7 +486,60 @@ class ServerGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.alb.ServerGroup("example", server_group_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example_value"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/16",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            instance_name=name,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_zones.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id)
+        default_server_group = alicloud.alb.ServerGroup("defaultServerGroup",
+            protocol="HTTP",
+            vpc_id=alicloud_vpc["vpcs"][0]["id"],
+            server_group_name=name,
+            resource_group_id=data["alicloud_resource_manager_resource_groups"]["default"]["groups"][0]["id"],
+            health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
+                health_check_enabled=False,
+            ),
+            sticky_session_config=alicloud.alb.ServerGroupStickySessionConfigArgs(
+                sticky_session_enabled=False,
+            ),
+            tags={
+                "Created": "TF",
+            },
+            servers=[alicloud.alb.ServerGroupServerArgs(
+                description=name,
+                port=80,
+                server_id=default_instance.id,
+                server_ip=default_instance.private_ip,
+                server_type="Ecs",
+                weight=10,
+            )])
         ```
 
         ## Import

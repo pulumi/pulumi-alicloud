@@ -77,6 +77,11 @@ namespace Pulumi.AliCloud
         public static string? SecurityToken { get; set; } = __config.Get("securityToken");
 
         /// <summary>
+        /// The security transport for the assume role invoking.
+        /// </summary>
+        public static string? SecurityTransport { get; set; } = __config.Get("securityTransport");
+
+        /// <summary>
         /// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
         /// </summary>
         public static string? SharedCredentialsFile { get; set; } = __config.Get("sharedCredentialsFile");
@@ -88,8 +93,7 @@ namespace Pulumi.AliCloud
         public static bool? SkipRegionValidation { get; set; } = __config.GetBoolean("skipRegionValidation");
 
         /// <summary>
-        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        /// console.
+        /// The source ip for the assume role invoking.
         /// </summary>
         public static string? SourceIp { get; set; } = __config.Get("sourceIp");
 
@@ -109,6 +113,7 @@ namespace Pulumi.AliCloud
                 public string? Actiontrail { get; set; } = null!;
                 public string? Adb { get; set; } = null!;
                 public string? Alb { get; set; } = null!;
+                public string? Alidfs { get; set; } = null!;
                 public string? Alidns { get; set; } = null!;
                 public string? Alikafka { get; set; } = null!;
                 public string? Apigateway { get; set; } = null!;
@@ -139,9 +144,11 @@ namespace Pulumi.AliCloud
                 public string? Drds { get; set; } = null!;
                 public string? Eci { get; set; } = null!;
                 public string? Ecs { get; set; } = null!;
+                public string? Ehpc { get; set; } = null!;
                 public string? Eipanycast { get; set; } = null!;
                 public string? Elasticsearch { get; set; } = null!;
                 public string? Emr { get; set; } = null!;
+                public string? Ens { get; set; } = null!;
                 public string? Ess { get; set; } = null!;
                 public string? Eventbridge { get; set; } = null!;
                 public string? Fc { get; set; } = null!;
@@ -179,6 +186,7 @@ namespace Pulumi.AliCloud
                 public string? Resourcemanager { get; set; } = null!;
                 public string? Resourcesharing { get; set; } = null!;
                 public string? Ros { get; set; } = null!;
+                public string? Sas { get; set; } = null!;
                 public string? Scdn { get; set; } = null!;
                 public string? Sddp { get; set; } = null!;
                 public string? Serverless { get; set; } = null!;

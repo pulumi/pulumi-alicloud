@@ -104,6 +104,7 @@ class ProviderEndpoint(dict):
                  actiontrail: Optional[str] = None,
                  adb: Optional[str] = None,
                  alb: Optional[str] = None,
+                 alidfs: Optional[str] = None,
                  alidns: Optional[str] = None,
                  alikafka: Optional[str] = None,
                  apigateway: Optional[str] = None,
@@ -134,9 +135,11 @@ class ProviderEndpoint(dict):
                  drds: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
+                 ehpc: Optional[str] = None,
                  eipanycast: Optional[str] = None,
                  elasticsearch: Optional[str] = None,
                  emr: Optional[str] = None,
+                 ens: Optional[str] = None,
                  ess: Optional[str] = None,
                  eventbridge: Optional[str] = None,
                  fc: Optional[str] = None,
@@ -174,6 +177,7 @@ class ProviderEndpoint(dict):
                  resourcemanager: Optional[str] = None,
                  resourcesharing: Optional[str] = None,
                  ros: Optional[str] = None,
+                 sas: Optional[str] = None,
                  scdn: Optional[str] = None,
                  sddp: Optional[str] = None,
                  serverless: Optional[str] = None,
@@ -188,6 +192,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "adb", adb)
         if alb is not None:
             pulumi.set(__self__, "alb", alb)
+        if alidfs is not None:
+            pulumi.set(__self__, "alidfs", alidfs)
         if alidns is not None:
             pulumi.set(__self__, "alidns", alidns)
         if alikafka is not None:
@@ -248,12 +254,16 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
             pulumi.set(__self__, "ecs", ecs)
+        if ehpc is not None:
+            pulumi.set(__self__, "ehpc", ehpc)
         if eipanycast is not None:
             pulumi.set(__self__, "eipanycast", eipanycast)
         if elasticsearch is not None:
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if emr is not None:
             pulumi.set(__self__, "emr", emr)
+        if ens is not None:
+            pulumi.set(__self__, "ens", ens)
         if ess is not None:
             pulumi.set(__self__, "ess", ess)
         if eventbridge is not None:
@@ -328,6 +338,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
+        if sas is not None:
+            pulumi.set(__self__, "sas", sas)
         if scdn is not None:
             pulumi.set(__self__, "scdn", scdn)
         if sddp is not None:
@@ -359,6 +371,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def alb(self) -> Optional[str]:
         return pulumi.get(self, "alb")
+
+    @property
+    @pulumi.getter
+    def alidfs(self) -> Optional[str]:
+        return pulumi.get(self, "alidfs")
 
     @property
     @pulumi.getter
@@ -512,6 +529,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def ehpc(self) -> Optional[str]:
+        return pulumi.get(self, "ehpc")
+
+    @property
+    @pulumi.getter
     def eipanycast(self) -> Optional[str]:
         return pulumi.get(self, "eipanycast")
 
@@ -524,6 +546,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def emr(self) -> Optional[str]:
         return pulumi.get(self, "emr")
+
+    @property
+    @pulumi.getter
+    def ens(self) -> Optional[str]:
+        return pulumi.get(self, "ens")
 
     @property
     @pulumi.getter
@@ -709,6 +736,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def ros(self) -> Optional[str]:
         return pulumi.get(self, "ros")
+
+    @property
+    @pulumi.getter
+    def sas(self) -> Optional[str]:
+        return pulumi.get(self, "sas")
 
     @property
     @pulumi.getter

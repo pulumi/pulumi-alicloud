@@ -32,7 +32,7 @@ import (
 // frontendPort | http & https & tcp & udp | 1-65535 |
 // protocol | http & https & tcp & udp |
 // bandwidth | http & https & tcp & udp | -1 / 1-1000 |
-// scheduler | http & https & tcp & udp | wrr rr or wlc |
+// scheduler | http & https & tcp & udp | wrr, rr, wlc, tch, qch |
 // stickySession | http & https | on or off |
 // stickySessionType | http & https | insert or server |
 // cookieTimeout | http & https | 1-86400  |
@@ -143,7 +143,8 @@ type Listener struct {
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrOutput `pulumi:"requestTimeout"`
-	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
+	// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
 	Scheduler pulumi.StringPtrOutput `pulumi:"scheduler"`
 	// SLB Server certificate ID. It is required when `protocol` is `https`.
 	ServerCertificateId pulumi.StringOutput `pulumi:"serverCertificateId"`
@@ -272,7 +273,8 @@ type listenerState struct {
 	Protocol *string `pulumi:"protocol"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout *int `pulumi:"requestTimeout"`
-	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
+	// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
 	Scheduler *string `pulumi:"scheduler"`
 	// SLB Server certificate ID. It is required when `protocol` is `https`.
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
@@ -364,7 +366,8 @@ type ListenerState struct {
 	Protocol pulumi.StringPtrInput
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrInput
-	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
+	// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
 	Scheduler pulumi.StringPtrInput
 	// SLB Server certificate ID. It is required when `protocol` is `https`.
 	ServerCertificateId pulumi.StringPtrInput
@@ -460,7 +463,8 @@ type listenerArgs struct {
 	Protocol string `pulumi:"protocol"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout *int `pulumi:"requestTimeout"`
-	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
+	// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
 	Scheduler *string `pulumi:"scheduler"`
 	// SLB Server certificate ID. It is required when `protocol` is `https`.
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
@@ -553,7 +557,8 @@ type ListenerArgs struct {
 	Protocol pulumi.StringInput
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrInput
-	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
+	// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
 	Scheduler pulumi.StringPtrInput
 	// SLB Server certificate ID. It is required when `protocol` is `https`.
 	ServerCertificateId pulumi.StringPtrInput

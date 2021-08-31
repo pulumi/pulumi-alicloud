@@ -10,6 +10,541 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetApplicationsApplication struct {
+	// The ARN of the RAM role required when pulling images across accounts.
+	AcrAssumeRoleArn string `pulumi:"acrAssumeRoleArn"`
+	// Application description information. No more than 1024 characters.
+	AppDescription string `pulumi:"appDescription"`
+	// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+	AppName string `pulumi:"appName"`
+	// The first ID of the resource.
+	ApplicationId string `pulumi:"applicationId"`
+	// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+	Command string `pulumi:"command"`
+	// Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+	CommandArgs string `pulumi:"commandArgs"`
+	// ConfigMap mount description.
+	ConfigMapMountDesc string `pulumi:"configMapMountDesc"`
+	// The CPU required for each instance, in millicores, cannot be 0.
+	Cpu int `pulumi:"cpu"`
+	// Indicates That the Application of the Creation Time.
+	CreateTime string `pulumi:"createTime"`
+	// Custom host mapping in the container. For example: [{"hostName":"samplehost","ip":"127.0.0.1"}].
+	CustomHostAlias string `pulumi:"customHostAlias"`
+	// The operating environment used by the Pandora application.
+	EdasContainerVersion string `pulumi:"edasContainerVersion"`
+	// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+	Envs string `pulumi:"envs"`
+	// The ID of the Application.
+	Id string `pulumi:"id"`
+	// Mirror address. Only Image type applications can configure the mirror address.
+	ImageUrl string `pulumi:"imageUrl"`
+	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
+	JarStartArgs string `pulumi:"jarStartArgs"`
+	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
+	JarStartOptions string `pulumi:"jarStartOptions"`
+	// The JDK version that the deployment package depends on. Image type applications are not supported.
+	Jdk string `pulumi:"jdk"`
+	// Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+	Liveness string `pulumi:"liveness"`
+	// The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU.
+	Memory int `pulumi:"memory"`
+	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
+	MinReadyInstances int `pulumi:"minReadyInstances"`
+	// Mount description.
+	MountDesc string `pulumi:"mountDesc"`
+	// Mount point of NAS in application VPC.
+	MountHost string `pulumi:"mountHost"`
+	// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+	NamespaceId string `pulumi:"namespaceId"`
+	// ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+	NasId string `pulumi:"nasId"`
+	// OSS AccessKey ID.
+	OssAkId string `pulumi:"ossAkId"`
+	// OSS  AccessKey Secret.
+	OssAkSecret string `pulumi:"ossAkSecret"`
+	// OSS mount description information.
+	OssMountDescs string `pulumi:"ossMountDescs"`
+	// Application package type. Support FatJar, War and Image.
+	PackageType string `pulumi:"packageType"`
+	// Deployment package address. Only FatJar or War type applications can configure the deployment package address.
+	PackageUrl string `pulumi:"packageUrl"`
+	// The version number of the deployment package. Required when the Package Type is War and FatJar.
+	PackageVersion string `pulumi:"packageVersion"`
+	// The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
+	PhpArmsConfigLocation string `pulumi:"phpArmsConfigLocation"`
+	// PHP configuration file content.
+	PhpConfig string `pulumi:"phpConfig"`
+	// PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
+	PhpConfigLocation string `pulumi:"phpConfigLocation"`
+	// Execute the script after startup, the format is like: {"exec":{"command":["cat","/etc/group"]}}.
+	PostStart string `pulumi:"postStart"`
+	// Execute the script before stopping, the format is like: {"exec":{"command":["cat","/etc/group"]}}.
+	PreStop string `pulumi:"preStop"`
+	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds ":2}.
+	Readiness string `pulumi:"readiness"`
+	RegionId  string `pulumi:"regionId"`
+	// Initial number of instances.
+	Replicas       int    `pulumi:"replicas"`
+	RepoName       string `pulumi:"repoName"`
+	RepoNamespace  string `pulumi:"repoNamespace"`
+	RepoOriginType string `pulumi:"repoOriginType"`
+	// Security group ID.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// SLS  configuration.
+	SlsConfigs string `pulumi:"slsConfigs"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
+	TerminationGracePeriodSeconds int `pulumi:"terminationGracePeriodSeconds"`
+	// Time zone, the default value is Asia/Shanghai.
+	Timezone string `pulumi:"timezone"`
+	// Tomcat file configuration, set to "" or "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL.
+	TomcatConfig string `pulumi:"tomcatConfig"`
+	// The VPC corresponding to the SAE namespace. In SAE, a namespace can only correspond to one VPC and cannot be modified. Creating a SAE application in the namespace for the first time will form a binding relationship. Multiple namespaces can correspond to a VPC. If you leave it blank, it will default to the VPC ID bound to the namespace.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
+	WarStartOptions string `pulumi:"warStartOptions"`
+	// The version of tomcat that the deployment package depends on. Image type applications are not supported.
+	WebContainer string `pulumi:"webContainer"`
+}
+
+// GetApplicationsApplicationInput is an input type that accepts GetApplicationsApplicationArgs and GetApplicationsApplicationOutput values.
+// You can construct a concrete instance of `GetApplicationsApplicationInput` via:
+//
+//          GetApplicationsApplicationArgs{...}
+type GetApplicationsApplicationInput interface {
+	pulumi.Input
+
+	ToGetApplicationsApplicationOutput() GetApplicationsApplicationOutput
+	ToGetApplicationsApplicationOutputWithContext(context.Context) GetApplicationsApplicationOutput
+}
+
+type GetApplicationsApplicationArgs struct {
+	// The ARN of the RAM role required when pulling images across accounts.
+	AcrAssumeRoleArn pulumi.StringInput `pulumi:"acrAssumeRoleArn"`
+	// Application description information. No more than 1024 characters.
+	AppDescription pulumi.StringInput `pulumi:"appDescription"`
+	// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+	AppName pulumi.StringInput `pulumi:"appName"`
+	// The first ID of the resource.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+	Command pulumi.StringInput `pulumi:"command"`
+	// Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+	CommandArgs pulumi.StringInput `pulumi:"commandArgs"`
+	// ConfigMap mount description.
+	ConfigMapMountDesc pulumi.StringInput `pulumi:"configMapMountDesc"`
+	// The CPU required for each instance, in millicores, cannot be 0.
+	Cpu pulumi.IntInput `pulumi:"cpu"`
+	// Indicates That the Application of the Creation Time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Custom host mapping in the container. For example: [{"hostName":"samplehost","ip":"127.0.0.1"}].
+	CustomHostAlias pulumi.StringInput `pulumi:"customHostAlias"`
+	// The operating environment used by the Pandora application.
+	EdasContainerVersion pulumi.StringInput `pulumi:"edasContainerVersion"`
+	// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+	Envs pulumi.StringInput `pulumi:"envs"`
+	// The ID of the Application.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Mirror address. Only Image type applications can configure the mirror address.
+	ImageUrl pulumi.StringInput `pulumi:"imageUrl"`
+	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
+	JarStartArgs pulumi.StringInput `pulumi:"jarStartArgs"`
+	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
+	JarStartOptions pulumi.StringInput `pulumi:"jarStartOptions"`
+	// The JDK version that the deployment package depends on. Image type applications are not supported.
+	Jdk pulumi.StringInput `pulumi:"jdk"`
+	// Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+	Liveness pulumi.StringInput `pulumi:"liveness"`
+	// The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
+	MinReadyInstances pulumi.IntInput `pulumi:"minReadyInstances"`
+	// Mount description.
+	MountDesc pulumi.StringInput `pulumi:"mountDesc"`
+	// Mount point of NAS in application VPC.
+	MountHost pulumi.StringInput `pulumi:"mountHost"`
+	// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+	NasId pulumi.StringInput `pulumi:"nasId"`
+	// OSS AccessKey ID.
+	OssAkId pulumi.StringInput `pulumi:"ossAkId"`
+	// OSS  AccessKey Secret.
+	OssAkSecret pulumi.StringInput `pulumi:"ossAkSecret"`
+	// OSS mount description information.
+	OssMountDescs pulumi.StringInput `pulumi:"ossMountDescs"`
+	// Application package type. Support FatJar, War and Image.
+	PackageType pulumi.StringInput `pulumi:"packageType"`
+	// Deployment package address. Only FatJar or War type applications can configure the deployment package address.
+	PackageUrl pulumi.StringInput `pulumi:"packageUrl"`
+	// The version number of the deployment package. Required when the Package Type is War and FatJar.
+	PackageVersion pulumi.StringInput `pulumi:"packageVersion"`
+	// The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
+	PhpArmsConfigLocation pulumi.StringInput `pulumi:"phpArmsConfigLocation"`
+	// PHP configuration file content.
+	PhpConfig pulumi.StringInput `pulumi:"phpConfig"`
+	// PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
+	PhpConfigLocation pulumi.StringInput `pulumi:"phpConfigLocation"`
+	// Execute the script after startup, the format is like: {"exec":{"command":["cat","/etc/group"]}}.
+	PostStart pulumi.StringInput `pulumi:"postStart"`
+	// Execute the script before stopping, the format is like: {"exec":{"command":["cat","/etc/group"]}}.
+	PreStop pulumi.StringInput `pulumi:"preStop"`
+	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds ":2}.
+	Readiness pulumi.StringInput `pulumi:"readiness"`
+	RegionId  pulumi.StringInput `pulumi:"regionId"`
+	// Initial number of instances.
+	Replicas       pulumi.IntInput    `pulumi:"replicas"`
+	RepoName       pulumi.StringInput `pulumi:"repoName"`
+	RepoNamespace  pulumi.StringInput `pulumi:"repoNamespace"`
+	RepoOriginType pulumi.StringInput `pulumi:"repoOriginType"`
+	// Security group ID.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// SLS  configuration.
+	SlsConfigs pulumi.StringInput `pulumi:"slsConfigs"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
+	TerminationGracePeriodSeconds pulumi.IntInput `pulumi:"terminationGracePeriodSeconds"`
+	// Time zone, the default value is Asia/Shanghai.
+	Timezone pulumi.StringInput `pulumi:"timezone"`
+	// Tomcat file configuration, set to "" or "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL.
+	TomcatConfig pulumi.StringInput `pulumi:"tomcatConfig"`
+	// The VPC corresponding to the SAE namespace. In SAE, a namespace can only correspond to one VPC and cannot be modified. Creating a SAE application in the namespace for the first time will form a binding relationship. Multiple namespaces can correspond to a VPC. If you leave it blank, it will default to the VPC ID bound to the namespace.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
+	WarStartOptions pulumi.StringInput `pulumi:"warStartOptions"`
+	// The version of tomcat that the deployment package depends on. Image type applications are not supported.
+	WebContainer pulumi.StringInput `pulumi:"webContainer"`
+}
+
+func (GetApplicationsApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsApplication)(nil)).Elem()
+}
+
+func (i GetApplicationsApplicationArgs) ToGetApplicationsApplicationOutput() GetApplicationsApplicationOutput {
+	return i.ToGetApplicationsApplicationOutputWithContext(context.Background())
+}
+
+func (i GetApplicationsApplicationArgs) ToGetApplicationsApplicationOutputWithContext(ctx context.Context) GetApplicationsApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationOutput)
+}
+
+// GetApplicationsApplicationArrayInput is an input type that accepts GetApplicationsApplicationArray and GetApplicationsApplicationArrayOutput values.
+// You can construct a concrete instance of `GetApplicationsApplicationArrayInput` via:
+//
+//          GetApplicationsApplicationArray{ GetApplicationsApplicationArgs{...} }
+type GetApplicationsApplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationsApplicationArrayOutput() GetApplicationsApplicationArrayOutput
+	ToGetApplicationsApplicationArrayOutputWithContext(context.Context) GetApplicationsApplicationArrayOutput
+}
+
+type GetApplicationsApplicationArray []GetApplicationsApplicationInput
+
+func (GetApplicationsApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationsApplication)(nil)).Elem()
+}
+
+func (i GetApplicationsApplicationArray) ToGetApplicationsApplicationArrayOutput() GetApplicationsApplicationArrayOutput {
+	return i.ToGetApplicationsApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationsApplicationArray) ToGetApplicationsApplicationArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationArrayOutput)
+}
+
+type GetApplicationsApplicationOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsApplication)(nil)).Elem()
+}
+
+func (o GetApplicationsApplicationOutput) ToGetApplicationsApplicationOutput() GetApplicationsApplicationOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationOutput) ToGetApplicationsApplicationOutputWithContext(ctx context.Context) GetApplicationsApplicationOutput {
+	return o
+}
+
+// The ARN of the RAM role required when pulling images across accounts.
+func (o GetApplicationsApplicationOutput) AcrAssumeRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.AcrAssumeRoleArn }).(pulumi.StringOutput)
+}
+
+// Application description information. No more than 1024 characters.
+func (o GetApplicationsApplicationOutput) AppDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.AppDescription }).(pulumi.StringOutput)
+}
+
+// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+func (o GetApplicationsApplicationOutput) AppName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.AppName }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetApplicationsApplicationOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+func (o GetApplicationsApplicationOutput) Command() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.Command }).(pulumi.StringOutput)
+}
+
+// Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+func (o GetApplicationsApplicationOutput) CommandArgs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.CommandArgs }).(pulumi.StringOutput)
+}
+
+// ConfigMap mount description.
+func (o GetApplicationsApplicationOutput) ConfigMapMountDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.ConfigMapMountDesc }).(pulumi.StringOutput)
+}
+
+// The CPU required for each instance, in millicores, cannot be 0.
+func (o GetApplicationsApplicationOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// Indicates That the Application of the Creation Time.
+func (o GetApplicationsApplicationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Custom host mapping in the container. For example: [{"hostName":"samplehost","ip":"127.0.0.1"}].
+func (o GetApplicationsApplicationOutput) CustomHostAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.CustomHostAlias }).(pulumi.StringOutput)
+}
+
+// The operating environment used by the Pandora application.
+func (o GetApplicationsApplicationOutput) EdasContainerVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.EdasContainerVersion }).(pulumi.StringOutput)
+}
+
+// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+func (o GetApplicationsApplicationOutput) Envs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.Envs }).(pulumi.StringOutput)
+}
+
+// The ID of the Application.
+func (o GetApplicationsApplicationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Mirror address. Only Image type applications can configure the mirror address.
+func (o GetApplicationsApplicationOutput) ImageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.ImageUrl }).(pulumi.StringOutput)
+}
+
+// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
+func (o GetApplicationsApplicationOutput) JarStartArgs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.JarStartArgs }).(pulumi.StringOutput)
+}
+
+// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
+func (o GetApplicationsApplicationOutput) JarStartOptions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.JarStartOptions }).(pulumi.StringOutput)
+}
+
+// The JDK version that the deployment package depends on. Image type applications are not supported.
+func (o GetApplicationsApplicationOutput) Jdk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.Jdk }).(pulumi.StringOutput)
+}
+
+// Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+func (o GetApplicationsApplicationOutput) Liveness() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.Liveness }).(pulumi.StringOutput)
+}
+
+// The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU.
+func (o GetApplicationsApplicationOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
+func (o GetApplicationsApplicationOutput) MinReadyInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) int { return v.MinReadyInstances }).(pulumi.IntOutput)
+}
+
+// Mount description.
+func (o GetApplicationsApplicationOutput) MountDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.MountDesc }).(pulumi.StringOutput)
+}
+
+// Mount point of NAS in application VPC.
+func (o GetApplicationsApplicationOutput) MountHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.MountHost }).(pulumi.StringOutput)
+}
+
+// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+func (o GetApplicationsApplicationOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+func (o GetApplicationsApplicationOutput) NasId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.NasId }).(pulumi.StringOutput)
+}
+
+// OSS AccessKey ID.
+func (o GetApplicationsApplicationOutput) OssAkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.OssAkId }).(pulumi.StringOutput)
+}
+
+// OSS  AccessKey Secret.
+func (o GetApplicationsApplicationOutput) OssAkSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.OssAkSecret }).(pulumi.StringOutput)
+}
+
+// OSS mount description information.
+func (o GetApplicationsApplicationOutput) OssMountDescs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.OssMountDescs }).(pulumi.StringOutput)
+}
+
+// Application package type. Support FatJar, War and Image.
+func (o GetApplicationsApplicationOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// Deployment package address. Only FatJar or War type applications can configure the deployment package address.
+func (o GetApplicationsApplicationOutput) PackageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.PackageUrl }).(pulumi.StringOutput)
+}
+
+// The version number of the deployment package. Required when the Package Type is War and FatJar.
+func (o GetApplicationsApplicationOutput) PackageVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.PackageVersion }).(pulumi.StringOutput)
+}
+
+// The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
+func (o GetApplicationsApplicationOutput) PhpArmsConfigLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.PhpArmsConfigLocation }).(pulumi.StringOutput)
+}
+
+// PHP configuration file content.
+func (o GetApplicationsApplicationOutput) PhpConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.PhpConfig }).(pulumi.StringOutput)
+}
+
+// PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
+func (o GetApplicationsApplicationOutput) PhpConfigLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.PhpConfigLocation }).(pulumi.StringOutput)
+}
+
+// Execute the script after startup, the format is like: {"exec":{"command":["cat","/etc/group"]}}.
+func (o GetApplicationsApplicationOutput) PostStart() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.PostStart }).(pulumi.StringOutput)
+}
+
+// Execute the script before stopping, the format is like: {"exec":{"command":["cat","/etc/group"]}}.
+func (o GetApplicationsApplicationOutput) PreStop() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.PreStop }).(pulumi.StringOutput)
+}
+
+// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds ":2}.
+func (o GetApplicationsApplicationOutput) Readiness() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.Readiness }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationsApplicationOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// Initial number of instances.
+func (o GetApplicationsApplicationOutput) Replicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) int { return v.Replicas }).(pulumi.IntOutput)
+}
+
+func (o GetApplicationsApplicationOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationsApplicationOutput) RepoNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.RepoNamespace }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationsApplicationOutput) RepoOriginType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.RepoOriginType }).(pulumi.StringOutput)
+}
+
+// Security group ID.
+func (o GetApplicationsApplicationOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// SLS  configuration.
+func (o GetApplicationsApplicationOutput) SlsConfigs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.SlsConfigs }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetApplicationsApplicationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
+func (o GetApplicationsApplicationOutput) TerminationGracePeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) int { return v.TerminationGracePeriodSeconds }).(pulumi.IntOutput)
+}
+
+// Time zone, the default value is Asia/Shanghai.
+func (o GetApplicationsApplicationOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.Timezone }).(pulumi.StringOutput)
+}
+
+// Tomcat file configuration, set to "" or "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL.
+func (o GetApplicationsApplicationOutput) TomcatConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.TomcatConfig }).(pulumi.StringOutput)
+}
+
+// The VPC corresponding to the SAE namespace. In SAE, a namespace can only correspond to one VPC and cannot be modified. Creating a SAE application in the namespace for the first time will form a binding relationship. Multiple namespaces can correspond to a VPC. If you leave it blank, it will default to the VPC ID bound to the namespace.
+func (o GetApplicationsApplicationOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetApplicationsApplicationOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
+func (o GetApplicationsApplicationOutput) WarStartOptions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.WarStartOptions }).(pulumi.StringOutput)
+}
+
+// The version of tomcat that the deployment package depends on. Image type applications are not supported.
+func (o GetApplicationsApplicationOutput) WebContainer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.WebContainer }).(pulumi.StringOutput)
+}
+
+type GetApplicationsApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationsApplication)(nil)).Elem()
+}
+
+func (o GetApplicationsApplicationArrayOutput) ToGetApplicationsApplicationArrayOutput() GetApplicationsApplicationArrayOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationArrayOutput) ToGetApplicationsApplicationArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationArrayOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetApplicationsApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationsApplication {
+		return vs[0].([]GetApplicationsApplication)[vs[1].(int)]
+	}).(GetApplicationsApplicationOutput)
+}
+
 type GetConfigMapsMap struct {
 	// The first ID of the resource.
 	ConfigMapId string `pulumi:"configMapId"`
@@ -286,6 +821,8 @@ func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespace
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetApplicationsApplicationOutput{})
+	pulumi.RegisterOutputType(GetApplicationsApplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetConfigMapsMapOutput{})
 	pulumi.RegisterOutputType(GetConfigMapsMapArrayOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceOutput{})

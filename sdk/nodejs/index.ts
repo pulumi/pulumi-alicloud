@@ -42,6 +42,7 @@ import * as dataworks from "./dataworks";
 import * as dcdn from "./dcdn";
 import * as ddos from "./ddos";
 import * as dds from "./dds";
+import * as dfs from "./dfs";
 import * as directmail from "./directmail";
 import * as dms from "./dms";
 import * as dns from "./dns";
@@ -51,9 +52,11 @@ import * as ecp from "./ecp";
 import * as ecs from "./ecs";
 import * as edas from "./edas";
 import * as eds from "./eds";
+import * as ehpc from "./ehpc";
 import * as eipanycast from "./eipanycast";
 import * as elasticsearch from "./elasticsearch";
 import * as emr from "./emr";
+import * as ens from "./ens";
 import * as ess from "./ess";
 import * as eventbridge from "./eventbridge";
 import * as expressconnect from "./expressconnect";
@@ -90,6 +93,7 @@ import * as sae from "./sae";
 import * as sag from "./sag";
 import * as scdn from "./scdn";
 import * as sddp from "./sddp";
+import * as securitycenter from "./securitycenter";
 import * as slb from "./slb";
 import * as tsdb from "./tsdb";
 import * as types from "./types";
@@ -127,6 +131,7 @@ export {
     dcdn,
     ddos,
     dds,
+    dfs,
     directmail,
     dms,
     dns,
@@ -136,9 +141,11 @@ export {
     ecs,
     edas,
     eds,
+    ehpc,
     eipanycast,
     elasticsearch,
     emr,
+    ens,
     ess,
     eventbridge,
     expressconnect,
@@ -175,6 +182,7 @@ export {
     sag,
     scdn,
     sddp,
+    securitycenter,
     slb,
     tsdb,
     types,

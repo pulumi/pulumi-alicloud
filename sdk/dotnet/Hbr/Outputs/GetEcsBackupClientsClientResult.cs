@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class GetEcsBackupClientsClientResult
     {
         /// <summary>
-        /// The Client System Architecture (Only the ECS File Backup Client Is Available. Possible Values: * AMD64 * 386.
+        /// The Client System Architecture (Only the ECS File Backup Client Is Available. Valid Values: `AMD64` , `386`.
         /// </summary>
         public readonly string ArchType;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BackupStatus;
         /// <summary>
-        /// The Client Type. Possible Values: * ECS_CLIENT (ECS File Backup Client).
+        /// The Client Type. Valid Values: `ECS_CLIENT` (ECS File Backup Client).
         /// </summary>
         public readonly string ClientType;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The Data Plane Data Access Point Type. Valid Values: * Public Internet * VPC VPC * Classic Network.
+        /// The Data Plane Data Access Point Type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
         /// </summary>
         public readonly string DataNetworkType;
         /// <summary>
-        /// The Data Plane Proxy Settings. Valid Values: * DISABLE  * USE_CONTROL_PROXY (Default, the same with Control Plane) * CUSTOM (Custom Configuration Items for the HTTP Protocol).
+        /// The Data Plane Proxy Settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`. **Note**: `USE_CONTROL_PROXY` (Default, the same with Control Plane), `CUSTOM` (Custom Configuration Items for the HTTP Protocol).
         /// </summary>
         public readonly string DataProxySetting;
         /// <summary>

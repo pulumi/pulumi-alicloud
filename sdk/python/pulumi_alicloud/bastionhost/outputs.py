@@ -11,6 +11,7 @@ from .. import _utilities
 __all__ = [
     'GetInstancesInstanceResult',
     'GetUserGroupsGroupResult',
+    'GetUsersUserResult',
 ]
 
 @pulumi.output_type
@@ -203,5 +204,144 @@ class GetUserGroupsGroupResult(dict):
         Specify the New Group Name. Supports up to 128 Characters.
         """
         return pulumi.get(self, "user_group_name")
+
+
+@pulumi.output_type
+class GetUsersUserResult(dict):
+    def __init__(__self__, *,
+                 comment: str,
+                 display_name: str,
+                 email: str,
+                 id: str,
+                 instance_id: str,
+                 mobile: str,
+                 mobile_country_code: str,
+                 source: str,
+                 source_user_id: str,
+                 status: str,
+                 user_id: str,
+                 user_name: str):
+        """
+        :param str comment: Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
+        :param str display_name: Specify the New Created the User's Display Name. Supports up to 128 Characters.
+        :param str email: Specify the New User's Mailbox.
+        :param str id: The ID of the User.
+        :param str instance_id: You Want to Query the User the Bastion Host ID of.
+        :param str mobile: Specify the New of the User That Created a Different Mobile Phone Number from Your.
+        :param str mobile_country_code: Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN Value: CN: Mainland China (+86) HK: hong Kong, China (+852) Mo: Macau, China (+853) TW: Taiwan, China (+886) ru: Russian (+7) SG: Singapore (+65) My: malaysia (+60) ID: Indonesia (+62) De: Germany (+49) AU: Australia (+61) US: United States (+1) AE: dubai (+971) JP: Japan (+81) Introducing the Long-Range GB: United Kingdom (+44) in: India (+91) KR: South Korea (+82) Ph: philippines (+63) Ch: Switzerland (+41) Se: Sweden (+46).
+        :param str source: Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+        :param str source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+        :param str status: The status of the resource.
+        :param str user_id: The User ID.
+        :param str user_name: Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+        """
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "mobile", mobile)
+        pulumi.set(__self__, "mobile_country_code", mobile_country_code)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "source_user_id", source_user_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> str:
+        """
+        Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
+        """
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Specify the New Created the User's Display Name. Supports up to 128 Characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        Specify the New User's Mailbox.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the User.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        You Want to Query the User the Bastion Host ID of.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def mobile(self) -> str:
+        """
+        Specify the New of the User That Created a Different Mobile Phone Number from Your.
+        """
+        return pulumi.get(self, "mobile")
+
+    @property
+    @pulumi.getter(name="mobileCountryCode")
+    def mobile_country_code(self) -> str:
+        """
+        Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN Value: CN: Mainland China (+86) HK: hong Kong, China (+852) Mo: Macau, China (+853) TW: Taiwan, China (+886) ru: Russian (+7) SG: Singapore (+65) My: malaysia (+60) ID: Indonesia (+62) De: Germany (+49) AU: Australia (+61) US: United States (+1) AE: dubai (+971) JP: Japan (+81) Introducing the Long-Range GB: United Kingdom (+44) in: India (+91) KR: South Korea (+82) Ph: philippines (+63) Ch: Switzerland (+41) Se: Sweden (+46).
+        """
+        return pulumi.get(self, "mobile_country_code")
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        """
+        Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="sourceUserId")
+    def source_user_id(self) -> str:
+        """
+        Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+        """
+        return pulumi.get(self, "source_user_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        The User ID.
+        """
+        return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+        """
+        return pulumi.get(self, "user_name")
 
 

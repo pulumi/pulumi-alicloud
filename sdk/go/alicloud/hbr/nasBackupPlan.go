@@ -69,7 +69,7 @@ type NasBackupPlan struct {
 
 	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
 	BackupType pulumi.StringOutput `pulumi:"backupType"`
-	// File System Creation Time. Unix Time Seconds.
+	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime pulumi.StringOutput    `pulumi:"createTime"`
 	Detail     pulumi.StringPtrOutput `pulumi:"detail"`
 	// Whether to Disable the Backup Task. Valid Values: true, false.
@@ -139,7 +139,7 @@ func GetNasBackupPlan(ctx *pulumi.Context,
 type nasBackupPlanState struct {
 	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
-	// File System Creation Time. Unix Time Seconds.
+	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime *string `pulumi:"createTime"`
 	Detail     *string `pulumi:"detail"`
 	// Whether to Disable the Backup Task. Valid Values: true, false.
@@ -169,7 +169,7 @@ type nasBackupPlanState struct {
 type NasBackupPlanState struct {
 	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput
-	// File System Creation Time. Unix Time Seconds.
+	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime pulumi.StringPtrInput
 	Detail     pulumi.StringPtrInput
 	// Whether to Disable the Backup Task. Valid Values: true, false.
@@ -203,7 +203,7 @@ func (NasBackupPlanState) ElementType() reflect.Type {
 type nasBackupPlanArgs struct {
 	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
-	// File System Creation Time. Unix Time Seconds.
+	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime string  `pulumi:"createTime"`
 	Detail     *string `pulumi:"detail"`
 	// Whether to Disable the Backup Task. Valid Values: true, false.
@@ -234,7 +234,7 @@ type nasBackupPlanArgs struct {
 type NasBackupPlanArgs struct {
 	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput
-	// File System Creation Time. Unix Time Seconds.
+	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime pulumi.StringInput
 	Detail     pulumi.StringPtrInput
 	// Whether to Disable the Backup Task. Valid Values: true, false.

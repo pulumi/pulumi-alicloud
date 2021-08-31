@@ -7,11 +7,14 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./getInstances";
 export * from "./getUserGroups";
+export * from "./getUsers";
 export * from "./instance";
+export * from "./user";
 export * from "./userGroup";
 
 // Import resources to register:
 import { Instance } from "./instance";
+import { User } from "./user";
 import { UserGroup } from "./userGroup";
 
 const _module = {
@@ -20,6 +23,8 @@ const _module = {
         switch (type) {
             case "alicloud:bastionhost/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:bastionhost/user:User":
+                return new User(name, <any>undefined, { urn })
             case "alicloud:bastionhost/userGroup:UserGroup":
                 return new UserGroup(name, <any>undefined, { urn })
             default:
@@ -28,4 +33,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "bastionhost/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "bastionhost/user", _module)
 pulumi.runtime.registerResourceModule("alicloud", "bastionhost/userGroup", _module)

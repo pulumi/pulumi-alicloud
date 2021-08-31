@@ -19,17 +19,37 @@ namespace Pulumi.AliCloud.EventBridge
         /// &gt; **NOTE:** Available in v1.126.0+
         /// 
         /// &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var open = Output.Create(AliCloud.EventBridge.GetService.InvokeAsync(new AliCloud.EventBridge.GetServiceArgs
+        ///         {
+        ///             Enable = "On",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
-        public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
+        public static Task<GetServiceResult> InvokeAsync(GetServiceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("alicloud:eventbridge/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
     }
 
 
     public sealed class GetServiceArgs : Pulumi.InvokeArgs
     {
-        [Input("code", required: true)]
-        public string Code { get; set; } = null!;
-
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
         /// </summary>
@@ -45,7 +65,6 @@ namespace Pulumi.AliCloud.EventBridge
     [OutputType]
     public sealed class GetServiceResult
     {
-        public readonly string Code;
         public readonly string? Enable;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -58,15 +77,12 @@ namespace Pulumi.AliCloud.EventBridge
 
         [OutputConstructor]
         private GetServiceResult(
-            string code,
-
             string? enable,
 
             string id,
 
             string status)
         {
-            Code = code;
             Enable = enable;
             Id = id;
             Status = status;

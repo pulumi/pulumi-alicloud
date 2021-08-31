@@ -3,6 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .config import *
+from .get_configs import *
 from .get_rules import *
 from .rule import *
 from . import outputs
@@ -19,13 +21,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:sddp/rule:Rule":
+            if typ == "alicloud:sddp/config:Config":
+                return Config(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:sddp/rule:Rule":
                 return Rule(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "sddp/config", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "sddp/rule", _module_instance)
 
 _register_module()

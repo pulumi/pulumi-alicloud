@@ -27,6 +27,7 @@ __all__ = [
     'region',
     'secret_key',
     'security_token',
+    'security_transport',
     'shared_credentials_file',
     'skip_region_validation',
     'source_ip',
@@ -102,6 +103,11 @@ security_token = __config__.get('securityToken')
 security token. A security token is only required if you are using Security Token Service.
 """
 
+security_transport = __config__.get('securityTransport')
+"""
+The security transport for the assume role invoking.
+"""
+
 shared_credentials_file = __config__.get('sharedCredentialsFile')
 """
 The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
@@ -115,7 +121,6 @@ that are not public (yet).
 
 source_ip = __config__.get('sourceIp')
 """
-The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-console.
+The source ip for the assume role invoking.
 """
 

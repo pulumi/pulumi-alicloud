@@ -185,6 +185,7 @@ type ProviderEndpoint struct {
 	Actiontrail         *string `pulumi:"actiontrail"`
 	Adb                 *string `pulumi:"adb"`
 	Alb                 *string `pulumi:"alb"`
+	Alidfs              *string `pulumi:"alidfs"`
 	Alidns              *string `pulumi:"alidns"`
 	Alikafka            *string `pulumi:"alikafka"`
 	Apigateway          *string `pulumi:"apigateway"`
@@ -215,9 +216,11 @@ type ProviderEndpoint struct {
 	Drds                *string `pulumi:"drds"`
 	Eci                 *string `pulumi:"eci"`
 	Ecs                 *string `pulumi:"ecs"`
+	Ehpc                *string `pulumi:"ehpc"`
 	Eipanycast          *string `pulumi:"eipanycast"`
 	Elasticsearch       *string `pulumi:"elasticsearch"`
 	Emr                 *string `pulumi:"emr"`
+	Ens                 *string `pulumi:"ens"`
 	Ess                 *string `pulumi:"ess"`
 	Eventbridge         *string `pulumi:"eventbridge"`
 	Fc                  *string `pulumi:"fc"`
@@ -255,6 +258,7 @@ type ProviderEndpoint struct {
 	Resourcemanager     *string `pulumi:"resourcemanager"`
 	Resourcesharing     *string `pulumi:"resourcesharing"`
 	Ros                 *string `pulumi:"ros"`
+	Sas                 *string `pulumi:"sas"`
 	Scdn                *string `pulumi:"scdn"`
 	Sddp                *string `pulumi:"sddp"`
 	Serverless          *string `pulumi:"serverless"`
@@ -280,6 +284,7 @@ type ProviderEndpointArgs struct {
 	Actiontrail         pulumi.StringPtrInput `pulumi:"actiontrail"`
 	Adb                 pulumi.StringPtrInput `pulumi:"adb"`
 	Alb                 pulumi.StringPtrInput `pulumi:"alb"`
+	Alidfs              pulumi.StringPtrInput `pulumi:"alidfs"`
 	Alidns              pulumi.StringPtrInput `pulumi:"alidns"`
 	Alikafka            pulumi.StringPtrInput `pulumi:"alikafka"`
 	Apigateway          pulumi.StringPtrInput `pulumi:"apigateway"`
@@ -310,9 +315,11 @@ type ProviderEndpointArgs struct {
 	Drds                pulumi.StringPtrInput `pulumi:"drds"`
 	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
+	Ehpc                pulumi.StringPtrInput `pulumi:"ehpc"`
 	Eipanycast          pulumi.StringPtrInput `pulumi:"eipanycast"`
 	Elasticsearch       pulumi.StringPtrInput `pulumi:"elasticsearch"`
 	Emr                 pulumi.StringPtrInput `pulumi:"emr"`
+	Ens                 pulumi.StringPtrInput `pulumi:"ens"`
 	Ess                 pulumi.StringPtrInput `pulumi:"ess"`
 	Eventbridge         pulumi.StringPtrInput `pulumi:"eventbridge"`
 	Fc                  pulumi.StringPtrInput `pulumi:"fc"`
@@ -350,6 +357,7 @@ type ProviderEndpointArgs struct {
 	Resourcemanager     pulumi.StringPtrInput `pulumi:"resourcemanager"`
 	Resourcesharing     pulumi.StringPtrInput `pulumi:"resourcesharing"`
 	Ros                 pulumi.StringPtrInput `pulumi:"ros"`
+	Sas                 pulumi.StringPtrInput `pulumi:"sas"`
 	Scdn                pulumi.StringPtrInput `pulumi:"scdn"`
 	Sddp                pulumi.StringPtrInput `pulumi:"sddp"`
 	Serverless          pulumi.StringPtrInput `pulumi:"serverless"`
@@ -421,6 +429,10 @@ func (o ProviderEndpointOutput) Adb() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Alb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Alb }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Alidfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Alidfs }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Alidns() pulumi.StringPtrOutput {
@@ -543,6 +555,10 @@ func (o ProviderEndpointOutput) Ecs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ecs }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Ehpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ehpc }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Eipanycast() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eipanycast }).(pulumi.StringPtrOutput)
 }
@@ -553,6 +569,10 @@ func (o ProviderEndpointOutput) Elasticsearch() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Emr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Emr }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Ens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ens }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ess() pulumi.StringPtrOutput {
@@ -701,6 +721,10 @@ func (o ProviderEndpointOutput) Resourcesharing() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Ros() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ros }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Sas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Sas }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Scdn() pulumi.StringPtrOutput {

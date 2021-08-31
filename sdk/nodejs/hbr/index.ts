@@ -11,9 +11,12 @@ export * from "./getEcsBackupClients";
 export * from "./getEcsBackupPlans";
 export * from "./getNasBackupPlans";
 export * from "./getOssBackupPlans";
+export * from "./getRestoreJobs";
+export * from "./getSnapshots";
 export * from "./getVaults";
 export * from "./nasBackupPlan";
 export * from "./ossBackupPlan";
+export * from "./restoreJob";
 export * from "./vault";
 
 // Import resources to register:
@@ -21,6 +24,7 @@ import { EcsBackupClient } from "./ecsBackupClient";
 import { EcsBackupPlan } from "./ecsBackupPlan";
 import { NasBackupPlan } from "./nasBackupPlan";
 import { OssBackupPlan } from "./ossBackupPlan";
+import { RestoreJob } from "./restoreJob";
 import { Vault } from "./vault";
 
 const _module = {
@@ -35,6 +39,8 @@ const _module = {
                 return new NasBackupPlan(name, <any>undefined, { urn })
             case "alicloud:hbr/ossBackupPlan:OssBackupPlan":
                 return new OssBackupPlan(name, <any>undefined, { urn })
+            case "alicloud:hbr/restoreJob:RestoreJob":
+                return new RestoreJob(name, <any>undefined, { urn })
             case "alicloud:hbr/vault:Vault":
                 return new Vault(name, <any>undefined, { urn })
             default:
@@ -46,4 +52,5 @@ pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupClient", _module
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/nasBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ossBackupPlan", _module)
+pulumi.runtime.registerResourceModule("alicloud", "hbr/restoreJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/vault", _module)

@@ -114,6 +114,7 @@ export interface ProviderEndpoint {
     actiontrail?: string;
     adb?: string;
     alb?: string;
+    alidfs?: string;
     alidns?: string;
     alikafka?: string;
     apigateway?: string;
@@ -144,9 +145,11 @@ export interface ProviderEndpoint {
     drds?: string;
     eci?: string;
     ecs?: string;
+    ehpc?: string;
     eipanycast?: string;
     elasticsearch?: string;
     emr?: string;
+    ens?: string;
     ess?: string;
     eventbridge?: string;
     fc?: string;
@@ -184,6 +187,7 @@ export interface ProviderEndpoint {
     resourcemanager?: string;
     resourcesharing?: string;
     ros?: string;
+    sas?: string;
     scdn?: string;
     sddp?: string;
     serverless?: string;
@@ -757,6 +761,262 @@ export namespace adb {
 }
 
 export namespace alb {
+    export interface AclAclEntry {
+        /**
+         * The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+         */
+        description?: string;
+        /**
+         * The IP address for the ACL entry.
+         */
+        entry?: string;
+        /**
+         * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+         */
+        status: string;
+    }
+
+    export interface GetAclsAcl {
+        /**
+         * ACL Entries.
+         */
+        aclEntries: outputs.alb.GetAclsAclAclEntry[];
+        /**
+         * Access Control Policy ID.
+         */
+        aclId: string;
+        /**
+         * The ACL Name.
+         */
+        aclName: string;
+        /**
+         * Address Protocol Version.
+         */
+        addressIpVersion: string;
+        /**
+         * The ID of the Acl.
+         */
+        id: string;
+        /**
+         * Resource Group to Which the Number.
+         */
+        resourceGroupId: string;
+        /**
+         * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+         */
+        status: string;
+    }
+
+    export interface GetAclsAclAclEntry {
+        /**
+         * Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
+         */
+        description: string;
+        entry: string;
+        /**
+         * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+         */
+        status: string;
+    }
+
+    export interface GetListenersListener {
+        /**
+         * Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+         */
+        accessLogRecordCustomizedHeadersEnabled: boolean;
+        /**
+         * Xtrace Configuration Information.
+         */
+        accessLogTracingConfigs: outputs.alb.GetListenersListenerAccessLogTracingConfig[];
+        /**
+         * Snooping Binding of the Access Policy Group ID List.
+         */
+        aclId: string;
+        /**
+         * The type of the ACL. Valid values: White: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. Black: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+         */
+        aclType: string;
+        /**
+         * Certificate.
+         */
+        certificates: outputs.alb.GetListenersListenerCertificate[];
+        /**
+         * The Default Rule Action List.
+         */
+        defaultActions: outputs.alb.GetListenersListenerDefaultAction[];
+        /**
+         * Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
+         */
+        gzipEnabled: boolean;
+        /**
+         * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+         */
+        http2Enabled: boolean;
+        /**
+         * The ID of the Listener.
+         */
+        id: string;
+        /**
+         * Specify the Connection Idle Timeout Value: 1 to 60.
+         */
+        idleTimeout: number;
+        /**
+         * Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters. 	* `listenerId` - on Behalf of the Resource Level Id of the Resources Property Fields.
+         */
+        listenerDescription: string;
+        listenerId: string;
+        /**
+         * The SLB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
+         */
+        listenerPort: number;
+        /**
+         * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+         */
+        listenerProtocol: string;
+        /**
+         * The SLB Instance Id.
+         */
+        loadBalancerId: string;
+        /**
+         * This Request Returned by the Maximum Number of Records.
+         */
+        maxResults: string;
+        /**
+         * The Current Call Returns to the Position of the Set to Null Represents the Data Has Been Read to the End of.
+         */
+        nextToken: string;
+        /**
+         * Configuration Associated with the QuIC Listening.
+         */
+        quicConfigs: outputs.alb.GetListenersListenerQuicConfig[];
+        /**
+         * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+         */
+        requestTimeout: number;
+        /**
+         * Security Policy.
+         */
+        securityPolicyId: string;
+        /**
+         * The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+         */
+        status: string;
+        /**
+         * xforwardfor Related Attribute Configuration.
+         */
+        xforwardedForConfigs: outputs.alb.GetListenersListenerXforwardedForConfig[];
+    }
+
+    export interface GetListenersListenerAccessLogTracingConfig {
+        /**
+         * Xtrace Function. Value: True Or False. Default Value: False.
+         */
+        tracingEnabled: boolean;
+        /**
+         * Xtrace Sampling Rate. Value: **1~10000**.
+         */
+        tracingSample: number;
+        /**
+         * Xtrace Type Value Is **Zipkin**.
+         */
+        tracingType: string;
+    }
+
+    export interface GetListenersListenerCertificate {
+        certificateId: string;
+    }
+
+    export interface GetListenersListenerDefaultAction {
+        /**
+         * The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
+         */
+        forwardGroupConfigs: outputs.alb.GetListenersListenerDefaultActionForwardGroupConfig[];
+        /**
+         * Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
+         */
+        type: string;
+    }
+
+    export interface GetListenersListenerDefaultActionForwardGroupConfig {
+        /**
+         * The destination server group to which requests are forwarded.
+         */
+        serverGroupTuples: outputs.alb.GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple[];
+    }
+
+    export interface GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple {
+        /**
+         * The ID of the destination server group to which requests are forwarded.
+         */
+        serverGroupId: string;
+    }
+
+    export interface GetListenersListenerQuicConfig {
+        /**
+         * The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
+         */
+        quicListenerId: string;
+        /**
+         * Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
+         */
+        quicUpgradeEnabled: boolean;
+    }
+
+    export interface GetListenersListenerXforwardedForConfig {
+        /**
+         * The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+         */
+        xforwardedforclientcertIssuerdnalias: string;
+        /**
+         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+         */
+        xforwardedforclientcertIssuerdnenabled: boolean;
+        /**
+         * The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xforwardedforclientcertclientverifyalias: string;
+        /**
+         * Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+         */
+        xforwardedforclientcertclientverifyenabled: boolean;
+        /**
+         * The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xforwardedforclientcertfingerprintalias: string;
+        /**
+         * Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+         */
+        xforwardedforclientcertfingerprintenabled: boolean;
+        /**
+         * The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xforwardedforclientcertsubjectdnalias: string;
+        /**
+         * Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         */
+        xforwardedforclientcertsubjectdnenabled: boolean;
+        /**
+         * Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+         */
+        xforwardedforclientsrcportenabled: boolean;
+        /**
+         * Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
+         */
+        xforwardedforenabled: boolean;
+        /**
+         * Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+         */
+        xforwardedforprotoenabled: boolean;
+        /**
+         * Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
+         */
+        xforwardedforslbidenabled: boolean;
+        /**
+         * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+         */
+        xforwardedforslbportenabled: boolean;
+    }
+
     export interface GetLoadBalancersBalancer {
         /**
          * The Access Logging Configuration Structure.
@@ -908,6 +1168,261 @@ export namespace alb {
 
     export interface GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
         address: string;
+    }
+
+    export interface GetRulesRule {
+        /**
+         * The ID of the Rule.
+         */
+        id: string;
+        /**
+         * The ID of the listener to which the forwarding rule belongs.
+         */
+        listenerId: string;
+        /**
+         * The ID of the Application Load Balancer (ALB) instance to which the forwarding rule belongs.
+         */
+        loadBalancerId: string;
+        /**
+         * The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority.  Note The priority of each rule within the same listener must be unique.
+         */
+        priority: number;
+        /**
+         * The actions of the forwarding rules.
+         */
+        ruleActions: outputs.alb.GetRulesRuleRuleAction[];
+        /**
+         * The conditions of the forwarding rule.
+         */
+        ruleConditions: outputs.alb.GetRulesRuleRuleCondition[];
+        /**
+         * The first ID of the resource.
+         */
+        ruleId: string;
+        /**
+         * The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+         */
+        ruleName: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
+    export interface GetRulesRuleRuleAction {
+        /**
+         * The configuration of the fixed response.
+         */
+        fixedResponseConfigs: outputs.alb.GetRulesRuleRuleActionFixedResponseConfig[];
+        /**
+         * The configurations of the destination server groups.
+         */
+        forwardGroupConfigs: outputs.alb.GetRulesRuleRuleActionForwardGroupConfig[];
+        /**
+         * The configuration of the inserted header field.
+         */
+        insertHeaderConfigs: outputs.alb.GetRulesRuleRuleActionInsertHeaderConfig[];
+        /**
+         * The order of the forwarding rule actions. Valid values:1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+         */
+        order: number;
+        /**
+         * The configuration of the external redirect action.
+         */
+        redirectConfigs: outputs.alb.GetRulesRuleRuleActionRedirectConfig[];
+        /**
+         * The redirect action within ALB.
+         */
+        rewriteConfigs: outputs.alb.GetRulesRuleRuleActionRewriteConfig[];
+        /**
+         * The type of the forwarding rule.
+         */
+        type: string;
+    }
+
+    export interface GetRulesRuleRuleActionFixedResponseConfig {
+        /**
+         * The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+         */
+        content: string;
+        /**
+         * The format of the fixed response.  Valid values: text/plain, text/css, text/html, application/javascript, and application/json.
+         */
+        contentType: string;
+        /**
+         * The redirect method. Valid values:301, 302, 303, 307, and 308.
+         */
+        httpCode: string;
+    }
+
+    export interface GetRulesRuleRuleActionForwardGroupConfig {
+        /**
+         * The destination server group to which requests are forwarded.
+         */
+        serverGroupTuples: outputs.alb.GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple[];
+    }
+
+    export interface GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple {
+        /**
+         * The ID of the destination server group to which requests are forwarded.
+         */
+        serverGroupId: string;
+    }
+
+    export interface GetRulesRuleRuleActionInsertHeaderConfig {
+        /**
+         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         */
+        key: string;
+        /**
+         * The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+         */
+        value: string;
+        /**
+         * Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+         */
+        valueType: string;
+    }
+
+    export interface GetRulesRuleRuleActionRedirectConfig {
+        /**
+         * The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         */
+        host: string;
+        /**
+         * The redirect method. Valid values:301, 302, 303, 307, and 308.
+         */
+        httpCode: string;
+        /**
+         * The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         */
+        path: string;
+        /**
+         * The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+         */
+        port: string;
+        /**
+         * The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+         */
+        protocol: string;
+        /**
+         * The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+         */
+        query: string;
+    }
+
+    export interface GetRulesRuleRuleActionRewriteConfig {
+        /**
+         * The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         */
+        host: string;
+        /**
+         * The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         */
+        path: string;
+        /**
+         * The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+         */
+        query: string;
+    }
+
+    export interface GetRulesRuleRuleCondition {
+        /**
+         * The configuration of the cookie.
+         */
+        cookieConfigs: outputs.alb.GetRulesRuleRuleConditionCookieConfig[];
+        /**
+         * The configuration of the header field.
+         */
+        headerConfigs: outputs.alb.GetRulesRuleRuleConditionHeaderConfig[];
+        /**
+         * The configuration of the host.
+         */
+        hostConfigs: outputs.alb.GetRulesRuleRuleConditionHostConfig[];
+        /**
+         * The configuration of the request method.
+         */
+        methodConfigs: outputs.alb.GetRulesRuleRuleConditionMethodConfig[];
+        /**
+         * The configuration of the path for the request to be forwarded.
+         */
+        pathConfigs: outputs.alb.GetRulesRuleRuleConditionPathConfig[];
+        /**
+         * The configuration of the query string.
+         */
+        queryStringConfigs: outputs.alb.GetRulesRuleRuleConditionQueryStringConfig[];
+        /**
+         * The type of the forwarding rule.
+         */
+        type: string;
+    }
+
+    export interface GetRulesRuleRuleConditionCookieConfig {
+        /**
+         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         */
+        values: outputs.alb.GetRulesRuleRuleConditionCookieConfigValue[];
+    }
+
+    export interface GetRulesRuleRuleConditionCookieConfigValue {
+        /**
+         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         */
+        key: string;
+        /**
+         * The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+         */
+        value: string;
+    }
+
+    export interface GetRulesRuleRuleConditionHeaderConfig {
+        /**
+         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         */
+        key: string;
+        /**
+         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         */
+        values: string[];
+    }
+
+    export interface GetRulesRuleRuleConditionHostConfig {
+        /**
+         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         */
+        values: string[];
+    }
+
+    export interface GetRulesRuleRuleConditionMethodConfig {
+        /**
+         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         */
+        values: string[];
+    }
+
+    export interface GetRulesRuleRuleConditionPathConfig {
+        /**
+         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         */
+        values: string[];
+    }
+
+    export interface GetRulesRuleRuleConditionQueryStringConfig {
+        /**
+         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         */
+        values: outputs.alb.GetRulesRuleRuleConditionQueryStringConfigValue[];
+    }
+
+    export interface GetRulesRuleRuleConditionQueryStringConfigValue {
+        /**
+         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         */
+        key: string;
+        /**
+         * The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+         */
+        value: string;
     }
 
     export interface GetSecurityPoliciesPolicy {
@@ -1100,6 +1615,116 @@ export namespace alb {
         zoneId: string;
     }
 
+    export interface ListenerAccessLogTracingConfig {
+        /**
+         * Xtrace Function. Value: True Or False . Default Value: False.
+         */
+        tracingEnabled?: boolean;
+        /**
+         * Xtrace Sampling Rate. Value: **1~10000**.
+         */
+        tracingSample?: number;
+        /**
+         * Xtrace Type Value Is **Zipkin**.
+         */
+        tracingType?: string;
+    }
+
+    export interface ListenerCertificate {
+        certificateId?: string;
+    }
+
+    export interface ListenerDefaultAction {
+        /**
+         * The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+         */
+        forwardGroupConfig: outputs.alb.ListenerDefaultActionForwardGroupConfig;
+        /**
+         * Action Type.
+         */
+        type: string;
+    }
+
+    export interface ListenerDefaultActionForwardGroupConfig {
+        /**
+         * The destination server group to which requests are forwarded.
+         */
+        serverGroupTuples: outputs.alb.ListenerDefaultActionForwardGroupConfigServerGroupTuple[];
+    }
+
+    export interface ListenerDefaultActionForwardGroupConfigServerGroupTuple {
+        /**
+         * The ID of the destination server group to which requests are forwarded.
+         */
+        serverGroupId: string;
+    }
+
+    export interface ListenerQuicConfig {
+        /**
+         * There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
+         */
+        quicListenerId?: string;
+        /**
+         * Indicates Whether to Enable the QuIC Upgrade.
+         */
+        quicUpgradeEnabled: boolean;
+    }
+
+    export interface ListenerXforwardedForConfig {
+        /**
+         * The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+         */
+        xforwardedforclientcertIssuerdnalias?: string;
+        /**
+         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+         */
+        xforwardedforclientcertIssuerdnenabled: boolean;
+        /**
+         * The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xforwardedforclientcertclientverifyalias?: string;
+        /**
+         * Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+         */
+        xforwardedforclientcertclientverifyenabled: boolean;
+        /**
+         * The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xforwardedforclientcertfingerprintalias?: string;
+        /**
+         * Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+         */
+        xforwardedforclientcertfingerprintenabled: boolean;
+        /**
+         * The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xforwardedforclientcertsubjectdnalias?: string;
+        /**
+         * Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         */
+        xforwardedforclientcertsubjectdnenabled: boolean;
+        /**
+         * Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+         */
+        xforwardedforclientsrcportenabled: boolean;
+        /**
+         * Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+         */
+        xforwardedforenabled: boolean;
+        /**
+         * Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+         */
+        xforwardedforprotoenabled: boolean;
+        /**
+         * Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+         */
+        xforwardedforslbidenabled: boolean;
+        /**
+         * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+         */
+        xforwardedforslbportenabled: boolean;
+    }
+
     export interface LoadBalancerAccessLogConfig {
         /**
          * The log service that access logs are shipped to.
@@ -1140,17 +1765,237 @@ export namespace alb {
         zoneId: string;
     }
 
+    export interface RuleRuleAction {
+        /**
+         * The configuration of the fixed response. See the following `Block fixedResponseConfig`.
+         */
+        fixedResponseConfig?: outputs.alb.RuleRuleActionFixedResponseConfig;
+        /**
+         * The forward response action within ALB. See the following `Block forwardGroupConfig`.
+         */
+        forwardGroupConfig: outputs.alb.RuleRuleActionForwardGroupConfig;
+        /**
+         * The configuration of the inserted header field. See the following `Block insertHeaderConfig`.
+         */
+        insertHeaderConfig?: outputs.alb.RuleRuleActionInsertHeaderConfig;
+        /**
+         * The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+         */
+        order: number;
+        /**
+         * The configuration of the external redirect action. See the following `Block redirectConfig`.
+         */
+        redirectConfig?: outputs.alb.RuleRuleActionRedirectConfig;
+        /**
+         * The redirect action within ALB. See the following `Block rewriteConfig`.
+         */
+        rewriteConfig?: outputs.alb.RuleRuleActionRewriteConfig;
+        /**
+         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         */
+        type: string;
+    }
+
+    export interface RuleRuleActionFixedResponseConfig {
+        /**
+         * The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+         */
+        content: string;
+        /**
+         * The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+         */
+        contentType?: string;
+        /**
+         * The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+         */
+        httpCode?: string;
+    }
+
+    export interface RuleRuleActionForwardGroupConfig {
+        /**
+         * The destination server group to which requests are forwarded.
+         */
+        serverGroupTuples: outputs.alb.RuleRuleActionForwardGroupConfigServerGroupTuple[];
+    }
+
+    export interface RuleRuleActionForwardGroupConfigServerGroupTuple {
+        /**
+         * The ID of the destination server group to which requests are forwarded.
+         */
+        serverGroupId: string;
+    }
+
+    export interface RuleRuleActionInsertHeaderConfig {
+        /**
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+         */
+        key?: string;
+        /**
+         * The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+         */
+        value?: string;
+        /**
+         * Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+         */
+        valueType?: string;
+    }
+
+    export interface RuleRuleActionRedirectConfig {
+        /**
+         * The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         */
+        host?: string;
+        /**
+         * The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+         */
+        httpCode?: string;
+        /**
+         * The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+         */
+        path?: string;
+        /**
+         * The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+         */
+        port?: number;
+        /**
+         * The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+         */
+        protocol?: string;
+        /**
+         * The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+         */
+        query?: string;
+    }
+
+    export interface RuleRuleActionRewriteConfig {
+        /**
+         * The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         */
+        host?: string;
+        /**
+         * The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+         */
+        path?: string;
+        /**
+         * The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+         */
+        query?: string;
+    }
+
+    export interface RuleRuleCondition {
+        /**
+         * The configuration of the cookie. See the following `Block cookieConfig`.
+         */
+        cookieConfig?: outputs.alb.RuleRuleConditionCookieConfig;
+        /**
+         * The configuration of the header field. See the following `Block headerConfig`.
+         */
+        headerConfig?: outputs.alb.RuleRuleConditionHeaderConfig;
+        /**
+         * The configuration of the host field. See the following `Block hostConfig`.
+         */
+        hostConfig?: outputs.alb.RuleRuleConditionHostConfig;
+        /**
+         * The configuration of the request method. See the following `Block methodConfig`.
+         */
+        methodConfig?: outputs.alb.RuleRuleConditionMethodConfig;
+        /**
+         * The configuration of the path for the request to be forwarded. See the following `Block pathConfig`.
+         */
+        pathConfig?: outputs.alb.RuleRuleConditionPathConfig;
+        /**
+         * The configuration of the query string. See the following `Block queryStringConfig`.
+         */
+        queryStringConfig?: outputs.alb.RuleRuleConditionQueryStringConfig;
+        /**
+         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         */
+        type: string;
+    }
+
+    export interface RuleRuleConditionCookieConfig {
+        /**
+         * The query string.
+         */
+        values?: outputs.alb.RuleRuleConditionCookieConfigValue[];
+    }
+
+    export interface RuleRuleConditionCookieConfigValue {
+        /**
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+         */
+        key?: string;
+        /**
+         * The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+         */
+        value?: string;
+    }
+
+    export interface RuleRuleConditionHeaderConfig {
+        /**
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+         */
+        key?: string;
+        /**
+         * The query string.
+         */
+        values?: string[];
+    }
+
+    export interface RuleRuleConditionHostConfig {
+        /**
+         * The query string.
+         */
+        values?: string[];
+    }
+
+    export interface RuleRuleConditionMethodConfig {
+        /**
+         * The query string.
+         */
+        values?: string[];
+    }
+
+    export interface RuleRuleConditionPathConfig {
+        /**
+         * The query string.
+         */
+        values?: string[];
+    }
+
+    export interface RuleRuleConditionQueryStringConfig {
+        /**
+         * The query string.
+         */
+        values?: outputs.alb.RuleRuleConditionQueryStringConfigValue[];
+    }
+
+    export interface RuleRuleConditionQueryStringConfigValue {
+        /**
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+         */
+        key?: string;
+        /**
+         * The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+         */
+        value?: string;
+    }
+
     export interface ServerGroupHealthCheckConfig {
         /**
-         * The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * The status code for a successful health check. Multiple status codes can be specified as a
+         * list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
+         * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckCodes: string[];
         /**
-         * The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+         * The port of the backend server that is used for health checks. Valid values: `0`
+         * to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
          */
         healthCheckConnectPort: number;
         /**
-         * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+         * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
+         * value: `true`.
          */
         healthCheckEnabled?: boolean;
         /**
@@ -1158,19 +2003,23 @@ export namespace alb {
          */
         healthCheckHost: string;
         /**
-         * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
+         * . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckHttpVersion: string;
         /**
-         * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+         * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
+         * to `50`. Default value: `2`.
          */
         healthCheckInterval: number;
         /**
-         * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
+         * exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckMethod: string;
         /**
-         * The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * The forwarding rule path of health checks. **NOTE:** This parameter exists if
+         * the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckPath: string;
         /**
@@ -1178,15 +2027,23 @@ export namespace alb {
          */
         healthCheckProtocol: string;
         /**
-         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
+         * instance does not send an expected response within the specified period of time, the ECS instance is considered
+         * unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
+         * parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
+         * is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
          */
         healthCheckTimeout: number;
         /**
-         * The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+         * The number of health checks that an unhealthy backend server must pass consecutively before it
+         * is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
+         * Default value: 3.
          */
         healthyThreshold: number;
         /**
-         * The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+         * The number of consecutive health checks that a healthy backend server must consecutively fail
+         * before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
+         * values: `2` to `10`. Default value: `3`.
          */
         unhealthyThreshold: number;
     }
@@ -1217,22 +2074,26 @@ export namespace alb {
          */
         status: string;
         /**
-         * The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+         * The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
+         * requests are forwarded to the server.
          */
         weight: number;
     }
 
     export interface ServerGroupStickySessionConfig {
         /**
-         * the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+         * the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
+         * parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
          */
         cookie: string;
         /**
-         * The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+         * The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
+         * to `86400`. Default value: `1000`.
          */
         cookieTimeout: number;
         /**
-         * Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+         * Indicates whether sticky session is enabled. Values: `true` and `false`. Default
+         * value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
          */
         stickySessionEnabled?: boolean;
         /**
@@ -1794,6 +2655,57 @@ export namespace bastionhost {
          * Specify the New Group Name. Supports up to 128 Characters.
          */
         userGroupName: string;
+    }
+
+    export interface GetUsersUser {
+        /**
+         * Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
+         */
+        comment: string;
+        /**
+         * Specify the New Created the User's Display Name. Supports up to 128 Characters.
+         */
+        displayName: string;
+        /**
+         * Specify the New User's Mailbox.
+         */
+        email: string;
+        /**
+         * The ID of the User.
+         */
+        id: string;
+        /**
+         * You Want to Query the User the Bastion Host ID of.
+         */
+        instanceId: string;
+        /**
+         * Specify the New of the User That Created a Different Mobile Phone Number from Your.
+         */
+        mobile: string;
+        /**
+         * Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN Value: CN: Mainland China (+86) HK: hong Kong, China (+852) Mo: Macau, China (+853) TW: Taiwan, China (+886) ru: Russian (+7) SG: Singapore (+65) My: malaysia (+60) ID: Indonesia (+62) De: Germany (+49) AU: Australia (+61) US: United States (+1) AE: dubai (+971) JP: Japan (+81) Introducing the Long-Range GB: United Kingdom (+44) in: India (+91) KR: South Korea (+82) Ph: philippines (+63) Ch: Switzerland (+41) Se: Sweden (+46).
+         */
+        mobileCountryCode: string;
+        /**
+         * Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+         */
+        source: string;
+        /**
+         * Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+         */
+        sourceUserId: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The User ID.
+         */
+        userId: string;
+        /**
+         * Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+         */
+        userName: string;
     }
 }
 
@@ -4469,6 +5381,7 @@ export namespace config {
         actiontrail?: string;
         adb?: string;
         alb?: string;
+        alidfs?: string;
         alidns?: string;
         alikafka?: string;
         apigateway?: string;
@@ -4499,9 +5412,11 @@ export namespace config {
         drds?: string;
         eci?: string;
         ecs?: string;
+        ehpc?: string;
         eipanycast?: string;
         elasticsearch?: string;
         emr?: string;
+        ens?: string;
         ess?: string;
         eventbridge?: string;
         fc?: string;
@@ -4539,6 +5454,7 @@ export namespace config {
         resourcemanager?: string;
         resourcesharing?: string;
         ros?: string;
+        sas?: string;
         scdn?: string;
         sddp?: string;
         serverless?: string;
@@ -6150,6 +7066,43 @@ export namespace dds {
         description: string;
         nodeId: string;
         storage: number;
+    }
+}
+
+export namespace dfs {
+    export interface GetAccessGroupsGroup {
+        /**
+         * The length of `description` does not exceed 100 bytes.
+         */
+        accessGroupId: string;
+        /**
+         * The Name of Access Group. The length Of `accessGroupName` does not exceed 100 bytes.
+         */
+        accessGroupName: string;
+        /**
+         * The CreateTime of Access Group.
+         */
+        createTime: string;
+        /**
+         * The Description of Access Group. The length Of `description` does not exceed 100 bytes.
+         */
+        description: string;
+        /**
+         * The ID of the Access Group.
+         */
+        id: string;
+        /**
+         * The Number of attached mountpoint.
+         */
+        mountPointCount: number;
+        /**
+         * The NetworkType of Access Group. Valid values: `VPC`.
+         */
+        networkType: string;
+        /**
+         * The Number of access rule.
+         */
+        ruleCount: number;
     }
 }
 
@@ -10368,6 +11321,87 @@ export namespace eds {
     }
 }
 
+export namespace ehpc {
+    export interface GetJobTemplatesTemplate {
+        /**
+         * Queue Jobs, Is of the Form: 1-10:2.
+         */
+        arrayRequest: string;
+        /**
+         * Job Maximum Run Time.
+         */
+        clockTime: string;
+        /**
+         * Job Commands.
+         */
+        commandLine: string;
+        /**
+         * A Single Compute Node Using the GPU Number.Possible Values: 1~20000.
+         */
+        gpu: number;
+        /**
+         * The ID of the Job Template.
+         */
+        id: string;
+        /**
+         * The first ID of the resource.
+         */
+        jobTemplateId: string;
+        /**
+         * A Job Template Name.
+         */
+        jobTemplateName: string;
+        /**
+         * A Single Compute Node Maximum Memory.
+         */
+        mem: string;
+        /**
+         * Submit a Task Is Required for Computing the Number of Data Nodes to Be. Possible Values: 1~5000 .
+         */
+        node: number;
+        /**
+         * Job Commands the Directory.
+         */
+        packagePath: string;
+        /**
+         * The Job Priority.Possible Values: 0~9.
+         */
+        priority: number;
+        /**
+         * The Job Queue.
+         */
+        queue: string;
+        /**
+         * If the Job Is Support for the Re-Run.
+         */
+        reRunable: boolean;
+        /**
+         * The name of the user who performed the job.
+         */
+        runasUser: string;
+        /**
+         * Error Output Path.
+         */
+        stderrRedirectPath: string;
+        /**
+         * Standard Output Path and.
+         */
+        stdoutRedirectPath: string;
+        /**
+         * A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
+         */
+        task: number;
+        /**
+         * A Single Task and the Number of Required Threads.Possible Values: 1~20000.
+         */
+        thread: number;
+        /**
+         * The Job of the Environment Variable.
+         */
+        variables: string;
+    }
+}
+
 export namespace eipanycast {
     export interface GetAnycastEipAddressesAddress {
         /**
@@ -10592,6 +11626,31 @@ export namespace emr {
          * The image id of the emr cluster instance.
          */
         imageId: string;
+    }
+}
+
+export namespace ens {
+    export interface GetKeyPairsPair {
+        /**
+         * The creation time of the key pair. The date format is in accordance with ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+         */
+        createTime: string;
+        /**
+         * The ID of the Key Pair.
+         */
+        id: string;
+        /**
+         * Fingerprint of the key pair.
+         */
+        keyPairFingerPrint: string;
+        /**
+         * The name of the key pair.
+         */
+        keyPairName: string;
+        /**
+         * The version number.
+         */
+        version: string;
     }
 }
 
@@ -12567,7 +13626,7 @@ export namespace hbase {
 export namespace hbr {
     export interface GetEcsBackupClientsClient {
         /**
-         * The Client System Architecture (Only the ECS File Backup Client Is Available. Possible Values: * AMD64 * 386.
+         * The Client System Architecture (Only the ECS File Backup Client Is Available. Valid Values: `AMD64` , `386`.
          */
         archType: string;
         /**
@@ -12575,7 +13634,7 @@ export namespace hbr {
          */
         backupStatus: string;
         /**
-         * The Client Type. Possible Values: * ECS_CLIENT (ECS File Backup Client).
+         * The Client Type. Valid Values: `ECS_CLIENT` (ECS File Backup Client).
          */
         clientType: string;
         /**
@@ -12587,11 +13646,11 @@ export namespace hbr {
          */
         createTime: string;
         /**
-         * The Data Plane Data Access Point Type. Valid Values: * Public Internet * VPC VPC * Classic Network.
+         * The Data Plane Data Access Point Type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
          */
         dataNetworkType: string;
         /**
-         * The Data Plane Proxy Settings. Valid Values: * DISABLE  * USE_CONTROL_PROXY (Default, the same with Control Plane) * CUSTOM (Custom Configuration Items for the HTTP Protocol).
+         * The Data Plane Proxy Settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`. **Note**: `USE_CONTROL_PROXY` (Default, the same with Control Plane), `CUSTOM` (Custom Configuration Items for the HTTP Protocol).
          */
         dataProxySetting: string;
         /**
@@ -12730,7 +13789,7 @@ export namespace hbr {
          */
         backupType: string;
         /**
-         * File System Creation Time. Unix Time Seconds.
+         * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
          */
         createTime: string;
         disabled: boolean;
@@ -12795,6 +13854,238 @@ export namespace hbr {
          * Vault ID.
          */
         vaultId: string;
+    }
+
+    export interface GetRestoreJobsJob {
+        /**
+         * The Actual Size of Snapshot.
+         */
+        actualBytes: string;
+        /**
+         * The Actual Number of Files.
+         */
+        actualItems: string;
+        /**
+         * Recovery Is Successful, Size.
+         */
+        bytesDone: string;
+        /**
+         * The Restored Total.
+         */
+        bytesTotal: string;
+        /**
+         * Restore Completion Time.
+         */
+        completeTime: string;
+        /**
+         * The Restore Job Creation Time.
+         */
+        createTime: string;
+        errorFile: string;
+        /**
+         * The Recovery Task Execution Error Message.
+         */
+        errorMessage: string;
+        /**
+         * Restore the Expiration Time. Unix Time in Seconds.
+         */
+        expireTime: string;
+        /**
+         * The ID of the Restore Job.
+         */
+        id: string;
+        /**
+         * Log of Files Successfully Recovered the Number.
+         */
+        itemsDone: string;
+        /**
+         * File the Total Number.
+         */
+        itemsTotal: string;
+        /**
+         * Recovery Options.
+         */
+        options: string;
+        /**
+         * The Parent Node.
+         */
+        parentId: string;
+        /**
+         * The Recovery Progress 100% * 100.
+         */
+        progress: number;
+        /**
+         * Restore Job ID.
+         */
+        restoreJobId: string;
+        /**
+         * The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+         */
+        restoreType: string;
+        /**
+         * Restore Snapshot of HashCode.
+         */
+        snapshotHash: string;
+        /**
+         * The ID of Snapshot.
+         */
+        snapshotId: string;
+        /**
+         * The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+         */
+        sourceType: string;
+        /**
+         * Restoring the Start Time. Unix Time in Seconds.
+         */
+        startTime: string;
+        /**
+         * The Restore Job Status.
+         */
+        status: string;
+        /**
+         * The Target ofo OSS Bucket Name.
+         */
+        targetBucket: string;
+        /**
+         * The ID of Target Client.
+         */
+        targetClientId: string;
+        /**
+         * The Destination File System Creation Time.
+         */
+        targetCreateTime: string;
+        /**
+         * The Destination ID.
+         */
+        targetDataSourceId: string;
+        /**
+         * The Destination File System ID.
+         */
+        targetFileSystemId: string;
+        /**
+         * Objective to ECS Instance Id.
+         */
+        targetInstanceId: string;
+        /**
+         * The Target of (ECS) Instance Changes the ECS File Path.
+         */
+        targetPath: string;
+        /**
+         * The Target of the OSS Object Prefix.
+         */
+        targetPrefix: string;
+        /**
+         * Update Time.
+         */
+        updatedTime: string;
+        /**
+         * The ID of Vault.
+         */
+        vaultId: string;
+    }
+
+    export interface GetSnapshotsSnapshot {
+        /**
+         * The actual data volume of the snapshot. Unit byte.
+         */
+        actualBytes: string;
+        /**
+         * The actual number of items in the snapshot. (Currently only file backup is available).
+         */
+        actualItems: string;
+        /**
+         * Backup type. Possible values: `COMPLETE` (full backup).
+         */
+        backupType: string;
+        /**
+         * The name of OSS bucket.
+         */
+        bucket: string;
+        /**
+         * The incremental amount of backup data. Unit byte.
+         */
+        bytesDone: string;
+        /**
+         * The total amount of data sources. Unit byte.
+         */
+        bytesTotal: string;
+        /**
+         * The time when the snapshot was completed. UNIX time in seconds.
+         */
+        completeTime: string;
+        /**
+         * File System Creation Time of Nas. Unix Time Seconds.
+         */
+        createTime: string;
+        /**
+         * Snapshot creation time. UNIX time in seconds.
+         */
+        createdTime: string;
+        errorFile: string;
+        /**
+         * The ID of NAS File system.
+         */
+        fileSystemId: string;
+        /**
+         * The ID of the Snapshot.
+         */
+        id: string;
+        /**
+         * InstanceId.
+         */
+        instanceId: string;
+        /**
+         * The number of backup items. (Currently only file backup is available).
+         */
+        itemsDone: string;
+        /**
+         * The total number of data source items. (Currently only file backup is available).
+         */
+        itemsTotal: string;
+        /**
+         * The job ID of backup task.
+         */
+        jobId: string;
+        /**
+         * The hashcode of parent backup snapshot.
+         */
+        parentSnapshotHash: string;
+        /**
+         * Backup Path.
+         */
+        path: string;
+        /**
+         * Backup file prefix.
+         */
+        prefix: string;
+        /**
+         * The number of days to keep.
+         */
+        retention: string;
+        /**
+         * The hashcode of Snapshot.
+         */
+        snapshotHash: string;
+        /**
+         * The ID of the Snapshot.
+         */
+        snapshotId: string;
+        /**
+         * Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+         */
+        sourceType: string;
+        /**
+         * The start time of the snapshot. UNIX time in seconds.
+         */
+        startTime: string;
+        /**
+         * The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+         */
+        status: string;
+        /**
+         * The update time of snapshot. UNIX time in seconds.
+         */
+        updatedTime: string;
     }
 
     export interface GetVaultsVault {
@@ -17510,6 +18801,201 @@ export namespace ros {
 }
 
 export namespace sae {
+    export interface GetApplicationsApplication {
+        /**
+         * The ARN of the RAM role required when pulling images across accounts.
+         */
+        acrAssumeRoleArn: string;
+        /**
+         * Application description information. No more than 1024 characters.
+         */
+        appDescription: string;
+        /**
+         * Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+         */
+        appName: string;
+        /**
+         * The first ID of the resource.
+         */
+        applicationId: string;
+        /**
+         * Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+         */
+        command: string;
+        /**
+         * Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+         */
+        commandArgs: string;
+        /**
+         * ConfigMap mount description.
+         */
+        configMapMountDesc: string;
+        /**
+         * The CPU required for each instance, in millicores, cannot be 0.
+         */
+        cpu: number;
+        /**
+         * Indicates That the Application of the Creation Time.
+         */
+        createTime: string;
+        /**
+         * Custom host mapping in the container. For example: [{"hostName":"samplehost","ip":"127.0.0.1"}].
+         */
+        customHostAlias: string;
+        /**
+         * The operating environment used by the Pandora application.
+         */
+        edasContainerVersion: string;
+        /**
+         * The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+         */
+        envs: string;
+        /**
+         * The ID of the Application.
+         */
+        id: string;
+        /**
+         * Mirror address. Only Image type applications can configure the mirror address.
+         */
+        imageUrl: string;
+        /**
+         * The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
+         */
+        jarStartArgs: string;
+        /**
+         * The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
+         */
+        jarStartOptions: string;
+        /**
+         * The JDK version that the deployment package depends on. Image type applications are not supported.
+         */
+        jdk: string;
+        /**
+         * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+         */
+        liveness: string;
+        /**
+         * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU.
+         */
+        memory: number;
+        /**
+         * The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
+         */
+        minReadyInstances: number;
+        /**
+         * Mount description.
+         */
+        mountDesc: string;
+        /**
+         * Mount point of NAS in application VPC.
+         */
+        mountHost: string;
+        /**
+         * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+         */
+        namespaceId: string;
+        /**
+         * ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+         */
+        nasId: string;
+        /**
+         * OSS AccessKey ID.
+         */
+        ossAkId: string;
+        /**
+         * OSS  AccessKey Secret.
+         */
+        ossAkSecret: string;
+        /**
+         * OSS mount description information.
+         */
+        ossMountDescs: string;
+        /**
+         * Application package type. Support FatJar, War and Image.
+         */
+        packageType: string;
+        /**
+         * Deployment package address. Only FatJar or War type applications can configure the deployment package address.
+         */
+        packageUrl: string;
+        /**
+         * The version number of the deployment package. Required when the Package Type is War and FatJar.
+         */
+        packageVersion: string;
+        /**
+         * The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
+         */
+        phpArmsConfigLocation: string;
+        /**
+         * PHP configuration file content.
+         */
+        phpConfig: string;
+        /**
+         * PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
+         */
+        phpConfigLocation: string;
+        /**
+         * Execute the script after startup, the format is like: {"exec":{"command":["cat","/etc/group"]}}.
+         */
+        postStart: string;
+        /**
+         * Execute the script before stopping, the format is like: {"exec":{"command":["cat","/etc/group"]}}.
+         */
+        preStop: string;
+        /**
+         * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds ":2}.
+         */
+        readiness: string;
+        regionId: string;
+        /**
+         * Initial number of instances.
+         */
+        replicas: number;
+        repoName: string;
+        repoNamespace: string;
+        repoOriginType: string;
+        /**
+         * Security group ID.
+         */
+        securityGroupId: string;
+        /**
+         * SLS  configuration.
+         */
+        slsConfigs: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
+         */
+        terminationGracePeriodSeconds: number;
+        /**
+         * Time zone, the default value is Asia/Shanghai.
+         */
+        timezone: string;
+        /**
+         * Tomcat file configuration, set to "" or "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL.
+         */
+        tomcatConfig: string;
+        /**
+         * The VPC corresponding to the SAE namespace. In SAE, a namespace can only correspond to one VPC and cannot be modified. Creating a SAE application in the namespace for the first time will form a binding relationship. Multiple namespaces can correspond to a VPC. If you leave it blank, it will default to the VPC ID bound to the namespace.
+         */
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+        /**
+         * WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
+         */
+        warStartOptions: string;
+        /**
+         * The version of tomcat that the deployment package depends on. Image type applications are not supported.
+         */
+        webContainer: string;
+    }
+
     export interface GetConfigMapsMap {
         /**
          * The first ID of the resource.
@@ -17725,6 +19211,36 @@ export namespace scdn {
 }
 
 export namespace sddp {
+    export interface GetConfigsConfig {
+        /**
+         * Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
+         */
+        code: string;
+        /**
+         * Configure the Number.
+         */
+        configId: string;
+        /**
+         * Default Value.
+         */
+        defaultValue: string;
+        /**
+         * Abnormal Alarm General Description of the Configuration Item.
+         */
+        description: string;
+        /**
+         * The ID of the Config.
+         */
+        id: string;
+        /**
+         * The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
+         * * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+         * * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+         * * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
+         */
+        value: string;
+    }
+
     export interface GetRulesRule {
         /**
          * Sensitive Data Identification Rules for the Type of.
@@ -17818,6 +19334,27 @@ export namespace sddp {
          * The Level of Risk.
          */
         warnLevel: number;
+    }
+}
+
+export namespace securitycenter {
+    export interface GetGroupsGroup {
+        /**
+         * GroupFlag, '0' mean default group(created by system), '1' means customer defined group.
+         */
+        groupFlag: number;
+        /**
+         * The ID of Group.
+         */
+        groupId: string;
+        /**
+         * The name of Group.
+         */
+        groupName: string;
+        /**
+         * The ID of the Group(same as the group_id).
+         */
+        id: string;
     }
 }
 

@@ -17,6 +17,59 @@ import (
 //
 // > **NOTE:** Available in v1.131.0+.
 //
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cfg := config.New(ctx, "")
+// 		name := fmt.Sprintf("%v%v", "%", "s")
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
+// 			VaultName: pulumi.String(name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "bosh-cf-blobstore-hz"
+// 		_, err = oss.GetBuckets(ctx, &oss.GetBucketsArgs{
+// 			NameRegex: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = hbr.NewOssBackupPlan(ctx, "example", &hbr.OssBackupPlanArgs{
+// 			OssBackupPlanName: pulumi.String(name),
+// 			VaultId:           defaultVault.ID(),
+// 			Bucket:            pulumi.Any(alicloud_oss_bucket.Default.Bucket),
+// 			Prefix:            pulumi.String("/home"),
+// 			Retention:         pulumi.String("1"),
+// 			Schedule:          pulumi.String("I|1602673264|PT2H"),
+// 			BackupType:        pulumi.String("COMPLETE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // HBR Oss Backup Plan can be imported using the id, e.g.
