@@ -143,7 +143,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Auto scaling node pool configuration. For more details, see `scalingConfig`.
+     * Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      */
     public readonly scalingConfig!: pulumi.Output<outputs.cs.NodePoolScalingConfig>;
     /**
@@ -414,7 +414,7 @@ export interface NodePoolState {
      */
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
-     * Auto scaling node pool configuration. For more details, see `scalingConfig`.
+     * Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      */
     readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
     /**
@@ -574,7 +574,7 @@ export interface NodePoolArgs {
      */
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
-     * Auto scaling node pool configuration. For more details, see `scalingConfig`.
+     * Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      */
     readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
     /**

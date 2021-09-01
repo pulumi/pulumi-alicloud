@@ -12,34 +12,10 @@ import (
 
 // Provides a ALB Server Group resource.
 //
-// For information about ALB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/doc-detail/213627.htm).
+// For information about ALB Server Group and how to use it,
+// see [What is Server Group](https://www.alibabacloud.com/help/doc-detail/213627.htm).
 //
 // > **NOTE:** Available in v1.131.0+.
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := alb.NewServerGroup(ctx, "example", &alb.ServerGroupArgs{
-// 			ServerGroupName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 //
 // ## Import
 //

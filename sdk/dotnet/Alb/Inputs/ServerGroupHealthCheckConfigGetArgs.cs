@@ -16,7 +16,9 @@ namespace Pulumi.AliCloud.Alb.Inputs
         private InputList<string>? _healthCheckCodes;
 
         /// <summary>
-        /// The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        /// The status code for a successful health check. Multiple status codes can be specified as a
+        /// list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
+        /// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
         /// </summary>
         public InputList<string> HealthCheckCodes
         {
@@ -25,13 +27,15 @@ namespace Pulumi.AliCloud.Alb.Inputs
         }
 
         /// <summary>
-        /// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+        /// The port of the backend server that is used for health checks. Valid values: `0`
+        /// to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
         /// </summary>
         [Input("healthCheckConnectPort")]
         public Input<int>? HealthCheckConnectPort { get; set; }
 
         /// <summary>
-        /// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+        /// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
+        /// value: `true`.
         /// </summary>
         [Input("healthCheckEnabled")]
         public Input<bool>? HealthCheckEnabled { get; set; }
@@ -43,25 +47,29 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? HealthCheckHost { get; set; }
 
         /// <summary>
-        /// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        /// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
+        /// . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
         /// </summary>
         [Input("healthCheckHttpVersion")]
         public Input<string>? HealthCheckHttpVersion { get; set; }
 
         /// <summary>
-        /// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+        /// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
+        /// to `50`. Default value: `2`.
         /// </summary>
         [Input("healthCheckInterval")]
         public Input<int>? HealthCheckInterval { get; set; }
 
         /// <summary>
-        /// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        /// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
+        /// exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
         /// </summary>
         [Input("healthCheckMethod")]
         public Input<string>? HealthCheckMethod { get; set; }
 
         /// <summary>
-        /// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        /// The forwarding rule path of health checks. **NOTE:** This parameter exists if
+        /// the `HealthCheckProtocol` parameter is set to `HTTP`.
         /// </summary>
         [Input("healthCheckPath")]
         public Input<string>? HealthCheckPath { get; set; }
@@ -73,19 +81,27 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? HealthCheckProtocol { get; set; }
 
         /// <summary>
-        /// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+        /// The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
+        /// instance does not send an expected response within the specified period of time, the ECS instance is considered
+        /// unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
+        /// parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
+        /// is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
         /// </summary>
         [Input("healthCheckTimeout")]
         public Input<int>? HealthCheckTimeout { get; set; }
 
         /// <summary>
-        /// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+        /// The number of health checks that an unhealthy backend server must pass consecutively before it
+        /// is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
+        /// Default value: 3.
         /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
 
         /// <summary>
-        /// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+        /// The number of consecutive health checks that a healthy backend server must consecutively fail
+        /// before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
+        /// values: `2` to `10`. Default value: `3`.
         /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }

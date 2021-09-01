@@ -11,6 +11,7 @@ from . import _utilities
 __all__ = [
     'ProviderAssumeRole',
     'ProviderEndpoint',
+    'GetMscSubContractsContactResult',
     'GetRegionsRegionResult',
     'GetZonesZoneResult',
 ]
@@ -81,6 +82,8 @@ class ProviderEndpoint(dict):
             suggest = "brain_industrial"
         elif key == "dmsEnterprise":
             suggest = "dms_enterprise"
+        elif key == "hcsSgw":
+            suggest = "hcs_sgw"
         elif key == "rKvstore":
             suggest = "r_kvstore"
         elif key == "wafOpenapi":
@@ -101,15 +104,18 @@ class ProviderEndpoint(dict):
                  actiontrail: Optional[str] = None,
                  adb: Optional[str] = None,
                  alb: Optional[str] = None,
+                 alidfs: Optional[str] = None,
                  alidns: Optional[str] = None,
                  alikafka: Optional[str] = None,
                  apigateway: Optional[str] = None,
                  arms: Optional[str] = None,
+                 bastionhost: Optional[str] = None,
                  brain_industrial: Optional[str] = None,
                  bssopenapi: Optional[str] = None,
                  cas: Optional[str] = None,
                  cassandra: Optional[str] = None,
                  cbn: Optional[str] = None,
+                 cddc: Optional[str] = None,
                  cdn: Optional[str] = None,
                  cds: Optional[str] = None,
                  cloudphone: Optional[str] = None,
@@ -129,9 +135,11 @@ class ProviderEndpoint(dict):
                  drds: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
+                 ehpc: Optional[str] = None,
                  eipanycast: Optional[str] = None,
                  elasticsearch: Optional[str] = None,
                  emr: Optional[str] = None,
+                 ens: Optional[str] = None,
                  ess: Optional[str] = None,
                  eventbridge: Optional[str] = None,
                  fc: Optional[str] = None,
@@ -140,6 +148,7 @@ class ProviderEndpoint(dict):
                  gpdb: Optional[str] = None,
                  gwsecd: Optional[str] = None,
                  hbr: Optional[str] = None,
+                 hcs_sgw: Optional[str] = None,
                  hitsdb: Optional[str] = None,
                  ims: Optional[str] = None,
                  kms: Optional[str] = None,
@@ -149,6 +158,7 @@ class ProviderEndpoint(dict):
                  market: Optional[str] = None,
                  maxcompute: Optional[str] = None,
                  mns: Optional[str] = None,
+                 mscopensubscription: Optional[str] = None,
                  mse: Optional[str] = None,
                  nas: Optional[str] = None,
                  ons: Optional[str] = None,
@@ -167,7 +177,9 @@ class ProviderEndpoint(dict):
                  resourcemanager: Optional[str] = None,
                  resourcesharing: Optional[str] = None,
                  ros: Optional[str] = None,
+                 sas: Optional[str] = None,
                  scdn: Optional[str] = None,
+                 sddp: Optional[str] = None,
                  serverless: Optional[str] = None,
                  sgw: Optional[str] = None,
                  slb: Optional[str] = None,
@@ -180,6 +192,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "adb", adb)
         if alb is not None:
             pulumi.set(__self__, "alb", alb)
+        if alidfs is not None:
+            pulumi.set(__self__, "alidfs", alidfs)
         if alidns is not None:
             pulumi.set(__self__, "alidns", alidns)
         if alikafka is not None:
@@ -188,6 +202,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "apigateway", apigateway)
         if arms is not None:
             pulumi.set(__self__, "arms", arms)
+        if bastionhost is not None:
+            pulumi.set(__self__, "bastionhost", bastionhost)
         if brain_industrial is not None:
             pulumi.set(__self__, "brain_industrial", brain_industrial)
         if bssopenapi is not None:
@@ -198,6 +214,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "cassandra", cassandra)
         if cbn is not None:
             pulumi.set(__self__, "cbn", cbn)
+        if cddc is not None:
+            pulumi.set(__self__, "cddc", cddc)
         if cdn is not None:
             pulumi.set(__self__, "cdn", cdn)
         if cds is not None:
@@ -236,12 +254,16 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
             pulumi.set(__self__, "ecs", ecs)
+        if ehpc is not None:
+            pulumi.set(__self__, "ehpc", ehpc)
         if eipanycast is not None:
             pulumi.set(__self__, "eipanycast", eipanycast)
         if elasticsearch is not None:
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if emr is not None:
             pulumi.set(__self__, "emr", emr)
+        if ens is not None:
+            pulumi.set(__self__, "ens", ens)
         if ess is not None:
             pulumi.set(__self__, "ess", ess)
         if eventbridge is not None:
@@ -258,6 +280,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "gwsecd", gwsecd)
         if hbr is not None:
             pulumi.set(__self__, "hbr", hbr)
+        if hcs_sgw is not None:
+            pulumi.set(__self__, "hcs_sgw", hcs_sgw)
         if hitsdb is not None:
             pulumi.set(__self__, "hitsdb", hitsdb)
         if ims is not None:
@@ -276,6 +300,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "maxcompute", maxcompute)
         if mns is not None:
             pulumi.set(__self__, "mns", mns)
+        if mscopensubscription is not None:
+            pulumi.set(__self__, "mscopensubscription", mscopensubscription)
         if mse is not None:
             pulumi.set(__self__, "mse", mse)
         if nas is not None:
@@ -312,8 +338,12 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
+        if sas is not None:
+            pulumi.set(__self__, "sas", sas)
         if scdn is not None:
             pulumi.set(__self__, "scdn", scdn)
+        if sddp is not None:
+            pulumi.set(__self__, "sddp", sddp)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
         if sgw is not None:
@@ -344,6 +374,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def alidfs(self) -> Optional[str]:
+        return pulumi.get(self, "alidfs")
+
+    @property
+    @pulumi.getter
     def alidns(self) -> Optional[str]:
         return pulumi.get(self, "alidns")
 
@@ -361,6 +396,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def arms(self) -> Optional[str]:
         return pulumi.get(self, "arms")
+
+    @property
+    @pulumi.getter
+    def bastionhost(self) -> Optional[str]:
+        return pulumi.get(self, "bastionhost")
 
     @property
     @pulumi.getter(name="brainIndustrial")
@@ -386,6 +426,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def cbn(self) -> Optional[str]:
         return pulumi.get(self, "cbn")
+
+    @property
+    @pulumi.getter
+    def cddc(self) -> Optional[str]:
+        return pulumi.get(self, "cddc")
 
     @property
     @pulumi.getter
@@ -484,6 +529,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def ehpc(self) -> Optional[str]:
+        return pulumi.get(self, "ehpc")
+
+    @property
+    @pulumi.getter
     def eipanycast(self) -> Optional[str]:
         return pulumi.get(self, "eipanycast")
 
@@ -496,6 +546,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def emr(self) -> Optional[str]:
         return pulumi.get(self, "emr")
+
+    @property
+    @pulumi.getter
+    def ens(self) -> Optional[str]:
+        return pulumi.get(self, "ens")
 
     @property
     @pulumi.getter
@@ -536,6 +591,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def hbr(self) -> Optional[str]:
         return pulumi.get(self, "hbr")
+
+    @property
+    @pulumi.getter(name="hcsSgw")
+    def hcs_sgw(self) -> Optional[str]:
+        return pulumi.get(self, "hcs_sgw")
 
     @property
     @pulumi.getter
@@ -581,6 +641,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def mns(self) -> Optional[str]:
         return pulumi.get(self, "mns")
+
+    @property
+    @pulumi.getter
+    def mscopensubscription(self) -> Optional[str]:
+        return pulumi.get(self, "mscopensubscription")
 
     @property
     @pulumi.getter
@@ -674,8 +739,18 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def sas(self) -> Optional[str]:
+        return pulumi.get(self, "sas")
+
+    @property
+    @pulumi.getter
     def scdn(self) -> Optional[str]:
         return pulumi.get(self, "scdn")
+
+    @property
+    @pulumi.getter
+    def sddp(self) -> Optional[str]:
+        return pulumi.get(self, "sddp")
 
     @property
     @pulumi.getter
@@ -706,6 +781,156 @@ class ProviderEndpoint(dict):
     @pulumi.getter(name="wafOpenapi")
     def waf_openapi(self) -> Optional[str]:
         return pulumi.get(self, "waf_openapi")
+
+
+@pulumi.output_type
+class GetMscSubContractsContactResult(dict):
+    def __init__(__self__, *,
+                 account_uid: str,
+                 contact_id: str,
+                 contact_name: str,
+                 email: str,
+                 id: str,
+                 is_account: bool,
+                 is_obsolete: bool,
+                 is_verified_email: bool,
+                 is_verified_mobile: bool,
+                 last_email_verification_time_stamp: str,
+                 last_mobile_verification_time_stamp: str,
+                 mobile: str,
+                 position: str):
+        """
+        :param str account_uid: UID.
+        :param str contact_id: The first ID of the resource.
+        :param str contact_name: The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+        :param str email: The User's Contact Email Address.
+        :param str id: The ID of the Contact.
+        :param bool is_account: Indicates Whether the BGP Group Is the Account Itself.
+        :param bool is_obsolete: Whether They Have Expired Or Not.
+        :param bool is_verified_email: Email Validation for.
+        :param bool is_verified_mobile: If the Phone Verification.
+        :param str last_email_verification_time_stamp: Last Verification Email Transmission Time.
+        :param str last_mobile_verification_time_stamp: The Pieces of Authentication SMS Sending Time.
+        :param str mobile: The User's Telephone.
+        :param str position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        """
+        pulumi.set(__self__, "account_uid", account_uid)
+        pulumi.set(__self__, "contact_id", contact_id)
+        pulumi.set(__self__, "contact_name", contact_name)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_account", is_account)
+        pulumi.set(__self__, "is_obsolete", is_obsolete)
+        pulumi.set(__self__, "is_verified_email", is_verified_email)
+        pulumi.set(__self__, "is_verified_mobile", is_verified_mobile)
+        pulumi.set(__self__, "last_email_verification_time_stamp", last_email_verification_time_stamp)
+        pulumi.set(__self__, "last_mobile_verification_time_stamp", last_mobile_verification_time_stamp)
+        pulumi.set(__self__, "mobile", mobile)
+        pulumi.set(__self__, "position", position)
+
+    @property
+    @pulumi.getter(name="accountUid")
+    def account_uid(self) -> str:
+        """
+        UID.
+        """
+        return pulumi.get(self, "account_uid")
+
+    @property
+    @pulumi.getter(name="contactId")
+    def contact_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "contact_id")
+
+    @property
+    @pulumi.getter(name="contactName")
+    def contact_name(self) -> str:
+        """
+        The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+        """
+        return pulumi.get(self, "contact_name")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The User's Contact Email Address.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Contact.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isAccount")
+    def is_account(self) -> bool:
+        """
+        Indicates Whether the BGP Group Is the Account Itself.
+        """
+        return pulumi.get(self, "is_account")
+
+    @property
+    @pulumi.getter(name="isObsolete")
+    def is_obsolete(self) -> bool:
+        """
+        Whether They Have Expired Or Not.
+        """
+        return pulumi.get(self, "is_obsolete")
+
+    @property
+    @pulumi.getter(name="isVerifiedEmail")
+    def is_verified_email(self) -> bool:
+        """
+        Email Validation for.
+        """
+        return pulumi.get(self, "is_verified_email")
+
+    @property
+    @pulumi.getter(name="isVerifiedMobile")
+    def is_verified_mobile(self) -> bool:
+        """
+        If the Phone Verification.
+        """
+        return pulumi.get(self, "is_verified_mobile")
+
+    @property
+    @pulumi.getter(name="lastEmailVerificationTimeStamp")
+    def last_email_verification_time_stamp(self) -> str:
+        """
+        Last Verification Email Transmission Time.
+        """
+        return pulumi.get(self, "last_email_verification_time_stamp")
+
+    @property
+    @pulumi.getter(name="lastMobileVerificationTimeStamp")
+    def last_mobile_verification_time_stamp(self) -> str:
+        """
+        The Pieces of Authentication SMS Sending Time.
+        """
+        return pulumi.get(self, "last_mobile_verification_time_stamp")
+
+    @property
+    @pulumi.getter
+    def mobile(self) -> str:
+        """
+        The User's Telephone.
+        """
+        return pulumi.get(self, "mobile")
+
+    @property
+    @pulumi.getter
+    def position(self) -> str:
+        """
+        The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        """
+        return pulumi.get(self, "position")
 
 
 @pulumi.output_type

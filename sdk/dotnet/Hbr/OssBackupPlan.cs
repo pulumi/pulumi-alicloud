@@ -16,6 +16,43 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// &gt; **NOTE:** Available in v1.131.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "%s";
+    ///         var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new AliCloud.Hbr.VaultArgs
+    ///         {
+    ///             VaultName = name,
+    ///         });
+    ///         var defaultBuckets = Output.Create(AliCloud.Oss.GetBuckets.InvokeAsync(new AliCloud.Oss.GetBucketsArgs
+    ///         {
+    ///             NameRegex = "bosh-cf-blobstore-hz",
+    ///         }));
+    ///         var example = new AliCloud.Hbr.OssBackupPlan("example", new AliCloud.Hbr.OssBackupPlanArgs
+    ///         {
+    ///             OssBackupPlanName = name,
+    ///             VaultId = defaultVault.Id,
+    ///             Bucket = alicloud_oss_bucket.Default.Bucket,
+    ///             Prefix = "/home",
+    ///             Retention = "1",
+    ///             Schedule = "I|1602673264|PT2H",
+    ///             BackupType = "COMPLETE",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// HBR Oss Backup Plan can be imported using the id, e.g.

@@ -5,17 +5,22 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./gateway";
+export * from "./getGateways";
 export * from "./getService";
 export * from "./getStorageBundles";
 export * from "./storageBundle";
 
 // Import resources to register:
+import { Gateway } from "./gateway";
 import { StorageBundle } from "./storageBundle";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:cloudstoragegateway/gateway:Gateway":
+                return new Gateway(name, <any>undefined, { urn })
             case "alicloud:cloudstoragegateway/storageBundle:StorageBundle":
                 return new StorageBundle(name, <any>undefined, { urn })
             default:
@@ -23,4 +28,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "cloudstoragegateway/gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudstoragegateway/storageBundle", _module)

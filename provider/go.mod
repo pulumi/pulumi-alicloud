@@ -7,12 +7,12 @@ replace (
 	github.com/denverdino/aliyungo => github.com/denverdino/aliyungo v0.0.0-20210518071019-eb3bbb144d8a
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	k8s.io/api => k8s.io/api v0.0.0-20190409021203-6e4e0e4f393b
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20191029021442-5f2132fc4383
+	k8s.io/api => k8s.io/api v0.21.0-rc.0
+	k8s.io/client-go => k8s.io/client-go v0.21.0-rc.0
 )
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.131.0
+	github.com/aliyun/terraform-provider-alicloud v1.133.0
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0
 	github.com/pulumi/pulumi/pkg/v3 v3.0.0

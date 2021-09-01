@@ -16,15 +16,18 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Actiontrail;
         public readonly string? Adb;
         public readonly string? Alb;
+        public readonly string? Alidfs;
         public readonly string? Alidns;
         public readonly string? Alikafka;
         public readonly string? Apigateway;
         public readonly string? Arms;
+        public readonly string? Bastionhost;
         public readonly string? BrainIndustrial;
         public readonly string? Bssopenapi;
         public readonly string? Cas;
         public readonly string? Cassandra;
         public readonly string? Cbn;
+        public readonly string? Cddc;
         public readonly string? Cdn;
         public readonly string? Cds;
         public readonly string? Cloudphone;
@@ -44,9 +47,11 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Drds;
         public readonly string? Eci;
         public readonly string? Ecs;
+        public readonly string? Ehpc;
         public readonly string? Eipanycast;
         public readonly string? Elasticsearch;
         public readonly string? Emr;
+        public readonly string? Ens;
         public readonly string? Ess;
         public readonly string? Eventbridge;
         public readonly string? Fc;
@@ -55,6 +60,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Gpdb;
         public readonly string? Gwsecd;
         public readonly string? Hbr;
+        public readonly string? HcsSgw;
         public readonly string? Hitsdb;
         public readonly string? Ims;
         public readonly string? Kms;
@@ -64,6 +70,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Market;
         public readonly string? Maxcompute;
         public readonly string? Mns;
+        public readonly string? Mscopensubscription;
         public readonly string? Mse;
         public readonly string? Nas;
         public readonly string? Ons;
@@ -82,7 +89,9 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Resourcemanager;
         public readonly string? Resourcesharing;
         public readonly string? Ros;
+        public readonly string? Sas;
         public readonly string? Scdn;
+        public readonly string? Sddp;
         public readonly string? Serverless;
         public readonly string? Sgw;
         public readonly string? Slb;
@@ -98,6 +107,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? alb,
 
+            string? alidfs,
+
             string? alidns,
 
             string? alikafka,
@@ -105,6 +116,8 @@ namespace Pulumi.AliCloud.Outputs
             string? apigateway,
 
             string? arms,
+
+            string? bastionhost,
 
             string? brainIndustrial,
 
@@ -115,6 +128,8 @@ namespace Pulumi.AliCloud.Outputs
             string? cassandra,
 
             string? cbn,
+
+            string? cddc,
 
             string? cdn,
 
@@ -154,11 +169,15 @@ namespace Pulumi.AliCloud.Outputs
 
             string? ecs,
 
+            string? ehpc,
+
             string? eipanycast,
 
             string? elasticsearch,
 
             string? emr,
+
+            string? ens,
 
             string? ess,
 
@@ -175,6 +194,8 @@ namespace Pulumi.AliCloud.Outputs
             string? gwsecd,
 
             string? hbr,
+
+            string? hcsSgw,
 
             string? hitsdb,
 
@@ -193,6 +214,8 @@ namespace Pulumi.AliCloud.Outputs
             string? maxcompute,
 
             string? mns,
+
+            string? mscopensubscription,
 
             string? mse,
 
@@ -230,7 +253,11 @@ namespace Pulumi.AliCloud.Outputs
 
             string? ros,
 
+            string? sas,
+
             string? scdn,
+
+            string? sddp,
 
             string? serverless,
 
@@ -247,15 +274,18 @@ namespace Pulumi.AliCloud.Outputs
             Actiontrail = actiontrail;
             Adb = adb;
             Alb = alb;
+            Alidfs = alidfs;
             Alidns = alidns;
             Alikafka = alikafka;
             Apigateway = apigateway;
             Arms = arms;
+            Bastionhost = bastionhost;
             BrainIndustrial = brainIndustrial;
             Bssopenapi = bssopenapi;
             Cas = cas;
             Cassandra = cassandra;
             Cbn = cbn;
+            Cddc = cddc;
             Cdn = cdn;
             Cds = cds;
             Cloudphone = cloudphone;
@@ -275,9 +305,11 @@ namespace Pulumi.AliCloud.Outputs
             Drds = drds;
             Eci = eci;
             Ecs = ecs;
+            Ehpc = ehpc;
             Eipanycast = eipanycast;
             Elasticsearch = elasticsearch;
             Emr = emr;
+            Ens = ens;
             Ess = ess;
             Eventbridge = eventbridge;
             Fc = fc;
@@ -286,6 +318,7 @@ namespace Pulumi.AliCloud.Outputs
             Gpdb = gpdb;
             Gwsecd = gwsecd;
             Hbr = hbr;
+            HcsSgw = hcsSgw;
             Hitsdb = hitsdb;
             Ims = ims;
             Kms = kms;
@@ -295,6 +328,7 @@ namespace Pulumi.AliCloud.Outputs
             Market = market;
             Maxcompute = maxcompute;
             Mns = mns;
+            Mscopensubscription = mscopensubscription;
             Mse = mse;
             Nas = nas;
             Ons = ons;
@@ -313,7 +347,9 @@ namespace Pulumi.AliCloud.Outputs
             Resourcemanager = resourcemanager;
             Resourcesharing = resourcesharing;
             Ros = ros;
+            Sas = sas;
             Scdn = scdn;
+            Sddp = sddp;
             Serverless = serverless;
             Sgw = sgw;
             Slb = slb;

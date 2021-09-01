@@ -71,17 +71,25 @@ import (
 // CDN domain config can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example cdn:config-abc123456
+//  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
+// ```
+//
+// ```sh
+//  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>
 // ```
 type DomainConfig struct {
 	pulumi.CustomResourceState
 
+	// The ID of the function.
+	ConfigId pulumi.StringOutput `pulumi:"configId"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// The args of the domain config.
 	FunctionArgs DomainConfigFunctionArgArrayOutput `pulumi:"functionArgs"`
 	// The name of the domain config.
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
+	// The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewDomainConfig registers a new resource with the given unique name, arguments, and options.
@@ -122,21 +130,29 @@ func GetDomainConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainConfig resources.
 type domainConfigState struct {
+	// The ID of the function.
+	ConfigId *string `pulumi:"configId"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName *string `pulumi:"domainName"`
 	// The args of the domain config.
 	FunctionArgs []DomainConfigFunctionArg `pulumi:"functionArgs"`
 	// The name of the domain config.
 	FunctionName *string `pulumi:"functionName"`
+	// The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+	Status *string `pulumi:"status"`
 }
 
 type DomainConfigState struct {
+	// The ID of the function.
+	ConfigId pulumi.StringPtrInput
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringPtrInput
 	// The args of the domain config.
 	FunctionArgs DomainConfigFunctionArgArrayInput
 	// The name of the domain config.
 	FunctionName pulumi.StringPtrInput
+	// The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+	Status pulumi.StringPtrInput
 }
 
 func (DomainConfigState) ElementType() reflect.Type {

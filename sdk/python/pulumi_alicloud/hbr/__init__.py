@@ -3,9 +3,18 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .ecs_backup_client import *
+from .ecs_backup_plan import *
+from .get_ecs_backup_clients import *
+from .get_ecs_backup_plans import *
+from .get_nas_backup_plans import *
 from .get_oss_backup_plans import *
+from .get_restore_jobs import *
+from .get_snapshots import *
 from .get_vaults import *
+from .nas_backup_plan import *
 from .oss_backup_plan import *
+from .restore_job import *
 from .vault import *
 from . import outputs
 
@@ -21,8 +30,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:hbr/ossBackupPlan:OssBackupPlan":
+            if typ == "alicloud:hbr/ecsBackupClient:EcsBackupClient":
+                return EcsBackupClient(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:hbr/ecsBackupPlan:EcsBackupPlan":
+                return EcsBackupPlan(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:hbr/nasBackupPlan:NasBackupPlan":
+                return NasBackupPlan(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:hbr/ossBackupPlan:OssBackupPlan":
                 return OssBackupPlan(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:hbr/restoreJob:RestoreJob":
+                return RestoreJob(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:hbr/vault:Vault":
                 return Vault(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -30,7 +47,11 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "hbr/ecsBackupClient", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "hbr/ecsBackupPlan", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "hbr/nasBackupPlan", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "hbr/ossBackupPlan", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "hbr/restoreJob", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "hbr/vault", _module_instance)
 
 _register_module()

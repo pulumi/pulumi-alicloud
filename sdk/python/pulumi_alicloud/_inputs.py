@@ -71,15 +71,18 @@ class ProviderEndpointArgs:
                  actiontrail: Optional[pulumi.Input[str]] = None,
                  adb: Optional[pulumi.Input[str]] = None,
                  alb: Optional[pulumi.Input[str]] = None,
+                 alidfs: Optional[pulumi.Input[str]] = None,
                  alidns: Optional[pulumi.Input[str]] = None,
                  alikafka: Optional[pulumi.Input[str]] = None,
                  apigateway: Optional[pulumi.Input[str]] = None,
                  arms: Optional[pulumi.Input[str]] = None,
+                 bastionhost: Optional[pulumi.Input[str]] = None,
                  brain_industrial: Optional[pulumi.Input[str]] = None,
                  bssopenapi: Optional[pulumi.Input[str]] = None,
                  cas: Optional[pulumi.Input[str]] = None,
                  cassandra: Optional[pulumi.Input[str]] = None,
                  cbn: Optional[pulumi.Input[str]] = None,
+                 cddc: Optional[pulumi.Input[str]] = None,
                  cdn: Optional[pulumi.Input[str]] = None,
                  cds: Optional[pulumi.Input[str]] = None,
                  cloudphone: Optional[pulumi.Input[str]] = None,
@@ -99,9 +102,11 @@ class ProviderEndpointArgs:
                  drds: Optional[pulumi.Input[str]] = None,
                  eci: Optional[pulumi.Input[str]] = None,
                  ecs: Optional[pulumi.Input[str]] = None,
+                 ehpc: Optional[pulumi.Input[str]] = None,
                  eipanycast: Optional[pulumi.Input[str]] = None,
                  elasticsearch: Optional[pulumi.Input[str]] = None,
                  emr: Optional[pulumi.Input[str]] = None,
+                 ens: Optional[pulumi.Input[str]] = None,
                  ess: Optional[pulumi.Input[str]] = None,
                  eventbridge: Optional[pulumi.Input[str]] = None,
                  fc: Optional[pulumi.Input[str]] = None,
@@ -110,6 +115,7 @@ class ProviderEndpointArgs:
                  gpdb: Optional[pulumi.Input[str]] = None,
                  gwsecd: Optional[pulumi.Input[str]] = None,
                  hbr: Optional[pulumi.Input[str]] = None,
+                 hcs_sgw: Optional[pulumi.Input[str]] = None,
                  hitsdb: Optional[pulumi.Input[str]] = None,
                  ims: Optional[pulumi.Input[str]] = None,
                  kms: Optional[pulumi.Input[str]] = None,
@@ -119,6 +125,7 @@ class ProviderEndpointArgs:
                  market: Optional[pulumi.Input[str]] = None,
                  maxcompute: Optional[pulumi.Input[str]] = None,
                  mns: Optional[pulumi.Input[str]] = None,
+                 mscopensubscription: Optional[pulumi.Input[str]] = None,
                  mse: Optional[pulumi.Input[str]] = None,
                  nas: Optional[pulumi.Input[str]] = None,
                  ons: Optional[pulumi.Input[str]] = None,
@@ -137,7 +144,9 @@ class ProviderEndpointArgs:
                  resourcemanager: Optional[pulumi.Input[str]] = None,
                  resourcesharing: Optional[pulumi.Input[str]] = None,
                  ros: Optional[pulumi.Input[str]] = None,
+                 sas: Optional[pulumi.Input[str]] = None,
                  scdn: Optional[pulumi.Input[str]] = None,
+                 sddp: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[str]] = None,
                  sgw: Optional[pulumi.Input[str]] = None,
                  slb: Optional[pulumi.Input[str]] = None,
@@ -150,6 +159,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "adb", adb)
         if alb is not None:
             pulumi.set(__self__, "alb", alb)
+        if alidfs is not None:
+            pulumi.set(__self__, "alidfs", alidfs)
         if alidns is not None:
             pulumi.set(__self__, "alidns", alidns)
         if alikafka is not None:
@@ -158,6 +169,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "apigateway", apigateway)
         if arms is not None:
             pulumi.set(__self__, "arms", arms)
+        if bastionhost is not None:
+            pulumi.set(__self__, "bastionhost", bastionhost)
         if brain_industrial is not None:
             pulumi.set(__self__, "brain_industrial", brain_industrial)
         if bssopenapi is not None:
@@ -168,6 +181,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "cassandra", cassandra)
         if cbn is not None:
             pulumi.set(__self__, "cbn", cbn)
+        if cddc is not None:
+            pulumi.set(__self__, "cddc", cddc)
         if cdn is not None:
             pulumi.set(__self__, "cdn", cdn)
         if cds is not None:
@@ -206,12 +221,16 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
             pulumi.set(__self__, "ecs", ecs)
+        if ehpc is not None:
+            pulumi.set(__self__, "ehpc", ehpc)
         if eipanycast is not None:
             pulumi.set(__self__, "eipanycast", eipanycast)
         if elasticsearch is not None:
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if emr is not None:
             pulumi.set(__self__, "emr", emr)
+        if ens is not None:
+            pulumi.set(__self__, "ens", ens)
         if ess is not None:
             pulumi.set(__self__, "ess", ess)
         if eventbridge is not None:
@@ -228,6 +247,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "gwsecd", gwsecd)
         if hbr is not None:
             pulumi.set(__self__, "hbr", hbr)
+        if hcs_sgw is not None:
+            pulumi.set(__self__, "hcs_sgw", hcs_sgw)
         if hitsdb is not None:
             pulumi.set(__self__, "hitsdb", hitsdb)
         if ims is not None:
@@ -246,6 +267,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "maxcompute", maxcompute)
         if mns is not None:
             pulumi.set(__self__, "mns", mns)
+        if mscopensubscription is not None:
+            pulumi.set(__self__, "mscopensubscription", mscopensubscription)
         if mse is not None:
             pulumi.set(__self__, "mse", mse)
         if nas is not None:
@@ -282,8 +305,12 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
+        if sas is not None:
+            pulumi.set(__self__, "sas", sas)
         if scdn is not None:
             pulumi.set(__self__, "scdn", scdn)
+        if sddp is not None:
+            pulumi.set(__self__, "sddp", sddp)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
         if sgw is not None:
@@ -326,6 +353,15 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
+    def alidfs(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "alidfs")
+
+    @alidfs.setter
+    def alidfs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alidfs", value)
+
+    @property
+    @pulumi.getter
     def alidns(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "alidns")
 
@@ -359,6 +395,15 @@ class ProviderEndpointArgs:
     @arms.setter
     def arms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "arms", value)
+
+    @property
+    @pulumi.getter
+    def bastionhost(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bastionhost")
+
+    @bastionhost.setter
+    def bastionhost(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bastionhost", value)
 
     @property
     @pulumi.getter(name="brainIndustrial")
@@ -404,6 +449,15 @@ class ProviderEndpointArgs:
     @cbn.setter
     def cbn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cbn", value)
+
+    @property
+    @pulumi.getter
+    def cddc(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cddc")
+
+    @cddc.setter
+    def cddc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cddc", value)
 
     @property
     @pulumi.getter
@@ -578,6 +632,15 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
+    def ehpc(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ehpc")
+
+    @ehpc.setter
+    def ehpc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ehpc", value)
+
+    @property
+    @pulumi.getter
     def eipanycast(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "eipanycast")
 
@@ -602,6 +665,15 @@ class ProviderEndpointArgs:
     @emr.setter
     def emr(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "emr", value)
+
+    @property
+    @pulumi.getter
+    def ens(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ens")
+
+    @ens.setter
+    def ens(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ens", value)
 
     @property
     @pulumi.getter
@@ -674,6 +746,15 @@ class ProviderEndpointArgs:
     @hbr.setter
     def hbr(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hbr", value)
+
+    @property
+    @pulumi.getter(name="hcsSgw")
+    def hcs_sgw(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "hcs_sgw")
+
+    @hcs_sgw.setter
+    def hcs_sgw(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hcs_sgw", value)
 
     @property
     @pulumi.getter
@@ -755,6 +836,15 @@ class ProviderEndpointArgs:
     @mns.setter
     def mns(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mns", value)
+
+    @property
+    @pulumi.getter
+    def mscopensubscription(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mscopensubscription")
+
+    @mscopensubscription.setter
+    def mscopensubscription(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mscopensubscription", value)
 
     @property
     @pulumi.getter
@@ -920,12 +1010,30 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
+    def sas(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sas")
+
+    @sas.setter
+    def sas(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sas", value)
+
+    @property
+    @pulumi.getter
     def scdn(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "scdn")
 
     @scdn.setter
     def scdn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scdn", value)
+
+    @property
+    @pulumi.getter
+    def sddp(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sddp")
+
+    @sddp.setter
+    def sddp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sddp", value)
 
     @property
     @pulumi.getter

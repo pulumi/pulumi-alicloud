@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("alb")]
         public Input<string>? Alb { get; set; }
 
+        [Input("alidfs")]
+        public Input<string>? Alidfs { get; set; }
+
         [Input("alidns")]
         public Input<string>? Alidns { get; set; }
 
@@ -32,6 +35,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("arms")]
         public Input<string>? Arms { get; set; }
+
+        [Input("bastionhost")]
+        public Input<string>? Bastionhost { get; set; }
 
         [Input("brainIndustrial")]
         public Input<string>? BrainIndustrial { get; set; }
@@ -47,6 +53,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("cbn")]
         public Input<string>? Cbn { get; set; }
+
+        [Input("cddc")]
+        public Input<string>? Cddc { get; set; }
 
         [Input("cdn")]
         public Input<string>? Cdn { get; set; }
@@ -105,6 +114,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("ecs")]
         public Input<string>? Ecs { get; set; }
 
+        [Input("ehpc")]
+        public Input<string>? Ehpc { get; set; }
+
         [Input("eipanycast")]
         public Input<string>? Eipanycast { get; set; }
 
@@ -113,6 +125,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("emr")]
         public Input<string>? Emr { get; set; }
+
+        [Input("ens")]
+        public Input<string>? Ens { get; set; }
 
         [Input("ess")]
         public Input<string>? Ess { get; set; }
@@ -137,6 +152,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("hbr")]
         public Input<string>? Hbr { get; set; }
+
+        [Input("hcsSgw")]
+        public Input<string>? HcsSgw { get; set; }
 
         [Input("hitsdb")]
         public Input<string>? Hitsdb { get; set; }
@@ -164,6 +182,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("mns")]
         public Input<string>? Mns { get; set; }
+
+        [Input("mscopensubscription")]
+        public Input<string>? Mscopensubscription { get; set; }
 
         [Input("mse")]
         public Input<string>? Mse { get; set; }
@@ -219,8 +240,14 @@ namespace Pulumi.AliCloud.Inputs
         [Input("ros")]
         public Input<string>? Ros { get; set; }
 
+        [Input("sas")]
+        public Input<string>? Sas { get; set; }
+
         [Input("scdn")]
         public Input<string>? Scdn { get; set; }
+
+        [Input("sddp")]
+        public Input<string>? Sddp { get; set; }
 
         [Input("serverless")]
         public Input<string>? Serverless { get; set; }

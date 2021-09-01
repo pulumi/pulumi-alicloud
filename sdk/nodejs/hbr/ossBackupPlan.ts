@@ -26,9 +26,10 @@ import * as utilities from "../utilities";
  *     nameRegex: "bosh-cf-blobstore-hz",
  * });
  * const example = new alicloud.hbr.OssBackupPlan("example", {
- *     ossBackupPlanName: "example_value",
- *     instanceId: defaultBuckets.then(defaultBuckets => defaultBuckets.buckets[0].name),
+ *     ossBackupPlanName: name,
  *     vaultId: defaultVault.id,
+ *     bucket: alicloud_oss_bucket["default"].bucket,
+ *     prefix: "/home",
  *     retention: "1",
  *     schedule: "I|1602673264|PT2H",
  *     backupType: "COMPLETE",

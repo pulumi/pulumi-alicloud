@@ -53,7 +53,9 @@ import * as utilities from "../utilities";
  * * `autoAddNewNodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
  * * `endpointConfig` - (Optional) The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
  * * `sslEnabled` - (Optional, Available in v1.121.0+) Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
- * * `netType` - (Optional, Available in v1.121.0+) The network type of the endpoint address.\
+ * * `netType` - (Optional, Available in v1.121.0+) The network type of the endpoint address.
+ * * `sslAutoRotate` - (Available in v1.132.0+) Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+ * * `sslCertificateUrl` - (Available in v1.132.0+) Specifies SSL certificate download link.\
  *     **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\
  *     For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
  *
@@ -103,6 +105,8 @@ export class Endpoint extends pulumi.CustomResource {
     public readonly netType!: pulumi.Output<string | undefined>;
     public readonly nodes!: pulumi.Output<string[]>;
     public readonly readWriteMode!: pulumi.Output<string>;
+    public readonly sslAutoRotate!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly sslCertificateUrl!: pulumi.Output<string>;
     /**
      * (Available in v1.121.0+) The SSL connection string.
      */
@@ -133,6 +137,8 @@ export class Endpoint extends pulumi.CustomResource {
             inputs["netType"] = state ? state.netType : undefined;
             inputs["nodes"] = state ? state.nodes : undefined;
             inputs["readWriteMode"] = state ? state.readWriteMode : undefined;
+            inputs["sslAutoRotate"] = state ? state.sslAutoRotate : undefined;
+            inputs["sslCertificateUrl"] = state ? state.sslCertificateUrl : undefined;
             inputs["sslConnectionString"] = state ? state.sslConnectionString : undefined;
             inputs["sslEnabled"] = state ? state.sslEnabled : undefined;
             inputs["sslExpireTime"] = state ? state.sslExpireTime : undefined;
@@ -148,7 +154,9 @@ export class Endpoint extends pulumi.CustomResource {
             inputs["netType"] = args ? args.netType : undefined;
             inputs["nodes"] = args ? args.nodes : undefined;
             inputs["readWriteMode"] = args ? args.readWriteMode : undefined;
+            inputs["sslAutoRotate"] = args ? args.sslAutoRotate : undefined;
             inputs["sslEnabled"] = args ? args.sslEnabled : undefined;
+            inputs["sslCertificateUrl"] = undefined /*out*/;
             inputs["sslConnectionString"] = undefined /*out*/;
             inputs["sslExpireTime"] = undefined /*out*/;
         }
@@ -173,6 +181,8 @@ export interface EndpointState {
     readonly netType?: pulumi.Input<string>;
     readonly nodes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly readWriteMode?: pulumi.Input<string>;
+    readonly sslAutoRotate?: pulumi.Input<string>;
+    readonly sslCertificateUrl?: pulumi.Input<string>;
     /**
      * (Available in v1.121.0+) The SSL connection string.
      */
@@ -198,5 +208,6 @@ export interface EndpointArgs {
     readonly netType?: pulumi.Input<string>;
     readonly nodes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly readWriteMode?: pulumi.Input<string>;
+    readonly sslAutoRotate?: pulumi.Input<string>;
     readonly sslEnabled?: pulumi.Input<string>;
 }

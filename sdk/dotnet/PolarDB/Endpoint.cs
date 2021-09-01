@@ -72,7 +72,9 @@ namespace Pulumi.AliCloud.PolarDB
     /// * `auto_add_new_nodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
     /// * `endpoint_config` - (Optional) The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
     /// * `ssl_enabled` - (Optional, Available in v1.121.0+) Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
-    /// * `net_type` - (Optional, Available in v1.121.0+) The network type of the endpoint address.\
+    /// * `net_type` - (Optional, Available in v1.121.0+) The network type of the endpoint address.
+    /// * `ssl_auto_rotate` - (Available in v1.132.0+) Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+    /// * `ssl_certificate_url` - (Available in v1.132.0+) Specifies SSL certificate download link.\
     ///     **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\
     ///     For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
     /// 
@@ -110,6 +112,12 @@ namespace Pulumi.AliCloud.PolarDB
 
         [Output("readWriteMode")]
         public Output<string> ReadWriteMode { get; private set; } = null!;
+
+        [Output("sslAutoRotate")]
+        public Output<string?> SslAutoRotate { get; private set; } = null!;
+
+        [Output("sslCertificateUrl")]
+        public Output<string> SslCertificateUrl { get; private set; } = null!;
 
         /// <summary>
         /// (Available in v1.121.0+) The SSL connection string.
@@ -206,6 +214,9 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("readWriteMode")]
         public Input<string>? ReadWriteMode { get; set; }
 
+        [Input("sslAutoRotate")]
+        public Input<string>? SslAutoRotate { get; set; }
+
         [Input("sslEnabled")]
         public Input<string>? SslEnabled { get; set; }
 
@@ -249,6 +260,12 @@ namespace Pulumi.AliCloud.PolarDB
 
         [Input("readWriteMode")]
         public Input<string>? ReadWriteMode { get; set; }
+
+        [Input("sslAutoRotate")]
+        public Input<string>? SslAutoRotate { get; set; }
+
+        [Input("sslCertificateUrl")]
+        public Input<string>? SslCertificateUrl { get; set; }
 
         /// <summary>
         /// (Available in v1.121.0+) The SSL connection string.

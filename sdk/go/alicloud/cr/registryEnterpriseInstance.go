@@ -67,6 +67,12 @@ type RegistryEnterpriseInstance struct {
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
 	// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
@@ -124,6 +130,12 @@ type registryEnterpriseInstanceState struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
 	InstanceType *string `pulumi:"instanceType"`
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	Password *string `pulumi:"password"`
 	// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
@@ -147,6 +159,12 @@ type RegistryEnterpriseInstanceState struct {
 	InstanceName pulumi.StringPtrInput
 	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
 	InstanceType pulumi.StringPtrInput
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+	KmsEncryptedPassword pulumi.StringPtrInput
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext pulumi.MapInput
+	// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	Password pulumi.StringPtrInput
 	// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
 	PaymentType pulumi.StringPtrInput
 	// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
@@ -170,6 +188,12 @@ type registryEnterpriseInstanceArgs struct {
 	InstanceName string `pulumi:"instanceName"`
 	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
 	InstanceType string `pulumi:"instanceType"`
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	Password *string `pulumi:"password"`
 	// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
@@ -188,6 +212,12 @@ type RegistryEnterpriseInstanceArgs struct {
 	InstanceName pulumi.StringInput
 	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
 	InstanceType pulumi.StringInput
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+	KmsEncryptedPassword pulumi.StringPtrInput
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext pulumi.MapInput
+	// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	Password pulumi.StringPtrInput
 	// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
 	PaymentType pulumi.StringPtrInput
 	// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.

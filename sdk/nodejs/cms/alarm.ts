@@ -82,7 +82,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+     * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
      */
     public readonly effectiveInterval!: pulumi.Output<string | undefined>;
     /**
@@ -140,7 +140,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
-     * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+     * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
      *
      * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */
@@ -254,7 +254,7 @@ export interface AlarmState {
      */
     readonly dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+     * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
      */
     readonly effectiveInterval?: pulumi.Input<string>;
     /**
@@ -312,7 +312,7 @@ export interface AlarmState {
      */
     readonly startTime?: pulumi.Input<number>;
     /**
-     * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+     * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
      *
      * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */
@@ -352,7 +352,7 @@ export interface AlarmArgs {
      */
     readonly dimensions: pulumi.Input<{[key: string]: any}>;
     /**
-     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+     * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
      */
     readonly effectiveInterval?: pulumi.Input<string>;
     /**
@@ -410,7 +410,7 @@ export interface AlarmArgs {
      */
     readonly startTime?: pulumi.Input<number>;
     /**
-     * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+     * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
      *
      * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */

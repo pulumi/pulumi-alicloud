@@ -20,8 +20,8 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// &gt; **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
     /// 
-    /// &gt; **NOTE:**  This resource is used to manage a Reserved Storage Mode instance, and creating new reserved storage mode instance is no longer supported since v1.127.0.
-    /// You can still use this resource to mange the instance which has been already created, but can not create a new one.
+    /// &gt; **NOTE:**  This resource is used to manage a Reserved Storage Mode instance, and creating a new reserved storage mode instance is no longer supported since v1.127.0.
+    /// You can still use this resource to manage the instance which has been already created, but can not create a new one.
     /// 
     /// ## Example Usage
     /// ### Create a Gpdb instance

@@ -13,19 +13,22 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class ServerGroupStickySessionConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+        /// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
+        /// parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
         /// </summary>
         [Input("cookie")]
         public Input<string>? Cookie { get; set; }
 
         /// <summary>
-        /// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+        /// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
+        /// to `86400`. Default value: `1000`.
         /// </summary>
         [Input("cookieTimeout")]
         public Input<int>? CookieTimeout { get; set; }
 
         /// <summary>
-        /// Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+        /// Indicates whether sticky session is enabled. Values: `true` and `false`. Default
+        /// value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
         /// </summary>
         [Input("stickySessionEnabled")]
         public Input<bool>? StickySessionEnabled { get; set; }

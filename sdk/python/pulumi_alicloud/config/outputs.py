@@ -79,6 +79,8 @@ class Endpoints(dict):
             suggest = "brain_industrial"
         elif key == "dmsEnterprise":
             suggest = "dms_enterprise"
+        elif key == "hcsSgw":
+            suggest = "hcs_sgw"
         elif key == "rKvstore":
             suggest = "r_kvstore"
         elif key == "wafOpenapi":
@@ -99,15 +101,18 @@ class Endpoints(dict):
                  actiontrail: Optional[str] = None,
                  adb: Optional[str] = None,
                  alb: Optional[str] = None,
+                 alidfs: Optional[str] = None,
                  alidns: Optional[str] = None,
                  alikafka: Optional[str] = None,
                  apigateway: Optional[str] = None,
                  arms: Optional[str] = None,
+                 bastionhost: Optional[str] = None,
                  brain_industrial: Optional[str] = None,
                  bssopenapi: Optional[str] = None,
                  cas: Optional[str] = None,
                  cassandra: Optional[str] = None,
                  cbn: Optional[str] = None,
+                 cddc: Optional[str] = None,
                  cdn: Optional[str] = None,
                  cds: Optional[str] = None,
                  cloudphone: Optional[str] = None,
@@ -127,9 +132,11 @@ class Endpoints(dict):
                  drds: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
+                 ehpc: Optional[str] = None,
                  eipanycast: Optional[str] = None,
                  elasticsearch: Optional[str] = None,
                  emr: Optional[str] = None,
+                 ens: Optional[str] = None,
                  ess: Optional[str] = None,
                  eventbridge: Optional[str] = None,
                  fc: Optional[str] = None,
@@ -138,6 +145,7 @@ class Endpoints(dict):
                  gpdb: Optional[str] = None,
                  gwsecd: Optional[str] = None,
                  hbr: Optional[str] = None,
+                 hcs_sgw: Optional[str] = None,
                  hitsdb: Optional[str] = None,
                  ims: Optional[str] = None,
                  kms: Optional[str] = None,
@@ -147,6 +155,7 @@ class Endpoints(dict):
                  market: Optional[str] = None,
                  maxcompute: Optional[str] = None,
                  mns: Optional[str] = None,
+                 mscopensubscription: Optional[str] = None,
                  mse: Optional[str] = None,
                  nas: Optional[str] = None,
                  ons: Optional[str] = None,
@@ -165,7 +174,9 @@ class Endpoints(dict):
                  resourcemanager: Optional[str] = None,
                  resourcesharing: Optional[str] = None,
                  ros: Optional[str] = None,
+                 sas: Optional[str] = None,
                  scdn: Optional[str] = None,
+                 sddp: Optional[str] = None,
                  serverless: Optional[str] = None,
                  sgw: Optional[str] = None,
                  slb: Optional[str] = None,
@@ -178,6 +189,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "adb", adb)
         if alb is not None:
             pulumi.set(__self__, "alb", alb)
+        if alidfs is not None:
+            pulumi.set(__self__, "alidfs", alidfs)
         if alidns is not None:
             pulumi.set(__self__, "alidns", alidns)
         if alikafka is not None:
@@ -186,6 +199,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "apigateway", apigateway)
         if arms is not None:
             pulumi.set(__self__, "arms", arms)
+        if bastionhost is not None:
+            pulumi.set(__self__, "bastionhost", bastionhost)
         if brain_industrial is not None:
             pulumi.set(__self__, "brain_industrial", brain_industrial)
         if bssopenapi is not None:
@@ -196,6 +211,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "cassandra", cassandra)
         if cbn is not None:
             pulumi.set(__self__, "cbn", cbn)
+        if cddc is not None:
+            pulumi.set(__self__, "cddc", cddc)
         if cdn is not None:
             pulumi.set(__self__, "cdn", cdn)
         if cds is not None:
@@ -234,12 +251,16 @@ class Endpoints(dict):
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
             pulumi.set(__self__, "ecs", ecs)
+        if ehpc is not None:
+            pulumi.set(__self__, "ehpc", ehpc)
         if eipanycast is not None:
             pulumi.set(__self__, "eipanycast", eipanycast)
         if elasticsearch is not None:
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if emr is not None:
             pulumi.set(__self__, "emr", emr)
+        if ens is not None:
+            pulumi.set(__self__, "ens", ens)
         if ess is not None:
             pulumi.set(__self__, "ess", ess)
         if eventbridge is not None:
@@ -256,6 +277,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "gwsecd", gwsecd)
         if hbr is not None:
             pulumi.set(__self__, "hbr", hbr)
+        if hcs_sgw is not None:
+            pulumi.set(__self__, "hcs_sgw", hcs_sgw)
         if hitsdb is not None:
             pulumi.set(__self__, "hitsdb", hitsdb)
         if ims is not None:
@@ -274,6 +297,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "maxcompute", maxcompute)
         if mns is not None:
             pulumi.set(__self__, "mns", mns)
+        if mscopensubscription is not None:
+            pulumi.set(__self__, "mscopensubscription", mscopensubscription)
         if mse is not None:
             pulumi.set(__self__, "mse", mse)
         if nas is not None:
@@ -310,8 +335,12 @@ class Endpoints(dict):
             pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
+        if sas is not None:
+            pulumi.set(__self__, "sas", sas)
         if scdn is not None:
             pulumi.set(__self__, "scdn", scdn)
+        if sddp is not None:
+            pulumi.set(__self__, "sddp", sddp)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
         if sgw is not None:
@@ -342,6 +371,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def alidfs(self) -> Optional[str]:
+        return pulumi.get(self, "alidfs")
+
+    @property
+    @pulumi.getter
     def alidns(self) -> Optional[str]:
         return pulumi.get(self, "alidns")
 
@@ -359,6 +393,11 @@ class Endpoints(dict):
     @pulumi.getter
     def arms(self) -> Optional[str]:
         return pulumi.get(self, "arms")
+
+    @property
+    @pulumi.getter
+    def bastionhost(self) -> Optional[str]:
+        return pulumi.get(self, "bastionhost")
 
     @property
     @pulumi.getter(name="brainIndustrial")
@@ -384,6 +423,11 @@ class Endpoints(dict):
     @pulumi.getter
     def cbn(self) -> Optional[str]:
         return pulumi.get(self, "cbn")
+
+    @property
+    @pulumi.getter
+    def cddc(self) -> Optional[str]:
+        return pulumi.get(self, "cddc")
 
     @property
     @pulumi.getter
@@ -482,6 +526,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def ehpc(self) -> Optional[str]:
+        return pulumi.get(self, "ehpc")
+
+    @property
+    @pulumi.getter
     def eipanycast(self) -> Optional[str]:
         return pulumi.get(self, "eipanycast")
 
@@ -494,6 +543,11 @@ class Endpoints(dict):
     @pulumi.getter
     def emr(self) -> Optional[str]:
         return pulumi.get(self, "emr")
+
+    @property
+    @pulumi.getter
+    def ens(self) -> Optional[str]:
+        return pulumi.get(self, "ens")
 
     @property
     @pulumi.getter
@@ -534,6 +588,11 @@ class Endpoints(dict):
     @pulumi.getter
     def hbr(self) -> Optional[str]:
         return pulumi.get(self, "hbr")
+
+    @property
+    @pulumi.getter(name="hcsSgw")
+    def hcs_sgw(self) -> Optional[str]:
+        return pulumi.get(self, "hcs_sgw")
 
     @property
     @pulumi.getter
@@ -579,6 +638,11 @@ class Endpoints(dict):
     @pulumi.getter
     def mns(self) -> Optional[str]:
         return pulumi.get(self, "mns")
+
+    @property
+    @pulumi.getter
+    def mscopensubscription(self) -> Optional[str]:
+        return pulumi.get(self, "mscopensubscription")
 
     @property
     @pulumi.getter
@@ -672,8 +736,18 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def sas(self) -> Optional[str]:
+        return pulumi.get(self, "sas")
+
+    @property
+    @pulumi.getter
     def scdn(self) -> Optional[str]:
         return pulumi.get(self, "scdn")
+
+    @property
+    @pulumi.getter
+    def sddp(self) -> Optional[str]:
+        return pulumi.get(self, "sddp")
 
     @property
     @pulumi.getter

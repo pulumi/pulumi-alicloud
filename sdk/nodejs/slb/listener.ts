@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  * frontendPort | http & https & tcp & udp | 1-65535 |
  * protocol | http & https & tcp & udp |
  * bandwidth | http & https & tcp & udp | -1 / 1-1000 |
- * scheduler | http & https & tcp & udp | wrr rr or wlc |
+ * scheduler | http & https & tcp & udp | wrr, rr, wlc, tch, qch |
  * stickySession | http & https | on or off |
  * stickySessionType | http & https | insert or server |
  * cookieTimeout | http & https | 1-86400  |
@@ -290,7 +290,8 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly requestTimeout!: pulumi.Output<number | undefined>;
     /**
-     * Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+     * Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+     * Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
      */
     public readonly scheduler!: pulumi.Output<string | undefined>;
     /**
@@ -590,7 +591,8 @@ export interface ListenerState {
      */
     readonly requestTimeout?: pulumi.Input<number>;
     /**
-     * Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+     * Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+     * Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
      */
     readonly scheduler?: pulumi.Input<string>;
     /**
@@ -771,7 +773,8 @@ export interface ListenerArgs {
      */
     readonly requestTimeout?: pulumi.Input<number>;
     /**
-     * Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+     * Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+     * Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
      */
     readonly scheduler?: pulumi.Input<string>;
     /**

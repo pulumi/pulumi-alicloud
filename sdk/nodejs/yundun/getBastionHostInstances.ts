@@ -5,24 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
- *
- * > **NOTE:** Available in 1.63.0+ .
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const instanceBastionHostInstances = pulumi.output(alicloud.yundun.getBastionHostInstances({
- *     nameRegex: "^bastionhost",
- * }, { async: true }));
- *
- * export const instance = alicloud_yundun_bastionhost_instances_instance.map(v => v.id);
- * ```
- */
 export function getBastionHostInstances(args?: GetBastionHostInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetBastionHostInstancesResult> {
     args = args || {};
     if (!opts) {
@@ -44,31 +26,9 @@ export function getBastionHostInstances(args?: GetBastionHostInstancesArgs, opts
  * A collection of arguments for invoking getBastionHostInstances.
  */
 export interface GetBastionHostInstancesArgs {
-    /**
-     * A regex string to filter results by the instance description.
-     */
     readonly descriptionRegex?: string;
-    /**
-     * Matched instance IDs to filter data source result.
-     */
     readonly ids?: string[];
-    /**
-     * File name to persist data source output.
-     */
     readonly outputFile?: string;
-    /**
-     * A map of tags assigned to the bastionhost instance. It must be in the format:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as alicloud from "@pulumi/alicloud";
-     *
-     * const instance = pulumi.output(alicloud.yundun.getBastionHostInstances({
-     *     tags: {
-     *         tagKey1: "tagValue1",
-     *     },
-     * }, { async: true }));
-     * ```
-     */
     readonly tags?: {[key: string]: any};
 }
 
@@ -83,13 +43,7 @@ export interface GetBastionHostInstancesResult {
      */
     readonly id: string;
     readonly ids: string[];
-    /**
-     * A list of apis. Each element contains the following attributes:
-     */
     readonly instances: outputs.yundun.GetBastionHostInstancesInstance[];
     readonly outputFile?: string;
-    /**
-     * A map of tags assigned to the bastionhost instance.
-     */
     readonly tags?: {[key: string]: any};
 }

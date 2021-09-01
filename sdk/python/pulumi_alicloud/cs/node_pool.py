@@ -81,7 +81,7 @@ class NodePoolArgs:
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`.
+        :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
@@ -483,7 +483,7 @@ class NodePoolArgs:
     @pulumi.getter(name="scalingConfig")
     def scaling_config(self) -> Optional[pulumi.Input['NodePoolScalingConfigArgs']]:
         """
-        Auto scaling node pool configuration. For more details, see `scaling_config`.
+        Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         """
         return pulumi.get(self, "scaling_config")
 
@@ -691,7 +691,7 @@ class _NodePoolState:
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`.
+        :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         :param pulumi.Input[str] scaling_group_id: (Available in 1.105.0+) Id of the Scaling Group.
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node.
@@ -1090,7 +1090,7 @@ class _NodePoolState:
     @pulumi.getter(name="scalingConfig")
     def scaling_config(self) -> Optional[pulumi.Input['NodePoolScalingConfigArgs']]:
         """
-        Auto scaling node pool configuration. For more details, see `scaling_config`.
+        Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         """
         return pulumi.get(self, "scaling_config")
 
@@ -1341,7 +1341,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`.
+        :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
@@ -1562,7 +1562,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`.
+        :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         :param pulumi.Input[str] scaling_group_id: (Available in 1.105.0+) Id of the Scaling Group.
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node.
@@ -1826,7 +1826,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="scalingConfig")
     def scaling_config(self) -> pulumi.Output['outputs.NodePoolScalingConfig']:
         """
-        Auto scaling node pool configuration. For more details, see `scaling_config`.
+        Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         """
         return pulumi.get(self, "scaling_config")
 

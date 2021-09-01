@@ -3,7 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .application import *
 from .config_map import *
+from .get_applications import *
 from .get_config_maps import *
 from .get_namespaces import *
 from .get_service import *
@@ -22,7 +24,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:sae/configMap:ConfigMap":
+            if typ == "alicloud:sae/application:Application":
+                return Application(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:sae/configMap:ConfigMap":
                 return ConfigMap(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:sae/namespace:Namespace":
                 return Namespace(name, pulumi.ResourceOptions(urn=urn))
@@ -31,6 +35,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "sae/application", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "sae/configMap", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "sae/namespace", _module_instance)
 

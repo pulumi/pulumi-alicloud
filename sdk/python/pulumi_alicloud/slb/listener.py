@@ -92,7 +92,8 @@ class ListenerArgs:
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+               Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
         :param pulumi.Input[str] ssl_certificate_id: It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
@@ -612,7 +613,8 @@ class ListenerArgs:
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
-        Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+        Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         """
         return pulumi.get(self, "scheduler")
 
@@ -797,7 +799,8 @@ class _ListenerState:
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
         :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+               Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
         :param pulumi.Input[str] ssl_certificate_id: It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
@@ -1320,7 +1323,8 @@ class _ListenerState:
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
-        Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+        Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         """
         return pulumi.get(self, "scheduler")
 
@@ -1497,7 +1501,7 @@ class Listener(pulumi.CustomResource):
         frontend_port | http & https & tcp & udp | 1-65535 |
         protocol | http & https & tcp & udp |
         bandwidth | http & https & tcp & udp | -1 / 1-1000 |
-        scheduler | http & https & tcp & udp | wrr rr or wlc |
+        scheduler | http & https & tcp & udp | wrr, rr, wlc, tch, qch |
         sticky_session | http & https | on or off |
         sticky_session_type | http & https | insert or server |
         cookie_timeout | http & https | 1-86400  |
@@ -1570,7 +1574,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
         :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+               Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
         :param pulumi.Input[str] ssl_certificate_id: It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
@@ -1608,7 +1613,7 @@ class Listener(pulumi.CustomResource):
         frontend_port | http & https & tcp & udp | 1-65535 |
         protocol | http & https & tcp & udp |
         bandwidth | http & https & tcp & udp | -1 / 1-1000 |
-        scheduler | http & https & tcp & udp | wrr rr or wlc |
+        scheduler | http & https & tcp & udp | wrr, rr, wlc, tch, qch |
         sticky_session | http & https | on or off |
         sticky_session_type | http & https | insert or server |
         cookie_timeout | http & https | 1-86400  |
@@ -1873,7 +1878,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
         :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+               Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
         :param pulumi.Input[str] ssl_certificate_id: It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
@@ -2205,7 +2211,8 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def scheduler(self) -> pulumi.Output[Optional[str]]:
         """
-        Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
+        Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         """
         return pulumi.get(self, "scheduler")
 

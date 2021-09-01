@@ -77,6 +77,11 @@ namespace Pulumi.AliCloud
         public static string? SecurityToken { get; set; } = __config.Get("securityToken");
 
         /// <summary>
+        /// The security transport for the assume role invoking.
+        /// </summary>
+        public static string? SecurityTransport { get; set; } = __config.Get("securityTransport");
+
+        /// <summary>
         /// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
         /// </summary>
         public static string? SharedCredentialsFile { get; set; } = __config.Get("sharedCredentialsFile");
@@ -88,8 +93,7 @@ namespace Pulumi.AliCloud
         public static bool? SkipRegionValidation { get; set; } = __config.GetBoolean("skipRegionValidation");
 
         /// <summary>
-        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        /// console.
+        /// The source ip for the assume role invoking.
         /// </summary>
         public static string? SourceIp { get; set; } = __config.Get("sourceIp");
 
@@ -109,15 +113,18 @@ namespace Pulumi.AliCloud
                 public string? Actiontrail { get; set; } = null!;
                 public string? Adb { get; set; } = null!;
                 public string? Alb { get; set; } = null!;
+                public string? Alidfs { get; set; } = null!;
                 public string? Alidns { get; set; } = null!;
                 public string? Alikafka { get; set; } = null!;
                 public string? Apigateway { get; set; } = null!;
                 public string? Arms { get; set; } = null!;
+                public string? Bastionhost { get; set; } = null!;
                 public string? BrainIndustrial { get; set; } = null!;
                 public string? Bssopenapi { get; set; } = null!;
                 public string? Cas { get; set; } = null!;
                 public string? Cassandra { get; set; } = null!;
                 public string? Cbn { get; set; } = null!;
+                public string? Cddc { get; set; } = null!;
                 public string? Cdn { get; set; } = null!;
                 public string? Cds { get; set; } = null!;
                 public string? Cloudphone { get; set; } = null!;
@@ -137,9 +144,11 @@ namespace Pulumi.AliCloud
                 public string? Drds { get; set; } = null!;
                 public string? Eci { get; set; } = null!;
                 public string? Ecs { get; set; } = null!;
+                public string? Ehpc { get; set; } = null!;
                 public string? Eipanycast { get; set; } = null!;
                 public string? Elasticsearch { get; set; } = null!;
                 public string? Emr { get; set; } = null!;
+                public string? Ens { get; set; } = null!;
                 public string? Ess { get; set; } = null!;
                 public string? Eventbridge { get; set; } = null!;
                 public string? Fc { get; set; } = null!;
@@ -148,6 +157,7 @@ namespace Pulumi.AliCloud
                 public string? Gpdb { get; set; } = null!;
                 public string? Gwsecd { get; set; } = null!;
                 public string? Hbr { get; set; } = null!;
+                public string? HcsSgw { get; set; } = null!;
                 public string? Hitsdb { get; set; } = null!;
                 public string? Ims { get; set; } = null!;
                 public string? Kms { get; set; } = null!;
@@ -157,6 +167,7 @@ namespace Pulumi.AliCloud
                 public string? Market { get; set; } = null!;
                 public string? Maxcompute { get; set; } = null!;
                 public string? Mns { get; set; } = null!;
+                public string? Mscopensubscription { get; set; } = null!;
                 public string? Mse { get; set; } = null!;
                 public string? Nas { get; set; } = null!;
                 public string? Ons { get; set; } = null!;
@@ -175,7 +186,9 @@ namespace Pulumi.AliCloud
                 public string? Resourcemanager { get; set; } = null!;
                 public string? Resourcesharing { get; set; } = null!;
                 public string? Ros { get; set; } = null!;
+                public string? Sas { get; set; } = null!;
                 public string? Scdn { get; set; } = null!;
+                public string? Sddp { get; set; } = null!;
                 public string? Serverless { get; set; } = null!;
                 public string? Sgw { get; set; } = null!;
                 public string? Slb { get; set; } = null!;

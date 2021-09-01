@@ -10,6 +10,322 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetGatewaysGateway struct {
+	// gateway .
+	ActivatedTime string `pulumi:"activatedTime"`
+	BuyUrl        string `pulumi:"buyUrl"`
+	// gateway category.
+	Category string `pulumi:"category"`
+	// gateway created timestamp in second format.
+	CreateTime string `pulumi:"createTime"`
+	// gateway description.
+	Description string `pulumi:"description"`
+	// gateway ecs instance id.
+	EcsInstanceId string `pulumi:"ecsInstanceId"`
+	// gateway expiration status.
+	ExpireStatus int `pulumi:"expireStatus"`
+	// gateway expiration timestamp in second format.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// gateway class.
+	GatewayClass string `pulumi:"gatewayClass"`
+	// gateway id.
+	GatewayId string `pulumi:"gatewayId"`
+	// gateway name.
+	GatewayName string `pulumi:"gatewayName"`
+	// gateway version.
+	GatewayVersion string `pulumi:"gatewayVersion"`
+	// The ID of the Gateway.
+	Id string `pulumi:"id"`
+	// gateway service ip.
+	InnerIp string `pulumi:"innerIp"`
+	// gateway public ip.
+	Ip string `pulumi:"ip"`
+	// whether subscription gateway is released after expiration or not.
+	IsReleaseAfterExpiration bool `pulumi:"isReleaseAfterExpiration"`
+	// gateway location.
+	Location string `pulumi:"location"`
+	// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+	PaymentType string `pulumi:"paymentType"`
+	// gateway public network bandwidth.
+	PublicNetworkBandwidth int    `pulumi:"publicNetworkBandwidth"`
+	RenewUrl               string `pulumi:"renewUrl"`
+	// gateway status.
+	Status string `pulumi:"status"`
+	// storage bundle id.
+	StorageBundleId string `pulumi:"storageBundleId"`
+	// gateway task id.
+	TaskId string `pulumi:"taskId"`
+	// gateway type.
+	Type string `pulumi:"type"`
+	// gateway vpc id.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetGatewaysGatewayInput is an input type that accepts GetGatewaysGatewayArgs and GetGatewaysGatewayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayInput` via:
+//
+//          GetGatewaysGatewayArgs{...}
+type GetGatewaysGatewayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayOutput() GetGatewaysGatewayOutput
+	ToGetGatewaysGatewayOutputWithContext(context.Context) GetGatewaysGatewayOutput
+}
+
+type GetGatewaysGatewayArgs struct {
+	// gateway .
+	ActivatedTime pulumi.StringInput `pulumi:"activatedTime"`
+	BuyUrl        pulumi.StringInput `pulumi:"buyUrl"`
+	// gateway category.
+	Category pulumi.StringInput `pulumi:"category"`
+	// gateway created timestamp in second format.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// gateway description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// gateway ecs instance id.
+	EcsInstanceId pulumi.StringInput `pulumi:"ecsInstanceId"`
+	// gateway expiration status.
+	ExpireStatus pulumi.IntInput `pulumi:"expireStatus"`
+	// gateway expiration timestamp in second format.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// gateway class.
+	GatewayClass pulumi.StringInput `pulumi:"gatewayClass"`
+	// gateway id.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// gateway name.
+	GatewayName pulumi.StringInput `pulumi:"gatewayName"`
+	// gateway version.
+	GatewayVersion pulumi.StringInput `pulumi:"gatewayVersion"`
+	// The ID of the Gateway.
+	Id pulumi.StringInput `pulumi:"id"`
+	// gateway service ip.
+	InnerIp pulumi.StringInput `pulumi:"innerIp"`
+	// gateway public ip.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// whether subscription gateway is released after expiration or not.
+	IsReleaseAfterExpiration pulumi.BoolInput `pulumi:"isReleaseAfterExpiration"`
+	// gateway location.
+	Location pulumi.StringInput `pulumi:"location"`
+	// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// gateway public network bandwidth.
+	PublicNetworkBandwidth pulumi.IntInput    `pulumi:"publicNetworkBandwidth"`
+	RenewUrl               pulumi.StringInput `pulumi:"renewUrl"`
+	// gateway status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// storage bundle id.
+	StorageBundleId pulumi.StringInput `pulumi:"storageBundleId"`
+	// gateway task id.
+	TaskId pulumi.StringInput `pulumi:"taskId"`
+	// gateway type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// gateway vpc id.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetGatewaysGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGateway)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutput() GetGatewaysGatewayOutput {
+	return i.ToGetGatewaysGatewayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutputWithContext(ctx context.Context) GetGatewaysGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayOutput)
+}
+
+// GetGatewaysGatewayArrayInput is an input type that accepts GetGatewaysGatewayArray and GetGatewaysGatewayArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayArrayInput` via:
+//
+//          GetGatewaysGatewayArray{ GetGatewaysGatewayArgs{...} }
+type GetGatewaysGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayArrayOutput() GetGatewaysGatewayArrayOutput
+	ToGetGatewaysGatewayArrayOutputWithContext(context.Context) GetGatewaysGatewayArrayOutput
+}
+
+type GetGatewaysGatewayArray []GetGatewaysGatewayInput
+
+func (GetGatewaysGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGateway)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayArray) ToGetGatewaysGatewayArrayOutput() GetGatewaysGatewayArrayOutput {
+	return i.ToGetGatewaysGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayArray) ToGetGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayArrayOutput)
+}
+
+type GetGatewaysGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGateway)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutput() GetGatewaysGatewayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutputWithContext(ctx context.Context) GetGatewaysGatewayOutput {
+	return o
+}
+
+// gateway .
+func (o GetGatewaysGatewayOutput) ActivatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.ActivatedTime }).(pulumi.StringOutput)
+}
+
+func (o GetGatewaysGatewayOutput) BuyUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.BuyUrl }).(pulumi.StringOutput)
+}
+
+// gateway category.
+func (o GetGatewaysGatewayOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// gateway created timestamp in second format.
+func (o GetGatewaysGatewayOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// gateway description.
+func (o GetGatewaysGatewayOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// gateway ecs instance id.
+func (o GetGatewaysGatewayOutput) EcsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.EcsInstanceId }).(pulumi.StringOutput)
+}
+
+// gateway expiration status.
+func (o GetGatewaysGatewayOutput) ExpireStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) int { return v.ExpireStatus }).(pulumi.IntOutput)
+}
+
+// gateway expiration timestamp in second format.
+func (o GetGatewaysGatewayOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// gateway class.
+func (o GetGatewaysGatewayOutput) GatewayClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GatewayClass }).(pulumi.StringOutput)
+}
+
+// gateway id.
+func (o GetGatewaysGatewayOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// gateway name.
+func (o GetGatewaysGatewayOutput) GatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GatewayName }).(pulumi.StringOutput)
+}
+
+// gateway version.
+func (o GetGatewaysGatewayOutput) GatewayVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GatewayVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the Gateway.
+func (o GetGatewaysGatewayOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// gateway service ip.
+func (o GetGatewaysGatewayOutput) InnerIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.InnerIp }).(pulumi.StringOutput)
+}
+
+// gateway public ip.
+func (o GetGatewaysGatewayOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// whether subscription gateway is released after expiration or not.
+func (o GetGatewaysGatewayOutput) IsReleaseAfterExpiration() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) bool { return v.IsReleaseAfterExpiration }).(pulumi.BoolOutput)
+}
+
+// gateway location.
+func (o GetGatewaysGatewayOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+func (o GetGatewaysGatewayOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// gateway public network bandwidth.
+func (o GetGatewaysGatewayOutput) PublicNetworkBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) int { return v.PublicNetworkBandwidth }).(pulumi.IntOutput)
+}
+
+func (o GetGatewaysGatewayOutput) RenewUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.RenewUrl }).(pulumi.StringOutput)
+}
+
+// gateway status.
+func (o GetGatewaysGatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// storage bundle id.
+func (o GetGatewaysGatewayOutput) StorageBundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.StorageBundleId }).(pulumi.StringOutput)
+}
+
+// gateway task id.
+func (o GetGatewaysGatewayOutput) TaskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.TaskId }).(pulumi.StringOutput)
+}
+
+// gateway type.
+func (o GetGatewaysGatewayOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// gateway vpc id.
+func (o GetGatewaysGatewayOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetGatewaysGatewayOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetGatewaysGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGateway)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutput() GetGatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGateway {
+		return vs[0].([]GetGatewaysGateway)[vs[1].(int)]
+	}).(GetGatewaysGatewayOutput)
+}
+
 type GetStorageBundlesBundle struct {
 	Description       string `pulumi:"description"`
 	Id                string `pulumi:"id"`
@@ -129,6 +445,8 @@ func (o GetStorageBundlesBundleArrayOutput) Index(i pulumi.IntInput) GetStorageB
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetGatewaysGatewayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetStorageBundlesBundleOutput{})
 	pulumi.RegisterOutputType(GetStorageBundlesBundleArrayOutput{})
 }

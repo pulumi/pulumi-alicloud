@@ -13,7 +13,7 @@ import (
 type AlarmEscalationsCritical struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
@@ -35,7 +35,7 @@ type AlarmEscalationsCriticalInput interface {
 type AlarmEscalationsCriticalArgs struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
@@ -125,7 +125,7 @@ func (o AlarmEscalationsCriticalOutput) ComparisonOperator() pulumi.StringPtrOut
 	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsCriticalOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
@@ -168,7 +168,7 @@ func (o AlarmEscalationsCriticalPtrOutput) ComparisonOperator() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsCriticalPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsCritical) *string {
 		if v == nil {
@@ -201,7 +201,7 @@ func (o AlarmEscalationsCriticalPtrOutput) Times() pulumi.IntPtrOutput {
 type AlarmEscalationsInfo struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
@@ -223,7 +223,7 @@ type AlarmEscalationsInfoInput interface {
 type AlarmEscalationsInfoArgs struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
@@ -313,7 +313,7 @@ func (o AlarmEscalationsInfoOutput) ComparisonOperator() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsInfoOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
@@ -356,7 +356,7 @@ func (o AlarmEscalationsInfoPtrOutput) ComparisonOperator() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsInfoPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsInfo) *string {
 		if v == nil {
@@ -389,7 +389,7 @@ func (o AlarmEscalationsInfoPtrOutput) Times() pulumi.IntPtrOutput {
 type AlarmEscalationsWarn struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
@@ -411,7 +411,7 @@ type AlarmEscalationsWarnInput interface {
 type AlarmEscalationsWarnArgs struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
@@ -501,7 +501,7 @@ func (o AlarmEscalationsWarnOutput) ComparisonOperator() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsWarnOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
@@ -544,7 +544,7 @@ func (o AlarmEscalationsWarnPtrOutput) ComparisonOperator() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsWarnPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsWarn) *string {
 		if v == nil {

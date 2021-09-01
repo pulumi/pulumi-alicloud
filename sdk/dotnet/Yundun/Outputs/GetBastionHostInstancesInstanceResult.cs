@@ -13,61 +13,15 @@ namespace Pulumi.AliCloud.Yundun.Outputs
     [OutputType]
     public sealed class GetBastionHostInstancesInstanceResult
     {
-        /// <summary>
-        /// The instance's remark.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// The instance's id.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The instance's status.
-        /// </summary>
         public readonly string InstanceStatus;
         public readonly string LicenseCode;
-        /// <summary>
-        /// The instance's private domain name.
-        /// </summary>
         public readonly string PrivateDomain;
-        /// <summary>
-        /// The instance's public domain name.
-        /// </summary>
         public readonly string PublicDomain;
-        /// <summary>
-        /// The instance's public network access configuration.
-        /// </summary>
         public readonly bool PublicNetworkAccess;
-        /// <summary>
-        /// The instance's security group configuration.
-        /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
-        /// <summary>
-        /// A map of tags assigned to the bastionhost instance. It must be in the format:
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var instance = Output.Create(AliCloud.Yundun.GetBastionHostInstances.InvokeAsync(new AliCloud.Yundun.GetBastionHostInstancesArgs
-        ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
-        /// <summary>
-        /// The instance's vSwitch ID.
-        /// </summary>
         public readonly string UserVswitchId;
 
         [OutputConstructor]

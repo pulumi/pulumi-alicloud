@@ -15,15 +15,18 @@ export interface ProviderEndpoint {
     actiontrail?: pulumi.Input<string>;
     adb?: pulumi.Input<string>;
     alb?: pulumi.Input<string>;
+    alidfs?: pulumi.Input<string>;
     alidns?: pulumi.Input<string>;
     alikafka?: pulumi.Input<string>;
     apigateway?: pulumi.Input<string>;
     arms?: pulumi.Input<string>;
+    bastionhost?: pulumi.Input<string>;
     brainIndustrial?: pulumi.Input<string>;
     bssopenapi?: pulumi.Input<string>;
     cas?: pulumi.Input<string>;
     cassandra?: pulumi.Input<string>;
     cbn?: pulumi.Input<string>;
+    cddc?: pulumi.Input<string>;
     cdn?: pulumi.Input<string>;
     cds?: pulumi.Input<string>;
     cloudphone?: pulumi.Input<string>;
@@ -43,9 +46,11 @@ export interface ProviderEndpoint {
     drds?: pulumi.Input<string>;
     eci?: pulumi.Input<string>;
     ecs?: pulumi.Input<string>;
+    ehpc?: pulumi.Input<string>;
     eipanycast?: pulumi.Input<string>;
     elasticsearch?: pulumi.Input<string>;
     emr?: pulumi.Input<string>;
+    ens?: pulumi.Input<string>;
     ess?: pulumi.Input<string>;
     eventbridge?: pulumi.Input<string>;
     fc?: pulumi.Input<string>;
@@ -54,6 +59,7 @@ export interface ProviderEndpoint {
     gpdb?: pulumi.Input<string>;
     gwsecd?: pulumi.Input<string>;
     hbr?: pulumi.Input<string>;
+    hcsSgw?: pulumi.Input<string>;
     hitsdb?: pulumi.Input<string>;
     ims?: pulumi.Input<string>;
     kms?: pulumi.Input<string>;
@@ -63,6 +69,7 @@ export interface ProviderEndpoint {
     market?: pulumi.Input<string>;
     maxcompute?: pulumi.Input<string>;
     mns?: pulumi.Input<string>;
+    mscopensubscription?: pulumi.Input<string>;
     mse?: pulumi.Input<string>;
     nas?: pulumi.Input<string>;
     ons?: pulumi.Input<string>;
@@ -81,7 +88,9 @@ export interface ProviderEndpoint {
     resourcemanager?: pulumi.Input<string>;
     resourcesharing?: pulumi.Input<string>;
     ros?: pulumi.Input<string>;
+    sas?: pulumi.Input<string>;
     scdn?: pulumi.Input<string>;
+    sddp?: pulumi.Input<string>;
     serverless?: pulumi.Input<string>;
     sgw?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
@@ -96,17 +105,402 @@ export namespace adb {
 }
 
 export namespace alb {
+    export interface AclAclEntry {
+        /**
+         * The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The IP address for the ACL entry.
+         */
+        entry?: pulumi.Input<string>;
+        /**
+         * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    export interface ListenerAccessLogTracingConfig {
+        /**
+         * Xtrace Function. Value: True Or False . Default Value: False.
+         */
+        tracingEnabled?: pulumi.Input<boolean>;
+        /**
+         * Xtrace Sampling Rate. Value: **1~10000**.
+         */
+        tracingSample?: pulumi.Input<number>;
+        /**
+         * Xtrace Type Value Is **Zipkin**.
+         */
+        tracingType?: pulumi.Input<string>;
+    }
+
+    export interface ListenerCertificate {
+        certificateId?: pulumi.Input<string>;
+    }
+
+    export interface ListenerDefaultAction {
+        /**
+         * The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+         */
+        forwardGroupConfig: pulumi.Input<inputs.alb.ListenerDefaultActionForwardGroupConfig>;
+        /**
+         * Action Type.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ListenerDefaultActionForwardGroupConfig {
+        /**
+         * The destination server group to which requests are forwarded.
+         */
+        serverGroupTuples: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultActionForwardGroupConfigServerGroupTuple>[]>;
+    }
+
+    export interface ListenerDefaultActionForwardGroupConfigServerGroupTuple {
+        /**
+         * The ID of the destination server group to which requests are forwarded.
+         */
+        serverGroupId: pulumi.Input<string>;
+    }
+
+    export interface ListenerQuicConfig {
+        /**
+         * There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
+         */
+        quicListenerId?: pulumi.Input<string>;
+        /**
+         * Indicates Whether to Enable the QuIC Upgrade.
+         */
+        quicUpgradeEnabled?: pulumi.Input<boolean>;
+    }
+
+    export interface ListenerXforwardedForConfig {
+        /**
+         * The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+         */
+        xforwardedforclientcertIssuerdnalias?: pulumi.Input<string>;
+        /**
+         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+         */
+        xforwardedforclientcertIssuerdnenabled?: pulumi.Input<boolean>;
+        /**
+         * The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xforwardedforclientcertclientverifyalias?: pulumi.Input<string>;
+        /**
+         * Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+         */
+        xforwardedforclientcertclientverifyenabled?: pulumi.Input<boolean>;
+        /**
+         * The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xforwardedforclientcertfingerprintalias?: pulumi.Input<string>;
+        /**
+         * Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+         */
+        xforwardedforclientcertfingerprintenabled?: pulumi.Input<boolean>;
+        /**
+         * The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xforwardedforclientcertsubjectdnalias?: pulumi.Input<string>;
+        /**
+         * Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         */
+        xforwardedforclientcertsubjectdnenabled?: pulumi.Input<boolean>;
+        /**
+         * Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+         */
+        xforwardedforclientsrcportenabled?: pulumi.Input<boolean>;
+        /**
+         * Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+         */
+        xforwardedforenabled?: pulumi.Input<boolean>;
+        /**
+         * Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+         */
+        xforwardedforprotoenabled?: pulumi.Input<boolean>;
+        /**
+         * Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+         */
+        xforwardedforslbidenabled?: pulumi.Input<boolean>;
+        /**
+         * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+         */
+        xforwardedforslbportenabled?: pulumi.Input<boolean>;
+    }
+
+    export interface LoadBalancerAccessLogConfig {
+        /**
+         * The log service that access logs are shipped to.
+         */
+        logProject?: pulumi.Input<string>;
+        /**
+         * The log service that access logs are shipped to.
+         */
+        logStore?: pulumi.Input<string>;
+    }
+
+    export interface LoadBalancerLoadBalancerBillingConfig {
+        /**
+         * The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+         */
+        payType: pulumi.Input<string>;
+    }
+
+    export interface LoadBalancerModificationProtectionConfig {
+        /**
+         * The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+         */
+        reason?: pulumi.Input<string>;
+        /**
+         * Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    export interface LoadBalancerZoneMapping {
+        /**
+         * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+         */
+        vswitchId: pulumi.Input<string>;
+        /**
+         * The ID of the zone to which the ALB instance belongs.
+         */
+        zoneId: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleAction {
+        /**
+         * The configuration of the fixed response. See the following `Block fixedResponseConfig`.
+         */
+        fixedResponseConfig?: pulumi.Input<inputs.alb.RuleRuleActionFixedResponseConfig>;
+        /**
+         * The forward response action within ALB. See the following `Block forwardGroupConfig`.
+         */
+        forwardGroupConfig?: pulumi.Input<inputs.alb.RuleRuleActionForwardGroupConfig>;
+        /**
+         * The configuration of the inserted header field. See the following `Block insertHeaderConfig`.
+         */
+        insertHeaderConfig?: pulumi.Input<inputs.alb.RuleRuleActionInsertHeaderConfig>;
+        /**
+         * The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+         */
+        order: pulumi.Input<number>;
+        /**
+         * The configuration of the external redirect action. See the following `Block redirectConfig`.
+         */
+        redirectConfig?: pulumi.Input<inputs.alb.RuleRuleActionRedirectConfig>;
+        /**
+         * The redirect action within ALB. See the following `Block rewriteConfig`.
+         */
+        rewriteConfig?: pulumi.Input<inputs.alb.RuleRuleActionRewriteConfig>;
+        /**
+         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleActionFixedResponseConfig {
+        /**
+         * The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+         */
+        content: pulumi.Input<string>;
+        /**
+         * The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+         */
+        contentType?: pulumi.Input<string>;
+        /**
+         * The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+         */
+        httpCode?: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleActionForwardGroupConfig {
+        /**
+         * The destination server group to which requests are forwarded.
+         */
+        serverGroupTuples?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleActionForwardGroupConfigServerGroupTuple>[]>;
+    }
+
+    export interface RuleRuleActionForwardGroupConfigServerGroupTuple {
+        /**
+         * The ID of the destination server group to which requests are forwarded.
+         */
+        serverGroupId?: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleActionInsertHeaderConfig {
+        /**
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+         */
+        value?: pulumi.Input<string>;
+        /**
+         * Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+         */
+        valueType?: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleActionRedirectConfig {
+        /**
+         * The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+         */
+        httpCode?: pulumi.Input<string>;
+        /**
+         * The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+         */
+        protocol?: pulumi.Input<string>;
+        /**
+         * The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+         */
+        query?: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleActionRewriteConfig {
+        /**
+         * The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+         */
+        query?: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleCondition {
+        /**
+         * The configuration of the cookie. See the following `Block cookieConfig`.
+         */
+        cookieConfig?: pulumi.Input<inputs.alb.RuleRuleConditionCookieConfig>;
+        /**
+         * The configuration of the header field. See the following `Block headerConfig`.
+         */
+        headerConfig?: pulumi.Input<inputs.alb.RuleRuleConditionHeaderConfig>;
+        /**
+         * The configuration of the host field. See the following `Block hostConfig`.
+         */
+        hostConfig?: pulumi.Input<inputs.alb.RuleRuleConditionHostConfig>;
+        /**
+         * The configuration of the request method. See the following `Block methodConfig`.
+         */
+        methodConfig?: pulumi.Input<inputs.alb.RuleRuleConditionMethodConfig>;
+        /**
+         * The configuration of the path for the request to be forwarded. See the following `Block pathConfig`.
+         */
+        pathConfig?: pulumi.Input<inputs.alb.RuleRuleConditionPathConfig>;
+        /**
+         * The configuration of the query string. See the following `Block queryStringConfig`.
+         */
+        queryStringConfig?: pulumi.Input<inputs.alb.RuleRuleConditionQueryStringConfig>;
+        /**
+         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleConditionCookieConfig {
+        /**
+         * The query string.
+         */
+        values?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleConditionCookieConfigValue>[]>;
+    }
+
+    export interface RuleRuleConditionCookieConfigValue {
+        /**
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleConditionHeaderConfig {
+        /**
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The query string.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RuleRuleConditionHostConfig {
+        /**
+         * The query string.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RuleRuleConditionMethodConfig {
+        /**
+         * The query string.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RuleRuleConditionPathConfig {
+        /**
+         * The query string.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RuleRuleConditionQueryStringConfig {
+        /**
+         * The query string.
+         */
+        values?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleConditionQueryStringConfigValue>[]>;
+    }
+
+    export interface RuleRuleConditionQueryStringConfigValue {
+        /**
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface ServerGroupHealthCheckConfig {
         /**
-         * The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * The status code for a successful health check. Multiple status codes can be specified as a
+         * list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
+         * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+         * The port of the backend server that is used for health checks. Valid values: `0`
+         * to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
          */
         healthCheckConnectPort?: pulumi.Input<number>;
         /**
-         * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+         * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
+         * value: `true`.
          */
         healthCheckEnabled?: pulumi.Input<boolean>;
         /**
@@ -114,19 +508,23 @@ export namespace alb {
          */
         healthCheckHost?: pulumi.Input<string>;
         /**
-         * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
+         * . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckHttpVersion?: pulumi.Input<string>;
         /**
-         * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+         * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
+         * to `50`. Default value: `2`.
          */
         healthCheckInterval?: pulumi.Input<number>;
         /**
-         * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
+         * exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckMethod?: pulumi.Input<string>;
         /**
-         * The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * The forwarding rule path of health checks. **NOTE:** This parameter exists if
+         * the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckPath?: pulumi.Input<string>;
         /**
@@ -134,15 +532,23 @@ export namespace alb {
          */
         healthCheckProtocol?: pulumi.Input<string>;
         /**
-         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
+         * instance does not send an expected response within the specified period of time, the ECS instance is considered
+         * unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
+         * parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
+         * is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
          */
         healthCheckTimeout?: pulumi.Input<number>;
         /**
-         * The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+         * The number of health checks that an unhealthy backend server must pass consecutively before it
+         * is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
+         * Default value: 3.
          */
         healthyThreshold?: pulumi.Input<number>;
         /**
-         * The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+         * The number of consecutive health checks that a healthy backend server must consecutively fail
+         * before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
+         * values: `2` to `10`. Default value: `3`.
          */
         unhealthyThreshold?: pulumi.Input<number>;
     }
@@ -173,22 +579,26 @@ export namespace alb {
          */
         status?: pulumi.Input<string>;
         /**
-         * The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+         * The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
+         * requests are forwarded to the server.
          */
         weight?: pulumi.Input<number>;
     }
 
     export interface ServerGroupStickySessionConfig {
         /**
-         * the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+         * the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
+         * parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
          */
         cookie?: pulumi.Input<string>;
         /**
-         * The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+         * The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
+         * to `86400`. Default value: `1000`.
          */
         cookieTimeout?: pulumi.Input<number>;
         /**
-         * Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+         * Indicates whether sticky session is enabled. Values: `true` and `false`. Default
+         * value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
          */
         stickySessionEnabled?: pulumi.Input<boolean>;
         /**
@@ -370,6 +780,9 @@ export namespace apigateway {
 export namespace arms {
 }
 
+export namespace bastionhost {
+}
+
 export namespace brain {
 }
 
@@ -377,6 +790,9 @@ export namespace cas {
 }
 
 export namespace cassandra {
+}
+
+export namespace cddc {
 }
 
 export namespace cdn {
@@ -637,7 +1053,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -656,7 +1072,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -675,7 +1091,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -1407,6 +1823,9 @@ export namespace ddos {
 export namespace dds {
 }
 
+export namespace dfs {
+}
+
 export namespace directmail {
 }
 
@@ -2109,6 +2528,9 @@ export namespace eds {
 
 }
 
+export namespace ehpc {
+}
+
 export namespace eipanycast {
 }
 
@@ -2189,6 +2611,9 @@ export namespace emr {
 
 }
 
+export namespace ens {
+}
+
 export namespace ess {
     export interface ScalingConfigurationDataDisk {
         autoSnapshotPolicyId?: pulumi.Input<string>;
@@ -2263,6 +2688,9 @@ export namespace eventbridge {
          */
         value?: pulumi.Input<string>;
     }
+}
+
+export namespace expressconnect {
 }
 
 export namespace fc {
@@ -2543,6 +2971,9 @@ export namespace kvstore {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
     }
+}
+
+export namespace lindorm {
 }
 
 export namespace log {
@@ -3271,6 +3702,12 @@ export namespace scdn {
         type: pulumi.Input<string>;
     }
 
+}
+
+export namespace sddp {
+}
+
+export namespace securitycenter {
 }
 
 export namespace slb {

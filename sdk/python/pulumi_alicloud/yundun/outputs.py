@@ -26,25 +26,6 @@ class GetBastionHostInstancesInstanceResult(dict):
                  security_group_ids: Sequence[str],
                  user_vswitch_id: str,
                  tags: Optional[Mapping[str, Any]] = None):
-        """
-        :param str description: The instance's remark.
-        :param str id: The instance's id.
-        :param str instance_status: The instance's status.
-        :param str private_domain: The instance's private domain name.
-        :param str public_domain: The instance's public domain name.
-        :param bool public_network_access: The instance's public network access configuration.
-        :param Sequence[str] security_group_ids: The instance's security group configuration.
-        :param str user_vswitch_id: The instance's vSwitch ID.
-        :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
-               ```python
-               import pulumi
-               import pulumi_alicloud as alicloud
-               
-               instance = alicloud.yundun.get_bastion_host_instances(tags={
-                   "tagKey1": "tagValue1",
-               })
-               ```
-        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_status", instance_status)
@@ -60,25 +41,16 @@ class GetBastionHostInstancesInstanceResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The instance's remark.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The instance's id.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="instanceStatus")
     def instance_status(self) -> str:
-        """
-        The instance's status.
-        """
         return pulumi.get(self, "instance_status")
 
     @property
@@ -89,57 +61,31 @@ class GetBastionHostInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="privateDomain")
     def private_domain(self) -> str:
-        """
-        The instance's private domain name.
-        """
         return pulumi.get(self, "private_domain")
 
     @property
     @pulumi.getter(name="publicDomain")
     def public_domain(self) -> str:
-        """
-        The instance's public domain name.
-        """
         return pulumi.get(self, "public_domain")
 
     @property
     @pulumi.getter(name="publicNetworkAccess")
     def public_network_access(self) -> bool:
-        """
-        The instance's public network access configuration.
-        """
         return pulumi.get(self, "public_network_access")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Sequence[str]:
-        """
-        The instance's security group configuration.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter(name="userVswitchId")
     def user_vswitch_id(self) -> str:
-        """
-        The instance's vSwitch ID.
-        """
         return pulumi.get(self, "user_vswitch_id")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
-        """
-        A map of tags assigned to the bastionhost instance. It must be in the format:
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        instance = alicloud.yundun.get_bastion_host_instances(tags={
-            "tagKey1": "tagValue1",
-        })
-        ```
-        """
         return pulumi.get(self, "tags")
 
 

@@ -38,7 +38,8 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+        /// The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
+        /// requests are forwarded to the server.
         /// </summary>
         public readonly int? Weight;
 

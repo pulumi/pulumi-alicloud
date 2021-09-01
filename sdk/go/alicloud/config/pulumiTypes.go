@@ -78,82 +78,91 @@ func (o AssumeRoleOutput) SessionName() pulumi.StringPtrOutput {
 }
 
 type Endpoints struct {
-	Actiontrail     *string `pulumi:"actiontrail"`
-	Adb             *string `pulumi:"adb"`
-	Alb             *string `pulumi:"alb"`
-	Alidns          *string `pulumi:"alidns"`
-	Alikafka        *string `pulumi:"alikafka"`
-	Apigateway      *string `pulumi:"apigateway"`
-	Arms            *string `pulumi:"arms"`
-	BrainIndustrial *string `pulumi:"brainIndustrial"`
-	Bssopenapi      *string `pulumi:"bssopenapi"`
-	Cas             *string `pulumi:"cas"`
-	Cassandra       *string `pulumi:"cassandra"`
-	Cbn             *string `pulumi:"cbn"`
-	Cdn             *string `pulumi:"cdn"`
-	Cds             *string `pulumi:"cds"`
-	Cloudphone      *string `pulumi:"cloudphone"`
-	Cms             *string `pulumi:"cms"`
-	Config          *string `pulumi:"config"`
-	Cr              *string `pulumi:"cr"`
-	Cs              *string `pulumi:"cs"`
-	Datahub         *string `pulumi:"datahub"`
-	Dataworkspublic *string `pulumi:"dataworkspublic"`
-	Dcdn            *string `pulumi:"dcdn"`
-	Ddosbgp         *string `pulumi:"ddosbgp"`
-	Ddoscoo         *string `pulumi:"ddoscoo"`
-	Dds             *string `pulumi:"dds"`
-	Dm              *string `pulumi:"dm"`
-	DmsEnterprise   *string `pulumi:"dmsEnterprise"`
-	Dns             *string `pulumi:"dns"`
-	Drds            *string `pulumi:"drds"`
-	Eci             *string `pulumi:"eci"`
-	Ecs             *string `pulumi:"ecs"`
-	Eipanycast      *string `pulumi:"eipanycast"`
-	Elasticsearch   *string `pulumi:"elasticsearch"`
-	Emr             *string `pulumi:"emr"`
-	Ess             *string `pulumi:"ess"`
-	Eventbridge     *string `pulumi:"eventbridge"`
-	Fc              *string `pulumi:"fc"`
-	Fnf             *string `pulumi:"fnf"`
-	Ga              *string `pulumi:"ga"`
-	Gpdb            *string `pulumi:"gpdb"`
-	Gwsecd          *string `pulumi:"gwsecd"`
-	Hbr             *string `pulumi:"hbr"`
-	Hitsdb          *string `pulumi:"hitsdb"`
-	Ims             *string `pulumi:"ims"`
-	Kms             *string `pulumi:"kms"`
-	Kvstore         *string `pulumi:"kvstore"`
-	Location        *string `pulumi:"location"`
-	Log             *string `pulumi:"log"`
-	Market          *string `pulumi:"market"`
-	Maxcompute      *string `pulumi:"maxcompute"`
-	Mns             *string `pulumi:"mns"`
-	Mse             *string `pulumi:"mse"`
-	Nas             *string `pulumi:"nas"`
-	Ons             *string `pulumi:"ons"`
-	Onsproxy        *string `pulumi:"onsproxy"`
-	Oos             *string `pulumi:"oos"`
-	Oss             *string `pulumi:"oss"`
-	Ots             *string `pulumi:"ots"`
-	Polardb         *string `pulumi:"polardb"`
-	Privatelink     *string `pulumi:"privatelink"`
-	Pvtz            *string `pulumi:"pvtz"`
-	Quotas          *string `pulumi:"quotas"`
-	RKvstore        *string `pulumi:"rKvstore"`
-	Ram             *string `pulumi:"ram"`
-	Rds             *string `pulumi:"rds"`
-	Redisa          *string `pulumi:"redisa"`
-	Resourcemanager *string `pulumi:"resourcemanager"`
-	Resourcesharing *string `pulumi:"resourcesharing"`
-	Ros             *string `pulumi:"ros"`
-	Scdn            *string `pulumi:"scdn"`
-	Serverless      *string `pulumi:"serverless"`
-	Sgw             *string `pulumi:"sgw"`
-	Slb             *string `pulumi:"slb"`
-	Sts             *string `pulumi:"sts"`
-	Vpc             *string `pulumi:"vpc"`
-	WafOpenapi      *string `pulumi:"wafOpenapi"`
+	Actiontrail         *string `pulumi:"actiontrail"`
+	Adb                 *string `pulumi:"adb"`
+	Alb                 *string `pulumi:"alb"`
+	Alidfs              *string `pulumi:"alidfs"`
+	Alidns              *string `pulumi:"alidns"`
+	Alikafka            *string `pulumi:"alikafka"`
+	Apigateway          *string `pulumi:"apigateway"`
+	Arms                *string `pulumi:"arms"`
+	Bastionhost         *string `pulumi:"bastionhost"`
+	BrainIndustrial     *string `pulumi:"brainIndustrial"`
+	Bssopenapi          *string `pulumi:"bssopenapi"`
+	Cas                 *string `pulumi:"cas"`
+	Cassandra           *string `pulumi:"cassandra"`
+	Cbn                 *string `pulumi:"cbn"`
+	Cddc                *string `pulumi:"cddc"`
+	Cdn                 *string `pulumi:"cdn"`
+	Cds                 *string `pulumi:"cds"`
+	Cloudphone          *string `pulumi:"cloudphone"`
+	Cms                 *string `pulumi:"cms"`
+	Config              *string `pulumi:"config"`
+	Cr                  *string `pulumi:"cr"`
+	Cs                  *string `pulumi:"cs"`
+	Datahub             *string `pulumi:"datahub"`
+	Dataworkspublic     *string `pulumi:"dataworkspublic"`
+	Dcdn                *string `pulumi:"dcdn"`
+	Ddosbgp             *string `pulumi:"ddosbgp"`
+	Ddoscoo             *string `pulumi:"ddoscoo"`
+	Dds                 *string `pulumi:"dds"`
+	Dm                  *string `pulumi:"dm"`
+	DmsEnterprise       *string `pulumi:"dmsEnterprise"`
+	Dns                 *string `pulumi:"dns"`
+	Drds                *string `pulumi:"drds"`
+	Eci                 *string `pulumi:"eci"`
+	Ecs                 *string `pulumi:"ecs"`
+	Ehpc                *string `pulumi:"ehpc"`
+	Eipanycast          *string `pulumi:"eipanycast"`
+	Elasticsearch       *string `pulumi:"elasticsearch"`
+	Emr                 *string `pulumi:"emr"`
+	Ens                 *string `pulumi:"ens"`
+	Ess                 *string `pulumi:"ess"`
+	Eventbridge         *string `pulumi:"eventbridge"`
+	Fc                  *string `pulumi:"fc"`
+	Fnf                 *string `pulumi:"fnf"`
+	Ga                  *string `pulumi:"ga"`
+	Gpdb                *string `pulumi:"gpdb"`
+	Gwsecd              *string `pulumi:"gwsecd"`
+	Hbr                 *string `pulumi:"hbr"`
+	HcsSgw              *string `pulumi:"hcsSgw"`
+	Hitsdb              *string `pulumi:"hitsdb"`
+	Ims                 *string `pulumi:"ims"`
+	Kms                 *string `pulumi:"kms"`
+	Kvstore             *string `pulumi:"kvstore"`
+	Location            *string `pulumi:"location"`
+	Log                 *string `pulumi:"log"`
+	Market              *string `pulumi:"market"`
+	Maxcompute          *string `pulumi:"maxcompute"`
+	Mns                 *string `pulumi:"mns"`
+	Mscopensubscription *string `pulumi:"mscopensubscription"`
+	Mse                 *string `pulumi:"mse"`
+	Nas                 *string `pulumi:"nas"`
+	Ons                 *string `pulumi:"ons"`
+	Onsproxy            *string `pulumi:"onsproxy"`
+	Oos                 *string `pulumi:"oos"`
+	Oss                 *string `pulumi:"oss"`
+	Ots                 *string `pulumi:"ots"`
+	Polardb             *string `pulumi:"polardb"`
+	Privatelink         *string `pulumi:"privatelink"`
+	Pvtz                *string `pulumi:"pvtz"`
+	Quotas              *string `pulumi:"quotas"`
+	RKvstore            *string `pulumi:"rKvstore"`
+	Ram                 *string `pulumi:"ram"`
+	Rds                 *string `pulumi:"rds"`
+	Redisa              *string `pulumi:"redisa"`
+	Resourcemanager     *string `pulumi:"resourcemanager"`
+	Resourcesharing     *string `pulumi:"resourcesharing"`
+	Ros                 *string `pulumi:"ros"`
+	Sas                 *string `pulumi:"sas"`
+	Scdn                *string `pulumi:"scdn"`
+	Sddp                *string `pulumi:"sddp"`
+	Serverless          *string `pulumi:"serverless"`
+	Sgw                 *string `pulumi:"sgw"`
+	Slb                 *string `pulumi:"slb"`
+	Sts                 *string `pulumi:"sts"`
+	Vpc                 *string `pulumi:"vpc"`
+	WafOpenapi          *string `pulumi:"wafOpenapi"`
 }
 
 // EndpointsInput is an input type that accepts EndpointsArgs and EndpointsOutput values.
@@ -168,82 +177,91 @@ type EndpointsInput interface {
 }
 
 type EndpointsArgs struct {
-	Actiontrail     pulumi.StringPtrInput `pulumi:"actiontrail"`
-	Adb             pulumi.StringPtrInput `pulumi:"adb"`
-	Alb             pulumi.StringPtrInput `pulumi:"alb"`
-	Alidns          pulumi.StringPtrInput `pulumi:"alidns"`
-	Alikafka        pulumi.StringPtrInput `pulumi:"alikafka"`
-	Apigateway      pulumi.StringPtrInput `pulumi:"apigateway"`
-	Arms            pulumi.StringPtrInput `pulumi:"arms"`
-	BrainIndustrial pulumi.StringPtrInput `pulumi:"brainIndustrial"`
-	Bssopenapi      pulumi.StringPtrInput `pulumi:"bssopenapi"`
-	Cas             pulumi.StringPtrInput `pulumi:"cas"`
-	Cassandra       pulumi.StringPtrInput `pulumi:"cassandra"`
-	Cbn             pulumi.StringPtrInput `pulumi:"cbn"`
-	Cdn             pulumi.StringPtrInput `pulumi:"cdn"`
-	Cds             pulumi.StringPtrInput `pulumi:"cds"`
-	Cloudphone      pulumi.StringPtrInput `pulumi:"cloudphone"`
-	Cms             pulumi.StringPtrInput `pulumi:"cms"`
-	Config          pulumi.StringPtrInput `pulumi:"config"`
-	Cr              pulumi.StringPtrInput `pulumi:"cr"`
-	Cs              pulumi.StringPtrInput `pulumi:"cs"`
-	Datahub         pulumi.StringPtrInput `pulumi:"datahub"`
-	Dataworkspublic pulumi.StringPtrInput `pulumi:"dataworkspublic"`
-	Dcdn            pulumi.StringPtrInput `pulumi:"dcdn"`
-	Ddosbgp         pulumi.StringPtrInput `pulumi:"ddosbgp"`
-	Ddoscoo         pulumi.StringPtrInput `pulumi:"ddoscoo"`
-	Dds             pulumi.StringPtrInput `pulumi:"dds"`
-	Dm              pulumi.StringPtrInput `pulumi:"dm"`
-	DmsEnterprise   pulumi.StringPtrInput `pulumi:"dmsEnterprise"`
-	Dns             pulumi.StringPtrInput `pulumi:"dns"`
-	Drds            pulumi.StringPtrInput `pulumi:"drds"`
-	Eci             pulumi.StringPtrInput `pulumi:"eci"`
-	Ecs             pulumi.StringPtrInput `pulumi:"ecs"`
-	Eipanycast      pulumi.StringPtrInput `pulumi:"eipanycast"`
-	Elasticsearch   pulumi.StringPtrInput `pulumi:"elasticsearch"`
-	Emr             pulumi.StringPtrInput `pulumi:"emr"`
-	Ess             pulumi.StringPtrInput `pulumi:"ess"`
-	Eventbridge     pulumi.StringPtrInput `pulumi:"eventbridge"`
-	Fc              pulumi.StringPtrInput `pulumi:"fc"`
-	Fnf             pulumi.StringPtrInput `pulumi:"fnf"`
-	Ga              pulumi.StringPtrInput `pulumi:"ga"`
-	Gpdb            pulumi.StringPtrInput `pulumi:"gpdb"`
-	Gwsecd          pulumi.StringPtrInput `pulumi:"gwsecd"`
-	Hbr             pulumi.StringPtrInput `pulumi:"hbr"`
-	Hitsdb          pulumi.StringPtrInput `pulumi:"hitsdb"`
-	Ims             pulumi.StringPtrInput `pulumi:"ims"`
-	Kms             pulumi.StringPtrInput `pulumi:"kms"`
-	Kvstore         pulumi.StringPtrInput `pulumi:"kvstore"`
-	Location        pulumi.StringPtrInput `pulumi:"location"`
-	Log             pulumi.StringPtrInput `pulumi:"log"`
-	Market          pulumi.StringPtrInput `pulumi:"market"`
-	Maxcompute      pulumi.StringPtrInput `pulumi:"maxcompute"`
-	Mns             pulumi.StringPtrInput `pulumi:"mns"`
-	Mse             pulumi.StringPtrInput `pulumi:"mse"`
-	Nas             pulumi.StringPtrInput `pulumi:"nas"`
-	Ons             pulumi.StringPtrInput `pulumi:"ons"`
-	Onsproxy        pulumi.StringPtrInput `pulumi:"onsproxy"`
-	Oos             pulumi.StringPtrInput `pulumi:"oos"`
-	Oss             pulumi.StringPtrInput `pulumi:"oss"`
-	Ots             pulumi.StringPtrInput `pulumi:"ots"`
-	Polardb         pulumi.StringPtrInput `pulumi:"polardb"`
-	Privatelink     pulumi.StringPtrInput `pulumi:"privatelink"`
-	Pvtz            pulumi.StringPtrInput `pulumi:"pvtz"`
-	Quotas          pulumi.StringPtrInput `pulumi:"quotas"`
-	RKvstore        pulumi.StringPtrInput `pulumi:"rKvstore"`
-	Ram             pulumi.StringPtrInput `pulumi:"ram"`
-	Rds             pulumi.StringPtrInput `pulumi:"rds"`
-	Redisa          pulumi.StringPtrInput `pulumi:"redisa"`
-	Resourcemanager pulumi.StringPtrInput `pulumi:"resourcemanager"`
-	Resourcesharing pulumi.StringPtrInput `pulumi:"resourcesharing"`
-	Ros             pulumi.StringPtrInput `pulumi:"ros"`
-	Scdn            pulumi.StringPtrInput `pulumi:"scdn"`
-	Serverless      pulumi.StringPtrInput `pulumi:"serverless"`
-	Sgw             pulumi.StringPtrInput `pulumi:"sgw"`
-	Slb             pulumi.StringPtrInput `pulumi:"slb"`
-	Sts             pulumi.StringPtrInput `pulumi:"sts"`
-	Vpc             pulumi.StringPtrInput `pulumi:"vpc"`
-	WafOpenapi      pulumi.StringPtrInput `pulumi:"wafOpenapi"`
+	Actiontrail         pulumi.StringPtrInput `pulumi:"actiontrail"`
+	Adb                 pulumi.StringPtrInput `pulumi:"adb"`
+	Alb                 pulumi.StringPtrInput `pulumi:"alb"`
+	Alidfs              pulumi.StringPtrInput `pulumi:"alidfs"`
+	Alidns              pulumi.StringPtrInput `pulumi:"alidns"`
+	Alikafka            pulumi.StringPtrInput `pulumi:"alikafka"`
+	Apigateway          pulumi.StringPtrInput `pulumi:"apigateway"`
+	Arms                pulumi.StringPtrInput `pulumi:"arms"`
+	Bastionhost         pulumi.StringPtrInput `pulumi:"bastionhost"`
+	BrainIndustrial     pulumi.StringPtrInput `pulumi:"brainIndustrial"`
+	Bssopenapi          pulumi.StringPtrInput `pulumi:"bssopenapi"`
+	Cas                 pulumi.StringPtrInput `pulumi:"cas"`
+	Cassandra           pulumi.StringPtrInput `pulumi:"cassandra"`
+	Cbn                 pulumi.StringPtrInput `pulumi:"cbn"`
+	Cddc                pulumi.StringPtrInput `pulumi:"cddc"`
+	Cdn                 pulumi.StringPtrInput `pulumi:"cdn"`
+	Cds                 pulumi.StringPtrInput `pulumi:"cds"`
+	Cloudphone          pulumi.StringPtrInput `pulumi:"cloudphone"`
+	Cms                 pulumi.StringPtrInput `pulumi:"cms"`
+	Config              pulumi.StringPtrInput `pulumi:"config"`
+	Cr                  pulumi.StringPtrInput `pulumi:"cr"`
+	Cs                  pulumi.StringPtrInput `pulumi:"cs"`
+	Datahub             pulumi.StringPtrInput `pulumi:"datahub"`
+	Dataworkspublic     pulumi.StringPtrInput `pulumi:"dataworkspublic"`
+	Dcdn                pulumi.StringPtrInput `pulumi:"dcdn"`
+	Ddosbgp             pulumi.StringPtrInput `pulumi:"ddosbgp"`
+	Ddoscoo             pulumi.StringPtrInput `pulumi:"ddoscoo"`
+	Dds                 pulumi.StringPtrInput `pulumi:"dds"`
+	Dm                  pulumi.StringPtrInput `pulumi:"dm"`
+	DmsEnterprise       pulumi.StringPtrInput `pulumi:"dmsEnterprise"`
+	Dns                 pulumi.StringPtrInput `pulumi:"dns"`
+	Drds                pulumi.StringPtrInput `pulumi:"drds"`
+	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
+	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
+	Ehpc                pulumi.StringPtrInput `pulumi:"ehpc"`
+	Eipanycast          pulumi.StringPtrInput `pulumi:"eipanycast"`
+	Elasticsearch       pulumi.StringPtrInput `pulumi:"elasticsearch"`
+	Emr                 pulumi.StringPtrInput `pulumi:"emr"`
+	Ens                 pulumi.StringPtrInput `pulumi:"ens"`
+	Ess                 pulumi.StringPtrInput `pulumi:"ess"`
+	Eventbridge         pulumi.StringPtrInput `pulumi:"eventbridge"`
+	Fc                  pulumi.StringPtrInput `pulumi:"fc"`
+	Fnf                 pulumi.StringPtrInput `pulumi:"fnf"`
+	Ga                  pulumi.StringPtrInput `pulumi:"ga"`
+	Gpdb                pulumi.StringPtrInput `pulumi:"gpdb"`
+	Gwsecd              pulumi.StringPtrInput `pulumi:"gwsecd"`
+	Hbr                 pulumi.StringPtrInput `pulumi:"hbr"`
+	HcsSgw              pulumi.StringPtrInput `pulumi:"hcsSgw"`
+	Hitsdb              pulumi.StringPtrInput `pulumi:"hitsdb"`
+	Ims                 pulumi.StringPtrInput `pulumi:"ims"`
+	Kms                 pulumi.StringPtrInput `pulumi:"kms"`
+	Kvstore             pulumi.StringPtrInput `pulumi:"kvstore"`
+	Location            pulumi.StringPtrInput `pulumi:"location"`
+	Log                 pulumi.StringPtrInput `pulumi:"log"`
+	Market              pulumi.StringPtrInput `pulumi:"market"`
+	Maxcompute          pulumi.StringPtrInput `pulumi:"maxcompute"`
+	Mns                 pulumi.StringPtrInput `pulumi:"mns"`
+	Mscopensubscription pulumi.StringPtrInput `pulumi:"mscopensubscription"`
+	Mse                 pulumi.StringPtrInput `pulumi:"mse"`
+	Nas                 pulumi.StringPtrInput `pulumi:"nas"`
+	Ons                 pulumi.StringPtrInput `pulumi:"ons"`
+	Onsproxy            pulumi.StringPtrInput `pulumi:"onsproxy"`
+	Oos                 pulumi.StringPtrInput `pulumi:"oos"`
+	Oss                 pulumi.StringPtrInput `pulumi:"oss"`
+	Ots                 pulumi.StringPtrInput `pulumi:"ots"`
+	Polardb             pulumi.StringPtrInput `pulumi:"polardb"`
+	Privatelink         pulumi.StringPtrInput `pulumi:"privatelink"`
+	Pvtz                pulumi.StringPtrInput `pulumi:"pvtz"`
+	Quotas              pulumi.StringPtrInput `pulumi:"quotas"`
+	RKvstore            pulumi.StringPtrInput `pulumi:"rKvstore"`
+	Ram                 pulumi.StringPtrInput `pulumi:"ram"`
+	Rds                 pulumi.StringPtrInput `pulumi:"rds"`
+	Redisa              pulumi.StringPtrInput `pulumi:"redisa"`
+	Resourcemanager     pulumi.StringPtrInput `pulumi:"resourcemanager"`
+	Resourcesharing     pulumi.StringPtrInput `pulumi:"resourcesharing"`
+	Ros                 pulumi.StringPtrInput `pulumi:"ros"`
+	Sas                 pulumi.StringPtrInput `pulumi:"sas"`
+	Scdn                pulumi.StringPtrInput `pulumi:"scdn"`
+	Sddp                pulumi.StringPtrInput `pulumi:"sddp"`
+	Serverless          pulumi.StringPtrInput `pulumi:"serverless"`
+	Sgw                 pulumi.StringPtrInput `pulumi:"sgw"`
+	Slb                 pulumi.StringPtrInput `pulumi:"slb"`
+	Sts                 pulumi.StringPtrInput `pulumi:"sts"`
+	Vpc                 pulumi.StringPtrInput `pulumi:"vpc"`
+	WafOpenapi          pulumi.StringPtrInput `pulumi:"wafOpenapi"`
 }
 
 func (EndpointsArgs) ElementType() reflect.Type {
@@ -309,6 +327,10 @@ func (o EndpointsOutput) Alb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Alb }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Alidfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Alidfs }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Alidns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Alidns }).(pulumi.StringPtrOutput)
 }
@@ -323,6 +345,10 @@ func (o EndpointsOutput) Apigateway() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Arms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Arms }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Bastionhost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Bastionhost }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) BrainIndustrial() pulumi.StringPtrOutput {
@@ -343,6 +369,10 @@ func (o EndpointsOutput) Cassandra() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Cbn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Cbn }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Cddc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Cddc }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Cdn() pulumi.StringPtrOutput {
@@ -421,6 +451,10 @@ func (o EndpointsOutput) Ecs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Ecs }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Ehpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Ehpc }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Eipanycast() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Eipanycast }).(pulumi.StringPtrOutput)
 }
@@ -431,6 +465,10 @@ func (o EndpointsOutput) Elasticsearch() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Emr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Emr }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Ens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Ens }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Ess() pulumi.StringPtrOutput {
@@ -463,6 +501,10 @@ func (o EndpointsOutput) Gwsecd() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Hbr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Hbr }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) HcsSgw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.HcsSgw }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Hitsdb() pulumi.StringPtrOutput {
@@ -499,6 +541,10 @@ func (o EndpointsOutput) Maxcompute() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Mns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Mns }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Mscopensubscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Mscopensubscription }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Mse() pulumi.StringPtrOutput {
@@ -573,8 +619,16 @@ func (o EndpointsOutput) Ros() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Ros }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Sas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Sas }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Scdn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Scdn }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Sddp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Sddp }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Serverless() pulumi.StringPtrOutput {

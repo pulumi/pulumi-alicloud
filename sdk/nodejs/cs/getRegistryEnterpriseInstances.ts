@@ -35,6 +35,7 @@ export function getRegistryEnterpriseInstances(args?: GetRegistryEnterpriseInsta
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -45,6 +46,10 @@ export function getRegistryEnterpriseInstances(args?: GetRegistryEnterpriseInsta
  * A collection of arguments for invoking getRegistryEnterpriseInstances.
  */
 export interface GetRegistryEnterpriseInstancesArgs {
+    /**
+     * Default to `true`. Set it to true can output instance authorization token.
+     */
+    readonly enableDetails?: boolean;
     /**
      * A list of ids to filter results by instance id.
      */
@@ -60,6 +65,7 @@ export interface GetRegistryEnterpriseInstancesArgs {
  * A collection of values returned by getRegistryEnterpriseInstances.
  */
 export interface GetRegistryEnterpriseInstancesResult {
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

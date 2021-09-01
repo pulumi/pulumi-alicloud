@@ -317,7 +317,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
@@ -712,7 +712,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -1098,7 +1098,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }

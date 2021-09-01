@@ -8,7 +8,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a ALB Server Group resource.
  *
- * For information about ALB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/doc-detail/213627.htm).
+ * For information about ALB Server Group and how to use it,
+ * see [What is Server Group](https://www.alibabacloud.com/help/doc-detail/213627.htm).
  *
  * > **NOTE:** Available in v1.131.0+.
  *
@@ -20,8 +21,67 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.alb.ServerGroup("example", {
- *     serverGroupName: "example_value",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/16",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     vswitchName: name,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
+ *     instanceName: name,
+ *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: "10",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     instanceChargeType: "PostPaid",
+ *     systemDiskCategory: "cloud_efficiency",
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const defaultServerGroup = new alicloud.alb.ServerGroup("defaultServerGroup", {
+ *     protocol: "HTTP",
+ *     vpcId: alicloud_vpc.vpcs[0].id,
+ *     serverGroupName: name,
+ *     resourceGroupId: data.alicloud_resource_manager_resource_groups["default"].groups[0].id,
+ *     healthCheckConfig: {
+ *         healthCheckEnabled: "false",
+ *     },
+ *     stickySessionConfig: {
+ *         stickySessionEnabled: "false",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ *     servers: [{
+ *         description: name,
+ *         port: 80,
+ *         serverId: defaultInstance.id,
+ *         serverIp: defaultInstance.privateIp,
+ *         serverType: "Ecs",
+ *         weight: 10,
+ *     }],
  * });
  * ```
  *

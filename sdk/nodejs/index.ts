@@ -8,8 +8,10 @@ import * as utilities from "./utilities";
 export * from "./getAccount";
 export * from "./getCallerIdentity";
 export * from "./getFileCrc64Checksum";
+export * from "./getMscSubContracts";
 export * from "./getRegions";
 export * from "./getZones";
+export * from "./mscSubContract";
 export * from "./provider";
 
 // Export sub-modules:
@@ -20,9 +22,11 @@ import * as alikafka from "./alikafka";
 import * as amqp from "./amqp";
 import * as apigateway from "./apigateway";
 import * as arms from "./arms";
+import * as bastionhost from "./bastionhost";
 import * as brain from "./brain";
 import * as cas from "./cas";
 import * as cassandra from "./cassandra";
+import * as cddc from "./cddc";
 import * as cdn from "./cdn";
 import * as cen from "./cen";
 import * as cfg from "./cfg";
@@ -38,6 +42,7 @@ import * as dataworks from "./dataworks";
 import * as dcdn from "./dcdn";
 import * as ddos from "./ddos";
 import * as dds from "./dds";
+import * as dfs from "./dfs";
 import * as directmail from "./directmail";
 import * as dms from "./dms";
 import * as dns from "./dns";
@@ -47,11 +52,14 @@ import * as ecp from "./ecp";
 import * as ecs from "./ecs";
 import * as edas from "./edas";
 import * as eds from "./eds";
+import * as ehpc from "./ehpc";
 import * as eipanycast from "./eipanycast";
 import * as elasticsearch from "./elasticsearch";
 import * as emr from "./emr";
+import * as ens from "./ens";
 import * as ess from "./ess";
 import * as eventbridge from "./eventbridge";
+import * as expressconnect from "./expressconnect";
 import * as fc from "./fc";
 import * as fnf from "./fnf";
 import * as ga from "./ga";
@@ -61,6 +69,7 @@ import * as hbr from "./hbr";
 import * as iot from "./iot";
 import * as kms from "./kms";
 import * as kvstore from "./kvstore";
+import * as lindorm from "./lindorm";
 import * as log from "./log";
 import * as marketplace from "./marketplace";
 import * as maxcompute from "./maxcompute";
@@ -83,6 +92,8 @@ import * as ros from "./ros";
 import * as sae from "./sae";
 import * as sag from "./sag";
 import * as scdn from "./scdn";
+import * as sddp from "./sddp";
+import * as securitycenter from "./securitycenter";
 import * as slb from "./slb";
 import * as tsdb from "./tsdb";
 import * as types from "./types";
@@ -100,9 +111,11 @@ export {
     amqp,
     apigateway,
     arms,
+    bastionhost,
     brain,
     cas,
     cassandra,
+    cddc,
     cdn,
     cen,
     cfg,
@@ -118,6 +131,7 @@ export {
     dcdn,
     ddos,
     dds,
+    dfs,
     directmail,
     dms,
     dns,
@@ -127,11 +141,14 @@ export {
     ecs,
     edas,
     eds,
+    ehpc,
     eipanycast,
     elasticsearch,
     emr,
+    ens,
     ess,
     eventbridge,
+    expressconnect,
     fc,
     fnf,
     ga,
@@ -141,6 +158,7 @@ export {
     iot,
     kms,
     kvstore,
+    lindorm,
     log,
     marketplace,
     maxcompute,
@@ -163,6 +181,8 @@ export {
     sae,
     sag,
     scdn,
+    sddp,
+    securitycenter,
     slb,
     tsdb,
     types,
@@ -172,6 +192,22 @@ export {
     waf,
     yundun,
 };
+
+// Import resources to register:
+import { MscSubContract } from "./mscSubContract";
+
+const _module = {
+    version: utilities.getVersion(),
+    construct: (name: string, type: string, urn: string): pulumi.Resource => {
+        switch (type) {
+            case "alicloud:index/mscSubContract:MscSubContract":
+                return new MscSubContract(name, <any>undefined, { urn })
+            default:
+                throw new Error(`unknown resource type ${type}`);
+        }
+    },
+};
+pulumi.runtime.registerResourceModule("alicloud", "index/mscSubContract", _module)
 
 import { Provider } from "./provider";
 

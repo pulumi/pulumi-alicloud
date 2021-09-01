@@ -84,6 +84,24 @@ namespace Pulumi.AliCloud.CR
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
+        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        /// </summary>
+        [Output("kmsEncryptedPassword")]
+        public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// </summary>
+        [Output("kmsEncryptionContext")]
+        public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
+
+        /// <summary>
+        /// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        /// </summary>
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
         /// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
         /// </summary>
         [Output("paymentType")]
@@ -178,6 +196,30 @@ namespace Pulumi.AliCloud.CR
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
+        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        /// </summary>
+        [Input("kmsEncryptedPassword")]
+        public Input<string>? KmsEncryptedPassword { get; set; }
+
+        [Input("kmsEncryptionContext")]
+        private InputMap<object>? _kmsEncryptionContext;
+
+        /// <summary>
+        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// </summary>
+        public InputMap<object> KmsEncryptionContext
+        {
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            set => _kmsEncryptionContext = value;
+        }
+
+        /// <summary>
+        /// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
         /// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
         /// </summary>
         [Input("paymentType")]
@@ -237,6 +279,30 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        /// </summary>
+        [Input("kmsEncryptedPassword")]
+        public Input<string>? KmsEncryptedPassword { get; set; }
+
+        [Input("kmsEncryptionContext")]
+        private InputMap<object>? _kmsEncryptionContext;
+
+        /// <summary>
+        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// </summary>
+        public InputMap<object> KmsEncryptionContext
+        {
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            set => _kmsEncryptionContext = value;
+        }
+
+        /// <summary>
+        /// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
 
         /// <summary>
         /// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.

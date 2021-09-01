@@ -292,6 +292,30 @@ class OssBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.131.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "%s"
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
+        default_buckets = alicloud.oss.get_buckets(name_regex="bosh-cf-blobstore-hz")
+        example = alicloud.hbr.OssBackupPlan("example",
+            oss_backup_plan_name=name,
+            vault_id=default_vault.id,
+            bucket=alicloud_oss_bucket["default"]["bucket"],
+            prefix="/home",
+            retention="1",
+            schedule="I|1602673264|PT2H",
+            backup_type="COMPLETE")
+        ```
+
         ## Import
 
         HBR Oss Backup Plan can be imported using the id, e.g.
@@ -322,6 +346,30 @@ class OssBackupPlan(pulumi.CustomResource):
         For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/product/hybrid-backup-recovery).
 
         > **NOTE:** Available in v1.131.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "%s"
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
+        default_buckets = alicloud.oss.get_buckets(name_regex="bosh-cf-blobstore-hz")
+        example = alicloud.hbr.OssBackupPlan("example",
+            oss_backup_plan_name=name,
+            vault_id=default_vault.id,
+            bucket=alicloud_oss_bucket["default"]["bucket"],
+            prefix="/home",
+            retention="1",
+            schedule="I|1602673264|PT2H",
+            backup_type="COMPLETE")
+        ```
 
         ## Import
 

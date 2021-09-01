@@ -48,7 +48,11 @@ import * as utilities from "../utilities";
  * CDN domain config can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example cdn:config-abc123456
+ *  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>
  * ```
  */
 export class DomainConfig extends pulumi.CustomResource {
@@ -80,6 +84,10 @@ export class DomainConfig extends pulumi.CustomResource {
     }
 
     /**
+     * The ID of the function.
+     */
+    public /*out*/ readonly configId!: pulumi.Output<string>;
+    /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
     public readonly domainName!: pulumi.Output<string>;
@@ -91,6 +99,10 @@ export class DomainConfig extends pulumi.CustomResource {
      * The name of the domain config.
      */
     public readonly functionName!: pulumi.Output<string>;
+    /**
+     * The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a DomainConfig resource with the given unique name, arguments, and options.
@@ -105,9 +117,11 @@ export class DomainConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainConfigState | undefined;
+            inputs["configId"] = state ? state.configId : undefined;
             inputs["domainName"] = state ? state.domainName : undefined;
             inputs["functionArgs"] = state ? state.functionArgs : undefined;
             inputs["functionName"] = state ? state.functionName : undefined;
+            inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DomainConfigArgs | undefined;
             if ((!args || args.domainName === undefined) && !opts.urn) {
@@ -122,6 +136,8 @@ export class DomainConfig extends pulumi.CustomResource {
             inputs["domainName"] = args ? args.domainName : undefined;
             inputs["functionArgs"] = args ? args.functionArgs : undefined;
             inputs["functionName"] = args ? args.functionName : undefined;
+            inputs["configId"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -135,6 +151,10 @@ export class DomainConfig extends pulumi.CustomResource {
  */
 export interface DomainConfigState {
     /**
+     * The ID of the function.
+     */
+    readonly configId?: pulumi.Input<string>;
+    /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
     readonly domainName?: pulumi.Input<string>;
@@ -146,6 +166,10 @@ export interface DomainConfigState {
      * The name of the domain config.
      */
     readonly functionName?: pulumi.Input<string>;
+    /**
+     * The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+     */
+    readonly status?: pulumi.Input<string>;
 }
 
 /**

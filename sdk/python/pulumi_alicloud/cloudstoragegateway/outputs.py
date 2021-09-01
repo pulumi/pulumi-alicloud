@@ -9,8 +9,294 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetGatewaysGatewayResult',
     'GetStorageBundlesBundleResult',
 ]
+
+@pulumi.output_type
+class GetGatewaysGatewayResult(dict):
+    def __init__(__self__, *,
+                 activated_time: str,
+                 buy_url: str,
+                 category: str,
+                 create_time: str,
+                 description: str,
+                 ecs_instance_id: str,
+                 expire_status: int,
+                 expired_time: str,
+                 gateway_class: str,
+                 gateway_id: str,
+                 gateway_name: str,
+                 gateway_version: str,
+                 id: str,
+                 inner_ip: str,
+                 ip: str,
+                 is_release_after_expiration: bool,
+                 location: str,
+                 payment_type: str,
+                 public_network_bandwidth: int,
+                 renew_url: str,
+                 status: str,
+                 storage_bundle_id: str,
+                 task_id: str,
+                 type: str,
+                 vpc_id: str,
+                 vswitch_id: str):
+        """
+        :param str activated_time: gateway .
+        :param str category: gateway category.
+        :param str create_time: gateway created timestamp in second format.
+        :param str description: gateway description.
+        :param str ecs_instance_id: gateway ecs instance id.
+        :param int expire_status: gateway expiration status.
+        :param str expired_time: gateway expiration timestamp in second format.
+        :param str gateway_class: gateway class.
+        :param str gateway_id: gateway id.
+        :param str gateway_name: gateway name.
+        :param str gateway_version: gateway version.
+        :param str id: The ID of the Gateway.
+        :param str inner_ip: gateway service ip.
+        :param str ip: gateway public ip.
+        :param bool is_release_after_expiration: whether subscription gateway is released after expiration or not.
+        :param str location: gateway location.
+        :param str payment_type: gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+        :param int public_network_bandwidth: gateway public network bandwidth.
+        :param str status: gateway status.
+        :param str storage_bundle_id: storage bundle id.
+        :param str task_id: gateway task id.
+        :param str type: gateway type.
+        :param str vpc_id: gateway vpc id.
+        :param str vswitch_id: The vswitch id.
+        """
+        pulumi.set(__self__, "activated_time", activated_time)
+        pulumi.set(__self__, "buy_url", buy_url)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "ecs_instance_id", ecs_instance_id)
+        pulumi.set(__self__, "expire_status", expire_status)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "gateway_class", gateway_class)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "gateway_name", gateway_name)
+        pulumi.set(__self__, "gateway_version", gateway_version)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "inner_ip", inner_ip)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "is_release_after_expiration", is_release_after_expiration)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "public_network_bandwidth", public_network_bandwidth)
+        pulumi.set(__self__, "renew_url", renew_url)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_bundle_id", storage_bundle_id)
+        pulumi.set(__self__, "task_id", task_id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="activatedTime")
+    def activated_time(self) -> str:
+        """
+        gateway .
+        """
+        return pulumi.get(self, "activated_time")
+
+    @property
+    @pulumi.getter(name="buyUrl")
+    def buy_url(self) -> str:
+        return pulumi.get(self, "buy_url")
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        """
+        gateway category.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        gateway created timestamp in second format.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        gateway description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="ecsInstanceId")
+    def ecs_instance_id(self) -> str:
+        """
+        gateway ecs instance id.
+        """
+        return pulumi.get(self, "ecs_instance_id")
+
+    @property
+    @pulumi.getter(name="expireStatus")
+    def expire_status(self) -> int:
+        """
+        gateway expiration status.
+        """
+        return pulumi.get(self, "expire_status")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        gateway expiration timestamp in second format.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="gatewayClass")
+    def gateway_class(self) -> str:
+        """
+        gateway class.
+        """
+        return pulumi.get(self, "gateway_class")
+
+    @property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> str:
+        """
+        gateway id.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @property
+    @pulumi.getter(name="gatewayName")
+    def gateway_name(self) -> str:
+        """
+        gateway name.
+        """
+        return pulumi.get(self, "gateway_name")
+
+    @property
+    @pulumi.getter(name="gatewayVersion")
+    def gateway_version(self) -> str:
+        """
+        gateway version.
+        """
+        return pulumi.get(self, "gateway_version")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Gateway.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="innerIp")
+    def inner_ip(self) -> str:
+        """
+        gateway service ip.
+        """
+        return pulumi.get(self, "inner_ip")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        gateway public ip.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="isReleaseAfterExpiration")
+    def is_release_after_expiration(self) -> bool:
+        """
+        whether subscription gateway is released after expiration or not.
+        """
+        return pulumi.get(self, "is_release_after_expiration")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        gateway location.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="publicNetworkBandwidth")
+    def public_network_bandwidth(self) -> int:
+        """
+        gateway public network bandwidth.
+        """
+        return pulumi.get(self, "public_network_bandwidth")
+
+    @property
+    @pulumi.getter(name="renewUrl")
+    def renew_url(self) -> str:
+        return pulumi.get(self, "renew_url")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        gateway status.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageBundleId")
+    def storage_bundle_id(self) -> str:
+        """
+        storage bundle id.
+        """
+        return pulumi.get(self, "storage_bundle_id")
+
+    @property
+    @pulumi.getter(name="taskId")
+    def task_id(self) -> str:
+        """
+        gateway task id.
+        """
+        return pulumi.get(self, "task_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        gateway type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        gateway vpc id.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
 
 @pulumi.output_type
 class GetStorageBundlesBundleResult(dict):

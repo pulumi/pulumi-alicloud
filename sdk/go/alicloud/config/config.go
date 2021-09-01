@@ -103,6 +103,11 @@ func GetSecurityToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:securityToken")
 }
 
+// The security transport for the assume role invoking.
+func GetSecurityTransport(ctx *pulumi.Context) string {
+	return config.Get(ctx, "alicloud:securityTransport")
+}
+
 // The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 func GetSharedCredentialsFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:sharedCredentialsFile")
@@ -114,8 +119,7 @@ func GetSkipRegionValidation(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "alicloud:skipRegionValidation")
 }
 
-// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-// console.
+// The source ip for the assume role invoking.
 func GetSourceIp(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:sourceIp")
 }

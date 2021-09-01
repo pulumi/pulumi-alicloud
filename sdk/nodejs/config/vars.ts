@@ -59,6 +59,10 @@ export let secretKey: string | undefined = __config.get("secretKey");
  */
 export let securityToken: string | undefined = __config.get("securityToken");
 /**
+ * The security transport for the assume role invoking.
+ */
+export let securityTransport: string | undefined = __config.get("securityTransport");
+/**
  * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
  */
 export let sharedCredentialsFile: string | undefined = __config.get("sharedCredentialsFile");
@@ -68,7 +72,6 @@ export let sharedCredentialsFile: string | undefined = __config.get("sharedCrede
  */
 export let skipRegionValidation: boolean | undefined = __config.getObject<boolean>("skipRegionValidation");
 /**
- * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
- * console.
+ * The source ip for the assume role invoking.
  */
 export let sourceIp: string | undefined = __config.get("sourceIp");
