@@ -29,21 +29,26 @@ export interface ProviderEndpoint {
     cddc?: pulumi.Input<string>;
     cdn?: pulumi.Input<string>;
     cds?: pulumi.Input<string>;
+    clickhouse?: pulumi.Input<string>;
     cloudphone?: pulumi.Input<string>;
+    cloudsso?: pulumi.Input<string>;
     cms?: pulumi.Input<string>;
     config?: pulumi.Input<string>;
     cr?: pulumi.Input<string>;
     cs?: pulumi.Input<string>;
     datahub?: pulumi.Input<string>;
     dataworkspublic?: pulumi.Input<string>;
+    dbfs?: pulumi.Input<string>;
     dcdn?: pulumi.Input<string>;
     ddosbgp?: pulumi.Input<string>;
     ddoscoo?: pulumi.Input<string>;
     dds?: pulumi.Input<string>;
+    dg?: pulumi.Input<string>;
     dm?: pulumi.Input<string>;
     dmsEnterprise?: pulumi.Input<string>;
     dns?: pulumi.Input<string>;
     drds?: pulumi.Input<string>;
+    dts?: pulumi.Input<string>;
     eci?: pulumi.Input<string>;
     ecs?: pulumi.Input<string>;
     ehpc?: pulumi.Input<string>;
@@ -56,12 +61,15 @@ export interface ProviderEndpoint {
     fc?: pulumi.Input<string>;
     fnf?: pulumi.Input<string>;
     ga?: pulumi.Input<string>;
+    gds?: pulumi.Input<string>;
     gpdb?: pulumi.Input<string>;
     gwsecd?: pulumi.Input<string>;
     hbr?: pulumi.Input<string>;
     hcsSgw?: pulumi.Input<string>;
     hitsdb?: pulumi.Input<string>;
+    imm?: pulumi.Input<string>;
     ims?: pulumi.Input<string>;
+    iot?: pulumi.Input<string>;
     kms?: pulumi.Input<string>;
     kvstore?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
@@ -75,11 +83,13 @@ export interface ProviderEndpoint {
     ons?: pulumi.Input<string>;
     onsproxy?: pulumi.Input<string>;
     oos?: pulumi.Input<string>;
+    opensearch?: pulumi.Input<string>;
     oss?: pulumi.Input<string>;
     ots?: pulumi.Input<string>;
     polardb?: pulumi.Input<string>;
     privatelink?: pulumi.Input<string>;
     pvtz?: pulumi.Input<string>;
+    quickbi?: pulumi.Input<string>;
     quotas?: pulumi.Input<string>;
     rKvstore?: pulumi.Input<string>;
     ram?: pulumi.Input<string>;
@@ -95,7 +105,11 @@ export interface ProviderEndpoint {
     sgw?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
     sts?: pulumi.Input<string>;
+    swas?: pulumi.Input<string>;
+    vod?: pulumi.Input<string>;
     vpc?: pulumi.Input<string>;
+    vs?: pulumi.Input<string>;
+    waf?: pulumi.Input<string>;
     wafOpenapi?: pulumi.Input<string>;
 }
 export namespace actiontrail {
@@ -122,17 +136,39 @@ export namespace alb {
 
     export interface ListenerAccessLogTracingConfig {
         /**
-         * Xtrace Function. Value: True Or False . Default Value: False.
+         * Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
          */
         tracingEnabled?: pulumi.Input<boolean>;
         /**
-         * Xtrace Sampling Rate. Value: **1~10000**.
+         * Xtrace Sampling Rate. Value: `1` to `10000`.
          */
         tracingSample?: pulumi.Input<number>;
         /**
-         * Xtrace Type Value Is **Zipkin**.
+         * Xtrace Type Value Is `Zipkin`.
          */
         tracingType?: pulumi.Input<string>;
+    }
+
+    export interface ListenerAclConfig {
+        /**
+         * The ACLs that are associated with the listener.
+         */
+        aclRelations?: pulumi.Input<pulumi.Input<inputs.alb.ListenerAclConfigAclRelation>[]>;
+        /**
+         * The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+         */
+        aclType?: pulumi.Input<string>;
+    }
+
+    export interface ListenerAclConfigAclRelation {
+        /**
+         * Snooping Binding of the Access Policy Group ID List.
+         */
+        aclId?: pulumi.Input<string>;
+        /**
+         * The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+         */
+        status?: pulumi.Input<string>;
     }
 
     export interface ListenerCertificate {
@@ -778,6 +814,112 @@ export namespace apigateway {
 }
 
 export namespace arms {
+    export interface DispatchRuleGroupRule {
+        groupId?: pulumi.Input<number>;
+        /**
+         * The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+         */
+        groupInterval: pulumi.Input<number>;
+        /**
+         * The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+         */
+        groupWaitTime: pulumi.Input<number>;
+        /**
+         * The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+         */
+        groupingFields: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+         */
+        repeatInterval?: pulumi.Input<number>;
+    }
+
+    export interface DispatchRuleLabelMatchExpressionGrid {
+        /**
+         * Sets the dispatch rule. See the following `Block labelMatchExpressionGroups`.
+         */
+        labelMatchExpressionGroups: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup>[]>;
+    }
+
+    export interface DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup {
+        /**
+         * Sets the dispatch rule. See the following `Block labelMatchExpressions`.
+         */
+        labelMatchExpressions: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression>[]>;
+    }
+
+    export interface DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
+        /**
+         * The key of the tag of the dispatch rule. Valud values:
+         * * _aliyun_arms_userid: user ID
+         * * _aliyun_arms_involvedObject_kind: type of the associated object
+         * * _aliyun_arms_involvedObject_id: ID of the associated object
+         * * _aliyun_arms_involvedObject_name: name of the associated object
+         * * _aliyun_arms_alert_name: alert name
+         * * _aliyun_arms_alert_rule_id: alert rule ID
+         * * _aliyun_arms_alert_type: alert type
+         * * _aliyun_arms_alert_level: alert severity
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The operator used in the dispatch rule. Valid values: 
+         * * eq: equals to.
+         * * re: matches a regular expression.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * The value of the tag.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface DispatchRuleNotifyRule {
+        /**
+         * The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
+         */
+        notifyChannels: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Sets the notification object. See the following `Block notifyObjects`.
+         */
+        notifyObjects: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleNotifyRuleNotifyObject>[]>;
+    }
+
+    export interface DispatchRuleNotifyRuleNotifyObject {
+        /**
+         * The name of the contact or contact group.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The ID of the contact or contact group.
+         */
+        notifyObjectId: pulumi.Input<string>;
+        /**
+         * The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+         */
+        notifyType: pulumi.Input<string>;
+    }
+
+    export interface PrometheusAlertRuleAnnotation {
+        /**
+         * The name of the annotation.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The value of the annotation.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface PrometheusAlertRuleLabel {
+        /**
+         * The name of the annotation.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The value of the annotation.
+         */
+        value?: pulumi.Input<string>;
+    }
 }
 
 export namespace bastionhost {
@@ -960,6 +1102,7 @@ export namespace cdn {
          */
         referType?: pulumi.Input<string>;
     }
+
 }
 
 export namespace cen {
@@ -980,7 +1123,7 @@ export namespace cfg {
         /**
          * A list of parameter rules.
          */
-        configRuleParameters: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleConfigRuleParameter>[]>;
+        configRuleParameters?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleConfigRuleParameter>[]>;
         /**
          * The Managed Rule Identifier.
          */
@@ -991,11 +1134,11 @@ export namespace cfg {
         /**
          * The Parameter Name.
          */
-        parameterName: pulumi.Input<string>;
+        parameterName?: pulumi.Input<string>;
         /**
          * The Parameter Value.
          */
-        parameterValue: pulumi.Input<string>;
+        parameterValue?: pulumi.Input<string>;
     }
 
     export interface AggregatorAggregatorAccount {
@@ -1017,7 +1160,7 @@ export namespace cfg {
         /**
          * A list of Config Rule Parameters.
          */
-        configRuleParameters: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleConfigRuleParameter>[]>;
+        configRuleParameters?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleConfigRuleParameter>[]>;
         /**
          * The Managed Rule Identifier.
          */
@@ -1028,7 +1171,7 @@ export namespace cfg {
         /**
          * The parameter name.
          */
-        parameterName: pulumi.Input<string>;
+        parameterName?: pulumi.Input<string>;
         /**
          * The parameter value.
          */
@@ -1037,10 +1180,27 @@ export namespace cfg {
 
 }
 
+export namespace clickhouse {
+}
+
 export namespace cloudconnect {
 }
 
 export namespace cloudfirewall {
+}
+
+export namespace cloudsso {
+    export interface DirectorySamlIdentityProviderConfiguration {
+        /**
+         * Base64 encoded IdP metadata document.
+         */
+        encodedMetadataDocument?: pulumi.Input<string>;
+        /**
+         * SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+         */
+        ssoStatus?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace cloudstoragegateway {
@@ -1174,6 +1334,105 @@ export namespace cms {
          * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: pulumi.Input<number>;
+    }
+
+    export interface MetricRuleTemplateAlertTemplate {
+        /**
+         * The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+         */
+        category: pulumi.Input<string>;
+        /**
+         * The information about the trigger condition based on the alert level. See the following `Block escalations`.
+         */
+        escalations?: pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplateEscalations>;
+        /**
+         * The name of the metric.
+         */
+        metricName: pulumi.Input<string>;
+        /**
+         * The namespace of the service.
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * The name of the alert rule.
+         */
+        ruleName: pulumi.Input<string>;
+        /**
+         * The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+         */
+        webhook?: pulumi.Input<string>;
+    }
+
+    export interface MetricRuleTemplateAlertTemplateEscalations {
+        /**
+         * The condition for triggering critical-level alerts. See the following `Block critical`.
+         */
+        critical?: pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplateEscalationsCritical>;
+        /**
+         * The condition for triggering info-level alerts. See the following `Block info`.
+         */
+        info?: pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplateEscalationsInfo>;
+        /**
+         * The condition for triggering warn-level alerts. See the following `Block warn`.
+         */
+        warn?: pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplateEscalationsWarn>;
+    }
+
+    export interface MetricRuleTemplateAlertTemplateEscalationsCritical {
+        /**
+         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         */
+        comparisonOperator?: pulumi.Input<string>;
+        /**
+         * The statistical aggregation method for critical-level alerts.
+         */
+        statistics?: pulumi.Input<string>;
+        /**
+         * The threshold for critical-level alerts.
+         */
+        threshold?: pulumi.Input<string>;
+        /**
+         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         */
+        times?: pulumi.Input<string>;
+    }
+
+    export interface MetricRuleTemplateAlertTemplateEscalationsInfo {
+        /**
+         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         */
+        comparisonOperator?: pulumi.Input<string>;
+        /**
+         * The statistical aggregation method for critical-level alerts.
+         */
+        statistics?: pulumi.Input<string>;
+        /**
+         * The threshold for critical-level alerts.
+         */
+        threshold?: pulumi.Input<string>;
+        /**
+         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         */
+        times?: pulumi.Input<string>;
+    }
+
+    export interface MetricRuleTemplateAlertTemplateEscalationsWarn {
+        /**
+         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         */
+        comparisonOperator?: pulumi.Input<string>;
+        /**
+         * The statistical aggregation method for critical-level alerts.
+         */
+        statistics?: pulumi.Input<string>;
+        /**
+         * The threshold for critical-level alerts.
+         */
+        threshold?: pulumi.Input<string>;
+        /**
+         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         */
+        times?: pulumi.Input<string>;
     }
 
     export interface MonitorGroupInstancesInstance {
@@ -1753,6 +2012,18 @@ export namespace cs {
         privateIp?: pulumi.Input<string>;
         status?: pulumi.Input<string>;
     }
+}
+
+export namespace databasefilesystem {
+    export interface InstanceEcsList {
+        /**
+         * The ID of the ECS instance.
+         */
+        ecsId?: pulumi.Input<string>;
+    }
+}
+
+export namespace databasegateway {
 }
 
 export namespace dataworks {
@@ -2691,6 +2962,18 @@ export namespace eventbridge {
 }
 
 export namespace expressconnect {
+    export interface GetVirtualBorderRoutersFilter {
+        /**
+         * The key of the field to filter by, as defined by
+         * [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+         */
+        key?: string;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: string[];
+    }
+
 }
 
 export namespace fc {
@@ -2940,6 +3223,24 @@ export namespace ga {
 export namespace gpdb {
 }
 
+export namespace graphdatabase {
+    export interface DbInstanceDbInstanceIpArray {
+        /**
+         * The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
+         */
+        dbInstanceIpArrayAttribute?: pulumi.Input<string>;
+        /**
+         * IP ADDRESS whitelist group name.
+         */
+        dbInstanceIpArrayName?: pulumi.Input<string>;
+        /**
+         * IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
+         */
+        securityIps?: pulumi.Input<string>;
+    }
+
+}
+
 export namespace hbase {
     export interface InstanceSlbConnAddr {
         connAddr?: pulumi.Input<string>;
@@ -2961,6 +3262,12 @@ export namespace hbase {
 }
 
 export namespace hbr {
+}
+
+export namespace imm {
+}
+
+export namespace iot {
 }
 
 export namespace kms {
@@ -3242,6 +3549,50 @@ export namespace nas {
 export namespace oos {
 }
 
+export namespace opensearch {
+    export interface AppGroupOrder {
+        /**
+         * Whether to renew automatically. It only takes effect when the parameter paymentType takes the value `Subscription`.
+         */
+        autoRenew?: pulumi.Input<boolean>;
+        /**
+         * Order cycle. The minimum value is not less than 0.
+         */
+        duration?: pulumi.Input<number>;
+        /**
+         * Order cycle unit. Valid values: `Year` and `Month`.
+         */
+        pricingCycle?: pulumi.Input<string>;
+    }
+
+    export interface AppGroupQuota {
+        /**
+         * Computing resources. Unit: LCU.
+         */
+        computeResource: pulumi.Input<number>;
+        /**
+         * Storage Size. Unit: GB.
+         */
+        docSize: pulumi.Input<number>;
+        /**
+         * Search request. Unit: times/second.
+         */
+        qps?: pulumi.Input<number>;
+        /**
+         * Specification. Valid values: 
+         * * `opensearch.share.junior`: Entry-level.
+         * * `opensearch.share.common`: Shared universal.
+         * * `opensearch.share.compute`: Shared computing.
+         * * `opensearch.share.storage`: Shared storage type.
+         * * `opensearch.private.common`: Exclusive universal type.
+         * * `opensearch.private.compute`: Exclusive computing type.
+         * * `opensearch.private.storage`: Exclusive storage type
+         */
+        spec: pulumi.Input<string>;
+    }
+
+}
+
 export namespace oss {
     export interface BucketCorsRule {
         /**
@@ -3472,6 +3823,9 @@ export namespace pvtz {
          */
         vpcId: pulumi.Input<string>;
     }
+}
+
+export namespace quickbi {
 }
 
 export namespace quotas {
@@ -3710,6 +4064,9 @@ export namespace sddp {
 export namespace securitycenter {
 }
 
+export namespace simpleapplicationserver {
+}
+
 export namespace slb {
     export interface AclEntryList {
         comment?: pulumi.Input<string>;
@@ -3759,7 +4116,43 @@ export namespace slb {
 export namespace tsdb {
 }
 
+export namespace videosurveillance {
+}
+
+export namespace vod {
+    export interface DomainSource {
+        /**
+         * The address of the origin server. You can specify an IP address or a domain name.
+         */
+        sourceContent: pulumi.Input<string>;
+        /**
+         * The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+         */
+        sourcePort: pulumi.Input<string>;
+        /**
+         * The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+         */
+        sourcePriority?: pulumi.Input<string>;
+        /**
+         * The type of the origin server. Valid values:
+         */
+        sourceType: pulumi.Input<string>;
+    }
+
+}
+
 export namespace vpc {
+    export interface DhcpOptionsSetAssociateVpc {
+        /**
+         * The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+         */
+        associateStatus?: pulumi.Input<string>;
+        /**
+         * The ID of the VPC network that is associated with the DHCP options set.
+         */
+        vpcId?: pulumi.Input<string>;
+    }
+
     export interface NetworkAclAttachmentResource {
         /**
          * The resource id that the network acl will associate with.

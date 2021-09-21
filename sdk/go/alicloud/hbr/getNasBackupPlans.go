@@ -48,14 +48,14 @@ func GetNasBackupPlans(ctx *pulumi.Context, args *GetNasBackupPlansArgs, opts ..
 
 // A collection of arguments for invoking getNasBackupPlans.
 type GetNasBackupPlansArgs struct {
-	// The File System ID.
+	// The File System ID of Nas.
 	FileSystemId *string `pulumi:"fileSystemId"`
 	// A list of NasBackupPlan IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by NasBackupPlan name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The Vault ID of the EcsBackupPlan used.
+	// The backup vault ID of the NasBackupPlan used.
 	VaultId *string `pulumi:"vaultId"`
 }
 

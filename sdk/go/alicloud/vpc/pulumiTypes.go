@@ -10,6 +10,112 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DhcpOptionsSetAssociateVpc struct {
+	// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+	AssociateStatus *string `pulumi:"associateStatus"`
+	// The ID of the VPC network that is associated with the DHCP options set.
+	VpcId *string `pulumi:"vpcId"`
+}
+
+// DhcpOptionsSetAssociateVpcInput is an input type that accepts DhcpOptionsSetAssociateVpcArgs and DhcpOptionsSetAssociateVpcOutput values.
+// You can construct a concrete instance of `DhcpOptionsSetAssociateVpcInput` via:
+//
+//          DhcpOptionsSetAssociateVpcArgs{...}
+type DhcpOptionsSetAssociateVpcInput interface {
+	pulumi.Input
+
+	ToDhcpOptionsSetAssociateVpcOutput() DhcpOptionsSetAssociateVpcOutput
+	ToDhcpOptionsSetAssociateVpcOutputWithContext(context.Context) DhcpOptionsSetAssociateVpcOutput
+}
+
+type DhcpOptionsSetAssociateVpcArgs struct {
+	// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+	AssociateStatus pulumi.StringPtrInput `pulumi:"associateStatus"`
+	// The ID of the VPC network that is associated with the DHCP options set.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (DhcpOptionsSetAssociateVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DhcpOptionsSetAssociateVpc)(nil)).Elem()
+}
+
+func (i DhcpOptionsSetAssociateVpcArgs) ToDhcpOptionsSetAssociateVpcOutput() DhcpOptionsSetAssociateVpcOutput {
+	return i.ToDhcpOptionsSetAssociateVpcOutputWithContext(context.Background())
+}
+
+func (i DhcpOptionsSetAssociateVpcArgs) ToDhcpOptionsSetAssociateVpcOutputWithContext(ctx context.Context) DhcpOptionsSetAssociateVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionsSetAssociateVpcOutput)
+}
+
+// DhcpOptionsSetAssociateVpcArrayInput is an input type that accepts DhcpOptionsSetAssociateVpcArray and DhcpOptionsSetAssociateVpcArrayOutput values.
+// You can construct a concrete instance of `DhcpOptionsSetAssociateVpcArrayInput` via:
+//
+//          DhcpOptionsSetAssociateVpcArray{ DhcpOptionsSetAssociateVpcArgs{...} }
+type DhcpOptionsSetAssociateVpcArrayInput interface {
+	pulumi.Input
+
+	ToDhcpOptionsSetAssociateVpcArrayOutput() DhcpOptionsSetAssociateVpcArrayOutput
+	ToDhcpOptionsSetAssociateVpcArrayOutputWithContext(context.Context) DhcpOptionsSetAssociateVpcArrayOutput
+}
+
+type DhcpOptionsSetAssociateVpcArray []DhcpOptionsSetAssociateVpcInput
+
+func (DhcpOptionsSetAssociateVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DhcpOptionsSetAssociateVpc)(nil)).Elem()
+}
+
+func (i DhcpOptionsSetAssociateVpcArray) ToDhcpOptionsSetAssociateVpcArrayOutput() DhcpOptionsSetAssociateVpcArrayOutput {
+	return i.ToDhcpOptionsSetAssociateVpcArrayOutputWithContext(context.Background())
+}
+
+func (i DhcpOptionsSetAssociateVpcArray) ToDhcpOptionsSetAssociateVpcArrayOutputWithContext(ctx context.Context) DhcpOptionsSetAssociateVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionsSetAssociateVpcArrayOutput)
+}
+
+type DhcpOptionsSetAssociateVpcOutput struct{ *pulumi.OutputState }
+
+func (DhcpOptionsSetAssociateVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DhcpOptionsSetAssociateVpc)(nil)).Elem()
+}
+
+func (o DhcpOptionsSetAssociateVpcOutput) ToDhcpOptionsSetAssociateVpcOutput() DhcpOptionsSetAssociateVpcOutput {
+	return o
+}
+
+func (o DhcpOptionsSetAssociateVpcOutput) ToDhcpOptionsSetAssociateVpcOutputWithContext(ctx context.Context) DhcpOptionsSetAssociateVpcOutput {
+	return o
+}
+
+// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+func (o DhcpOptionsSetAssociateVpcOutput) AssociateStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DhcpOptionsSetAssociateVpc) *string { return v.AssociateStatus }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC network that is associated with the DHCP options set.
+func (o DhcpOptionsSetAssociateVpcOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DhcpOptionsSetAssociateVpc) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+type DhcpOptionsSetAssociateVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (DhcpOptionsSetAssociateVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DhcpOptionsSetAssociateVpc)(nil)).Elem()
+}
+
+func (o DhcpOptionsSetAssociateVpcArrayOutput) ToDhcpOptionsSetAssociateVpcArrayOutput() DhcpOptionsSetAssociateVpcArrayOutput {
+	return o
+}
+
+func (o DhcpOptionsSetAssociateVpcArrayOutput) ToDhcpOptionsSetAssociateVpcArrayOutputWithContext(ctx context.Context) DhcpOptionsSetAssociateVpcArrayOutput {
+	return o
+}
+
+func (o DhcpOptionsSetAssociateVpcArrayOutput) Index(i pulumi.IntInput) DhcpOptionsSetAssociateVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DhcpOptionsSetAssociateVpc {
+		return vs[0].([]DhcpOptionsSetAssociateVpc)[vs[1].(int)]
+	}).(DhcpOptionsSetAssociateVpcOutput)
+}
+
 type NetworkAclAttachmentResource struct {
 	// The resource id that the network acl will associate with.
 	ResourceId string `pulumi:"resourceId"`
@@ -1204,6 +1310,293 @@ func (o GetCommonBandwidthPackagesPackagePublicIpAddressArrayOutput) Index(i pul
 	}).(GetCommonBandwidthPackagesPackagePublicIpAddressOutput)
 }
 
+type GetDhcpOptionsSetsSet struct {
+	// AssociateVpcs.
+	AssociateVpcs []GetDhcpOptionsSetsSetAssociateVpc `pulumi:"associateVpcs"`
+	// The description of the DHCP options set. The description must be 2 to 256
+	// characters in length and cannot start with `http://` or `https://`.
+	DhcpOptionsSetDescription string `pulumi:"dhcpOptionsSetDescription"`
+	DhcpOptionsSetId          string `pulumi:"dhcpOptionsSetId"`
+	// The root domain, for example, example.com. After a DHCP options set is associated with a
+	// Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
+	// ECS instances in the VPC network.
+	DhcpOptionsSetName string `pulumi:"dhcpOptionsSetName"`
+	// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
+	// Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
+	// instances in the VPC network.
+	DomainName string `pulumi:"domainName"`
+	// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP
+	// addresses must be separated with commas (,).
+	DomainNameServers string `pulumi:"domainNameServers"`
+	Id                string `pulumi:"id"`
+	// The ID of the account to which the DHCP options set belongs.
+	OwnerId string `pulumi:"ownerId"`
+	// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+	Status string `pulumi:"status"`
+}
+
+// GetDhcpOptionsSetsSetInput is an input type that accepts GetDhcpOptionsSetsSetArgs and GetDhcpOptionsSetsSetOutput values.
+// You can construct a concrete instance of `GetDhcpOptionsSetsSetInput` via:
+//
+//          GetDhcpOptionsSetsSetArgs{...}
+type GetDhcpOptionsSetsSetInput interface {
+	pulumi.Input
+
+	ToGetDhcpOptionsSetsSetOutput() GetDhcpOptionsSetsSetOutput
+	ToGetDhcpOptionsSetsSetOutputWithContext(context.Context) GetDhcpOptionsSetsSetOutput
+}
+
+type GetDhcpOptionsSetsSetArgs struct {
+	// AssociateVpcs.
+	AssociateVpcs GetDhcpOptionsSetsSetAssociateVpcArrayInput `pulumi:"associateVpcs"`
+	// The description of the DHCP options set. The description must be 2 to 256
+	// characters in length and cannot start with `http://` or `https://`.
+	DhcpOptionsSetDescription pulumi.StringInput `pulumi:"dhcpOptionsSetDescription"`
+	DhcpOptionsSetId          pulumi.StringInput `pulumi:"dhcpOptionsSetId"`
+	// The root domain, for example, example.com. After a DHCP options set is associated with a
+	// Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
+	// ECS instances in the VPC network.
+	DhcpOptionsSetName pulumi.StringInput `pulumi:"dhcpOptionsSetName"`
+	// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
+	// Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
+	// instances in the VPC network.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP
+	// addresses must be separated with commas (,).
+	DomainNameServers pulumi.StringInput `pulumi:"domainNameServers"`
+	Id                pulumi.StringInput `pulumi:"id"`
+	// The ID of the account to which the DHCP options set belongs.
+	OwnerId pulumi.StringInput `pulumi:"ownerId"`
+	// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetDhcpOptionsSetsSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDhcpOptionsSetsSet)(nil)).Elem()
+}
+
+func (i GetDhcpOptionsSetsSetArgs) ToGetDhcpOptionsSetsSetOutput() GetDhcpOptionsSetsSetOutput {
+	return i.ToGetDhcpOptionsSetsSetOutputWithContext(context.Background())
+}
+
+func (i GetDhcpOptionsSetsSetArgs) ToGetDhcpOptionsSetsSetOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDhcpOptionsSetsSetOutput)
+}
+
+// GetDhcpOptionsSetsSetArrayInput is an input type that accepts GetDhcpOptionsSetsSetArray and GetDhcpOptionsSetsSetArrayOutput values.
+// You can construct a concrete instance of `GetDhcpOptionsSetsSetArrayInput` via:
+//
+//          GetDhcpOptionsSetsSetArray{ GetDhcpOptionsSetsSetArgs{...} }
+type GetDhcpOptionsSetsSetArrayInput interface {
+	pulumi.Input
+
+	ToGetDhcpOptionsSetsSetArrayOutput() GetDhcpOptionsSetsSetArrayOutput
+	ToGetDhcpOptionsSetsSetArrayOutputWithContext(context.Context) GetDhcpOptionsSetsSetArrayOutput
+}
+
+type GetDhcpOptionsSetsSetArray []GetDhcpOptionsSetsSetInput
+
+func (GetDhcpOptionsSetsSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDhcpOptionsSetsSet)(nil)).Elem()
+}
+
+func (i GetDhcpOptionsSetsSetArray) ToGetDhcpOptionsSetsSetArrayOutput() GetDhcpOptionsSetsSetArrayOutput {
+	return i.ToGetDhcpOptionsSetsSetArrayOutputWithContext(context.Background())
+}
+
+func (i GetDhcpOptionsSetsSetArray) ToGetDhcpOptionsSetsSetArrayOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDhcpOptionsSetsSetArrayOutput)
+}
+
+type GetDhcpOptionsSetsSetOutput struct{ *pulumi.OutputState }
+
+func (GetDhcpOptionsSetsSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDhcpOptionsSetsSet)(nil)).Elem()
+}
+
+func (o GetDhcpOptionsSetsSetOutput) ToGetDhcpOptionsSetsSetOutput() GetDhcpOptionsSetsSetOutput {
+	return o
+}
+
+func (o GetDhcpOptionsSetsSetOutput) ToGetDhcpOptionsSetsSetOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetOutput {
+	return o
+}
+
+// AssociateVpcs.
+func (o GetDhcpOptionsSetsSetOutput) AssociateVpcs() GetDhcpOptionsSetsSetAssociateVpcArrayOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSet) []GetDhcpOptionsSetsSetAssociateVpc { return v.AssociateVpcs }).(GetDhcpOptionsSetsSetAssociateVpcArrayOutput)
+}
+
+// The description of the DHCP options set. The description must be 2 to 256
+// characters in length and cannot start with `http://` or `https://`.
+func (o GetDhcpOptionsSetsSetOutput) DhcpOptionsSetDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.DhcpOptionsSetDescription }).(pulumi.StringOutput)
+}
+
+func (o GetDhcpOptionsSetsSetOutput) DhcpOptionsSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.DhcpOptionsSetId }).(pulumi.StringOutput)
+}
+
+// The root domain, for example, example.com. After a DHCP options set is associated with a
+// Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
+// ECS instances in the VPC network.
+func (o GetDhcpOptionsSetsSetOutput) DhcpOptionsSetName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.DhcpOptionsSetName }).(pulumi.StringOutput)
+}
+
+// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
+// Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
+// instances in the VPC network.
+func (o GetDhcpOptionsSetsSetOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP
+// addresses must be separated with commas (,).
+func (o GetDhcpOptionsSetsSetOutput) DomainNameServers() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.DomainNameServers }).(pulumi.StringOutput)
+}
+
+func (o GetDhcpOptionsSetsSetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the account to which the DHCP options set belongs.
+func (o GetDhcpOptionsSetsSetOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+func (o GetDhcpOptionsSetsSetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDhcpOptionsSetsSetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDhcpOptionsSetsSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDhcpOptionsSetsSet)(nil)).Elem()
+}
+
+func (o GetDhcpOptionsSetsSetArrayOutput) ToGetDhcpOptionsSetsSetArrayOutput() GetDhcpOptionsSetsSetArrayOutput {
+	return o
+}
+
+func (o GetDhcpOptionsSetsSetArrayOutput) ToGetDhcpOptionsSetsSetArrayOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetArrayOutput {
+	return o
+}
+
+func (o GetDhcpOptionsSetsSetArrayOutput) Index(i pulumi.IntInput) GetDhcpOptionsSetsSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDhcpOptionsSetsSet {
+		return vs[0].([]GetDhcpOptionsSetsSet)[vs[1].(int)]
+	}).(GetDhcpOptionsSetsSetOutput)
+}
+
+type GetDhcpOptionsSetsSetAssociateVpc struct {
+	// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+	AssociateStatus string `pulumi:"associateStatus"`
+	// The ID of the VPC network that is associated with the DHCP options set.
+	VpcId string `pulumi:"vpcId"`
+}
+
+// GetDhcpOptionsSetsSetAssociateVpcInput is an input type that accepts GetDhcpOptionsSetsSetAssociateVpcArgs and GetDhcpOptionsSetsSetAssociateVpcOutput values.
+// You can construct a concrete instance of `GetDhcpOptionsSetsSetAssociateVpcInput` via:
+//
+//          GetDhcpOptionsSetsSetAssociateVpcArgs{...}
+type GetDhcpOptionsSetsSetAssociateVpcInput interface {
+	pulumi.Input
+
+	ToGetDhcpOptionsSetsSetAssociateVpcOutput() GetDhcpOptionsSetsSetAssociateVpcOutput
+	ToGetDhcpOptionsSetsSetAssociateVpcOutputWithContext(context.Context) GetDhcpOptionsSetsSetAssociateVpcOutput
+}
+
+type GetDhcpOptionsSetsSetAssociateVpcArgs struct {
+	// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+	AssociateStatus pulumi.StringInput `pulumi:"associateStatus"`
+	// The ID of the VPC network that is associated with the DHCP options set.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (GetDhcpOptionsSetsSetAssociateVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDhcpOptionsSetsSetAssociateVpc)(nil)).Elem()
+}
+
+func (i GetDhcpOptionsSetsSetAssociateVpcArgs) ToGetDhcpOptionsSetsSetAssociateVpcOutput() GetDhcpOptionsSetsSetAssociateVpcOutput {
+	return i.ToGetDhcpOptionsSetsSetAssociateVpcOutputWithContext(context.Background())
+}
+
+func (i GetDhcpOptionsSetsSetAssociateVpcArgs) ToGetDhcpOptionsSetsSetAssociateVpcOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetAssociateVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDhcpOptionsSetsSetAssociateVpcOutput)
+}
+
+// GetDhcpOptionsSetsSetAssociateVpcArrayInput is an input type that accepts GetDhcpOptionsSetsSetAssociateVpcArray and GetDhcpOptionsSetsSetAssociateVpcArrayOutput values.
+// You can construct a concrete instance of `GetDhcpOptionsSetsSetAssociateVpcArrayInput` via:
+//
+//          GetDhcpOptionsSetsSetAssociateVpcArray{ GetDhcpOptionsSetsSetAssociateVpcArgs{...} }
+type GetDhcpOptionsSetsSetAssociateVpcArrayInput interface {
+	pulumi.Input
+
+	ToGetDhcpOptionsSetsSetAssociateVpcArrayOutput() GetDhcpOptionsSetsSetAssociateVpcArrayOutput
+	ToGetDhcpOptionsSetsSetAssociateVpcArrayOutputWithContext(context.Context) GetDhcpOptionsSetsSetAssociateVpcArrayOutput
+}
+
+type GetDhcpOptionsSetsSetAssociateVpcArray []GetDhcpOptionsSetsSetAssociateVpcInput
+
+func (GetDhcpOptionsSetsSetAssociateVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDhcpOptionsSetsSetAssociateVpc)(nil)).Elem()
+}
+
+func (i GetDhcpOptionsSetsSetAssociateVpcArray) ToGetDhcpOptionsSetsSetAssociateVpcArrayOutput() GetDhcpOptionsSetsSetAssociateVpcArrayOutput {
+	return i.ToGetDhcpOptionsSetsSetAssociateVpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetDhcpOptionsSetsSetAssociateVpcArray) ToGetDhcpOptionsSetsSetAssociateVpcArrayOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetAssociateVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDhcpOptionsSetsSetAssociateVpcArrayOutput)
+}
+
+type GetDhcpOptionsSetsSetAssociateVpcOutput struct{ *pulumi.OutputState }
+
+func (GetDhcpOptionsSetsSetAssociateVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDhcpOptionsSetsSetAssociateVpc)(nil)).Elem()
+}
+
+func (o GetDhcpOptionsSetsSetAssociateVpcOutput) ToGetDhcpOptionsSetsSetAssociateVpcOutput() GetDhcpOptionsSetsSetAssociateVpcOutput {
+	return o
+}
+
+func (o GetDhcpOptionsSetsSetAssociateVpcOutput) ToGetDhcpOptionsSetsSetAssociateVpcOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetAssociateVpcOutput {
+	return o
+}
+
+// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+func (o GetDhcpOptionsSetsSetAssociateVpcOutput) AssociateStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSetAssociateVpc) string { return v.AssociateStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC network that is associated with the DHCP options set.
+func (o GetDhcpOptionsSetsSetAssociateVpcOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSetAssociateVpc) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type GetDhcpOptionsSetsSetAssociateVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDhcpOptionsSetsSetAssociateVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDhcpOptionsSetsSetAssociateVpc)(nil)).Elem()
+}
+
+func (o GetDhcpOptionsSetsSetAssociateVpcArrayOutput) ToGetDhcpOptionsSetsSetAssociateVpcArrayOutput() GetDhcpOptionsSetsSetAssociateVpcArrayOutput {
+	return o
+}
+
+func (o GetDhcpOptionsSetsSetAssociateVpcArrayOutput) ToGetDhcpOptionsSetsSetAssociateVpcArrayOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetAssociateVpcArrayOutput {
+	return o
+}
+
+func (o GetDhcpOptionsSetsSetAssociateVpcArrayOutput) Index(i pulumi.IntInput) GetDhcpOptionsSetsSetAssociateVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDhcpOptionsSetsSetAssociateVpc {
+		return vs[0].([]GetDhcpOptionsSetsSetAssociateVpc)[vs[1].(int)]
+	}).(GetDhcpOptionsSetsSetAssociateVpcOutput)
+}
+
 type GetEnhancedNatAvailableZonesZone struct {
 	LocalName string `pulumi:"localName"`
 	ZoneId    string `pulumi:"zoneId"`
@@ -1953,6 +2346,344 @@ func (o GetNatGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetNatGateway
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNatGatewaysGateway {
 		return vs[0].([]GetNatGatewaysGateway)[vs[1].(int)]
 	}).(GetNatGatewaysGatewayOutput)
+}
+
+type GetNatIpCidrsCidr struct {
+	// The time when the CIDR block was created.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Nat Ip Cidr.
+	Id string `pulumi:"id"`
+	// Whether it is the default NAT IP ADDRESS. Valid values:`true` or `false`.`true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+	IsDefault bool `pulumi:"isDefault"`
+	// The ID of the VPC NAT gateway.
+	NatGatewayId string `pulumi:"natGatewayId"`
+	// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+	NatIpCidr string `pulumi:"natIpCidr"`
+	// NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+	NatIpCidrDescription string `pulumi:"natIpCidrDescription"`
+	// NAT IP ADDRESS instance ID.
+	NatIpCidrId string `pulumi:"natIpCidrId"`
+	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	NatIpCidrName string `pulumi:"natIpCidrName"`
+	// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+	Status string `pulumi:"status"`
+}
+
+// GetNatIpCidrsCidrInput is an input type that accepts GetNatIpCidrsCidrArgs and GetNatIpCidrsCidrOutput values.
+// You can construct a concrete instance of `GetNatIpCidrsCidrInput` via:
+//
+//          GetNatIpCidrsCidrArgs{...}
+type GetNatIpCidrsCidrInput interface {
+	pulumi.Input
+
+	ToGetNatIpCidrsCidrOutput() GetNatIpCidrsCidrOutput
+	ToGetNatIpCidrsCidrOutputWithContext(context.Context) GetNatIpCidrsCidrOutput
+}
+
+type GetNatIpCidrsCidrArgs struct {
+	// The time when the CIDR block was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Nat Ip Cidr.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether it is the default NAT IP ADDRESS. Valid values:`true` or `false`.`true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
+	// The ID of the VPC NAT gateway.
+	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
+	// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+	NatIpCidr pulumi.StringInput `pulumi:"natIpCidr"`
+	// NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+	NatIpCidrDescription pulumi.StringInput `pulumi:"natIpCidrDescription"`
+	// NAT IP ADDRESS instance ID.
+	NatIpCidrId pulumi.StringInput `pulumi:"natIpCidrId"`
+	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	NatIpCidrName pulumi.StringInput `pulumi:"natIpCidrName"`
+	// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetNatIpCidrsCidrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatIpCidrsCidr)(nil)).Elem()
+}
+
+func (i GetNatIpCidrsCidrArgs) ToGetNatIpCidrsCidrOutput() GetNatIpCidrsCidrOutput {
+	return i.ToGetNatIpCidrsCidrOutputWithContext(context.Background())
+}
+
+func (i GetNatIpCidrsCidrArgs) ToGetNatIpCidrsCidrOutputWithContext(ctx context.Context) GetNatIpCidrsCidrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNatIpCidrsCidrOutput)
+}
+
+// GetNatIpCidrsCidrArrayInput is an input type that accepts GetNatIpCidrsCidrArray and GetNatIpCidrsCidrArrayOutput values.
+// You can construct a concrete instance of `GetNatIpCidrsCidrArrayInput` via:
+//
+//          GetNatIpCidrsCidrArray{ GetNatIpCidrsCidrArgs{...} }
+type GetNatIpCidrsCidrArrayInput interface {
+	pulumi.Input
+
+	ToGetNatIpCidrsCidrArrayOutput() GetNatIpCidrsCidrArrayOutput
+	ToGetNatIpCidrsCidrArrayOutputWithContext(context.Context) GetNatIpCidrsCidrArrayOutput
+}
+
+type GetNatIpCidrsCidrArray []GetNatIpCidrsCidrInput
+
+func (GetNatIpCidrsCidrArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNatIpCidrsCidr)(nil)).Elem()
+}
+
+func (i GetNatIpCidrsCidrArray) ToGetNatIpCidrsCidrArrayOutput() GetNatIpCidrsCidrArrayOutput {
+	return i.ToGetNatIpCidrsCidrArrayOutputWithContext(context.Background())
+}
+
+func (i GetNatIpCidrsCidrArray) ToGetNatIpCidrsCidrArrayOutputWithContext(ctx context.Context) GetNatIpCidrsCidrArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNatIpCidrsCidrArrayOutput)
+}
+
+type GetNatIpCidrsCidrOutput struct{ *pulumi.OutputState }
+
+func (GetNatIpCidrsCidrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatIpCidrsCidr)(nil)).Elem()
+}
+
+func (o GetNatIpCidrsCidrOutput) ToGetNatIpCidrsCidrOutput() GetNatIpCidrsCidrOutput {
+	return o
+}
+
+func (o GetNatIpCidrsCidrOutput) ToGetNatIpCidrsCidrOutputWithContext(ctx context.Context) GetNatIpCidrsCidrOutput {
+	return o
+}
+
+// The time when the CIDR block was created.
+func (o GetNatIpCidrsCidrOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Nat Ip Cidr.
+func (o GetNatIpCidrsCidrOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether it is the default NAT IP ADDRESS. Valid values:`true` or `false`.`true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+func (o GetNatIpCidrsCidrOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNatIpCidrsCidr) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// The ID of the VPC NAT gateway.
+func (o GetNatIpCidrsCidrOutput) NatGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.NatGatewayId }).(pulumi.StringOutput)
+}
+
+// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+func (o GetNatIpCidrsCidrOutput) NatIpCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.NatIpCidr }).(pulumi.StringOutput)
+}
+
+// NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+func (o GetNatIpCidrsCidrOutput) NatIpCidrDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.NatIpCidrDescription }).(pulumi.StringOutput)
+}
+
+// NAT IP ADDRESS instance ID.
+func (o GetNatIpCidrsCidrOutput) NatIpCidrId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.NatIpCidrId }).(pulumi.StringOutput)
+}
+
+// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+func (o GetNatIpCidrsCidrOutput) NatIpCidrName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.NatIpCidrName }).(pulumi.StringOutput)
+}
+
+// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+func (o GetNatIpCidrsCidrOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetNatIpCidrsCidrArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNatIpCidrsCidrArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNatIpCidrsCidr)(nil)).Elem()
+}
+
+func (o GetNatIpCidrsCidrArrayOutput) ToGetNatIpCidrsCidrArrayOutput() GetNatIpCidrsCidrArrayOutput {
+	return o
+}
+
+func (o GetNatIpCidrsCidrArrayOutput) ToGetNatIpCidrsCidrArrayOutputWithContext(ctx context.Context) GetNatIpCidrsCidrArrayOutput {
+	return o
+}
+
+func (o GetNatIpCidrsCidrArrayOutput) Index(i pulumi.IntInput) GetNatIpCidrsCidrOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNatIpCidrsCidr {
+		return vs[0].([]GetNatIpCidrsCidr)[vs[1].(int)]
+	}).(GetNatIpCidrsCidrOutput)
+}
+
+type GetNatIpsIp struct {
+	// The ID of the Nat Ip.
+	Id string `pulumi:"id"`
+	// Indicates whether the BGP Group is the default NAT IP ADDRESS. Valid values: `true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+	IsDefault bool `pulumi:"isDefault"`
+	// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+	NatGatewayId string `pulumi:"natGatewayId"`
+	// The NAT IP address that is queried.
+	NatIp string `pulumi:"natIp"`
+	// The CIDR block to which the NAT IP address belongs.
+	NatIpCidr string `pulumi:"natIpCidr"`
+	// The description of the NAT IP address.
+	NatIpDescription string `pulumi:"natIpDescription"`
+	// The ID of the NAT IP address.
+	NatIpId string `pulumi:"natIpId"`
+	// The name of the NAT IP address.
+	NatIpName string `pulumi:"natIpName"`
+	// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+	Status string `pulumi:"status"`
+}
+
+// GetNatIpsIpInput is an input type that accepts GetNatIpsIpArgs and GetNatIpsIpOutput values.
+// You can construct a concrete instance of `GetNatIpsIpInput` via:
+//
+//          GetNatIpsIpArgs{...}
+type GetNatIpsIpInput interface {
+	pulumi.Input
+
+	ToGetNatIpsIpOutput() GetNatIpsIpOutput
+	ToGetNatIpsIpOutputWithContext(context.Context) GetNatIpsIpOutput
+}
+
+type GetNatIpsIpArgs struct {
+	// The ID of the Nat Ip.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates whether the BGP Group is the default NAT IP ADDRESS. Valid values: `true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
+	// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
+	// The NAT IP address that is queried.
+	NatIp pulumi.StringInput `pulumi:"natIp"`
+	// The CIDR block to which the NAT IP address belongs.
+	NatIpCidr pulumi.StringInput `pulumi:"natIpCidr"`
+	// The description of the NAT IP address.
+	NatIpDescription pulumi.StringInput `pulumi:"natIpDescription"`
+	// The ID of the NAT IP address.
+	NatIpId pulumi.StringInput `pulumi:"natIpId"`
+	// The name of the NAT IP address.
+	NatIpName pulumi.StringInput `pulumi:"natIpName"`
+	// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetNatIpsIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatIpsIp)(nil)).Elem()
+}
+
+func (i GetNatIpsIpArgs) ToGetNatIpsIpOutput() GetNatIpsIpOutput {
+	return i.ToGetNatIpsIpOutputWithContext(context.Background())
+}
+
+func (i GetNatIpsIpArgs) ToGetNatIpsIpOutputWithContext(ctx context.Context) GetNatIpsIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNatIpsIpOutput)
+}
+
+// GetNatIpsIpArrayInput is an input type that accepts GetNatIpsIpArray and GetNatIpsIpArrayOutput values.
+// You can construct a concrete instance of `GetNatIpsIpArrayInput` via:
+//
+//          GetNatIpsIpArray{ GetNatIpsIpArgs{...} }
+type GetNatIpsIpArrayInput interface {
+	pulumi.Input
+
+	ToGetNatIpsIpArrayOutput() GetNatIpsIpArrayOutput
+	ToGetNatIpsIpArrayOutputWithContext(context.Context) GetNatIpsIpArrayOutput
+}
+
+type GetNatIpsIpArray []GetNatIpsIpInput
+
+func (GetNatIpsIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNatIpsIp)(nil)).Elem()
+}
+
+func (i GetNatIpsIpArray) ToGetNatIpsIpArrayOutput() GetNatIpsIpArrayOutput {
+	return i.ToGetNatIpsIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetNatIpsIpArray) ToGetNatIpsIpArrayOutputWithContext(ctx context.Context) GetNatIpsIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNatIpsIpArrayOutput)
+}
+
+type GetNatIpsIpOutput struct{ *pulumi.OutputState }
+
+func (GetNatIpsIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatIpsIp)(nil)).Elem()
+}
+
+func (o GetNatIpsIpOutput) ToGetNatIpsIpOutput() GetNatIpsIpOutput {
+	return o
+}
+
+func (o GetNatIpsIpOutput) ToGetNatIpsIpOutputWithContext(ctx context.Context) GetNatIpsIpOutput {
+	return o
+}
+
+// The ID of the Nat Ip.
+func (o GetNatIpsIpOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpsIp) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Indicates whether the BGP Group is the default NAT IP ADDRESS. Valid values: `true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+func (o GetNatIpsIpOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNatIpsIp) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+func (o GetNatIpsIpOutput) NatGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpsIp) string { return v.NatGatewayId }).(pulumi.StringOutput)
+}
+
+// The NAT IP address that is queried.
+func (o GetNatIpsIpOutput) NatIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpsIp) string { return v.NatIp }).(pulumi.StringOutput)
+}
+
+// The CIDR block to which the NAT IP address belongs.
+func (o GetNatIpsIpOutput) NatIpCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpsIp) string { return v.NatIpCidr }).(pulumi.StringOutput)
+}
+
+// The description of the NAT IP address.
+func (o GetNatIpsIpOutput) NatIpDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpsIp) string { return v.NatIpDescription }).(pulumi.StringOutput)
+}
+
+// The ID of the NAT IP address.
+func (o GetNatIpsIpOutput) NatIpId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpsIp) string { return v.NatIpId }).(pulumi.StringOutput)
+}
+
+// The name of the NAT IP address.
+func (o GetNatIpsIpOutput) NatIpName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpsIp) string { return v.NatIpName }).(pulumi.StringOutput)
+}
+
+// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+func (o GetNatIpsIpOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpsIp) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetNatIpsIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNatIpsIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNatIpsIp)(nil)).Elem()
+}
+
+func (o GetNatIpsIpArrayOutput) ToGetNatIpsIpArrayOutput() GetNatIpsIpArrayOutput {
+	return o
+}
+
+func (o GetNatIpsIpArrayOutput) ToGetNatIpsIpArrayOutputWithContext(ctx context.Context) GetNatIpsIpArrayOutput {
+	return o
+}
+
+func (o GetNatIpsIpArrayOutput) Index(i pulumi.IntInput) GetNatIpsIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNatIpsIp {
+		return vs[0].([]GetNatIpsIp)[vs[1].(int)]
+	}).(GetNatIpsIpOutput)
 }
 
 type GetNetworkAclsAcl struct {
@@ -4273,6 +5004,8 @@ func (o GetVpcFlowLogsLogArrayOutput) Index(i pulumi.IntInput) GetVpcFlowLogsLog
 }
 
 func init() {
+	pulumi.RegisterOutputType(DhcpOptionsSetAssociateVpcOutput{})
+	pulumi.RegisterOutputType(DhcpOptionsSetAssociateVpcArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclAttachmentResourceOutput{})
 	pulumi.RegisterOutputType(NetworkAclAttachmentResourceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclEgressAclEntryOutput{})
@@ -4289,6 +5022,10 @@ func init() {
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackagePublicIpAddressOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackagePublicIpAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetDhcpOptionsSetsSetOutput{})
+	pulumi.RegisterOutputType(GetDhcpOptionsSetsSetArrayOutput{})
+	pulumi.RegisterOutputType(GetDhcpOptionsSetsSetAssociateVpcOutput{})
+	pulumi.RegisterOutputType(GetDhcpOptionsSetsSetAssociateVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetEnhancedNatAvailableZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetEnhancedNatAvailableZonesZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetForwardEntriesEntryOutput{})
@@ -4297,6 +5034,10 @@ func init() {
 	pulumi.RegisterOutputType(GetHavipsHavipArrayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetNatIpCidrsCidrOutput{})
+	pulumi.RegisterOutputType(GetNatIpCidrsCidrArrayOutput{})
+	pulumi.RegisterOutputType(GetNatIpsIpOutput{})
+	pulumi.RegisterOutputType(GetNatIpsIpArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkAclsAclOutput{})
 	pulumi.RegisterOutputType(GetNetworkAclsAclArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkAclsAclEgressAclEntryOutput{})

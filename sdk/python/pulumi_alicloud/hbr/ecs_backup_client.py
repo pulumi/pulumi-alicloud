@@ -26,17 +26,17 @@ class EcsBackupClientArgs:
                  use_https: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a EcsBackupClient resource.
-        :param pulumi.Input[str] instance_id: The ECS Instance Id.
-        :param pulumi.Input[str] data_network_type: The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
-        :param pulumi.Input[str] data_proxy_setting: The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
-        :param pulumi.Input[str] max_cpu_core: A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
-        :param pulumi.Input[str] max_worker: A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
-        :param pulumi.Input[str] proxy_host: Custom Data Plane Proxy Server Host Address.
-        :param pulumi.Input[str] proxy_password: Custom Data Plane Proxy Password.
-        :param pulumi.Input[str] proxy_port: Custom Data Plane Proxy Server Host Port.
-        :param pulumi.Input[str] proxy_user: Custom Data Plane Proxy Server Username.
+        :param pulumi.Input[str] instance_id: The ID of ECS instance.
+        :param pulumi.Input[str] data_network_type: The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        :param pulumi.Input[str] data_proxy_setting: The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+        :param pulumi.Input[str] max_cpu_core: Number of CPU cores used by a single backup task, 0 means no restrictions.
+        :param pulumi.Input[str] max_worker: Number of concurrent jobs for a single backup task, 0 means no restrictions.
+        :param pulumi.Input[str] proxy_host: Custom data plane proxy server host address.
+        :param pulumi.Input[str] proxy_password: Custom data plane proxy server password.
+        :param pulumi.Input[str] proxy_port: Custom data plane proxy server host port.
+        :param pulumi.Input[str] proxy_user: Username of custom data plane proxy server.
         :param pulumi.Input[str] status: Status of client. Valid values: `ACTIVATED`, `STOPPED`.
-        :param pulumi.Input[bool] use_https: Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] use_https: Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if data_network_type is not None:
@@ -64,7 +64,7 @@ class EcsBackupClientArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        The ECS Instance Id.
+        The ID of ECS instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -76,7 +76,7 @@ class EcsBackupClientArgs:
     @pulumi.getter(name="dataNetworkType")
     def data_network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
         """
         return pulumi.get(self, "data_network_type")
 
@@ -88,7 +88,7 @@ class EcsBackupClientArgs:
     @pulumi.getter(name="dataProxySetting")
     def data_proxy_setting(self) -> Optional[pulumi.Input[str]]:
         """
-        The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+        The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
         """
         return pulumi.get(self, "data_proxy_setting")
 
@@ -100,7 +100,7 @@ class EcsBackupClientArgs:
     @pulumi.getter(name="maxCpuCore")
     def max_cpu_core(self) -> Optional[pulumi.Input[str]]:
         """
-        A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+        Number of CPU cores used by a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_cpu_core")
 
@@ -112,7 +112,7 @@ class EcsBackupClientArgs:
     @pulumi.getter(name="maxWorker")
     def max_worker(self) -> Optional[pulumi.Input[str]]:
         """
-        A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+        Number of concurrent jobs for a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_worker")
 
@@ -124,7 +124,7 @@ class EcsBackupClientArgs:
     @pulumi.getter(name="proxyHost")
     def proxy_host(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom Data Plane Proxy Server Host Address.
+        Custom data plane proxy server host address.
         """
         return pulumi.get(self, "proxy_host")
 
@@ -136,7 +136,7 @@ class EcsBackupClientArgs:
     @pulumi.getter(name="proxyPassword")
     def proxy_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom Data Plane Proxy Password.
+        Custom data plane proxy server password.
         """
         return pulumi.get(self, "proxy_password")
 
@@ -148,7 +148,7 @@ class EcsBackupClientArgs:
     @pulumi.getter(name="proxyPort")
     def proxy_port(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom Data Plane Proxy Server Host Port.
+        Custom data plane proxy server host port.
         """
         return pulumi.get(self, "proxy_port")
 
@@ -160,7 +160,7 @@ class EcsBackupClientArgs:
     @pulumi.getter(name="proxyUser")
     def proxy_user(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom Data Plane Proxy Server Username.
+        Username of custom data plane proxy server.
         """
         return pulumi.get(self, "proxy_user")
 
@@ -184,7 +184,7 @@ class EcsBackupClientArgs:
     @pulumi.getter(name="useHttps")
     def use_https(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+        Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "use_https")
 
@@ -209,17 +209,17 @@ class _EcsBackupClientState:
                  use_https: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering EcsBackupClient resources.
-        :param pulumi.Input[str] data_network_type: The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
-        :param pulumi.Input[str] data_proxy_setting: The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
-        :param pulumi.Input[str] instance_id: The ECS Instance Id.
-        :param pulumi.Input[str] max_cpu_core: A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
-        :param pulumi.Input[str] max_worker: A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
-        :param pulumi.Input[str] proxy_host: Custom Data Plane Proxy Server Host Address.
-        :param pulumi.Input[str] proxy_password: Custom Data Plane Proxy Password.
-        :param pulumi.Input[str] proxy_port: Custom Data Plane Proxy Server Host Port.
-        :param pulumi.Input[str] proxy_user: Custom Data Plane Proxy Server Username.
+        :param pulumi.Input[str] data_network_type: The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        :param pulumi.Input[str] data_proxy_setting: The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+        :param pulumi.Input[str] instance_id: The ID of ECS instance.
+        :param pulumi.Input[str] max_cpu_core: Number of CPU cores used by a single backup task, 0 means no restrictions.
+        :param pulumi.Input[str] max_worker: Number of concurrent jobs for a single backup task, 0 means no restrictions.
+        :param pulumi.Input[str] proxy_host: Custom data plane proxy server host address.
+        :param pulumi.Input[str] proxy_password: Custom data plane proxy server password.
+        :param pulumi.Input[str] proxy_port: Custom data plane proxy server host port.
+        :param pulumi.Input[str] proxy_user: Username of custom data plane proxy server.
         :param pulumi.Input[str] status: Status of client. Valid values: `ACTIVATED`, `STOPPED`.
-        :param pulumi.Input[bool] use_https: Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] use_https: Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         """
         if data_network_type is not None:
             pulumi.set(__self__, "data_network_type", data_network_type)
@@ -248,7 +248,7 @@ class _EcsBackupClientState:
     @pulumi.getter(name="dataNetworkType")
     def data_network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
         """
         return pulumi.get(self, "data_network_type")
 
@@ -260,7 +260,7 @@ class _EcsBackupClientState:
     @pulumi.getter(name="dataProxySetting")
     def data_proxy_setting(self) -> Optional[pulumi.Input[str]]:
         """
-        The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+        The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
         """
         return pulumi.get(self, "data_proxy_setting")
 
@@ -272,7 +272,7 @@ class _EcsBackupClientState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ECS Instance Id.
+        The ID of ECS instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -284,7 +284,7 @@ class _EcsBackupClientState:
     @pulumi.getter(name="maxCpuCore")
     def max_cpu_core(self) -> Optional[pulumi.Input[str]]:
         """
-        A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+        Number of CPU cores used by a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_cpu_core")
 
@@ -296,7 +296,7 @@ class _EcsBackupClientState:
     @pulumi.getter(name="maxWorker")
     def max_worker(self) -> Optional[pulumi.Input[str]]:
         """
-        A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+        Number of concurrent jobs for a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_worker")
 
@@ -308,7 +308,7 @@ class _EcsBackupClientState:
     @pulumi.getter(name="proxyHost")
     def proxy_host(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom Data Plane Proxy Server Host Address.
+        Custom data plane proxy server host address.
         """
         return pulumi.get(self, "proxy_host")
 
@@ -320,7 +320,7 @@ class _EcsBackupClientState:
     @pulumi.getter(name="proxyPassword")
     def proxy_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom Data Plane Proxy Password.
+        Custom data plane proxy server password.
         """
         return pulumi.get(self, "proxy_password")
 
@@ -332,7 +332,7 @@ class _EcsBackupClientState:
     @pulumi.getter(name="proxyPort")
     def proxy_port(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom Data Plane Proxy Server Host Port.
+        Custom data plane proxy server host port.
         """
         return pulumi.get(self, "proxy_port")
 
@@ -344,7 +344,7 @@ class _EcsBackupClientState:
     @pulumi.getter(name="proxyUser")
     def proxy_user(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom Data Plane Proxy Server Username.
+        Username of custom data plane proxy server.
         """
         return pulumi.get(self, "proxy_user")
 
@@ -368,7 +368,7 @@ class _EcsBackupClientState:
     @pulumi.getter(name="useHttps")
     def use_https(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+        Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "use_https")
 
@@ -425,14 +425,13 @@ class EcsBackupClient(pulumi.CustomResource):
         ```
         ## Notice
 
-        > Please read the following precautions carefully before deleting a client:
-
+        > **Note:** Please read the following precautions carefully before deleting a client:
         1. You cannot delete active clients that have received heartbeat packets within one hour.
-        2. You can make the client inactive by change the status of client to `ACTIVATED`.
+        2. You can make the client inactive by change the status of client to `STOPPED`.
         3. The resources bound to the client will be deleted in cascade, including:
-        - Backup plan
-        - Backup task (Running in the background)
-        - Snapshot
+            - Backup plan
+            - Backup task (Running in the background)
+            - Snapshot
 
         ## Import
 
@@ -444,17 +443,17 @@ class EcsBackupClient(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] data_network_type: The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
-        :param pulumi.Input[str] data_proxy_setting: The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
-        :param pulumi.Input[str] instance_id: The ECS Instance Id.
-        :param pulumi.Input[str] max_cpu_core: A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
-        :param pulumi.Input[str] max_worker: A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
-        :param pulumi.Input[str] proxy_host: Custom Data Plane Proxy Server Host Address.
-        :param pulumi.Input[str] proxy_password: Custom Data Plane Proxy Password.
-        :param pulumi.Input[str] proxy_port: Custom Data Plane Proxy Server Host Port.
-        :param pulumi.Input[str] proxy_user: Custom Data Plane Proxy Server Username.
+        :param pulumi.Input[str] data_network_type: The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        :param pulumi.Input[str] data_proxy_setting: The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+        :param pulumi.Input[str] instance_id: The ID of ECS instance.
+        :param pulumi.Input[str] max_cpu_core: Number of CPU cores used by a single backup task, 0 means no restrictions.
+        :param pulumi.Input[str] max_worker: Number of concurrent jobs for a single backup task, 0 means no restrictions.
+        :param pulumi.Input[str] proxy_host: Custom data plane proxy server host address.
+        :param pulumi.Input[str] proxy_password: Custom data plane proxy server password.
+        :param pulumi.Input[str] proxy_port: Custom data plane proxy server host port.
+        :param pulumi.Input[str] proxy_user: Username of custom data plane proxy server.
         :param pulumi.Input[str] status: Status of client. Valid values: `ACTIVATED`, `STOPPED`.
-        :param pulumi.Input[bool] use_https: Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] use_https: Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         """
         ...
     @overload
@@ -493,14 +492,13 @@ class EcsBackupClient(pulumi.CustomResource):
         ```
         ## Notice
 
-        > Please read the following precautions carefully before deleting a client:
-
+        > **Note:** Please read the following precautions carefully before deleting a client:
         1. You cannot delete active clients that have received heartbeat packets within one hour.
-        2. You can make the client inactive by change the status of client to `ACTIVATED`.
+        2. You can make the client inactive by change the status of client to `STOPPED`.
         3. The resources bound to the client will be deleted in cascade, including:
-        - Backup plan
-        - Backup task (Running in the background)
-        - Snapshot
+            - Backup plan
+            - Backup task (Running in the background)
+            - Snapshot
 
         ## Import
 
@@ -589,17 +587,17 @@ class EcsBackupClient(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] data_network_type: The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
-        :param pulumi.Input[str] data_proxy_setting: The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
-        :param pulumi.Input[str] instance_id: The ECS Instance Id.
-        :param pulumi.Input[str] max_cpu_core: A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
-        :param pulumi.Input[str] max_worker: A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
-        :param pulumi.Input[str] proxy_host: Custom Data Plane Proxy Server Host Address.
-        :param pulumi.Input[str] proxy_password: Custom Data Plane Proxy Password.
-        :param pulumi.Input[str] proxy_port: Custom Data Plane Proxy Server Host Port.
-        :param pulumi.Input[str] proxy_user: Custom Data Plane Proxy Server Username.
+        :param pulumi.Input[str] data_network_type: The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        :param pulumi.Input[str] data_proxy_setting: The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+        :param pulumi.Input[str] instance_id: The ID of ECS instance.
+        :param pulumi.Input[str] max_cpu_core: Number of CPU cores used by a single backup task, 0 means no restrictions.
+        :param pulumi.Input[str] max_worker: Number of concurrent jobs for a single backup task, 0 means no restrictions.
+        :param pulumi.Input[str] proxy_host: Custom data plane proxy server host address.
+        :param pulumi.Input[str] proxy_password: Custom data plane proxy server password.
+        :param pulumi.Input[str] proxy_port: Custom data plane proxy server host port.
+        :param pulumi.Input[str] proxy_user: Username of custom data plane proxy server.
         :param pulumi.Input[str] status: Status of client. Valid values: `ACTIVATED`, `STOPPED`.
-        :param pulumi.Input[bool] use_https: Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] use_https: Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -622,7 +620,7 @@ class EcsBackupClient(pulumi.CustomResource):
     @pulumi.getter(name="dataNetworkType")
     def data_network_type(self) -> pulumi.Output[str]:
         """
-        The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
         """
         return pulumi.get(self, "data_network_type")
 
@@ -630,7 +628,7 @@ class EcsBackupClient(pulumi.CustomResource):
     @pulumi.getter(name="dataProxySetting")
     def data_proxy_setting(self) -> pulumi.Output[str]:
         """
-        The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+        The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
         """
         return pulumi.get(self, "data_proxy_setting")
 
@@ -638,7 +636,7 @@ class EcsBackupClient(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        The ECS Instance Id.
+        The ID of ECS instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -646,7 +644,7 @@ class EcsBackupClient(pulumi.CustomResource):
     @pulumi.getter(name="maxCpuCore")
     def max_cpu_core(self) -> pulumi.Output[str]:
         """
-        A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+        Number of CPU cores used by a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_cpu_core")
 
@@ -654,7 +652,7 @@ class EcsBackupClient(pulumi.CustomResource):
     @pulumi.getter(name="maxWorker")
     def max_worker(self) -> pulumi.Output[str]:
         """
-        A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+        Number of concurrent jobs for a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_worker")
 
@@ -662,7 +660,7 @@ class EcsBackupClient(pulumi.CustomResource):
     @pulumi.getter(name="proxyHost")
     def proxy_host(self) -> pulumi.Output[str]:
         """
-        Custom Data Plane Proxy Server Host Address.
+        Custom data plane proxy server host address.
         """
         return pulumi.get(self, "proxy_host")
 
@@ -670,7 +668,7 @@ class EcsBackupClient(pulumi.CustomResource):
     @pulumi.getter(name="proxyPassword")
     def proxy_password(self) -> pulumi.Output[str]:
         """
-        Custom Data Plane Proxy Password.
+        Custom data plane proxy server password.
         """
         return pulumi.get(self, "proxy_password")
 
@@ -678,7 +676,7 @@ class EcsBackupClient(pulumi.CustomResource):
     @pulumi.getter(name="proxyPort")
     def proxy_port(self) -> pulumi.Output[str]:
         """
-        Custom Data Plane Proxy Server Host Port.
+        Custom data plane proxy server host port.
         """
         return pulumi.get(self, "proxy_port")
 
@@ -686,7 +684,7 @@ class EcsBackupClient(pulumi.CustomResource):
     @pulumi.getter(name="proxyUser")
     def proxy_user(self) -> pulumi.Output[str]:
         """
-        Custom Data Plane Proxy Server Username.
+        Username of custom data plane proxy server.
         """
         return pulumi.get(self, "proxy_user")
 
@@ -702,7 +700,7 @@ class EcsBackupClient(pulumi.CustomResource):
     @pulumi.getter(name="useHttps")
     def use_https(self) -> pulumi.Output[bool]:
         """
-        Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+        Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "use_https")
 

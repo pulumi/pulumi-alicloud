@@ -20,7 +20,22 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, id=None, ids=None, instance_charge_type=None, multi=None, output_file=None, zones=None):
+    def __init__(__self__, category=None, db_instance_class=None, db_instance_storage_type=None, engine=None, engine_version=None, id=None, ids=None, instance_charge_type=None, multi=None, output_file=None, zones=None):
+        if category and not isinstance(category, str):
+            raise TypeError("Expected argument 'category' to be a str")
+        pulumi.set(__self__, "category", category)
+        if db_instance_class and not isinstance(db_instance_class, str):
+            raise TypeError("Expected argument 'db_instance_class' to be a str")
+        pulumi.set(__self__, "db_instance_class", db_instance_class)
+        if db_instance_storage_type and not isinstance(db_instance_storage_type, str):
+            raise TypeError("Expected argument 'db_instance_storage_type' to be a str")
+        pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+        if engine and not isinstance(engine, str):
+            raise TypeError("Expected argument 'engine' to be a str")
+        pulumi.set(__self__, "engine", engine)
+        if engine_version and not isinstance(engine_version, str):
+            raise TypeError("Expected argument 'engine_version' to be a str")
+        pulumi.set(__self__, "engine_version", engine_version)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +54,31 @@ class GetZonesResult:
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="dbInstanceClass")
+    def db_instance_class(self) -> Optional[str]:
+        return pulumi.get(self, "db_instance_class")
+
+    @property
+    @pulumi.getter(name="dbInstanceStorageType")
+    def db_instance_storage_type(self) -> Optional[str]:
+        return pulumi.get(self, "db_instance_storage_type")
+
+    @property
+    @pulumi.getter
+    def engine(self) -> Optional[str]:
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> Optional[str]:
+        return pulumi.get(self, "engine_version")
 
     @property
     @pulumi.getter
@@ -86,6 +126,11 @@ class AwaitableGetZonesResult(GetZonesResult):
         if False:
             yield self
         return GetZonesResult(
+            category=self.category,
+            db_instance_class=self.db_instance_class,
+            db_instance_storage_type=self.db_instance_storage_type,
+            engine=self.engine,
+            engine_version=self.engine_version,
             id=self.id,
             ids=self.ids,
             instance_charge_type=self.instance_charge_type,
@@ -94,7 +139,12 @@ class AwaitableGetZonesResult(GetZonesResult):
             zones=self.zones)
 
 
-def get_zones(instance_charge_type: Optional[str] = None,
+def get_zones(category: Optional[str] = None,
+              db_instance_class: Optional[str] = None,
+              db_instance_storage_type: Optional[str] = None,
+              engine: Optional[str] = None,
+              engine_version: Optional[str] = None,
+              instance_charge_type: Optional[str] = None,
               multi: Optional[bool] = None,
               output_file: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
@@ -104,10 +154,19 @@ def get_zones(instance_charge_type: Optional[str] = None,
     > **NOTE:** Available in v1.73.0+.
 
 
+    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+    :param str engine: Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+    :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
     :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
     """
     __args__ = dict()
+    __args__['category'] = category
+    __args__['dbInstanceClass'] = db_instance_class
+    __args__['dbInstanceStorageType'] = db_instance_storage_type
+    __args__['engine'] = engine
+    __args__['engineVersion'] = engine_version
     __args__['instanceChargeType'] = instance_charge_type
     __args__['multi'] = multi
     __args__['outputFile'] = output_file
@@ -118,6 +177,11 @@ def get_zones(instance_charge_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
+        category=__ret__.category,
+        db_instance_class=__ret__.db_instance_class,
+        db_instance_storage_type=__ret__.db_instance_storage_type,
+        engine=__ret__.engine,
+        engine_version=__ret__.engine_version,
         id=__ret__.id,
         ids=__ret__.ids,
         instance_charge_type=__ret__.instance_charge_type,

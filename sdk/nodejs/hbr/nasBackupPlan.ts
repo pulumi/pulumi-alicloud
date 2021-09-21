@@ -75,9 +75,6 @@ export class NasBackupPlan extends pulumi.CustomResource {
         return obj['__pulumiType'] === NasBackupPlan.__pulumiType;
     }
 
-    /**
-     * Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-     */
     public readonly backupType!: pulumi.Output<string>;
     /**
      * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
@@ -85,43 +82,40 @@ export class NasBackupPlan extends pulumi.CustomResource {
     public readonly createTime!: pulumi.Output<string>;
     public readonly detail!: pulumi.Output<string | undefined>;
     /**
-     * Whether to Disable the Backup Task. Valid Values: true, false.
+     * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
-     * The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+     * The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
      */
     public readonly exclude!: pulumi.Output<string | undefined>;
     /**
-     * The File System ID.
+     * The File System ID of Nas.
      */
     public readonly fileSystemId!: pulumi.Output<string | undefined>;
     /**
-     * The include path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+     * The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
      */
     public readonly include!: pulumi.Output<string | undefined>;
     /**
-     * The name of the resource.
+     * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     public readonly nasBackupPlanName!: pulumi.Output<string>;
-    /**
-     * Options. NAS Backup Plan Does Not Support Yet.
-     */
     public readonly options!: pulumi.Output<string | undefined>;
     /**
-     * Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+     * Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
      */
     public readonly paths!: pulumi.Output<string[] | undefined>;
     /**
-     * Backup Retention Period, the Minimum Value of 1.
+     * Backup retention days, the minimum is 1.
      */
     public readonly retention!: pulumi.Output<string>;
     /**
-     * The Backup Policy. Formats: I | {Range Specified by the StartTime }|{ Interval}\n* The Time Range Specified by the StartTime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
+     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
      */
     public readonly schedule!: pulumi.Output<string>;
     /**
-     * flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backupType` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
      */
     public readonly speedLimit!: pulumi.Output<string | undefined>;
     public readonly updatePaths!: pulumi.Output<boolean | undefined>;
@@ -196,9 +190,6 @@ export class NasBackupPlan extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NasBackupPlan resources.
  */
 export interface NasBackupPlanState {
-    /**
-     * Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-     */
     readonly backupType?: pulumi.Input<string>;
     /**
      * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
@@ -206,43 +197,40 @@ export interface NasBackupPlanState {
     readonly createTime?: pulumi.Input<string>;
     readonly detail?: pulumi.Input<string>;
     /**
-     * Whether to Disable the Backup Task. Valid Values: true, false.
+     * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+     * The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
      */
     readonly exclude?: pulumi.Input<string>;
     /**
-     * The File System ID.
+     * The File System ID of Nas.
      */
     readonly fileSystemId?: pulumi.Input<string>;
     /**
-     * The include path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+     * The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
      */
     readonly include?: pulumi.Input<string>;
     /**
-     * The name of the resource.
+     * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     readonly nasBackupPlanName?: pulumi.Input<string>;
-    /**
-     * Options. NAS Backup Plan Does Not Support Yet.
-     */
     readonly options?: pulumi.Input<string>;
     /**
-     * Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+     * Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
      */
     readonly paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Backup Retention Period, the Minimum Value of 1.
+     * Backup retention days, the minimum is 1.
      */
     readonly retention?: pulumi.Input<string>;
     /**
-     * The Backup Policy. Formats: I | {Range Specified by the StartTime }|{ Interval}\n* The Time Range Specified by the StartTime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
+     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
      */
     readonly schedule?: pulumi.Input<string>;
     /**
-     * flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backupType` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
      */
     readonly speedLimit?: pulumi.Input<string>;
     readonly updatePaths?: pulumi.Input<boolean>;
@@ -253,9 +241,6 @@ export interface NasBackupPlanState {
  * The set of arguments for constructing a NasBackupPlan resource.
  */
 export interface NasBackupPlanArgs {
-    /**
-     * Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-     */
     readonly backupType?: pulumi.Input<string>;
     /**
      * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
@@ -263,43 +248,40 @@ export interface NasBackupPlanArgs {
     readonly createTime: pulumi.Input<string>;
     readonly detail?: pulumi.Input<string>;
     /**
-     * Whether to Disable the Backup Task. Valid Values: true, false.
+     * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+     * The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
      */
     readonly exclude?: pulumi.Input<string>;
     /**
-     * The File System ID.
+     * The File System ID of Nas.
      */
     readonly fileSystemId?: pulumi.Input<string>;
     /**
-     * The include path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+     * The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
      */
     readonly include?: pulumi.Input<string>;
     /**
-     * The name of the resource.
+     * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     readonly nasBackupPlanName: pulumi.Input<string>;
-    /**
-     * Options. NAS Backup Plan Does Not Support Yet.
-     */
     readonly options?: pulumi.Input<string>;
     /**
-     * Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+     * Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
      */
     readonly paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Backup Retention Period, the Minimum Value of 1.
+     * Backup retention days, the minimum is 1.
      */
     readonly retention: pulumi.Input<string>;
     /**
-     * The Backup Policy. Formats: I | {Range Specified by the StartTime }|{ Interval}\n* The Time Range Specified by the StartTime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
+     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
      */
     readonly schedule: pulumi.Input<string>;
     /**
-     * flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backupType` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
      */
     readonly speedLimit?: pulumi.Input<string>;
     readonly updatePaths?: pulumi.Input<boolean>;

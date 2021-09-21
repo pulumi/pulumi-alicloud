@@ -30,6 +30,7 @@ class ProviderArgs:
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 secure_transport: Optional[pulumi.Input[str]] = None,
                  security_token: Optional[pulumi.Input[str]] = None,
                  security_transport: Optional[pulumi.Input[str]] = None,
                  shared_credentials_file: Optional[pulumi.Input[str]] = None,
@@ -50,8 +51,8 @@ class ProviderArgs:
         :param pulumi.Input[str] region: The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
         :param pulumi.Input[str] secret_key: The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
                console.
+        :param pulumi.Input[str] secure_transport: The security transport for the assume role invoking.
         :param pulumi.Input[str] security_token: security token. A security token is only required if you are using Security Token Service.
-        :param pulumi.Input[str] security_transport: The security transport for the assume role invoking.
         :param pulumi.Input[str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
         :param pulumi.Input[bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
                that are not public (yet).
@@ -107,6 +108,8 @@ class ProviderArgs:
             pulumi.set(__self__, "region", region)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if secure_transport is not None:
+            pulumi.set(__self__, "secure_transport", secure_transport)
         if security_token is not None:
             pulumi.set(__self__, "security_token", security_token)
         if security_transport is not None:
@@ -294,6 +297,18 @@ class ProviderArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="secureTransport")
+    def secure_transport(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security transport for the assume role invoking.
+        """
+        return pulumi.get(self, "secure_transport")
+
+    @secure_transport.setter
+    def secure_transport(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secure_transport", value)
+
+    @property
     @pulumi.getter(name="securityToken")
     def security_token(self) -> Optional[pulumi.Input[str]]:
         """
@@ -308,9 +323,6 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="securityTransport")
     def security_transport(self) -> Optional[pulumi.Input[str]]:
-        """
-        The security transport for the assume role invoking.
-        """
         return pulumi.get(self, "security_transport")
 
     @security_transport.setter
@@ -376,6 +388,7 @@ class Provider(pulumi.ProviderResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 secure_transport: Optional[pulumi.Input[str]] = None,
                  security_token: Optional[pulumi.Input[str]] = None,
                  security_transport: Optional[pulumi.Input[str]] = None,
                  shared_credentials_file: Optional[pulumi.Input[str]] = None,
@@ -403,8 +416,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] region: The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
         :param pulumi.Input[str] secret_key: The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
                console.
+        :param pulumi.Input[str] secure_transport: The security transport for the assume role invoking.
         :param pulumi.Input[str] security_token: security token. A security token is only required if you are using Security Token Service.
-        :param pulumi.Input[str] security_transport: The security transport for the assume role invoking.
         :param pulumi.Input[str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
         :param pulumi.Input[bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
                that are not public (yet).
@@ -453,6 +466,7 @@ class Provider(pulumi.ProviderResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 secure_transport: Optional[pulumi.Input[str]] = None,
                  security_token: Optional[pulumi.Input[str]] = None,
                  security_transport: Optional[pulumi.Input[str]] = None,
                  shared_credentials_file: Optional[pulumi.Input[str]] = None,
@@ -504,6 +518,7 @@ class Provider(pulumi.ProviderResource):
                 region = _utilities.get_env('ALICLOUD_REGION')
             __props__.__dict__["region"] = region
             __props__.__dict__["secret_key"] = secret_key
+            __props__.__dict__["secure_transport"] = secure_transport
             __props__.__dict__["security_token"] = security_token
             __props__.__dict__["security_transport"] = security_transport
             __props__.__dict__["shared_credentials_file"] = shared_credentials_file

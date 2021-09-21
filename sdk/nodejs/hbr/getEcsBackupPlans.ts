@@ -51,7 +51,7 @@ export interface GetEcsBackupPlansArgs {
      */
     readonly ids?: string[];
     /**
-     * The ECS Instance Id. Must Have Installed the Client.
+     * The ID of ECS instance.
      */
     readonly instanceId?: string;
     /**
@@ -60,7 +60,7 @@ export interface GetEcsBackupPlansArgs {
     readonly nameRegex?: string;
     readonly outputFile?: string;
     /**
-     * Vault ID.
+     * The ID of Backup vault.
      */
     readonly vaultId?: string;
 }

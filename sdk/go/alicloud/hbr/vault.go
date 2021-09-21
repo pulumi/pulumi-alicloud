@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a HBR Vault resource.
+// Provides a HBR Backup vault resource.
 //
-// For information about HBR Vault and how to use it, see [What is Vault](https://www.alibabacloud.com/help/zh/doc-detail/62362.htm).
+// For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/doc-detail/62362.htm).
 //
 // > **NOTE:** Available in v1.129.0+.
 //

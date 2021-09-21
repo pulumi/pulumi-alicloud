@@ -110,6 +110,160 @@ func (o DomainLogHeaderArrayOutput) Index(i pulumi.IntInput) DomainLogHeaderOutp
 	}).(DomainLogHeaderOutput)
 }
 
+type GetCertificatesCertificate struct {
+	// Certificate recording ID.
+	CertificateId string `pulumi:"certificateId"`
+	// Your certificate name.
+	CertificateName string `pulumi:"certificateName"`
+	// Certificate bound to the domain name.
+	CommonName string `pulumi:"commonName"`
+	// The domain that you want to add to WAF.
+	Domain string `pulumi:"domain"`
+	// The ID of the Certificate.
+	Id string `pulumi:"id"`
+	// WAF instance ID.
+	InstanceId string   `pulumi:"instanceId"`
+	IsUsing    bool     `pulumi:"isUsing"`
+	Sans       []string `pulumi:"sans"`
+}
+
+// GetCertificatesCertificateInput is an input type that accepts GetCertificatesCertificateArgs and GetCertificatesCertificateOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateInput` via:
+//
+//          GetCertificatesCertificateArgs{...}
+type GetCertificatesCertificateInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateOutput() GetCertificatesCertificateOutput
+	ToGetCertificatesCertificateOutputWithContext(context.Context) GetCertificatesCertificateOutput
+}
+
+type GetCertificatesCertificateArgs struct {
+	// Certificate recording ID.
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+	// Your certificate name.
+	CertificateName pulumi.StringInput `pulumi:"certificateName"`
+	// Certificate bound to the domain name.
+	CommonName pulumi.StringInput `pulumi:"commonName"`
+	// The domain that you want to add to WAF.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The ID of the Certificate.
+	Id pulumi.StringInput `pulumi:"id"`
+	// WAF instance ID.
+	InstanceId pulumi.StringInput      `pulumi:"instanceId"`
+	IsUsing    pulumi.BoolInput        `pulumi:"isUsing"`
+	Sans       pulumi.StringArrayInput `pulumi:"sans"`
+}
+
+func (GetCertificatesCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateArgs) ToGetCertificatesCertificateOutput() GetCertificatesCertificateOutput {
+	return i.ToGetCertificatesCertificateOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateArgs) ToGetCertificatesCertificateOutputWithContext(ctx context.Context) GetCertificatesCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateOutput)
+}
+
+// GetCertificatesCertificateArrayInput is an input type that accepts GetCertificatesCertificateArray and GetCertificatesCertificateArrayOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateArrayInput` via:
+//
+//          GetCertificatesCertificateArray{ GetCertificatesCertificateArgs{...} }
+type GetCertificatesCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateArrayOutput() GetCertificatesCertificateArrayOutput
+	ToGetCertificatesCertificateArrayOutputWithContext(context.Context) GetCertificatesCertificateArrayOutput
+}
+
+type GetCertificatesCertificateArray []GetCertificatesCertificateInput
+
+func (GetCertificatesCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateArray) ToGetCertificatesCertificateArrayOutput() GetCertificatesCertificateArrayOutput {
+	return i.ToGetCertificatesCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateArray) ToGetCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateArrayOutput)
+}
+
+type GetCertificatesCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutput() GetCertificatesCertificateOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutputWithContext(ctx context.Context) GetCertificatesCertificateOutput {
+	return o
+}
+
+// Certificate recording ID.
+func (o GetCertificatesCertificateOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+// Your certificate name.
+func (o GetCertificatesCertificateOutput) CertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.CertificateName }).(pulumi.StringOutput)
+}
+
+// Certificate bound to the domain name.
+func (o GetCertificatesCertificateOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+// The domain that you want to add to WAF.
+func (o GetCertificatesCertificateOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The ID of the Certificate.
+func (o GetCertificatesCertificateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// WAF instance ID.
+func (o GetCertificatesCertificateOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetCertificatesCertificateOutput) IsUsing() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) bool { return v.IsUsing }).(pulumi.BoolOutput)
+}
+
+func (o GetCertificatesCertificateOutput) Sans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) []string { return v.Sans }).(pulumi.StringArrayOutput)
+}
+
+type GetCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateArrayOutput) ToGetCertificatesCertificateArrayOutput() GetCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateArrayOutput) ToGetCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetCertificatesCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatesCertificate {
+		return vs[0].([]GetCertificatesCertificate)[vs[1].(int)]
+	}).(GetCertificatesCertificateOutput)
+}
+
 type GetDomainsDomain struct {
 	// The type of the WAF cluster.
 	ClusterType string `pulumi:"clusterType"`
@@ -635,6 +789,8 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 func init() {
 	pulumi.RegisterOutputType(DomainLogHeaderOutput{})
 	pulumi.RegisterOutputType(DomainLogHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainLogHeaderOutput{})

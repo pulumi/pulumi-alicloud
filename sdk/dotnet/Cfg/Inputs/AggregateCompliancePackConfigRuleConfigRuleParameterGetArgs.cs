@@ -15,14 +15,14 @@ namespace Pulumi.AliCloud.Cfg.Inputs
         /// <summary>
         /// The Parameter Name.
         /// </summary>
-        [Input("parameterName", required: true)]
-        public Input<string> ParameterName { get; set; } = null!;
+        [Input("parameterName")]
+        public Input<string>? ParameterName { get; set; }
 
         /// <summary>
         /// The Parameter Value.
         /// </summary>
-        [Input("parameterValue", required: true)]
-        public Input<string> ParameterValue { get; set; } = null!;
+        [Input("parameterValue")]
+        public Input<string>? ParameterValue { get; set; }
 
         public AggregateCompliancePackConfigRuleConfigRuleParameterGetArgs()
         {

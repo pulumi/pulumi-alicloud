@@ -70,7 +70,6 @@ export interface GetZonesArgs {
     readonly availableResourceCreation?: string;
     /**
      * Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
-     * > **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloudEfficiency` or `cloudSsd`.
      */
     readonly availableSlbAddressIpVersion?: string;
     /**

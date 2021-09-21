@@ -48,14 +48,14 @@ func GetOssBackupPlans(ctx *pulumi.Context, args *GetOssBackupPlansArgs, opts ..
 
 // A collection of arguments for invoking getOssBackupPlans.
 type GetOssBackupPlansArgs struct {
-	// The OSS Bucket Name.
+	// The name of OSS bucket.
 	Bucket *string `pulumi:"bucket"`
 	// A list of OssBackupPlan IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by OssBackupPlan name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// Vault ID.
+	// The ID of backup vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 

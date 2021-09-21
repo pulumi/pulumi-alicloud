@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// InstanceId.
+        /// The ID of ECS instance.
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }

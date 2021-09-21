@@ -130,14 +130,17 @@ namespace Pulumi.AliCloud
         public Input<string>? SecretKey { get; set; }
 
         /// <summary>
+        /// The security transport for the assume role invoking.
+        /// </summary>
+        [Input("secureTransport")]
+        public Input<string>? SecureTransport { get; set; }
+
+        /// <summary>
         /// security token. A security token is only required if you are using Security Token Service.
         /// </summary>
         [Input("securityToken")]
         public Input<string>? SecurityToken { get; set; }
 
-        /// <summary>
-        /// The security transport for the assume role invoking.
-        /// </summary>
         [Input("securityTransport")]
         public Input<string>? SecurityTransport { get; set; }
 

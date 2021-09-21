@@ -13,7 +13,7 @@ import (
 
 // Provides a HBR Ecs Backup Plan resource.
 //
-// For information about HBR Ecs Backup Plan and how to use it, see [What is Ecs Backup Plan](https://www.alibabacloud.com/help/doc-detail/186568.htm).
+// For information about HBR Ecs Backup Plan and how to use it, see [What is Ecs Backup Plan](https://www.alibabacloud.com/help/doc-detail/186574.htm).
 //
 // > **NOTE:** Available in v1.132.0+.
 //
@@ -45,7 +45,7 @@ import (
 // 			},
 // 			Retention:  pulumi.String("1"),
 // 			Schedule:   pulumi.String("I|1602673264|PT2H"),
-// 			SpeedLimit: pulumi.String("I|1602673264|PT2H"),
+// 			SpeedLimit: pulumi.String("0:24:5120"),
 // 			VaultId:    pulumi.String("v-0003gxoksflhxxxxxxxx"),
 // 		})
 // 		if err != nil {
@@ -66,31 +66,31 @@ import (
 type EcsBackupPlan struct {
 	pulumi.CustomResourceState
 
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringOutput    `pulumi:"backupType"`
 	Detail     pulumi.StringPtrOutput `pulumi:"detail"`
-	// Whether to Disable the Backup Task. Valid Values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	EcsBackupPlanName pulumi.StringOutput `pulumi:"ecsBackupPlanName"`
-	// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+	// Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
 	Exclude pulumi.StringPtrOutput `pulumi:"exclude"`
-	// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+	// Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
 	Include pulumi.StringPtrOutput `pulumi:"include"`
-	// The ECS Instance Id. Must Have Installed the Client.
+	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
 	Options pulumi.StringPtrOutput `pulumi:"options"`
-	// Backup Path. e.g. `["/home", "/var"]`
+	// Backup path. e.g. `["/home", "/var"]`
 	Paths pulumi.StringArrayOutput `pulumi:"paths"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringOutput `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
-	// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit  pulumi.StringPtrOutput `pulumi:"speedLimit"`
 	UpdatePaths pulumi.BoolPtrOutput   `pulumi:"updatePaths"`
-	// Vault ID.
+	// The ID of Backup vault.
 	VaultId pulumi.StringPtrOutput `pulumi:"vaultId"`
 }
 
@@ -135,60 +135,60 @@ func GetEcsBackupPlan(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsBackupPlan resources.
 type ecsBackupPlanState struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
 	Detail     *string `pulumi:"detail"`
-	// Whether to Disable the Backup Task. Valid Values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	EcsBackupPlanName *string `pulumi:"ecsBackupPlanName"`
-	// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+	// Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
 	Exclude *string `pulumi:"exclude"`
-	// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+	// Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
 	Include *string `pulumi:"include"`
-	// The ECS Instance Id. Must Have Installed the Client.
+	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId *string `pulumi:"instanceId"`
-	// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
 	Options *string `pulumi:"options"`
-	// Backup Path. e.g. `["/home", "/var"]`
+	// Backup path. e.g. `["/home", "/var"]`
 	Paths []string `pulumi:"paths"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention *string `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule *string `pulumi:"schedule"`
-	// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit  *string `pulumi:"speedLimit"`
 	UpdatePaths *bool   `pulumi:"updatePaths"`
-	// Vault ID.
+	// The ID of Backup vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 
 type EcsBackupPlanState struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput
 	Detail     pulumi.StringPtrInput
-	// Whether to Disable the Backup Task. Valid Values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	EcsBackupPlanName pulumi.StringPtrInput
-	// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+	// Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
 	Exclude pulumi.StringPtrInput
-	// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+	// Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
 	Include pulumi.StringPtrInput
-	// The ECS Instance Id. Must Have Installed the Client.
+	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId pulumi.StringPtrInput
-	// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
 	Options pulumi.StringPtrInput
-	// Backup Path. e.g. `["/home", "/var"]`
+	// Backup path. e.g. `["/home", "/var"]`
 	Paths pulumi.StringArrayInput
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringPtrInput
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringPtrInput
-	// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit  pulumi.StringPtrInput
 	UpdatePaths pulumi.BoolPtrInput
-	// Vault ID.
+	// The ID of Backup vault.
 	VaultId pulumi.StringPtrInput
 }
 
@@ -197,61 +197,61 @@ func (EcsBackupPlanState) ElementType() reflect.Type {
 }
 
 type ecsBackupPlanArgs struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
 	Detail     *string `pulumi:"detail"`
-	// Whether to Disable the Backup Task. Valid Values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	EcsBackupPlanName string `pulumi:"ecsBackupPlanName"`
-	// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+	// Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
 	Exclude *string `pulumi:"exclude"`
-	// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+	// Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
 	Include *string `pulumi:"include"`
-	// The ECS Instance Id. Must Have Installed the Client.
+	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId string `pulumi:"instanceId"`
-	// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
 	Options *string `pulumi:"options"`
-	// Backup Path. e.g. `["/home", "/var"]`
+	// Backup path. e.g. `["/home", "/var"]`
 	Paths []string `pulumi:"paths"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule string `pulumi:"schedule"`
-	// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit  *string `pulumi:"speedLimit"`
 	UpdatePaths *bool   `pulumi:"updatePaths"`
-	// Vault ID.
+	// The ID of Backup vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 
 // The set of arguments for constructing a EcsBackupPlan resource.
 type EcsBackupPlanArgs struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput
 	Detail     pulumi.StringPtrInput
-	// Whether to Disable the Backup Task. Valid Values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	EcsBackupPlanName pulumi.StringInput
-	// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+	// Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
 	Exclude pulumi.StringPtrInput
-	// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+	// Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
 	Include pulumi.StringPtrInput
-	// The ECS Instance Id. Must Have Installed the Client.
+	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId pulumi.StringInput
-	// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
 	Options pulumi.StringPtrInput
-	// Backup Path. e.g. `["/home", "/var"]`
+	// Backup path. e.g. `["/home", "/var"]`
 	Paths pulumi.StringArrayInput
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringInput
-	// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit  pulumi.StringPtrInput
 	UpdatePaths pulumi.BoolPtrInput
-	// Vault ID.
+	// The ID of Backup vault.
 	VaultId pulumi.StringPtrInput
 }
 

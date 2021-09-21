@@ -52,11 +52,13 @@ func GetInstanceClasses(ctx *pulumi.Context, args *GetInstanceClassesArgs, opts 
 
 // A collection of arguments for invoking getInstanceClasses.
 type GetInstanceClassesArgs struct {
-	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
 	Category *string `pulumi:"category"`
 	// The DB instance class type by the user.
 	DbInstanceClass *string `pulumi:"dbInstanceClass"`
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+	// Same as `storageType`.
+	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
+	// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
 	Engine *string `pulumi:"engine"`
 	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
@@ -66,7 +68,7 @@ type GetInstanceClassesArgs struct {
 	MultiZone  *bool   `pulumi:"multiZone"`
 	OutputFile *string `pulumi:"outputFile"`
 	SortedBy   *string `pulumi:"sortedBy"`
-	// The DB instance storage space required by the user. Valid values: `cloudSsd` and `localSsd`.
+	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3"
 	StorageType *string `pulumi:"storageType"`
 	// The Zone to launch the DB instance.
 	ZoneId *string `pulumi:"zoneId"`
@@ -74,10 +76,11 @@ type GetInstanceClassesArgs struct {
 
 // A collection of values returned by getInstanceClasses.
 type GetInstanceClassesResult struct {
-	Category        *string `pulumi:"category"`
-	DbInstanceClass *string `pulumi:"dbInstanceClass"`
-	Engine          *string `pulumi:"engine"`
-	EngineVersion   *string `pulumi:"engineVersion"`
+	Category              *string `pulumi:"category"`
+	DbInstanceClass       *string `pulumi:"dbInstanceClass"`
+	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
+	Engine                *string `pulumi:"engine"`
+	EngineVersion         *string `pulumi:"engineVersion"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Available in 1.60.0+) A list of Rds instance class codes.

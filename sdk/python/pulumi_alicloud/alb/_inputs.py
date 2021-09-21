@@ -11,6 +11,8 @@ from .. import _utilities
 __all__ = [
     'AclAclEntryArgs',
     'ListenerAccessLogTracingConfigArgs',
+    'ListenerAclConfigArgs',
+    'ListenerAclConfigAclRelationArgs',
     'ListenerCertificateArgs',
     'ListenerDefaultActionArgs',
     'ListenerDefaultActionForwardGroupConfigArgs',
@@ -104,9 +106,9 @@ class ListenerAccessLogTracingConfigArgs:
                  tracing_sample: Optional[pulumi.Input[int]] = None,
                  tracing_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] tracing_enabled: Xtrace Function. Value: True Or False . Default Value: False.
-        :param pulumi.Input[int] tracing_sample: Xtrace Sampling Rate. Value: **1~10000**.
-        :param pulumi.Input[str] tracing_type: Xtrace Type Value Is **Zipkin**.
+        :param pulumi.Input[bool] tracing_enabled: Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+        :param pulumi.Input[int] tracing_sample: Xtrace Sampling Rate. Value: `1` to `10000`.
+        :param pulumi.Input[str] tracing_type: Xtrace Type Value Is `Zipkin`.
         """
         if tracing_enabled is not None:
             pulumi.set(__self__, "tracing_enabled", tracing_enabled)
@@ -119,7 +121,7 @@ class ListenerAccessLogTracingConfigArgs:
     @pulumi.getter(name="tracingEnabled")
     def tracing_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Xtrace Function. Value: True Or False . Default Value: False.
+        Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
         """
         return pulumi.get(self, "tracing_enabled")
 
@@ -131,7 +133,7 @@ class ListenerAccessLogTracingConfigArgs:
     @pulumi.getter(name="tracingSample")
     def tracing_sample(self) -> Optional[pulumi.Input[int]]:
         """
-        Xtrace Sampling Rate. Value: **1~10000**.
+        Xtrace Sampling Rate. Value: `1` to `10000`.
         """
         return pulumi.get(self, "tracing_sample")
 
@@ -143,13 +145,91 @@ class ListenerAccessLogTracingConfigArgs:
     @pulumi.getter(name="tracingType")
     def tracing_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Xtrace Type Value Is **Zipkin**.
+        Xtrace Type Value Is `Zipkin`.
         """
         return pulumi.get(self, "tracing_type")
 
     @tracing_type.setter
     def tracing_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tracing_type", value)
+
+
+@pulumi.input_type
+class ListenerAclConfigArgs:
+    def __init__(__self__, *,
+                 acl_relations: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]]] = None,
+                 acl_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]] acl_relations: The ACLs that are associated with the listener.
+        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+        """
+        if acl_relations is not None:
+            pulumi.set(__self__, "acl_relations", acl_relations)
+        if acl_type is not None:
+            pulumi.set(__self__, "acl_type", acl_type)
+
+    @property
+    @pulumi.getter(name="aclRelations")
+    def acl_relations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]]]:
+        """
+        The ACLs that are associated with the listener.
+        """
+        return pulumi.get(self, "acl_relations")
+
+    @acl_relations.setter
+    def acl_relations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]]]):
+        pulumi.set(self, "acl_relations", value)
+
+    @property
+    @pulumi.getter(name="aclType")
+    def acl_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+        """
+        return pulumi.get(self, "acl_type")
+
+    @acl_type.setter
+    def acl_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_type", value)
+
+
+@pulumi.input_type
+class ListenerAclConfigAclRelationArgs:
+    def __init__(__self__, *,
+                 acl_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] acl_id: Snooping Binding of the Access Policy Group ID List.
+        :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        """
+        if acl_id is not None:
+            pulumi.set(__self__, "acl_id", acl_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Snooping Binding of the Access Policy Group ID List.
+        """
+        return pulumi.get(self, "acl_id")
+
+    @acl_id.setter
+    def acl_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type

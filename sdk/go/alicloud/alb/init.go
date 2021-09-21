@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:alb/acl:Acl":
 		r = &Acl{}
+	case "alicloud:alb/healthCheckTemplate:HealthCheckTemplate":
+		r = &HealthCheckTemplate{}
 	case "alicloud:alb/listener:Listener":
 		r = &Listener{}
 	case "alicloud:alb/loadBalancer:LoadBalancer":
@@ -49,6 +51,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"alb/acl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"alb/healthCheckTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

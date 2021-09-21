@@ -62,7 +62,6 @@ type GetZonesArgs struct {
 	// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
 	AvailableResourceCreation *string `pulumi:"availableResourceCreation"`
 	// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
-	// > **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloudEfficiency` or `cloudSsd`.
 	AvailableSlbAddressIpVersion *string `pulumi:"availableSlbAddressIpVersion"`
 	// Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
 	AvailableSlbAddressType *string `pulumi:"availableSlbAddressType"`

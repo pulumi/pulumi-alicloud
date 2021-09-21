@@ -95,21 +95,26 @@ type Endpoints struct {
 	Cddc                *string `pulumi:"cddc"`
 	Cdn                 *string `pulumi:"cdn"`
 	Cds                 *string `pulumi:"cds"`
+	Clickhouse          *string `pulumi:"clickhouse"`
 	Cloudphone          *string `pulumi:"cloudphone"`
+	Cloudsso            *string `pulumi:"cloudsso"`
 	Cms                 *string `pulumi:"cms"`
 	Config              *string `pulumi:"config"`
 	Cr                  *string `pulumi:"cr"`
 	Cs                  *string `pulumi:"cs"`
 	Datahub             *string `pulumi:"datahub"`
 	Dataworkspublic     *string `pulumi:"dataworkspublic"`
+	Dbfs                *string `pulumi:"dbfs"`
 	Dcdn                *string `pulumi:"dcdn"`
 	Ddosbgp             *string `pulumi:"ddosbgp"`
 	Ddoscoo             *string `pulumi:"ddoscoo"`
 	Dds                 *string `pulumi:"dds"`
+	Dg                  *string `pulumi:"dg"`
 	Dm                  *string `pulumi:"dm"`
 	DmsEnterprise       *string `pulumi:"dmsEnterprise"`
 	Dns                 *string `pulumi:"dns"`
 	Drds                *string `pulumi:"drds"`
+	Dts                 *string `pulumi:"dts"`
 	Eci                 *string `pulumi:"eci"`
 	Ecs                 *string `pulumi:"ecs"`
 	Ehpc                *string `pulumi:"ehpc"`
@@ -122,12 +127,15 @@ type Endpoints struct {
 	Fc                  *string `pulumi:"fc"`
 	Fnf                 *string `pulumi:"fnf"`
 	Ga                  *string `pulumi:"ga"`
+	Gds                 *string `pulumi:"gds"`
 	Gpdb                *string `pulumi:"gpdb"`
 	Gwsecd              *string `pulumi:"gwsecd"`
 	Hbr                 *string `pulumi:"hbr"`
 	HcsSgw              *string `pulumi:"hcsSgw"`
 	Hitsdb              *string `pulumi:"hitsdb"`
+	Imm                 *string `pulumi:"imm"`
 	Ims                 *string `pulumi:"ims"`
+	Iot                 *string `pulumi:"iot"`
 	Kms                 *string `pulumi:"kms"`
 	Kvstore             *string `pulumi:"kvstore"`
 	Location            *string `pulumi:"location"`
@@ -141,11 +149,13 @@ type Endpoints struct {
 	Ons                 *string `pulumi:"ons"`
 	Onsproxy            *string `pulumi:"onsproxy"`
 	Oos                 *string `pulumi:"oos"`
+	Opensearch          *string `pulumi:"opensearch"`
 	Oss                 *string `pulumi:"oss"`
 	Ots                 *string `pulumi:"ots"`
 	Polardb             *string `pulumi:"polardb"`
 	Privatelink         *string `pulumi:"privatelink"`
 	Pvtz                *string `pulumi:"pvtz"`
+	Quickbi             *string `pulumi:"quickbi"`
 	Quotas              *string `pulumi:"quotas"`
 	RKvstore            *string `pulumi:"rKvstore"`
 	Ram                 *string `pulumi:"ram"`
@@ -161,7 +171,11 @@ type Endpoints struct {
 	Sgw                 *string `pulumi:"sgw"`
 	Slb                 *string `pulumi:"slb"`
 	Sts                 *string `pulumi:"sts"`
+	Swas                *string `pulumi:"swas"`
+	Vod                 *string `pulumi:"vod"`
 	Vpc                 *string `pulumi:"vpc"`
+	Vs                  *string `pulumi:"vs"`
+	Waf                 *string `pulumi:"waf"`
 	WafOpenapi          *string `pulumi:"wafOpenapi"`
 }
 
@@ -194,21 +208,26 @@ type EndpointsArgs struct {
 	Cddc                pulumi.StringPtrInput `pulumi:"cddc"`
 	Cdn                 pulumi.StringPtrInput `pulumi:"cdn"`
 	Cds                 pulumi.StringPtrInput `pulumi:"cds"`
+	Clickhouse          pulumi.StringPtrInput `pulumi:"clickhouse"`
 	Cloudphone          pulumi.StringPtrInput `pulumi:"cloudphone"`
+	Cloudsso            pulumi.StringPtrInput `pulumi:"cloudsso"`
 	Cms                 pulumi.StringPtrInput `pulumi:"cms"`
 	Config              pulumi.StringPtrInput `pulumi:"config"`
 	Cr                  pulumi.StringPtrInput `pulumi:"cr"`
 	Cs                  pulumi.StringPtrInput `pulumi:"cs"`
 	Datahub             pulumi.StringPtrInput `pulumi:"datahub"`
 	Dataworkspublic     pulumi.StringPtrInput `pulumi:"dataworkspublic"`
+	Dbfs                pulumi.StringPtrInput `pulumi:"dbfs"`
 	Dcdn                pulumi.StringPtrInput `pulumi:"dcdn"`
 	Ddosbgp             pulumi.StringPtrInput `pulumi:"ddosbgp"`
 	Ddoscoo             pulumi.StringPtrInput `pulumi:"ddoscoo"`
 	Dds                 pulumi.StringPtrInput `pulumi:"dds"`
+	Dg                  pulumi.StringPtrInput `pulumi:"dg"`
 	Dm                  pulumi.StringPtrInput `pulumi:"dm"`
 	DmsEnterprise       pulumi.StringPtrInput `pulumi:"dmsEnterprise"`
 	Dns                 pulumi.StringPtrInput `pulumi:"dns"`
 	Drds                pulumi.StringPtrInput `pulumi:"drds"`
+	Dts                 pulumi.StringPtrInput `pulumi:"dts"`
 	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
 	Ehpc                pulumi.StringPtrInput `pulumi:"ehpc"`
@@ -221,12 +240,15 @@ type EndpointsArgs struct {
 	Fc                  pulumi.StringPtrInput `pulumi:"fc"`
 	Fnf                 pulumi.StringPtrInput `pulumi:"fnf"`
 	Ga                  pulumi.StringPtrInput `pulumi:"ga"`
+	Gds                 pulumi.StringPtrInput `pulumi:"gds"`
 	Gpdb                pulumi.StringPtrInput `pulumi:"gpdb"`
 	Gwsecd              pulumi.StringPtrInput `pulumi:"gwsecd"`
 	Hbr                 pulumi.StringPtrInput `pulumi:"hbr"`
 	HcsSgw              pulumi.StringPtrInput `pulumi:"hcsSgw"`
 	Hitsdb              pulumi.StringPtrInput `pulumi:"hitsdb"`
+	Imm                 pulumi.StringPtrInput `pulumi:"imm"`
 	Ims                 pulumi.StringPtrInput `pulumi:"ims"`
+	Iot                 pulumi.StringPtrInput `pulumi:"iot"`
 	Kms                 pulumi.StringPtrInput `pulumi:"kms"`
 	Kvstore             pulumi.StringPtrInput `pulumi:"kvstore"`
 	Location            pulumi.StringPtrInput `pulumi:"location"`
@@ -240,11 +262,13 @@ type EndpointsArgs struct {
 	Ons                 pulumi.StringPtrInput `pulumi:"ons"`
 	Onsproxy            pulumi.StringPtrInput `pulumi:"onsproxy"`
 	Oos                 pulumi.StringPtrInput `pulumi:"oos"`
+	Opensearch          pulumi.StringPtrInput `pulumi:"opensearch"`
 	Oss                 pulumi.StringPtrInput `pulumi:"oss"`
 	Ots                 pulumi.StringPtrInput `pulumi:"ots"`
 	Polardb             pulumi.StringPtrInput `pulumi:"polardb"`
 	Privatelink         pulumi.StringPtrInput `pulumi:"privatelink"`
 	Pvtz                pulumi.StringPtrInput `pulumi:"pvtz"`
+	Quickbi             pulumi.StringPtrInput `pulumi:"quickbi"`
 	Quotas              pulumi.StringPtrInput `pulumi:"quotas"`
 	RKvstore            pulumi.StringPtrInput `pulumi:"rKvstore"`
 	Ram                 pulumi.StringPtrInput `pulumi:"ram"`
@@ -260,7 +284,11 @@ type EndpointsArgs struct {
 	Sgw                 pulumi.StringPtrInput `pulumi:"sgw"`
 	Slb                 pulumi.StringPtrInput `pulumi:"slb"`
 	Sts                 pulumi.StringPtrInput `pulumi:"sts"`
+	Swas                pulumi.StringPtrInput `pulumi:"swas"`
+	Vod                 pulumi.StringPtrInput `pulumi:"vod"`
 	Vpc                 pulumi.StringPtrInput `pulumi:"vpc"`
+	Vs                  pulumi.StringPtrInput `pulumi:"vs"`
+	Waf                 pulumi.StringPtrInput `pulumi:"waf"`
 	WafOpenapi          pulumi.StringPtrInput `pulumi:"wafOpenapi"`
 }
 
@@ -383,8 +411,16 @@ func (o EndpointsOutput) Cds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Cds }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Clickhouse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Clickhouse }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Cloudphone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Cloudphone }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Cloudsso() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Cloudsso }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Cms() pulumi.StringPtrOutput {
@@ -411,6 +447,10 @@ func (o EndpointsOutput) Dataworkspublic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Dataworkspublic }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Dbfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Dbfs }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Dcdn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Dcdn }).(pulumi.StringPtrOutput)
 }
@@ -427,6 +467,10 @@ func (o EndpointsOutput) Dds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Dds }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Dg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Dg }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Dm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Dm }).(pulumi.StringPtrOutput)
 }
@@ -441,6 +485,10 @@ func (o EndpointsOutput) Dns() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Drds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Drds }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Dts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Dts }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Eci() pulumi.StringPtrOutput {
@@ -491,6 +539,10 @@ func (o EndpointsOutput) Ga() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Ga }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Gds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Gds }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Gpdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Gpdb }).(pulumi.StringPtrOutput)
 }
@@ -511,8 +563,16 @@ func (o EndpointsOutput) Hitsdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Hitsdb }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Imm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Imm }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Ims() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Ims }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Iot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Iot }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Kms() pulumi.StringPtrOutput {
@@ -567,6 +627,10 @@ func (o EndpointsOutput) Oos() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Oos }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Opensearch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Oss() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Oss }).(pulumi.StringPtrOutput)
 }
@@ -585,6 +649,10 @@ func (o EndpointsOutput) Privatelink() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Pvtz() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Pvtz }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Quickbi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Quickbi }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Quotas() pulumi.StringPtrOutput {
@@ -647,8 +715,24 @@ func (o EndpointsOutput) Sts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Sts }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Swas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Swas }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Vod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Vod }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Vpc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Vs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Vs }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Waf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Waf }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) WafOpenapi() pulumi.StringPtrOutput {

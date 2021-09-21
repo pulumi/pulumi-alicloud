@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:sddp/config:Config":
 		r = &Config{}
+	case "alicloud:sddp/instance:Instance":
+		r = &Instance{}
 	case "alicloud:sddp/rule:Rule":
 		r = &Rule{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"sddp/config",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sddp/instance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

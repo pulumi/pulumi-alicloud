@@ -38,6 +38,7 @@ class ScalingConfigurationArgs:
                  override: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -76,6 +77,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[bool] override: Indicates whether to overwrite the existing data. Default to false.
         :param pulumi.Input[str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
+        :param pulumi.Input[str] resource_group_id: ID of resource group.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
@@ -143,6 +145,8 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "password", password)
         if password_inherit is not None:
             pulumi.set(__self__, "password_inherit", password_inherit)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
         if scaling_configuration_name is not None:
@@ -447,6 +451,18 @@ class ScalingConfigurationArgs:
         pulumi.set(self, "password_inherit", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="roleName")
     def role_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -630,6 +646,7 @@ class _ScalingConfigurationState:
                  override: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
@@ -668,6 +685,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[bool] override: Indicates whether to overwrite the existing data. Default to false.
         :param pulumi.Input[str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
+        :param pulumi.Input[str] resource_group_id: ID of resource group.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
@@ -735,6 +753,8 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "password", password)
         if password_inherit is not None:
             pulumi.set(__self__, "password_inherit", password_inherit)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
         if scaling_configuration_name is not None:
@@ -1029,6 +1049,18 @@ class _ScalingConfigurationState:
         pulumi.set(self, "password_inherit", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="roleName")
     def role_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1226,6 +1258,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  override: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
@@ -1274,6 +1307,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] override: Indicates whether to overwrite the existing data. Default to false.
         :param pulumi.Input[str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
+        :param pulumi.Input[str] resource_group_id: ID of resource group.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
@@ -1343,6 +1377,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  override: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
@@ -1397,6 +1432,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["override"] = override
             __props__.__dict__["password"] = password
             __props__.__dict__["password_inherit"] = password_inherit
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["role_name"] = role_name
             __props__.__dict__["scaling_configuration_name"] = scaling_configuration_name
             if scaling_group_id is None and not opts.urn:
@@ -1445,6 +1481,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             override: Optional[pulumi.Input[bool]] = None,
             password: Optional[pulumi.Input[str]] = None,
             password_inherit: Optional[pulumi.Input[bool]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             role_name: Optional[pulumi.Input[str]] = None,
             scaling_configuration_name: Optional[pulumi.Input[str]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None,
@@ -1488,6 +1525,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] override: Indicates whether to overwrite the existing data. Default to false.
         :param pulumi.Input[str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
+        :param pulumi.Input[str] resource_group_id: ID of resource group.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
@@ -1531,6 +1569,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["override"] = override
         __props__.__dict__["password"] = password
         __props__.__dict__["password_inherit"] = password_inherit
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["role_name"] = role_name
         __props__.__dict__["scaling_configuration_name"] = scaling_configuration_name
         __props__.__dict__["scaling_group_id"] = scaling_group_id
@@ -1722,6 +1761,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
         """
         return pulumi.get(self, "password_inherit")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        ID of resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="roleName")

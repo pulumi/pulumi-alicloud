@@ -5,12 +5,14 @@
 # Export this package's modules as members:
 from .acl import *
 from .get_acls import *
+from .get_health_check_templates import *
 from .get_listeners import *
 from .get_load_balancers import *
 from .get_rules import *
 from .get_security_policies import *
 from .get_server_groups import *
 from .get_zones import *
+from .health_check_template import *
 from .listener import *
 from .load_balancer import *
 from .rule import *
@@ -33,6 +35,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:alb/acl:Acl":
                 return Acl(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:alb/healthCheckTemplate:HealthCheckTemplate":
+                return HealthCheckTemplate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:alb/listener:Listener":
                 return Listener(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:alb/loadBalancer:LoadBalancer":
@@ -49,6 +53,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "alb/acl", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "alb/healthCheckTemplate", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "alb/listener", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "alb/loadBalancer", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "alb/rule", _module_instance)

@@ -9,11 +9,107 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetBindingsBindingResult',
     'GetExchangesExchangeResult',
     'GetInstancesInstanceResult',
     'GetQueuesQueueResult',
     'GetVirtualHostsHostResult',
 ]
+
+@pulumi.output_type
+class GetBindingsBindingResult(dict):
+    def __init__(__self__, *,
+                 argument: str,
+                 binding_key: str,
+                 binding_type: str,
+                 destination_name: str,
+                 id: str,
+                 instance_id: str,
+                 source_exchange: str,
+                 virtual_host_name: str):
+        """
+        :param str argument: X-match Attributes. Valid Values: All: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match. Any: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match. This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        :param str binding_key: The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). If You Include the Hash (.
+        :param str binding_type: The Target Binding Types.
+        :param str destination_name: The Target Queue Or Exchange of the Name.
+        :param str id: The ID of the Binding. The value formats as `<instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>`.
+        :param str instance_id: Instance Id.
+        :param str source_exchange: The Source Exchange Name.
+        :param str virtual_host_name: Virtualhost Name.
+        """
+        pulumi.set(__self__, "argument", argument)
+        pulumi.set(__self__, "binding_key", binding_key)
+        pulumi.set(__self__, "binding_type", binding_type)
+        pulumi.set(__self__, "destination_name", destination_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "source_exchange", source_exchange)
+        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+
+    @property
+    @pulumi.getter
+    def argument(self) -> str:
+        """
+        X-match Attributes. Valid Values: All: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match. Any: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match. This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        """
+        return pulumi.get(self, "argument")
+
+    @property
+    @pulumi.getter(name="bindingKey")
+    def binding_key(self) -> str:
+        """
+        The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). If You Include the Hash (.
+        """
+        return pulumi.get(self, "binding_key")
+
+    @property
+    @pulumi.getter(name="bindingType")
+    def binding_type(self) -> str:
+        """
+        The Target Binding Types.
+        """
+        return pulumi.get(self, "binding_type")
+
+    @property
+    @pulumi.getter(name="destinationName")
+    def destination_name(self) -> str:
+        """
+        The Target Queue Or Exchange of the Name.
+        """
+        return pulumi.get(self, "destination_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Binding. The value formats as `<instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        Instance Id.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="sourceExchange")
+    def source_exchange(self) -> str:
+        """
+        The Source Exchange Name.
+        """
+        return pulumi.get(self, "source_exchange")
+
+    @property
+    @pulumi.getter(name="virtualHostName")
+    def virtual_host_name(self) -> str:
+        """
+        Virtualhost Name.
+        """
+        return pulumi.get(self, "virtual_host_name")
+
 
 @pulumi.output_type
 class GetExchangesExchangeResult(dict):

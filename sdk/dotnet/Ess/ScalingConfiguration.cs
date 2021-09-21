@@ -154,6 +154,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> PasswordInherit { get; private set; } = null!;
 
         /// <summary>
+        /// ID of resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
         /// </summary>
         [Output("roleName")]
@@ -443,6 +449,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? PasswordInherit { get; set; }
 
         /// <summary>
+        /// ID of resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
         /// </summary>
         [Input("roleName")]
@@ -703,6 +715,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("passwordInherit")]
         public Input<bool>? PasswordInherit { get; set; }
+
+        /// <summary>
+        /// ID of resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.

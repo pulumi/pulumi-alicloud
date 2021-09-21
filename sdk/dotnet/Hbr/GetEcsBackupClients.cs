@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Hbr
     public static class GetEcsBackupClients
     {
         /// <summary>
-        /// This data source provides the Hbr Ecs Backup Clients of the current Alibaba Cloud user.
+        /// This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+.
         /// 

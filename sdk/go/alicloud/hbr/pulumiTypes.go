@@ -11,57 +11,57 @@ import (
 )
 
 type GetEcsBackupClientsClient struct {
-	// The Client System Architecture (Only the ECS File Backup Client Is Available. Valid Values: `AMD64` , `386`.
+	// The system architecture of client, only the ECS File Backup Client is available. Valid values: `AMD64` , `386`.
 	ArchType string `pulumi:"archType"`
 	// Client protected status.
 	BackupStatus string `pulumi:"backupStatus"`
-	// The Client Type. Valid Values: `ECS_CLIENT` (ECS File Backup Client).
+	// The type of client. Valid values: `ECS_CLIENT` (ECS File Backup Client).
 	ClientType string `pulumi:"clientType"`
-	// Client Version.
+	// The version of client.
 	ClientVersion string `pulumi:"clientVersion"`
-	// The Client Creates a Time. Unix Time Seconds.
+	// The creation time of client. Unix time seconds.
 	CreateTime string `pulumi:"createTime"`
-	// The Data Plane Data Access Point Type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
+	// The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
 	DataNetworkType string `pulumi:"dataNetworkType"`
-	// The Data Plane Proxy Settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`. **Note**: `USE_CONTROL_PROXY` (Default, the same with Control Plane), `CUSTOM` (Custom Configuration Items for the HTTP Protocol).
+	// The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
 	DataProxySetting string `pulumi:"dataProxySetting"`
 	// The first ID of the resource.
 	EcsBackupClientId string `pulumi:"ecsBackupClientId"`
-	// The ECS Host Name.
+	// The name of ECS host.
 	Hostname string `pulumi:"hostname"`
 	// The ID of the Ecs Backup Client.
 	Id string `pulumi:"id"`
-	// The ID of ECS Instance.
+	// The ID of ECS instance.
 	InstanceId string `pulumi:"instanceId"`
-	// ECS Instance Names.
+	// The name of ECS instance.
 	InstanceName string `pulumi:"instanceName"`
-	// Client Last Heartbeat Time. Unix Time Seconds.
+	// Client last heartbeat time. Unix Time Seconds.
 	LastHeartBeatTime string `pulumi:"lastHeartBeatTime"`
-	// The Latest Client Version.
+	// The latest client version.
 	MaxClientVersion string `pulumi:"maxClientVersion"`
-	// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+	// Number of CPU cores used by a single backup task, 0 means no restrictions.
 	MaxCpuCore string `pulumi:"maxCpuCore"`
-	// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+	// Number of concurrent jobs for a single backup task, 0 means no restrictions.
 	MaxWorker string `pulumi:"maxWorker"`
-	// The Client System Type (Only the ECS File Backup Client Is Available. Possible Values: * windows * linux.
+	// The operating system type of client, only the ECS File Backup Client is available. Valid values: `windows`, `linux`.
 	OsType string `pulumi:"osType"`
-	// Instance Must Not Use the Intranet IP Address.
+	// Intranet IP address of the instance, only available for ECS file backup client.
 	PrivateIpv4 string `pulumi:"privateIpv4"`
-	// Custom Data Plane Proxy Server Host Address.
+	// Custom data plane proxy server host address.
 	ProxyHost string `pulumi:"proxyHost"`
-	// Custom Data Plane Proxy Password.
+	// Custom data plane proxy server password.
 	ProxyPassword string `pulumi:"proxyPassword"`
-	// Custom Data Plane Proxy Server Host Port.
+	// Custom data plane proxy server host port.
 	ProxyPort string `pulumi:"proxyPort"`
-	// Custom Data Plane Proxy Server User Name.
+	// Username of custom data plane proxy server.
 	ProxyUser string `pulumi:"proxyUser"`
 	// The status of the resource.
 	Status string `pulumi:"status"`
-	// Client Update Time. Unix Time Seconds.
+	// The update time of client. Unix Time Seconds.
 	UpdatedTime string `pulumi:"updatedTime"`
-	// Indicates Whether to Use the Https Transport Data Plane Data.
+	// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
 	UseHttps bool `pulumi:"useHttps"`
-	// The Zone ID.
+	// The ID of Zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -77,57 +77,57 @@ type GetEcsBackupClientsClientInput interface {
 }
 
 type GetEcsBackupClientsClientArgs struct {
-	// The Client System Architecture (Only the ECS File Backup Client Is Available. Valid Values: `AMD64` , `386`.
+	// The system architecture of client, only the ECS File Backup Client is available. Valid values: `AMD64` , `386`.
 	ArchType pulumi.StringInput `pulumi:"archType"`
 	// Client protected status.
 	BackupStatus pulumi.StringInput `pulumi:"backupStatus"`
-	// The Client Type. Valid Values: `ECS_CLIENT` (ECS File Backup Client).
+	// The type of client. Valid values: `ECS_CLIENT` (ECS File Backup Client).
 	ClientType pulumi.StringInput `pulumi:"clientType"`
-	// Client Version.
+	// The version of client.
 	ClientVersion pulumi.StringInput `pulumi:"clientVersion"`
-	// The Client Creates a Time. Unix Time Seconds.
+	// The creation time of client. Unix time seconds.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The Data Plane Data Access Point Type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
+	// The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
 	DataNetworkType pulumi.StringInput `pulumi:"dataNetworkType"`
-	// The Data Plane Proxy Settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`. **Note**: `USE_CONTROL_PROXY` (Default, the same with Control Plane), `CUSTOM` (Custom Configuration Items for the HTTP Protocol).
+	// The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
 	DataProxySetting pulumi.StringInput `pulumi:"dataProxySetting"`
 	// The first ID of the resource.
 	EcsBackupClientId pulumi.StringInput `pulumi:"ecsBackupClientId"`
-	// The ECS Host Name.
+	// The name of ECS host.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// The ID of the Ecs Backup Client.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of ECS Instance.
+	// The ID of ECS instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// ECS Instance Names.
+	// The name of ECS instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
-	// Client Last Heartbeat Time. Unix Time Seconds.
+	// Client last heartbeat time. Unix Time Seconds.
 	LastHeartBeatTime pulumi.StringInput `pulumi:"lastHeartBeatTime"`
-	// The Latest Client Version.
+	// The latest client version.
 	MaxClientVersion pulumi.StringInput `pulumi:"maxClientVersion"`
-	// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+	// Number of CPU cores used by a single backup task, 0 means no restrictions.
 	MaxCpuCore pulumi.StringInput `pulumi:"maxCpuCore"`
-	// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+	// Number of concurrent jobs for a single backup task, 0 means no restrictions.
 	MaxWorker pulumi.StringInput `pulumi:"maxWorker"`
-	// The Client System Type (Only the ECS File Backup Client Is Available. Possible Values: * windows * linux.
+	// The operating system type of client, only the ECS File Backup Client is available. Valid values: `windows`, `linux`.
 	OsType pulumi.StringInput `pulumi:"osType"`
-	// Instance Must Not Use the Intranet IP Address.
+	// Intranet IP address of the instance, only available for ECS file backup client.
 	PrivateIpv4 pulumi.StringInput `pulumi:"privateIpv4"`
-	// Custom Data Plane Proxy Server Host Address.
+	// Custom data plane proxy server host address.
 	ProxyHost pulumi.StringInput `pulumi:"proxyHost"`
-	// Custom Data Plane Proxy Password.
+	// Custom data plane proxy server password.
 	ProxyPassword pulumi.StringInput `pulumi:"proxyPassword"`
-	// Custom Data Plane Proxy Server Host Port.
+	// Custom data plane proxy server host port.
 	ProxyPort pulumi.StringInput `pulumi:"proxyPort"`
-	// Custom Data Plane Proxy Server User Name.
+	// Username of custom data plane proxy server.
 	ProxyUser pulumi.StringInput `pulumi:"proxyUser"`
 	// The status of the resource.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Client Update Time. Unix Time Seconds.
+	// The update time of client. Unix Time Seconds.
 	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
-	// Indicates Whether to Use the Https Transport Data Plane Data.
+	// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
 	UseHttps pulumi.BoolInput `pulumi:"useHttps"`
-	// The Zone ID.
+	// The ID of Zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -182,7 +182,7 @@ func (o GetEcsBackupClientsClientOutput) ToGetEcsBackupClientsClientOutputWithCo
 	return o
 }
 
-// The Client System Architecture (Only the ECS File Backup Client Is Available. Valid Values: `AMD64` , `386`.
+// The system architecture of client, only the ECS File Backup Client is available. Valid values: `AMD64` , `386`.
 func (o GetEcsBackupClientsClientOutput) ArchType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.ArchType }).(pulumi.StringOutput)
 }
@@ -192,27 +192,27 @@ func (o GetEcsBackupClientsClientOutput) BackupStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.BackupStatus }).(pulumi.StringOutput)
 }
 
-// The Client Type. Valid Values: `ECS_CLIENT` (ECS File Backup Client).
+// The type of client. Valid values: `ECS_CLIENT` (ECS File Backup Client).
 func (o GetEcsBackupClientsClientOutput) ClientType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.ClientType }).(pulumi.StringOutput)
 }
 
-// Client Version.
+// The version of client.
 func (o GetEcsBackupClientsClientOutput) ClientVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.ClientVersion }).(pulumi.StringOutput)
 }
 
-// The Client Creates a Time. Unix Time Seconds.
+// The creation time of client. Unix time seconds.
 func (o GetEcsBackupClientsClientOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The Data Plane Data Access Point Type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
+// The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
 func (o GetEcsBackupClientsClientOutput) DataNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.DataNetworkType }).(pulumi.StringOutput)
 }
 
-// The Data Plane Proxy Settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`. **Note**: `USE_CONTROL_PROXY` (Default, the same with Control Plane), `CUSTOM` (Custom Configuration Items for the HTTP Protocol).
+// The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
 func (o GetEcsBackupClientsClientOutput) DataProxySetting() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.DataProxySetting }).(pulumi.StringOutput)
 }
@@ -222,7 +222,7 @@ func (o GetEcsBackupClientsClientOutput) EcsBackupClientId() pulumi.StringOutput
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.EcsBackupClientId }).(pulumi.StringOutput)
 }
 
-// The ECS Host Name.
+// The name of ECS host.
 func (o GetEcsBackupClientsClientOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -232,62 +232,62 @@ func (o GetEcsBackupClientsClientOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of ECS Instance.
+// The ID of ECS instance.
 func (o GetEcsBackupClientsClientOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// ECS Instance Names.
+// The name of ECS instance.
 func (o GetEcsBackupClientsClientOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// Client Last Heartbeat Time. Unix Time Seconds.
+// Client last heartbeat time. Unix Time Seconds.
 func (o GetEcsBackupClientsClientOutput) LastHeartBeatTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.LastHeartBeatTime }).(pulumi.StringOutput)
 }
 
-// The Latest Client Version.
+// The latest client version.
 func (o GetEcsBackupClientsClientOutput) MaxClientVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.MaxClientVersion }).(pulumi.StringOutput)
 }
 
-// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+// Number of CPU cores used by a single backup task, 0 means no restrictions.
 func (o GetEcsBackupClientsClientOutput) MaxCpuCore() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.MaxCpuCore }).(pulumi.StringOutput)
 }
 
-// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+// Number of concurrent jobs for a single backup task, 0 means no restrictions.
 func (o GetEcsBackupClientsClientOutput) MaxWorker() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.MaxWorker }).(pulumi.StringOutput)
 }
 
-// The Client System Type (Only the ECS File Backup Client Is Available. Possible Values: * windows * linux.
+// The operating system type of client, only the ECS File Backup Client is available. Valid values: `windows`, `linux`.
 func (o GetEcsBackupClientsClientOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.OsType }).(pulumi.StringOutput)
 }
 
-// Instance Must Not Use the Intranet IP Address.
+// Intranet IP address of the instance, only available for ECS file backup client.
 func (o GetEcsBackupClientsClientOutput) PrivateIpv4() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.PrivateIpv4 }).(pulumi.StringOutput)
 }
 
-// Custom Data Plane Proxy Server Host Address.
+// Custom data plane proxy server host address.
 func (o GetEcsBackupClientsClientOutput) ProxyHost() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.ProxyHost }).(pulumi.StringOutput)
 }
 
-// Custom Data Plane Proxy Password.
+// Custom data plane proxy server password.
 func (o GetEcsBackupClientsClientOutput) ProxyPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.ProxyPassword }).(pulumi.StringOutput)
 }
 
-// Custom Data Plane Proxy Server Host Port.
+// Custom data plane proxy server host port.
 func (o GetEcsBackupClientsClientOutput) ProxyPort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.ProxyPort }).(pulumi.StringOutput)
 }
 
-// Custom Data Plane Proxy Server User Name.
+// Username of custom data plane proxy server.
 func (o GetEcsBackupClientsClientOutput) ProxyUser() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.ProxyUser }).(pulumi.StringOutput)
 }
@@ -297,17 +297,17 @@ func (o GetEcsBackupClientsClientOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Client Update Time. Unix Time Seconds.
+// The update time of client. Unix Time Seconds.
 func (o GetEcsBackupClientsClientOutput) UpdatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.UpdatedTime }).(pulumi.StringOutput)
 }
 
-// Indicates Whether to Use the Https Transport Data Plane Data.
+// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
 func (o GetEcsBackupClientsClientOutput) UseHttps() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) bool { return v.UseHttps }).(pulumi.BoolOutput)
 }
 
-// The Zone ID.
+// The ID of Zone.
 func (o GetEcsBackupClientsClientOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -333,32 +333,32 @@ func (o GetEcsBackupClientsClientArrayOutput) Index(i pulumi.IntInput) GetEcsBac
 }
 
 type GetEcsBackupPlansPlan struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType      string `pulumi:"backupType"`
 	CreateTime      string `pulumi:"createTime"`
 	Detail          string `pulumi:"detail"`
 	Disabled        bool   `pulumi:"disabled"`
 	EcsBackupPlanId string `pulumi:"ecsBackupPlanId"`
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan.
 	EcsBackupPlanName string `pulumi:"ecsBackupPlanName"`
-	// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+	// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
 	Exclude string `pulumi:"exclude"`
 	Id      string `pulumi:"id"`
-	// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+	// Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
 	Include string `pulumi:"include"`
-	// The ECS Instance Id. Must Have Installed the Client.
+	// The ID of ECS instance.
 	InstanceId string `pulumi:"instanceId"`
-	// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
 	Options string `pulumi:"options"`
-	// Backup Path. e.g. `["/home", "/var"]`
+	// Backup path. e.g. `["/home", "/var"]`
 	Paths []string `pulumi:"paths"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule string `pulumi:"schedule"`
-	// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit string `pulumi:"speedLimit"`
-	// Vault ID.
+	// The ID of Backup vault.
 	VaultId string `pulumi:"vaultId"`
 }
 
@@ -374,32 +374,32 @@ type GetEcsBackupPlansPlanInput interface {
 }
 
 type GetEcsBackupPlansPlanArgs struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType      pulumi.StringInput `pulumi:"backupType"`
 	CreateTime      pulumi.StringInput `pulumi:"createTime"`
 	Detail          pulumi.StringInput `pulumi:"detail"`
 	Disabled        pulumi.BoolInput   `pulumi:"disabled"`
 	EcsBackupPlanId pulumi.StringInput `pulumi:"ecsBackupPlanId"`
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan.
 	EcsBackupPlanName pulumi.StringInput `pulumi:"ecsBackupPlanName"`
-	// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+	// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
 	Exclude pulumi.StringInput `pulumi:"exclude"`
 	Id      pulumi.StringInput `pulumi:"id"`
-	// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+	// Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
 	Include pulumi.StringInput `pulumi:"include"`
-	// The ECS Instance Id. Must Have Installed the Client.
+	// The ID of ECS instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
 	Options pulumi.StringInput `pulumi:"options"`
-	// Backup Path. e.g. `["/home", "/var"]`
+	// Backup path. e.g. `["/home", "/var"]`
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
-	// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit pulumi.StringInput `pulumi:"speedLimit"`
-	// Vault ID.
+	// The ID of Backup vault.
 	VaultId pulumi.StringInput `pulumi:"vaultId"`
 }
 
@@ -454,7 +454,7 @@ func (o GetEcsBackupPlansPlanOutput) ToGetEcsBackupPlansPlanOutputWithContext(ct
 	return o
 }
 
-// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+// Backup type. Valid values: `COMPLETE`.
 func (o GetEcsBackupPlansPlanOutput) BackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.BackupType }).(pulumi.StringOutput)
 }
@@ -475,12 +475,12 @@ func (o GetEcsBackupPlansPlanOutput) EcsBackupPlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.EcsBackupPlanId }).(pulumi.StringOutput)
 }
 
-// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+// The name of the backup plan.
 func (o GetEcsBackupPlansPlanOutput) EcsBackupPlanName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.EcsBackupPlanName }).(pulumi.StringOutput)
 }
 
-// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
 func (o GetEcsBackupPlansPlanOutput) Exclude() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.Exclude }).(pulumi.StringOutput)
 }
@@ -489,42 +489,42 @@ func (o GetEcsBackupPlansPlanOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+// Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
 func (o GetEcsBackupPlansPlanOutput) Include() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.Include }).(pulumi.StringOutput)
 }
 
-// The ECS Instance Id. Must Have Installed the Client.
+// The ID of ECS instance.
 func (o GetEcsBackupPlansPlanOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
 func (o GetEcsBackupPlansPlanOutput) Options() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.Options }).(pulumi.StringOutput)
 }
 
-// Backup Path. e.g. `["/home", "/var"]`
+// Backup path. e.g. `["/home", "/var"]`
 func (o GetEcsBackupPlansPlanOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
-// Backup Retention Period, the Minimum Value of 1.
+// Backup retention days, the minimum is 1.
 func (o GetEcsBackupPlansPlanOutput) Retention() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.Retention }).(pulumi.StringOutput)
 }
 
-// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 func (o GetEcsBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
 
-// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 func (o GetEcsBackupPlansPlanOutput) SpeedLimit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.SpeedLimit }).(pulumi.StringOutput)
 }
 
-// Vault ID.
+// The ID of Backup vault.
 func (o GetEcsBackupPlansPlanOutput) VaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.VaultId }).(pulumi.StringOutput)
 }
@@ -550,26 +550,25 @@ func (o GetEcsBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetEcsBackupP
 }
 
 type GetNasBackupPlansPlan struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType string `pulumi:"backupType"`
 	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime string `pulumi:"createTime"`
 	Disabled   bool   `pulumi:"disabled"`
-	// The File System ID.
+	// The File System ID of Nas.
 	FileSystemId    string `pulumi:"fileSystemId"`
 	Id              string `pulumi:"id"`
 	NasBackupPlanId string `pulumi:"nasBackupPlanId"`
 	// The name of the resource.
 	NasBackupPlanName string `pulumi:"nasBackupPlanName"`
-	// Options. NAS Backup Plan Does Not Support Yet.
-	Options string `pulumi:"options"`
-	// Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+	Options           string `pulumi:"options"`
+	// Backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
 	Paths []string `pulumi:"paths"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
-	// The Backup Policy. Formats: I | {Range Specified by the Starttime }|{ Interval}\n* The Time Range Specified by the Starttime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule string `pulumi:"schedule"`
-	// The Vault ID of the EcsBackupPlan used.
+	// The backup vault ID of the NasBackupPlan used.
 	VaultId string `pulumi:"vaultId"`
 }
 
@@ -585,26 +584,25 @@ type GetNasBackupPlansPlanInput interface {
 }
 
 type GetNasBackupPlansPlanArgs struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringInput `pulumi:"backupType"`
 	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	Disabled   pulumi.BoolInput   `pulumi:"disabled"`
-	// The File System ID.
+	// The File System ID of Nas.
 	FileSystemId    pulumi.StringInput `pulumi:"fileSystemId"`
 	Id              pulumi.StringInput `pulumi:"id"`
 	NasBackupPlanId pulumi.StringInput `pulumi:"nasBackupPlanId"`
 	// The name of the resource.
 	NasBackupPlanName pulumi.StringInput `pulumi:"nasBackupPlanName"`
-	// Options. NAS Backup Plan Does Not Support Yet.
-	Options pulumi.StringInput `pulumi:"options"`
-	// Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+	Options           pulumi.StringInput `pulumi:"options"`
+	// Backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
-	// The Backup Policy. Formats: I | {Range Specified by the Starttime }|{ Interval}\n* The Time Range Specified by the Starttime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
-	// The Vault ID of the EcsBackupPlan used.
+	// The backup vault ID of the NasBackupPlan used.
 	VaultId pulumi.StringInput `pulumi:"vaultId"`
 }
 
@@ -659,7 +657,7 @@ func (o GetNasBackupPlansPlanOutput) ToGetNasBackupPlansPlanOutputWithContext(ct
 	return o
 }
 
-// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+// Backup type. Valid values: `COMPLETE`.
 func (o GetNasBackupPlansPlanOutput) BackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.BackupType }).(pulumi.StringOutput)
 }
@@ -673,7 +671,7 @@ func (o GetNasBackupPlansPlanOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-// The File System ID.
+// The File System ID of Nas.
 func (o GetNasBackupPlansPlanOutput) FileSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.FileSystemId }).(pulumi.StringOutput)
 }
@@ -691,27 +689,26 @@ func (o GetNasBackupPlansPlanOutput) NasBackupPlanName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.NasBackupPlanName }).(pulumi.StringOutput)
 }
 
-// Options. NAS Backup Plan Does Not Support Yet.
 func (o GetNasBackupPlansPlanOutput) Options() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.Options }).(pulumi.StringOutput)
 }
 
-// Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+// Backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
 func (o GetNasBackupPlansPlanOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
-// Backup Retention Period, the Minimum Value of 1.
+// Backup retention days, the minimum is 1.
 func (o GetNasBackupPlansPlanOutput) Retention() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.Retention }).(pulumi.StringOutput)
 }
 
-// The Backup Policy. Formats: I | {Range Specified by the Starttime }|{ Interval}\n* The Time Range Specified by the Starttime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
+// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 func (o GetNasBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
 
-// The Vault ID of the EcsBackupPlan used.
+// The backup vault ID of the NasBackupPlan used.
 func (o GetNasBackupPlansPlanOutput) VaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.VaultId }).(pulumi.StringOutput)
 }
@@ -737,21 +734,21 @@ func (o GetNasBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetNasBackupP
 }
 
 type GetOssBackupPlansPlan struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType string `pulumi:"backupType"`
-	// The OSS Bucket Name.
+	// The name of OSS bucket.
 	Bucket          string `pulumi:"bucket"`
 	Disabled        bool   `pulumi:"disabled"`
 	Id              string `pulumi:"id"`
 	OssBackupPlanId string `pulumi:"ossBackupPlanId"`
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OssBackupPlanName string `pulumi:"ossBackupPlanName"`
 	Prefix            string `pulumi:"prefix"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule string `pulumi:"schedule"`
-	// Vault ID.
+	// The ID of backup vault.
 	VaultId string `pulumi:"vaultId"`
 }
 
@@ -767,21 +764,21 @@ type GetOssBackupPlansPlanInput interface {
 }
 
 type GetOssBackupPlansPlanArgs struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringInput `pulumi:"backupType"`
-	// The OSS Bucket Name.
+	// The name of OSS bucket.
 	Bucket          pulumi.StringInput `pulumi:"bucket"`
 	Disabled        pulumi.BoolInput   `pulumi:"disabled"`
 	Id              pulumi.StringInput `pulumi:"id"`
 	OssBackupPlanId pulumi.StringInput `pulumi:"ossBackupPlanId"`
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OssBackupPlanName pulumi.StringInput `pulumi:"ossBackupPlanName"`
 	Prefix            pulumi.StringInput `pulumi:"prefix"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
-	// Vault ID.
+	// The ID of backup vault.
 	VaultId pulumi.StringInput `pulumi:"vaultId"`
 }
 
@@ -836,12 +833,12 @@ func (o GetOssBackupPlansPlanOutput) ToGetOssBackupPlansPlanOutputWithContext(ct
 	return o
 }
 
-// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+// Backup type. Valid values: `COMPLETE`.
 func (o GetOssBackupPlansPlanOutput) BackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.BackupType }).(pulumi.StringOutput)
 }
 
-// The OSS Bucket Name.
+// The name of OSS bucket.
 func (o GetOssBackupPlansPlanOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -858,7 +855,7 @@ func (o GetOssBackupPlansPlanOutput) OssBackupPlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.OssBackupPlanId }).(pulumi.StringOutput)
 }
 
-// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 func (o GetOssBackupPlansPlanOutput) OssBackupPlanName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.OssBackupPlanName }).(pulumi.StringOutput)
 }
@@ -867,17 +864,17 @@ func (o GetOssBackupPlansPlanOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
-// Backup Retention Period, the Minimum Value of 1.
+// Backup retention days, the minimum is 1.
 func (o GetOssBackupPlansPlanOutput) Retention() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.Retention }).(pulumi.StringOutput)
 }
 
-// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 func (o GetOssBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
 
-// Vault ID.
+// The ID of backup vault.
 func (o GetOssBackupPlansPlanOutput) VaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.VaultId }).(pulumi.StringOutput)
 }
@@ -903,68 +900,68 @@ func (o GetOssBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetOssBackupP
 }
 
 type GetRestoreJobsJob struct {
-	// The Actual Size of Snapshot.
+	// The actual size of Snapshot.
 	ActualBytes string `pulumi:"actualBytes"`
-	// The Actual Number of Files.
+	// The actual number of files.
 	ActualItems string `pulumi:"actualItems"`
-	// Recovery Is Successful, Size.
+	// The size of restore job recovered.
 	BytesDone string `pulumi:"bytesDone"`
-	// The Restored Total.
+	// The total size of restore job recovered.
 	BytesTotal string `pulumi:"bytesTotal"`
-	// Restore Completion Time.
+	// The completion time of restore Job.
 	CompleteTime string `pulumi:"completeTime"`
-	// The Restore Job Creation Time.
+	// The creation time of restore job.
 	CreateTime string `pulumi:"createTime"`
 	ErrorFile  string `pulumi:"errorFile"`
-	// The Recovery Task Execution Error Message.
+	// The error message of recovery task execution.
 	ErrorMessage string `pulumi:"errorMessage"`
-	// Restore the Expiration Time. Unix Time in Seconds.
+	// The expiration time of restore job. Unix Time in seconds.
 	ExpireTime string `pulumi:"expireTime"`
-	// The ID of the Restore Job.
+	// The ID of the restore job.
 	Id string `pulumi:"id"`
-	// Log of Files Successfully Recovered the Number.
+	// The number of items restore job recovered.
 	ItemsDone string `pulumi:"itemsDone"`
-	// File the Total Number.
+	// The total number of items restore job recovered.
 	ItemsTotal string `pulumi:"itemsTotal"`
 	// Recovery Options.
 	Options string `pulumi:"options"`
-	// The Parent Node.
+	// The ID of parent node.
 	ParentId string `pulumi:"parentId"`
-	// The Recovery Progress 100% * 100.
+	// The recovery progress.
 	Progress int `pulumi:"progress"`
-	// Restore Job ID.
+	// The ID of restore job.
 	RestoreJobId string `pulumi:"restoreJobId"`
-	// The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 	RestoreType string `pulumi:"restoreType"`
-	// Restore Snapshot of HashCode.
+	// The hashcode of Snapshot.
 	SnapshotHash string `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId string `pulumi:"snapshotId"`
-	// The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 	SourceType string `pulumi:"sourceType"`
-	// Restoring the Start Time. Unix Time in Seconds.
+	// The start time of restore job. Unix Time in Seconds.
 	StartTime string `pulumi:"startTime"`
-	// The Restore Job Status.
+	// The status of restore job.
 	Status string `pulumi:"status"`
-	// The Target ofo OSS Bucket Name.
+	// The name of target ofo OSS bucket.
 	TargetBucket string `pulumi:"targetBucket"`
-	// The ID of Target Client.
+	// The ID of target client.
 	TargetClientId string `pulumi:"targetClientId"`
-	// The Destination File System Creation Time.
+	// The creation time of destination file system.
 	TargetCreateTime string `pulumi:"targetCreateTime"`
-	// The Destination ID.
+	// The ID of destination data source.
 	TargetDataSourceId string `pulumi:"targetDataSourceId"`
-	// The Destination File System ID.
+	// The ID of destination file system.
 	TargetFileSystemId string `pulumi:"targetFileSystemId"`
-	// Objective to ECS Instance Id.
+	// The ID of target ECS instance.
 	TargetInstanceId string `pulumi:"targetInstanceId"`
-	// The Target of (ECS) Instance Changes the ECS File Path.
+	// The target file path of ECS instance.
 	TargetPath string `pulumi:"targetPath"`
-	// The Target of the OSS Object Prefix.
+	// The file prefix of target OSS object.
 	TargetPrefix string `pulumi:"targetPrefix"`
-	// Update Time.
+	// The update Time of restore job. Unix Time in Seconds.
 	UpdatedTime string `pulumi:"updatedTime"`
-	// The ID of Vault.
+	// The ID of backup vault.
 	VaultId string `pulumi:"vaultId"`
 }
 
@@ -980,68 +977,68 @@ type GetRestoreJobsJobInput interface {
 }
 
 type GetRestoreJobsJobArgs struct {
-	// The Actual Size of Snapshot.
+	// The actual size of Snapshot.
 	ActualBytes pulumi.StringInput `pulumi:"actualBytes"`
-	// The Actual Number of Files.
+	// The actual number of files.
 	ActualItems pulumi.StringInput `pulumi:"actualItems"`
-	// Recovery Is Successful, Size.
+	// The size of restore job recovered.
 	BytesDone pulumi.StringInput `pulumi:"bytesDone"`
-	// The Restored Total.
+	// The total size of restore job recovered.
 	BytesTotal pulumi.StringInput `pulumi:"bytesTotal"`
-	// Restore Completion Time.
+	// The completion time of restore Job.
 	CompleteTime pulumi.StringInput `pulumi:"completeTime"`
-	// The Restore Job Creation Time.
+	// The creation time of restore job.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	ErrorFile  pulumi.StringInput `pulumi:"errorFile"`
-	// The Recovery Task Execution Error Message.
+	// The error message of recovery task execution.
 	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
-	// Restore the Expiration Time. Unix Time in Seconds.
+	// The expiration time of restore job. Unix Time in seconds.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-	// The ID of the Restore Job.
+	// The ID of the restore job.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Log of Files Successfully Recovered the Number.
+	// The number of items restore job recovered.
 	ItemsDone pulumi.StringInput `pulumi:"itemsDone"`
-	// File the Total Number.
+	// The total number of items restore job recovered.
 	ItemsTotal pulumi.StringInput `pulumi:"itemsTotal"`
 	// Recovery Options.
 	Options pulumi.StringInput `pulumi:"options"`
-	// The Parent Node.
+	// The ID of parent node.
 	ParentId pulumi.StringInput `pulumi:"parentId"`
-	// The Recovery Progress 100% * 100.
+	// The recovery progress.
 	Progress pulumi.IntInput `pulumi:"progress"`
-	// Restore Job ID.
+	// The ID of restore job.
 	RestoreJobId pulumi.StringInput `pulumi:"restoreJobId"`
-	// The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 	RestoreType pulumi.StringInput `pulumi:"restoreType"`
-	// Restore Snapshot of HashCode.
+	// The hashcode of Snapshot.
 	SnapshotHash pulumi.StringInput `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
-	// The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
-	// Restoring the Start Time. Unix Time in Seconds.
+	// The start time of restore job. Unix Time in Seconds.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// The Restore Job Status.
+	// The status of restore job.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The Target ofo OSS Bucket Name.
+	// The name of target ofo OSS bucket.
 	TargetBucket pulumi.StringInput `pulumi:"targetBucket"`
-	// The ID of Target Client.
+	// The ID of target client.
 	TargetClientId pulumi.StringInput `pulumi:"targetClientId"`
-	// The Destination File System Creation Time.
+	// The creation time of destination file system.
 	TargetCreateTime pulumi.StringInput `pulumi:"targetCreateTime"`
-	// The Destination ID.
+	// The ID of destination data source.
 	TargetDataSourceId pulumi.StringInput `pulumi:"targetDataSourceId"`
-	// The Destination File System ID.
+	// The ID of destination file system.
 	TargetFileSystemId pulumi.StringInput `pulumi:"targetFileSystemId"`
-	// Objective to ECS Instance Id.
+	// The ID of target ECS instance.
 	TargetInstanceId pulumi.StringInput `pulumi:"targetInstanceId"`
-	// The Target of (ECS) Instance Changes the ECS File Path.
+	// The target file path of ECS instance.
 	TargetPath pulumi.StringInput `pulumi:"targetPath"`
-	// The Target of the OSS Object Prefix.
+	// The file prefix of target OSS object.
 	TargetPrefix pulumi.StringInput `pulumi:"targetPrefix"`
-	// Update Time.
+	// The update Time of restore job. Unix Time in Seconds.
 	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
-	// The ID of Vault.
+	// The ID of backup vault.
 	VaultId pulumi.StringInput `pulumi:"vaultId"`
 }
 
@@ -1096,32 +1093,32 @@ func (o GetRestoreJobsJobOutput) ToGetRestoreJobsJobOutputWithContext(ctx contex
 	return o
 }
 
-// The Actual Size of Snapshot.
+// The actual size of Snapshot.
 func (o GetRestoreJobsJobOutput) ActualBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ActualBytes }).(pulumi.StringOutput)
 }
 
-// The Actual Number of Files.
+// The actual number of files.
 func (o GetRestoreJobsJobOutput) ActualItems() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ActualItems }).(pulumi.StringOutput)
 }
 
-// Recovery Is Successful, Size.
+// The size of restore job recovered.
 func (o GetRestoreJobsJobOutput) BytesDone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.BytesDone }).(pulumi.StringOutput)
 }
 
-// The Restored Total.
+// The total size of restore job recovered.
 func (o GetRestoreJobsJobOutput) BytesTotal() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.BytesTotal }).(pulumi.StringOutput)
 }
 
-// Restore Completion Time.
+// The completion time of restore Job.
 func (o GetRestoreJobsJobOutput) CompleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.CompleteTime }).(pulumi.StringOutput)
 }
 
-// The Restore Job Creation Time.
+// The creation time of restore job.
 func (o GetRestoreJobsJobOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -1130,27 +1127,27 @@ func (o GetRestoreJobsJobOutput) ErrorFile() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ErrorFile }).(pulumi.StringOutput)
 }
 
-// The Recovery Task Execution Error Message.
+// The error message of recovery task execution.
 func (o GetRestoreJobsJobOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
-// Restore the Expiration Time. Unix Time in Seconds.
+// The expiration time of restore job. Unix Time in seconds.
 func (o GetRestoreJobsJobOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
-// The ID of the Restore Job.
+// The ID of the restore job.
 func (o GetRestoreJobsJobOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Log of Files Successfully Recovered the Number.
+// The number of items restore job recovered.
 func (o GetRestoreJobsJobOutput) ItemsDone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ItemsDone }).(pulumi.StringOutput)
 }
 
-// File the Total Number.
+// The total number of items restore job recovered.
 func (o GetRestoreJobsJobOutput) ItemsTotal() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ItemsTotal }).(pulumi.StringOutput)
 }
@@ -1160,27 +1157,27 @@ func (o GetRestoreJobsJobOutput) Options() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.Options }).(pulumi.StringOutput)
 }
 
-// The Parent Node.
+// The ID of parent node.
 func (o GetRestoreJobsJobOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// The Recovery Progress 100% * 100.
+// The recovery progress.
 func (o GetRestoreJobsJobOutput) Progress() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) int { return v.Progress }).(pulumi.IntOutput)
 }
 
-// Restore Job ID.
+// The ID of restore job.
 func (o GetRestoreJobsJobOutput) RestoreJobId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.RestoreJobId }).(pulumi.StringOutput)
 }
 
-// The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 func (o GetRestoreJobsJobOutput) RestoreType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.RestoreType }).(pulumi.StringOutput)
 }
 
-// Restore Snapshot of HashCode.
+// The hashcode of Snapshot.
 func (o GetRestoreJobsJobOutput) SnapshotHash() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.SnapshotHash }).(pulumi.StringOutput)
 }
@@ -1190,67 +1187,67 @@ func (o GetRestoreJobsJobOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 func (o GetRestoreJobsJobOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.SourceType }).(pulumi.StringOutput)
 }
 
-// Restoring the Start Time. Unix Time in Seconds.
+// The start time of restore job. Unix Time in Seconds.
 func (o GetRestoreJobsJobOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// The Restore Job Status.
+// The status of restore job.
 func (o GetRestoreJobsJobOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The Target ofo OSS Bucket Name.
+// The name of target ofo OSS bucket.
 func (o GetRestoreJobsJobOutput) TargetBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetBucket }).(pulumi.StringOutput)
 }
 
-// The ID of Target Client.
+// The ID of target client.
 func (o GetRestoreJobsJobOutput) TargetClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetClientId }).(pulumi.StringOutput)
 }
 
-// The Destination File System Creation Time.
+// The creation time of destination file system.
 func (o GetRestoreJobsJobOutput) TargetCreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetCreateTime }).(pulumi.StringOutput)
 }
 
-// The Destination ID.
+// The ID of destination data source.
 func (o GetRestoreJobsJobOutput) TargetDataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetDataSourceId }).(pulumi.StringOutput)
 }
 
-// The Destination File System ID.
+// The ID of destination file system.
 func (o GetRestoreJobsJobOutput) TargetFileSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetFileSystemId }).(pulumi.StringOutput)
 }
 
-// Objective to ECS Instance Id.
+// The ID of target ECS instance.
 func (o GetRestoreJobsJobOutput) TargetInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetInstanceId }).(pulumi.StringOutput)
 }
 
-// The Target of (ECS) Instance Changes the ECS File Path.
+// The target file path of ECS instance.
 func (o GetRestoreJobsJobOutput) TargetPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetPath }).(pulumi.StringOutput)
 }
 
-// The Target of the OSS Object Prefix.
+// The file prefix of target OSS object.
 func (o GetRestoreJobsJobOutput) TargetPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.TargetPrefix }).(pulumi.StringOutput)
 }
 
-// Update Time.
+// The update Time of restore job. Unix Time in Seconds.
 func (o GetRestoreJobsJobOutput) UpdatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.UpdatedTime }).(pulumi.StringOutput)
 }
 
-// The ID of Vault.
+// The ID of backup vault.
 func (o GetRestoreJobsJobOutput) VaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.VaultId }).(pulumi.StringOutput)
 }
@@ -1299,7 +1296,7 @@ type GetSnapshotsSnapshot struct {
 	FileSystemId string `pulumi:"fileSystemId"`
 	// The ID of the Snapshot.
 	Id string `pulumi:"id"`
-	// InstanceId.
+	// The ID of ECS instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The number of backup items. (Currently only file backup is available).
 	ItemsDone string `pulumi:"itemsDone"`
@@ -1364,7 +1361,7 @@ type GetSnapshotsSnapshotArgs struct {
 	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
 	// The ID of the Snapshot.
 	Id pulumi.StringInput `pulumi:"id"`
-	// InstanceId.
+	// The ID of ECS instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The number of backup items. (Currently only file backup is available).
 	ItemsDone pulumi.StringInput `pulumi:"itemsDone"`
@@ -1504,7 +1501,7 @@ func (o GetSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// InstanceId.
+// The ID of ECS instance.
 func (o GetSnapshotsSnapshotOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -1634,11 +1631,11 @@ type GetVaultsVault struct {
 	StorageSize string `pulumi:"storageSize"`
 	// The update time of the Vault. UNIX time in seconds.
 	UpdatedTime string `pulumi:"updatedTime"`
-	// The ID of Vault.
+	// The ID of Vault, same as `id`.
 	VaultId string `pulumi:"vaultId"`
 	// The name of Vault.
 	VaultName string `pulumi:"vaultName"`
-	// Error status information of Vault.
+	// Error status information of Vault. Only valid for remote backup warehouses.
 	VaultStatusMessage string `pulumi:"vaultStatusMessage"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass string `pulumi:"vaultStorageClass"`
@@ -1697,11 +1694,11 @@ type GetVaultsVaultArgs struct {
 	StorageSize pulumi.StringInput `pulumi:"storageSize"`
 	// The update time of the Vault. UNIX time in seconds.
 	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
-	// The ID of Vault.
+	// The ID of Vault, same as `id`.
 	VaultId pulumi.StringInput `pulumi:"vaultId"`
 	// The name of Vault.
 	VaultName pulumi.StringInput `pulumi:"vaultName"`
-	// Error status information of Vault.
+	// Error status information of Vault. Only valid for remote backup warehouses.
 	VaultStatusMessage pulumi.StringInput `pulumi:"vaultStatusMessage"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringInput `pulumi:"vaultStorageClass"`
@@ -1859,7 +1856,7 @@ func (o GetVaultsVaultOutput) UpdatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.UpdatedTime }).(pulumi.StringOutput)
 }
 
-// The ID of Vault.
+// The ID of Vault, same as `id`.
 func (o GetVaultsVaultOutput) VaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.VaultId }).(pulumi.StringOutput)
 }
@@ -1869,7 +1866,7 @@ func (o GetVaultsVaultOutput) VaultName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.VaultName }).(pulumi.StringOutput)
 }
 
-// Error status information of Vault.
+// Error status information of Vault. Only valid for remote backup warehouses.
 func (o GetVaultsVaultOutput) VaultStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.VaultStatusMessage }).(pulumi.StringOutput)
 }

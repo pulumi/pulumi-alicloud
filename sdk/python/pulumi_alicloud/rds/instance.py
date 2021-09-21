@@ -32,6 +32,7 @@ class InstanceArgs:
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 db_time_zone: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  ha_config: Optional[pulumi.Input[str]] = None,
@@ -45,6 +46,7 @@ class InstanceArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
+                 released_keep_policy: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -112,6 +114,13 @@ class InstanceArgs:
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+               - If you set the `Engine` parameter to MySQL.
+               - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+               - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+               - If you set the `Engine` parameter to PostgreSQL.
+               - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+               - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] ha_config: The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
@@ -128,6 +137,10 @@ class InstanceArgs:
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+               - None: No archived backup files are retained.
+               - Lastest: Only the last archived backup file is retained.
+               - All: All the archived backup files are retained.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
                - perfer
@@ -214,6 +227,8 @@ class InstanceArgs:
             pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
         if db_instance_storage_type is not None:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+        if db_time_zone is not None:
+            pulumi.set(__self__, "db_time_zone", db_time_zone)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if force_restart is not None:
@@ -240,6 +255,8 @@ class InstanceArgs:
             pulumi.set(__self__, "port", port)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
+        if released_keep_policy is not None:
+            pulumi.set(__self__, "released_keep_policy", released_keep_policy)
         if replication_acl is not None:
             pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
@@ -521,6 +538,24 @@ class InstanceArgs:
         pulumi.set(self, "db_instance_storage_type", value)
 
     @property
+    @pulumi.getter(name="dbTimeZone")
+    def db_time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+        - If you set the `Engine` parameter to MySQL.
+        - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+        - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        - If you set the `Engine` parameter to PostgreSQL.
+        - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        """
+        return pulumi.get(self, "db_time_zone")
+
+    @db_time_zone.setter
+    def db_time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_time_zone", value)
+
+    @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -674,6 +709,21 @@ class InstanceArgs:
     @private_ip_address.setter
     def private_ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "private_ip_address", value)
+
+    @property
+    @pulumi.getter(name="releasedKeepPolicy")
+    def released_keep_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+        - None: No archived backup files are retained.
+        - Lastest: Only the last archived backup file is retained.
+        - All: All the archived backup files are retained.
+        """
+        return pulumi.get(self, "released_keep_policy")
+
+    @released_keep_policy.setter
+    def released_keep_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "released_keep_policy", value)
 
     @property
     @pulumi.getter(name="replicationAcl")
@@ -1034,6 +1084,7 @@ class _InstanceState:
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 db_time_zone: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -1051,6 +1102,7 @@ class _InstanceState:
                  period: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
+                 released_keep_policy: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -1110,6 +1162,13 @@ class _InstanceState:
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+               - If you set the `Engine` parameter to MySQL.
+               - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+               - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+               - If you set the `Engine` parameter to PostgreSQL.
+               - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+               - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -1136,6 +1195,10 @@ class _InstanceState:
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+               - None: No archived backup files are retained.
+               - Lastest: Only the last archived backup file is retained.
+               - All: All the archived backup files are retained.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
                - perfer
@@ -1221,6 +1284,8 @@ class _InstanceState:
             pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
         if db_instance_storage_type is not None:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+        if db_time_zone is not None:
+            pulumi.set(__self__, "db_time_zone", db_time_zone)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if engine is not None:
@@ -1255,6 +1320,8 @@ class _InstanceState:
             pulumi.set(__self__, "port", port)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
+        if released_keep_policy is not None:
+            pulumi.set(__self__, "released_keep_policy", released_keep_policy)
         if replication_acl is not None:
             pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
@@ -1496,6 +1563,24 @@ class _InstanceState:
         pulumi.set(self, "db_instance_storage_type", value)
 
     @property
+    @pulumi.getter(name="dbTimeZone")
+    def db_time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+        - If you set the `Engine` parameter to MySQL.
+        - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+        - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        - If you set the `Engine` parameter to PostgreSQL.
+        - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        """
+        return pulumi.get(self, "db_time_zone")
+
+    @db_time_zone.setter
+    def db_time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_time_zone", value)
+
+    @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1703,6 +1788,21 @@ class _InstanceState:
     @private_ip_address.setter
     def private_ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "private_ip_address", value)
+
+    @property
+    @pulumi.getter(name="releasedKeepPolicy")
+    def released_keep_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+        - None: No archived backup files are retained.
+        - Lastest: Only the last archived backup file is retained.
+        - All: All the archived backup files are retained.
+        """
+        return pulumi.get(self, "released_keep_policy")
+
+    @released_keep_policy.setter
+    def released_keep_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "released_keep_policy", value)
 
     @property
     @pulumi.getter(name="replicationAcl")
@@ -2076,6 +2176,7 @@ class Instance(pulumi.CustomResource):
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 db_time_zone: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -2093,6 +2194,7 @@ class Instance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
+                 released_keep_policy: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -2195,6 +2297,13 @@ class Instance(pulumi.CustomResource):
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+               - If you set the `Engine` parameter to MySQL.
+               - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+               - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+               - If you set the `Engine` parameter to PostgreSQL.
+               - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+               - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -2221,6 +2330,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+               - None: No archived backup files are retained.
+               - Lastest: Only the last archived backup file is retained.
+               - All: All the archived backup files are retained.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
                - perfer
@@ -2355,6 +2468,7 @@ class Instance(pulumi.CustomResource):
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 db_time_zone: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -2372,6 +2486,7 @@ class Instance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
+                 released_keep_policy: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -2423,6 +2538,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
             __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
             __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
+            __props__.__dict__["db_time_zone"] = db_time_zone
             __props__.__dict__["encryption_key"] = encryption_key
             if engine is None and not opts.urn:
                 raise TypeError("Missing required property 'engine'")
@@ -2448,6 +2564,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["period"] = period
             __props__.__dict__["port"] = port
             __props__.__dict__["private_ip_address"] = private_ip_address
+            __props__.__dict__["released_keep_policy"] = released_keep_policy
             __props__.__dict__["replication_acl"] = replication_acl
             __props__.__dict__["resource_group_id"] = resource_group_id
             if security_group_id is not None and not opts.urn:
@@ -2503,6 +2620,7 @@ class Instance(pulumi.CustomResource):
             db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
             db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+            db_time_zone: Optional[pulumi.Input[str]] = None,
             encryption_key: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
@@ -2520,6 +2638,7 @@ class Instance(pulumi.CustomResource):
             period: Optional[pulumi.Input[int]] = None,
             port: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
+            released_keep_policy: Optional[pulumi.Input[str]] = None,
             replication_acl: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
@@ -2584,6 +2703,13 @@ class Instance(pulumi.CustomResource):
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+               - If you set the `Engine` parameter to MySQL.
+               - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+               - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+               - If you set the `Engine` parameter to PostgreSQL.
+               - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+               - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -2610,6 +2736,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+               - None: No archived backup files are retained.
+               - Lastest: Only the last archived backup file is retained.
+               - All: All the archived backup files are retained.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
                - perfer
@@ -2685,6 +2815,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
         __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
         __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
+        __props__.__dict__["db_time_zone"] = db_time_zone
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
@@ -2702,6 +2833,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
         __props__.__dict__["private_ip_address"] = private_ip_address
+        __props__.__dict__["released_keep_policy"] = released_keep_policy
         __props__.__dict__["replication_acl"] = replication_acl
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_id"] = security_group_id
@@ -2858,6 +2990,20 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "db_instance_storage_type")
 
     @property
+    @pulumi.getter(name="dbTimeZone")
+    def db_time_zone(self) -> pulumi.Output[str]:
+        """
+        The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+        - If you set the `Engine` parameter to MySQL.
+        - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+        - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        - If you set the `Engine` parameter to PostgreSQL.
+        - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        """
+        return pulumi.get(self, "db_time_zone")
+
+    @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> pulumi.Output[Optional[str]]:
         """
@@ -2997,6 +3143,17 @@ class Instance(pulumi.CustomResource):
         The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         """
         return pulumi.get(self, "private_ip_address")
+
+    @property
+    @pulumi.getter(name="releasedKeepPolicy")
+    def released_keep_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+        - None: No archived backup files are retained.
+        - Lastest: Only the last archived backup file is retained.
+        - All: All the archived backup files are retained.
+        """
+        return pulumi.get(self, "released_keep_policy")
 
     @property
     @pulumi.getter(name="replicationAcl")

@@ -10,6 +10,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'DhcpOptionsSetAssociateVpc',
     'NetworkAclAttachmentResource',
     'NetworkAclEgressAclEntry',
     'NetworkAclEntriesEgress',
@@ -18,10 +19,14 @@ __all__ = [
     'NetworkAclResource',
     'GetCommonBandwidthPackagesPackageResult',
     'GetCommonBandwidthPackagesPackagePublicIpAddressResult',
+    'GetDhcpOptionsSetsSetResult',
+    'GetDhcpOptionsSetsSetAssociateVpcResult',
     'GetEnhancedNatAvailableZonesZoneResult',
     'GetForwardEntriesEntryResult',
     'GetHavipsHavipResult',
     'GetNatGatewaysGatewayResult',
+    'GetNatIpCidrsCidrResult',
+    'GetNatIpsIpResult',
     'GetNetworkAclsAclResult',
     'GetNetworkAclsAclEgressAclEntryResult',
     'GetNetworkAclsAclIngressAclEntryResult',
@@ -36,6 +41,56 @@ __all__ = [
     'GetSwitchesVswitchResult',
     'GetVpcFlowLogsLogResult',
 ]
+
+@pulumi.output_type
+class DhcpOptionsSetAssociateVpc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "associateStatus":
+            suggest = "associate_status"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DhcpOptionsSetAssociateVpc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DhcpOptionsSetAssociateVpc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DhcpOptionsSetAssociateVpc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 associate_status: Optional[str] = None,
+                 vpc_id: Optional[str] = None):
+        """
+        :param str associate_status: The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+        :param str vpc_id: The ID of the VPC network that is associated with the DHCP options set.
+        """
+        if associate_status is not None:
+            pulumi.set(__self__, "associate_status", associate_status)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="associateStatus")
+    def associate_status(self) -> Optional[str]:
+        """
+        The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+        """
+        return pulumi.get(self, "associate_status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[str]:
+        """
+        The ID of the VPC network that is associated with the DHCP options set.
+        """
+        return pulumi.get(self, "vpc_id")
+
 
 @pulumi.output_type
 class NetworkAclAttachmentResource(dict):
@@ -827,6 +882,145 @@ class GetCommonBandwidthPackagesPackagePublicIpAddressResult(dict):
 
 
 @pulumi.output_type
+class GetDhcpOptionsSetsSetResult(dict):
+    def __init__(__self__, *,
+                 associate_vpcs: Sequence['outputs.GetDhcpOptionsSetsSetAssociateVpcResult'],
+                 dhcp_options_set_description: str,
+                 dhcp_options_set_id: str,
+                 dhcp_options_set_name: str,
+                 domain_name: str,
+                 domain_name_servers: str,
+                 id: str,
+                 owner_id: str,
+                 status: str):
+        """
+        :param Sequence['GetDhcpOptionsSetsSetAssociateVpcArgs'] associate_vpcs: AssociateVpcs.
+        :param str dhcp_options_set_description: The description of the DHCP options set. The description must be 2 to 256
+               characters in length and cannot start with `http://` or `https://`.
+        :param str dhcp_options_set_name: The root domain, for example, example.com. After a DHCP options set is associated with a
+               Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
+               ECS instances in the VPC network.
+        :param str domain_name: The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
+               Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
+               instances in the VPC network.
+        :param str domain_name_servers: The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP
+               addresses must be separated with commas (,).
+        :param str owner_id: The ID of the account to which the DHCP options set belongs.
+        :param str status: The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+        """
+        pulumi.set(__self__, "associate_vpcs", associate_vpcs)
+        pulumi.set(__self__, "dhcp_options_set_description", dhcp_options_set_description)
+        pulumi.set(__self__, "dhcp_options_set_id", dhcp_options_set_id)
+        pulumi.set(__self__, "dhcp_options_set_name", dhcp_options_set_name)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "domain_name_servers", domain_name_servers)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "owner_id", owner_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="associateVpcs")
+    def associate_vpcs(self) -> Sequence['outputs.GetDhcpOptionsSetsSetAssociateVpcResult']:
+        """
+        AssociateVpcs.
+        """
+        return pulumi.get(self, "associate_vpcs")
+
+    @property
+    @pulumi.getter(name="dhcpOptionsSetDescription")
+    def dhcp_options_set_description(self) -> str:
+        """
+        The description of the DHCP options set. The description must be 2 to 256
+        characters in length and cannot start with `http://` or `https://`.
+        """
+        return pulumi.get(self, "dhcp_options_set_description")
+
+    @property
+    @pulumi.getter(name="dhcpOptionsSetId")
+    def dhcp_options_set_id(self) -> str:
+        return pulumi.get(self, "dhcp_options_set_id")
+
+    @property
+    @pulumi.getter(name="dhcpOptionsSetName")
+    def dhcp_options_set_name(self) -> str:
+        """
+        The root domain, for example, example.com. After a DHCP options set is associated with a
+        Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
+        ECS instances in the VPC network.
+        """
+        return pulumi.get(self, "dhcp_options_set_name")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
+        Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
+        instances in the VPC network.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter(name="domainNameServers")
+    def domain_name_servers(self) -> str:
+        """
+        The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP
+        addresses must be separated with commas (,).
+        """
+        return pulumi.get(self, "domain_name_servers")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> str:
+        """
+        The ID of the account to which the DHCP options set belongs.
+        """
+        return pulumi.get(self, "owner_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetDhcpOptionsSetsSetAssociateVpcResult(dict):
+    def __init__(__self__, *,
+                 associate_status: str,
+                 vpc_id: str):
+        """
+        :param str associate_status: The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+        :param str vpc_id: The ID of the VPC network that is associated with the DHCP options set.
+        """
+        pulumi.set(__self__, "associate_status", associate_status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="associateStatus")
+    def associate_status(self) -> str:
+        """
+        The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+        """
+        return pulumi.get(self, "associate_status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC network that is associated with the DHCP options set.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
 class GetEnhancedNatAvailableZonesZoneResult(dict):
     def __init__(__self__, *,
                  local_name: str,
@@ -1337,6 +1531,218 @@ class GetNatGatewaysGatewayResult(dict):
         The ID of the vSwitch to which the NAT gateway belongs.
         """
         return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetNatIpCidrsCidrResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 id: str,
+                 is_default: bool,
+                 nat_gateway_id: str,
+                 nat_ip_cidr: str,
+                 nat_ip_cidr_description: str,
+                 nat_ip_cidr_id: str,
+                 nat_ip_cidr_name: str,
+                 status: str):
+        """
+        :param str create_time: The time when the CIDR block was created.
+        :param str id: The ID of the Nat Ip Cidr.
+        :param bool is_default: Whether it is the default NAT IP ADDRESS. Valid values:`true` or `false`.`true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+        :param str nat_gateway_id: The ID of the VPC NAT gateway.
+        :param str nat_ip_cidr: The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+        :param str nat_ip_cidr_description: NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        :param str nat_ip_cidr_id: NAT IP ADDRESS instance ID.
+        :param str nat_ip_cidr_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        :param str status: The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_default", is_default)
+        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
+        pulumi.set(__self__, "nat_ip_cidr", nat_ip_cidr)
+        pulumi.set(__self__, "nat_ip_cidr_description", nat_ip_cidr_description)
+        pulumi.set(__self__, "nat_ip_cidr_id", nat_ip_cidr_id)
+        pulumi.set(__self__, "nat_ip_cidr_name", nat_ip_cidr_name)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the CIDR block was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Nat Ip Cidr.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> bool:
+        """
+        Whether it is the default NAT IP ADDRESS. Valid values:`true` or `false`.`true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+        """
+        return pulumi.get(self, "is_default")
+
+    @property
+    @pulumi.getter(name="natGatewayId")
+    def nat_gateway_id(self) -> str:
+        """
+        The ID of the VPC NAT gateway.
+        """
+        return pulumi.get(self, "nat_gateway_id")
+
+    @property
+    @pulumi.getter(name="natIpCidr")
+    def nat_ip_cidr(self) -> str:
+        """
+        The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+        """
+        return pulumi.get(self, "nat_ip_cidr")
+
+    @property
+    @pulumi.getter(name="natIpCidrDescription")
+    def nat_ip_cidr_description(self) -> str:
+        """
+        NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        """
+        return pulumi.get(self, "nat_ip_cidr_description")
+
+    @property
+    @pulumi.getter(name="natIpCidrId")
+    def nat_ip_cidr_id(self) -> str:
+        """
+        NAT IP ADDRESS instance ID.
+        """
+        return pulumi.get(self, "nat_ip_cidr_id")
+
+    @property
+    @pulumi.getter(name="natIpCidrName")
+    def nat_ip_cidr_name(self) -> str:
+        """
+        NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        """
+        return pulumi.get(self, "nat_ip_cidr_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetNatIpsIpResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 is_default: bool,
+                 nat_gateway_id: str,
+                 nat_ip: str,
+                 nat_ip_cidr: str,
+                 nat_ip_description: str,
+                 nat_ip_id: str,
+                 nat_ip_name: str,
+                 status: str):
+        """
+        :param str id: The ID of the Nat Ip.
+        :param bool is_default: Indicates whether the BGP Group is the default NAT IP ADDRESS. Valid values: `true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+        :param str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+        :param str nat_ip: The NAT IP address that is queried.
+        :param str nat_ip_cidr: The CIDR block to which the NAT IP address belongs.
+        :param str nat_ip_description: The description of the NAT IP address.
+        :param str nat_ip_id: The ID of the NAT IP address.
+        :param str nat_ip_name: The name of the NAT IP address.
+        :param str status: The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_default", is_default)
+        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
+        pulumi.set(__self__, "nat_ip", nat_ip)
+        pulumi.set(__self__, "nat_ip_cidr", nat_ip_cidr)
+        pulumi.set(__self__, "nat_ip_description", nat_ip_description)
+        pulumi.set(__self__, "nat_ip_id", nat_ip_id)
+        pulumi.set(__self__, "nat_ip_name", nat_ip_name)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Nat Ip.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> bool:
+        """
+        Indicates whether the BGP Group is the default NAT IP ADDRESS. Valid values: `true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+        """
+        return pulumi.get(self, "is_default")
+
+    @property
+    @pulumi.getter(name="natGatewayId")
+    def nat_gateway_id(self) -> str:
+        """
+        The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+        """
+        return pulumi.get(self, "nat_gateway_id")
+
+    @property
+    @pulumi.getter(name="natIp")
+    def nat_ip(self) -> str:
+        """
+        The NAT IP address that is queried.
+        """
+        return pulumi.get(self, "nat_ip")
+
+    @property
+    @pulumi.getter(name="natIpCidr")
+    def nat_ip_cidr(self) -> str:
+        """
+        The CIDR block to which the NAT IP address belongs.
+        """
+        return pulumi.get(self, "nat_ip_cidr")
+
+    @property
+    @pulumi.getter(name="natIpDescription")
+    def nat_ip_description(self) -> str:
+        """
+        The description of the NAT IP address.
+        """
+        return pulumi.get(self, "nat_ip_description")
+
+    @property
+    @pulumi.getter(name="natIpId")
+    def nat_ip_id(self) -> str:
+        """
+        The ID of the NAT IP address.
+        """
+        return pulumi.get(self, "nat_ip_id")
+
+    @property
+    @pulumi.getter(name="natIpName")
+    def nat_ip_name(self) -> str:
+        """
+        The name of the NAT IP address.
+        """
+        return pulumi.get(self, "nat_ip_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

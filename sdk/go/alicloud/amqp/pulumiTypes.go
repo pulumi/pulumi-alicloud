@@ -10,6 +10,166 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetBindingsBinding struct {
+	// X-match Attributes. Valid Values: All: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match. Any: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match. This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+	Argument string `pulumi:"argument"`
+	// The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). If You Include the Hash (.
+	BindingKey string `pulumi:"bindingKey"`
+	// The Target Binding Types.
+	BindingType string `pulumi:"bindingType"`
+	// The Target Queue Or Exchange of the Name.
+	DestinationName string `pulumi:"destinationName"`
+	// The ID of the Binding. The value formats as `<instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>`.
+	Id string `pulumi:"id"`
+	// Instance Id.
+	InstanceId string `pulumi:"instanceId"`
+	// The Source Exchange Name.
+	SourceExchange string `pulumi:"sourceExchange"`
+	// Virtualhost Name.
+	VirtualHostName string `pulumi:"virtualHostName"`
+}
+
+// GetBindingsBindingInput is an input type that accepts GetBindingsBindingArgs and GetBindingsBindingOutput values.
+// You can construct a concrete instance of `GetBindingsBindingInput` via:
+//
+//          GetBindingsBindingArgs{...}
+type GetBindingsBindingInput interface {
+	pulumi.Input
+
+	ToGetBindingsBindingOutput() GetBindingsBindingOutput
+	ToGetBindingsBindingOutputWithContext(context.Context) GetBindingsBindingOutput
+}
+
+type GetBindingsBindingArgs struct {
+	// X-match Attributes. Valid Values: All: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match. Any: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match. This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+	Argument pulumi.StringInput `pulumi:"argument"`
+	// The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). If You Include the Hash (.
+	BindingKey pulumi.StringInput `pulumi:"bindingKey"`
+	// The Target Binding Types.
+	BindingType pulumi.StringInput `pulumi:"bindingType"`
+	// The Target Queue Or Exchange of the Name.
+	DestinationName pulumi.StringInput `pulumi:"destinationName"`
+	// The ID of the Binding. The value formats as `<instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Instance Id.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The Source Exchange Name.
+	SourceExchange pulumi.StringInput `pulumi:"sourceExchange"`
+	// Virtualhost Name.
+	VirtualHostName pulumi.StringInput `pulumi:"virtualHostName"`
+}
+
+func (GetBindingsBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBindingsBinding)(nil)).Elem()
+}
+
+func (i GetBindingsBindingArgs) ToGetBindingsBindingOutput() GetBindingsBindingOutput {
+	return i.ToGetBindingsBindingOutputWithContext(context.Background())
+}
+
+func (i GetBindingsBindingArgs) ToGetBindingsBindingOutputWithContext(ctx context.Context) GetBindingsBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBindingsBindingOutput)
+}
+
+// GetBindingsBindingArrayInput is an input type that accepts GetBindingsBindingArray and GetBindingsBindingArrayOutput values.
+// You can construct a concrete instance of `GetBindingsBindingArrayInput` via:
+//
+//          GetBindingsBindingArray{ GetBindingsBindingArgs{...} }
+type GetBindingsBindingArrayInput interface {
+	pulumi.Input
+
+	ToGetBindingsBindingArrayOutput() GetBindingsBindingArrayOutput
+	ToGetBindingsBindingArrayOutputWithContext(context.Context) GetBindingsBindingArrayOutput
+}
+
+type GetBindingsBindingArray []GetBindingsBindingInput
+
+func (GetBindingsBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBindingsBinding)(nil)).Elem()
+}
+
+func (i GetBindingsBindingArray) ToGetBindingsBindingArrayOutput() GetBindingsBindingArrayOutput {
+	return i.ToGetBindingsBindingArrayOutputWithContext(context.Background())
+}
+
+func (i GetBindingsBindingArray) ToGetBindingsBindingArrayOutputWithContext(ctx context.Context) GetBindingsBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBindingsBindingArrayOutput)
+}
+
+type GetBindingsBindingOutput struct{ *pulumi.OutputState }
+
+func (GetBindingsBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBindingsBinding)(nil)).Elem()
+}
+
+func (o GetBindingsBindingOutput) ToGetBindingsBindingOutput() GetBindingsBindingOutput {
+	return o
+}
+
+func (o GetBindingsBindingOutput) ToGetBindingsBindingOutputWithContext(ctx context.Context) GetBindingsBindingOutput {
+	return o
+}
+
+// X-match Attributes. Valid Values: All: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match. Any: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match. This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+func (o GetBindingsBindingOutput) Argument() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBindingsBinding) string { return v.Argument }).(pulumi.StringOutput)
+}
+
+// The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). If You Include the Hash (.
+func (o GetBindingsBindingOutput) BindingKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBindingsBinding) string { return v.BindingKey }).(pulumi.StringOutput)
+}
+
+// The Target Binding Types.
+func (o GetBindingsBindingOutput) BindingType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBindingsBinding) string { return v.BindingType }).(pulumi.StringOutput)
+}
+
+// The Target Queue Or Exchange of the Name.
+func (o GetBindingsBindingOutput) DestinationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBindingsBinding) string { return v.DestinationName }).(pulumi.StringOutput)
+}
+
+// The ID of the Binding. The value formats as `<instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>`.
+func (o GetBindingsBindingOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBindingsBinding) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Instance Id.
+func (o GetBindingsBindingOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBindingsBinding) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The Source Exchange Name.
+func (o GetBindingsBindingOutput) SourceExchange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBindingsBinding) string { return v.SourceExchange }).(pulumi.StringOutput)
+}
+
+// Virtualhost Name.
+func (o GetBindingsBindingOutput) VirtualHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBindingsBinding) string { return v.VirtualHostName }).(pulumi.StringOutput)
+}
+
+type GetBindingsBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBindingsBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBindingsBinding)(nil)).Elem()
+}
+
+func (o GetBindingsBindingArrayOutput) ToGetBindingsBindingArrayOutput() GetBindingsBindingArrayOutput {
+	return o
+}
+
+func (o GetBindingsBindingArrayOutput) ToGetBindingsBindingArrayOutputWithContext(ctx context.Context) GetBindingsBindingArrayOutput {
+	return o
+}
+
+func (o GetBindingsBindingArrayOutput) Index(i pulumi.IntInput) GetBindingsBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBindingsBinding {
+		return vs[0].([]GetBindingsBinding)[vs[1].(int)]
+	}).(GetBindingsBindingOutput)
+}
+
 type GetExchangesExchange struct {
 	// The attributes.
 	Attributes map[string]interface{} `pulumi:"attributes"`
@@ -669,6 +829,8 @@ func (o GetVirtualHostsHostArrayOutput) Index(i pulumi.IntInput) GetVirtualHosts
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetBindingsBindingOutput{})
+	pulumi.RegisterOutputType(GetBindingsBindingArrayOutput{})
 	pulumi.RegisterOutputType(GetExchangesExchangeOutput{})
 	pulumi.RegisterOutputType(GetExchangesExchangeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})

@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Outputs
         /// </summary>
         public readonly string Mobile;
         /// <summary>
-        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         /// </summary>
         public readonly string Position;
 

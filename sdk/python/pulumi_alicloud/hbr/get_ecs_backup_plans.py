@@ -131,9 +131,9 @@ def get_ecs_backup_plans(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of EcsBackupPlan IDs.
-    :param str instance_id: The ECS Instance Id. Must Have Installed the Client.
+    :param str instance_id: The ID of ECS instance.
     :param str name_regex: A regex string to filter results by EcsBackupPlan name.
-    :param str vault_id: Vault ID.
+    :param str vault_id: The ID of Backup vault.
     """
     __args__ = dict()
     __args__['ids'] = ids

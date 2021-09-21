@@ -8,10 +8,13 @@ import * as utilities from "../utilities";
 export * from "./getAccessPoints";
 export * from "./getPhysicalConnectionService";
 export * from "./getPhysicalConnections";
+export * from "./getVirtualBorderRouters";
 export * from "./physicalConnection";
+export * from "./virtualBorderRouter";
 
 // Import resources to register:
 import { PhysicalConnection } from "./physicalConnection";
+import { VirtualBorderRouter } from "./virtualBorderRouter";
 
 const _module = {
     version: utilities.getVersion(),
@@ -19,9 +22,12 @@ const _module = {
         switch (type) {
             case "alicloud:expressconnect/physicalConnection:PhysicalConnection":
                 return new PhysicalConnection(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter":
+                return new VirtualBorderRouter(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/physicalConnection", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/virtualBorderRouter", _module)

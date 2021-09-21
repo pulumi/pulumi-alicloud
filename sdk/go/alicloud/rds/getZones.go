@@ -21,6 +21,15 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
+	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+	Category        *string `pulumi:"category"`
+	DbInstanceClass *string `pulumi:"dbInstanceClass"`
+	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
+	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
+	// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+	Engine *string `pulumi:"engine"`
+	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+	EngineVersion *string `pulumi:"engineVersion"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
@@ -30,6 +39,11 @@ type GetZonesArgs struct {
 
 // A collection of values returned by getZones.
 type GetZonesResult struct {
+	Category              *string `pulumi:"category"`
+	DbInstanceClass       *string `pulumi:"dbInstanceClass"`
+	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
+	Engine                *string `pulumi:"engine"`
+	EngineVersion         *string `pulumi:"engineVersion"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of zone IDs.

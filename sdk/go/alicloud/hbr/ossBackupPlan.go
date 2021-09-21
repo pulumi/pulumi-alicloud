@@ -13,7 +13,7 @@ import (
 
 // Provides a HBR Oss Backup Plan resource.
 //
-// For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/product/hybrid-backup-recovery).
+// For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
 //
 // > **NOTE:** Available in v1.131.0+.
 //
@@ -25,8 +25,6 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
-//
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -36,7 +34,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		cfg := config.New(ctx, "")
-// 		name := fmt.Sprintf("%v%v", "%", "s")
+// 		name := "example_value"
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
@@ -46,7 +44,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "bosh-cf-blobstore-hz"
+// 		opt0 := "oss_bucket_example_name"
 // 		_, err = oss.GetBuckets(ctx, &oss.GetBucketsArgs{
 // 			NameRegex: &opt0,
 // 		}, nil)
@@ -80,20 +78,20 @@ import (
 type OssBackupPlan struct {
 	pulumi.CustomResourceState
 
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup Type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringOutput `pulumi:"backupType"`
-	// The OSS Bucket Name.
+	// The name of OSS bucket.
 	Bucket pulumi.StringPtrOutput `pulumi:"bucket"`
-	// Whether to Disable the Backup Task. Valid Values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OssBackupPlanName pulumi.StringOutput    `pulumi:"ossBackupPlanName"`
 	Prefix            pulumi.StringPtrOutput `pulumi:"prefix"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringOutput `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
-	// Vault ID.
+	// The ID of backup vault.
 	VaultId pulumi.StringPtrOutput `pulumi:"vaultId"`
 }
 
@@ -135,38 +133,38 @@ func GetOssBackupPlan(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OssBackupPlan resources.
 type ossBackupPlanState struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup Type. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
-	// The OSS Bucket Name.
+	// The name of OSS bucket.
 	Bucket *string `pulumi:"bucket"`
-	// Whether to Disable the Backup Task. Valid Values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OssBackupPlanName *string `pulumi:"ossBackupPlanName"`
 	Prefix            *string `pulumi:"prefix"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention *string `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule *string `pulumi:"schedule"`
-	// Vault ID.
+	// The ID of backup vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 
 type OssBackupPlanState struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup Type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput
-	// The OSS Bucket Name.
+	// The name of OSS bucket.
 	Bucket pulumi.StringPtrInput
-	// Whether to Disable the Backup Task. Valid Values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OssBackupPlanName pulumi.StringPtrInput
 	Prefix            pulumi.StringPtrInput
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringPtrInput
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringPtrInput
-	// Vault ID.
+	// The ID of backup vault.
 	VaultId pulumi.StringPtrInput
 }
 
@@ -175,39 +173,39 @@ func (OssBackupPlanState) ElementType() reflect.Type {
 }
 
 type ossBackupPlanArgs struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup Type. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
-	// The OSS Bucket Name.
+	// The name of OSS bucket.
 	Bucket *string `pulumi:"bucket"`
-	// Whether to Disable the Backup Task. Valid Values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OssBackupPlanName string  `pulumi:"ossBackupPlanName"`
 	Prefix            *string `pulumi:"prefix"`
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule string `pulumi:"schedule"`
-	// Vault ID.
+	// The ID of backup vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 
 // The set of arguments for constructing a OssBackupPlan resource.
 type OssBackupPlanArgs struct {
-	// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Backup Type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput
-	// The OSS Bucket Name.
+	// The name of OSS bucket.
 	Bucket pulumi.StringPtrInput
-	// Whether to Disable the Backup Task. Valid Values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
-	// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OssBackupPlanName pulumi.StringInput
 	Prefix            pulumi.StringPtrInput
-	// Backup Retention Period, the Minimum Value of 1.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput
-	// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringInput
-	// Vault ID.
+	// The ID of backup vault.
 	VaultId pulumi.StringPtrInput
 }
 

@@ -3,7 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .domain import *
+from .get_domains import *
+from .get_mail_addresses import *
 from .get_receivers import *
+from .mail_address import *
 from .receivers import *
 from . import outputs
 
@@ -19,13 +23,19 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:directmail/receivers:Receivers":
+            if typ == "alicloud:directmail/domain:Domain":
+                return Domain(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:directmail/mailAddress:MailAddress":
+                return MailAddress(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:directmail/receivers:Receivers":
                 return Receivers(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "directmail/domain", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "directmail/mailAddress", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "directmail/receivers", _module_instance)
 
 _register_module()

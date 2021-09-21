@@ -14,48 +14,48 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class GetRestoreJobsJobResult
     {
         /// <summary>
-        /// The Actual Size of Snapshot.
+        /// The actual size of Snapshot.
         /// </summary>
         public readonly string ActualBytes;
         /// <summary>
-        /// The Actual Number of Files.
+        /// The actual number of files.
         /// </summary>
         public readonly string ActualItems;
         /// <summary>
-        /// Recovery Is Successful, Size.
+        /// The size of restore job recovered.
         /// </summary>
         public readonly string BytesDone;
         /// <summary>
-        /// The Restored Total.
+        /// The total size of restore job recovered.
         /// </summary>
         public readonly string BytesTotal;
         /// <summary>
-        /// Restore Completion Time.
+        /// The completion time of restore Job.
         /// </summary>
         public readonly string CompleteTime;
         /// <summary>
-        /// The Restore Job Creation Time.
+        /// The creation time of restore job.
         /// </summary>
         public readonly string CreateTime;
         public readonly string ErrorFile;
         /// <summary>
-        /// The Recovery Task Execution Error Message.
+        /// The error message of recovery task execution.
         /// </summary>
         public readonly string ErrorMessage;
         /// <summary>
-        /// Restore the Expiration Time. Unix Time in Seconds.
+        /// The expiration time of restore job. Unix Time in seconds.
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
-        /// The ID of the Restore Job.
+        /// The ID of the restore job.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Log of Files Successfully Recovered the Number.
+        /// The number of items restore job recovered.
         /// </summary>
         public readonly string ItemsDone;
         /// <summary>
-        /// File the Total Number.
+        /// The total number of items restore job recovered.
         /// </summary>
         public readonly string ItemsTotal;
         /// <summary>
@@ -63,23 +63,23 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Options;
         /// <summary>
-        /// The Parent Node.
+        /// The ID of parent node.
         /// </summary>
         public readonly string ParentId;
         /// <summary>
-        /// The Recovery Progress 100% * 100.
+        /// The recovery progress.
         /// </summary>
         public readonly int Progress;
         /// <summary>
-        /// Restore Job ID.
+        /// The ID of restore job.
         /// </summary>
         public readonly string RestoreJobId;
         /// <summary>
-        /// The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
         /// </summary>
         public readonly string RestoreType;
         /// <summary>
-        /// Restore Snapshot of HashCode.
+        /// The hashcode of Snapshot.
         /// </summary>
         public readonly string SnapshotHash;
         /// <summary>
@@ -87,55 +87,55 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>
-        /// The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
         /// </summary>
         public readonly string SourceType;
         /// <summary>
-        /// Restoring the Start Time. Unix Time in Seconds.
+        /// The start time of restore job. Unix Time in Seconds.
         /// </summary>
         public readonly string StartTime;
         /// <summary>
-        /// The Restore Job Status.
+        /// The status of restore job.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The Target ofo OSS Bucket Name.
+        /// The name of target ofo OSS bucket.
         /// </summary>
         public readonly string TargetBucket;
         /// <summary>
-        /// The ID of Target Client.
+        /// The ID of target client.
         /// </summary>
         public readonly string TargetClientId;
         /// <summary>
-        /// The Destination File System Creation Time.
+        /// The creation time of destination file system.
         /// </summary>
         public readonly string TargetCreateTime;
         /// <summary>
-        /// The Destination ID.
+        /// The ID of destination data source.
         /// </summary>
         public readonly string TargetDataSourceId;
         /// <summary>
-        /// The Destination File System ID.
+        /// The ID of destination file system.
         /// </summary>
         public readonly string TargetFileSystemId;
         /// <summary>
-        /// Objective to ECS Instance Id.
+        /// The ID of target ECS instance.
         /// </summary>
         public readonly string TargetInstanceId;
         /// <summary>
-        /// The Target of (ECS) Instance Changes the ECS File Path.
+        /// The target file path of ECS instance.
         /// </summary>
         public readonly string TargetPath;
         /// <summary>
-        /// The Target of the OSS Object Prefix.
+        /// The file prefix of target OSS object.
         /// </summary>
         public readonly string TargetPrefix;
         /// <summary>
-        /// Update Time.
+        /// The update Time of restore job. Unix Time in Seconds.
         /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
-        /// The ID of Vault.
+        /// The ID of backup vault.
         /// </summary>
         public readonly string VaultId;
 

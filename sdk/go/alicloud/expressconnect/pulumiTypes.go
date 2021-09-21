@@ -618,6 +618,491 @@ func (o GetPhysicalConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetPhysicalConnectionsConnectionOutput)
 }
 
+type GetVirtualBorderRoutersFilter struct {
+	// The key of the field to filter by, as defined by
+	// [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+	Key *string `pulumi:"key"`
+	// Set of values that are accepted for the given field.
+	Values []string `pulumi:"values"`
+}
+
+// GetVirtualBorderRoutersFilterInput is an input type that accepts GetVirtualBorderRoutersFilterArgs and GetVirtualBorderRoutersFilterOutput values.
+// You can construct a concrete instance of `GetVirtualBorderRoutersFilterInput` via:
+//
+//          GetVirtualBorderRoutersFilterArgs{...}
+type GetVirtualBorderRoutersFilterInput interface {
+	pulumi.Input
+
+	ToGetVirtualBorderRoutersFilterOutput() GetVirtualBorderRoutersFilterOutput
+	ToGetVirtualBorderRoutersFilterOutputWithContext(context.Context) GetVirtualBorderRoutersFilterOutput
+}
+
+type GetVirtualBorderRoutersFilterArgs struct {
+	// The key of the field to filter by, as defined by
+	// [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Set of values that are accepted for the given field.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetVirtualBorderRoutersFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualBorderRoutersFilter)(nil)).Elem()
+}
+
+func (i GetVirtualBorderRoutersFilterArgs) ToGetVirtualBorderRoutersFilterOutput() GetVirtualBorderRoutersFilterOutput {
+	return i.ToGetVirtualBorderRoutersFilterOutputWithContext(context.Background())
+}
+
+func (i GetVirtualBorderRoutersFilterArgs) ToGetVirtualBorderRoutersFilterOutputWithContext(ctx context.Context) GetVirtualBorderRoutersFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualBorderRoutersFilterOutput)
+}
+
+// GetVirtualBorderRoutersFilterArrayInput is an input type that accepts GetVirtualBorderRoutersFilterArray and GetVirtualBorderRoutersFilterArrayOutput values.
+// You can construct a concrete instance of `GetVirtualBorderRoutersFilterArrayInput` via:
+//
+//          GetVirtualBorderRoutersFilterArray{ GetVirtualBorderRoutersFilterArgs{...} }
+type GetVirtualBorderRoutersFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetVirtualBorderRoutersFilterArrayOutput() GetVirtualBorderRoutersFilterArrayOutput
+	ToGetVirtualBorderRoutersFilterArrayOutputWithContext(context.Context) GetVirtualBorderRoutersFilterArrayOutput
+}
+
+type GetVirtualBorderRoutersFilterArray []GetVirtualBorderRoutersFilterInput
+
+func (GetVirtualBorderRoutersFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualBorderRoutersFilter)(nil)).Elem()
+}
+
+func (i GetVirtualBorderRoutersFilterArray) ToGetVirtualBorderRoutersFilterArrayOutput() GetVirtualBorderRoutersFilterArrayOutput {
+	return i.ToGetVirtualBorderRoutersFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetVirtualBorderRoutersFilterArray) ToGetVirtualBorderRoutersFilterArrayOutputWithContext(ctx context.Context) GetVirtualBorderRoutersFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualBorderRoutersFilterArrayOutput)
+}
+
+type GetVirtualBorderRoutersFilterOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualBorderRoutersFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualBorderRoutersFilter)(nil)).Elem()
+}
+
+func (o GetVirtualBorderRoutersFilterOutput) ToGetVirtualBorderRoutersFilterOutput() GetVirtualBorderRoutersFilterOutput {
+	return o
+}
+
+func (o GetVirtualBorderRoutersFilterOutput) ToGetVirtualBorderRoutersFilterOutputWithContext(ctx context.Context) GetVirtualBorderRoutersFilterOutput {
+	return o
+}
+
+// The key of the field to filter by, as defined by
+// [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+func (o GetVirtualBorderRoutersFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Set of values that are accepted for the given field.
+func (o GetVirtualBorderRoutersFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetVirtualBorderRoutersFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualBorderRoutersFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualBorderRoutersFilter)(nil)).Elem()
+}
+
+func (o GetVirtualBorderRoutersFilterArrayOutput) ToGetVirtualBorderRoutersFilterArrayOutput() GetVirtualBorderRoutersFilterArrayOutput {
+	return o
+}
+
+func (o GetVirtualBorderRoutersFilterArrayOutput) ToGetVirtualBorderRoutersFilterArrayOutputWithContext(ctx context.Context) GetVirtualBorderRoutersFilterArrayOutput {
+	return o
+}
+
+func (o GetVirtualBorderRoutersFilterArrayOutput) Index(i pulumi.IntInput) GetVirtualBorderRoutersFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualBorderRoutersFilter {
+		return vs[0].([]GetVirtualBorderRoutersFilter)[vs[1].(int)]
+	}).(GetVirtualBorderRoutersFilterOutput)
+}
+
+type GetVirtualBorderRoutersRouter struct {
+	// The physical leased line access point ID.
+	AccessPointId string `pulumi:"accessPointId"`
+	// The first activation time of VBR.
+	ActivationTime string `pulumi:"activationTime"`
+	// Operators for physical connection circuit provided coding.
+	CircuitCode string `pulumi:"circuitCode"`
+	// Box Instance Id.
+	CloudBoxInstanceId string `pulumi:"cloudBoxInstanceId"`
+	// The representative of the creation time resources attribute field.
+	CreateTime string `pulumi:"createTime"`
+	// The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+	Description string `pulumi:"description"`
+	// Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+	DetectMultiplier int `pulumi:"detectMultiplier"`
+	// High Speed Migration Service Instance Id.
+	EccId string `pulumi:"eccId"`
+	// Whether to Enable IPv6.
+	EnableIpv6 bool `pulumi:"enableIpv6"`
+	// The ID of the Virtual Border Router.
+	Id string `pulumi:"id"`
+	// Alibaba Cloud-Connected IPv4 address.
+	LocalGatewayIp string `pulumi:"localGatewayIp"`
+	// Alibaba Cloud-Connected IPv6 Address.
+	LocalIpv6GatewayIp string `pulumi:"localIpv6GatewayIp"`
+	// Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+	MinRxInterval int `pulumi:"minRxInterval"`
+	// Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+	MinTxInterval int `pulumi:"minTxInterval"`
+	// The Billing of the Extended Time.
+	PaymentVbrExpireTime string `pulumi:"paymentVbrExpireTime"`
+	// The Client-Side Interconnection IPv4 Address.
+	PeerGatewayIp string `pulumi:"peerGatewayIp"`
+	// The Client-Side Interconnection IPv6 Address.
+	PeerIpv6GatewayIp string `pulumi:"peerIpv6GatewayIp"`
+	// Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+	PeeringIpv6SubnetMask string `pulumi:"peeringIpv6SubnetMask"`
+	// Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+	PeeringSubnetMask string `pulumi:"peeringSubnetMask"`
+	// Physical Private Line Service Status Value Normal: Normal, financiallocked: If You Lock.
+	PhysicalConnectionBusinessStatus string `pulumi:"physicalConnectionBusinessStatus"`
+	// The ID of the Physical Connection to Which the ID.
+	PhysicalConnectionId string `pulumi:"physicalConnectionId"`
+	// Physical Private Line Where the Account ID.
+	PhysicalConnectionOwnerUid string `pulumi:"physicalConnectionOwnerUid"`
+	// Physical Private Line State.
+	PhysicalConnectionStatus string `pulumi:"physicalConnectionStatus"`
+	// The Last from a Terminated State to the Active State of the Time.
+	RecoveryTime string `pulumi:"recoveryTime"`
+	// Route Table ID.
+	RouteTableId string `pulumi:"routeTableId"`
+	// The VBR state.
+	Status string `pulumi:"status"`
+	// The Most Recent Was Aborted by the Time.
+	TerminationTime string `pulumi:"terminationTime"`
+	// VBR Type.
+	Type string `pulumi:"type"`
+	// The VBR ID.
+	VirtualBorderRouterId string `pulumi:"virtualBorderRouterId"`
+	// The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+	VirtualBorderRouterName string `pulumi:"virtualBorderRouterName"`
+	// The VLAN ID of the VBR. Value range: 0~2999.
+	VlanId int `pulumi:"vlanId"`
+	// The ID of the Router Interface.
+	VlanInterfaceId string `pulumi:"vlanInterfaceId"`
+}
+
+// GetVirtualBorderRoutersRouterInput is an input type that accepts GetVirtualBorderRoutersRouterArgs and GetVirtualBorderRoutersRouterOutput values.
+// You can construct a concrete instance of `GetVirtualBorderRoutersRouterInput` via:
+//
+//          GetVirtualBorderRoutersRouterArgs{...}
+type GetVirtualBorderRoutersRouterInput interface {
+	pulumi.Input
+
+	ToGetVirtualBorderRoutersRouterOutput() GetVirtualBorderRoutersRouterOutput
+	ToGetVirtualBorderRoutersRouterOutputWithContext(context.Context) GetVirtualBorderRoutersRouterOutput
+}
+
+type GetVirtualBorderRoutersRouterArgs struct {
+	// The physical leased line access point ID.
+	AccessPointId pulumi.StringInput `pulumi:"accessPointId"`
+	// The first activation time of VBR.
+	ActivationTime pulumi.StringInput `pulumi:"activationTime"`
+	// Operators for physical connection circuit provided coding.
+	CircuitCode pulumi.StringInput `pulumi:"circuitCode"`
+	// Box Instance Id.
+	CloudBoxInstanceId pulumi.StringInput `pulumi:"cloudBoxInstanceId"`
+	// The representative of the creation time resources attribute field.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+	DetectMultiplier pulumi.IntInput `pulumi:"detectMultiplier"`
+	// High Speed Migration Service Instance Id.
+	EccId pulumi.StringInput `pulumi:"eccId"`
+	// Whether to Enable IPv6.
+	EnableIpv6 pulumi.BoolInput `pulumi:"enableIpv6"`
+	// The ID of the Virtual Border Router.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Alibaba Cloud-Connected IPv4 address.
+	LocalGatewayIp pulumi.StringInput `pulumi:"localGatewayIp"`
+	// Alibaba Cloud-Connected IPv6 Address.
+	LocalIpv6GatewayIp pulumi.StringInput `pulumi:"localIpv6GatewayIp"`
+	// Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+	MinRxInterval pulumi.IntInput `pulumi:"minRxInterval"`
+	// Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+	MinTxInterval pulumi.IntInput `pulumi:"minTxInterval"`
+	// The Billing of the Extended Time.
+	PaymentVbrExpireTime pulumi.StringInput `pulumi:"paymentVbrExpireTime"`
+	// The Client-Side Interconnection IPv4 Address.
+	PeerGatewayIp pulumi.StringInput `pulumi:"peerGatewayIp"`
+	// The Client-Side Interconnection IPv6 Address.
+	PeerIpv6GatewayIp pulumi.StringInput `pulumi:"peerIpv6GatewayIp"`
+	// Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+	PeeringIpv6SubnetMask pulumi.StringInput `pulumi:"peeringIpv6SubnetMask"`
+	// Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+	PeeringSubnetMask pulumi.StringInput `pulumi:"peeringSubnetMask"`
+	// Physical Private Line Service Status Value Normal: Normal, financiallocked: If You Lock.
+	PhysicalConnectionBusinessStatus pulumi.StringInput `pulumi:"physicalConnectionBusinessStatus"`
+	// The ID of the Physical Connection to Which the ID.
+	PhysicalConnectionId pulumi.StringInput `pulumi:"physicalConnectionId"`
+	// Physical Private Line Where the Account ID.
+	PhysicalConnectionOwnerUid pulumi.StringInput `pulumi:"physicalConnectionOwnerUid"`
+	// Physical Private Line State.
+	PhysicalConnectionStatus pulumi.StringInput `pulumi:"physicalConnectionStatus"`
+	// The Last from a Terminated State to the Active State of the Time.
+	RecoveryTime pulumi.StringInput `pulumi:"recoveryTime"`
+	// Route Table ID.
+	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
+	// The VBR state.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The Most Recent Was Aborted by the Time.
+	TerminationTime pulumi.StringInput `pulumi:"terminationTime"`
+	// VBR Type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The VBR ID.
+	VirtualBorderRouterId pulumi.StringInput `pulumi:"virtualBorderRouterId"`
+	// The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+	VirtualBorderRouterName pulumi.StringInput `pulumi:"virtualBorderRouterName"`
+	// The VLAN ID of the VBR. Value range: 0~2999.
+	VlanId pulumi.IntInput `pulumi:"vlanId"`
+	// The ID of the Router Interface.
+	VlanInterfaceId pulumi.StringInput `pulumi:"vlanInterfaceId"`
+}
+
+func (GetVirtualBorderRoutersRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualBorderRoutersRouter)(nil)).Elem()
+}
+
+func (i GetVirtualBorderRoutersRouterArgs) ToGetVirtualBorderRoutersRouterOutput() GetVirtualBorderRoutersRouterOutput {
+	return i.ToGetVirtualBorderRoutersRouterOutputWithContext(context.Background())
+}
+
+func (i GetVirtualBorderRoutersRouterArgs) ToGetVirtualBorderRoutersRouterOutputWithContext(ctx context.Context) GetVirtualBorderRoutersRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualBorderRoutersRouterOutput)
+}
+
+// GetVirtualBorderRoutersRouterArrayInput is an input type that accepts GetVirtualBorderRoutersRouterArray and GetVirtualBorderRoutersRouterArrayOutput values.
+// You can construct a concrete instance of `GetVirtualBorderRoutersRouterArrayInput` via:
+//
+//          GetVirtualBorderRoutersRouterArray{ GetVirtualBorderRoutersRouterArgs{...} }
+type GetVirtualBorderRoutersRouterArrayInput interface {
+	pulumi.Input
+
+	ToGetVirtualBorderRoutersRouterArrayOutput() GetVirtualBorderRoutersRouterArrayOutput
+	ToGetVirtualBorderRoutersRouterArrayOutputWithContext(context.Context) GetVirtualBorderRoutersRouterArrayOutput
+}
+
+type GetVirtualBorderRoutersRouterArray []GetVirtualBorderRoutersRouterInput
+
+func (GetVirtualBorderRoutersRouterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualBorderRoutersRouter)(nil)).Elem()
+}
+
+func (i GetVirtualBorderRoutersRouterArray) ToGetVirtualBorderRoutersRouterArrayOutput() GetVirtualBorderRoutersRouterArrayOutput {
+	return i.ToGetVirtualBorderRoutersRouterArrayOutputWithContext(context.Background())
+}
+
+func (i GetVirtualBorderRoutersRouterArray) ToGetVirtualBorderRoutersRouterArrayOutputWithContext(ctx context.Context) GetVirtualBorderRoutersRouterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualBorderRoutersRouterArrayOutput)
+}
+
+type GetVirtualBorderRoutersRouterOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualBorderRoutersRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualBorderRoutersRouter)(nil)).Elem()
+}
+
+func (o GetVirtualBorderRoutersRouterOutput) ToGetVirtualBorderRoutersRouterOutput() GetVirtualBorderRoutersRouterOutput {
+	return o
+}
+
+func (o GetVirtualBorderRoutersRouterOutput) ToGetVirtualBorderRoutersRouterOutputWithContext(ctx context.Context) GetVirtualBorderRoutersRouterOutput {
+	return o
+}
+
+// The physical leased line access point ID.
+func (o GetVirtualBorderRoutersRouterOutput) AccessPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.AccessPointId }).(pulumi.StringOutput)
+}
+
+// The first activation time of VBR.
+func (o GetVirtualBorderRoutersRouterOutput) ActivationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.ActivationTime }).(pulumi.StringOutput)
+}
+
+// Operators for physical connection circuit provided coding.
+func (o GetVirtualBorderRoutersRouterOutput) CircuitCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.CircuitCode }).(pulumi.StringOutput)
+}
+
+// Box Instance Id.
+func (o GetVirtualBorderRoutersRouterOutput) CloudBoxInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.CloudBoxInstanceId }).(pulumi.StringOutput)
+}
+
+// The representative of the creation time resources attribute field.
+func (o GetVirtualBorderRoutersRouterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+func (o GetVirtualBorderRoutersRouterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+func (o GetVirtualBorderRoutersRouterOutput) DetectMultiplier() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) int { return v.DetectMultiplier }).(pulumi.IntOutput)
+}
+
+// High Speed Migration Service Instance Id.
+func (o GetVirtualBorderRoutersRouterOutput) EccId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.EccId }).(pulumi.StringOutput)
+}
+
+// Whether to Enable IPv6.
+func (o GetVirtualBorderRoutersRouterOutput) EnableIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) bool { return v.EnableIpv6 }).(pulumi.BoolOutput)
+}
+
+// The ID of the Virtual Border Router.
+func (o GetVirtualBorderRoutersRouterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Alibaba Cloud-Connected IPv4 address.
+func (o GetVirtualBorderRoutersRouterOutput) LocalGatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.LocalGatewayIp }).(pulumi.StringOutput)
+}
+
+// Alibaba Cloud-Connected IPv6 Address.
+func (o GetVirtualBorderRoutersRouterOutput) LocalIpv6GatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.LocalIpv6GatewayIp }).(pulumi.StringOutput)
+}
+
+// Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+func (o GetVirtualBorderRoutersRouterOutput) MinRxInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) int { return v.MinRxInterval }).(pulumi.IntOutput)
+}
+
+// Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+func (o GetVirtualBorderRoutersRouterOutput) MinTxInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) int { return v.MinTxInterval }).(pulumi.IntOutput)
+}
+
+// The Billing of the Extended Time.
+func (o GetVirtualBorderRoutersRouterOutput) PaymentVbrExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.PaymentVbrExpireTime }).(pulumi.StringOutput)
+}
+
+// The Client-Side Interconnection IPv4 Address.
+func (o GetVirtualBorderRoutersRouterOutput) PeerGatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.PeerGatewayIp }).(pulumi.StringOutput)
+}
+
+// The Client-Side Interconnection IPv6 Address.
+func (o GetVirtualBorderRoutersRouterOutput) PeerIpv6GatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.PeerIpv6GatewayIp }).(pulumi.StringOutput)
+}
+
+// Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+func (o GetVirtualBorderRoutersRouterOutput) PeeringIpv6SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.PeeringIpv6SubnetMask }).(pulumi.StringOutput)
+}
+
+// Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+func (o GetVirtualBorderRoutersRouterOutput) PeeringSubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.PeeringSubnetMask }).(pulumi.StringOutput)
+}
+
+// Physical Private Line Service Status Value Normal: Normal, financiallocked: If You Lock.
+func (o GetVirtualBorderRoutersRouterOutput) PhysicalConnectionBusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.PhysicalConnectionBusinessStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the Physical Connection to Which the ID.
+func (o GetVirtualBorderRoutersRouterOutput) PhysicalConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.PhysicalConnectionId }).(pulumi.StringOutput)
+}
+
+// Physical Private Line Where the Account ID.
+func (o GetVirtualBorderRoutersRouterOutput) PhysicalConnectionOwnerUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.PhysicalConnectionOwnerUid }).(pulumi.StringOutput)
+}
+
+// Physical Private Line State.
+func (o GetVirtualBorderRoutersRouterOutput) PhysicalConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.PhysicalConnectionStatus }).(pulumi.StringOutput)
+}
+
+// The Last from a Terminated State to the Active State of the Time.
+func (o GetVirtualBorderRoutersRouterOutput) RecoveryTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.RecoveryTime }).(pulumi.StringOutput)
+}
+
+// Route Table ID.
+func (o GetVirtualBorderRoutersRouterOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+// The VBR state.
+func (o GetVirtualBorderRoutersRouterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The Most Recent Was Aborted by the Time.
+func (o GetVirtualBorderRoutersRouterOutput) TerminationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.TerminationTime }).(pulumi.StringOutput)
+}
+
+// VBR Type.
+func (o GetVirtualBorderRoutersRouterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The VBR ID.
+func (o GetVirtualBorderRoutersRouterOutput) VirtualBorderRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.VirtualBorderRouterId }).(pulumi.StringOutput)
+}
+
+// The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+func (o GetVirtualBorderRoutersRouterOutput) VirtualBorderRouterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.VirtualBorderRouterName }).(pulumi.StringOutput)
+}
+
+// The VLAN ID of the VBR. Value range: 0~2999.
+func (o GetVirtualBorderRoutersRouterOutput) VlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) int { return v.VlanId }).(pulumi.IntOutput)
+}
+
+// The ID of the Router Interface.
+func (o GetVirtualBorderRoutersRouterOutput) VlanInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.VlanInterfaceId }).(pulumi.StringOutput)
+}
+
+type GetVirtualBorderRoutersRouterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualBorderRoutersRouterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualBorderRoutersRouter)(nil)).Elem()
+}
+
+func (o GetVirtualBorderRoutersRouterArrayOutput) ToGetVirtualBorderRoutersRouterArrayOutput() GetVirtualBorderRoutersRouterArrayOutput {
+	return o
+}
+
+func (o GetVirtualBorderRoutersRouterArrayOutput) ToGetVirtualBorderRoutersRouterArrayOutputWithContext(ctx context.Context) GetVirtualBorderRoutersRouterArrayOutput {
+	return o
+}
+
+func (o GetVirtualBorderRoutersRouterArrayOutput) Index(i pulumi.IntInput) GetVirtualBorderRoutersRouterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualBorderRoutersRouter {
+		return vs[0].([]GetVirtualBorderRoutersRouter)[vs[1].(int)]
+	}).(GetVirtualBorderRoutersRouterOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetAccessPointsPointOutput{})
 	pulumi.RegisterOutputType(GetAccessPointsPointArrayOutput{})
@@ -625,4 +1110,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAccessPointsPointAccessPointFeatureModelArrayOutput{})
 	pulumi.RegisterOutputType(GetPhysicalConnectionsConnectionOutput{})
 	pulumi.RegisterOutputType(GetPhysicalConnectionsConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetVirtualBorderRoutersFilterOutput{})
+	pulumi.RegisterOutputType(GetVirtualBorderRoutersFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetVirtualBorderRoutersRouterOutput{})
+	pulumi.RegisterOutputType(GetVirtualBorderRoutersRouterArrayOutput{})
 }

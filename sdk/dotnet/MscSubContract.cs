@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud
         public Output<string> Mobile { get; private set; } = null!;
 
         /// <summary>
-        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         /// </summary>
         [Output("position")]
         public Output<string> Position { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud
         public Input<string> Mobile { get; set; } = null!;
 
         /// <summary>
-        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         /// </summary>
         [Input("position", required: true)]
         public Input<string> Position { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud
         public Input<string>? Mobile { get; set; }
 
         /// <summary>
-        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         /// </summary>
         [Input("position")]
         public Input<string>? Position { get; set; }

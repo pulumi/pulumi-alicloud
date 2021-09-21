@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class GetNasBackupPlansArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The File System ID.
+        /// The File System ID of Nas.
         /// </summary>
         [Input("fileSystemId")]
         public string? FileSystemId { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The Vault ID of the EcsBackupPlan used.
+        /// The backup vault ID of the NasBackupPlan used.
         /// </summary>
         [Input("vaultId")]
         public string? VaultId { get; set; }

@@ -78,6 +78,10 @@ export class NatGateway extends pulumi.CustomResource {
      */
     public readonly natType!: pulumi.Output<string | undefined>;
     /**
+     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+     */
+    public readonly networkType!: pulumi.Output<string>;
+    /**
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
@@ -130,6 +134,7 @@ export class NatGateway extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["natGatewayName"] = state ? state.natGatewayName : undefined;
             inputs["natType"] = state ? state.natType : undefined;
+            inputs["networkType"] = state ? state.networkType : undefined;
             inputs["paymentType"] = state ? state.paymentType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["snatTableIds"] = state ? state.snatTableIds : undefined;
@@ -152,6 +157,7 @@ export class NatGateway extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["natGatewayName"] = args ? args.natGatewayName : undefined;
             inputs["natType"] = args ? args.natType : undefined;
+            inputs["networkType"] = args ? args.networkType : undefined;
             inputs["paymentType"] = args ? args.paymentType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["specification"] = args ? args.specification : undefined;
@@ -209,6 +215,10 @@ export interface NatGatewayState {
      * The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
      */
     readonly natType?: pulumi.Input<string>;
+    /**
+     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+     */
+    readonly networkType?: pulumi.Input<string>;
     /**
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
@@ -276,6 +286,10 @@ export interface NatGatewayArgs {
      * The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
      */
     readonly natType?: pulumi.Input<string>;
+    /**
+     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+     */
+    readonly networkType?: pulumi.Input<string>;
     /**
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */

@@ -21,6 +21,7 @@ __all__ = [
     'GetInstanceEnginesInstanceEngineResult',
     'GetInstanceEnginesInstanceEngineZoneIdResult',
     'GetInstancesInstanceResult',
+    'GetInstancesInstanceParameterResult',
     'GetRdsParameterGroupsGroupResult',
     'GetRdsParameterGroupsGroupParamDetailResult',
     'GetZonesZoneResult',
@@ -360,8 +361,8 @@ class GetInstanceEnginesInstanceEngineResult(dict):
                  engine_version: str,
                  zone_ids: Sequence['outputs.GetInstanceEnginesInstanceEngineZoneIdResult']):
         """
-        :param str category: DB Instance category.
-        :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+        :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        :param str engine: Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
         :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param Sequence['GetInstanceEnginesInstanceEngineZoneIdArgs'] zone_ids: A list of Zone to launch the DB instance.
         """
@@ -374,7 +375,7 @@ class GetInstanceEnginesInstanceEngineResult(dict):
     @pulumi.getter
     def category(self) -> str:
         """
-        DB Instance category.
+        DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
         """
         return pulumi.get(self, "category")
 
@@ -382,7 +383,7 @@ class GetInstanceEnginesInstanceEngineResult(dict):
     @pulumi.getter
     def engine(self) -> str:
         """
-        Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+        Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
         """
         return pulumi.get(self, "engine")
 
@@ -468,6 +469,7 @@ class GetInstancesInstanceResult(dict):
                  name: str,
                  net_type: str,
                  origin: str,
+                 parameters: Sequence['outputs.GetInstancesInstanceParameterResult'],
                  port: str,
                  readonly_instance_ids: Sequence[str],
                  region_id: str,
@@ -531,6 +533,7 @@ class GetInstancesInstanceResult(dict):
         :param str name: The name of the RDS instance.
         :param str net_type: `Internet` for public network or `Intranet` for private network.
         :param str origin: (Available in 1.124.3+) The source of the encryption key.
+        :param Sequence['GetInstancesInstanceParameterArgs'] parameters: (Available in 1.135.0+) Parameter list.
         :param str port: (Available in 1.70.3+) RDS database connection port.
         :param Sequence[str] readonly_instance_ids: A list of IDs of read-only instances attached to the primary instance.
         :param str region_id: Region ID the instance belongs to.
@@ -596,6 +599,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "net_type", net_type)
         pulumi.set(__self__, "origin", origin)
+        pulumi.set(__self__, "parameters", parameters)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "readonly_instance_ids", readonly_instance_ids)
         pulumi.set(__self__, "region_id", region_id)
@@ -890,6 +894,14 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
+    def parameters(self) -> Sequence['outputs.GetInstancesInstanceParameterResult']:
+        """
+        (Available in 1.135.0+) Parameter list.
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
     def port(self) -> str:
         """
         (Available in 1.70.3+) RDS database connection port.
@@ -1051,6 +1063,79 @@ class GetInstancesInstanceResult(dict):
         (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         return pulumi.get(self, "zone_id_slave_b")
+
+
+@pulumi.output_type
+class GetInstancesInstanceParameterResult(dict):
+    def __init__(__self__, *,
+                 checking_code: str,
+                 force_modify: str,
+                 force_restart: str,
+                 parameter_description: str,
+                 parameter_name: str,
+                 parameter_value: str):
+        """
+        :param str checking_code: The value range of the parameter.
+        :param str force_modify: Indicates whether the parameter can be modified. Valid values: true | false
+        :param str force_restart: Indicates whether the modified parameter takes effect only after a database restart. Valid values: true | false
+        :param str parameter_description: The description of the parameter.
+        :param str parameter_name: The name of the parameter.
+        :param str parameter_value: The default value of the parameter.
+        """
+        pulumi.set(__self__, "checking_code", checking_code)
+        pulumi.set(__self__, "force_modify", force_modify)
+        pulumi.set(__self__, "force_restart", force_restart)
+        pulumi.set(__self__, "parameter_description", parameter_description)
+        pulumi.set(__self__, "parameter_name", parameter_name)
+        pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @property
+    @pulumi.getter(name="checkingCode")
+    def checking_code(self) -> str:
+        """
+        The value range of the parameter.
+        """
+        return pulumi.get(self, "checking_code")
+
+    @property
+    @pulumi.getter(name="forceModify")
+    def force_modify(self) -> str:
+        """
+        Indicates whether the parameter can be modified. Valid values: true | false
+        """
+        return pulumi.get(self, "force_modify")
+
+    @property
+    @pulumi.getter(name="forceRestart")
+    def force_restart(self) -> str:
+        """
+        Indicates whether the modified parameter takes effect only after a database restart. Valid values: true | false
+        """
+        return pulumi.get(self, "force_restart")
+
+    @property
+    @pulumi.getter(name="parameterDescription")
+    def parameter_description(self) -> str:
+        """
+        The description of the parameter.
+        """
+        return pulumi.get(self, "parameter_description")
+
+    @property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> str:
+        """
+        The name of the parameter.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> str:
+        """
+        The default value of the parameter.
+        """
+        return pulumi.get(self, "parameter_value")
 
 
 @pulumi.output_type

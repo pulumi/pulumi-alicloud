@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetInstanceClassesArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
@@ -65,7 +65,13 @@ namespace Pulumi.AliCloud.Rds
         public string? DbInstanceClass { get; set; }
 
         /// <summary>
-        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+        /// Same as `storage_type`.
+        /// </summary>
+        [Input("dbInstanceStorageType")]
+        public string? DbInstanceStorageType { get; set; }
+
+        /// <summary>
+        /// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
@@ -95,7 +101,7 @@ namespace Pulumi.AliCloud.Rds
         public string? SortedBy { get; set; }
 
         /// <summary>
-        /// The DB instance storage space required by the user. Valid values: `cloud_ssd` and `local_ssd`.
+        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3"
         /// </summary>
         [Input("storageType")]
         public string? StorageType { get; set; }
@@ -117,6 +123,7 @@ namespace Pulumi.AliCloud.Rds
     {
         public readonly string? Category;
         public readonly string? DbInstanceClass;
+        public readonly string? DbInstanceStorageType;
         public readonly string? Engine;
         public readonly string? EngineVersion;
         /// <summary>
@@ -144,6 +151,8 @@ namespace Pulumi.AliCloud.Rds
 
             string? dbInstanceClass,
 
+            string? dbInstanceStorageType,
+
             string? engine,
 
             string? engineVersion,
@@ -168,6 +177,7 @@ namespace Pulumi.AliCloud.Rds
         {
             Category = category;
             DbInstanceClass = dbInstanceClass;
+            DbInstanceStorageType = dbInstanceStorageType;
             Engine = engine;
             EngineVersion = engineVersion;
             Id = id;

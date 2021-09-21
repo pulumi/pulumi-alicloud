@@ -23,6 +23,7 @@ class NatGatewayArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  nat_gateway_name: Optional[pulumi.Input[str]] = None,
                  nat_type: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,7 @@ class NatGatewayArgs:
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of NAT gateway.
@@ -64,6 +66,8 @@ class NatGatewayArgs:
             pulumi.set(__self__, "nat_gateway_name", nat_gateway_name)
         if nat_type is not None:
             pulumi.set(__self__, "nat_type", nat_type)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
@@ -192,6 +196,18 @@ class NatGatewayArgs:
         pulumi.set(self, "nat_type", value)
 
     @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_type", value)
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -262,6 +278,7 @@ class _NatGatewayState:
                  name: Optional[pulumi.Input[str]] = None,
                  nat_gateway_name: Optional[pulumi.Input[str]] = None,
                  nat_type: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  snat_table_ids: Optional[pulumi.Input[str]] = None,
@@ -282,6 +299,7 @@ class _NatGatewayState:
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[str] snat_table_ids: The nat gateway will auto create a snat item.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
@@ -310,6 +328,8 @@ class _NatGatewayState:
             pulumi.set(__self__, "nat_gateway_name", nat_gateway_name)
         if nat_type is not None:
             pulumi.set(__self__, "nat_type", nat_type)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
@@ -444,6 +464,18 @@ class _NatGatewayState:
         pulumi.set(self, "nat_type", value)
 
     @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_type", value)
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -551,6 +583,7 @@ class NatGateway(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  nat_gateway_name: Optional[pulumi.Input[str]] = None,
                  nat_type: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
@@ -578,6 +611,7 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of NAT gateway.
@@ -623,6 +657,7 @@ class NatGateway(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  nat_gateway_name: Optional[pulumi.Input[str]] = None,
                  nat_type: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
@@ -650,6 +685,7 @@ class NatGateway(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["nat_gateway_name"] = nat_gateway_name
             __props__.__dict__["nat_type"] = nat_type
+            __props__.__dict__["network_type"] = network_type
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["specification"] = specification
@@ -681,6 +717,7 @@ class NatGateway(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             nat_gateway_name: Optional[pulumi.Input[str]] = None,
             nat_type: Optional[pulumi.Input[str]] = None,
+            network_type: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             snat_table_ids: Optional[pulumi.Input[str]] = None,
@@ -706,6 +743,7 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[str] snat_table_ids: The nat gateway will auto create a snat item.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
@@ -728,6 +766,7 @@ class NatGateway(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["nat_gateway_name"] = nat_gateway_name
         __props__.__dict__["nat_type"] = nat_type
+        __props__.__dict__["network_type"] = network_type
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["snat_table_ids"] = snat_table_ids
@@ -813,6 +852,14 @@ class NatGateway(pulumi.CustomResource):
         The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
         """
         return pulumi.get(self, "nat_type")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> pulumi.Output[str]:
+        """
+        Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        """
+        return pulumi.get(self, "network_type")
 
     @property
     @pulumi.getter(name="paymentType")

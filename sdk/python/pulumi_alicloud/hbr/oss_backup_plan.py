@@ -23,13 +23,13 @@ class OssBackupPlanArgs:
                  vault_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OssBackupPlan resource.
-        :param pulumi.Input[str] oss_backup_plan_name: The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
-        :param pulumi.Input[str] retention: Backup Retention Period, the Minimum Value of 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-        :param pulumi.Input[str] bucket: The OSS Bucket Name.
-        :param pulumi.Input[bool] disabled: Whether to Disable the Backup Task. Valid Values: true, false.
-        :param pulumi.Input[str] vault_id: Vault ID.
+        :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] backup_type: Backup Type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] bucket: The name of OSS bucket.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
+        :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         pulumi.set(__self__, "oss_backup_plan_name", oss_backup_plan_name)
         pulumi.set(__self__, "retention", retention)
@@ -49,7 +49,7 @@ class OssBackupPlanArgs:
     @pulumi.getter(name="ossBackupPlanName")
     def oss_backup_plan_name(self) -> pulumi.Input[str]:
         """
-        The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         """
         return pulumi.get(self, "oss_backup_plan_name")
 
@@ -61,7 +61,7 @@ class OssBackupPlanArgs:
     @pulumi.getter
     def retention(self) -> pulumi.Input[str]:
         """
-        Backup Retention Period, the Minimum Value of 1.
+        Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
@@ -73,7 +73,7 @@ class OssBackupPlanArgs:
     @pulumi.getter
     def schedule(self) -> pulumi.Input[str]:
         """
-        Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -85,7 +85,7 @@ class OssBackupPlanArgs:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        Backup Type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -97,7 +97,7 @@ class OssBackupPlanArgs:
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        The OSS Bucket Name.
+        The name of OSS bucket.
         """
         return pulumi.get(self, "bucket")
 
@@ -109,7 +109,7 @@ class OssBackupPlanArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to Disable the Backup Task. Valid Values: true, false.
+        Whether to disable the backup task. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -130,7 +130,7 @@ class OssBackupPlanArgs:
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Vault ID.
+        The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
 
@@ -152,13 +152,13 @@ class _OssBackupPlanState:
                  vault_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OssBackupPlan resources.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-        :param pulumi.Input[str] bucket: The OSS Bucket Name.
-        :param pulumi.Input[bool] disabled: Whether to Disable the Backup Task. Valid Values: true, false.
-        :param pulumi.Input[str] oss_backup_plan_name: The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
-        :param pulumi.Input[str] retention: Backup Retention Period, the Minimum Value of 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
-        :param pulumi.Input[str] vault_id: Vault ID.
+        :param pulumi.Input[str] backup_type: Backup Type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] bucket: The name of OSS bucket.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
+        :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         if backup_type is not None:
             pulumi.set(__self__, "backup_type", backup_type)
@@ -181,7 +181,7 @@ class _OssBackupPlanState:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        Backup Type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -193,7 +193,7 @@ class _OssBackupPlanState:
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        The OSS Bucket Name.
+        The name of OSS bucket.
         """
         return pulumi.get(self, "bucket")
 
@@ -205,7 +205,7 @@ class _OssBackupPlanState:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to Disable the Backup Task. Valid Values: true, false.
+        Whether to disable the backup task. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -217,7 +217,7 @@ class _OssBackupPlanState:
     @pulumi.getter(name="ossBackupPlanName")
     def oss_backup_plan_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         """
         return pulumi.get(self, "oss_backup_plan_name")
 
@@ -238,7 +238,7 @@ class _OssBackupPlanState:
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup Retention Period, the Minimum Value of 1.
+        Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
@@ -250,7 +250,7 @@ class _OssBackupPlanState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -262,7 +262,7 @@ class _OssBackupPlanState:
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Vault ID.
+        The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
 
@@ -288,7 +288,7 @@ class OssBackupPlan(pulumi.CustomResource):
         """
         Provides a HBR Oss Backup Plan resource.
 
-        For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/product/hybrid-backup-recovery).
+        For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
 
         > **NOTE:** Available in v1.131.0+.
 
@@ -303,9 +303,9 @@ class OssBackupPlan(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "%s"
+            name = "example_value"
         default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
-        default_buckets = alicloud.oss.get_buckets(name_regex="bosh-cf-blobstore-hz")
+        default_buckets = alicloud.oss.get_buckets(name_regex="oss_bucket_example_name")
         example = alicloud.hbr.OssBackupPlan("example",
             oss_backup_plan_name=name,
             vault_id=default_vault.id,
@@ -326,13 +326,13 @@ class OssBackupPlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-        :param pulumi.Input[str] bucket: The OSS Bucket Name.
-        :param pulumi.Input[bool] disabled: Whether to Disable the Backup Task. Valid Values: true, false.
-        :param pulumi.Input[str] oss_backup_plan_name: The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
-        :param pulumi.Input[str] retention: Backup Retention Period, the Minimum Value of 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
-        :param pulumi.Input[str] vault_id: Vault ID.
+        :param pulumi.Input[str] backup_type: Backup Type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] bucket: The name of OSS bucket.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
+        :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         ...
     @overload
@@ -343,7 +343,7 @@ class OssBackupPlan(pulumi.CustomResource):
         """
         Provides a HBR Oss Backup Plan resource.
 
-        For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/product/hybrid-backup-recovery).
+        For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
 
         > **NOTE:** Available in v1.131.0+.
 
@@ -358,9 +358,9 @@ class OssBackupPlan(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "%s"
+            name = "example_value"
         default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
-        default_buckets = alicloud.oss.get_buckets(name_regex="bosh-cf-blobstore-hz")
+        default_buckets = alicloud.oss.get_buckets(name_regex="oss_bucket_example_name")
         example = alicloud.hbr.OssBackupPlan("example",
             oss_backup_plan_name=name,
             vault_id=default_vault.id,
@@ -453,13 +453,13 @@ class OssBackupPlan(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-        :param pulumi.Input[str] bucket: The OSS Bucket Name.
-        :param pulumi.Input[bool] disabled: Whether to Disable the Backup Task. Valid Values: true, false.
-        :param pulumi.Input[str] oss_backup_plan_name: The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
-        :param pulumi.Input[str] retention: Backup Retention Period, the Minimum Value of 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
-        :param pulumi.Input[str] vault_id: Vault ID.
+        :param pulumi.Input[str] backup_type: Backup Type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] bucket: The name of OSS bucket.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
+        :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -479,7 +479,7 @@ class OssBackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="backupType")
     def backup_type(self) -> pulumi.Output[str]:
         """
-        Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        Backup Type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -487,7 +487,7 @@ class OssBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def bucket(self) -> pulumi.Output[Optional[str]]:
         """
-        The OSS Bucket Name.
+        The name of OSS bucket.
         """
         return pulumi.get(self, "bucket")
 
@@ -495,7 +495,7 @@ class OssBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def disabled(self) -> pulumi.Output[bool]:
         """
-        Whether to Disable the Backup Task. Valid Values: true, false.
+        Whether to disable the backup task. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -503,7 +503,7 @@ class OssBackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="ossBackupPlanName")
     def oss_backup_plan_name(self) -> pulumi.Output[str]:
         """
-        The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         """
         return pulumi.get(self, "oss_backup_plan_name")
 
@@ -516,7 +516,7 @@ class OssBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def retention(self) -> pulumi.Output[str]:
         """
-        Backup Retention Period, the Minimum Value of 1.
+        Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
@@ -524,7 +524,7 @@ class OssBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[str]:
         """
-        Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -532,7 +532,7 @@ class OssBackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Vault ID.
+        The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
 

@@ -22,6 +22,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:index/mscSubContract:MscSubContract":
 		r = &MscSubContract{}
+	case "alicloud:index/mscSubSubscription:MscSubSubscription":
+		r = &MscSubSubscription{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -56,6 +58,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"index/mscSubContract",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"index/mscSubSubscription",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class GetOssBackupPlansArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The OSS Bucket Name.
+        /// The name of OSS bucket.
         /// </summary>
         [Input("bucket")]
         public string? Bucket { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Vault ID.
+        /// The ID of backup vault.
         /// </summary>
         [Input("vaultId")]
         public string? VaultId { get; set; }

@@ -69,7 +69,7 @@ export interface GetSnapshotsArgs {
      */
     readonly ids?: string[];
     /**
-     * InstanceId.
+     * The ID of ECS instance.
      */
     readonly instanceId?: string;
     readonly limit?: number;

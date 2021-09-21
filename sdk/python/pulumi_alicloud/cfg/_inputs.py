@@ -19,26 +19,15 @@ __all__ = [
 @pulumi.input_type
 class AggregateCompliancePackConfigRuleArgs:
     def __init__(__self__, *,
-                 config_rule_parameters: pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]],
-                 managed_rule_identifier: pulumi.Input[str]):
+                 managed_rule_identifier: pulumi.Input[str],
+                 config_rule_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of parameter rules.
         :param pulumi.Input[str] managed_rule_identifier: The Managed Rule Identifier.
+        :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of parameter rules.
         """
-        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
         pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
-
-    @property
-    @pulumi.getter(name="configRuleParameters")
-    def config_rule_parameters(self) -> pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]:
-        """
-        A list of parameter rules.
-        """
-        return pulumi.get(self, "config_rule_parameters")
-
-    @config_rule_parameters.setter
-    def config_rule_parameters(self, value: pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]):
-        pulumi.set(self, "config_rule_parameters", value)
+        if config_rule_parameters is not None:
+            pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
 
     @property
     @pulumi.getter(name="managedRuleIdentifier")
@@ -52,41 +41,55 @@ class AggregateCompliancePackConfigRuleArgs:
     def managed_rule_identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "managed_rule_identifier", value)
 
+    @property
+    @pulumi.getter(name="configRuleParameters")
+    def config_rule_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]]:
+        """
+        A list of parameter rules.
+        """
+        return pulumi.get(self, "config_rule_parameters")
+
+    @config_rule_parameters.setter
+    def config_rule_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]]):
+        pulumi.set(self, "config_rule_parameters", value)
+
 
 @pulumi.input_type
 class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
     def __init__(__self__, *,
-                 parameter_name: pulumi.Input[str],
-                 parameter_value: pulumi.Input[str]):
+                 parameter_name: Optional[pulumi.Input[str]] = None,
+                 parameter_value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] parameter_name: The Parameter Name.
         :param pulumi.Input[str] parameter_value: The Parameter Value.
         """
-        pulumi.set(__self__, "parameter_name", parameter_name)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        if parameter_name is not None:
+            pulumi.set(__self__, "parameter_name", parameter_name)
+        if parameter_value is not None:
+            pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterName")
-    def parameter_name(self) -> pulumi.Input[str]:
+    def parameter_name(self) -> Optional[pulumi.Input[str]]:
         """
         The Parameter Name.
         """
         return pulumi.get(self, "parameter_name")
 
     @parameter_name.setter
-    def parameter_name(self, value: pulumi.Input[str]):
+    def parameter_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parameter_name", value)
 
     @property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> pulumi.Input[str]:
+    def parameter_value(self) -> Optional[pulumi.Input[str]]:
         """
         The Parameter Value.
         """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: pulumi.Input[str]):
+    def parameter_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parameter_value", value)
 
 
@@ -145,26 +148,15 @@ class AggregatorAggregatorAccountArgs:
 @pulumi.input_type
 class CompliancePackConfigRuleArgs:
     def __init__(__self__, *,
-                 config_rule_parameters: pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]],
-                 managed_rule_identifier: pulumi.Input[str]):
+                 managed_rule_identifier: pulumi.Input[str],
+                 config_rule_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of Config Rule Parameters.
         :param pulumi.Input[str] managed_rule_identifier: The Managed Rule Identifier.
+        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of Config Rule Parameters.
         """
-        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
         pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
-
-    @property
-    @pulumi.getter(name="configRuleParameters")
-    def config_rule_parameters(self) -> pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]:
-        """
-        A list of Config Rule Parameters.
-        """
-        return pulumi.get(self, "config_rule_parameters")
-
-    @config_rule_parameters.setter
-    def config_rule_parameters(self, value: pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]):
-        pulumi.set(self, "config_rule_parameters", value)
+        if config_rule_parameters is not None:
+            pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
 
     @property
     @pulumi.getter(name="managedRuleIdentifier")
@@ -178,30 +170,43 @@ class CompliancePackConfigRuleArgs:
     def managed_rule_identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "managed_rule_identifier", value)
 
+    @property
+    @pulumi.getter(name="configRuleParameters")
+    def config_rule_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]]:
+        """
+        A list of Config Rule Parameters.
+        """
+        return pulumi.get(self, "config_rule_parameters")
+
+    @config_rule_parameters.setter
+    def config_rule_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]]):
+        pulumi.set(self, "config_rule_parameters", value)
+
 
 @pulumi.input_type
 class CompliancePackConfigRuleConfigRuleParameterArgs:
     def __init__(__self__, *,
-                 parameter_name: pulumi.Input[str],
+                 parameter_name: Optional[pulumi.Input[str]] = None,
                  parameter_value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] parameter_name: The parameter name.
         :param pulumi.Input[str] parameter_value: The parameter value.
         """
-        pulumi.set(__self__, "parameter_name", parameter_name)
+        if parameter_name is not None:
+            pulumi.set(__self__, "parameter_name", parameter_name)
         if parameter_value is not None:
             pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterName")
-    def parameter_name(self) -> pulumi.Input[str]:
+    def parameter_name(self) -> Optional[pulumi.Input[str]]:
         """
         The parameter name.
         """
         return pulumi.get(self, "parameter_name")
 
     @parameter_name.setter
-    def parameter_name(self, value: pulumi.Input[str]):
+    def parameter_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parameter_name", value)
 
     @property

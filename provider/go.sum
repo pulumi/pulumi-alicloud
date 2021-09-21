@@ -199,12 +199,18 @@ github.com/alibabacloud-go/tea v1.1.10/go.mod h1:/tmnEaQMyb4Ky1/5D+SE1BAsa5zj/Ke
 github.com/alibabacloud-go/tea v1.1.11/go.mod h1:/tmnEaQMyb4Ky1/5D+SE1BAsa5zj/KeGOFfwYm3N/p4=
 github.com/alibabacloud-go/tea v1.1.15 h1:IaBC1Mm5Ss+l7cWnOXSxCmnWoWrEdeHEtDgQzoCCgjY=
 github.com/alibabacloud-go/tea v1.1.15/go.mod h1:nXxjm6CIFkBhwW4FQkNrolwbfon8Svy6cujmKFUq98A=
+github.com/alibabacloud-go/tea v1.1.17 h1:05R5DnaJXe9sCNIe8KUgWHC/z6w/VZIwczgUwzRnul8=
+github.com/alibabacloud-go/tea v1.1.17/go.mod h1:nXxjm6CIFkBhwW4FQkNrolwbfon8Svy6cujmKFUq98A=
 github.com/alibabacloud-go/tea-roa v1.2.8 h1:N5kjn7gYckpCNMZw6syHmNfQYGkdt0UnV1f+1LJieCA=
 github.com/alibabacloud-go/tea-roa v1.2.8/go.mod h1:mmXHtSWCuOEUI3saHp0KRAk4zIUom3/RG9tdU+hziEM=
+github.com/alibabacloud-go/tea-roa v1.2.9 h1:RLOaT7qdxtMyRqdRv7yJyH1TI0WIZWCF3Ek40KQwpRY=
+github.com/alibabacloud-go/tea-roa v1.2.9/go.mod h1:Cdv5rQZqx9V8kYbAHSfvCgYR6KXRnbuM12piJOjssYY=
 github.com/alibabacloud-go/tea-roa-utils v1.1.5 h1:BkZAywim4piCeTA9qmRTq9gkcOI3Gltu3VobZwegnUE=
 github.com/alibabacloud-go/tea-roa-utils v1.1.5/go.mod h1:7mkMI3FZEm4LGKIR1322y0N6N9EC0R1G/oXvzQjf1fQ=
 github.com/alibabacloud-go/tea-rpc v1.1.8 h1:QgHWo5PSOkJ4Fu56caZtTeCocltf4tMqXty75LVX0hg=
 github.com/alibabacloud-go/tea-rpc v1.1.8/go.mod h1:C1nOCvQ/WjIn3bVcBCcZY34s+1TqUowR44ovROFvwfw=
+github.com/alibabacloud-go/tea-rpc v1.1.9 h1:vhatw+FHYEGCFcwmRnhyJkAFa9uzdkNMOUjurjEQn/0=
+github.com/alibabacloud-go/tea-rpc v1.1.9/go.mod h1:zwKwxuf92liNsPcLOxPdrkvR5Dq6jtX2du6qx8FT094=
 github.com/alibabacloud-go/tea-rpc-utils v1.1.2 h1:ZTfFREnP2q9D49T2J/1jYYOndepGdrUOgm/JR8/bIQ0=
 github.com/alibabacloud-go/tea-rpc-utils v1.1.2/go.mod h1:V5HdNi6Xdn0JMpgVhQ19vsFAS51tydr7BqcJtuXH1Yw=
 github.com/alibabacloud-go/tea-utils v1.3.0/go.mod h1:EI/o33aBfj3hETm4RLiAxF/ThQdSngxrpF8rKUDJjPE=
@@ -222,6 +228,8 @@ github.com/aliyun/alibaba-cloud-sdk-go v1.61.1154 h1:+6PluSvddiDm8YF4E5LRs8kiXtC
 github.com/aliyun/alibaba-cloud-sdk-go v1.61.1154/go.mod h1:pUKYbK5JQ+1Dfxk80P0qxGqe5dkxDoabbZS7zOcouyA=
 github.com/aliyun/alibaba-cloud-sdk-go v1.61.1240 h1:AD69LkWywSwa2zG2iAuPKViRXh42j0i8Vp2GF+riHFE=
 github.com/aliyun/alibaba-cloud-sdk-go v1.61.1240/go.mod h1:9CMdKNL3ynIGPpfTcdwTvIm8SGuAZYYC4jFVSSvE1YQ=
+github.com/aliyun/alibaba-cloud-sdk-go v1.61.1264 h1:67Ky9Wy6qmYRBrS9DRxlXRYgosNnb/4uEDLu2H554JU=
+github.com/aliyun/alibaba-cloud-sdk-go v1.61.1264/go.mod h1:9CMdKNL3ynIGPpfTcdwTvIm8SGuAZYYC4jFVSSvE1YQ=
 github.com/aliyun/aliyun-datahub-sdk-go v0.0.0-20180929121038-c1c85baca7c0 h1:nvOIS4LOMKF65MCDkJgAMZXNk5MdbbfFcA3Dk9WwsXM=
 github.com/aliyun/aliyun-datahub-sdk-go v0.0.0-20180929121038-c1c85baca7c0/go.mod h1:GwtZxKUD+aLBrtlkEcyPNAx+jRkBioEC7EKOlQ26lTc=
 github.com/aliyun/aliyun-datahub-sdk-go v0.1.5 h1:c2TFcJ5PjkqkHr2use7Av2wHB8jVgoKxX1gmLDsysR4=
@@ -275,6 +283,8 @@ github.com/aliyun/terraform-provider-alicloud v1.132.0 h1:neBCKJGbL7XJBkzySQX7GJ
 github.com/aliyun/terraform-provider-alicloud v1.132.0/go.mod h1:7Ac42rNclVHQRkt91rPHJbHY4Ro1UzbU+sQ3xT9m5ds=
 github.com/aliyun/terraform-provider-alicloud v1.133.0 h1:Xx7LJQkBy6mQhIXRfJS0WvLT65+FQ/CC1ScC8Fx5HEQ=
 github.com/aliyun/terraform-provider-alicloud v1.133.0/go.mod h1:2wY1qg/UYg4gBJ4NI/KJjoUraR6gaxsVPrJZJx/3Kag=
+github.com/aliyun/terraform-provider-alicloud v1.136.0 h1:LrBFek6+/v0qVcwJzcrExjoBXfMZQo+ZP5nOM6aj+o4=
+github.com/aliyun/terraform-provider-alicloud v1.136.0/go.mod h1:2R7WBH6U5fnLOprB7CfqXaksdeoOOQ8yyfhIrfQGQjs=
 github.com/andybalholm/brotli v1.0.1 h1:KqhlKozYbRtJvsPrrEeXcO+N2l6NYT5A2QAFmSULpEc=
 github.com/andybalholm/brotli v1.0.1/go.mod h1:loMXtMfwqflxFJPmdbJO0a3KNoPuLBgiu3qAvBg8x/Y=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239 h1:kFOfPq6dUM1hTo4JG6LR5AXSUEsOjtdm0kw0FtQtMJA=

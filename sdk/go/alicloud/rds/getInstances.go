@@ -55,6 +55,8 @@ type GetInstancesArgs struct {
 	ConnectionMode *string `pulumi:"connectionMode"`
 	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
 	DbType *string `pulumi:"dbType"`
+	// Default to `false`. Set it to `true` can output parameter template about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
 	Engine *string `pulumi:"engine"`
 	// A list of RDS instance IDs.
@@ -78,7 +80,8 @@ type GetInstancesResult struct {
 	// `Standard` for standard access mode and `Safe` for high security access mode.
 	ConnectionMode *string `pulumi:"connectionMode"`
 	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
-	DbType *string `pulumi:"dbType"`
+	DbType        *string `pulumi:"dbType"`
+	EnableDetails *bool   `pulumi:"enableDetails"`
 	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
 	Engine *string `pulumi:"engine"`
 	// The provider-assigned unique ID for this managed resource.

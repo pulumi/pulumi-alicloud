@@ -57,6 +57,10 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly accessLogTracingConfig!: pulumi.Output<outputs.alb.ListenerAccessLogTracingConfig | undefined>;
     /**
+     * The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+     */
+    public readonly aclConfig!: pulumi.Output<outputs.alb.ListenerAclConfig | undefined>;
+    /**
      * The Certificates.
      */
     public readonly certificates!: pulumi.Output<outputs.alb.ListenerCertificate[] | undefined>;
@@ -73,27 +77,27 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly gzipEnabled!: pulumi.Output<boolean>;
     /**
-     * Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+     * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
      */
     public readonly http2Enabled!: pulumi.Output<boolean>;
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 miao.
+     * Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
      */
     public readonly idleTimeout!: pulumi.Output<number>;
     /**
-     * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\x00-\xff]|[\w.,;/@-]){2,256}$/.
+     * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
      */
     public readonly listenerDescription!: pulumi.Output<string | undefined>;
     /**
-     * The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+     * The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
      */
     public readonly listenerPort!: pulumi.Output<number>;
     /**
-     * Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+     * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
      */
     public readonly listenerProtocol!: pulumi.Output<string>;
     /**
-     * The SLB Instance Id.
+     * The ALB Instance Id.
      */
     public readonly loadBalancerId!: pulumi.Output<string>;
     /**
@@ -101,7 +105,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly quicConfig!: pulumi.Output<outputs.alb.ListenerQuicConfig>;
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
     public readonly requestTimeout!: pulumi.Output<number>;
     /**
@@ -132,6 +136,7 @@ export class Listener extends pulumi.CustomResource {
             const state = argsOrState as ListenerState | undefined;
             inputs["accessLogRecordCustomizedHeadersEnabled"] = state ? state.accessLogRecordCustomizedHeadersEnabled : undefined;
             inputs["accessLogTracingConfig"] = state ? state.accessLogTracingConfig : undefined;
+            inputs["aclConfig"] = state ? state.aclConfig : undefined;
             inputs["certificates"] = state ? state.certificates : undefined;
             inputs["defaultActions"] = state ? state.defaultActions : undefined;
             inputs["dryRun"] = state ? state.dryRun : undefined;
@@ -160,6 +165,7 @@ export class Listener extends pulumi.CustomResource {
             }
             inputs["accessLogRecordCustomizedHeadersEnabled"] = args ? args.accessLogRecordCustomizedHeadersEnabled : undefined;
             inputs["accessLogTracingConfig"] = args ? args.accessLogTracingConfig : undefined;
+            inputs["aclConfig"] = args ? args.aclConfig : undefined;
             inputs["certificates"] = args ? args.certificates : undefined;
             inputs["defaultActions"] = args ? args.defaultActions : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
@@ -196,6 +202,10 @@ export interface ListenerState {
      */
     readonly accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig>;
     /**
+     * The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+     */
+    readonly aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
+    /**
      * The Certificates.
      */
     readonly certificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCertificate>[]>;
@@ -212,27 +222,27 @@ export interface ListenerState {
      */
     readonly gzipEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+     * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
      */
     readonly http2Enabled?: pulumi.Input<boolean>;
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 miao.
+     * Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
      */
     readonly idleTimeout?: pulumi.Input<number>;
     /**
-     * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\x00-\xff]|[\w.,;/@-]){2,256}$/.
+     * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
      */
     readonly listenerDescription?: pulumi.Input<string>;
     /**
-     * The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+     * The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
      */
     readonly listenerPort?: pulumi.Input<number>;
     /**
-     * Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+     * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
      */
     readonly listenerProtocol?: pulumi.Input<string>;
     /**
-     * The SLB Instance Id.
+     * The ALB Instance Id.
      */
     readonly loadBalancerId?: pulumi.Input<string>;
     /**
@@ -240,7 +250,7 @@ export interface ListenerState {
      */
     readonly quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
     readonly requestTimeout?: pulumi.Input<number>;
     /**
@@ -270,6 +280,10 @@ export interface ListenerArgs {
      */
     readonly accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig>;
     /**
+     * The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+     */
+    readonly aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
+    /**
      * The Certificates.
      */
     readonly certificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCertificate>[]>;
@@ -286,27 +300,27 @@ export interface ListenerArgs {
      */
     readonly gzipEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+     * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
      */
     readonly http2Enabled?: pulumi.Input<boolean>;
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 miao.
+     * Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
      */
     readonly idleTimeout?: pulumi.Input<number>;
     /**
-     * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\x00-\xff]|[\w.,;/@-]){2,256}$/.
+     * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
      */
     readonly listenerDescription?: pulumi.Input<string>;
     /**
-     * The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+     * The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
      */
     readonly listenerPort: pulumi.Input<number>;
     /**
-     * Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+     * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
      */
     readonly listenerProtocol: pulumi.Input<string>;
     /**
-     * The SLB Instance Id.
+     * The ALB Instance Id.
      */
     readonly loadBalancerId: pulumi.Input<string>;
     /**
@@ -314,7 +328,7 @@ export interface ListenerArgs {
      */
     readonly quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
     readonly requestTimeout?: pulumi.Input<number>;
     /**

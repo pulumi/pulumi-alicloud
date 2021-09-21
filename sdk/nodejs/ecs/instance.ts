@@ -226,7 +226,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly systemDiskName!: pulumi.Output<string | undefined>;
     /**
-     * The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL0`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+     * The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
      */
     public readonly systemDiskPerformanceLevel!: pulumi.Output<string>;
     /**
@@ -570,7 +570,7 @@ export interface InstanceState {
      */
     readonly systemDiskName?: pulumi.Input<string>;
     /**
-     * The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL0`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+     * The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
      */
     readonly systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**
@@ -783,7 +783,7 @@ export interface InstanceArgs {
      */
     readonly systemDiskName?: pulumi.Input<string>;
     /**
-     * The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL0`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+     * The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
      */
     readonly systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**

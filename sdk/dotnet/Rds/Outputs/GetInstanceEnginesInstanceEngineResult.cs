@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Rds.Outputs
     public sealed class GetInstanceEnginesInstanceEngineResult
     {
         /// <summary>
-        /// DB Instance category.
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
         /// </summary>
         public readonly string Category;
         /// <summary>
-        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+        /// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
         /// </summary>
         public readonly string Engine;
         /// <summary>

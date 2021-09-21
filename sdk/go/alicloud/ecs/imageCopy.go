@@ -65,6 +65,7 @@ import (
 type ImageCopy struct {
 	pulumi.CustomResourceState
 
+	DeleteAutoSnapshot pulumi.BoolPtrOutput `pulumi:"deleteAutoSnapshot"`
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Indicates whether to encrypt the image.
@@ -122,6 +123,7 @@ func GetImageCopy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ImageCopy resources.
 type imageCopyState struct {
+	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description *string `pulumi:"description"`
 	// Indicates whether to encrypt the image.
@@ -145,6 +147,7 @@ type imageCopyState struct {
 }
 
 type ImageCopyState struct {
+	DeleteAutoSnapshot pulumi.BoolPtrInput
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description pulumi.StringPtrInput
 	// Indicates whether to encrypt the image.
@@ -172,6 +175,7 @@ func (ImageCopyState) ElementType() reflect.Type {
 }
 
 type imageCopyArgs struct {
+	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description *string `pulumi:"description"`
 	// Indicates whether to encrypt the image.
@@ -196,6 +200,7 @@ type imageCopyArgs struct {
 
 // The set of arguments for constructing a ImageCopy resource.
 type ImageCopyArgs struct {
+	DeleteAutoSnapshot pulumi.BoolPtrInput
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description pulumi.StringPtrInput
 	// Indicates whether to encrypt the image.

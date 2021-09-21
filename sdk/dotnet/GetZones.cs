@@ -74,7 +74,6 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
-        /// &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
         /// </summary>
         [Input("availableSlbAddressIpVersion")]
         public string? AvailableSlbAddressIpVersion { get; set; }

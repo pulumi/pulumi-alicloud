@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SystemDiskName { get; private set; } = null!;
 
         /// <summary>
-        /// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL0`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+        /// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         /// </summary>
         [Output("systemDiskPerformanceLevel")]
         public Output<string> SystemDiskPerformanceLevel { get; private set; } = null!;
@@ -642,7 +642,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
-        /// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL0`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+        /// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         /// </summary>
         [Input("systemDiskPerformanceLevel")]
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
@@ -980,7 +980,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
-        /// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL0`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+        /// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         /// </summary>
         [Input("systemDiskPerformanceLevel")]
         public Input<string>? SystemDiskPerformanceLevel { get; set; }

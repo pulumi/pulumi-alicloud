@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _restoreIds;
 
         /// <summary>
-        /// The restore id.
+        /// The ID of restore job.
         /// </summary>
         public List<string> RestoreIds
         {
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
         /// </summary>
         [Input("restoreType", required: true)]
         public string RestoreType { get; set; } = null!;
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _sourceTypes;
 
         /// <summary>
-        /// The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
         /// </summary>
         public List<string> SourceTypes
         {
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The Restore Job Status.
+        /// The status of restore job.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _targetBuckets;
 
         /// <summary>
-        /// The Target ofo OSS Bucket Name.
+        /// The name of target ofo OSS bucket.
         /// </summary>
         public List<string> TargetBuckets
         {
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _targetFileSystemIds;
 
         /// <summary>
-        /// The Destination File System ID.
+        /// The ID of destination file system.
         /// </summary>
         public List<string> TargetFileSystemIds
         {
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _targetInstanceIds;
 
         /// <summary>
-        /// Objective to ECS Instance Id.
+        /// The ID of target ECS instance.
         /// </summary>
         public List<string> TargetInstanceIds
         {
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _vaultIds;
 
         /// <summary>
-        /// The ID of Vault.
+        /// The ID of backup vault.
         /// </summary>
         public List<string> VaultIds
         {

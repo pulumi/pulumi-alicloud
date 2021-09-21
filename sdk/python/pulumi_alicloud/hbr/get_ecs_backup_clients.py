@@ -94,7 +94,7 @@ def get_ecs_backup_clients(ids: Optional[Sequence[str]] = None,
                            status: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEcsBackupClientsResult:
     """
-    This data source provides the Hbr Ecs Backup Clients of the current Alibaba Cloud user.
+    This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.132.0+.
 

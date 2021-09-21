@@ -39,7 +39,6 @@ export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Prom
     }
     return pulumi.runtime.invoke("alicloud:alb/getRules:getRules", {
         "ids": args.ids,
-        "listenerId": args.listenerId,
         "listenerIds": args.listenerIds,
         "loadBalancerIds": args.loadBalancerIds,
         "nameRegex": args.nameRegex,
@@ -57,10 +56,6 @@ export interface GetRulesArgs {
      * A list of Rule IDs.
      */
     readonly ids?: string[];
-    /**
-     * The ID of the listener to which the forwarding rule belongs.
-     */
-    readonly listenerId?: string;
     /**
      * The listener ids.
      */
@@ -93,7 +88,6 @@ export interface GetRulesResult {
      */
     readonly id: string;
     readonly ids: string[];
-    readonly listenerId?: string;
     readonly listenerIds?: string[];
     readonly loadBalancerIds?: string[];
     readonly nameRegex?: string;

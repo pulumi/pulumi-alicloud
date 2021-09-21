@@ -16,6 +16,7 @@ __all__ = ['ImageArgs', 'Image']
 class ImageArgs:
     def __init__(__self__, *,
                  architecture: Optional[pulumi.Input[str]] = None,
+                 delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -43,6 +44,8 @@ class ImageArgs:
         """
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
+        if delete_auto_snapshot is not None:
+            pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_device_mappings is not None:
@@ -78,6 +81,15 @@ class ImageArgs:
     @architecture.setter
     def architecture(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "architecture", value)
+
+    @property
+    @pulumi.getter(name="deleteAutoSnapshot")
+    def delete_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "delete_auto_snapshot")
+
+    @delete_auto_snapshot.setter
+    def delete_auto_snapshot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_auto_snapshot", value)
 
     @property
     @pulumi.getter
@@ -203,6 +215,7 @@ class ImageArgs:
 class _ImageState:
     def __init__(__self__, *,
                  architecture: Optional[pulumi.Input[str]] = None,
+                 delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -230,6 +243,8 @@ class _ImageState:
         """
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
+        if delete_auto_snapshot is not None:
+            pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_device_mappings is not None:
@@ -265,6 +280,15 @@ class _ImageState:
     @architecture.setter
     def architecture(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "architecture", value)
+
+    @property
+    @pulumi.getter(name="deleteAutoSnapshot")
+    def delete_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "delete_auto_snapshot")
+
+    @delete_auto_snapshot.setter
+    def delete_auto_snapshot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_auto_snapshot", value)
 
     @property
     @pulumi.getter
@@ -392,6 +416,7 @@ class Image(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  architecture: Optional[pulumi.Input[str]] = None,
+                 delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -514,6 +539,7 @@ class Image(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  architecture: Optional[pulumi.Input[str]] = None,
+                 delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -537,6 +563,7 @@ class Image(pulumi.CustomResource):
             __props__ = ImageArgs.__new__(ImageArgs)
 
             __props__.__dict__["architecture"] = architecture
+            __props__.__dict__["delete_auto_snapshot"] = delete_auto_snapshot
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_device_mappings"] = disk_device_mappings
             __props__.__dict__["force"] = force
@@ -561,6 +588,7 @@ class Image(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             architecture: Optional[pulumi.Input[str]] = None,
+            delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]]] = None,
             force: Optional[pulumi.Input[bool]] = None,
@@ -596,6 +624,7 @@ class Image(pulumi.CustomResource):
         __props__ = _ImageState.__new__(_ImageState)
 
         __props__.__dict__["architecture"] = architecture
+        __props__.__dict__["delete_auto_snapshot"] = delete_auto_snapshot
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_device_mappings"] = disk_device_mappings
         __props__.__dict__["force"] = force
@@ -615,6 +644,11 @@ class Image(pulumi.CustomResource):
         Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
         """
         return pulumi.get(self, "architecture")
+
+    @property
+    @pulumi.getter(name="deleteAutoSnapshot")
+    def delete_auto_snapshot(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "delete_auto_snapshot")
 
     @property
     @pulumi.getter

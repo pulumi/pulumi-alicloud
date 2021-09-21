@@ -92,6 +92,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+     * * UPGRADE: The specifications are upgraded.
+     * * DOWNGRADE: The specifications are downgraded.
+     * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     */
+    public readonly orderType!: pulumi.Output<string | undefined>;
+    /**
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      */
     public readonly period!: pulumi.Output<number>;
@@ -171,6 +178,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
             inputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["orderType"] = state ? state.orderType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["replicaSetName"] = state ? state.replicaSetName : undefined;
             inputs["replicationFactor"] = state ? state.replicationFactor : undefined;
@@ -207,6 +215,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
             inputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["orderType"] = args ? args.orderType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["replicationFactor"] = args ? args.replicationFactor : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
@@ -282,6 +291,13 @@ export interface InstanceState {
      * The name of DB instance. It a string of 2 to 256 characters.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+     * * UPGRADE: The specifications are upgraded.
+     * * DOWNGRADE: The specifications are downgraded.
+     * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     */
+    readonly orderType?: pulumi.Input<string>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      */
@@ -392,6 +408,13 @@ export interface InstanceArgs {
      * The name of DB instance. It a string of 2 to 256 characters.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+     * * UPGRADE: The specifications are upgraded.
+     * * DOWNGRADE: The specifications are downgraded.
+     * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     */
+    readonly orderType?: pulumi.Input<string>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      */

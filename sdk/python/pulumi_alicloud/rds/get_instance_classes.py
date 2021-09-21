@@ -20,13 +20,16 @@ class GetInstanceClassesResult:
     """
     A collection of values returned by getInstanceClasses.
     """
-    def __init__(__self__, category=None, db_instance_class=None, engine=None, engine_version=None, id=None, ids=None, instance_charge_type=None, instance_classes=None, multi_zone=None, output_file=None, sorted_by=None, storage_type=None, zone_id=None):
+    def __init__(__self__, category=None, db_instance_class=None, db_instance_storage_type=None, engine=None, engine_version=None, id=None, ids=None, instance_charge_type=None, instance_classes=None, multi_zone=None, output_file=None, sorted_by=None, storage_type=None, zone_id=None):
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         pulumi.set(__self__, "category", category)
         if db_instance_class and not isinstance(db_instance_class, str):
             raise TypeError("Expected argument 'db_instance_class' to be a str")
         pulumi.set(__self__, "db_instance_class", db_instance_class)
+        if db_instance_storage_type and not isinstance(db_instance_storage_type, str):
+            raise TypeError("Expected argument 'db_instance_storage_type' to be a str")
+        pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if engine and not isinstance(engine, str):
             raise TypeError("Expected argument 'engine' to be a str")
         pulumi.set(__self__, "engine", engine)
@@ -70,6 +73,11 @@ class GetInstanceClassesResult:
     @pulumi.getter(name="dbInstanceClass")
     def db_instance_class(self) -> Optional[str]:
         return pulumi.get(self, "db_instance_class")
+
+    @property
+    @pulumi.getter(name="dbInstanceStorageType")
+    def db_instance_storage_type(self) -> Optional[str]:
+        return pulumi.get(self, "db_instance_storage_type")
 
     @property
     @pulumi.getter
@@ -144,6 +152,7 @@ class AwaitableGetInstanceClassesResult(GetInstanceClassesResult):
         return GetInstanceClassesResult(
             category=self.category,
             db_instance_class=self.db_instance_class,
+            db_instance_storage_type=self.db_instance_storage_type,
             engine=self.engine,
             engine_version=self.engine_version,
             id=self.id,
@@ -159,6 +168,7 @@ class AwaitableGetInstanceClassesResult(GetInstanceClassesResult):
 
 def get_instance_classes(category: Optional[str] = None,
                          db_instance_class: Optional[str] = None,
+                         db_instance_storage_type: Optional[str] = None,
                          engine: Optional[str] = None,
                          engine_version: Optional[str] = None,
                          instance_charge_type: Optional[str] = None,
@@ -187,18 +197,20 @@ def get_instance_classes(category: Optional[str] = None,
     ```
 
 
-    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
     :param str db_instance_class: The DB instance class type by the user.
-    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+    :param str db_instance_storage_type: Same as `storage_type`.
+    :param str engine: Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
     :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
-    :param str storage_type: The DB instance storage space required by the user. Valid values: `cloud_ssd` and `local_ssd`.
+    :param str storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3"
     :param str zone_id: The Zone to launch the DB instance.
     """
     __args__ = dict()
     __args__['category'] = category
     __args__['dbInstanceClass'] = db_instance_class
+    __args__['dbInstanceStorageType'] = db_instance_storage_type
     __args__['engine'] = engine
     __args__['engineVersion'] = engine_version
     __args__['instanceChargeType'] = instance_charge_type
@@ -216,6 +228,7 @@ def get_instance_classes(category: Optional[str] = None,
     return AwaitableGetInstanceClassesResult(
         category=__ret__.category,
         db_instance_class=__ret__.db_instance_class,
+        db_instance_storage_type=__ret__.db_instance_storage_type,
         engine=__ret__.engine,
         engine_version=__ret__.engine_version,
         id=__ret__.id,

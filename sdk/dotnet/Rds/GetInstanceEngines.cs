@@ -53,7 +53,19 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetInstanceEnginesArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        /// </summary>
+        [Input("category")]
+        public string? Category { get; set; }
+
+        /// <summary>
+        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+        /// </summary>
+        [Input("dbInstanceStorageType")]
+        public string? DbInstanceStorageType { get; set; }
+
+        /// <summary>
+        /// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
@@ -95,6 +107,11 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetInstanceEnginesResult
     {
         /// <summary>
+        /// DB Instance category.
+        /// </summary>
+        public readonly string? Category;
+        public readonly string? DbInstanceStorageType;
+        /// <summary>
         /// Database type.
         /// </summary>
         public readonly string? Engine;
@@ -106,6 +123,10 @@ namespace Pulumi.AliCloud.Rds
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of engines.
+        /// </summary>
+        public readonly ImmutableArray<string> Ids;
         public readonly string? InstanceChargeType;
         /// <summary>
         /// A list of Rds available resource. Each element contains the following attributes:
@@ -117,11 +138,17 @@ namespace Pulumi.AliCloud.Rds
 
         [OutputConstructor]
         private GetInstanceEnginesResult(
+            string? category,
+
+            string? dbInstanceStorageType,
+
             string? engine,
 
             string? engineVersion,
 
             string id,
+
+            ImmutableArray<string> ids,
 
             string? instanceChargeType,
 
@@ -133,9 +160,12 @@ namespace Pulumi.AliCloud.Rds
 
             string? zoneId)
         {
+            Category = category;
+            DbInstanceStorageType = dbInstanceStorageType;
             Engine = engine;
             EngineVersion = engineVersion;
             Id = id;
+            Ids = ids;
             InstanceChargeType = instanceChargeType;
             InstanceEngines = instanceEngines;
             MultiZone = multiZone;

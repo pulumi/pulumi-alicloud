@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The ECS Instance Id. Must Have Installed the Client.
+        /// The ID of ECS instance.
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Vault ID.
+        /// The ID of Backup vault.
         /// </summary>
         [Input("vaultId")]
         public string? VaultId { get; set; }

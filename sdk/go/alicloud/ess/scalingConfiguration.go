@@ -69,6 +69,8 @@ type ScalingConfiguration struct {
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
 	PasswordInherit pulumi.BoolPtrOutput `pulumi:"passwordInherit"`
+	// ID of resource group.
+	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringPtrOutput `pulumi:"roleName"`
 	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
@@ -181,6 +183,8 @@ type scalingConfigurationState struct {
 	Password *string `pulumi:"password"`
 	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
 	PasswordInherit *bool `pulumi:"passwordInherit"`
+	// ID of resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName *string `pulumi:"roleName"`
 	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
@@ -262,6 +266,8 @@ type ScalingConfigurationState struct {
 	Password pulumi.StringPtrInput
 	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
 	PasswordInherit pulumi.BoolPtrInput
+	// ID of resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringPtrInput
 	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
@@ -347,6 +353,8 @@ type scalingConfigurationArgs struct {
 	Password *string `pulumi:"password"`
 	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
 	PasswordInherit *bool `pulumi:"passwordInherit"`
+	// ID of resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName *string `pulumi:"roleName"`
 	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
@@ -429,6 +437,8 @@ type ScalingConfigurationArgs struct {
 	Password pulumi.StringPtrInput
 	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
 	PasswordInherit pulumi.BoolPtrInput
+	// ID of resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringPtrInput
 	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.

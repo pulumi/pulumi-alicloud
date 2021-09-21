@@ -3,7 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .binding import *
 from .exchange import *
+from .get_bindings import *
 from .get_exchanges import *
 from .get_instances import *
 from .get_queues import *
@@ -25,7 +27,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:amqp/exchange:Exchange":
+            if typ == "alicloud:amqp/binding:Binding":
+                return Binding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:amqp/exchange:Exchange":
                 return Exchange(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:amqp/instance:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
@@ -38,6 +42,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "amqp/binding", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "amqp/exchange", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "amqp/instance", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "amqp/queue", _module_instance)

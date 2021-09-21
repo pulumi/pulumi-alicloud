@@ -3,11 +3,23 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .get_host_accounts import *
+from .get_host_groups import *
+from .get_hosts import *
 from .get_instances import *
 from .get_user_groups import *
 from .get_users import *
+from .host import *
+from .host_account import *
+from .host_account_user_attachment import *
+from .host_account_user_group_attachment import *
+from .host_attachment import *
+from .host_group import *
+from .host_group_account_user_attachment import *
+from .host_group_account_user_group_attachment import *
 from .instance import *
 from .user import *
+from .user_attachment import *
 from .user_group import *
 from . import outputs
 
@@ -23,10 +35,28 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:bastionhost/instance:Instance":
+            if typ == "alicloud:bastionhost/host:Host":
+                return Host(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:bastionhost/hostAccount:HostAccount":
+                return HostAccount(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment":
+                return HostAccountUserAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment":
+                return HostAccountUserGroupAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:bastionhost/hostAttachment:HostAttachment":
+                return HostAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:bastionhost/hostGroup:HostGroup":
+                return HostGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:bastionhost/hostGroupAccountUserAttachment:HostGroupAccountUserAttachment":
+                return HostGroupAccountUserAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment":
+                return HostGroupAccountUserGroupAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:bastionhost/instance:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:bastionhost/user:User":
                 return User(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:bastionhost/userAttachment:UserAttachment":
+                return UserAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:bastionhost/userGroup:UserGroup":
                 return UserGroup(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -34,8 +64,17 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "bastionhost/host", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "bastionhost/hostAccount", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "bastionhost/hostAccountUserAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "bastionhost/hostAccountUserGroupAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "bastionhost/hostAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "bastionhost/hostGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "bastionhost/hostGroupAccountUserAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "bastionhost/hostGroupAccountUserGroupAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "bastionhost/instance", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "bastionhost/user", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "bastionhost/userAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "bastionhost/userGroup", _module_instance)
 
 _register_module()

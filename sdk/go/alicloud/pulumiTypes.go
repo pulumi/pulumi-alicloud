@@ -199,21 +199,26 @@ type ProviderEndpoint struct {
 	Cddc                *string `pulumi:"cddc"`
 	Cdn                 *string `pulumi:"cdn"`
 	Cds                 *string `pulumi:"cds"`
+	Clickhouse          *string `pulumi:"clickhouse"`
 	Cloudphone          *string `pulumi:"cloudphone"`
+	Cloudsso            *string `pulumi:"cloudsso"`
 	Cms                 *string `pulumi:"cms"`
 	Config              *string `pulumi:"config"`
 	Cr                  *string `pulumi:"cr"`
 	Cs                  *string `pulumi:"cs"`
 	Datahub             *string `pulumi:"datahub"`
 	Dataworkspublic     *string `pulumi:"dataworkspublic"`
+	Dbfs                *string `pulumi:"dbfs"`
 	Dcdn                *string `pulumi:"dcdn"`
 	Ddosbgp             *string `pulumi:"ddosbgp"`
 	Ddoscoo             *string `pulumi:"ddoscoo"`
 	Dds                 *string `pulumi:"dds"`
+	Dg                  *string `pulumi:"dg"`
 	Dm                  *string `pulumi:"dm"`
 	DmsEnterprise       *string `pulumi:"dmsEnterprise"`
 	Dns                 *string `pulumi:"dns"`
 	Drds                *string `pulumi:"drds"`
+	Dts                 *string `pulumi:"dts"`
 	Eci                 *string `pulumi:"eci"`
 	Ecs                 *string `pulumi:"ecs"`
 	Ehpc                *string `pulumi:"ehpc"`
@@ -226,12 +231,15 @@ type ProviderEndpoint struct {
 	Fc                  *string `pulumi:"fc"`
 	Fnf                 *string `pulumi:"fnf"`
 	Ga                  *string `pulumi:"ga"`
+	Gds                 *string `pulumi:"gds"`
 	Gpdb                *string `pulumi:"gpdb"`
 	Gwsecd              *string `pulumi:"gwsecd"`
 	Hbr                 *string `pulumi:"hbr"`
 	HcsSgw              *string `pulumi:"hcsSgw"`
 	Hitsdb              *string `pulumi:"hitsdb"`
+	Imm                 *string `pulumi:"imm"`
 	Ims                 *string `pulumi:"ims"`
+	Iot                 *string `pulumi:"iot"`
 	Kms                 *string `pulumi:"kms"`
 	Kvstore             *string `pulumi:"kvstore"`
 	Location            *string `pulumi:"location"`
@@ -245,11 +253,13 @@ type ProviderEndpoint struct {
 	Ons                 *string `pulumi:"ons"`
 	Onsproxy            *string `pulumi:"onsproxy"`
 	Oos                 *string `pulumi:"oos"`
+	Opensearch          *string `pulumi:"opensearch"`
 	Oss                 *string `pulumi:"oss"`
 	Ots                 *string `pulumi:"ots"`
 	Polardb             *string `pulumi:"polardb"`
 	Privatelink         *string `pulumi:"privatelink"`
 	Pvtz                *string `pulumi:"pvtz"`
+	Quickbi             *string `pulumi:"quickbi"`
 	Quotas              *string `pulumi:"quotas"`
 	RKvstore            *string `pulumi:"rKvstore"`
 	Ram                 *string `pulumi:"ram"`
@@ -265,7 +275,11 @@ type ProviderEndpoint struct {
 	Sgw                 *string `pulumi:"sgw"`
 	Slb                 *string `pulumi:"slb"`
 	Sts                 *string `pulumi:"sts"`
+	Swas                *string `pulumi:"swas"`
+	Vod                 *string `pulumi:"vod"`
 	Vpc                 *string `pulumi:"vpc"`
+	Vs                  *string `pulumi:"vs"`
+	Waf                 *string `pulumi:"waf"`
 	WafOpenapi          *string `pulumi:"wafOpenapi"`
 }
 
@@ -298,21 +312,26 @@ type ProviderEndpointArgs struct {
 	Cddc                pulumi.StringPtrInput `pulumi:"cddc"`
 	Cdn                 pulumi.StringPtrInput `pulumi:"cdn"`
 	Cds                 pulumi.StringPtrInput `pulumi:"cds"`
+	Clickhouse          pulumi.StringPtrInput `pulumi:"clickhouse"`
 	Cloudphone          pulumi.StringPtrInput `pulumi:"cloudphone"`
+	Cloudsso            pulumi.StringPtrInput `pulumi:"cloudsso"`
 	Cms                 pulumi.StringPtrInput `pulumi:"cms"`
 	Config              pulumi.StringPtrInput `pulumi:"config"`
 	Cr                  pulumi.StringPtrInput `pulumi:"cr"`
 	Cs                  pulumi.StringPtrInput `pulumi:"cs"`
 	Datahub             pulumi.StringPtrInput `pulumi:"datahub"`
 	Dataworkspublic     pulumi.StringPtrInput `pulumi:"dataworkspublic"`
+	Dbfs                pulumi.StringPtrInput `pulumi:"dbfs"`
 	Dcdn                pulumi.StringPtrInput `pulumi:"dcdn"`
 	Ddosbgp             pulumi.StringPtrInput `pulumi:"ddosbgp"`
 	Ddoscoo             pulumi.StringPtrInput `pulumi:"ddoscoo"`
 	Dds                 pulumi.StringPtrInput `pulumi:"dds"`
+	Dg                  pulumi.StringPtrInput `pulumi:"dg"`
 	Dm                  pulumi.StringPtrInput `pulumi:"dm"`
 	DmsEnterprise       pulumi.StringPtrInput `pulumi:"dmsEnterprise"`
 	Dns                 pulumi.StringPtrInput `pulumi:"dns"`
 	Drds                pulumi.StringPtrInput `pulumi:"drds"`
+	Dts                 pulumi.StringPtrInput `pulumi:"dts"`
 	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
 	Ehpc                pulumi.StringPtrInput `pulumi:"ehpc"`
@@ -325,12 +344,15 @@ type ProviderEndpointArgs struct {
 	Fc                  pulumi.StringPtrInput `pulumi:"fc"`
 	Fnf                 pulumi.StringPtrInput `pulumi:"fnf"`
 	Ga                  pulumi.StringPtrInput `pulumi:"ga"`
+	Gds                 pulumi.StringPtrInput `pulumi:"gds"`
 	Gpdb                pulumi.StringPtrInput `pulumi:"gpdb"`
 	Gwsecd              pulumi.StringPtrInput `pulumi:"gwsecd"`
 	Hbr                 pulumi.StringPtrInput `pulumi:"hbr"`
 	HcsSgw              pulumi.StringPtrInput `pulumi:"hcsSgw"`
 	Hitsdb              pulumi.StringPtrInput `pulumi:"hitsdb"`
+	Imm                 pulumi.StringPtrInput `pulumi:"imm"`
 	Ims                 pulumi.StringPtrInput `pulumi:"ims"`
+	Iot                 pulumi.StringPtrInput `pulumi:"iot"`
 	Kms                 pulumi.StringPtrInput `pulumi:"kms"`
 	Kvstore             pulumi.StringPtrInput `pulumi:"kvstore"`
 	Location            pulumi.StringPtrInput `pulumi:"location"`
@@ -344,11 +366,13 @@ type ProviderEndpointArgs struct {
 	Ons                 pulumi.StringPtrInput `pulumi:"ons"`
 	Onsproxy            pulumi.StringPtrInput `pulumi:"onsproxy"`
 	Oos                 pulumi.StringPtrInput `pulumi:"oos"`
+	Opensearch          pulumi.StringPtrInput `pulumi:"opensearch"`
 	Oss                 pulumi.StringPtrInput `pulumi:"oss"`
 	Ots                 pulumi.StringPtrInput `pulumi:"ots"`
 	Polardb             pulumi.StringPtrInput `pulumi:"polardb"`
 	Privatelink         pulumi.StringPtrInput `pulumi:"privatelink"`
 	Pvtz                pulumi.StringPtrInput `pulumi:"pvtz"`
+	Quickbi             pulumi.StringPtrInput `pulumi:"quickbi"`
 	Quotas              pulumi.StringPtrInput `pulumi:"quotas"`
 	RKvstore            pulumi.StringPtrInput `pulumi:"rKvstore"`
 	Ram                 pulumi.StringPtrInput `pulumi:"ram"`
@@ -364,7 +388,11 @@ type ProviderEndpointArgs struct {
 	Sgw                 pulumi.StringPtrInput `pulumi:"sgw"`
 	Slb                 pulumi.StringPtrInput `pulumi:"slb"`
 	Sts                 pulumi.StringPtrInput `pulumi:"sts"`
+	Swas                pulumi.StringPtrInput `pulumi:"swas"`
+	Vod                 pulumi.StringPtrInput `pulumi:"vod"`
 	Vpc                 pulumi.StringPtrInput `pulumi:"vpc"`
+	Vs                  pulumi.StringPtrInput `pulumi:"vs"`
+	Waf                 pulumi.StringPtrInput `pulumi:"waf"`
 	WafOpenapi          pulumi.StringPtrInput `pulumi:"wafOpenapi"`
 }
 
@@ -487,8 +515,16 @@ func (o ProviderEndpointOutput) Cds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cds }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Clickhouse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Clickhouse }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Cloudphone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudphone }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Cloudsso() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudsso }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Cms() pulumi.StringPtrOutput {
@@ -515,6 +551,10 @@ func (o ProviderEndpointOutput) Dataworkspublic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dataworkspublic }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Dbfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dbfs }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Dcdn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dcdn }).(pulumi.StringPtrOutput)
 }
@@ -531,6 +571,10 @@ func (o ProviderEndpointOutput) Dds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dds }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Dg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dg }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Dm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dm }).(pulumi.StringPtrOutput)
 }
@@ -545,6 +589,10 @@ func (o ProviderEndpointOutput) Dns() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Drds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Drds }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Dts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dts }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Eci() pulumi.StringPtrOutput {
@@ -595,6 +643,10 @@ func (o ProviderEndpointOutput) Ga() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ga }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Gds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Gds }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Gpdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Gpdb }).(pulumi.StringPtrOutput)
 }
@@ -615,8 +667,16 @@ func (o ProviderEndpointOutput) Hitsdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Hitsdb }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Imm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Imm }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Ims() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ims }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Iot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Iot }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Kms() pulumi.StringPtrOutput {
@@ -671,6 +731,10 @@ func (o ProviderEndpointOutput) Oos() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Oos }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Opensearch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Oss() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Oss }).(pulumi.StringPtrOutput)
 }
@@ -689,6 +753,10 @@ func (o ProviderEndpointOutput) Privatelink() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Pvtz() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Pvtz }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Quickbi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Quickbi }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Quotas() pulumi.StringPtrOutput {
@@ -751,8 +819,24 @@ func (o ProviderEndpointOutput) Sts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Sts }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Swas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Swas }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Vod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vod }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Vpc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Vs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vs }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Waf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Waf }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) WafOpenapi() pulumi.StringPtrOutput {
@@ -804,7 +888,7 @@ type GetMscSubContractsContact struct {
 	LastMobileVerificationTimeStamp string `pulumi:"lastMobileVerificationTimeStamp"`
 	// The User's Telephone.
 	Mobile string `pulumi:"mobile"`
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
 	Position string `pulumi:"position"`
 }
 
@@ -844,7 +928,7 @@ type GetMscSubContractsContactArgs struct {
 	LastMobileVerificationTimeStamp pulumi.StringInput `pulumi:"lastMobileVerificationTimeStamp"`
 	// The User's Telephone.
 	Mobile pulumi.StringInput `pulumi:"mobile"`
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
 	Position pulumi.StringInput `pulumi:"position"`
 }
 
@@ -959,7 +1043,7 @@ func (o GetMscSubContractsContactOutput) Mobile() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMscSubContractsContact) string { return v.Mobile }).(pulumi.StringOutput)
 }
 
-// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
 func (o GetMscSubContractsContactOutput) Position() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMscSubContractsContact) string { return v.Position }).(pulumi.StringOutput)
 }
@@ -982,6 +1066,202 @@ func (o GetMscSubContractsContactArrayOutput) Index(i pulumi.IntInput) GetMscSub
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMscSubContractsContact {
 		return vs[0].([]GetMscSubContractsContact)[vs[1].(int)]
 	}).(GetMscSubContractsContactOutput)
+}
+
+type GetMscSubSubscriptionsSubscription struct {
+	// The channel the Subscription.
+	Channel string `pulumi:"channel"`
+	// The ids of subscribed contacts.
+	ContactIds []int `pulumi:"contactIds"`
+	// The description of the Subscription.
+	Description string `pulumi:"description"`
+	// The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+	EmailStatus int `pulumi:"emailStatus"`
+	// The ID of the Subscription.
+	Id string `pulumi:"id"`
+	// The ID of the Subscription.
+	ItemId string `pulumi:"itemId"`
+	// The name of the Subscription.
+	ItemName string `pulumi:"itemName"`
+	// The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+	PmsgStatus int `pulumi:"pmsgStatus"`
+	// The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+	SmsStatus int `pulumi:"smsStatus"`
+	// The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+	TtsStatus int `pulumi:"ttsStatus"`
+	// The ids of subscribed webhooks.
+	WebhookIds []int `pulumi:"webhookIds"`
+	// The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+	WebhookStatus int `pulumi:"webhookStatus"`
+}
+
+// GetMscSubSubscriptionsSubscriptionInput is an input type that accepts GetMscSubSubscriptionsSubscriptionArgs and GetMscSubSubscriptionsSubscriptionOutput values.
+// You can construct a concrete instance of `GetMscSubSubscriptionsSubscriptionInput` via:
+//
+//          GetMscSubSubscriptionsSubscriptionArgs{...}
+type GetMscSubSubscriptionsSubscriptionInput interface {
+	pulumi.Input
+
+	ToGetMscSubSubscriptionsSubscriptionOutput() GetMscSubSubscriptionsSubscriptionOutput
+	ToGetMscSubSubscriptionsSubscriptionOutputWithContext(context.Context) GetMscSubSubscriptionsSubscriptionOutput
+}
+
+type GetMscSubSubscriptionsSubscriptionArgs struct {
+	// The channel the Subscription.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The ids of subscribed contacts.
+	ContactIds pulumi.IntArrayInput `pulumi:"contactIds"`
+	// The description of the Subscription.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+	EmailStatus pulumi.IntInput `pulumi:"emailStatus"`
+	// The ID of the Subscription.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the Subscription.
+	ItemId pulumi.StringInput `pulumi:"itemId"`
+	// The name of the Subscription.
+	ItemName pulumi.StringInput `pulumi:"itemName"`
+	// The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+	PmsgStatus pulumi.IntInput `pulumi:"pmsgStatus"`
+	// The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+	SmsStatus pulumi.IntInput `pulumi:"smsStatus"`
+	// The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+	TtsStatus pulumi.IntInput `pulumi:"ttsStatus"`
+	// The ids of subscribed webhooks.
+	WebhookIds pulumi.IntArrayInput `pulumi:"webhookIds"`
+	// The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+	WebhookStatus pulumi.IntInput `pulumi:"webhookStatus"`
+}
+
+func (GetMscSubSubscriptionsSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMscSubSubscriptionsSubscription)(nil)).Elem()
+}
+
+func (i GetMscSubSubscriptionsSubscriptionArgs) ToGetMscSubSubscriptionsSubscriptionOutput() GetMscSubSubscriptionsSubscriptionOutput {
+	return i.ToGetMscSubSubscriptionsSubscriptionOutputWithContext(context.Background())
+}
+
+func (i GetMscSubSubscriptionsSubscriptionArgs) ToGetMscSubSubscriptionsSubscriptionOutputWithContext(ctx context.Context) GetMscSubSubscriptionsSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubSubscriptionsSubscriptionOutput)
+}
+
+// GetMscSubSubscriptionsSubscriptionArrayInput is an input type that accepts GetMscSubSubscriptionsSubscriptionArray and GetMscSubSubscriptionsSubscriptionArrayOutput values.
+// You can construct a concrete instance of `GetMscSubSubscriptionsSubscriptionArrayInput` via:
+//
+//          GetMscSubSubscriptionsSubscriptionArray{ GetMscSubSubscriptionsSubscriptionArgs{...} }
+type GetMscSubSubscriptionsSubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToGetMscSubSubscriptionsSubscriptionArrayOutput() GetMscSubSubscriptionsSubscriptionArrayOutput
+	ToGetMscSubSubscriptionsSubscriptionArrayOutputWithContext(context.Context) GetMscSubSubscriptionsSubscriptionArrayOutput
+}
+
+type GetMscSubSubscriptionsSubscriptionArray []GetMscSubSubscriptionsSubscriptionInput
+
+func (GetMscSubSubscriptionsSubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMscSubSubscriptionsSubscription)(nil)).Elem()
+}
+
+func (i GetMscSubSubscriptionsSubscriptionArray) ToGetMscSubSubscriptionsSubscriptionArrayOutput() GetMscSubSubscriptionsSubscriptionArrayOutput {
+	return i.ToGetMscSubSubscriptionsSubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetMscSubSubscriptionsSubscriptionArray) ToGetMscSubSubscriptionsSubscriptionArrayOutputWithContext(ctx context.Context) GetMscSubSubscriptionsSubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubSubscriptionsSubscriptionArrayOutput)
+}
+
+type GetMscSubSubscriptionsSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (GetMscSubSubscriptionsSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMscSubSubscriptionsSubscription)(nil)).Elem()
+}
+
+func (o GetMscSubSubscriptionsSubscriptionOutput) ToGetMscSubSubscriptionsSubscriptionOutput() GetMscSubSubscriptionsSubscriptionOutput {
+	return o
+}
+
+func (o GetMscSubSubscriptionsSubscriptionOutput) ToGetMscSubSubscriptionsSubscriptionOutputWithContext(ctx context.Context) GetMscSubSubscriptionsSubscriptionOutput {
+	return o
+}
+
+// The channel the Subscription.
+func (o GetMscSubSubscriptionsSubscriptionOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The ids of subscribed contacts.
+func (o GetMscSubSubscriptionsSubscriptionOutput) ContactIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) []int { return v.ContactIds }).(pulumi.IntArrayOutput)
+}
+
+// The description of the Subscription.
+func (o GetMscSubSubscriptionsSubscriptionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+func (o GetMscSubSubscriptionsSubscriptionOutput) EmailStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) int { return v.EmailStatus }).(pulumi.IntOutput)
+}
+
+// The ID of the Subscription.
+func (o GetMscSubSubscriptionsSubscriptionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Subscription.
+func (o GetMscSubSubscriptionsSubscriptionOutput) ItemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) string { return v.ItemId }).(pulumi.StringOutput)
+}
+
+// The name of the Subscription.
+func (o GetMscSubSubscriptionsSubscriptionOutput) ItemName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) string { return v.ItemName }).(pulumi.StringOutput)
+}
+
+// The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+func (o GetMscSubSubscriptionsSubscriptionOutput) PmsgStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) int { return v.PmsgStatus }).(pulumi.IntOutput)
+}
+
+// The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+func (o GetMscSubSubscriptionsSubscriptionOutput) SmsStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) int { return v.SmsStatus }).(pulumi.IntOutput)
+}
+
+// The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+func (o GetMscSubSubscriptionsSubscriptionOutput) TtsStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) int { return v.TtsStatus }).(pulumi.IntOutput)
+}
+
+// The ids of subscribed webhooks.
+func (o GetMscSubSubscriptionsSubscriptionOutput) WebhookIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) []int { return v.WebhookIds }).(pulumi.IntArrayOutput)
+}
+
+// The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+func (o GetMscSubSubscriptionsSubscriptionOutput) WebhookStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsSubscription) int { return v.WebhookStatus }).(pulumi.IntOutput)
+}
+
+type GetMscSubSubscriptionsSubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMscSubSubscriptionsSubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMscSubSubscriptionsSubscription)(nil)).Elem()
+}
+
+func (o GetMscSubSubscriptionsSubscriptionArrayOutput) ToGetMscSubSubscriptionsSubscriptionArrayOutput() GetMscSubSubscriptionsSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetMscSubSubscriptionsSubscriptionArrayOutput) ToGetMscSubSubscriptionsSubscriptionArrayOutputWithContext(ctx context.Context) GetMscSubSubscriptionsSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetMscSubSubscriptionsSubscriptionArrayOutput) Index(i pulumi.IntInput) GetMscSubSubscriptionsSubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMscSubSubscriptionsSubscription {
+		return vs[0].([]GetMscSubSubscriptionsSubscription)[vs[1].(int)]
+	}).(GetMscSubSubscriptionsSubscriptionOutput)
 }
 
 type GetRegionsRegion struct {
@@ -1257,6 +1537,8 @@ func init() {
 	pulumi.RegisterOutputType(ProviderEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetMscSubContractsContactOutput{})
 	pulumi.RegisterOutputType(GetMscSubContractsContactArrayOutput{})
+	pulumi.RegisterOutputType(GetMscSubSubscriptionsSubscriptionOutput{})
+	pulumi.RegisterOutputType(GetMscSubSubscriptionsSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})

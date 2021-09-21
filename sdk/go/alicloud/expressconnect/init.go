@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:expressconnect/physicalConnection:PhysicalConnection":
 		r = &PhysicalConnection{}
+	case "alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter":
+		r = &VirtualBorderRouter{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"expressconnect/physicalConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"expressconnect/virtualBorderRouter",
 		&module{version},
 	)
 }

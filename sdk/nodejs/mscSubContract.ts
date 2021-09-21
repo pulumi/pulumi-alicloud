@@ -74,7 +74,7 @@ export class MscSubContract extends pulumi.CustomResource {
      */
     public readonly mobile!: pulumi.Output<string>;
     /**
-     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
      */
     public readonly position!: pulumi.Output<string>;
 
@@ -138,7 +138,7 @@ export interface MscSubContractState {
      */
     readonly mobile?: pulumi.Input<string>;
     /**
-     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
      */
     readonly position?: pulumi.Input<string>;
 }
@@ -160,7 +160,7 @@ export interface MscSubContractArgs {
      */
     readonly mobile: pulumi.Input<string>;
     /**
-     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
      */
     readonly position: pulumi.Input<string>;
 }

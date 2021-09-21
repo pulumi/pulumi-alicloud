@@ -78,6 +78,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> NatType { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        /// </summary>
+        [Output("networkType")]
+        public Output<string> NetworkType { get; private set; } = null!;
+
+        /// <summary>
         /// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         /// </summary>
         [Output("paymentType")]
@@ -219,6 +225,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NatType { get; set; }
 
         /// <summary>
+        /// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
         /// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
@@ -319,6 +331,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("natType")]
         public Input<string>? NatType { get; set; }
+
+        /// <summary>
+        /// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
 
         /// <summary>
         /// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.

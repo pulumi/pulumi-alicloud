@@ -84,7 +84,7 @@ export class DomainConfig extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the function.
+     * (Available in 1.132.0+) The ID of the domain config function.
      */
     public /*out*/ readonly configId!: pulumi.Output<string>;
     /**
@@ -100,7 +100,7 @@ export class DomainConfig extends pulumi.CustomResource {
      */
     public readonly functionName!: pulumi.Output<string>;
     /**
-     * The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+     * (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -151,7 +151,7 @@ export class DomainConfig extends pulumi.CustomResource {
  */
 export interface DomainConfigState {
     /**
-     * The ID of the function.
+     * (Available in 1.132.0+) The ID of the domain config function.
      */
     readonly configId?: pulumi.Input<string>;
     /**
@@ -167,7 +167,7 @@ export interface DomainConfigState {
      */
     readonly functionName?: pulumi.Input<string>;
     /**
-     * The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+     * (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
      */
     readonly status?: pulumi.Input<string>;
 }

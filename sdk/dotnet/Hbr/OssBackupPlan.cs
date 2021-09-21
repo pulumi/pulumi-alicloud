@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Hbr
     /// <summary>
     /// Provides a HBR Oss Backup Plan resource.
     /// 
-    /// For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/product/hybrid-backup-recovery).
+    /// For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
     /// 
     /// &gt; **NOTE:** Available in v1.131.0+.
     /// 
@@ -29,14 +29,14 @@ namespace Pulumi.AliCloud.Hbr
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "%s";
+    ///         var name = config.Get("name") ?? "example_value";
     ///         var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new AliCloud.Hbr.VaultArgs
     ///         {
     ///             VaultName = name,
     ///         });
     ///         var defaultBuckets = Output.Create(AliCloud.Oss.GetBuckets.InvokeAsync(new AliCloud.Oss.GetBucketsArgs
     ///         {
-    ///             NameRegex = "bosh-cf-blobstore-hz",
+    ///             NameRegex = "oss_bucket_example_name",
     ///         }));
     ///         var example = new AliCloud.Hbr.OssBackupPlan("example", new AliCloud.Hbr.OssBackupPlanArgs
     ///         {
@@ -65,25 +65,25 @@ namespace Pulumi.AliCloud.Hbr
     public partial class OssBackupPlan : Pulumi.CustomResource
     {
         /// <summary>
-        /// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Backup Type. Valid values: `COMPLETE`.
         /// </summary>
         [Output("backupType")]
         public Output<string> BackupType { get; private set; } = null!;
 
         /// <summary>
-        /// The OSS Bucket Name.
+        /// The name of OSS bucket.
         /// </summary>
         [Output("bucket")]
         public Output<string?> Bucket { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to Disable the Backup Task. Valid Values: true, false.
+        /// Whether to disable the backup task. Valid values: `true`, `false`.
         /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         /// </summary>
         [Output("ossBackupPlanName")]
         public Output<string> OssBackupPlanName { get; private set; } = null!;
@@ -92,19 +92,19 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Prefix { get; private set; } = null!;
 
         /// <summary>
-        /// Backup Retention Period, the Minimum Value of 1.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         [Output("retention")]
         public Output<string> Retention { get; private set; } = null!;
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Vault ID.
+        /// The ID of backup vault.
         /// </summary>
         [Output("vaultId")]
         public Output<string?> VaultId { get; private set; } = null!;
@@ -156,25 +156,25 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class OssBackupPlanArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Backup Type. Valid values: `COMPLETE`.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// The OSS Bucket Name.
+        /// The name of OSS bucket.
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Whether to Disable the Backup Task. Valid Values: true, false.
+        /// Whether to disable the backup task. Valid values: `true`, `false`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         /// </summary>
         [Input("ossBackupPlanName", required: true)]
         public Input<string> OssBackupPlanName { get; set; } = null!;
@@ -183,19 +183,19 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
-        /// Backup Retention Period, the Minimum Value of 1.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         [Input("retention", required: true)]
         public Input<string> Retention { get; set; } = null!;
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<string> Schedule { get; set; } = null!;
 
         /// <summary>
-        /// Vault ID.
+        /// The ID of backup vault.
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }
@@ -208,25 +208,25 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class OssBackupPlanState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Backup Type. Valid values: `COMPLETE`.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// The OSS Bucket Name.
+        /// The name of OSS bucket.
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Whether to Disable the Backup Task. Valid Values: true, false.
+        /// Whether to disable the backup task. Valid values: `true`, `false`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         /// </summary>
         [Input("ossBackupPlanName")]
         public Input<string>? OssBackupPlanName { get; set; }
@@ -235,19 +235,19 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
-        /// Backup Retention Period, the Minimum Value of 1.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// Vault ID.
+        /// The ID of backup vault.
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }

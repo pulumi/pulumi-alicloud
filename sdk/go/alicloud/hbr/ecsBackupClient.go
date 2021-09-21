@@ -62,14 +62,13 @@ import (
 // ```
 // ## Notice
 //
-// > Please read the following precautions carefully before deleting a client:
-//
+// > **Note:** Please read the following precautions carefully before deleting a client:
 // 1. You cannot delete active clients that have received heartbeat packets within one hour.
-// 2. You can make the client inactive by change the status of client to `ACTIVATED`.
+// 2. You can make the client inactive by change the status of client to `STOPPED`.
 // 3. The resources bound to the client will be deleted in cascade, including:
-// - Backup plan
-// - Backup task (Running in the background)
-// - Snapshot
+//     - Backup plan
+//     - Backup task (Running in the background)
+//     - Snapshot
 //
 // ## Import
 //
@@ -81,27 +80,27 @@ import (
 type EcsBackupClient struct {
 	pulumi.CustomResourceState
 
-	// The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
 	DataNetworkType pulumi.StringOutput `pulumi:"dataNetworkType"`
-	// The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+	// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
 	DataProxySetting pulumi.StringOutput `pulumi:"dataProxySetting"`
-	// The ECS Instance Id.
+	// The ID of ECS instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+	// Number of CPU cores used by a single backup task, 0 means no restrictions.
 	MaxCpuCore pulumi.StringOutput `pulumi:"maxCpuCore"`
-	// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+	// Number of concurrent jobs for a single backup task, 0 means no restrictions.
 	MaxWorker pulumi.StringOutput `pulumi:"maxWorker"`
-	// Custom Data Plane Proxy Server Host Address.
+	// Custom data plane proxy server host address.
 	ProxyHost pulumi.StringOutput `pulumi:"proxyHost"`
-	// Custom Data Plane Proxy Password.
+	// Custom data plane proxy server password.
 	ProxyPassword pulumi.StringOutput `pulumi:"proxyPassword"`
-	// Custom Data Plane Proxy Server Host Port.
+	// Custom data plane proxy server host port.
 	ProxyPort pulumi.StringOutput `pulumi:"proxyPort"`
-	// Custom Data Plane Proxy Server Username.
+	// Username of custom data plane proxy server.
 	ProxyUser pulumi.StringOutput `pulumi:"proxyUser"`
 	// Status of client. Valid values: `ACTIVATED`, `STOPPED`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+	// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
 	UseHttps pulumi.BoolOutput `pulumi:"useHttps"`
 }
 
@@ -137,52 +136,52 @@ func GetEcsBackupClient(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsBackupClient resources.
 type ecsBackupClientState struct {
-	// The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
 	DataNetworkType *string `pulumi:"dataNetworkType"`
-	// The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+	// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
 	DataProxySetting *string `pulumi:"dataProxySetting"`
-	// The ECS Instance Id.
+	// The ID of ECS instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+	// Number of CPU cores used by a single backup task, 0 means no restrictions.
 	MaxCpuCore *string `pulumi:"maxCpuCore"`
-	// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+	// Number of concurrent jobs for a single backup task, 0 means no restrictions.
 	MaxWorker *string `pulumi:"maxWorker"`
-	// Custom Data Plane Proxy Server Host Address.
+	// Custom data plane proxy server host address.
 	ProxyHost *string `pulumi:"proxyHost"`
-	// Custom Data Plane Proxy Password.
+	// Custom data plane proxy server password.
 	ProxyPassword *string `pulumi:"proxyPassword"`
-	// Custom Data Plane Proxy Server Host Port.
+	// Custom data plane proxy server host port.
 	ProxyPort *string `pulumi:"proxyPort"`
-	// Custom Data Plane Proxy Server Username.
+	// Username of custom data plane proxy server.
 	ProxyUser *string `pulumi:"proxyUser"`
 	// Status of client. Valid values: `ACTIVATED`, `STOPPED`.
 	Status *string `pulumi:"status"`
-	// Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+	// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
 	UseHttps *bool `pulumi:"useHttps"`
 }
 
 type EcsBackupClientState struct {
-	// The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
 	DataNetworkType pulumi.StringPtrInput
-	// The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+	// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
 	DataProxySetting pulumi.StringPtrInput
-	// The ECS Instance Id.
+	// The ID of ECS instance.
 	InstanceId pulumi.StringPtrInput
-	// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+	// Number of CPU cores used by a single backup task, 0 means no restrictions.
 	MaxCpuCore pulumi.StringPtrInput
-	// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+	// Number of concurrent jobs for a single backup task, 0 means no restrictions.
 	MaxWorker pulumi.StringPtrInput
-	// Custom Data Plane Proxy Server Host Address.
+	// Custom data plane proxy server host address.
 	ProxyHost pulumi.StringPtrInput
-	// Custom Data Plane Proxy Password.
+	// Custom data plane proxy server password.
 	ProxyPassword pulumi.StringPtrInput
-	// Custom Data Plane Proxy Server Host Port.
+	// Custom data plane proxy server host port.
 	ProxyPort pulumi.StringPtrInput
-	// Custom Data Plane Proxy Server Username.
+	// Username of custom data plane proxy server.
 	ProxyUser pulumi.StringPtrInput
 	// Status of client. Valid values: `ACTIVATED`, `STOPPED`.
 	Status pulumi.StringPtrInput
-	// Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+	// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
 	UseHttps pulumi.BoolPtrInput
 }
 
@@ -191,53 +190,53 @@ func (EcsBackupClientState) ElementType() reflect.Type {
 }
 
 type ecsBackupClientArgs struct {
-	// The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
 	DataNetworkType *string `pulumi:"dataNetworkType"`
-	// The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+	// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
 	DataProxySetting *string `pulumi:"dataProxySetting"`
-	// The ECS Instance Id.
+	// The ID of ECS instance.
 	InstanceId string `pulumi:"instanceId"`
-	// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+	// Number of CPU cores used by a single backup task, 0 means no restrictions.
 	MaxCpuCore *string `pulumi:"maxCpuCore"`
-	// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+	// Number of concurrent jobs for a single backup task, 0 means no restrictions.
 	MaxWorker *string `pulumi:"maxWorker"`
-	// Custom Data Plane Proxy Server Host Address.
+	// Custom data plane proxy server host address.
 	ProxyHost *string `pulumi:"proxyHost"`
-	// Custom Data Plane Proxy Password.
+	// Custom data plane proxy server password.
 	ProxyPassword *string `pulumi:"proxyPassword"`
-	// Custom Data Plane Proxy Server Host Port.
+	// Custom data plane proxy server host port.
 	ProxyPort *string `pulumi:"proxyPort"`
-	// Custom Data Plane Proxy Server Username.
+	// Username of custom data plane proxy server.
 	ProxyUser *string `pulumi:"proxyUser"`
 	// Status of client. Valid values: `ACTIVATED`, `STOPPED`.
 	Status *string `pulumi:"status"`
-	// Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+	// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
 	UseHttps *bool `pulumi:"useHttps"`
 }
 
 // The set of arguments for constructing a EcsBackupClient resource.
 type EcsBackupClientArgs struct {
-	// The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
 	DataNetworkType pulumi.StringPtrInput
-	// The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+	// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
 	DataProxySetting pulumi.StringPtrInput
-	// The ECS Instance Id.
+	// The ID of ECS instance.
 	InstanceId pulumi.StringInput
-	// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+	// Number of CPU cores used by a single backup task, 0 means no restrictions.
 	MaxCpuCore pulumi.StringPtrInput
-	// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+	// Number of concurrent jobs for a single backup task, 0 means no restrictions.
 	MaxWorker pulumi.StringPtrInput
-	// Custom Data Plane Proxy Server Host Address.
+	// Custom data plane proxy server host address.
 	ProxyHost pulumi.StringPtrInput
-	// Custom Data Plane Proxy Password.
+	// Custom data plane proxy server password.
 	ProxyPassword pulumi.StringPtrInput
-	// Custom Data Plane Proxy Server Host Port.
+	// Custom data plane proxy server host port.
 	ProxyPort pulumi.StringPtrInput
-	// Custom Data Plane Proxy Server Username.
+	// Username of custom data plane proxy server.
 	ProxyUser pulumi.StringPtrInput
 	// Status of client. Valid values: `ACTIVATED`, `STOPPED`.
 	Status pulumi.StringPtrInput
-	// Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+	// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
 	UseHttps pulumi.BoolPtrInput
 }
 

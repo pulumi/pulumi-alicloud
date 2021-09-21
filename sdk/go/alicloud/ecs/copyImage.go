@@ -14,11 +14,12 @@ import (
 type CopyImage struct {
 	pulumi.CustomResourceState
 
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Encrypted   pulumi.BoolPtrOutput   `pulumi:"encrypted"`
-	Force       pulumi.BoolPtrOutput   `pulumi:"force"`
-	ImageName   pulumi.StringOutput    `pulumi:"imageName"`
-	KmsKeyId    pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
+	DeleteAutoSnapshot pulumi.BoolPtrOutput   `pulumi:"deleteAutoSnapshot"`
+	Description        pulumi.StringPtrOutput `pulumi:"description"`
+	Encrypted          pulumi.BoolPtrOutput   `pulumi:"encrypted"`
+	Force              pulumi.BoolPtrOutput   `pulumi:"force"`
+	ImageName          pulumi.StringOutput    `pulumi:"imageName"`
+	KmsKeyId           pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name           pulumi.StringOutput `pulumi:"name"`
 	SourceImageId  pulumi.StringOutput `pulumi:"sourceImageId"`
@@ -61,11 +62,12 @@ func GetCopyImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CopyImage resources.
 type copyImageState struct {
-	Description *string `pulumi:"description"`
-	Encrypted   *bool   `pulumi:"encrypted"`
-	Force       *bool   `pulumi:"force"`
-	ImageName   *string `pulumi:"imageName"`
-	KmsKeyId    *string `pulumi:"kmsKeyId"`
+	DeleteAutoSnapshot *bool   `pulumi:"deleteAutoSnapshot"`
+	Description        *string `pulumi:"description"`
+	Encrypted          *bool   `pulumi:"encrypted"`
+	Force              *bool   `pulumi:"force"`
+	ImageName          *string `pulumi:"imageName"`
+	KmsKeyId           *string `pulumi:"kmsKeyId"`
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name           *string                `pulumi:"name"`
 	SourceImageId  *string                `pulumi:"sourceImageId"`
@@ -74,11 +76,12 @@ type copyImageState struct {
 }
 
 type CopyImageState struct {
-	Description pulumi.StringPtrInput
-	Encrypted   pulumi.BoolPtrInput
-	Force       pulumi.BoolPtrInput
-	ImageName   pulumi.StringPtrInput
-	KmsKeyId    pulumi.StringPtrInput
+	DeleteAutoSnapshot pulumi.BoolPtrInput
+	Description        pulumi.StringPtrInput
+	Encrypted          pulumi.BoolPtrInput
+	Force              pulumi.BoolPtrInput
+	ImageName          pulumi.StringPtrInput
+	KmsKeyId           pulumi.StringPtrInput
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name           pulumi.StringPtrInput
 	SourceImageId  pulumi.StringPtrInput
@@ -91,11 +94,12 @@ func (CopyImageState) ElementType() reflect.Type {
 }
 
 type copyImageArgs struct {
-	Description *string `pulumi:"description"`
-	Encrypted   *bool   `pulumi:"encrypted"`
-	Force       *bool   `pulumi:"force"`
-	ImageName   *string `pulumi:"imageName"`
-	KmsKeyId    *string `pulumi:"kmsKeyId"`
+	DeleteAutoSnapshot *bool   `pulumi:"deleteAutoSnapshot"`
+	Description        *string `pulumi:"description"`
+	Encrypted          *bool   `pulumi:"encrypted"`
+	Force              *bool   `pulumi:"force"`
+	ImageName          *string `pulumi:"imageName"`
+	KmsKeyId           *string `pulumi:"kmsKeyId"`
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name           *string                `pulumi:"name"`
 	SourceImageId  string                 `pulumi:"sourceImageId"`
@@ -105,11 +109,12 @@ type copyImageArgs struct {
 
 // The set of arguments for constructing a CopyImage resource.
 type CopyImageArgs struct {
-	Description pulumi.StringPtrInput
-	Encrypted   pulumi.BoolPtrInput
-	Force       pulumi.BoolPtrInput
-	ImageName   pulumi.StringPtrInput
-	KmsKeyId    pulumi.StringPtrInput
+	DeleteAutoSnapshot pulumi.BoolPtrInput
+	Description        pulumi.StringPtrInput
+	Encrypted          pulumi.BoolPtrInput
+	Force              pulumi.BoolPtrInput
+	ImageName          pulumi.StringPtrInput
+	KmsKeyId           pulumi.StringPtrInput
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name           pulumi.StringPtrInput
 	SourceImageId  pulumi.StringInput

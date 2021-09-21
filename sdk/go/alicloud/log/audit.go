@@ -167,6 +167,68 @@ import (
 // 	})
 // }
 // ```
+// Resource Directory Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := log.NewAudit(ctx, "example", &log.AuditArgs{
+// 			Aliuid:                pulumi.String("12345678"),
+// 			DisplayName:           pulumi.String("tf-audit-test"),
+// 			ResourceDirectoryType: pulumi.String("all"),
+// 			VariableMap: pulumi.StringMap{
+// 				"actiontrail_enabled": pulumi.String("true"),
+// 				"actiontrail_ttl":     pulumi.String("180"),
+// 				"oss_access_enabled":  pulumi.String("true"),
+// 				"oss_access_ttl":      pulumi.String("180"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := log.NewAudit(ctx, "example", &log.AuditArgs{
+// 			Aliuid:      pulumi.String("12345678"),
+// 			DisplayName: pulumi.String("tf-audit-test"),
+// 			MultiAccounts: pulumi.StringArray{
+// 				pulumi.String("123456789123"),
+// 				pulumi.String("12345678912300123"),
+// 			},
+// 			ResourceDirectoryType: pulumi.String("custom"),
+// 			VariableMap: pulumi.StringMap{
+// 				"actiontrail_enabled": pulumi.String("true"),
+// 				"actiontrail_ttl":     pulumi.String("180"),
+// 				"oss_access_enabled":  pulumi.String("true"),
+// 				"oss_access_ttl":      pulumi.String("180"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -184,6 +246,8 @@ type Audit struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Multi-account configuration, please fill in multiple aliuid.
 	MultiAccounts pulumi.StringArrayOutput `pulumi:"multiAccounts"`
+	// Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
+	ResourceDirectoryType pulumi.StringPtrOutput `pulumi:"resourceDirectoryType"`
 	// Log audit detailed configuration.
 	VariableMap pulumi.MapOutput `pulumi:"variableMap"`
 }
@@ -229,6 +293,8 @@ type auditState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Multi-account configuration, please fill in multiple aliuid.
 	MultiAccounts []string `pulumi:"multiAccounts"`
+	// Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
+	ResourceDirectoryType *string `pulumi:"resourceDirectoryType"`
 	// Log audit detailed configuration.
 	VariableMap map[string]interface{} `pulumi:"variableMap"`
 }
@@ -240,6 +306,8 @@ type AuditState struct {
 	DisplayName pulumi.StringPtrInput
 	// Multi-account configuration, please fill in multiple aliuid.
 	MultiAccounts pulumi.StringArrayInput
+	// Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
+	ResourceDirectoryType pulumi.StringPtrInput
 	// Log audit detailed configuration.
 	VariableMap pulumi.MapInput
 }
@@ -255,6 +323,8 @@ type auditArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Multi-account configuration, please fill in multiple aliuid.
 	MultiAccounts []string `pulumi:"multiAccounts"`
+	// Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
+	ResourceDirectoryType *string `pulumi:"resourceDirectoryType"`
 	// Log audit detailed configuration.
 	VariableMap map[string]interface{} `pulumi:"variableMap"`
 }
@@ -267,6 +337,8 @@ type AuditArgs struct {
 	DisplayName pulumi.StringInput
 	// Multi-account configuration, please fill in multiple aliuid.
 	MultiAccounts pulumi.StringArrayInput
+	// Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
+	ResourceDirectoryType pulumi.StringPtrInput
 	// Log audit detailed configuration.
 	VariableMap pulumi.MapInput
 }

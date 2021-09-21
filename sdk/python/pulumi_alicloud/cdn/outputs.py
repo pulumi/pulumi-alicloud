@@ -19,6 +19,7 @@ __all__ = [
     'DomainPage404Config',
     'DomainParameterFilterConfig',
     'DomainReferConfig',
+    'GetRealTimeLogDeliveriesDeliveryResult',
 ]
 
 @pulumi.output_type
@@ -688,5 +689,78 @@ class DomainReferConfig(dict):
         Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
         """
         return pulumi.get(self, "refer_type")
+
+
+@pulumi.output_type
+class GetRealTimeLogDeliveriesDeliveryResult(dict):
+    def __init__(__self__, *,
+                 domain: str,
+                 id: str,
+                 logstore: str,
+                 project: str,
+                 sls_region: str,
+                 status: str):
+        """
+        :param str domain: Real-Time Log Service Domain.
+        :param str id: The ID of the Real Time Log Delivery.
+        :param str logstore: The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+        :param str project: The name of the Log Service project that is used for real-time log delivery.
+        :param str sls_region: The region where the Log Service project is deployed.
+        :param str status: -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "sls_region", sls_region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        Real-Time Log Service Domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Real Time Log Delivery.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def logstore(self) -> str:
+        """
+        The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+        """
+        return pulumi.get(self, "logstore")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The name of the Log Service project that is used for real-time log delivery.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="slsRegion")
+    def sls_region(self) -> str:
+        """
+        The region where the Log Service project is deployed.
+        """
+        return pulumi.get(self, "sls_region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        """
+        return pulumi.get(self, "status")
 
 

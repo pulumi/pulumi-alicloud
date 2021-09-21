@@ -14,31 +14,31 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class GetOssBackupPlansPlanResult
     {
         /// <summary>
-        /// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         public readonly string BackupType;
         /// <summary>
-        /// The OSS Bucket Name.
+        /// The name of OSS bucket.
         /// </summary>
         public readonly string Bucket;
         public readonly bool Disabled;
         public readonly string Id;
         public readonly string OssBackupPlanId;
         /// <summary>
-        /// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         /// </summary>
         public readonly string OssBackupPlanName;
         public readonly string Prefix;
         /// <summary>
-        /// Backup Retention Period, the Minimum Value of 1.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         public readonly string Retention;
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         /// </summary>
         public readonly string Schedule;
         /// <summary>
-        /// Vault ID.
+        /// The ID of backup vault.
         /// </summary>
         public readonly string VaultId;
 

@@ -73,12 +73,6 @@ namespace Pulumi.AliCloud.Alb
             set => _ids = value;
         }
 
-        /// <summary>
-        /// The ID of the listener to which the forwarding rule belongs.
-        /// </summary>
-        [Input("listenerId")]
-        public string? ListenerId { get; set; }
-
         [Input("listenerIds")]
         private List<string>? _listenerIds;
 
@@ -144,7 +138,6 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
-        public readonly string? ListenerId;
         public readonly ImmutableArray<string> ListenerIds;
         public readonly ImmutableArray<string> LoadBalancerIds;
         public readonly string? NameRegex;
@@ -159,8 +152,6 @@ namespace Pulumi.AliCloud.Alb
             string id,
 
             ImmutableArray<string> ids,
-
-            string? listenerId,
 
             ImmutableArray<string> listenerIds,
 
@@ -180,7 +171,6 @@ namespace Pulumi.AliCloud.Alb
         {
             Id = id;
             Ids = ids;
-            ListenerId = listenerId;
             ListenerIds = listenerIds;
             LoadBalancerIds = loadBalancerIds;
             NameRegex = nameRegex;

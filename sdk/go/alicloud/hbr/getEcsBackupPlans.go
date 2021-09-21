@@ -50,12 +50,12 @@ func GetEcsBackupPlans(ctx *pulumi.Context, args *GetEcsBackupPlansArgs, opts ..
 type GetEcsBackupPlansArgs struct {
 	// A list of EcsBackupPlan IDs.
 	Ids []string `pulumi:"ids"`
-	// The ECS Instance Id. Must Have Installed the Client.
+	// The ID of ECS instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// A regex string to filter results by EcsBackupPlan name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// Vault ID.
+	// The ID of Backup vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 

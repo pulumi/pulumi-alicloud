@@ -41,6 +41,8 @@ type NatGateway struct {
 	NatGatewayName pulumi.StringOutput `pulumi:"natGatewayName"`
 	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
 	NatType pulumi.StringPtrOutput `pulumi:"natType"`
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
@@ -110,6 +112,8 @@ type natGatewayState struct {
 	NatGatewayName *string `pulumi:"natGatewayName"`
 	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
 	NatType *string `pulumi:"natType"`
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	NetworkType *string `pulumi:"networkType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
@@ -148,6 +152,8 @@ type NatGatewayState struct {
 	NatGatewayName pulumi.StringPtrInput
 	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
 	NatType pulumi.StringPtrInput
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	NetworkType pulumi.StringPtrInput
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
@@ -188,6 +194,8 @@ type natGatewayArgs struct {
 	NatGatewayName *string `pulumi:"natGatewayName"`
 	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
 	NatType *string `pulumi:"natType"`
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	NetworkType *string `pulumi:"networkType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
@@ -221,6 +229,8 @@ type NatGatewayArgs struct {
 	NatGatewayName pulumi.StringPtrInput
 	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
 	NatType pulumi.StringPtrInput
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	NetworkType pulumi.StringPtrInput
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput

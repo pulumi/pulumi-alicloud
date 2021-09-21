@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./binding";
 export * from "./exchange";
+export * from "./getBindings";
 export * from "./getExchanges";
 export * from "./getInstances";
 export * from "./getQueues";
@@ -15,6 +17,7 @@ export * from "./queue";
 export * from "./virtualHost";
 
 // Import resources to register:
+import { Binding } from "./binding";
 import { Exchange } from "./exchange";
 import { Instance } from "./instance";
 import { Queue } from "./queue";
@@ -24,6 +27,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:amqp/binding:Binding":
+                return new Binding(name, <any>undefined, { urn })
             case "alicloud:amqp/exchange:Exchange":
                 return new Exchange(name, <any>undefined, { urn })
             case "alicloud:amqp/instance:Instance":
@@ -37,6 +42,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "amqp/binding", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/exchange", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/queue", _module)

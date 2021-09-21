@@ -35,20 +35,20 @@ class RestoreJobArgs:
         """
         The set of arguments for constructing a RestoreJob resource.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
-        :param pulumi.Input[str] restore_type: The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
-        :param pulumi.Input[str] snapshot_hash: Restore Snapshot of HashCode.
+        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        :param pulumi.Input[str] snapshot_hash: The hashcode of restore Snapshot.
         :param pulumi.Input[str] snapshot_id: The ID of Snapshot.
-        :param pulumi.Input[str] source_type: The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
-        :param pulumi.Input[str] vault_id: The ID of Vault.
+        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        :param pulumi.Input[str] vault_id: The ID of backup vault.
         :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/home", "/exclude"]`.
         :param pulumi.Input[str] include: The include path. It's a json string with format:`["/home", "/include"]`.
-        :param pulumi.Input[str] options: Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
-        :param pulumi.Input[str] target_bucket: The Target ofo OSS Bucket Name.
-        :param pulumi.Input[str] target_create_time: The Destination File System Creation Time.
-        :param pulumi.Input[str] target_file_system_id: The Destination File System ID.
-        :param pulumi.Input[str] target_instance_id: Objective to ECS Instance Id.
-        :param pulumi.Input[str] target_path: The Target of (ECS) Instance Changes the ECS File Path.
-        :param pulumi.Input[str] target_prefix: The Target of the OSS Object Prefix.
+        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] target_bucket: The target ofo OSS bucket name.
+        :param pulumi.Input[str] target_create_time: The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] target_file_system_id: The ID of destination File System.
+        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance.
+        :param pulumi.Input[str] target_path: The target file path of (ECS) instance.
+        :param pulumi.Input[str] target_prefix: The target of the OSS object prefix.
         """
         pulumi.set(__self__, "restore_job_id", restore_job_id)
         pulumi.set(__self__, "restore_type", restore_type)
@@ -99,7 +99,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="restoreType")
     def restore_type(self) -> pulumi.Input[str]:
         """
-        The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         """
         return pulumi.get(self, "restore_type")
 
@@ -111,7 +111,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="snapshotHash")
     def snapshot_hash(self) -> pulumi.Input[str]:
         """
-        Restore Snapshot of HashCode.
+        The hashcode of restore Snapshot.
         """
         return pulumi.get(self, "snapshot_hash")
 
@@ -135,7 +135,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Input[str]:
         """
-        The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         """
         return pulumi.get(self, "source_type")
 
@@ -147,7 +147,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> pulumi.Input[str]:
         """
-        The ID of Vault.
+        The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
 
@@ -183,7 +183,7 @@ class RestoreJobArgs:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
         """
-        Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         """
         return pulumi.get(self, "options")
 
@@ -195,7 +195,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="targetBucket")
     def target_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        The Target ofo OSS Bucket Name.
+        The target ofo OSS bucket name.
         """
         return pulumi.get(self, "target_bucket")
 
@@ -234,7 +234,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="targetCreateTime")
     def target_create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The Destination File System Creation Time.
+        The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "target_create_time")
 
@@ -255,7 +255,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="targetFileSystemId")
     def target_file_system_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Destination File System ID.
+        The ID of destination File System.
         """
         return pulumi.get(self, "target_file_system_id")
 
@@ -267,7 +267,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="targetInstanceId")
     def target_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Objective to ECS Instance Id.
+        The target ID of ECS instance.
         """
         return pulumi.get(self, "target_instance_id")
 
@@ -279,7 +279,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="targetPath")
     def target_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The Target of (ECS) Instance Changes the ECS File Path.
+        The target file path of (ECS) instance.
         """
         return pulumi.get(self, "target_path")
 
@@ -291,7 +291,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="targetPrefix")
     def target_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The Target of the OSS Object Prefix.
+        The target of the OSS object prefix.
         """
         return pulumi.get(self, "target_prefix")
 
@@ -327,20 +327,20 @@ class _RestoreJobState:
         Input properties used for looking up and filtering RestoreJob resources.
         :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/home", "/exclude"]`.
         :param pulumi.Input[str] include: The include path. It's a json string with format:`["/home", "/include"]`.
-        :param pulumi.Input[str] options: Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
-        :param pulumi.Input[str] restore_type: The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
-        :param pulumi.Input[str] snapshot_hash: Restore Snapshot of HashCode.
+        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        :param pulumi.Input[str] snapshot_hash: The hashcode of restore Snapshot.
         :param pulumi.Input[str] snapshot_id: The ID of Snapshot.
-        :param pulumi.Input[str] source_type: The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         :param pulumi.Input[str] status: The Restore Job Status.
-        :param pulumi.Input[str] target_bucket: The Target ofo OSS Bucket Name.
-        :param pulumi.Input[str] target_create_time: The Destination File System Creation Time.
-        :param pulumi.Input[str] target_file_system_id: The Destination File System ID.
-        :param pulumi.Input[str] target_instance_id: Objective to ECS Instance Id.
-        :param pulumi.Input[str] target_path: The Target of (ECS) Instance Changes the ECS File Path.
-        :param pulumi.Input[str] target_prefix: The Target of the OSS Object Prefix.
-        :param pulumi.Input[str] vault_id: The ID of Vault.
+        :param pulumi.Input[str] target_bucket: The target ofo OSS bucket name.
+        :param pulumi.Input[str] target_create_time: The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] target_file_system_id: The ID of destination File System.
+        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance.
+        :param pulumi.Input[str] target_path: The target file path of (ECS) instance.
+        :param pulumi.Input[str] target_prefix: The target of the OSS object prefix.
+        :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         if exclude is not None:
             pulumi.set(__self__, "exclude", exclude)
@@ -411,7 +411,7 @@ class _RestoreJobState:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
         """
-        Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         """
         return pulumi.get(self, "options")
 
@@ -435,7 +435,7 @@ class _RestoreJobState:
     @pulumi.getter(name="restoreType")
     def restore_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         """
         return pulumi.get(self, "restore_type")
 
@@ -447,7 +447,7 @@ class _RestoreJobState:
     @pulumi.getter(name="snapshotHash")
     def snapshot_hash(self) -> Optional[pulumi.Input[str]]:
         """
-        Restore Snapshot of HashCode.
+        The hashcode of restore Snapshot.
         """
         return pulumi.get(self, "snapshot_hash")
 
@@ -471,7 +471,7 @@ class _RestoreJobState:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         """
         return pulumi.get(self, "source_type")
 
@@ -495,7 +495,7 @@ class _RestoreJobState:
     @pulumi.getter(name="targetBucket")
     def target_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        The Target ofo OSS Bucket Name.
+        The target ofo OSS bucket name.
         """
         return pulumi.get(self, "target_bucket")
 
@@ -534,7 +534,7 @@ class _RestoreJobState:
     @pulumi.getter(name="targetCreateTime")
     def target_create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The Destination File System Creation Time.
+        The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "target_create_time")
 
@@ -555,7 +555,7 @@ class _RestoreJobState:
     @pulumi.getter(name="targetFileSystemId")
     def target_file_system_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Destination File System ID.
+        The ID of destination File System.
         """
         return pulumi.get(self, "target_file_system_id")
 
@@ -567,7 +567,7 @@ class _RestoreJobState:
     @pulumi.getter(name="targetInstanceId")
     def target_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Objective to ECS Instance Id.
+        The target ID of ECS instance.
         """
         return pulumi.get(self, "target_instance_id")
 
@@ -579,7 +579,7 @@ class _RestoreJobState:
     @pulumi.getter(name="targetPath")
     def target_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The Target of (ECS) Instance Changes the ECS File Path.
+        The target file path of (ECS) instance.
         """
         return pulumi.get(self, "target_path")
 
@@ -591,7 +591,7 @@ class _RestoreJobState:
     @pulumi.getter(name="targetPrefix")
     def target_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The Target of the OSS Object Prefix.
+        The target of the OSS object prefix.
         """
         return pulumi.get(self, "target_prefix")
 
@@ -603,7 +603,7 @@ class _RestoreJobState:
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of Vault.
+        The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
 
@@ -640,7 +640,7 @@ class RestoreJob(pulumi.CustomResource):
         """
         Provides a Hybrid Backup Recovery (HBR) Restore Job resource.
 
-        For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://help.aliyun.com/document_detail/62361.html).
+        For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://www.alibabacloud.com/help/doc-detail/186575.htm).
 
         > **NOTE:** Available in v1.133.0+.
 
@@ -684,19 +684,19 @@ class RestoreJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/home", "/exclude"]`.
         :param pulumi.Input[str] include: The include path. It's a json string with format:`["/home", "/include"]`.
-        :param pulumi.Input[str] options: Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
-        :param pulumi.Input[str] restore_type: The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
-        :param pulumi.Input[str] snapshot_hash: Restore Snapshot of HashCode.
+        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        :param pulumi.Input[str] snapshot_hash: The hashcode of restore Snapshot.
         :param pulumi.Input[str] snapshot_id: The ID of Snapshot.
-        :param pulumi.Input[str] source_type: The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
-        :param pulumi.Input[str] target_bucket: The Target ofo OSS Bucket Name.
-        :param pulumi.Input[str] target_create_time: The Destination File System Creation Time.
-        :param pulumi.Input[str] target_file_system_id: The Destination File System ID.
-        :param pulumi.Input[str] target_instance_id: Objective to ECS Instance Id.
-        :param pulumi.Input[str] target_path: The Target of (ECS) Instance Changes the ECS File Path.
-        :param pulumi.Input[str] target_prefix: The Target of the OSS Object Prefix.
-        :param pulumi.Input[str] vault_id: The ID of Vault.
+        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        :param pulumi.Input[str] target_bucket: The target ofo OSS bucket name.
+        :param pulumi.Input[str] target_create_time: The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] target_file_system_id: The ID of destination File System.
+        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance.
+        :param pulumi.Input[str] target_path: The target file path of (ECS) instance.
+        :param pulumi.Input[str] target_prefix: The target of the OSS object prefix.
+        :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         ...
     @overload
@@ -707,7 +707,7 @@ class RestoreJob(pulumi.CustomResource):
         """
         Provides a Hybrid Backup Recovery (HBR) Restore Job resource.
 
-        For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://help.aliyun.com/document_detail/62361.html).
+        For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://www.alibabacloud.com/help/doc-detail/186575.htm).
 
         > **NOTE:** Available in v1.133.0+.
 
@@ -864,20 +864,20 @@ class RestoreJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/home", "/exclude"]`.
         :param pulumi.Input[str] include: The include path. It's a json string with format:`["/home", "/include"]`.
-        :param pulumi.Input[str] options: Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
-        :param pulumi.Input[str] restore_type: The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
-        :param pulumi.Input[str] snapshot_hash: Restore Snapshot of HashCode.
+        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        :param pulumi.Input[str] snapshot_hash: The hashcode of restore Snapshot.
         :param pulumi.Input[str] snapshot_id: The ID of Snapshot.
-        :param pulumi.Input[str] source_type: The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         :param pulumi.Input[str] status: The Restore Job Status.
-        :param pulumi.Input[str] target_bucket: The Target ofo OSS Bucket Name.
-        :param pulumi.Input[str] target_create_time: The Destination File System Creation Time.
-        :param pulumi.Input[str] target_file_system_id: The Destination File System ID.
-        :param pulumi.Input[str] target_instance_id: Objective to ECS Instance Id.
-        :param pulumi.Input[str] target_path: The Target of (ECS) Instance Changes the ECS File Path.
-        :param pulumi.Input[str] target_prefix: The Target of the OSS Object Prefix.
-        :param pulumi.Input[str] vault_id: The ID of Vault.
+        :param pulumi.Input[str] target_bucket: The target ofo OSS bucket name.
+        :param pulumi.Input[str] target_create_time: The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] target_file_system_id: The ID of destination File System.
+        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance.
+        :param pulumi.Input[str] target_path: The target file path of (ECS) instance.
+        :param pulumi.Input[str] target_prefix: The target of the OSS object prefix.
+        :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -925,7 +925,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter
     def options(self) -> pulumi.Output[Optional[str]]:
         """
-        Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         """
         return pulumi.get(self, "options")
 
@@ -941,7 +941,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="restoreType")
     def restore_type(self) -> pulumi.Output[str]:
         """
-        The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         """
         return pulumi.get(self, "restore_type")
 
@@ -949,7 +949,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="snapshotHash")
     def snapshot_hash(self) -> pulumi.Output[str]:
         """
-        Restore Snapshot of HashCode.
+        The hashcode of restore Snapshot.
         """
         return pulumi.get(self, "snapshot_hash")
 
@@ -965,7 +965,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Output[str]:
         """
-        The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         """
         return pulumi.get(self, "source_type")
 
@@ -981,7 +981,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="targetBucket")
     def target_bucket(self) -> pulumi.Output[Optional[str]]:
         """
-        The Target ofo OSS Bucket Name.
+        The target ofo OSS bucket name.
         """
         return pulumi.get(self, "target_bucket")
 
@@ -1004,7 +1004,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="targetCreateTime")
     def target_create_time(self) -> pulumi.Output[Optional[str]]:
         """
-        The Destination File System Creation Time.
+        The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "target_create_time")
 
@@ -1017,7 +1017,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="targetFileSystemId")
     def target_file_system_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The Destination File System ID.
+        The ID of destination File System.
         """
         return pulumi.get(self, "target_file_system_id")
 
@@ -1025,7 +1025,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="targetInstanceId")
     def target_instance_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Objective to ECS Instance Id.
+        The target ID of ECS instance.
         """
         return pulumi.get(self, "target_instance_id")
 
@@ -1033,7 +1033,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="targetPath")
     def target_path(self) -> pulumi.Output[Optional[str]]:
         """
-        The Target of (ECS) Instance Changes the ECS File Path.
+        The target file path of (ECS) instance.
         """
         return pulumi.get(self, "target_path")
 
@@ -1041,7 +1041,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="targetPrefix")
     def target_prefix(self) -> pulumi.Output[Optional[str]]:
         """
-        The Target of the OSS Object Prefix.
+        The target of the OSS object prefix.
         """
         return pulumi.get(self, "target_prefix")
 
@@ -1049,7 +1049,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> pulumi.Output[str]:
         """
-        The ID of Vault.
+        The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
 

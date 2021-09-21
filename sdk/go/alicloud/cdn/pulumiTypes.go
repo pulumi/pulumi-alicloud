@@ -1558,6 +1558,148 @@ func (o DomainReferConfigPtrOutput) ReferType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetRealTimeLogDeliveriesDelivery struct {
+	// Real-Time Log Service Domain.
+	Domain string `pulumi:"domain"`
+	// The ID of the Real Time Log Delivery.
+	Id string `pulumi:"id"`
+	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+	Logstore string `pulumi:"logstore"`
+	// The name of the Log Service project that is used for real-time log delivery.
+	Project string `pulumi:"project"`
+	// The region where the Log Service project is deployed.
+	SlsRegion string `pulumi:"slsRegion"`
+	// -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+	Status string `pulumi:"status"`
+}
+
+// GetRealTimeLogDeliveriesDeliveryInput is an input type that accepts GetRealTimeLogDeliveriesDeliveryArgs and GetRealTimeLogDeliveriesDeliveryOutput values.
+// You can construct a concrete instance of `GetRealTimeLogDeliveriesDeliveryInput` via:
+//
+//          GetRealTimeLogDeliveriesDeliveryArgs{...}
+type GetRealTimeLogDeliveriesDeliveryInput interface {
+	pulumi.Input
+
+	ToGetRealTimeLogDeliveriesDeliveryOutput() GetRealTimeLogDeliveriesDeliveryOutput
+	ToGetRealTimeLogDeliveriesDeliveryOutputWithContext(context.Context) GetRealTimeLogDeliveriesDeliveryOutput
+}
+
+type GetRealTimeLogDeliveriesDeliveryArgs struct {
+	// Real-Time Log Service Domain.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The ID of the Real Time Log Delivery.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+	Logstore pulumi.StringInput `pulumi:"logstore"`
+	// The name of the Log Service project that is used for real-time log delivery.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The region where the Log Service project is deployed.
+	SlsRegion pulumi.StringInput `pulumi:"slsRegion"`
+	// -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetRealTimeLogDeliveriesDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRealTimeLogDeliveriesDelivery)(nil)).Elem()
+}
+
+func (i GetRealTimeLogDeliveriesDeliveryArgs) ToGetRealTimeLogDeliveriesDeliveryOutput() GetRealTimeLogDeliveriesDeliveryOutput {
+	return i.ToGetRealTimeLogDeliveriesDeliveryOutputWithContext(context.Background())
+}
+
+func (i GetRealTimeLogDeliveriesDeliveryArgs) ToGetRealTimeLogDeliveriesDeliveryOutputWithContext(ctx context.Context) GetRealTimeLogDeliveriesDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRealTimeLogDeliveriesDeliveryOutput)
+}
+
+// GetRealTimeLogDeliveriesDeliveryArrayInput is an input type that accepts GetRealTimeLogDeliveriesDeliveryArray and GetRealTimeLogDeliveriesDeliveryArrayOutput values.
+// You can construct a concrete instance of `GetRealTimeLogDeliveriesDeliveryArrayInput` via:
+//
+//          GetRealTimeLogDeliveriesDeliveryArray{ GetRealTimeLogDeliveriesDeliveryArgs{...} }
+type GetRealTimeLogDeliveriesDeliveryArrayInput interface {
+	pulumi.Input
+
+	ToGetRealTimeLogDeliveriesDeliveryArrayOutput() GetRealTimeLogDeliveriesDeliveryArrayOutput
+	ToGetRealTimeLogDeliveriesDeliveryArrayOutputWithContext(context.Context) GetRealTimeLogDeliveriesDeliveryArrayOutput
+}
+
+type GetRealTimeLogDeliveriesDeliveryArray []GetRealTimeLogDeliveriesDeliveryInput
+
+func (GetRealTimeLogDeliveriesDeliveryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRealTimeLogDeliveriesDelivery)(nil)).Elem()
+}
+
+func (i GetRealTimeLogDeliveriesDeliveryArray) ToGetRealTimeLogDeliveriesDeliveryArrayOutput() GetRealTimeLogDeliveriesDeliveryArrayOutput {
+	return i.ToGetRealTimeLogDeliveriesDeliveryArrayOutputWithContext(context.Background())
+}
+
+func (i GetRealTimeLogDeliveriesDeliveryArray) ToGetRealTimeLogDeliveriesDeliveryArrayOutputWithContext(ctx context.Context) GetRealTimeLogDeliveriesDeliveryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRealTimeLogDeliveriesDeliveryArrayOutput)
+}
+
+type GetRealTimeLogDeliveriesDeliveryOutput struct{ *pulumi.OutputState }
+
+func (GetRealTimeLogDeliveriesDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRealTimeLogDeliveriesDelivery)(nil)).Elem()
+}
+
+func (o GetRealTimeLogDeliveriesDeliveryOutput) ToGetRealTimeLogDeliveriesDeliveryOutput() GetRealTimeLogDeliveriesDeliveryOutput {
+	return o
+}
+
+func (o GetRealTimeLogDeliveriesDeliveryOutput) ToGetRealTimeLogDeliveriesDeliveryOutputWithContext(ctx context.Context) GetRealTimeLogDeliveriesDeliveryOutput {
+	return o
+}
+
+// Real-Time Log Service Domain.
+func (o GetRealTimeLogDeliveriesDeliveryOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRealTimeLogDeliveriesDelivery) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The ID of the Real Time Log Delivery.
+func (o GetRealTimeLogDeliveriesDeliveryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRealTimeLogDeliveriesDelivery) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+func (o GetRealTimeLogDeliveriesDeliveryOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRealTimeLogDeliveriesDelivery) string { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// The name of the Log Service project that is used for real-time log delivery.
+func (o GetRealTimeLogDeliveriesDeliveryOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRealTimeLogDeliveriesDelivery) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The region where the Log Service project is deployed.
+func (o GetRealTimeLogDeliveriesDeliveryOutput) SlsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRealTimeLogDeliveriesDelivery) string { return v.SlsRegion }).(pulumi.StringOutput)
+}
+
+// -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+func (o GetRealTimeLogDeliveriesDeliveryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRealTimeLogDeliveriesDelivery) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetRealTimeLogDeliveriesDeliveryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRealTimeLogDeliveriesDeliveryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRealTimeLogDeliveriesDelivery)(nil)).Elem()
+}
+
+func (o GetRealTimeLogDeliveriesDeliveryArrayOutput) ToGetRealTimeLogDeliveriesDeliveryArrayOutput() GetRealTimeLogDeliveriesDeliveryArrayOutput {
+	return o
+}
+
+func (o GetRealTimeLogDeliveriesDeliveryArrayOutput) ToGetRealTimeLogDeliveriesDeliveryArrayOutputWithContext(ctx context.Context) GetRealTimeLogDeliveriesDeliveryArrayOutput {
+	return o
+}
+
+func (o GetRealTimeLogDeliveriesDeliveryArrayOutput) Index(i pulumi.IntInput) GetRealTimeLogDeliveriesDeliveryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRealTimeLogDeliveriesDelivery {
+		return vs[0].([]GetRealTimeLogDeliveriesDelivery)[vs[1].(int)]
+	}).(GetRealTimeLogDeliveriesDeliveryOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainAuthConfigOutput{})
 	pulumi.RegisterOutputType(DomainAuthConfigPtrOutput{})
@@ -1579,4 +1721,6 @@ func init() {
 	pulumi.RegisterOutputType(DomainParameterFilterConfigPtrOutput{})
 	pulumi.RegisterOutputType(DomainReferConfigOutput{})
 	pulumi.RegisterOutputType(DomainReferConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetRealTimeLogDeliveriesDeliveryOutput{})
+	pulumi.RegisterOutputType(GetRealTimeLogDeliveriesDeliveryArrayOutput{})
 }

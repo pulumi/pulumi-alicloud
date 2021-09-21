@@ -35,7 +35,7 @@ type GetSnapshotsArgs struct {
 	FileSystemId *string `pulumi:"fileSystemId"`
 	// A list of Snapshot IDs.
 	Ids []string `pulumi:"ids"`
-	// InstanceId.
+	// The ID of ECS instance.
 	InstanceId *string `pulumi:"instanceId"`
 	Limit      *int    `pulumi:"limit"`
 	OutputFile *string `pulumi:"outputFile"`

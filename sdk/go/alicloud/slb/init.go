@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServerCertificate{}
 	case "alicloud:slb/serverGroup:ServerGroup":
 		r = &ServerGroup{}
+	case "alicloud:slb/tlsCipherPolicy:TlsCipherPolicy":
+		r = &TlsCipherPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -116,6 +118,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"slb/serverGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"slb/tlsCipherPolicy",
 		&module{version},
 	)
 }

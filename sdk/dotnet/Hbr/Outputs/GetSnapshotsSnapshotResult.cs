@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// InstanceId.
+        /// The ID of ECS instance.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>

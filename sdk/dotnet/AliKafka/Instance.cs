@@ -49,6 +49,10 @@ namespace Pulumi.AliCloud.AliKafka
     ///             CidrBlock = "172.16.0.0/24",
     ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
+    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
     ///         var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new AliCloud.AliKafka.InstanceArgs
     ///         {
     ///             TopicQuota = 50,
@@ -57,6 +61,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///             DeployType = 4,
     ///             IoMax = 20,
     ///             VswitchId = defaultSwitch.Id,
+    ///             SecurityGroup = defaultSecurityGroup.Id,
     ///         });
     ///     }
     /// 
@@ -102,7 +107,7 @@ namespace Pulumi.AliCloud.AliKafka
         /// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
         /// </summary>
         [Output("eipMax")]
-        public Output<int?> EipMax { get; private set; } = null!;
+        public Output<int> EipMax { get; private set; } = null!;
 
         /// <summary>
         /// The EndPoint to access the kafka instance.
@@ -132,7 +137,7 @@ namespace Pulumi.AliCloud.AliKafka
         /// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
         /// </summary>
         [Output("securityGroup")]
-        public Output<string?> SecurityGroup { get; private set; } = null!;
+        public Output<string> SecurityGroup { get; private set; } = null!;
 
         /// <summary>
         /// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.

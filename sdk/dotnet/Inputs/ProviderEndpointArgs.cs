@@ -63,8 +63,14 @@ namespace Pulumi.AliCloud.Inputs
         [Input("cds")]
         public Input<string>? Cds { get; set; }
 
+        [Input("clickhouse")]
+        public Input<string>? Clickhouse { get; set; }
+
         [Input("cloudphone")]
         public Input<string>? Cloudphone { get; set; }
+
+        [Input("cloudsso")]
+        public Input<string>? Cloudsso { get; set; }
 
         [Input("cms")]
         public Input<string>? Cms { get; set; }
@@ -84,6 +90,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("dataworkspublic")]
         public Input<string>? Dataworkspublic { get; set; }
 
+        [Input("dbfs")]
+        public Input<string>? Dbfs { get; set; }
+
         [Input("dcdn")]
         public Input<string>? Dcdn { get; set; }
 
@@ -96,6 +105,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("dds")]
         public Input<string>? Dds { get; set; }
 
+        [Input("dg")]
+        public Input<string>? Dg { get; set; }
+
         [Input("dm")]
         public Input<string>? Dm { get; set; }
 
@@ -107,6 +119,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("drds")]
         public Input<string>? Drds { get; set; }
+
+        [Input("dts")]
+        public Input<string>? Dts { get; set; }
 
         [Input("eci")]
         public Input<string>? Eci { get; set; }
@@ -144,6 +159,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("ga")]
         public Input<string>? Ga { get; set; }
 
+        [Input("gds")]
+        public Input<string>? Gds { get; set; }
+
         [Input("gpdb")]
         public Input<string>? Gpdb { get; set; }
 
@@ -159,8 +177,14 @@ namespace Pulumi.AliCloud.Inputs
         [Input("hitsdb")]
         public Input<string>? Hitsdb { get; set; }
 
+        [Input("imm")]
+        public Input<string>? Imm { get; set; }
+
         [Input("ims")]
         public Input<string>? Ims { get; set; }
+
+        [Input("iot")]
+        public Input<string>? Iot { get; set; }
 
         [Input("kms")]
         public Input<string>? Kms { get; set; }
@@ -201,6 +225,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("oos")]
         public Input<string>? Oos { get; set; }
 
+        [Input("opensearch")]
+        public Input<string>? Opensearch { get; set; }
+
         [Input("oss")]
         public Input<string>? Oss { get; set; }
 
@@ -215,6 +242,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("pvtz")]
         public Input<string>? Pvtz { get; set; }
+
+        [Input("quickbi")]
+        public Input<string>? Quickbi { get; set; }
 
         [Input("quotas")]
         public Input<string>? Quotas { get; set; }
@@ -261,8 +291,20 @@ namespace Pulumi.AliCloud.Inputs
         [Input("sts")]
         public Input<string>? Sts { get; set; }
 
+        [Input("swas")]
+        public Input<string>? Swas { get; set; }
+
+        [Input("vod")]
+        public Input<string>? Vod { get; set; }
+
         [Input("vpc")]
         public Input<string>? Vpc { get; set; }
+
+        [Input("vs")]
+        public Input<string>? Vs { get; set; }
+
+        [Input("waf")]
+        public Input<string>? Waf { get; set; }
 
         [Input("wafOpenapi")]
         public Input<string>? WafOpenapi { get; set; }

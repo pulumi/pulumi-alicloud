@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/copyImage:CopyImage")]
     public partial class CopyImage : Pulumi.CustomResource
     {
+        [Output("deleteAutoSnapshot")]
+        public Output<bool?> DeleteAutoSnapshot { get; private set; } = null!;
+
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
@@ -85,6 +88,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class CopyImageArgs : Pulumi.ResourceArgs
     {
+        [Input("deleteAutoSnapshot")]
+        public Input<bool>? DeleteAutoSnapshot { get; set; }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -124,6 +130,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class CopyImageState : Pulumi.ResourceArgs
     {
+        [Input("deleteAutoSnapshot")]
+        public Input<bool>? DeleteAutoSnapshot { get; set; }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 

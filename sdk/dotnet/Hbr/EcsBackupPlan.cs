@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Hbr
     /// <summary>
     /// Provides a HBR Ecs Backup Plan resource.
     /// 
-    /// For information about HBR Ecs Backup Plan and how to use it, see [What is Ecs Backup Plan](https://www.alibabacloud.com/help/doc-detail/186568.htm).
+    /// For information about HBR Ecs Backup Plan and how to use it, see [What is Ecs Backup Plan](https://www.alibabacloud.com/help/doc-detail/186574.htm).
     /// 
     /// &gt; **NOTE:** Available in v1.132.0+.
     /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Hbr
     ///             },
     ///             Retention = "1",
     ///             Schedule = "I|1602673264|PT2H",
-    ///             SpeedLimit = "I|1602673264|PT2H",
+    ///             SpeedLimit = "0:24:5120",
     ///             VaultId = "v-0003gxoksflhxxxxxxxx",
     ///         });
     ///     }
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Hbr
     public partial class EcsBackupPlan : Pulumi.CustomResource
     {
         /// <summary>
-        /// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Output("backupType")]
         public Output<string> BackupType { get; private set; } = null!;
@@ -75,61 +75,61 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Detail { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to Disable the Backup Task. Valid Values: true, false.
+        /// Whether to disable the backup task. Valid values: `true`, `false`.
         /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         /// </summary>
         [Output("ecsBackupPlanName")]
         public Output<string> EcsBackupPlanName { get; private set; } = null!;
 
         /// <summary>
-        /// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+        /// Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         /// </summary>
         [Output("exclude")]
         public Output<string?> Exclude { get; private set; } = null!;
 
         /// <summary>
-        /// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+        /// Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         /// </summary>
         [Output("include")]
         public Output<string?> Include { get; private set; } = null!;
 
         /// <summary>
-        /// The ECS Instance Id. Must Have Installed the Client.
+        /// The ID of ECS instance. The ecs backup client must have been installed on the host.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+        /// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
         /// </summary>
         [Output("options")]
         public Output<string?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// Backup Path. e.g. `["/home", "/var"]`
+        /// Backup path. e.g. `["/home", "/var"]`
         /// </summary>
         [Output("paths")]
         public Output<ImmutableArray<string>> Paths { get; private set; } = null!;
 
         /// <summary>
-        /// Backup Retention Period, the Minimum Value of 1.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         [Output("retention")]
         public Output<string> Retention { get; private set; } = null!;
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         /// </summary>
         [Output("speedLimit")]
         public Output<string?> SpeedLimit { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<bool?> UpdatePaths { get; private set; } = null!;
 
         /// <summary>
-        /// Vault ID.
+        /// The ID of Backup vault.
         /// </summary>
         [Output("vaultId")]
         public Output<string?> VaultId { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class EcsBackupPlanArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
@@ -199,37 +199,37 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Detail { get; set; }
 
         /// <summary>
-        /// Whether to Disable the Backup Task. Valid Values: true, false.
+        /// Whether to disable the backup task. Valid values: `true`, `false`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         /// </summary>
         [Input("ecsBackupPlanName", required: true)]
         public Input<string> EcsBackupPlanName { get; set; } = null!;
 
         /// <summary>
-        /// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+        /// Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         /// </summary>
         [Input("exclude")]
         public Input<string>? Exclude { get; set; }
 
         /// <summary>
-        /// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+        /// Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// The ECS Instance Id. Must Have Installed the Client.
+        /// The ID of ECS instance. The ecs backup client must have been installed on the host.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+        /// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
@@ -238,7 +238,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _paths;
 
         /// <summary>
-        /// Backup Path. e.g. `["/home", "/var"]`
+        /// Backup path. e.g. `["/home", "/var"]`
         /// </summary>
         public InputList<string> Paths
         {
@@ -247,19 +247,19 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// Backup Retention Period, the Minimum Value of 1.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         [Input("retention", required: true)]
         public Input<string> Retention { get; set; } = null!;
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<string> Schedule { get; set; } = null!;
 
         /// <summary>
-        /// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         /// </summary>
         [Input("speedLimit")]
         public Input<string>? SpeedLimit { get; set; }
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<bool>? UpdatePaths { get; set; }
 
         /// <summary>
-        /// Vault ID.
+        /// The ID of Backup vault.
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class EcsBackupPlanState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
@@ -290,37 +290,37 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Detail { get; set; }
 
         /// <summary>
-        /// Whether to Disable the Backup Task. Valid Values: true, false.
+        /// Whether to disable the backup task. Valid values: `true`, `false`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         /// </summary>
         [Input("ecsBackupPlanName")]
         public Input<string>? EcsBackupPlanName { get; set; }
 
         /// <summary>
-        /// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+        /// Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         /// </summary>
         [Input("exclude")]
         public Input<string>? Exclude { get; set; }
 
         /// <summary>
-        /// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+        /// Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// The ECS Instance Id. Must Have Installed the Client.
+        /// The ID of ECS instance. The ecs backup client must have been installed on the host.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+        /// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _paths;
 
         /// <summary>
-        /// Backup Path. e.g. `["/home", "/var"]`
+        /// Backup path. e.g. `["/home", "/var"]`
         /// </summary>
         public InputList<string> Paths
         {
@@ -338,19 +338,19 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// Backup Retention Period, the Minimum Value of 1.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         /// </summary>
         [Input("speedLimit")]
         public Input<string>? SpeedLimit { get; set; }
@@ -359,7 +359,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<bool>? UpdatePaths { get; set; }
 
         /// <summary>
-        /// Vault ID.
+        /// The ID of Backup vault.
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }

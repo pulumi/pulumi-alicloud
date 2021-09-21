@@ -115,21 +115,26 @@ class Endpoints(dict):
                  cddc: Optional[str] = None,
                  cdn: Optional[str] = None,
                  cds: Optional[str] = None,
+                 clickhouse: Optional[str] = None,
                  cloudphone: Optional[str] = None,
+                 cloudsso: Optional[str] = None,
                  cms: Optional[str] = None,
                  config: Optional[str] = None,
                  cr: Optional[str] = None,
                  cs: Optional[str] = None,
                  datahub: Optional[str] = None,
                  dataworkspublic: Optional[str] = None,
+                 dbfs: Optional[str] = None,
                  dcdn: Optional[str] = None,
                  ddosbgp: Optional[str] = None,
                  ddoscoo: Optional[str] = None,
                  dds: Optional[str] = None,
+                 dg: Optional[str] = None,
                  dm: Optional[str] = None,
                  dms_enterprise: Optional[str] = None,
                  dns: Optional[str] = None,
                  drds: Optional[str] = None,
+                 dts: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
                  ehpc: Optional[str] = None,
@@ -142,12 +147,15 @@ class Endpoints(dict):
                  fc: Optional[str] = None,
                  fnf: Optional[str] = None,
                  ga: Optional[str] = None,
+                 gds: Optional[str] = None,
                  gpdb: Optional[str] = None,
                  gwsecd: Optional[str] = None,
                  hbr: Optional[str] = None,
                  hcs_sgw: Optional[str] = None,
                  hitsdb: Optional[str] = None,
+                 imm: Optional[str] = None,
                  ims: Optional[str] = None,
+                 iot: Optional[str] = None,
                  kms: Optional[str] = None,
                  kvstore: Optional[str] = None,
                  location: Optional[str] = None,
@@ -161,11 +169,13 @@ class Endpoints(dict):
                  ons: Optional[str] = None,
                  onsproxy: Optional[str] = None,
                  oos: Optional[str] = None,
+                 opensearch: Optional[str] = None,
                  oss: Optional[str] = None,
                  ots: Optional[str] = None,
                  polardb: Optional[str] = None,
                  privatelink: Optional[str] = None,
                  pvtz: Optional[str] = None,
+                 quickbi: Optional[str] = None,
                  quotas: Optional[str] = None,
                  r_kvstore: Optional[str] = None,
                  ram: Optional[str] = None,
@@ -181,7 +191,11 @@ class Endpoints(dict):
                  sgw: Optional[str] = None,
                  slb: Optional[str] = None,
                  sts: Optional[str] = None,
+                 swas: Optional[str] = None,
+                 vod: Optional[str] = None,
                  vpc: Optional[str] = None,
+                 vs: Optional[str] = None,
+                 waf: Optional[str] = None,
                  waf_openapi: Optional[str] = None):
         if actiontrail is not None:
             pulumi.set(__self__, "actiontrail", actiontrail)
@@ -217,8 +231,12 @@ class Endpoints(dict):
             pulumi.set(__self__, "cdn", cdn)
         if cds is not None:
             pulumi.set(__self__, "cds", cds)
+        if clickhouse is not None:
+            pulumi.set(__self__, "clickhouse", clickhouse)
         if cloudphone is not None:
             pulumi.set(__self__, "cloudphone", cloudphone)
+        if cloudsso is not None:
+            pulumi.set(__self__, "cloudsso", cloudsso)
         if cms is not None:
             pulumi.set(__self__, "cms", cms)
         if config is not None:
@@ -231,6 +249,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "datahub", datahub)
         if dataworkspublic is not None:
             pulumi.set(__self__, "dataworkspublic", dataworkspublic)
+        if dbfs is not None:
+            pulumi.set(__self__, "dbfs", dbfs)
         if dcdn is not None:
             pulumi.set(__self__, "dcdn", dcdn)
         if ddosbgp is not None:
@@ -239,6 +259,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "ddoscoo", ddoscoo)
         if dds is not None:
             pulumi.set(__self__, "dds", dds)
+        if dg is not None:
+            pulumi.set(__self__, "dg", dg)
         if dm is not None:
             pulumi.set(__self__, "dm", dm)
         if dms_enterprise is not None:
@@ -247,6 +269,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "dns", dns)
         if drds is not None:
             pulumi.set(__self__, "drds", drds)
+        if dts is not None:
+            pulumi.set(__self__, "dts", dts)
         if eci is not None:
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
@@ -271,6 +295,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "fnf", fnf)
         if ga is not None:
             pulumi.set(__self__, "ga", ga)
+        if gds is not None:
+            pulumi.set(__self__, "gds", gds)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
         if gwsecd is not None:
@@ -281,8 +307,12 @@ class Endpoints(dict):
             pulumi.set(__self__, "hcs_sgw", hcs_sgw)
         if hitsdb is not None:
             pulumi.set(__self__, "hitsdb", hitsdb)
+        if imm is not None:
+            pulumi.set(__self__, "imm", imm)
         if ims is not None:
             pulumi.set(__self__, "ims", ims)
+        if iot is not None:
+            pulumi.set(__self__, "iot", iot)
         if kms is not None:
             pulumi.set(__self__, "kms", kms)
         if kvstore is not None:
@@ -309,6 +339,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "onsproxy", onsproxy)
         if oos is not None:
             pulumi.set(__self__, "oos", oos)
+        if opensearch is not None:
+            pulumi.set(__self__, "opensearch", opensearch)
         if oss is not None:
             pulumi.set(__self__, "oss", oss)
         if ots is not None:
@@ -319,6 +351,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "privatelink", privatelink)
         if pvtz is not None:
             pulumi.set(__self__, "pvtz", pvtz)
+        if quickbi is not None:
+            pulumi.set(__self__, "quickbi", quickbi)
         if quotas is not None:
             pulumi.set(__self__, "quotas", quotas)
         if r_kvstore is not None:
@@ -349,8 +383,16 @@ class Endpoints(dict):
             pulumi.set(__self__, "slb", slb)
         if sts is not None:
             pulumi.set(__self__, "sts", sts)
+        if swas is not None:
+            pulumi.set(__self__, "swas", swas)
+        if vod is not None:
+            pulumi.set(__self__, "vod", vod)
         if vpc is not None:
             pulumi.set(__self__, "vpc", vpc)
+        if vs is not None:
+            pulumi.set(__self__, "vs", vs)
+        if waf is not None:
+            pulumi.set(__self__, "waf", waf)
         if waf_openapi is not None:
             pulumi.set(__self__, "waf_openapi", waf_openapi)
 
@@ -441,8 +483,18 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def clickhouse(self) -> Optional[str]:
+        return pulumi.get(self, "clickhouse")
+
+    @property
+    @pulumi.getter
     def cloudphone(self) -> Optional[str]:
         return pulumi.get(self, "cloudphone")
+
+    @property
+    @pulumi.getter
+    def cloudsso(self) -> Optional[str]:
+        return pulumi.get(self, "cloudsso")
 
     @property
     @pulumi.getter
@@ -476,6 +528,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def dbfs(self) -> Optional[str]:
+        return pulumi.get(self, "dbfs")
+
+    @property
+    @pulumi.getter
     def dcdn(self) -> Optional[str]:
         return pulumi.get(self, "dcdn")
 
@@ -496,6 +553,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def dg(self) -> Optional[str]:
+        return pulumi.get(self, "dg")
+
+    @property
+    @pulumi.getter
     def dm(self) -> Optional[str]:
         return pulumi.get(self, "dm")
 
@@ -513,6 +575,11 @@ class Endpoints(dict):
     @pulumi.getter
     def drds(self) -> Optional[str]:
         return pulumi.get(self, "drds")
+
+    @property
+    @pulumi.getter
+    def dts(self) -> Optional[str]:
+        return pulumi.get(self, "dts")
 
     @property
     @pulumi.getter
@@ -576,6 +643,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def gds(self) -> Optional[str]:
+        return pulumi.get(self, "gds")
+
+    @property
+    @pulumi.getter
     def gpdb(self) -> Optional[str]:
         return pulumi.get(self, "gpdb")
 
@@ -601,8 +673,18 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def imm(self) -> Optional[str]:
+        return pulumi.get(self, "imm")
+
+    @property
+    @pulumi.getter
     def ims(self) -> Optional[str]:
         return pulumi.get(self, "ims")
+
+    @property
+    @pulumi.getter
+    def iot(self) -> Optional[str]:
+        return pulumi.get(self, "iot")
 
     @property
     @pulumi.getter
@@ -671,6 +753,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def opensearch(self) -> Optional[str]:
+        return pulumi.get(self, "opensearch")
+
+    @property
+    @pulumi.getter
     def oss(self) -> Optional[str]:
         return pulumi.get(self, "oss")
 
@@ -693,6 +780,11 @@ class Endpoints(dict):
     @pulumi.getter
     def pvtz(self) -> Optional[str]:
         return pulumi.get(self, "pvtz")
+
+    @property
+    @pulumi.getter
+    def quickbi(self) -> Optional[str]:
+        return pulumi.get(self, "quickbi")
 
     @property
     @pulumi.getter
@@ -771,8 +863,28 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def swas(self) -> Optional[str]:
+        return pulumi.get(self, "swas")
+
+    @property
+    @pulumi.getter
+    def vod(self) -> Optional[str]:
+        return pulumi.get(self, "vod")
+
+    @property
+    @pulumi.getter
     def vpc(self) -> Optional[str]:
         return pulumi.get(self, "vpc")
+
+    @property
+    @pulumi.getter
+    def vs(self) -> Optional[str]:
+        return pulumi.get(self, "vs")
+
+    @property
+    @pulumi.getter
+    def waf(self) -> Optional[str]:
+        return pulumi.get(self, "waf")
 
     @property
     @pulumi.getter(name="wafOpenapi")

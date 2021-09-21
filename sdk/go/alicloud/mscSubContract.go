@@ -59,7 +59,7 @@ type MscSubContract struct {
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The User's Telephone.
 	Mobile pulumi.StringOutput `pulumi:"mobile"`
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
 	Position pulumi.StringOutput `pulumi:"position"`
 }
 
@@ -110,7 +110,7 @@ type mscSubContractState struct {
 	Email *string `pulumi:"email"`
 	// The User's Telephone.
 	Mobile *string `pulumi:"mobile"`
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
 	Position *string `pulumi:"position"`
 }
 
@@ -121,7 +121,7 @@ type MscSubContractState struct {
 	Email pulumi.StringPtrInput
 	// The User's Telephone.
 	Mobile pulumi.StringPtrInput
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
 	Position pulumi.StringPtrInput
 }
 
@@ -136,7 +136,7 @@ type mscSubContractArgs struct {
 	Email string `pulumi:"email"`
 	// The User's Telephone.
 	Mobile string `pulumi:"mobile"`
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
 	Position string `pulumi:"position"`
 }
 
@@ -148,7 +148,7 @@ type MscSubContractArgs struct {
 	Email pulumi.StringInput
 	// The User's Telephone.
 	Mobile pulumi.StringInput
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
 	Position pulumi.StringInput
 }
 

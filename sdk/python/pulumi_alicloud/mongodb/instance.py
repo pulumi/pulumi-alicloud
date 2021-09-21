@@ -25,6 +25,7 @@ class InstanceArgs:
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -51,6 +52,10 @@ class InstanceArgs:
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+               * UPGRADE: The specifications are upgraded.
+               * DOWNGRADE: The specifications are downgraded.
+               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
@@ -85,6 +90,8 @@ class InstanceArgs:
             pulumi.set(__self__, "maintain_start_time", maintain_start_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if order_type is not None:
+            pulumi.set(__self__, "order_type", order_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if replication_factor is not None:
@@ -253,6 +260,21 @@ class InstanceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+        * UPGRADE: The specifications are upgraded.
+        * DOWNGRADE: The specifications are downgraded.
+        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        """
+        return pulumi.get(self, "order_type")
+
+    @order_type.setter
+    def order_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order_type", value)
+
+    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -390,6 +412,7 @@ class _InstanceState:
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  replica_set_name: Optional[pulumi.Input[str]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -419,6 +442,10 @@ class _InstanceState:
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+               * UPGRADE: The specifications are upgraded.
+               * DOWNGRADE: The specifications are downgraded.
+               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
@@ -459,6 +486,8 @@ class _InstanceState:
             pulumi.set(__self__, "maintain_start_time", maintain_start_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if order_type is not None:
+            pulumi.set(__self__, "order_type", order_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if replica_set_name is not None:
@@ -631,6 +660,21 @@ class _InstanceState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+        * UPGRADE: The specifications are upgraded.
+        * DOWNGRADE: The specifications are downgraded.
+        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        """
+        return pulumi.get(self, "order_type")
+
+    @order_type.setter
+    def order_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order_type", value)
 
     @property
     @pulumi.getter
@@ -808,6 +852,7 @@ class Instance(pulumi.CustomResource):
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -844,6 +889,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+               * UPGRADE: The specifications are upgraded.
+               * DOWNGRADE: The specifications are downgraded.
+               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
@@ -899,6 +948,7 @@ class Instance(pulumi.CustomResource):
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -939,6 +989,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["maintain_end_time"] = maintain_end_time
             __props__.__dict__["maintain_start_time"] = maintain_start_time
             __props__.__dict__["name"] = name
+            __props__.__dict__["order_type"] = order_type
             __props__.__dict__["period"] = period
             __props__.__dict__["replication_factor"] = replication_factor
             __props__.__dict__["security_group_id"] = security_group_id
@@ -974,6 +1025,7 @@ class Instance(pulumi.CustomResource):
             maintain_end_time: Optional[pulumi.Input[str]] = None,
             maintain_start_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            order_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             replica_set_name: Optional[pulumi.Input[str]] = None,
             replication_factor: Optional[pulumi.Input[int]] = None,
@@ -1008,6 +1060,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+               * UPGRADE: The specifications are upgraded.
+               * DOWNGRADE: The specifications are downgraded.
+               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
@@ -1040,6 +1096,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["maintain_end_time"] = maintain_end_time
         __props__.__dict__["maintain_start_time"] = maintain_start_time
         __props__.__dict__["name"] = name
+        __props__.__dict__["order_type"] = order_type
         __props__.__dict__["period"] = period
         __props__.__dict__["replica_set_name"] = replica_set_name
         __props__.__dict__["replication_factor"] = replication_factor
@@ -1152,6 +1209,17 @@ class Instance(pulumi.CustomResource):
         The name of DB instance. It a string of 2 to 256 characters.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+        * UPGRADE: The specifications are upgraded.
+        * DOWNGRADE: The specifications are downgraded.
+        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        """
+        return pulumi.get(self, "order_type")
 
     @property
     @pulumi.getter

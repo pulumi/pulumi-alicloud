@@ -39,6 +39,8 @@ __all__ = [
     'GetServerCertificatesCertificateResult',
     'GetServerGroupsSlbServerGroupResult',
     'GetServerGroupsSlbServerGroupServerResult',
+    'GetTlsCipherPoliciesPolicyResult',
+    'GetTlsCipherPoliciesPolicyRelateListenerResult',
     'GetZonesZoneResult',
 ]
 
@@ -2674,6 +2676,141 @@ class GetServerGroupsSlbServerGroupServerResult(dict):
         Weight associated to the ECS instance.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetTlsCipherPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 ciphers: Sequence[str],
+                 create_time: str,
+                 id: str,
+                 relate_listeners: Sequence['outputs.GetTlsCipherPoliciesPolicyRelateListenerResult'],
+                 status: str,
+                 tls_cipher_policy_id: str,
+                 tls_cipher_policy_name: str,
+                 tls_versions: Sequence[str]):
+        """
+        :param Sequence[str] ciphers: The encryption algorithms supported. It depends on the value of `tls_versions`.
+        :param str create_time: The creation time timestamp.
+        :param str id: The ID of the Tls Cipher Policy.
+        :param Sequence['GetTlsCipherPoliciesPolicyRelateListenerArgs'] relate_listeners: Array of Relate Listeners.
+        :param str status: TLS policy instance state.
+        :param str tls_cipher_policy_id: The ID of TLS cipher policy.
+        :param str tls_cipher_policy_name: TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+        :param Sequence[str] tls_versions: The version of TLS protocol.
+        """
+        pulumi.set(__self__, "ciphers", ciphers)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "relate_listeners", relate_listeners)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tls_cipher_policy_id", tls_cipher_policy_id)
+        pulumi.set(__self__, "tls_cipher_policy_name", tls_cipher_policy_name)
+        pulumi.set(__self__, "tls_versions", tls_versions)
+
+    @property
+    @pulumi.getter
+    def ciphers(self) -> Sequence[str]:
+        """
+        The encryption algorithms supported. It depends on the value of `tls_versions`.
+        """
+        return pulumi.get(self, "ciphers")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time timestamp.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Tls Cipher Policy.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="relateListeners")
+    def relate_listeners(self) -> Sequence['outputs.GetTlsCipherPoliciesPolicyRelateListenerResult']:
+        """
+        Array of Relate Listeners.
+        """
+        return pulumi.get(self, "relate_listeners")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        TLS policy instance state.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tlsCipherPolicyId")
+    def tls_cipher_policy_id(self) -> str:
+        """
+        The ID of TLS cipher policy.
+        """
+        return pulumi.get(self, "tls_cipher_policy_id")
+
+    @property
+    @pulumi.getter(name="tlsCipherPolicyName")
+    def tls_cipher_policy_name(self) -> str:
+        """
+        TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+        """
+        return pulumi.get(self, "tls_cipher_policy_name")
+
+    @property
+    @pulumi.getter(name="tlsVersions")
+    def tls_versions(self) -> Sequence[str]:
+        """
+        The version of TLS protocol.
+        """
+        return pulumi.get(self, "tls_versions")
+
+
+@pulumi.output_type
+class GetTlsCipherPoliciesPolicyRelateListenerResult(dict):
+    def __init__(__self__, *,
+                 load_balancer_id: str,
+                 port: int,
+                 protocol: str):
+        """
+        :param str load_balancer_id: The ID of SLB instance.
+        :param int port: Listening port. Valid value: 1 to 65535.
+        :param str protocol: Snooping protocols. Valid values: `TCP`, `UDP`, `HTTP`, or `HTTPS`.
+        """
+        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> str:
+        """
+        The ID of SLB instance.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Listening port. Valid value: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Snooping protocols. Valid values: `TCP`, `UDP`, `HTTP`, or `HTTPS`.
+        """
+        return pulumi.get(self, "protocol")
 
 
 @pulumi.output_type

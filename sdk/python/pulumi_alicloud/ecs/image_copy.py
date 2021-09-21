@@ -15,6 +15,7 @@ class ImageCopyArgs:
     def __init__(__self__, *,
                  source_image_id: pulumi.Input[str],
                  source_region_id: pulumi.Input[str],
+                 delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -37,6 +38,8 @@ class ImageCopyArgs:
         """
         pulumi.set(__self__, "source_image_id", source_image_id)
         pulumi.set(__self__, "source_region_id", source_region_id)
+        if delete_auto_snapshot is not None:
+            pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encrypted is not None:
@@ -78,6 +81,15 @@ class ImageCopyArgs:
     @source_region_id.setter
     def source_region_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_region_id", value)
+
+    @property
+    @pulumi.getter(name="deleteAutoSnapshot")
+    def delete_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "delete_auto_snapshot")
+
+    @delete_auto_snapshot.setter
+    def delete_auto_snapshot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_auto_snapshot", value)
 
     @property
     @pulumi.getter
@@ -166,6 +178,7 @@ class ImageCopyArgs:
 @pulumi.input_type
 class _ImageCopyState:
     def __init__(__self__, *,
+                 delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -188,6 +201,8 @@ class _ImageCopyState:
         :param pulumi.Input[str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
+        if delete_auto_snapshot is not None:
+            pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encrypted is not None:
@@ -209,6 +224,15 @@ class _ImageCopyState:
             pulumi.set(__self__, "source_region_id", source_region_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="deleteAutoSnapshot")
+    def delete_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "delete_auto_snapshot")
+
+    @delete_auto_snapshot.setter
+    def delete_auto_snapshot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_auto_snapshot", value)
 
     @property
     @pulumi.getter
@@ -323,6 +347,7 @@ class ImageCopy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -447,6 +472,7 @@ class ImageCopy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -468,6 +494,7 @@ class ImageCopy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ImageCopyArgs.__new__(ImageCopyArgs)
 
+            __props__.__dict__["delete_auto_snapshot"] = delete_auto_snapshot
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypted"] = encrypted
             __props__.__dict__["force"] = force
@@ -494,6 +521,7 @@ class ImageCopy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             encrypted: Optional[pulumi.Input[bool]] = None,
             force: Optional[pulumi.Input[bool]] = None,
@@ -525,6 +553,7 @@ class ImageCopy(pulumi.CustomResource):
 
         __props__ = _ImageCopyState.__new__(_ImageCopyState)
 
+        __props__.__dict__["delete_auto_snapshot"] = delete_auto_snapshot
         __props__.__dict__["description"] = description
         __props__.__dict__["encrypted"] = encrypted
         __props__.__dict__["force"] = force
@@ -535,6 +564,11 @@ class ImageCopy(pulumi.CustomResource):
         __props__.__dict__["source_region_id"] = source_region_id
         __props__.__dict__["tags"] = tags
         return ImageCopy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="deleteAutoSnapshot")
+    def delete_auto_snapshot(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "delete_auto_snapshot")
 
     @property
     @pulumi.getter

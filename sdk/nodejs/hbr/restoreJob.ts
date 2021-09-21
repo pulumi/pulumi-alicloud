@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Hybrid Backup Recovery (HBR) Restore Job resource.
  *
- * For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://help.aliyun.com/document_detail/62361.html).
+ * For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://www.alibabacloud.com/help/doc-detail/186575.htm).
  *
  * > **NOTE:** Available in v1.133.0+.
  *
@@ -89,7 +89,7 @@ export class RestoreJob extends pulumi.CustomResource {
      */
     public readonly include!: pulumi.Output<string | undefined>;
     /**
-     * Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+     * Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
      */
     public readonly options!: pulumi.Output<string | undefined>;
     /**
@@ -97,11 +97,11 @@ export class RestoreJob extends pulumi.CustomResource {
      */
     public readonly restoreJobId!: pulumi.Output<string>;
     /**
-     * The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+     * The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
      */
     public readonly restoreType!: pulumi.Output<string>;
     /**
-     * Restore Snapshot of HashCode.
+     * The hashcode of restore Snapshot.
      */
     public readonly snapshotHash!: pulumi.Output<string>;
     /**
@@ -109,7 +109,7 @@ export class RestoreJob extends pulumi.CustomResource {
      */
     public readonly snapshotId!: pulumi.Output<string>;
     /**
-     * The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
      */
     public readonly sourceType!: pulumi.Output<string>;
     /**
@@ -117,35 +117,35 @@ export class RestoreJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The Target ofo OSS Bucket Name.
+     * The target ofo OSS bucket name.
      */
     public readonly targetBucket!: pulumi.Output<string | undefined>;
     public readonly targetClientId!: pulumi.Output<string | undefined>;
     public readonly targetContainer!: pulumi.Output<string | undefined>;
     public readonly targetContainerClusterId!: pulumi.Output<string | undefined>;
     /**
-     * The Destination File System Creation Time.
+     * The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
     public readonly targetCreateTime!: pulumi.Output<string | undefined>;
     public readonly targetDataSourceId!: pulumi.Output<string | undefined>;
     /**
-     * The Destination File System ID.
+     * The ID of destination File System.
      */
     public readonly targetFileSystemId!: pulumi.Output<string | undefined>;
     /**
-     * Objective to ECS Instance Id.
+     * The target ID of ECS instance.
      */
     public readonly targetInstanceId!: pulumi.Output<string | undefined>;
     /**
-     * The Target of (ECS) Instance Changes the ECS File Path.
+     * The target file path of (ECS) instance.
      */
     public readonly targetPath!: pulumi.Output<string | undefined>;
     /**
-     * The Target of the OSS Object Prefix.
+     * The target of the OSS object prefix.
      */
     public readonly targetPrefix!: pulumi.Output<string | undefined>;
     /**
-     * The ID of Vault.
+     * The ID of backup vault.
      */
     public readonly vaultId!: pulumi.Output<string>;
 
@@ -243,7 +243,7 @@ export interface RestoreJobState {
      */
     readonly include?: pulumi.Input<string>;
     /**
-     * Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+     * Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
      */
     readonly options?: pulumi.Input<string>;
     /**
@@ -251,11 +251,11 @@ export interface RestoreJobState {
      */
     readonly restoreJobId?: pulumi.Input<string>;
     /**
-     * The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+     * The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
      */
     readonly restoreType?: pulumi.Input<string>;
     /**
-     * Restore Snapshot of HashCode.
+     * The hashcode of restore Snapshot.
      */
     readonly snapshotHash?: pulumi.Input<string>;
     /**
@@ -263,7 +263,7 @@ export interface RestoreJobState {
      */
     readonly snapshotId?: pulumi.Input<string>;
     /**
-     * The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
      */
     readonly sourceType?: pulumi.Input<string>;
     /**
@@ -271,35 +271,35 @@ export interface RestoreJobState {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * The Target ofo OSS Bucket Name.
+     * The target ofo OSS bucket name.
      */
     readonly targetBucket?: pulumi.Input<string>;
     readonly targetClientId?: pulumi.Input<string>;
     readonly targetContainer?: pulumi.Input<string>;
     readonly targetContainerClusterId?: pulumi.Input<string>;
     /**
-     * The Destination File System Creation Time.
+     * The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
     readonly targetCreateTime?: pulumi.Input<string>;
     readonly targetDataSourceId?: pulumi.Input<string>;
     /**
-     * The Destination File System ID.
+     * The ID of destination File System.
      */
     readonly targetFileSystemId?: pulumi.Input<string>;
     /**
-     * Objective to ECS Instance Id.
+     * The target ID of ECS instance.
      */
     readonly targetInstanceId?: pulumi.Input<string>;
     /**
-     * The Target of (ECS) Instance Changes the ECS File Path.
+     * The target file path of (ECS) instance.
      */
     readonly targetPath?: pulumi.Input<string>;
     /**
-     * The Target of the OSS Object Prefix.
+     * The target of the OSS object prefix.
      */
     readonly targetPrefix?: pulumi.Input<string>;
     /**
-     * The ID of Vault.
+     * The ID of backup vault.
      */
     readonly vaultId?: pulumi.Input<string>;
 }
@@ -317,7 +317,7 @@ export interface RestoreJobArgs {
      */
     readonly include?: pulumi.Input<string>;
     /**
-     * Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+     * Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
      */
     readonly options?: pulumi.Input<string>;
     /**
@@ -325,11 +325,11 @@ export interface RestoreJobArgs {
      */
     readonly restoreJobId: pulumi.Input<string>;
     /**
-     * The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+     * The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
      */
     readonly restoreType: pulumi.Input<string>;
     /**
-     * Restore Snapshot of HashCode.
+     * The hashcode of restore Snapshot.
      */
     readonly snapshotHash: pulumi.Input<string>;
     /**
@@ -337,39 +337,39 @@ export interface RestoreJobArgs {
      */
     readonly snapshotId: pulumi.Input<string>;
     /**
-     * The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
      */
     readonly sourceType: pulumi.Input<string>;
     /**
-     * The Target ofo OSS Bucket Name.
+     * The target ofo OSS bucket name.
      */
     readonly targetBucket?: pulumi.Input<string>;
     readonly targetClientId?: pulumi.Input<string>;
     readonly targetContainer?: pulumi.Input<string>;
     readonly targetContainerClusterId?: pulumi.Input<string>;
     /**
-     * The Destination File System Creation Time.
+     * The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
     readonly targetCreateTime?: pulumi.Input<string>;
     readonly targetDataSourceId?: pulumi.Input<string>;
     /**
-     * The Destination File System ID.
+     * The ID of destination File System.
      */
     readonly targetFileSystemId?: pulumi.Input<string>;
     /**
-     * Objective to ECS Instance Id.
+     * The target ID of ECS instance.
      */
     readonly targetInstanceId?: pulumi.Input<string>;
     /**
-     * The Target of (ECS) Instance Changes the ECS File Path.
+     * The target file path of (ECS) instance.
      */
     readonly targetPath?: pulumi.Input<string>;
     /**
-     * The Target of the OSS Object Prefix.
+     * The target of the OSS object prefix.
      */
     readonly targetPrefix?: pulumi.Input<string>;
     /**
-     * The ID of Vault.
+     * The ID of backup vault.
      */
     readonly vaultId: pulumi.Input<string>;
 }

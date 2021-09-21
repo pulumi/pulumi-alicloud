@@ -161,6 +161,63 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// }
     /// ```
+    /// Resource Directory Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.Log.Audit("example", new AliCloud.Log.AuditArgs
+    ///         {
+    ///             Aliuid = "12345678",
+    ///             DisplayName = "tf-audit-test",
+    ///             ResourceDirectoryType = "all",
+    ///             VariableMap = 
+    ///             {
+    ///                 { "actiontrail_enabled", "true" },
+    ///                 { "actiontrail_ttl", "180" },
+    ///                 { "oss_access_enabled", "true" },
+    ///                 { "oss_access_ttl", "180" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.Log.Audit("example", new AliCloud.Log.AuditArgs
+    ///         {
+    ///             Aliuid = "12345678",
+    ///             DisplayName = "tf-audit-test",
+    ///             MultiAccounts = 
+    ///             {
+    ///                 "123456789123",
+    ///                 "12345678912300123",
+    ///             },
+    ///             ResourceDirectoryType = "custom",
+    ///             VariableMap = 
+    ///             {
+    ///                 { "actiontrail_enabled", "true" },
+    ///                 { "actiontrail_ttl", "180" },
+    ///                 { "oss_access_enabled", "true" },
+    ///                 { "oss_access_ttl", "180" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -190,6 +247,12 @@ namespace Pulumi.AliCloud.Log
         /// </summary>
         [Output("multiAccounts")]
         public Output<ImmutableArray<string>> MultiAccounts { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+        /// </summary>
+        [Output("resourceDirectoryType")]
+        public Output<string?> ResourceDirectoryType { get; private set; } = null!;
 
         /// <summary>
         /// Log audit detailed configuration.
@@ -267,6 +330,12 @@ namespace Pulumi.AliCloud.Log
             set => _multiAccounts = value;
         }
 
+        /// <summary>
+        /// Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+        /// </summary>
+        [Input("resourceDirectoryType")]
+        public Input<string>? ResourceDirectoryType { get; set; }
+
         [Input("variableMap")]
         private InputMap<object>? _variableMap;
 
@@ -309,6 +378,12 @@ namespace Pulumi.AliCloud.Log
             get => _multiAccounts ?? (_multiAccounts = new InputList<string>());
             set => _multiAccounts = value;
         }
+
+        /// <summary>
+        /// Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+        /// </summary>
+        [Input("resourceDirectoryType")]
+        public Input<string>? ResourceDirectoryType { get; set; }
 
         [Input("variableMap")]
         private InputMap<object>? _variableMap;

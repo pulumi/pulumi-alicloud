@@ -36,6 +36,8 @@ export function getInstanceEngines(args?: GetInstanceEnginesArgs, opts?: pulumi.
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:rds/getInstanceEngines:getInstanceEngines", {
+        "category": args.category,
+        "dbInstanceStorageType": args.dbInstanceStorageType,
         "engine": args.engine,
         "engineVersion": args.engineVersion,
         "instanceChargeType": args.instanceChargeType,
@@ -50,7 +52,15 @@ export function getInstanceEngines(args?: GetInstanceEnginesArgs, opts?: pulumi.
  */
 export interface GetInstanceEnginesArgs {
     /**
-     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     */
+    readonly category?: string;
+    /**
+     * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
+     */
+    readonly dbInstanceStorageType?: string;
+    /**
+     * Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
      */
     readonly engine?: string;
     /**
@@ -77,6 +87,11 @@ export interface GetInstanceEnginesArgs {
  */
 export interface GetInstanceEnginesResult {
     /**
+     * DB Instance category.
+     */
+    readonly category?: string;
+    readonly dbInstanceStorageType?: string;
+    /**
      * Database type.
      */
     readonly engine?: string;
@@ -88,6 +103,10 @@ export interface GetInstanceEnginesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of engines.
+     */
+    readonly ids: string[];
     readonly instanceChargeType?: string;
     /**
      * A list of Rds available resource. Each element contains the following attributes:

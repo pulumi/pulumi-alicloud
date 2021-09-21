@@ -6,7 +6,9 @@
 from .domain import *
 from .domain_config import *
 from .domain_new import *
+from .get_real_time_log_deliveries import *
 from .get_service import *
+from .real_time_log_delivery import *
 from ._inputs import *
 from . import outputs
 
@@ -28,6 +30,8 @@ def _register_module():
                 return DomainConfig(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cdn/domainNew:DomainNew":
                 return DomainNew(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery":
+                return RealTimeLogDelivery(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
@@ -36,5 +40,6 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "cdn/domain", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cdn/domainConfig", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cdn/domainNew", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cdn/realTimeLogDelivery", _module_instance)
 
 _register_module()

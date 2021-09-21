@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
  *     topicQuota: "50",
  *     diskType: "1",
@@ -42,6 +43,7 @@ import * as utilities from "../utilities";
  *     deployType: "4",
  *     ioMax: "20",
  *     vswitchId: defaultSwitch.id,
+ *     securityGroup: defaultSecurityGroup.id,
  * });
  * ```
  *
@@ -100,7 +102,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
      */
-    public readonly eipMax!: pulumi.Output<number | undefined>;
+    public readonly eipMax!: pulumi.Output<number>;
     /**
      * The EndPoint to access the kafka instance.
      */
@@ -120,7 +122,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
-    public readonly securityGroup!: pulumi.Output<string | undefined>;
+    public readonly securityGroup!: pulumi.Output<string>;
     /**
      * （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      */

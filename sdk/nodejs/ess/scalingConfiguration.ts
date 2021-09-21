@@ -135,6 +135,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly passwordInherit!: pulumi.Output<boolean | undefined>;
     /**
+     * ID of resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
     public readonly roleName!: pulumi.Output<string | undefined>;
@@ -228,6 +232,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["override"] = state ? state.override : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["passwordInherit"] = state ? state.passwordInherit : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["roleName"] = state ? state.roleName : undefined;
             inputs["scalingConfigurationName"] = state ? state.scalingConfigurationName : undefined;
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
@@ -269,6 +274,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["override"] = args ? args.override : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["passwordInherit"] = args ? args.passwordInherit : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["roleName"] = args ? args.roleName : undefined;
             inputs["scalingConfigurationName"] = args ? args.scalingConfigurationName : undefined;
             inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
@@ -387,6 +393,10 @@ export interface ScalingConfigurationState {
      * Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
      */
     readonly passwordInherit?: pulumi.Input<boolean>;
+    /**
+     * ID of resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
@@ -543,6 +553,10 @@ export interface ScalingConfigurationArgs {
      * Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
      */
     readonly passwordInherit?: pulumi.Input<boolean>;
+    /**
+     * ID of resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */

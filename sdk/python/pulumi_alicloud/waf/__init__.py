@@ -3,7 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .certificate import *
 from .domain import *
+from .get_certificates import *
 from .get_domains import *
 from .get_instances import *
 from .instance import *
@@ -22,7 +24,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:waf/domain:Domain":
+            if typ == "alicloud:waf/certificate:Certificate":
+                return Certificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:waf/domain:Domain":
                 return Domain(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:waf/instance:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
@@ -31,6 +35,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "waf/certificate", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "waf/domain", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "waf/instance", _module_instance)
 

@@ -172,14 +172,14 @@ def get_restore_jobs(output_file: Optional[str] = None,
     ```
 
 
-    :param Sequence[str] restore_ids: The restore id.
-    :param str restore_type: The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
-    :param Sequence[str] source_types: The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
-    :param str status: The Restore Job Status.
-    :param Sequence[str] target_buckets: The Target ofo OSS Bucket Name.
-    :param Sequence[str] target_file_system_ids: The Destination File System ID.
-    :param Sequence[str] target_instance_ids: Objective to ECS Instance Id.
-    :param Sequence[str] vault_ids: The ID of Vault.
+    :param Sequence[str] restore_ids: The ID of restore job.
+    :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+    :param Sequence[str] source_types: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+    :param str status: The status of restore job.
+    :param Sequence[str] target_buckets: The name of target ofo OSS bucket.
+    :param Sequence[str] target_file_system_ids: The ID of destination file system.
+    :param Sequence[str] target_instance_ids: The ID of target ECS instance.
+    :param Sequence[str] vault_ids: The ID of backup vault.
     """
     __args__ = dict()
     __args__['outputFile'] = output_file

@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class ListenerAccessLogTracingConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Xtrace Function. Value: True Or False . Default Value: False.
+        /// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
         /// </summary>
         [Input("tracingEnabled")]
         public Input<bool>? TracingEnabled { get; set; }
 
         /// <summary>
-        /// Xtrace Sampling Rate. Value: **1~10000**.
+        /// Xtrace Sampling Rate. Value: `1` to `10000`.
         /// </summary>
         [Input("tracingSample")]
         public Input<int>? TracingSample { get; set; }
 
         /// <summary>
-        /// Xtrace Type Value Is **Zipkin**.
+        /// Xtrace Type Value Is `Zipkin`.
         /// </summary>
         [Input("tracingType")]
         public Input<string>? TracingType { get; set; }

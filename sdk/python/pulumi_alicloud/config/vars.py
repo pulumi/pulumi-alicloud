@@ -26,6 +26,7 @@ __all__ = [
     'protocol',
     'region',
     'secret_key',
+    'secure_transport',
     'security_token',
     'security_transport',
     'shared_credentials_file',
@@ -98,15 +99,17 @@ The secret key for API operations. You can retrieve this from the 'Security Mana
 console.
 """
 
+secure_transport = __config__.get('secureTransport')
+"""
+The security transport for the assume role invoking.
+"""
+
 security_token = __config__.get('securityToken')
 """
 security token. A security token is only required if you are using Security Token Service.
 """
 
 security_transport = __config__.get('securityTransport')
-"""
-The security transport for the assume role invoking.
-"""
 
 shared_credentials_file = __config__.get('sharedCredentialsFile')
 """

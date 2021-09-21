@@ -10,6 +10,918 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DispatchRuleGroupRule struct {
+	GroupId *int `pulumi:"groupId"`
+	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+	GroupInterval int `pulumi:"groupInterval"`
+	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+	GroupWaitTime int `pulumi:"groupWaitTime"`
+	// The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+	GroupingFields []string `pulumi:"groupingFields"`
+	// The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+	RepeatInterval *int `pulumi:"repeatInterval"`
+}
+
+// DispatchRuleGroupRuleInput is an input type that accepts DispatchRuleGroupRuleArgs and DispatchRuleGroupRuleOutput values.
+// You can construct a concrete instance of `DispatchRuleGroupRuleInput` via:
+//
+//          DispatchRuleGroupRuleArgs{...}
+type DispatchRuleGroupRuleInput interface {
+	pulumi.Input
+
+	ToDispatchRuleGroupRuleOutput() DispatchRuleGroupRuleOutput
+	ToDispatchRuleGroupRuleOutputWithContext(context.Context) DispatchRuleGroupRuleOutput
+}
+
+type DispatchRuleGroupRuleArgs struct {
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+	GroupInterval pulumi.IntInput `pulumi:"groupInterval"`
+	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+	GroupWaitTime pulumi.IntInput `pulumi:"groupWaitTime"`
+	// The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+	GroupingFields pulumi.StringArrayInput `pulumi:"groupingFields"`
+	// The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+	RepeatInterval pulumi.IntPtrInput `pulumi:"repeatInterval"`
+}
+
+func (DispatchRuleGroupRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleGroupRule)(nil)).Elem()
+}
+
+func (i DispatchRuleGroupRuleArgs) ToDispatchRuleGroupRuleOutput() DispatchRuleGroupRuleOutput {
+	return i.ToDispatchRuleGroupRuleOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleGroupRuleArgs) ToDispatchRuleGroupRuleOutputWithContext(ctx context.Context) DispatchRuleGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleGroupRuleOutput)
+}
+
+// DispatchRuleGroupRuleArrayInput is an input type that accepts DispatchRuleGroupRuleArray and DispatchRuleGroupRuleArrayOutput values.
+// You can construct a concrete instance of `DispatchRuleGroupRuleArrayInput` via:
+//
+//          DispatchRuleGroupRuleArray{ DispatchRuleGroupRuleArgs{...} }
+type DispatchRuleGroupRuleArrayInput interface {
+	pulumi.Input
+
+	ToDispatchRuleGroupRuleArrayOutput() DispatchRuleGroupRuleArrayOutput
+	ToDispatchRuleGroupRuleArrayOutputWithContext(context.Context) DispatchRuleGroupRuleArrayOutput
+}
+
+type DispatchRuleGroupRuleArray []DispatchRuleGroupRuleInput
+
+func (DispatchRuleGroupRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleGroupRule)(nil)).Elem()
+}
+
+func (i DispatchRuleGroupRuleArray) ToDispatchRuleGroupRuleArrayOutput() DispatchRuleGroupRuleArrayOutput {
+	return i.ToDispatchRuleGroupRuleArrayOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleGroupRuleArray) ToDispatchRuleGroupRuleArrayOutputWithContext(ctx context.Context) DispatchRuleGroupRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleGroupRuleArrayOutput)
+}
+
+type DispatchRuleGroupRuleOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleGroupRule)(nil)).Elem()
+}
+
+func (o DispatchRuleGroupRuleOutput) ToDispatchRuleGroupRuleOutput() DispatchRuleGroupRuleOutput {
+	return o
+}
+
+func (o DispatchRuleGroupRuleOutput) ToDispatchRuleGroupRuleOutputWithContext(ctx context.Context) DispatchRuleGroupRuleOutput {
+	return o
+}
+
+func (o DispatchRuleGroupRuleOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DispatchRuleGroupRule) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+func (o DispatchRuleGroupRuleOutput) GroupInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v DispatchRuleGroupRule) int { return v.GroupInterval }).(pulumi.IntOutput)
+}
+
+// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+func (o DispatchRuleGroupRuleOutput) GroupWaitTime() pulumi.IntOutput {
+	return o.ApplyT(func(v DispatchRuleGroupRule) int { return v.GroupWaitTime }).(pulumi.IntOutput)
+}
+
+// The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+func (o DispatchRuleGroupRuleOutput) GroupingFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DispatchRuleGroupRule) []string { return v.GroupingFields }).(pulumi.StringArrayOutput)
+}
+
+// The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+func (o DispatchRuleGroupRuleOutput) RepeatInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DispatchRuleGroupRule) *int { return v.RepeatInterval }).(pulumi.IntPtrOutput)
+}
+
+type DispatchRuleGroupRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleGroupRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleGroupRule)(nil)).Elem()
+}
+
+func (o DispatchRuleGroupRuleArrayOutput) ToDispatchRuleGroupRuleArrayOutput() DispatchRuleGroupRuleArrayOutput {
+	return o
+}
+
+func (o DispatchRuleGroupRuleArrayOutput) ToDispatchRuleGroupRuleArrayOutputWithContext(ctx context.Context) DispatchRuleGroupRuleArrayOutput {
+	return o
+}
+
+func (o DispatchRuleGroupRuleArrayOutput) Index(i pulumi.IntInput) DispatchRuleGroupRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DispatchRuleGroupRule {
+		return vs[0].([]DispatchRuleGroupRule)[vs[1].(int)]
+	}).(DispatchRuleGroupRuleOutput)
+}
+
+type DispatchRuleLabelMatchExpressionGrid struct {
+	// Sets the dispatch rule. See the following `Block labelMatchExpressionGroups`.
+	LabelMatchExpressionGroups []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup `pulumi:"labelMatchExpressionGroups"`
+}
+
+// DispatchRuleLabelMatchExpressionGridInput is an input type that accepts DispatchRuleLabelMatchExpressionGridArgs and DispatchRuleLabelMatchExpressionGridOutput values.
+// You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridInput` via:
+//
+//          DispatchRuleLabelMatchExpressionGridArgs{...}
+type DispatchRuleLabelMatchExpressionGridInput interface {
+	pulumi.Input
+
+	ToDispatchRuleLabelMatchExpressionGridOutput() DispatchRuleLabelMatchExpressionGridOutput
+	ToDispatchRuleLabelMatchExpressionGridOutputWithContext(context.Context) DispatchRuleLabelMatchExpressionGridOutput
+}
+
+type DispatchRuleLabelMatchExpressionGridArgs struct {
+	// Sets the dispatch rule. See the following `Block labelMatchExpressionGroups`.
+	LabelMatchExpressionGroups DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput `pulumi:"labelMatchExpressionGroups"`
+}
+
+func (DispatchRuleLabelMatchExpressionGridArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleLabelMatchExpressionGrid)(nil)).Elem()
+}
+
+func (i DispatchRuleLabelMatchExpressionGridArgs) ToDispatchRuleLabelMatchExpressionGridOutput() DispatchRuleLabelMatchExpressionGridOutput {
+	return i.ToDispatchRuleLabelMatchExpressionGridOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleLabelMatchExpressionGridArgs) ToDispatchRuleLabelMatchExpressionGridOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridOutput)
+}
+
+// DispatchRuleLabelMatchExpressionGridArrayInput is an input type that accepts DispatchRuleLabelMatchExpressionGridArray and DispatchRuleLabelMatchExpressionGridArrayOutput values.
+// You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridArrayInput` via:
+//
+//          DispatchRuleLabelMatchExpressionGridArray{ DispatchRuleLabelMatchExpressionGridArgs{...} }
+type DispatchRuleLabelMatchExpressionGridArrayInput interface {
+	pulumi.Input
+
+	ToDispatchRuleLabelMatchExpressionGridArrayOutput() DispatchRuleLabelMatchExpressionGridArrayOutput
+	ToDispatchRuleLabelMatchExpressionGridArrayOutputWithContext(context.Context) DispatchRuleLabelMatchExpressionGridArrayOutput
+}
+
+type DispatchRuleLabelMatchExpressionGridArray []DispatchRuleLabelMatchExpressionGridInput
+
+func (DispatchRuleLabelMatchExpressionGridArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleLabelMatchExpressionGrid)(nil)).Elem()
+}
+
+func (i DispatchRuleLabelMatchExpressionGridArray) ToDispatchRuleLabelMatchExpressionGridArrayOutput() DispatchRuleLabelMatchExpressionGridArrayOutput {
+	return i.ToDispatchRuleLabelMatchExpressionGridArrayOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleLabelMatchExpressionGridArray) ToDispatchRuleLabelMatchExpressionGridArrayOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridArrayOutput)
+}
+
+type DispatchRuleLabelMatchExpressionGridOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleLabelMatchExpressionGridOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleLabelMatchExpressionGrid)(nil)).Elem()
+}
+
+func (o DispatchRuleLabelMatchExpressionGridOutput) ToDispatchRuleLabelMatchExpressionGridOutput() DispatchRuleLabelMatchExpressionGridOutput {
+	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridOutput) ToDispatchRuleLabelMatchExpressionGridOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridOutput {
+	return o
+}
+
+// Sets the dispatch rule. See the following `Block labelMatchExpressionGroups`.
+func (o DispatchRuleLabelMatchExpressionGridOutput) LabelMatchExpressionGroups() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
+	return o.ApplyT(func(v DispatchRuleLabelMatchExpressionGrid) []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup {
+		return v.LabelMatchExpressionGroups
+	}).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput)
+}
+
+type DispatchRuleLabelMatchExpressionGridArrayOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleLabelMatchExpressionGridArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleLabelMatchExpressionGrid)(nil)).Elem()
+}
+
+func (o DispatchRuleLabelMatchExpressionGridArrayOutput) ToDispatchRuleLabelMatchExpressionGridArrayOutput() DispatchRuleLabelMatchExpressionGridArrayOutput {
+	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridArrayOutput) ToDispatchRuleLabelMatchExpressionGridArrayOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridArrayOutput {
+	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridArrayOutput) Index(i pulumi.IntInput) DispatchRuleLabelMatchExpressionGridOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DispatchRuleLabelMatchExpressionGrid {
+		return vs[0].([]DispatchRuleLabelMatchExpressionGrid)[vs[1].(int)]
+	}).(DispatchRuleLabelMatchExpressionGridOutput)
+}
+
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup struct {
+	// Sets the dispatch rule. See the following `Block labelMatchExpressions`.
+	LabelMatchExpressions []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression `pulumi:"labelMatchExpressions"`
+}
+
+// DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput is an input type that accepts DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs and DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput values.
+// You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput` via:
+//
+//          DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...}
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput interface {
+	pulumi.Input
+
+	ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput
+	ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput
+}
+
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs struct {
+	// Sets the dispatch rule. See the following `Block labelMatchExpressions`.
+	LabelMatchExpressions DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput `pulumi:"labelMatchExpressions"`
+}
+
+func (DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup)(nil)).Elem()
+}
+
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
+	return i.ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput)
+}
+
+// DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput is an input type that accepts DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray and DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput values.
+// You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput` via:
+//
+//          DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray{ DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...} }
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput interface {
+	pulumi.Input
+
+	ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput
+	ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput
+}
+
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput
+
+func (DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup)(nil)).Elem()
+}
+
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
+	return i.ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput)
+}
+
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup)(nil)).Elem()
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
+	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
+	return o
+}
+
+// Sets the dispatch rule. See the following `Block labelMatchExpressions`.
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) LabelMatchExpressions() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
+	return o.ApplyT(func(v DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup) []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
+		return v.LabelMatchExpressions
+	}).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput)
+}
+
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup)(nil)).Elem()
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
+	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
+	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) Index(i pulumi.IntInput) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup {
+		return vs[0].([]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup)[vs[1].(int)]
+	}).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput)
+}
+
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression struct {
+	// The key of the tag of the dispatch rule. Valud values:
+	// * _aliyun_arms_userid: user ID
+	// * _aliyun_arms_involvedObject_kind: type of the associated object
+	// * _aliyun_arms_involvedObject_id: ID of the associated object
+	// * _aliyun_arms_involvedObject_name: name of the associated object
+	// * _aliyun_arms_alert_name: alert name
+	// * _aliyun_arms_alert_rule_id: alert rule ID
+	// * _aliyun_arms_alert_type: alert type
+	// * _aliyun_arms_alert_level: alert severity
+	Key string `pulumi:"key"`
+	// The operator used in the dispatch rule. Valid values:
+	// * eq: equals to.
+	// * re: matches a regular expression.
+	Operator string `pulumi:"operator"`
+	// The value of the tag.
+	Value string `pulumi:"value"`
+}
+
+// DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput is an input type that accepts DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs and DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput values.
+// You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput` via:
+//
+//          DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...}
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput interface {
+	pulumi.Input
+
+	ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput
+	ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput
+}
+
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs struct {
+	// The key of the tag of the dispatch rule. Valud values:
+	// * _aliyun_arms_userid: user ID
+	// * _aliyun_arms_involvedObject_kind: type of the associated object
+	// * _aliyun_arms_involvedObject_id: ID of the associated object
+	// * _aliyun_arms_involvedObject_name: name of the associated object
+	// * _aliyun_arms_alert_name: alert name
+	// * _aliyun_arms_alert_rule_id: alert rule ID
+	// * _aliyun_arms_alert_type: alert type
+	// * _aliyun_arms_alert_level: alert severity
+	Key pulumi.StringInput `pulumi:"key"`
+	// The operator used in the dispatch rule. Valid values:
+	// * eq: equals to.
+	// * re: matches a regular expression.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The value of the tag.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression)(nil)).Elem()
+}
+
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
+	return i.ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput)
+}
+
+// DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput is an input type that accepts DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray and DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput values.
+// You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput` via:
+//
+//          DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray{ DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...} }
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput interface {
+	pulumi.Input
+
+	ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput
+	ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutputWithContext(context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput
+}
+
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput
+
+func (DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression)(nil)).Elem()
+}
+
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
+	return i.ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput)
+}
+
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression)(nil)).Elem()
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
+	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
+	return o
+}
+
+// The key of the tag of the dispatch rule. Valud values:
+// * _aliyun_arms_userid: user ID
+// * _aliyun_arms_involvedObject_kind: type of the associated object
+// * _aliyun_arms_involvedObject_id: ID of the associated object
+// * _aliyun_arms_involvedObject_name: name of the associated object
+// * _aliyun_arms_alert_name: alert name
+// * _aliyun_arms_alert_rule_id: alert rule ID
+// * _aliyun_arms_alert_type: alert type
+// * _aliyun_arms_alert_level: alert severity
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// The operator used in the dispatch rule. Valid values:
+// * eq: equals to.
+// * re: matches a regular expression.
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression) string {
+		return v.Operator
+	}).(pulumi.StringOutput)
+}
+
+// The value of the tag.
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression)(nil)).Elem()
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
+	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
+	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) Index(i pulumi.IntInput) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
+		return vs[0].([]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression)[vs[1].(int)]
+	}).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput)
+}
+
+type DispatchRuleNotifyRule struct {
+	// The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
+	NotifyChannels []string `pulumi:"notifyChannels"`
+	// Sets the notification object. See the following `Block notifyObjects`.
+	NotifyObjects []DispatchRuleNotifyRuleNotifyObject `pulumi:"notifyObjects"`
+}
+
+// DispatchRuleNotifyRuleInput is an input type that accepts DispatchRuleNotifyRuleArgs and DispatchRuleNotifyRuleOutput values.
+// You can construct a concrete instance of `DispatchRuleNotifyRuleInput` via:
+//
+//          DispatchRuleNotifyRuleArgs{...}
+type DispatchRuleNotifyRuleInput interface {
+	pulumi.Input
+
+	ToDispatchRuleNotifyRuleOutput() DispatchRuleNotifyRuleOutput
+	ToDispatchRuleNotifyRuleOutputWithContext(context.Context) DispatchRuleNotifyRuleOutput
+}
+
+type DispatchRuleNotifyRuleArgs struct {
+	// The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
+	NotifyChannels pulumi.StringArrayInput `pulumi:"notifyChannels"`
+	// Sets the notification object. See the following `Block notifyObjects`.
+	NotifyObjects DispatchRuleNotifyRuleNotifyObjectArrayInput `pulumi:"notifyObjects"`
+}
+
+func (DispatchRuleNotifyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleNotifyRule)(nil)).Elem()
+}
+
+func (i DispatchRuleNotifyRuleArgs) ToDispatchRuleNotifyRuleOutput() DispatchRuleNotifyRuleOutput {
+	return i.ToDispatchRuleNotifyRuleOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleNotifyRuleArgs) ToDispatchRuleNotifyRuleOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleNotifyRuleOutput)
+}
+
+// DispatchRuleNotifyRuleArrayInput is an input type that accepts DispatchRuleNotifyRuleArray and DispatchRuleNotifyRuleArrayOutput values.
+// You can construct a concrete instance of `DispatchRuleNotifyRuleArrayInput` via:
+//
+//          DispatchRuleNotifyRuleArray{ DispatchRuleNotifyRuleArgs{...} }
+type DispatchRuleNotifyRuleArrayInput interface {
+	pulumi.Input
+
+	ToDispatchRuleNotifyRuleArrayOutput() DispatchRuleNotifyRuleArrayOutput
+	ToDispatchRuleNotifyRuleArrayOutputWithContext(context.Context) DispatchRuleNotifyRuleArrayOutput
+}
+
+type DispatchRuleNotifyRuleArray []DispatchRuleNotifyRuleInput
+
+func (DispatchRuleNotifyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleNotifyRule)(nil)).Elem()
+}
+
+func (i DispatchRuleNotifyRuleArray) ToDispatchRuleNotifyRuleArrayOutput() DispatchRuleNotifyRuleArrayOutput {
+	return i.ToDispatchRuleNotifyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleNotifyRuleArray) ToDispatchRuleNotifyRuleArrayOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleNotifyRuleArrayOutput)
+}
+
+type DispatchRuleNotifyRuleOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleNotifyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleNotifyRule)(nil)).Elem()
+}
+
+func (o DispatchRuleNotifyRuleOutput) ToDispatchRuleNotifyRuleOutput() DispatchRuleNotifyRuleOutput {
+	return o
+}
+
+func (o DispatchRuleNotifyRuleOutput) ToDispatchRuleNotifyRuleOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleOutput {
+	return o
+}
+
+// The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
+func (o DispatchRuleNotifyRuleOutput) NotifyChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyRule) []string { return v.NotifyChannels }).(pulumi.StringArrayOutput)
+}
+
+// Sets the notification object. See the following `Block notifyObjects`.
+func (o DispatchRuleNotifyRuleOutput) NotifyObjects() DispatchRuleNotifyRuleNotifyObjectArrayOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyRule) []DispatchRuleNotifyRuleNotifyObject { return v.NotifyObjects }).(DispatchRuleNotifyRuleNotifyObjectArrayOutput)
+}
+
+type DispatchRuleNotifyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleNotifyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleNotifyRule)(nil)).Elem()
+}
+
+func (o DispatchRuleNotifyRuleArrayOutput) ToDispatchRuleNotifyRuleArrayOutput() DispatchRuleNotifyRuleArrayOutput {
+	return o
+}
+
+func (o DispatchRuleNotifyRuleArrayOutput) ToDispatchRuleNotifyRuleArrayOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleArrayOutput {
+	return o
+}
+
+func (o DispatchRuleNotifyRuleArrayOutput) Index(i pulumi.IntInput) DispatchRuleNotifyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DispatchRuleNotifyRule {
+		return vs[0].([]DispatchRuleNotifyRule)[vs[1].(int)]
+	}).(DispatchRuleNotifyRuleOutput)
+}
+
+type DispatchRuleNotifyRuleNotifyObject struct {
+	// The name of the contact or contact group.
+	Name string `pulumi:"name"`
+	// The ID of the contact or contact group.
+	NotifyObjectId string `pulumi:"notifyObjectId"`
+	// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+	NotifyType string `pulumi:"notifyType"`
+}
+
+// DispatchRuleNotifyRuleNotifyObjectInput is an input type that accepts DispatchRuleNotifyRuleNotifyObjectArgs and DispatchRuleNotifyRuleNotifyObjectOutput values.
+// You can construct a concrete instance of `DispatchRuleNotifyRuleNotifyObjectInput` via:
+//
+//          DispatchRuleNotifyRuleNotifyObjectArgs{...}
+type DispatchRuleNotifyRuleNotifyObjectInput interface {
+	pulumi.Input
+
+	ToDispatchRuleNotifyRuleNotifyObjectOutput() DispatchRuleNotifyRuleNotifyObjectOutput
+	ToDispatchRuleNotifyRuleNotifyObjectOutputWithContext(context.Context) DispatchRuleNotifyRuleNotifyObjectOutput
+}
+
+type DispatchRuleNotifyRuleNotifyObjectArgs struct {
+	// The name of the contact or contact group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the contact or contact group.
+	NotifyObjectId pulumi.StringInput `pulumi:"notifyObjectId"`
+	// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+	NotifyType pulumi.StringInput `pulumi:"notifyType"`
+}
+
+func (DispatchRuleNotifyRuleNotifyObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (i DispatchRuleNotifyRuleNotifyObjectArgs) ToDispatchRuleNotifyRuleNotifyObjectOutput() DispatchRuleNotifyRuleNotifyObjectOutput {
+	return i.ToDispatchRuleNotifyRuleNotifyObjectOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleNotifyRuleNotifyObjectArgs) ToDispatchRuleNotifyRuleNotifyObjectOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleNotifyObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleNotifyRuleNotifyObjectOutput)
+}
+
+// DispatchRuleNotifyRuleNotifyObjectArrayInput is an input type that accepts DispatchRuleNotifyRuleNotifyObjectArray and DispatchRuleNotifyRuleNotifyObjectArrayOutput values.
+// You can construct a concrete instance of `DispatchRuleNotifyRuleNotifyObjectArrayInput` via:
+//
+//          DispatchRuleNotifyRuleNotifyObjectArray{ DispatchRuleNotifyRuleNotifyObjectArgs{...} }
+type DispatchRuleNotifyRuleNotifyObjectArrayInput interface {
+	pulumi.Input
+
+	ToDispatchRuleNotifyRuleNotifyObjectArrayOutput() DispatchRuleNotifyRuleNotifyObjectArrayOutput
+	ToDispatchRuleNotifyRuleNotifyObjectArrayOutputWithContext(context.Context) DispatchRuleNotifyRuleNotifyObjectArrayOutput
+}
+
+type DispatchRuleNotifyRuleNotifyObjectArray []DispatchRuleNotifyRuleNotifyObjectInput
+
+func (DispatchRuleNotifyRuleNotifyObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (i DispatchRuleNotifyRuleNotifyObjectArray) ToDispatchRuleNotifyRuleNotifyObjectArrayOutput() DispatchRuleNotifyRuleNotifyObjectArrayOutput {
+	return i.ToDispatchRuleNotifyRuleNotifyObjectArrayOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleNotifyRuleNotifyObjectArray) ToDispatchRuleNotifyRuleNotifyObjectArrayOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleNotifyObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleNotifyRuleNotifyObjectArrayOutput)
+}
+
+type DispatchRuleNotifyRuleNotifyObjectOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleNotifyRuleNotifyObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (o DispatchRuleNotifyRuleNotifyObjectOutput) ToDispatchRuleNotifyRuleNotifyObjectOutput() DispatchRuleNotifyRuleNotifyObjectOutput {
+	return o
+}
+
+func (o DispatchRuleNotifyRuleNotifyObjectOutput) ToDispatchRuleNotifyRuleNotifyObjectOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleNotifyObjectOutput {
+	return o
+}
+
+// The name of the contact or contact group.
+func (o DispatchRuleNotifyRuleNotifyObjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyRuleNotifyObject) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the contact or contact group.
+func (o DispatchRuleNotifyRuleNotifyObjectOutput) NotifyObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyRuleNotifyObject) string { return v.NotifyObjectId }).(pulumi.StringOutput)
+}
+
+// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+func (o DispatchRuleNotifyRuleNotifyObjectOutput) NotifyType() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyRuleNotifyObject) string { return v.NotifyType }).(pulumi.StringOutput)
+}
+
+type DispatchRuleNotifyRuleNotifyObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleNotifyRuleNotifyObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (o DispatchRuleNotifyRuleNotifyObjectArrayOutput) ToDispatchRuleNotifyRuleNotifyObjectArrayOutput() DispatchRuleNotifyRuleNotifyObjectArrayOutput {
+	return o
+}
+
+func (o DispatchRuleNotifyRuleNotifyObjectArrayOutput) ToDispatchRuleNotifyRuleNotifyObjectArrayOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleNotifyObjectArrayOutput {
+	return o
+}
+
+func (o DispatchRuleNotifyRuleNotifyObjectArrayOutput) Index(i pulumi.IntInput) DispatchRuleNotifyRuleNotifyObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DispatchRuleNotifyRuleNotifyObject {
+		return vs[0].([]DispatchRuleNotifyRuleNotifyObject)[vs[1].(int)]
+	}).(DispatchRuleNotifyRuleNotifyObjectOutput)
+}
+
+type PrometheusAlertRuleAnnotation struct {
+	// The name of the annotation.
+	Name *string `pulumi:"name"`
+	// The value of the annotation.
+	Value *string `pulumi:"value"`
+}
+
+// PrometheusAlertRuleAnnotationInput is an input type that accepts PrometheusAlertRuleAnnotationArgs and PrometheusAlertRuleAnnotationOutput values.
+// You can construct a concrete instance of `PrometheusAlertRuleAnnotationInput` via:
+//
+//          PrometheusAlertRuleAnnotationArgs{...}
+type PrometheusAlertRuleAnnotationInput interface {
+	pulumi.Input
+
+	ToPrometheusAlertRuleAnnotationOutput() PrometheusAlertRuleAnnotationOutput
+	ToPrometheusAlertRuleAnnotationOutputWithContext(context.Context) PrometheusAlertRuleAnnotationOutput
+}
+
+type PrometheusAlertRuleAnnotationArgs struct {
+	// The name of the annotation.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the annotation.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (PrometheusAlertRuleAnnotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusAlertRuleAnnotation)(nil)).Elem()
+}
+
+func (i PrometheusAlertRuleAnnotationArgs) ToPrometheusAlertRuleAnnotationOutput() PrometheusAlertRuleAnnotationOutput {
+	return i.ToPrometheusAlertRuleAnnotationOutputWithContext(context.Background())
+}
+
+func (i PrometheusAlertRuleAnnotationArgs) ToPrometheusAlertRuleAnnotationOutputWithContext(ctx context.Context) PrometheusAlertRuleAnnotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleAnnotationOutput)
+}
+
+// PrometheusAlertRuleAnnotationArrayInput is an input type that accepts PrometheusAlertRuleAnnotationArray and PrometheusAlertRuleAnnotationArrayOutput values.
+// You can construct a concrete instance of `PrometheusAlertRuleAnnotationArrayInput` via:
+//
+//          PrometheusAlertRuleAnnotationArray{ PrometheusAlertRuleAnnotationArgs{...} }
+type PrometheusAlertRuleAnnotationArrayInput interface {
+	pulumi.Input
+
+	ToPrometheusAlertRuleAnnotationArrayOutput() PrometheusAlertRuleAnnotationArrayOutput
+	ToPrometheusAlertRuleAnnotationArrayOutputWithContext(context.Context) PrometheusAlertRuleAnnotationArrayOutput
+}
+
+type PrometheusAlertRuleAnnotationArray []PrometheusAlertRuleAnnotationInput
+
+func (PrometheusAlertRuleAnnotationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrometheusAlertRuleAnnotation)(nil)).Elem()
+}
+
+func (i PrometheusAlertRuleAnnotationArray) ToPrometheusAlertRuleAnnotationArrayOutput() PrometheusAlertRuleAnnotationArrayOutput {
+	return i.ToPrometheusAlertRuleAnnotationArrayOutputWithContext(context.Background())
+}
+
+func (i PrometheusAlertRuleAnnotationArray) ToPrometheusAlertRuleAnnotationArrayOutputWithContext(ctx context.Context) PrometheusAlertRuleAnnotationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleAnnotationArrayOutput)
+}
+
+type PrometheusAlertRuleAnnotationOutput struct{ *pulumi.OutputState }
+
+func (PrometheusAlertRuleAnnotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusAlertRuleAnnotation)(nil)).Elem()
+}
+
+func (o PrometheusAlertRuleAnnotationOutput) ToPrometheusAlertRuleAnnotationOutput() PrometheusAlertRuleAnnotationOutput {
+	return o
+}
+
+func (o PrometheusAlertRuleAnnotationOutput) ToPrometheusAlertRuleAnnotationOutputWithContext(ctx context.Context) PrometheusAlertRuleAnnotationOutput {
+	return o
+}
+
+// The name of the annotation.
+func (o PrometheusAlertRuleAnnotationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusAlertRuleAnnotation) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the annotation.
+func (o PrometheusAlertRuleAnnotationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusAlertRuleAnnotation) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type PrometheusAlertRuleAnnotationArrayOutput struct{ *pulumi.OutputState }
+
+func (PrometheusAlertRuleAnnotationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrometheusAlertRuleAnnotation)(nil)).Elem()
+}
+
+func (o PrometheusAlertRuleAnnotationArrayOutput) ToPrometheusAlertRuleAnnotationArrayOutput() PrometheusAlertRuleAnnotationArrayOutput {
+	return o
+}
+
+func (o PrometheusAlertRuleAnnotationArrayOutput) ToPrometheusAlertRuleAnnotationArrayOutputWithContext(ctx context.Context) PrometheusAlertRuleAnnotationArrayOutput {
+	return o
+}
+
+func (o PrometheusAlertRuleAnnotationArrayOutput) Index(i pulumi.IntInput) PrometheusAlertRuleAnnotationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrometheusAlertRuleAnnotation {
+		return vs[0].([]PrometheusAlertRuleAnnotation)[vs[1].(int)]
+	}).(PrometheusAlertRuleAnnotationOutput)
+}
+
+type PrometheusAlertRuleLabel struct {
+	// The name of the annotation.
+	Name *string `pulumi:"name"`
+	// The value of the annotation.
+	Value *string `pulumi:"value"`
+}
+
+// PrometheusAlertRuleLabelInput is an input type that accepts PrometheusAlertRuleLabelArgs and PrometheusAlertRuleLabelOutput values.
+// You can construct a concrete instance of `PrometheusAlertRuleLabelInput` via:
+//
+//          PrometheusAlertRuleLabelArgs{...}
+type PrometheusAlertRuleLabelInput interface {
+	pulumi.Input
+
+	ToPrometheusAlertRuleLabelOutput() PrometheusAlertRuleLabelOutput
+	ToPrometheusAlertRuleLabelOutputWithContext(context.Context) PrometheusAlertRuleLabelOutput
+}
+
+type PrometheusAlertRuleLabelArgs struct {
+	// The name of the annotation.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the annotation.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (PrometheusAlertRuleLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusAlertRuleLabel)(nil)).Elem()
+}
+
+func (i PrometheusAlertRuleLabelArgs) ToPrometheusAlertRuleLabelOutput() PrometheusAlertRuleLabelOutput {
+	return i.ToPrometheusAlertRuleLabelOutputWithContext(context.Background())
+}
+
+func (i PrometheusAlertRuleLabelArgs) ToPrometheusAlertRuleLabelOutputWithContext(ctx context.Context) PrometheusAlertRuleLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleLabelOutput)
+}
+
+// PrometheusAlertRuleLabelArrayInput is an input type that accepts PrometheusAlertRuleLabelArray and PrometheusAlertRuleLabelArrayOutput values.
+// You can construct a concrete instance of `PrometheusAlertRuleLabelArrayInput` via:
+//
+//          PrometheusAlertRuleLabelArray{ PrometheusAlertRuleLabelArgs{...} }
+type PrometheusAlertRuleLabelArrayInput interface {
+	pulumi.Input
+
+	ToPrometheusAlertRuleLabelArrayOutput() PrometheusAlertRuleLabelArrayOutput
+	ToPrometheusAlertRuleLabelArrayOutputWithContext(context.Context) PrometheusAlertRuleLabelArrayOutput
+}
+
+type PrometheusAlertRuleLabelArray []PrometheusAlertRuleLabelInput
+
+func (PrometheusAlertRuleLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrometheusAlertRuleLabel)(nil)).Elem()
+}
+
+func (i PrometheusAlertRuleLabelArray) ToPrometheusAlertRuleLabelArrayOutput() PrometheusAlertRuleLabelArrayOutput {
+	return i.ToPrometheusAlertRuleLabelArrayOutputWithContext(context.Background())
+}
+
+func (i PrometheusAlertRuleLabelArray) ToPrometheusAlertRuleLabelArrayOutputWithContext(ctx context.Context) PrometheusAlertRuleLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleLabelArrayOutput)
+}
+
+type PrometheusAlertRuleLabelOutput struct{ *pulumi.OutputState }
+
+func (PrometheusAlertRuleLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusAlertRuleLabel)(nil)).Elem()
+}
+
+func (o PrometheusAlertRuleLabelOutput) ToPrometheusAlertRuleLabelOutput() PrometheusAlertRuleLabelOutput {
+	return o
+}
+
+func (o PrometheusAlertRuleLabelOutput) ToPrometheusAlertRuleLabelOutputWithContext(ctx context.Context) PrometheusAlertRuleLabelOutput {
+	return o
+}
+
+// The name of the annotation.
+func (o PrometheusAlertRuleLabelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusAlertRuleLabel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the annotation.
+func (o PrometheusAlertRuleLabelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusAlertRuleLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type PrometheusAlertRuleLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (PrometheusAlertRuleLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrometheusAlertRuleLabel)(nil)).Elem()
+}
+
+func (o PrometheusAlertRuleLabelArrayOutput) ToPrometheusAlertRuleLabelArrayOutput() PrometheusAlertRuleLabelArrayOutput {
+	return o
+}
+
+func (o PrometheusAlertRuleLabelArrayOutput) ToPrometheusAlertRuleLabelArrayOutputWithContext(ctx context.Context) PrometheusAlertRuleLabelArrayOutput {
+	return o
+}
+
+func (o PrometheusAlertRuleLabelArrayOutput) Index(i pulumi.IntInput) PrometheusAlertRuleLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrometheusAlertRuleLabel {
+		return vs[0].([]PrometheusAlertRuleLabel)[vs[1].(int)]
+	}).(PrometheusAlertRuleLabelOutput)
+}
+
 type GetAlertContactGroupsGroup struct {
 	// The first ID of the resource.
 	AlertContactGroupId string `pulumi:"alertContactGroupId"`
@@ -312,9 +1224,1299 @@ func (o GetAlertContactsContactArrayOutput) Index(i pulumi.IntInput) GetAlertCon
 	}).(GetAlertContactsContactOutput)
 }
 
+type GetDispatchRulesRule struct {
+	// Dispatch rule ID.
+	DispatchRuleId string `pulumi:"dispatchRuleId"`
+	// The name of the dispatch rule.
+	DispatchRuleName string `pulumi:"dispatchRuleName"`
+	DispatchType     string `pulumi:"dispatchType"`
+	// Sets the event group.
+	GroupRules []GetDispatchRulesRuleGroupRule `pulumi:"groupRules"`
+	// The ID of the Dispatch Rule.
+	Id string `pulumi:"id"`
+	// Sets the dispatch rule.
+	LabelMatchExpressionGrids []GetDispatchRulesRuleLabelMatchExpressionGrid `pulumi:"labelMatchExpressionGrids"`
+	// Sets the notification rule.
+	NotifyRules []GetDispatchRulesRuleNotifyRule `pulumi:"notifyRules"`
+	// The resource status of Alert Dispatch Rule.
+	Status string `pulumi:"status"`
+}
+
+// GetDispatchRulesRuleInput is an input type that accepts GetDispatchRulesRuleArgs and GetDispatchRulesRuleOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleInput` via:
+//
+//          GetDispatchRulesRuleArgs{...}
+type GetDispatchRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleOutput() GetDispatchRulesRuleOutput
+	ToGetDispatchRulesRuleOutputWithContext(context.Context) GetDispatchRulesRuleOutput
+}
+
+type GetDispatchRulesRuleArgs struct {
+	// Dispatch rule ID.
+	DispatchRuleId pulumi.StringInput `pulumi:"dispatchRuleId"`
+	// The name of the dispatch rule.
+	DispatchRuleName pulumi.StringInput `pulumi:"dispatchRuleName"`
+	DispatchType     pulumi.StringInput `pulumi:"dispatchType"`
+	// Sets the event group.
+	GroupRules GetDispatchRulesRuleGroupRuleArrayInput `pulumi:"groupRules"`
+	// The ID of the Dispatch Rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Sets the dispatch rule.
+	LabelMatchExpressionGrids GetDispatchRulesRuleLabelMatchExpressionGridArrayInput `pulumi:"labelMatchExpressionGrids"`
+	// Sets the notification rule.
+	NotifyRules GetDispatchRulesRuleNotifyRuleArrayInput `pulumi:"notifyRules"`
+	// The resource status of Alert Dispatch Rule.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetDispatchRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRule)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleArgs) ToGetDispatchRulesRuleOutput() GetDispatchRulesRuleOutput {
+	return i.ToGetDispatchRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleArgs) ToGetDispatchRulesRuleOutputWithContext(ctx context.Context) GetDispatchRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleOutput)
+}
+
+// GetDispatchRulesRuleArrayInput is an input type that accepts GetDispatchRulesRuleArray and GetDispatchRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleArrayInput` via:
+//
+//          GetDispatchRulesRuleArray{ GetDispatchRulesRuleArgs{...} }
+type GetDispatchRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleArrayOutput() GetDispatchRulesRuleArrayOutput
+	ToGetDispatchRulesRuleArrayOutputWithContext(context.Context) GetDispatchRulesRuleArrayOutput
+}
+
+type GetDispatchRulesRuleArray []GetDispatchRulesRuleInput
+
+func (GetDispatchRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRule)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleArray) ToGetDispatchRulesRuleArrayOutput() GetDispatchRulesRuleArrayOutput {
+	return i.ToGetDispatchRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleArray) ToGetDispatchRulesRuleArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleArrayOutput)
+}
+
+type GetDispatchRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRule)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleOutput) ToGetDispatchRulesRuleOutput() GetDispatchRulesRuleOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleOutput) ToGetDispatchRulesRuleOutputWithContext(ctx context.Context) GetDispatchRulesRuleOutput {
+	return o
+}
+
+// Dispatch rule ID.
+func (o GetDispatchRulesRuleOutput) DispatchRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRule) string { return v.DispatchRuleId }).(pulumi.StringOutput)
+}
+
+// The name of the dispatch rule.
+func (o GetDispatchRulesRuleOutput) DispatchRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRule) string { return v.DispatchRuleName }).(pulumi.StringOutput)
+}
+
+func (o GetDispatchRulesRuleOutput) DispatchType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRule) string { return v.DispatchType }).(pulumi.StringOutput)
+}
+
+// Sets the event group.
+func (o GetDispatchRulesRuleOutput) GroupRules() GetDispatchRulesRuleGroupRuleArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesRule) []GetDispatchRulesRuleGroupRule { return v.GroupRules }).(GetDispatchRulesRuleGroupRuleArrayOutput)
+}
+
+// The ID of the Dispatch Rule.
+func (o GetDispatchRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Sets the dispatch rule.
+func (o GetDispatchRulesRuleOutput) LabelMatchExpressionGrids() GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesRule) []GetDispatchRulesRuleLabelMatchExpressionGrid {
+		return v.LabelMatchExpressionGrids
+	}).(GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput)
+}
+
+// Sets the notification rule.
+func (o GetDispatchRulesRuleOutput) NotifyRules() GetDispatchRulesRuleNotifyRuleArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesRule) []GetDispatchRulesRuleNotifyRule { return v.NotifyRules }).(GetDispatchRulesRuleNotifyRuleArrayOutput)
+}
+
+// The resource status of Alert Dispatch Rule.
+func (o GetDispatchRulesRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDispatchRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRule)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleArrayOutput) ToGetDispatchRulesRuleArrayOutput() GetDispatchRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleArrayOutput) ToGetDispatchRulesRuleArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDispatchRulesRule {
+		return vs[0].([]GetDispatchRulesRule)[vs[1].(int)]
+	}).(GetDispatchRulesRuleOutput)
+}
+
+type GetDispatchRulesRuleGroupRule struct {
+	GroupId int `pulumi:"groupId"`
+	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+	GroupInterval int `pulumi:"groupInterval"`
+	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+	GroupWaitTime int `pulumi:"groupWaitTime"`
+	// The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+	GroupingFields []string `pulumi:"groupingFields"`
+	// The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+	RepeatInterval int `pulumi:"repeatInterval"`
+}
+
+// GetDispatchRulesRuleGroupRuleInput is an input type that accepts GetDispatchRulesRuleGroupRuleArgs and GetDispatchRulesRuleGroupRuleOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleGroupRuleInput` via:
+//
+//          GetDispatchRulesRuleGroupRuleArgs{...}
+type GetDispatchRulesRuleGroupRuleInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleGroupRuleOutput() GetDispatchRulesRuleGroupRuleOutput
+	ToGetDispatchRulesRuleGroupRuleOutputWithContext(context.Context) GetDispatchRulesRuleGroupRuleOutput
+}
+
+type GetDispatchRulesRuleGroupRuleArgs struct {
+	GroupId pulumi.IntInput `pulumi:"groupId"`
+	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+	GroupInterval pulumi.IntInput `pulumi:"groupInterval"`
+	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+	GroupWaitTime pulumi.IntInput `pulumi:"groupWaitTime"`
+	// The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+	GroupingFields pulumi.StringArrayInput `pulumi:"groupingFields"`
+	// The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+	RepeatInterval pulumi.IntInput `pulumi:"repeatInterval"`
+}
+
+func (GetDispatchRulesRuleGroupRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleGroupRule)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleGroupRuleArgs) ToGetDispatchRulesRuleGroupRuleOutput() GetDispatchRulesRuleGroupRuleOutput {
+	return i.ToGetDispatchRulesRuleGroupRuleOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleGroupRuleArgs) ToGetDispatchRulesRuleGroupRuleOutputWithContext(ctx context.Context) GetDispatchRulesRuleGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleGroupRuleOutput)
+}
+
+// GetDispatchRulesRuleGroupRuleArrayInput is an input type that accepts GetDispatchRulesRuleGroupRuleArray and GetDispatchRulesRuleGroupRuleArrayOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleGroupRuleArrayInput` via:
+//
+//          GetDispatchRulesRuleGroupRuleArray{ GetDispatchRulesRuleGroupRuleArgs{...} }
+type GetDispatchRulesRuleGroupRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleGroupRuleArrayOutput() GetDispatchRulesRuleGroupRuleArrayOutput
+	ToGetDispatchRulesRuleGroupRuleArrayOutputWithContext(context.Context) GetDispatchRulesRuleGroupRuleArrayOutput
+}
+
+type GetDispatchRulesRuleGroupRuleArray []GetDispatchRulesRuleGroupRuleInput
+
+func (GetDispatchRulesRuleGroupRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleGroupRule)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleGroupRuleArray) ToGetDispatchRulesRuleGroupRuleArrayOutput() GetDispatchRulesRuleGroupRuleArrayOutput {
+	return i.ToGetDispatchRulesRuleGroupRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleGroupRuleArray) ToGetDispatchRulesRuleGroupRuleArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleGroupRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleGroupRuleArrayOutput)
+}
+
+type GetDispatchRulesRuleGroupRuleOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleGroupRule)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleGroupRuleOutput) ToGetDispatchRulesRuleGroupRuleOutput() GetDispatchRulesRuleGroupRuleOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleGroupRuleOutput) ToGetDispatchRulesRuleGroupRuleOutputWithContext(ctx context.Context) GetDispatchRulesRuleGroupRuleOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleGroupRuleOutput) GroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleGroupRule) int { return v.GroupId }).(pulumi.IntOutput)
+}
+
+// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+func (o GetDispatchRulesRuleGroupRuleOutput) GroupInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleGroupRule) int { return v.GroupInterval }).(pulumi.IntOutput)
+}
+
+// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+func (o GetDispatchRulesRuleGroupRuleOutput) GroupWaitTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleGroupRule) int { return v.GroupWaitTime }).(pulumi.IntOutput)
+}
+
+// The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+func (o GetDispatchRulesRuleGroupRuleOutput) GroupingFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleGroupRule) []string { return v.GroupingFields }).(pulumi.StringArrayOutput)
+}
+
+// The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+func (o GetDispatchRulesRuleGroupRuleOutput) RepeatInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleGroupRule) int { return v.RepeatInterval }).(pulumi.IntOutput)
+}
+
+type GetDispatchRulesRuleGroupRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleGroupRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleGroupRule)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleGroupRuleArrayOutput) ToGetDispatchRulesRuleGroupRuleArrayOutput() GetDispatchRulesRuleGroupRuleArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleGroupRuleArrayOutput) ToGetDispatchRulesRuleGroupRuleArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleGroupRuleArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleGroupRuleArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleGroupRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDispatchRulesRuleGroupRule {
+		return vs[0].([]GetDispatchRulesRuleGroupRule)[vs[1].(int)]
+	}).(GetDispatchRulesRuleGroupRuleOutput)
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGrid struct {
+	// Sets the dispatch rule.
+	LabelMatchExpressionGroups []GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup `pulumi:"labelMatchExpressionGroups"`
+}
+
+// GetDispatchRulesRuleLabelMatchExpressionGridInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridArgs and GetDispatchRulesRuleLabelMatchExpressionGridOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridInput` via:
+//
+//          GetDispatchRulesRuleLabelMatchExpressionGridArgs{...}
+type GetDispatchRulesRuleLabelMatchExpressionGridInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleLabelMatchExpressionGridOutput() GetDispatchRulesRuleLabelMatchExpressionGridOutput
+	ToGetDispatchRulesRuleLabelMatchExpressionGridOutputWithContext(context.Context) GetDispatchRulesRuleLabelMatchExpressionGridOutput
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridArgs struct {
+	// Sets the dispatch rule.
+	LabelMatchExpressionGroups GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput `pulumi:"labelMatchExpressionGroups"`
+}
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleLabelMatchExpressionGrid)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridArgs) ToGetDispatchRulesRuleLabelMatchExpressionGridOutput() GetDispatchRulesRuleLabelMatchExpressionGridOutput {
+	return i.ToGetDispatchRulesRuleLabelMatchExpressionGridOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridArgs) ToGetDispatchRulesRuleLabelMatchExpressionGridOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridOutput)
+}
+
+// GetDispatchRulesRuleLabelMatchExpressionGridArrayInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridArray and GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridArrayInput` via:
+//
+//          GetDispatchRulesRuleLabelMatchExpressionGridArray{ GetDispatchRulesRuleLabelMatchExpressionGridArgs{...} }
+type GetDispatchRulesRuleLabelMatchExpressionGridArrayInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleLabelMatchExpressionGridArrayOutput() GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput
+	ToGetDispatchRulesRuleLabelMatchExpressionGridArrayOutputWithContext(context.Context) GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridArray []GetDispatchRulesRuleLabelMatchExpressionGridInput
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleLabelMatchExpressionGrid)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridArray) ToGetDispatchRulesRuleLabelMatchExpressionGridArrayOutput() GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput {
+	return i.ToGetDispatchRulesRuleLabelMatchExpressionGridArrayOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridArray) ToGetDispatchRulesRuleLabelMatchExpressionGridArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput)
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleLabelMatchExpressionGrid)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridOutput() GetDispatchRulesRuleLabelMatchExpressionGridOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridOutput {
+	return o
+}
+
+// Sets the dispatch rule.
+func (o GetDispatchRulesRuleLabelMatchExpressionGridOutput) LabelMatchExpressionGroups() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleLabelMatchExpressionGrid) []GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup {
+		return v.LabelMatchExpressionGroups
+	}).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput)
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleLabelMatchExpressionGrid)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridArrayOutput() GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleLabelMatchExpressionGridOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDispatchRulesRuleLabelMatchExpressionGrid {
+		return vs[0].([]GetDispatchRulesRuleLabelMatchExpressionGrid)[vs[1].(int)]
+	}).(GetDispatchRulesRuleLabelMatchExpressionGridOutput)
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup struct {
+	// Sets the dispatch rule.
+	LabelMatchExpressions []GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression `pulumi:"labelMatchExpressions"`
+}
+
+// GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs and GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput` via:
+//
+//          GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...}
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput
+	ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs struct {
+	// Sets the dispatch rule.
+	LabelMatchExpressions GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput `pulumi:"labelMatchExpressions"`
+}
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
+	return i.ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput)
+}
+
+// GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray and GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput` via:
+//
+//          GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray{ GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...} }
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput
+	ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray []GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
+	return i.ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput)
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
+	return o
+}
+
+// Sets the dispatch rule.
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) LabelMatchExpressions() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup) []GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
+		return v.LabelMatchExpressions
+	}).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput)
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup {
+		return vs[0].([]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup)[vs[1].(int)]
+	}).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput)
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression struct {
+	// The key of the tag of the dispatch rule.
+	Key string `pulumi:"key"`
+	// The operator used in the dispatch rule.
+	Operator string `pulumi:"operator"`
+	// The value of the tag.
+	Value string `pulumi:"value"`
+}
+
+// GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs and GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput` via:
+//
+//          GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...}
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput
+	ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs struct {
+	// The key of the tag of the dispatch rule.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The operator used in the dispatch rule.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The value of the tag.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
+	return i.ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput)
+}
+
+// GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray and GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput` via:
+//
+//          GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray{ GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...} }
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput
+	ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutputWithContext(context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray []GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
+	return i.ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput)
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
+	return o
+}
+
+// The key of the tag of the dispatch rule.
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// The operator used in the dispatch rule.
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression) string {
+		return v.Operator
+	}).(pulumi.StringOutput)
+}
+
+// The value of the tag.
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput() GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
+		return vs[0].([]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression)[vs[1].(int)]
+	}).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput)
+}
+
+type GetDispatchRulesRuleNotifyRule struct {
+	// The notification method.
+	NotifyChannels []string `pulumi:"notifyChannels"`
+	// Sets the notification object.
+	NotifyObjects []GetDispatchRulesRuleNotifyRuleNotifyObject `pulumi:"notifyObjects"`
+}
+
+// GetDispatchRulesRuleNotifyRuleInput is an input type that accepts GetDispatchRulesRuleNotifyRuleArgs and GetDispatchRulesRuleNotifyRuleOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleNotifyRuleInput` via:
+//
+//          GetDispatchRulesRuleNotifyRuleArgs{...}
+type GetDispatchRulesRuleNotifyRuleInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleNotifyRuleOutput() GetDispatchRulesRuleNotifyRuleOutput
+	ToGetDispatchRulesRuleNotifyRuleOutputWithContext(context.Context) GetDispatchRulesRuleNotifyRuleOutput
+}
+
+type GetDispatchRulesRuleNotifyRuleArgs struct {
+	// The notification method.
+	NotifyChannels pulumi.StringArrayInput `pulumi:"notifyChannels"`
+	// Sets the notification object.
+	NotifyObjects GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput `pulumi:"notifyObjects"`
+}
+
+func (GetDispatchRulesRuleNotifyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleNotifyRule)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleNotifyRuleArgs) ToGetDispatchRulesRuleNotifyRuleOutput() GetDispatchRulesRuleNotifyRuleOutput {
+	return i.ToGetDispatchRulesRuleNotifyRuleOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleNotifyRuleArgs) ToGetDispatchRulesRuleNotifyRuleOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleNotifyRuleOutput)
+}
+
+// GetDispatchRulesRuleNotifyRuleArrayInput is an input type that accepts GetDispatchRulesRuleNotifyRuleArray and GetDispatchRulesRuleNotifyRuleArrayOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleNotifyRuleArrayInput` via:
+//
+//          GetDispatchRulesRuleNotifyRuleArray{ GetDispatchRulesRuleNotifyRuleArgs{...} }
+type GetDispatchRulesRuleNotifyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleNotifyRuleArrayOutput() GetDispatchRulesRuleNotifyRuleArrayOutput
+	ToGetDispatchRulesRuleNotifyRuleArrayOutputWithContext(context.Context) GetDispatchRulesRuleNotifyRuleArrayOutput
+}
+
+type GetDispatchRulesRuleNotifyRuleArray []GetDispatchRulesRuleNotifyRuleInput
+
+func (GetDispatchRulesRuleNotifyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleNotifyRule)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleNotifyRuleArray) ToGetDispatchRulesRuleNotifyRuleArrayOutput() GetDispatchRulesRuleNotifyRuleArrayOutput {
+	return i.ToGetDispatchRulesRuleNotifyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleNotifyRuleArray) ToGetDispatchRulesRuleNotifyRuleArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleNotifyRuleArrayOutput)
+}
+
+type GetDispatchRulesRuleNotifyRuleOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleNotifyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleNotifyRule)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleNotifyRuleOutput) ToGetDispatchRulesRuleNotifyRuleOutput() GetDispatchRulesRuleNotifyRuleOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleNotifyRuleOutput) ToGetDispatchRulesRuleNotifyRuleOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleOutput {
+	return o
+}
+
+// The notification method.
+func (o GetDispatchRulesRuleNotifyRuleOutput) NotifyChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyRule) []string { return v.NotifyChannels }).(pulumi.StringArrayOutput)
+}
+
+// Sets the notification object.
+func (o GetDispatchRulesRuleNotifyRuleOutput) NotifyObjects() GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyRule) []GetDispatchRulesRuleNotifyRuleNotifyObject {
+		return v.NotifyObjects
+	}).(GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput)
+}
+
+type GetDispatchRulesRuleNotifyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleNotifyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleNotifyRule)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleNotifyRuleArrayOutput) ToGetDispatchRulesRuleNotifyRuleArrayOutput() GetDispatchRulesRuleNotifyRuleArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleNotifyRuleArrayOutput) ToGetDispatchRulesRuleNotifyRuleArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleNotifyRuleArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleNotifyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDispatchRulesRuleNotifyRule {
+		return vs[0].([]GetDispatchRulesRuleNotifyRule)[vs[1].(int)]
+	}).(GetDispatchRulesRuleNotifyRuleOutput)
+}
+
+type GetDispatchRulesRuleNotifyRuleNotifyObject struct {
+	// The name of the contact or contact group.
+	Name string `pulumi:"name"`
+	// The ID of the contact or contact group.
+	NotifyObjectId string `pulumi:"notifyObjectId"`
+	// The type of the alert contact.
+	NotifyType string `pulumi:"notifyType"`
+}
+
+// GetDispatchRulesRuleNotifyRuleNotifyObjectInput is an input type that accepts GetDispatchRulesRuleNotifyRuleNotifyObjectArgs and GetDispatchRulesRuleNotifyRuleNotifyObjectOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleNotifyRuleNotifyObjectInput` via:
+//
+//          GetDispatchRulesRuleNotifyRuleNotifyObjectArgs{...}
+type GetDispatchRulesRuleNotifyRuleNotifyObjectInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleNotifyRuleNotifyObjectOutput() GetDispatchRulesRuleNotifyRuleNotifyObjectOutput
+	ToGetDispatchRulesRuleNotifyRuleNotifyObjectOutputWithContext(context.Context) GetDispatchRulesRuleNotifyRuleNotifyObjectOutput
+}
+
+type GetDispatchRulesRuleNotifyRuleNotifyObjectArgs struct {
+	// The name of the contact or contact group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the contact or contact group.
+	NotifyObjectId pulumi.StringInput `pulumi:"notifyObjectId"`
+	// The type of the alert contact.
+	NotifyType pulumi.StringInput `pulumi:"notifyType"`
+}
+
+func (GetDispatchRulesRuleNotifyRuleNotifyObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleNotifyRuleNotifyObjectArgs) ToGetDispatchRulesRuleNotifyRuleNotifyObjectOutput() GetDispatchRulesRuleNotifyRuleNotifyObjectOutput {
+	return i.ToGetDispatchRulesRuleNotifyRuleNotifyObjectOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleNotifyRuleNotifyObjectArgs) ToGetDispatchRulesRuleNotifyRuleNotifyObjectOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleNotifyObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleNotifyRuleNotifyObjectOutput)
+}
+
+// GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput is an input type that accepts GetDispatchRulesRuleNotifyRuleNotifyObjectArray and GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput` via:
+//
+//          GetDispatchRulesRuleNotifyRuleNotifyObjectArray{ GetDispatchRulesRuleNotifyRuleNotifyObjectArgs{...} }
+type GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput() GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput
+	ToGetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutputWithContext(context.Context) GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput
+}
+
+type GetDispatchRulesRuleNotifyRuleNotifyObjectArray []GetDispatchRulesRuleNotifyRuleNotifyObjectInput
+
+func (GetDispatchRulesRuleNotifyRuleNotifyObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleNotifyRuleNotifyObjectArray) ToGetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput() GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput {
+	return i.ToGetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleNotifyRuleNotifyObjectArray) ToGetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput)
+}
+
+type GetDispatchRulesRuleNotifyRuleNotifyObjectOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleNotifyRuleNotifyObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleNotifyRuleNotifyObjectOutput) ToGetDispatchRulesRuleNotifyRuleNotifyObjectOutput() GetDispatchRulesRuleNotifyRuleNotifyObjectOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleNotifyRuleNotifyObjectOutput) ToGetDispatchRulesRuleNotifyRuleNotifyObjectOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleNotifyObjectOutput {
+	return o
+}
+
+// The name of the contact or contact group.
+func (o GetDispatchRulesRuleNotifyRuleNotifyObjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyRuleNotifyObject) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the contact or contact group.
+func (o GetDispatchRulesRuleNotifyRuleNotifyObjectOutput) NotifyObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyRuleNotifyObject) string { return v.NotifyObjectId }).(pulumi.StringOutput)
+}
+
+// The type of the alert contact.
+func (o GetDispatchRulesRuleNotifyRuleNotifyObjectOutput) NotifyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyRuleNotifyObject) string { return v.NotifyType }).(pulumi.StringOutput)
+}
+
+type GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput) ToGetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput() GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput) ToGetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleNotifyRuleNotifyObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDispatchRulesRuleNotifyRuleNotifyObject {
+		return vs[0].([]GetDispatchRulesRuleNotifyRuleNotifyObject)[vs[1].(int)]
+	}).(GetDispatchRulesRuleNotifyRuleNotifyObjectOutput)
+}
+
+type GetPrometheusAlertRulesRule struct {
+	// The annotations of the alert rule.
+	Annotations []GetPrometheusAlertRulesRuleAnnotation `pulumi:"annotations"`
+	// The ID of the cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
+	DispatchRuleId string `pulumi:"dispatchRuleId"`
+	// -The duration of the alert.
+	Duration string `pulumi:"duration"`
+	// The alert rule expression that follows the PromQL syntax..
+	Expression string `pulumi:"expression"`
+	// The ID of the Prometheus Alert Rule.
+	Id string `pulumi:"id"`
+	// -The labels of the resource.
+	Labels []GetPrometheusAlertRulesRuleLabel `pulumi:"labels"`
+	// The message of the alert notification.
+	Message string `pulumi:"message"`
+	// The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
+	NotifyType string `pulumi:"notifyType"`
+	// The first ID of the resource.
+	PrometheusAlertRuleId string `pulumi:"prometheusAlertRuleId"`
+	// The name of the resource.
+	PrometheusAlertRuleName string `pulumi:"prometheusAlertRuleName"`
+	// The status of the resource. Valid values: `0`, `1`.
+	// * `1`: open.
+	// * `0`: off.
+	Status int `pulumi:"status"`
+	// The type of the alert rule.
+	Type string `pulumi:"type"`
+}
+
+// GetPrometheusAlertRulesRuleInput is an input type that accepts GetPrometheusAlertRulesRuleArgs and GetPrometheusAlertRulesRuleOutput values.
+// You can construct a concrete instance of `GetPrometheusAlertRulesRuleInput` via:
+//
+//          GetPrometheusAlertRulesRuleArgs{...}
+type GetPrometheusAlertRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetPrometheusAlertRulesRuleOutput() GetPrometheusAlertRulesRuleOutput
+	ToGetPrometheusAlertRulesRuleOutputWithContext(context.Context) GetPrometheusAlertRulesRuleOutput
+}
+
+type GetPrometheusAlertRulesRuleArgs struct {
+	// The annotations of the alert rule.
+	Annotations GetPrometheusAlertRulesRuleAnnotationArrayInput `pulumi:"annotations"`
+	// The ID of the cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
+	DispatchRuleId pulumi.StringInput `pulumi:"dispatchRuleId"`
+	// -The duration of the alert.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// The alert rule expression that follows the PromQL syntax..
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// The ID of the Prometheus Alert Rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// -The labels of the resource.
+	Labels GetPrometheusAlertRulesRuleLabelArrayInput `pulumi:"labels"`
+	// The message of the alert notification.
+	Message pulumi.StringInput `pulumi:"message"`
+	// The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
+	NotifyType pulumi.StringInput `pulumi:"notifyType"`
+	// The first ID of the resource.
+	PrometheusAlertRuleId pulumi.StringInput `pulumi:"prometheusAlertRuleId"`
+	// The name of the resource.
+	PrometheusAlertRuleName pulumi.StringInput `pulumi:"prometheusAlertRuleName"`
+	// The status of the resource. Valid values: `0`, `1`.
+	// * `1`: open.
+	// * `0`: off.
+	Status pulumi.IntInput `pulumi:"status"`
+	// The type of the alert rule.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetPrometheusAlertRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusAlertRulesRule)(nil)).Elem()
+}
+
+func (i GetPrometheusAlertRulesRuleArgs) ToGetPrometheusAlertRulesRuleOutput() GetPrometheusAlertRulesRuleOutput {
+	return i.ToGetPrometheusAlertRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusAlertRulesRuleArgs) ToGetPrometheusAlertRulesRuleOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleOutput)
+}
+
+// GetPrometheusAlertRulesRuleArrayInput is an input type that accepts GetPrometheusAlertRulesRuleArray and GetPrometheusAlertRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetPrometheusAlertRulesRuleArrayInput` via:
+//
+//          GetPrometheusAlertRulesRuleArray{ GetPrometheusAlertRulesRuleArgs{...} }
+type GetPrometheusAlertRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetPrometheusAlertRulesRuleArrayOutput() GetPrometheusAlertRulesRuleArrayOutput
+	ToGetPrometheusAlertRulesRuleArrayOutputWithContext(context.Context) GetPrometheusAlertRulesRuleArrayOutput
+}
+
+type GetPrometheusAlertRulesRuleArray []GetPrometheusAlertRulesRuleInput
+
+func (GetPrometheusAlertRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusAlertRulesRule)(nil)).Elem()
+}
+
+func (i GetPrometheusAlertRulesRuleArray) ToGetPrometheusAlertRulesRuleArrayOutput() GetPrometheusAlertRulesRuleArrayOutput {
+	return i.ToGetPrometheusAlertRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusAlertRulesRuleArray) ToGetPrometheusAlertRulesRuleArrayOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleArrayOutput)
+}
+
+type GetPrometheusAlertRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusAlertRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusAlertRulesRule)(nil)).Elem()
+}
+
+func (o GetPrometheusAlertRulesRuleOutput) ToGetPrometheusAlertRulesRuleOutput() GetPrometheusAlertRulesRuleOutput {
+	return o
+}
+
+func (o GetPrometheusAlertRulesRuleOutput) ToGetPrometheusAlertRulesRuleOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleOutput {
+	return o
+}
+
+// The annotations of the alert rule.
+func (o GetPrometheusAlertRulesRuleOutput) Annotations() GetPrometheusAlertRulesRuleAnnotationArrayOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) []GetPrometheusAlertRulesRuleAnnotation { return v.Annotations }).(GetPrometheusAlertRulesRuleAnnotationArrayOutput)
+}
+
+// The ID of the cluster.
+func (o GetPrometheusAlertRulesRuleOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
+func (o GetPrometheusAlertRulesRuleOutput) DispatchRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.DispatchRuleId }).(pulumi.StringOutput)
+}
+
+// -The duration of the alert.
+func (o GetPrometheusAlertRulesRuleOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// The alert rule expression that follows the PromQL syntax..
+func (o GetPrometheusAlertRulesRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// The ID of the Prometheus Alert Rule.
+func (o GetPrometheusAlertRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// -The labels of the resource.
+func (o GetPrometheusAlertRulesRuleOutput) Labels() GetPrometheusAlertRulesRuleLabelArrayOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) []GetPrometheusAlertRulesRuleLabel { return v.Labels }).(GetPrometheusAlertRulesRuleLabelArrayOutput)
+}
+
+// The message of the alert notification.
+func (o GetPrometheusAlertRulesRuleOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
+func (o GetPrometheusAlertRulesRuleOutput) NotifyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.NotifyType }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetPrometheusAlertRulesRuleOutput) PrometheusAlertRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.PrometheusAlertRuleId }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetPrometheusAlertRulesRuleOutput) PrometheusAlertRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.PrometheusAlertRuleName }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `0`, `1`.
+// * `1`: open.
+// * `0`: off.
+func (o GetPrometheusAlertRulesRuleOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) int { return v.Status }).(pulumi.IntOutput)
+}
+
+// The type of the alert rule.
+func (o GetPrometheusAlertRulesRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPrometheusAlertRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusAlertRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusAlertRulesRule)(nil)).Elem()
+}
+
+func (o GetPrometheusAlertRulesRuleArrayOutput) ToGetPrometheusAlertRulesRuleArrayOutput() GetPrometheusAlertRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetPrometheusAlertRulesRuleArrayOutput) ToGetPrometheusAlertRulesRuleArrayOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetPrometheusAlertRulesRuleArrayOutput) Index(i pulumi.IntInput) GetPrometheusAlertRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrometheusAlertRulesRule {
+		return vs[0].([]GetPrometheusAlertRulesRule)[vs[1].(int)]
+	}).(GetPrometheusAlertRulesRuleOutput)
+}
+
+type GetPrometheusAlertRulesRuleAnnotation struct {
+	// The name of the label.
+	Name string `pulumi:"name"`
+	// The value of the label.
+	Value string `pulumi:"value"`
+}
+
+// GetPrometheusAlertRulesRuleAnnotationInput is an input type that accepts GetPrometheusAlertRulesRuleAnnotationArgs and GetPrometheusAlertRulesRuleAnnotationOutput values.
+// You can construct a concrete instance of `GetPrometheusAlertRulesRuleAnnotationInput` via:
+//
+//          GetPrometheusAlertRulesRuleAnnotationArgs{...}
+type GetPrometheusAlertRulesRuleAnnotationInput interface {
+	pulumi.Input
+
+	ToGetPrometheusAlertRulesRuleAnnotationOutput() GetPrometheusAlertRulesRuleAnnotationOutput
+	ToGetPrometheusAlertRulesRuleAnnotationOutputWithContext(context.Context) GetPrometheusAlertRulesRuleAnnotationOutput
+}
+
+type GetPrometheusAlertRulesRuleAnnotationArgs struct {
+	// The name of the label.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the label.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetPrometheusAlertRulesRuleAnnotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusAlertRulesRuleAnnotation)(nil)).Elem()
+}
+
+func (i GetPrometheusAlertRulesRuleAnnotationArgs) ToGetPrometheusAlertRulesRuleAnnotationOutput() GetPrometheusAlertRulesRuleAnnotationOutput {
+	return i.ToGetPrometheusAlertRulesRuleAnnotationOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusAlertRulesRuleAnnotationArgs) ToGetPrometheusAlertRulesRuleAnnotationOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleAnnotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleAnnotationOutput)
+}
+
+// GetPrometheusAlertRulesRuleAnnotationArrayInput is an input type that accepts GetPrometheusAlertRulesRuleAnnotationArray and GetPrometheusAlertRulesRuleAnnotationArrayOutput values.
+// You can construct a concrete instance of `GetPrometheusAlertRulesRuleAnnotationArrayInput` via:
+//
+//          GetPrometheusAlertRulesRuleAnnotationArray{ GetPrometheusAlertRulesRuleAnnotationArgs{...} }
+type GetPrometheusAlertRulesRuleAnnotationArrayInput interface {
+	pulumi.Input
+
+	ToGetPrometheusAlertRulesRuleAnnotationArrayOutput() GetPrometheusAlertRulesRuleAnnotationArrayOutput
+	ToGetPrometheusAlertRulesRuleAnnotationArrayOutputWithContext(context.Context) GetPrometheusAlertRulesRuleAnnotationArrayOutput
+}
+
+type GetPrometheusAlertRulesRuleAnnotationArray []GetPrometheusAlertRulesRuleAnnotationInput
+
+func (GetPrometheusAlertRulesRuleAnnotationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusAlertRulesRuleAnnotation)(nil)).Elem()
+}
+
+func (i GetPrometheusAlertRulesRuleAnnotationArray) ToGetPrometheusAlertRulesRuleAnnotationArrayOutput() GetPrometheusAlertRulesRuleAnnotationArrayOutput {
+	return i.ToGetPrometheusAlertRulesRuleAnnotationArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusAlertRulesRuleAnnotationArray) ToGetPrometheusAlertRulesRuleAnnotationArrayOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleAnnotationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleAnnotationArrayOutput)
+}
+
+type GetPrometheusAlertRulesRuleAnnotationOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusAlertRulesRuleAnnotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusAlertRulesRuleAnnotation)(nil)).Elem()
+}
+
+func (o GetPrometheusAlertRulesRuleAnnotationOutput) ToGetPrometheusAlertRulesRuleAnnotationOutput() GetPrometheusAlertRulesRuleAnnotationOutput {
+	return o
+}
+
+func (o GetPrometheusAlertRulesRuleAnnotationOutput) ToGetPrometheusAlertRulesRuleAnnotationOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleAnnotationOutput {
+	return o
+}
+
+// The name of the label.
+func (o GetPrometheusAlertRulesRuleAnnotationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRuleAnnotation) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the label.
+func (o GetPrometheusAlertRulesRuleAnnotationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRuleAnnotation) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetPrometheusAlertRulesRuleAnnotationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusAlertRulesRuleAnnotationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusAlertRulesRuleAnnotation)(nil)).Elem()
+}
+
+func (o GetPrometheusAlertRulesRuleAnnotationArrayOutput) ToGetPrometheusAlertRulesRuleAnnotationArrayOutput() GetPrometheusAlertRulesRuleAnnotationArrayOutput {
+	return o
+}
+
+func (o GetPrometheusAlertRulesRuleAnnotationArrayOutput) ToGetPrometheusAlertRulesRuleAnnotationArrayOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleAnnotationArrayOutput {
+	return o
+}
+
+func (o GetPrometheusAlertRulesRuleAnnotationArrayOutput) Index(i pulumi.IntInput) GetPrometheusAlertRulesRuleAnnotationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrometheusAlertRulesRuleAnnotation {
+		return vs[0].([]GetPrometheusAlertRulesRuleAnnotation)[vs[1].(int)]
+	}).(GetPrometheusAlertRulesRuleAnnotationOutput)
+}
+
+type GetPrometheusAlertRulesRuleLabel struct {
+	// The name of the label.
+	Name string `pulumi:"name"`
+	// The value of the label.
+	Value string `pulumi:"value"`
+}
+
+// GetPrometheusAlertRulesRuleLabelInput is an input type that accepts GetPrometheusAlertRulesRuleLabelArgs and GetPrometheusAlertRulesRuleLabelOutput values.
+// You can construct a concrete instance of `GetPrometheusAlertRulesRuleLabelInput` via:
+//
+//          GetPrometheusAlertRulesRuleLabelArgs{...}
+type GetPrometheusAlertRulesRuleLabelInput interface {
+	pulumi.Input
+
+	ToGetPrometheusAlertRulesRuleLabelOutput() GetPrometheusAlertRulesRuleLabelOutput
+	ToGetPrometheusAlertRulesRuleLabelOutputWithContext(context.Context) GetPrometheusAlertRulesRuleLabelOutput
+}
+
+type GetPrometheusAlertRulesRuleLabelArgs struct {
+	// The name of the label.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the label.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetPrometheusAlertRulesRuleLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusAlertRulesRuleLabel)(nil)).Elem()
+}
+
+func (i GetPrometheusAlertRulesRuleLabelArgs) ToGetPrometheusAlertRulesRuleLabelOutput() GetPrometheusAlertRulesRuleLabelOutput {
+	return i.ToGetPrometheusAlertRulesRuleLabelOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusAlertRulesRuleLabelArgs) ToGetPrometheusAlertRulesRuleLabelOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleLabelOutput)
+}
+
+// GetPrometheusAlertRulesRuleLabelArrayInput is an input type that accepts GetPrometheusAlertRulesRuleLabelArray and GetPrometheusAlertRulesRuleLabelArrayOutput values.
+// You can construct a concrete instance of `GetPrometheusAlertRulesRuleLabelArrayInput` via:
+//
+//          GetPrometheusAlertRulesRuleLabelArray{ GetPrometheusAlertRulesRuleLabelArgs{...} }
+type GetPrometheusAlertRulesRuleLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetPrometheusAlertRulesRuleLabelArrayOutput() GetPrometheusAlertRulesRuleLabelArrayOutput
+	ToGetPrometheusAlertRulesRuleLabelArrayOutputWithContext(context.Context) GetPrometheusAlertRulesRuleLabelArrayOutput
+}
+
+type GetPrometheusAlertRulesRuleLabelArray []GetPrometheusAlertRulesRuleLabelInput
+
+func (GetPrometheusAlertRulesRuleLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusAlertRulesRuleLabel)(nil)).Elem()
+}
+
+func (i GetPrometheusAlertRulesRuleLabelArray) ToGetPrometheusAlertRulesRuleLabelArrayOutput() GetPrometheusAlertRulesRuleLabelArrayOutput {
+	return i.ToGetPrometheusAlertRulesRuleLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusAlertRulesRuleLabelArray) ToGetPrometheusAlertRulesRuleLabelArrayOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleLabelArrayOutput)
+}
+
+type GetPrometheusAlertRulesRuleLabelOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusAlertRulesRuleLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusAlertRulesRuleLabel)(nil)).Elem()
+}
+
+func (o GetPrometheusAlertRulesRuleLabelOutput) ToGetPrometheusAlertRulesRuleLabelOutput() GetPrometheusAlertRulesRuleLabelOutput {
+	return o
+}
+
+func (o GetPrometheusAlertRulesRuleLabelOutput) ToGetPrometheusAlertRulesRuleLabelOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleLabelOutput {
+	return o
+}
+
+// The name of the label.
+func (o GetPrometheusAlertRulesRuleLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRuleLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the label.
+func (o GetPrometheusAlertRulesRuleLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusAlertRulesRuleLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetPrometheusAlertRulesRuleLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusAlertRulesRuleLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusAlertRulesRuleLabel)(nil)).Elem()
+}
+
+func (o GetPrometheusAlertRulesRuleLabelArrayOutput) ToGetPrometheusAlertRulesRuleLabelArrayOutput() GetPrometheusAlertRulesRuleLabelArrayOutput {
+	return o
+}
+
+func (o GetPrometheusAlertRulesRuleLabelArrayOutput) ToGetPrometheusAlertRulesRuleLabelArrayOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleLabelArrayOutput {
+	return o
+}
+
+func (o GetPrometheusAlertRulesRuleLabelArrayOutput) Index(i pulumi.IntInput) GetPrometheusAlertRulesRuleLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrometheusAlertRulesRuleLabel {
+		return vs[0].([]GetPrometheusAlertRulesRuleLabel)[vs[1].(int)]
+	}).(GetPrometheusAlertRulesRuleLabelOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(DispatchRuleGroupRuleOutput{})
+	pulumi.RegisterOutputType(DispatchRuleGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(DispatchRuleLabelMatchExpressionGridOutput{})
+	pulumi.RegisterOutputType(DispatchRuleLabelMatchExpressionGridArrayOutput{})
+	pulumi.RegisterOutputType(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput{})
+	pulumi.RegisterOutputType(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput{})
+	pulumi.RegisterOutputType(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput{})
+	pulumi.RegisterOutputType(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput{})
+	pulumi.RegisterOutputType(DispatchRuleNotifyRuleOutput{})
+	pulumi.RegisterOutputType(DispatchRuleNotifyRuleArrayOutput{})
+	pulumi.RegisterOutputType(DispatchRuleNotifyRuleNotifyObjectOutput{})
+	pulumi.RegisterOutputType(DispatchRuleNotifyRuleNotifyObjectArrayOutput{})
+	pulumi.RegisterOutputType(PrometheusAlertRuleAnnotationOutput{})
+	pulumi.RegisterOutputType(PrometheusAlertRuleAnnotationArrayOutput{})
+	pulumi.RegisterOutputType(PrometheusAlertRuleLabelOutput{})
+	pulumi.RegisterOutputType(PrometheusAlertRuleLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetAlertContactGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAlertContactGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAlertContactsContactOutput{})
 	pulumi.RegisterOutputType(GetAlertContactsContactArrayOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleGroupRuleOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleLabelMatchExpressionGridOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyRuleOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyRuleNotifyObjectOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleAnnotationOutput{})
+	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleAnnotationArrayOutput{})
+	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleLabelOutput{})
+	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleLabelArrayOutput{})
 }

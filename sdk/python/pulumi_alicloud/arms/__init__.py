@@ -5,8 +5,13 @@
 # Export this package's modules as members:
 from .alert_contact import *
 from .alert_contact_group import *
+from .dispatch_rule import *
 from .get_alert_contact_groups import *
 from .get_alert_contacts import *
+from .get_dispatch_rules import *
+from .get_prometheus_alert_rules import *
+from .prometheus_alert_rule import *
+from ._inputs import *
 from . import outputs
 
 def _register_module():
@@ -25,6 +30,10 @@ def _register_module():
                 return AlertContact(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:arms/alertContactGroup:AlertContactGroup":
                 return AlertContactGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:arms/dispatchRule:DispatchRule":
+                return DispatchRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:arms/prometheusAlertRule:PrometheusAlertRule":
+                return PrometheusAlertRule(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
@@ -32,5 +41,7 @@ def _register_module():
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "arms/alertContact", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "arms/alertContactGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "arms/dispatchRule", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "arms/prometheusAlertRule", _module_instance)
 
 _register_module()

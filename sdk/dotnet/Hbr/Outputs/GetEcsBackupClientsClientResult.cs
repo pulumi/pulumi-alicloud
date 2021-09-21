@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class GetEcsBackupClientsClientResult
     {
         /// <summary>
-        /// The Client System Architecture (Only the ECS File Backup Client Is Available. Valid Values: `AMD64` , `386`.
+        /// The system architecture of client, only the ECS File Backup Client is available. Valid values: `AMD64` , `386`.
         /// </summary>
         public readonly string ArchType;
         /// <summary>
@@ -22,23 +22,23 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BackupStatus;
         /// <summary>
-        /// The Client Type. Valid Values: `ECS_CLIENT` (ECS File Backup Client).
+        /// The type of client. Valid values: `ECS_CLIENT` (ECS File Backup Client).
         /// </summary>
         public readonly string ClientType;
         /// <summary>
-        /// Client Version.
+        /// The version of client.
         /// </summary>
         public readonly string ClientVersion;
         /// <summary>
-        /// The Client Creates a Time. Unix Time Seconds.
+        /// The creation time of client. Unix time seconds.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The Data Plane Data Access Point Type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
+        /// The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
         /// </summary>
         public readonly string DataNetworkType;
         /// <summary>
-        /// The Data Plane Proxy Settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`. **Note**: `USE_CONTROL_PROXY` (Default, the same with Control Plane), `CUSTOM` (Custom Configuration Items for the HTTP Protocol).
+        /// The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
         /// </summary>
         public readonly string DataProxySetting;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string EcsBackupClientId;
         /// <summary>
-        /// The ECS Host Name.
+        /// The name of ECS host.
         /// </summary>
         public readonly string Hostname;
         /// <summary>
@@ -54,51 +54,51 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of ECS Instance.
+        /// The ID of ECS instance.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// ECS Instance Names.
+        /// The name of ECS instance.
         /// </summary>
         public readonly string InstanceName;
         /// <summary>
-        /// Client Last Heartbeat Time. Unix Time Seconds.
+        /// Client last heartbeat time. Unix Time Seconds.
         /// </summary>
         public readonly string LastHeartBeatTime;
         /// <summary>
-        /// The Latest Client Version.
+        /// The latest client version.
         /// </summary>
         public readonly string MaxClientVersion;
         /// <summary>
-        /// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+        /// Number of CPU cores used by a single backup task, 0 means no restrictions.
         /// </summary>
         public readonly string MaxCpuCore;
         /// <summary>
-        /// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+        /// Number of concurrent jobs for a single backup task, 0 means no restrictions.
         /// </summary>
         public readonly string MaxWorker;
         /// <summary>
-        /// The Client System Type (Only the ECS File Backup Client Is Available. Possible Values: * windows * linux.
+        /// The operating system type of client, only the ECS File Backup Client is available. Valid values: `windows`, `linux`.
         /// </summary>
         public readonly string OsType;
         /// <summary>
-        /// Instance Must Not Use the Intranet IP Address.
+        /// Intranet IP address of the instance, only available for ECS file backup client.
         /// </summary>
         public readonly string PrivateIpv4;
         /// <summary>
-        /// Custom Data Plane Proxy Server Host Address.
+        /// Custom data plane proxy server host address.
         /// </summary>
         public readonly string ProxyHost;
         /// <summary>
-        /// Custom Data Plane Proxy Password.
+        /// Custom data plane proxy server password.
         /// </summary>
         public readonly string ProxyPassword;
         /// <summary>
-        /// Custom Data Plane Proxy Server Host Port.
+        /// Custom data plane proxy server host port.
         /// </summary>
         public readonly string ProxyPort;
         /// <summary>
-        /// Custom Data Plane Proxy Server User Name.
+        /// Username of custom data plane proxy server.
         /// </summary>
         public readonly string ProxyUser;
         /// <summary>
@@ -106,15 +106,15 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Client Update Time. Unix Time Seconds.
+        /// The update time of client. Unix Time Seconds.
         /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
-        /// Indicates Whether to Use the Https Transport Data Plane Data.
+        /// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         /// </summary>
         public readonly bool UseHttps;
         /// <summary>
-        /// The Zone ID.
+        /// The ID of Zone.
         /// </summary>
         public readonly string ZoneId;
 

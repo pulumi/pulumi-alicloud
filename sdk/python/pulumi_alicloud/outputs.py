@@ -12,6 +12,7 @@ __all__ = [
     'ProviderAssumeRole',
     'ProviderEndpoint',
     'GetMscSubContractsContactResult',
+    'GetMscSubSubscriptionsSubscriptionResult',
     'GetRegionsRegionResult',
     'GetZonesZoneResult',
 ]
@@ -118,21 +119,26 @@ class ProviderEndpoint(dict):
                  cddc: Optional[str] = None,
                  cdn: Optional[str] = None,
                  cds: Optional[str] = None,
+                 clickhouse: Optional[str] = None,
                  cloudphone: Optional[str] = None,
+                 cloudsso: Optional[str] = None,
                  cms: Optional[str] = None,
                  config: Optional[str] = None,
                  cr: Optional[str] = None,
                  cs: Optional[str] = None,
                  datahub: Optional[str] = None,
                  dataworkspublic: Optional[str] = None,
+                 dbfs: Optional[str] = None,
                  dcdn: Optional[str] = None,
                  ddosbgp: Optional[str] = None,
                  ddoscoo: Optional[str] = None,
                  dds: Optional[str] = None,
+                 dg: Optional[str] = None,
                  dm: Optional[str] = None,
                  dms_enterprise: Optional[str] = None,
                  dns: Optional[str] = None,
                  drds: Optional[str] = None,
+                 dts: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
                  ehpc: Optional[str] = None,
@@ -145,12 +151,15 @@ class ProviderEndpoint(dict):
                  fc: Optional[str] = None,
                  fnf: Optional[str] = None,
                  ga: Optional[str] = None,
+                 gds: Optional[str] = None,
                  gpdb: Optional[str] = None,
                  gwsecd: Optional[str] = None,
                  hbr: Optional[str] = None,
                  hcs_sgw: Optional[str] = None,
                  hitsdb: Optional[str] = None,
+                 imm: Optional[str] = None,
                  ims: Optional[str] = None,
+                 iot: Optional[str] = None,
                  kms: Optional[str] = None,
                  kvstore: Optional[str] = None,
                  location: Optional[str] = None,
@@ -164,11 +173,13 @@ class ProviderEndpoint(dict):
                  ons: Optional[str] = None,
                  onsproxy: Optional[str] = None,
                  oos: Optional[str] = None,
+                 opensearch: Optional[str] = None,
                  oss: Optional[str] = None,
                  ots: Optional[str] = None,
                  polardb: Optional[str] = None,
                  privatelink: Optional[str] = None,
                  pvtz: Optional[str] = None,
+                 quickbi: Optional[str] = None,
                  quotas: Optional[str] = None,
                  r_kvstore: Optional[str] = None,
                  ram: Optional[str] = None,
@@ -184,7 +195,11 @@ class ProviderEndpoint(dict):
                  sgw: Optional[str] = None,
                  slb: Optional[str] = None,
                  sts: Optional[str] = None,
+                 swas: Optional[str] = None,
+                 vod: Optional[str] = None,
                  vpc: Optional[str] = None,
+                 vs: Optional[str] = None,
+                 waf: Optional[str] = None,
                  waf_openapi: Optional[str] = None):
         if actiontrail is not None:
             pulumi.set(__self__, "actiontrail", actiontrail)
@@ -220,8 +235,12 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "cdn", cdn)
         if cds is not None:
             pulumi.set(__self__, "cds", cds)
+        if clickhouse is not None:
+            pulumi.set(__self__, "clickhouse", clickhouse)
         if cloudphone is not None:
             pulumi.set(__self__, "cloudphone", cloudphone)
+        if cloudsso is not None:
+            pulumi.set(__self__, "cloudsso", cloudsso)
         if cms is not None:
             pulumi.set(__self__, "cms", cms)
         if config is not None:
@@ -234,6 +253,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "datahub", datahub)
         if dataworkspublic is not None:
             pulumi.set(__self__, "dataworkspublic", dataworkspublic)
+        if dbfs is not None:
+            pulumi.set(__self__, "dbfs", dbfs)
         if dcdn is not None:
             pulumi.set(__self__, "dcdn", dcdn)
         if ddosbgp is not None:
@@ -242,6 +263,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "ddoscoo", ddoscoo)
         if dds is not None:
             pulumi.set(__self__, "dds", dds)
+        if dg is not None:
+            pulumi.set(__self__, "dg", dg)
         if dm is not None:
             pulumi.set(__self__, "dm", dm)
         if dms_enterprise is not None:
@@ -250,6 +273,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "dns", dns)
         if drds is not None:
             pulumi.set(__self__, "drds", drds)
+        if dts is not None:
+            pulumi.set(__self__, "dts", dts)
         if eci is not None:
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
@@ -274,6 +299,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "fnf", fnf)
         if ga is not None:
             pulumi.set(__self__, "ga", ga)
+        if gds is not None:
+            pulumi.set(__self__, "gds", gds)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
         if gwsecd is not None:
@@ -284,8 +311,12 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "hcs_sgw", hcs_sgw)
         if hitsdb is not None:
             pulumi.set(__self__, "hitsdb", hitsdb)
+        if imm is not None:
+            pulumi.set(__self__, "imm", imm)
         if ims is not None:
             pulumi.set(__self__, "ims", ims)
+        if iot is not None:
+            pulumi.set(__self__, "iot", iot)
         if kms is not None:
             pulumi.set(__self__, "kms", kms)
         if kvstore is not None:
@@ -312,6 +343,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "onsproxy", onsproxy)
         if oos is not None:
             pulumi.set(__self__, "oos", oos)
+        if opensearch is not None:
+            pulumi.set(__self__, "opensearch", opensearch)
         if oss is not None:
             pulumi.set(__self__, "oss", oss)
         if ots is not None:
@@ -322,6 +355,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "privatelink", privatelink)
         if pvtz is not None:
             pulumi.set(__self__, "pvtz", pvtz)
+        if quickbi is not None:
+            pulumi.set(__self__, "quickbi", quickbi)
         if quotas is not None:
             pulumi.set(__self__, "quotas", quotas)
         if r_kvstore is not None:
@@ -352,8 +387,16 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "slb", slb)
         if sts is not None:
             pulumi.set(__self__, "sts", sts)
+        if swas is not None:
+            pulumi.set(__self__, "swas", swas)
+        if vod is not None:
+            pulumi.set(__self__, "vod", vod)
         if vpc is not None:
             pulumi.set(__self__, "vpc", vpc)
+        if vs is not None:
+            pulumi.set(__self__, "vs", vs)
+        if waf is not None:
+            pulumi.set(__self__, "waf", waf)
         if waf_openapi is not None:
             pulumi.set(__self__, "waf_openapi", waf_openapi)
 
@@ -444,8 +487,18 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def clickhouse(self) -> Optional[str]:
+        return pulumi.get(self, "clickhouse")
+
+    @property
+    @pulumi.getter
     def cloudphone(self) -> Optional[str]:
         return pulumi.get(self, "cloudphone")
+
+    @property
+    @pulumi.getter
+    def cloudsso(self) -> Optional[str]:
+        return pulumi.get(self, "cloudsso")
 
     @property
     @pulumi.getter
@@ -479,6 +532,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def dbfs(self) -> Optional[str]:
+        return pulumi.get(self, "dbfs")
+
+    @property
+    @pulumi.getter
     def dcdn(self) -> Optional[str]:
         return pulumi.get(self, "dcdn")
 
@@ -499,6 +557,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def dg(self) -> Optional[str]:
+        return pulumi.get(self, "dg")
+
+    @property
+    @pulumi.getter
     def dm(self) -> Optional[str]:
         return pulumi.get(self, "dm")
 
@@ -516,6 +579,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def drds(self) -> Optional[str]:
         return pulumi.get(self, "drds")
+
+    @property
+    @pulumi.getter
+    def dts(self) -> Optional[str]:
+        return pulumi.get(self, "dts")
 
     @property
     @pulumi.getter
@@ -579,6 +647,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def gds(self) -> Optional[str]:
+        return pulumi.get(self, "gds")
+
+    @property
+    @pulumi.getter
     def gpdb(self) -> Optional[str]:
         return pulumi.get(self, "gpdb")
 
@@ -604,8 +677,18 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def imm(self) -> Optional[str]:
+        return pulumi.get(self, "imm")
+
+    @property
+    @pulumi.getter
     def ims(self) -> Optional[str]:
         return pulumi.get(self, "ims")
+
+    @property
+    @pulumi.getter
+    def iot(self) -> Optional[str]:
+        return pulumi.get(self, "iot")
 
     @property
     @pulumi.getter
@@ -674,6 +757,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def opensearch(self) -> Optional[str]:
+        return pulumi.get(self, "opensearch")
+
+    @property
+    @pulumi.getter
     def oss(self) -> Optional[str]:
         return pulumi.get(self, "oss")
 
@@ -696,6 +784,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def pvtz(self) -> Optional[str]:
         return pulumi.get(self, "pvtz")
+
+    @property
+    @pulumi.getter
+    def quickbi(self) -> Optional[str]:
+        return pulumi.get(self, "quickbi")
 
     @property
     @pulumi.getter
@@ -774,8 +867,28 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def swas(self) -> Optional[str]:
+        return pulumi.get(self, "swas")
+
+    @property
+    @pulumi.getter
+    def vod(self) -> Optional[str]:
+        return pulumi.get(self, "vod")
+
+    @property
+    @pulumi.getter
     def vpc(self) -> Optional[str]:
         return pulumi.get(self, "vpc")
+
+    @property
+    @pulumi.getter
+    def vs(self) -> Optional[str]:
+        return pulumi.get(self, "vs")
+
+    @property
+    @pulumi.getter
+    def waf(self) -> Optional[str]:
+        return pulumi.get(self, "waf")
 
     @property
     @pulumi.getter(name="wafOpenapi")
@@ -812,7 +925,7 @@ class GetMscSubContractsContactResult(dict):
         :param str last_email_verification_time_stamp: Last Verification Email Transmission Time.
         :param str last_mobile_verification_time_stamp: The Pieces of Authentication SMS Sending Time.
         :param str mobile: The User's Telephone.
-        :param str position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        :param str position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         """
         pulumi.set(__self__, "account_uid", account_uid)
         pulumi.set(__self__, "contact_id", contact_id)
@@ -928,9 +1041,148 @@ class GetMscSubContractsContactResult(dict):
     @pulumi.getter
     def position(self) -> str:
         """
-        The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         """
         return pulumi.get(self, "position")
+
+
+@pulumi.output_type
+class GetMscSubSubscriptionsSubscriptionResult(dict):
+    def __init__(__self__, *,
+                 channel: str,
+                 contact_ids: Sequence[int],
+                 description: str,
+                 email_status: int,
+                 id: str,
+                 item_id: str,
+                 item_name: str,
+                 pmsg_status: int,
+                 sms_status: int,
+                 tts_status: int,
+                 webhook_ids: Sequence[int],
+                 webhook_status: int):
+        """
+        :param str channel: The channel the Subscription.
+        :param Sequence[int] contact_ids: The ids of subscribed contacts.
+        :param str description: The description of the Subscription.
+        :param int email_status: The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+        :param str id: The ID of the Subscription.
+        :param str item_id: The ID of the Subscription.
+        :param str item_name: The name of the Subscription.
+        :param int pmsg_status: The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+        :param int sms_status: The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+        :param int tts_status: The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+        :param Sequence[int] webhook_ids: The ids of subscribed webhooks.
+        :param int webhook_status: The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+        """
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "contact_ids", contact_ids)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "email_status", email_status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "item_id", item_id)
+        pulumi.set(__self__, "item_name", item_name)
+        pulumi.set(__self__, "pmsg_status", pmsg_status)
+        pulumi.set(__self__, "sms_status", sms_status)
+        pulumi.set(__self__, "tts_status", tts_status)
+        pulumi.set(__self__, "webhook_ids", webhook_ids)
+        pulumi.set(__self__, "webhook_status", webhook_status)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> str:
+        """
+        The channel the Subscription.
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter(name="contactIds")
+    def contact_ids(self) -> Sequence[int]:
+        """
+        The ids of subscribed contacts.
+        """
+        return pulumi.get(self, "contact_ids")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Subscription.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="emailStatus")
+    def email_status(self) -> int:
+        """
+        The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+        """
+        return pulumi.get(self, "email_status")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Subscription.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="itemId")
+    def item_id(self) -> str:
+        """
+        The ID of the Subscription.
+        """
+        return pulumi.get(self, "item_id")
+
+    @property
+    @pulumi.getter(name="itemName")
+    def item_name(self) -> str:
+        """
+        The name of the Subscription.
+        """
+        return pulumi.get(self, "item_name")
+
+    @property
+    @pulumi.getter(name="pmsgStatus")
+    def pmsg_status(self) -> int:
+        """
+        The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+        """
+        return pulumi.get(self, "pmsg_status")
+
+    @property
+    @pulumi.getter(name="smsStatus")
+    def sms_status(self) -> int:
+        """
+        The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+        """
+        return pulumi.get(self, "sms_status")
+
+    @property
+    @pulumi.getter(name="ttsStatus")
+    def tts_status(self) -> int:
+        """
+        The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+        """
+        return pulumi.get(self, "tts_status")
+
+    @property
+    @pulumi.getter(name="webhookIds")
+    def webhook_ids(self) -> Sequence[int]:
+        """
+        The ids of subscribed webhooks.
+        """
+        return pulumi.get(self, "webhook_ids")
+
+    @property
+    @pulumi.getter(name="webhookStatus")
+    def webhook_status(self) -> int:
+        """
+        The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+        """
+        return pulumi.get(self, "webhook_status")
 
 
 @pulumi.output_type

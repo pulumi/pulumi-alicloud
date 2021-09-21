@@ -65,6 +65,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("architecture")]
         public Output<string?> Architecture { get; private set; } = null!;
 
+        [Output("deleteAutoSnapshot")]
+        public Output<bool?> DeleteAutoSnapshot { get; private set; } = null!;
+
         /// <summary>
         /// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         /// </summary>
@@ -176,6 +179,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
 
+        [Input("deleteAutoSnapshot")]
+        public Input<bool>? DeleteAutoSnapshot { get; set; }
+
         /// <summary>
         /// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         /// </summary>
@@ -259,6 +265,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
+
+        [Input("deleteAutoSnapshot")]
+        public Input<bool>? DeleteAutoSnapshot { get; set; }
 
         /// <summary>
         /// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
