@@ -63,7 +63,7 @@ export interface GetInstanceClassesArgs {
      */
     readonly dbInstanceClass?: string;
     /**
-     * Same as `storageType`.
+     * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
      */
     readonly dbInstanceStorageType?: string;
     /**
@@ -85,7 +85,7 @@ export interface GetInstanceClassesArgs {
     readonly outputFile?: string;
     readonly sortedBy?: string;
     /**
-     * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3"
+     * It has been deprecated from verison 1.134.0+ and using `dbInstanceStorageType` instead.
      */
     readonly storageType?: string;
     /**

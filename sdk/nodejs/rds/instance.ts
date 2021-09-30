@@ -407,7 +407,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
-    public readonly zoneIdSlaveA!: pulumi.Output<string | undefined>;
+    public readonly zoneIdSlaveA!: pulumi.Output<string>;
     /**
      * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */

@@ -478,7 +478,7 @@ namespace Pulumi.AliCloud.Rds
         /// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         /// </summary>
         [Output("zoneIdSlaveA")]
-        public Output<string?> ZoneIdSlaveA { get; private set; } = null!;
+        public Output<string> ZoneIdSlaveA { get; private set; } = null!;
 
         /// <summary>
         /// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.

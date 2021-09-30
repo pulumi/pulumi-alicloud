@@ -13,6 +13,8 @@ __all__ = [
     'GetAccountsAccountResult',
     'GetDbClustersClusterResult',
     'GetDbClustersClusterScaleOutStatusResult',
+    'GetRegionsRegionResult',
+    'GetRegionsRegionZoneIdResult',
 ]
 
 @pulumi.output_type
@@ -514,5 +516,63 @@ class GetDbClustersClusterScaleOutStatusResult(dict):
         Efficiency.
         """
         return pulumi.get(self, "ratio")
+
+
+@pulumi.output_type
+class GetRegionsRegionResult(dict):
+    def __init__(__self__, *,
+                 region_id: str,
+                 zone_ids: Sequence['outputs.GetRegionsRegionZoneIdResult']):
+        """
+        :param str region_id: The Region ID.
+        :param Sequence['GetRegionsRegionZoneIdArgs'] zone_ids: A list of available zone ids in the region_id.
+        """
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "zone_ids", zone_ids)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The Region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="zoneIds")
+    def zone_ids(self) -> Sequence['outputs.GetRegionsRegionZoneIdResult']:
+        """
+        A list of available zone ids in the region_id.
+        """
+        return pulumi.get(self, "zone_ids")
+
+
+@pulumi.output_type
+class GetRegionsRegionZoneIdResult(dict):
+    def __init__(__self__, *,
+                 vpc_enabled: bool,
+                 zone_id: str):
+        """
+        :param bool vpc_enabled: Whether to support vpc network.
+        :param str zone_id: The zone ID.
+        """
+        pulumi.set(__self__, "vpc_enabled", vpc_enabled)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="vpcEnabled")
+    def vpc_enabled(self) -> bool:
+        """
+        Whether to support vpc network.
+        """
+        return pulumi.get(self, "vpc_enabled")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
 
 

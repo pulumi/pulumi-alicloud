@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:dts/jobMonitorRule:JobMonitorRule":
 		r = &JobMonitorRule{}
+	case "alicloud:dts/subscriptionJob:SubscriptionJob":
+		r = &SubscriptionJob{}
+	case "alicloud:dts/synchronizationInstance:SynchronizationInstance":
+		r = &SynchronizationInstance{}
+	case "alicloud:dts/synchronizationJob:SynchronizationJob":
+		r = &SynchronizationJob{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +45,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dts/jobMonitorRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dts/subscriptionJob",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dts/synchronizationInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dts/synchronizationJob",
 		&module{version},
 	)
 }

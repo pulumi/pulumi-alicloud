@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Hbr
     public partial class OssBackupPlan : Pulumi.CustomResource
     {
         /// <summary>
-        /// Backup Type. Valid values: `COMPLETE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Output("backupType")]
         public Output<string> BackupType { get; private set; } = null!;
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Hbr
         /// The name of OSS bucket.
         /// </summary>
         [Output("bucket")]
-        public Output<string?> Bucket { get; private set; } = null!;
+        public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
         /// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Hbr
         /// The ID of backup vault.
         /// </summary>
         [Output("vaultId")]
-        public Output<string?> VaultId { get; private set; } = null!;
+        public Output<string> VaultId { get; private set; } = null!;
 
 
         /// <summary>
@@ -156,16 +156,16 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class OssBackupPlanArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup Type. Valid values: `COMPLETE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
-        [Input("backupType")]
-        public Input<string>? BackupType { get; set; }
+        [Input("backupType", required: true)]
+        public Input<string> BackupType { get; set; } = null!;
 
         /// <summary>
         /// The name of OSS bucket.
         /// </summary>
-        [Input("bucket")]
-        public Input<string>? Bucket { get; set; }
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
         /// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -197,8 +197,8 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// The ID of backup vault.
         /// </summary>
-        [Input("vaultId")]
-        public Input<string>? VaultId { get; set; }
+        [Input("vaultId", required: true)]
+        public Input<string> VaultId { get; set; } = null!;
 
         public OssBackupPlanArgs()
         {
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class OssBackupPlanState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup Type. Valid values: `COMPLETE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }

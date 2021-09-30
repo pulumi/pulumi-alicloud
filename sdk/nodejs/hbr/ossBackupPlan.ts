@@ -73,13 +73,13 @@ export class OssBackupPlan extends pulumi.CustomResource {
     }
 
     /**
-     * Backup Type. Valid values: `COMPLETE`.
+     * Backup type. Valid values: `COMPLETE`.
      */
     public readonly backupType!: pulumi.Output<string>;
     /**
      * The name of OSS bucket.
      */
-    public readonly bucket!: pulumi.Output<string | undefined>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
@@ -100,7 +100,7 @@ export class OssBackupPlan extends pulumi.CustomResource {
     /**
      * The ID of backup vault.
      */
-    public readonly vaultId!: pulumi.Output<string | undefined>;
+    public readonly vaultId!: pulumi.Output<string>;
 
     /**
      * Create a OssBackupPlan resource with the given unique name, arguments, and options.
@@ -125,6 +125,12 @@ export class OssBackupPlan extends pulumi.CustomResource {
             inputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as OssBackupPlanArgs | undefined;
+            if ((!args || args.backupType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'backupType'");
+            }
+            if ((!args || args.bucket === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'bucket'");
+            }
             if ((!args || args.ossBackupPlanName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ossBackupPlanName'");
             }
@@ -133,6 +139,9 @@ export class OssBackupPlan extends pulumi.CustomResource {
             }
             if ((!args || args.schedule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
+            }
+            if ((!args || args.vaultId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'vaultId'");
             }
             inputs["backupType"] = args ? args.backupType : undefined;
             inputs["bucket"] = args ? args.bucket : undefined;
@@ -155,7 +164,7 @@ export class OssBackupPlan extends pulumi.CustomResource {
  */
 export interface OssBackupPlanState {
     /**
-     * Backup Type. Valid values: `COMPLETE`.
+     * Backup type. Valid values: `COMPLETE`.
      */
     readonly backupType?: pulumi.Input<string>;
     /**
@@ -190,13 +199,13 @@ export interface OssBackupPlanState {
  */
 export interface OssBackupPlanArgs {
     /**
-     * Backup Type. Valid values: `COMPLETE`.
+     * Backup type. Valid values: `COMPLETE`.
      */
-    readonly backupType?: pulumi.Input<string>;
+    readonly backupType: pulumi.Input<string>;
     /**
      * The name of OSS bucket.
      */
-    readonly bucket?: pulumi.Input<string>;
+    readonly bucket: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
@@ -217,5 +226,5 @@ export interface OssBackupPlanArgs {
     /**
      * The ID of backup vault.
      */
-    readonly vaultId?: pulumi.Input<string>;
+    readonly vaultId: pulumi.Input<string>;
 }

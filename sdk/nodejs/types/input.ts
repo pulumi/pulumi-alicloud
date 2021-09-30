@@ -30,6 +30,7 @@ export interface ProviderEndpoint {
     cdn?: pulumi.Input<string>;
     cds?: pulumi.Input<string>;
     clickhouse?: pulumi.Input<string>;
+    cloudauth?: pulumi.Input<string>;
     cloudphone?: pulumi.Input<string>;
     cloudsso?: pulumi.Input<string>;
     cms?: pulumi.Input<string>;
@@ -43,12 +44,14 @@ export interface ProviderEndpoint {
     ddosbgp?: pulumi.Input<string>;
     ddoscoo?: pulumi.Input<string>;
     dds?: pulumi.Input<string>;
+    devopsrdc?: pulumi.Input<string>;
     dg?: pulumi.Input<string>;
     dm?: pulumi.Input<string>;
     dmsEnterprise?: pulumi.Input<string>;
     dns?: pulumi.Input<string>;
     drds?: pulumi.Input<string>;
     dts?: pulumi.Input<string>;
+    eais?: pulumi.Input<string>;
     eci?: pulumi.Input<string>;
     ecs?: pulumi.Input<string>;
     ehpc?: pulumi.Input<string>;
@@ -68,6 +71,7 @@ export interface ProviderEndpoint {
     hcsSgw?: pulumi.Input<string>;
     hitsdb?: pulumi.Input<string>;
     imm?: pulumi.Input<string>;
+    imp?: pulumi.Input<string>;
     ims?: pulumi.Input<string>;
     iot?: pulumi.Input<string>;
     kms?: pulumi.Input<string>;
@@ -76,6 +80,7 @@ export interface ProviderEndpoint {
     log?: pulumi.Input<string>;
     market?: pulumi.Input<string>;
     maxcompute?: pulumi.Input<string>;
+    mhub?: pulumi.Input<string>;
     mns?: pulumi.Input<string>;
     mscopensubscription?: pulumi.Input<string>;
     mse?: pulumi.Input<string>;
@@ -102,6 +107,7 @@ export interface ProviderEndpoint {
     scdn?: pulumi.Input<string>;
     sddp?: pulumi.Input<string>;
     serverless?: pulumi.Input<string>;
+    servicemesh?: pulumi.Input<string>;
     sgw?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
     sts?: pulumi.Input<string>;
@@ -1183,6 +1189,9 @@ export namespace cfg {
 export namespace clickhouse {
 }
 
+export namespace cloudauth {
+}
+
 export namespace cloudconnect {
 }
 
@@ -2107,6 +2116,12 @@ export namespace dns {
 }
 
 export namespace drds {
+}
+
+export namespace dts {
+}
+
+export namespace eais {
 }
 
 export namespace eci {
@@ -3262,9 +3277,38 @@ export namespace hbase {
 }
 
 export namespace hbr {
+    export interface GetBackupJobsFilter {
+        /**
+         * The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+         */
+        key?: string;
+        /**
+         * The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+         */
+        operator?: string;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: string[];
+    }
+
 }
 
 export namespace imm {
+}
+
+export namespace imp {
+    export interface AppTemplateConfigList {
+        /**
+         * Configuration item key. Valid values:
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Configuration item content.
+         */
+        value?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace iot {
@@ -3493,6 +3537,9 @@ export namespace log {
 }
 
 export namespace marketplace {
+}
+
+export namespace mhub {
 }
 
 export namespace mns {
@@ -3912,6 +3959,9 @@ export namespace ram {
     }
 }
 
+export namespace rdc {
+}
+
 export namespace rds {
     export interface InstanceParameter {
         name: pulumi.Input<string>;
@@ -3987,6 +4037,43 @@ export namespace ros {
 }
 
 export namespace sae {
+    export interface IngressDefaultRule {
+        /**
+         * Target application ID.
+         */
+        appId?: pulumi.Input<string>;
+        /**
+         * Target application name.
+         */
+        appName?: pulumi.Input<string>;
+        /**
+         * Application backend port.
+         */
+        containerPort?: pulumi.Input<number>;
+    }
+
+    export interface IngressRule {
+        /**
+         * Target application ID.
+         */
+        appId: pulumi.Input<string>;
+        /**
+         * Target application name.
+         */
+        appName: pulumi.Input<string>;
+        /**
+         * Application backend port.
+         */
+        containerPort: pulumi.Input<number>;
+        /**
+         * Application domain name.
+         */
+        domain: pulumi.Input<string>;
+        /**
+         * URL path.
+         */
+        path: pulumi.Input<string>;
+    }
 }
 
 export namespace sag {
@@ -4062,6 +4149,192 @@ export namespace sddp {
 }
 
 export namespace securitycenter {
+}
+
+export namespace servicemesh {
+    export interface ServiceMeshLoadBalancer {
+        apiServerLoadbalancerId?: pulumi.Input<string>;
+        /**
+         * Whether to use the IP address of a public network exposed the API Server.
+         */
+        apiServerPublicEip?: pulumi.Input<boolean>;
+        /**
+         * Whether to use the IP address of a public network exposure the Istio Pilot.
+         */
+        pilotPublicEip?: pulumi.Input<boolean>;
+        pilotPublicLoadbalancerId?: pulumi.Input<string>;
+    }
+
+    export interface ServiceMeshMeshConfig {
+        /**
+         * The configuration of the access logging.
+         */
+        accessLog?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigAccessLog>;
+        /**
+         * The configuration of the audit. See the following `Block audit`.
+         */
+        audit?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigAudit>;
+        /**
+         * Whether or not to enable the use of a custom zipkin.
+         */
+        customizedZipkin?: pulumi.Input<boolean>;
+        /**
+         * The enable locality lb.
+         */
+        enableLocalityLb?: pulumi.Input<boolean>;
+        /**
+         * The configuration of the Kiali. See the following `Block kiali`.
+         */
+        kiali?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigKiali>;
+        /**
+         * The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+         */
+        opa?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigOpa>;
+        /**
+         * The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+         */
+        outboundTrafficPolicy?: pulumi.Input<string>;
+        /**
+         * The configuration of the Link trace sampling. See the following `Block pilot`.
+         */
+        pilot?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigPilot>;
+        /**
+         * The configuration of the Proxy. See the following `Block proxy`.
+         */
+        proxy?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigProxy>;
+        /**
+         * The configuration of the Sidecar injector. See the following `Block sidecarInjector`.
+         */
+        sidecarInjector?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigSidecarInjector>;
+        /**
+         * Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+         */
+        telemetry?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+         */
+        tracing?: pulumi.Input<boolean>;
+    }
+
+    export interface ServiceMeshMeshConfigAccessLog {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface ServiceMeshMeshConfigAudit {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The Service grid audit that to the project.
+         */
+        project?: pulumi.Input<string>;
+    }
+
+    export interface ServiceMeshMeshConfigKiali {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface ServiceMeshMeshConfigOpa {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The CPU resource  of the limitsOPA proxy container.
+         */
+        limitCpu?: pulumi.Input<string>;
+        /**
+         * The memory resource limit of the OPA proxy container.
+         */
+        limitMemory?: pulumi.Input<string>;
+        /**
+         * The log level of the OPA proxy container .
+         */
+        logLevel?: pulumi.Input<string>;
+        /**
+         * The CPU resource request of the OPA proxy container.
+         */
+        requestCpu?: pulumi.Input<string>;
+        /**
+         * The memory resource request of the OPA proxy container.
+         */
+        requestMemory?: pulumi.Input<string>;
+    }
+
+    export interface ServiceMeshMeshConfigPilot {
+        /**
+         * Whether to support the HTTP1.0.
+         */
+        http10Enabled?: pulumi.Input<boolean>;
+        /**
+         * The  percentage of the Link trace sampling.
+         */
+        traceSampling?: pulumi.Input<number>;
+    }
+
+    export interface ServiceMeshMeshConfigProxy {
+        /**
+         * The CPU resource  of the limitsOPA proxy container.
+         */
+        limitCpu?: pulumi.Input<string>;
+        /**
+         * The memory resource limit of the OPA proxy container.
+         */
+        limitMemory?: pulumi.Input<string>;
+        /**
+         * The CPU resource request of the OPA proxy container.
+         */
+        requestCpu?: pulumi.Input<string>;
+        /**
+         * The memory resource request of the OPA proxy container.
+         */
+        requestMemory?: pulumi.Input<string>;
+    }
+
+    export interface ServiceMeshMeshConfigSidecarInjector {
+        /**
+         * Whether to enable by Pod Annotations automatic injection Sidecar.
+         */
+        autoInjectionPolicyEnabled?: pulumi.Input<boolean>;
+        /**
+         * Whether it is the all namespaces you turn on the auto injection capabilities.
+         */
+        enableNamespacesByDefault?: pulumi.Input<boolean>;
+        /**
+         * The CPU resource  of the limitsOPA proxy container.
+         */
+        limitCpu?: pulumi.Input<string>;
+        /**
+         * The memory resource limit of the OPA proxy container.
+         */
+        limitMemory?: pulumi.Input<string>;
+        /**
+         * The CPU resource request of the OPA proxy container.
+         */
+        requestCpu?: pulumi.Input<string>;
+        /**
+         * The memory resource request of the OPA proxy container.
+         */
+        requestMemory?: pulumi.Input<string>;
+    }
+
+    export interface ServiceMeshNetwork {
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: pulumi.Input<string>;
+        /**
+         * The list of Virtual Switch.
+         */
+        vswitcheList: pulumi.Input<string>;
+    }
 }
 
 export namespace simpleapplicationserver {

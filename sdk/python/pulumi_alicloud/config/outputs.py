@@ -116,6 +116,7 @@ class Endpoints(dict):
                  cdn: Optional[str] = None,
                  cds: Optional[str] = None,
                  clickhouse: Optional[str] = None,
+                 cloudauth: Optional[str] = None,
                  cloudphone: Optional[str] = None,
                  cloudsso: Optional[str] = None,
                  cms: Optional[str] = None,
@@ -129,12 +130,14 @@ class Endpoints(dict):
                  ddosbgp: Optional[str] = None,
                  ddoscoo: Optional[str] = None,
                  dds: Optional[str] = None,
+                 devopsrdc: Optional[str] = None,
                  dg: Optional[str] = None,
                  dm: Optional[str] = None,
                  dms_enterprise: Optional[str] = None,
                  dns: Optional[str] = None,
                  drds: Optional[str] = None,
                  dts: Optional[str] = None,
+                 eais: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
                  ehpc: Optional[str] = None,
@@ -154,6 +157,7 @@ class Endpoints(dict):
                  hcs_sgw: Optional[str] = None,
                  hitsdb: Optional[str] = None,
                  imm: Optional[str] = None,
+                 imp: Optional[str] = None,
                  ims: Optional[str] = None,
                  iot: Optional[str] = None,
                  kms: Optional[str] = None,
@@ -162,6 +166,7 @@ class Endpoints(dict):
                  log: Optional[str] = None,
                  market: Optional[str] = None,
                  maxcompute: Optional[str] = None,
+                 mhub: Optional[str] = None,
                  mns: Optional[str] = None,
                  mscopensubscription: Optional[str] = None,
                  mse: Optional[str] = None,
@@ -188,6 +193,7 @@ class Endpoints(dict):
                  scdn: Optional[str] = None,
                  sddp: Optional[str] = None,
                  serverless: Optional[str] = None,
+                 servicemesh: Optional[str] = None,
                  sgw: Optional[str] = None,
                  slb: Optional[str] = None,
                  sts: Optional[str] = None,
@@ -233,6 +239,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "cds", cds)
         if clickhouse is not None:
             pulumi.set(__self__, "clickhouse", clickhouse)
+        if cloudauth is not None:
+            pulumi.set(__self__, "cloudauth", cloudauth)
         if cloudphone is not None:
             pulumi.set(__self__, "cloudphone", cloudphone)
         if cloudsso is not None:
@@ -259,6 +267,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "ddoscoo", ddoscoo)
         if dds is not None:
             pulumi.set(__self__, "dds", dds)
+        if devopsrdc is not None:
+            pulumi.set(__self__, "devopsrdc", devopsrdc)
         if dg is not None:
             pulumi.set(__self__, "dg", dg)
         if dm is not None:
@@ -271,6 +281,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "drds", drds)
         if dts is not None:
             pulumi.set(__self__, "dts", dts)
+        if eais is not None:
+            pulumi.set(__self__, "eais", eais)
         if eci is not None:
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
@@ -309,6 +321,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "hitsdb", hitsdb)
         if imm is not None:
             pulumi.set(__self__, "imm", imm)
+        if imp is not None:
+            pulumi.set(__self__, "imp", imp)
         if ims is not None:
             pulumi.set(__self__, "ims", ims)
         if iot is not None:
@@ -325,6 +339,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "market", market)
         if maxcompute is not None:
             pulumi.set(__self__, "maxcompute", maxcompute)
+        if mhub is not None:
+            pulumi.set(__self__, "mhub", mhub)
         if mns is not None:
             pulumi.set(__self__, "mns", mns)
         if mscopensubscription is not None:
@@ -377,6 +393,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "sddp", sddp)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
+        if servicemesh is not None:
+            pulumi.set(__self__, "servicemesh", servicemesh)
         if sgw is not None:
             pulumi.set(__self__, "sgw", sgw)
         if slb is not None:
@@ -488,6 +506,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def cloudauth(self) -> Optional[str]:
+        return pulumi.get(self, "cloudauth")
+
+    @property
+    @pulumi.getter
     def cloudphone(self) -> Optional[str]:
         return pulumi.get(self, "cloudphone")
 
@@ -553,6 +576,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def devopsrdc(self) -> Optional[str]:
+        return pulumi.get(self, "devopsrdc")
+
+    @property
+    @pulumi.getter
     def dg(self) -> Optional[str]:
         return pulumi.get(self, "dg")
 
@@ -580,6 +608,11 @@ class Endpoints(dict):
     @pulumi.getter
     def dts(self) -> Optional[str]:
         return pulumi.get(self, "dts")
+
+    @property
+    @pulumi.getter
+    def eais(self) -> Optional[str]:
+        return pulumi.get(self, "eais")
 
     @property
     @pulumi.getter
@@ -678,6 +711,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def imp(self) -> Optional[str]:
+        return pulumi.get(self, "imp")
+
+    @property
+    @pulumi.getter
     def ims(self) -> Optional[str]:
         return pulumi.get(self, "ims")
 
@@ -715,6 +753,11 @@ class Endpoints(dict):
     @pulumi.getter
     def maxcompute(self) -> Optional[str]:
         return pulumi.get(self, "maxcompute")
+
+    @property
+    @pulumi.getter
+    def mhub(self) -> Optional[str]:
+        return pulumi.get(self, "mhub")
 
     @property
     @pulumi.getter
@@ -845,6 +888,11 @@ class Endpoints(dict):
     @pulumi.getter
     def serverless(self) -> Optional[str]:
         return pulumi.get(self, "serverless")
+
+    @property
+    @pulumi.getter
+    def servicemesh(self) -> Optional[str]:
+        return pulumi.get(self, "servicemesh")
 
     @property
     @pulumi.getter

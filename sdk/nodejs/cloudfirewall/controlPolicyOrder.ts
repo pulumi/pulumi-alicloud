@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     sourceType: "net",
  * });
  * const example2 = new alicloud.cloudfirewall.ControlPolicyOrder("example2", {
- *     aclAction: example1.aclUuid,
+ *     aclUuid: example1.aclUuid,
  *     direction: example1.direction,
  *     order: 1,
  * });

@@ -10,6 +10,443 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetBackupJobsFilter struct {
+	// The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+	Key *string `pulumi:"key"`
+	// The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+	Operator *string `pulumi:"operator"`
+	// Set of values that are accepted for the given field.
+	Values []string `pulumi:"values"`
+}
+
+// GetBackupJobsFilterInput is an input type that accepts GetBackupJobsFilterArgs and GetBackupJobsFilterOutput values.
+// You can construct a concrete instance of `GetBackupJobsFilterInput` via:
+//
+//          GetBackupJobsFilterArgs{...}
+type GetBackupJobsFilterInput interface {
+	pulumi.Input
+
+	ToGetBackupJobsFilterOutput() GetBackupJobsFilterOutput
+	ToGetBackupJobsFilterOutputWithContext(context.Context) GetBackupJobsFilterOutput
+}
+
+type GetBackupJobsFilterArgs struct {
+	// The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Set of values that are accepted for the given field.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetBackupJobsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupJobsFilter)(nil)).Elem()
+}
+
+func (i GetBackupJobsFilterArgs) ToGetBackupJobsFilterOutput() GetBackupJobsFilterOutput {
+	return i.ToGetBackupJobsFilterOutputWithContext(context.Background())
+}
+
+func (i GetBackupJobsFilterArgs) ToGetBackupJobsFilterOutputWithContext(ctx context.Context) GetBackupJobsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsFilterOutput)
+}
+
+// GetBackupJobsFilterArrayInput is an input type that accepts GetBackupJobsFilterArray and GetBackupJobsFilterArrayOutput values.
+// You can construct a concrete instance of `GetBackupJobsFilterArrayInput` via:
+//
+//          GetBackupJobsFilterArray{ GetBackupJobsFilterArgs{...} }
+type GetBackupJobsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupJobsFilterArrayOutput() GetBackupJobsFilterArrayOutput
+	ToGetBackupJobsFilterArrayOutputWithContext(context.Context) GetBackupJobsFilterArrayOutput
+}
+
+type GetBackupJobsFilterArray []GetBackupJobsFilterInput
+
+func (GetBackupJobsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupJobsFilter)(nil)).Elem()
+}
+
+func (i GetBackupJobsFilterArray) ToGetBackupJobsFilterArrayOutput() GetBackupJobsFilterArrayOutput {
+	return i.ToGetBackupJobsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupJobsFilterArray) ToGetBackupJobsFilterArrayOutputWithContext(ctx context.Context) GetBackupJobsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsFilterArrayOutput)
+}
+
+type GetBackupJobsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetBackupJobsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupJobsFilter)(nil)).Elem()
+}
+
+func (o GetBackupJobsFilterOutput) ToGetBackupJobsFilterOutput() GetBackupJobsFilterOutput {
+	return o
+}
+
+func (o GetBackupJobsFilterOutput) ToGetBackupJobsFilterOutputWithContext(ctx context.Context) GetBackupJobsFilterOutput {
+	return o
+}
+
+// The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+func (o GetBackupJobsFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBackupJobsFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+func (o GetBackupJobsFilterOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBackupJobsFilter) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Set of values that are accepted for the given field.
+func (o GetBackupJobsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBackupJobsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetBackupJobsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupJobsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupJobsFilter)(nil)).Elem()
+}
+
+func (o GetBackupJobsFilterArrayOutput) ToGetBackupJobsFilterArrayOutput() GetBackupJobsFilterArrayOutput {
+	return o
+}
+
+func (o GetBackupJobsFilterArrayOutput) ToGetBackupJobsFilterArrayOutputWithContext(ctx context.Context) GetBackupJobsFilterArrayOutput {
+	return o
+}
+
+func (o GetBackupJobsFilterArrayOutput) Index(i pulumi.IntInput) GetBackupJobsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupJobsFilter {
+		return vs[0].([]GetBackupJobsFilter)[vs[1].(int)]
+	}).(GetBackupJobsFilterOutput)
+}
+
+type GetBackupJobsJob struct {
+	// The actual size of backup job.
+	ActualBytes string `pulumi:"actualBytes"`
+	// The actual number of files.
+	ActualItems string `pulumi:"actualItems"`
+	// The name of backup job.
+	BackJobName string `pulumi:"backJobName"`
+	// The ID of backup job.
+	BackupJobId string `pulumi:"backupJobId"`
+	// Backup type. Valid values: `COMPLETE`(full backup).
+	BackupType string `pulumi:"backupType"`
+	// The name of target ofo OSS bucket.
+	Bucket string `pulumi:"bucket"`
+	// The size of backup job recovered.
+	BytesDone string `pulumi:"bytesDone"`
+	// The total size of backup job recovered.
+	BytesTotal string `pulumi:"bytesTotal"`
+	// The completion time of backup job. UNIX time seconds.
+	CompleteTime string `pulumi:"completeTime"`
+	// The creation time of backup job. UNIX time seconds.
+	CreateTime string `pulumi:"createTime"`
+	// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
+	Exclude string `pulumi:"exclude"`
+	// The ID of destination file system.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The ID of the backup job.
+	Id string `pulumi:"id"`
+	// Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
+	Include string `pulumi:"include"`
+	// The ID of target ECS instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The number of items restore job recovered.
+	ItemsDone string `pulumi:"itemsDone"`
+	// The total number of items restore job recovered.
+	ItemsTotal string `pulumi:"itemsTotal"`
+	// File system creation time. UNIX time in seconds.
+	NasCreateTime string `pulumi:"nasCreateTime"`
+	// Backup path. e.g. `["/home", "/var"]`
+	Paths []string `pulumi:"paths"`
+	// The IF of a backup plan.
+	PlanId string `pulumi:"planId"`
+	// The prefix of Oss bucket files.
+	Prefix string `pulumi:"prefix"`
+	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	SourceType string `pulumi:"sourceType"`
+	// The scheduled backup start time. UNIX time seconds.
+	StartTime string `pulumi:"startTime"`
+	// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+	Status string `pulumi:"status"`
+	// The update time of backup job. UNIX time seconds.
+	UpdatedTime string `pulumi:"updatedTime"`
+	// The ID of backup vault.
+	VaultId string `pulumi:"vaultId"`
+}
+
+// GetBackupJobsJobInput is an input type that accepts GetBackupJobsJobArgs and GetBackupJobsJobOutput values.
+// You can construct a concrete instance of `GetBackupJobsJobInput` via:
+//
+//          GetBackupJobsJobArgs{...}
+type GetBackupJobsJobInput interface {
+	pulumi.Input
+
+	ToGetBackupJobsJobOutput() GetBackupJobsJobOutput
+	ToGetBackupJobsJobOutputWithContext(context.Context) GetBackupJobsJobOutput
+}
+
+type GetBackupJobsJobArgs struct {
+	// The actual size of backup job.
+	ActualBytes pulumi.StringInput `pulumi:"actualBytes"`
+	// The actual number of files.
+	ActualItems pulumi.StringInput `pulumi:"actualItems"`
+	// The name of backup job.
+	BackJobName pulumi.StringInput `pulumi:"backJobName"`
+	// The ID of backup job.
+	BackupJobId pulumi.StringInput `pulumi:"backupJobId"`
+	// Backup type. Valid values: `COMPLETE`(full backup).
+	BackupType pulumi.StringInput `pulumi:"backupType"`
+	// The name of target ofo OSS bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The size of backup job recovered.
+	BytesDone pulumi.StringInput `pulumi:"bytesDone"`
+	// The total size of backup job recovered.
+	BytesTotal pulumi.StringInput `pulumi:"bytesTotal"`
+	// The completion time of backup job. UNIX time seconds.
+	CompleteTime pulumi.StringInput `pulumi:"completeTime"`
+	// The creation time of backup job. UNIX time seconds.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
+	Exclude pulumi.StringInput `pulumi:"exclude"`
+	// The ID of destination file system.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The ID of the backup job.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
+	Include pulumi.StringInput `pulumi:"include"`
+	// The ID of target ECS instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The number of items restore job recovered.
+	ItemsDone pulumi.StringInput `pulumi:"itemsDone"`
+	// The total number of items restore job recovered.
+	ItemsTotal pulumi.StringInput `pulumi:"itemsTotal"`
+	// File system creation time. UNIX time in seconds.
+	NasCreateTime pulumi.StringInput `pulumi:"nasCreateTime"`
+	// Backup path. e.g. `["/home", "/var"]`
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// The IF of a backup plan.
+	PlanId pulumi.StringInput `pulumi:"planId"`
+	// The prefix of Oss bucket files.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// The scheduled backup start time. UNIX time seconds.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The update time of backup job. UNIX time seconds.
+	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
+	// The ID of backup vault.
+	VaultId pulumi.StringInput `pulumi:"vaultId"`
+}
+
+func (GetBackupJobsJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupJobsJob)(nil)).Elem()
+}
+
+func (i GetBackupJobsJobArgs) ToGetBackupJobsJobOutput() GetBackupJobsJobOutput {
+	return i.ToGetBackupJobsJobOutputWithContext(context.Background())
+}
+
+func (i GetBackupJobsJobArgs) ToGetBackupJobsJobOutputWithContext(ctx context.Context) GetBackupJobsJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsJobOutput)
+}
+
+// GetBackupJobsJobArrayInput is an input type that accepts GetBackupJobsJobArray and GetBackupJobsJobArrayOutput values.
+// You can construct a concrete instance of `GetBackupJobsJobArrayInput` via:
+//
+//          GetBackupJobsJobArray{ GetBackupJobsJobArgs{...} }
+type GetBackupJobsJobArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupJobsJobArrayOutput() GetBackupJobsJobArrayOutput
+	ToGetBackupJobsJobArrayOutputWithContext(context.Context) GetBackupJobsJobArrayOutput
+}
+
+type GetBackupJobsJobArray []GetBackupJobsJobInput
+
+func (GetBackupJobsJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupJobsJob)(nil)).Elem()
+}
+
+func (i GetBackupJobsJobArray) ToGetBackupJobsJobArrayOutput() GetBackupJobsJobArrayOutput {
+	return i.ToGetBackupJobsJobArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupJobsJobArray) ToGetBackupJobsJobArrayOutputWithContext(ctx context.Context) GetBackupJobsJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsJobArrayOutput)
+}
+
+type GetBackupJobsJobOutput struct{ *pulumi.OutputState }
+
+func (GetBackupJobsJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupJobsJob)(nil)).Elem()
+}
+
+func (o GetBackupJobsJobOutput) ToGetBackupJobsJobOutput() GetBackupJobsJobOutput {
+	return o
+}
+
+func (o GetBackupJobsJobOutput) ToGetBackupJobsJobOutputWithContext(ctx context.Context) GetBackupJobsJobOutput {
+	return o
+}
+
+// The actual size of backup job.
+func (o GetBackupJobsJobOutput) ActualBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.ActualBytes }).(pulumi.StringOutput)
+}
+
+// The actual number of files.
+func (o GetBackupJobsJobOutput) ActualItems() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.ActualItems }).(pulumi.StringOutput)
+}
+
+// The name of backup job.
+func (o GetBackupJobsJobOutput) BackJobName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.BackJobName }).(pulumi.StringOutput)
+}
+
+// The ID of backup job.
+func (o GetBackupJobsJobOutput) BackupJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.BackupJobId }).(pulumi.StringOutput)
+}
+
+// Backup type. Valid values: `COMPLETE`(full backup).
+func (o GetBackupJobsJobOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The name of target ofo OSS bucket.
+func (o GetBackupJobsJobOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The size of backup job recovered.
+func (o GetBackupJobsJobOutput) BytesDone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.BytesDone }).(pulumi.StringOutput)
+}
+
+// The total size of backup job recovered.
+func (o GetBackupJobsJobOutput) BytesTotal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.BytesTotal }).(pulumi.StringOutput)
+}
+
+// The completion time of backup job. UNIX time seconds.
+func (o GetBackupJobsJobOutput) CompleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.CompleteTime }).(pulumi.StringOutput)
+}
+
+// The creation time of backup job. UNIX time seconds.
+func (o GetBackupJobsJobOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
+func (o GetBackupJobsJobOutput) Exclude() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.Exclude }).(pulumi.StringOutput)
+}
+
+// The ID of destination file system.
+func (o GetBackupJobsJobOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The ID of the backup job.
+func (o GetBackupJobsJobOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
+func (o GetBackupJobsJobOutput) Include() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.Include }).(pulumi.StringOutput)
+}
+
+// The ID of target ECS instance.
+func (o GetBackupJobsJobOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The number of items restore job recovered.
+func (o GetBackupJobsJobOutput) ItemsDone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.ItemsDone }).(pulumi.StringOutput)
+}
+
+// The total number of items restore job recovered.
+func (o GetBackupJobsJobOutput) ItemsTotal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.ItemsTotal }).(pulumi.StringOutput)
+}
+
+// File system creation time. UNIX time in seconds.
+func (o GetBackupJobsJobOutput) NasCreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.NasCreateTime }).(pulumi.StringOutput)
+}
+
+// Backup path. e.g. `["/home", "/var"]`
+func (o GetBackupJobsJobOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// The IF of a backup plan.
+func (o GetBackupJobsJobOutput) PlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.PlanId }).(pulumi.StringOutput)
+}
+
+// The prefix of Oss bucket files.
+func (o GetBackupJobsJobOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+func (o GetBackupJobsJobOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// The scheduled backup start time. UNIX time seconds.
+func (o GetBackupJobsJobOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+func (o GetBackupJobsJobOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The update time of backup job. UNIX time seconds.
+func (o GetBackupJobsJobOutput) UpdatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.UpdatedTime }).(pulumi.StringOutput)
+}
+
+// The ID of backup vault.
+func (o GetBackupJobsJobOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.VaultId }).(pulumi.StringOutput)
+}
+
+type GetBackupJobsJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupJobsJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupJobsJob)(nil)).Elem()
+}
+
+func (o GetBackupJobsJobArrayOutput) ToGetBackupJobsJobArrayOutput() GetBackupJobsJobArrayOutput {
+	return o
+}
+
+func (o GetBackupJobsJobArrayOutput) ToGetBackupJobsJobArrayOutputWithContext(ctx context.Context) GetBackupJobsJobArrayOutput {
+	return o
+}
+
+func (o GetBackupJobsJobArrayOutput) Index(i pulumi.IntInput) GetBackupJobsJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupJobsJob {
+		return vs[0].([]GetBackupJobsJob)[vs[1].(int)]
+	}).(GetBackupJobsJobOutput)
+}
+
 type GetEcsBackupClientsClient struct {
 	// The system architecture of client, only the ECS File Backup Client is available. Valid values: `AMD64` , `386`.
 	ArchType string `pulumi:"archType"`
@@ -1902,6 +2339,10 @@ func (o GetVaultsVaultArrayOutput) Index(i pulumi.IntInput) GetVaultsVaultOutput
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetBackupJobsFilterOutput{})
+	pulumi.RegisterOutputType(GetBackupJobsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupJobsJobOutput{})
+	pulumi.RegisterOutputType(GetBackupJobsJobArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupClientsClientOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupClientsClientArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupPlansPlanOutput{})

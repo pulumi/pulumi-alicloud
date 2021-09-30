@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./ecsBackupClient";
 export * from "./ecsBackupPlan";
+export * from "./getBackupJobs";
 export * from "./getEcsBackupClients";
 export * from "./getEcsBackupPlans";
 export * from "./getNasBackupPlans";

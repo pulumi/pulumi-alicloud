@@ -20,7 +20,7 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, category=None, db_instance_class=None, db_instance_storage_type=None, engine=None, engine_version=None, id=None, ids=None, instance_charge_type=None, multi=None, output_file=None, zones=None):
+    def __init__(__self__, category=None, db_instance_class=None, db_instance_storage_type=None, engine=None, engine_version=None, id=None, ids=None, instance_charge_type=None, multi=None, multi_zone=None, output_file=None, zones=None):
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         pulumi.set(__self__, "category", category)
@@ -48,6 +48,9 @@ class GetZonesResult:
         if multi and not isinstance(multi, bool):
             raise TypeError("Expected argument 'multi' to be a bool")
         pulumi.set(__self__, "multi", multi)
+        if multi_zone and not isinstance(multi_zone, bool):
+            raise TypeError("Expected argument 'multi_zone' to be a bool")
+        pulumi.set(__self__, "multi_zone", multi_zone)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
@@ -107,6 +110,11 @@ class GetZonesResult:
         return pulumi.get(self, "multi")
 
     @property
+    @pulumi.getter(name="multiZone")
+    def multi_zone(self) -> Optional[bool]:
+        return pulumi.get(self, "multi_zone")
+
+    @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
@@ -135,6 +143,7 @@ class AwaitableGetZonesResult(GetZonesResult):
             ids=self.ids,
             instance_charge_type=self.instance_charge_type,
             multi=self.multi,
+            multi_zone=self.multi_zone,
             output_file=self.output_file,
             zones=self.zones)
 
@@ -146,6 +155,7 @@ def get_zones(category: Optional[str] = None,
               engine_version: Optional[str] = None,
               instance_charge_type: Optional[str] = None,
               multi: Optional[bool] = None,
+              multi_zone: Optional[bool] = None,
               output_file: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
@@ -159,7 +169,8 @@ def get_zones(category: Optional[str] = None,
     :param str engine: Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
     :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
     :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
-    :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+    :param bool multi: It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+    :param bool multi_zone: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
     """
     __args__ = dict()
     __args__['category'] = category
@@ -169,6 +180,7 @@ def get_zones(category: Optional[str] = None,
     __args__['engineVersion'] = engine_version
     __args__['instanceChargeType'] = instance_charge_type
     __args__['multi'] = multi
+    __args__['multiZone'] = multi_zone
     __args__['outputFile'] = output_file
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -186,5 +198,6 @@ def get_zones(category: Optional[str] = None,
         ids=__ret__.ids,
         instance_charge_type=__ret__.instance_charge_type,
         multi=__ret__.multi,
+        multi_zone=__ret__.multi_zone,
         output_file=__ret__.output_file,
         zones=__ret__.zones)

@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:cloudsso/directory:Directory":
 		r = &Directory{}
+	case "alicloud:cloudsso/group:Group":
+		r = &Group{}
+	case "alicloud:cloudsso/scimServerCredential:ScimServerCredential":
+		r = &ScimServerCredential{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +43,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudsso/directory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudsso/group",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudsso/scimServerCredential",
 		&module{version},
 	)
 }

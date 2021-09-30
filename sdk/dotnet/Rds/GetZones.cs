@@ -57,10 +57,16 @@ namespace Pulumi.AliCloud.Rds
         public string? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+        /// It has been deprecated from version 1.137.0 and using `multi_zone` instead.
         /// </summary>
         [Input("multi")]
         public bool? Multi { get; set; }
+
+        /// <summary>
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+        /// </summary>
+        [Input("multiZone")]
+        public bool? MultiZone { get; set; }
 
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -89,6 +95,7 @@ namespace Pulumi.AliCloud.Rds
         public readonly ImmutableArray<string> Ids;
         public readonly string? InstanceChargeType;
         public readonly bool? Multi;
+        public readonly bool? MultiZone;
         public readonly string? OutputFile;
         /// <summary>
         /// A list of availability zones. Each element contains the following attributes:
@@ -115,6 +122,8 @@ namespace Pulumi.AliCloud.Rds
 
             bool? multi,
 
+            bool? multiZone,
+
             string? outputFile,
 
             ImmutableArray<Outputs.GetZonesZoneResult> zones)
@@ -128,6 +137,7 @@ namespace Pulumi.AliCloud.Rds
             Ids = ids;
             InstanceChargeType = instanceChargeType;
             Multi = multi;
+            MultiZone = multiZone;
             OutputFile = outputFile;
             Zones = zones;
         }

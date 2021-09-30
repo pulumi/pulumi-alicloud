@@ -4,7 +4,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
-export interface GetMscSubContractsContact {
+export interface GetMscSubContactsContact {
     /**
      * UID.
      */
@@ -180,6 +180,7 @@ export interface ProviderEndpoint {
     cdn?: string;
     cds?: string;
     clickhouse?: string;
+    cloudauth?: string;
     cloudphone?: string;
     cloudsso?: string;
     cms?: string;
@@ -193,12 +194,14 @@ export interface ProviderEndpoint {
     ddosbgp?: string;
     ddoscoo?: string;
     dds?: string;
+    devopsrdc?: string;
     dg?: string;
     dm?: string;
     dmsEnterprise?: string;
     dns?: string;
     drds?: string;
     dts?: string;
+    eais?: string;
     eci?: string;
     ecs?: string;
     ehpc?: string;
@@ -218,6 +221,7 @@ export interface ProviderEndpoint {
     hcsSgw?: string;
     hitsdb?: string;
     imm?: string;
+    imp?: string;
     ims?: string;
     iot?: string;
     kms?: string;
@@ -226,6 +230,7 @@ export interface ProviderEndpoint {
     log?: string;
     market?: string;
     maxcompute?: string;
+    mhub?: string;
     mns?: string;
     mscopensubscription?: string;
     mse?: string;
@@ -252,6 +257,7 @@ export interface ProviderEndpoint {
     scdn?: string;
     sddp?: string;
     serverless?: string;
+    servicemesh?: string;
     sgw?: string;
     slb?: string;
     sts?: string;
@@ -5546,6 +5552,45 @@ export namespace clickhouse {
          */
         ratio: string;
     }
+
+    export interface GetRegionsRegion {
+        /**
+         * The Region ID.
+         */
+        regionId: string;
+        /**
+         * A list of available zone ids in the region_id.
+         */
+        zoneIds: outputs.clickhouse.GetRegionsRegionZoneId[];
+    }
+
+    export interface GetRegionsRegionZoneId {
+        /**
+         * Whether to support vpc network.
+         */
+        vpcEnabled: boolean;
+        /**
+         * The zone ID.
+         */
+        zoneId: string;
+    }
+}
+
+export namespace cloudauth {
+    export interface GetFaceConfigsConfig {
+        /**
+         * Scene name.
+         */
+        bizName: string;
+        /**
+         * Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+         */
+        bizType: string;
+        /**
+         * The Update Time.
+         */
+        gmtUpdated: string;
+    }
 }
 
 export namespace cloudconnect {
@@ -5780,6 +5825,72 @@ export namespace cloudsso {
          * The Type of the Task.
          */
         taskType: string;
+    }
+
+    export interface GetGroupsGroup {
+        /**
+         * The Created Time of the Directory.
+         */
+        createTime: string;
+        /**
+         * The Description of the Directory.
+         */
+        description: string;
+        /**
+         * The ID of the Directory.
+         */
+        directoryId: string;
+        /**
+         * The Group ID of the group.
+         */
+        groupId: string;
+        /**
+         * The Name of the group.
+         */
+        groupName: string;
+        /**
+         * The ID of the Group.
+         */
+        id: string;
+        /**
+         * The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+         */
+        provisionType: string;
+    }
+
+    export interface GetScimServerCredentialsCredential {
+        /**
+         * The CreateTime of the resource.
+         */
+        createTime: string;
+        /**
+         * The CredentialId of the resource.
+         */
+        credentialId: string;
+        /**
+         * The CredentialSecret of the resource.
+         */
+        credentialSecret: string;
+        /**
+         * The CredentialType of the resource.
+         */
+        credentialType: string;
+        /**
+         * The ID of the Directory.
+         */
+        directoryId: string;
+        /**
+         * The ExpireTime of the resource.
+         */
+        expireTime: string;
+        /**
+         * The ID of the SCIM Server Credential.
+         */
+        id: string;
+        /**
+         * The Status of the resource. Valid values: `Disabled`, `Enabled`.
+         */
+        status: string;
     }
 }
 
@@ -6597,6 +6708,7 @@ export namespace config {
         cdn?: string;
         cds?: string;
         clickhouse?: string;
+        cloudauth?: string;
         cloudphone?: string;
         cloudsso?: string;
         cms?: string;
@@ -6610,12 +6722,14 @@ export namespace config {
         ddosbgp?: string;
         ddoscoo?: string;
         dds?: string;
+        devopsrdc?: string;
         dg?: string;
         dm?: string;
         dmsEnterprise?: string;
         dns?: string;
         drds?: string;
         dts?: string;
+        eais?: string;
         eci?: string;
         ecs?: string;
         ehpc?: string;
@@ -6635,6 +6749,7 @@ export namespace config {
         hcsSgw?: string;
         hitsdb?: string;
         imm?: string;
+        imp?: string;
         ims?: string;
         iot?: string;
         kms?: string;
@@ -6643,6 +6758,7 @@ export namespace config {
         log?: string;
         market?: string;
         maxcompute?: string;
+        mhub?: string;
         mns?: string;
         mscopensubscription?: string;
         mse?: string;
@@ -6669,6 +6785,7 @@ export namespace config {
         scdn?: string;
         sddp?: string;
         serverless?: string;
+        servicemesh?: string;
         sgw?: string;
         slb?: string;
         sts?: string;
@@ -9245,6 +9362,302 @@ export namespace drds {
         version: number;
         /**
          * Zone ID the instance belongs to.
+         */
+        zoneId: string;
+    }
+}
+
+export namespace dts {
+    export interface GetSubscriptionJobsJob {
+        /**
+         * Subscription start time in Unix timestamp format.
+         */
+        checkpoint: string;
+        /**
+         * The creation time of subscription job instance.
+         */
+        createTime: string;
+        /**
+         * Subscription object, in the format of JSON strings.
+         */
+        dbList: string;
+        /**
+         * The ID of subscription job instance.
+         */
+        dtsInstanceId: string;
+        /**
+         * The ID of subscription job instance.
+         */
+        dtsJobId: string;
+        /**
+         * The name of subscription job instance.
+         */
+        dtsJobName: string;
+        /**
+         * The Expiration Time. Formatting with yyyy-MM-ddTHH:mm:ssZ(UTC time).
+         */
+        expireTime: string;
+        /**
+         * The ID of the Subscription Job.
+         */
+        id: string;
+        /**
+         * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
+         */
+        paymentType: string;
+        /**
+         * To subscribe to the name of the database.
+         */
+        sourceEndpointDatabaseName: string;
+        /**
+         * The source database type value is MySQL or Oracle.
+         */
+        sourceEndpointEngineName: string;
+        /**
+         * The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
+         */
+        sourceEndpointInstanceId: string;
+        /**
+         * The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
+         */
+        sourceEndpointInstanceType: string;
+        /**
+         * The IP of source endpoint.
+         */
+        sourceEndpointIp: string;
+        /**
+         * The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
+         */
+        sourceEndpointOracleSid: string;
+        /**
+         * The Alibaba Cloud account ID to which the source instance belongs. This parameter is only available when configuring data subscriptions across Alibaba Cloud accounts and must be passed in.
+         */
+        sourceEndpointOwnerId: string;
+        /**
+         * The  port of source database.
+         */
+        sourceEndpointPort: string;
+        /**
+         * The region of source database.
+         */
+        sourceEndpointRegion: string;
+        /**
+         * Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
+         */
+        sourceEndpointRole: string;
+        /**
+         * The username of source database instance account.
+         */
+        sourceEndpointUserName: string;
+        /**
+         * The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+         */
+        status: string;
+        /**
+         * Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
+         */
+        subscriptionDataTypeDdl: boolean;
+        /**
+         * Whether to subscribe the DML type of data. Valid values: `true`, `false`.
+         */
+        subscriptionDataTypeDml: boolean;
+        /**
+         * Network information.
+         */
+        subscriptionHosts: outputs.dts.GetSubscriptionJobsJobSubscriptionHost[];
+        /**
+         * The type of subscription instance network. Valid value: `classic`, `vpc`.
+         */
+        subscriptionInstanceNetworkType: string;
+        /**
+         * The ID of subscription instance vpc.
+         */
+        subscriptionInstanceVpcId: string;
+        /**
+         * The ID of subscription instance vswitch.
+         */
+        subscriptionInstanceVswitchId: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: any};
+    }
+
+    export interface GetSubscriptionJobsJobSubscriptionHost {
+        /**
+         * Classic network address.
+         */
+        privateHost: string;
+        /**
+         * Public network address.
+         */
+        publicHost: string;
+        /**
+         * VPC network address.
+         */
+        vpcHost: string;
+    }
+
+    export interface GetSynchronizationJobsJob {
+        /**
+         * Start time in Unix timestamp format.
+         */
+        checkpoint: string;
+        createTime: string;
+        /**
+         * Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
+         */
+        dataInitialization: boolean;
+        /**
+         * Whether to perform incremental data migration for migration types or synchronization values include:
+         */
+        dataSynchronization: boolean;
+        /**
+         * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+         */
+        dbList: string;
+        /**
+         * The name of migrate the database.
+         */
+        destinationEndpointDataBaseName: string;
+        /**
+         * The type of destination database. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+         */
+        destinationEndpointEngineName: string;
+        /**
+         * The ID of destination instance.
+         */
+        destinationEndpointInstanceId: string;
+        /**
+         * The type of destination instance. Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+         */
+        destinationEndpointInstanceType: string;
+        /**
+         * The ip of source endpoint.
+         */
+        destinationEndpointIp: string;
+        /**
+         * The SID of Oracle database.
+         */
+        destinationEndpointOracleSid: string;
+        /**
+         * The port of source endpoint.
+         */
+        destinationEndpointPort: string;
+        /**
+         * The region of destination instance.
+         */
+        destinationEndpointRegion: string;
+        /**
+         * The username of database account.
+         */
+        destinationEndpointUserName: string;
+        dtsInstanceId: string;
+        dtsJobId: string;
+        /**
+         * The name of synchronization job.
+         */
+        dtsJobName: string;
+        expireTime: string;
+        /**
+         * The ID of synchronizing instance. It's the ID of resource `alicloud.dts.SynchronizationInstance`.
+         */
+        id: string;
+        /**
+         * The name of migrate the database.
+         */
+        sourceEndpointDatabaseName: string;
+        /**
+         * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+         */
+        sourceEndpointEngineName: string;
+        /**
+         * The ID of source instance.
+         */
+        sourceEndpointInstanceId: string;
+        /**
+         * The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+         */
+        sourceEndpointInstanceType: string;
+        /**
+         * The ip of source endpoint.
+         */
+        sourceEndpointIp: string;
+        /**
+         * The SID of Oracle database.
+         */
+        sourceEndpointOracleSid: string;
+        /**
+         * The Alibaba Cloud account ID to which the source instance belongs.
+         */
+        sourceEndpointOwnerId: string;
+        /**
+         * The port of source endpoint.
+         */
+        sourceEndpointPort: string;
+        /**
+         * The region of source instance.
+         */
+        sourceEndpointRegion: string;
+        /**
+         * The name of the role configured for the cloud account to which the source instance belongs.
+         */
+        sourceEndpointRole: string;
+        /**
+         * The username of database account.
+         */
+        sourceEndpointUserName: string;
+        /**
+         * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+         */
+        status: string;
+        /**
+         * Whether to perform a database table structure to migrate or initialization values include:
+         */
+        structureInitialization: boolean;
+        /**
+         * Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `syncArchitecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
+         */
+        synchronizationDirection: string;
+    }
+}
+
+export namespace eais {
+    export interface GetInstancesInstance {
+        /**
+         * The ID of the ECS instance to be bound.
+         */
+        clientInstanceId: string;
+        /**
+         * The name of the ECS instance bound to the EAIS instance.
+         */
+        clientInstanceName: string;
+        /**
+         * The type of the ECS instance bound to the EAIS instance.
+         */
+        clientInstanceType: string;
+        /**
+         * The ID of the Instance.
+         */
+        id: string;
+        /**
+         * The ID of the resource.
+         */
+        instanceId: string;
+        /**
+         * The name of the resource.
+         */
+        instanceName: string;
+        /**
+         * The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+         */
+        instanceType: string;
+        /**
+         * The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+         */
+        status: string;
+        /**
+         * The ID of the region to which the EAIS instance belongs.
          */
         zoneId: string;
     }
@@ -15459,6 +15872,128 @@ export namespace hbase {
 }
 
 export namespace hbr {
+    export interface GetBackupJobsFilter {
+        /**
+         * The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+         */
+        key?: string;
+        /**
+         * The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+         */
+        operator?: string;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: string[];
+    }
+
+    export interface GetBackupJobsJob {
+        /**
+         * The actual size of backup job.
+         */
+        actualBytes: string;
+        /**
+         * The actual number of files.
+         */
+        actualItems: string;
+        /**
+         * The name of backup job.
+         */
+        backJobName: string;
+        /**
+         * The ID of backup job.
+         */
+        backupJobId: string;
+        /**
+         * Backup type. Valid values: `COMPLETE`(full backup).
+         */
+        backupType: string;
+        /**
+         * The name of target ofo OSS bucket.
+         */
+        bucket: string;
+        /**
+         * The size of backup job recovered.
+         */
+        bytesDone: string;
+        /**
+         * The total size of backup job recovered.
+         */
+        bytesTotal: string;
+        /**
+         * The completion time of backup job. UNIX time seconds.
+         */
+        completeTime: string;
+        /**
+         * The creation time of backup job. UNIX time seconds.
+         */
+        createTime: string;
+        /**
+         * Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
+         */
+        exclude: string;
+        /**
+         * The ID of destination file system.
+         */
+        fileSystemId: string;
+        /**
+         * The ID of the backup job.
+         */
+        id: string;
+        /**
+         * Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
+         */
+        include: string;
+        /**
+         * The ID of target ECS instance.
+         */
+        instanceId: string;
+        /**
+         * The number of items restore job recovered.
+         */
+        itemsDone: string;
+        /**
+         * The total number of items restore job recovered.
+         */
+        itemsTotal: string;
+        /**
+         * File system creation time. UNIX time in seconds.
+         */
+        nasCreateTime: string;
+        /**
+         * Backup path. e.g. `["/home", "/var"]`
+         */
+        paths: string[];
+        /**
+         * The IF of a backup plan.
+         */
+        planId: string;
+        /**
+         * The prefix of Oss bucket files.
+         */
+        prefix: string;
+        /**
+         * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+         */
+        sourceType: string;
+        /**
+         * The scheduled backup start time. UNIX time seconds.
+         */
+        startTime: string;
+        /**
+         * The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+         */
+        status: string;
+        /**
+         * The update time of backup job. UNIX time seconds.
+         */
+        updatedTime: string;
+        /**
+         * The ID of backup vault.
+         */
+        vaultId: string;
+    }
+
     export interface GetEcsBackupClientsClient {
         /**
          * The system architecture of client, only the ECS File Backup Client is available. Valid values: `AMD64` , `386`.
@@ -16059,6 +16594,81 @@ export namespace imm {
          * The type of project.
          */
         type: string;
+    }
+}
+
+export namespace imp {
+    export interface AppTemplateConfigList {
+        /**
+         * Configuration item key. Valid values:
+         */
+        key: string;
+        /**
+         * Configuration item content.
+         */
+        value: string;
+    }
+
+    export interface GetAppTemplatesTemplate {
+        /**
+         * Apply template creator.
+         */
+        appTemplateCreator: string;
+        /**
+         * The first ID of the resource.
+         */
+        appTemplateId: string;
+        /**
+         * The name of the resource.
+         */
+        appTemplateName: string;
+        /**
+         * List of components.
+         */
+        componentLists: string[];
+        /**
+         * List of config.
+         */
+        configLists: outputs.imp.GetAppTemplatesTemplateConfigList[];
+        /**
+         * Creation time.
+         */
+        createTime: string;
+        /**
+         * The ID of the App Template.
+         */
+        id: string;
+        /**
+         * Integration mode (Integrated SDK:paasSDK, Model Room: standardRoom).
+         */
+        integrationMode: string;
+        /**
+         * Application Template scenario, e-commerce business, classroom classroom.
+         */
+        scene: string;
+        /**
+         * SDK information.
+         */
+        sdkInfo: string;
+        /**
+         * Model room information.
+         */
+        standardRoomInfo: string;
+        /**
+         * Application template usage status.
+         */
+        status: string;
+    }
+
+    export interface GetAppTemplatesTemplateConfigList {
+        /**
+         * Config key.
+         */
+        key: string;
+        /**
+         * Config Value.
+         */
+        value: string;
     }
 }
 
@@ -17087,6 +17697,66 @@ export namespace marketplace {
          * The warranty date of the product.
          */
         warrantyDate: string;
+    }
+}
+
+export namespace mhub {
+    export interface GetAppsApp {
+        /**
+         * Application AppKey, which uniquely identifies an application when requested by the interface
+         */
+        appKey: string;
+        /**
+         * The Name of the App.
+         */
+        appName: string;
+        /**
+         * iOS application ID. Required when creating an iOS app. **NOTE:** Either `bundleId` or `packageName` must be set.
+         */
+        bundleId: string;
+        /**
+         * The CreateTime of the App.
+         */
+        createTime: string;
+        /**
+         * Base64 string of picture.
+         */
+        encodedIcon: string;
+        /**
+         * The ID of the App.
+         */
+        id: string;
+        /**
+         * The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
+         */
+        industryId: string;
+        /**
+         * Android App package name.  **NOTE:** Either `bundleId` or `packageName` must be set.
+         */
+        packageName: string;
+        /**
+         * The ID of the Product.
+         */
+        productId: string;
+        /**
+         * The type of the App. Valid values: `Android` and `iOS`.
+         */
+        type: string;
+    }
+
+    export interface GetProductsProduct {
+        /**
+         * The ID of the Product.
+         */
+        id: string;
+        /**
+         * The ID of the Product.
+         */
+        productId: string;
+        /**
+         * The name of the Product.
+         */
+        productName: string;
     }
 }
 
@@ -19681,6 +20351,23 @@ export namespace ram {
     }
 }
 
+export namespace rdc {
+    export interface GetOrganizationsOrganization {
+        /**
+         * The ID of the Organization.
+         */
+        id: string;
+        /**
+         * The first ID of the resource.
+         */
+        organizationId: string;
+        /**
+         * Company name.
+         */
+        organizationName: string;
+    }
+}
+
 export namespace rds {
     export interface GetAccountsAccount {
         /**
@@ -21194,6 +21881,41 @@ export namespace sae {
         namespaceId: string;
     }
 
+    export interface GetIngressesIngress {
+        /**
+         * Cert Id.
+         */
+        certId: string;
+        /**
+         * Default Rule.
+         */
+        defaultRule: string;
+        /**
+         * Description.
+         */
+        description: string;
+        /**
+         * The ID of the Ingress.
+         */
+        id: string;
+        /**
+         * The first ID of the resource.
+         */
+        ingressId: string;
+        /**
+         * SLB listening port.
+         */
+        listenerPort: number;
+        /**
+         * The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+         */
+        namespaceId: string;
+        /**
+         * SLB ID.
+         */
+        slbId: string;
+    }
+
     export interface GetNamespacesNamespace {
         /**
          * The ID of the Namespace.
@@ -21211,6 +21933,44 @@ export namespace sae {
          * The Name of Namespace.
          */
         namespaceName: string;
+    }
+
+    export interface IngressDefaultRule {
+        /**
+         * Target application ID.
+         */
+        appId?: string;
+        /**
+         * Target application name.
+         */
+        appName?: string;
+        /**
+         * Application backend port.
+         */
+        containerPort?: number;
+    }
+
+    export interface IngressRule {
+        /**
+         * Target application ID.
+         */
+        appId: string;
+        /**
+         * Target application name.
+         */
+        appName: string;
+        /**
+         * Application backend port.
+         */
+        containerPort: number;
+        /**
+         * Application domain name.
+         */
+        domain: string;
+        /**
+         * URL path.
+         */
+        path: string;
     }
 }
 
@@ -21562,6 +22322,506 @@ export namespace securitycenter {
          * The ID of the Group(same as the group_id).
          */
         id: string;
+    }
+}
+
+export namespace servicemesh {
+    export interface GetServiceMeshesMesh {
+        /**
+         * Cluster List.
+         */
+        clusters: string[];
+        /**
+         * The created time of the resource.
+         */
+        createTime: string;
+        /**
+         * Grid instance version type. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+         */
+        edition: string;
+        /**
+         * The endpoint details.
+         */
+        endpoints: outputs.servicemesh.GetServiceMeshesMeshEndpoint[];
+        /**
+         * The Cause of the Error.
+         */
+        errorMessage: string;
+        /**
+         * The ID of the Service Mesh.
+         */
+        id: string;
+        /**
+         * The configuration of the Load Balancer.
+         */
+        loadBalancers: outputs.servicemesh.GetServiceMeshesMeshLoadBalancer[];
+        /**
+         * The configuration of the Service grid.
+         */
+        meshConfigs: outputs.servicemesh.GetServiceMeshesMeshMeshConfig[];
+        /**
+         * The configuration of the Service grid network.
+         */
+        networks: outputs.servicemesh.GetServiceMeshesMeshNetwork[];
+        /**
+         * The first ID of the resource.
+         */
+        serviceMeshId: string;
+        /**
+         * The name of the resource.
+         */
+        serviceMeshName: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The version of the resource.
+         */
+        version: string;
+    }
+
+    export interface GetServiceMeshesMeshEndpoint {
+        /**
+         * The internal address of the API Server.
+         */
+        intranetApiServerEndpoint: string;
+        /**
+         * The internal address of the Istio Pilot.
+         */
+        intranetPilotEndpoint: string;
+        /**
+         * The public address of the API Server.
+         */
+        publicApiServerEndpoint: string;
+        /**
+         * The public address of the Istio Pilot.
+         */
+        publicPilotEndpoint: string;
+    }
+
+    export interface GetServiceMeshesMeshLoadBalancer {
+        /**
+         * The IP address of a public network exposed API Server corresponding to the Load Balance.
+         */
+        apiServerLoadbalancerId: string;
+        /**
+         * Whether to use the IP address of a public network exposed the API Server.
+         */
+        apiServerPublicEip: boolean;
+        /**
+         * Whether to use the IP address of a public network exposure the Istio Pilot.
+         */
+        pilotPublicEip: boolean;
+        /**
+         * The IP address of a public network exposure Istio Pilot corresponds to the Load Balance.
+         */
+        pilotPublicLoadbalancerId: string;
+    }
+
+    export interface GetServiceMeshesMeshMeshConfig {
+        /**
+         * The configuration of the access logging.
+         */
+        accessLogs: outputs.servicemesh.GetServiceMeshesMeshMeshConfigAccessLog[];
+        /**
+         * The configuration of the Service grid audit.
+         */
+        audits: outputs.servicemesh.GetServiceMeshesMeshMeshConfigAudit[];
+        /**
+         * Whether or not to enable the use of a custom zipkin.
+         */
+        customizedZipkin: boolean;
+        /**
+         * Whether to enable service can access the service through the nearest node access.
+         */
+        enableLocalityLb: boolean;
+        /**
+         * The IP ADDRESS range.
+         */
+        includeIpRanges: string;
+        /**
+         * The configuration of the Kiali.
+         */
+        kialis: outputs.servicemesh.GetServiceMeshesMeshMeshConfigKiali[];
+        /**
+         * The open-door policy of agent (OPA) plug-in information.
+         */
+        opas: outputs.servicemesh.GetServiceMeshesMeshMeshConfigOpa[];
+        /**
+         * The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+         */
+        outboundTrafficPolicy: string;
+        /**
+         * The configuration of the Link trace sampling.
+         */
+        pilots: outputs.servicemesh.GetServiceMeshesMeshMeshConfigPilot[];
+        /**
+         * the configuration of the Prometheus.
+         */
+        prometheuses: outputs.servicemesh.GetServiceMeshesMeshMeshConfigPrometheus[];
+        /**
+         * The configuration of the Proxy.
+         */
+        proxies: outputs.servicemesh.GetServiceMeshesMeshMeshConfigProxy[];
+        /**
+         * The configuration of the Sidecar injector.
+         */
+        sidecarInjectors: outputs.servicemesh.GetServiceMeshesMeshMeshConfigSidecarInjector[];
+        /**
+         * Whether to enable acquisition Prometheus metrics.
+         */
+        telemetry: boolean;
+        /**
+         * Whether to enable link trace.
+         */
+        tracing: boolean;
+    }
+
+    export interface GetServiceMeshesMeshMeshConfigAccessLog {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetServiceMeshesMeshMeshConfigAudit {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled: boolean;
+        /**
+         * The Service grid audit that to the project.
+         */
+        project: string;
+    }
+
+    export interface GetServiceMeshesMeshMeshConfigKiali {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled: boolean;
+        /**
+         * The service address of the Kiali.
+         */
+        url: string;
+    }
+
+    export interface GetServiceMeshesMeshMeshConfigOpa {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled: boolean;
+        /**
+         * Sidecar injector Pods on the throttle.
+         */
+        limitCpu: string;
+        /**
+         * The memory limit  of the Sidecar injector Pods.
+         */
+        limitMemory: string;
+        /**
+         * The log level of the OPA proxy container .
+         */
+        logLevel: string;
+        /**
+         * The requested cpu the Sidecar injector Pods.
+         */
+        requestCpu: string;
+        /**
+         * The requested memory the Sidecar injector Pods.
+         */
+        requestMemory: string;
+    }
+
+    export interface GetServiceMeshesMeshMeshConfigPilot {
+        /**
+         * Whether to support the HTTP1.0.
+         */
+        http10Enabled: boolean;
+        /**
+         * The  percentage of the Link trace sampling.
+         */
+        traceSampling: number;
+    }
+
+    export interface GetServiceMeshesMeshMeshConfigPrometheus {
+        /**
+         * The  service addresses of the Prometheus.
+         */
+        externalUrl: string;
+        /**
+         * Whether to enable external Prometheus.
+         */
+        useExternal: boolean;
+    }
+
+    export interface GetServiceMeshesMeshMeshConfigProxy {
+        /**
+         * The domain name of the Cluster.
+         */
+        clusterDomain: string;
+        /**
+         * Sidecar injector Pods on the throttle.
+         */
+        limitCpu: string;
+        /**
+         * The memory limit  of the Sidecar injector Pods.
+         */
+        limitMemory: string;
+        /**
+         * The requested cpu the Sidecar injector Pods.
+         */
+        requestCpu: string;
+        /**
+         * The requested memory the Sidecar injector Pods.
+         */
+        requestMemory: string;
+    }
+
+    export interface GetServiceMeshesMeshMeshConfigSidecarInjector {
+        /**
+         * Whether to enable by Pod Annotations automatic injection Sidecar.
+         */
+        autoInjectionPolicyEnabled: boolean;
+        /**
+         * Whether it is the all namespaces you turn on the auto injection capabilities.
+         */
+        enableNamespacesByDefault: boolean;
+        /**
+         * The configuration of the CNI
+         */
+        initCniConfigurations: outputs.servicemesh.GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration[];
+        /**
+         * Sidecar injector Pods on the throttle.
+         */
+        limitCpu: string;
+        /**
+         * The memory limit  of the Sidecar injector Pods.
+         */
+        limitMemory: string;
+        /**
+         * The requested cpu the Sidecar injector Pods.
+         */
+        requestCpu: string;
+        /**
+         * The requested memory the Sidecar injector Pods.
+         */
+        requestMemory: string;
+        /**
+         * Other automatic injection Sidecar configuration (in YAML format).
+         */
+        sidecarInjectorWebhookAsYaml: string;
+    }
+
+    export interface GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled: boolean;
+        /**
+         * The excluded namespace of the CNI.
+         */
+        excludeNamespaces: string;
+    }
+
+    export interface GetServiceMeshesMeshNetwork {
+        /**
+         * The ID of the Security group
+         */
+        securityGroupId: string;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The list of Virtual Switch.
+         */
+        vswitcheLists: string[];
+    }
+
+    export interface ServiceMeshLoadBalancer {
+        apiServerLoadbalancerId: string;
+        /**
+         * Whether to use the IP address of a public network exposed the API Server.
+         */
+        apiServerPublicEip: boolean;
+        /**
+         * Whether to use the IP address of a public network exposure the Istio Pilot.
+         */
+        pilotPublicEip: boolean;
+        pilotPublicLoadbalancerId: string;
+    }
+
+    export interface ServiceMeshMeshConfig {
+        /**
+         * The configuration of the access logging.
+         */
+        accessLog?: outputs.servicemesh.ServiceMeshMeshConfigAccessLog;
+        /**
+         * The configuration of the audit. See the following `Block audit`.
+         */
+        audit: outputs.servicemesh.ServiceMeshMeshConfigAudit;
+        /**
+         * Whether or not to enable the use of a custom zipkin.
+         */
+        customizedZipkin?: boolean;
+        /**
+         * The enable locality lb.
+         */
+        enableLocalityLb: boolean;
+        /**
+         * The configuration of the Kiali. See the following `Block kiali`.
+         */
+        kiali: outputs.servicemesh.ServiceMeshMeshConfigKiali;
+        /**
+         * The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+         */
+        opa: outputs.servicemesh.ServiceMeshMeshConfigOpa;
+        /**
+         * The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+         */
+        outboundTrafficPolicy: string;
+        /**
+         * The configuration of the Link trace sampling. See the following `Block pilot`.
+         */
+        pilot: outputs.servicemesh.ServiceMeshMeshConfigPilot;
+        /**
+         * The configuration of the Proxy. See the following `Block proxy`.
+         */
+        proxy: outputs.servicemesh.ServiceMeshMeshConfigProxy;
+        /**
+         * The configuration of the Sidecar injector. See the following `Block sidecarInjector`.
+         */
+        sidecarInjector: outputs.servicemesh.ServiceMeshMeshConfigSidecarInjector;
+        /**
+         * Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+         */
+        telemetry: boolean;
+        /**
+         * Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+         */
+        tracing: boolean;
+    }
+
+    export interface ServiceMeshMeshConfigAccessLog {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled: boolean;
+    }
+
+    export interface ServiceMeshMeshConfigAudit {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled: boolean;
+        /**
+         * The Service grid audit that to the project.
+         */
+        project: string;
+    }
+
+    export interface ServiceMeshMeshConfigKiali {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled?: boolean;
+    }
+
+    export interface ServiceMeshMeshConfigOpa {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled: boolean;
+        /**
+         * The CPU resource  of the limitsOPA proxy container.
+         */
+        limitCpu: string;
+        /**
+         * The memory resource limit of the OPA proxy container.
+         */
+        limitMemory: string;
+        /**
+         * The log level of the OPA proxy container .
+         */
+        logLevel: string;
+        /**
+         * The CPU resource request of the OPA proxy container.
+         */
+        requestCpu: string;
+        /**
+         * The memory resource request of the OPA proxy container.
+         */
+        requestMemory: string;
+    }
+
+    export interface ServiceMeshMeshConfigPilot {
+        /**
+         * Whether to support the HTTP1.0.
+         */
+        http10Enabled: boolean;
+        /**
+         * The  percentage of the Link trace sampling.
+         */
+        traceSampling?: number;
+    }
+
+    export interface ServiceMeshMeshConfigProxy {
+        /**
+         * The CPU resource  of the limitsOPA proxy container.
+         */
+        limitCpu: string;
+        /**
+         * The memory resource limit of the OPA proxy container.
+         */
+        limitMemory: string;
+        /**
+         * The CPU resource request of the OPA proxy container.
+         */
+        requestCpu: string;
+        /**
+         * The memory resource request of the OPA proxy container.
+         */
+        requestMemory: string;
+    }
+
+    export interface ServiceMeshMeshConfigSidecarInjector {
+        /**
+         * Whether to enable by Pod Annotations automatic injection Sidecar.
+         */
+        autoInjectionPolicyEnabled: boolean;
+        /**
+         * Whether it is the all namespaces you turn on the auto injection capabilities.
+         */
+        enableNamespacesByDefault: boolean;
+        /**
+         * The CPU resource  of the limitsOPA proxy container.
+         */
+        limitCpu?: string;
+        /**
+         * The memory resource limit of the OPA proxy container.
+         */
+        limitMemory?: string;
+        /**
+         * The CPU resource request of the OPA proxy container.
+         */
+        requestCpu?: string;
+        /**
+         * The memory resource request of the OPA proxy container.
+         */
+        requestMemory?: string;
+    }
+
+    export interface ServiceMeshNetwork {
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The list of Virtual Switch.
+         */
+        vswitcheList: string;
     }
 }
 
@@ -23143,6 +24403,10 @@ export namespace vpc {
          * The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
          */
         natType: string;
+        /**
+         * (Available in 1.137.0+) Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`.
+         */
+        networkType: string;
         /**
          * The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
          */

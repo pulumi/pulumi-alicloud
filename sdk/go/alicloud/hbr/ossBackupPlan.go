@@ -78,10 +78,10 @@ import (
 type OssBackupPlan struct {
 	pulumi.CustomResourceState
 
-	// Backup Type. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringOutput `pulumi:"backupType"`
 	// The name of OSS bucket.
-	Bucket pulumi.StringPtrOutput `pulumi:"bucket"`
+	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -92,7 +92,7 @@ type OssBackupPlan struct {
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// The ID of backup vault.
-	VaultId pulumi.StringPtrOutput `pulumi:"vaultId"`
+	VaultId pulumi.StringOutput `pulumi:"vaultId"`
 }
 
 // NewOssBackupPlan registers a new resource with the given unique name, arguments, and options.
@@ -102,6 +102,12 @@ func NewOssBackupPlan(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BackupType == nil {
+		return nil, errors.New("invalid value for required argument 'BackupType'")
+	}
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
 	if args.OssBackupPlanName == nil {
 		return nil, errors.New("invalid value for required argument 'OssBackupPlanName'")
 	}
@@ -110,6 +116,9 @@ func NewOssBackupPlan(ctx *pulumi.Context,
 	}
 	if args.Schedule == nil {
 		return nil, errors.New("invalid value for required argument 'Schedule'")
+	}
+	if args.VaultId == nil {
+		return nil, errors.New("invalid value for required argument 'VaultId'")
 	}
 	var resource OssBackupPlan
 	err := ctx.RegisterResource("alicloud:hbr/ossBackupPlan:OssBackupPlan", name, args, &resource, opts...)
@@ -133,7 +142,7 @@ func GetOssBackupPlan(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OssBackupPlan resources.
 type ossBackupPlanState struct {
-	// Backup Type. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
 	// The name of OSS bucket.
 	Bucket *string `pulumi:"bucket"`
@@ -151,7 +160,7 @@ type ossBackupPlanState struct {
 }
 
 type OssBackupPlanState struct {
-	// Backup Type. Valid values: `COMPLETE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput
 	// The name of OSS bucket.
 	Bucket pulumi.StringPtrInput
@@ -173,10 +182,10 @@ func (OssBackupPlanState) ElementType() reflect.Type {
 }
 
 type ossBackupPlanArgs struct {
-	// Backup Type. Valid values: `COMPLETE`.
-	BackupType *string `pulumi:"backupType"`
+	// Backup type. Valid values: `COMPLETE`.
+	BackupType string `pulumi:"backupType"`
 	// The name of OSS bucket.
-	Bucket *string `pulumi:"bucket"`
+	Bucket string `pulumi:"bucket"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -187,15 +196,15 @@ type ossBackupPlanArgs struct {
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule string `pulumi:"schedule"`
 	// The ID of backup vault.
-	VaultId *string `pulumi:"vaultId"`
+	VaultId string `pulumi:"vaultId"`
 }
 
 // The set of arguments for constructing a OssBackupPlan resource.
 type OssBackupPlanArgs struct {
-	// Backup Type. Valid values: `COMPLETE`.
-	BackupType pulumi.StringPtrInput
+	// Backup type. Valid values: `COMPLETE`.
+	BackupType pulumi.StringInput
 	// The name of OSS bucket.
-	Bucket pulumi.StringPtrInput
+	Bucket pulumi.StringInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -206,7 +215,7 @@ type OssBackupPlanArgs struct {
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringInput
 	// The ID of backup vault.
-	VaultId pulumi.StringPtrInput
+	VaultId pulumi.StringInput
 }
 
 func (OssBackupPlanArgs) ElementType() reflect.Type {

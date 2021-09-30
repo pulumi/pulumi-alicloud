@@ -66,6 +66,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("clickhouse")]
         public Input<string>? Clickhouse { get; set; }
 
+        [Input("cloudauth")]
+        public Input<string>? Cloudauth { get; set; }
+
         [Input("cloudphone")]
         public Input<string>? Cloudphone { get; set; }
 
@@ -105,6 +108,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("dds")]
         public Input<string>? Dds { get; set; }
 
+        [Input("devopsrdc")]
+        public Input<string>? Devopsrdc { get; set; }
+
         [Input("dg")]
         public Input<string>? Dg { get; set; }
 
@@ -122,6 +128,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("dts")]
         public Input<string>? Dts { get; set; }
+
+        [Input("eais")]
+        public Input<string>? Eais { get; set; }
 
         [Input("eci")]
         public Input<string>? Eci { get; set; }
@@ -180,6 +189,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("imm")]
         public Input<string>? Imm { get; set; }
 
+        [Input("imp")]
+        public Input<string>? Imp { get; set; }
+
         [Input("ims")]
         public Input<string>? Ims { get; set; }
 
@@ -203,6 +215,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("maxcompute")]
         public Input<string>? Maxcompute { get; set; }
+
+        [Input("mhub")]
+        public Input<string>? Mhub { get; set; }
 
         [Input("mns")]
         public Input<string>? Mns { get; set; }
@@ -281,6 +296,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("serverless")]
         public Input<string>? Serverless { get; set; }
+
+        [Input("servicemesh")]
+        public Input<string>? Servicemesh { get; set; }
 
         [Input("sgw")]
         public Input<string>? Sgw { get; set; }

@@ -10,6 +10,308 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type IngressDefaultRule struct {
+	// Target application ID.
+	AppId *string `pulumi:"appId"`
+	// Target application name.
+	AppName *string `pulumi:"appName"`
+	// Application backend port.
+	ContainerPort *int `pulumi:"containerPort"`
+}
+
+// IngressDefaultRuleInput is an input type that accepts IngressDefaultRuleArgs and IngressDefaultRuleOutput values.
+// You can construct a concrete instance of `IngressDefaultRuleInput` via:
+//
+//          IngressDefaultRuleArgs{...}
+type IngressDefaultRuleInput interface {
+	pulumi.Input
+
+	ToIngressDefaultRuleOutput() IngressDefaultRuleOutput
+	ToIngressDefaultRuleOutputWithContext(context.Context) IngressDefaultRuleOutput
+}
+
+type IngressDefaultRuleArgs struct {
+	// Target application ID.
+	AppId pulumi.StringPtrInput `pulumi:"appId"`
+	// Target application name.
+	AppName pulumi.StringPtrInput `pulumi:"appName"`
+	// Application backend port.
+	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
+}
+
+func (IngressDefaultRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressDefaultRule)(nil)).Elem()
+}
+
+func (i IngressDefaultRuleArgs) ToIngressDefaultRuleOutput() IngressDefaultRuleOutput {
+	return i.ToIngressDefaultRuleOutputWithContext(context.Background())
+}
+
+func (i IngressDefaultRuleArgs) ToIngressDefaultRuleOutputWithContext(ctx context.Context) IngressDefaultRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressDefaultRuleOutput)
+}
+
+func (i IngressDefaultRuleArgs) ToIngressDefaultRulePtrOutput() IngressDefaultRulePtrOutput {
+	return i.ToIngressDefaultRulePtrOutputWithContext(context.Background())
+}
+
+func (i IngressDefaultRuleArgs) ToIngressDefaultRulePtrOutputWithContext(ctx context.Context) IngressDefaultRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressDefaultRuleOutput).ToIngressDefaultRulePtrOutputWithContext(ctx)
+}
+
+// IngressDefaultRulePtrInput is an input type that accepts IngressDefaultRuleArgs, IngressDefaultRulePtr and IngressDefaultRulePtrOutput values.
+// You can construct a concrete instance of `IngressDefaultRulePtrInput` via:
+//
+//          IngressDefaultRuleArgs{...}
+//
+//  or:
+//
+//          nil
+type IngressDefaultRulePtrInput interface {
+	pulumi.Input
+
+	ToIngressDefaultRulePtrOutput() IngressDefaultRulePtrOutput
+	ToIngressDefaultRulePtrOutputWithContext(context.Context) IngressDefaultRulePtrOutput
+}
+
+type ingressDefaultRulePtrType IngressDefaultRuleArgs
+
+func IngressDefaultRulePtr(v *IngressDefaultRuleArgs) IngressDefaultRulePtrInput {
+	return (*ingressDefaultRulePtrType)(v)
+}
+
+func (*ingressDefaultRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IngressDefaultRule)(nil)).Elem()
+}
+
+func (i *ingressDefaultRulePtrType) ToIngressDefaultRulePtrOutput() IngressDefaultRulePtrOutput {
+	return i.ToIngressDefaultRulePtrOutputWithContext(context.Background())
+}
+
+func (i *ingressDefaultRulePtrType) ToIngressDefaultRulePtrOutputWithContext(ctx context.Context) IngressDefaultRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressDefaultRulePtrOutput)
+}
+
+type IngressDefaultRuleOutput struct{ *pulumi.OutputState }
+
+func (IngressDefaultRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressDefaultRule)(nil)).Elem()
+}
+
+func (o IngressDefaultRuleOutput) ToIngressDefaultRuleOutput() IngressDefaultRuleOutput {
+	return o
+}
+
+func (o IngressDefaultRuleOutput) ToIngressDefaultRuleOutputWithContext(ctx context.Context) IngressDefaultRuleOutput {
+	return o
+}
+
+func (o IngressDefaultRuleOutput) ToIngressDefaultRulePtrOutput() IngressDefaultRulePtrOutput {
+	return o.ToIngressDefaultRulePtrOutputWithContext(context.Background())
+}
+
+func (o IngressDefaultRuleOutput) ToIngressDefaultRulePtrOutputWithContext(ctx context.Context) IngressDefaultRulePtrOutput {
+	return o.ApplyT(func(v IngressDefaultRule) *IngressDefaultRule {
+		return &v
+	}).(IngressDefaultRulePtrOutput)
+}
+
+// Target application ID.
+func (o IngressDefaultRuleOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressDefaultRule) *string { return v.AppId }).(pulumi.StringPtrOutput)
+}
+
+// Target application name.
+func (o IngressDefaultRuleOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressDefaultRule) *string { return v.AppName }).(pulumi.StringPtrOutput)
+}
+
+// Application backend port.
+func (o IngressDefaultRuleOutput) ContainerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IngressDefaultRule) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
+}
+
+type IngressDefaultRulePtrOutput struct{ *pulumi.OutputState }
+
+func (IngressDefaultRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IngressDefaultRule)(nil)).Elem()
+}
+
+func (o IngressDefaultRulePtrOutput) ToIngressDefaultRulePtrOutput() IngressDefaultRulePtrOutput {
+	return o
+}
+
+func (o IngressDefaultRulePtrOutput) ToIngressDefaultRulePtrOutputWithContext(ctx context.Context) IngressDefaultRulePtrOutput {
+	return o
+}
+
+func (o IngressDefaultRulePtrOutput) Elem() IngressDefaultRuleOutput {
+	return o.ApplyT(func(v *IngressDefaultRule) IngressDefaultRule { return *v }).(IngressDefaultRuleOutput)
+}
+
+// Target application ID.
+func (o IngressDefaultRulePtrOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IngressDefaultRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target application name.
+func (o IngressDefaultRulePtrOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IngressDefaultRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Application backend port.
+func (o IngressDefaultRulePtrOutput) ContainerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IngressDefaultRule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+type IngressRule struct {
+	// Target application ID.
+	AppId string `pulumi:"appId"`
+	// Target application name.
+	AppName string `pulumi:"appName"`
+	// Application backend port.
+	ContainerPort int `pulumi:"containerPort"`
+	// Application domain name.
+	Domain string `pulumi:"domain"`
+	// URL path.
+	Path string `pulumi:"path"`
+}
+
+// IngressRuleInput is an input type that accepts IngressRuleArgs and IngressRuleOutput values.
+// You can construct a concrete instance of `IngressRuleInput` via:
+//
+//          IngressRuleArgs{...}
+type IngressRuleInput interface {
+	pulumi.Input
+
+	ToIngressRuleOutput() IngressRuleOutput
+	ToIngressRuleOutputWithContext(context.Context) IngressRuleOutput
+}
+
+type IngressRuleArgs struct {
+	// Target application ID.
+	AppId pulumi.StringInput `pulumi:"appId"`
+	// Target application name.
+	AppName pulumi.StringInput `pulumi:"appName"`
+	// Application backend port.
+	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
+	// Application domain name.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// URL path.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (IngressRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressRule)(nil)).Elem()
+}
+
+func (i IngressRuleArgs) ToIngressRuleOutput() IngressRuleOutput {
+	return i.ToIngressRuleOutputWithContext(context.Background())
+}
+
+func (i IngressRuleArgs) ToIngressRuleOutputWithContext(ctx context.Context) IngressRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressRuleOutput)
+}
+
+// IngressRuleArrayInput is an input type that accepts IngressRuleArray and IngressRuleArrayOutput values.
+// You can construct a concrete instance of `IngressRuleArrayInput` via:
+//
+//          IngressRuleArray{ IngressRuleArgs{...} }
+type IngressRuleArrayInput interface {
+	pulumi.Input
+
+	ToIngressRuleArrayOutput() IngressRuleArrayOutput
+	ToIngressRuleArrayOutputWithContext(context.Context) IngressRuleArrayOutput
+}
+
+type IngressRuleArray []IngressRuleInput
+
+func (IngressRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IngressRule)(nil)).Elem()
+}
+
+func (i IngressRuleArray) ToIngressRuleArrayOutput() IngressRuleArrayOutput {
+	return i.ToIngressRuleArrayOutputWithContext(context.Background())
+}
+
+func (i IngressRuleArray) ToIngressRuleArrayOutputWithContext(ctx context.Context) IngressRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressRuleArrayOutput)
+}
+
+type IngressRuleOutput struct{ *pulumi.OutputState }
+
+func (IngressRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressRule)(nil)).Elem()
+}
+
+func (o IngressRuleOutput) ToIngressRuleOutput() IngressRuleOutput {
+	return o
+}
+
+func (o IngressRuleOutput) ToIngressRuleOutputWithContext(ctx context.Context) IngressRuleOutput {
+	return o
+}
+
+// Target application ID.
+func (o IngressRuleOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v IngressRule) string { return v.AppId }).(pulumi.StringOutput)
+}
+
+// Target application name.
+func (o IngressRuleOutput) AppName() pulumi.StringOutput {
+	return o.ApplyT(func(v IngressRule) string { return v.AppName }).(pulumi.StringOutput)
+}
+
+// Application backend port.
+func (o IngressRuleOutput) ContainerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v IngressRule) int { return v.ContainerPort }).(pulumi.IntOutput)
+}
+
+// Application domain name.
+func (o IngressRuleOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v IngressRule) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// URL path.
+func (o IngressRuleOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v IngressRule) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type IngressRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (IngressRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IngressRule)(nil)).Elem()
+}
+
+func (o IngressRuleArrayOutput) ToIngressRuleArrayOutput() IngressRuleArrayOutput {
+	return o
+}
+
+func (o IngressRuleArrayOutput) ToIngressRuleArrayOutputWithContext(ctx context.Context) IngressRuleArrayOutput {
+	return o
+}
+
+func (o IngressRuleArrayOutput) Index(i pulumi.IntInput) IngressRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IngressRule {
+		return vs[0].([]IngressRule)[vs[1].(int)]
+	}).(IngressRuleOutput)
+}
+
 type GetApplicationsApplication struct {
 	// The ARN of the RAM role required when pulling images across accounts.
 	AcrAssumeRoleArn string `pulumi:"acrAssumeRoleArn"`
@@ -696,6 +998,166 @@ func (o GetConfigMapsMapArrayOutput) Index(i pulumi.IntInput) GetConfigMapsMapOu
 	}).(GetConfigMapsMapOutput)
 }
 
+type GetIngressesIngress struct {
+	// Cert Id.
+	CertId string `pulumi:"certId"`
+	// Default Rule.
+	DefaultRule string `pulumi:"defaultRule"`
+	// Description.
+	Description string `pulumi:"description"`
+	// The ID of the Ingress.
+	Id string `pulumi:"id"`
+	// The first ID of the resource.
+	IngressId string `pulumi:"ingressId"`
+	// SLB listening port.
+	ListenerPort int `pulumi:"listenerPort"`
+	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+	NamespaceId string `pulumi:"namespaceId"`
+	// SLB ID.
+	SlbId string `pulumi:"slbId"`
+}
+
+// GetIngressesIngressInput is an input type that accepts GetIngressesIngressArgs and GetIngressesIngressOutput values.
+// You can construct a concrete instance of `GetIngressesIngressInput` via:
+//
+//          GetIngressesIngressArgs{...}
+type GetIngressesIngressInput interface {
+	pulumi.Input
+
+	ToGetIngressesIngressOutput() GetIngressesIngressOutput
+	ToGetIngressesIngressOutputWithContext(context.Context) GetIngressesIngressOutput
+}
+
+type GetIngressesIngressArgs struct {
+	// Cert Id.
+	CertId pulumi.StringInput `pulumi:"certId"`
+	// Default Rule.
+	DefaultRule pulumi.StringInput `pulumi:"defaultRule"`
+	// Description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Ingress.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The first ID of the resource.
+	IngressId pulumi.StringInput `pulumi:"ingressId"`
+	// SLB listening port.
+	ListenerPort pulumi.IntInput `pulumi:"listenerPort"`
+	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// SLB ID.
+	SlbId pulumi.StringInput `pulumi:"slbId"`
+}
+
+func (GetIngressesIngressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIngressesIngress)(nil)).Elem()
+}
+
+func (i GetIngressesIngressArgs) ToGetIngressesIngressOutput() GetIngressesIngressOutput {
+	return i.ToGetIngressesIngressOutputWithContext(context.Background())
+}
+
+func (i GetIngressesIngressArgs) ToGetIngressesIngressOutputWithContext(ctx context.Context) GetIngressesIngressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIngressesIngressOutput)
+}
+
+// GetIngressesIngressArrayInput is an input type that accepts GetIngressesIngressArray and GetIngressesIngressArrayOutput values.
+// You can construct a concrete instance of `GetIngressesIngressArrayInput` via:
+//
+//          GetIngressesIngressArray{ GetIngressesIngressArgs{...} }
+type GetIngressesIngressArrayInput interface {
+	pulumi.Input
+
+	ToGetIngressesIngressArrayOutput() GetIngressesIngressArrayOutput
+	ToGetIngressesIngressArrayOutputWithContext(context.Context) GetIngressesIngressArrayOutput
+}
+
+type GetIngressesIngressArray []GetIngressesIngressInput
+
+func (GetIngressesIngressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIngressesIngress)(nil)).Elem()
+}
+
+func (i GetIngressesIngressArray) ToGetIngressesIngressArrayOutput() GetIngressesIngressArrayOutput {
+	return i.ToGetIngressesIngressArrayOutputWithContext(context.Background())
+}
+
+func (i GetIngressesIngressArray) ToGetIngressesIngressArrayOutputWithContext(ctx context.Context) GetIngressesIngressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIngressesIngressArrayOutput)
+}
+
+type GetIngressesIngressOutput struct{ *pulumi.OutputState }
+
+func (GetIngressesIngressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIngressesIngress)(nil)).Elem()
+}
+
+func (o GetIngressesIngressOutput) ToGetIngressesIngressOutput() GetIngressesIngressOutput {
+	return o
+}
+
+func (o GetIngressesIngressOutput) ToGetIngressesIngressOutputWithContext(ctx context.Context) GetIngressesIngressOutput {
+	return o
+}
+
+// Cert Id.
+func (o GetIngressesIngressOutput) CertId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIngressesIngress) string { return v.CertId }).(pulumi.StringOutput)
+}
+
+// Default Rule.
+func (o GetIngressesIngressOutput) DefaultRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIngressesIngress) string { return v.DefaultRule }).(pulumi.StringOutput)
+}
+
+// Description.
+func (o GetIngressesIngressOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIngressesIngress) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Ingress.
+func (o GetIngressesIngressOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIngressesIngress) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetIngressesIngressOutput) IngressId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIngressesIngress) string { return v.IngressId }).(pulumi.StringOutput)
+}
+
+// SLB listening port.
+func (o GetIngressesIngressOutput) ListenerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIngressesIngress) int { return v.ListenerPort }).(pulumi.IntOutput)
+}
+
+// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+func (o GetIngressesIngressOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIngressesIngress) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// SLB ID.
+func (o GetIngressesIngressOutput) SlbId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIngressesIngress) string { return v.SlbId }).(pulumi.StringOutput)
+}
+
+type GetIngressesIngressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIngressesIngressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIngressesIngress)(nil)).Elem()
+}
+
+func (o GetIngressesIngressArrayOutput) ToGetIngressesIngressArrayOutput() GetIngressesIngressArrayOutput {
+	return o
+}
+
+func (o GetIngressesIngressArrayOutput) ToGetIngressesIngressArrayOutputWithContext(ctx context.Context) GetIngressesIngressArrayOutput {
+	return o
+}
+
+func (o GetIngressesIngressArrayOutput) Index(i pulumi.IntInput) GetIngressesIngressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIngressesIngress {
+		return vs[0].([]GetIngressesIngress)[vs[1].(int)]
+	}).(GetIngressesIngressOutput)
+}
+
 type GetNamespacesNamespace struct {
 	// The ID of the Namespace.
 	Id string `pulumi:"id"`
@@ -821,10 +1283,16 @@ func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespace
 }
 
 func init() {
+	pulumi.RegisterOutputType(IngressDefaultRuleOutput{})
+	pulumi.RegisterOutputType(IngressDefaultRulePtrOutput{})
+	pulumi.RegisterOutputType(IngressRuleOutput{})
+	pulumi.RegisterOutputType(IngressRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationsApplicationOutput{})
 	pulumi.RegisterOutputType(GetApplicationsApplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetConfigMapsMapOutput{})
 	pulumi.RegisterOutputType(GetConfigMapsMapArrayOutput{})
+	pulumi.RegisterOutputType(GetIngressesIngressOutput{})
+	pulumi.RegisterOutputType(GetIngressesIngressArrayOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceArrayOutput{})
 }

@@ -8,11 +8,13 @@ import * as utilities from "../utilities";
 export * from "./getService";
 export * from "./getZoneRecords";
 export * from "./getZones";
+export * from "./userVpcAuthorization";
 export * from "./zone";
 export * from "./zoneAttachment";
 export * from "./zoneRecord";
 
 // Import resources to register:
+import { UserVpcAuthorization } from "./userVpcAuthorization";
 import { Zone } from "./zone";
 import { ZoneAttachment } from "./zoneAttachment";
 import { ZoneRecord } from "./zoneRecord";
@@ -21,6 +23,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization":
+                return new UserVpcAuthorization(name, <any>undefined, { urn })
             case "alicloud:pvtz/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
             case "alicloud:pvtz/zoneAttachment:ZoneAttachment":
@@ -32,6 +36,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "pvtz/userVpcAuthorization", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pvtz/zone", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pvtz/zoneAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pvtz/zoneRecord", _module)

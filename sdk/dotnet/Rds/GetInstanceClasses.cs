@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Rds
         public string? DbInstanceClass { get; set; }
 
         /// <summary>
-        /// Same as `storage_type`.
+        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
         /// </summary>
         [Input("dbInstanceStorageType")]
         public string? DbInstanceStorageType { get; set; }
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Rds
         public string? SortedBy { get; set; }
 
         /// <summary>
-        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3"
+        /// It has been deprecated from verison 1.134.0+ and using `db_instance_storage_type` instead.
         /// </summary>
         [Input("storageType")]
         public string? StorageType { get; set; }

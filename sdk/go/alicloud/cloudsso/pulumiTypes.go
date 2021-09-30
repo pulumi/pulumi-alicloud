@@ -691,6 +691,317 @@ func (o GetDirectoriesDirectoryTaskArrayOutput) Index(i pulumi.IntInput) GetDire
 	}).(GetDirectoriesDirectoryTaskOutput)
 }
 
+type GetGroupsGroup struct {
+	// The Created Time of the Directory.
+	CreateTime string `pulumi:"createTime"`
+	// The Description of the Directory.
+	Description string `pulumi:"description"`
+	// The ID of the Directory.
+	DirectoryId string `pulumi:"directoryId"`
+	// The Group ID of the group.
+	GroupId string `pulumi:"groupId"`
+	// The Name of the group.
+	GroupName string `pulumi:"groupName"`
+	// The ID of the Group.
+	Id string `pulumi:"id"`
+	// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+	ProvisionType string `pulumi:"provisionType"`
+}
+
+// GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
+// You can construct a concrete instance of `GetGroupsGroupInput` via:
+//
+//          GetGroupsGroupArgs{...}
+type GetGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetGroupsGroupOutput() GetGroupsGroupOutput
+	ToGetGroupsGroupOutputWithContext(context.Context) GetGroupsGroupOutput
+}
+
+type GetGroupsGroupArgs struct {
+	// The Created Time of the Directory.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The Description of the Directory.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Directory.
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+	// The Group ID of the group.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The Name of the group.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// The ID of the Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+	ProvisionType pulumi.StringInput `pulumi:"provisionType"`
+}
+
+func (GetGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
+}
+
+func (i GetGroupsGroupArgs) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
+	return i.ToGetGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupOutput)
+}
+
+// GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
+//
+//          GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
+type GetGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput
+	ToGetGroupsGroupArrayOutputWithContext(context.Context) GetGroupsGroupArrayOutput
+}
+
+type GetGroupsGroupArray []GetGroupsGroupInput
+
+func (GetGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
+}
+
+func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput {
+	return i.ToGetGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
+}
+
+type GetGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
+}
+
+func (o GetGroupsGroupOutput) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
+	return o
+}
+
+func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
+	return o
+}
+
+// The Created Time of the Directory.
+func (o GetGroupsGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The Description of the Directory.
+func (o GetGroupsGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Directory.
+func (o GetGroupsGroupOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The Group ID of the group.
+func (o GetGroupsGroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The Name of the group.
+func (o GetGroupsGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The ID of the Group.
+func (o GetGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+func (o GetGroupsGroupOutput) ProvisionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.ProvisionType }).(pulumi.StringOutput)
+}
+
+type GetGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
+}
+
+func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroup {
+		return vs[0].([]GetGroupsGroup)[vs[1].(int)]
+	}).(GetGroupsGroupOutput)
+}
+
+type GetScimServerCredentialsCredential struct {
+	// The CreateTime of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The CredentialId of the resource.
+	CredentialId string `pulumi:"credentialId"`
+	// The CredentialSecret of the resource.
+	CredentialSecret string `pulumi:"credentialSecret"`
+	// The CredentialType of the resource.
+	CredentialType string `pulumi:"credentialType"`
+	// The ID of the Directory.
+	DirectoryId string `pulumi:"directoryId"`
+	// The ExpireTime of the resource.
+	ExpireTime string `pulumi:"expireTime"`
+	// The ID of the SCIM Server Credential.
+	Id string `pulumi:"id"`
+	// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+	Status string `pulumi:"status"`
+}
+
+// GetScimServerCredentialsCredentialInput is an input type that accepts GetScimServerCredentialsCredentialArgs and GetScimServerCredentialsCredentialOutput values.
+// You can construct a concrete instance of `GetScimServerCredentialsCredentialInput` via:
+//
+//          GetScimServerCredentialsCredentialArgs{...}
+type GetScimServerCredentialsCredentialInput interface {
+	pulumi.Input
+
+	ToGetScimServerCredentialsCredentialOutput() GetScimServerCredentialsCredentialOutput
+	ToGetScimServerCredentialsCredentialOutputWithContext(context.Context) GetScimServerCredentialsCredentialOutput
+}
+
+type GetScimServerCredentialsCredentialArgs struct {
+	// The CreateTime of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The CredentialId of the resource.
+	CredentialId pulumi.StringInput `pulumi:"credentialId"`
+	// The CredentialSecret of the resource.
+	CredentialSecret pulumi.StringInput `pulumi:"credentialSecret"`
+	// The CredentialType of the resource.
+	CredentialType pulumi.StringInput `pulumi:"credentialType"`
+	// The ID of the Directory.
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+	// The ExpireTime of the resource.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The ID of the SCIM Server Credential.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetScimServerCredentialsCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScimServerCredentialsCredential)(nil)).Elem()
+}
+
+func (i GetScimServerCredentialsCredentialArgs) ToGetScimServerCredentialsCredentialOutput() GetScimServerCredentialsCredentialOutput {
+	return i.ToGetScimServerCredentialsCredentialOutputWithContext(context.Background())
+}
+
+func (i GetScimServerCredentialsCredentialArgs) ToGetScimServerCredentialsCredentialOutputWithContext(ctx context.Context) GetScimServerCredentialsCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScimServerCredentialsCredentialOutput)
+}
+
+// GetScimServerCredentialsCredentialArrayInput is an input type that accepts GetScimServerCredentialsCredentialArray and GetScimServerCredentialsCredentialArrayOutput values.
+// You can construct a concrete instance of `GetScimServerCredentialsCredentialArrayInput` via:
+//
+//          GetScimServerCredentialsCredentialArray{ GetScimServerCredentialsCredentialArgs{...} }
+type GetScimServerCredentialsCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetScimServerCredentialsCredentialArrayOutput() GetScimServerCredentialsCredentialArrayOutput
+	ToGetScimServerCredentialsCredentialArrayOutputWithContext(context.Context) GetScimServerCredentialsCredentialArrayOutput
+}
+
+type GetScimServerCredentialsCredentialArray []GetScimServerCredentialsCredentialInput
+
+func (GetScimServerCredentialsCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScimServerCredentialsCredential)(nil)).Elem()
+}
+
+func (i GetScimServerCredentialsCredentialArray) ToGetScimServerCredentialsCredentialArrayOutput() GetScimServerCredentialsCredentialArrayOutput {
+	return i.ToGetScimServerCredentialsCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetScimServerCredentialsCredentialArray) ToGetScimServerCredentialsCredentialArrayOutputWithContext(ctx context.Context) GetScimServerCredentialsCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScimServerCredentialsCredentialArrayOutput)
+}
+
+type GetScimServerCredentialsCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetScimServerCredentialsCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScimServerCredentialsCredential)(nil)).Elem()
+}
+
+func (o GetScimServerCredentialsCredentialOutput) ToGetScimServerCredentialsCredentialOutput() GetScimServerCredentialsCredentialOutput {
+	return o
+}
+
+func (o GetScimServerCredentialsCredentialOutput) ToGetScimServerCredentialsCredentialOutputWithContext(ctx context.Context) GetScimServerCredentialsCredentialOutput {
+	return o
+}
+
+// The CreateTime of the resource.
+func (o GetScimServerCredentialsCredentialOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsCredential) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The CredentialId of the resource.
+func (o GetScimServerCredentialsCredentialOutput) CredentialId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsCredential) string { return v.CredentialId }).(pulumi.StringOutput)
+}
+
+// The CredentialSecret of the resource.
+func (o GetScimServerCredentialsCredentialOutput) CredentialSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsCredential) string { return v.CredentialSecret }).(pulumi.StringOutput)
+}
+
+// The CredentialType of the resource.
+func (o GetScimServerCredentialsCredentialOutput) CredentialType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsCredential) string { return v.CredentialType }).(pulumi.StringOutput)
+}
+
+// The ID of the Directory.
+func (o GetScimServerCredentialsCredentialOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsCredential) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The ExpireTime of the resource.
+func (o GetScimServerCredentialsCredentialOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsCredential) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The ID of the SCIM Server Credential.
+func (o GetScimServerCredentialsCredentialOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsCredential) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+func (o GetScimServerCredentialsCredentialOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsCredential) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetScimServerCredentialsCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScimServerCredentialsCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScimServerCredentialsCredential)(nil)).Elem()
+}
+
+func (o GetScimServerCredentialsCredentialArrayOutput) ToGetScimServerCredentialsCredentialArrayOutput() GetScimServerCredentialsCredentialArrayOutput {
+	return o
+}
+
+func (o GetScimServerCredentialsCredentialArrayOutput) ToGetScimServerCredentialsCredentialArrayOutputWithContext(ctx context.Context) GetScimServerCredentialsCredentialArrayOutput {
+	return o
+}
+
+func (o GetScimServerCredentialsCredentialArrayOutput) Index(i pulumi.IntInput) GetScimServerCredentialsCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScimServerCredentialsCredential {
+		return vs[0].([]GetScimServerCredentialsCredential)[vs[1].(int)]
+	}).(GetScimServerCredentialsCredentialOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DirectorySamlIdentityProviderConfigurationOutput{})
 	pulumi.RegisterOutputType(DirectorySamlIdentityProviderConfigurationPtrOutput{})
@@ -700,4 +1011,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDirectoriesDirectoryTaskOutput{})
 	pulumi.RegisterOutputType(GetDirectoriesDirectoryTaskArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetScimServerCredentialsCredentialOutput{})
+	pulumi.RegisterOutputType(GetScimServerCredentialsCredentialArrayOutput{})
 }

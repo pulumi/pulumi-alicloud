@@ -7,6 +7,7 @@ from .account import *
 from .db_cluster import *
 from .get_accounts import *
 from .get_db_clusters import *
+from .get_regions import *
 from . import outputs
 
 def _register_module():

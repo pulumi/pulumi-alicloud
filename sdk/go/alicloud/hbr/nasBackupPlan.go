@@ -67,6 +67,7 @@ import (
 type NasBackupPlan struct {
 	pulumi.CustomResourceState
 
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringOutput `pulumi:"backupType"`
 	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime pulumi.StringOutput    `pulumi:"createTime"`
@@ -76,7 +77,7 @@ type NasBackupPlan struct {
 	// The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
 	Exclude pulumi.StringPtrOutput `pulumi:"exclude"`
 	// The File System ID of Nas.
-	FileSystemId pulumi.StringPtrOutput `pulumi:"fileSystemId"`
+	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
 	// The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
 	Include pulumi.StringPtrOutput `pulumi:"include"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -88,10 +89,11 @@ type NasBackupPlan struct {
 	Retention pulumi.StringOutput `pulumi:"retention"`
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
-	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backupType` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit  pulumi.StringPtrOutput `pulumi:"speedLimit"`
 	UpdatePaths pulumi.BoolPtrOutput   `pulumi:"updatePaths"`
-	VaultId     pulumi.StringPtrOutput `pulumi:"vaultId"`
+	// The ID of Backup vault.
+	VaultId pulumi.StringOutput `pulumi:"vaultId"`
 }
 
 // NewNasBackupPlan registers a new resource with the given unique name, arguments, and options.
@@ -101,8 +103,14 @@ func NewNasBackupPlan(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BackupType == nil {
+		return nil, errors.New("invalid value for required argument 'BackupType'")
+	}
 	if args.CreateTime == nil {
 		return nil, errors.New("invalid value for required argument 'CreateTime'")
+	}
+	if args.FileSystemId == nil {
+		return nil, errors.New("invalid value for required argument 'FileSystemId'")
 	}
 	if args.NasBackupPlanName == nil {
 		return nil, errors.New("invalid value for required argument 'NasBackupPlanName'")
@@ -112,6 +120,9 @@ func NewNasBackupPlan(ctx *pulumi.Context,
 	}
 	if args.Schedule == nil {
 		return nil, errors.New("invalid value for required argument 'Schedule'")
+	}
+	if args.VaultId == nil {
+		return nil, errors.New("invalid value for required argument 'VaultId'")
 	}
 	var resource NasBackupPlan
 	err := ctx.RegisterResource("alicloud:hbr/nasBackupPlan:NasBackupPlan", name, args, &resource, opts...)
@@ -135,6 +146,7 @@ func GetNasBackupPlan(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NasBackupPlan resources.
 type nasBackupPlanState struct {
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
 	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime *string `pulumi:"createTime"`
@@ -156,13 +168,15 @@ type nasBackupPlanState struct {
 	Retention *string `pulumi:"retention"`
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule *string `pulumi:"schedule"`
-	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backupType` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit  *string `pulumi:"speedLimit"`
 	UpdatePaths *bool   `pulumi:"updatePaths"`
-	VaultId     *string `pulumi:"vaultId"`
+	// The ID of Backup vault.
+	VaultId *string `pulumi:"vaultId"`
 }
 
 type NasBackupPlanState struct {
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput
 	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime pulumi.StringPtrInput
@@ -184,10 +198,11 @@ type NasBackupPlanState struct {
 	Retention pulumi.StringPtrInput
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringPtrInput
-	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backupType` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit  pulumi.StringPtrInput
 	UpdatePaths pulumi.BoolPtrInput
-	VaultId     pulumi.StringPtrInput
+	// The ID of Backup vault.
+	VaultId pulumi.StringPtrInput
 }
 
 func (NasBackupPlanState) ElementType() reflect.Type {
@@ -195,7 +210,8 @@ func (NasBackupPlanState) ElementType() reflect.Type {
 }
 
 type nasBackupPlanArgs struct {
-	BackupType *string `pulumi:"backupType"`
+	// Backup type. Valid values: `COMPLETE`.
+	BackupType string `pulumi:"backupType"`
 	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime string  `pulumi:"createTime"`
 	Detail     *string `pulumi:"detail"`
@@ -204,7 +220,7 @@ type nasBackupPlanArgs struct {
 	// The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
 	Exclude *string `pulumi:"exclude"`
 	// The File System ID of Nas.
-	FileSystemId *string `pulumi:"fileSystemId"`
+	FileSystemId string `pulumi:"fileSystemId"`
 	// The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
 	Include *string `pulumi:"include"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -216,15 +232,17 @@ type nasBackupPlanArgs struct {
 	Retention string `pulumi:"retention"`
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule string `pulumi:"schedule"`
-	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backupType` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit  *string `pulumi:"speedLimit"`
 	UpdatePaths *bool   `pulumi:"updatePaths"`
-	VaultId     *string `pulumi:"vaultId"`
+	// The ID of Backup vault.
+	VaultId string `pulumi:"vaultId"`
 }
 
 // The set of arguments for constructing a NasBackupPlan resource.
 type NasBackupPlanArgs struct {
-	BackupType pulumi.StringPtrInput
+	// Backup type. Valid values: `COMPLETE`.
+	BackupType pulumi.StringInput
 	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	CreateTime pulumi.StringInput
 	Detail     pulumi.StringPtrInput
@@ -233,7 +251,7 @@ type NasBackupPlanArgs struct {
 	// The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
 	Exclude pulumi.StringPtrInput
 	// The File System ID of Nas.
-	FileSystemId pulumi.StringPtrInput
+	FileSystemId pulumi.StringInput
 	// The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
 	Include pulumi.StringPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -245,10 +263,11 @@ type NasBackupPlanArgs struct {
 	Retention pulumi.StringInput
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringInput
-	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backupType` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit  pulumi.StringPtrInput
 	UpdatePaths pulumi.BoolPtrInput
-	VaultId     pulumi.StringPtrInput
+	// The ID of Backup vault.
+	VaultId pulumi.StringInput
 }
 
 func (NasBackupPlanArgs) ElementType() reflect.Type {

@@ -9,6 +9,7 @@ export * from "./account";
 export * from "./dbCluster";
 export * from "./getAccounts";
 export * from "./getDbClusters";
+export * from "./getRegions";
 
 // Import resources to register:
 import { Account } from "./account";

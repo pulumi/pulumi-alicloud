@@ -96,6 +96,7 @@ type Endpoints struct {
 	Cdn                 *string `pulumi:"cdn"`
 	Cds                 *string `pulumi:"cds"`
 	Clickhouse          *string `pulumi:"clickhouse"`
+	Cloudauth           *string `pulumi:"cloudauth"`
 	Cloudphone          *string `pulumi:"cloudphone"`
 	Cloudsso            *string `pulumi:"cloudsso"`
 	Cms                 *string `pulumi:"cms"`
@@ -109,12 +110,14 @@ type Endpoints struct {
 	Ddosbgp             *string `pulumi:"ddosbgp"`
 	Ddoscoo             *string `pulumi:"ddoscoo"`
 	Dds                 *string `pulumi:"dds"`
+	Devopsrdc           *string `pulumi:"devopsrdc"`
 	Dg                  *string `pulumi:"dg"`
 	Dm                  *string `pulumi:"dm"`
 	DmsEnterprise       *string `pulumi:"dmsEnterprise"`
 	Dns                 *string `pulumi:"dns"`
 	Drds                *string `pulumi:"drds"`
 	Dts                 *string `pulumi:"dts"`
+	Eais                *string `pulumi:"eais"`
 	Eci                 *string `pulumi:"eci"`
 	Ecs                 *string `pulumi:"ecs"`
 	Ehpc                *string `pulumi:"ehpc"`
@@ -134,6 +137,7 @@ type Endpoints struct {
 	HcsSgw              *string `pulumi:"hcsSgw"`
 	Hitsdb              *string `pulumi:"hitsdb"`
 	Imm                 *string `pulumi:"imm"`
+	Imp                 *string `pulumi:"imp"`
 	Ims                 *string `pulumi:"ims"`
 	Iot                 *string `pulumi:"iot"`
 	Kms                 *string `pulumi:"kms"`
@@ -142,6 +146,7 @@ type Endpoints struct {
 	Log                 *string `pulumi:"log"`
 	Market              *string `pulumi:"market"`
 	Maxcompute          *string `pulumi:"maxcompute"`
+	Mhub                *string `pulumi:"mhub"`
 	Mns                 *string `pulumi:"mns"`
 	Mscopensubscription *string `pulumi:"mscopensubscription"`
 	Mse                 *string `pulumi:"mse"`
@@ -168,6 +173,7 @@ type Endpoints struct {
 	Scdn                *string `pulumi:"scdn"`
 	Sddp                *string `pulumi:"sddp"`
 	Serverless          *string `pulumi:"serverless"`
+	Servicemesh         *string `pulumi:"servicemesh"`
 	Sgw                 *string `pulumi:"sgw"`
 	Slb                 *string `pulumi:"slb"`
 	Sts                 *string `pulumi:"sts"`
@@ -209,6 +215,7 @@ type EndpointsArgs struct {
 	Cdn                 pulumi.StringPtrInput `pulumi:"cdn"`
 	Cds                 pulumi.StringPtrInput `pulumi:"cds"`
 	Clickhouse          pulumi.StringPtrInput `pulumi:"clickhouse"`
+	Cloudauth           pulumi.StringPtrInput `pulumi:"cloudauth"`
 	Cloudphone          pulumi.StringPtrInput `pulumi:"cloudphone"`
 	Cloudsso            pulumi.StringPtrInput `pulumi:"cloudsso"`
 	Cms                 pulumi.StringPtrInput `pulumi:"cms"`
@@ -222,12 +229,14 @@ type EndpointsArgs struct {
 	Ddosbgp             pulumi.StringPtrInput `pulumi:"ddosbgp"`
 	Ddoscoo             pulumi.StringPtrInput `pulumi:"ddoscoo"`
 	Dds                 pulumi.StringPtrInput `pulumi:"dds"`
+	Devopsrdc           pulumi.StringPtrInput `pulumi:"devopsrdc"`
 	Dg                  pulumi.StringPtrInput `pulumi:"dg"`
 	Dm                  pulumi.StringPtrInput `pulumi:"dm"`
 	DmsEnterprise       pulumi.StringPtrInput `pulumi:"dmsEnterprise"`
 	Dns                 pulumi.StringPtrInput `pulumi:"dns"`
 	Drds                pulumi.StringPtrInput `pulumi:"drds"`
 	Dts                 pulumi.StringPtrInput `pulumi:"dts"`
+	Eais                pulumi.StringPtrInput `pulumi:"eais"`
 	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
 	Ehpc                pulumi.StringPtrInput `pulumi:"ehpc"`
@@ -247,6 +256,7 @@ type EndpointsArgs struct {
 	HcsSgw              pulumi.StringPtrInput `pulumi:"hcsSgw"`
 	Hitsdb              pulumi.StringPtrInput `pulumi:"hitsdb"`
 	Imm                 pulumi.StringPtrInput `pulumi:"imm"`
+	Imp                 pulumi.StringPtrInput `pulumi:"imp"`
 	Ims                 pulumi.StringPtrInput `pulumi:"ims"`
 	Iot                 pulumi.StringPtrInput `pulumi:"iot"`
 	Kms                 pulumi.StringPtrInput `pulumi:"kms"`
@@ -255,6 +265,7 @@ type EndpointsArgs struct {
 	Log                 pulumi.StringPtrInput `pulumi:"log"`
 	Market              pulumi.StringPtrInput `pulumi:"market"`
 	Maxcompute          pulumi.StringPtrInput `pulumi:"maxcompute"`
+	Mhub                pulumi.StringPtrInput `pulumi:"mhub"`
 	Mns                 pulumi.StringPtrInput `pulumi:"mns"`
 	Mscopensubscription pulumi.StringPtrInput `pulumi:"mscopensubscription"`
 	Mse                 pulumi.StringPtrInput `pulumi:"mse"`
@@ -281,6 +292,7 @@ type EndpointsArgs struct {
 	Scdn                pulumi.StringPtrInput `pulumi:"scdn"`
 	Sddp                pulumi.StringPtrInput `pulumi:"sddp"`
 	Serverless          pulumi.StringPtrInput `pulumi:"serverless"`
+	Servicemesh         pulumi.StringPtrInput `pulumi:"servicemesh"`
 	Sgw                 pulumi.StringPtrInput `pulumi:"sgw"`
 	Slb                 pulumi.StringPtrInput `pulumi:"slb"`
 	Sts                 pulumi.StringPtrInput `pulumi:"sts"`
@@ -415,6 +427,10 @@ func (o EndpointsOutput) Clickhouse() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Clickhouse }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Cloudauth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Cloudauth }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Cloudphone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Cloudphone }).(pulumi.StringPtrOutput)
 }
@@ -467,6 +483,10 @@ func (o EndpointsOutput) Dds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Dds }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Devopsrdc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Devopsrdc }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Dg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Dg }).(pulumi.StringPtrOutput)
 }
@@ -489,6 +509,10 @@ func (o EndpointsOutput) Drds() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Dts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Dts }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Eais() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Eais }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Eci() pulumi.StringPtrOutput {
@@ -567,6 +591,10 @@ func (o EndpointsOutput) Imm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Imm }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Imp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Imp }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Ims() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Ims }).(pulumi.StringPtrOutput)
 }
@@ -597,6 +625,10 @@ func (o EndpointsOutput) Market() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Maxcompute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Maxcompute }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Mhub() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Mhub }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Mns() pulumi.StringPtrOutput {
@@ -701,6 +733,10 @@ func (o EndpointsOutput) Sddp() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Serverless() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Serverless }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Servicemesh() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Servicemesh }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Sgw() pulumi.StringPtrOutput {

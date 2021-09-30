@@ -37,6 +37,23 @@ import * as utilities from "../utilities";
  *     vaultId: "v-0003gxoksflhxxxxxxxx",
  * });
  * ```
+ * ## Notice
+ *
+ * **About Backup path rules:**
+ * 1. If there is no wildcard `*`, you can enter 8 lines of path.
+ * 2. When using wildcard `*`, only one line of path can be input, and wildcards like `/*&#47;*` are supported.
+ * 3. Each line only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
+ *
+ * **About Restrictions:**
+ * 1. When using VSS, multiple paths, UNC paths, wildcards, and excluded files are not supported.
+ * 2. When using UNC, VSS is not supported, wildcards are not supported, and files to be excluded are not supported.
+ *
+ * **About Include/exclude path rules:**
+ * 1. Supports up to 8 paths, including paths using wildcards `*`.
+ * 2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
+ * 3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*&#47;*&#47;` share will match `/a/b/c/share`, but not `/a/d/share`.
+ * 4. If the path ends with `/`, it means the folder matches. For example, `*tmp/` will match `/a/b/aaatmp/`, `/tmp/` and so on.
+ * 5. The path separator takes Linux system `/` as an example, if it is Windows system, please replace it with `\`.
  *
  * ## Import
  *
@@ -100,7 +117,7 @@ export class EcsBackupPlan extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
      */
     public readonly options!: pulumi.Output<string | undefined>;
     /**
@@ -123,7 +140,7 @@ export class EcsBackupPlan extends pulumi.CustomResource {
     /**
      * The ID of Backup vault.
      */
-    public readonly vaultId!: pulumi.Output<string | undefined>;
+    public readonly vaultId!: pulumi.Output<string>;
 
     /**
      * Create a EcsBackupPlan resource with the given unique name, arguments, and options.
@@ -154,6 +171,9 @@ export class EcsBackupPlan extends pulumi.CustomResource {
             inputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as EcsBackupPlanArgs | undefined;
+            if ((!args || args.backupType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'backupType'");
+            }
             if ((!args || args.ecsBackupPlanName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ecsBackupPlanName'");
             }
@@ -165,6 +185,9 @@ export class EcsBackupPlan extends pulumi.CustomResource {
             }
             if ((!args || args.schedule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
+            }
+            if ((!args || args.vaultId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'vaultId'");
             }
             inputs["backupType"] = args ? args.backupType : undefined;
             inputs["detail"] = args ? args.detail : undefined;
@@ -218,7 +241,7 @@ export interface EcsBackupPlanState {
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
-     * Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
      */
     readonly options?: pulumi.Input<string>;
     /**
@@ -251,7 +274,7 @@ export interface EcsBackupPlanArgs {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    readonly backupType?: pulumi.Input<string>;
+    readonly backupType: pulumi.Input<string>;
     readonly detail?: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
@@ -274,7 +297,7 @@ export interface EcsBackupPlanArgs {
      */
     readonly instanceId: pulumi.Input<string>;
     /**
-     * Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
      */
     readonly options?: pulumi.Input<string>;
     /**
@@ -297,5 +320,5 @@ export interface EcsBackupPlanArgs {
     /**
      * The ID of Backup vault.
      */
-    readonly vaultId?: pulumi.Input<string>;
+    readonly vaultId: pulumi.Input<string>;
 }

@@ -2089,6 +2089,8 @@ type GetNatGatewaysGateway struct {
 	NatGatewayName string `pulumi:"natGatewayName"`
 	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
 	NatType string `pulumi:"natType"`
+	// (Available in 1.137.0+) Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`.
+	NetworkType string `pulumi:"networkType"`
 	// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
 	// The resource group id of NAT gateway.
@@ -2147,6 +2149,8 @@ type GetNatGatewaysGatewayArgs struct {
 	NatGatewayName pulumi.StringInput `pulumi:"natGatewayName"`
 	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
 	NatType pulumi.StringInput `pulumi:"natType"`
+	// (Available in 1.137.0+) Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// The resource group id of NAT gateway.
@@ -2281,6 +2285,11 @@ func (o GetNatGatewaysGatewayOutput) NatGatewayName() pulumi.StringOutput {
 // The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
 func (o GetNatGatewaysGatewayOutput) NatType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.NatType }).(pulumi.StringOutput)
+}
+
+// (Available in 1.137.0+) Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`.
+func (o GetNatGatewaysGatewayOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 // The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.

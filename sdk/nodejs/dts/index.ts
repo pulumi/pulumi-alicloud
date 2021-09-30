@@ -5,10 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./getSubscriptionJobs";
+export * from "./getSynchronizationJobs";
 export * from "./jobMonitorRule";
+export * from "./subscriptionJob";
+export * from "./synchronizationInstance";
+export * from "./synchronizationJob";
 
 // Import resources to register:
 import { JobMonitorRule } from "./jobMonitorRule";
+import { SubscriptionJob } from "./subscriptionJob";
+import { SynchronizationInstance } from "./synchronizationInstance";
+import { SynchronizationJob } from "./synchronizationJob";
 
 const _module = {
     version: utilities.getVersion(),
@@ -16,9 +24,18 @@ const _module = {
         switch (type) {
             case "alicloud:dts/jobMonitorRule:JobMonitorRule":
                 return new JobMonitorRule(name, <any>undefined, { urn })
+            case "alicloud:dts/subscriptionJob:SubscriptionJob":
+                return new SubscriptionJob(name, <any>undefined, { urn })
+            case "alicloud:dts/synchronizationInstance:SynchronizationInstance":
+                return new SynchronizationInstance(name, <any>undefined, { urn })
+            case "alicloud:dts/synchronizationJob:SynchronizationJob":
+                return new SynchronizationJob(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "dts/jobMonitorRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dts/subscriptionJob", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dts/synchronizationInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dts/synchronizationJob", _module)

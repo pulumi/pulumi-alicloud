@@ -3386,7 +3386,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneIdSlaveA")
-    def zone_id_slave_a(self) -> pulumi.Output[Optional[str]]:
+    def zone_id_slave_a(self) -> pulumi.Output[str]:
         """
         The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """

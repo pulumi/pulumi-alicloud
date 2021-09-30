@@ -130,6 +130,7 @@ namespace Pulumi.AliCloud
                 public string? Cdn { get; set; } = null!;
                 public string? Cds { get; set; } = null!;
                 public string? Clickhouse { get; set; } = null!;
+                public string? Cloudauth { get; set; } = null!;
                 public string? Cloudphone { get; set; } = null!;
                 public string? Cloudsso { get; set; } = null!;
                 public string? Cms { get; set; } = null!;
@@ -143,12 +144,14 @@ namespace Pulumi.AliCloud
                 public string? Ddosbgp { get; set; } = null!;
                 public string? Ddoscoo { get; set; } = null!;
                 public string? Dds { get; set; } = null!;
+                public string? Devopsrdc { get; set; } = null!;
                 public string? Dg { get; set; } = null!;
                 public string? Dm { get; set; } = null!;
                 public string? DmsEnterprise { get; set; } = null!;
                 public string? Dns { get; set; } = null!;
                 public string? Drds { get; set; } = null!;
                 public string? Dts { get; set; } = null!;
+                public string? Eais { get; set; } = null!;
                 public string? Eci { get; set; } = null!;
                 public string? Ecs { get; set; } = null!;
                 public string? Ehpc { get; set; } = null!;
@@ -168,6 +171,7 @@ namespace Pulumi.AliCloud
                 public string? HcsSgw { get; set; } = null!;
                 public string? Hitsdb { get; set; } = null!;
                 public string? Imm { get; set; } = null!;
+                public string? Imp { get; set; } = null!;
                 public string? Ims { get; set; } = null!;
                 public string? Iot { get; set; } = null!;
                 public string? Kms { get; set; } = null!;
@@ -176,6 +180,7 @@ namespace Pulumi.AliCloud
                 public string? Log { get; set; } = null!;
                 public string? Market { get; set; } = null!;
                 public string? Maxcompute { get; set; } = null!;
+                public string? Mhub { get; set; } = null!;
                 public string? Mns { get; set; } = null!;
                 public string? Mscopensubscription { get; set; } = null!;
                 public string? Mse { get; set; } = null!;
@@ -202,6 +207,7 @@ namespace Pulumi.AliCloud
                 public string? Scdn { get; set; } = null!;
                 public string? Sddp { get; set; } = null!;
                 public string? Serverless { get; set; } = null!;
+                public string? Servicemesh { get; set; } = null!;
                 public string? Sgw { get; set; } = null!;
                 public string? Slb { get; set; } = null!;
                 public string? Sts { get; set; } = null!;

@@ -55,6 +55,23 @@ import (
 // 	})
 // }
 // ```
+// ## Notice
+//
+// **About Backup path rules:**
+// 1. If there is no wildcard `*`, you can enter 8 lines of path.
+// 2. When using wildcard `*`, only one line of path can be input, and wildcards like `/*/*` are supported.
+// 3. Each line only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
+//
+// **About Restrictions:**
+// 1. When using VSS, multiple paths, UNC paths, wildcards, and excluded files are not supported.
+// 2. When using UNC, VSS is not supported, wildcards are not supported, and files to be excluded are not supported.
+//
+// **About Include/exclude path rules:**
+// 1. Supports up to 8 paths, including paths using wildcards `*`.
+// 2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
+// 3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*/*/` share will match `/a/b/c/share`, but not `/a/d/share`.
+// 4. If the path ends with `/`, it means the folder matches. For example, `*tmp/` will match `/a/b/aaatmp/`, `/tmp/` and so on.
+// 5. The path separator takes Linux system `/` as an example, if it is Windows system, please replace it with `\`.
 //
 // ## Import
 //
@@ -79,7 +96,7 @@ type EcsBackupPlan struct {
 	Include pulumi.StringPtrOutput `pulumi:"include"`
 	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
 	Options pulumi.StringPtrOutput `pulumi:"options"`
 	// Backup path. e.g. `["/home", "/var"]`
 	Paths pulumi.StringArrayOutput `pulumi:"paths"`
@@ -91,7 +108,7 @@ type EcsBackupPlan struct {
 	SpeedLimit  pulumi.StringPtrOutput `pulumi:"speedLimit"`
 	UpdatePaths pulumi.BoolPtrOutput   `pulumi:"updatePaths"`
 	// The ID of Backup vault.
-	VaultId pulumi.StringPtrOutput `pulumi:"vaultId"`
+	VaultId pulumi.StringOutput `pulumi:"vaultId"`
 }
 
 // NewEcsBackupPlan registers a new resource with the given unique name, arguments, and options.
@@ -101,6 +118,9 @@ func NewEcsBackupPlan(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BackupType == nil {
+		return nil, errors.New("invalid value for required argument 'BackupType'")
+	}
 	if args.EcsBackupPlanName == nil {
 		return nil, errors.New("invalid value for required argument 'EcsBackupPlanName'")
 	}
@@ -112,6 +132,9 @@ func NewEcsBackupPlan(ctx *pulumi.Context,
 	}
 	if args.Schedule == nil {
 		return nil, errors.New("invalid value for required argument 'Schedule'")
+	}
+	if args.VaultId == nil {
+		return nil, errors.New("invalid value for required argument 'VaultId'")
 	}
 	var resource EcsBackupPlan
 	err := ctx.RegisterResource("alicloud:hbr/ecsBackupPlan:EcsBackupPlan", name, args, &resource, opts...)
@@ -148,7 +171,7 @@ type ecsBackupPlanState struct {
 	Include *string `pulumi:"include"`
 	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId *string `pulumi:"instanceId"`
-	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
 	Options *string `pulumi:"options"`
 	// Backup path. e.g. `["/home", "/var"]`
 	Paths []string `pulumi:"paths"`
@@ -177,7 +200,7 @@ type EcsBackupPlanState struct {
 	Include pulumi.StringPtrInput
 	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId pulumi.StringPtrInput
-	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
 	Options pulumi.StringPtrInput
 	// Backup path. e.g. `["/home", "/var"]`
 	Paths pulumi.StringArrayInput
@@ -198,7 +221,7 @@ func (EcsBackupPlanState) ElementType() reflect.Type {
 
 type ecsBackupPlanArgs struct {
 	// Backup type. Valid values: `COMPLETE`.
-	BackupType *string `pulumi:"backupType"`
+	BackupType string  `pulumi:"backupType"`
 	Detail     *string `pulumi:"detail"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
@@ -210,7 +233,7 @@ type ecsBackupPlanArgs struct {
 	Include *string `pulumi:"include"`
 	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId string `pulumi:"instanceId"`
-	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
 	Options *string `pulumi:"options"`
 	// Backup path. e.g. `["/home", "/var"]`
 	Paths []string `pulumi:"paths"`
@@ -222,13 +245,13 @@ type ecsBackupPlanArgs struct {
 	SpeedLimit  *string `pulumi:"speedLimit"`
 	UpdatePaths *bool   `pulumi:"updatePaths"`
 	// The ID of Backup vault.
-	VaultId *string `pulumi:"vaultId"`
+	VaultId string `pulumi:"vaultId"`
 }
 
 // The set of arguments for constructing a EcsBackupPlan resource.
 type EcsBackupPlanArgs struct {
 	// Backup type. Valid values: `COMPLETE`.
-	BackupType pulumi.StringPtrInput
+	BackupType pulumi.StringInput
 	Detail     pulumi.StringPtrInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
@@ -240,7 +263,7 @@ type EcsBackupPlanArgs struct {
 	Include pulumi.StringPtrInput
 	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId pulumi.StringInput
-	// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
 	Options pulumi.StringPtrInput
 	// Backup path. e.g. `["/home", "/var"]`
 	Paths pulumi.StringArrayInput
@@ -252,7 +275,7 @@ type EcsBackupPlanArgs struct {
 	SpeedLimit  pulumi.StringPtrInput
 	UpdatePaths pulumi.BoolPtrInput
 	// The ID of Backup vault.
-	VaultId pulumi.StringPtrInput
+	VaultId pulumi.StringInput
 }
 
 func (EcsBackupPlanArgs) ElementType() reflect.Type {

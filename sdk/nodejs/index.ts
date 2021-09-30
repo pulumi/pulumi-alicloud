@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 export * from "./getAccount";
 export * from "./getCallerIdentity";
 export * from "./getFileCrc64Checksum";
-export * from "./getMscSubContracts";
+export * from "./getMscSubContacts";
 export * from "./getMscSubSubscriptions";
 export * from "./getRegions";
 export * from "./getZones";
@@ -33,6 +33,7 @@ import * as cdn from "./cdn";
 import * as cen from "./cen";
 import * as cfg from "./cfg";
 import * as clickhouse from "./clickhouse";
+import * as cloudauth from "./cloudauth";
 import * as cloudconnect from "./cloudconnect";
 import * as cloudfirewall from "./cloudfirewall";
 import * as cloudsso from "./cloudsso";
@@ -54,6 +55,7 @@ import * as dms from "./dms";
 import * as dns from "./dns";
 import * as drds from "./drds";
 import * as dts from "./dts";
+import * as eais from "./eais";
 import * as eci from "./eci";
 import * as ecp from "./ecp";
 import * as ecs from "./ecs";
@@ -75,6 +77,7 @@ import * as graphdatabase from "./graphdatabase";
 import * as hbase from "./hbase";
 import * as hbr from "./hbr";
 import * as imm from "./imm";
+import * as imp from "./imp";
 import * as iot from "./iot";
 import * as kms from "./kms";
 import * as kvstore from "./kvstore";
@@ -82,6 +85,7 @@ import * as lindorm from "./lindorm";
 import * as log from "./log";
 import * as marketplace from "./marketplace";
 import * as maxcompute from "./maxcompute";
+import * as mhub from "./mhub";
 import * as mns from "./mns";
 import * as mongodb from "./mongodb";
 import * as mse from "./mse";
@@ -96,6 +100,7 @@ import * as pvtz from "./pvtz";
 import * as quickbi from "./quickbi";
 import * as quotas from "./quotas";
 import * as ram from "./ram";
+import * as rdc from "./rdc";
 import * as rds from "./rds";
 import * as resourcemanager from "./resourcemanager";
 import * as rocketmq from "./rocketmq";
@@ -105,6 +110,7 @@ import * as sag from "./sag";
 import * as scdn from "./scdn";
 import * as sddp from "./sddp";
 import * as securitycenter from "./securitycenter";
+import * as servicemesh from "./servicemesh";
 import * as simpleapplicationserver from "./simpleapplicationserver";
 import * as slb from "./slb";
 import * as tsdb from "./tsdb";
@@ -133,6 +139,7 @@ export {
     cen,
     cfg,
     clickhouse,
+    cloudauth,
     cloudconnect,
     cloudfirewall,
     cloudsso,
@@ -154,6 +161,7 @@ export {
     dns,
     drds,
     dts,
+    eais,
     eci,
     ecp,
     ecs,
@@ -175,6 +183,7 @@ export {
     hbase,
     hbr,
     imm,
+    imp,
     iot,
     kms,
     kvstore,
@@ -182,6 +191,7 @@ export {
     log,
     marketplace,
     maxcompute,
+    mhub,
     mns,
     mongodb,
     mse,
@@ -196,6 +206,7 @@ export {
     quickbi,
     quotas,
     ram,
+    rdc,
     rds,
     resourcemanager,
     rocketmq,
@@ -205,6 +216,7 @@ export {
     scdn,
     sddp,
     securitycenter,
+    servicemesh,
     simpleapplicationserver,
     slb,
     tsdb,

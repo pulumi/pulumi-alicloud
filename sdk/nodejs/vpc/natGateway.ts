@@ -62,7 +62,7 @@ export class NatGateway extends pulumi.CustomResource {
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
-     * The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+     * The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
      */
     public readonly internetChargeType!: pulumi.Output<string>;
     /**
@@ -74,9 +74,9 @@ export class NatGateway extends pulumi.CustomResource {
      */
     public readonly natGatewayName!: pulumi.Output<string>;
     /**
-     * The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+     * The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
      */
-    public readonly natType!: pulumi.Output<string | undefined>;
+    public readonly natType!: pulumi.Output<string>;
     /**
      * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
      */
@@ -91,9 +91,9 @@ export class NatGateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly snatTableIds!: pulumi.Output<string>;
     /**
-     * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+     * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      */
-    public readonly specification!: pulumi.Output<string | undefined>;
+    public readonly specification!: pulumi.Output<string>;
     /**
      * (Available in 1.121.0+) The status of NAT gateway.
      */
@@ -200,7 +200,7 @@ export interface NatGatewayState {
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
-     * The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+     * The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
      */
     readonly internetChargeType?: pulumi.Input<string>;
     /**
@@ -212,7 +212,7 @@ export interface NatGatewayState {
      */
     readonly natGatewayName?: pulumi.Input<string>;
     /**
-     * The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+     * The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
      */
     readonly natType?: pulumi.Input<string>;
     /**
@@ -229,7 +229,7 @@ export interface NatGatewayState {
      */
     readonly snatTableIds?: pulumi.Input<string>;
     /**
-     * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+     * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      */
     readonly specification?: pulumi.Input<string>;
     /**
@@ -271,7 +271,7 @@ export interface NatGatewayArgs {
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
-     * The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+     * The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
      */
     readonly internetChargeType?: pulumi.Input<string>;
     /**
@@ -283,7 +283,7 @@ export interface NatGatewayArgs {
      */
     readonly natGatewayName?: pulumi.Input<string>;
     /**
-     * The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+     * The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
      */
     readonly natType?: pulumi.Input<string>;
     /**
@@ -296,7 +296,7 @@ export interface NatGatewayArgs {
     readonly paymentType?: pulumi.Input<string>;
     readonly period?: pulumi.Input<number>;
     /**
-     * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+     * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      */
     readonly specification?: pulumi.Input<string>;
     /**

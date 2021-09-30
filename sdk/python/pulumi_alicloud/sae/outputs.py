@@ -9,10 +9,160 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'IngressDefaultRule',
+    'IngressRule',
     'GetApplicationsApplicationResult',
     'GetConfigMapsMapResult',
+    'GetIngressesIngressResult',
     'GetNamespacesNamespaceResult',
 ]
+
+@pulumi.output_type
+class IngressDefaultRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appId":
+            suggest = "app_id"
+        elif key == "appName":
+            suggest = "app_name"
+        elif key == "containerPort":
+            suggest = "container_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IngressDefaultRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IngressDefaultRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IngressDefaultRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 app_id: Optional[str] = None,
+                 app_name: Optional[str] = None,
+                 container_port: Optional[int] = None):
+        """
+        :param str app_id: Target application ID.
+        :param str app_name: Target application name.
+        :param int container_port: Application backend port.
+        """
+        if app_id is not None:
+            pulumi.set(__self__, "app_id", app_id)
+        if app_name is not None:
+            pulumi.set(__self__, "app_name", app_name)
+        if container_port is not None:
+            pulumi.set(__self__, "container_port", container_port)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> Optional[str]:
+        """
+        Target application ID.
+        """
+        return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> Optional[str]:
+        """
+        Target application name.
+        """
+        return pulumi.get(self, "app_name")
+
+    @property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> Optional[int]:
+        """
+        Application backend port.
+        """
+        return pulumi.get(self, "container_port")
+
+
+@pulumi.output_type
+class IngressRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appId":
+            suggest = "app_id"
+        elif key == "appName":
+            suggest = "app_name"
+        elif key == "containerPort":
+            suggest = "container_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IngressRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IngressRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IngressRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 app_id: str,
+                 app_name: str,
+                 container_port: int,
+                 domain: str,
+                 path: str):
+        """
+        :param str app_id: Target application ID.
+        :param str app_name: Target application name.
+        :param int container_port: Application backend port.
+        :param str domain: Application domain name.
+        :param str path: URL path.
+        """
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "app_name", app_name)
+        pulumi.set(__self__, "container_port", container_port)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> str:
+        """
+        Target application ID.
+        """
+        return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> str:
+        """
+        Target application name.
+        """
+        return pulumi.get(self, "app_name")
+
+    @property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> int:
+        """
+        Application backend port.
+        """
+        return pulumi.get(self, "container_port")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        Application domain name.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        URL path.
+        """
+        return pulumi.get(self, "path")
+
 
 @pulumi.output_type
 class GetApplicationsApplicationResult(dict):
@@ -648,6 +798,101 @@ class GetConfigMapsMapResult(dict):
         The NamespaceId of Config Maps.
         """
         return pulumi.get(self, "namespace_id")
+
+
+@pulumi.output_type
+class GetIngressesIngressResult(dict):
+    def __init__(__self__, *,
+                 cert_id: str,
+                 default_rule: str,
+                 description: str,
+                 id: str,
+                 ingress_id: str,
+                 listener_port: int,
+                 namespace_id: str,
+                 slb_id: str):
+        """
+        :param str cert_id: Cert Id.
+        :param str default_rule: Default Rule.
+        :param str description: Description.
+        :param str id: The ID of the Ingress.
+        :param str ingress_id: The first ID of the resource.
+        :param int listener_port: SLB listening port.
+        :param str namespace_id: The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+        :param str slb_id: SLB ID.
+        """
+        pulumi.set(__self__, "cert_id", cert_id)
+        pulumi.set(__self__, "default_rule", default_rule)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ingress_id", ingress_id)
+        pulumi.set(__self__, "listener_port", listener_port)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "slb_id", slb_id)
+
+    @property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> str:
+        """
+        Cert Id.
+        """
+        return pulumi.get(self, "cert_id")
+
+    @property
+    @pulumi.getter(name="defaultRule")
+    def default_rule(self) -> str:
+        """
+        Default Rule.
+        """
+        return pulumi.get(self, "default_rule")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ingress.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ingressId")
+    def ingress_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "ingress_id")
+
+    @property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> int:
+        """
+        SLB listening port.
+        """
+        return pulumi.get(self, "listener_port")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
+        """
+        The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter(name="slbId")
+    def slb_id(self) -> str:
+        """
+        SLB ID.
+        """
+        return pulumi.get(self, "slb_id")
 
 
 @pulumi.output_type

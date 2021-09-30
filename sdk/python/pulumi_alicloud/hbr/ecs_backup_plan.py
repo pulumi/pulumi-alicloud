@@ -13,11 +13,12 @@ __all__ = ['EcsBackupPlanArgs', 'EcsBackupPlan']
 @pulumi.input_type
 class EcsBackupPlanArgs:
     def __init__(__self__, *,
+                 backup_type: pulumi.Input[str],
                  ecs_backup_plan_name: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  retention: pulumi.Input[str],
                  schedule: pulumi.Input[str],
-                 backup_type: Optional[pulumi.Input[str]] = None,
+                 vault_id: pulumi.Input[str],
                  detail: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
@@ -25,29 +26,28 @@ class EcsBackupPlanArgs:
                  options: Optional[pulumi.Input[str]] = None,
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  speed_limit: Optional[pulumi.Input[str]] = None,
-                 update_paths: Optional[pulumi.Input[bool]] = None,
-                 vault_id: Optional[pulumi.Input[str]] = None):
+                 update_paths: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a EcsBackupPlan resource.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] ecs_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[str] instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] vault_id: The ID of Backup vault.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] exclude: Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         :param pulumi.Input[str] include: Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
-        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. e.g. `["/home", "/var"]`
         :param pulumi.Input[str] speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-        :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
+        pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "ecs_backup_plan_name", ecs_backup_plan_name)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "retention", retention)
         pulumi.set(__self__, "schedule", schedule)
-        if backup_type is not None:
-            pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "vault_id", vault_id)
         if detail is not None:
             pulumi.set(__self__, "detail", detail)
         if disabled is not None:
@@ -64,8 +64,18 @@ class EcsBackupPlanArgs:
             pulumi.set(__self__, "speed_limit", speed_limit)
         if update_paths is not None:
             pulumi.set(__self__, "update_paths", update_paths)
-        if vault_id is not None:
-            pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> pulumi.Input[str]:
+        """
+        Backup type. Valid values: `COMPLETE`.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @backup_type.setter
+    def backup_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "backup_type", value)
 
     @property
     @pulumi.getter(name="ecsBackupPlanName")
@@ -116,16 +126,16 @@ class EcsBackupPlanArgs:
         pulumi.set(self, "schedule", value)
 
     @property
-    @pulumi.getter(name="backupType")
-    def backup_type(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> pulumi.Input[str]:
         """
-        Backup type. Valid values: `COMPLETE`.
+        The ID of Backup vault.
         """
-        return pulumi.get(self, "backup_type")
+        return pulumi.get(self, "vault_id")
 
-    @backup_type.setter
-    def backup_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "backup_type", value)
+    @vault_id.setter
+    def vault_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vault_id", value)
 
     @property
     @pulumi.getter
@@ -176,7 +186,7 @@ class EcsBackupPlanArgs:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
         """
-        Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+        Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         """
         return pulumi.get(self, "options")
 
@@ -217,18 +227,6 @@ class EcsBackupPlanArgs:
     def update_paths(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "update_paths", value)
 
-    @property
-    @pulumi.getter(name="vaultId")
-    def vault_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of Backup vault.
-        """
-        return pulumi.get(self, "vault_id")
-
-    @vault_id.setter
-    def vault_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "vault_id", value)
-
 
 @pulumi.input_type
 class _EcsBackupPlanState:
@@ -255,7 +253,7 @@ class _EcsBackupPlanState:
         :param pulumi.Input[str] exclude: Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         :param pulumi.Input[str] include: Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         :param pulumi.Input[str] instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host.
-        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. e.g. `["/home", "/var"]`
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
@@ -376,7 +374,7 @@ class _EcsBackupPlanState:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
         """
-        Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+        Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         """
         return pulumi.get(self, "options")
 
@@ -508,6 +506,23 @@ class EcsBackupPlan(pulumi.CustomResource):
             speed_limit="0:24:5120",
             vault_id="v-0003gxoksflhxxxxxxxx")
         ```
+        ## Notice
+
+        **About Backup path rules:**
+        1. If there is no wildcard `*`, you can enter 8 lines of path.
+        2. When using wildcard `*`, only one line of path can be input, and wildcards like `/*/*` are supported.
+        3. Each line only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
+
+        **About Restrictions:**
+        1. When using VSS, multiple paths, UNC paths, wildcards, and excluded files are not supported.
+        2. When using UNC, VSS is not supported, wildcards are not supported, and files to be excluded are not supported.
+
+        **About Include/exclude path rules:**
+        1. Supports up to 8 paths, including paths using wildcards `*`.
+        2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
+        3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*/*/` share will match `/a/b/c/share`, but not `/a/d/share`.
+        4. If the path ends with `/`, it means the folder matches. For example, `*tmp/` will match `/a/b/aaatmp/`, `/tmp/` and so on.
+        5. The path separator takes Linux system `/` as an example, if it is Windows system, please replace it with `\`.
 
         ## Import
 
@@ -525,7 +540,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] exclude: Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         :param pulumi.Input[str] include: Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         :param pulumi.Input[str] instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host.
-        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. e.g. `["/home", "/var"]`
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
@@ -572,6 +587,23 @@ class EcsBackupPlan(pulumi.CustomResource):
             speed_limit="0:24:5120",
             vault_id="v-0003gxoksflhxxxxxxxx")
         ```
+        ## Notice
+
+        **About Backup path rules:**
+        1. If there is no wildcard `*`, you can enter 8 lines of path.
+        2. When using wildcard `*`, only one line of path can be input, and wildcards like `/*/*` are supported.
+        3. Each line only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
+
+        **About Restrictions:**
+        1. When using VSS, multiple paths, UNC paths, wildcards, and excluded files are not supported.
+        2. When using UNC, VSS is not supported, wildcards are not supported, and files to be excluded are not supported.
+
+        **About Include/exclude path rules:**
+        1. Supports up to 8 paths, including paths using wildcards `*`.
+        2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
+        3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*/*/` share will match `/a/b/c/share`, but not `/a/d/share`.
+        4. If the path ends with `/`, it means the folder matches. For example, `*tmp/` will match `/a/b/aaatmp/`, `/tmp/` and so on.
+        5. The path separator takes Linux system `/` as an example, if it is Windows system, please replace it with `\`.
 
         ## Import
 
@@ -622,6 +654,8 @@ class EcsBackupPlan(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EcsBackupPlanArgs.__new__(EcsBackupPlanArgs)
 
+            if backup_type is None and not opts.urn:
+                raise TypeError("Missing required property 'backup_type'")
             __props__.__dict__["backup_type"] = backup_type
             __props__.__dict__["detail"] = detail
             __props__.__dict__["disabled"] = disabled
@@ -643,6 +677,8 @@ class EcsBackupPlan(pulumi.CustomResource):
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["speed_limit"] = speed_limit
             __props__.__dict__["update_paths"] = update_paths
+            if vault_id is None and not opts.urn:
+                raise TypeError("Missing required property 'vault_id'")
             __props__.__dict__["vault_id"] = vault_id
         super(EcsBackupPlan, __self__).__init__(
             'alicloud:hbr/ecsBackupPlan:EcsBackupPlan',
@@ -681,7 +717,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] exclude: Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         :param pulumi.Input[str] include: Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         :param pulumi.Input[str] instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host.
-        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. e.g. `["/home", "/var"]`
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
@@ -765,7 +801,7 @@ class EcsBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def options(self) -> pulumi.Output[Optional[str]]:
         """
-        Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+        Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         """
         return pulumi.get(self, "options")
 
@@ -808,7 +844,7 @@ class EcsBackupPlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vaultId")
-    def vault_id(self) -> pulumi.Output[Optional[str]]:
+    def vault_id(self) -> pulumi.Output[str]:
         """
         The ID of Backup vault.
         """

@@ -13,37 +13,58 @@ __all__ = ['OssBackupPlanArgs', 'OssBackupPlan']
 @pulumi.input_type
 class OssBackupPlanArgs:
     def __init__(__self__, *,
+                 backup_type: pulumi.Input[str],
+                 bucket: pulumi.Input[str],
                  oss_backup_plan_name: pulumi.Input[str],
                  retention: pulumi.Input[str],
                  schedule: pulumi.Input[str],
-                 backup_type: Optional[pulumi.Input[str]] = None,
-                 bucket: Optional[pulumi.Input[str]] = None,
+                 vault_id: pulumi.Input[str],
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 prefix: Optional[pulumi.Input[str]] = None,
-                 vault_id: Optional[pulumi.Input[str]] = None):
+                 prefix: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OssBackupPlan resource.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] bucket: The name of OSS bucket.
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid values: `COMPLETE`.
-        :param pulumi.Input[str] bucket: The name of OSS bucket.
-        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         """
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "oss_backup_plan_name", oss_backup_plan_name)
         pulumi.set(__self__, "retention", retention)
         pulumi.set(__self__, "schedule", schedule)
-        if backup_type is not None:
-            pulumi.set(__self__, "backup_type", backup_type)
-        if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "vault_id", vault_id)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
-        if vault_id is not None:
-            pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> pulumi.Input[str]:
+        """
+        Backup type. Valid values: `COMPLETE`.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @backup_type.setter
+    def backup_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "backup_type", value)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        The name of OSS bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
 
     @property
     @pulumi.getter(name="ossBackupPlanName")
@@ -82,28 +103,16 @@ class OssBackupPlanArgs:
         pulumi.set(self, "schedule", value)
 
     @property
-    @pulumi.getter(name="backupType")
-    def backup_type(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> pulumi.Input[str]:
         """
-        Backup Type. Valid values: `COMPLETE`.
+        The ID of backup vault.
         """
-        return pulumi.get(self, "backup_type")
+        return pulumi.get(self, "vault_id")
 
-    @backup_type.setter
-    def backup_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "backup_type", value)
-
-    @property
-    @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of OSS bucket.
-        """
-        return pulumi.get(self, "bucket")
-
-    @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "bucket", value)
+    @vault_id.setter
+    def vault_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vault_id", value)
 
     @property
     @pulumi.getter
@@ -126,18 +135,6 @@ class OssBackupPlanArgs:
     def prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "prefix", value)
 
-    @property
-    @pulumi.getter(name="vaultId")
-    def vault_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of backup vault.
-        """
-        return pulumi.get(self, "vault_id")
-
-    @vault_id.setter
-    def vault_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "vault_id", value)
-
 
 @pulumi.input_type
 class _OssBackupPlanState:
@@ -152,7 +149,7 @@ class _OssBackupPlanState:
                  vault_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OssBackupPlan resources.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] bucket: The name of OSS bucket.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -181,7 +178,7 @@ class _OssBackupPlanState:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup Type. Valid values: `COMPLETE`.
+        Backup type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -326,7 +323,7 @@ class OssBackupPlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] bucket: The name of OSS bucket.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -414,7 +411,11 @@ class OssBackupPlan(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OssBackupPlanArgs.__new__(OssBackupPlanArgs)
 
+            if backup_type is None and not opts.urn:
+                raise TypeError("Missing required property 'backup_type'")
             __props__.__dict__["backup_type"] = backup_type
+            if bucket is None and not opts.urn:
+                raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
             __props__.__dict__["disabled"] = disabled
             if oss_backup_plan_name is None and not opts.urn:
@@ -427,6 +428,8 @@ class OssBackupPlan(pulumi.CustomResource):
             if schedule is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule'")
             __props__.__dict__["schedule"] = schedule
+            if vault_id is None and not opts.urn:
+                raise TypeError("Missing required property 'vault_id'")
             __props__.__dict__["vault_id"] = vault_id
         super(OssBackupPlan, __self__).__init__(
             'alicloud:hbr/ossBackupPlan:OssBackupPlan',
@@ -453,7 +456,7 @@ class OssBackupPlan(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] bucket: The name of OSS bucket.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -479,13 +482,13 @@ class OssBackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="backupType")
     def backup_type(self) -> pulumi.Output[str]:
         """
-        Backup Type. Valid values: `COMPLETE`.
+        Backup type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
     @property
     @pulumi.getter
-    def bucket(self) -> pulumi.Output[Optional[str]]:
+    def bucket(self) -> pulumi.Output[str]:
         """
         The name of OSS bucket.
         """
@@ -530,7 +533,7 @@ class OssBackupPlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vaultId")
-    def vault_id(self) -> pulumi.Output[Optional[str]]:
+    def vault_id(self) -> pulumi.Output[str]:
         """
         The ID of backup vault.
         """

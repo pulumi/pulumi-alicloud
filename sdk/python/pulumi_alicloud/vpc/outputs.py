@@ -1300,6 +1300,7 @@ class GetNatGatewaysGatewayResult(dict):
                  nat_gateway_id: str,
                  nat_gateway_name: str,
                  nat_type: str,
+                 network_type: str,
                  payment_type: str,
                  resource_group_id: str,
                  snat_table_ids: Sequence[str],
@@ -1323,6 +1324,7 @@ class GetNatGatewaysGatewayResult(dict):
         :param str nat_gateway_id: The ID of the NAT gateway.
         :param str nat_gateway_name: The name of NAT gateway.
         :param str nat_type: The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
+        :param str network_type: (Available in 1.137.0+) Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`.
         :param str payment_type: The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
         :param str resource_group_id: The resource group id of NAT gateway.
         :param Sequence[str] snat_table_ids: The ID of the SNAT table that is associated with the NAT gateway.
@@ -1346,6 +1348,7 @@ class GetNatGatewaysGatewayResult(dict):
         pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
         pulumi.set(__self__, "nat_gateway_name", nat_gateway_name)
         pulumi.set(__self__, "nat_type", nat_type)
+        pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "snat_table_ids", snat_table_ids)
@@ -1459,6 +1462,14 @@ class GetNatGatewaysGatewayResult(dict):
         The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
         """
         return pulumi.get(self, "nat_type")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        (Available in 1.137.0+) Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`.
+        """
+        return pulumi.get(self, "network_type")
 
     @property
     @pulumi.getter(name="paymentType")

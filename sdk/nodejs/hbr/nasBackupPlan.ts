@@ -75,6 +75,9 @@ export class NasBackupPlan extends pulumi.CustomResource {
         return obj['__pulumiType'] === NasBackupPlan.__pulumiType;
     }
 
+    /**
+     * Backup type. Valid values: `COMPLETE`.
+     */
     public readonly backupType!: pulumi.Output<string>;
     /**
      * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
@@ -92,7 +95,7 @@ export class NasBackupPlan extends pulumi.CustomResource {
     /**
      * The File System ID of Nas.
      */
-    public readonly fileSystemId!: pulumi.Output<string | undefined>;
+    public readonly fileSystemId!: pulumi.Output<string>;
     /**
      * The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
      */
@@ -115,11 +118,14 @@ export class NasBackupPlan extends pulumi.CustomResource {
      */
     public readonly schedule!: pulumi.Output<string>;
     /**
-     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backupType` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      */
     public readonly speedLimit!: pulumi.Output<string | undefined>;
     public readonly updatePaths!: pulumi.Output<boolean | undefined>;
-    public readonly vaultId!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of Backup vault.
+     */
+    public readonly vaultId!: pulumi.Output<string>;
 
     /**
      * Create a NasBackupPlan resource with the given unique name, arguments, and options.
@@ -151,8 +157,14 @@ export class NasBackupPlan extends pulumi.CustomResource {
             inputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as NasBackupPlanArgs | undefined;
+            if ((!args || args.backupType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'backupType'");
+            }
             if ((!args || args.createTime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'createTime'");
+            }
+            if ((!args || args.fileSystemId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'fileSystemId'");
             }
             if ((!args || args.nasBackupPlanName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nasBackupPlanName'");
@@ -162,6 +174,9 @@ export class NasBackupPlan extends pulumi.CustomResource {
             }
             if ((!args || args.schedule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
+            }
+            if ((!args || args.vaultId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'vaultId'");
             }
             inputs["backupType"] = args ? args.backupType : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -190,6 +205,9 @@ export class NasBackupPlan extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NasBackupPlan resources.
  */
 export interface NasBackupPlanState {
+    /**
+     * Backup type. Valid values: `COMPLETE`.
+     */
     readonly backupType?: pulumi.Input<string>;
     /**
      * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
@@ -230,10 +248,13 @@ export interface NasBackupPlanState {
      */
     readonly schedule?: pulumi.Input<string>;
     /**
-     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backupType` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      */
     readonly speedLimit?: pulumi.Input<string>;
     readonly updatePaths?: pulumi.Input<boolean>;
+    /**
+     * The ID of Backup vault.
+     */
     readonly vaultId?: pulumi.Input<string>;
 }
 
@@ -241,7 +262,10 @@ export interface NasBackupPlanState {
  * The set of arguments for constructing a NasBackupPlan resource.
  */
 export interface NasBackupPlanArgs {
-    readonly backupType?: pulumi.Input<string>;
+    /**
+     * Backup type. Valid values: `COMPLETE`.
+     */
+    readonly backupType: pulumi.Input<string>;
     /**
      * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
@@ -258,7 +282,7 @@ export interface NasBackupPlanArgs {
     /**
      * The File System ID of Nas.
      */
-    readonly fileSystemId?: pulumi.Input<string>;
+    readonly fileSystemId: pulumi.Input<string>;
     /**
      * The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
      */
@@ -281,9 +305,12 @@ export interface NasBackupPlanArgs {
      */
     readonly schedule: pulumi.Input<string>;
     /**
-     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backupType` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      */
     readonly speedLimit?: pulumi.Input<string>;
     readonly updatePaths?: pulumi.Input<boolean>;
-    readonly vaultId?: pulumi.Input<string>;
+    /**
+     * The ID of Backup vault.
+     */
+    readonly vaultId: pulumi.Input<string>;
 }

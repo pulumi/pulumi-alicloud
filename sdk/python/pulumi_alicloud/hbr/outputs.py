@@ -9,6 +9,8 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetBackupJobsFilterResult',
+    'GetBackupJobsJobResult',
     'GetEcsBackupClientsClientResult',
     'GetEcsBackupPlansPlanResult',
     'GetNasBackupPlansPlanResult',
@@ -17,6 +19,342 @@ __all__ = [
     'GetSnapshotsSnapshotResult',
     'GetVaultsVaultResult',
 ]
+
+@pulumi.output_type
+class GetBackupJobsFilterResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str key: The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+        :param str operator: The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        Set of values that are accepted for the given field.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetBackupJobsJobResult(dict):
+    def __init__(__self__, *,
+                 actual_bytes: str,
+                 actual_items: str,
+                 back_job_name: str,
+                 backup_job_id: str,
+                 backup_type: str,
+                 bucket: str,
+                 bytes_done: str,
+                 bytes_total: str,
+                 complete_time: str,
+                 create_time: str,
+                 exclude: str,
+                 file_system_id: str,
+                 id: str,
+                 include: str,
+                 instance_id: str,
+                 items_done: str,
+                 items_total: str,
+                 nas_create_time: str,
+                 paths: Sequence[str],
+                 plan_id: str,
+                 prefix: str,
+                 source_type: str,
+                 start_time: str,
+                 status: str,
+                 updated_time: str,
+                 vault_id: str):
+        """
+        :param str actual_bytes: The actual size of backup job.
+        :param str actual_items: The actual number of files.
+        :param str back_job_name: The name of backup job.
+        :param str backup_job_id: The ID of backup job.
+        :param str backup_type: Backup type. Valid values: `COMPLETE`(full backup).
+        :param str bucket: The name of target ofo OSS bucket.
+        :param str bytes_done: The size of backup job recovered.
+        :param str bytes_total: The total size of backup job recovered.
+        :param str complete_time: The completion time of backup job. UNIX time seconds.
+        :param str create_time: The creation time of backup job. UNIX time seconds.
+        :param str exclude: Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
+        :param str file_system_id: The ID of destination file system.
+        :param str id: The ID of the backup job.
+        :param str include: Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
+        :param str instance_id: The ID of target ECS instance.
+        :param str items_done: The number of items restore job recovered.
+        :param str items_total: The total number of items restore job recovered.
+        :param str nas_create_time: File system creation time. UNIX time in seconds.
+        :param Sequence[str] paths: Backup path. e.g. `["/home", "/var"]`
+        :param str plan_id: The IF of a backup plan.
+        :param str prefix: The prefix of Oss bucket files.
+        :param str source_type: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        :param str start_time: The scheduled backup start time. UNIX time seconds.
+        :param str status: The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+        :param str updated_time: The update time of backup job. UNIX time seconds.
+        :param str vault_id: The ID of backup vault.
+        """
+        pulumi.set(__self__, "actual_bytes", actual_bytes)
+        pulumi.set(__self__, "actual_items", actual_items)
+        pulumi.set(__self__, "back_job_name", back_job_name)
+        pulumi.set(__self__, "backup_job_id", backup_job_id)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "bytes_done", bytes_done)
+        pulumi.set(__self__, "bytes_total", bytes_total)
+        pulumi.set(__self__, "complete_time", complete_time)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "exclude", exclude)
+        pulumi.set(__self__, "file_system_id", file_system_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "include", include)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "items_done", items_done)
+        pulumi.set(__self__, "items_total", items_total)
+        pulumi.set(__self__, "nas_create_time", nas_create_time)
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "plan_id", plan_id)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="actualBytes")
+    def actual_bytes(self) -> str:
+        """
+        The actual size of backup job.
+        """
+        return pulumi.get(self, "actual_bytes")
+
+    @property
+    @pulumi.getter(name="actualItems")
+    def actual_items(self) -> str:
+        """
+        The actual number of files.
+        """
+        return pulumi.get(self, "actual_items")
+
+    @property
+    @pulumi.getter(name="backJobName")
+    def back_job_name(self) -> str:
+        """
+        The name of backup job.
+        """
+        return pulumi.get(self, "back_job_name")
+
+    @property
+    @pulumi.getter(name="backupJobId")
+    def backup_job_id(self) -> str:
+        """
+        The ID of backup job.
+        """
+        return pulumi.get(self, "backup_job_id")
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> str:
+        """
+        Backup type. Valid values: `COMPLETE`(full backup).
+        """
+        return pulumi.get(self, "backup_type")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        The name of target ofo OSS bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="bytesDone")
+    def bytes_done(self) -> str:
+        """
+        The size of backup job recovered.
+        """
+        return pulumi.get(self, "bytes_done")
+
+    @property
+    @pulumi.getter(name="bytesTotal")
+    def bytes_total(self) -> str:
+        """
+        The total size of backup job recovered.
+        """
+        return pulumi.get(self, "bytes_total")
+
+    @property
+    @pulumi.getter(name="completeTime")
+    def complete_time(self) -> str:
+        """
+        The completion time of backup job. UNIX time seconds.
+        """
+        return pulumi.get(self, "complete_time")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of backup job. UNIX time seconds.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def exclude(self) -> str:
+        """
+        Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
+        """
+        return pulumi.get(self, "exclude")
+
+    @property
+    @pulumi.getter(name="fileSystemId")
+    def file_system_id(self) -> str:
+        """
+        The ID of destination file system.
+        """
+        return pulumi.get(self, "file_system_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the backup job.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def include(self) -> str:
+        """
+        Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
+        """
+        return pulumi.get(self, "include")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of target ECS instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="itemsDone")
+    def items_done(self) -> str:
+        """
+        The number of items restore job recovered.
+        """
+        return pulumi.get(self, "items_done")
+
+    @property
+    @pulumi.getter(name="itemsTotal")
+    def items_total(self) -> str:
+        """
+        The total number of items restore job recovered.
+        """
+        return pulumi.get(self, "items_total")
+
+    @property
+    @pulumi.getter(name="nasCreateTime")
+    def nas_create_time(self) -> str:
+        """
+        File system creation time. UNIX time in seconds.
+        """
+        return pulumi.get(self, "nas_create_time")
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Sequence[str]:
+        """
+        Backup path. e.g. `["/home", "/var"]`
+        """
+        return pulumi.get(self, "paths")
+
+    @property
+    @pulumi.getter(name="planId")
+    def plan_id(self) -> str:
+        """
+        The IF of a backup plan.
+        """
+        return pulumi.get(self, "plan_id")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        The prefix of Oss bucket files.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> str:
+        """
+        The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        """
+        return pulumi.get(self, "source_type")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The scheduled backup start time. UNIX time seconds.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> str:
+        """
+        The update time of backup job. UNIX time seconds.
+        """
+        return pulumi.get(self, "updated_time")
+
+    @property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> str:
+        """
+        The ID of backup vault.
+        """
+        return pulumi.get(self, "vault_id")
+
 
 @pulumi.output_type
 class GetEcsBackupClientsClientResult(dict):

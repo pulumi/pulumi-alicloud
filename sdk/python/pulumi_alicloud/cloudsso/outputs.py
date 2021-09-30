@@ -14,6 +14,8 @@ __all__ = [
     'GetDirectoriesDirectoryResult',
     'GetDirectoriesDirectorySamlIdentityProviderConfigurationResult',
     'GetDirectoriesDirectoryTaskResult',
+    'GetGroupsGroupResult',
+    'GetScimServerCredentialsCredentialResult',
 ]
 
 @pulumi.output_type
@@ -404,5 +406,184 @@ class GetDirectoriesDirectoryTaskResult(dict):
         The Type of the Task.
         """
         return pulumi.get(self, "task_type")
+
+
+@pulumi.output_type
+class GetGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 directory_id: str,
+                 group_id: str,
+                 group_name: str,
+                 id: str,
+                 provision_type: str):
+        """
+        :param str create_time: The Created Time of the Directory.
+        :param str description: The Description of the Directory.
+        :param str directory_id: The ID of the Directory.
+        :param str group_id: The Group ID of the group.
+        :param str group_name: The Name of the group.
+        :param str id: The ID of the Group.
+        :param str provision_type: The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "provision_type", provision_type)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The Created Time of the Directory.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The Description of the Directory.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> str:
+        """
+        The ID of the Directory.
+        """
+        return pulumi.get(self, "directory_id")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        The Group ID of the group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> str:
+        """
+        The Name of the group.
+        """
+        return pulumi.get(self, "group_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="provisionType")
+    def provision_type(self) -> str:
+        """
+        The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+        """
+        return pulumi.get(self, "provision_type")
+
+
+@pulumi.output_type
+class GetScimServerCredentialsCredentialResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 credential_id: str,
+                 credential_secret: str,
+                 credential_type: str,
+                 directory_id: str,
+                 expire_time: str,
+                 id: str,
+                 status: str):
+        """
+        :param str create_time: The CreateTime of the resource.
+        :param str credential_id: The CredentialId of the resource.
+        :param str credential_secret: The CredentialSecret of the resource.
+        :param str credential_type: The CredentialType of the resource.
+        :param str directory_id: The ID of the Directory.
+        :param str expire_time: The ExpireTime of the resource.
+        :param str id: The ID of the SCIM Server Credential.
+        :param str status: The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "credential_id", credential_id)
+        pulumi.set(__self__, "credential_secret", credential_secret)
+        pulumi.set(__self__, "credential_type", credential_type)
+        pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The CreateTime of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="credentialId")
+    def credential_id(self) -> str:
+        """
+        The CredentialId of the resource.
+        """
+        return pulumi.get(self, "credential_id")
+
+    @property
+    @pulumi.getter(name="credentialSecret")
+    def credential_secret(self) -> str:
+        """
+        The CredentialSecret of the resource.
+        """
+        return pulumi.get(self, "credential_secret")
+
+    @property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> str:
+        """
+        The CredentialType of the resource.
+        """
+        return pulumi.get(self, "credential_type")
+
+    @property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> str:
+        """
+        The ID of the Directory.
+        """
+        return pulumi.get(self, "directory_id")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        The ExpireTime of the resource.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the SCIM Server Credential.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        """
+        return pulumi.get(self, "status")
 
 

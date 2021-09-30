@@ -199,12 +199,12 @@ def get_instance_classes(category: Optional[str] = None,
 
     :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
     :param str db_instance_class: The DB instance class type by the user.
-    :param str db_instance_storage_type: Same as `storage_type`.
+    :param str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
     :param str engine: Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
     :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
-    :param str storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3"
+    :param str storage_type: It has been deprecated from verison 1.134.0+ and using `db_instance_storage_type` instead.
     :param str zone_id: The Zone to launch the DB instance.
     """
     __args__ = dict()

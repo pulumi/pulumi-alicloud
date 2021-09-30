@@ -6,7 +6,7 @@
 from .get_account import *
 from .get_caller_identity import *
 from .get_file_crc64_checksum import *
-from .get_msc_sub_contracts import *
+from .get_msc_sub_contacts import *
 from .get_msc_sub_subscriptions import *
 from .get_regions import *
 from .get_zones import *
@@ -34,6 +34,7 @@ from . import (
     cen,
     cfg,
     clickhouse,
+    cloudauth,
     cloudconnect,
     cloudfirewall,
     cloudsso,
@@ -55,6 +56,7 @@ from . import (
     dns,
     drds,
     dts,
+    eais,
     eci,
     ecp,
     ecs,
@@ -76,6 +78,7 @@ from . import (
     hbase,
     hbr,
     imm,
+    imp,
     iot,
     kms,
     kvstore,
@@ -83,6 +86,7 @@ from . import (
     log,
     marketplace,
     maxcompute,
+    mhub,
     mns,
     mongodb,
     mse,
@@ -97,6 +101,7 @@ from . import (
     quickbi,
     quotas,
     ram,
+    rdc,
     rds,
     resourcemanager,
     rocketmq,
@@ -106,6 +111,7 @@ from . import (
     scdn,
     sddp,
     securitycenter,
+    servicemesh,
     simpleapplicationserver,
     slb,
     tsdb,

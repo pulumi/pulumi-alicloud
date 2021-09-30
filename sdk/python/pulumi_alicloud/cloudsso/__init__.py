@@ -5,6 +5,10 @@
 # Export this package's modules as members:
 from .directory import *
 from .get_directories import *
+from .get_groups import *
+from .get_scim_server_credentials import *
+from .group import *
+from .scim_server_credential import *
 from ._inputs import *
 from . import outputs
 
@@ -22,11 +26,17 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:cloudsso/directory:Directory":
                 return Directory(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cloudsso/group:Group":
+                return Group(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cloudsso/scimServerCredential:ScimServerCredential":
+                return ScimServerCredential(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "cloudsso/directory", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cloudsso/group", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cloudsso/scimServerCredential", _module_instance)
 
 _register_module()

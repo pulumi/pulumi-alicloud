@@ -200,6 +200,7 @@ type ProviderEndpoint struct {
 	Cdn                 *string `pulumi:"cdn"`
 	Cds                 *string `pulumi:"cds"`
 	Clickhouse          *string `pulumi:"clickhouse"`
+	Cloudauth           *string `pulumi:"cloudauth"`
 	Cloudphone          *string `pulumi:"cloudphone"`
 	Cloudsso            *string `pulumi:"cloudsso"`
 	Cms                 *string `pulumi:"cms"`
@@ -213,12 +214,14 @@ type ProviderEndpoint struct {
 	Ddosbgp             *string `pulumi:"ddosbgp"`
 	Ddoscoo             *string `pulumi:"ddoscoo"`
 	Dds                 *string `pulumi:"dds"`
+	Devopsrdc           *string `pulumi:"devopsrdc"`
 	Dg                  *string `pulumi:"dg"`
 	Dm                  *string `pulumi:"dm"`
 	DmsEnterprise       *string `pulumi:"dmsEnterprise"`
 	Dns                 *string `pulumi:"dns"`
 	Drds                *string `pulumi:"drds"`
 	Dts                 *string `pulumi:"dts"`
+	Eais                *string `pulumi:"eais"`
 	Eci                 *string `pulumi:"eci"`
 	Ecs                 *string `pulumi:"ecs"`
 	Ehpc                *string `pulumi:"ehpc"`
@@ -238,6 +241,7 @@ type ProviderEndpoint struct {
 	HcsSgw              *string `pulumi:"hcsSgw"`
 	Hitsdb              *string `pulumi:"hitsdb"`
 	Imm                 *string `pulumi:"imm"`
+	Imp                 *string `pulumi:"imp"`
 	Ims                 *string `pulumi:"ims"`
 	Iot                 *string `pulumi:"iot"`
 	Kms                 *string `pulumi:"kms"`
@@ -246,6 +250,7 @@ type ProviderEndpoint struct {
 	Log                 *string `pulumi:"log"`
 	Market              *string `pulumi:"market"`
 	Maxcompute          *string `pulumi:"maxcompute"`
+	Mhub                *string `pulumi:"mhub"`
 	Mns                 *string `pulumi:"mns"`
 	Mscopensubscription *string `pulumi:"mscopensubscription"`
 	Mse                 *string `pulumi:"mse"`
@@ -272,6 +277,7 @@ type ProviderEndpoint struct {
 	Scdn                *string `pulumi:"scdn"`
 	Sddp                *string `pulumi:"sddp"`
 	Serverless          *string `pulumi:"serverless"`
+	Servicemesh         *string `pulumi:"servicemesh"`
 	Sgw                 *string `pulumi:"sgw"`
 	Slb                 *string `pulumi:"slb"`
 	Sts                 *string `pulumi:"sts"`
@@ -313,6 +319,7 @@ type ProviderEndpointArgs struct {
 	Cdn                 pulumi.StringPtrInput `pulumi:"cdn"`
 	Cds                 pulumi.StringPtrInput `pulumi:"cds"`
 	Clickhouse          pulumi.StringPtrInput `pulumi:"clickhouse"`
+	Cloudauth           pulumi.StringPtrInput `pulumi:"cloudauth"`
 	Cloudphone          pulumi.StringPtrInput `pulumi:"cloudphone"`
 	Cloudsso            pulumi.StringPtrInput `pulumi:"cloudsso"`
 	Cms                 pulumi.StringPtrInput `pulumi:"cms"`
@@ -326,12 +333,14 @@ type ProviderEndpointArgs struct {
 	Ddosbgp             pulumi.StringPtrInput `pulumi:"ddosbgp"`
 	Ddoscoo             pulumi.StringPtrInput `pulumi:"ddoscoo"`
 	Dds                 pulumi.StringPtrInput `pulumi:"dds"`
+	Devopsrdc           pulumi.StringPtrInput `pulumi:"devopsrdc"`
 	Dg                  pulumi.StringPtrInput `pulumi:"dg"`
 	Dm                  pulumi.StringPtrInput `pulumi:"dm"`
 	DmsEnterprise       pulumi.StringPtrInput `pulumi:"dmsEnterprise"`
 	Dns                 pulumi.StringPtrInput `pulumi:"dns"`
 	Drds                pulumi.StringPtrInput `pulumi:"drds"`
 	Dts                 pulumi.StringPtrInput `pulumi:"dts"`
+	Eais                pulumi.StringPtrInput `pulumi:"eais"`
 	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
 	Ehpc                pulumi.StringPtrInput `pulumi:"ehpc"`
@@ -351,6 +360,7 @@ type ProviderEndpointArgs struct {
 	HcsSgw              pulumi.StringPtrInput `pulumi:"hcsSgw"`
 	Hitsdb              pulumi.StringPtrInput `pulumi:"hitsdb"`
 	Imm                 pulumi.StringPtrInput `pulumi:"imm"`
+	Imp                 pulumi.StringPtrInput `pulumi:"imp"`
 	Ims                 pulumi.StringPtrInput `pulumi:"ims"`
 	Iot                 pulumi.StringPtrInput `pulumi:"iot"`
 	Kms                 pulumi.StringPtrInput `pulumi:"kms"`
@@ -359,6 +369,7 @@ type ProviderEndpointArgs struct {
 	Log                 pulumi.StringPtrInput `pulumi:"log"`
 	Market              pulumi.StringPtrInput `pulumi:"market"`
 	Maxcompute          pulumi.StringPtrInput `pulumi:"maxcompute"`
+	Mhub                pulumi.StringPtrInput `pulumi:"mhub"`
 	Mns                 pulumi.StringPtrInput `pulumi:"mns"`
 	Mscopensubscription pulumi.StringPtrInput `pulumi:"mscopensubscription"`
 	Mse                 pulumi.StringPtrInput `pulumi:"mse"`
@@ -385,6 +396,7 @@ type ProviderEndpointArgs struct {
 	Scdn                pulumi.StringPtrInput `pulumi:"scdn"`
 	Sddp                pulumi.StringPtrInput `pulumi:"sddp"`
 	Serverless          pulumi.StringPtrInput `pulumi:"serverless"`
+	Servicemesh         pulumi.StringPtrInput `pulumi:"servicemesh"`
 	Sgw                 pulumi.StringPtrInput `pulumi:"sgw"`
 	Slb                 pulumi.StringPtrInput `pulumi:"slb"`
 	Sts                 pulumi.StringPtrInput `pulumi:"sts"`
@@ -519,6 +531,10 @@ func (o ProviderEndpointOutput) Clickhouse() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Clickhouse }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Cloudauth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudauth }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Cloudphone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudphone }).(pulumi.StringPtrOutput)
 }
@@ -571,6 +587,10 @@ func (o ProviderEndpointOutput) Dds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dds }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Devopsrdc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Devopsrdc }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Dg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dg }).(pulumi.StringPtrOutput)
 }
@@ -593,6 +613,10 @@ func (o ProviderEndpointOutput) Drds() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Dts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dts }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Eais() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eais }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Eci() pulumi.StringPtrOutput {
@@ -671,6 +695,10 @@ func (o ProviderEndpointOutput) Imm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Imm }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Imp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Imp }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Ims() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ims }).(pulumi.StringPtrOutput)
 }
@@ -701,6 +729,10 @@ func (o ProviderEndpointOutput) Market() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Maxcompute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Maxcompute }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Mhub() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Mhub }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Mns() pulumi.StringPtrOutput {
@@ -807,6 +839,10 @@ func (o ProviderEndpointOutput) Serverless() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Serverless }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Servicemesh() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Servicemesh }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Sgw() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Sgw }).(pulumi.StringPtrOutput)
 }
@@ -863,7 +899,7 @@ func (o ProviderEndpointArrayOutput) Index(i pulumi.IntInput) ProviderEndpointOu
 	}).(ProviderEndpointOutput)
 }
 
-type GetMscSubContractsContact struct {
+type GetMscSubContactsContact struct {
 	// UID.
 	AccountUid string `pulumi:"accountUid"`
 	// The first ID of the resource.
@@ -892,18 +928,18 @@ type GetMscSubContractsContact struct {
 	Position string `pulumi:"position"`
 }
 
-// GetMscSubContractsContactInput is an input type that accepts GetMscSubContractsContactArgs and GetMscSubContractsContactOutput values.
-// You can construct a concrete instance of `GetMscSubContractsContactInput` via:
+// GetMscSubContactsContactInput is an input type that accepts GetMscSubContactsContactArgs and GetMscSubContactsContactOutput values.
+// You can construct a concrete instance of `GetMscSubContactsContactInput` via:
 //
-//          GetMscSubContractsContactArgs{...}
-type GetMscSubContractsContactInput interface {
+//          GetMscSubContactsContactArgs{...}
+type GetMscSubContactsContactInput interface {
 	pulumi.Input
 
-	ToGetMscSubContractsContactOutput() GetMscSubContractsContactOutput
-	ToGetMscSubContractsContactOutputWithContext(context.Context) GetMscSubContractsContactOutput
+	ToGetMscSubContactsContactOutput() GetMscSubContactsContactOutput
+	ToGetMscSubContactsContactOutputWithContext(context.Context) GetMscSubContactsContactOutput
 }
 
-type GetMscSubContractsContactArgs struct {
+type GetMscSubContactsContactArgs struct {
 	// UID.
 	AccountUid pulumi.StringInput `pulumi:"accountUid"`
 	// The first ID of the resource.
@@ -932,140 +968,140 @@ type GetMscSubContractsContactArgs struct {
 	Position pulumi.StringInput `pulumi:"position"`
 }
 
-func (GetMscSubContractsContactArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMscSubContractsContact)(nil)).Elem()
+func (GetMscSubContactsContactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMscSubContactsContact)(nil)).Elem()
 }
 
-func (i GetMscSubContractsContactArgs) ToGetMscSubContractsContactOutput() GetMscSubContractsContactOutput {
-	return i.ToGetMscSubContractsContactOutputWithContext(context.Background())
+func (i GetMscSubContactsContactArgs) ToGetMscSubContactsContactOutput() GetMscSubContactsContactOutput {
+	return i.ToGetMscSubContactsContactOutputWithContext(context.Background())
 }
 
-func (i GetMscSubContractsContactArgs) ToGetMscSubContractsContactOutputWithContext(ctx context.Context) GetMscSubContractsContactOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubContractsContactOutput)
+func (i GetMscSubContactsContactArgs) ToGetMscSubContactsContactOutputWithContext(ctx context.Context) GetMscSubContactsContactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubContactsContactOutput)
 }
 
-// GetMscSubContractsContactArrayInput is an input type that accepts GetMscSubContractsContactArray and GetMscSubContractsContactArrayOutput values.
-// You can construct a concrete instance of `GetMscSubContractsContactArrayInput` via:
+// GetMscSubContactsContactArrayInput is an input type that accepts GetMscSubContactsContactArray and GetMscSubContactsContactArrayOutput values.
+// You can construct a concrete instance of `GetMscSubContactsContactArrayInput` via:
 //
-//          GetMscSubContractsContactArray{ GetMscSubContractsContactArgs{...} }
-type GetMscSubContractsContactArrayInput interface {
+//          GetMscSubContactsContactArray{ GetMscSubContactsContactArgs{...} }
+type GetMscSubContactsContactArrayInput interface {
 	pulumi.Input
 
-	ToGetMscSubContractsContactArrayOutput() GetMscSubContractsContactArrayOutput
-	ToGetMscSubContractsContactArrayOutputWithContext(context.Context) GetMscSubContractsContactArrayOutput
+	ToGetMscSubContactsContactArrayOutput() GetMscSubContactsContactArrayOutput
+	ToGetMscSubContactsContactArrayOutputWithContext(context.Context) GetMscSubContactsContactArrayOutput
 }
 
-type GetMscSubContractsContactArray []GetMscSubContractsContactInput
+type GetMscSubContactsContactArray []GetMscSubContactsContactInput
 
-func (GetMscSubContractsContactArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMscSubContractsContact)(nil)).Elem()
+func (GetMscSubContactsContactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMscSubContactsContact)(nil)).Elem()
 }
 
-func (i GetMscSubContractsContactArray) ToGetMscSubContractsContactArrayOutput() GetMscSubContractsContactArrayOutput {
-	return i.ToGetMscSubContractsContactArrayOutputWithContext(context.Background())
+func (i GetMscSubContactsContactArray) ToGetMscSubContactsContactArrayOutput() GetMscSubContactsContactArrayOutput {
+	return i.ToGetMscSubContactsContactArrayOutputWithContext(context.Background())
 }
 
-func (i GetMscSubContractsContactArray) ToGetMscSubContractsContactArrayOutputWithContext(ctx context.Context) GetMscSubContractsContactArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubContractsContactArrayOutput)
+func (i GetMscSubContactsContactArray) ToGetMscSubContactsContactArrayOutputWithContext(ctx context.Context) GetMscSubContactsContactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubContactsContactArrayOutput)
 }
 
-type GetMscSubContractsContactOutput struct{ *pulumi.OutputState }
+type GetMscSubContactsContactOutput struct{ *pulumi.OutputState }
 
-func (GetMscSubContractsContactOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMscSubContractsContact)(nil)).Elem()
+func (GetMscSubContactsContactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMscSubContactsContact)(nil)).Elem()
 }
 
-func (o GetMscSubContractsContactOutput) ToGetMscSubContractsContactOutput() GetMscSubContractsContactOutput {
+func (o GetMscSubContactsContactOutput) ToGetMscSubContactsContactOutput() GetMscSubContactsContactOutput {
 	return o
 }
 
-func (o GetMscSubContractsContactOutput) ToGetMscSubContractsContactOutputWithContext(ctx context.Context) GetMscSubContractsContactOutput {
+func (o GetMscSubContactsContactOutput) ToGetMscSubContactsContactOutputWithContext(ctx context.Context) GetMscSubContactsContactOutput {
 	return o
 }
 
 // UID.
-func (o GetMscSubContractsContactOutput) AccountUid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) string { return v.AccountUid }).(pulumi.StringOutput)
+func (o GetMscSubContactsContactOutput) AccountUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) string { return v.AccountUid }).(pulumi.StringOutput)
 }
 
 // The first ID of the resource.
-func (o GetMscSubContractsContactOutput) ContactId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) string { return v.ContactId }).(pulumi.StringOutput)
+func (o GetMscSubContactsContactOutput) ContactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) string { return v.ContactId }).(pulumi.StringOutput)
 }
 
 // The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
-func (o GetMscSubContractsContactOutput) ContactName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) string { return v.ContactName }).(pulumi.StringOutput)
+func (o GetMscSubContactsContactOutput) ContactName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) string { return v.ContactName }).(pulumi.StringOutput)
 }
 
 // The User's Contact Email Address.
-func (o GetMscSubContractsContactOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) string { return v.Email }).(pulumi.StringOutput)
+func (o GetMscSubContactsContactOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) string { return v.Email }).(pulumi.StringOutput)
 }
 
 // The ID of the Contact.
-func (o GetMscSubContractsContactOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) string { return v.Id }).(pulumi.StringOutput)
+func (o GetMscSubContactsContactOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Indicates Whether the BGP Group Is the Account Itself.
-func (o GetMscSubContractsContactOutput) IsAccount() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) bool { return v.IsAccount }).(pulumi.BoolOutput)
+func (o GetMscSubContactsContactOutput) IsAccount() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) bool { return v.IsAccount }).(pulumi.BoolOutput)
 }
 
 // Whether They Have Expired Or Not.
-func (o GetMscSubContractsContactOutput) IsObsolete() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) bool { return v.IsObsolete }).(pulumi.BoolOutput)
+func (o GetMscSubContactsContactOutput) IsObsolete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) bool { return v.IsObsolete }).(pulumi.BoolOutput)
 }
 
 // Email Validation for.
-func (o GetMscSubContractsContactOutput) IsVerifiedEmail() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) bool { return v.IsVerifiedEmail }).(pulumi.BoolOutput)
+func (o GetMscSubContactsContactOutput) IsVerifiedEmail() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) bool { return v.IsVerifiedEmail }).(pulumi.BoolOutput)
 }
 
 // If the Phone Verification.
-func (o GetMscSubContractsContactOutput) IsVerifiedMobile() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) bool { return v.IsVerifiedMobile }).(pulumi.BoolOutput)
+func (o GetMscSubContactsContactOutput) IsVerifiedMobile() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) bool { return v.IsVerifiedMobile }).(pulumi.BoolOutput)
 }
 
 // Last Verification Email Transmission Time.
-func (o GetMscSubContractsContactOutput) LastEmailVerificationTimeStamp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) string { return v.LastEmailVerificationTimeStamp }).(pulumi.StringOutput)
+func (o GetMscSubContactsContactOutput) LastEmailVerificationTimeStamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) string { return v.LastEmailVerificationTimeStamp }).(pulumi.StringOutput)
 }
 
 // The Pieces of Authentication SMS Sending Time.
-func (o GetMscSubContractsContactOutput) LastMobileVerificationTimeStamp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) string { return v.LastMobileVerificationTimeStamp }).(pulumi.StringOutput)
+func (o GetMscSubContactsContactOutput) LastMobileVerificationTimeStamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) string { return v.LastMobileVerificationTimeStamp }).(pulumi.StringOutput)
 }
 
 // The User's Telephone.
-func (o GetMscSubContractsContactOutput) Mobile() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) string { return v.Mobile }).(pulumi.StringOutput)
+func (o GetMscSubContactsContactOutput) Mobile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) string { return v.Mobile }).(pulumi.StringOutput)
 }
 
 // The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
-func (o GetMscSubContractsContactOutput) Position() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMscSubContractsContact) string { return v.Position }).(pulumi.StringOutput)
+func (o GetMscSubContactsContactOutput) Position() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubContactsContact) string { return v.Position }).(pulumi.StringOutput)
 }
 
-type GetMscSubContractsContactArrayOutput struct{ *pulumi.OutputState }
+type GetMscSubContactsContactArrayOutput struct{ *pulumi.OutputState }
 
-func (GetMscSubContractsContactArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMscSubContractsContact)(nil)).Elem()
+func (GetMscSubContactsContactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMscSubContactsContact)(nil)).Elem()
 }
 
-func (o GetMscSubContractsContactArrayOutput) ToGetMscSubContractsContactArrayOutput() GetMscSubContractsContactArrayOutput {
+func (o GetMscSubContactsContactArrayOutput) ToGetMscSubContactsContactArrayOutput() GetMscSubContactsContactArrayOutput {
 	return o
 }
 
-func (o GetMscSubContractsContactArrayOutput) ToGetMscSubContractsContactArrayOutputWithContext(ctx context.Context) GetMscSubContractsContactArrayOutput {
+func (o GetMscSubContactsContactArrayOutput) ToGetMscSubContactsContactArrayOutputWithContext(ctx context.Context) GetMscSubContactsContactArrayOutput {
 	return o
 }
 
-func (o GetMscSubContractsContactArrayOutput) Index(i pulumi.IntInput) GetMscSubContractsContactOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMscSubContractsContact {
-		return vs[0].([]GetMscSubContractsContact)[vs[1].(int)]
-	}).(GetMscSubContractsContactOutput)
+func (o GetMscSubContactsContactArrayOutput) Index(i pulumi.IntInput) GetMscSubContactsContactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMscSubContactsContact {
+		return vs[0].([]GetMscSubContactsContact)[vs[1].(int)]
+	}).(GetMscSubContactsContactOutput)
 }
 
 type GetMscSubSubscriptionsSubscription struct {
@@ -1535,8 +1571,8 @@ func init() {
 	pulumi.RegisterOutputType(ProviderAssumeRolePtrOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointArrayOutput{})
-	pulumi.RegisterOutputType(GetMscSubContractsContactOutput{})
-	pulumi.RegisterOutputType(GetMscSubContractsContactArrayOutput{})
+	pulumi.RegisterOutputType(GetMscSubContactsContactOutput{})
+	pulumi.RegisterOutputType(GetMscSubContactsContactArrayOutput{})
 	pulumi.RegisterOutputType(GetMscSubSubscriptionsSubscriptionOutput{})
 	pulumi.RegisterOutputType(GetMscSubSubscriptionsSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionOutput{})

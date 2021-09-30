@@ -56,7 +56,7 @@ type GetInstanceClassesArgs struct {
 	Category *string `pulumi:"category"`
 	// The DB instance class type by the user.
 	DbInstanceClass *string `pulumi:"dbInstanceClass"`
-	// Same as `storageType`.
+	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
 	// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
 	Engine *string `pulumi:"engine"`
@@ -68,7 +68,7 @@ type GetInstanceClassesArgs struct {
 	MultiZone  *bool   `pulumi:"multiZone"`
 	OutputFile *string `pulumi:"outputFile"`
 	SortedBy   *string `pulumi:"sortedBy"`
-	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3"
+	// It has been deprecated from verison 1.134.0+ and using `dbInstanceStorageType` instead.
 	StorageType *string `pulumi:"storageType"`
 	// The Zone to launch the DB instance.
 	ZoneId *string `pulumi:"zoneId"`

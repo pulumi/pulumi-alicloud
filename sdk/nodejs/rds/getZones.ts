@@ -27,6 +27,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
         "engineVersion": args.engineVersion,
         "instanceChargeType": args.instanceChargeType,
         "multi": args.multi,
+        "multiZone": args.multiZone,
         "outputFile": args.outputFile,
     }, opts);
 }
@@ -57,9 +58,13 @@ export interface GetZonesArgs {
      */
     readonly instanceChargeType?: string;
     /**
-     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
      */
     readonly multi?: boolean;
+    /**
+     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+     */
+    readonly multiZone?: boolean;
     readonly outputFile?: string;
 }
 
@@ -82,6 +87,7 @@ export interface GetZonesResult {
     readonly ids: string[];
     readonly instanceChargeType?: string;
     readonly multi?: boolean;
+    readonly multiZone?: boolean;
     readonly outputFile?: string;
     /**
      * A list of availability zones. Each element contains the following attributes:

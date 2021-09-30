@@ -16,6 +16,41 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available in v1.130.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example1 = new AliCloud.CloudFirewall.ControlPolicy("example1", new AliCloud.CloudFirewall.ControlPolicyArgs
+    ///         {
+    ///             ApplicationName = "ANY",
+    ///             AclAction = "accept",
+    ///             Description = "example",
+    ///             DestinationType = "net",
+    ///             Destination = "100.1.1.0/24",
+    ///             Direction = "out",
+    ///             Proto = "ANY",
+    ///             Source = "1.2.3.0/24",
+    ///             SourceType = "net",
+    ///         });
+    ///         var example2 = new AliCloud.CloudFirewall.ControlPolicyOrder("example2", new AliCloud.CloudFirewall.ControlPolicyOrderArgs
+    ///         {
+    ///             AclUuid = example1.AclUuid,
+    ///             Direction = example1.Direction,
+    ///             Order = 1,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Control Policy Order can be imported using the id, e.g.

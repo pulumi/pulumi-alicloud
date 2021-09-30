@@ -66,6 +66,9 @@ namespace Pulumi.AliCloud.Hbr
     [AliCloudResourceType("alicloud:hbr/nasBackupPlan:NasBackupPlan")]
     public partial class NasBackupPlan : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Backup type. Valid values: `COMPLETE`.
+        /// </summary>
         [Output("backupType")]
         public Output<string> BackupType { get; private set; } = null!;
 
@@ -94,7 +97,7 @@ namespace Pulumi.AliCloud.Hbr
         /// The File System ID of Nas.
         /// </summary>
         [Output("fileSystemId")]
-        public Output<string?> FileSystemId { get; private set; } = null!;
+        public Output<string> FileSystemId { get; private set; } = null!;
 
         /// <summary>
         /// The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
@@ -130,7 +133,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backup_type` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         /// </summary>
         [Output("speedLimit")]
         public Output<string?> SpeedLimit { get; private set; } = null!;
@@ -138,8 +141,11 @@ namespace Pulumi.AliCloud.Hbr
         [Output("updatePaths")]
         public Output<bool?> UpdatePaths { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of Backup vault.
+        /// </summary>
         [Output("vaultId")]
-        public Output<string?> VaultId { get; private set; } = null!;
+        public Output<string> VaultId { get; private set; } = null!;
 
 
         /// <summary>
@@ -187,8 +193,11 @@ namespace Pulumi.AliCloud.Hbr
 
     public sealed class NasBackupPlanArgs : Pulumi.ResourceArgs
     {
-        [Input("backupType")]
-        public Input<string>? BackupType { get; set; }
+        /// <summary>
+        /// Backup type. Valid values: `COMPLETE`.
+        /// </summary>
+        [Input("backupType", required: true)]
+        public Input<string> BackupType { get; set; } = null!;
 
         /// <summary>
         /// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
@@ -214,8 +223,8 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// The File System ID of Nas.
         /// </summary>
-        [Input("fileSystemId")]
-        public Input<string>? FileSystemId { get; set; }
+        [Input("fileSystemId", required: true)]
+        public Input<string> FileSystemId { get; set; } = null!;
 
         /// <summary>
         /// The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
@@ -257,7 +266,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> Schedule { get; set; } = null!;
 
         /// <summary>
-        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backup_type` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         /// </summary>
         [Input("speedLimit")]
         public Input<string>? SpeedLimit { get; set; }
@@ -265,8 +274,11 @@ namespace Pulumi.AliCloud.Hbr
         [Input("updatePaths")]
         public Input<bool>? UpdatePaths { get; set; }
 
-        [Input("vaultId")]
-        public Input<string>? VaultId { get; set; }
+        /// <summary>
+        /// The ID of Backup vault.
+        /// </summary>
+        [Input("vaultId", required: true)]
+        public Input<string> VaultId { get; set; } = null!;
 
         public NasBackupPlanArgs()
         {
@@ -275,6 +287,9 @@ namespace Pulumi.AliCloud.Hbr
 
     public sealed class NasBackupPlanState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Backup type. Valid values: `COMPLETE`.
+        /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
 
@@ -345,7 +360,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.* `backup_type` - (Optional, Computed, ForceNew) Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         /// </summary>
         [Input("speedLimit")]
         public Input<string>? SpeedLimit { get; set; }
@@ -353,6 +368,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("updatePaths")]
         public Input<bool>? UpdatePaths { get; set; }
 
+        /// <summary>
+        /// The ID of Backup vault.
+        /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }
 

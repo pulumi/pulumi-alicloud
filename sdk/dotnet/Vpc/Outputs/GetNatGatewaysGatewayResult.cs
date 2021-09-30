@@ -66,6 +66,10 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string NatType;
         /// <summary>
+        /// (Available in 1.137.0+) Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`.
+        /// </summary>
+        public readonly string NetworkType;
+        /// <summary>
         /// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
         /// </summary>
         public readonly string PaymentType;
@@ -130,6 +134,8 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string natType,
 
+            string networkType,
+
             string paymentType,
 
             string resourceGroupId,
@@ -161,6 +167,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
             NatGatewayId = natGatewayId;
             NatGatewayName = natGatewayName;
             NatType = natType;
+            NetworkType = networkType;
             PaymentType = paymentType;
             ResourceGroupId = resourceGroupId;
             SnatTableIds = snatTableIds;

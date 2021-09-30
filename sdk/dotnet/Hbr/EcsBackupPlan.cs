@@ -53,6 +53,23 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// }
     /// ```
+    /// ## Notice
+    /// 
+    /// **About Backup path rules:**
+    /// 1. If there is no wildcard `*`, you can enter 8 lines of path.
+    /// 2. When using wildcard `*`, only one line of path can be input, and wildcards like `/*/*` are supported.
+    /// 3. Each line only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
+    /// 
+    /// **About Restrictions:**
+    /// 1. When using VSS, multiple paths, UNC paths, wildcards, and excluded files are not supported.
+    /// 2. When using UNC, VSS is not supported, wildcards are not supported, and files to be excluded are not supported.
+    /// 
+    /// **About Include/exclude path rules:**
+    /// 1. Supports up to 8 paths, including paths using wildcards `*`.
+    /// 2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
+    /// 3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*/*/` share will match `/a/b/c/share`, but not `/a/d/share`.
+    /// 4. If the path ends with `/`, it means the folder matches. For example, `*tmp/` will match `/a/b/aaatmp/`, `/tmp/` and so on.
+    /// 5. The path separator takes Linux system `/` as an example, if it is Windows system, please replace it with `\`.
     /// 
     /// ## Import
     /// 
@@ -105,7 +122,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         /// </summary>
         [Output("options")]
         public Output<string?> Options { get; private set; } = null!;
@@ -141,7 +158,7 @@ namespace Pulumi.AliCloud.Hbr
         /// The ID of Backup vault.
         /// </summary>
         [Output("vaultId")]
-        public Output<string?> VaultId { get; private set; } = null!;
+        public Output<string> VaultId { get; private set; } = null!;
 
 
         /// <summary>
@@ -192,8 +209,8 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
-        [Input("backupType")]
-        public Input<string>? BackupType { get; set; }
+        [Input("backupType", required: true)]
+        public Input<string> BackupType { get; set; } = null!;
 
         [Input("detail")]
         public Input<string>? Detail { get; set; }
@@ -229,7 +246,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
@@ -270,8 +287,8 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// The ID of Backup vault.
         /// </summary>
-        [Input("vaultId")]
-        public Input<string>? VaultId { get; set; }
+        [Input("vaultId", required: true)]
+        public Input<string> VaultId { get; set; } = null!;
 
         public EcsBackupPlanArgs()
         {
@@ -320,7 +337,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
+        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }

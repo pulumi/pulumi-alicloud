@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+        /// The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string> InternetChargeType { get; private set; } = null!;
@@ -72,10 +72,10 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> NatGatewayName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        /// The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
         /// </summary>
         [Output("natType")]
-        public Output<string?> NatType { get; private set; } = null!;
+        public Output<string> NatType { get; private set; } = null!;
 
         /// <summary>
         /// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
@@ -99,10 +99,10 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> SnatTableIds { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         /// </summary>
         [Output("specification")]
-        public Output<string?> Specification { get; private set; } = null!;
+        public Output<string> Specification { get; private set; } = null!;
 
         /// <summary>
         /// (Available in 1.121.0+) The status of NAT gateway.
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+        /// The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NatGatewayName { get; set; }
 
         /// <summary>
-        /// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        /// The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
         /// </summary>
         [Input("natType")]
         public Input<string>? NatType { get; set; }
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+        /// The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -327,7 +327,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NatGatewayName { get; set; }
 
         /// <summary>
-        /// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        /// The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
         /// </summary>
         [Input("natType")]
         public Input<string>? NatType { get; set; }
@@ -354,7 +354,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? SnatTableIds { get; set; }
 
         /// <summary>
-        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
