@@ -39,6 +39,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
     return pulumi.runtime.invoke("alicloud:rds/getInstances:getInstances", {
         "connectionMode": args.connectionMode,
         "dbType": args.dbType,
+        "enableDetails": args.enableDetails,
         "engine": args.engine,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -62,6 +63,10 @@ export interface GetInstancesArgs {
      * `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
      */
     readonly dbType?: string;
+    /**
+     * Default to `false`. Set it to `true` can output parameter template about resource attributes.
+     */
+    readonly enableDetails?: boolean;
     /**
      * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
      */
@@ -106,6 +111,7 @@ export interface GetInstancesResult {
      * `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
      */
     readonly dbType?: string;
+    readonly enableDetails?: boolean;
     /**
      * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
      */

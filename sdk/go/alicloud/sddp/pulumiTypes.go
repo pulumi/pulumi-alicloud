@@ -161,6 +161,181 @@ func (o GetConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetConfigsConfigOu
 	}).(GetConfigsConfigOutput)
 }
 
+type GetInstancesInstance struct {
+	// Whether the required RAM authorization is configured.
+	Authed bool   `pulumi:"authed"`
+	Id     string `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The number of instances.
+	InstanceNum string `pulumi:"instanceNum"`
+	// Whether the authorized MaxCompute (ODPS) assets.
+	OdpsSet bool `pulumi:"odpsSet"`
+	// Whether the authorized oss assets.
+	OssBucketSet bool `pulumi:"ossBucketSet"`
+	// The OSS size of the instance.
+	OssSize string `pulumi:"ossSize"`
+	// The payment type of the resource. Valid values: `Subscription`.
+	PaymentType string `pulumi:"paymentType"`
+	// Whether the authorized rds assets.
+	RdsSet bool `pulumi:"rdsSet"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+//          GetInstancesInstanceArgs{...}
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	// Whether the required RAM authorization is configured.
+	Authed pulumi.BoolInput   `pulumi:"authed"`
+	Id     pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The number of instances.
+	InstanceNum pulumi.StringInput `pulumi:"instanceNum"`
+	// Whether the authorized MaxCompute (ODPS) assets.
+	OdpsSet pulumi.BoolInput `pulumi:"odpsSet"`
+	// Whether the authorized oss assets.
+	OssBucketSet pulumi.BoolInput `pulumi:"ossBucketSet"`
+	// The OSS size of the instance.
+	OssSize pulumi.StringInput `pulumi:"ossSize"`
+	// The payment type of the resource. Valid values: `Subscription`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// Whether the authorized rds assets.
+	RdsSet pulumi.BoolInput `pulumi:"rdsSet"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+// Whether the required RAM authorization is configured.
+func (o GetInstancesInstanceOutput) Authed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.Authed }).(pulumi.BoolOutput)
+}
+
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The number of instances.
+func (o GetInstancesInstanceOutput) InstanceNum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceNum }).(pulumi.StringOutput)
+}
+
+// Whether the authorized MaxCompute (ODPS) assets.
+func (o GetInstancesInstanceOutput) OdpsSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.OdpsSet }).(pulumi.BoolOutput)
+}
+
+// Whether the authorized oss assets.
+func (o GetInstancesInstanceOutput) OssBucketSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.OssBucketSet }).(pulumi.BoolOutput)
+}
+
+// The OSS size of the instance.
+func (o GetInstancesInstanceOutput) OssSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.OssSize }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource. Valid values: `Subscription`.
+func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Whether the authorized rds assets.
+func (o GetInstancesInstanceOutput) RdsSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.RdsSet }).(pulumi.BoolOutput)
+}
+
+// The status of the resource.
+func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
 type GetRulesRule struct {
 	// Sensitive Data Identification Rules for the Type of.
 	Category int `pulumi:"category"`
@@ -459,6 +634,8 @@ func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
 func init() {
 	pulumi.RegisterOutputType(GetConfigsConfigOutput{})
 	pulumi.RegisterOutputType(GetConfigsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleArrayOutput{})
 }

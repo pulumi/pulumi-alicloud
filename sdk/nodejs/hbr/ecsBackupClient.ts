@@ -38,14 +38,13 @@ import * as utilities from "../utilities";
  * ```
  * ## Notice
  *
- * > Please read the following precautions carefully before deleting a client:
- *
+ * > **Note:** Please read the following precautions carefully before deleting a client:
  * 1. You cannot delete active clients that have received heartbeat packets within one hour.
- * 2. You can make the client inactive by change the status of client to `ACTIVATED`.
+ * 2. You can make the client inactive by change the status of client to `STOPPED`.
  * 3. The resources bound to the client will be deleted in cascade, including:
- * - Backup plan
- * - Backup task (Running in the background)
- * - Snapshot
+ *     - Backup plan
+ *     - Backup task (Running in the background)
+ *     - Snapshot
  *
  * ## Import
  *
@@ -84,39 +83,39 @@ export class EcsBackupClient extends pulumi.CustomResource {
     }
 
     /**
-     * The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+     * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
      */
     public readonly dataNetworkType!: pulumi.Output<string>;
     /**
-     * The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+     * The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
      */
     public readonly dataProxySetting!: pulumi.Output<string>;
     /**
-     * The ECS Instance Id.
+     * The ID of ECS instance.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+     * Number of CPU cores used by a single backup task, 0 means no restrictions.
      */
     public readonly maxCpuCore!: pulumi.Output<string>;
     /**
-     * A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+     * Number of concurrent jobs for a single backup task, 0 means no restrictions.
      */
     public readonly maxWorker!: pulumi.Output<string>;
     /**
-     * Custom Data Plane Proxy Server Host Address.
+     * Custom data plane proxy server host address.
      */
     public readonly proxyHost!: pulumi.Output<string>;
     /**
-     * Custom Data Plane Proxy Password.
+     * Custom data plane proxy server password.
      */
     public readonly proxyPassword!: pulumi.Output<string>;
     /**
-     * Custom Data Plane Proxy Server Host Port.
+     * Custom data plane proxy server host port.
      */
     public readonly proxyPort!: pulumi.Output<string>;
     /**
-     * Custom Data Plane Proxy Server Username.
+     * Username of custom data plane proxy server.
      */
     public readonly proxyUser!: pulumi.Output<string>;
     /**
@@ -124,7 +123,7 @@ export class EcsBackupClient extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+     * Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
      */
     public readonly useHttps!: pulumi.Output<boolean>;
 
@@ -181,39 +180,39 @@ export class EcsBackupClient extends pulumi.CustomResource {
  */
 export interface EcsBackupClientState {
     /**
-     * The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+     * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
      */
     readonly dataNetworkType?: pulumi.Input<string>;
     /**
-     * The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+     * The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
      */
     readonly dataProxySetting?: pulumi.Input<string>;
     /**
-     * The ECS Instance Id.
+     * The ID of ECS instance.
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
-     * A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+     * Number of CPU cores used by a single backup task, 0 means no restrictions.
      */
     readonly maxCpuCore?: pulumi.Input<string>;
     /**
-     * A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+     * Number of concurrent jobs for a single backup task, 0 means no restrictions.
      */
     readonly maxWorker?: pulumi.Input<string>;
     /**
-     * Custom Data Plane Proxy Server Host Address.
+     * Custom data plane proxy server host address.
      */
     readonly proxyHost?: pulumi.Input<string>;
     /**
-     * Custom Data Plane Proxy Password.
+     * Custom data plane proxy server password.
      */
     readonly proxyPassword?: pulumi.Input<string>;
     /**
-     * Custom Data Plane Proxy Server Host Port.
+     * Custom data plane proxy server host port.
      */
     readonly proxyPort?: pulumi.Input<string>;
     /**
-     * Custom Data Plane Proxy Server Username.
+     * Username of custom data plane proxy server.
      */
     readonly proxyUser?: pulumi.Input<string>;
     /**
@@ -221,7 +220,7 @@ export interface EcsBackupClientState {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+     * Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
      */
     readonly useHttps?: pulumi.Input<boolean>;
 }
@@ -231,39 +230,39 @@ export interface EcsBackupClientState {
  */
 export interface EcsBackupClientArgs {
     /**
-     * The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+     * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
      */
     readonly dataNetworkType?: pulumi.Input<string>;
     /**
-     * The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+     * The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
      */
     readonly dataProxySetting?: pulumi.Input<string>;
     /**
-     * The ECS Instance Id.
+     * The ID of ECS instance.
      */
     readonly instanceId: pulumi.Input<string>;
     /**
-     * A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+     * Number of CPU cores used by a single backup task, 0 means no restrictions.
      */
     readonly maxCpuCore?: pulumi.Input<string>;
     /**
-     * A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+     * Number of concurrent jobs for a single backup task, 0 means no restrictions.
      */
     readonly maxWorker?: pulumi.Input<string>;
     /**
-     * Custom Data Plane Proxy Server Host Address.
+     * Custom data plane proxy server host address.
      */
     readonly proxyHost?: pulumi.Input<string>;
     /**
-     * Custom Data Plane Proxy Password.
+     * Custom data plane proxy server password.
      */
     readonly proxyPassword?: pulumi.Input<string>;
     /**
-     * Custom Data Plane Proxy Server Host Port.
+     * Custom data plane proxy server host port.
      */
     readonly proxyPort?: pulumi.Input<string>;
     /**
-     * Custom Data Plane Proxy Server Username.
+     * Username of custom data plane proxy server.
      */
     readonly proxyUser?: pulumi.Input<string>;
     /**
@@ -271,7 +270,7 @@ export interface EcsBackupClientArgs {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+     * Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
      */
     readonly useHttps?: pulumi.Input<boolean>;
 }

@@ -47,6 +47,11 @@ type Instance struct {
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+	// * UPGRADE: The specifications are upgraded.
+	// * DOWNGRADE: The specifications are downgraded.
+	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntOutput `pulumi:"period"`
 	// The name of the mongo replica set
@@ -141,6 +146,11 @@ type instanceState struct {
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name *string `pulumi:"name"`
+	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+	// * UPGRADE: The specifications are upgraded.
+	// * DOWNGRADE: The specifications are downgraded.
+	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+	OrderType *string `pulumi:"orderType"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
 	// The name of the mongo replica set
@@ -198,6 +208,11 @@ type InstanceState struct {
 	MaintainStartTime pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringPtrInput
+	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+	// * UPGRADE: The specifications are upgraded.
+	// * DOWNGRADE: The specifications are downgraded.
+	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+	OrderType pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
 	// The name of the mongo replica set
@@ -259,6 +274,11 @@ type instanceArgs struct {
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name *string `pulumi:"name"`
+	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+	// * UPGRADE: The specifications are upgraded.
+	// * DOWNGRADE: The specifications are downgraded.
+	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+	OrderType *string `pulumi:"orderType"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
@@ -311,6 +331,11 @@ type InstanceArgs struct {
 	MaintainStartTime pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringPtrInput
+	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+	// * UPGRADE: The specifications are upgraded.
+	// * DOWNGRADE: The specifications are downgraded.
+	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+	OrderType pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]

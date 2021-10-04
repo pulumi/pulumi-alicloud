@@ -4689,6 +4689,283 @@ func (o GetServerGroupsSlbServerGroupServerArrayOutput) Index(i pulumi.IntInput)
 	}).(GetServerGroupsSlbServerGroupServerOutput)
 }
 
+type GetTlsCipherPoliciesPolicy struct {
+	// The encryption algorithms supported. It depends on the value of `tlsVersions`.
+	Ciphers []string `pulumi:"ciphers"`
+	// The creation time timestamp.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Tls Cipher Policy.
+	Id string `pulumi:"id"`
+	// Array of Relate Listeners.
+	RelateListeners []GetTlsCipherPoliciesPolicyRelateListener `pulumi:"relateListeners"`
+	// TLS policy instance state.
+	Status string `pulumi:"status"`
+	// The ID of TLS cipher policy.
+	TlsCipherPolicyId string `pulumi:"tlsCipherPolicyId"`
+	// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+	TlsCipherPolicyName string `pulumi:"tlsCipherPolicyName"`
+	// The version of TLS protocol.
+	TlsVersions []string `pulumi:"tlsVersions"`
+}
+
+// GetTlsCipherPoliciesPolicyInput is an input type that accepts GetTlsCipherPoliciesPolicyArgs and GetTlsCipherPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetTlsCipherPoliciesPolicyInput` via:
+//
+//          GetTlsCipherPoliciesPolicyArgs{...}
+type GetTlsCipherPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetTlsCipherPoliciesPolicyOutput() GetTlsCipherPoliciesPolicyOutput
+	ToGetTlsCipherPoliciesPolicyOutputWithContext(context.Context) GetTlsCipherPoliciesPolicyOutput
+}
+
+type GetTlsCipherPoliciesPolicyArgs struct {
+	// The encryption algorithms supported. It depends on the value of `tlsVersions`.
+	Ciphers pulumi.StringArrayInput `pulumi:"ciphers"`
+	// The creation time timestamp.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Tls Cipher Policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Array of Relate Listeners.
+	RelateListeners GetTlsCipherPoliciesPolicyRelateListenerArrayInput `pulumi:"relateListeners"`
+	// TLS policy instance state.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of TLS cipher policy.
+	TlsCipherPolicyId pulumi.StringInput `pulumi:"tlsCipherPolicyId"`
+	// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+	TlsCipherPolicyName pulumi.StringInput `pulumi:"tlsCipherPolicyName"`
+	// The version of TLS protocol.
+	TlsVersions pulumi.StringArrayInput `pulumi:"tlsVersions"`
+}
+
+func (GetTlsCipherPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTlsCipherPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetTlsCipherPoliciesPolicyArgs) ToGetTlsCipherPoliciesPolicyOutput() GetTlsCipherPoliciesPolicyOutput {
+	return i.ToGetTlsCipherPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetTlsCipherPoliciesPolicyArgs) ToGetTlsCipherPoliciesPolicyOutputWithContext(ctx context.Context) GetTlsCipherPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTlsCipherPoliciesPolicyOutput)
+}
+
+// GetTlsCipherPoliciesPolicyArrayInput is an input type that accepts GetTlsCipherPoliciesPolicyArray and GetTlsCipherPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetTlsCipherPoliciesPolicyArrayInput` via:
+//
+//          GetTlsCipherPoliciesPolicyArray{ GetTlsCipherPoliciesPolicyArgs{...} }
+type GetTlsCipherPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetTlsCipherPoliciesPolicyArrayOutput() GetTlsCipherPoliciesPolicyArrayOutput
+	ToGetTlsCipherPoliciesPolicyArrayOutputWithContext(context.Context) GetTlsCipherPoliciesPolicyArrayOutput
+}
+
+type GetTlsCipherPoliciesPolicyArray []GetTlsCipherPoliciesPolicyInput
+
+func (GetTlsCipherPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTlsCipherPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetTlsCipherPoliciesPolicyArray) ToGetTlsCipherPoliciesPolicyArrayOutput() GetTlsCipherPoliciesPolicyArrayOutput {
+	return i.ToGetTlsCipherPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetTlsCipherPoliciesPolicyArray) ToGetTlsCipherPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetTlsCipherPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTlsCipherPoliciesPolicyArrayOutput)
+}
+
+type GetTlsCipherPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetTlsCipherPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTlsCipherPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetTlsCipherPoliciesPolicyOutput) ToGetTlsCipherPoliciesPolicyOutput() GetTlsCipherPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetTlsCipherPoliciesPolicyOutput) ToGetTlsCipherPoliciesPolicyOutputWithContext(ctx context.Context) GetTlsCipherPoliciesPolicyOutput {
+	return o
+}
+
+// The encryption algorithms supported. It depends on the value of `tlsVersions`.
+func (o GetTlsCipherPoliciesPolicyOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesPolicy) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
+}
+
+// The creation time timestamp.
+func (o GetTlsCipherPoliciesPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesPolicy) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Tls Cipher Policy.
+func (o GetTlsCipherPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Array of Relate Listeners.
+func (o GetTlsCipherPoliciesPolicyOutput) RelateListeners() GetTlsCipherPoliciesPolicyRelateListenerArrayOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesPolicy) []GetTlsCipherPoliciesPolicyRelateListener {
+		return v.RelateListeners
+	}).(GetTlsCipherPoliciesPolicyRelateListenerArrayOutput)
+}
+
+// TLS policy instance state.
+func (o GetTlsCipherPoliciesPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of TLS cipher policy.
+func (o GetTlsCipherPoliciesPolicyOutput) TlsCipherPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesPolicy) string { return v.TlsCipherPolicyId }).(pulumi.StringOutput)
+}
+
+// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+func (o GetTlsCipherPoliciesPolicyOutput) TlsCipherPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesPolicy) string { return v.TlsCipherPolicyName }).(pulumi.StringOutput)
+}
+
+// The version of TLS protocol.
+func (o GetTlsCipherPoliciesPolicyOutput) TlsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesPolicy) []string { return v.TlsVersions }).(pulumi.StringArrayOutput)
+}
+
+type GetTlsCipherPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTlsCipherPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTlsCipherPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetTlsCipherPoliciesPolicyArrayOutput) ToGetTlsCipherPoliciesPolicyArrayOutput() GetTlsCipherPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetTlsCipherPoliciesPolicyArrayOutput) ToGetTlsCipherPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetTlsCipherPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetTlsCipherPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetTlsCipherPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTlsCipherPoliciesPolicy {
+		return vs[0].([]GetTlsCipherPoliciesPolicy)[vs[1].(int)]
+	}).(GetTlsCipherPoliciesPolicyOutput)
+}
+
+type GetTlsCipherPoliciesPolicyRelateListener struct {
+	// The ID of SLB instance.
+	LoadBalancerId string `pulumi:"loadBalancerId"`
+	// Listening port. Valid value: 1 to 65535.
+	Port int `pulumi:"port"`
+	// Snooping protocols. Valid values: `TCP`, `UDP`, `HTTP`, or `HTTPS`.
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetTlsCipherPoliciesPolicyRelateListenerInput is an input type that accepts GetTlsCipherPoliciesPolicyRelateListenerArgs and GetTlsCipherPoliciesPolicyRelateListenerOutput values.
+// You can construct a concrete instance of `GetTlsCipherPoliciesPolicyRelateListenerInput` via:
+//
+//          GetTlsCipherPoliciesPolicyRelateListenerArgs{...}
+type GetTlsCipherPoliciesPolicyRelateListenerInput interface {
+	pulumi.Input
+
+	ToGetTlsCipherPoliciesPolicyRelateListenerOutput() GetTlsCipherPoliciesPolicyRelateListenerOutput
+	ToGetTlsCipherPoliciesPolicyRelateListenerOutputWithContext(context.Context) GetTlsCipherPoliciesPolicyRelateListenerOutput
+}
+
+type GetTlsCipherPoliciesPolicyRelateListenerArgs struct {
+	// The ID of SLB instance.
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// Listening port. Valid value: 1 to 65535.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Snooping protocols. Valid values: `TCP`, `UDP`, `HTTP`, or `HTTPS`.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetTlsCipherPoliciesPolicyRelateListenerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTlsCipherPoliciesPolicyRelateListener)(nil)).Elem()
+}
+
+func (i GetTlsCipherPoliciesPolicyRelateListenerArgs) ToGetTlsCipherPoliciesPolicyRelateListenerOutput() GetTlsCipherPoliciesPolicyRelateListenerOutput {
+	return i.ToGetTlsCipherPoliciesPolicyRelateListenerOutputWithContext(context.Background())
+}
+
+func (i GetTlsCipherPoliciesPolicyRelateListenerArgs) ToGetTlsCipherPoliciesPolicyRelateListenerOutputWithContext(ctx context.Context) GetTlsCipherPoliciesPolicyRelateListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTlsCipherPoliciesPolicyRelateListenerOutput)
+}
+
+// GetTlsCipherPoliciesPolicyRelateListenerArrayInput is an input type that accepts GetTlsCipherPoliciesPolicyRelateListenerArray and GetTlsCipherPoliciesPolicyRelateListenerArrayOutput values.
+// You can construct a concrete instance of `GetTlsCipherPoliciesPolicyRelateListenerArrayInput` via:
+//
+//          GetTlsCipherPoliciesPolicyRelateListenerArray{ GetTlsCipherPoliciesPolicyRelateListenerArgs{...} }
+type GetTlsCipherPoliciesPolicyRelateListenerArrayInput interface {
+	pulumi.Input
+
+	ToGetTlsCipherPoliciesPolicyRelateListenerArrayOutput() GetTlsCipherPoliciesPolicyRelateListenerArrayOutput
+	ToGetTlsCipherPoliciesPolicyRelateListenerArrayOutputWithContext(context.Context) GetTlsCipherPoliciesPolicyRelateListenerArrayOutput
+}
+
+type GetTlsCipherPoliciesPolicyRelateListenerArray []GetTlsCipherPoliciesPolicyRelateListenerInput
+
+func (GetTlsCipherPoliciesPolicyRelateListenerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTlsCipherPoliciesPolicyRelateListener)(nil)).Elem()
+}
+
+func (i GetTlsCipherPoliciesPolicyRelateListenerArray) ToGetTlsCipherPoliciesPolicyRelateListenerArrayOutput() GetTlsCipherPoliciesPolicyRelateListenerArrayOutput {
+	return i.ToGetTlsCipherPoliciesPolicyRelateListenerArrayOutputWithContext(context.Background())
+}
+
+func (i GetTlsCipherPoliciesPolicyRelateListenerArray) ToGetTlsCipherPoliciesPolicyRelateListenerArrayOutputWithContext(ctx context.Context) GetTlsCipherPoliciesPolicyRelateListenerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTlsCipherPoliciesPolicyRelateListenerArrayOutput)
+}
+
+type GetTlsCipherPoliciesPolicyRelateListenerOutput struct{ *pulumi.OutputState }
+
+func (GetTlsCipherPoliciesPolicyRelateListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTlsCipherPoliciesPolicyRelateListener)(nil)).Elem()
+}
+
+func (o GetTlsCipherPoliciesPolicyRelateListenerOutput) ToGetTlsCipherPoliciesPolicyRelateListenerOutput() GetTlsCipherPoliciesPolicyRelateListenerOutput {
+	return o
+}
+
+func (o GetTlsCipherPoliciesPolicyRelateListenerOutput) ToGetTlsCipherPoliciesPolicyRelateListenerOutputWithContext(ctx context.Context) GetTlsCipherPoliciesPolicyRelateListenerOutput {
+	return o
+}
+
+// The ID of SLB instance.
+func (o GetTlsCipherPoliciesPolicyRelateListenerOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesPolicyRelateListener) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// Listening port. Valid value: 1 to 65535.
+func (o GetTlsCipherPoliciesPolicyRelateListenerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesPolicyRelateListener) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Snooping protocols. Valid values: `TCP`, `UDP`, `HTTP`, or `HTTPS`.
+func (o GetTlsCipherPoliciesPolicyRelateListenerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesPolicyRelateListener) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetTlsCipherPoliciesPolicyRelateListenerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTlsCipherPoliciesPolicyRelateListenerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTlsCipherPoliciesPolicyRelateListener)(nil)).Elem()
+}
+
+func (o GetTlsCipherPoliciesPolicyRelateListenerArrayOutput) ToGetTlsCipherPoliciesPolicyRelateListenerArrayOutput() GetTlsCipherPoliciesPolicyRelateListenerArrayOutput {
+	return o
+}
+
+func (o GetTlsCipherPoliciesPolicyRelateListenerArrayOutput) ToGetTlsCipherPoliciesPolicyRelateListenerArrayOutputWithContext(ctx context.Context) GetTlsCipherPoliciesPolicyRelateListenerArrayOutput {
+	return o
+}
+
+func (o GetTlsCipherPoliciesPolicyRelateListenerArrayOutput) Index(i pulumi.IntInput) GetTlsCipherPoliciesPolicyRelateListenerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTlsCipherPoliciesPolicyRelateListener {
+		return vs[0].([]GetTlsCipherPoliciesPolicyRelateListener)[vs[1].(int)]
+	}).(GetTlsCipherPoliciesPolicyRelateListenerOutput)
+}
+
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -4854,6 +5131,10 @@ func init() {
 	pulumi.RegisterOutputType(GetServerGroupsSlbServerGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetServerGroupsSlbServerGroupServerOutput{})
 	pulumi.RegisterOutputType(GetServerGroupsSlbServerGroupServerArrayOutput{})
+	pulumi.RegisterOutputType(GetTlsCipherPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetTlsCipherPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetTlsCipherPoliciesPolicyRelateListenerOutput{})
+	pulumi.RegisterOutputType(GetTlsCipherPoliciesPolicyRelateListenerArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

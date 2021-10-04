@@ -126,11 +126,11 @@ func (o AclAclEntryArrayOutput) Index(i pulumi.IntInput) AclAclEntryOutput {
 }
 
 type ListenerAccessLogTracingConfig struct {
-	// Xtrace Function. Value: True Or False . Default Value: False.
+	// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
 	TracingEnabled *bool `pulumi:"tracingEnabled"`
-	// Xtrace Sampling Rate. Value: **1~10000**.
+	// Xtrace Sampling Rate. Value: `1` to `10000`.
 	TracingSample *int `pulumi:"tracingSample"`
-	// Xtrace Type Value Is **Zipkin**.
+	// Xtrace Type Value Is `Zipkin`.
 	TracingType *string `pulumi:"tracingType"`
 }
 
@@ -146,11 +146,11 @@ type ListenerAccessLogTracingConfigInput interface {
 }
 
 type ListenerAccessLogTracingConfigArgs struct {
-	// Xtrace Function. Value: True Or False . Default Value: False.
+	// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
 	TracingEnabled pulumi.BoolPtrInput `pulumi:"tracingEnabled"`
-	// Xtrace Sampling Rate. Value: **1~10000**.
+	// Xtrace Sampling Rate. Value: `1` to `10000`.
 	TracingSample pulumi.IntPtrInput `pulumi:"tracingSample"`
-	// Xtrace Type Value Is **Zipkin**.
+	// Xtrace Type Value Is `Zipkin`.
 	TracingType pulumi.StringPtrInput `pulumi:"tracingType"`
 }
 
@@ -231,17 +231,17 @@ func (o ListenerAccessLogTracingConfigOutput) ToListenerAccessLogTracingConfigPt
 	}).(ListenerAccessLogTracingConfigPtrOutput)
 }
 
-// Xtrace Function. Value: True Or False . Default Value: False.
+// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
 func (o ListenerAccessLogTracingConfigOutput) TracingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *bool { return v.TracingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Xtrace Sampling Rate. Value: **1~10000**.
+// Xtrace Sampling Rate. Value: `1` to `10000`.
 func (o ListenerAccessLogTracingConfigOutput) TracingSample() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *int { return v.TracingSample }).(pulumi.IntPtrOutput)
 }
 
-// Xtrace Type Value Is **Zipkin**.
+// Xtrace Type Value Is `Zipkin`.
 func (o ListenerAccessLogTracingConfigOutput) TracingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *string { return v.TracingType }).(pulumi.StringPtrOutput)
 }
@@ -264,7 +264,7 @@ func (o ListenerAccessLogTracingConfigPtrOutput) Elem() ListenerAccessLogTracing
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) ListenerAccessLogTracingConfig { return *v }).(ListenerAccessLogTracingConfigOutput)
 }
 
-// Xtrace Function. Value: True Or False . Default Value: False.
+// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *bool {
 		if v == nil {
@@ -274,7 +274,7 @@ func (o ListenerAccessLogTracingConfigPtrOutput) TracingEnabled() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Xtrace Sampling Rate. Value: **1~10000**.
+// Xtrace Sampling Rate. Value: `1` to `10000`.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingSample() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *int {
 		if v == nil {
@@ -284,7 +284,7 @@ func (o ListenerAccessLogTracingConfigPtrOutput) TracingSample() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Xtrace Type Value Is **Zipkin**.
+// Xtrace Type Value Is `Zipkin`.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *string {
 		if v == nil {
@@ -292,6 +292,262 @@ func (o ListenerAccessLogTracingConfigPtrOutput) TracingType() pulumi.StringPtrO
 		}
 		return v.TracingType
 	}).(pulumi.StringPtrOutput)
+}
+
+type ListenerAclConfig struct {
+	// The ACLs that are associated with the listener.
+	AclRelations []ListenerAclConfigAclRelation `pulumi:"aclRelations"`
+	// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+	AclType *string `pulumi:"aclType"`
+}
+
+// ListenerAclConfigInput is an input type that accepts ListenerAclConfigArgs and ListenerAclConfigOutput values.
+// You can construct a concrete instance of `ListenerAclConfigInput` via:
+//
+//          ListenerAclConfigArgs{...}
+type ListenerAclConfigInput interface {
+	pulumi.Input
+
+	ToListenerAclConfigOutput() ListenerAclConfigOutput
+	ToListenerAclConfigOutputWithContext(context.Context) ListenerAclConfigOutput
+}
+
+type ListenerAclConfigArgs struct {
+	// The ACLs that are associated with the listener.
+	AclRelations ListenerAclConfigAclRelationArrayInput `pulumi:"aclRelations"`
+	// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+	AclType pulumi.StringPtrInput `pulumi:"aclType"`
+}
+
+func (ListenerAclConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerAclConfig)(nil)).Elem()
+}
+
+func (i ListenerAclConfigArgs) ToListenerAclConfigOutput() ListenerAclConfigOutput {
+	return i.ToListenerAclConfigOutputWithContext(context.Background())
+}
+
+func (i ListenerAclConfigArgs) ToListenerAclConfigOutputWithContext(ctx context.Context) ListenerAclConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerAclConfigOutput)
+}
+
+func (i ListenerAclConfigArgs) ToListenerAclConfigPtrOutput() ListenerAclConfigPtrOutput {
+	return i.ToListenerAclConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListenerAclConfigArgs) ToListenerAclConfigPtrOutputWithContext(ctx context.Context) ListenerAclConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerAclConfigOutput).ToListenerAclConfigPtrOutputWithContext(ctx)
+}
+
+// ListenerAclConfigPtrInput is an input type that accepts ListenerAclConfigArgs, ListenerAclConfigPtr and ListenerAclConfigPtrOutput values.
+// You can construct a concrete instance of `ListenerAclConfigPtrInput` via:
+//
+//          ListenerAclConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ListenerAclConfigPtrInput interface {
+	pulumi.Input
+
+	ToListenerAclConfigPtrOutput() ListenerAclConfigPtrOutput
+	ToListenerAclConfigPtrOutputWithContext(context.Context) ListenerAclConfigPtrOutput
+}
+
+type listenerAclConfigPtrType ListenerAclConfigArgs
+
+func ListenerAclConfigPtr(v *ListenerAclConfigArgs) ListenerAclConfigPtrInput {
+	return (*listenerAclConfigPtrType)(v)
+}
+
+func (*listenerAclConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerAclConfig)(nil)).Elem()
+}
+
+func (i *listenerAclConfigPtrType) ToListenerAclConfigPtrOutput() ListenerAclConfigPtrOutput {
+	return i.ToListenerAclConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listenerAclConfigPtrType) ToListenerAclConfigPtrOutputWithContext(ctx context.Context) ListenerAclConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerAclConfigPtrOutput)
+}
+
+type ListenerAclConfigOutput struct{ *pulumi.OutputState }
+
+func (ListenerAclConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerAclConfig)(nil)).Elem()
+}
+
+func (o ListenerAclConfigOutput) ToListenerAclConfigOutput() ListenerAclConfigOutput {
+	return o
+}
+
+func (o ListenerAclConfigOutput) ToListenerAclConfigOutputWithContext(ctx context.Context) ListenerAclConfigOutput {
+	return o
+}
+
+func (o ListenerAclConfigOutput) ToListenerAclConfigPtrOutput() ListenerAclConfigPtrOutput {
+	return o.ToListenerAclConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListenerAclConfigOutput) ToListenerAclConfigPtrOutputWithContext(ctx context.Context) ListenerAclConfigPtrOutput {
+	return o.ApplyT(func(v ListenerAclConfig) *ListenerAclConfig {
+		return &v
+	}).(ListenerAclConfigPtrOutput)
+}
+
+// The ACLs that are associated with the listener.
+func (o ListenerAclConfigOutput) AclRelations() ListenerAclConfigAclRelationArrayOutput {
+	return o.ApplyT(func(v ListenerAclConfig) []ListenerAclConfigAclRelation { return v.AclRelations }).(ListenerAclConfigAclRelationArrayOutput)
+}
+
+// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+func (o ListenerAclConfigOutput) AclType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerAclConfig) *string { return v.AclType }).(pulumi.StringPtrOutput)
+}
+
+type ListenerAclConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListenerAclConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerAclConfig)(nil)).Elem()
+}
+
+func (o ListenerAclConfigPtrOutput) ToListenerAclConfigPtrOutput() ListenerAclConfigPtrOutput {
+	return o
+}
+
+func (o ListenerAclConfigPtrOutput) ToListenerAclConfigPtrOutputWithContext(ctx context.Context) ListenerAclConfigPtrOutput {
+	return o
+}
+
+func (o ListenerAclConfigPtrOutput) Elem() ListenerAclConfigOutput {
+	return o.ApplyT(func(v *ListenerAclConfig) ListenerAclConfig { return *v }).(ListenerAclConfigOutput)
+}
+
+// The ACLs that are associated with the listener.
+func (o ListenerAclConfigPtrOutput) AclRelations() ListenerAclConfigAclRelationArrayOutput {
+	return o.ApplyT(func(v *ListenerAclConfig) []ListenerAclConfigAclRelation {
+		if v == nil {
+			return nil
+		}
+		return v.AclRelations
+	}).(ListenerAclConfigAclRelationArrayOutput)
+}
+
+// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+func (o ListenerAclConfigPtrOutput) AclType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerAclConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AclType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListenerAclConfigAclRelation struct {
+	// Snooping Binding of the Access Policy Group ID List.
+	AclId *string `pulumi:"aclId"`
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+	Status *string `pulumi:"status"`
+}
+
+// ListenerAclConfigAclRelationInput is an input type that accepts ListenerAclConfigAclRelationArgs and ListenerAclConfigAclRelationOutput values.
+// You can construct a concrete instance of `ListenerAclConfigAclRelationInput` via:
+//
+//          ListenerAclConfigAclRelationArgs{...}
+type ListenerAclConfigAclRelationInput interface {
+	pulumi.Input
+
+	ToListenerAclConfigAclRelationOutput() ListenerAclConfigAclRelationOutput
+	ToListenerAclConfigAclRelationOutputWithContext(context.Context) ListenerAclConfigAclRelationOutput
+}
+
+type ListenerAclConfigAclRelationArgs struct {
+	// Snooping Binding of the Access Policy Group ID List.
+	AclId pulumi.StringPtrInput `pulumi:"aclId"`
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (ListenerAclConfigAclRelationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerAclConfigAclRelation)(nil)).Elem()
+}
+
+func (i ListenerAclConfigAclRelationArgs) ToListenerAclConfigAclRelationOutput() ListenerAclConfigAclRelationOutput {
+	return i.ToListenerAclConfigAclRelationOutputWithContext(context.Background())
+}
+
+func (i ListenerAclConfigAclRelationArgs) ToListenerAclConfigAclRelationOutputWithContext(ctx context.Context) ListenerAclConfigAclRelationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerAclConfigAclRelationOutput)
+}
+
+// ListenerAclConfigAclRelationArrayInput is an input type that accepts ListenerAclConfigAclRelationArray and ListenerAclConfigAclRelationArrayOutput values.
+// You can construct a concrete instance of `ListenerAclConfigAclRelationArrayInput` via:
+//
+//          ListenerAclConfigAclRelationArray{ ListenerAclConfigAclRelationArgs{...} }
+type ListenerAclConfigAclRelationArrayInput interface {
+	pulumi.Input
+
+	ToListenerAclConfigAclRelationArrayOutput() ListenerAclConfigAclRelationArrayOutput
+	ToListenerAclConfigAclRelationArrayOutputWithContext(context.Context) ListenerAclConfigAclRelationArrayOutput
+}
+
+type ListenerAclConfigAclRelationArray []ListenerAclConfigAclRelationInput
+
+func (ListenerAclConfigAclRelationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerAclConfigAclRelation)(nil)).Elem()
+}
+
+func (i ListenerAclConfigAclRelationArray) ToListenerAclConfigAclRelationArrayOutput() ListenerAclConfigAclRelationArrayOutput {
+	return i.ToListenerAclConfigAclRelationArrayOutputWithContext(context.Background())
+}
+
+func (i ListenerAclConfigAclRelationArray) ToListenerAclConfigAclRelationArrayOutputWithContext(ctx context.Context) ListenerAclConfigAclRelationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerAclConfigAclRelationArrayOutput)
+}
+
+type ListenerAclConfigAclRelationOutput struct{ *pulumi.OutputState }
+
+func (ListenerAclConfigAclRelationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerAclConfigAclRelation)(nil)).Elem()
+}
+
+func (o ListenerAclConfigAclRelationOutput) ToListenerAclConfigAclRelationOutput() ListenerAclConfigAclRelationOutput {
+	return o
+}
+
+func (o ListenerAclConfigAclRelationOutput) ToListenerAclConfigAclRelationOutputWithContext(ctx context.Context) ListenerAclConfigAclRelationOutput {
+	return o
+}
+
+// Snooping Binding of the Access Policy Group ID List.
+func (o ListenerAclConfigAclRelationOutput) AclId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerAclConfigAclRelation) *string { return v.AclId }).(pulumi.StringPtrOutput)
+}
+
+// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+func (o ListenerAclConfigAclRelationOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerAclConfigAclRelation) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type ListenerAclConfigAclRelationArrayOutput struct{ *pulumi.OutputState }
+
+func (ListenerAclConfigAclRelationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerAclConfigAclRelation)(nil)).Elem()
+}
+
+func (o ListenerAclConfigAclRelationArrayOutput) ToListenerAclConfigAclRelationArrayOutput() ListenerAclConfigAclRelationArrayOutput {
+	return o
+}
+
+func (o ListenerAclConfigAclRelationArrayOutput) ToListenerAclConfigAclRelationArrayOutputWithContext(ctx context.Context) ListenerAclConfigAclRelationArrayOutput {
+	return o
+}
+
+func (o ListenerAclConfigAclRelationArrayOutput) Index(i pulumi.IntInput) ListenerAclConfigAclRelationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListenerAclConfigAclRelation {
+		return vs[0].([]ListenerAclConfigAclRelation)[vs[1].(int)]
+	}).(ListenerAclConfigAclRelationOutput)
 }
 
 type ListenerCertificate struct {
@@ -4994,15 +5250,227 @@ func (o GetAclsAclAclEntryArrayOutput) Index(i pulumi.IntInput) GetAclsAclAclEnt
 	}).(GetAclsAclAclEntryOutput)
 }
 
+type GetHealthCheckTemplatesTemplate struct {
+	// The HTTP status code that indicates a successful health check.
+	HealthCheckCodes []string `pulumi:"healthCheckCodes"`
+	// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
+	HealthCheckConnectPort int `pulumi:"healthCheckConnectPort"`
+	// The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.
+	HealthCheckHost string `pulumi:"healthCheckHost"`
+	// The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`.
+	HealthCheckHttpVersion string `pulumi:"healthCheckHttpVersion"`
+	// The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+	HealthCheckInterval int `pulumi:"healthCheckInterval"`
+	// The health check method.  Valid values: `GET` and `HEAD`.  Default value: `HEAD`.
+	HealthCheckMethod string `pulumi:"healthCheckMethod"`
+	// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/) `.
+	HealthCheckPath string `pulumi:"healthCheckPath"`
+	// The protocol that is used for health checks.  Valid values: HTTP and TCP.  Default value: HTTP.
+	HealthCheckProtocol string `pulumi:"healthCheckProtocol"`
+	// The ID of the resource.
+	HealthCheckTemplateId string `pulumi:"healthCheckTemplateId"`
+	// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	HealthCheckTemplateName string `pulumi:"healthCheckTemplateName"`
+	// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+	HealthCheckTimeout int `pulumi:"healthCheckTimeout"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	HealthyThreshold int `pulumi:"healthyThreshold"`
+	// The ID of the Health Check Template.
+	Id string `pulumi:"id"`
+	// The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
+}
+
+// GetHealthCheckTemplatesTemplateInput is an input type that accepts GetHealthCheckTemplatesTemplateArgs and GetHealthCheckTemplatesTemplateOutput values.
+// You can construct a concrete instance of `GetHealthCheckTemplatesTemplateInput` via:
+//
+//          GetHealthCheckTemplatesTemplateArgs{...}
+type GetHealthCheckTemplatesTemplateInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckTemplatesTemplateOutput() GetHealthCheckTemplatesTemplateOutput
+	ToGetHealthCheckTemplatesTemplateOutputWithContext(context.Context) GetHealthCheckTemplatesTemplateOutput
+}
+
+type GetHealthCheckTemplatesTemplateArgs struct {
+	// The HTTP status code that indicates a successful health check.
+	HealthCheckCodes pulumi.StringArrayInput `pulumi:"healthCheckCodes"`
+	// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
+	HealthCheckConnectPort pulumi.IntInput `pulumi:"healthCheckConnectPort"`
+	// The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.
+	HealthCheckHost pulumi.StringInput `pulumi:"healthCheckHost"`
+	// The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`.
+	HealthCheckHttpVersion pulumi.StringInput `pulumi:"healthCheckHttpVersion"`
+	// The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+	HealthCheckInterval pulumi.IntInput `pulumi:"healthCheckInterval"`
+	// The health check method.  Valid values: `GET` and `HEAD`.  Default value: `HEAD`.
+	HealthCheckMethod pulumi.StringInput `pulumi:"healthCheckMethod"`
+	// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/) `.
+	HealthCheckPath pulumi.StringInput `pulumi:"healthCheckPath"`
+	// The protocol that is used for health checks.  Valid values: HTTP and TCP.  Default value: HTTP.
+	HealthCheckProtocol pulumi.StringInput `pulumi:"healthCheckProtocol"`
+	// The ID of the resource.
+	HealthCheckTemplateId pulumi.StringInput `pulumi:"healthCheckTemplateId"`
+	// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	HealthCheckTemplateName pulumi.StringInput `pulumi:"healthCheckTemplateName"`
+	// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+	HealthCheckTimeout pulumi.IntInput `pulumi:"healthCheckTimeout"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
+	// The ID of the Health Check Template.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
+}
+
+func (GetHealthCheckTemplatesTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetHealthCheckTemplatesTemplateArgs) ToGetHealthCheckTemplatesTemplateOutput() GetHealthCheckTemplatesTemplateOutput {
+	return i.ToGetHealthCheckTemplatesTemplateOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckTemplatesTemplateArgs) ToGetHealthCheckTemplatesTemplateOutputWithContext(ctx context.Context) GetHealthCheckTemplatesTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckTemplatesTemplateOutput)
+}
+
+// GetHealthCheckTemplatesTemplateArrayInput is an input type that accepts GetHealthCheckTemplatesTemplateArray and GetHealthCheckTemplatesTemplateArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckTemplatesTemplateArrayInput` via:
+//
+//          GetHealthCheckTemplatesTemplateArray{ GetHealthCheckTemplatesTemplateArgs{...} }
+type GetHealthCheckTemplatesTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckTemplatesTemplateArrayOutput() GetHealthCheckTemplatesTemplateArrayOutput
+	ToGetHealthCheckTemplatesTemplateArrayOutputWithContext(context.Context) GetHealthCheckTemplatesTemplateArrayOutput
+}
+
+type GetHealthCheckTemplatesTemplateArray []GetHealthCheckTemplatesTemplateInput
+
+func (GetHealthCheckTemplatesTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetHealthCheckTemplatesTemplateArray) ToGetHealthCheckTemplatesTemplateArrayOutput() GetHealthCheckTemplatesTemplateArrayOutput {
+	return i.ToGetHealthCheckTemplatesTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckTemplatesTemplateArray) ToGetHealthCheckTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetHealthCheckTemplatesTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckTemplatesTemplateArrayOutput)
+}
+
+type GetHealthCheckTemplatesTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckTemplatesTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetHealthCheckTemplatesTemplateOutput) ToGetHealthCheckTemplatesTemplateOutput() GetHealthCheckTemplatesTemplateOutput {
+	return o
+}
+
+func (o GetHealthCheckTemplatesTemplateOutput) ToGetHealthCheckTemplatesTemplateOutputWithContext(ctx context.Context) GetHealthCheckTemplatesTemplateOutput {
+	return o
+}
+
+// The HTTP status code that indicates a successful health check.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) []string { return v.HealthCheckCodes }).(pulumi.StringArrayOutput)
+}
+
+// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckConnectPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) int { return v.HealthCheckConnectPort }).(pulumi.IntOutput)
+}
+
+// The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) string { return v.HealthCheckHost }).(pulumi.StringOutput)
+}
+
+// The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckHttpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) string { return v.HealthCheckHttpVersion }).(pulumi.StringOutput)
+}
+
+// The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) int { return v.HealthCheckInterval }).(pulumi.IntOutput)
+}
+
+// The health check method.  Valid values: `GET` and `HEAD`.  Default value: `HEAD`.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) string { return v.HealthCheckMethod }).(pulumi.StringOutput)
+}
+
+// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/) `.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) string { return v.HealthCheckPath }).(pulumi.StringOutput)
+}
+
+// The protocol that is used for health checks.  Valid values: HTTP and TCP.  Default value: HTTP.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) string { return v.HealthCheckProtocol }).(pulumi.StringOutput)
+}
+
+// The ID of the resource.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) string { return v.HealthCheckTemplateId }).(pulumi.StringOutput)
+}
+
+// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) string { return v.HealthCheckTemplateName }).(pulumi.StringOutput)
+}
+
+// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) int { return v.HealthCheckTimeout }).(pulumi.IntOutput)
+}
+
+// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+func (o GetHealthCheckTemplatesTemplateOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+// The ID of the Health Check Template.
+func (o GetHealthCheckTemplatesTemplateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+func (o GetHealthCheckTemplatesTemplateOutput) UnhealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+}
+
+type GetHealthCheckTemplatesTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckTemplatesTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetHealthCheckTemplatesTemplateArrayOutput) ToGetHealthCheckTemplatesTemplateArrayOutput() GetHealthCheckTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckTemplatesTemplateArrayOutput) ToGetHealthCheckTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetHealthCheckTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetHealthCheckTemplatesTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckTemplatesTemplate {
+		return vs[0].([]GetHealthCheckTemplatesTemplate)[vs[1].(int)]
+	}).(GetHealthCheckTemplatesTemplateOutput)
+}
+
 type GetListenersListener struct {
 	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
 	AccessLogRecordCustomizedHeadersEnabled bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information.
 	AccessLogTracingConfigs []GetListenersListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfigs"`
-	// Snooping Binding of the Access Policy Group ID List.
-	AclId string `pulumi:"aclId"`
-	// The type of the ACL. Valid values: White: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. Black: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
-	AclType string `pulumi:"aclType"`
+	// The configurations of the access control lists (ACLs).
+	AclConfigs []GetListenersListenerAclConfig `pulumi:"aclConfigs"`
 	// Certificate.
 	Certificates []GetListenersListenerCertificate `pulumi:"certificates"`
 	// The Default Rule Action List.
@@ -5013,16 +5481,17 @@ type GetListenersListener struct {
 	Http2Enabled bool `pulumi:"http2Enabled"`
 	// The ID of the Listener.
 	Id string `pulumi:"id"`
-	// Specify the Connection Idle Timeout Value: 1 to 60.
+	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout int `pulumi:"idleTimeout"`
-	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters. 	* `listenerId` - on Behalf of the Resource Level Id of the Resources Property Fields.
+	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription string `pulumi:"listenerDescription"`
-	ListenerId          string `pulumi:"listenerId"`
-	// The SLB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
+	// on Behalf of the Resource Level Id of the Resources Property Fields.
+	ListenerId string `pulumi:"listenerId"`
+	// The ALB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
 	ListenerPort int `pulumi:"listenerPort"`
 	// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
 	ListenerProtocol string `pulumi:"listenerProtocol"`
-	// The SLB Instance Id.
+	// The ALB Instance Id.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// This Request Returned by the Maximum Number of Records.
 	MaxResults string `pulumi:"maxResults"`
@@ -5030,11 +5499,11 @@ type GetListenersListener struct {
 	NextToken string `pulumi:"nextToken"`
 	// Configuration Associated with the QuIC Listening.
 	QuicConfigs []GetListenersListenerQuicConfig `pulumi:"quicConfigs"`
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout int `pulumi:"requestTimeout"`
 	// Security Policy.
 	SecurityPolicyId string `pulumi:"securityPolicyId"`
-	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
 	Status string `pulumi:"status"`
 	// xforwardfor Related Attribute Configuration.
 	XforwardedForConfigs []GetListenersListenerXforwardedForConfig `pulumi:"xforwardedForConfigs"`
@@ -5056,10 +5525,8 @@ type GetListenersListenerArgs struct {
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolInput `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information.
 	AccessLogTracingConfigs GetListenersListenerAccessLogTracingConfigArrayInput `pulumi:"accessLogTracingConfigs"`
-	// Snooping Binding of the Access Policy Group ID List.
-	AclId pulumi.StringInput `pulumi:"aclId"`
-	// The type of the ACL. Valid values: White: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. Black: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
-	AclType pulumi.StringInput `pulumi:"aclType"`
+	// The configurations of the access control lists (ACLs).
+	AclConfigs GetListenersListenerAclConfigArrayInput `pulumi:"aclConfigs"`
 	// Certificate.
 	Certificates GetListenersListenerCertificateArrayInput `pulumi:"certificates"`
 	// The Default Rule Action List.
@@ -5070,16 +5537,17 @@ type GetListenersListenerArgs struct {
 	Http2Enabled pulumi.BoolInput `pulumi:"http2Enabled"`
 	// The ID of the Listener.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specify the Connection Idle Timeout Value: 1 to 60.
+	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout pulumi.IntInput `pulumi:"idleTimeout"`
-	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters. 	* `listenerId` - on Behalf of the Resource Level Id of the Resources Property Fields.
+	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription pulumi.StringInput `pulumi:"listenerDescription"`
-	ListenerId          pulumi.StringInput `pulumi:"listenerId"`
-	// The SLB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
+	// on Behalf of the Resource Level Id of the Resources Property Fields.
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// The ALB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
 	ListenerPort pulumi.IntInput `pulumi:"listenerPort"`
 	// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
 	ListenerProtocol pulumi.StringInput `pulumi:"listenerProtocol"`
-	// The SLB Instance Id.
+	// The ALB Instance Id.
 	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
 	// This Request Returned by the Maximum Number of Records.
 	MaxResults pulumi.StringInput `pulumi:"maxResults"`
@@ -5087,11 +5555,11 @@ type GetListenersListenerArgs struct {
 	NextToken pulumi.StringInput `pulumi:"nextToken"`
 	// Configuration Associated with the QuIC Listening.
 	QuicConfigs GetListenersListenerQuicConfigArrayInput `pulumi:"quicConfigs"`
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntInput `pulumi:"requestTimeout"`
 	// Security Policy.
 	SecurityPolicyId pulumi.StringInput `pulumi:"securityPolicyId"`
-	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
 	Status pulumi.StringInput `pulumi:"status"`
 	// xforwardfor Related Attribute Configuration.
 	XforwardedForConfigs GetListenersListenerXforwardedForConfigArrayInput `pulumi:"xforwardedForConfigs"`
@@ -5160,14 +5628,9 @@ func (o GetListenersListenerOutput) AccessLogTracingConfigs() GetListenersListen
 	}).(GetListenersListenerAccessLogTracingConfigArrayOutput)
 }
 
-// Snooping Binding of the Access Policy Group ID List.
-func (o GetListenersListenerOutput) AclId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetListenersListener) string { return v.AclId }).(pulumi.StringOutput)
-}
-
-// The type of the ACL. Valid values: White: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. Black: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
-func (o GetListenersListenerOutput) AclType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetListenersListener) string { return v.AclType }).(pulumi.StringOutput)
+// The configurations of the access control lists (ACLs).
+func (o GetListenersListenerOutput) AclConfigs() GetListenersListenerAclConfigArrayOutput {
+	return o.ApplyT(func(v GetListenersListener) []GetListenersListenerAclConfig { return v.AclConfigs }).(GetListenersListenerAclConfigArrayOutput)
 }
 
 // Certificate.
@@ -5195,21 +5658,22 @@ func (o GetListenersListenerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specify the Connection Idle Timeout Value: 1 to 60.
+// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 func (o GetListenersListenerOutput) IdleTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetListenersListener) int { return v.IdleTimeout }).(pulumi.IntOutput)
 }
 
-// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters. 	* `listenerId` - on Behalf of the Resource Level Id of the Resources Property Fields.
+// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 func (o GetListenersListenerOutput) ListenerDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.ListenerDescription }).(pulumi.StringOutput)
 }
 
+// on Behalf of the Resource Level Id of the Resources Property Fields.
 func (o GetListenersListenerOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// The SLB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
+// The ALB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
 func (o GetListenersListenerOutput) ListenerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetListenersListener) int { return v.ListenerPort }).(pulumi.IntOutput)
 }
@@ -5219,7 +5683,7 @@ func (o GetListenersListenerOutput) ListenerProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.ListenerProtocol }).(pulumi.StringOutput)
 }
 
-// The SLB Instance Id.
+// The ALB Instance Id.
 func (o GetListenersListenerOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
@@ -5239,7 +5703,7 @@ func (o GetListenersListenerOutput) QuicConfigs() GetListenersListenerQuicConfig
 	return o.ApplyT(func(v GetListenersListener) []GetListenersListenerQuicConfig { return v.QuicConfigs }).(GetListenersListenerQuicConfigArrayOutput)
 }
 
-// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 func (o GetListenersListenerOutput) RequestTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetListenersListener) int { return v.RequestTimeout }).(pulumi.IntOutput)
 }
@@ -5249,7 +5713,7 @@ func (o GetListenersListenerOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
 
-// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
 func (o GetListenersListenerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -5392,6 +5856,220 @@ func (o GetListenersListenerAccessLogTracingConfigArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersListenerAccessLogTracingConfig {
 		return vs[0].([]GetListenersListenerAccessLogTracingConfig)[vs[1].(int)]
 	}).(GetListenersListenerAccessLogTracingConfigOutput)
+}
+
+type GetListenersListenerAclConfig struct {
+	// The ACLs that are associated with the listener.
+	AclRelations []GetListenersListenerAclConfigAclRelation `pulumi:"aclRelations"`
+	// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+	AclType string `pulumi:"aclType"`
+}
+
+// GetListenersListenerAclConfigInput is an input type that accepts GetListenersListenerAclConfigArgs and GetListenersListenerAclConfigOutput values.
+// You can construct a concrete instance of `GetListenersListenerAclConfigInput` via:
+//
+//          GetListenersListenerAclConfigArgs{...}
+type GetListenersListenerAclConfigInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerAclConfigOutput() GetListenersListenerAclConfigOutput
+	ToGetListenersListenerAclConfigOutputWithContext(context.Context) GetListenersListenerAclConfigOutput
+}
+
+type GetListenersListenerAclConfigArgs struct {
+	// The ACLs that are associated with the listener.
+	AclRelations GetListenersListenerAclConfigAclRelationArrayInput `pulumi:"aclRelations"`
+	// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+	AclType pulumi.StringInput `pulumi:"aclType"`
+}
+
+func (GetListenersListenerAclConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerAclConfig)(nil)).Elem()
+}
+
+func (i GetListenersListenerAclConfigArgs) ToGetListenersListenerAclConfigOutput() GetListenersListenerAclConfigOutput {
+	return i.ToGetListenersListenerAclConfigOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerAclConfigArgs) ToGetListenersListenerAclConfigOutputWithContext(ctx context.Context) GetListenersListenerAclConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerAclConfigOutput)
+}
+
+// GetListenersListenerAclConfigArrayInput is an input type that accepts GetListenersListenerAclConfigArray and GetListenersListenerAclConfigArrayOutput values.
+// You can construct a concrete instance of `GetListenersListenerAclConfigArrayInput` via:
+//
+//          GetListenersListenerAclConfigArray{ GetListenersListenerAclConfigArgs{...} }
+type GetListenersListenerAclConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerAclConfigArrayOutput() GetListenersListenerAclConfigArrayOutput
+	ToGetListenersListenerAclConfigArrayOutputWithContext(context.Context) GetListenersListenerAclConfigArrayOutput
+}
+
+type GetListenersListenerAclConfigArray []GetListenersListenerAclConfigInput
+
+func (GetListenersListenerAclConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerAclConfig)(nil)).Elem()
+}
+
+func (i GetListenersListenerAclConfigArray) ToGetListenersListenerAclConfigArrayOutput() GetListenersListenerAclConfigArrayOutput {
+	return i.ToGetListenersListenerAclConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerAclConfigArray) ToGetListenersListenerAclConfigArrayOutputWithContext(ctx context.Context) GetListenersListenerAclConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerAclConfigArrayOutput)
+}
+
+type GetListenersListenerAclConfigOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerAclConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerAclConfig)(nil)).Elem()
+}
+
+func (o GetListenersListenerAclConfigOutput) ToGetListenersListenerAclConfigOutput() GetListenersListenerAclConfigOutput {
+	return o
+}
+
+func (o GetListenersListenerAclConfigOutput) ToGetListenersListenerAclConfigOutputWithContext(ctx context.Context) GetListenersListenerAclConfigOutput {
+	return o
+}
+
+// The ACLs that are associated with the listener.
+func (o GetListenersListenerAclConfigOutput) AclRelations() GetListenersListenerAclConfigAclRelationArrayOutput {
+	return o.ApplyT(func(v GetListenersListenerAclConfig) []GetListenersListenerAclConfigAclRelation {
+		return v.AclRelations
+	}).(GetListenersListenerAclConfigAclRelationArrayOutput)
+}
+
+// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+func (o GetListenersListenerAclConfigOutput) AclType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerAclConfig) string { return v.AclType }).(pulumi.StringOutput)
+}
+
+type GetListenersListenerAclConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerAclConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerAclConfig)(nil)).Elem()
+}
+
+func (o GetListenersListenerAclConfigArrayOutput) ToGetListenersListenerAclConfigArrayOutput() GetListenersListenerAclConfigArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerAclConfigArrayOutput) ToGetListenersListenerAclConfigArrayOutputWithContext(ctx context.Context) GetListenersListenerAclConfigArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerAclConfigArrayOutput) Index(i pulumi.IntInput) GetListenersListenerAclConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersListenerAclConfig {
+		return vs[0].([]GetListenersListenerAclConfig)[vs[1].(int)]
+	}).(GetListenersListenerAclConfigOutput)
+}
+
+type GetListenersListenerAclConfigAclRelation struct {
+	// Snooping Binding of the Access Policy Group ID List.
+	AclId string `pulumi:"aclId"`
+	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	Status string `pulumi:"status"`
+}
+
+// GetListenersListenerAclConfigAclRelationInput is an input type that accepts GetListenersListenerAclConfigAclRelationArgs and GetListenersListenerAclConfigAclRelationOutput values.
+// You can construct a concrete instance of `GetListenersListenerAclConfigAclRelationInput` via:
+//
+//          GetListenersListenerAclConfigAclRelationArgs{...}
+type GetListenersListenerAclConfigAclRelationInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerAclConfigAclRelationOutput() GetListenersListenerAclConfigAclRelationOutput
+	ToGetListenersListenerAclConfigAclRelationOutputWithContext(context.Context) GetListenersListenerAclConfigAclRelationOutput
+}
+
+type GetListenersListenerAclConfigAclRelationArgs struct {
+	// Snooping Binding of the Access Policy Group ID List.
+	AclId pulumi.StringInput `pulumi:"aclId"`
+	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetListenersListenerAclConfigAclRelationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerAclConfigAclRelation)(nil)).Elem()
+}
+
+func (i GetListenersListenerAclConfigAclRelationArgs) ToGetListenersListenerAclConfigAclRelationOutput() GetListenersListenerAclConfigAclRelationOutput {
+	return i.ToGetListenersListenerAclConfigAclRelationOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerAclConfigAclRelationArgs) ToGetListenersListenerAclConfigAclRelationOutputWithContext(ctx context.Context) GetListenersListenerAclConfigAclRelationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerAclConfigAclRelationOutput)
+}
+
+// GetListenersListenerAclConfigAclRelationArrayInput is an input type that accepts GetListenersListenerAclConfigAclRelationArray and GetListenersListenerAclConfigAclRelationArrayOutput values.
+// You can construct a concrete instance of `GetListenersListenerAclConfigAclRelationArrayInput` via:
+//
+//          GetListenersListenerAclConfigAclRelationArray{ GetListenersListenerAclConfigAclRelationArgs{...} }
+type GetListenersListenerAclConfigAclRelationArrayInput interface {
+	pulumi.Input
+
+	ToGetListenersListenerAclConfigAclRelationArrayOutput() GetListenersListenerAclConfigAclRelationArrayOutput
+	ToGetListenersListenerAclConfigAclRelationArrayOutputWithContext(context.Context) GetListenersListenerAclConfigAclRelationArrayOutput
+}
+
+type GetListenersListenerAclConfigAclRelationArray []GetListenersListenerAclConfigAclRelationInput
+
+func (GetListenersListenerAclConfigAclRelationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerAclConfigAclRelation)(nil)).Elem()
+}
+
+func (i GetListenersListenerAclConfigAclRelationArray) ToGetListenersListenerAclConfigAclRelationArrayOutput() GetListenersListenerAclConfigAclRelationArrayOutput {
+	return i.ToGetListenersListenerAclConfigAclRelationArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenersListenerAclConfigAclRelationArray) ToGetListenersListenerAclConfigAclRelationArrayOutputWithContext(ctx context.Context) GetListenersListenerAclConfigAclRelationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenersListenerAclConfigAclRelationArrayOutput)
+}
+
+type GetListenersListenerAclConfigAclRelationOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerAclConfigAclRelationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersListenerAclConfigAclRelation)(nil)).Elem()
+}
+
+func (o GetListenersListenerAclConfigAclRelationOutput) ToGetListenersListenerAclConfigAclRelationOutput() GetListenersListenerAclConfigAclRelationOutput {
+	return o
+}
+
+func (o GetListenersListenerAclConfigAclRelationOutput) ToGetListenersListenerAclConfigAclRelationOutputWithContext(ctx context.Context) GetListenersListenerAclConfigAclRelationOutput {
+	return o
+}
+
+// Snooping Binding of the Access Policy Group ID List.
+func (o GetListenersListenerAclConfigAclRelationOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerAclConfigAclRelation) string { return v.AclId }).(pulumi.StringOutput)
+}
+
+// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+func (o GetListenersListenerAclConfigAclRelationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersListenerAclConfigAclRelation) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetListenersListenerAclConfigAclRelationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenersListenerAclConfigAclRelationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenersListenerAclConfigAclRelation)(nil)).Elem()
+}
+
+func (o GetListenersListenerAclConfigAclRelationArrayOutput) ToGetListenersListenerAclConfigAclRelationArrayOutput() GetListenersListenerAclConfigAclRelationArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerAclConfigAclRelationArrayOutput) ToGetListenersListenerAclConfigAclRelationArrayOutputWithContext(ctx context.Context) GetListenersListenerAclConfigAclRelationArrayOutput {
+	return o
+}
+
+func (o GetListenersListenerAclConfigAclRelationArrayOutput) Index(i pulumi.IntInput) GetListenersListenerAclConfigAclRelationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersListenerAclConfigAclRelation {
+		return vs[0].([]GetListenersListenerAclConfigAclRelation)[vs[1].(int)]
+	}).(GetListenersListenerAclConfigAclRelationOutput)
 }
 
 type GetListenersListenerCertificate struct {
@@ -10016,6 +10694,10 @@ func init() {
 	pulumi.RegisterOutputType(AclAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(ListenerAccessLogTracingConfigOutput{})
 	pulumi.RegisterOutputType(ListenerAccessLogTracingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ListenerAclConfigOutput{})
+	pulumi.RegisterOutputType(ListenerAclConfigPtrOutput{})
+	pulumi.RegisterOutputType(ListenerAclConfigAclRelationOutput{})
+	pulumi.RegisterOutputType(ListenerAclConfigAclRelationArrayOutput{})
 	pulumi.RegisterOutputType(ListenerCertificateOutput{})
 	pulumi.RegisterOutputType(ListenerCertificateArrayOutput{})
 	pulumi.RegisterOutputType(ListenerDefaultActionOutput{})
@@ -10077,10 +10759,16 @@ func init() {
 	pulumi.RegisterOutputType(GetAclsAclArrayOutput{})
 	pulumi.RegisterOutputType(GetAclsAclAclEntryOutput{})
 	pulumi.RegisterOutputType(GetAclsAclAclEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckTemplatesTemplateOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckTemplatesTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerArrayOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerAccessLogTracingConfigOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerAccessLogTracingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerAclConfigOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerAclConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerAclConfigAclRelationOutput{})
+	pulumi.RegisterOutputType(GetListenersListenerAclConfigAclRelationArrayOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerCertificateOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerDefaultActionOutput{})

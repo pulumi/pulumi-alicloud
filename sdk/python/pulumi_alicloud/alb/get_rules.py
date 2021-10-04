@@ -20,16 +20,13 @@ class GetRulesResult:
     """
     A collection of values returned by getRules.
     """
-    def __init__(__self__, id=None, ids=None, listener_id=None, listener_ids=None, load_balancer_ids=None, name_regex=None, names=None, output_file=None, rule_ids=None, rules=None, status=None):
+    def __init__(__self__, id=None, ids=None, listener_ids=None, load_balancer_ids=None, name_regex=None, names=None, output_file=None, rule_ids=None, rules=None, status=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
-        if listener_id and not isinstance(listener_id, str):
-            raise TypeError("Expected argument 'listener_id' to be a str")
-        pulumi.set(__self__, "listener_id", listener_id)
         if listener_ids and not isinstance(listener_ids, list):
             raise TypeError("Expected argument 'listener_ids' to be a list")
         pulumi.set(__self__, "listener_ids", listener_ids)
@@ -67,11 +64,6 @@ class GetRulesResult:
     @pulumi.getter
     def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
-
-    @property
-    @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[str]:
-        return pulumi.get(self, "listener_id")
 
     @property
     @pulumi.getter(name="listenerIds")
@@ -122,7 +114,6 @@ class AwaitableGetRulesResult(GetRulesResult):
         return GetRulesResult(
             id=self.id,
             ids=self.ids,
-            listener_id=self.listener_id,
             listener_ids=self.listener_ids,
             load_balancer_ids=self.load_balancer_ids,
             name_regex=self.name_regex,
@@ -134,7 +125,6 @@ class AwaitableGetRulesResult(GetRulesResult):
 
 
 def get_rules(ids: Optional[Sequence[str]] = None,
-              listener_id: Optional[str] = None,
               listener_ids: Optional[Sequence[str]] = None,
               load_balancer_ids: Optional[Sequence[str]] = None,
               name_regex: Optional[str] = None,
@@ -163,7 +153,6 @@ def get_rules(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Rule IDs.
-    :param str listener_id: The ID of the listener to which the forwarding rule belongs.
     :param Sequence[str] listener_ids: The listener ids.
     :param Sequence[str] load_balancer_ids: The load balancer ids.
     :param str name_regex: A regex string to filter results by Rule name.
@@ -172,7 +161,6 @@ def get_rules(ids: Optional[Sequence[str]] = None,
     """
     __args__ = dict()
     __args__['ids'] = ids
-    __args__['listenerId'] = listener_id
     __args__['listenerIds'] = listener_ids
     __args__['loadBalancerIds'] = load_balancer_ids
     __args__['nameRegex'] = name_regex
@@ -188,7 +176,6 @@ def get_rules(ids: Optional[Sequence[str]] = None,
     return AwaitableGetRulesResult(
         id=__ret__.id,
         ids=__ret__.ids,
-        listener_id=__ret__.listener_id,
         listener_ids=__ret__.listener_ids,
         load_balancer_ids=__ret__.load_balancer_ids,
         name_regex=__ret__.name_regex,

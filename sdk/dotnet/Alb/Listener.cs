@@ -40,6 +40,12 @@ namespace Pulumi.AliCloud.Alb
         public Output<Outputs.ListenerAccessLogTracingConfig?> AccessLogTracingConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The configurations of the access control lists (ACLs). See the following `Block acl_config`.
+        /// </summary>
+        [Output("aclConfig")]
+        public Output<Outputs.ListenerAclConfig?> AclConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The Certificates.
         /// </summary>
         [Output("certificates")]
@@ -64,37 +70,37 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool> GzipEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+        /// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
         /// </summary>
         [Output("http2Enabled")]
         public Output<bool> Http2Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        /// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         /// </summary>
         [Output("idleTimeout")]
         public Output<int> IdleTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\x00-\xff]|[\w.,;/@-]){2,256}$/.
+        /// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
         /// </summary>
         [Output("listenerDescription")]
         public Output<string?> ListenerDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+        /// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
         /// </summary>
         [Output("listenerPort")]
         public Output<int> ListenerPort { get; private set; } = null!;
 
         /// <summary>
-        /// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+        /// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
         /// </summary>
         [Output("listenerProtocol")]
         public Output<string> ListenerProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// The SLB Instance Id.
+        /// The ALB Instance Id.
         /// </summary>
         [Output("loadBalancerId")]
         public Output<string> LoadBalancerId { get; private set; } = null!;
@@ -106,7 +112,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<Outputs.ListenerQuicConfig> QuicConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Output("requestTimeout")]
         public Output<int> RequestTimeout { get; private set; } = null!;
@@ -187,6 +193,12 @@ namespace Pulumi.AliCloud.Alb
         [Input("accessLogTracingConfig")]
         public Input<Inputs.ListenerAccessLogTracingConfigArgs>? AccessLogTracingConfig { get; set; }
 
+        /// <summary>
+        /// The configurations of the access control lists (ACLs). See the following `Block acl_config`.
+        /// </summary>
+        [Input("aclConfig")]
+        public Input<Inputs.ListenerAclConfigArgs>? AclConfig { get; set; }
+
         [Input("certificates")]
         private InputList<Inputs.ListenerCertificateArgs>? _certificates;
 
@@ -224,37 +236,37 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? GzipEnabled { get; set; }
 
         /// <summary>
-        /// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+        /// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
         /// </summary>
         [Input("http2Enabled")]
         public Input<bool>? Http2Enabled { get; set; }
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        /// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
 
         /// <summary>
-        /// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\x00-\xff]|[\w.,;/@-]){2,256}$/.
+        /// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
         /// </summary>
         [Input("listenerDescription")]
         public Input<string>? ListenerDescription { get; set; }
 
         /// <summary>
-        /// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+        /// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
         /// </summary>
         [Input("listenerPort", required: true)]
         public Input<int> ListenerPort { get; set; } = null!;
 
         /// <summary>
-        /// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+        /// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
         /// </summary>
         [Input("listenerProtocol", required: true)]
         public Input<string> ListenerProtocol { get; set; } = null!;
 
         /// <summary>
-        /// The SLB Instance Id.
+        /// The ALB Instance Id.
         /// </summary>
         [Input("loadBalancerId", required: true)]
         public Input<string> LoadBalancerId { get; set; } = null!;
@@ -266,7 +278,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<Inputs.ListenerQuicConfigArgs>? QuicConfig { get; set; }
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
@@ -308,6 +320,12 @@ namespace Pulumi.AliCloud.Alb
         [Input("accessLogTracingConfig")]
         public Input<Inputs.ListenerAccessLogTracingConfigGetArgs>? AccessLogTracingConfig { get; set; }
 
+        /// <summary>
+        /// The configurations of the access control lists (ACLs). See the following `Block acl_config`.
+        /// </summary>
+        [Input("aclConfig")]
+        public Input<Inputs.ListenerAclConfigGetArgs>? AclConfig { get; set; }
+
         [Input("certificates")]
         private InputList<Inputs.ListenerCertificateGetArgs>? _certificates;
 
@@ -345,37 +363,37 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? GzipEnabled { get; set; }
 
         /// <summary>
-        /// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+        /// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
         /// </summary>
         [Input("http2Enabled")]
         public Input<bool>? Http2Enabled { get; set; }
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        /// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
 
         /// <summary>
-        /// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\x00-\xff]|[\w.,;/@-]){2,256}$/.
+        /// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
         /// </summary>
         [Input("listenerDescription")]
         public Input<string>? ListenerDescription { get; set; }
 
         /// <summary>
-        /// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+        /// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
         /// </summary>
         [Input("listenerPort")]
         public Input<int>? ListenerPort { get; set; }
 
         /// <summary>
-        /// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+        /// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
         /// </summary>
         [Input("listenerProtocol")]
         public Input<string>? ListenerProtocol { get; set; }
 
         /// <summary>
-        /// The SLB Instance Id.
+        /// The ALB Instance Id.
         /// </summary>
         [Input("loadBalancerId")]
         public Input<string>? LoadBalancerId { get; set; }
@@ -387,7 +405,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<Inputs.ListenerQuicConfigGetArgs>? QuicConfig { get; set; }
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }

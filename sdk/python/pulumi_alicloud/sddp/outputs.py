@@ -10,6 +10,7 @@ from .. import _utilities
 
 __all__ = [
     'GetConfigsConfigResult',
+    'GetInstancesInstanceResult',
     'GetRulesRuleResult',
 ]
 
@@ -90,6 +91,119 @@ class GetConfigsConfigResult(dict):
         * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 authed: bool,
+                 id: str,
+                 instance_id: str,
+                 instance_num: str,
+                 odps_set: bool,
+                 oss_bucket_set: bool,
+                 oss_size: str,
+                 payment_type: str,
+                 rds_set: bool,
+                 status: str):
+        """
+        :param bool authed: Whether the required RAM authorization is configured.
+        :param str instance_id: The ID of the instance.
+        :param str instance_num: The number of instances.
+        :param bool odps_set: Whether the authorized MaxCompute (ODPS) assets.
+        :param bool oss_bucket_set: Whether the authorized oss assets.
+        :param str oss_size: The OSS size of the instance.
+        :param str payment_type: The payment type of the resource. Valid values: `Subscription`.
+        :param bool rds_set: Whether the authorized rds assets.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "authed", authed)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_num", instance_num)
+        pulumi.set(__self__, "odps_set", odps_set)
+        pulumi.set(__self__, "oss_bucket_set", oss_bucket_set)
+        pulumi.set(__self__, "oss_size", oss_size)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "rds_set", rds_set)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def authed(self) -> bool:
+        """
+        Whether the required RAM authorization is configured.
+        """
+        return pulumi.get(self, "authed")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceNum")
+    def instance_num(self) -> str:
+        """
+        The number of instances.
+        """
+        return pulumi.get(self, "instance_num")
+
+    @property
+    @pulumi.getter(name="odpsSet")
+    def odps_set(self) -> bool:
+        """
+        Whether the authorized MaxCompute (ODPS) assets.
+        """
+        return pulumi.get(self, "odps_set")
+
+    @property
+    @pulumi.getter(name="ossBucketSet")
+    def oss_bucket_set(self) -> bool:
+        """
+        Whether the authorized oss assets.
+        """
+        return pulumi.get(self, "oss_bucket_set")
+
+    @property
+    @pulumi.getter(name="ossSize")
+    def oss_size(self) -> str:
+        """
+        The OSS size of the instance.
+        """
+        return pulumi.get(self, "oss_size")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the resource. Valid values: `Subscription`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="rdsSet")
+    def rds_set(self) -> bool:
+        """
+        Whether the authorized rds assets.
+        """
+        return pulumi.get(self, "rds_set")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

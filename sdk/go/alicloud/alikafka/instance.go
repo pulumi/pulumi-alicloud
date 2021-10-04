@@ -32,6 +32,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -65,13 +66,20 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+// 			VpcId: defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		_, err = alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-// 			TopicQuota: pulumi.Int(50),
-// 			DiskType:   pulumi.Int(1),
-// 			DiskSize:   pulumi.Int(500),
-// 			DeployType: pulumi.Int(4),
-// 			IoMax:      pulumi.Int(20),
-// 			VswitchId:  defaultSwitch.ID(),
+// 			TopicQuota:    pulumi.Int(50),
+// 			DiskType:      pulumi.Int(1),
+// 			DiskSize:      pulumi.Int(500),
+// 			DeployType:    pulumi.Int(4),
+// 			IoMax:         pulumi.Int(20),
+// 			VswitchId:     defaultSwitch.ID(),
+// 			SecurityGroup: defaultSecurityGroup.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -100,7 +108,7 @@ type Instance struct {
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType pulumi.IntOutput `pulumi:"diskType"`
 	// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
-	EipMax pulumi.IntPtrOutput `pulumi:"eipMax"`
+	EipMax pulumi.IntOutput `pulumi:"eipMax"`
 	// The EndPoint to access the kafka instance.
 	EndPoint pulumi.StringOutput `pulumi:"endPoint"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
@@ -110,7 +118,7 @@ type Instance struct {
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrOutput `pulumi:"paidType"`
 	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
-	SecurityGroup pulumi.StringPtrOutput `pulumi:"securityGroup"`
+	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
 	// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.

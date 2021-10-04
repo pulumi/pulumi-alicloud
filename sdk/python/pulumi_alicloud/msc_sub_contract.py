@@ -22,7 +22,7 @@ class MscSubContractArgs:
         :param pulumi.Input[str] contact_name: The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
         :param pulumi.Input[str] email: The User's Contact Email Address.
         :param pulumi.Input[str] mobile: The User's Telephone.
-        :param pulumi.Input[str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        :param pulumi.Input[str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         """
         pulumi.set(__self__, "contact_name", contact_name)
         pulumi.set(__self__, "email", email)
@@ -69,7 +69,7 @@ class MscSubContractArgs:
     @pulumi.getter
     def position(self) -> pulumi.Input[str]:
         """
-        The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         """
         return pulumi.get(self, "position")
 
@@ -90,7 +90,7 @@ class _MscSubContractState:
         :param pulumi.Input[str] contact_name: The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
         :param pulumi.Input[str] email: The User's Contact Email Address.
         :param pulumi.Input[str] mobile: The User's Telephone.
-        :param pulumi.Input[str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        :param pulumi.Input[str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         """
         if contact_name is not None:
             pulumi.set(__self__, "contact_name", contact_name)
@@ -141,7 +141,7 @@ class _MscSubContractState:
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[str]]:
         """
-        The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         """
         return pulumi.get(self, "position")
 
@@ -193,7 +193,7 @@ class MscSubContract(pulumi.CustomResource):
         :param pulumi.Input[str] contact_name: The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
         :param pulumi.Input[str] email: The User's Contact Email Address.
         :param pulumi.Input[str] mobile: The User's Telephone.
-        :param pulumi.Input[str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        :param pulumi.Input[str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         """
         ...
     @overload
@@ -296,7 +296,7 @@ class MscSubContract(pulumi.CustomResource):
         :param pulumi.Input[str] contact_name: The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
         :param pulumi.Input[str] email: The User's Contact Email Address.
         :param pulumi.Input[str] mobile: The User's Telephone.
-        :param pulumi.Input[str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        :param pulumi.Input[str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -336,7 +336,7 @@ class MscSubContract(pulumi.CustomResource):
     @pulumi.getter
     def position(self) -> pulumi.Output[str]:
         """
-        The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+        The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
         """
         return pulumi.get(self, "position")
 

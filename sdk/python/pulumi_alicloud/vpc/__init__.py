@@ -5,13 +5,17 @@
 # Export this package's modules as members:
 from .common_bandwith_package import *
 from .common_bandwith_package_attachment import *
+from .dhcp_options_set import *
 from .flow_log import *
 from .forward_entry import *
 from .get_common_bandwidth_packages import *
+from .get_dhcp_options_sets import *
 from .get_enhanced_nat_available_zones import *
 from .get_forward_entries import *
 from .get_havips import *
 from .get_nat_gateways import *
+from .get_nat_ip_cidrs import *
+from .get_nat_ips import *
 from .get_network_acls import *
 from .get_networks import *
 from .get_route_entries import *
@@ -25,6 +29,8 @@ from .get_vpc_flow_logs import *
 from .ha_vip import *
 from .ha_vip_attachment import *
 from .nat_gateway import *
+from .nat_ip import *
+from .nat_ip_cidr import *
 from .network import *
 from .network_acl import *
 from .network_acl_attachment import *
@@ -58,6 +64,8 @@ def _register_module():
                 return CommonBandwithPackage(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment":
                 return CommonBandwithPackageAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet":
+                return DhcpOptionsSet(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:vpc/flowLog:FlowLog":
                 return FlowLog(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:vpc/forwardEntry:ForwardEntry":
@@ -68,6 +76,10 @@ def _register_module():
                 return HAVipAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:vpc/natGateway:NatGateway":
                 return NatGateway(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/natIp:NatIp":
+                return NatIp(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/natIpCidr:NatIpCidr":
+                return NatIpCidr(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:vpc/network:Network":
                 return Network(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:vpc/networkAcl:NetworkAcl":
@@ -103,11 +115,14 @@ def _register_module():
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "vpc/commonBandwithPackage", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/commonBandwithPackageAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/dhcpOptionsSet", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/flowLog", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/forwardEntry", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/hAVip", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/hAVipAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/natGateway", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/natIp", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/natIpCidr", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/network", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/networkAcl", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/networkAclAttachment", _module_instance)

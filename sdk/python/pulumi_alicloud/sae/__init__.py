@@ -7,9 +7,12 @@ from .application import *
 from .config_map import *
 from .get_applications import *
 from .get_config_maps import *
+from .get_ingresses import *
 from .get_namespaces import *
 from .get_service import *
+from .ingress import *
 from .namespace import *
+from ._inputs import *
 from . import outputs
 
 def _register_module():
@@ -28,6 +31,8 @@ def _register_module():
                 return Application(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:sae/configMap:ConfigMap":
                 return ConfigMap(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:sae/ingress:Ingress":
+                return Ingress(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:sae/namespace:Namespace":
                 return Namespace(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -37,6 +42,7 @@ def _register_module():
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "sae/application", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "sae/configMap", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "sae/ingress", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "sae/namespace", _module_instance)
 
 _register_module()

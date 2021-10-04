@@ -76,6 +76,15 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+        /// * UPGRADE: The specifications are upgraded.
+        /// * DOWNGRADE: The specifications are downgraded.
+        /// Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// </summary>
+        [Output("orderType")]
+        public Output<string?> OrderType { get; private set; } = null!;
+
+        /// <summary>
         /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         /// </summary>
         [Output("period")]
@@ -252,6 +261,15 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+        /// * UPGRADE: The specifications are upgraded.
+        /// * DOWNGRADE: The specifications are downgraded.
+        /// Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// </summary>
+        [Input("orderType")]
+        public Input<string>? OrderType { get; set; }
+
+        /// <summary>
         /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         /// </summary>
         [Input("period")]
@@ -398,6 +416,15 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+        /// * UPGRADE: The specifications are upgraded.
+        /// * DOWNGRADE: The specifications are downgraded.
+        /// Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// </summary>
+        [Input("orderType")]
+        public Input<string>? OrderType { get; set; }
 
         /// <summary>
         /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.

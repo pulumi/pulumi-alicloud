@@ -52,14 +52,13 @@ namespace Pulumi.AliCloud.Hbr
     /// ```
     /// ## Notice
     /// 
-    /// &gt; Please read the following precautions carefully before deleting a client:
-    /// 
+    /// &gt; **Note:** Please read the following precautions carefully before deleting a client:
     /// 1. You cannot delete active clients that have received heartbeat packets within one hour.
-    /// 2. You can make the client inactive by change the status of client to `ACTIVATED`.
+    /// 2. You can make the client inactive by change the status of client to `STOPPED`.
     /// 3. The resources bound to the client will be deleted in cascade, including:
-    /// - Backup plan
-    /// - Backup task (Running in the background)
-    /// - Snapshot
+    ///     - Backup plan
+    ///     - Backup task (Running in the background)
+    ///     - Snapshot
     /// 
     /// ## Import
     /// 
@@ -73,55 +72,55 @@ namespace Pulumi.AliCloud.Hbr
     public partial class EcsBackupClient : Pulumi.CustomResource
     {
         /// <summary>
-        /// The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
         /// </summary>
         [Output("dataNetworkType")]
         public Output<string> DataNetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+        /// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
         /// </summary>
         [Output("dataProxySetting")]
         public Output<string> DataProxySetting { get; private set; } = null!;
 
         /// <summary>
-        /// The ECS Instance Id.
+        /// The ID of ECS instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+        /// Number of CPU cores used by a single backup task, 0 means no restrictions.
         /// </summary>
         [Output("maxCpuCore")]
         public Output<string> MaxCpuCore { get; private set; } = null!;
 
         /// <summary>
-        /// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+        /// Number of concurrent jobs for a single backup task, 0 means no restrictions.
         /// </summary>
         [Output("maxWorker")]
         public Output<string> MaxWorker { get; private set; } = null!;
 
         /// <summary>
-        /// Custom Data Plane Proxy Server Host Address.
+        /// Custom data plane proxy server host address.
         /// </summary>
         [Output("proxyHost")]
         public Output<string> ProxyHost { get; private set; } = null!;
 
         /// <summary>
-        /// Custom Data Plane Proxy Password.
+        /// Custom data plane proxy server password.
         /// </summary>
         [Output("proxyPassword")]
         public Output<string> ProxyPassword { get; private set; } = null!;
 
         /// <summary>
-        /// Custom Data Plane Proxy Server Host Port.
+        /// Custom data plane proxy server host port.
         /// </summary>
         [Output("proxyPort")]
         public Output<string> ProxyPort { get; private set; } = null!;
 
         /// <summary>
-        /// Custom Data Plane Proxy Server Username.
+        /// Username of custom data plane proxy server.
         /// </summary>
         [Output("proxyUser")]
         public Output<string> ProxyUser { get; private set; } = null!;
@@ -133,7 +132,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+        /// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         /// </summary>
         [Output("useHttps")]
         public Output<bool> UseHttps { get; private set; } = null!;
@@ -185,55 +184,55 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class EcsBackupClientArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
         /// </summary>
         [Input("dataNetworkType")]
         public Input<string>? DataNetworkType { get; set; }
 
         /// <summary>
-        /// The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+        /// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
         /// </summary>
         [Input("dataProxySetting")]
         public Input<string>? DataProxySetting { get; set; }
 
         /// <summary>
-        /// The ECS Instance Id.
+        /// The ID of ECS instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+        /// Number of CPU cores used by a single backup task, 0 means no restrictions.
         /// </summary>
         [Input("maxCpuCore")]
         public Input<string>? MaxCpuCore { get; set; }
 
         /// <summary>
-        /// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+        /// Number of concurrent jobs for a single backup task, 0 means no restrictions.
         /// </summary>
         [Input("maxWorker")]
         public Input<string>? MaxWorker { get; set; }
 
         /// <summary>
-        /// Custom Data Plane Proxy Server Host Address.
+        /// Custom data plane proxy server host address.
         /// </summary>
         [Input("proxyHost")]
         public Input<string>? ProxyHost { get; set; }
 
         /// <summary>
-        /// Custom Data Plane Proxy Password.
+        /// Custom data plane proxy server password.
         /// </summary>
         [Input("proxyPassword")]
         public Input<string>? ProxyPassword { get; set; }
 
         /// <summary>
-        /// Custom Data Plane Proxy Server Host Port.
+        /// Custom data plane proxy server host port.
         /// </summary>
         [Input("proxyPort")]
         public Input<string>? ProxyPort { get; set; }
 
         /// <summary>
-        /// Custom Data Plane Proxy Server Username.
+        /// Username of custom data plane proxy server.
         /// </summary>
         [Input("proxyUser")]
         public Input<string>? ProxyUser { get; set; }
@@ -245,7 +244,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+        /// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         /// </summary>
         [Input("useHttps")]
         public Input<bool>? UseHttps { get; set; }
@@ -258,55 +257,55 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class EcsBackupClientState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Data Plane Data Access Point Type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
         /// </summary>
         [Input("dataNetworkType")]
         public Input<string>? DataNetworkType { get; set; }
 
         /// <summary>
-        /// The Data Plane Proxy Settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+        /// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
         /// </summary>
         [Input("dataProxySetting")]
         public Input<string>? DataProxySetting { get; set; }
 
         /// <summary>
-        /// The ECS Instance Id.
+        /// The ID of ECS instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// A Single Backup Task Uses for Example, Instances Can Be Grouped According to CPU Core Count, 0 Means No Restrictions.
+        /// Number of CPU cores used by a single backup task, 0 means no restrictions.
         /// </summary>
         [Input("maxCpuCore")]
         public Input<string>? MaxCpuCore { get; set; }
 
         /// <summary>
-        /// A Single Backup Task Parallel Work, the Number of 0 Means No Restrictions.
+        /// Number of concurrent jobs for a single backup task, 0 means no restrictions.
         /// </summary>
         [Input("maxWorker")]
         public Input<string>? MaxWorker { get; set; }
 
         /// <summary>
-        /// Custom Data Plane Proxy Server Host Address.
+        /// Custom data plane proxy server host address.
         /// </summary>
         [Input("proxyHost")]
         public Input<string>? ProxyHost { get; set; }
 
         /// <summary>
-        /// Custom Data Plane Proxy Password.
+        /// Custom data plane proxy server password.
         /// </summary>
         [Input("proxyPassword")]
         public Input<string>? ProxyPassword { get; set; }
 
         /// <summary>
-        /// Custom Data Plane Proxy Server Host Port.
+        /// Custom data plane proxy server host port.
         /// </summary>
         [Input("proxyPort")]
         public Input<string>? ProxyPort { get; set; }
 
         /// <summary>
-        /// Custom Data Plane Proxy Server Username.
+        /// Username of custom data plane proxy server.
         /// </summary>
         [Input("proxyUser")]
         public Input<string>? ProxyUser { get; set; }
@@ -318,7 +317,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Indicates Whether to Use the Https Transport Data Plane Data. Valid values: `true`, `false`.
+        /// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         /// </summary>
         [Input("useHttps")]
         public Input<bool>? UseHttps { get; set; }

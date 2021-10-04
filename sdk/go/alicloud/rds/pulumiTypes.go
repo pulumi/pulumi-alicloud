@@ -882,9 +882,9 @@ func (o GetInstanceClassesInstanceClassZoneIdArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetInstanceEnginesInstanceEngine struct {
-	// DB Instance category.
+	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
 	Category string `pulumi:"category"`
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+	// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
 	Engine string `pulumi:"engine"`
 	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion string `pulumi:"engineVersion"`
@@ -904,9 +904,9 @@ type GetInstanceEnginesInstanceEngineInput interface {
 }
 
 type GetInstanceEnginesInstanceEngineArgs struct {
-	// DB Instance category.
+	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
 	Category pulumi.StringInput `pulumi:"category"`
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+	// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
@@ -965,12 +965,12 @@ func (o GetInstanceEnginesInstanceEngineOutput) ToGetInstanceEnginesInstanceEngi
 	return o
 }
 
-// DB Instance category.
+// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
 func (o GetInstanceEnginesInstanceEngineOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceEnginesInstanceEngine) string { return v.Category }).(pulumi.StringOutput)
 }
 
-// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
 func (o GetInstanceEnginesInstanceEngineOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceEnginesInstanceEngine) string { return v.Engine }).(pulumi.StringOutput)
 }
@@ -1188,6 +1188,8 @@ type GetInstancesInstance struct {
 	NetType string `pulumi:"netType"`
 	// (Available in 1.124.3+) The source of the encryption key.
 	Origin string `pulumi:"origin"`
+	// (Available in 1.135.0+) Parameter list.
+	Parameters []GetInstancesInstanceParameter `pulumi:"parameters"`
 	// (Available in 1.70.3+) RDS database connection port.
 	Port string `pulumi:"port"`
 	// A list of IDs of read-only instances attached to the primary instance.
@@ -1328,6 +1330,8 @@ type GetInstancesInstanceArgs struct {
 	NetType pulumi.StringInput `pulumi:"netType"`
 	// (Available in 1.124.3+) The source of the encryption key.
 	Origin pulumi.StringInput `pulumi:"origin"`
+	// (Available in 1.135.0+) Parameter list.
+	Parameters GetInstancesInstanceParameterArrayInput `pulumi:"parameters"`
 	// (Available in 1.70.3+) RDS database connection port.
 	Port pulumi.StringInput `pulumi:"port"`
 	// A list of IDs of read-only instances attached to the primary instance.
@@ -1606,6 +1610,11 @@ func (o GetInstancesInstanceOutput) Origin() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Origin }).(pulumi.StringOutput)
 }
 
+// (Available in 1.135.0+) Parameter list.
+func (o GetInstancesInstanceOutput) Parameters() GetInstancesInstanceParameterArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceParameter { return v.Parameters }).(GetInstancesInstanceParameterArrayOutput)
+}
+
 // (Available in 1.70.3+) RDS database connection port.
 func (o GetInstancesInstanceOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Port }).(pulumi.StringOutput)
@@ -1731,6 +1740,148 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
+}
+
+type GetInstancesInstanceParameter struct {
+	// The value range of the parameter.
+	CheckingCode string `pulumi:"checkingCode"`
+	// Indicates whether the parameter can be modified. Valid values: true | false
+	ForceModify string `pulumi:"forceModify"`
+	// Indicates whether the modified parameter takes effect only after a database restart. Valid values: true | false
+	ForceRestart string `pulumi:"forceRestart"`
+	// The description of the parameter.
+	ParameterDescription string `pulumi:"parameterDescription"`
+	// The name of the parameter.
+	ParameterName string `pulumi:"parameterName"`
+	// The default value of the parameter.
+	ParameterValue string `pulumi:"parameterValue"`
+}
+
+// GetInstancesInstanceParameterInput is an input type that accepts GetInstancesInstanceParameterArgs and GetInstancesInstanceParameterOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceParameterInput` via:
+//
+//          GetInstancesInstanceParameterArgs{...}
+type GetInstancesInstanceParameterInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceParameterOutput() GetInstancesInstanceParameterOutput
+	ToGetInstancesInstanceParameterOutputWithContext(context.Context) GetInstancesInstanceParameterOutput
+}
+
+type GetInstancesInstanceParameterArgs struct {
+	// The value range of the parameter.
+	CheckingCode pulumi.StringInput `pulumi:"checkingCode"`
+	// Indicates whether the parameter can be modified. Valid values: true | false
+	ForceModify pulumi.StringInput `pulumi:"forceModify"`
+	// Indicates whether the modified parameter takes effect only after a database restart. Valid values: true | false
+	ForceRestart pulumi.StringInput `pulumi:"forceRestart"`
+	// The description of the parameter.
+	ParameterDescription pulumi.StringInput `pulumi:"parameterDescription"`
+	// The name of the parameter.
+	ParameterName pulumi.StringInput `pulumi:"parameterName"`
+	// The default value of the parameter.
+	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
+}
+
+func (GetInstancesInstanceParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceParameter)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceParameterArgs) ToGetInstancesInstanceParameterOutput() GetInstancesInstanceParameterOutput {
+	return i.ToGetInstancesInstanceParameterOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceParameterArgs) ToGetInstancesInstanceParameterOutputWithContext(ctx context.Context) GetInstancesInstanceParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceParameterOutput)
+}
+
+// GetInstancesInstanceParameterArrayInput is an input type that accepts GetInstancesInstanceParameterArray and GetInstancesInstanceParameterArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceParameterArrayInput` via:
+//
+//          GetInstancesInstanceParameterArray{ GetInstancesInstanceParameterArgs{...} }
+type GetInstancesInstanceParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceParameterArrayOutput() GetInstancesInstanceParameterArrayOutput
+	ToGetInstancesInstanceParameterArrayOutputWithContext(context.Context) GetInstancesInstanceParameterArrayOutput
+}
+
+type GetInstancesInstanceParameterArray []GetInstancesInstanceParameterInput
+
+func (GetInstancesInstanceParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceParameter)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceParameterArray) ToGetInstancesInstanceParameterArrayOutput() GetInstancesInstanceParameterArrayOutput {
+	return i.ToGetInstancesInstanceParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceParameterArray) ToGetInstancesInstanceParameterArrayOutputWithContext(ctx context.Context) GetInstancesInstanceParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceParameterArrayOutput)
+}
+
+type GetInstancesInstanceParameterOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceParameter)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceParameterOutput) ToGetInstancesInstanceParameterOutput() GetInstancesInstanceParameterOutput {
+	return o
+}
+
+func (o GetInstancesInstanceParameterOutput) ToGetInstancesInstanceParameterOutputWithContext(ctx context.Context) GetInstancesInstanceParameterOutput {
+	return o
+}
+
+// The value range of the parameter.
+func (o GetInstancesInstanceParameterOutput) CheckingCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceParameter) string { return v.CheckingCode }).(pulumi.StringOutput)
+}
+
+// Indicates whether the parameter can be modified. Valid values: true | false
+func (o GetInstancesInstanceParameterOutput) ForceModify() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceParameter) string { return v.ForceModify }).(pulumi.StringOutput)
+}
+
+// Indicates whether the modified parameter takes effect only after a database restart. Valid values: true | false
+func (o GetInstancesInstanceParameterOutput) ForceRestart() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceParameter) string { return v.ForceRestart }).(pulumi.StringOutput)
+}
+
+// The description of the parameter.
+func (o GetInstancesInstanceParameterOutput) ParameterDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceParameter) string { return v.ParameterDescription }).(pulumi.StringOutput)
+}
+
+// The name of the parameter.
+func (o GetInstancesInstanceParameterOutput) ParameterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceParameter) string { return v.ParameterName }).(pulumi.StringOutput)
+}
+
+// The default value of the parameter.
+func (o GetInstancesInstanceParameterOutput) ParameterValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceParameter)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceParameterArrayOutput) ToGetInstancesInstanceParameterArrayOutput() GetInstancesInstanceParameterArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceParameterArrayOutput) ToGetInstancesInstanceParameterArrayOutputWithContext(ctx context.Context) GetInstancesInstanceParameterArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceParameterArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceParameter {
+		return vs[0].([]GetInstancesInstanceParameter)[vs[1].(int)]
+	}).(GetInstancesInstanceParameterOutput)
 }
 
 type GetRdsParameterGroupsGroup struct {
@@ -2109,6 +2260,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceEnginesInstanceEngineZoneIdArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceParameterOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupParamDetailOutput{})

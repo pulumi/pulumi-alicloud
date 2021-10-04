@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Cfg.Inputs
 
     public sealed class AggregateCompliancePackConfigRuleGetArgs : Pulumi.ResourceArgs
     {
-        [Input("configRuleParameters", required: true)]
+        [Input("configRuleParameters")]
         private InputList<Inputs.AggregateCompliancePackConfigRuleConfigRuleParameterGetArgs>? _configRuleParameters;
 
         /// <summary>

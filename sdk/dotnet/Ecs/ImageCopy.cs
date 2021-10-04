@@ -62,6 +62,9 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/imageCopy:ImageCopy")]
     public partial class ImageCopy : Pulumi.CustomResource
     {
+        [Output("deleteAutoSnapshot")]
+        public Output<bool?> DeleteAutoSnapshot { get; private set; } = null!;
+
         /// <summary>
         /// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         /// </summary>
@@ -161,6 +164,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class ImageCopyArgs : Pulumi.ResourceArgs
     {
+        [Input("deleteAutoSnapshot")]
+        public Input<bool>? DeleteAutoSnapshot { get; set; }
+
         /// <summary>
         /// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         /// </summary>
@@ -227,6 +233,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class ImageCopyState : Pulumi.ResourceArgs
     {
+        [Input("deleteAutoSnapshot")]
+        public Input<bool>? DeleteAutoSnapshot { get; set; }
+
         /// <summary>
         /// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         /// </summary>

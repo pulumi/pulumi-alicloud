@@ -11,6 +11,7 @@ from . import outputs
 
 __all__ = [
     'DomainLogHeader',
+    'GetCertificatesCertificateResult',
     'GetDomainsDomainResult',
     'GetDomainsDomainLogHeaderResult',
     'GetInstancesInstanceResult',
@@ -35,6 +36,93 @@ class DomainLogHeader(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCertificatesCertificateResult(dict):
+    def __init__(__self__, *,
+                 certificate_id: str,
+                 certificate_name: str,
+                 common_name: str,
+                 domain: str,
+                 id: str,
+                 instance_id: str,
+                 is_using: bool,
+                 sans: Sequence[str]):
+        """
+        :param str certificate_id: Certificate recording ID.
+        :param str certificate_name: Your certificate name.
+        :param str common_name: Certificate bound to the domain name.
+        :param str domain: The domain that you want to add to WAF.
+        :param str id: The ID of the Certificate.
+        :param str instance_id: WAF instance ID.
+        """
+        pulumi.set(__self__, "certificate_id", certificate_id)
+        pulumi.set(__self__, "certificate_name", certificate_name)
+        pulumi.set(__self__, "common_name", common_name)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "is_using", is_using)
+        pulumi.set(__self__, "sans", sans)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> str:
+        """
+        Certificate recording ID.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> str:
+        """
+        Your certificate name.
+        """
+        return pulumi.get(self, "certificate_name")
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> str:
+        """
+        Certificate bound to the domain name.
+        """
+        return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The domain that you want to add to WAF.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Certificate.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        WAF instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="isUsing")
+    def is_using(self) -> bool:
+        return pulumi.get(self, "is_using")
+
+    @property
+    @pulumi.getter
+    def sans(self) -> Sequence[str]:
+        return pulumi.get(self, "sans")
 
 
 @pulumi.output_type

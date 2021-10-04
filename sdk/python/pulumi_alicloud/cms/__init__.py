@@ -9,10 +9,12 @@ from .alarm_contact_group import *
 from .get_alarm_contact_groups import *
 from .get_alarm_contacts import *
 from .get_group_metric_rules import *
+from .get_metric_rule_templates import *
 from .get_monitor_group_instances import *
 from .get_monitor_groups import *
 from .get_service import *
 from .group_metric_rule import *
+from .metric_rule_template import *
 from .monitor_group import *
 from .monitor_group_instances import *
 from .site_monitor import *
@@ -39,6 +41,8 @@ def _register_module():
                 return AlarmContactGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cms/groupMetricRule:GroupMetricRule":
                 return GroupMetricRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cms/metricRuleTemplate:MetricRuleTemplate":
+                return MetricRuleTemplate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cms/monitorGroup:MonitorGroup":
                 return MonitorGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cms/monitorGroupInstances:MonitorGroupInstances":
@@ -54,6 +58,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "cms/alarmContact", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cms/alarmContactGroup", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cms/groupMetricRule", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cms/metricRuleTemplate", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cms/monitorGroup", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cms/monitorGroupInstances", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cms/siteMonitor", _module_instance)

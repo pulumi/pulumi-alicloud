@@ -67,6 +67,12 @@ namespace Pulumi.AliCloud.Rds
         public string? DbType { get; set; }
 
         /// <summary>
+        /// Default to `false`. Set it to `true` can output parameter template about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
+        /// <summary>
         /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
         /// </summary>
         [Input("engine")]
@@ -141,6 +147,7 @@ namespace Pulumi.AliCloud.Rds
         /// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
         /// </summary>
         public readonly string? DbType;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
         /// </summary>
@@ -183,6 +190,8 @@ namespace Pulumi.AliCloud.Rds
 
             string? dbType,
 
+            bool? enableDetails,
+
             string? engine,
 
             string id,
@@ -207,6 +216,7 @@ namespace Pulumi.AliCloud.Rds
         {
             ConnectionMode = connectionMode;
             DbType = dbType;
+            EnableDetails = enableDetails;
             Engine = engine;
             Id = id;
             Ids = ids;

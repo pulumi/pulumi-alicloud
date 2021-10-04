@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Hbr
     /// <summary>
     /// Provides a Hybrid Backup Recovery (HBR) Restore Job resource.
     /// 
-    /// For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://help.aliyun.com/document_detail/62361.html).
+    /// For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://www.alibabacloud.com/help/doc-detail/186575.htm).
     /// 
     /// &gt; **NOTE:** Available in v1.133.0+.
     /// 
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Include { get; private set; } = null!;
 
         /// <summary>
-        /// Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        /// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         /// </summary>
         [Output("options")]
         public Output<string?> Options { get; private set; } = null!;
@@ -102,13 +102,13 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> RestoreJobId { get; private set; } = null!;
 
         /// <summary>
-        /// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        /// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         /// </summary>
         [Output("restoreType")]
         public Output<string> RestoreType { get; private set; } = null!;
 
         /// <summary>
-        /// Restore Snapshot of HashCode.
+        /// The hashcode of restore Snapshot.
         /// </summary>
         [Output("snapshotHash")]
         public Output<string> SnapshotHash { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> SnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         /// </summary>
         [Output("sourceType")]
         public Output<string> SourceType { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The Target ofo OSS Bucket Name.
+        /// The target ofo OSS bucket name.
         /// </summary>
         [Output("targetBucket")]
         public Output<string?> TargetBucket { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> TargetContainerClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The Destination File System Creation Time.
+        /// The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Output("targetCreateTime")]
         public Output<string?> TargetCreateTime { get; private set; } = null!;
@@ -156,31 +156,31 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> TargetDataSourceId { get; private set; } = null!;
 
         /// <summary>
-        /// The Destination File System ID.
+        /// The ID of destination File System.
         /// </summary>
         [Output("targetFileSystemId")]
         public Output<string?> TargetFileSystemId { get; private set; } = null!;
 
         /// <summary>
-        /// Objective to ECS Instance Id.
+        /// The target ID of ECS instance.
         /// </summary>
         [Output("targetInstanceId")]
         public Output<string?> TargetInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The Target of (ECS) Instance Changes the ECS File Path.
+        /// The target file path of (ECS) instance.
         /// </summary>
         [Output("targetPath")]
         public Output<string?> TargetPath { get; private set; } = null!;
 
         /// <summary>
-        /// The Target of the OSS Object Prefix.
+        /// The target of the OSS object prefix.
         /// </summary>
         [Output("targetPrefix")]
         public Output<string?> TargetPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of Vault.
+        /// The ID of backup vault.
         /// </summary>
         [Output("vaultId")]
         public Output<string> VaultId { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        /// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
@@ -256,13 +256,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> RestoreJobId { get; set; } = null!;
 
         /// <summary>
-        /// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        /// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         /// </summary>
         [Input("restoreType", required: true)]
         public Input<string> RestoreType { get; set; } = null!;
 
         /// <summary>
-        /// Restore Snapshot of HashCode.
+        /// The hashcode of restore Snapshot.
         /// </summary>
         [Input("snapshotHash", required: true)]
         public Input<string> SnapshotHash { get; set; } = null!;
@@ -274,13 +274,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> SnapshotId { get; set; } = null!;
 
         /// <summary>
-        /// The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;
 
         /// <summary>
-        /// The Target ofo OSS Bucket Name.
+        /// The target ofo OSS bucket name.
         /// </summary>
         [Input("targetBucket")]
         public Input<string>? TargetBucket { get; set; }
@@ -295,7 +295,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? TargetContainerClusterId { get; set; }
 
         /// <summary>
-        /// The Destination File System Creation Time.
+        /// The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Input("targetCreateTime")]
         public Input<string>? TargetCreateTime { get; set; }
@@ -304,31 +304,31 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? TargetDataSourceId { get; set; }
 
         /// <summary>
-        /// The Destination File System ID.
+        /// The ID of destination File System.
         /// </summary>
         [Input("targetFileSystemId")]
         public Input<string>? TargetFileSystemId { get; set; }
 
         /// <summary>
-        /// Objective to ECS Instance Id.
+        /// The target ID of ECS instance.
         /// </summary>
         [Input("targetInstanceId")]
         public Input<string>? TargetInstanceId { get; set; }
 
         /// <summary>
-        /// The Target of (ECS) Instance Changes the ECS File Path.
+        /// The target file path of (ECS) instance.
         /// </summary>
         [Input("targetPath")]
         public Input<string>? TargetPath { get; set; }
 
         /// <summary>
-        /// The Target of the OSS Object Prefix.
+        /// The target of the OSS object prefix.
         /// </summary>
         [Input("targetPrefix")]
         public Input<string>? TargetPrefix { get; set; }
 
         /// <summary>
-        /// The ID of Vault.
+        /// The ID of backup vault.
         /// </summary>
         [Input("vaultId", required: true)]
         public Input<string> VaultId { get; set; } = null!;
@@ -353,7 +353,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        /// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
@@ -365,13 +365,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? RestoreJobId { get; set; }
 
         /// <summary>
-        /// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        /// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         /// </summary>
         [Input("restoreType")]
         public Input<string>? RestoreType { get; set; }
 
         /// <summary>
-        /// Restore Snapshot of HashCode.
+        /// The hashcode of restore Snapshot.
         /// </summary>
         [Input("snapshotHash")]
         public Input<string>? SnapshotHash { get; set; }
@@ -383,7 +383,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
@@ -395,7 +395,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The Target ofo OSS Bucket Name.
+        /// The target ofo OSS bucket name.
         /// </summary>
         [Input("targetBucket")]
         public Input<string>? TargetBucket { get; set; }
@@ -410,7 +410,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? TargetContainerClusterId { get; set; }
 
         /// <summary>
-        /// The Destination File System Creation Time.
+        /// The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Input("targetCreateTime")]
         public Input<string>? TargetCreateTime { get; set; }
@@ -419,31 +419,31 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? TargetDataSourceId { get; set; }
 
         /// <summary>
-        /// The Destination File System ID.
+        /// The ID of destination File System.
         /// </summary>
         [Input("targetFileSystemId")]
         public Input<string>? TargetFileSystemId { get; set; }
 
         /// <summary>
-        /// Objective to ECS Instance Id.
+        /// The target ID of ECS instance.
         /// </summary>
         [Input("targetInstanceId")]
         public Input<string>? TargetInstanceId { get; set; }
 
         /// <summary>
-        /// The Target of (ECS) Instance Changes the ECS File Path.
+        /// The target file path of (ECS) instance.
         /// </summary>
         [Input("targetPath")]
         public Input<string>? TargetPath { get; set; }
 
         /// <summary>
-        /// The Target of the OSS Object Prefix.
+        /// The target of the OSS object prefix.
         /// </summary>
         [Input("targetPrefix")]
         public Input<string>? TargetPrefix { get; set; }
 
         /// <summary>
-        /// The ID of Vault.
+        /// The ID of backup vault.
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }

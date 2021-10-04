@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CommonBandwithPackage{}
 	case "alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment":
 		r = &CommonBandwithPackageAttachment{}
+	case "alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet":
+		r = &DhcpOptionsSet{}
 	case "alicloud:vpc/flowLog:FlowLog":
 		r = &FlowLog{}
 	case "alicloud:vpc/forwardEntry:ForwardEntry":
@@ -35,6 +37,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HAVipAttachment{}
 	case "alicloud:vpc/natGateway:NatGateway":
 		r = &NatGateway{}
+	case "alicloud:vpc/natIp:NatIp":
+		r = &NatIp{}
+	case "alicloud:vpc/natIpCidr:NatIpCidr":
+		r = &NatIpCidr{}
 	case "alicloud:vpc/network:Network":
 		r = &Network{}
 	case "alicloud:vpc/networkAcl:NetworkAcl":
@@ -88,6 +94,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"vpc/dhcpOptionsSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"vpc/flowLog",
 		&module{version},
 	)
@@ -109,6 +120,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/natGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/natIp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/natIpCidr",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

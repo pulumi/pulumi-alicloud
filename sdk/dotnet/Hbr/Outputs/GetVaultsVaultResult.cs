@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
-        /// The ID of Vault.
+        /// The ID of Vault, same as `id`.
         /// </summary>
         public readonly string VaultId;
         /// <summary>
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string VaultName;
         /// <summary>
-        /// Error status information of Vault.
+        /// Error status information of Vault. Only valid for remote backup warehouses.
         /// </summary>
         public readonly string VaultStatusMessage;
         /// <summary>

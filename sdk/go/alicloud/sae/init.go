@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Application{}
 	case "alicloud:sae/configMap:ConfigMap":
 		r = &ConfigMap{}
+	case "alicloud:sae/ingress:Ingress":
+		r = &Ingress{}
 	case "alicloud:sae/namespace:Namespace":
 		r = &Namespace{}
 	default:
@@ -48,6 +50,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"sae/configMap",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sae/ingress",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

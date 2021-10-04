@@ -7,11 +7,414 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'DispatchRuleGroupRule',
+    'DispatchRuleLabelMatchExpressionGrid',
+    'DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup',
+    'DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression',
+    'DispatchRuleNotifyRule',
+    'DispatchRuleNotifyRuleNotifyObject',
+    'PrometheusAlertRuleAnnotation',
+    'PrometheusAlertRuleLabel',
     'GetAlertContactGroupsGroupResult',
     'GetAlertContactsContactResult',
+    'GetDispatchRulesRuleResult',
+    'GetDispatchRulesRuleGroupRuleResult',
+    'GetDispatchRulesRuleLabelMatchExpressionGridResult',
+    'GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResult',
+    'GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionResult',
+    'GetDispatchRulesRuleNotifyRuleResult',
+    'GetDispatchRulesRuleNotifyRuleNotifyObjectResult',
+    'GetPrometheusAlertRulesRuleResult',
+    'GetPrometheusAlertRulesRuleAnnotationResult',
+    'GetPrometheusAlertRulesRuleLabelResult',
 ]
+
+@pulumi.output_type
+class DispatchRuleGroupRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupInterval":
+            suggest = "group_interval"
+        elif key == "groupWaitTime":
+            suggest = "group_wait_time"
+        elif key == "groupingFields":
+            suggest = "grouping_fields"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "repeatInterval":
+            suggest = "repeat_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DispatchRuleGroupRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DispatchRuleGroupRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DispatchRuleGroupRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 group_interval: int,
+                 group_wait_time: int,
+                 grouping_fields: Sequence[str],
+                 group_id: Optional[int] = None,
+                 repeat_interval: Optional[int] = None):
+        """
+        :param int group_interval: The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+        :param int group_wait_time: The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+        :param Sequence[str] grouping_fields: The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+        :param int repeat_interval: The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+        """
+        pulumi.set(__self__, "group_interval", group_interval)
+        pulumi.set(__self__, "group_wait_time", group_wait_time)
+        pulumi.set(__self__, "grouping_fields", grouping_fields)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if repeat_interval is not None:
+            pulumi.set(__self__, "repeat_interval", repeat_interval)
+
+    @property
+    @pulumi.getter(name="groupInterval")
+    def group_interval(self) -> int:
+        """
+        The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+        """
+        return pulumi.get(self, "group_interval")
+
+    @property
+    @pulumi.getter(name="groupWaitTime")
+    def group_wait_time(self) -> int:
+        """
+        The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+        """
+        return pulumi.get(self, "group_wait_time")
+
+    @property
+    @pulumi.getter(name="groupingFields")
+    def grouping_fields(self) -> Sequence[str]:
+        """
+        The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+        """
+        return pulumi.get(self, "grouping_fields")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[int]:
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="repeatInterval")
+    def repeat_interval(self) -> Optional[int]:
+        """
+        The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+        """
+        return pulumi.get(self, "repeat_interval")
+
+
+@pulumi.output_type
+class DispatchRuleLabelMatchExpressionGrid(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "labelMatchExpressionGroups":
+            suggest = "label_match_expression_groups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DispatchRuleLabelMatchExpressionGrid. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DispatchRuleLabelMatchExpressionGrid.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DispatchRuleLabelMatchExpressionGrid.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 label_match_expression_groups: Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup']):
+        """
+        :param Sequence['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs'] label_match_expression_groups: Sets the dispatch rule. See the following `Block label_match_expression_groups`.
+        """
+        pulumi.set(__self__, "label_match_expression_groups", label_match_expression_groups)
+
+    @property
+    @pulumi.getter(name="labelMatchExpressionGroups")
+    def label_match_expression_groups(self) -> Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup']:
+        """
+        Sets the dispatch rule. See the following `Block label_match_expression_groups`.
+        """
+        return pulumi.get(self, "label_match_expression_groups")
+
+
+@pulumi.output_type
+class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "labelMatchExpressions":
+            suggest = "label_match_expressions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 label_match_expressions: Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression']):
+        """
+        :param Sequence['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs'] label_match_expressions: Sets the dispatch rule. See the following `Block label_match_expressions`.
+        """
+        pulumi.set(__self__, "label_match_expressions", label_match_expressions)
+
+    @property
+    @pulumi.getter(name="labelMatchExpressions")
+    def label_match_expressions(self) -> Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression']:
+        """
+        Sets the dispatch rule. See the following `Block label_match_expressions`.
+        """
+        return pulumi.get(self, "label_match_expressions")
+
+
+@pulumi.output_type
+class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 value: str):
+        """
+        :param str key: The key of the tag of the dispatch rule. Valud values:
+               * _aliyun_arms_userid: user ID
+               * _aliyun_arms_involvedObject_kind: type of the associated object
+               * _aliyun_arms_involvedObject_id: ID of the associated object
+               * _aliyun_arms_involvedObject_name: name of the associated object
+               * _aliyun_arms_alert_name: alert name
+               * _aliyun_arms_alert_rule_id: alert rule ID
+               * _aliyun_arms_alert_type: alert type
+               * _aliyun_arms_alert_level: alert severity
+        :param str operator: The operator used in the dispatch rule. Valid values: 
+               * eq: equals to.
+               * re: matches a regular expression.
+        :param str value: The value of the tag.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of the tag of the dispatch rule. Valud values:
+        * _aliyun_arms_userid: user ID
+        * _aliyun_arms_involvedObject_kind: type of the associated object
+        * _aliyun_arms_involvedObject_id: ID of the associated object
+        * _aliyun_arms_involvedObject_name: name of the associated object
+        * _aliyun_arms_alert_name: alert name
+        * _aliyun_arms_alert_rule_id: alert rule ID
+        * _aliyun_arms_alert_type: alert type
+        * _aliyun_arms_alert_level: alert severity
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator used in the dispatch rule. Valid values: 
+        * eq: equals to.
+        * re: matches a regular expression.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the tag.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DispatchRuleNotifyRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notifyChannels":
+            suggest = "notify_channels"
+        elif key == "notifyObjects":
+            suggest = "notify_objects"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DispatchRuleNotifyRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DispatchRuleNotifyRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DispatchRuleNotifyRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 notify_channels: Sequence[str],
+                 notify_objects: Sequence['outputs.DispatchRuleNotifyRuleNotifyObject']):
+        """
+        :param Sequence[str] notify_channels: The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
+        :param Sequence['DispatchRuleNotifyRuleNotifyObjectArgs'] notify_objects: Sets the notification object. See the following `Block notify_objects`.
+        """
+        pulumi.set(__self__, "notify_channels", notify_channels)
+        pulumi.set(__self__, "notify_objects", notify_objects)
+
+    @property
+    @pulumi.getter(name="notifyChannels")
+    def notify_channels(self) -> Sequence[str]:
+        """
+        The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
+        """
+        return pulumi.get(self, "notify_channels")
+
+    @property
+    @pulumi.getter(name="notifyObjects")
+    def notify_objects(self) -> Sequence['outputs.DispatchRuleNotifyRuleNotifyObject']:
+        """
+        Sets the notification object. See the following `Block notify_objects`.
+        """
+        return pulumi.get(self, "notify_objects")
+
+
+@pulumi.output_type
+class DispatchRuleNotifyRuleNotifyObject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notifyObjectId":
+            suggest = "notify_object_id"
+        elif key == "notifyType":
+            suggest = "notify_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DispatchRuleNotifyRuleNotifyObject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DispatchRuleNotifyRuleNotifyObject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DispatchRuleNotifyRuleNotifyObject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 notify_object_id: str,
+                 notify_type: str):
+        """
+        :param str name: The name of the contact or contact group.
+        :param str notify_object_id: The ID of the contact or contact group.
+        :param str notify_type: The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "notify_object_id", notify_object_id)
+        pulumi.set(__self__, "notify_type", notify_type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the contact or contact group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notifyObjectId")
+    def notify_object_id(self) -> str:
+        """
+        The ID of the contact or contact group.
+        """
+        return pulumi.get(self, "notify_object_id")
+
+    @property
+    @pulumi.getter(name="notifyType")
+    def notify_type(self) -> str:
+        """
+        The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+        """
+        return pulumi.get(self, "notify_type")
+
+
+@pulumi.output_type
+class PrometheusAlertRuleAnnotation(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: The name of the annotation.
+        :param str value: The value of the annotation.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the annotation.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the annotation.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class PrometheusAlertRuleLabel(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: The name of the annotation.
+        :param str value: The value of the annotation.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the annotation.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the annotation.
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class GetAlertContactGroupsGroupResult(dict):
@@ -179,5 +582,511 @@ class GetAlertContactsContactResult(dict):
         Webhook Information.
         """
         return pulumi.get(self, "webhook")
+
+
+@pulumi.output_type
+class GetDispatchRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 dispatch_rule_id: str,
+                 dispatch_rule_name: str,
+                 dispatch_type: str,
+                 group_rules: Sequence['outputs.GetDispatchRulesRuleGroupRuleResult'],
+                 id: str,
+                 label_match_expression_grids: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridResult'],
+                 notify_rules: Sequence['outputs.GetDispatchRulesRuleNotifyRuleResult'],
+                 status: str):
+        """
+        :param str dispatch_rule_id: Dispatch rule ID.
+        :param str dispatch_rule_name: The name of the dispatch rule.
+        :param Sequence['GetDispatchRulesRuleGroupRuleArgs'] group_rules: Sets the event group.
+        :param str id: The ID of the Dispatch Rule.
+        :param Sequence['GetDispatchRulesRuleLabelMatchExpressionGridArgs'] label_match_expression_grids: Sets the dispatch rule.
+        :param Sequence['GetDispatchRulesRuleNotifyRuleArgs'] notify_rules: Sets the notification rule.
+        :param str status: The resource status of Alert Dispatch Rule.
+        """
+        pulumi.set(__self__, "dispatch_rule_id", dispatch_rule_id)
+        pulumi.set(__self__, "dispatch_rule_name", dispatch_rule_name)
+        pulumi.set(__self__, "dispatch_type", dispatch_type)
+        pulumi.set(__self__, "group_rules", group_rules)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label_match_expression_grids", label_match_expression_grids)
+        pulumi.set(__self__, "notify_rules", notify_rules)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="dispatchRuleId")
+    def dispatch_rule_id(self) -> str:
+        """
+        Dispatch rule ID.
+        """
+        return pulumi.get(self, "dispatch_rule_id")
+
+    @property
+    @pulumi.getter(name="dispatchRuleName")
+    def dispatch_rule_name(self) -> str:
+        """
+        The name of the dispatch rule.
+        """
+        return pulumi.get(self, "dispatch_rule_name")
+
+    @property
+    @pulumi.getter(name="dispatchType")
+    def dispatch_type(self) -> str:
+        return pulumi.get(self, "dispatch_type")
+
+    @property
+    @pulumi.getter(name="groupRules")
+    def group_rules(self) -> Sequence['outputs.GetDispatchRulesRuleGroupRuleResult']:
+        """
+        Sets the event group.
+        """
+        return pulumi.get(self, "group_rules")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Dispatch Rule.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="labelMatchExpressionGrids")
+    def label_match_expression_grids(self) -> Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridResult']:
+        """
+        Sets the dispatch rule.
+        """
+        return pulumi.get(self, "label_match_expression_grids")
+
+    @property
+    @pulumi.getter(name="notifyRules")
+    def notify_rules(self) -> Sequence['outputs.GetDispatchRulesRuleNotifyRuleResult']:
+        """
+        Sets the notification rule.
+        """
+        return pulumi.get(self, "notify_rules")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The resource status of Alert Dispatch Rule.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetDispatchRulesRuleGroupRuleResult(dict):
+    def __init__(__self__, *,
+                 group_id: int,
+                 group_interval: int,
+                 group_wait_time: int,
+                 grouping_fields: Sequence[str],
+                 repeat_interval: int):
+        """
+        :param int group_interval: The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+        :param int group_wait_time: The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+        :param Sequence[str] grouping_fields: The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+        :param int repeat_interval: The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "group_interval", group_interval)
+        pulumi.set(__self__, "group_wait_time", group_wait_time)
+        pulumi.set(__self__, "grouping_fields", grouping_fields)
+        pulumi.set(__self__, "repeat_interval", repeat_interval)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> int:
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="groupInterval")
+    def group_interval(self) -> int:
+        """
+        The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+        """
+        return pulumi.get(self, "group_interval")
+
+    @property
+    @pulumi.getter(name="groupWaitTime")
+    def group_wait_time(self) -> int:
+        """
+        The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+        """
+        return pulumi.get(self, "group_wait_time")
+
+    @property
+    @pulumi.getter(name="groupingFields")
+    def grouping_fields(self) -> Sequence[str]:
+        """
+        The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+        """
+        return pulumi.get(self, "grouping_fields")
+
+    @property
+    @pulumi.getter(name="repeatInterval")
+    def repeat_interval(self) -> int:
+        """
+        The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+        """
+        return pulumi.get(self, "repeat_interval")
+
+
+@pulumi.output_type
+class GetDispatchRulesRuleLabelMatchExpressionGridResult(dict):
+    def __init__(__self__, *,
+                 label_match_expression_groups: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResult']):
+        """
+        :param Sequence['GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs'] label_match_expression_groups: Sets the dispatch rule.
+        """
+        pulumi.set(__self__, "label_match_expression_groups", label_match_expression_groups)
+
+    @property
+    @pulumi.getter(name="labelMatchExpressionGroups")
+    def label_match_expression_groups(self) -> Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResult']:
+        """
+        Sets the dispatch rule.
+        """
+        return pulumi.get(self, "label_match_expression_groups")
+
+
+@pulumi.output_type
+class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResult(dict):
+    def __init__(__self__, *,
+                 label_match_expressions: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionResult']):
+        """
+        :param Sequence['GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs'] label_match_expressions: Sets the dispatch rule.
+        """
+        pulumi.set(__self__, "label_match_expressions", label_match_expressions)
+
+    @property
+    @pulumi.getter(name="labelMatchExpressions")
+    def label_match_expressions(self) -> Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionResult']:
+        """
+        Sets the dispatch rule.
+        """
+        return pulumi.get(self, "label_match_expressions")
+
+
+@pulumi.output_type
+class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 value: str):
+        """
+        :param str key: The key of the tag of the dispatch rule.
+        :param str operator: The operator used in the dispatch rule.
+        :param str value: The value of the tag.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of the tag of the dispatch rule.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator used in the dispatch rule.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the tag.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetDispatchRulesRuleNotifyRuleResult(dict):
+    def __init__(__self__, *,
+                 notify_channels: Sequence[str],
+                 notify_objects: Sequence['outputs.GetDispatchRulesRuleNotifyRuleNotifyObjectResult']):
+        """
+        :param Sequence[str] notify_channels: The notification method.
+        :param Sequence['GetDispatchRulesRuleNotifyRuleNotifyObjectArgs'] notify_objects: Sets the notification object.
+        """
+        pulumi.set(__self__, "notify_channels", notify_channels)
+        pulumi.set(__self__, "notify_objects", notify_objects)
+
+    @property
+    @pulumi.getter(name="notifyChannels")
+    def notify_channels(self) -> Sequence[str]:
+        """
+        The notification method.
+        """
+        return pulumi.get(self, "notify_channels")
+
+    @property
+    @pulumi.getter(name="notifyObjects")
+    def notify_objects(self) -> Sequence['outputs.GetDispatchRulesRuleNotifyRuleNotifyObjectResult']:
+        """
+        Sets the notification object.
+        """
+        return pulumi.get(self, "notify_objects")
+
+
+@pulumi.output_type
+class GetDispatchRulesRuleNotifyRuleNotifyObjectResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 notify_object_id: str,
+                 notify_type: str):
+        """
+        :param str name: The name of the contact or contact group.
+        :param str notify_object_id: The ID of the contact or contact group.
+        :param str notify_type: The type of the alert contact.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "notify_object_id", notify_object_id)
+        pulumi.set(__self__, "notify_type", notify_type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the contact or contact group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notifyObjectId")
+    def notify_object_id(self) -> str:
+        """
+        The ID of the contact or contact group.
+        """
+        return pulumi.get(self, "notify_object_id")
+
+    @property
+    @pulumi.getter(name="notifyType")
+    def notify_type(self) -> str:
+        """
+        The type of the alert contact.
+        """
+        return pulumi.get(self, "notify_type")
+
+
+@pulumi.output_type
+class GetPrometheusAlertRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 annotations: Sequence['outputs.GetPrometheusAlertRulesRuleAnnotationResult'],
+                 cluster_id: str,
+                 dispatch_rule_id: str,
+                 duration: str,
+                 expression: str,
+                 id: str,
+                 labels: Sequence['outputs.GetPrometheusAlertRulesRuleLabelResult'],
+                 message: str,
+                 notify_type: str,
+                 prometheus_alert_rule_id: str,
+                 prometheus_alert_rule_name: str,
+                 status: int,
+                 type: str):
+        """
+        :param Sequence['GetPrometheusAlertRulesRuleAnnotationArgs'] annotations: The annotations of the alert rule.
+        :param str cluster_id: The ID of the cluster.
+        :param str dispatch_rule_id: The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+        :param str duration: -The duration of the alert.
+        :param str expression: The alert rule expression that follows the PromQL syntax..
+        :param str id: The ID of the Prometheus Alert Rule.
+        :param Sequence['GetPrometheusAlertRulesRuleLabelArgs'] labels: -The labels of the resource.
+        :param str message: The message of the alert notification.
+        :param str notify_type: The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
+        :param str prometheus_alert_rule_id: The first ID of the resource.
+        :param str prometheus_alert_rule_name: The name of the resource.
+        :param int status: The status of the resource. Valid values: `0`, `1`.
+               * `1`: open.
+               * `0`: off.
+        :param str type: The type of the alert rule.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "dispatch_rule_id", dispatch_rule_id)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "notify_type", notify_type)
+        pulumi.set(__self__, "prometheus_alert_rule_id", prometheus_alert_rule_id)
+        pulumi.set(__self__, "prometheus_alert_rule_name", prometheus_alert_rule_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Sequence['outputs.GetPrometheusAlertRulesRuleAnnotationResult']:
+        """
+        The annotations of the alert rule.
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="dispatchRuleId")
+    def dispatch_rule_id(self) -> str:
+        """
+        The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+        """
+        return pulumi.get(self, "dispatch_rule_id")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        -The duration of the alert.
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        The alert rule expression that follows the PromQL syntax..
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Prometheus Alert Rule.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Sequence['outputs.GetPrometheusAlertRulesRuleLabelResult']:
+        """
+        -The labels of the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        The message of the alert notification.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="notifyType")
+    def notify_type(self) -> str:
+        """
+        The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
+        """
+        return pulumi.get(self, "notify_type")
+
+    @property
+    @pulumi.getter(name="prometheusAlertRuleId")
+    def prometheus_alert_rule_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "prometheus_alert_rule_id")
+
+    @property
+    @pulumi.getter(name="prometheusAlertRuleName")
+    def prometheus_alert_rule_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "prometheus_alert_rule_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> int:
+        """
+        The status of the resource. Valid values: `0`, `1`.
+        * `1`: open.
+        * `0`: off.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the alert rule.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetPrometheusAlertRulesRuleAnnotationResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: The name of the label.
+        :param str value: The value of the label.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the label.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the label.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetPrometheusAlertRulesRuleLabelResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: The name of the label.
+        :param str value: The value of the label.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the label.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the label.
+        """
+        return pulumi.get(self, "value")
 
 

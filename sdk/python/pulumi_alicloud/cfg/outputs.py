@@ -36,10 +36,10 @@ class AggregateCompliancePackConfigRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "configRuleParameters":
-            suggest = "config_rule_parameters"
-        elif key == "managedRuleIdentifier":
+        if key == "managedRuleIdentifier":
             suggest = "managed_rule_identifier"
+        elif key == "configRuleParameters":
+            suggest = "config_rule_parameters"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AggregateCompliancePackConfigRule. Access the value via the '{suggest}' property getter instead.")
@@ -53,22 +53,15 @@ class AggregateCompliancePackConfigRule(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 config_rule_parameters: Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter'],
-                 managed_rule_identifier: str):
+                 managed_rule_identifier: str,
+                 config_rule_parameters: Optional[Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter']] = None):
         """
-        :param Sequence['AggregateCompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules.
         :param str managed_rule_identifier: The Managed Rule Identifier.
+        :param Sequence['AggregateCompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules.
         """
-        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
         pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
-
-    @property
-    @pulumi.getter(name="configRuleParameters")
-    def config_rule_parameters(self) -> Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter']:
-        """
-        A list of parameter rules.
-        """
-        return pulumi.get(self, "config_rule_parameters")
+        if config_rule_parameters is not None:
+            pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
 
     @property
     @pulumi.getter(name="managedRuleIdentifier")
@@ -77,6 +70,14 @@ class AggregateCompliancePackConfigRule(dict):
         The Managed Rule Identifier.
         """
         return pulumi.get(self, "managed_rule_identifier")
+
+    @property
+    @pulumi.getter(name="configRuleParameters")
+    def config_rule_parameters(self) -> Optional[Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter']]:
+        """
+        A list of parameter rules.
+        """
+        return pulumi.get(self, "config_rule_parameters")
 
 
 @pulumi.output_type
@@ -101,18 +102,20 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 parameter_name: str,
-                 parameter_value: str):
+                 parameter_name: Optional[str] = None,
+                 parameter_value: Optional[str] = None):
         """
         :param str parameter_name: The Parameter Name.
         :param str parameter_value: The Parameter Value.
         """
-        pulumi.set(__self__, "parameter_name", parameter_name)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        if parameter_name is not None:
+            pulumi.set(__self__, "parameter_name", parameter_name)
+        if parameter_value is not None:
+            pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterName")
-    def parameter_name(self) -> str:
+    def parameter_name(self) -> Optional[str]:
         """
         The Parameter Name.
         """
@@ -120,7 +123,7 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter(dict):
 
     @property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> str:
+    def parameter_value(self) -> Optional[str]:
         """
         The Parameter Value.
         """
@@ -193,10 +196,10 @@ class CompliancePackConfigRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "configRuleParameters":
-            suggest = "config_rule_parameters"
-        elif key == "managedRuleIdentifier":
+        if key == "managedRuleIdentifier":
             suggest = "managed_rule_identifier"
+        elif key == "configRuleParameters":
+            suggest = "config_rule_parameters"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CompliancePackConfigRule. Access the value via the '{suggest}' property getter instead.")
@@ -210,22 +213,15 @@ class CompliancePackConfigRule(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 config_rule_parameters: Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter'],
-                 managed_rule_identifier: str):
+                 managed_rule_identifier: str,
+                 config_rule_parameters: Optional[Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter']] = None):
         """
-        :param Sequence['CompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of Config Rule Parameters.
         :param str managed_rule_identifier: The Managed Rule Identifier.
+        :param Sequence['CompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of Config Rule Parameters.
         """
-        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
         pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
-
-    @property
-    @pulumi.getter(name="configRuleParameters")
-    def config_rule_parameters(self) -> Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter']:
-        """
-        A list of Config Rule Parameters.
-        """
-        return pulumi.get(self, "config_rule_parameters")
+        if config_rule_parameters is not None:
+            pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
 
     @property
     @pulumi.getter(name="managedRuleIdentifier")
@@ -234,6 +230,14 @@ class CompliancePackConfigRule(dict):
         The Managed Rule Identifier.
         """
         return pulumi.get(self, "managed_rule_identifier")
+
+    @property
+    @pulumi.getter(name="configRuleParameters")
+    def config_rule_parameters(self) -> Optional[Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter']]:
+        """
+        A list of Config Rule Parameters.
+        """
+        return pulumi.get(self, "config_rule_parameters")
 
 
 @pulumi.output_type
@@ -258,19 +262,20 @@ class CompliancePackConfigRuleConfigRuleParameter(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 parameter_name: str,
+                 parameter_name: Optional[str] = None,
                  parameter_value: Optional[str] = None):
         """
         :param str parameter_name: The parameter name.
         :param str parameter_value: The parameter value.
         """
-        pulumi.set(__self__, "parameter_name", parameter_name)
+        if parameter_name is not None:
+            pulumi.set(__self__, "parameter_name", parameter_name)
         if parameter_value is not None:
             pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterName")
-    def parameter_name(self) -> str:
+    def parameter_name(self) -> Optional[str]:
         """
         The parameter name.
         """

@@ -13,7 +13,7 @@ import (
 
 // Provides a Hybrid Backup Recovery (HBR) Restore Job resource.
 //
-// For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://help.aliyun.com/document_detail/62361.html).
+// For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://www.alibabacloud.com/help/doc-detail/186575.htm).
 //
 // > **NOTE:** Available in v1.133.0+.
 //
@@ -85,37 +85,37 @@ type RestoreJob struct {
 	Exclude pulumi.StringPtrOutput `pulumi:"exclude"`
 	// The include path. It's a json string with format:`["/home", "/include"]`.
 	Include pulumi.StringPtrOutput `pulumi:"include"`
-	// Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options pulumi.StringPtrOutput `pulumi:"options"`
 	// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
 	RestoreJobId pulumi.StringOutput `pulumi:"restoreJobId"`
-	// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
 	RestoreType pulumi.StringOutput `pulumi:"restoreType"`
-	// Restore Snapshot of HashCode.
+	// The hashcode of restore Snapshot.
 	SnapshotHash pulumi.StringOutput `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
-	// The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceType pulumi.StringOutput `pulumi:"sourceType"`
 	// The Restore Job Status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The Target ofo OSS Bucket Name.
+	// The target ofo OSS bucket name.
 	TargetBucket             pulumi.StringPtrOutput `pulumi:"targetBucket"`
 	TargetClientId           pulumi.StringPtrOutput `pulumi:"targetClientId"`
 	TargetContainer          pulumi.StringPtrOutput `pulumi:"targetContainer"`
 	TargetContainerClusterId pulumi.StringPtrOutput `pulumi:"targetContainerClusterId"`
-	// The Destination File System Creation Time.
+	// The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	TargetCreateTime   pulumi.StringPtrOutput `pulumi:"targetCreateTime"`
 	TargetDataSourceId pulumi.StringPtrOutput `pulumi:"targetDataSourceId"`
-	// The Destination File System ID.
+	// The ID of destination File System.
 	TargetFileSystemId pulumi.StringPtrOutput `pulumi:"targetFileSystemId"`
-	// Objective to ECS Instance Id.
+	// The target ID of ECS instance.
 	TargetInstanceId pulumi.StringPtrOutput `pulumi:"targetInstanceId"`
-	// The Target of (ECS) Instance Changes the ECS File Path.
+	// The target file path of (ECS) instance.
 	TargetPath pulumi.StringPtrOutput `pulumi:"targetPath"`
-	// The Target of the OSS Object Prefix.
+	// The target of the OSS object prefix.
 	TargetPrefix pulumi.StringPtrOutput `pulumi:"targetPrefix"`
-	// The ID of Vault.
+	// The ID of backup vault.
 	VaultId pulumi.StringOutput `pulumi:"vaultId"`
 }
 
@@ -170,37 +170,37 @@ type restoreJobState struct {
 	Exclude *string `pulumi:"exclude"`
 	// The include path. It's a json string with format:`["/home", "/include"]`.
 	Include *string `pulumi:"include"`
-	// Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options *string `pulumi:"options"`
 	// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
 	RestoreJobId *string `pulumi:"restoreJobId"`
-	// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
 	RestoreType *string `pulumi:"restoreType"`
-	// Restore Snapshot of HashCode.
+	// The hashcode of restore Snapshot.
 	SnapshotHash *string `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceType *string `pulumi:"sourceType"`
 	// The Restore Job Status.
 	Status *string `pulumi:"status"`
-	// The Target ofo OSS Bucket Name.
+	// The target ofo OSS bucket name.
 	TargetBucket             *string `pulumi:"targetBucket"`
 	TargetClientId           *string `pulumi:"targetClientId"`
 	TargetContainer          *string `pulumi:"targetContainer"`
 	TargetContainerClusterId *string `pulumi:"targetContainerClusterId"`
-	// The Destination File System Creation Time.
+	// The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	TargetCreateTime   *string `pulumi:"targetCreateTime"`
 	TargetDataSourceId *string `pulumi:"targetDataSourceId"`
-	// The Destination File System ID.
+	// The ID of destination File System.
 	TargetFileSystemId *string `pulumi:"targetFileSystemId"`
-	// Objective to ECS Instance Id.
+	// The target ID of ECS instance.
 	TargetInstanceId *string `pulumi:"targetInstanceId"`
-	// The Target of (ECS) Instance Changes the ECS File Path.
+	// The target file path of (ECS) instance.
 	TargetPath *string `pulumi:"targetPath"`
-	// The Target of the OSS Object Prefix.
+	// The target of the OSS object prefix.
 	TargetPrefix *string `pulumi:"targetPrefix"`
-	// The ID of Vault.
+	// The ID of backup vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 
@@ -209,37 +209,37 @@ type RestoreJobState struct {
 	Exclude pulumi.StringPtrInput
 	// The include path. It's a json string with format:`["/home", "/include"]`.
 	Include pulumi.StringPtrInput
-	// Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options pulumi.StringPtrInput
 	// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
 	RestoreJobId pulumi.StringPtrInput
-	// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
 	RestoreType pulumi.StringPtrInput
-	// Restore Snapshot of HashCode.
+	// The hashcode of restore Snapshot.
 	SnapshotHash pulumi.StringPtrInput
 	// The ID of Snapshot.
 	SnapshotId pulumi.StringPtrInput
-	// The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceType pulumi.StringPtrInput
 	// The Restore Job Status.
 	Status pulumi.StringPtrInput
-	// The Target ofo OSS Bucket Name.
+	// The target ofo OSS bucket name.
 	TargetBucket             pulumi.StringPtrInput
 	TargetClientId           pulumi.StringPtrInput
 	TargetContainer          pulumi.StringPtrInput
 	TargetContainerClusterId pulumi.StringPtrInput
-	// The Destination File System Creation Time.
+	// The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	TargetCreateTime   pulumi.StringPtrInput
 	TargetDataSourceId pulumi.StringPtrInput
-	// The Destination File System ID.
+	// The ID of destination File System.
 	TargetFileSystemId pulumi.StringPtrInput
-	// Objective to ECS Instance Id.
+	// The target ID of ECS instance.
 	TargetInstanceId pulumi.StringPtrInput
-	// The Target of (ECS) Instance Changes the ECS File Path.
+	// The target file path of (ECS) instance.
 	TargetPath pulumi.StringPtrInput
-	// The Target of the OSS Object Prefix.
+	// The target of the OSS object prefix.
 	TargetPrefix pulumi.StringPtrInput
-	// The ID of Vault.
+	// The ID of backup vault.
 	VaultId pulumi.StringPtrInput
 }
 
@@ -252,35 +252,35 @@ type restoreJobArgs struct {
 	Exclude *string `pulumi:"exclude"`
 	// The include path. It's a json string with format:`["/home", "/include"]`.
 	Include *string `pulumi:"include"`
-	// Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options *string `pulumi:"options"`
 	// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
 	RestoreJobId string `pulumi:"restoreJobId"`
-	// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
 	RestoreType string `pulumi:"restoreType"`
-	// Restore Snapshot of HashCode.
+	// The hashcode of restore Snapshot.
 	SnapshotHash string `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId string `pulumi:"snapshotId"`
-	// The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceType string `pulumi:"sourceType"`
-	// The Target ofo OSS Bucket Name.
+	// The target ofo OSS bucket name.
 	TargetBucket             *string `pulumi:"targetBucket"`
 	TargetClientId           *string `pulumi:"targetClientId"`
 	TargetContainer          *string `pulumi:"targetContainer"`
 	TargetContainerClusterId *string `pulumi:"targetContainerClusterId"`
-	// The Destination File System Creation Time.
+	// The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	TargetCreateTime   *string `pulumi:"targetCreateTime"`
 	TargetDataSourceId *string `pulumi:"targetDataSourceId"`
-	// The Destination File System ID.
+	// The ID of destination File System.
 	TargetFileSystemId *string `pulumi:"targetFileSystemId"`
-	// Objective to ECS Instance Id.
+	// The target ID of ECS instance.
 	TargetInstanceId *string `pulumi:"targetInstanceId"`
-	// The Target of (ECS) Instance Changes the ECS File Path.
+	// The target file path of (ECS) instance.
 	TargetPath *string `pulumi:"targetPath"`
-	// The Target of the OSS Object Prefix.
+	// The target of the OSS object prefix.
 	TargetPrefix *string `pulumi:"targetPrefix"`
-	// The ID of Vault.
+	// The ID of backup vault.
 	VaultId string `pulumi:"vaultId"`
 }
 
@@ -290,35 +290,35 @@ type RestoreJobArgs struct {
 	Exclude pulumi.StringPtrInput
 	// The include path. It's a json string with format:`["/home", "/include"]`.
 	Include pulumi.StringPtrInput
-	// Recovery Options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options pulumi.StringPtrInput
 	// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
 	RestoreJobId pulumi.StringInput
-	// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
 	RestoreType pulumi.StringInput
-	// Restore Snapshot of HashCode.
+	// The hashcode of restore Snapshot.
 	SnapshotHash pulumi.StringInput
 	// The ID of Snapshot.
 	SnapshotId pulumi.StringInput
-	// The Type of Data Source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceType pulumi.StringInput
-	// The Target ofo OSS Bucket Name.
+	// The target ofo OSS bucket name.
 	TargetBucket             pulumi.StringPtrInput
 	TargetClientId           pulumi.StringPtrInput
 	TargetContainer          pulumi.StringPtrInput
 	TargetContainerClusterId pulumi.StringPtrInput
-	// The Destination File System Creation Time.
+	// The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	TargetCreateTime   pulumi.StringPtrInput
 	TargetDataSourceId pulumi.StringPtrInput
-	// The Destination File System ID.
+	// The ID of destination File System.
 	TargetFileSystemId pulumi.StringPtrInput
-	// Objective to ECS Instance Id.
+	// The target ID of ECS instance.
 	TargetInstanceId pulumi.StringPtrInput
-	// The Target of (ECS) Instance Changes the ECS File Path.
+	// The target file path of (ECS) instance.
 	TargetPath pulumi.StringPtrInput
-	// The Target of the OSS Object Prefix.
+	// The target of the OSS object prefix.
 	TargetPrefix pulumi.StringPtrInput
-	// The ID of Vault.
+	// The ID of backup vault.
 	VaultId pulumi.StringInput
 }
 

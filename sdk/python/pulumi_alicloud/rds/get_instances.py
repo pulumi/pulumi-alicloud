@@ -20,13 +20,16 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, connection_mode=None, db_type=None, engine=None, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None, status=None, tags=None, vpc_id=None, vswitch_id=None):
+    def __init__(__self__, connection_mode=None, db_type=None, enable_details=None, engine=None, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None, status=None, tags=None, vpc_id=None, vswitch_id=None):
         if connection_mode and not isinstance(connection_mode, str):
             raise TypeError("Expected argument 'connection_mode' to be a str")
         pulumi.set(__self__, "connection_mode", connection_mode)
         if db_type and not isinstance(db_type, str):
             raise TypeError("Expected argument 'db_type' to be a str")
         pulumi.set(__self__, "db_type", db_type)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if engine and not isinstance(engine, str):
             raise TypeError("Expected argument 'engine' to be a str")
         pulumi.set(__self__, "engine", engine)
@@ -76,6 +79,11 @@ class GetInstancesResult:
         `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
         """
         return pulumi.get(self, "db_type")
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -165,6 +173,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
         return GetInstancesResult(
             connection_mode=self.connection_mode,
             db_type=self.db_type,
+            enable_details=self.enable_details,
             engine=self.engine,
             id=self.id,
             ids=self.ids,
@@ -180,6 +189,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
 
 def get_instances(connection_mode: Optional[str] = None,
                   db_type: Optional[str] = None,
+                  enable_details: Optional[bool] = None,
                   engine: Optional[str] = None,
                   ids: Optional[Sequence[str]] = None,
                   name_regex: Optional[str] = None,
@@ -211,6 +221,7 @@ def get_instances(connection_mode: Optional[str] = None,
 
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
     :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+    :param bool enable_details: Default to `false`. Set it to `true` can output parameter template about resource attributes.
     :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
     :param Sequence[str] ids: A list of RDS instance IDs.
     :param str name_regex: A regex string to filter results by instance name.
@@ -223,6 +234,7 @@ def get_instances(connection_mode: Optional[str] = None,
     __args__ = dict()
     __args__['connectionMode'] = connection_mode
     __args__['dbType'] = db_type
+    __args__['enableDetails'] = enable_details
     __args__['engine'] = engine
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -240,6 +252,7 @@ def get_instances(connection_mode: Optional[str] = None,
     return AwaitableGetInstancesResult(
         connection_mode=__ret__.connection_mode,
         db_type=__ret__.db_type,
+        enable_details=__ret__.enable_details,
         engine=__ret__.engine,
         id=__ret__.id,
         ids=__ret__.ids,

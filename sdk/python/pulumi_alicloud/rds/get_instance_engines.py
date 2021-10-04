@@ -20,7 +20,13 @@ class GetInstanceEnginesResult:
     """
     A collection of values returned by getInstanceEngines.
     """
-    def __init__(__self__, engine=None, engine_version=None, id=None, instance_charge_type=None, instance_engines=None, multi_zone=None, output_file=None, zone_id=None):
+    def __init__(__self__, category=None, db_instance_storage_type=None, engine=None, engine_version=None, id=None, ids=None, instance_charge_type=None, instance_engines=None, multi_zone=None, output_file=None, zone_id=None):
+        if category and not isinstance(category, str):
+            raise TypeError("Expected argument 'category' to be a str")
+        pulumi.set(__self__, "category", category)
+        if db_instance_storage_type and not isinstance(db_instance_storage_type, str):
+            raise TypeError("Expected argument 'db_instance_storage_type' to be a str")
+        pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if engine and not isinstance(engine, str):
             raise TypeError("Expected argument 'engine' to be a str")
         pulumi.set(__self__, "engine", engine)
@@ -30,6 +36,9 @@ class GetInstanceEnginesResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ids and not isinstance(ids, list):
+            raise TypeError("Expected argument 'ids' to be a list")
+        pulumi.set(__self__, "ids", ids)
         if instance_charge_type and not isinstance(instance_charge_type, str):
             raise TypeError("Expected argument 'instance_charge_type' to be a str")
         pulumi.set(__self__, "instance_charge_type", instance_charge_type)
@@ -45,6 +54,19 @@ class GetInstanceEnginesResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        """
+        DB Instance category.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="dbInstanceStorageType")
+    def db_instance_storage_type(self) -> Optional[str]:
+        return pulumi.get(self, "db_instance_storage_type")
 
     @property
     @pulumi.getter
@@ -69,6 +91,14 @@ class GetInstanceEnginesResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Sequence[str]:
+        """
+        A list of engines.
+        """
+        return pulumi.get(self, "ids")
 
     @property
     @pulumi.getter(name="instanceChargeType")
@@ -105,9 +135,12 @@ class AwaitableGetInstanceEnginesResult(GetInstanceEnginesResult):
         if False:
             yield self
         return GetInstanceEnginesResult(
+            category=self.category,
+            db_instance_storage_type=self.db_instance_storage_type,
             engine=self.engine,
             engine_version=self.engine_version,
             id=self.id,
+            ids=self.ids,
             instance_charge_type=self.instance_charge_type,
             instance_engines=self.instance_engines,
             multi_zone=self.multi_zone,
@@ -115,7 +148,9 @@ class AwaitableGetInstanceEnginesResult(GetInstanceEnginesResult):
             zone_id=self.zone_id)
 
 
-def get_instance_engines(engine: Optional[str] = None,
+def get_instance_engines(category: Optional[str] = None,
+                         db_instance_storage_type: Optional[str] = None,
+                         engine: Optional[str] = None,
                          engine_version: Optional[str] = None,
                          instance_charge_type: Optional[str] = None,
                          multi_zone: Optional[bool] = None,
@@ -141,13 +176,17 @@ def get_instance_engines(engine: Optional[str] = None,
     ```
 
 
-    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+    :param str engine: Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
     :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
     :param str zone_id: The Zone to launch the DB instance.
     """
     __args__ = dict()
+    __args__['category'] = category
+    __args__['dbInstanceStorageType'] = db_instance_storage_type
     __args__['engine'] = engine
     __args__['engineVersion'] = engine_version
     __args__['instanceChargeType'] = instance_charge_type
@@ -161,9 +200,12 @@ def get_instance_engines(engine: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getInstanceEngines:getInstanceEngines', __args__, opts=opts, typ=GetInstanceEnginesResult).value
 
     return AwaitableGetInstanceEnginesResult(
+        category=__ret__.category,
+        db_instance_storage_type=__ret__.db_instance_storage_type,
         engine=__ret__.engine,
         engine_version=__ret__.engine_version,
         id=__ret__.id,
+        ids=__ret__.ids,
         instance_charge_type=__ret__.instance_charge_type,
         instance_engines=__ret__.instance_engines,
         multi_zone=__ret__.multi_zone,

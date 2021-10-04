@@ -5,16 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./domain";
+export * from "./getDomains";
+export * from "./getMailAddresses";
 export * from "./getReceivers";
+export * from "./mailAddress";
 export * from "./receivers";
 
 // Import resources to register:
+import { Domain } from "./domain";
+import { MailAddress } from "./mailAddress";
 import { Receivers } from "./receivers";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:directmail/domain:Domain":
+                return new Domain(name, <any>undefined, { urn })
+            case "alicloud:directmail/mailAddress:MailAddress":
+                return new MailAddress(name, <any>undefined, { urn })
             case "alicloud:directmail/receivers:Receivers":
                 return new Receivers(name, <any>undefined, { urn })
             default:
@@ -22,4 +32,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "directmail/domain", _module)
+pulumi.runtime.registerResourceModule("alicloud", "directmail/mailAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "directmail/receivers", _module)

@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the Hbr Ecs Backup Clients of the current Alibaba Cloud user.
+// This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.132.0+.
 func GetEcsBackupClients(ctx *pulumi.Context, args *GetEcsBackupClientsArgs, opts ...pulumi.InvokeOption) (*GetEcsBackupClientsResult, error) {

@@ -47,7 +47,7 @@ export function getOssBackupPlans(args?: GetOssBackupPlansArgs, opts?: pulumi.In
  */
 export interface GetOssBackupPlansArgs {
     /**
-     * The OSS Bucket Name.
+     * The name of OSS bucket.
      */
     readonly bucket?: string;
     /**
@@ -60,7 +60,7 @@ export interface GetOssBackupPlansArgs {
     readonly nameRegex?: string;
     readonly outputFile?: string;
     /**
-     * Vault ID.
+     * The ID of backup vault.
      */
     readonly vaultId?: string;
 }

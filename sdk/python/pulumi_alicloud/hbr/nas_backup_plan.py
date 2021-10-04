@@ -13,50 +13,49 @@ __all__ = ['NasBackupPlanArgs', 'NasBackupPlan']
 @pulumi.input_type
 class NasBackupPlanArgs:
     def __init__(__self__, *,
+                 backup_type: pulumi.Input[str],
                  create_time: pulumi.Input[str],
+                 file_system_id: pulumi.Input[str],
                  nas_backup_plan_name: pulumi.Input[str],
                  retention: pulumi.Input[str],
                  schedule: pulumi.Input[str],
-                 backup_type: Optional[pulumi.Input[str]] = None,
+                 vault_id: pulumi.Input[str],
                  detail: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
-                 file_system_id: Optional[pulumi.Input[str]] = None,
                  include: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  speed_limit: Optional[pulumi.Input[str]] = None,
-                 update_paths: Optional[pulumi.Input[bool]] = None,
-                 vault_id: Optional[pulumi.Input[str]] = None):
+                 update_paths: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a NasBackupPlan resource.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
-        :param pulumi.Input[str] nas_backup_plan_name: The name of the resource.
-        :param pulumi.Input[str] retention: Backup Retention Period, the Minimum Value of 1.
-        :param pulumi.Input[str] schedule: The Backup Policy. Formats: I | {Range Specified by the StartTime }|{ Interval}\n* The Time Range Specified by the StartTime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
-        :param pulumi.Input[bool] disabled: Whether to Disable the Backup Task. Valid Values: true, false.
-        :param pulumi.Input[str] exclude: The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
-        :param pulumi.Input[str] file_system_id: The File System ID.
-        :param pulumi.Input[str] include: The include path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
-        :param pulumi.Input[str] options: Options. NAS Backup Plan Does Not Support Yet.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
-        :param pulumi.Input[str] speed_limit: flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+        :param pulumi.Input[str] file_system_id: The File System ID of Nas.
+        :param pulumi.Input[str] nas_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] vault_id: The ID of Backup vault.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
+        :param pulumi.Input[str] exclude: The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
+        :param pulumi.Input[str] include: The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
+        :param pulumi.Input[str] speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         """
+        pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "file_system_id", file_system_id)
         pulumi.set(__self__, "nas_backup_plan_name", nas_backup_plan_name)
         pulumi.set(__self__, "retention", retention)
         pulumi.set(__self__, "schedule", schedule)
-        if backup_type is not None:
-            pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "vault_id", vault_id)
         if detail is not None:
             pulumi.set(__self__, "detail", detail)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if exclude is not None:
             pulumi.set(__self__, "exclude", exclude)
-        if file_system_id is not None:
-            pulumi.set(__self__, "file_system_id", file_system_id)
         if include is not None:
             pulumi.set(__self__, "include", include)
         if options is not None:
@@ -67,8 +66,18 @@ class NasBackupPlanArgs:
             pulumi.set(__self__, "speed_limit", speed_limit)
         if update_paths is not None:
             pulumi.set(__self__, "update_paths", update_paths)
-        if vault_id is not None:
-            pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> pulumi.Input[str]:
+        """
+        Backup type. Valid values: `COMPLETE`.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @backup_type.setter
+    def backup_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "backup_type", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -83,10 +92,22 @@ class NasBackupPlanArgs:
         pulumi.set(self, "create_time", value)
 
     @property
+    @pulumi.getter(name="fileSystemId")
+    def file_system_id(self) -> pulumi.Input[str]:
+        """
+        The File System ID of Nas.
+        """
+        return pulumi.get(self, "file_system_id")
+
+    @file_system_id.setter
+    def file_system_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "file_system_id", value)
+
+    @property
     @pulumi.getter(name="nasBackupPlanName")
     def nas_backup_plan_name(self) -> pulumi.Input[str]:
         """
-        The name of the resource.
+        The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         """
         return pulumi.get(self, "nas_backup_plan_name")
 
@@ -98,7 +119,7 @@ class NasBackupPlanArgs:
     @pulumi.getter
     def retention(self) -> pulumi.Input[str]:
         """
-        Backup Retention Period, the Minimum Value of 1.
+        Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
@@ -110,7 +131,7 @@ class NasBackupPlanArgs:
     @pulumi.getter
     def schedule(self) -> pulumi.Input[str]:
         """
-        The Backup Policy. Formats: I | {Range Specified by the StartTime }|{ Interval}\n* The Time Range Specified by the StartTime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
+        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -119,16 +140,16 @@ class NasBackupPlanArgs:
         pulumi.set(self, "schedule", value)
 
     @property
-    @pulumi.getter(name="backupType")
-    def backup_type(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> pulumi.Input[str]:
         """
-        Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        The ID of Backup vault.
         """
-        return pulumi.get(self, "backup_type")
+        return pulumi.get(self, "vault_id")
 
-    @backup_type.setter
-    def backup_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "backup_type", value)
+    @vault_id.setter
+    def vault_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vault_id", value)
 
     @property
     @pulumi.getter
@@ -143,7 +164,7 @@ class NasBackupPlanArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to Disable the Backup Task. Valid Values: true, false.
+        Whether to disable the backup task. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -155,7 +176,7 @@ class NasBackupPlanArgs:
     @pulumi.getter
     def exclude(self) -> Optional[pulumi.Input[str]]:
         """
-        The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+        The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         """
         return pulumi.get(self, "exclude")
 
@@ -164,22 +185,10 @@ class NasBackupPlanArgs:
         pulumi.set(self, "exclude", value)
 
     @property
-    @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The File System ID.
-        """
-        return pulumi.get(self, "file_system_id")
-
-    @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "file_system_id", value)
-
-    @property
     @pulumi.getter
     def include(self) -> Optional[pulumi.Input[str]]:
         """
-        The include path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+        The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         """
         return pulumi.get(self, "include")
 
@@ -190,9 +199,6 @@ class NasBackupPlanArgs:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
-        """
-        Options. NAS Backup Plan Does Not Support Yet.
-        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -203,7 +209,7 @@ class NasBackupPlanArgs:
     @pulumi.getter
     def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+        Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
         """
         return pulumi.get(self, "paths")
 
@@ -215,7 +221,7 @@ class NasBackupPlanArgs:
     @pulumi.getter(name="speedLimit")
     def speed_limit(self) -> Optional[pulumi.Input[str]]:
         """
-        flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+        Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         """
         return pulumi.get(self, "speed_limit")
 
@@ -231,15 +237,6 @@ class NasBackupPlanArgs:
     @update_paths.setter
     def update_paths(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "update_paths", value)
-
-    @property
-    @pulumi.getter(name="vaultId")
-    def vault_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "vault_id")
-
-    @vault_id.setter
-    def vault_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "vault_id", value)
 
 
 @pulumi.input_type
@@ -262,18 +259,18 @@ class _NasBackupPlanState:
                  vault_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NasBackupPlan resources.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
-        :param pulumi.Input[bool] disabled: Whether to Disable the Backup Task. Valid Values: true, false.
-        :param pulumi.Input[str] exclude: The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
-        :param pulumi.Input[str] file_system_id: The File System ID.
-        :param pulumi.Input[str] include: The include path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
-        :param pulumi.Input[str] nas_backup_plan_name: The name of the resource.
-        :param pulumi.Input[str] options: Options. NAS Backup Plan Does Not Support Yet.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
-        :param pulumi.Input[str] retention: Backup Retention Period, the Minimum Value of 1.
-        :param pulumi.Input[str] schedule: The Backup Policy. Formats: I | {Range Specified by the StartTime }|{ Interval}\n* The Time Range Specified by the StartTime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
-        :param pulumi.Input[str] speed_limit: flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
+        :param pulumi.Input[str] exclude: The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
+        :param pulumi.Input[str] file_system_id: The File System ID of Nas.
+        :param pulumi.Input[str] include: The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
+        :param pulumi.Input[str] nas_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         if backup_type is not None:
             pulumi.set(__self__, "backup_type", backup_type)
@@ -310,7 +307,7 @@ class _NasBackupPlanState:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        Backup type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -343,7 +340,7 @@ class _NasBackupPlanState:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to Disable the Backup Task. Valid Values: true, false.
+        Whether to disable the backup task. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -355,7 +352,7 @@ class _NasBackupPlanState:
     @pulumi.getter
     def exclude(self) -> Optional[pulumi.Input[str]]:
         """
-        The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+        The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         """
         return pulumi.get(self, "exclude")
 
@@ -367,7 +364,7 @@ class _NasBackupPlanState:
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The File System ID.
+        The File System ID of Nas.
         """
         return pulumi.get(self, "file_system_id")
 
@@ -379,7 +376,7 @@ class _NasBackupPlanState:
     @pulumi.getter
     def include(self) -> Optional[pulumi.Input[str]]:
         """
-        The include path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+        The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         """
         return pulumi.get(self, "include")
 
@@ -391,7 +388,7 @@ class _NasBackupPlanState:
     @pulumi.getter(name="nasBackupPlanName")
     def nas_backup_plan_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the resource.
+        The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         """
         return pulumi.get(self, "nas_backup_plan_name")
 
@@ -402,9 +399,6 @@ class _NasBackupPlanState:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
-        """
-        Options. NAS Backup Plan Does Not Support Yet.
-        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -415,7 +409,7 @@ class _NasBackupPlanState:
     @pulumi.getter
     def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+        Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
         """
         return pulumi.get(self, "paths")
 
@@ -427,7 +421,7 @@ class _NasBackupPlanState:
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup Retention Period, the Minimum Value of 1.
+        Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
@@ -439,7 +433,7 @@ class _NasBackupPlanState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        The Backup Policy. Formats: I | {Range Specified by the StartTime }|{ Interval}\n* The Time Range Specified by the StartTime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
+        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -451,7 +445,7 @@ class _NasBackupPlanState:
     @pulumi.getter(name="speedLimit")
     def speed_limit(self) -> Optional[pulumi.Input[str]]:
         """
-        flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+        Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         """
         return pulumi.get(self, "speed_limit")
 
@@ -471,6 +465,9 @@ class _NasBackupPlanState:
     @property
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of Backup vault.
+        """
         return pulumi.get(self, "vault_id")
 
     @vault_id.setter
@@ -545,18 +542,18 @@ class NasBackupPlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
-        :param pulumi.Input[bool] disabled: Whether to Disable the Backup Task. Valid Values: true, false.
-        :param pulumi.Input[str] exclude: The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
-        :param pulumi.Input[str] file_system_id: The File System ID.
-        :param pulumi.Input[str] include: The include path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
-        :param pulumi.Input[str] nas_backup_plan_name: The name of the resource.
-        :param pulumi.Input[str] options: Options. NAS Backup Plan Does Not Support Yet.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
-        :param pulumi.Input[str] retention: Backup Retention Period, the Minimum Value of 1.
-        :param pulumi.Input[str] schedule: The Backup Policy. Formats: I | {Range Specified by the StartTime }|{ Interval}\n* The Time Range Specified by the StartTime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
-        :param pulumi.Input[str] speed_limit: flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
+        :param pulumi.Input[str] exclude: The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
+        :param pulumi.Input[str] file_system_id: The File System ID of Nas.
+        :param pulumi.Input[str] include: The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
+        :param pulumi.Input[str] nas_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         ...
     @overload
@@ -650,6 +647,8 @@ class NasBackupPlan(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NasBackupPlanArgs.__new__(NasBackupPlanArgs)
 
+            if backup_type is None and not opts.urn:
+                raise TypeError("Missing required property 'backup_type'")
             __props__.__dict__["backup_type"] = backup_type
             if create_time is None and not opts.urn:
                 raise TypeError("Missing required property 'create_time'")
@@ -657,6 +656,8 @@ class NasBackupPlan(pulumi.CustomResource):
             __props__.__dict__["detail"] = detail
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["exclude"] = exclude
+            if file_system_id is None and not opts.urn:
+                raise TypeError("Missing required property 'file_system_id'")
             __props__.__dict__["file_system_id"] = file_system_id
             __props__.__dict__["include"] = include
             if nas_backup_plan_name is None and not opts.urn:
@@ -672,6 +673,8 @@ class NasBackupPlan(pulumi.CustomResource):
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["speed_limit"] = speed_limit
             __props__.__dict__["update_paths"] = update_paths
+            if vault_id is None and not opts.urn:
+                raise TypeError("Missing required property 'vault_id'")
             __props__.__dict__["vault_id"] = vault_id
         super(NasBackupPlan, __self__).__init__(
             'alicloud:hbr/nasBackupPlan:NasBackupPlan',
@@ -705,18 +708,18 @@ class NasBackupPlan(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup_type: Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
-        :param pulumi.Input[bool] disabled: Whether to Disable the Backup Task. Valid Values: true, false.
-        :param pulumi.Input[str] exclude: The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
-        :param pulumi.Input[str] file_system_id: The File System ID.
-        :param pulumi.Input[str] include: The include path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
-        :param pulumi.Input[str] nas_backup_plan_name: The name of the resource.
-        :param pulumi.Input[str] options: Options. NAS Backup Plan Does Not Support Yet.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
-        :param pulumi.Input[str] retention: Backup Retention Period, the Minimum Value of 1.
-        :param pulumi.Input[str] schedule: The Backup Policy. Formats: I | {Range Specified by the StartTime }|{ Interval}\n* The Time Range Specified by the StartTime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
-        :param pulumi.Input[str] speed_limit: flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
+        :param pulumi.Input[str] exclude: The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
+        :param pulumi.Input[str] file_system_id: The File System ID of Nas.
+        :param pulumi.Input[str] include: The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
+        :param pulumi.Input[str] nas_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -743,7 +746,7 @@ class NasBackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="backupType")
     def backup_type(self) -> pulumi.Output[str]:
         """
-        Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        Backup type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -764,7 +767,7 @@ class NasBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def disabled(self) -> pulumi.Output[bool]:
         """
-        Whether to Disable the Backup Task. Valid Values: true, false.
+        Whether to disable the backup task. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -772,15 +775,15 @@ class NasBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def exclude(self) -> pulumi.Output[Optional[str]]:
         """
-        The exclude path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+        The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         """
         return pulumi.get(self, "exclude")
 
     @property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> pulumi.Output[Optional[str]]:
+    def file_system_id(self) -> pulumi.Output[str]:
         """
-        The File System ID.
+        The File System ID of Nas.
         """
         return pulumi.get(self, "file_system_id")
 
@@ -788,7 +791,7 @@ class NasBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def include(self) -> pulumi.Output[Optional[str]]:
         """
-        The include path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+        The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         """
         return pulumi.get(self, "include")
 
@@ -796,23 +799,20 @@ class NasBackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="nasBackupPlanName")
     def nas_backup_plan_name(self) -> pulumi.Output[str]:
         """
-        The name of the resource.
+        The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         """
         return pulumi.get(self, "nas_backup_plan_name")
 
     @property
     @pulumi.getter
     def options(self) -> pulumi.Output[Optional[str]]:
-        """
-        Options. NAS Backup Plan Does Not Support Yet.
-        """
         return pulumi.get(self, "options")
 
     @property
     @pulumi.getter
     def paths(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+        Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
         """
         return pulumi.get(self, "paths")
 
@@ -820,7 +820,7 @@ class NasBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def retention(self) -> pulumi.Output[str]:
         """
-        Backup Retention Period, the Minimum Value of 1.
+        Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
@@ -828,7 +828,7 @@ class NasBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[str]:
         """
-        The Backup Policy. Formats: I | {Range Specified by the StartTime }|{ Interval}\n* The Time Range Specified by the StartTime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
+        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -836,7 +836,7 @@ class NasBackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="speedLimit")
     def speed_limit(self) -> pulumi.Output[Optional[str]]:
         """
-        flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+        Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         """
         return pulumi.get(self, "speed_limit")
 
@@ -847,6 +847,9 @@ class NasBackupPlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vaultId")
-    def vault_id(self) -> pulumi.Output[Optional[str]]:
+    def vault_id(self) -> pulumi.Output[str]:
+        """
+        The ID of Backup vault.
+        """
         return pulumi.get(self, "vault_id")
 

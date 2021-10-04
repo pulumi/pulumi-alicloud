@@ -137,6 +137,44 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * Resource Directory Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.log.Audit("example", {
+ *     aliuid: "12345678",
+ *     displayName: "tf-audit-test",
+ *     resourceDirectoryType: "all",
+ *     variableMap: {
+ *         actiontrail_enabled: "true",
+ *         actiontrail_ttl: "180",
+ *         oss_access_enabled: "true",
+ *         oss_access_ttl: "180",
+ *     },
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.log.Audit("example", {
+ *     aliuid: "12345678",
+ *     displayName: "tf-audit-test",
+ *     multiAccounts: [
+ *         "123456789123",
+ *         "12345678912300123",
+ *     ],
+ *     resourceDirectoryType: "custom",
+ *     variableMap: {
+ *         actiontrail_enabled: "true",
+ *         actiontrail_ttl: "180",
+ *         oss_access_enabled: "true",
+ *         oss_access_ttl: "180",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -187,6 +225,10 @@ export class Audit extends pulumi.CustomResource {
      */
     public readonly multiAccounts!: pulumi.Output<string[] | undefined>;
     /**
+     * Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
+     */
+    public readonly resourceDirectoryType!: pulumi.Output<string | undefined>;
+    /**
      * Log audit detailed configuration.
      */
     public readonly variableMap!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -207,6 +249,7 @@ export class Audit extends pulumi.CustomResource {
             inputs["aliuid"] = state ? state.aliuid : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["multiAccounts"] = state ? state.multiAccounts : undefined;
+            inputs["resourceDirectoryType"] = state ? state.resourceDirectoryType : undefined;
             inputs["variableMap"] = state ? state.variableMap : undefined;
         } else {
             const args = argsOrState as AuditArgs | undefined;
@@ -219,6 +262,7 @@ export class Audit extends pulumi.CustomResource {
             inputs["aliuid"] = args ? args.aliuid : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["multiAccounts"] = args ? args.multiAccounts : undefined;
+            inputs["resourceDirectoryType"] = args ? args.resourceDirectoryType : undefined;
             inputs["variableMap"] = args ? args.variableMap : undefined;
         }
         if (!opts.version) {
@@ -245,6 +289,10 @@ export interface AuditState {
      */
     readonly multiAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
+     */
+    readonly resourceDirectoryType?: pulumi.Input<string>;
+    /**
      * Log audit detailed configuration.
      */
     readonly variableMap?: pulumi.Input<{[key: string]: any}>;
@@ -266,6 +314,10 @@ export interface AuditArgs {
      * Multi-account configuration, please fill in multiple aliuid.
      */
     readonly multiAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
+     */
+    readonly resourceDirectoryType?: pulumi.Input<string>;
     /**
      * Log audit detailed configuration.
      */

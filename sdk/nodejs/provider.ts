@@ -54,6 +54,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("ALICLOUD_REGION");
             inputs["secretKey"] = args ? args.secretKey : undefined;
+            inputs["secureTransport"] = args ? args.secureTransport : undefined;
             inputs["securityToken"] = args ? args.securityToken : undefined;
             inputs["securityTransport"] = args ? args.securityTransport : undefined;
             inputs["sharedCredentialsFile"] = args ? args.sharedCredentialsFile : undefined;
@@ -131,12 +132,13 @@ export interface ProviderArgs {
      */
     readonly secretKey?: pulumi.Input<string>;
     /**
+     * The security transport for the assume role invoking.
+     */
+    readonly secureTransport?: pulumi.Input<string>;
+    /**
      * security token. A security token is only required if you are using Security Token Service.
      */
     readonly securityToken?: pulumi.Input<string>;
-    /**
-     * The security transport for the assume role invoking.
-     */
     readonly securityTransport?: pulumi.Input<string>;
     /**
      * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json

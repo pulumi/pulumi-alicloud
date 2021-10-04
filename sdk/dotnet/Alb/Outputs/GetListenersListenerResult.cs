@@ -22,13 +22,9 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetListenersListenerAccessLogTracingConfigResult> AccessLogTracingConfigs;
         /// <summary>
-        /// Snooping Binding of the Access Policy Group ID List.
+        /// The configurations of the access control lists (ACLs).
         /// </summary>
-        public readonly string AclId;
-        /// <summary>
-        /// The type of the ACL. Valid values: White: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. Black: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
-        /// </summary>
-        public readonly string AclType;
+        public readonly ImmutableArray<Outputs.GetListenersListenerAclConfigResult> AclConfigs;
         /// <summary>
         /// Certificate.
         /// </summary>
@@ -50,16 +46,19 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: 1 to 60.
+        /// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         /// </summary>
         public readonly int IdleTimeout;
         /// <summary>
-        /// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters. 	* `listener_id` - on Behalf of the Resource Level Id of the Resources Property Fields.
+        /// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         /// </summary>
         public readonly string ListenerDescription;
+        /// <summary>
+        /// on Behalf of the Resource Level Id of the Resources Property Fields.
+        /// </summary>
         public readonly string ListenerId;
         /// <summary>
-        /// The SLB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
+        /// The ALB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
         /// </summary>
         public readonly int ListenerPort;
         /// <summary>
@@ -67,7 +66,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string ListenerProtocol;
         /// <summary>
-        /// The SLB Instance Id.
+        /// The ALB Instance Id.
         /// </summary>
         public readonly string LoadBalancerId;
         /// <summary>
@@ -83,7 +82,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetListenersListenerQuicConfigResult> QuicConfigs;
         /// <summary>
-        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         public readonly int RequestTimeout;
         /// <summary>
@@ -91,7 +90,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string SecurityPolicyId;
         /// <summary>
-        /// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+        /// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -105,9 +104,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
 
             ImmutableArray<Outputs.GetListenersListenerAccessLogTracingConfigResult> accessLogTracingConfigs,
 
-            string aclId,
-
-            string aclType,
+            ImmutableArray<Outputs.GetListenersListenerAclConfigResult> aclConfigs,
 
             ImmutableArray<Outputs.GetListenersListenerCertificateResult> certificates,
 
@@ -147,8 +144,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         {
             AccessLogRecordCustomizedHeadersEnabled = accessLogRecordCustomizedHeadersEnabled;
             AccessLogTracingConfigs = accessLogTracingConfigs;
-            AclId = aclId;
-            AclType = aclType;
+            AclConfigs = aclConfigs;
             Certificates = certificates;
             DefaultActions = defaultActions;
             GzipEnabled = gzipEnabled;

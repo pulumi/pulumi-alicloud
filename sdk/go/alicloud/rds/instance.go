@@ -133,6 +133,14 @@ type Instance struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
+	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+	// - If you set the `Engine` parameter to MySQL.
+	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+	// - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+	// - If you set the `Engine` parameter to PostgreSQL.
+	// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+	// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+	DbTimeZone pulumi.StringOutput `pulumi:"dbTimeZone"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -176,6 +184,11 @@ type Instance struct {
 	Port       pulumi.StringOutput          `pulumi:"port"`
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
+	// The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+	// - None: No archived backup files are retained.
+	// - Lastest: Only the last archived backup file is retained.
+	// - All: All the archived backup files are retained.
+	ReleasedKeepPolicy pulumi.StringPtrOutput `pulumi:"releasedKeepPolicy"`
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	// - cert
 	// - perfer
@@ -258,7 +271,7 @@ type Instance struct {
 	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-	ZoneIdSlaveA pulumi.StringPtrOutput `pulumi:"zoneIdSlaveA"`
+	ZoneIdSlaveA pulumi.StringOutput `pulumi:"zoneIdSlaveA"`
 	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveB pulumi.StringPtrOutput `pulumi:"zoneIdSlaveB"`
 }
@@ -348,6 +361,14 @@ type instanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
+	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+	// - If you set the `Engine` parameter to MySQL.
+	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+	// - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+	// - If you set the `Engine` parameter to PostgreSQL.
+	// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+	// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+	DbTimeZone *string `pulumi:"dbTimeZone"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -391,6 +412,11 @@ type instanceState struct {
 	Port       *string             `pulumi:"port"`
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+	// - None: No archived backup files are retained.
+	// - Lastest: Only the last archived backup file is retained.
+	// - All: All the archived backup files are retained.
+	ReleasedKeepPolicy *string `pulumi:"releasedKeepPolicy"`
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	// - cert
 	// - perfer
@@ -523,6 +549,14 @@ type InstanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringPtrInput
+	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+	// - If you set the `Engine` parameter to MySQL.
+	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+	// - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+	// - If you set the `Engine` parameter to PostgreSQL.
+	// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+	// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+	DbTimeZone pulumi.StringPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -566,6 +600,11 @@ type InstanceState struct {
 	Port       pulumi.StringPtrInput
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress pulumi.StringPtrInput
+	// The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+	// - None: No archived backup files are retained.
+	// - Lastest: Only the last archived backup file is retained.
+	// - All: All the archived backup files are retained.
+	ReleasedKeepPolicy pulumi.StringPtrInput
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	// - cert
 	// - perfer
@@ -700,6 +739,14 @@ type instanceArgs struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
+	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+	// - If you set the `Engine` parameter to MySQL.
+	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+	// - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+	// - If you set the `Engine` parameter to PostgreSQL.
+	// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+	// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+	DbTimeZone *string `pulumi:"dbTimeZone"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -743,6 +790,11 @@ type instanceArgs struct {
 	Port       *string             `pulumi:"port"`
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+	// - None: No archived backup files are retained.
+	// - Lastest: Only the last archived backup file is retained.
+	// - All: All the archived backup files are retained.
+	ReleasedKeepPolicy *string `pulumi:"releasedKeepPolicy"`
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	// - cert
 	// - perfer
@@ -872,6 +924,14 @@ type InstanceArgs struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringPtrInput
+	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+	// - If you set the `Engine` parameter to MySQL.
+	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+	// - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+	// - If you set the `Engine` parameter to PostgreSQL.
+	// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+	// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+	DbTimeZone pulumi.StringPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -915,6 +975,11 @@ type InstanceArgs struct {
 	Port       pulumi.StringPtrInput
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress pulumi.StringPtrInput
+	// The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+	// - None: No archived backup files are retained.
+	// - Lastest: Only the last archived backup file is retained.
+	// - All: All the archived backup files are retained.
+	ReleasedKeepPolicy pulumi.StringPtrInput
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	// - cert
 	// - perfer

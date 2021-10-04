@@ -6,6 +6,7 @@
 from .get_service import *
 from .get_zone_records import *
 from .get_zones import *
+from .user_vpc_authorization import *
 from .zone import *
 from .zone_attachment import *
 from .zone_record import *
@@ -24,7 +25,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:pvtz/zone:Zone":
+            if typ == "alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization":
+                return UserVpcAuthorization(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:pvtz/zone:Zone":
                 return Zone(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:pvtz/zoneAttachment:ZoneAttachment":
                 return ZoneAttachment(name, pulumi.ResourceOptions(urn=urn))
@@ -35,6 +38,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "pvtz/userVpcAuthorization", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "pvtz/zone", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "pvtz/zoneAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "pvtz/zoneRecord", _module_instance)

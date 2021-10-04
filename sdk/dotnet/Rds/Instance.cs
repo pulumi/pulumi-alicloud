@@ -168,6 +168,18 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DbInstanceStorageType { get; private set; } = null!;
 
         /// <summary>
+        /// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+        /// - If you set the `Engine` parameter to MySQL.
+        /// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+        /// - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        /// - If you set the `Engine` parameter to PostgreSQL.
+        /// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        /// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        /// </summary>
+        [Output("dbTimeZone")]
+        public Output<string> DbTimeZone { get; private set; } = null!;
+
+        /// <summary>
         /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         /// </summary>
         [Output("encryptionKey")]
@@ -273,6 +285,15 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("privateIpAddress")]
         public Output<string> PrivateIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+        /// - None: No archived backup files are retained.
+        /// - Lastest: Only the last archived backup file is retained.
+        /// - All: All the archived backup files are retained.
+        /// </summary>
+        [Output("releasedKeepPolicy")]
+        public Output<string?> ReleasedKeepPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -457,7 +478,7 @@ namespace Pulumi.AliCloud.Rds
         /// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         /// </summary>
         [Output("zoneIdSlaveA")]
-        public Output<string?> ZoneIdSlaveA { get; private set; } = null!;
+        public Output<string> ZoneIdSlaveA { get; private set; } = null!;
 
         /// <summary>
         /// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
@@ -604,6 +625,18 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceStorageType { get; set; }
 
         /// <summary>
+        /// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+        /// - If you set the `Engine` parameter to MySQL.
+        /// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+        /// - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        /// - If you set the `Engine` parameter to PostgreSQL.
+        /// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        /// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        /// </summary>
+        [Input("dbTimeZone")]
+        public Input<string>? DbTimeZone { get; set; }
+
+        /// <summary>
         /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         /// </summary>
         [Input("encryptionKey")]
@@ -715,6 +748,15 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+        /// - None: No archived backup files are retained.
+        /// - Lastest: Only the last archived backup file is retained.
+        /// - All: All the archived backup files are retained.
+        /// </summary>
+        [Input("releasedKeepPolicy")]
+        public Input<string>? ReleasedKeepPolicy { get; set; }
 
         /// <summary>
         /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -1025,6 +1067,18 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceStorageType { get; set; }
 
         /// <summary>
+        /// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+        /// - If you set the `Engine` parameter to MySQL.
+        /// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+        /// - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        /// - If you set the `Engine` parameter to PostgreSQL.
+        /// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+        /// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        /// </summary>
+        [Input("dbTimeZone")]
+        public Input<string>? DbTimeZone { get; set; }
+
+        /// <summary>
         /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         /// </summary>
         [Input("encryptionKey")]
@@ -1136,6 +1190,15 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+        /// - None: No archived backup files are retained.
+        /// - Lastest: Only the last archived backup file is retained.
+        /// - All: All the archived backup files are retained.
+        /// </summary>
+        [Input("releasedKeepPolicy")]
+        public Input<string>? ReleasedKeepPolicy { get; set; }
 
         /// <summary>
         /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:

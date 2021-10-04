@@ -73,6 +73,7 @@ export class ImageCopy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ImageCopy.__pulumiType;
     }
 
+    public readonly deleteAutoSnapshot!: pulumi.Output<boolean | undefined>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */
@@ -125,6 +126,7 @@ export class ImageCopy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageCopyState | undefined;
+            inputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["encrypted"] = state ? state.encrypted : undefined;
             inputs["force"] = state ? state.force : undefined;
@@ -142,6 +144,7 @@ export class ImageCopy extends pulumi.CustomResource {
             if ((!args || args.sourceRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceRegionId'");
             }
+            inputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["encrypted"] = args ? args.encrypted : undefined;
             inputs["force"] = args ? args.force : undefined;
@@ -163,6 +166,7 @@ export class ImageCopy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ImageCopy resources.
  */
 export interface ImageCopyState {
+    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */
@@ -207,6 +211,7 @@ export interface ImageCopyState {
  * The set of arguments for constructing a ImageCopy resource.
  */
 export interface ImageCopyArgs {
+    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */

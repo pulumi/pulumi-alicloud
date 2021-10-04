@@ -7,12 +7,353 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'GetHostAccountsAccountResult',
+    'GetHostGroupsGroupResult',
+    'GetHostsHostResult',
+    'GetHostsHostProtocolResult',
     'GetInstancesInstanceResult',
     'GetUserGroupsGroupResult',
     'GetUsersUserResult',
 ]
+
+@pulumi.output_type
+class GetHostAccountsAccountResult(dict):
+    def __init__(__self__, *,
+                 has_password: bool,
+                 host_account_id: str,
+                 host_account_name: str,
+                 host_id: str,
+                 id: str,
+                 instance_id: str,
+                 private_key_fingerprint: str,
+                 protocol_name: str):
+        """
+        :param bool has_password: Whether to set a new password.
+        :param str host_account_id: Hosting account ID.
+        :param str host_account_name: Specify the new hosting account's name, support the longest 128 characters.
+        :param str host_id: Specifies the database where you want to create your hosting account's host ID.
+        :param str id: The ID of the Host Account.
+        :param str instance_id: Specifies the database where you want to create your hosting account's host bastion host ID of.
+        :param str private_key_fingerprint: The situation where the private keys of the fingerprint information.
+        :param str protocol_name: Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+        """
+        pulumi.set(__self__, "has_password", has_password)
+        pulumi.set(__self__, "host_account_id", host_account_id)
+        pulumi.set(__self__, "host_account_name", host_account_name)
+        pulumi.set(__self__, "host_id", host_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "private_key_fingerprint", private_key_fingerprint)
+        pulumi.set(__self__, "protocol_name", protocol_name)
+
+    @property
+    @pulumi.getter(name="hasPassword")
+    def has_password(self) -> bool:
+        """
+        Whether to set a new password.
+        """
+        return pulumi.get(self, "has_password")
+
+    @property
+    @pulumi.getter(name="hostAccountId")
+    def host_account_id(self) -> str:
+        """
+        Hosting account ID.
+        """
+        return pulumi.get(self, "host_account_id")
+
+    @property
+    @pulumi.getter(name="hostAccountName")
+    def host_account_name(self) -> str:
+        """
+        Specify the new hosting account's name, support the longest 128 characters.
+        """
+        return pulumi.get(self, "host_account_name")
+
+    @property
+    @pulumi.getter(name="hostId")
+    def host_id(self) -> str:
+        """
+        Specifies the database where you want to create your hosting account's host ID.
+        """
+        return pulumi.get(self, "host_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Host Account.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        Specifies the database where you want to create your hosting account's host bastion host ID of.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="privateKeyFingerprint")
+    def private_key_fingerprint(self) -> str:
+        """
+        The situation where the private keys of the fingerprint information.
+        """
+        return pulumi.get(self, "private_key_fingerprint")
+
+    @property
+    @pulumi.getter(name="protocolName")
+    def protocol_name(self) -> str:
+        """
+        Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+        """
+        return pulumi.get(self, "protocol_name")
+
+
+@pulumi.output_type
+class GetHostGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 comment: str,
+                 host_group_id: str,
+                 host_group_name: str,
+                 id: str,
+                 instance_id: str):
+        """
+        :param str comment: Specify the New Host Group of Notes, Supports up to 500 Characters.
+        :param str host_group_id: Host Group ID.
+        :param str host_group_name: Specify the New Host Group Name, Supports up to 128 Characters.
+        :param str id: The ID of the Host Group.
+        :param str instance_id: Specify the New Host Group Where the Bastion Host ID of.
+        """
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "host_group_id", host_group_id)
+        pulumi.set(__self__, "host_group_name", host_group_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> str:
+        """
+        Specify the New Host Group of Notes, Supports up to 500 Characters.
+        """
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="hostGroupId")
+    def host_group_id(self) -> str:
+        """
+        Host Group ID.
+        """
+        return pulumi.get(self, "host_group_id")
+
+    @property
+    @pulumi.getter(name="hostGroupName")
+    def host_group_name(self) -> str:
+        """
+        Specify the New Host Group Name, Supports up to 128 Characters.
+        """
+        return pulumi.get(self, "host_group_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Host Group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        Specify the New Host Group Where the Bastion Host ID of.
+        """
+        return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
+class GetHostsHostResult(dict):
+    def __init__(__self__, *,
+                 active_address_type: str,
+                 comment: str,
+                 host_id: str,
+                 host_name: str,
+                 host_private_address: str,
+                 host_public_address: str,
+                 id: str,
+                 instance_id: str,
+                 os_type: str,
+                 protocols: Sequence['outputs.GetHostsHostProtocolResult'],
+                 source: str,
+                 source_instance_id: str):
+        """
+        :param str active_address_type: Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        :param str comment: Specify a host of notes, supports up to 500 characters.
+        :param str host_id: The host ID.
+        :param str host_name: Specify the new create a host name of the supports up to 128 characters.
+        :param str host_private_address: Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        :param str host_public_address: Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
+        :param str id: The ID of the Host.
+        :param str instance_id: Specify the new create a host where the Bastion host ID of.
+        :param str os_type: Specify the new create the host's operating system. Valid values: Linux Windows.
+        :param Sequence['GetHostsHostProtocolArgs'] protocols: The host of the protocol information.
+        :param str source: Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+        :param str source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID.
+        """
+        pulumi.set(__self__, "active_address_type", active_address_type)
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "host_id", host_id)
+        pulumi.set(__self__, "host_name", host_name)
+        pulumi.set(__self__, "host_private_address", host_private_address)
+        pulumi.set(__self__, "host_public_address", host_public_address)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "os_type", os_type)
+        pulumi.set(__self__, "protocols", protocols)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "source_instance_id", source_instance_id)
+
+    @property
+    @pulumi.getter(name="activeAddressType")
+    def active_address_type(self) -> str:
+        """
+        Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        """
+        return pulumi.get(self, "active_address_type")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> str:
+        """
+        Specify a host of notes, supports up to 500 characters.
+        """
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="hostId")
+    def host_id(self) -> str:
+        """
+        The host ID.
+        """
+        return pulumi.get(self, "host_id")
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> str:
+        """
+        Specify the new create a host name of the supports up to 128 characters.
+        """
+        return pulumi.get(self, "host_name")
+
+    @property
+    @pulumi.getter(name="hostPrivateAddress")
+    def host_private_address(self) -> str:
+        """
+        Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        """
+        return pulumi.get(self, "host_private_address")
+
+    @property
+    @pulumi.getter(name="hostPublicAddress")
+    def host_public_address(self) -> str:
+        """
+        Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
+        """
+        return pulumi.get(self, "host_public_address")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Host.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        Specify the new create a host where the Bastion host ID of.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> str:
+        """
+        Specify the new create the host's operating system. Valid values: Linux Windows.
+        """
+        return pulumi.get(self, "os_type")
+
+    @property
+    @pulumi.getter
+    def protocols(self) -> Sequence['outputs.GetHostsHostProtocolResult']:
+        """
+        The host of the protocol information.
+        """
+        return pulumi.get(self, "protocols")
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        """
+        Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="sourceInstanceId")
+    def source_instance_id(self) -> str:
+        """
+        Specify the newly created ECS instance ID or dedicated cluster host ID.
+        """
+        return pulumi.get(self, "source_instance_id")
+
+
+@pulumi.output_type
+class GetHostsHostProtocolResult(dict):
+    def __init__(__self__, *,
+                 host_finger_print: str,
+                 port: int,
+                 protocol_name: str):
+        """
+        :param str host_finger_print: Host fingerprint information, it is possible to uniquely identify a host.
+        :param int port: Host the service port of the RDS.
+        :param str protocol_name: The host uses the protocol name.
+        """
+        pulumi.set(__self__, "host_finger_print", host_finger_print)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol_name", protocol_name)
+
+    @property
+    @pulumi.getter(name="hostFingerPrint")
+    def host_finger_print(self) -> str:
+        """
+        Host fingerprint information, it is possible to uniquely identify a host.
+        """
+        return pulumi.get(self, "host_finger_print")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Host the service port of the RDS.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="protocolName")
+    def protocol_name(self) -> str:
+        """
+        The host uses the protocol name.
+        """
+        return pulumi.get(self, "protocol_name")
+
 
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):

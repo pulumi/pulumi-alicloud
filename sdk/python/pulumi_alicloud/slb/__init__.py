@@ -21,6 +21,7 @@ from .get_master_slave_server_groups import *
 from .get_rules import *
 from .get_server_certificates import *
 from .get_server_groups import *
+from .get_tls_cipher_policies import *
 from .get_zones import *
 from .listener import *
 from .load_balancer import *
@@ -28,6 +29,7 @@ from .master_slave_server_group import *
 from .rule import *
 from .server_certificate import *
 from .server_group import *
+from .tls_cipher_policy import *
 from ._inputs import *
 from . import outputs
 
@@ -67,6 +69,8 @@ def _register_module():
                 return ServerCertificate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:slb/serverGroup:ServerGroup":
                 return ServerGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:slb/tlsCipherPolicy:TlsCipherPolicy":
+                return TlsCipherPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
@@ -84,5 +88,6 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "slb/rule", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "slb/serverCertificate", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "slb/serverGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "slb/tlsCipherPolicy", _module_instance)
 
 _register_module()

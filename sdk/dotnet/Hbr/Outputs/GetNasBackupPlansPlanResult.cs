@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class GetNasBackupPlansPlanResult
     {
         /// <summary>
-        /// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         public readonly string BackupType;
         /// <summary>
@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly string CreateTime;
         public readonly bool Disabled;
         /// <summary>
-        /// The File System ID.
+        /// The File System ID of Nas.
         /// </summary>
         public readonly string FileSystemId;
         public readonly string Id;
@@ -32,24 +32,21 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// The name of the resource.
         /// </summary>
         public readonly string NasBackupPlanName;
-        /// <summary>
-        /// Options. NAS Backup Plan Does Not Support Yet.
-        /// </summary>
         public readonly string Options;
         /// <summary>
-        /// Backup Path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+        /// Backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
         /// </summary>
         public readonly ImmutableArray<string> Paths;
         /// <summary>
-        /// Backup Retention Period, the Minimum Value of 1.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         public readonly string Retention;
         /// <summary>
-        /// The Backup Policy. Formats: I | {Range Specified by the Starttime }|{ Interval}\n* The Time Range Specified by the Starttime Backup Start Time in Unix Time Seconds.\n* Interval ISO8601 Time Intervals. For Example:\n**PT1H Interval for an Hour.\n**P1D Interval Day.\nMeaning from {Range Specified by the Starttime} Every {Interval} of the Time Where We Took Backups Once a Task. Does Not Compensate the Has Elapsed Time the Backup Task. If the Last Backup Has Not Been Completed without Triggering the next Backup.
+        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         /// </summary>
         public readonly string Schedule;
         /// <summary>
-        /// The Vault ID of the EcsBackupPlan used.
+        /// The backup vault ID of the NasBackupPlan used.
         /// </summary>
         public readonly string VaultId;
 

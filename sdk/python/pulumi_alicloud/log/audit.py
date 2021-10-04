@@ -16,18 +16,22 @@ class AuditArgs:
                  aliuid: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_directory_type: Optional[pulumi.Input[str]] = None,
                  variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Audit resource.
         :param pulumi.Input[str] aliuid: Aliuid value of your account.
         :param pulumi.Input[str] display_name: Name of SLS log audit.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
+        :param pulumi.Input[str] resource_directory_type: Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
         :param pulumi.Input[Mapping[str, Any]] variable_map: Log audit detailed configuration.
         """
         pulumi.set(__self__, "aliuid", aliuid)
         pulumi.set(__self__, "display_name", display_name)
         if multi_accounts is not None:
             pulumi.set(__self__, "multi_accounts", multi_accounts)
+        if resource_directory_type is not None:
+            pulumi.set(__self__, "resource_directory_type", resource_directory_type)
         if variable_map is not None:
             pulumi.set(__self__, "variable_map", variable_map)
 
@@ -68,6 +72,18 @@ class AuditArgs:
         pulumi.set(self, "multi_accounts", value)
 
     @property
+    @pulumi.getter(name="resourceDirectoryType")
+    def resource_directory_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+        """
+        return pulumi.get(self, "resource_directory_type")
+
+    @resource_directory_type.setter
+    def resource_directory_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_directory_type", value)
+
+    @property
     @pulumi.getter(name="variableMap")
     def variable_map(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -86,12 +102,14 @@ class _AuditState:
                  aliuid: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_directory_type: Optional[pulumi.Input[str]] = None,
                  variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Audit resources.
         :param pulumi.Input[str] aliuid: Aliuid value of your account.
         :param pulumi.Input[str] display_name: Name of SLS log audit.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
+        :param pulumi.Input[str] resource_directory_type: Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
         :param pulumi.Input[Mapping[str, Any]] variable_map: Log audit detailed configuration.
         """
         if aliuid is not None:
@@ -100,6 +118,8 @@ class _AuditState:
             pulumi.set(__self__, "display_name", display_name)
         if multi_accounts is not None:
             pulumi.set(__self__, "multi_accounts", multi_accounts)
+        if resource_directory_type is not None:
+            pulumi.set(__self__, "resource_directory_type", resource_directory_type)
         if variable_map is not None:
             pulumi.set(__self__, "variable_map", variable_map)
 
@@ -140,6 +160,18 @@ class _AuditState:
         pulumi.set(self, "multi_accounts", value)
 
     @property
+    @pulumi.getter(name="resourceDirectoryType")
+    def resource_directory_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+        """
+        return pulumi.get(self, "resource_directory_type")
+
+    @resource_directory_type.setter
+    def resource_directory_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_directory_type", value)
+
+    @property
     @pulumi.getter(name="variableMap")
     def variable_map(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -160,6 +192,7 @@ class Audit(pulumi.CustomResource):
                  aliuid: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_directory_type: Optional[pulumi.Input[str]] = None,
                  variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
@@ -293,6 +326,42 @@ class Audit(pulumi.CustomResource):
                 "oss_access_ttl": "180",
             })
         ```
+        Resource Directory Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.log.Audit("example",
+            aliuid="12345678",
+            display_name="tf-audit-test",
+            resource_directory_type="all",
+            variable_map={
+                "actiontrail_enabled": "true",
+                "actiontrail_ttl": "180",
+                "oss_access_enabled": "true",
+                "oss_access_ttl": "180",
+            })
+        ```
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.log.Audit("example",
+            aliuid="12345678",
+            display_name="tf-audit-test",
+            multi_accounts=[
+                "123456789123",
+                "12345678912300123",
+            ],
+            resource_directory_type="custom",
+            variable_map={
+                "actiontrail_enabled": "true",
+                "actiontrail_ttl": "180",
+                "oss_access_enabled": "true",
+                "oss_access_ttl": "180",
+            })
+        ```
 
         ## Import
 
@@ -307,6 +376,7 @@ class Audit(pulumi.CustomResource):
         :param pulumi.Input[str] aliuid: Aliuid value of your account.
         :param pulumi.Input[str] display_name: Name of SLS log audit.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
+        :param pulumi.Input[str] resource_directory_type: Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
         :param pulumi.Input[Mapping[str, Any]] variable_map: Log audit detailed configuration.
         """
         ...
@@ -446,6 +516,42 @@ class Audit(pulumi.CustomResource):
                 "oss_access_ttl": "180",
             })
         ```
+        Resource Directory Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.log.Audit("example",
+            aliuid="12345678",
+            display_name="tf-audit-test",
+            resource_directory_type="all",
+            variable_map={
+                "actiontrail_enabled": "true",
+                "actiontrail_ttl": "180",
+                "oss_access_enabled": "true",
+                "oss_access_ttl": "180",
+            })
+        ```
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.log.Audit("example",
+            aliuid="12345678",
+            display_name="tf-audit-test",
+            multi_accounts=[
+                "123456789123",
+                "12345678912300123",
+            ],
+            resource_directory_type="custom",
+            variable_map={
+                "actiontrail_enabled": "true",
+                "actiontrail_ttl": "180",
+                "oss_access_enabled": "true",
+                "oss_access_ttl": "180",
+            })
+        ```
 
         ## Import
 
@@ -473,6 +579,7 @@ class Audit(pulumi.CustomResource):
                  aliuid: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_directory_type: Optional[pulumi.Input[str]] = None,
                  variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         if opts is None:
@@ -493,6 +600,7 @@ class Audit(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["multi_accounts"] = multi_accounts
+            __props__.__dict__["resource_directory_type"] = resource_directory_type
             __props__.__dict__["variable_map"] = variable_map
         super(Audit, __self__).__init__(
             'alicloud:log/audit:Audit',
@@ -507,6 +615,7 @@ class Audit(pulumi.CustomResource):
             aliuid: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            resource_directory_type: Optional[pulumi.Input[str]] = None,
             variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Audit':
         """
         Get an existing Audit resource's state with the given name, id, and optional extra
@@ -518,6 +627,7 @@ class Audit(pulumi.CustomResource):
         :param pulumi.Input[str] aliuid: Aliuid value of your account.
         :param pulumi.Input[str] display_name: Name of SLS log audit.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
+        :param pulumi.Input[str] resource_directory_type: Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
         :param pulumi.Input[Mapping[str, Any]] variable_map: Log audit detailed configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -527,6 +637,7 @@ class Audit(pulumi.CustomResource):
         __props__.__dict__["aliuid"] = aliuid
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["multi_accounts"] = multi_accounts
+        __props__.__dict__["resource_directory_type"] = resource_directory_type
         __props__.__dict__["variable_map"] = variable_map
         return Audit(resource_name, opts=opts, __props__=__props__)
 
@@ -553,6 +664,14 @@ class Audit(pulumi.CustomResource):
         Multi-account configuration, please fill in multiple aliuid.
         """
         return pulumi.get(self, "multi_accounts")
+
+    @property
+    @pulumi.getter(name="resourceDirectoryType")
+    def resource_directory_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+        """
+        return pulumi.get(self, "resource_directory_type")
 
     @property
     @pulumi.getter(name="variableMap")

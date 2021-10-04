@@ -20,6 +20,7 @@ class ListenerArgs:
                  load_balancer_id: pulumi.Input[str],
                  access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
                  access_log_tracing_config: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']] = None,
+                 acl_config: Optional[pulumi.Input['ListenerAclConfigArgs']] = None,
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
                  default_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -34,20 +35,21 @@ class ListenerArgs:
                  xforwarded_for_config: Optional[pulumi.Input['ListenerXforwardedForConfigArgs']] = None):
         """
         The set of arguments for constructing a Listener resource.
-        :param pulumi.Input[int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
-        :param pulumi.Input[str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
-        :param pulumi.Input[str] load_balancer_id: The SLB Instance Id.
+        :param pulumi.Input[int] listener_port: The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+        :param pulumi.Input[str] listener_protocol: Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+        :param pulumi.Input[str] load_balancer_id: The ALB Instance Id.
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input['ListenerAccessLogTracingConfigArgs'] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
+        :param pulumi.Input['ListenerAclConfigArgs'] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The Certificates.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
-        :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
-        :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 miao.
-        :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/.
+        :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+        :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+        :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/`.
         :param pulumi.Input['ListenerQuicConfigArgs'] quic_config: Configuration Associated with the QuIC Listening. See the following `Block quic_config`.
-        :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param pulumi.Input['ListenerXforwardedForConfigArgs'] xforwarded_for_config: xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
@@ -59,6 +61,8 @@ class ListenerArgs:
             pulumi.set(__self__, "access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
         if access_log_tracing_config is not None:
             pulumi.set(__self__, "access_log_tracing_config", access_log_tracing_config)
+        if acl_config is not None:
+            pulumi.set(__self__, "acl_config", acl_config)
         if certificates is not None:
             pulumi.set(__self__, "certificates", certificates)
         if default_actions is not None:
@@ -88,7 +92,7 @@ class ListenerArgs:
     @pulumi.getter(name="listenerPort")
     def listener_port(self) -> pulumi.Input[int]:
         """
-        The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+        The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
         """
         return pulumi.get(self, "listener_port")
 
@@ -100,7 +104,7 @@ class ListenerArgs:
     @pulumi.getter(name="listenerProtocol")
     def listener_protocol(self) -> pulumi.Input[str]:
         """
-        Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+        Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
         """
         return pulumi.get(self, "listener_protocol")
 
@@ -112,7 +116,7 @@ class ListenerArgs:
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Input[str]:
         """
-        The SLB Instance Id.
+        The ALB Instance Id.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -143,6 +147,18 @@ class ListenerArgs:
     @access_log_tracing_config.setter
     def access_log_tracing_config(self, value: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']]):
         pulumi.set(self, "access_log_tracing_config", value)
+
+    @property
+    @pulumi.getter(name="aclConfig")
+    def acl_config(self) -> Optional[pulumi.Input['ListenerAclConfigArgs']]:
+        """
+        The configurations of the access control lists (ACLs). See the following `Block acl_config`.
+        """
+        return pulumi.get(self, "acl_config")
+
+    @acl_config.setter
+    def acl_config(self, value: Optional[pulumi.Input['ListenerAclConfigArgs']]):
+        pulumi.set(self, "acl_config", value)
 
     @property
     @pulumi.getter
@@ -196,7 +212,7 @@ class ListenerArgs:
     @pulumi.getter(name="http2Enabled")
     def http2_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+        Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
         """
         return pulumi.get(self, "http2_enabled")
 
@@ -208,7 +224,7 @@ class ListenerArgs:
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -220,7 +236,7 @@ class ListenerArgs:
     @pulumi.getter(name="listenerDescription")
     def listener_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/.
+        The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/`.
         """
         return pulumi.get(self, "listener_description")
 
@@ -244,7 +260,7 @@ class ListenerArgs:
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 
@@ -294,6 +310,7 @@ class _ListenerState:
     def __init__(__self__, *,
                  access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
                  access_log_tracing_config: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']] = None,
+                 acl_config: Optional[pulumi.Input['ListenerAclConfigArgs']] = None,
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
                  default_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -313,18 +330,19 @@ class _ListenerState:
         Input properties used for looking up and filtering Listener resources.
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input['ListenerAccessLogTracingConfigArgs'] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
+        :param pulumi.Input['ListenerAclConfigArgs'] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The Certificates.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
-        :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
-        :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 miao.
-        :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/.
-        :param pulumi.Input[int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
-        :param pulumi.Input[str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
-        :param pulumi.Input[str] load_balancer_id: The SLB Instance Id.
+        :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+        :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+        :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/`.
+        :param pulumi.Input[int] listener_port: The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+        :param pulumi.Input[str] listener_protocol: Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+        :param pulumi.Input[str] load_balancer_id: The ALB Instance Id.
         :param pulumi.Input['ListenerQuicConfigArgs'] quic_config: Configuration Associated with the QuIC Listening. See the following `Block quic_config`.
-        :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param pulumi.Input['ListenerXforwardedForConfigArgs'] xforwarded_for_config: xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
@@ -333,6 +351,8 @@ class _ListenerState:
             pulumi.set(__self__, "access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
         if access_log_tracing_config is not None:
             pulumi.set(__self__, "access_log_tracing_config", access_log_tracing_config)
+        if acl_config is not None:
+            pulumi.set(__self__, "acl_config", acl_config)
         if certificates is not None:
             pulumi.set(__self__, "certificates", certificates)
         if default_actions is not None:
@@ -389,6 +409,18 @@ class _ListenerState:
         pulumi.set(self, "access_log_tracing_config", value)
 
     @property
+    @pulumi.getter(name="aclConfig")
+    def acl_config(self) -> Optional[pulumi.Input['ListenerAclConfigArgs']]:
+        """
+        The configurations of the access control lists (ACLs). See the following `Block acl_config`.
+        """
+        return pulumi.get(self, "acl_config")
+
+    @acl_config.setter
+    def acl_config(self, value: Optional[pulumi.Input['ListenerAclConfigArgs']]):
+        pulumi.set(self, "acl_config", value)
+
+    @property
     @pulumi.getter
     def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
         """
@@ -440,7 +472,7 @@ class _ListenerState:
     @pulumi.getter(name="http2Enabled")
     def http2_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+        Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
         """
         return pulumi.get(self, "http2_enabled")
 
@@ -452,7 +484,7 @@ class _ListenerState:
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -464,7 +496,7 @@ class _ListenerState:
     @pulumi.getter(name="listenerDescription")
     def listener_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/.
+        The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/`.
         """
         return pulumi.get(self, "listener_description")
 
@@ -476,7 +508,7 @@ class _ListenerState:
     @pulumi.getter(name="listenerPort")
     def listener_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+        The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
         """
         return pulumi.get(self, "listener_port")
 
@@ -488,7 +520,7 @@ class _ListenerState:
     @pulumi.getter(name="listenerProtocol")
     def listener_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+        Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
         """
         return pulumi.get(self, "listener_protocol")
 
@@ -500,7 +532,7 @@ class _ListenerState:
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The SLB Instance Id.
+        The ALB Instance Id.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -524,7 +556,7 @@ class _ListenerState:
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 
@@ -576,6 +608,7 @@ class Listener(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
                  access_log_tracing_config: Optional[pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']]] = None,
+                 acl_config: Optional[pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']]] = None,
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
                  default_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -611,18 +644,19 @@ class Listener(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
+        :param pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The Certificates.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
-        :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
-        :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 miao.
-        :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/.
-        :param pulumi.Input[int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
-        :param pulumi.Input[str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
-        :param pulumi.Input[str] load_balancer_id: The SLB Instance Id.
+        :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+        :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+        :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/`.
+        :param pulumi.Input[int] listener_port: The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+        :param pulumi.Input[str] listener_protocol: Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+        :param pulumi.Input[str] load_balancer_id: The ALB Instance Id.
         :param pulumi.Input[pulumi.InputType['ListenerQuicConfigArgs']] quic_config: Configuration Associated with the QuIC Listening. See the following `Block quic_config`.
-        :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param pulumi.Input[pulumi.InputType['ListenerXforwardedForConfigArgs']] xforwarded_for_config: xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
@@ -665,6 +699,7 @@ class Listener(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
                  access_log_tracing_config: Optional[pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']]] = None,
+                 acl_config: Optional[pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']]] = None,
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
                  default_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -694,6 +729,7 @@ class Listener(pulumi.CustomResource):
 
             __props__.__dict__["access_log_record_customized_headers_enabled"] = access_log_record_customized_headers_enabled
             __props__.__dict__["access_log_tracing_config"] = access_log_tracing_config
+            __props__.__dict__["acl_config"] = acl_config
             __props__.__dict__["certificates"] = certificates
             __props__.__dict__["default_actions"] = default_actions
             __props__.__dict__["dry_run"] = dry_run
@@ -727,6 +763,7 @@ class Listener(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
             access_log_tracing_config: Optional[pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']]] = None,
+            acl_config: Optional[pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']]] = None,
             certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
             default_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
@@ -751,18 +788,19 @@ class Listener(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
+        :param pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The Certificates.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
-        :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
-        :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 miao.
-        :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/.
-        :param pulumi.Input[int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
-        :param pulumi.Input[str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
-        :param pulumi.Input[str] load_balancer_id: The SLB Instance Id.
+        :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+        :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+        :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/`.
+        :param pulumi.Input[int] listener_port: The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+        :param pulumi.Input[str] listener_protocol: Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+        :param pulumi.Input[str] load_balancer_id: The ALB Instance Id.
         :param pulumi.Input[pulumi.InputType['ListenerQuicConfigArgs']] quic_config: Configuration Associated with the QuIC Listening. See the following `Block quic_config`.
-        :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param pulumi.Input[pulumi.InputType['ListenerXforwardedForConfigArgs']] xforwarded_for_config: xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
@@ -773,6 +811,7 @@ class Listener(pulumi.CustomResource):
 
         __props__.__dict__["access_log_record_customized_headers_enabled"] = access_log_record_customized_headers_enabled
         __props__.__dict__["access_log_tracing_config"] = access_log_tracing_config
+        __props__.__dict__["acl_config"] = acl_config
         __props__.__dict__["certificates"] = certificates
         __props__.__dict__["default_actions"] = default_actions
         __props__.__dict__["dry_run"] = dry_run
@@ -805,6 +844,14 @@ class Listener(pulumi.CustomResource):
         Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         """
         return pulumi.get(self, "access_log_tracing_config")
+
+    @property
+    @pulumi.getter(name="aclConfig")
+    def acl_config(self) -> pulumi.Output[Optional['outputs.ListenerAclConfig']]:
+        """
+        The configurations of the access control lists (ACLs). See the following `Block acl_config`.
+        """
+        return pulumi.get(self, "acl_config")
 
     @property
     @pulumi.getter
@@ -842,7 +889,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="http2Enabled")
     def http2_enabled(self) -> pulumi.Output[bool]:
         """
-        Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+        Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
         """
         return pulumi.get(self, "http2_enabled")
 
@@ -850,7 +897,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> pulumi.Output[int]:
         """
-        Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -858,7 +905,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="listenerDescription")
     def listener_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/.
+        The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\\x00-\\xff]|[\w.,;/@-]){2,256}$/`.
         """
         return pulumi.get(self, "listener_description")
 
@@ -866,7 +913,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="listenerPort")
     def listener_port(self) -> pulumi.Output[int]:
         """
-        The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+        The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
         """
         return pulumi.get(self, "listener_port")
 
@@ -874,7 +921,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="listenerProtocol")
     def listener_protocol(self) -> pulumi.Output[str]:
         """
-        Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+        Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
         """
         return pulumi.get(self, "listener_protocol")
 
@@ -882,7 +929,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Output[str]:
         """
-        The SLB Instance Id.
+        The ALB Instance Id.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -898,7 +945,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> pulumi.Output[int]:
         """
-        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 

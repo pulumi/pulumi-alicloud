@@ -23,6 +23,7 @@ export * from "./getMasterSlaveServerGroups";
 export * from "./getRules";
 export * from "./getServerCertificates";
 export * from "./getServerGroups";
+export * from "./getTlsCipherPolicies";
 export * from "./getZones";
 export * from "./listener";
 export * from "./loadBalancer";
@@ -30,6 +31,7 @@ export * from "./masterSlaveServerGroup";
 export * from "./rule";
 export * from "./serverCertificate";
 export * from "./serverGroup";
+export * from "./tlsCipherPolicy";
 
 // Import resources to register:
 import { Acl } from "./acl";
@@ -44,6 +46,7 @@ import { MasterSlaveServerGroup } from "./masterSlaveServerGroup";
 import { Rule } from "./rule";
 import { ServerCertificate } from "./serverCertificate";
 import { ServerGroup } from "./serverGroup";
+import { TlsCipherPolicy } from "./tlsCipherPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -73,6 +76,8 @@ const _module = {
                 return new ServerCertificate(name, <any>undefined, { urn })
             case "alicloud:slb/serverGroup:ServerGroup":
                 return new ServerGroup(name, <any>undefined, { urn })
+            case "alicloud:slb/tlsCipherPolicy:TlsCipherPolicy":
+                return new TlsCipherPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -90,3 +95,4 @@ pulumi.runtime.registerResourceModule("alicloud", "slb/masterSlaveServerGroup", 
 pulumi.runtime.registerResourceModule("alicloud", "slb/rule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "slb/serverCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "slb/serverGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "slb/tlsCipherPolicy", _module)

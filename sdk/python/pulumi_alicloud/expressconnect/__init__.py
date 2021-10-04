@@ -6,7 +6,10 @@
 from .get_access_points import *
 from .get_physical_connection_service import *
 from .get_physical_connections import *
+from .get_virtual_border_routers import *
 from .physical_connection import *
+from .virtual_border_router import *
+from ._inputs import *
 from . import outputs
 
 def _register_module():
@@ -23,11 +26,14 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:expressconnect/physicalConnection:PhysicalConnection":
                 return PhysicalConnection(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter":
+                return VirtualBorderRouter(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "expressconnect/physicalConnection", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "expressconnect/virtualBorderRouter", _module_instance)
 
 _register_module()

@@ -10,6 +10,610 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetHostAccountsAccount struct {
+	// Whether to set a new password.
+	HasPassword bool `pulumi:"hasPassword"`
+	// Hosting account ID.
+	HostAccountId string `pulumi:"hostAccountId"`
+	// Specify the new hosting account's name, support the longest 128 characters.
+	HostAccountName string `pulumi:"hostAccountName"`
+	// Specifies the database where you want to create your hosting account's host ID.
+	HostId string `pulumi:"hostId"`
+	// The ID of the Host Account.
+	Id string `pulumi:"id"`
+	// Specifies the database where you want to create your hosting account's host bastion host ID of.
+	InstanceId string `pulumi:"instanceId"`
+	// The situation where the private keys of the fingerprint information.
+	PrivateKeyFingerprint string `pulumi:"privateKeyFingerprint"`
+	// Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+	ProtocolName string `pulumi:"protocolName"`
+}
+
+// GetHostAccountsAccountInput is an input type that accepts GetHostAccountsAccountArgs and GetHostAccountsAccountOutput values.
+// You can construct a concrete instance of `GetHostAccountsAccountInput` via:
+//
+//          GetHostAccountsAccountArgs{...}
+type GetHostAccountsAccountInput interface {
+	pulumi.Input
+
+	ToGetHostAccountsAccountOutput() GetHostAccountsAccountOutput
+	ToGetHostAccountsAccountOutputWithContext(context.Context) GetHostAccountsAccountOutput
+}
+
+type GetHostAccountsAccountArgs struct {
+	// Whether to set a new password.
+	HasPassword pulumi.BoolInput `pulumi:"hasPassword"`
+	// Hosting account ID.
+	HostAccountId pulumi.StringInput `pulumi:"hostAccountId"`
+	// Specify the new hosting account's name, support the longest 128 characters.
+	HostAccountName pulumi.StringInput `pulumi:"hostAccountName"`
+	// Specifies the database where you want to create your hosting account's host ID.
+	HostId pulumi.StringInput `pulumi:"hostId"`
+	// The ID of the Host Account.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specifies the database where you want to create your hosting account's host bastion host ID of.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The situation where the private keys of the fingerprint information.
+	PrivateKeyFingerprint pulumi.StringInput `pulumi:"privateKeyFingerprint"`
+	// Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+	ProtocolName pulumi.StringInput `pulumi:"protocolName"`
+}
+
+func (GetHostAccountsAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAccountsAccount)(nil)).Elem()
+}
+
+func (i GetHostAccountsAccountArgs) ToGetHostAccountsAccountOutput() GetHostAccountsAccountOutput {
+	return i.ToGetHostAccountsAccountOutputWithContext(context.Background())
+}
+
+func (i GetHostAccountsAccountArgs) ToGetHostAccountsAccountOutputWithContext(ctx context.Context) GetHostAccountsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAccountsAccountOutput)
+}
+
+// GetHostAccountsAccountArrayInput is an input type that accepts GetHostAccountsAccountArray and GetHostAccountsAccountArrayOutput values.
+// You can construct a concrete instance of `GetHostAccountsAccountArrayInput` via:
+//
+//          GetHostAccountsAccountArray{ GetHostAccountsAccountArgs{...} }
+type GetHostAccountsAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetHostAccountsAccountArrayOutput() GetHostAccountsAccountArrayOutput
+	ToGetHostAccountsAccountArrayOutputWithContext(context.Context) GetHostAccountsAccountArrayOutput
+}
+
+type GetHostAccountsAccountArray []GetHostAccountsAccountInput
+
+func (GetHostAccountsAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAccountsAccount)(nil)).Elem()
+}
+
+func (i GetHostAccountsAccountArray) ToGetHostAccountsAccountArrayOutput() GetHostAccountsAccountArrayOutput {
+	return i.ToGetHostAccountsAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetHostAccountsAccountArray) ToGetHostAccountsAccountArrayOutputWithContext(ctx context.Context) GetHostAccountsAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAccountsAccountArrayOutput)
+}
+
+type GetHostAccountsAccountOutput struct{ *pulumi.OutputState }
+
+func (GetHostAccountsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAccountsAccount)(nil)).Elem()
+}
+
+func (o GetHostAccountsAccountOutput) ToGetHostAccountsAccountOutput() GetHostAccountsAccountOutput {
+	return o
+}
+
+func (o GetHostAccountsAccountOutput) ToGetHostAccountsAccountOutputWithContext(ctx context.Context) GetHostAccountsAccountOutput {
+	return o
+}
+
+// Whether to set a new password.
+func (o GetHostAccountsAccountOutput) HasPassword() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAccountsAccount) bool { return v.HasPassword }).(pulumi.BoolOutput)
+}
+
+// Hosting account ID.
+func (o GetHostAccountsAccountOutput) HostAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAccountsAccount) string { return v.HostAccountId }).(pulumi.StringOutput)
+}
+
+// Specify the new hosting account's name, support the longest 128 characters.
+func (o GetHostAccountsAccountOutput) HostAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAccountsAccount) string { return v.HostAccountName }).(pulumi.StringOutput)
+}
+
+// Specifies the database where you want to create your hosting account's host ID.
+func (o GetHostAccountsAccountOutput) HostId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAccountsAccount) string { return v.HostId }).(pulumi.StringOutput)
+}
+
+// The ID of the Host Account.
+func (o GetHostAccountsAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specifies the database where you want to create your hosting account's host bastion host ID of.
+func (o GetHostAccountsAccountOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAccountsAccount) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The situation where the private keys of the fingerprint information.
+func (o GetHostAccountsAccountOutput) PrivateKeyFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAccountsAccount) string { return v.PrivateKeyFingerprint }).(pulumi.StringOutput)
+}
+
+// Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+func (o GetHostAccountsAccountOutput) ProtocolName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAccountsAccount) string { return v.ProtocolName }).(pulumi.StringOutput)
+}
+
+type GetHostAccountsAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHostAccountsAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAccountsAccount)(nil)).Elem()
+}
+
+func (o GetHostAccountsAccountArrayOutput) ToGetHostAccountsAccountArrayOutput() GetHostAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetHostAccountsAccountArrayOutput) ToGetHostAccountsAccountArrayOutputWithContext(ctx context.Context) GetHostAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetHostAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetHostAccountsAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAccountsAccount {
+		return vs[0].([]GetHostAccountsAccount)[vs[1].(int)]
+	}).(GetHostAccountsAccountOutput)
+}
+
+type GetHostGroupsGroup struct {
+	// Specify the New Host Group of Notes, Supports up to 500 Characters.
+	Comment string `pulumi:"comment"`
+	// Host Group ID.
+	HostGroupId string `pulumi:"hostGroupId"`
+	// Specify the New Host Group Name, Supports up to 128 Characters.
+	HostGroupName string `pulumi:"hostGroupName"`
+	// The ID of the Host Group.
+	Id string `pulumi:"id"`
+	// Specify the New Host Group Where the Bastion Host ID of.
+	InstanceId string `pulumi:"instanceId"`
+}
+
+// GetHostGroupsGroupInput is an input type that accepts GetHostGroupsGroupArgs and GetHostGroupsGroupOutput values.
+// You can construct a concrete instance of `GetHostGroupsGroupInput` via:
+//
+//          GetHostGroupsGroupArgs{...}
+type GetHostGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetHostGroupsGroupOutput() GetHostGroupsGroupOutput
+	ToGetHostGroupsGroupOutputWithContext(context.Context) GetHostGroupsGroupOutput
+}
+
+type GetHostGroupsGroupArgs struct {
+	// Specify the New Host Group of Notes, Supports up to 500 Characters.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// Host Group ID.
+	HostGroupId pulumi.StringInput `pulumi:"hostGroupId"`
+	// Specify the New Host Group Name, Supports up to 128 Characters.
+	HostGroupName pulumi.StringInput `pulumi:"hostGroupName"`
+	// The ID of the Host Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specify the New Host Group Where the Bastion Host ID of.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+}
+
+func (GetHostGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostGroupsGroup)(nil)).Elem()
+}
+
+func (i GetHostGroupsGroupArgs) ToGetHostGroupsGroupOutput() GetHostGroupsGroupOutput {
+	return i.ToGetHostGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetHostGroupsGroupArgs) ToGetHostGroupsGroupOutputWithContext(ctx context.Context) GetHostGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostGroupsGroupOutput)
+}
+
+// GetHostGroupsGroupArrayInput is an input type that accepts GetHostGroupsGroupArray and GetHostGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetHostGroupsGroupArrayInput` via:
+//
+//          GetHostGroupsGroupArray{ GetHostGroupsGroupArgs{...} }
+type GetHostGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetHostGroupsGroupArrayOutput() GetHostGroupsGroupArrayOutput
+	ToGetHostGroupsGroupArrayOutputWithContext(context.Context) GetHostGroupsGroupArrayOutput
+}
+
+type GetHostGroupsGroupArray []GetHostGroupsGroupInput
+
+func (GetHostGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostGroupsGroup)(nil)).Elem()
+}
+
+func (i GetHostGroupsGroupArray) ToGetHostGroupsGroupArrayOutput() GetHostGroupsGroupArrayOutput {
+	return i.ToGetHostGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetHostGroupsGroupArray) ToGetHostGroupsGroupArrayOutputWithContext(ctx context.Context) GetHostGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostGroupsGroupArrayOutput)
+}
+
+type GetHostGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetHostGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostGroupsGroup)(nil)).Elem()
+}
+
+func (o GetHostGroupsGroupOutput) ToGetHostGroupsGroupOutput() GetHostGroupsGroupOutput {
+	return o
+}
+
+func (o GetHostGroupsGroupOutput) ToGetHostGroupsGroupOutputWithContext(ctx context.Context) GetHostGroupsGroupOutput {
+	return o
+}
+
+// Specify the New Host Group of Notes, Supports up to 500 Characters.
+func (o GetHostGroupsGroupOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostGroupsGroup) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// Host Group ID.
+func (o GetHostGroupsGroupOutput) HostGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostGroupsGroup) string { return v.HostGroupId }).(pulumi.StringOutput)
+}
+
+// Specify the New Host Group Name, Supports up to 128 Characters.
+func (o GetHostGroupsGroupOutput) HostGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostGroupsGroup) string { return v.HostGroupName }).(pulumi.StringOutput)
+}
+
+// The ID of the Host Group.
+func (o GetHostGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specify the New Host Group Where the Bastion Host ID of.
+func (o GetHostGroupsGroupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostGroupsGroup) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+type GetHostGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHostGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostGroupsGroup)(nil)).Elem()
+}
+
+func (o GetHostGroupsGroupArrayOutput) ToGetHostGroupsGroupArrayOutput() GetHostGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetHostGroupsGroupArrayOutput) ToGetHostGroupsGroupArrayOutputWithContext(ctx context.Context) GetHostGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetHostGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetHostGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostGroupsGroup {
+		return vs[0].([]GetHostGroupsGroup)[vs[1].(int)]
+	}).(GetHostGroupsGroupOutput)
+}
+
+type GetHostsHost struct {
+	// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+	ActiveAddressType string `pulumi:"activeAddressType"`
+	// Specify a host of notes, supports up to 500 characters.
+	Comment string `pulumi:"comment"`
+	// The host ID.
+	HostId string `pulumi:"hostId"`
+	// Specify the new create a host name of the supports up to 128 characters.
+	HostName string `pulumi:"hostName"`
+	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+	HostPrivateAddress string `pulumi:"hostPrivateAddress"`
+	// Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
+	HostPublicAddress string `pulumi:"hostPublicAddress"`
+	// The ID of the Host.
+	Id string `pulumi:"id"`
+	// Specify the new create a host where the Bastion host ID of.
+	InstanceId string `pulumi:"instanceId"`
+	// Specify the new create the host's operating system. Valid values: Linux Windows.
+	OsType string `pulumi:"osType"`
+	// The host of the protocol information.
+	Protocols []GetHostsHostProtocol `pulumi:"protocols"`
+	// Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+	Source string `pulumi:"source"`
+	// Specify the newly created ECS instance ID or dedicated cluster host ID.
+	SourceInstanceId string `pulumi:"sourceInstanceId"`
+}
+
+// GetHostsHostInput is an input type that accepts GetHostsHostArgs and GetHostsHostOutput values.
+// You can construct a concrete instance of `GetHostsHostInput` via:
+//
+//          GetHostsHostArgs{...}
+type GetHostsHostInput interface {
+	pulumi.Input
+
+	ToGetHostsHostOutput() GetHostsHostOutput
+	ToGetHostsHostOutputWithContext(context.Context) GetHostsHostOutput
+}
+
+type GetHostsHostArgs struct {
+	// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+	ActiveAddressType pulumi.StringInput `pulumi:"activeAddressType"`
+	// Specify a host of notes, supports up to 500 characters.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// The host ID.
+	HostId pulumi.StringInput `pulumi:"hostId"`
+	// Specify the new create a host name of the supports up to 128 characters.
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+	HostPrivateAddress pulumi.StringInput `pulumi:"hostPrivateAddress"`
+	// Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
+	HostPublicAddress pulumi.StringInput `pulumi:"hostPublicAddress"`
+	// The ID of the Host.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specify the new create a host where the Bastion host ID of.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Specify the new create the host's operating system. Valid values: Linux Windows.
+	OsType pulumi.StringInput `pulumi:"osType"`
+	// The host of the protocol information.
+	Protocols GetHostsHostProtocolArrayInput `pulumi:"protocols"`
+	// Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+	Source pulumi.StringInput `pulumi:"source"`
+	// Specify the newly created ECS instance ID or dedicated cluster host ID.
+	SourceInstanceId pulumi.StringInput `pulumi:"sourceInstanceId"`
+}
+
+func (GetHostsHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostsHost)(nil)).Elem()
+}
+
+func (i GetHostsHostArgs) ToGetHostsHostOutput() GetHostsHostOutput {
+	return i.ToGetHostsHostOutputWithContext(context.Background())
+}
+
+func (i GetHostsHostArgs) ToGetHostsHostOutputWithContext(ctx context.Context) GetHostsHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostsHostOutput)
+}
+
+// GetHostsHostArrayInput is an input type that accepts GetHostsHostArray and GetHostsHostArrayOutput values.
+// You can construct a concrete instance of `GetHostsHostArrayInput` via:
+//
+//          GetHostsHostArray{ GetHostsHostArgs{...} }
+type GetHostsHostArrayInput interface {
+	pulumi.Input
+
+	ToGetHostsHostArrayOutput() GetHostsHostArrayOutput
+	ToGetHostsHostArrayOutputWithContext(context.Context) GetHostsHostArrayOutput
+}
+
+type GetHostsHostArray []GetHostsHostInput
+
+func (GetHostsHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostsHost)(nil)).Elem()
+}
+
+func (i GetHostsHostArray) ToGetHostsHostArrayOutput() GetHostsHostArrayOutput {
+	return i.ToGetHostsHostArrayOutputWithContext(context.Background())
+}
+
+func (i GetHostsHostArray) ToGetHostsHostArrayOutputWithContext(ctx context.Context) GetHostsHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostsHostArrayOutput)
+}
+
+type GetHostsHostOutput struct{ *pulumi.OutputState }
+
+func (GetHostsHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostsHost)(nil)).Elem()
+}
+
+func (o GetHostsHostOutput) ToGetHostsHostOutput() GetHostsHostOutput {
+	return o
+}
+
+func (o GetHostsHostOutput) ToGetHostsHostOutputWithContext(ctx context.Context) GetHostsHostOutput {
+	return o
+}
+
+// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+func (o GetHostsHostOutput) ActiveAddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHost) string { return v.ActiveAddressType }).(pulumi.StringOutput)
+}
+
+// Specify a host of notes, supports up to 500 characters.
+func (o GetHostsHostOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHost) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// The host ID.
+func (o GetHostsHostOutput) HostId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHost) string { return v.HostId }).(pulumi.StringOutput)
+}
+
+// Specify the new create a host name of the supports up to 128 characters.
+func (o GetHostsHostOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHost) string { return v.HostName }).(pulumi.StringOutput)
+}
+
+// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+func (o GetHostsHostOutput) HostPrivateAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHost) string { return v.HostPrivateAddress }).(pulumi.StringOutput)
+}
+
+// Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
+func (o GetHostsHostOutput) HostPublicAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHost) string { return v.HostPublicAddress }).(pulumi.StringOutput)
+}
+
+// The ID of the Host.
+func (o GetHostsHostOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHost) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specify the new create a host where the Bastion host ID of.
+func (o GetHostsHostOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHost) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Specify the new create the host's operating system. Valid values: Linux Windows.
+func (o GetHostsHostOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHost) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// The host of the protocol information.
+func (o GetHostsHostOutput) Protocols() GetHostsHostProtocolArrayOutput {
+	return o.ApplyT(func(v GetHostsHost) []GetHostsHostProtocol { return v.Protocols }).(GetHostsHostProtocolArrayOutput)
+}
+
+// Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+func (o GetHostsHostOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHost) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// Specify the newly created ECS instance ID or dedicated cluster host ID.
+func (o GetHostsHostOutput) SourceInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHost) string { return v.SourceInstanceId }).(pulumi.StringOutput)
+}
+
+type GetHostsHostArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHostsHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostsHost)(nil)).Elem()
+}
+
+func (o GetHostsHostArrayOutput) ToGetHostsHostArrayOutput() GetHostsHostArrayOutput {
+	return o
+}
+
+func (o GetHostsHostArrayOutput) ToGetHostsHostArrayOutputWithContext(ctx context.Context) GetHostsHostArrayOutput {
+	return o
+}
+
+func (o GetHostsHostArrayOutput) Index(i pulumi.IntInput) GetHostsHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostsHost {
+		return vs[0].([]GetHostsHost)[vs[1].(int)]
+	}).(GetHostsHostOutput)
+}
+
+type GetHostsHostProtocol struct {
+	// Host fingerprint information, it is possible to uniquely identify a host.
+	HostFingerPrint string `pulumi:"hostFingerPrint"`
+	// Host the service port of the RDS.
+	Port int `pulumi:"port"`
+	// The host uses the protocol name.
+	ProtocolName string `pulumi:"protocolName"`
+}
+
+// GetHostsHostProtocolInput is an input type that accepts GetHostsHostProtocolArgs and GetHostsHostProtocolOutput values.
+// You can construct a concrete instance of `GetHostsHostProtocolInput` via:
+//
+//          GetHostsHostProtocolArgs{...}
+type GetHostsHostProtocolInput interface {
+	pulumi.Input
+
+	ToGetHostsHostProtocolOutput() GetHostsHostProtocolOutput
+	ToGetHostsHostProtocolOutputWithContext(context.Context) GetHostsHostProtocolOutput
+}
+
+type GetHostsHostProtocolArgs struct {
+	// Host fingerprint information, it is possible to uniquely identify a host.
+	HostFingerPrint pulumi.StringInput `pulumi:"hostFingerPrint"`
+	// Host the service port of the RDS.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The host uses the protocol name.
+	ProtocolName pulumi.StringInput `pulumi:"protocolName"`
+}
+
+func (GetHostsHostProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostsHostProtocol)(nil)).Elem()
+}
+
+func (i GetHostsHostProtocolArgs) ToGetHostsHostProtocolOutput() GetHostsHostProtocolOutput {
+	return i.ToGetHostsHostProtocolOutputWithContext(context.Background())
+}
+
+func (i GetHostsHostProtocolArgs) ToGetHostsHostProtocolOutputWithContext(ctx context.Context) GetHostsHostProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostsHostProtocolOutput)
+}
+
+// GetHostsHostProtocolArrayInput is an input type that accepts GetHostsHostProtocolArray and GetHostsHostProtocolArrayOutput values.
+// You can construct a concrete instance of `GetHostsHostProtocolArrayInput` via:
+//
+//          GetHostsHostProtocolArray{ GetHostsHostProtocolArgs{...} }
+type GetHostsHostProtocolArrayInput interface {
+	pulumi.Input
+
+	ToGetHostsHostProtocolArrayOutput() GetHostsHostProtocolArrayOutput
+	ToGetHostsHostProtocolArrayOutputWithContext(context.Context) GetHostsHostProtocolArrayOutput
+}
+
+type GetHostsHostProtocolArray []GetHostsHostProtocolInput
+
+func (GetHostsHostProtocolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostsHostProtocol)(nil)).Elem()
+}
+
+func (i GetHostsHostProtocolArray) ToGetHostsHostProtocolArrayOutput() GetHostsHostProtocolArrayOutput {
+	return i.ToGetHostsHostProtocolArrayOutputWithContext(context.Background())
+}
+
+func (i GetHostsHostProtocolArray) ToGetHostsHostProtocolArrayOutputWithContext(ctx context.Context) GetHostsHostProtocolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostsHostProtocolArrayOutput)
+}
+
+type GetHostsHostProtocolOutput struct{ *pulumi.OutputState }
+
+func (GetHostsHostProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostsHostProtocol)(nil)).Elem()
+}
+
+func (o GetHostsHostProtocolOutput) ToGetHostsHostProtocolOutput() GetHostsHostProtocolOutput {
+	return o
+}
+
+func (o GetHostsHostProtocolOutput) ToGetHostsHostProtocolOutputWithContext(ctx context.Context) GetHostsHostProtocolOutput {
+	return o
+}
+
+// Host fingerprint information, it is possible to uniquely identify a host.
+func (o GetHostsHostProtocolOutput) HostFingerPrint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHostProtocol) string { return v.HostFingerPrint }).(pulumi.StringOutput)
+}
+
+// Host the service port of the RDS.
+func (o GetHostsHostProtocolOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHostsHostProtocol) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The host uses the protocol name.
+func (o GetHostsHostProtocolOutput) ProtocolName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsHostProtocol) string { return v.ProtocolName }).(pulumi.StringOutput)
+}
+
+type GetHostsHostProtocolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHostsHostProtocolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostsHostProtocol)(nil)).Elem()
+}
+
+func (o GetHostsHostProtocolArrayOutput) ToGetHostsHostProtocolArrayOutput() GetHostsHostProtocolArrayOutput {
+	return o
+}
+
+func (o GetHostsHostProtocolArrayOutput) ToGetHostsHostProtocolArrayOutputWithContext(ctx context.Context) GetHostsHostProtocolArrayOutput {
+	return o
+}
+
+func (o GetHostsHostProtocolArrayOutput) Index(i pulumi.IntInput) GetHostsHostProtocolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostsHostProtocol {
+		return vs[0].([]GetHostsHostProtocol)[vs[1].(int)]
+	}).(GetHostsHostProtocolOutput)
+}
+
 type GetInstancesInstance struct {
 	// The instance's remark.
 	Description string `pulumi:"description"`
@@ -581,6 +1185,14 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetHostAccountsAccountOutput{})
+	pulumi.RegisterOutputType(GetHostAccountsAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetHostGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetHostGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetHostsHostOutput{})
+	pulumi.RegisterOutputType(GetHostsHostArrayOutput{})
+	pulumi.RegisterOutputType(GetHostsHostProtocolOutput{})
+	pulumi.RegisterOutputType(GetHostsHostProtocolArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetUserGroupsGroupOutput{})

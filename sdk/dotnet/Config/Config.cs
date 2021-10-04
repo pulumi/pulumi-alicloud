@@ -72,13 +72,15 @@ namespace Pulumi.AliCloud
         public static string? SecretKey { get; set; } = __config.Get("secretKey");
 
         /// <summary>
+        /// The security transport for the assume role invoking.
+        /// </summary>
+        public static string? SecureTransport { get; set; } = __config.Get("secureTransport");
+
+        /// <summary>
         /// security token. A security token is only required if you are using Security Token Service.
         /// </summary>
         public static string? SecurityToken { get; set; } = __config.Get("securityToken");
 
-        /// <summary>
-        /// The security transport for the assume role invoking.
-        /// </summary>
         public static string? SecurityTransport { get; set; } = __config.Get("securityTransport");
 
         /// <summary>
@@ -127,21 +129,29 @@ namespace Pulumi.AliCloud
                 public string? Cddc { get; set; } = null!;
                 public string? Cdn { get; set; } = null!;
                 public string? Cds { get; set; } = null!;
+                public string? Clickhouse { get; set; } = null!;
+                public string? Cloudauth { get; set; } = null!;
                 public string? Cloudphone { get; set; } = null!;
+                public string? Cloudsso { get; set; } = null!;
                 public string? Cms { get; set; } = null!;
                 public string? Config { get; set; } = null!;
                 public string? Cr { get; set; } = null!;
                 public string? Cs { get; set; } = null!;
                 public string? Datahub { get; set; } = null!;
                 public string? Dataworkspublic { get; set; } = null!;
+                public string? Dbfs { get; set; } = null!;
                 public string? Dcdn { get; set; } = null!;
                 public string? Ddosbgp { get; set; } = null!;
                 public string? Ddoscoo { get; set; } = null!;
                 public string? Dds { get; set; } = null!;
+                public string? Devopsrdc { get; set; } = null!;
+                public string? Dg { get; set; } = null!;
                 public string? Dm { get; set; } = null!;
                 public string? DmsEnterprise { get; set; } = null!;
                 public string? Dns { get; set; } = null!;
                 public string? Drds { get; set; } = null!;
+                public string? Dts { get; set; } = null!;
+                public string? Eais { get; set; } = null!;
                 public string? Eci { get; set; } = null!;
                 public string? Ecs { get; set; } = null!;
                 public string? Ehpc { get; set; } = null!;
@@ -154,18 +164,23 @@ namespace Pulumi.AliCloud
                 public string? Fc { get; set; } = null!;
                 public string? Fnf { get; set; } = null!;
                 public string? Ga { get; set; } = null!;
+                public string? Gds { get; set; } = null!;
                 public string? Gpdb { get; set; } = null!;
                 public string? Gwsecd { get; set; } = null!;
                 public string? Hbr { get; set; } = null!;
                 public string? HcsSgw { get; set; } = null!;
                 public string? Hitsdb { get; set; } = null!;
+                public string? Imm { get; set; } = null!;
+                public string? Imp { get; set; } = null!;
                 public string? Ims { get; set; } = null!;
+                public string? Iot { get; set; } = null!;
                 public string? Kms { get; set; } = null!;
                 public string? Kvstore { get; set; } = null!;
                 public string? Location { get; set; } = null!;
                 public string? Log { get; set; } = null!;
                 public string? Market { get; set; } = null!;
                 public string? Maxcompute { get; set; } = null!;
+                public string? Mhub { get; set; } = null!;
                 public string? Mns { get; set; } = null!;
                 public string? Mscopensubscription { get; set; } = null!;
                 public string? Mse { get; set; } = null!;
@@ -173,11 +188,13 @@ namespace Pulumi.AliCloud
                 public string? Ons { get; set; } = null!;
                 public string? Onsproxy { get; set; } = null!;
                 public string? Oos { get; set; } = null!;
+                public string? Opensearch { get; set; } = null!;
                 public string? Oss { get; set; } = null!;
                 public string? Ots { get; set; } = null!;
                 public string? Polardb { get; set; } = null!;
                 public string? Privatelink { get; set; } = null!;
                 public string? Pvtz { get; set; } = null!;
+                public string? Quickbi { get; set; } = null!;
                 public string? Quotas { get; set; } = null!;
                 public string? RKvstore { get; set; } = null!;
                 public string? Ram { get; set; } = null!;
@@ -190,10 +207,15 @@ namespace Pulumi.AliCloud
                 public string? Scdn { get; set; } = null!;
                 public string? Sddp { get; set; } = null!;
                 public string? Serverless { get; set; } = null!;
+                public string? Servicemesh { get; set; } = null!;
                 public string? Sgw { get; set; } = null!;
                 public string? Slb { get; set; } = null!;
                 public string? Sts { get; set; } = null!;
+                public string? Swas { get; set; } = null!;
+                public string? Vod { get; set; } = null!;
                 public string? Vpc { get; set; } = null!;
+                public string? Vs { get; set; } = null!;
+                public string? Waf { get; set; } = null!;
                 public string? WafOpenapi { get; set; } = null!;
             }
         }

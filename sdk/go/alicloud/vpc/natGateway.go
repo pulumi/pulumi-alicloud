@@ -33,21 +33,23 @@ type NatGateway struct {
 	ForwardTableIds pulumi.StringOutput `pulumi:"forwardTableIds"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
-	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
 	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
 	// Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	NatGatewayName pulumi.StringOutput `pulumi:"natGatewayName"`
-	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
-	NatType pulumi.StringPtrOutput `pulumi:"natType"`
+	// The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+	NatType pulumi.StringOutput `pulumi:"natType"`
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
 	// The nat gateway will auto create a snat item.
 	SnatTableIds pulumi.StringOutput `pulumi:"snatTableIds"`
-	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
-	Specification pulumi.StringPtrOutput `pulumi:"specification"`
+	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
+	Specification pulumi.StringOutput `pulumi:"specification"`
 	// (Available in 1.121.0+) The status of NAT gateway.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of NAT gateway.
@@ -102,20 +104,22 @@ type natGatewayState struct {
 	ForwardTableIds *string `pulumi:"forwardTableIds"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
 	Name *string `pulumi:"name"`
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	NatGatewayName *string `pulumi:"natGatewayName"`
-	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	// The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
 	NatType *string `pulumi:"natType"`
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	NetworkType *string `pulumi:"networkType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
 	// The nat gateway will auto create a snat item.
 	SnatTableIds *string `pulumi:"snatTableIds"`
-	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
 	Specification *string `pulumi:"specification"`
 	// (Available in 1.121.0+) The status of NAT gateway.
 	Status *string `pulumi:"status"`
@@ -140,20 +144,22 @@ type NatGatewayState struct {
 	ForwardTableIds pulumi.StringPtrInput
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
 	InternetChargeType pulumi.StringPtrInput
 	// Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
 	Name pulumi.StringPtrInput
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	NatGatewayName pulumi.StringPtrInput
-	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	// The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
 	NatType pulumi.StringPtrInput
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	NetworkType pulumi.StringPtrInput
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
 	// The nat gateway will auto create a snat item.
 	SnatTableIds pulumi.StringPtrInput
-	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
 	Specification pulumi.StringPtrInput
 	// (Available in 1.121.0+) The status of NAT gateway.
 	Status pulumi.StringPtrInput
@@ -180,18 +186,20 @@ type natGatewayArgs struct {
 	Force       *bool   `pulumi:"force"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
 	Name *string `pulumi:"name"`
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	NatGatewayName *string `pulumi:"natGatewayName"`
-	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	// The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
 	NatType *string `pulumi:"natType"`
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	NetworkType *string `pulumi:"networkType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
-	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
 	Specification *string `pulumi:"specification"`
 	// The tags of NAT gateway.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -213,18 +221,20 @@ type NatGatewayArgs struct {
 	Force       pulumi.BoolPtrInput
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
 	InternetChargeType pulumi.StringPtrInput
 	// Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
 	Name pulumi.StringPtrInput
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	NatGatewayName pulumi.StringPtrInput
-	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	// The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
 	NatType pulumi.StringPtrInput
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	NetworkType pulumi.StringPtrInput
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
-	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
 	Specification pulumi.StringPtrInput
 	// The tags of NAT gateway.
 	Tags pulumi.MapInput

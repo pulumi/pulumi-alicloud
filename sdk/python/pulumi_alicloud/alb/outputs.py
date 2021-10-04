@@ -12,6 +12,8 @@ from . import outputs
 __all__ = [
     'AclAclEntry',
     'ListenerAccessLogTracingConfig',
+    'ListenerAclConfig',
+    'ListenerAclConfigAclRelation',
     'ListenerCertificate',
     'ListenerDefaultAction',
     'ListenerDefaultActionForwardGroupConfig',
@@ -43,8 +45,11 @@ __all__ = [
     'ServerGroupStickySessionConfig',
     'GetAclsAclResult',
     'GetAclsAclAclEntryResult',
+    'GetHealthCheckTemplatesTemplateResult',
     'GetListenersListenerResult',
     'GetListenersListenerAccessLogTracingConfigResult',
+    'GetListenersListenerAclConfigResult',
+    'GetListenersListenerAclConfigAclRelationResult',
     'GetListenersListenerCertificateResult',
     'GetListenersListenerDefaultActionResult',
     'GetListenersListenerDefaultActionForwardGroupConfigResult',
@@ -155,9 +160,9 @@ class ListenerAccessLogTracingConfig(dict):
                  tracing_sample: Optional[int] = None,
                  tracing_type: Optional[str] = None):
         """
-        :param bool tracing_enabled: Xtrace Function. Value: True Or False . Default Value: False.
-        :param int tracing_sample: Xtrace Sampling Rate. Value: **1~10000**.
-        :param str tracing_type: Xtrace Type Value Is **Zipkin**.
+        :param bool tracing_enabled: Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+        :param int tracing_sample: Xtrace Sampling Rate. Value: `1` to `10000`.
+        :param str tracing_type: Xtrace Type Value Is `Zipkin`.
         """
         if tracing_enabled is not None:
             pulumi.set(__self__, "tracing_enabled", tracing_enabled)
@@ -170,7 +175,7 @@ class ListenerAccessLogTracingConfig(dict):
     @pulumi.getter(name="tracingEnabled")
     def tracing_enabled(self) -> Optional[bool]:
         """
-        Xtrace Function. Value: True Or False . Default Value: False.
+        Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
         """
         return pulumi.get(self, "tracing_enabled")
 
@@ -178,7 +183,7 @@ class ListenerAccessLogTracingConfig(dict):
     @pulumi.getter(name="tracingSample")
     def tracing_sample(self) -> Optional[int]:
         """
-        Xtrace Sampling Rate. Value: **1~10000**.
+        Xtrace Sampling Rate. Value: `1` to `10000`.
         """
         return pulumi.get(self, "tracing_sample")
 
@@ -186,9 +191,107 @@ class ListenerAccessLogTracingConfig(dict):
     @pulumi.getter(name="tracingType")
     def tracing_type(self) -> Optional[str]:
         """
-        Xtrace Type Value Is **Zipkin**.
+        Xtrace Type Value Is `Zipkin`.
         """
         return pulumi.get(self, "tracing_type")
+
+
+@pulumi.output_type
+class ListenerAclConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aclRelations":
+            suggest = "acl_relations"
+        elif key == "aclType":
+            suggest = "acl_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListenerAclConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListenerAclConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListenerAclConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acl_relations: Optional[Sequence['outputs.ListenerAclConfigAclRelation']] = None,
+                 acl_type: Optional[str] = None):
+        """
+        :param Sequence['ListenerAclConfigAclRelationArgs'] acl_relations: The ACLs that are associated with the listener.
+        :param str acl_type: The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+        """
+        if acl_relations is not None:
+            pulumi.set(__self__, "acl_relations", acl_relations)
+        if acl_type is not None:
+            pulumi.set(__self__, "acl_type", acl_type)
+
+    @property
+    @pulumi.getter(name="aclRelations")
+    def acl_relations(self) -> Optional[Sequence['outputs.ListenerAclConfigAclRelation']]:
+        """
+        The ACLs that are associated with the listener.
+        """
+        return pulumi.get(self, "acl_relations")
+
+    @property
+    @pulumi.getter(name="aclType")
+    def acl_type(self) -> Optional[str]:
+        """
+        The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+        """
+        return pulumi.get(self, "acl_type")
+
+
+@pulumi.output_type
+class ListenerAclConfigAclRelation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aclId":
+            suggest = "acl_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListenerAclConfigAclRelation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListenerAclConfigAclRelation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListenerAclConfigAclRelation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acl_id: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        :param str acl_id: Snooping Binding of the Access Policy Group ID List.
+        :param str status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        """
+        if acl_id is not None:
+            pulumi.set(__self__, "acl_id", acl_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> Optional[str]:
+        """
+        Snooping Binding of the Access Policy Group ID List.
+        """
+        return pulumi.get(self, "acl_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -2023,12 +2126,172 @@ class GetAclsAclAclEntryResult(dict):
 
 
 @pulumi.output_type
+class GetHealthCheckTemplatesTemplateResult(dict):
+    def __init__(__self__, *,
+                 health_check_codes: Sequence[str],
+                 health_check_connect_port: int,
+                 health_check_host: str,
+                 health_check_http_version: str,
+                 health_check_interval: int,
+                 health_check_method: str,
+                 health_check_path: str,
+                 health_check_protocol: str,
+                 health_check_template_id: str,
+                 health_check_template_name: str,
+                 health_check_timeout: int,
+                 healthy_threshold: int,
+                 id: str,
+                 unhealthy_threshold: int):
+        """
+        :param Sequence[str] health_check_codes: The HTTP status code that indicates a successful health check.
+        :param int health_check_connect_port: The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:` 0`. This default value indicates that the backend server is used for health checks.
+        :param str health_check_host: The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.
+        :param str health_check_http_version: The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`.
+        :param int health_check_interval: The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+        :param str health_check_method: The health check method.  Valid values: `GET` and `HEAD`.  Default value: `HEAD`.
+        :param str health_check_path: The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: ` _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
+        :param str health_check_protocol: The protocol that is used for health checks.  Valid values: HTTP and TCP.  Default value: HTTP.
+        :param str health_check_template_id: The ID of the resource.
+        :param str health_check_template_name: The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        :param int health_check_timeout: The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+        :param int healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        :param str id: The ID of the Health Check Template.
+        :param int unhealthy_threshold: The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        """
+        pulumi.set(__self__, "health_check_codes", health_check_codes)
+        pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
+        pulumi.set(__self__, "health_check_host", health_check_host)
+        pulumi.set(__self__, "health_check_http_version", health_check_http_version)
+        pulumi.set(__self__, "health_check_interval", health_check_interval)
+        pulumi.set(__self__, "health_check_method", health_check_method)
+        pulumi.set(__self__, "health_check_path", health_check_path)
+        pulumi.set(__self__, "health_check_protocol", health_check_protocol)
+        pulumi.set(__self__, "health_check_template_id", health_check_template_id)
+        pulumi.set(__self__, "health_check_template_name", health_check_template_name)
+        pulumi.set(__self__, "health_check_timeout", health_check_timeout)
+        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+
+    @property
+    @pulumi.getter(name="healthCheckCodes")
+    def health_check_codes(self) -> Sequence[str]:
+        """
+        The HTTP status code that indicates a successful health check.
+        """
+        return pulumi.get(self, "health_check_codes")
+
+    @property
+    @pulumi.getter(name="healthCheckConnectPort")
+    def health_check_connect_port(self) -> int:
+        """
+        The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:` 0`. This default value indicates that the backend server is used for health checks.
+        """
+        return pulumi.get(self, "health_check_connect_port")
+
+    @property
+    @pulumi.getter(name="healthCheckHost")
+    def health_check_host(self) -> str:
+        """
+        The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.
+        """
+        return pulumi.get(self, "health_check_host")
+
+    @property
+    @pulumi.getter(name="healthCheckHttpVersion")
+    def health_check_http_version(self) -> str:
+        """
+        The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`.
+        """
+        return pulumi.get(self, "health_check_http_version")
+
+    @property
+    @pulumi.getter(name="healthCheckInterval")
+    def health_check_interval(self) -> int:
+        """
+        The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+        """
+        return pulumi.get(self, "health_check_interval")
+
+    @property
+    @pulumi.getter(name="healthCheckMethod")
+    def health_check_method(self) -> str:
+        """
+        The health check method.  Valid values: `GET` and `HEAD`.  Default value: `HEAD`.
+        """
+        return pulumi.get(self, "health_check_method")
+
+    @property
+    @pulumi.getter(name="healthCheckPath")
+    def health_check_path(self) -> str:
+        """
+        The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: ` _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
+        """
+        return pulumi.get(self, "health_check_path")
+
+    @property
+    @pulumi.getter(name="healthCheckProtocol")
+    def health_check_protocol(self) -> str:
+        """
+        The protocol that is used for health checks.  Valid values: HTTP and TCP.  Default value: HTTP.
+        """
+        return pulumi.get(self, "health_check_protocol")
+
+    @property
+    @pulumi.getter(name="healthCheckTemplateId")
+    def health_check_template_id(self) -> str:
+        """
+        The ID of the resource.
+        """
+        return pulumi.get(self, "health_check_template_id")
+
+    @property
+    @pulumi.getter(name="healthCheckTemplateName")
+    def health_check_template_name(self) -> str:
+        """
+        The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        """
+        return pulumi.get(self, "health_check_template_name")
+
+    @property
+    @pulumi.getter(name="healthCheckTimeout")
+    def health_check_timeout(self) -> int:
+        """
+        The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+        """
+        return pulumi.get(self, "health_check_timeout")
+
+    @property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> int:
+        """
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Health Check Template.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="unhealthyThreshold")
+    def unhealthy_threshold(self) -> int:
+        """
+        The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        """
+        return pulumi.get(self, "unhealthy_threshold")
+
+
+@pulumi.output_type
 class GetListenersListenerResult(dict):
     def __init__(__self__, *,
                  access_log_record_customized_headers_enabled: bool,
                  access_log_tracing_configs: Sequence['outputs.GetListenersListenerAccessLogTracingConfigResult'],
-                 acl_id: str,
-                 acl_type: str,
+                 acl_configs: Sequence['outputs.GetListenersListenerAclConfigResult'],
                  certificates: Sequence['outputs.GetListenersListenerCertificateResult'],
                  default_actions: Sequence['outputs.GetListenersListenerDefaultActionResult'],
                  gzip_enabled: bool,
@@ -2050,30 +2313,29 @@ class GetListenersListenerResult(dict):
         """
         :param bool access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param Sequence['GetListenersListenerAccessLogTracingConfigArgs'] access_log_tracing_configs: Xtrace Configuration Information.
-        :param str acl_id: Snooping Binding of the Access Policy Group ID List.
-        :param str acl_type: The type of the ACL. Valid values: White: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. Black: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+        :param Sequence['GetListenersListenerAclConfigArgs'] acl_configs: The configurations of the access control lists (ACLs).
         :param Sequence['GetListenersListenerCertificateArgs'] certificates: Certificate.
         :param Sequence['GetListenersListenerDefaultActionArgs'] default_actions: The Default Rule Action List.
         :param bool gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
         :param bool http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
         :param str id: The ID of the Listener.
-        :param int idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60.
-        :param str listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters. 	* `listener_id` - on Behalf of the Resource Level Id of the Resources Property Fields.
-        :param int listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
+        :param int idle_timeout: Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+        :param str listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
+        :param str listener_id: on Behalf of the Resource Level Id of the Resources Property Fields.
+        :param int listener_port: The ALB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
         :param str listener_protocol: Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
-        :param str load_balancer_id: The SLB Instance Id.
+        :param str load_balancer_id: The ALB Instance Id.
         :param str max_results: This Request Returned by the Maximum Number of Records.
         :param str next_token: The Current Call Returns to the Position of the Set to Null Represents the Data Has Been Read to the End of.
         :param Sequence['GetListenersListenerQuicConfigArgs'] quic_configs: Configuration Associated with the QuIC Listening.
-        :param int request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param int request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param str security_policy_id: Security Policy.
-        :param str status: The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+        :param str status: The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
         :param Sequence['GetListenersListenerXforwardedForConfigArgs'] xforwarded_for_configs: xforwardfor Related Attribute Configuration.
         """
         pulumi.set(__self__, "access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
         pulumi.set(__self__, "access_log_tracing_configs", access_log_tracing_configs)
-        pulumi.set(__self__, "acl_id", acl_id)
-        pulumi.set(__self__, "acl_type", acl_type)
+        pulumi.set(__self__, "acl_configs", acl_configs)
         pulumi.set(__self__, "certificates", certificates)
         pulumi.set(__self__, "default_actions", default_actions)
         pulumi.set(__self__, "gzip_enabled", gzip_enabled)
@@ -2110,20 +2372,12 @@ class GetListenersListenerResult(dict):
         return pulumi.get(self, "access_log_tracing_configs")
 
     @property
-    @pulumi.getter(name="aclId")
-    def acl_id(self) -> str:
+    @pulumi.getter(name="aclConfigs")
+    def acl_configs(self) -> Sequence['outputs.GetListenersListenerAclConfigResult']:
         """
-        Snooping Binding of the Access Policy Group ID List.
+        The configurations of the access control lists (ACLs).
         """
-        return pulumi.get(self, "acl_id")
-
-    @property
-    @pulumi.getter(name="aclType")
-    def acl_type(self) -> str:
-        """
-        The type of the ACL. Valid values: White: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. Black: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
-        """
-        return pulumi.get(self, "acl_type")
+        return pulumi.get(self, "acl_configs")
 
     @property
     @pulumi.getter
@@ -2169,7 +2423,7 @@ class GetListenersListenerResult(dict):
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> int:
         """
-        Specify the Connection Idle Timeout Value: 1 to 60.
+        Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -2177,20 +2431,23 @@ class GetListenersListenerResult(dict):
     @pulumi.getter(name="listenerDescription")
     def listener_description(self) -> str:
         """
-        Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters. 	* `listener_id` - on Behalf of the Resource Level Id of the Resources Property Fields.
+        Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         """
         return pulumi.get(self, "listener_description")
 
     @property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> str:
+        """
+        on Behalf of the Resource Level Id of the Resources Property Fields.
+        """
         return pulumi.get(self, "listener_id")
 
     @property
     @pulumi.getter(name="listenerPort")
     def listener_port(self) -> int:
         """
-        The SLB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
+        The ALB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
         """
         return pulumi.get(self, "listener_port")
 
@@ -2206,7 +2463,7 @@ class GetListenersListenerResult(dict):
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> str:
         """
-        The SLB Instance Id.
+        The ALB Instance Id.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -2238,7 +2495,7 @@ class GetListenersListenerResult(dict):
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> int:
         """
-        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 
@@ -2254,7 +2511,7 @@ class GetListenersListenerResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+        The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
         """
         return pulumi.get(self, "status")
 
@@ -2305,6 +2562,64 @@ class GetListenersListenerAccessLogTracingConfigResult(dict):
         Xtrace Type Value Is **Zipkin**.
         """
         return pulumi.get(self, "tracing_type")
+
+
+@pulumi.output_type
+class GetListenersListenerAclConfigResult(dict):
+    def __init__(__self__, *,
+                 acl_relations: Sequence['outputs.GetListenersListenerAclConfigAclRelationResult'],
+                 acl_type: str):
+        """
+        :param Sequence['GetListenersListenerAclConfigAclRelationArgs'] acl_relations: The ACLs that are associated with the listener.
+        :param str acl_type: The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+        """
+        pulumi.set(__self__, "acl_relations", acl_relations)
+        pulumi.set(__self__, "acl_type", acl_type)
+
+    @property
+    @pulumi.getter(name="aclRelations")
+    def acl_relations(self) -> Sequence['outputs.GetListenersListenerAclConfigAclRelationResult']:
+        """
+        The ACLs that are associated with the listener.
+        """
+        return pulumi.get(self, "acl_relations")
+
+    @property
+    @pulumi.getter(name="aclType")
+    def acl_type(self) -> str:
+        """
+        The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+        """
+        return pulumi.get(self, "acl_type")
+
+
+@pulumi.output_type
+class GetListenersListenerAclConfigAclRelationResult(dict):
+    def __init__(__self__, *,
+                 acl_id: str,
+                 status: str):
+        """
+        :param str acl_id: Snooping Binding of the Access Policy Group ID List.
+        :param str status: The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+        """
+        pulumi.set(__self__, "acl_id", acl_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> str:
+        """
+        Snooping Binding of the Access Policy Group ID List.
+        """
+        return pulumi.get(self, "acl_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

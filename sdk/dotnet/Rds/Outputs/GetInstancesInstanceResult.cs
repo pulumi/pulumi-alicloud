@@ -154,6 +154,10 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string Origin;
         /// <summary>
+        /// (Available in 1.135.0+) Parameter list.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceParameterResult> Parameters;
+        /// <summary>
         /// (Available in 1.70.3+) RDS database connection port.
         /// </summary>
         public readonly string Port;
@@ -310,6 +314,8 @@ namespace Pulumi.AliCloud.Rds.Outputs
 
             string origin,
 
+            ImmutableArray<Outputs.GetInstancesInstanceParameterResult> parameters,
+
             string port,
 
             ImmutableArray<string> readonlyInstanceIds,
@@ -381,6 +387,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
             Name = name;
             NetType = netType;
             Origin = origin;
+            Parameters = parameters;
             Port = port;
             ReadonlyInstanceIds = readonlyInstanceIds;
             RegionId = regionId;

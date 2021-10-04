@@ -30,21 +30,29 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Cddc;
         public readonly string? Cdn;
         public readonly string? Cds;
+        public readonly string? Clickhouse;
+        public readonly string? Cloudauth;
         public readonly string? Cloudphone;
+        public readonly string? Cloudsso;
         public readonly string? Cms;
         public readonly string? Config;
         public readonly string? Cr;
         public readonly string? Cs;
         public readonly string? Datahub;
         public readonly string? Dataworkspublic;
+        public readonly string? Dbfs;
         public readonly string? Dcdn;
         public readonly string? Ddosbgp;
         public readonly string? Ddoscoo;
         public readonly string? Dds;
+        public readonly string? Devopsrdc;
+        public readonly string? Dg;
         public readonly string? Dm;
         public readonly string? DmsEnterprise;
         public readonly string? Dns;
         public readonly string? Drds;
+        public readonly string? Dts;
+        public readonly string? Eais;
         public readonly string? Eci;
         public readonly string? Ecs;
         public readonly string? Ehpc;
@@ -57,18 +65,23 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Fc;
         public readonly string? Fnf;
         public readonly string? Ga;
+        public readonly string? Gds;
         public readonly string? Gpdb;
         public readonly string? Gwsecd;
         public readonly string? Hbr;
         public readonly string? HcsSgw;
         public readonly string? Hitsdb;
+        public readonly string? Imm;
+        public readonly string? Imp;
         public readonly string? Ims;
+        public readonly string? Iot;
         public readonly string? Kms;
         public readonly string? Kvstore;
         public readonly string? Location;
         public readonly string? Log;
         public readonly string? Market;
         public readonly string? Maxcompute;
+        public readonly string? Mhub;
         public readonly string? Mns;
         public readonly string? Mscopensubscription;
         public readonly string? Mse;
@@ -76,11 +89,13 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Ons;
         public readonly string? Onsproxy;
         public readonly string? Oos;
+        public readonly string? Opensearch;
         public readonly string? Oss;
         public readonly string? Ots;
         public readonly string? Polardb;
         public readonly string? Privatelink;
         public readonly string? Pvtz;
+        public readonly string? Quickbi;
         public readonly string? Quotas;
         public readonly string? RKvstore;
         public readonly string? Ram;
@@ -93,10 +108,15 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Scdn;
         public readonly string? Sddp;
         public readonly string? Serverless;
+        public readonly string? Servicemesh;
         public readonly string? Sgw;
         public readonly string? Slb;
         public readonly string? Sts;
+        public readonly string? Swas;
+        public readonly string? Vod;
         public readonly string? Vpc;
+        public readonly string? Vs;
+        public readonly string? Waf;
         public readonly string? WafOpenapi;
 
         [OutputConstructor]
@@ -135,7 +155,13 @@ namespace Pulumi.AliCloud.Outputs
 
             string? cds,
 
+            string? clickhouse,
+
+            string? cloudauth,
+
             string? cloudphone,
+
+            string? cloudsso,
 
             string? cms,
 
@@ -149,6 +175,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? dataworkspublic,
 
+            string? dbfs,
+
             string? dcdn,
 
             string? ddosbgp,
@@ -157,6 +185,10 @@ namespace Pulumi.AliCloud.Outputs
 
             string? dds,
 
+            string? devopsrdc,
+
+            string? dg,
+
             string? dm,
 
             string? dmsEnterprise,
@@ -164,6 +196,10 @@ namespace Pulumi.AliCloud.Outputs
             string? dns,
 
             string? drds,
+
+            string? dts,
+
+            string? eais,
 
             string? eci,
 
@@ -189,6 +225,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? ga,
 
+            string? gds,
+
             string? gpdb,
 
             string? gwsecd,
@@ -199,7 +237,13 @@ namespace Pulumi.AliCloud.Outputs
 
             string? hitsdb,
 
+            string? imm,
+
+            string? imp,
+
             string? ims,
+
+            string? iot,
 
             string? kms,
 
@@ -212,6 +256,8 @@ namespace Pulumi.AliCloud.Outputs
             string? market,
 
             string? maxcompute,
+
+            string? mhub,
 
             string? mns,
 
@@ -227,6 +273,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? oos,
 
+            string? opensearch,
+
             string? oss,
 
             string? ots,
@@ -236,6 +284,8 @@ namespace Pulumi.AliCloud.Outputs
             string? privatelink,
 
             string? pvtz,
+
+            string? quickbi,
 
             string? quotas,
 
@@ -261,13 +311,23 @@ namespace Pulumi.AliCloud.Outputs
 
             string? serverless,
 
+            string? servicemesh,
+
             string? sgw,
 
             string? slb,
 
             string? sts,
 
+            string? swas,
+
+            string? vod,
+
             string? vpc,
+
+            string? vs,
+
+            string? waf,
 
             string? wafOpenapi)
         {
@@ -288,21 +348,29 @@ namespace Pulumi.AliCloud.Outputs
             Cddc = cddc;
             Cdn = cdn;
             Cds = cds;
+            Clickhouse = clickhouse;
+            Cloudauth = cloudauth;
             Cloudphone = cloudphone;
+            Cloudsso = cloudsso;
             Cms = cms;
             Config = config;
             Cr = cr;
             Cs = cs;
             Datahub = datahub;
             Dataworkspublic = dataworkspublic;
+            Dbfs = dbfs;
             Dcdn = dcdn;
             Ddosbgp = ddosbgp;
             Ddoscoo = ddoscoo;
             Dds = dds;
+            Devopsrdc = devopsrdc;
+            Dg = dg;
             Dm = dm;
             DmsEnterprise = dmsEnterprise;
             Dns = dns;
             Drds = drds;
+            Dts = dts;
+            Eais = eais;
             Eci = eci;
             Ecs = ecs;
             Ehpc = ehpc;
@@ -315,18 +383,23 @@ namespace Pulumi.AliCloud.Outputs
             Fc = fc;
             Fnf = fnf;
             Ga = ga;
+            Gds = gds;
             Gpdb = gpdb;
             Gwsecd = gwsecd;
             Hbr = hbr;
             HcsSgw = hcsSgw;
             Hitsdb = hitsdb;
+            Imm = imm;
+            Imp = imp;
             Ims = ims;
+            Iot = iot;
             Kms = kms;
             Kvstore = kvstore;
             Location = location;
             Log = log;
             Market = market;
             Maxcompute = maxcompute;
+            Mhub = mhub;
             Mns = mns;
             Mscopensubscription = mscopensubscription;
             Mse = mse;
@@ -334,11 +407,13 @@ namespace Pulumi.AliCloud.Outputs
             Ons = ons;
             Onsproxy = onsproxy;
             Oos = oos;
+            Opensearch = opensearch;
             Oss = oss;
             Ots = ots;
             Polardb = polardb;
             Privatelink = privatelink;
             Pvtz = pvtz;
+            Quickbi = quickbi;
             Quotas = quotas;
             RKvstore = rKvstore;
             Ram = ram;
@@ -351,10 +426,15 @@ namespace Pulumi.AliCloud.Outputs
             Scdn = scdn;
             Sddp = sddp;
             Serverless = serverless;
+            Servicemesh = servicemesh;
             Sgw = sgw;
             Slb = slb;
             Sts = sts;
+            Swas = swas;
+            Vod = vod;
             Vpc = vpc;
+            Vs = vs;
+            Waf = waf;
             WafOpenapi = wafOpenapi;
         }
     }

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a HBR Oss Backup Plan resource.
  *
- * For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/product/hybrid-backup-recovery).
+ * For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
  *
  * > **NOTE:** Available in v1.131.0+.
  *
@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || `%s`;
+ * const name = config.get("name") || "example_value";
  * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: name});
  * const defaultBuckets = alicloud.oss.getBuckets({
- *     nameRegex: "bosh-cf-blobstore-hz",
+ *     nameRegex: "oss_bucket_example_name",
  * });
  * const example = new alicloud.hbr.OssBackupPlan("example", {
  *     ossBackupPlanName: name,
@@ -73,34 +73,34 @@ export class OssBackupPlan extends pulumi.CustomResource {
     }
 
     /**
-     * Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+     * Backup type. Valid values: `COMPLETE`.
      */
     public readonly backupType!: pulumi.Output<string>;
     /**
-     * The OSS Bucket Name.
+     * The name of OSS bucket.
      */
-    public readonly bucket!: pulumi.Output<string | undefined>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
-     * Whether to Disable the Backup Task. Valid Values: true, false.
+     * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
-     * The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+     * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     public readonly ossBackupPlanName!: pulumi.Output<string>;
     public readonly prefix!: pulumi.Output<string | undefined>;
     /**
-     * Backup Retention Period, the Minimum Value of 1.
+     * Backup retention days, the minimum is 1.
      */
     public readonly retention!: pulumi.Output<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
      */
     public readonly schedule!: pulumi.Output<string>;
     /**
-     * Vault ID.
+     * The ID of backup vault.
      */
-    public readonly vaultId!: pulumi.Output<string | undefined>;
+    public readonly vaultId!: pulumi.Output<string>;
 
     /**
      * Create a OssBackupPlan resource with the given unique name, arguments, and options.
@@ -125,6 +125,12 @@ export class OssBackupPlan extends pulumi.CustomResource {
             inputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as OssBackupPlanArgs | undefined;
+            if ((!args || args.backupType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'backupType'");
+            }
+            if ((!args || args.bucket === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'bucket'");
+            }
             if ((!args || args.ossBackupPlanName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ossBackupPlanName'");
             }
@@ -133,6 +139,9 @@ export class OssBackupPlan extends pulumi.CustomResource {
             }
             if ((!args || args.schedule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
+            }
+            if ((!args || args.vaultId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'vaultId'");
             }
             inputs["backupType"] = args ? args.backupType : undefined;
             inputs["bucket"] = args ? args.bucket : undefined;
@@ -155,32 +164,32 @@ export class OssBackupPlan extends pulumi.CustomResource {
  */
 export interface OssBackupPlanState {
     /**
-     * Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+     * Backup type. Valid values: `COMPLETE`.
      */
     readonly backupType?: pulumi.Input<string>;
     /**
-     * The OSS Bucket Name.
+     * The name of OSS bucket.
      */
     readonly bucket?: pulumi.Input<string>;
     /**
-     * Whether to Disable the Backup Task. Valid Values: true, false.
+     * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+     * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     readonly ossBackupPlanName?: pulumi.Input<string>;
     readonly prefix?: pulumi.Input<string>;
     /**
-     * Backup Retention Period, the Minimum Value of 1.
+     * Backup retention days, the minimum is 1.
      */
     readonly retention?: pulumi.Input<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
      */
     readonly schedule?: pulumi.Input<string>;
     /**
-     * Vault ID.
+     * The ID of backup vault.
      */
     readonly vaultId?: pulumi.Input<string>;
 }
@@ -190,32 +199,32 @@ export interface OssBackupPlanState {
  */
 export interface OssBackupPlanArgs {
     /**
-     * Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+     * Backup type. Valid values: `COMPLETE`.
      */
-    readonly backupType?: pulumi.Input<string>;
+    readonly backupType: pulumi.Input<string>;
     /**
-     * The OSS Bucket Name.
+     * The name of OSS bucket.
      */
-    readonly bucket?: pulumi.Input<string>;
+    readonly bucket: pulumi.Input<string>;
     /**
-     * Whether to Disable the Backup Task. Valid Values: true, false.
+     * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+     * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     readonly ossBackupPlanName: pulumi.Input<string>;
     readonly prefix?: pulumi.Input<string>;
     /**
-     * Backup Retention Period, the Minimum Value of 1.
+     * Backup retention days, the minimum is 1.
      */
     readonly retention: pulumi.Input<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
      */
     readonly schedule: pulumi.Input<string>;
     /**
-     * Vault ID.
+     * The ID of backup vault.
      */
-    readonly vaultId?: pulumi.Input<string>;
+    readonly vaultId: pulumi.Input<string>;
 }

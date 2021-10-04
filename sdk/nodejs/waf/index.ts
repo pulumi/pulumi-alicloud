@@ -5,12 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./certificate";
 export * from "./domain";
+export * from "./getCertificates";
 export * from "./getDomains";
 export * from "./getInstances";
 export * from "./instance";
 
 // Import resources to register:
+import { Certificate } from "./certificate";
 import { Domain } from "./domain";
 import { Instance } from "./instance";
 
@@ -18,6 +21,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:waf/certificate:Certificate":
+                return new Certificate(name, <any>undefined, { urn })
             case "alicloud:waf/domain:Domain":
                 return new Domain(name, <any>undefined, { urn })
             case "alicloud:waf/instance:Instance":
@@ -27,5 +32,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "waf/certificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "waf/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "waf/instance", _module)

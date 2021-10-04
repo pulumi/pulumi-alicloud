@@ -21,10 +21,28 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:bastionhost/host:Host":
+		r = &Host{}
+	case "alicloud:bastionhost/hostAccount:HostAccount":
+		r = &HostAccount{}
+	case "alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment":
+		r = &HostAccountUserAttachment{}
+	case "alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment":
+		r = &HostAccountUserGroupAttachment{}
+	case "alicloud:bastionhost/hostAttachment:HostAttachment":
+		r = &HostAttachment{}
+	case "alicloud:bastionhost/hostGroup:HostGroup":
+		r = &HostGroup{}
+	case "alicloud:bastionhost/hostGroupAccountUserAttachment:HostGroupAccountUserAttachment":
+		r = &HostGroupAccountUserAttachment{}
+	case "alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment":
+		r = &HostGroupAccountUserGroupAttachment{}
 	case "alicloud:bastionhost/instance:Instance":
 		r = &Instance{}
 	case "alicloud:bastionhost/user:User":
 		r = &User{}
+	case "alicloud:bastionhost/userAttachment:UserAttachment":
+		r = &UserAttachment{}
 	case "alicloud:bastionhost/userGroup:UserGroup":
 		r = &UserGroup{}
 	default:
@@ -42,12 +60,57 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"bastionhost/host",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"bastionhost/hostAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"bastionhost/hostAccountUserAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"bastionhost/hostAccountUserGroupAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"bastionhost/hostAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"bastionhost/hostGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"bastionhost/hostGroupAccountUserAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"bastionhost/hostGroupAccountUserGroupAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"bastionhost/instance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"bastionhost/user",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"bastionhost/userAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

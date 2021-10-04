@@ -75,6 +75,7 @@ export class Image extends pulumi.CustomResource {
      * Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
      */
     public readonly architecture!: pulumi.Output<string | undefined>;
+    public readonly deleteAutoSnapshot!: pulumi.Output<boolean | undefined>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */
@@ -132,6 +133,7 @@ export class Image extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
             inputs["architecture"] = state ? state.architecture : undefined;
+            inputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["diskDeviceMappings"] = state ? state.diskDeviceMappings : undefined;
             inputs["force"] = state ? state.force : undefined;
@@ -145,6 +147,7 @@ export class Image extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ImageArgs | undefined;
             inputs["architecture"] = args ? args.architecture : undefined;
+            inputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["diskDeviceMappings"] = args ? args.diskDeviceMappings : undefined;
             inputs["force"] = args ? args.force : undefined;
@@ -171,6 +174,7 @@ export interface ImageState {
      * Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
      */
     readonly architecture?: pulumi.Input<string>;
+    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */
@@ -223,6 +227,7 @@ export interface ImageArgs {
      * Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
      */
     readonly architecture?: pulumi.Input<string>;
+    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */

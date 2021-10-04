@@ -7,11 +7,14 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./config";
 export * from "./getConfigs";
+export * from "./getInstances";
 export * from "./getRules";
+export * from "./instance";
 export * from "./rule";
 
 // Import resources to register:
 import { Config } from "./config";
+import { Instance } from "./instance";
 import { Rule } from "./rule";
 
 const _module = {
@@ -20,6 +23,8 @@ const _module = {
         switch (type) {
             case "alicloud:sddp/config:Config":
                 return new Config(name, <any>undefined, { urn })
+            case "alicloud:sddp/instance:Instance":
+                return new Instance(name, <any>undefined, { urn })
             case "alicloud:sddp/rule:Rule":
                 return new Rule(name, <any>undefined, { urn })
             default:
@@ -28,4 +33,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "sddp/config", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sddp/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sddp/rule", _module)

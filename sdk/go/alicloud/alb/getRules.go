@@ -59,8 +59,6 @@ func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOpti
 type GetRulesArgs struct {
 	// A list of Rule IDs.
 	Ids []string `pulumi:"ids"`
-	// The ID of the listener to which the forwarding rule belongs.
-	ListenerId *string `pulumi:"listenerId"`
 	// The listener ids.
 	ListenerIds []string `pulumi:"listenerIds"`
 	// The load balancer ids.
@@ -79,7 +77,6 @@ type GetRulesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id              string         `pulumi:"id"`
 	Ids             []string       `pulumi:"ids"`
-	ListenerId      *string        `pulumi:"listenerId"`
 	ListenerIds     []string       `pulumi:"listenerIds"`
 	LoadBalancerIds []string       `pulumi:"loadBalancerIds"`
 	NameRegex       *string        `pulumi:"nameRegex"`

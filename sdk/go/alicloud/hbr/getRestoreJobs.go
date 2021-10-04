@@ -60,21 +60,21 @@ func GetRestoreJobs(ctx *pulumi.Context, args *GetRestoreJobsArgs, opts ...pulum
 // A collection of arguments for invoking getRestoreJobs.
 type GetRestoreJobsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
-	// The restore id.
+	// The ID of restore job.
 	RestoreIds []string `pulumi:"restoreIds"`
-	// The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 	RestoreType string `pulumi:"restoreType"`
-	// The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 	SourceTypes []string `pulumi:"sourceTypes"`
-	// The Restore Job Status.
+	// The status of restore job.
 	Status *string `pulumi:"status"`
-	// The Target ofo OSS Bucket Name.
+	// The name of target ofo OSS bucket.
 	TargetBuckets []string `pulumi:"targetBuckets"`
-	// The Destination File System ID.
+	// The ID of destination file system.
 	TargetFileSystemIds []string `pulumi:"targetFileSystemIds"`
-	// Objective to ECS Instance Id.
+	// The ID of target ECS instance.
 	TargetInstanceIds []string `pulumi:"targetInstanceIds"`
-	// The ID of Vault.
+	// The ID of backup vault.
 	VaultIds []string `pulumi:"vaultIds"`
 }
 

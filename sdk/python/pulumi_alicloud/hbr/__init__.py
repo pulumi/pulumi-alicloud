@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .ecs_backup_client import *
 from .ecs_backup_plan import *
+from .get_backup_jobs import *
 from .get_ecs_backup_clients import *
 from .get_ecs_backup_plans import *
 from .get_nas_backup_plans import *
@@ -16,6 +17,7 @@ from .nas_backup_plan import *
 from .oss_backup_plan import *
 from .restore_job import *
 from .vault import *
+from ._inputs import *
 from . import outputs
 
 def _register_module():

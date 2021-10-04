@@ -55,35 +55,35 @@ export function getRestoreJobs(args: GetRestoreJobsArgs, opts?: pulumi.InvokeOpt
 export interface GetRestoreJobsArgs {
     readonly outputFile?: string;
     /**
-     * The restore id.
+     * The ID of restore job.
      */
     readonly restoreIds?: string[];
     /**
-     * The Recovery Destination Types. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
      */
     readonly restoreType: string;
     /**
-     * The Type of Data Source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
      */
     readonly sourceTypes?: string[];
     /**
-     * The Restore Job Status.
+     * The status of restore job.
      */
     readonly status?: string;
     /**
-     * The Target ofo OSS Bucket Name.
+     * The name of target ofo OSS bucket.
      */
     readonly targetBuckets?: string[];
     /**
-     * The Destination File System ID.
+     * The ID of destination file system.
      */
     readonly targetFileSystemIds?: string[];
     /**
-     * Objective to ECS Instance Id.
+     * The ID of target ECS instance.
      */
     readonly targetInstanceIds?: string[];
     /**
-     * The ID of Vault.
+     * The ID of backup vault.
      */
     readonly vaultIds?: string[];
 }

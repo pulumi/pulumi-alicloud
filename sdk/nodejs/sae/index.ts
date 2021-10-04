@@ -9,13 +9,16 @@ export * from "./application";
 export * from "./configMap";
 export * from "./getApplications";
 export * from "./getConfigMaps";
+export * from "./getIngresses";
 export * from "./getNamespaces";
 export * from "./getService";
+export * from "./ingress";
 export * from "./namespace";
 
 // Import resources to register:
 import { Application } from "./application";
 import { ConfigMap } from "./configMap";
+import { Ingress } from "./ingress";
 import { Namespace } from "./namespace";
 
 const _module = {
@@ -26,6 +29,8 @@ const _module = {
                 return new Application(name, <any>undefined, { urn })
             case "alicloud:sae/configMap:ConfigMap":
                 return new ConfigMap(name, <any>undefined, { urn })
+            case "alicloud:sae/ingress:Ingress":
+                return new Ingress(name, <any>undefined, { urn })
             case "alicloud:sae/namespace:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
             default:
@@ -35,4 +40,5 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "sae/application", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sae/configMap", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sae/ingress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sae/namespace", _module)

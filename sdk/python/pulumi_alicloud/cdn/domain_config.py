@@ -75,11 +75,11 @@ class _DomainConfigState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DomainConfig resources.
-        :param pulumi.Input[str] config_id: The ID of the function.
+        :param pulumi.Input[str] config_id: (Available in 1.132.0+) The ID of the domain config function.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config.
         :param pulumi.Input[str] function_name: The name of the domain config.
-        :param pulumi.Input[str] status: The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        :param pulumi.Input[str] status: (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
         """
         if config_id is not None:
             pulumi.set(__self__, "config_id", config_id)
@@ -96,7 +96,7 @@ class _DomainConfigState:
     @pulumi.getter(name="configId")
     def config_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the function.
+        (Available in 1.132.0+) The ID of the domain config function.
         """
         return pulumi.get(self, "config_id")
 
@@ -144,7 +144,7 @@ class _DomainConfigState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
         """
         return pulumi.get(self, "status")
 
@@ -333,11 +333,11 @@ class DomainConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] config_id: The ID of the function.
+        :param pulumi.Input[str] config_id: (Available in 1.132.0+) The ID of the domain config function.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config.
         :param pulumi.Input[str] function_name: The name of the domain config.
-        :param pulumi.Input[str] status: The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        :param pulumi.Input[str] status: (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -354,7 +354,7 @@ class DomainConfig(pulumi.CustomResource):
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Output[str]:
         """
-        The ID of the function.
+        (Available in 1.132.0+) The ID of the domain config function.
         """
         return pulumi.get(self, "config_id")
 
@@ -386,7 +386,7 @@ class DomainConfig(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
         """
         return pulumi.get(self, "status")
 

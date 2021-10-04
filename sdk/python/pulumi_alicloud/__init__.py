@@ -6,10 +6,12 @@
 from .get_account import *
 from .get_caller_identity import *
 from .get_file_crc64_checksum import *
-from .get_msc_sub_contracts import *
+from .get_msc_sub_contacts import *
+from .get_msc_sub_subscriptions import *
 from .get_regions import *
 from .get_zones import *
 from .msc_sub_contract import *
+from .msc_sub_subscription import *
 from .provider import *
 from ._inputs import *
 from . import outputs
@@ -31,13 +33,18 @@ from . import (
     cdn,
     cen,
     cfg,
+    clickhouse,
+    cloudauth,
     cloudconnect,
     cloudfirewall,
+    cloudsso,
     cloudstoragegateway,
     cms,
     config,
     cr,
     cs,
+    databasefilesystem,
+    databasegateway,
     datahub,
     dataworks,
     dcdn,
@@ -48,6 +55,8 @@ from . import (
     dms,
     dns,
     drds,
+    dts,
+    eais,
     eci,
     ecp,
     ecs,
@@ -65,8 +74,11 @@ from . import (
     fnf,
     ga,
     gpdb,
+    graphdatabase,
     hbase,
     hbr,
+    imm,
+    imp,
     iot,
     kms,
     kvstore,
@@ -74,18 +86,22 @@ from . import (
     log,
     marketplace,
     maxcompute,
+    mhub,
     mns,
     mongodb,
     mse,
     nas,
     oos,
+    opensearch,
     oss,
     ots,
     polardb,
     privatelink,
     pvtz,
+    quickbi,
     quotas,
     ram,
+    rdc,
     rds,
     resourcemanager,
     rocketmq,
@@ -95,9 +111,12 @@ from . import (
     scdn,
     sddp,
     securitycenter,
+    servicemesh,
+    simpleapplicationserver,
     slb,
     tsdb,
     videosurveillance,
+    vod,
     vpc,
     vpn,
     waf,
@@ -118,12 +137,15 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:index/mscSubContract:MscSubContract":
                 return MscSubContract(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:index/mscSubSubscription:MscSubSubscription":
+                return MscSubSubscription(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "index/mscSubContract", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "index/mscSubSubscription", _module_instance)
 
 
     class Package(pulumi.runtime.ResourcePackage):

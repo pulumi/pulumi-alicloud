@@ -122,7 +122,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */

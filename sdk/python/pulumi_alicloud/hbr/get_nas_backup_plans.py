@@ -130,10 +130,10 @@ def get_nas_backup_plans(file_system_id: Optional[str] = None,
     ```
 
 
-    :param str file_system_id: The File System ID.
+    :param str file_system_id: The File System ID of Nas.
     :param Sequence[str] ids: A list of NasBackupPlan IDs.
     :param str name_regex: A regex string to filter results by NasBackupPlan name.
-    :param str vault_id: The Vault ID of the EcsBackupPlan used.
+    :param str vault_id: The backup vault ID of the NasBackupPlan used.
     """
     __args__ = dict()
     __args__['fileSystemId'] = file_system_id

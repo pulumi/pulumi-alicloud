@@ -32,6 +32,7 @@ export class CopyImage extends pulumi.CustomResource {
         return obj['__pulumiType'] === CopyImage.__pulumiType;
     }
 
+    public readonly deleteAutoSnapshot!: pulumi.Output<boolean | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly encrypted!: pulumi.Output<boolean | undefined>;
     public readonly force!: pulumi.Output<boolean | undefined>;
@@ -58,6 +59,7 @@ export class CopyImage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CopyImageState | undefined;
+            inputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["encrypted"] = state ? state.encrypted : undefined;
             inputs["force"] = state ? state.force : undefined;
@@ -75,6 +77,7 @@ export class CopyImage extends pulumi.CustomResource {
             if ((!args || args.sourceRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceRegionId'");
             }
+            inputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["encrypted"] = args ? args.encrypted : undefined;
             inputs["force"] = args ? args.force : undefined;
@@ -96,6 +99,7 @@ export class CopyImage extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CopyImage resources.
  */
 export interface CopyImageState {
+    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
     readonly encrypted?: pulumi.Input<boolean>;
     readonly force?: pulumi.Input<boolean>;
@@ -114,6 +118,7 @@ export interface CopyImageState {
  * The set of arguments for constructing a CopyImage resource.
  */
 export interface CopyImageArgs {
+    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
     readonly encrypted?: pulumi.Input<boolean>;
     readonly force?: pulumi.Input<boolean>;

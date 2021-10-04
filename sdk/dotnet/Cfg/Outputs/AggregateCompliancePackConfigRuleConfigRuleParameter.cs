@@ -16,17 +16,17 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// <summary>
         /// The Parameter Name.
         /// </summary>
-        public readonly string ParameterName;
+        public readonly string? ParameterName;
         /// <summary>
         /// The Parameter Value.
         /// </summary>
-        public readonly string ParameterValue;
+        public readonly string? ParameterValue;
 
         [OutputConstructor]
         private AggregateCompliancePackConfigRuleConfigRuleParameter(
-            string parameterName,
+            string? parameterName,
 
-            string parameterValue)
+            string? parameterValue)
         {
             ParameterName = parameterName;
             ParameterValue = parameterValue;

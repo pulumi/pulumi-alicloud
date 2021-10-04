@@ -62,7 +62,8 @@ type Image struct {
 	pulumi.CustomResourceState
 
 	// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
-	Architecture pulumi.StringPtrOutput `pulumi:"architecture"`
+	Architecture       pulumi.StringPtrOutput `pulumi:"architecture"`
+	DeleteAutoSnapshot pulumi.BoolPtrOutput   `pulumi:"deleteAutoSnapshot"`
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Description of the system with disks and snapshots under the image.
@@ -117,7 +118,8 @@ func GetImage(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Image resources.
 type imageState struct {
 	// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
-	Architecture *string `pulumi:"architecture"`
+	Architecture       *string `pulumi:"architecture"`
+	DeleteAutoSnapshot *bool   `pulumi:"deleteAutoSnapshot"`
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description *string `pulumi:"description"`
 	// Description of the system with disks and snapshots under the image.
@@ -144,7 +146,8 @@ type imageState struct {
 
 type ImageState struct {
 	// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
-	Architecture pulumi.StringPtrInput
+	Architecture       pulumi.StringPtrInput
+	DeleteAutoSnapshot pulumi.BoolPtrInput
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description pulumi.StringPtrInput
 	// Description of the system with disks and snapshots under the image.
@@ -175,7 +178,8 @@ func (ImageState) ElementType() reflect.Type {
 
 type imageArgs struct {
 	// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
-	Architecture *string `pulumi:"architecture"`
+	Architecture       *string `pulumi:"architecture"`
+	DeleteAutoSnapshot *bool   `pulumi:"deleteAutoSnapshot"`
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description *string `pulumi:"description"`
 	// Description of the system with disks and snapshots under the image.
@@ -203,7 +207,8 @@ type imageArgs struct {
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
 	// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
-	Architecture pulumi.StringPtrInput
+	Architecture       pulumi.StringPtrInput
+	DeleteAutoSnapshot pulumi.BoolPtrInput
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 	Description pulumi.StringPtrInput
 	// Description of the system with disks and snapshots under the image.

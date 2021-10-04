@@ -20,8 +20,14 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:rds/getZones:getZones", {
+        "category": args.category,
+        "dbInstanceClass": args.dbInstanceClass,
+        "dbInstanceStorageType": args.dbInstanceStorageType,
+        "engine": args.engine,
+        "engineVersion": args.engineVersion,
         "instanceChargeType": args.instanceChargeType,
         "multi": args.multi,
+        "multiZone": args.multiZone,
         "outputFile": args.outputFile,
     }, opts);
 }
@@ -31,13 +37,34 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetZonesArgs {
     /**
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     */
+    readonly category?: string;
+    readonly dbInstanceClass?: string;
+    /**
+     * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
+     */
+    readonly dbInstanceStorageType?: string;
+    /**
+     * Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+     */
+    readonly engine?: string;
+    /**
+     * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+     */
+    readonly engineVersion?: string;
+    /**
      * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
     readonly instanceChargeType?: string;
     /**
-     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
      */
     readonly multi?: boolean;
+    /**
+     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+     */
+    readonly multiZone?: boolean;
     readonly outputFile?: string;
 }
 
@@ -45,6 +72,11 @@ export interface GetZonesArgs {
  * A collection of values returned by getZones.
  */
 export interface GetZonesResult {
+    readonly category?: string;
+    readonly dbInstanceClass?: string;
+    readonly dbInstanceStorageType?: string;
+    readonly engine?: string;
+    readonly engineVersion?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -55,6 +87,7 @@ export interface GetZonesResult {
     readonly ids: string[];
     readonly instanceChargeType?: string;
     readonly multi?: boolean;
+    readonly multiZone?: boolean;
     readonly outputFile?: string;
     /**
      * A list of availability zones. Each element contains the following attributes:

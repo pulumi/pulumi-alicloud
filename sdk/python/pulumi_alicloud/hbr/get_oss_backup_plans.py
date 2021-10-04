@@ -130,10 +130,10 @@ def get_oss_backup_plans(bucket: Optional[str] = None,
     ```
 
 
-    :param str bucket: The OSS Bucket Name.
+    :param str bucket: The name of OSS bucket.
     :param Sequence[str] ids: A list of OssBackupPlan IDs.
     :param str name_regex: A regex string to filter results by OssBackupPlan name.
-    :param str vault_id: Vault ID.
+    :param str vault_id: The ID of backup vault.
     """
     __args__ = dict()
     __args__['bucket'] = bucket

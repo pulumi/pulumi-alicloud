@@ -24,16 +24,49 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        /// </summary>
+        [Input("category")]
+        public string? Category { get; set; }
+
+        [Input("dbInstanceClass")]
+        public string? DbInstanceClass { get; set; }
+
+        /// <summary>
+        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+        /// </summary>
+        [Input("dbInstanceStorageType")]
+        public string? DbInstanceStorageType { get; set; }
+
+        /// <summary>
+        /// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+        /// </summary>
+        [Input("engine")]
+        public string? Engine { get; set; }
+
+        /// <summary>
+        /// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        /// </summary>
+        [Input("engineVersion")]
+        public string? EngineVersion { get; set; }
+
+        /// <summary>
         /// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
         /// </summary>
         [Input("instanceChargeType")]
         public string? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+        /// It has been deprecated from version 1.137.0 and using `multi_zone` instead.
         /// </summary>
         [Input("multi")]
         public bool? Multi { get; set; }
+
+        /// <summary>
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+        /// </summary>
+        [Input("multiZone")]
+        public bool? MultiZone { get; set; }
 
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -47,6 +80,11 @@ namespace Pulumi.AliCloud.Rds
     [OutputType]
     public sealed class GetZonesResult
     {
+        public readonly string? Category;
+        public readonly string? DbInstanceClass;
+        public readonly string? DbInstanceStorageType;
+        public readonly string? Engine;
+        public readonly string? EngineVersion;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -57,6 +95,7 @@ namespace Pulumi.AliCloud.Rds
         public readonly ImmutableArray<string> Ids;
         public readonly string? InstanceChargeType;
         public readonly bool? Multi;
+        public readonly bool? MultiZone;
         public readonly string? OutputFile;
         /// <summary>
         /// A list of availability zones. Each element contains the following attributes:
@@ -65,6 +104,16 @@ namespace Pulumi.AliCloud.Rds
 
         [OutputConstructor]
         private GetZonesResult(
+            string? category,
+
+            string? dbInstanceClass,
+
+            string? dbInstanceStorageType,
+
+            string? engine,
+
+            string? engineVersion,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -73,14 +122,22 @@ namespace Pulumi.AliCloud.Rds
 
             bool? multi,
 
+            bool? multiZone,
+
             string? outputFile,
 
             ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
+            Category = category;
+            DbInstanceClass = dbInstanceClass;
+            DbInstanceStorageType = dbInstanceStorageType;
+            Engine = engine;
+            EngineVersion = engineVersion;
             Id = id;
             Ids = ids;
             InstanceChargeType = instanceChargeType;
             Multi = multi;
+            MultiZone = multiZone;
             OutputFile = outputFile;
             Zones = zones;
         }

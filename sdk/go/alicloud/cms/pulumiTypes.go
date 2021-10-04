@@ -1307,6 +1307,897 @@ func (o GroupMetricRuleEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type MetricRuleTemplateAlertTemplate struct {
+	// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+	Category string `pulumi:"category"`
+	// The information about the trigger condition based on the alert level. See the following `Block escalations`.
+	Escalations *MetricRuleTemplateAlertTemplateEscalations `pulumi:"escalations"`
+	// The name of the metric.
+	MetricName string `pulumi:"metricName"`
+	// The namespace of the service.
+	Namespace string `pulumi:"namespace"`
+	// The name of the alert rule.
+	RuleName string `pulumi:"ruleName"`
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+	Webhook *string `pulumi:"webhook"`
+}
+
+// MetricRuleTemplateAlertTemplateInput is an input type that accepts MetricRuleTemplateAlertTemplateArgs and MetricRuleTemplateAlertTemplateOutput values.
+// You can construct a concrete instance of `MetricRuleTemplateAlertTemplateInput` via:
+//
+//          MetricRuleTemplateAlertTemplateArgs{...}
+type MetricRuleTemplateAlertTemplateInput interface {
+	pulumi.Input
+
+	ToMetricRuleTemplateAlertTemplateOutput() MetricRuleTemplateAlertTemplateOutput
+	ToMetricRuleTemplateAlertTemplateOutputWithContext(context.Context) MetricRuleTemplateAlertTemplateOutput
+}
+
+type MetricRuleTemplateAlertTemplateArgs struct {
+	// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The information about the trigger condition based on the alert level. See the following `Block escalations`.
+	Escalations MetricRuleTemplateAlertTemplateEscalationsPtrInput `pulumi:"escalations"`
+	// The name of the metric.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The namespace of the service.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The name of the alert rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+	Webhook pulumi.StringPtrInput `pulumi:"webhook"`
+}
+
+func (MetricRuleTemplateAlertTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleTemplateAlertTemplate)(nil)).Elem()
+}
+
+func (i MetricRuleTemplateAlertTemplateArgs) ToMetricRuleTemplateAlertTemplateOutput() MetricRuleTemplateAlertTemplateOutput {
+	return i.ToMetricRuleTemplateAlertTemplateOutputWithContext(context.Background())
+}
+
+func (i MetricRuleTemplateAlertTemplateArgs) ToMetricRuleTemplateAlertTemplateOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateOutput)
+}
+
+// MetricRuleTemplateAlertTemplateArrayInput is an input type that accepts MetricRuleTemplateAlertTemplateArray and MetricRuleTemplateAlertTemplateArrayOutput values.
+// You can construct a concrete instance of `MetricRuleTemplateAlertTemplateArrayInput` via:
+//
+//          MetricRuleTemplateAlertTemplateArray{ MetricRuleTemplateAlertTemplateArgs{...} }
+type MetricRuleTemplateAlertTemplateArrayInput interface {
+	pulumi.Input
+
+	ToMetricRuleTemplateAlertTemplateArrayOutput() MetricRuleTemplateAlertTemplateArrayOutput
+	ToMetricRuleTemplateAlertTemplateArrayOutputWithContext(context.Context) MetricRuleTemplateAlertTemplateArrayOutput
+}
+
+type MetricRuleTemplateAlertTemplateArray []MetricRuleTemplateAlertTemplateInput
+
+func (MetricRuleTemplateAlertTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRuleTemplateAlertTemplate)(nil)).Elem()
+}
+
+func (i MetricRuleTemplateAlertTemplateArray) ToMetricRuleTemplateAlertTemplateArrayOutput() MetricRuleTemplateAlertTemplateArrayOutput {
+	return i.ToMetricRuleTemplateAlertTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i MetricRuleTemplateAlertTemplateArray) ToMetricRuleTemplateAlertTemplateArrayOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateArrayOutput)
+}
+
+type MetricRuleTemplateAlertTemplateOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleTemplateAlertTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleTemplateAlertTemplate)(nil)).Elem()
+}
+
+func (o MetricRuleTemplateAlertTemplateOutput) ToMetricRuleTemplateAlertTemplateOutput() MetricRuleTemplateAlertTemplateOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateOutput) ToMetricRuleTemplateAlertTemplateOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateOutput {
+	return o
+}
+
+// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+func (o MetricRuleTemplateAlertTemplateOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The information about the trigger condition based on the alert level. See the following `Block escalations`.
+func (o MetricRuleTemplateAlertTemplateOutput) Escalations() MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) *MetricRuleTemplateAlertTemplateEscalations {
+		return v.Escalations
+	}).(MetricRuleTemplateAlertTemplateEscalationsPtrOutput)
+}
+
+// The name of the metric.
+func (o MetricRuleTemplateAlertTemplateOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The namespace of the service.
+func (o MetricRuleTemplateAlertTemplateOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The name of the alert rule.
+func (o MetricRuleTemplateAlertTemplateOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+func (o MetricRuleTemplateAlertTemplateOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) *string { return v.Webhook }).(pulumi.StringPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleTemplateAlertTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRuleTemplateAlertTemplate)(nil)).Elem()
+}
+
+func (o MetricRuleTemplateAlertTemplateArrayOutput) ToMetricRuleTemplateAlertTemplateArrayOutput() MetricRuleTemplateAlertTemplateArrayOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateArrayOutput) ToMetricRuleTemplateAlertTemplateArrayOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateArrayOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateArrayOutput) Index(i pulumi.IntInput) MetricRuleTemplateAlertTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRuleTemplateAlertTemplate {
+		return vs[0].([]MetricRuleTemplateAlertTemplate)[vs[1].(int)]
+	}).(MetricRuleTemplateAlertTemplateOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalations struct {
+	// The condition for triggering critical-level alerts. See the following `Block critical`.
+	Critical *MetricRuleTemplateAlertTemplateEscalationsCritical `pulumi:"critical"`
+	// The condition for triggering info-level alerts. See the following `Block info`.
+	Info *MetricRuleTemplateAlertTemplateEscalationsInfo `pulumi:"info"`
+	// The condition for triggering warn-level alerts. See the following `Block warn`.
+	Warn *MetricRuleTemplateAlertTemplateEscalationsWarn `pulumi:"warn"`
+}
+
+// MetricRuleTemplateAlertTemplateEscalationsInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsArgs and MetricRuleTemplateAlertTemplateEscalationsOutput values.
+// You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsInput` via:
+//
+//          MetricRuleTemplateAlertTemplateEscalationsArgs{...}
+type MetricRuleTemplateAlertTemplateEscalationsInput interface {
+	pulumi.Input
+
+	ToMetricRuleTemplateAlertTemplateEscalationsOutput() MetricRuleTemplateAlertTemplateEscalationsOutput
+	ToMetricRuleTemplateAlertTemplateEscalationsOutputWithContext(context.Context) MetricRuleTemplateAlertTemplateEscalationsOutput
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsArgs struct {
+	// The condition for triggering critical-level alerts. See the following `Block critical`.
+	Critical MetricRuleTemplateAlertTemplateEscalationsCriticalPtrInput `pulumi:"critical"`
+	// The condition for triggering info-level alerts. See the following `Block info`.
+	Info MetricRuleTemplateAlertTemplateEscalationsInfoPtrInput `pulumi:"info"`
+	// The condition for triggering warn-level alerts. See the following `Block warn`.
+	Warn MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput `pulumi:"warn"`
+}
+
+func (MetricRuleTemplateAlertTemplateEscalationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalations)(nil)).Elem()
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsArgs) ToMetricRuleTemplateAlertTemplateEscalationsOutput() MetricRuleTemplateAlertTemplateEscalationsOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsOutputWithContext(context.Background())
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsArgs) ToMetricRuleTemplateAlertTemplateEscalationsOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsOutput)
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsArgs) ToMetricRuleTemplateAlertTemplateEscalationsPtrOutput() MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(context.Background())
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsArgs) ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsOutput).ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(ctx)
+}
+
+// MetricRuleTemplateAlertTemplateEscalationsPtrInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsArgs, MetricRuleTemplateAlertTemplateEscalationsPtr and MetricRuleTemplateAlertTemplateEscalationsPtrOutput values.
+// You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsPtrInput` via:
+//
+//          MetricRuleTemplateAlertTemplateEscalationsArgs{...}
+//
+//  or:
+//
+//          nil
+type MetricRuleTemplateAlertTemplateEscalationsPtrInput interface {
+	pulumi.Input
+
+	ToMetricRuleTemplateAlertTemplateEscalationsPtrOutput() MetricRuleTemplateAlertTemplateEscalationsPtrOutput
+	ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(context.Context) MetricRuleTemplateAlertTemplateEscalationsPtrOutput
+}
+
+type metricRuleTemplateAlertTemplateEscalationsPtrType MetricRuleTemplateAlertTemplateEscalationsArgs
+
+func MetricRuleTemplateAlertTemplateEscalationsPtr(v *MetricRuleTemplateAlertTemplateEscalationsArgs) MetricRuleTemplateAlertTemplateEscalationsPtrInput {
+	return (*metricRuleTemplateAlertTemplateEscalationsPtrType)(v)
+}
+
+func (*metricRuleTemplateAlertTemplateEscalationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRuleTemplateAlertTemplateEscalations)(nil)).Elem()
+}
+
+func (i *metricRuleTemplateAlertTemplateEscalationsPtrType) ToMetricRuleTemplateAlertTemplateEscalationsPtrOutput() MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(context.Background())
+}
+
+func (i *metricRuleTemplateAlertTemplateEscalationsPtrType) ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleTemplateAlertTemplateEscalationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalations)(nil)).Elem()
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsOutput) ToMetricRuleTemplateAlertTemplateEscalationsOutput() MetricRuleTemplateAlertTemplateEscalationsOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsOutput) ToMetricRuleTemplateAlertTemplateEscalationsOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsOutput) ToMetricRuleTemplateAlertTemplateEscalationsPtrOutput() MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
+	return o.ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(context.Background())
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsOutput) ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalations {
+		return &v
+	}).(MetricRuleTemplateAlertTemplateEscalationsPtrOutput)
+}
+
+// The condition for triggering critical-level alerts. See the following `Block critical`.
+func (o MetricRuleTemplateAlertTemplateEscalationsOutput) Critical() MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsCritical {
+		return v.Critical
+	}).(MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput)
+}
+
+// The condition for triggering info-level alerts. See the following `Block info`.
+func (o MetricRuleTemplateAlertTemplateEscalationsOutput) Info() MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsInfo {
+		return v.Info
+	}).(MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput)
+}
+
+// The condition for triggering warn-level alerts. See the following `Block warn`.
+func (o MetricRuleTemplateAlertTemplateEscalationsOutput) Warn() MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsWarn {
+		return v.Warn
+	}).(MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleTemplateAlertTemplateEscalationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRuleTemplateAlertTemplateEscalations)(nil)).Elem()
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsPtrOutput() MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalations) MetricRuleTemplateAlertTemplateEscalations {
+		return *v
+	}).(MetricRuleTemplateAlertTemplateEscalationsOutput)
+}
+
+// The condition for triggering critical-level alerts. See the following `Block critical`.
+func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Critical() MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsCritical {
+		if v == nil {
+			return nil
+		}
+		return v.Critical
+	}).(MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput)
+}
+
+// The condition for triggering info-level alerts. See the following `Block info`.
+func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Info() MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsInfo {
+		if v == nil {
+			return nil
+		}
+		return v.Info
+	}).(MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput)
+}
+
+// The condition for triggering warn-level alerts. See the following `Block warn`.
+func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Warn() MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsWarn {
+		if v == nil {
+			return nil
+		}
+		return v.Warn
+	}).(MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsCritical struct {
+	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for critical-level alerts.
+	Statistics *string `pulumi:"statistics"`
+	// The threshold for critical-level alerts.
+	Threshold *string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	Times *string `pulumi:"times"`
+}
+
+// MetricRuleTemplateAlertTemplateEscalationsCriticalInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsCriticalArgs and MetricRuleTemplateAlertTemplateEscalationsCriticalOutput values.
+// You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsCriticalInput` via:
+//
+//          MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{...}
+type MetricRuleTemplateAlertTemplateEscalationsCriticalInput interface {
+	pulumi.Input
+
+	ToMetricRuleTemplateAlertTemplateEscalationsCriticalOutput() MetricRuleTemplateAlertTemplateEscalationsCriticalOutput
+	ToMetricRuleTemplateAlertTemplateEscalationsCriticalOutputWithContext(context.Context) MetricRuleTemplateAlertTemplateEscalationsCriticalOutput
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsCriticalArgs struct {
+	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for critical-level alerts.
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// The threshold for critical-level alerts.
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	Times pulumi.StringPtrInput `pulumi:"times"`
+}
+
+func (MetricRuleTemplateAlertTemplateEscalationsCriticalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsCritical)(nil)).Elem()
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsCriticalArgs) ToMetricRuleTemplateAlertTemplateEscalationsCriticalOutput() MetricRuleTemplateAlertTemplateEscalationsCriticalOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsCriticalOutputWithContext(context.Background())
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsCriticalArgs) ToMetricRuleTemplateAlertTemplateEscalationsCriticalOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsCriticalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsCriticalOutput)
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsCriticalArgs) ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput() MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsCriticalArgs) ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsCriticalOutput).ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(ctx)
+}
+
+// MetricRuleTemplateAlertTemplateEscalationsCriticalPtrInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsCriticalArgs, MetricRuleTemplateAlertTemplateEscalationsCriticalPtr and MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput values.
+// You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsCriticalPtrInput` via:
+//
+//          MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{...}
+//
+//  or:
+//
+//          nil
+type MetricRuleTemplateAlertTemplateEscalationsCriticalPtrInput interface {
+	pulumi.Input
+
+	ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput() MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput
+	ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(context.Context) MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput
+}
+
+type metricRuleTemplateAlertTemplateEscalationsCriticalPtrType MetricRuleTemplateAlertTemplateEscalationsCriticalArgs
+
+func MetricRuleTemplateAlertTemplateEscalationsCriticalPtr(v *MetricRuleTemplateAlertTemplateEscalationsCriticalArgs) MetricRuleTemplateAlertTemplateEscalationsCriticalPtrInput {
+	return (*metricRuleTemplateAlertTemplateEscalationsCriticalPtrType)(v)
+}
+
+func (*metricRuleTemplateAlertTemplateEscalationsCriticalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRuleTemplateAlertTemplateEscalationsCritical)(nil)).Elem()
+}
+
+func (i *metricRuleTemplateAlertTemplateEscalationsCriticalPtrType) ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput() MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i *metricRuleTemplateAlertTemplateEscalationsCriticalPtrType) ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsCriticalOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsCritical)(nil)).Elem()
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ToMetricRuleTemplateAlertTemplateEscalationsCriticalOutput() MetricRuleTemplateAlertTemplateEscalationsCriticalOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ToMetricRuleTemplateAlertTemplateEscalationsCriticalOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsCriticalOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput() MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
+	return o.ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(context.Background())
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsCritical) *MetricRuleTemplateAlertTemplateEscalationsCritical {
+		return &v
+	}).(MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput)
+}
+
+// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsCritical) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsCritical) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// The threshold for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsCritical) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) Times() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsCritical) *string { return v.Times }).(pulumi.StringPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRuleTemplateAlertTemplateEscalationsCritical)(nil)).Elem()
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput() MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsCriticalOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsCritical) MetricRuleTemplateAlertTemplateEscalationsCritical {
+		return *v
+	}).(MetricRuleTemplateAlertTemplateEscalationsCriticalOutput)
+}
+
+// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Statistics
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Times() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Times
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsInfo struct {
+	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for critical-level alerts.
+	Statistics *string `pulumi:"statistics"`
+	// The threshold for critical-level alerts.
+	Threshold *string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	Times *string `pulumi:"times"`
+}
+
+// MetricRuleTemplateAlertTemplateEscalationsInfoInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsInfoArgs and MetricRuleTemplateAlertTemplateEscalationsInfoOutput values.
+// You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsInfoInput` via:
+//
+//          MetricRuleTemplateAlertTemplateEscalationsInfoArgs{...}
+type MetricRuleTemplateAlertTemplateEscalationsInfoInput interface {
+	pulumi.Input
+
+	ToMetricRuleTemplateAlertTemplateEscalationsInfoOutput() MetricRuleTemplateAlertTemplateEscalationsInfoOutput
+	ToMetricRuleTemplateAlertTemplateEscalationsInfoOutputWithContext(context.Context) MetricRuleTemplateAlertTemplateEscalationsInfoOutput
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsInfoArgs struct {
+	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for critical-level alerts.
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// The threshold for critical-level alerts.
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	Times pulumi.StringPtrInput `pulumi:"times"`
+}
+
+func (MetricRuleTemplateAlertTemplateEscalationsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsInfo)(nil)).Elem()
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsInfoArgs) ToMetricRuleTemplateAlertTemplateEscalationsInfoOutput() MetricRuleTemplateAlertTemplateEscalationsInfoOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsInfoOutputWithContext(context.Background())
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsInfoArgs) ToMetricRuleTemplateAlertTemplateEscalationsInfoOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsInfoOutput)
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsInfoArgs) ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput() MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsInfoArgs) ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsInfoOutput).ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(ctx)
+}
+
+// MetricRuleTemplateAlertTemplateEscalationsInfoPtrInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsInfoArgs, MetricRuleTemplateAlertTemplateEscalationsInfoPtr and MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput values.
+// You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsInfoPtrInput` via:
+//
+//          MetricRuleTemplateAlertTemplateEscalationsInfoArgs{...}
+//
+//  or:
+//
+//          nil
+type MetricRuleTemplateAlertTemplateEscalationsInfoPtrInput interface {
+	pulumi.Input
+
+	ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput() MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput
+	ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(context.Context) MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput
+}
+
+type metricRuleTemplateAlertTemplateEscalationsInfoPtrType MetricRuleTemplateAlertTemplateEscalationsInfoArgs
+
+func MetricRuleTemplateAlertTemplateEscalationsInfoPtr(v *MetricRuleTemplateAlertTemplateEscalationsInfoArgs) MetricRuleTemplateAlertTemplateEscalationsInfoPtrInput {
+	return (*metricRuleTemplateAlertTemplateEscalationsInfoPtrType)(v)
+}
+
+func (*metricRuleTemplateAlertTemplateEscalationsInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRuleTemplateAlertTemplateEscalationsInfo)(nil)).Elem()
+}
+
+func (i *metricRuleTemplateAlertTemplateEscalationsInfoPtrType) ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput() MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *metricRuleTemplateAlertTemplateEscalationsInfoPtrType) ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsInfoOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsInfo)(nil)).Elem()
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ToMetricRuleTemplateAlertTemplateEscalationsInfoOutput() MetricRuleTemplateAlertTemplateEscalationsInfoOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ToMetricRuleTemplateAlertTemplateEscalationsInfoOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsInfoOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput() MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
+	return o.ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(context.Background())
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsInfo) *MetricRuleTemplateAlertTemplateEscalationsInfo {
+		return &v
+	}).(MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput)
+}
+
+// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsInfo) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsInfo) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// The threshold for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsInfo) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) Times() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsInfo) *string { return v.Times }).(pulumi.StringPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRuleTemplateAlertTemplateEscalationsInfo)(nil)).Elem()
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput() MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsInfoOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsInfo) MetricRuleTemplateAlertTemplateEscalationsInfo {
+		return *v
+	}).(MetricRuleTemplateAlertTemplateEscalationsInfoOutput)
+}
+
+// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Statistics
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Times() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Times
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsWarn struct {
+	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for critical-level alerts.
+	Statistics *string `pulumi:"statistics"`
+	// The threshold for critical-level alerts.
+	Threshold *string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	Times *string `pulumi:"times"`
+}
+
+// MetricRuleTemplateAlertTemplateEscalationsWarnInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsWarnArgs and MetricRuleTemplateAlertTemplateEscalationsWarnOutput values.
+// You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsWarnInput` via:
+//
+//          MetricRuleTemplateAlertTemplateEscalationsWarnArgs{...}
+type MetricRuleTemplateAlertTemplateEscalationsWarnInput interface {
+	pulumi.Input
+
+	ToMetricRuleTemplateAlertTemplateEscalationsWarnOutput() MetricRuleTemplateAlertTemplateEscalationsWarnOutput
+	ToMetricRuleTemplateAlertTemplateEscalationsWarnOutputWithContext(context.Context) MetricRuleTemplateAlertTemplateEscalationsWarnOutput
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsWarnArgs struct {
+	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for critical-level alerts.
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// The threshold for critical-level alerts.
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	Times pulumi.StringPtrInput `pulumi:"times"`
+}
+
+func (MetricRuleTemplateAlertTemplateEscalationsWarnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsWarn)(nil)).Elem()
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsWarnArgs) ToMetricRuleTemplateAlertTemplateEscalationsWarnOutput() MetricRuleTemplateAlertTemplateEscalationsWarnOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsWarnOutputWithContext(context.Background())
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsWarnArgs) ToMetricRuleTemplateAlertTemplateEscalationsWarnOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsWarnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsWarnOutput)
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsWarnArgs) ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput() MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(context.Background())
+}
+
+func (i MetricRuleTemplateAlertTemplateEscalationsWarnArgs) ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsWarnOutput).ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(ctx)
+}
+
+// MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsWarnArgs, MetricRuleTemplateAlertTemplateEscalationsWarnPtr and MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput values.
+// You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput` via:
+//
+//          MetricRuleTemplateAlertTemplateEscalationsWarnArgs{...}
+//
+//  or:
+//
+//          nil
+type MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput interface {
+	pulumi.Input
+
+	ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput() MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput
+	ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(context.Context) MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput
+}
+
+type metricRuleTemplateAlertTemplateEscalationsWarnPtrType MetricRuleTemplateAlertTemplateEscalationsWarnArgs
+
+func MetricRuleTemplateAlertTemplateEscalationsWarnPtr(v *MetricRuleTemplateAlertTemplateEscalationsWarnArgs) MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput {
+	return (*metricRuleTemplateAlertTemplateEscalationsWarnPtrType)(v)
+}
+
+func (*metricRuleTemplateAlertTemplateEscalationsWarnPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRuleTemplateAlertTemplateEscalationsWarn)(nil)).Elem()
+}
+
+func (i *metricRuleTemplateAlertTemplateEscalationsWarnPtrType) ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput() MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
+	return i.ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(context.Background())
+}
+
+func (i *metricRuleTemplateAlertTemplateEscalationsWarnPtrType) ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsWarnOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsWarn)(nil)).Elem()
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ToMetricRuleTemplateAlertTemplateEscalationsWarnOutput() MetricRuleTemplateAlertTemplateEscalationsWarnOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ToMetricRuleTemplateAlertTemplateEscalationsWarnOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsWarnOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput() MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
+	return o.ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(context.Background())
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsWarn) *MetricRuleTemplateAlertTemplateEscalationsWarn {
+		return &v
+	}).(MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput)
+}
+
+// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsWarn) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsWarn) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// The threshold for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsWarn) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) Times() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsWarn) *string { return v.Times }).(pulumi.StringPtrOutput)
+}
+
+type MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRuleTemplateAlertTemplateEscalationsWarn)(nil)).Elem()
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput() MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
+	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsWarnOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsWarn) MetricRuleTemplateAlertTemplateEscalationsWarn {
+		return *v
+	}).(MetricRuleTemplateAlertTemplateEscalationsWarnOutput)
+}
+
+// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsWarn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsWarn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Statistics
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold for critical-level alerts.
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsWarn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Times() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsWarn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Times
+	}).(pulumi.StringPtrOutput)
+}
+
 type MonitorGroupInstancesInstance struct {
 	// The category of instance.
 	Category string `pulumi:"category"`
@@ -2614,6 +3505,813 @@ func (o GetGroupMetricRulesRuleEscalationWarnArrayOutput) Index(i pulumi.IntInpu
 	}).(GetGroupMetricRulesRuleEscalationWarnOutput)
 }
 
+type GetMetricRuleTemplatesTemplate struct {
+	// The details of alert rules that are generated based on the alert template.
+	AlertTemplates []GetMetricRuleTemplatesTemplateAlertTemplate `pulumi:"alertTemplates"`
+	// The description of the alert template.
+	Description string `pulumi:"description"`
+	// GroupId.
+	GroupId string `pulumi:"groupId"`
+	// The ID of the Metric Rule Template.
+	Id string `pulumi:"id"`
+	// The name of the alert template.
+	MetricRuleTemplateName string `pulumi:"metricRuleTemplateName"`
+	// The version of the alert template.
+	RestVersion string `pulumi:"restVersion"`
+	// The ID of the alert template.
+	TemplateId string `pulumi:"templateId"`
+}
+
+// GetMetricRuleTemplatesTemplateInput is an input type that accepts GetMetricRuleTemplatesTemplateArgs and GetMetricRuleTemplatesTemplateOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateInput` via:
+//
+//          GetMetricRuleTemplatesTemplateArgs{...}
+type GetMetricRuleTemplatesTemplateInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateOutput() GetMetricRuleTemplatesTemplateOutput
+	ToGetMetricRuleTemplatesTemplateOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateOutput
+}
+
+type GetMetricRuleTemplatesTemplateArgs struct {
+	// The details of alert rules that are generated based on the alert template.
+	AlertTemplates GetMetricRuleTemplatesTemplateAlertTemplateArrayInput `pulumi:"alertTemplates"`
+	// The description of the alert template.
+	Description pulumi.StringInput `pulumi:"description"`
+	// GroupId.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The ID of the Metric Rule Template.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the alert template.
+	MetricRuleTemplateName pulumi.StringInput `pulumi:"metricRuleTemplateName"`
+	// The version of the alert template.
+	RestVersion pulumi.StringInput `pulumi:"restVersion"`
+	// The ID of the alert template.
+	TemplateId pulumi.StringInput `pulumi:"templateId"`
+}
+
+func (GetMetricRuleTemplatesTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateArgs) ToGetMetricRuleTemplatesTemplateOutput() GetMetricRuleTemplatesTemplateOutput {
+	return i.ToGetMetricRuleTemplatesTemplateOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateArgs) ToGetMetricRuleTemplatesTemplateOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateOutput)
+}
+
+// GetMetricRuleTemplatesTemplateArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateArray and GetMetricRuleTemplatesTemplateArrayOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateArrayInput` via:
+//
+//          GetMetricRuleTemplatesTemplateArray{ GetMetricRuleTemplatesTemplateArgs{...} }
+type GetMetricRuleTemplatesTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateArrayOutput() GetMetricRuleTemplatesTemplateArrayOutput
+	ToGetMetricRuleTemplatesTemplateArrayOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateArrayOutput
+}
+
+type GetMetricRuleTemplatesTemplateArray []GetMetricRuleTemplatesTemplateInput
+
+func (GetMetricRuleTemplatesTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateArray) ToGetMetricRuleTemplatesTemplateArrayOutput() GetMetricRuleTemplatesTemplateArrayOutput {
+	return i.ToGetMetricRuleTemplatesTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateArray) ToGetMetricRuleTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateArrayOutput)
+}
+
+type GetMetricRuleTemplatesTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateOutput) ToGetMetricRuleTemplatesTemplateOutput() GetMetricRuleTemplatesTemplateOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateOutput) ToGetMetricRuleTemplatesTemplateOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateOutput {
+	return o
+}
+
+// The details of alert rules that are generated based on the alert template.
+func (o GetMetricRuleTemplatesTemplateOutput) AlertTemplates() GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplate) []GetMetricRuleTemplatesTemplateAlertTemplate {
+		return v.AlertTemplates
+	}).(GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput)
+}
+
+// The description of the alert template.
+func (o GetMetricRuleTemplatesTemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// GroupId.
+func (o GetMetricRuleTemplatesTemplateOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplate) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the Metric Rule Template.
+func (o GetMetricRuleTemplatesTemplateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the alert template.
+func (o GetMetricRuleTemplatesTemplateOutput) MetricRuleTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplate) string { return v.MetricRuleTemplateName }).(pulumi.StringOutput)
+}
+
+// The version of the alert template.
+func (o GetMetricRuleTemplatesTemplateOutput) RestVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplate) string { return v.RestVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the alert template.
+func (o GetMetricRuleTemplatesTemplateOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplate) string { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+type GetMetricRuleTemplatesTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateArrayOutput) ToGetMetricRuleTemplatesTemplateArrayOutput() GetMetricRuleTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateArrayOutput) ToGetMetricRuleTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricRuleTemplatesTemplate {
+		return vs[0].([]GetMetricRuleTemplatesTemplate)[vs[1].(int)]
+	}).(GetMetricRuleTemplatesTemplateOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplate struct {
+	// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+	Category string `pulumi:"category"`
+	// The information about the trigger condition based on the alert level.
+	Escalations []GetMetricRuleTemplatesTemplateAlertTemplateEscalation `pulumi:"escalations"`
+	// The name of the metric.
+	MetricName string `pulumi:"metricName"`
+	// The namespace of the service.
+	Namespace string `pulumi:"namespace"`
+	// The name of the alert rule.
+	RuleName string `pulumi:"ruleName"`
+	Selector string `pulumi:"selector"`
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+	Webhook string `pulumi:"webhook"`
+}
+
+// GetMetricRuleTemplatesTemplateAlertTemplateInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateArgs and GetMetricRuleTemplatesTemplateAlertTemplateOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateInput` via:
+//
+//          GetMetricRuleTemplatesTemplateAlertTemplateArgs{...}
+type GetMetricRuleTemplatesTemplateAlertTemplateInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateAlertTemplateOutput() GetMetricRuleTemplatesTemplateAlertTemplateOutput
+	ToGetMetricRuleTemplatesTemplateAlertTemplateOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateAlertTemplateOutput
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateArgs struct {
+	// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The information about the trigger condition based on the alert level.
+	Escalations GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayInput `pulumi:"escalations"`
+	// The name of the metric.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The namespace of the service.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The name of the alert rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	Selector pulumi.StringInput `pulumi:"selector"`
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+	Webhook pulumi.StringInput `pulumi:"webhook"`
+}
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplate)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateArgs) ToGetMetricRuleTemplatesTemplateAlertTemplateOutput() GetMetricRuleTemplatesTemplateAlertTemplateOutput {
+	return i.ToGetMetricRuleTemplatesTemplateAlertTemplateOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateArgs) ToGetMetricRuleTemplatesTemplateAlertTemplateOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateOutput)
+}
+
+// GetMetricRuleTemplatesTemplateAlertTemplateArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateArray and GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateArrayInput` via:
+//
+//          GetMetricRuleTemplatesTemplateAlertTemplateArray{ GetMetricRuleTemplatesTemplateAlertTemplateArgs{...} }
+type GetMetricRuleTemplatesTemplateAlertTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateAlertTemplateArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput
+	ToGetMetricRuleTemplatesTemplateAlertTemplateArrayOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateArray []GetMetricRuleTemplatesTemplateAlertTemplateInput
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplateAlertTemplate)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateArray) ToGetMetricRuleTemplatesTemplateAlertTemplateArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput {
+	return i.ToGetMetricRuleTemplatesTemplateAlertTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateArray) ToGetMetricRuleTemplatesTemplateAlertTemplateArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplate)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateOutput() GetMetricRuleTemplatesTemplateAlertTemplateOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateOutput {
+	return o
+}
+
+// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The information about the trigger condition based on the alert level.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) Escalations() GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) []GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
+		return v.Escalations
+	}).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput)
+}
+
+// The name of the metric.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The namespace of the service.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The name of the alert rule.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) Webhook() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.Webhook }).(pulumi.StringOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplateAlertTemplate)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateAlertTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricRuleTemplatesTemplateAlertTemplate {
+		return vs[0].([]GetMetricRuleTemplatesTemplateAlertTemplate)[vs[1].(int)]
+	}).(GetMetricRuleTemplatesTemplateAlertTemplateOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalation struct {
+	// The condition for triggering critical-level alerts.
+	Criticals []GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical `pulumi:"criticals"`
+	// The condition for triggering info-level alerts.
+	Infos []GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo `pulumi:"infos"`
+	// The condition for triggering warn-level alerts.
+	Warns []GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn `pulumi:"warns"`
+}
+
+// GetMetricRuleTemplatesTemplateAlertTemplateEscalationInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationInput` via:
+//
+//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs{...}
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs struct {
+	// The condition for triggering critical-level alerts.
+	Criticals GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayInput `pulumi:"criticals"`
+	// The condition for triggering info-level alerts.
+	Infos GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput `pulumi:"infos"`
+	// The condition for triggering warn-level alerts.
+	Warns GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput `pulumi:"warns"`
+}
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalation)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput {
+	return i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput)
+}
+
+// GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayInput` via:
+//
+//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs{...} }
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray []GetMetricRuleTemplatesTemplateAlertTemplateEscalationInput
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplateAlertTemplateEscalation)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput {
+	return i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalation)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput {
+	return o
+}
+
+// The condition for triggering critical-level alerts.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) Criticals() GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalation) []GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical {
+		return v.Criticals
+	}).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput)
+}
+
+// The condition for triggering info-level alerts.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) Infos() GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalation) []GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo {
+		return v.Infos
+	}).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput)
+}
+
+// The condition for triggering warn-level alerts.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) Warns() GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalation) []GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn {
+		return v.Warns
+	}).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplateAlertTemplateEscalation)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
+		return vs[0].([]GetMetricRuleTemplatesTemplateAlertTemplateEscalation)[vs[1].(int)]
+	}).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical struct {
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level
+	// alert is triggered.
+	Times string `pulumi:"times"`
+}
+
+// GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalInput` via:
+//
+//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs{...}
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs struct {
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level
+	// alert is triggered.
+	Times pulumi.StringInput `pulumi:"times"`
+}
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput {
+	return i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput)
+}
+
+// GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayInput` via:
+//
+//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs{...} }
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray []GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalInput
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput {
+	return i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput {
+	return o
+}
+
+// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level
+// alert is triggered.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) Times() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string { return v.Times }).(pulumi.StringOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical {
+		return vs[0].([]GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical)[vs[1].(int)]
+	}).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo struct {
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level
+	// alert is triggered.
+	Times string `pulumi:"times"`
+}
+
+// GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoInput` via:
+//
+//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs{...}
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs struct {
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level
+	// alert is triggered.
+	Times pulumi.StringInput `pulumi:"times"`
+}
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput {
+	return i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput)
+}
+
+// GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput` via:
+//
+//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs{...} }
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray []GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoInput
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput {
+	return i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput {
+	return o
+}
+
+// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level
+// alert is triggered.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) Times() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.Times }).(pulumi.StringOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo {
+		return vs[0].([]GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo)[vs[1].(int)]
+	}).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn struct {
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level
+	// alert is triggered.
+	Times string `pulumi:"times"`
+}
+
+// GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnInput` via:
+//
+//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs{...}
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs struct {
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level
+	// alert is triggered.
+	Times pulumi.StringInput `pulumi:"times"`
+}
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput {
+	return i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput)
+}
+
+// GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput values.
+// You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput` via:
+//
+//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs{...} }
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput interface {
+	pulumi.Input
+
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput
+	ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutputWithContext(context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray []GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnInput
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn)(nil)).Elem()
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput {
+	return i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput {
+	return o
+}
+
+// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level
+// alert is triggered.
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) Times() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn) string { return v.Times }).(pulumi.StringOutput)
+}
+
+type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn)(nil)).Elem()
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput() GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput {
+	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn {
+		return vs[0].([]GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn)[vs[1].(int)]
+	}).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput)
+}
+
 type GetMonitorGroupInstancesInstance struct {
 	Instances []GetMonitorGroupInstancesInstanceInstance `pulumi:"instances"`
 }
@@ -3033,6 +4731,16 @@ func init() {
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsInfoPtrOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsWarnOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsWarnPtrOutput{})
+	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateOutput{})
+	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateArrayOutput{})
+	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateEscalationsOutput{})
+	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateEscalationsPtrOutput{})
+	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateEscalationsCriticalOutput{})
+	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput{})
+	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateEscalationsInfoOutput{})
+	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput{})
+	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateEscalationsWarnOutput{})
+	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput{})
 	pulumi.RegisterOutputType(MonitorGroupInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(MonitorGroupInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityOutput{})
@@ -3051,6 +4759,18 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationWarnOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationWarnArrayOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput{})
+	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceInstanceOutput{})

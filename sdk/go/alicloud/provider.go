@@ -76,9 +76,10 @@ type providerArgs struct {
 	// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
 	// console.
 	SecretKey *string `pulumi:"secretKey"`
-	// security token. A security token is only required if you are using Security Token Service.
-	SecurityToken *string `pulumi:"securityToken"`
 	// The security transport for the assume role invoking.
+	SecureTransport *string `pulumi:"secureTransport"`
+	// security token. A security token is only required if you are using Security Token Service.
+	SecurityToken     *string `pulumi:"securityToken"`
 	SecurityTransport *string `pulumi:"securityTransport"`
 	// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 	SharedCredentialsFile *string `pulumi:"sharedCredentialsFile"`
@@ -124,9 +125,10 @@ type ProviderArgs struct {
 	// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
 	// console.
 	SecretKey pulumi.StringPtrInput
-	// security token. A security token is only required if you are using Security Token Service.
-	SecurityToken pulumi.StringPtrInput
 	// The security transport for the assume role invoking.
+	SecureTransport pulumi.StringPtrInput
+	// security token. A security token is only required if you are using Security Token Service.
+	SecurityToken     pulumi.StringPtrInput
 	SecurityTransport pulumi.StringPtrInput
 	// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 	SharedCredentialsFile pulumi.StringPtrInput

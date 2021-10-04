@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the Hbr Ecs Backup Clients of the current Alibaba Cloud user.
+ * This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
  *

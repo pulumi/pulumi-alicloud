@@ -15,8 +15,8 @@ namespace Pulumi.AliCloud.Cfg.Inputs
         /// <summary>
         /// The parameter name.
         /// </summary>
-        [Input("parameterName", required: true)]
-        public Input<string> ParameterName { get; set; } = null!;
+        [Input("parameterName")]
+        public Input<string>? ParameterName { get; set; }
 
         /// <summary>
         /// The parameter value.

@@ -5,26 +5,65 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./getHostAccounts";
+export * from "./getHostGroups";
+export * from "./getHosts";
 export * from "./getInstances";
 export * from "./getUserGroups";
 export * from "./getUsers";
+export * from "./host";
+export * from "./hostAccount";
+export * from "./hostAccountUserAttachment";
+export * from "./hostAccountUserGroupAttachment";
+export * from "./hostAttachment";
+export * from "./hostGroup";
+export * from "./hostGroupAccountUserAttachment";
+export * from "./hostGroupAccountUserGroupAttachment";
 export * from "./instance";
 export * from "./user";
+export * from "./userAttachment";
 export * from "./userGroup";
 
 // Import resources to register:
+import { Host } from "./host";
+import { HostAccount } from "./hostAccount";
+import { HostAccountUserAttachment } from "./hostAccountUserAttachment";
+import { HostAccountUserGroupAttachment } from "./hostAccountUserGroupAttachment";
+import { HostAttachment } from "./hostAttachment";
+import { HostGroup } from "./hostGroup";
+import { HostGroupAccountUserAttachment } from "./hostGroupAccountUserAttachment";
+import { HostGroupAccountUserGroupAttachment } from "./hostGroupAccountUserGroupAttachment";
 import { Instance } from "./instance";
 import { User } from "./user";
+import { UserAttachment } from "./userAttachment";
 import { UserGroup } from "./userGroup";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:bastionhost/host:Host":
+                return new Host(name, <any>undefined, { urn })
+            case "alicloud:bastionhost/hostAccount:HostAccount":
+                return new HostAccount(name, <any>undefined, { urn })
+            case "alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment":
+                return new HostAccountUserAttachment(name, <any>undefined, { urn })
+            case "alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment":
+                return new HostAccountUserGroupAttachment(name, <any>undefined, { urn })
+            case "alicloud:bastionhost/hostAttachment:HostAttachment":
+                return new HostAttachment(name, <any>undefined, { urn })
+            case "alicloud:bastionhost/hostGroup:HostGroup":
+                return new HostGroup(name, <any>undefined, { urn })
+            case "alicloud:bastionhost/hostGroupAccountUserAttachment:HostGroupAccountUserAttachment":
+                return new HostGroupAccountUserAttachment(name, <any>undefined, { urn })
+            case "alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment":
+                return new HostGroupAccountUserGroupAttachment(name, <any>undefined, { urn })
             case "alicloud:bastionhost/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:bastionhost/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "alicloud:bastionhost/userAttachment:UserAttachment":
+                return new UserAttachment(name, <any>undefined, { urn })
             case "alicloud:bastionhost/userGroup:UserGroup":
                 return new UserGroup(name, <any>undefined, { urn })
             default:
@@ -32,6 +71,15 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "bastionhost/host", _module)
+pulumi.runtime.registerResourceModule("alicloud", "bastionhost/hostAccount", _module)
+pulumi.runtime.registerResourceModule("alicloud", "bastionhost/hostAccountUserAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "bastionhost/hostAccountUserGroupAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "bastionhost/hostAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "bastionhost/hostGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "bastionhost/hostGroupAccountUserAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "bastionhost/hostGroupAccountUserGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "bastionhost/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "bastionhost/user", _module)
+pulumi.runtime.registerResourceModule("alicloud", "bastionhost/userAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "bastionhost/userGroup", _module)

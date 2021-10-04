@@ -25,6 +25,7 @@ class ShardingInstanceArgs:
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -45,6 +46,10 @@ class ShardingInstanceArgs:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+               * UPGRADE: The specifications are upgraded.
+               * DOWNGRADE: The specifications are downgraded.
+               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
@@ -71,6 +76,8 @@ class ShardingInstanceArgs:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if order_type is not None:
+            pulumi.set(__self__, "order_type", order_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if security_group_id is not None:
@@ -209,6 +216,21 @@ class ShardingInstanceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+        * UPGRADE: The specifications are upgraded.
+        * DOWNGRADE: The specifications are downgraded.
+        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        """
+        return pulumi.get(self, "order_type")
+
+    @order_type.setter
+    def order_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order_type", value)
+
+    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -315,6 +337,7 @@ class _ShardingInstanceState:
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -336,6 +359,10 @@ class _ShardingInstanceState:
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]] mongo_lists: The mongo-node count can be purchased is in range of [2, 32].
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+               * UPGRADE: The specifications are upgraded.
+               * DOWNGRADE: The specifications are downgraded.
+               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
@@ -365,6 +392,8 @@ class _ShardingInstanceState:
             pulumi.set(__self__, "mongo_lists", mongo_lists)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if order_type is not None:
+            pulumi.set(__self__, "order_type", order_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if retention_period is not None:
@@ -493,6 +522,21 @@ class _ShardingInstanceState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+        * UPGRADE: The specifications are upgraded.
+        * DOWNGRADE: The specifications are downgraded.
+        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        """
+        return pulumi.get(self, "order_type")
+
+    @order_type.setter
+    def order_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order_type", value)
 
     @property
     @pulumi.getter
@@ -627,6 +671,7 @@ class ShardingInstance(pulumi.CustomResource):
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -657,6 +702,10 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]] mongo_lists: The mongo-node count can be purchased is in range of [2, 32].
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+               * UPGRADE: The specifications are upgraded.
+               * DOWNGRADE: The specifications are downgraded.
+               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
@@ -706,6 +755,7 @@ class ShardingInstance(pulumi.CustomResource):
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -740,6 +790,7 @@ class ShardingInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'mongo_lists'")
             __props__.__dict__["mongo_lists"] = mongo_lists
             __props__.__dict__["name"] = name
+            __props__.__dict__["order_type"] = order_type
             __props__.__dict__["period"] = period
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_ip_lists"] = security_ip_lists
@@ -771,6 +822,7 @@ class ShardingInstance(pulumi.CustomResource):
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            order_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             retention_period: Optional[pulumi.Input[int]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
@@ -797,6 +849,10 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]] mongo_lists: The mongo-node count can be purchased is in range of [2, 32].
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+               * UPGRADE: The specifications are upgraded.
+               * DOWNGRADE: The specifications are downgraded.
+               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
@@ -821,6 +877,7 @@ class ShardingInstance(pulumi.CustomResource):
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
         __props__.__dict__["mongo_lists"] = mongo_lists
         __props__.__dict__["name"] = name
+        __props__.__dict__["order_type"] = order_type
         __props__.__dict__["period"] = period
         __props__.__dict__["retention_period"] = retention_period
         __props__.__dict__["security_group_id"] = security_group_id
@@ -904,6 +961,17 @@ class ShardingInstance(pulumi.CustomResource):
         The name of DB instance. It a string of 2 to 256 characters.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+        * UPGRADE: The specifications are upgraded.
+        * DOWNGRADE: The specifications are downgraded.
+        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        """
+        return pulumi.get(self, "order_type")
 
     @property
     @pulumi.getter

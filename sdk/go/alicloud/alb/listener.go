@@ -31,6 +31,8 @@ type Listener struct {
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolOutput `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrOutput `pulumi:"accessLogTracingConfig"`
+	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+	AclConfig ListenerAclConfigPtrOutput `pulumi:"aclConfig"`
 	// The Certificates.
 	Certificates ListenerCertificateArrayOutput `pulumi:"certificates"`
 	// The Default Rule Action List. See the following `Block defaultActions`.
@@ -39,21 +41,21 @@ type Listener struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
 	GzipEnabled pulumi.BoolOutput `pulumi:"gzipEnabled"`
-	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
 	Http2Enabled pulumi.BoolOutput `pulumi:"http2Enabled"`
-	// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout pulumi.IntOutput `pulumi:"idleTimeout"`
-	// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\x00-\xff]|[\w.,;/@-]){2,256}$/.
+	// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
 	ListenerDescription pulumi.StringPtrOutput `pulumi:"listenerDescription"`
-	// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+	// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
 	ListenerPort pulumi.IntOutput `pulumi:"listenerPort"`
-	// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+	// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
 	ListenerProtocol pulumi.StringOutput `pulumi:"listenerProtocol"`
-	// The SLB Instance Id.
+	// The ALB Instance Id.
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
 	// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
 	QuicConfig ListenerQuicConfigOutput `pulumi:"quicConfig"`
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntOutput `pulumi:"requestTimeout"`
 	// Security Policy.
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
@@ -105,6 +107,8 @@ type listenerState struct {
 	AccessLogRecordCustomizedHeadersEnabled *bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
+	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+	AclConfig *ListenerAclConfig `pulumi:"aclConfig"`
 	// The Certificates.
 	Certificates []ListenerCertificate `pulumi:"certificates"`
 	// The Default Rule Action List. See the following `Block defaultActions`.
@@ -113,21 +117,21 @@ type listenerState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
 	GzipEnabled *bool `pulumi:"gzipEnabled"`
-	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
 	Http2Enabled *bool `pulumi:"http2Enabled"`
-	// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout *int `pulumi:"idleTimeout"`
-	// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\x00-\xff]|[\w.,;/@-]){2,256}$/.
+	// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
 	ListenerDescription *string `pulumi:"listenerDescription"`
-	// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+	// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
 	ListenerPort *int `pulumi:"listenerPort"`
-	// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+	// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
 	ListenerProtocol *string `pulumi:"listenerProtocol"`
-	// The SLB Instance Id.
+	// The ALB Instance Id.
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
 	// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
 	QuicConfig *ListenerQuicConfig `pulumi:"quicConfig"`
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Security Policy.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
@@ -142,6 +146,8 @@ type ListenerState struct {
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolPtrInput
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
+	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+	AclConfig ListenerAclConfigPtrInput
 	// The Certificates.
 	Certificates ListenerCertificateArrayInput
 	// The Default Rule Action List. See the following `Block defaultActions`.
@@ -150,21 +156,21 @@ type ListenerState struct {
 	DryRun pulumi.BoolPtrInput
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
 	GzipEnabled pulumi.BoolPtrInput
-	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
 	Http2Enabled pulumi.BoolPtrInput
-	// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout pulumi.IntPtrInput
-	// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\x00-\xff]|[\w.,;/@-]){2,256}$/.
+	// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
 	ListenerDescription pulumi.StringPtrInput
-	// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+	// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
 	ListenerPort pulumi.IntPtrInput
-	// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+	// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
 	ListenerProtocol pulumi.StringPtrInput
-	// The SLB Instance Id.
+	// The ALB Instance Id.
 	LoadBalancerId pulumi.StringPtrInput
 	// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
 	QuicConfig ListenerQuicConfigPtrInput
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntPtrInput
 	// Security Policy.
 	SecurityPolicyId pulumi.StringPtrInput
@@ -183,6 +189,8 @@ type listenerArgs struct {
 	AccessLogRecordCustomizedHeadersEnabled *bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
+	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+	AclConfig *ListenerAclConfig `pulumi:"aclConfig"`
 	// The Certificates.
 	Certificates []ListenerCertificate `pulumi:"certificates"`
 	// The Default Rule Action List. See the following `Block defaultActions`.
@@ -191,21 +199,21 @@ type listenerArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
 	GzipEnabled *bool `pulumi:"gzipEnabled"`
-	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
 	Http2Enabled *bool `pulumi:"http2Enabled"`
-	// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout *int `pulumi:"idleTimeout"`
-	// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\x00-\xff]|[\w.,;/@-]){2,256}$/.
+	// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
 	ListenerDescription *string `pulumi:"listenerDescription"`
-	// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+	// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
 	ListenerPort int `pulumi:"listenerPort"`
-	// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+	// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
 	ListenerProtocol string `pulumi:"listenerProtocol"`
-	// The SLB Instance Id.
+	// The ALB Instance Id.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
 	QuicConfig *ListenerQuicConfig `pulumi:"quicConfig"`
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Security Policy.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
@@ -221,6 +229,8 @@ type ListenerArgs struct {
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolPtrInput
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
+	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+	AclConfig ListenerAclConfigPtrInput
 	// The Certificates.
 	Certificates ListenerCertificateArrayInput
 	// The Default Rule Action List. See the following `Block defaultActions`.
@@ -229,21 +239,21 @@ type ListenerArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
 	GzipEnabled pulumi.BoolPtrInput
-	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE. Valid values: `false`, `true`.
+	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
 	Http2Enabled pulumi.BoolPtrInput
-	// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout pulumi.IntPtrInput
-	// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: /^([^\x00-\xff]|[\w.,;/@-]){2,256}$/.
+	// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
 	ListenerDescription pulumi.StringPtrInput
-	// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
+	// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
 	ListenerPort pulumi.IntInput
-	// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
+	// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
 	ListenerProtocol pulumi.StringInput
-	// The SLB Instance Id.
+	// The ALB Instance Id.
 	LoadBalancerId pulumi.StringInput
 	// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
 	QuicConfig ListenerQuicConfigPtrInput
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntPtrInput
 	// Security Policy.
 	SecurityPolicyId pulumi.StringPtrInput

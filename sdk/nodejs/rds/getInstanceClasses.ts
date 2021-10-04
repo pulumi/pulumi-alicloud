@@ -38,6 +38,7 @@ export function getInstanceClasses(args?: GetInstanceClassesArgs, opts?: pulumi.
     return pulumi.runtime.invoke("alicloud:rds/getInstanceClasses:getInstanceClasses", {
         "category": args.category,
         "dbInstanceClass": args.dbInstanceClass,
+        "dbInstanceStorageType": args.dbInstanceStorageType,
         "engine": args.engine,
         "engineVersion": args.engineVersion,
         "instanceChargeType": args.instanceChargeType,
@@ -54,7 +55,7 @@ export function getInstanceClasses(args?: GetInstanceClassesArgs, opts?: pulumi.
  */
 export interface GetInstanceClassesArgs {
     /**
-     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
     readonly category?: string;
     /**
@@ -62,7 +63,11 @@ export interface GetInstanceClassesArgs {
      */
     readonly dbInstanceClass?: string;
     /**
-     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+     * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
+     */
+    readonly dbInstanceStorageType?: string;
+    /**
+     * Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
      */
     readonly engine?: string;
     /**
@@ -80,7 +85,7 @@ export interface GetInstanceClassesArgs {
     readonly outputFile?: string;
     readonly sortedBy?: string;
     /**
-     * The DB instance storage space required by the user. Valid values: `cloudSsd` and `localSsd`.
+     * It has been deprecated from verison 1.134.0+ and using `dbInstanceStorageType` instead.
      */
     readonly storageType?: string;
     /**
@@ -95,6 +100,7 @@ export interface GetInstanceClassesArgs {
 export interface GetInstanceClassesResult {
     readonly category?: string;
     readonly dbInstanceClass?: string;
+    readonly dbInstanceStorageType?: string;
     readonly engine?: string;
     readonly engineVersion?: string;
     /**

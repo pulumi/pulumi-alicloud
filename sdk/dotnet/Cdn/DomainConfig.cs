@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Cdn
     public partial class DomainConfig : Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the function.
+        /// (Available in 1.132.0+) The ID of the domain config function.
         /// </summary>
         [Output("configId")]
         public Output<string> ConfigId { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Cdn
         public Output<string> FunctionName { get; private set; } = null!;
 
         /// <summary>
-        /// The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        /// (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class DomainConfigState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the function.
+        /// (Available in 1.132.0+) The ID of the domain config function.
         /// </summary>
         [Input("configId")]
         public Input<string>? ConfigId { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? FunctionName { get; set; }
 
         /// <summary>
-        /// The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        /// (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

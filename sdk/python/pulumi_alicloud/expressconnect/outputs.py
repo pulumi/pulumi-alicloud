@@ -13,6 +13,8 @@ __all__ = [
     'GetAccessPointsPointResult',
     'GetAccessPointsPointAccessPointFeatureModelResult',
     'GetPhysicalConnectionsConnectionResult',
+    'GetVirtualBorderRoutersFilterResult',
+    'GetVirtualBorderRoutersRouterResult',
 ]
 
 @pulumi.output_type
@@ -452,5 +454,397 @@ class GetPhysicalConnectionsConnectionResult(dict):
         Physical Private Line of Type. Default Value: VPC.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetVirtualBorderRoutersFilterResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str key: The key of the field to filter by, as defined by
+               [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+        :param Sequence[str] values: Set of values that are accepted for the given field.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The key of the field to filter by, as defined by
+        [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        Set of values that are accepted for the given field.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetVirtualBorderRoutersRouterResult(dict):
+    def __init__(__self__, *,
+                 access_point_id: str,
+                 activation_time: str,
+                 circuit_code: str,
+                 cloud_box_instance_id: str,
+                 create_time: str,
+                 description: str,
+                 detect_multiplier: int,
+                 ecc_id: str,
+                 enable_ipv6: bool,
+                 id: str,
+                 local_gateway_ip: str,
+                 local_ipv6_gateway_ip: str,
+                 min_rx_interval: int,
+                 min_tx_interval: int,
+                 payment_vbr_expire_time: str,
+                 peer_gateway_ip: str,
+                 peer_ipv6_gateway_ip: str,
+                 peering_ipv6_subnet_mask: str,
+                 peering_subnet_mask: str,
+                 physical_connection_business_status: str,
+                 physical_connection_id: str,
+                 physical_connection_owner_uid: str,
+                 physical_connection_status: str,
+                 recovery_time: str,
+                 route_table_id: str,
+                 status: str,
+                 termination_time: str,
+                 type: str,
+                 virtual_border_router_id: str,
+                 virtual_border_router_name: str,
+                 vlan_id: int,
+                 vlan_interface_id: str):
+        """
+        :param str access_point_id: The physical leased line access point ID.
+        :param str activation_time: The first activation time of VBR.
+        :param str circuit_code: Operators for physical connection circuit provided coding.
+        :param str cloud_box_instance_id: Box Instance Id.
+        :param str create_time: The representative of the creation time resources attribute field.
+        :param str description: The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+        :param int detect_multiplier: Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+        :param str ecc_id: High Speed Migration Service Instance Id.
+        :param bool enable_ipv6: Whether to Enable IPv6.
+        :param str id: The ID of the Virtual Border Router.
+        :param str local_gateway_ip: Alibaba Cloud-Connected IPv4 address.
+        :param str local_ipv6_gateway_ip: Alibaba Cloud-Connected IPv6 Address.
+        :param int min_rx_interval: Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+        :param int min_tx_interval: Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+        :param str payment_vbr_expire_time: The Billing of the Extended Time.
+        :param str peer_gateway_ip: The Client-Side Interconnection IPv4 Address.
+        :param str peer_ipv6_gateway_ip: The Client-Side Interconnection IPv6 Address.
+        :param str peering_ipv6_subnet_mask: Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+        :param str peering_subnet_mask: Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+        :param str physical_connection_business_status: Physical Private Line Service Status Value Normal: Normal, financiallocked: If You Lock.
+        :param str physical_connection_id: The ID of the Physical Connection to Which the ID.
+        :param str physical_connection_owner_uid: Physical Private Line Where the Account ID.
+        :param str physical_connection_status: Physical Private Line State.
+        :param str recovery_time: The Last from a Terminated State to the Active State of the Time.
+        :param str route_table_id: Route Table ID.
+        :param str status: The VBR state.
+        :param str termination_time: The Most Recent Was Aborted by the Time.
+        :param str type: VBR Type.
+        :param str virtual_border_router_id: The VBR ID.
+        :param str virtual_border_router_name: The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+        :param int vlan_id: The VLAN ID of the VBR. Value range: 0~2999.
+        :param str vlan_interface_id: The ID of the Router Interface.
+        """
+        pulumi.set(__self__, "access_point_id", access_point_id)
+        pulumi.set(__self__, "activation_time", activation_time)
+        pulumi.set(__self__, "circuit_code", circuit_code)
+        pulumi.set(__self__, "cloud_box_instance_id", cloud_box_instance_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "detect_multiplier", detect_multiplier)
+        pulumi.set(__self__, "ecc_id", ecc_id)
+        pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
+        pulumi.set(__self__, "local_ipv6_gateway_ip", local_ipv6_gateway_ip)
+        pulumi.set(__self__, "min_rx_interval", min_rx_interval)
+        pulumi.set(__self__, "min_tx_interval", min_tx_interval)
+        pulumi.set(__self__, "payment_vbr_expire_time", payment_vbr_expire_time)
+        pulumi.set(__self__, "peer_gateway_ip", peer_gateway_ip)
+        pulumi.set(__self__, "peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
+        pulumi.set(__self__, "peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
+        pulumi.set(__self__, "peering_subnet_mask", peering_subnet_mask)
+        pulumi.set(__self__, "physical_connection_business_status", physical_connection_business_status)
+        pulumi.set(__self__, "physical_connection_id", physical_connection_id)
+        pulumi.set(__self__, "physical_connection_owner_uid", physical_connection_owner_uid)
+        pulumi.set(__self__, "physical_connection_status", physical_connection_status)
+        pulumi.set(__self__, "recovery_time", recovery_time)
+        pulumi.set(__self__, "route_table_id", route_table_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "termination_time", termination_time)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "virtual_border_router_id", virtual_border_router_id)
+        pulumi.set(__self__, "virtual_border_router_name", virtual_border_router_name)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+        pulumi.set(__self__, "vlan_interface_id", vlan_interface_id)
+
+    @property
+    @pulumi.getter(name="accessPointId")
+    def access_point_id(self) -> str:
+        """
+        The physical leased line access point ID.
+        """
+        return pulumi.get(self, "access_point_id")
+
+    @property
+    @pulumi.getter(name="activationTime")
+    def activation_time(self) -> str:
+        """
+        The first activation time of VBR.
+        """
+        return pulumi.get(self, "activation_time")
+
+    @property
+    @pulumi.getter(name="circuitCode")
+    def circuit_code(self) -> str:
+        """
+        Operators for physical connection circuit provided coding.
+        """
+        return pulumi.get(self, "circuit_code")
+
+    @property
+    @pulumi.getter(name="cloudBoxInstanceId")
+    def cloud_box_instance_id(self) -> str:
+        """
+        Box Instance Id.
+        """
+        return pulumi.get(self, "cloud_box_instance_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The representative of the creation time resources attribute field.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="detectMultiplier")
+    def detect_multiplier(self) -> int:
+        """
+        Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+        """
+        return pulumi.get(self, "detect_multiplier")
+
+    @property
+    @pulumi.getter(name="eccId")
+    def ecc_id(self) -> str:
+        """
+        High Speed Migration Service Instance Id.
+        """
+        return pulumi.get(self, "ecc_id")
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> bool:
+        """
+        Whether to Enable IPv6.
+        """
+        return pulumi.get(self, "enable_ipv6")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Virtual Border Router.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="localGatewayIp")
+    def local_gateway_ip(self) -> str:
+        """
+        Alibaba Cloud-Connected IPv4 address.
+        """
+        return pulumi.get(self, "local_gateway_ip")
+
+    @property
+    @pulumi.getter(name="localIpv6GatewayIp")
+    def local_ipv6_gateway_ip(self) -> str:
+        """
+        Alibaba Cloud-Connected IPv6 Address.
+        """
+        return pulumi.get(self, "local_ipv6_gateway_ip")
+
+    @property
+    @pulumi.getter(name="minRxInterval")
+    def min_rx_interval(self) -> int:
+        """
+        Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+        """
+        return pulumi.get(self, "min_rx_interval")
+
+    @property
+    @pulumi.getter(name="minTxInterval")
+    def min_tx_interval(self) -> int:
+        """
+        Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+        """
+        return pulumi.get(self, "min_tx_interval")
+
+    @property
+    @pulumi.getter(name="paymentVbrExpireTime")
+    def payment_vbr_expire_time(self) -> str:
+        """
+        The Billing of the Extended Time.
+        """
+        return pulumi.get(self, "payment_vbr_expire_time")
+
+    @property
+    @pulumi.getter(name="peerGatewayIp")
+    def peer_gateway_ip(self) -> str:
+        """
+        The Client-Side Interconnection IPv4 Address.
+        """
+        return pulumi.get(self, "peer_gateway_ip")
+
+    @property
+    @pulumi.getter(name="peerIpv6GatewayIp")
+    def peer_ipv6_gateway_ip(self) -> str:
+        """
+        The Client-Side Interconnection IPv6 Address.
+        """
+        return pulumi.get(self, "peer_ipv6_gateway_ip")
+
+    @property
+    @pulumi.getter(name="peeringIpv6SubnetMask")
+    def peering_ipv6_subnet_mask(self) -> str:
+        """
+        Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+        """
+        return pulumi.get(self, "peering_ipv6_subnet_mask")
+
+    @property
+    @pulumi.getter(name="peeringSubnetMask")
+    def peering_subnet_mask(self) -> str:
+        """
+        Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+        """
+        return pulumi.get(self, "peering_subnet_mask")
+
+    @property
+    @pulumi.getter(name="physicalConnectionBusinessStatus")
+    def physical_connection_business_status(self) -> str:
+        """
+        Physical Private Line Service Status Value Normal: Normal, financiallocked: If You Lock.
+        """
+        return pulumi.get(self, "physical_connection_business_status")
+
+    @property
+    @pulumi.getter(name="physicalConnectionId")
+    def physical_connection_id(self) -> str:
+        """
+        The ID of the Physical Connection to Which the ID.
+        """
+        return pulumi.get(self, "physical_connection_id")
+
+    @property
+    @pulumi.getter(name="physicalConnectionOwnerUid")
+    def physical_connection_owner_uid(self) -> str:
+        """
+        Physical Private Line Where the Account ID.
+        """
+        return pulumi.get(self, "physical_connection_owner_uid")
+
+    @property
+    @pulumi.getter(name="physicalConnectionStatus")
+    def physical_connection_status(self) -> str:
+        """
+        Physical Private Line State.
+        """
+        return pulumi.get(self, "physical_connection_status")
+
+    @property
+    @pulumi.getter(name="recoveryTime")
+    def recovery_time(self) -> str:
+        """
+        The Last from a Terminated State to the Active State of the Time.
+        """
+        return pulumi.get(self, "recovery_time")
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> str:
+        """
+        Route Table ID.
+        """
+        return pulumi.get(self, "route_table_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The VBR state.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="terminationTime")
+    def termination_time(self) -> str:
+        """
+        The Most Recent Was Aborted by the Time.
+        """
+        return pulumi.get(self, "termination_time")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        VBR Type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="virtualBorderRouterId")
+    def virtual_border_router_id(self) -> str:
+        """
+        The VBR ID.
+        """
+        return pulumi.get(self, "virtual_border_router_id")
+
+    @property
+    @pulumi.getter(name="virtualBorderRouterName")
+    def virtual_border_router_name(self) -> str:
+        """
+        The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+        """
+        return pulumi.get(self, "virtual_border_router_name")
+
+    @property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> int:
+        """
+        The VLAN ID of the VBR. Value range: 0~2999.
+        """
+        return pulumi.get(self, "vlan_id")
+
+    @property
+    @pulumi.getter(name="vlanInterfaceId")
+    def vlan_interface_id(self) -> str:
+        """
+        The ID of the Router Interface.
+        """
+        return pulumi.get(self, "vlan_interface_id")
 
 

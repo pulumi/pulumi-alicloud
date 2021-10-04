@@ -566,13 +566,15 @@ class Instance(pulumi.CustomResource):
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_instance = alicloud.alikafka.Instance("defaultInstance",
             topic_quota=50,
             disk_type=1,
             disk_size=500,
             deploy_type=4,
             io_max=20,
-            vswitch_id=default_switch.id)
+            vswitch_id=default_switch.id,
+            security_group=default_security_group.id)
         ```
 
         ## Import
@@ -636,13 +638,15 @@ class Instance(pulumi.CustomResource):
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_instance = alicloud.alikafka.Instance("defaultInstance",
             topic_quota=50,
             disk_type=1,
             disk_size=500,
             deploy_type=4,
             io_max=20,
-            vswitch_id=default_switch.id)
+            vswitch_id=default_switch.id,
+            security_group=default_security_group.id)
         ```
 
         ## Import
@@ -832,7 +836,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eipMax")
-    def eip_max(self) -> pulumi.Output[Optional[int]]:
+    def eip_max(self) -> pulumi.Output[int]:
         """
         The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
         """
@@ -872,7 +876,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroup")
-    def security_group(self) -> pulumi.Output[Optional[str]]:
+    def security_group(self) -> pulumi.Output[str]:
         """
         （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
         """

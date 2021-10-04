@@ -47,7 +47,7 @@ export function getNasBackupPlans(args?: GetNasBackupPlansArgs, opts?: pulumi.In
  */
 export interface GetNasBackupPlansArgs {
     /**
-     * The File System ID.
+     * The File System ID of Nas.
      */
     readonly fileSystemId?: string;
     /**
@@ -60,7 +60,7 @@ export interface GetNasBackupPlansArgs {
     readonly nameRegex?: string;
     readonly outputFile?: string;
     /**
-     * The Vault ID of the EcsBackupPlan used.
+     * The backup vault ID of the NasBackupPlan used.
      */
     readonly vaultId?: string;
 }

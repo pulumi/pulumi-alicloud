@@ -55,12 +55,13 @@ export let region: string | undefined = __config.get("region") || utilities.getE
  */
 export let secretKey: string | undefined = __config.get("secretKey");
 /**
+ * The security transport for the assume role invoking.
+ */
+export let secureTransport: string | undefined = __config.get("secureTransport");
+/**
  * security token. A security token is only required if you are using Security Token Service.
  */
 export let securityToken: string | undefined = __config.get("securityToken");
-/**
- * The security transport for the assume role invoking.
- */
 export let securityTransport: string | undefined = __config.get("securityTransport");
 /**
  * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json

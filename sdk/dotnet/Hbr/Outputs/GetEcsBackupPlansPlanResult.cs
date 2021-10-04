@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class GetEcsBackupPlansPlanResult
     {
         /// <summary>
-        /// Backup Type. Valid Values: * Complete. Valid values: `COMPLETE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         public readonly string BackupType;
         public readonly string CreateTime;
@@ -22,44 +22,44 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly bool Disabled;
         public readonly string EcsBackupPlanId;
         /// <summary>
-        /// The Configuration Page of a Backup Plan Name. 1-64 Characters, requiring a Single Warehouse under Each of the Data Source Type Drop-down List of the Configuration Page of a Backup Plan Name Is Unique.
+        /// The name of the backup plan.
         /// </summary>
         public readonly string EcsBackupPlanName;
         /// <summary>
-        /// Exclude Path. String of Json List, most 255 Characters. e.g. `"[\"/home/work\"]"`
+        /// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
         /// </summary>
         public readonly string Exclude;
         public readonly string Id;
         /// <summary>
-        /// Include Path. String of Json List, most 255 Characters. e.g. `"[\"/var\"]"`
+        /// Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
         /// </summary>
         public readonly string Include;
         /// <summary>
-        /// The ECS Instance Id. Must Have Installed the Client.
+        /// The ID of ECS instance.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// Windows System with Application Consistency Using VSS. eg: {`UseVSS`:false}.
+        /// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
         /// </summary>
         public readonly string Options;
         /// <summary>
-        /// Backup Path. e.g. `["/home", "/var"]`
+        /// Backup path. e.g. `["/home", "/var"]`
         /// </summary>
         public readonly ImmutableArray<string> Paths;
         /// <summary>
-        /// Backup Retention Period, the Minimum Value of 1.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         public readonly string Retention;
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval} * startTime Backup start time, UNIX time, in seconds. * interval ISO8601 time interval. E.g: ** PT1H, one hour apart. ** P1D, one day apart. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         /// </summary>
         public readonly string Schedule;
         /// <summary>
-        /// flow control. The format is: {start}|{end}|{bandwidth} * start starting hour * end end hour * bandwidth limit rate, in KiB ** Use | to separate multiple flow control configurations; ** Multiple flow control configurations are not allowed to have overlapping times.
+        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         /// </summary>
         public readonly string SpeedLimit;
         /// <summary>
-        /// Vault ID.
+        /// The ID of Backup vault.
         /// </summary>
         public readonly string VaultId;
 

@@ -98,12 +98,15 @@ func GetSecretKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:secretKey")
 }
 
+// The security transport for the assume role invoking.
+func GetSecureTransport(ctx *pulumi.Context) string {
+	return config.Get(ctx, "alicloud:secureTransport")
+}
+
 // security token. A security token is only required if you are using Security Token Service.
 func GetSecurityToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:securityToken")
 }
-
-// The security transport for the assume role invoking.
 func GetSecurityTransport(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:securityTransport")
 }

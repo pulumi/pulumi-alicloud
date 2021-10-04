@@ -7,13 +7,17 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./commonBandwithPackage";
 export * from "./commonBandwithPackageAttachment";
+export * from "./dhcpOptionsSet";
 export * from "./flowLog";
 export * from "./forwardEntry";
 export * from "./getCommonBandwidthPackages";
+export * from "./getDhcpOptionsSets";
 export * from "./getEnhancedNatAvailableZones";
 export * from "./getForwardEntries";
 export * from "./getHavips";
 export * from "./getNatGateways";
+export * from "./getNatIpCidrs";
+export * from "./getNatIps";
 export * from "./getNetworkAcls";
 export * from "./getNetworks";
 export * from "./getRouteEntries";
@@ -27,6 +31,8 @@ export * from "./getVpcFlowLogs";
 export * from "./havip";
 export * from "./havipAttachment";
 export * from "./natGateway";
+export * from "./natIp";
+export * from "./natIpCidr";
 export * from "./network";
 export * from "./networkAcl";
 export * from "./networkAclAttachment";
@@ -45,11 +51,14 @@ export * from "./switch";
 // Import resources to register:
 import { CommonBandwithPackage } from "./commonBandwithPackage";
 import { CommonBandwithPackageAttachment } from "./commonBandwithPackageAttachment";
+import { DhcpOptionsSet } from "./dhcpOptionsSet";
 import { FlowLog } from "./flowLog";
 import { ForwardEntry } from "./forwardEntry";
 import { HAVip } from "./havip";
 import { HAVipAttachment } from "./havipAttachment";
 import { NatGateway } from "./natGateway";
+import { NatIp } from "./natIp";
+import { NatIpCidr } from "./natIpCidr";
 import { Network } from "./network";
 import { NetworkAcl } from "./networkAcl";
 import { NetworkAclAttachment } from "./networkAclAttachment";
@@ -73,6 +82,8 @@ const _module = {
                 return new CommonBandwithPackage(name, <any>undefined, { urn })
             case "alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment":
                 return new CommonBandwithPackageAttachment(name, <any>undefined, { urn })
+            case "alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet":
+                return new DhcpOptionsSet(name, <any>undefined, { urn })
             case "alicloud:vpc/flowLog:FlowLog":
                 return new FlowLog(name, <any>undefined, { urn })
             case "alicloud:vpc/forwardEntry:ForwardEntry":
@@ -83,6 +94,10 @@ const _module = {
                 return new HAVipAttachment(name, <any>undefined, { urn })
             case "alicloud:vpc/natGateway:NatGateway":
                 return new NatGateway(name, <any>undefined, { urn })
+            case "alicloud:vpc/natIp:NatIp":
+                return new NatIp(name, <any>undefined, { urn })
+            case "alicloud:vpc/natIpCidr:NatIpCidr":
+                return new NatIpCidr(name, <any>undefined, { urn })
             case "alicloud:vpc/network:Network":
                 return new Network(name, <any>undefined, { urn })
             case "alicloud:vpc/networkAcl:NetworkAcl":
@@ -118,11 +133,14 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "vpc/commonBandwithPackage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/commonBandwithPackageAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/dhcpOptionsSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/flowLog", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/forwardEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVipAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/natGateway", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/natIp", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/natIpCidr", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/network", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/networkAcl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/networkAclAttachment", _module)

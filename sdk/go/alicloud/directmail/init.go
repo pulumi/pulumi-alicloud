@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:directmail/domain:Domain":
+		r = &Domain{}
+	case "alicloud:directmail/mailAddress:MailAddress":
+		r = &MailAddress{}
 	case "alicloud:directmail/receivers:Receivers":
 		r = &Receivers{}
 	default:
@@ -36,6 +40,16 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"directmail/domain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"directmail/mailAddress",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"directmail/receivers",

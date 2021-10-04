@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.CS
         /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

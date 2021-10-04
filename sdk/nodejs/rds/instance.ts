@@ -184,6 +184,16 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
+     * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+     * - If you set the `Engine` parameter to MySQL.
+     * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+     * - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     * - If you set the `Engine` parameter to PostgreSQL.
+     * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+     */
+    public readonly dbTimeZone!: pulumi.Output<string>;
+    /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
     public readonly encryptionKey!: pulumi.Output<string | undefined>;
@@ -256,6 +266,13 @@ export class Instance extends pulumi.CustomResource {
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
      */
     public readonly privateIpAddress!: pulumi.Output<string>;
+    /**
+     * The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+     * - None: No archived backup files are retained.
+     * - Lastest: Only the last archived backup file is retained.
+     * - All: All the archived backup files are retained.
+     */
+    public readonly releasedKeepPolicy!: pulumi.Output<string | undefined>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - cert
@@ -390,7 +407,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
-    public readonly zoneIdSlaveA!: pulumi.Output<string | undefined>;
+    public readonly zoneIdSlaveA!: pulumi.Output<string>;
     /**
      * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
@@ -423,6 +440,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["dbInstanceIpArrayAttribute"] = state ? state.dbInstanceIpArrayAttribute : undefined;
             inputs["dbInstanceIpArrayName"] = state ? state.dbInstanceIpArrayName : undefined;
             inputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
+            inputs["dbTimeZone"] = state ? state.dbTimeZone : undefined;
             inputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             inputs["engine"] = state ? state.engine : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
@@ -440,6 +458,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["period"] = state ? state.period : undefined;
             inputs["port"] = state ? state.port : undefined;
             inputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
+            inputs["releasedKeepPolicy"] = state ? state.releasedKeepPolicy : undefined;
             inputs["replicationAcl"] = state ? state.replicationAcl : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
@@ -494,6 +513,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["dbInstanceIpArrayAttribute"] = args ? args.dbInstanceIpArrayAttribute : undefined;
             inputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
             inputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
+            inputs["dbTimeZone"] = args ? args.dbTimeZone : undefined;
             inputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             inputs["engine"] = args ? args.engine : undefined;
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
@@ -511,6 +531,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["period"] = args ? args.period : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
+            inputs["releasedKeepPolicy"] = args ? args.releasedKeepPolicy : undefined;
             inputs["replicationAcl"] = args ? args.replicationAcl : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
@@ -622,6 +643,16 @@ export interface InstanceState {
      */
     readonly dbInstanceStorageType?: pulumi.Input<string>;
     /**
+     * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+     * - If you set the `Engine` parameter to MySQL.
+     * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+     * - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     * - If you set the `Engine` parameter to PostgreSQL.
+     * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+     */
+    readonly dbTimeZone?: pulumi.Input<string>;
+    /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
     readonly encryptionKey?: pulumi.Input<string>;
@@ -694,6 +725,13 @@ export interface InstanceState {
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
      */
     readonly privateIpAddress?: pulumi.Input<string>;
+    /**
+     * The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+     * - None: No archived backup files are retained.
+     * - Lastest: Only the last archived backup file is retained.
+     * - All: All the archived backup files are retained.
+     */
+    readonly releasedKeepPolicy?: pulumi.Input<string>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - cert
@@ -906,6 +944,16 @@ export interface InstanceArgs {
      */
     readonly dbInstanceStorageType?: pulumi.Input<string>;
     /**
+     * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+     * - If you set the `Engine` parameter to MySQL.
+     * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+     * - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     * - If you set the `Engine` parameter to PostgreSQL.
+     * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+     */
+    readonly dbTimeZone?: pulumi.Input<string>;
+    /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
     readonly encryptionKey?: pulumi.Input<string>;
@@ -978,6 +1026,13 @@ export interface InstanceArgs {
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
      */
     readonly privateIpAddress?: pulumi.Input<string>;
+    /**
+     * The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+     * - None: No archived backup files are retained.
+     * - Lastest: Only the last archived backup file is retained.
+     * - All: All the archived backup files are retained.
+     */
+    readonly releasedKeepPolicy?: pulumi.Input<string>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - cert
