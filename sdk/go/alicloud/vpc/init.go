@@ -69,6 +69,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Subnet{}
 	case "alicloud:vpc/switch:Switch":
 		r = &Switch{}
+	case "alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter":
+		r = &TrafficMirrorFilter{}
+	case "alicloud:vpc/trafficMirrorFilterEgressRule:TrafficMirrorFilterEgressRule":
+		r = &TrafficMirrorFilterEgressRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -200,6 +204,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/switch",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/trafficMirrorFilter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/trafficMirrorFilterEgressRule",
 		&module{version},
 	)
 }

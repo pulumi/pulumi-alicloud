@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:cr/endpointAclPolicy:EndpointAclPolicy":
+		r = &EndpointAclPolicy{}
 	case "alicloud:cr/namespace:Namespace":
 		r = &Namespace{}
 	case "alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance":
@@ -40,6 +42,11 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cr/endpointAclPolicy",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cr/namespace",

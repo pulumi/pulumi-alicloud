@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
     public sealed class ApiRequestConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The body format of the api, which support the values of 'STREAM' and 'FORM'
+        /// The body format of the api, which support the values of 'STREAM' and 'FORM'.
         /// </summary>
         [Input("bodyFormat")]
         public Input<string>? BodyFormat { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> Method { get; set; } = null!;
 
         /// <summary>
-        /// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+        /// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
+        /// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;

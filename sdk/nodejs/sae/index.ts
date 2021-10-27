@@ -10,6 +10,7 @@ export * from "./configMap";
 export * from "./getApplications";
 export * from "./getConfigMaps";
 export * from "./getIngresses";
+export * from "./getInstanceSpecifications";
 export * from "./getNamespaces";
 export * from "./getService";
 export * from "./ingress";

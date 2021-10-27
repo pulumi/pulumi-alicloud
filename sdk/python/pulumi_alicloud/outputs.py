@@ -102,6 +102,7 @@ class ProviderEndpoint(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 acr: Optional[str] = None,
                  actiontrail: Optional[str] = None,
                  adb: Optional[str] = None,
                  alb: Optional[str] = None,
@@ -207,6 +208,8 @@ class ProviderEndpoint(dict):
                  vs: Optional[str] = None,
                  waf: Optional[str] = None,
                  waf_openapi: Optional[str] = None):
+        if acr is not None:
+            pulumi.set(__self__, "acr", acr)
         if actiontrail is not None:
             pulumi.set(__self__, "actiontrail", actiontrail)
         if adb is not None:
@@ -417,6 +420,11 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "waf", waf)
         if waf_openapi is not None:
             pulumi.set(__self__, "waf_openapi", waf_openapi)
+
+    @property
+    @pulumi.getter
+    def acr(self) -> Optional[str]:
+        return pulumi.get(self, "acr")
 
     @property
     @pulumi.getter

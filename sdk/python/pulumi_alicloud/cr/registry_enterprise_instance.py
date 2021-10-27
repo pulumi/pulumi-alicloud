@@ -26,7 +26,7 @@ class RegistryEnterpriseInstanceArgs:
         """
         The set of arguments for constructing a RegistryEnterpriseInstance resource.
         :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
         :param pulumi.Input[str] custom_oss_bucket: Name of your customized oss bucket. Use this bucket as instance storage if set.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -71,7 +71,7 @@ class RegistryEnterpriseInstanceArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
         """
-        Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -198,7 +198,7 @@ class _RegistryEnterpriseInstanceState:
         :param pulumi.Input[str] custom_oss_bucket: Name of your customized oss bucket. Use this bucket as instance storage if set.
         :param pulumi.Input[str] end_time: Time of Container Registry Enterprise Edition instance expiration.
         :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] password: The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
@@ -287,7 +287,7 @@ class _RegistryEnterpriseInstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -425,10 +425,10 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
 
         my_instance = alicloud.cr.RegistryEnterpriseInstance("my-instance",
             instance_name="test",
-            instance_type="Standard",
+            instance_type="Advanced",
             payment_type="Subscription",
-            period=12,
-            renew_period=12,
+            period=1,
+            renew_period=1,
             renewal_status="AutoRenewal")
         ```
 
@@ -444,7 +444,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_oss_bucket: Name of your customized oss bucket. Use this bucket as instance storage if set.
         :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] password: The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
@@ -476,10 +476,10 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
 
         my_instance = alicloud.cr.RegistryEnterpriseInstance("my-instance",
             instance_name="test",
-            instance_type="Standard",
+            instance_type="Advanced",
             payment_type="Subscription",
-            period=12,
-            renew_period=12,
+            period=1,
+            renew_period=1,
             renewal_status="AutoRenewal")
         ```
 
@@ -579,7 +579,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] custom_oss_bucket: Name of your customized oss bucket. Use this bucket as instance storage if set.
         :param pulumi.Input[str] end_time: Time of Container Registry Enterprise Edition instance expiration.
         :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] password: The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
@@ -644,7 +644,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
         """
         return pulumi.get(self, "instance_type")
 

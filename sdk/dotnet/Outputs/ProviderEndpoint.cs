@@ -13,6 +13,7 @@ namespace Pulumi.AliCloud.Outputs
     [OutputType]
     public sealed class ProviderEndpoint
     {
+        public readonly string? Acr;
         public readonly string? Actiontrail;
         public readonly string? Adb;
         public readonly string? Alb;
@@ -121,6 +122,8 @@ namespace Pulumi.AliCloud.Outputs
 
         [OutputConstructor]
         private ProviderEndpoint(
+            string? acr,
+
             string? actiontrail,
 
             string? adb,
@@ -331,6 +334,7 @@ namespace Pulumi.AliCloud.Outputs
 
             string? wafOpenapi)
         {
+            Acr = acr;
             Actiontrail = actiontrail;
             Adb = adb;
             Alb = alb;

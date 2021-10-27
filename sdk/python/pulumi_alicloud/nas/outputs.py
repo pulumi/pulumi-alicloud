@@ -7,12 +7,15 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetAccessGroupsGroupResult',
     'GetAccessRulesRuleResult',
     'GetFileSystemsSystemResult',
     'GetMountTargetsTargetResult',
+    'GetZonesZoneResult',
+    'GetZonesZoneInstanceTypeResult',
 ]
 
 @pulumi.output_type
@@ -164,35 +167,63 @@ class GetAccessRulesRuleResult(dict):
 @pulumi.output_type
 class GetFileSystemsSystemResult(dict):
     def __init__(__self__, *,
+                 capacity: int,
                  create_time: str,
                  description: str,
                  encrypt_type: int,
+                 file_system_type: str,
                  id: str,
+                 kms_key_id: str,
                  metered_size: int,
                  protocol_type: str,
                  region_id: str,
-                 storage_type: str):
+                 storage_type: str,
+                 zone_id: str):
         """
+        :param int capacity: (Optional, Available in v1.140.0+) The capacity of the file system.
         :param str create_time: Time of creation.
-        :param str description: Destription of the FileSystem.
-        :param int encrypt_type: (Optional, Available in v1.121.2+) Whether the file system is encrypted.
+        :param str description: Description of the FileSystem.
+        :param int encrypt_type: (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
+               * Valid values:
+               * `0`: The file system is not encrypted.
+               * `1`: The file system is encrypted with a managed secret key.
+               * `2`: User management key.
+        :param str file_system_type: The type of the file system.
                Valid values:
-               0: The file system is not encrypted.
-               1: The file system is encrypted with a managed secret key.
+               `standard` (Default),
+               `extreme`.
         :param str id: ID of the FileSystem.
+        :param str kms_key_id: (Optional, Available in v1.140.0+) The id of the KMS key.
         :param int metered_size: MeteredSize of the FileSystem.
-        :param str protocol_type: Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
+        :param str protocol_type: The protocol type of the file system.
+               Valid values:
+               `NFS`,
+               `SMB` (Available when the `file_system_type` is `standard`).
         :param str region_id: ID of the region where the FileSystem is located.
-        :param str storage_type: Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
+        :param str storage_type: The storage type of the file system.
+               * Valid values:
+        :param str zone_id: (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
         """
+        pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "encrypt_type", encrypt_type)
+        pulumi.set(__self__, "file_system_type", file_system_type)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
         pulumi.set(__self__, "metered_size", metered_size)
         pulumi.set(__self__, "protocol_type", protocol_type)
         pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def capacity(self) -> int:
+        """
+        (Optional, Available in v1.140.0+) The capacity of the file system.
+        """
+        return pulumi.get(self, "capacity")
 
     @property
     @pulumi.getter(name="createTime")
@@ -206,7 +237,7 @@ class GetFileSystemsSystemResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Destription of the FileSystem.
+        Description of the FileSystem.
         """
         return pulumi.get(self, "description")
 
@@ -214,12 +245,24 @@ class GetFileSystemsSystemResult(dict):
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> int:
         """
-        (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-        Valid values:
-        0: The file system is not encrypted.
-        1: The file system is encrypted with a managed secret key.
+        (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
+        * Valid values:
+        * `0`: The file system is not encrypted.
+        * `1`: The file system is encrypted with a managed secret key.
+        * `2`: User management key.
         """
         return pulumi.get(self, "encrypt_type")
+
+    @property
+    @pulumi.getter(name="fileSystemType")
+    def file_system_type(self) -> str:
+        """
+        The type of the file system.
+        Valid values:
+        `standard` (Default),
+        `extreme`.
+        """
+        return pulumi.get(self, "file_system_type")
 
     @property
     @pulumi.getter
@@ -228,6 +271,14 @@ class GetFileSystemsSystemResult(dict):
         ID of the FileSystem.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> str:
+        """
+        (Optional, Available in v1.140.0+) The id of the KMS key.
+        """
+        return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="meteredSize")
@@ -241,7 +292,10 @@ class GetFileSystemsSystemResult(dict):
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> str:
         """
-        Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
+        The protocol type of the file system.
+        Valid values:
+        `NFS`,
+        `SMB` (Available when the `file_system_type` is `standard`).
         """
         return pulumi.get(self, "protocol_type")
 
@@ -257,9 +311,18 @@ class GetFileSystemsSystemResult(dict):
     @pulumi.getter(name="storageType")
     def storage_type(self) -> str:
         """
-        Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
+        The storage type of the file system.
+        * Valid values:
         """
         return pulumi.get(self, "storage_type")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
+        """
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type
@@ -355,5 +418,63 @@ class GetMountTargetsTargetResult(dict):
         Filter results by a specific VSwitchId.
         """
         return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetZonesZoneResult(dict):
+    def __init__(__self__, *,
+                 instance_types: Sequence['outputs.GetZonesZoneInstanceTypeResult'],
+                 zone_id: str):
+        """
+        :param Sequence['GetZonesZoneInstanceTypeArgs'] instance_types: A list of instance type information collection
+        :param str zone_id: String to filter results by zone id.
+        """
+        pulumi.set(__self__, "instance_types", instance_types)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Sequence['outputs.GetZonesZoneInstanceTypeResult']:
+        """
+        A list of instance type information collection
+        """
+        return pulumi.get(self, "instance_types")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        String to filter results by zone id.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetZonesZoneInstanceTypeResult(dict):
+    def __init__(__self__, *,
+                 protocol_type: str,
+                 storage_type: str):
+        """
+        :param str protocol_type: File transfer protocol type. Valid values:
+        :param str storage_type: The storage type of the nas zones. Valid values:
+        """
+        pulumi.set(__self__, "protocol_type", protocol_type)
+        pulumi.set(__self__, "storage_type", storage_type)
+
+    @property
+    @pulumi.getter(name="protocolType")
+    def protocol_type(self) -> str:
+        """
+        File transfer protocol type. Valid values:
+        """
+        return pulumi.get(self, "protocol_type")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> str:
+        """
+        The storage type of the nas zones. Valid values:
+        """
+        return pulumi.get(self, "storage_type")
 
 

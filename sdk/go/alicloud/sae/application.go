@@ -134,6 +134,18 @@ type Application struct {
 	Envs pulumi.StringOutput `pulumi:"envs"`
 	// Mirror address. Only Image type applications can configure the mirror address.
 	ImageUrl pulumi.StringPtrOutput `pulumi:"imageUrl"`
+	// Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
+	// public network SLB ID.
+	InternetSlbId pulumi.StringPtrOutput `pulumi:"internetSlbId"`
+	// Bound private network SLB. The details see Block internet.
+	Internets ApplicationInternetArrayOutput `pulumi:"internets"`
+	// Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+	IntranetIp pulumi.StringOutput `pulumi:"intranetIp"`
+	// private network SLB ID.
+	IntranetSlbId pulumi.StringPtrOutput `pulumi:"intranetSlbId"`
+	// Bound public network SLB. The details see Block intranet.
+	Intranets ApplicationIntranetArrayOutput `pulumi:"intranets"`
 	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
 	JarStartArgs pulumi.StringPtrOutput `pulumi:"jarStartArgs"`
 	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -196,6 +208,8 @@ type Application struct {
 	UpdateStrategy pulumi.StringOutput `pulumi:"updateStrategy"`
 	// Application version id.
 	VersionId pulumi.StringPtrOutput `pulumi:"versionId"`
+	// The vpc id.
+	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
@@ -276,6 +290,18 @@ type applicationState struct {
 	Envs *string `pulumi:"envs"`
 	// Mirror address. Only Image type applications can configure the mirror address.
 	ImageUrl *string `pulumi:"imageUrl"`
+	// Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+	InternetIp *string `pulumi:"internetIp"`
+	// public network SLB ID.
+	InternetSlbId *string `pulumi:"internetSlbId"`
+	// Bound private network SLB. The details see Block internet.
+	Internets []ApplicationInternet `pulumi:"internets"`
+	// Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+	IntranetIp *string `pulumi:"intranetIp"`
+	// private network SLB ID.
+	IntranetSlbId *string `pulumi:"intranetSlbId"`
+	// Bound public network SLB. The details see Block intranet.
+	Intranets []ApplicationIntranet `pulumi:"intranets"`
 	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
 	JarStartArgs *string `pulumi:"jarStartArgs"`
 	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -338,6 +364,8 @@ type applicationState struct {
 	UpdateStrategy *string `pulumi:"updateStrategy"`
 	// Application version id.
 	VersionId *string `pulumi:"versionId"`
+	// The vpc id.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId *string `pulumi:"vswitchId"`
 	// WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
@@ -381,6 +409,18 @@ type ApplicationState struct {
 	Envs pulumi.StringPtrInput
 	// Mirror address. Only Image type applications can configure the mirror address.
 	ImageUrl pulumi.StringPtrInput
+	// Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+	InternetIp pulumi.StringPtrInput
+	// public network SLB ID.
+	InternetSlbId pulumi.StringPtrInput
+	// Bound private network SLB. The details see Block internet.
+	Internets ApplicationInternetArrayInput
+	// Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+	IntranetIp pulumi.StringPtrInput
+	// private network SLB ID.
+	IntranetSlbId pulumi.StringPtrInput
+	// Bound public network SLB. The details see Block intranet.
+	Intranets ApplicationIntranetArrayInput
 	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
 	JarStartArgs pulumi.StringPtrInput
 	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -443,6 +483,8 @@ type ApplicationState struct {
 	UpdateStrategy pulumi.StringPtrInput
 	// Application version id.
 	VersionId pulumi.StringPtrInput
+	// The vpc id.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id.
 	VswitchId pulumi.StringPtrInput
 	// WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
@@ -490,6 +532,14 @@ type applicationArgs struct {
 	Envs *string `pulumi:"envs"`
 	// Mirror address. Only Image type applications can configure the mirror address.
 	ImageUrl *string `pulumi:"imageUrl"`
+	// public network SLB ID.
+	InternetSlbId *string `pulumi:"internetSlbId"`
+	// Bound private network SLB. The details see Block internet.
+	Internets []ApplicationInternet `pulumi:"internets"`
+	// private network SLB ID.
+	IntranetSlbId *string `pulumi:"intranetSlbId"`
+	// Bound public network SLB. The details see Block intranet.
+	Intranets []ApplicationIntranet `pulumi:"intranets"`
 	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
 	JarStartArgs *string `pulumi:"jarStartArgs"`
 	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -552,6 +602,8 @@ type applicationArgs struct {
 	UpdateStrategy *string `pulumi:"updateStrategy"`
 	// Application version id.
 	VersionId *string `pulumi:"versionId"`
+	// The vpc id.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId *string `pulumi:"vswitchId"`
 	// WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
@@ -596,6 +648,14 @@ type ApplicationArgs struct {
 	Envs pulumi.StringPtrInput
 	// Mirror address. Only Image type applications can configure the mirror address.
 	ImageUrl pulumi.StringPtrInput
+	// public network SLB ID.
+	InternetSlbId pulumi.StringPtrInput
+	// Bound private network SLB. The details see Block internet.
+	Internets ApplicationInternetArrayInput
+	// private network SLB ID.
+	IntranetSlbId pulumi.StringPtrInput
+	// Bound public network SLB. The details see Block intranet.
+	Intranets ApplicationIntranetArrayInput
 	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
 	JarStartArgs pulumi.StringPtrInput
 	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -658,6 +718,8 @@ type ApplicationArgs struct {
 	UpdateStrategy pulumi.StringPtrInput
 	// Application version id.
 	VersionId pulumi.StringPtrInput
+	// The vpc id.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id.
 	VswitchId pulumi.StringPtrInput
 	// WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.

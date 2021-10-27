@@ -27,9 +27,10 @@ class OssBackupPlanArgs:
         :param pulumi.Input[str] bucket: The name of OSS bucket.
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
+        :param pulumi.Input[str] prefix: Backup prefix. Once specified, only objects with matching prefixes will be backed up.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "bucket", bucket)
@@ -94,7 +95,7 @@ class OssBackupPlanArgs:
     @pulumi.getter
     def schedule(self) -> pulumi.Input[str]:
         """
-        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -129,6 +130,9 @@ class OssBackupPlanArgs:
     @property
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+        """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
@@ -153,8 +157,9 @@ class _OssBackupPlanState:
         :param pulumi.Input[str] bucket: The name of OSS bucket.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[str] prefix: Backup prefix. Once specified, only objects with matching prefixes will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         if backup_type is not None:
@@ -225,6 +230,9 @@ class _OssBackupPlanState:
     @property
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+        """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
@@ -247,7 +255,7 @@ class _OssBackupPlanState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -300,17 +308,17 @@ class OssBackupPlan(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "example_value"
+            name = "tf-test112358"
         default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
-        default_buckets = alicloud.oss.get_buckets(name_regex="oss_bucket_example_name")
-        example = alicloud.hbr.OssBackupPlan("example",
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=name)
+        default_oss_backup_plan = alicloud.hbr.OssBackupPlan("defaultOssBackupPlan",
             oss_backup_plan_name=name,
+            prefix="/",
+            bucket=default_bucket.bucket,
             vault_id=default_vault.id,
-            bucket=alicloud_oss_bucket["default"]["bucket"],
-            prefix="/home",
-            retention="1",
             schedule="I|1602673264|PT2H",
-            backup_type="COMPLETE")
+            backup_type="COMPLETE",
+            retention="2")
         ```
 
         ## Import
@@ -327,8 +335,9 @@ class OssBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] bucket: The name of OSS bucket.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[str] prefix: Backup prefix. Once specified, only objects with matching prefixes will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         ...
@@ -355,17 +364,17 @@ class OssBackupPlan(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "example_value"
+            name = "tf-test112358"
         default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
-        default_buckets = alicloud.oss.get_buckets(name_regex="oss_bucket_example_name")
-        example = alicloud.hbr.OssBackupPlan("example",
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=name)
+        default_oss_backup_plan = alicloud.hbr.OssBackupPlan("defaultOssBackupPlan",
             oss_backup_plan_name=name,
+            prefix="/",
+            bucket=default_bucket.bucket,
             vault_id=default_vault.id,
-            bucket=alicloud_oss_bucket["default"]["bucket"],
-            prefix="/home",
-            retention="1",
             schedule="I|1602673264|PT2H",
-            backup_type="COMPLETE")
+            backup_type="COMPLETE",
+            retention="2")
         ```
 
         ## Import
@@ -460,8 +469,9 @@ class OssBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] bucket: The name of OSS bucket.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[str] prefix: Backup prefix. Once specified, only objects with matching prefixes will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -513,6 +523,9 @@ class OssBackupPlan(pulumi.CustomResource):
     @property
     @pulumi.getter
     def prefix(self) -> pulumi.Output[Optional[str]]:
+        """
+        Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+        """
         return pulumi.get(self, "prefix")
 
     @property
@@ -527,7 +540,7 @@ class OssBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[str]:
         """
-        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 

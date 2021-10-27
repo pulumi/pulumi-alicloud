@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> InService { get; set; } = null!;
 
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> Required { get; set; } = null!;
 
         /// <summary>
-        /// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
+        /// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

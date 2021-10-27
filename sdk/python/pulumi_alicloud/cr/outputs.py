@@ -11,6 +11,7 @@ from . import outputs
 
 __all__ = [
     'RepoDomainList',
+    'GetEndpointAclPoliciesPolicyResult',
     'GetNamespacesNamespaceResult',
     'GetReposRepoResult',
     'GetReposRepoDomainListResult',
@@ -58,6 +59,68 @@ class RepoDomainList(dict):
         Domain of vpc endpoint.
         """
         return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class GetEndpointAclPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 endpoint_type: str,
+                 entry: str,
+                 id: str,
+                 instance_id: str):
+        """
+        :param str description: The description of the entry.
+        :param str endpoint_type: The type of endpoint.
+        :param str entry: The IP segment that allowed to access.
+        :param str id: The ID of the Endpoint Acl Policy.
+        :param str instance_id: The ID of the CR Instance.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
+        pulumi.set(__self__, "entry", entry)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the entry.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> str:
+        """
+        The type of endpoint.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @property
+    @pulumi.getter
+    def entry(self) -> str:
+        """
+        The IP segment that allowed to access.
+        """
+        return pulumi.get(self, "entry")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Endpoint Acl Policy.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the CR Instance.
+        """
+        return pulumi.get(self, "instance_id")
 
 
 @pulumi.output_type

@@ -1285,7 +1285,7 @@ class SynchronizationJob(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default_synchronization_instance = alicloud.dts.SynchronizationInstance("defaultSynchronizationInstance",
-            payment_type="PostPaid",
+            payment_type="PayAsYouGo",
             source_endpoint_engine_name="PolarDB",
             source_endpoint_region="cn-hangzhou",
             destination_endpoint_engine_name="ADB30",
@@ -1394,7 +1394,7 @@ class SynchronizationJob(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default_synchronization_instance = alicloud.dts.SynchronizationInstance("defaultSynchronizationInstance",
-            payment_type="PostPaid",
+            payment_type="PayAsYouGo",
             source_endpoint_engine_name="PolarDB",
             source_endpoint_region="cn-hangzhou",
             destination_endpoint_engine_name="ADB30",

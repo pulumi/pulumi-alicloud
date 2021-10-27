@@ -121,8 +121,8 @@ def get_backup_jobs(filters: Optional[Sequence[pulumi.InputType['GetBackupJobsFi
 
 
     :param Sequence[str] ids: A list of Backup Job IDs.
-    :param str sort_direction: The sort direction.
-    :param str source_type: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+    :param str sort_direction: The sort direction. Valid values: `ASCEND`, `DESCEND`.
+    :param str source_type: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
     :param str status: The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
     """
     __args__ = dict()

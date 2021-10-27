@@ -15,6 +15,7 @@ class EipArgs:
     def __init__(__self__, *,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -47,6 +48,8 @@ class EipArgs:
             pulumi.set(__self__, "activity_id", activity_id)
         if address_name is not None:
             pulumi.set(__self__, "address_name", address_name)
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if deletion_protection is not None:
@@ -98,6 +101,15 @@ class EipArgs:
     @address_name.setter
     def address_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address_name", value)
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_pay", value)
 
     @property
     @pulumi.getter
@@ -245,6 +257,7 @@ class _EipState:
     def __init__(__self__, *,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -281,6 +294,8 @@ class _EipState:
             pulumi.set(__self__, "activity_id", activity_id)
         if address_name is not None:
             pulumi.set(__self__, "address_name", address_name)
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if deletion_protection is not None:
@@ -336,6 +351,15 @@ class _EipState:
     @address_name.setter
     def address_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address_name", value)
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_pay", value)
 
     @property
     @pulumi.getter
@@ -514,6 +538,7 @@ class Eip(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -584,6 +609,7 @@ class Eip(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -611,6 +637,7 @@ class Eip(pulumi.CustomResource):
 
             __props__.__dict__["activity_id"] = activity_id
             __props__.__dict__["address_name"] = address_name
+            __props__.__dict__["auto_pay"] = auto_pay
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
@@ -643,6 +670,7 @@ class Eip(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             activity_id: Optional[pulumi.Input[str]] = None,
             address_name: Optional[pulumi.Input[str]] = None,
+            auto_pay: Optional[pulumi.Input[bool]] = None,
             bandwidth: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -686,6 +714,7 @@ class Eip(pulumi.CustomResource):
 
         __props__.__dict__["activity_id"] = activity_id
         __props__.__dict__["address_name"] = address_name
+        __props__.__dict__["auto_pay"] = auto_pay
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
@@ -714,6 +743,11 @@ class Eip(pulumi.CustomResource):
         The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         """
         return pulumi.get(self, "address_name")
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "auto_pay")
 
     @property
     @pulumi.getter

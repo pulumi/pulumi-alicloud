@@ -551,6 +551,7 @@ func (o ListenerAclConfigAclRelationArrayOutput) Index(i pulumi.IntInput) Listen
 }
 
 type ListenerCertificate struct {
+	// The ID of the Certificate.
 	CertificateId *string `pulumi:"certificateId"`
 }
 
@@ -566,6 +567,7 @@ type ListenerCertificateInput interface {
 }
 
 type ListenerCertificateArgs struct {
+	// The ID of the Certificate.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 }
 
@@ -620,6 +622,7 @@ func (o ListenerCertificateOutput) ToListenerCertificateOutputWithContext(ctx co
 	return o
 }
 
+// The ID of the Certificate.
 func (o ListenerCertificateOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerCertificate) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
@@ -5471,7 +5474,7 @@ type GetListenersListener struct {
 	AccessLogTracingConfigs []GetListenersListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfigs"`
 	// The configurations of the access control lists (ACLs).
 	AclConfigs []GetListenersListenerAclConfig `pulumi:"aclConfigs"`
-	// Certificate.
+	// The Certificate List.
 	Certificates []GetListenersListenerCertificate `pulumi:"certificates"`
 	// The Default Rule Action List.
 	DefaultActions []GetListenersListenerDefaultAction `pulumi:"defaultActions"`
@@ -5527,7 +5530,7 @@ type GetListenersListenerArgs struct {
 	AccessLogTracingConfigs GetListenersListenerAccessLogTracingConfigArrayInput `pulumi:"accessLogTracingConfigs"`
 	// The configurations of the access control lists (ACLs).
 	AclConfigs GetListenersListenerAclConfigArrayInput `pulumi:"aclConfigs"`
-	// Certificate.
+	// The Certificate List.
 	Certificates GetListenersListenerCertificateArrayInput `pulumi:"certificates"`
 	// The Default Rule Action List.
 	DefaultActions GetListenersListenerDefaultActionArrayInput `pulumi:"defaultActions"`
@@ -5633,7 +5636,7 @@ func (o GetListenersListenerOutput) AclConfigs() GetListenersListenerAclConfigAr
 	return o.ApplyT(func(v GetListenersListener) []GetListenersListenerAclConfig { return v.AclConfigs }).(GetListenersListenerAclConfigArrayOutput)
 }
 
-// Certificate.
+// The Certificate List.
 func (o GetListenersListenerOutput) Certificates() GetListenersListenerCertificateArrayOutput {
 	return o.ApplyT(func(v GetListenersListener) []GetListenersListenerCertificate { return v.Certificates }).(GetListenersListenerCertificateArrayOutput)
 }
@@ -6073,6 +6076,7 @@ func (o GetListenersListenerAclConfigAclRelationArrayOutput) Index(i pulumi.IntI
 }
 
 type GetListenersListenerCertificate struct {
+	// The ID of the Certificate.
 	CertificateId string `pulumi:"certificateId"`
 }
 
@@ -6088,6 +6092,7 @@ type GetListenersListenerCertificateInput interface {
 }
 
 type GetListenersListenerCertificateArgs struct {
+	// The ID of the Certificate.
 	CertificateId pulumi.StringInput `pulumi:"certificateId"`
 }
 
@@ -6142,6 +6147,7 @@ func (o GetListenersListenerCertificateOutput) ToGetListenersListenerCertificate
 	return o
 }
 
+// The ID of the Certificate.
 func (o GetListenersListenerCertificateOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerCertificate) string { return v.CertificateId }).(pulumi.StringOutput)
 }

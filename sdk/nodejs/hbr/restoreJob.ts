@@ -19,17 +19,32 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const defaultEcsBackupPlans = alicloud.hbr.getEcsBackupPlans({
+ *     nameRegex: "plan-tf-used-dont-delete",
+ * });
+ * const defaultOssBackupPlans = alicloud.hbr.getOssBackupPlans({
+ *     nameRegex: "plan-tf-used-dont-delete",
+ * });
  * const defaultNasBackupPlans = alicloud.hbr.getNasBackupPlans({
  *     nameRegex: "plan-tf-used-dont-delete",
  * });
+ * const ecsSnapshots = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getSnapshots({
+ *     sourceType: "ECS_FILE",
+ *     vaultId: defaultEcsBackupPlans.plans[0].vaultId,
+ *     instanceId: defaultEcsBackupPlans1.plans[0].instanceId,
+ * }));
+ * const ossSnapshots = Promise.all([defaultOssBackupPlans, defaultOssBackupPlans]).then(([defaultOssBackupPlans, defaultOssBackupPlans1]) => alicloud.hbr.getSnapshots({
+ *     sourceType: "OSS",
+ *     vaultId: defaultOssBackupPlans.plans[0].vaultId,
+ *     bucket: defaultOssBackupPlans1.plans[0].bucket,
+ * }));
  * const nasSnapshots = Promise.all([defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans]).then(([defaultNasBackupPlans, defaultNasBackupPlans1, defaultNasBackupPlans2]) => alicloud.hbr.getSnapshots({
  *     sourceType: "NAS",
  *     vaultId: defaultNasBackupPlans.plans[0].vaultId,
  *     fileSystemId: defaultNasBackupPlans1.plans[0].fileSystemId,
  *     createTime: defaultNasBackupPlans2.plans[0].createTime,
  * }));
- * const defaultRestoreJob = new alicloud.hbr.RestoreJob("defaultRestoreJob", {
- *     restoreJobId: "tftestacc112358",
+ * const nasJob = new alicloud.hbr.RestoreJob("nasJob", {
  *     snapshotHash: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots[0].snapshotHash),
  *     vaultId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans[0].vaultId),
  *     sourceType: "NAS",
@@ -39,6 +54,25 @@ import * as utilities from "../utilities";
  *     targetCreateTime: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans[0].createTime),
  *     targetPath: "/",
  *     options: "    {\"includes\":[], \"excludes\":[]}\n",
+ * });
+ * const ossJob = new alicloud.hbr.RestoreJob("ossJob", {
+ *     snapshotHash: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots[0].snapshotHash),
+ *     vaultId: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans[0].vaultId),
+ *     sourceType: "OSS",
+ *     restoreType: "OSS",
+ *     snapshotId: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots[0].snapshotId),
+ *     targetBucket: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans[0].bucket),
+ *     targetPrefix: "",
+ *     options: "    {\"includes\":[], \"excludes\":[]}\n",
+ * });
+ * const ecsJob = new alicloud.hbr.RestoreJob("ecsJob", {
+ *     snapshotHash: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots[0].snapshotHash),
+ *     vaultId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans[0].vaultId),
+ *     sourceType: "ECS_FILE",
+ *     restoreType: "ECS_FILE",
+ *     snapshotId: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots[0].snapshotId),
+ *     targetInstanceId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans[0].instanceId),
+ *     targetPath: "/",
  * });
  * ```
  *
@@ -81,11 +115,11 @@ export class RestoreJob extends pulumi.CustomResource {
     }
 
     /**
-     * The exclude path. It's a json string with format:`["/home", "/exclude"]`.
+     * The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     public readonly exclude!: pulumi.Output<string | undefined>;
     /**
-     * The include path. It's a json string with format:`["/home", "/include"]`.
+     * The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     public readonly include!: pulumi.Output<string | undefined>;
     /**
@@ -93,7 +127,7 @@ export class RestoreJob extends pulumi.CustomResource {
      */
     public readonly options!: pulumi.Output<string | undefined>;
     /**
-     * Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
+     * Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      */
     public readonly restoreJobId!: pulumi.Output<string>;
     /**
@@ -101,7 +135,7 @@ export class RestoreJob extends pulumi.CustomResource {
      */
     public readonly restoreType!: pulumi.Output<string>;
     /**
-     * The hashcode of restore Snapshot.
+     * The hashcode of Snapshot.
      */
     public readonly snapshotHash!: pulumi.Output<string>;
     /**
@@ -117,14 +151,14 @@ export class RestoreJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The target ofo OSS bucket name.
+     * The target name of OSS bucket.
      */
     public readonly targetBucket!: pulumi.Output<string | undefined>;
     public readonly targetClientId!: pulumi.Output<string | undefined>;
     public readonly targetContainer!: pulumi.Output<string | undefined>;
     public readonly targetContainerClusterId!: pulumi.Output<string | undefined>;
     /**
-     * The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * The creation time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
     public readonly targetCreateTime!: pulumi.Output<string | undefined>;
     public readonly targetDataSourceId!: pulumi.Output<string | undefined>;
@@ -137,11 +171,11 @@ export class RestoreJob extends pulumi.CustomResource {
      */
     public readonly targetInstanceId!: pulumi.Output<string | undefined>;
     /**
-     * The target file path of (ECS) instance.
+     * The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     public readonly targetPath!: pulumi.Output<string | undefined>;
     /**
-     * The target of the OSS object prefix.
+     * The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     public readonly targetPrefix!: pulumi.Output<string | undefined>;
     /**
@@ -184,9 +218,6 @@ export class RestoreJob extends pulumi.CustomResource {
             inputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as RestoreJobArgs | undefined;
-            if ((!args || args.restoreJobId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'restoreJobId'");
-            }
             if ((!args || args.restoreType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'restoreType'");
             }
@@ -235,11 +266,11 @@ export class RestoreJob extends pulumi.CustomResource {
  */
 export interface RestoreJobState {
     /**
-     * The exclude path. It's a json string with format:`["/home", "/exclude"]`.
+     * The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     readonly exclude?: pulumi.Input<string>;
     /**
-     * The include path. It's a json string with format:`["/home", "/include"]`.
+     * The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     readonly include?: pulumi.Input<string>;
     /**
@@ -247,7 +278,7 @@ export interface RestoreJobState {
      */
     readonly options?: pulumi.Input<string>;
     /**
-     * Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
+     * Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      */
     readonly restoreJobId?: pulumi.Input<string>;
     /**
@@ -255,7 +286,7 @@ export interface RestoreJobState {
      */
     readonly restoreType?: pulumi.Input<string>;
     /**
-     * The hashcode of restore Snapshot.
+     * The hashcode of Snapshot.
      */
     readonly snapshotHash?: pulumi.Input<string>;
     /**
@@ -271,14 +302,14 @@ export interface RestoreJobState {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * The target ofo OSS bucket name.
+     * The target name of OSS bucket.
      */
     readonly targetBucket?: pulumi.Input<string>;
     readonly targetClientId?: pulumi.Input<string>;
     readonly targetContainer?: pulumi.Input<string>;
     readonly targetContainerClusterId?: pulumi.Input<string>;
     /**
-     * The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * The creation time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
     readonly targetCreateTime?: pulumi.Input<string>;
     readonly targetDataSourceId?: pulumi.Input<string>;
@@ -291,11 +322,11 @@ export interface RestoreJobState {
      */
     readonly targetInstanceId?: pulumi.Input<string>;
     /**
-     * The target file path of (ECS) instance.
+     * The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     readonly targetPath?: pulumi.Input<string>;
     /**
-     * The target of the OSS object prefix.
+     * The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     readonly targetPrefix?: pulumi.Input<string>;
     /**
@@ -309,11 +340,11 @@ export interface RestoreJobState {
  */
 export interface RestoreJobArgs {
     /**
-     * The exclude path. It's a json string with format:`["/home", "/exclude"]`.
+     * The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     readonly exclude?: pulumi.Input<string>;
     /**
-     * The include path. It's a json string with format:`["/home", "/include"]`.
+     * The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     readonly include?: pulumi.Input<string>;
     /**
@@ -321,15 +352,15 @@ export interface RestoreJobArgs {
      */
     readonly options?: pulumi.Input<string>;
     /**
-     * Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
+     * Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      */
-    readonly restoreJobId: pulumi.Input<string>;
+    readonly restoreJobId?: pulumi.Input<string>;
     /**
      * The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
      */
     readonly restoreType: pulumi.Input<string>;
     /**
-     * The hashcode of restore Snapshot.
+     * The hashcode of Snapshot.
      */
     readonly snapshotHash: pulumi.Input<string>;
     /**
@@ -341,14 +372,14 @@ export interface RestoreJobArgs {
      */
     readonly sourceType: pulumi.Input<string>;
     /**
-     * The target ofo OSS bucket name.
+     * The target name of OSS bucket.
      */
     readonly targetBucket?: pulumi.Input<string>;
     readonly targetClientId?: pulumi.Input<string>;
     readonly targetContainer?: pulumi.Input<string>;
     readonly targetContainerClusterId?: pulumi.Input<string>;
     /**
-     * The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * The creation time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
     readonly targetCreateTime?: pulumi.Input<string>;
     readonly targetDataSourceId?: pulumi.Input<string>;
@@ -361,11 +392,11 @@ export interface RestoreJobArgs {
      */
     readonly targetInstanceId?: pulumi.Input<string>;
     /**
-     * The target file path of (ECS) instance.
+     * The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     readonly targetPath?: pulumi.Input<string>;
     /**
-     * The target of the OSS object prefix.
+     * The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     readonly targetPrefix?: pulumi.Input<string>;
     /**

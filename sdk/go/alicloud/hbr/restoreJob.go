@@ -32,25 +32,56 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "plan-tf-used-dont-delete"
-// 		defaultNasBackupPlans, err := hbr.GetNasBackupPlans(ctx, &hbr.GetNasBackupPlansArgs{
+// 		defaultEcsBackupPlans, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
 // 			NameRegex: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := defaultNasBackupPlans.Plans[0].FileSystemId
-// 		opt2 := defaultNasBackupPlans.Plans[0].CreateTime
-// 		nasSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
-// 			SourceType:   "NAS",
-// 			VaultId:      defaultNasBackupPlans.Plans[0].VaultId,
-// 			FileSystemId: &opt1,
-// 			CreateTime:   &opt2,
+// 		opt1 := "plan-tf-used-dont-delete"
+// 		defaultOssBackupPlans, err := hbr.GetOssBackupPlans(ctx, &hbr.GetOssBackupPlansArgs{
+// 			NameRegex: &opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = hbr.NewRestoreJob(ctx, "defaultRestoreJob", &hbr.RestoreJobArgs{
-// 			RestoreJobId:       pulumi.String("tftestacc112358"),
+// 		opt2 := "plan-tf-used-dont-delete"
+// 		defaultNasBackupPlans, err := hbr.GetNasBackupPlans(ctx, &hbr.GetNasBackupPlansArgs{
+// 			NameRegex: &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt3 := defaultEcsBackupPlans.Plans[0].InstanceId
+// 		ecsSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
+// 			SourceType: "ECS_FILE",
+// 			VaultId:    defaultEcsBackupPlans.Plans[0].VaultId,
+// 			InstanceId: &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt4 := defaultOssBackupPlans.Plans[0].Bucket
+// 		ossSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
+// 			SourceType: "OSS",
+// 			VaultId:    defaultOssBackupPlans.Plans[0].VaultId,
+// 			Bucket:     &opt4,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt5 := defaultNasBackupPlans.Plans[0].FileSystemId
+// 		opt6 := defaultNasBackupPlans.Plans[0].CreateTime
+// 		nasSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
+// 			SourceType:   "NAS",
+// 			VaultId:      defaultNasBackupPlans.Plans[0].VaultId,
+// 			FileSystemId: &opt5,
+// 			CreateTime:   &opt6,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = hbr.NewRestoreJob(ctx, "nasJob", &hbr.RestoreJobArgs{
 // 			SnapshotHash:       pulumi.String(nasSnapshots.Snapshots[0].SnapshotHash),
 // 			VaultId:            pulumi.String(defaultNasBackupPlans.Plans[0].VaultId),
 // 			SourceType:         pulumi.String("NAS"),
@@ -60,6 +91,31 @@ import (
 // 			TargetCreateTime:   pulumi.String(defaultNasBackupPlans.Plans[0].CreateTime),
 // 			TargetPath:         pulumi.String("/"),
 // 			Options:            pulumi.String("    {\"includes\":[], \"excludes\":[]}\n"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = hbr.NewRestoreJob(ctx, "ossJob", &hbr.RestoreJobArgs{
+// 			SnapshotHash: pulumi.String(ossSnapshots.Snapshots[0].SnapshotHash),
+// 			VaultId:      pulumi.String(defaultOssBackupPlans.Plans[0].VaultId),
+// 			SourceType:   pulumi.String("OSS"),
+// 			RestoreType:  pulumi.String("OSS"),
+// 			SnapshotId:   pulumi.String(ossSnapshots.Snapshots[0].SnapshotId),
+// 			TargetBucket: pulumi.String(defaultOssBackupPlans.Plans[0].Bucket),
+// 			TargetPrefix: pulumi.String(""),
+// 			Options:      pulumi.String("    {\"includes\":[], \"excludes\":[]}\n"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = hbr.NewRestoreJob(ctx, "ecsJob", &hbr.RestoreJobArgs{
+// 			SnapshotHash:     pulumi.String(ecsSnapshots.Snapshots[0].SnapshotHash),
+// 			VaultId:          pulumi.String(defaultEcsBackupPlans.Plans[0].VaultId),
+// 			SourceType:       pulumi.String("ECS_FILE"),
+// 			RestoreType:      pulumi.String("ECS_FILE"),
+// 			SnapshotId:       pulumi.String(ecsSnapshots.Snapshots[0].SnapshotId),
+// 			TargetInstanceId: pulumi.String(defaultEcsBackupPlans.Plans[0].InstanceId),
+// 			TargetPath:       pulumi.String("/"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -81,17 +137,17 @@ import (
 type RestoreJob struct {
 	pulumi.CustomResourceState
 
-	// The exclude path. It's a json string with format:`["/home", "/exclude"]`.
+	// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude pulumi.StringPtrOutput `pulumi:"exclude"`
-	// The include path. It's a json string with format:`["/home", "/include"]`.
+	// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrOutput `pulumi:"include"`
 	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options pulumi.StringPtrOutput `pulumi:"options"`
-	// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
+	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringOutput `pulumi:"restoreJobId"`
 	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
 	RestoreType pulumi.StringOutput `pulumi:"restoreType"`
-	// The hashcode of restore Snapshot.
+	// The hashcode of Snapshot.
 	SnapshotHash pulumi.StringOutput `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
@@ -99,21 +155,21 @@ type RestoreJob struct {
 	SourceType pulumi.StringOutput `pulumi:"sourceType"`
 	// The Restore Job Status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The target ofo OSS bucket name.
+	// The target name of OSS bucket.
 	TargetBucket             pulumi.StringPtrOutput `pulumi:"targetBucket"`
 	TargetClientId           pulumi.StringPtrOutput `pulumi:"targetClientId"`
 	TargetContainer          pulumi.StringPtrOutput `pulumi:"targetContainer"`
 	TargetContainerClusterId pulumi.StringPtrOutput `pulumi:"targetContainerClusterId"`
-	// The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	// The creation time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	TargetCreateTime   pulumi.StringPtrOutput `pulumi:"targetCreateTime"`
 	TargetDataSourceId pulumi.StringPtrOutput `pulumi:"targetDataSourceId"`
 	// The ID of destination File System.
 	TargetFileSystemId pulumi.StringPtrOutput `pulumi:"targetFileSystemId"`
 	// The target ID of ECS instance.
 	TargetInstanceId pulumi.StringPtrOutput `pulumi:"targetInstanceId"`
-	// The target file path of (ECS) instance.
+	// The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	TargetPath pulumi.StringPtrOutput `pulumi:"targetPath"`
-	// The target of the OSS object prefix.
+	// The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	TargetPrefix pulumi.StringPtrOutput `pulumi:"targetPrefix"`
 	// The ID of backup vault.
 	VaultId pulumi.StringOutput `pulumi:"vaultId"`
@@ -126,9 +182,6 @@ func NewRestoreJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.RestoreJobId == nil {
-		return nil, errors.New("invalid value for required argument 'RestoreJobId'")
-	}
 	if args.RestoreType == nil {
 		return nil, errors.New("invalid value for required argument 'RestoreType'")
 	}
@@ -166,17 +219,17 @@ func GetRestoreJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RestoreJob resources.
 type restoreJobState struct {
-	// The exclude path. It's a json string with format:`["/home", "/exclude"]`.
+	// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude *string `pulumi:"exclude"`
-	// The include path. It's a json string with format:`["/home", "/include"]`.
+	// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include *string `pulumi:"include"`
 	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options *string `pulumi:"options"`
-	// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
+	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId *string `pulumi:"restoreJobId"`
 	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
 	RestoreType *string `pulumi:"restoreType"`
-	// The hashcode of restore Snapshot.
+	// The hashcode of Snapshot.
 	SnapshotHash *string `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId *string `pulumi:"snapshotId"`
@@ -184,38 +237,38 @@ type restoreJobState struct {
 	SourceType *string `pulumi:"sourceType"`
 	// The Restore Job Status.
 	Status *string `pulumi:"status"`
-	// The target ofo OSS bucket name.
+	// The target name of OSS bucket.
 	TargetBucket             *string `pulumi:"targetBucket"`
 	TargetClientId           *string `pulumi:"targetClientId"`
 	TargetContainer          *string `pulumi:"targetContainer"`
 	TargetContainerClusterId *string `pulumi:"targetContainerClusterId"`
-	// The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	// The creation time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	TargetCreateTime   *string `pulumi:"targetCreateTime"`
 	TargetDataSourceId *string `pulumi:"targetDataSourceId"`
 	// The ID of destination File System.
 	TargetFileSystemId *string `pulumi:"targetFileSystemId"`
 	// The target ID of ECS instance.
 	TargetInstanceId *string `pulumi:"targetInstanceId"`
-	// The target file path of (ECS) instance.
+	// The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	TargetPath *string `pulumi:"targetPath"`
-	// The target of the OSS object prefix.
+	// The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	TargetPrefix *string `pulumi:"targetPrefix"`
 	// The ID of backup vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 
 type RestoreJobState struct {
-	// The exclude path. It's a json string with format:`["/home", "/exclude"]`.
+	// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude pulumi.StringPtrInput
-	// The include path. It's a json string with format:`["/home", "/include"]`.
+	// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrInput
 	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options pulumi.StringPtrInput
-	// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
+	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringPtrInput
 	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
 	RestoreType pulumi.StringPtrInput
-	// The hashcode of restore Snapshot.
+	// The hashcode of Snapshot.
 	SnapshotHash pulumi.StringPtrInput
 	// The ID of Snapshot.
 	SnapshotId pulumi.StringPtrInput
@@ -223,21 +276,21 @@ type RestoreJobState struct {
 	SourceType pulumi.StringPtrInput
 	// The Restore Job Status.
 	Status pulumi.StringPtrInput
-	// The target ofo OSS bucket name.
+	// The target name of OSS bucket.
 	TargetBucket             pulumi.StringPtrInput
 	TargetClientId           pulumi.StringPtrInput
 	TargetContainer          pulumi.StringPtrInput
 	TargetContainerClusterId pulumi.StringPtrInput
-	// The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	// The creation time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	TargetCreateTime   pulumi.StringPtrInput
 	TargetDataSourceId pulumi.StringPtrInput
 	// The ID of destination File System.
 	TargetFileSystemId pulumi.StringPtrInput
 	// The target ID of ECS instance.
 	TargetInstanceId pulumi.StringPtrInput
-	// The target file path of (ECS) instance.
+	// The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	TargetPath pulumi.StringPtrInput
-	// The target of the OSS object prefix.
+	// The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	TargetPrefix pulumi.StringPtrInput
 	// The ID of backup vault.
 	VaultId pulumi.StringPtrInput
@@ -248,37 +301,37 @@ func (RestoreJobState) ElementType() reflect.Type {
 }
 
 type restoreJobArgs struct {
-	// The exclude path. It's a json string with format:`["/home", "/exclude"]`.
+	// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude *string `pulumi:"exclude"`
-	// The include path. It's a json string with format:`["/home", "/include"]`.
+	// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include *string `pulumi:"include"`
 	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options *string `pulumi:"options"`
-	// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
-	RestoreJobId string `pulumi:"restoreJobId"`
+	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
+	RestoreJobId *string `pulumi:"restoreJobId"`
 	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
 	RestoreType string `pulumi:"restoreType"`
-	// The hashcode of restore Snapshot.
+	// The hashcode of Snapshot.
 	SnapshotHash string `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId string `pulumi:"snapshotId"`
 	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceType string `pulumi:"sourceType"`
-	// The target ofo OSS bucket name.
+	// The target name of OSS bucket.
 	TargetBucket             *string `pulumi:"targetBucket"`
 	TargetClientId           *string `pulumi:"targetClientId"`
 	TargetContainer          *string `pulumi:"targetContainer"`
 	TargetContainerClusterId *string `pulumi:"targetContainerClusterId"`
-	// The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	// The creation time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	TargetCreateTime   *string `pulumi:"targetCreateTime"`
 	TargetDataSourceId *string `pulumi:"targetDataSourceId"`
 	// The ID of destination File System.
 	TargetFileSystemId *string `pulumi:"targetFileSystemId"`
 	// The target ID of ECS instance.
 	TargetInstanceId *string `pulumi:"targetInstanceId"`
-	// The target file path of (ECS) instance.
+	// The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	TargetPath *string `pulumi:"targetPath"`
-	// The target of the OSS object prefix.
+	// The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	TargetPrefix *string `pulumi:"targetPrefix"`
 	// The ID of backup vault.
 	VaultId string `pulumi:"vaultId"`
@@ -286,37 +339,37 @@ type restoreJobArgs struct {
 
 // The set of arguments for constructing a RestoreJob resource.
 type RestoreJobArgs struct {
-	// The exclude path. It's a json string with format:`["/home", "/exclude"]`.
+	// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude pulumi.StringPtrInput
-	// The include path. It's a json string with format:`["/home", "/include"]`.
+	// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrInput
 	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options pulumi.StringPtrInput
-	// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
-	RestoreJobId pulumi.StringInput
+	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
+	RestoreJobId pulumi.StringPtrInput
 	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
 	RestoreType pulumi.StringInput
-	// The hashcode of restore Snapshot.
+	// The hashcode of Snapshot.
 	SnapshotHash pulumi.StringInput
 	// The ID of Snapshot.
 	SnapshotId pulumi.StringInput
 	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceType pulumi.StringInput
-	// The target ofo OSS bucket name.
+	// The target name of OSS bucket.
 	TargetBucket             pulumi.StringPtrInput
 	TargetClientId           pulumi.StringPtrInput
 	TargetContainer          pulumi.StringPtrInput
 	TargetContainerClusterId pulumi.StringPtrInput
-	// The creation Time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	// The creation time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
 	TargetCreateTime   pulumi.StringPtrInput
 	TargetDataSourceId pulumi.StringPtrInput
 	// The ID of destination File System.
 	TargetFileSystemId pulumi.StringPtrInput
 	// The target ID of ECS instance.
 	TargetInstanceId pulumi.StringPtrInput
-	// The target file path of (ECS) instance.
+	// The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	TargetPath pulumi.StringPtrInput
-	// The target of the OSS object prefix.
+	// The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	TargetPrefix pulumi.StringPtrInput
 	// The ID of backup vault.
 	VaultId pulumi.StringInput

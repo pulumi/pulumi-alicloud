@@ -19,23 +19,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.hbr.NasBackupPlan("example", {
- *     backupType: "COMPLETE",
- *     createTime: "1603163444",
- *     exclude: `  ["/home/exclude"]
- *   `,
- *     fileSystemId: "031cf4964f",
- *     include: `  ["/home/include"]
- *   `,
- *     nasBackupPlanName: "example_value",
- *     paths: [
- *         "/home",
- *         "/var",
- *     ],
- *     retention: "1",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testAccHBRNas";
+ * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: name});
+ * const defaultFileSystem = new alicloud.nas.FileSystem("defaultFileSystem", {
+ *     protocolType: "NFS",
+ *     storageType: "Performance",
+ *     description: name,
+ *     encryptType: "1",
+ * });
+ * const defaultFileSystems = defaultFileSystem.description.apply(description => alicloud.nas.getFileSystems({
+ *     protocolType: "NFS",
+ *     descriptionRegex: description,
+ * }));
+ * const defaultNasBackupPlan = new alicloud.hbr.NasBackupPlan("defaultNasBackupPlan", {
+ *     nasBackupPlanName: name,
+ *     fileSystemId: defaultFileSystem.id,
  *     schedule: "I|1602673264|PT2H",
- *     speedLimit: "I|1602673264|PT2H",
- *     vaultId: "v-0003gxoksflhu46w185s",
+ *     backupType: "COMPLETE",
+ *     vaultId: defaultVault.id,
+ *     createTime: defaultFileSystems.systems[0].createTime,
+ *     retention: "2",
+ *     paths: ["/"],
+ * }, {
+ *     dependsOn: ["alicloud_nas_file_system.default"],
  * });
  * ```
  *
@@ -88,39 +95,36 @@ export class NasBackupPlan extends pulumi.CustomResource {
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     public readonly disabled!: pulumi.Output<boolean>;
-    /**
-     * The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
-     */
     public readonly exclude!: pulumi.Output<string | undefined>;
     /**
      * The File System ID of Nas.
      */
     public readonly fileSystemId!: pulumi.Output<string>;
-    /**
-     * The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
-     */
     public readonly include!: pulumi.Output<string | undefined>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     public readonly nasBackupPlanName!: pulumi.Output<string>;
+    /**
+     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+     */
     public readonly options!: pulumi.Output<string | undefined>;
     /**
-     * Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
+     * List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
      */
-    public readonly paths!: pulumi.Output<string[] | undefined>;
+    public readonly paths!: pulumi.Output<string[]>;
     /**
      * Backup retention days, the minimum is 1.
      */
     public readonly retention!: pulumi.Output<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     public readonly schedule!: pulumi.Output<string>;
-    /**
-     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-     */
     public readonly speedLimit!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     */
     public readonly updatePaths!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of Backup vault.
@@ -168,6 +172,9 @@ export class NasBackupPlan extends pulumi.CustomResource {
             }
             if ((!args || args.nasBackupPlanName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nasBackupPlanName'");
+            }
+            if ((!args || args.paths === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'paths'");
             }
             if ((!args || args.retention === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'retention'");
@@ -218,25 +225,22 @@ export interface NasBackupPlanState {
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     readonly disabled?: pulumi.Input<boolean>;
-    /**
-     * The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
-     */
     readonly exclude?: pulumi.Input<string>;
     /**
      * The File System ID of Nas.
      */
     readonly fileSystemId?: pulumi.Input<string>;
-    /**
-     * The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
-     */
     readonly include?: pulumi.Input<string>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     readonly nasBackupPlanName?: pulumi.Input<string>;
+    /**
+     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+     */
     readonly options?: pulumi.Input<string>;
     /**
-     * Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
+     * List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
      */
     readonly paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -244,13 +248,13 @@ export interface NasBackupPlanState {
      */
     readonly retention?: pulumi.Input<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     readonly schedule?: pulumi.Input<string>;
-    /**
-     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-     */
     readonly speedLimit?: pulumi.Input<string>;
+    /**
+     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     */
     readonly updatePaths?: pulumi.Input<boolean>;
     /**
      * The ID of Backup vault.
@@ -275,39 +279,36 @@ export interface NasBackupPlanArgs {
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     readonly disabled?: pulumi.Input<boolean>;
-    /**
-     * The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
-     */
     readonly exclude?: pulumi.Input<string>;
     /**
      * The File System ID of Nas.
      */
     readonly fileSystemId: pulumi.Input<string>;
-    /**
-     * The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
-     */
     readonly include?: pulumi.Input<string>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     readonly nasBackupPlanName: pulumi.Input<string>;
+    /**
+     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+     */
     readonly options?: pulumi.Input<string>;
     /**
-     * Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
+     * List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
      */
-    readonly paths?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly paths: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Backup retention days, the minimum is 1.
      */
     readonly retention: pulumi.Input<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     readonly schedule: pulumi.Input<string>;
-    /**
-     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-     */
     readonly speedLimit?: pulumi.Input<string>;
+    /**
+     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     */
     readonly updatePaths?: pulumi.Input<boolean>;
     /**
      * The ID of Backup vault.

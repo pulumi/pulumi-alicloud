@@ -4,7 +4,14 @@
 
 # Export this package's modules as members:
 from .access_group import *
+from .access_rule import *
+from .file_system import *
 from .get_access_groups import *
+from .get_access_rules import *
+from .get_file_systems import *
+from .get_mount_points import *
+from .get_zones import *
+from .mount_point import *
 from . import outputs
 
 def _register_module():
@@ -21,11 +28,20 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:dfs/accessGroup:AccessGroup":
                 return AccessGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dfs/accessRule:AccessRule":
+                return AccessRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dfs/fileSystem:FileSystem":
+                return FileSystem(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dfs/mountPoint:MountPoint":
+                return MountPoint(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "dfs/accessGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dfs/accessRule", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dfs/fileSystem", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dfs/mountPoint", _module_instance)
 
 _register_module()

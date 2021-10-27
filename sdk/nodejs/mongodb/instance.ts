@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -107,6 +108,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly replicaSetName!: pulumi.Output<string>;
     /**
+     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+     */
+    public /*out*/ readonly replicaSets!: pulumi.Output<outputs.mongodb.InstanceReplicaSet[]>;
+    /**
      * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */
     public readonly replicationFactor!: pulumi.Output<number>;
@@ -181,6 +186,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["orderType"] = state ? state.orderType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["replicaSetName"] = state ? state.replicaSetName : undefined;
+            inputs["replicaSets"] = state ? state.replicaSets : undefined;
             inputs["replicationFactor"] = state ? state.replicationFactor : undefined;
             inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
@@ -227,6 +233,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["replicaSetName"] = undefined /*out*/;
+            inputs["replicaSets"] = undefined /*out*/;
             inputs["retentionPeriod"] = undefined /*out*/;
             inputs["sslStatus"] = undefined /*out*/;
         }
@@ -306,6 +313,10 @@ export interface InstanceState {
      * The name of the mongo replica set
      */
     readonly replicaSetName?: pulumi.Input<string>;
+    /**
+     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+     */
+    readonly replicaSets?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceReplicaSet>[]>;
     /**
      * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */

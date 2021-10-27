@@ -31,6 +31,8 @@ type Api struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
 	FcServiceConfig ApiFcServiceConfigPtrOutput `pulumi:"fcServiceConfig"`
+	// Whether to prevent API replay attack. Default value: `false`.
+	ForceNonceCheck pulumi.BoolOutput `pulumi:"forceNonceCheck"`
 	// The api gateway that the api belongs to. Defaults to null.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// http_service_config defines the config when serviceType selected 'HTTP'.
@@ -39,7 +41,7 @@ type Api struct {
 	HttpVpcServiceConfig ApiHttpVpcServiceConfigPtrOutput `pulumi:"httpVpcServiceConfig"`
 	// http_service_config defines the config when serviceType selected 'MOCK'.
 	MockServiceConfig ApiMockServiceConfigPtrOutput `pulumi:"mockServiceConfig"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Request_config defines how users can send requests to your API.
 	RequestConfig ApiRequestConfigOutput `pulumi:"requestConfig"`
@@ -47,7 +49,7 @@ type Api struct {
 	RequestParameters ApiRequestParameterArrayOutput `pulumi:"requestParameters"`
 	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
 	ServiceType pulumi.StringOutput `pulumi:"serviceType"`
-	// Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames pulumi.StringArrayOutput `pulumi:"stageNames"`
 	// system_parameters defines the system parameters of the api.
 	SystemParameters ApiSystemParameterArrayOutput `pulumi:"systemParameters"`
@@ -107,6 +109,8 @@ type apiState struct {
 	Description *string `pulumi:"description"`
 	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
 	FcServiceConfig *ApiFcServiceConfig `pulumi:"fcServiceConfig"`
+	// Whether to prevent API replay attack. Default value: `false`.
+	ForceNonceCheck *bool `pulumi:"forceNonceCheck"`
 	// The api gateway that the api belongs to. Defaults to null.
 	GroupId *string `pulumi:"groupId"`
 	// http_service_config defines the config when serviceType selected 'HTTP'.
@@ -115,7 +119,7 @@ type apiState struct {
 	HttpVpcServiceConfig *ApiHttpVpcServiceConfig `pulumi:"httpVpcServiceConfig"`
 	// http_service_config defines the config when serviceType selected 'MOCK'.
 	MockServiceConfig *ApiMockServiceConfig `pulumi:"mockServiceConfig"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name *string `pulumi:"name"`
 	// Request_config defines how users can send requests to your API.
 	RequestConfig *ApiRequestConfig `pulumi:"requestConfig"`
@@ -123,7 +127,7 @@ type apiState struct {
 	RequestParameters []ApiRequestParameter `pulumi:"requestParameters"`
 	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
 	ServiceType *string `pulumi:"serviceType"`
-	// Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames []string `pulumi:"stageNames"`
 	// system_parameters defines the system parameters of the api.
 	SystemParameters []ApiSystemParameter `pulumi:"systemParameters"`
@@ -140,6 +144,8 @@ type ApiState struct {
 	Description pulumi.StringPtrInput
 	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
 	FcServiceConfig ApiFcServiceConfigPtrInput
+	// Whether to prevent API replay attack. Default value: `false`.
+	ForceNonceCheck pulumi.BoolPtrInput
 	// The api gateway that the api belongs to. Defaults to null.
 	GroupId pulumi.StringPtrInput
 	// http_service_config defines the config when serviceType selected 'HTTP'.
@@ -148,7 +154,7 @@ type ApiState struct {
 	HttpVpcServiceConfig ApiHttpVpcServiceConfigPtrInput
 	// http_service_config defines the config when serviceType selected 'MOCK'.
 	MockServiceConfig ApiMockServiceConfigPtrInput
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name pulumi.StringPtrInput
 	// Request_config defines how users can send requests to your API.
 	RequestConfig ApiRequestConfigPtrInput
@@ -156,7 +162,7 @@ type ApiState struct {
 	RequestParameters ApiRequestParameterArrayInput
 	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
 	ServiceType pulumi.StringPtrInput
-	// Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames pulumi.StringArrayInput
 	// system_parameters defines the system parameters of the api.
 	SystemParameters ApiSystemParameterArrayInput
@@ -175,6 +181,8 @@ type apiArgs struct {
 	Description string `pulumi:"description"`
 	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
 	FcServiceConfig *ApiFcServiceConfig `pulumi:"fcServiceConfig"`
+	// Whether to prevent API replay attack. Default value: `false`.
+	ForceNonceCheck *bool `pulumi:"forceNonceCheck"`
 	// The api gateway that the api belongs to. Defaults to null.
 	GroupId string `pulumi:"groupId"`
 	// http_service_config defines the config when serviceType selected 'HTTP'.
@@ -183,7 +191,7 @@ type apiArgs struct {
 	HttpVpcServiceConfig *ApiHttpVpcServiceConfig `pulumi:"httpVpcServiceConfig"`
 	// http_service_config defines the config when serviceType selected 'MOCK'.
 	MockServiceConfig *ApiMockServiceConfig `pulumi:"mockServiceConfig"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name *string `pulumi:"name"`
 	// Request_config defines how users can send requests to your API.
 	RequestConfig ApiRequestConfig `pulumi:"requestConfig"`
@@ -191,7 +199,7 @@ type apiArgs struct {
 	RequestParameters []ApiRequestParameter `pulumi:"requestParameters"`
 	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
 	ServiceType string `pulumi:"serviceType"`
-	// Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames []string `pulumi:"stageNames"`
 	// system_parameters defines the system parameters of the api.
 	SystemParameters []ApiSystemParameter `pulumi:"systemParameters"`
@@ -207,6 +215,8 @@ type ApiArgs struct {
 	Description pulumi.StringInput
 	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
 	FcServiceConfig ApiFcServiceConfigPtrInput
+	// Whether to prevent API replay attack. Default value: `false`.
+	ForceNonceCheck pulumi.BoolPtrInput
 	// The api gateway that the api belongs to. Defaults to null.
 	GroupId pulumi.StringInput
 	// http_service_config defines the config when serviceType selected 'HTTP'.
@@ -215,7 +225,7 @@ type ApiArgs struct {
 	HttpVpcServiceConfig ApiHttpVpcServiceConfigPtrInput
 	// http_service_config defines the config when serviceType selected 'MOCK'.
 	MockServiceConfig ApiMockServiceConfigPtrInput
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name pulumi.StringPtrInput
 	// Request_config defines how users can send requests to your API.
 	RequestConfig ApiRequestConfigInput
@@ -223,7 +233,7 @@ type ApiArgs struct {
 	RequestParameters ApiRequestParameterArrayInput
 	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
 	ServiceType pulumi.StringInput
-	// Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames pulumi.StringArrayInput
 	// system_parameters defines the system parameters of the api.
 	SystemParameters ApiSystemParameterArrayInput

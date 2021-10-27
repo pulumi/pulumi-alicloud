@@ -184,6 +184,42 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> ImageUrl { get; private set; } = null!;
 
         /// <summary>
+        /// Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        /// </summary>
+        [Output("internetIp")]
+        public Output<string> InternetIp { get; private set; } = null!;
+
+        /// <summary>
+        /// public network SLB ID.
+        /// </summary>
+        [Output("internetSlbId")]
+        public Output<string?> InternetSlbId { get; private set; } = null!;
+
+        /// <summary>
+        /// Bound private network SLB. The details see Block internet.
+        /// </summary>
+        [Output("internets")]
+        public Output<ImmutableArray<Outputs.ApplicationInternet>> Internets { get; private set; } = null!;
+
+        /// <summary>
+        /// Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        /// </summary>
+        [Output("intranetIp")]
+        public Output<string> IntranetIp { get; private set; } = null!;
+
+        /// <summary>
+        /// private network SLB ID.
+        /// </summary>
+        [Output("intranetSlbId")]
+        public Output<string?> IntranetSlbId { get; private set; } = null!;
+
+        /// <summary>
+        /// Bound public network SLB. The details see Block intranet.
+        /// </summary>
+        [Output("intranets")]
+        public Output<ImmutableArray<Outputs.ApplicationIntranet>> Intranets { get; private set; } = null!;
+
+        /// <summary>
         /// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         /// </summary>
         [Output("jarStartArgs")]
@@ -370,6 +406,12 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> VersionId { get; private set; } = null!;
 
         /// <summary>
+        /// The vpc id.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string?> VpcId { get; private set; } = null!;
+
+        /// <summary>
         /// The vswitch id.
         /// </summary>
         [Output("vswitchId")]
@@ -534,6 +576,42 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Input("imageUrl")]
         public Input<string>? ImageUrl { get; set; }
+
+        /// <summary>
+        /// public network SLB ID.
+        /// </summary>
+        [Input("internetSlbId")]
+        public Input<string>? InternetSlbId { get; set; }
+
+        [Input("internets")]
+        private InputList<Inputs.ApplicationInternetArgs>? _internets;
+
+        /// <summary>
+        /// Bound private network SLB. The details see Block internet.
+        /// </summary>
+        public InputList<Inputs.ApplicationInternetArgs> Internets
+        {
+            get => _internets ?? (_internets = new InputList<Inputs.ApplicationInternetArgs>());
+            set => _internets = value;
+        }
+
+        /// <summary>
+        /// private network SLB ID.
+        /// </summary>
+        [Input("intranetSlbId")]
+        public Input<string>? IntranetSlbId { get; set; }
+
+        [Input("intranets")]
+        private InputList<Inputs.ApplicationIntranetArgs>? _intranets;
+
+        /// <summary>
+        /// Bound public network SLB. The details see Block intranet.
+        /// </summary>
+        public InputList<Inputs.ApplicationIntranetArgs> Intranets
+        {
+            get => _intranets ?? (_intranets = new InputList<Inputs.ApplicationIntranetArgs>());
+            set => _intranets = value;
+        }
 
         /// <summary>
         /// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -722,6 +800,12 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? VersionId { get; set; }
 
         /// <summary>
+        /// The vpc id.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The vswitch id.
         /// </summary>
         [Input("vswitchId")]
@@ -847,6 +931,54 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Input("imageUrl")]
         public Input<string>? ImageUrl { get; set; }
+
+        /// <summary>
+        /// Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        /// </summary>
+        [Input("internetIp")]
+        public Input<string>? InternetIp { get; set; }
+
+        /// <summary>
+        /// public network SLB ID.
+        /// </summary>
+        [Input("internetSlbId")]
+        public Input<string>? InternetSlbId { get; set; }
+
+        [Input("internets")]
+        private InputList<Inputs.ApplicationInternetGetArgs>? _internets;
+
+        /// <summary>
+        /// Bound private network SLB. The details see Block internet.
+        /// </summary>
+        public InputList<Inputs.ApplicationInternetGetArgs> Internets
+        {
+            get => _internets ?? (_internets = new InputList<Inputs.ApplicationInternetGetArgs>());
+            set => _internets = value;
+        }
+
+        /// <summary>
+        /// Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        /// </summary>
+        [Input("intranetIp")]
+        public Input<string>? IntranetIp { get; set; }
+
+        /// <summary>
+        /// private network SLB ID.
+        /// </summary>
+        [Input("intranetSlbId")]
+        public Input<string>? IntranetSlbId { get; set; }
+
+        [Input("intranets")]
+        private InputList<Inputs.ApplicationIntranetGetArgs>? _intranets;
+
+        /// <summary>
+        /// Bound public network SLB. The details see Block intranet.
+        /// </summary>
+        public InputList<Inputs.ApplicationIntranetGetArgs> Intranets
+        {
+            get => _intranets ?? (_intranets = new InputList<Inputs.ApplicationIntranetGetArgs>());
+            set => _intranets = value;
+        }
 
         /// <summary>
         /// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -1033,6 +1165,12 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
+
+        /// <summary>
+        /// The vpc id.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The vswitch id.

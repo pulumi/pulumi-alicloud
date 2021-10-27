@@ -21,13 +21,29 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// The name of OSS bucket.
         /// </summary>
         public readonly string Bucket;
+        /// <summary>
+        /// The creation time of the backup plan. UNIX time in seconds.
+        /// </summary>
+        public readonly string CreatedTime;
+        /// <summary>
+        /// Whether to be suspended. Valid values: `true`, `false`.
+        /// </summary>
         public readonly bool Disabled;
+        /// <summary>
+        /// The ID of Oss backup plan.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of Oss backup plan.
+        /// </summary>
         public readonly string OssBackupPlanId;
         /// <summary>
         /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         /// </summary>
         public readonly string OssBackupPlanName;
+        /// <summary>
+        /// Backup prefix.
+        /// </summary>
         public readonly string Prefix;
         /// <summary>
         /// Backup retention days, the minimum is 1.
@@ -38,6 +54,10 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Schedule;
         /// <summary>
+        /// The update time of the backup plan. UNIX time in seconds.
+        /// </summary>
+        public readonly string UpdatedTime;
+        /// <summary>
         /// The ID of backup vault.
         /// </summary>
         public readonly string VaultId;
@@ -47,6 +67,8 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             string backupType,
 
             string bucket,
+
+            string createdTime,
 
             bool disabled,
 
@@ -62,10 +84,13 @@ namespace Pulumi.AliCloud.Hbr.Outputs
 
             string schedule,
 
+            string updatedTime,
+
             string vaultId)
         {
             BackupType = backupType;
             Bucket = bucket;
+            CreatedTime = createdTime;
             Disabled = disabled;
             Id = id;
             OssBackupPlanId = ossBackupPlanId;
@@ -73,6 +98,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             Prefix = prefix;
             Retention = retention;
             Schedule = schedule;
+            UpdatedTime = updatedTime;
             VaultId = vaultId;
         }
     }

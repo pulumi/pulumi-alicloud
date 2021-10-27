@@ -236,12 +236,18 @@ class ListenerAclConfigAclRelationArgs:
 class ListenerCertificateArgs:
     def __init__(__self__, *,
                  certificate_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] certificate_id: The ID of the Certificate.
+        """
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
 
     @property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Certificate.
+        """
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter

@@ -10,6 +10,121 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AccessConfigurationPermissionPolicy struct {
+	// The Content of Policy.
+	PermissionPolicyDocument *string `pulumi:"permissionPolicyDocument"`
+	// The Policy Name of policy.
+	PermissionPolicyName *string `pulumi:"permissionPolicyName"`
+	// The Policy Type of policy. Valid values: `System`, `Inline`.
+	PermissionPolicyType *string `pulumi:"permissionPolicyType"`
+}
+
+// AccessConfigurationPermissionPolicyInput is an input type that accepts AccessConfigurationPermissionPolicyArgs and AccessConfigurationPermissionPolicyOutput values.
+// You can construct a concrete instance of `AccessConfigurationPermissionPolicyInput` via:
+//
+//          AccessConfigurationPermissionPolicyArgs{...}
+type AccessConfigurationPermissionPolicyInput interface {
+	pulumi.Input
+
+	ToAccessConfigurationPermissionPolicyOutput() AccessConfigurationPermissionPolicyOutput
+	ToAccessConfigurationPermissionPolicyOutputWithContext(context.Context) AccessConfigurationPermissionPolicyOutput
+}
+
+type AccessConfigurationPermissionPolicyArgs struct {
+	// The Content of Policy.
+	PermissionPolicyDocument pulumi.StringPtrInput `pulumi:"permissionPolicyDocument"`
+	// The Policy Name of policy.
+	PermissionPolicyName pulumi.StringPtrInput `pulumi:"permissionPolicyName"`
+	// The Policy Type of policy. Valid values: `System`, `Inline`.
+	PermissionPolicyType pulumi.StringPtrInput `pulumi:"permissionPolicyType"`
+}
+
+func (AccessConfigurationPermissionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessConfigurationPermissionPolicy)(nil)).Elem()
+}
+
+func (i AccessConfigurationPermissionPolicyArgs) ToAccessConfigurationPermissionPolicyOutput() AccessConfigurationPermissionPolicyOutput {
+	return i.ToAccessConfigurationPermissionPolicyOutputWithContext(context.Background())
+}
+
+func (i AccessConfigurationPermissionPolicyArgs) ToAccessConfigurationPermissionPolicyOutputWithContext(ctx context.Context) AccessConfigurationPermissionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationPermissionPolicyOutput)
+}
+
+// AccessConfigurationPermissionPolicyArrayInput is an input type that accepts AccessConfigurationPermissionPolicyArray and AccessConfigurationPermissionPolicyArrayOutput values.
+// You can construct a concrete instance of `AccessConfigurationPermissionPolicyArrayInput` via:
+//
+//          AccessConfigurationPermissionPolicyArray{ AccessConfigurationPermissionPolicyArgs{...} }
+type AccessConfigurationPermissionPolicyArrayInput interface {
+	pulumi.Input
+
+	ToAccessConfigurationPermissionPolicyArrayOutput() AccessConfigurationPermissionPolicyArrayOutput
+	ToAccessConfigurationPermissionPolicyArrayOutputWithContext(context.Context) AccessConfigurationPermissionPolicyArrayOutput
+}
+
+type AccessConfigurationPermissionPolicyArray []AccessConfigurationPermissionPolicyInput
+
+func (AccessConfigurationPermissionPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessConfigurationPermissionPolicy)(nil)).Elem()
+}
+
+func (i AccessConfigurationPermissionPolicyArray) ToAccessConfigurationPermissionPolicyArrayOutput() AccessConfigurationPermissionPolicyArrayOutput {
+	return i.ToAccessConfigurationPermissionPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i AccessConfigurationPermissionPolicyArray) ToAccessConfigurationPermissionPolicyArrayOutputWithContext(ctx context.Context) AccessConfigurationPermissionPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationPermissionPolicyArrayOutput)
+}
+
+type AccessConfigurationPermissionPolicyOutput struct{ *pulumi.OutputState }
+
+func (AccessConfigurationPermissionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessConfigurationPermissionPolicy)(nil)).Elem()
+}
+
+func (o AccessConfigurationPermissionPolicyOutput) ToAccessConfigurationPermissionPolicyOutput() AccessConfigurationPermissionPolicyOutput {
+	return o
+}
+
+func (o AccessConfigurationPermissionPolicyOutput) ToAccessConfigurationPermissionPolicyOutputWithContext(ctx context.Context) AccessConfigurationPermissionPolicyOutput {
+	return o
+}
+
+// The Content of Policy.
+func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) *string { return v.PermissionPolicyDocument }).(pulumi.StringPtrOutput)
+}
+
+// The Policy Name of policy.
+func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) *string { return v.PermissionPolicyName }).(pulumi.StringPtrOutput)
+}
+
+// The Policy Type of policy. Valid values: `System`, `Inline`.
+func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) *string { return v.PermissionPolicyType }).(pulumi.StringPtrOutput)
+}
+
+type AccessConfigurationPermissionPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessConfigurationPermissionPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessConfigurationPermissionPolicy)(nil)).Elem()
+}
+
+func (o AccessConfigurationPermissionPolicyArrayOutput) ToAccessConfigurationPermissionPolicyArrayOutput() AccessConfigurationPermissionPolicyArrayOutput {
+	return o
+}
+
+func (o AccessConfigurationPermissionPolicyArrayOutput) ToAccessConfigurationPermissionPolicyArrayOutputWithContext(ctx context.Context) AccessConfigurationPermissionPolicyArrayOutput {
+	return o
+}
+
+func (o AccessConfigurationPermissionPolicyArrayOutput) Index(i pulumi.IntInput) AccessConfigurationPermissionPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessConfigurationPermissionPolicy {
+		return vs[0].([]AccessConfigurationPermissionPolicy)[vs[1].(int)]
+	}).(AccessConfigurationPermissionPolicyOutput)
+}
+
 type DirectorySamlIdentityProviderConfiguration struct {
 	// Base64 encoded IdP metadata document.
 	EncodedMetadataDocument *string `pulumi:"encodedMetadataDocument"`
@@ -160,6 +275,310 @@ func (o DirectorySamlIdentityProviderConfigurationPtrOutput) SsoStatus() pulumi.
 		}
 		return v.SsoStatus
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetAccessConfigurationsConfiguration struct {
+	// The AccessConfigurationId of the Access Configuration.
+	AccessConfigurationId string `pulumi:"accessConfigurationId"`
+	// The AccessConfigurationName of the Access Configuration.
+	AccessConfigurationName string `pulumi:"accessConfigurationName"`
+	// The Created Time of the Directory.
+	CreateTime string `pulumi:"createTime"`
+	// The Description of the Directory.
+	Description string `pulumi:"description"`
+	// The ID of the Directory.
+	DirectoryId string `pulumi:"directoryId"`
+	// The ID of the Access Configuration.
+	Id string `pulumi:"id"`
+	// The Policy List.
+	PermissionPolicies []GetAccessConfigurationsConfigurationPermissionPolicy `pulumi:"permissionPolicies"`
+	// The RelayState of the Access Configuration.
+	RelayState string `pulumi:"relayState"`
+	// The SessionDuration of the Access Configuration.
+	SessionDuration int `pulumi:"sessionDuration"`
+	// The StatusNotifications of the Access Configuration.
+	StatusNotifications []string `pulumi:"statusNotifications"`
+}
+
+// GetAccessConfigurationsConfigurationInput is an input type that accepts GetAccessConfigurationsConfigurationArgs and GetAccessConfigurationsConfigurationOutput values.
+// You can construct a concrete instance of `GetAccessConfigurationsConfigurationInput` via:
+//
+//          GetAccessConfigurationsConfigurationArgs{...}
+type GetAccessConfigurationsConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAccessConfigurationsConfigurationOutput() GetAccessConfigurationsConfigurationOutput
+	ToGetAccessConfigurationsConfigurationOutputWithContext(context.Context) GetAccessConfigurationsConfigurationOutput
+}
+
+type GetAccessConfigurationsConfigurationArgs struct {
+	// The AccessConfigurationId of the Access Configuration.
+	AccessConfigurationId pulumi.StringInput `pulumi:"accessConfigurationId"`
+	// The AccessConfigurationName of the Access Configuration.
+	AccessConfigurationName pulumi.StringInput `pulumi:"accessConfigurationName"`
+	// The Created Time of the Directory.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The Description of the Directory.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Directory.
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+	// The ID of the Access Configuration.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Policy List.
+	PermissionPolicies GetAccessConfigurationsConfigurationPermissionPolicyArrayInput `pulumi:"permissionPolicies"`
+	// The RelayState of the Access Configuration.
+	RelayState pulumi.StringInput `pulumi:"relayState"`
+	// The SessionDuration of the Access Configuration.
+	SessionDuration pulumi.IntInput `pulumi:"sessionDuration"`
+	// The StatusNotifications of the Access Configuration.
+	StatusNotifications pulumi.StringArrayInput `pulumi:"statusNotifications"`
+}
+
+func (GetAccessConfigurationsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (i GetAccessConfigurationsConfigurationArgs) ToGetAccessConfigurationsConfigurationOutput() GetAccessConfigurationsConfigurationOutput {
+	return i.ToGetAccessConfigurationsConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAccessConfigurationsConfigurationArgs) ToGetAccessConfigurationsConfigurationOutputWithContext(ctx context.Context) GetAccessConfigurationsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessConfigurationsConfigurationOutput)
+}
+
+// GetAccessConfigurationsConfigurationArrayInput is an input type that accepts GetAccessConfigurationsConfigurationArray and GetAccessConfigurationsConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetAccessConfigurationsConfigurationArrayInput` via:
+//
+//          GetAccessConfigurationsConfigurationArray{ GetAccessConfigurationsConfigurationArgs{...} }
+type GetAccessConfigurationsConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetAccessConfigurationsConfigurationArrayOutput() GetAccessConfigurationsConfigurationArrayOutput
+	ToGetAccessConfigurationsConfigurationArrayOutputWithContext(context.Context) GetAccessConfigurationsConfigurationArrayOutput
+}
+
+type GetAccessConfigurationsConfigurationArray []GetAccessConfigurationsConfigurationInput
+
+func (GetAccessConfigurationsConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (i GetAccessConfigurationsConfigurationArray) ToGetAccessConfigurationsConfigurationArrayOutput() GetAccessConfigurationsConfigurationArrayOutput {
+	return i.ToGetAccessConfigurationsConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccessConfigurationsConfigurationArray) ToGetAccessConfigurationsConfigurationArrayOutputWithContext(ctx context.Context) GetAccessConfigurationsConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessConfigurationsConfigurationArrayOutput)
+}
+
+type GetAccessConfigurationsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAccessConfigurationsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (o GetAccessConfigurationsConfigurationOutput) ToGetAccessConfigurationsConfigurationOutput() GetAccessConfigurationsConfigurationOutput {
+	return o
+}
+
+func (o GetAccessConfigurationsConfigurationOutput) ToGetAccessConfigurationsConfigurationOutputWithContext(ctx context.Context) GetAccessConfigurationsConfigurationOutput {
+	return o
+}
+
+// The AccessConfigurationId of the Access Configuration.
+func (o GetAccessConfigurationsConfigurationOutput) AccessConfigurationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfiguration) string { return v.AccessConfigurationId }).(pulumi.StringOutput)
+}
+
+// The AccessConfigurationName of the Access Configuration.
+func (o GetAccessConfigurationsConfigurationOutput) AccessConfigurationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfiguration) string { return v.AccessConfigurationName }).(pulumi.StringOutput)
+}
+
+// The Created Time of the Directory.
+func (o GetAccessConfigurationsConfigurationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfiguration) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The Description of the Directory.
+func (o GetAccessConfigurationsConfigurationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfiguration) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Directory.
+func (o GetAccessConfigurationsConfigurationOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfiguration) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The ID of the Access Configuration.
+func (o GetAccessConfigurationsConfigurationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfiguration) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Policy List.
+func (o GetAccessConfigurationsConfigurationOutput) PermissionPolicies() GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfiguration) []GetAccessConfigurationsConfigurationPermissionPolicy {
+		return v.PermissionPolicies
+	}).(GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput)
+}
+
+// The RelayState of the Access Configuration.
+func (o GetAccessConfigurationsConfigurationOutput) RelayState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfiguration) string { return v.RelayState }).(pulumi.StringOutput)
+}
+
+// The SessionDuration of the Access Configuration.
+func (o GetAccessConfigurationsConfigurationOutput) SessionDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfiguration) int { return v.SessionDuration }).(pulumi.IntOutput)
+}
+
+// The StatusNotifications of the Access Configuration.
+func (o GetAccessConfigurationsConfigurationOutput) StatusNotifications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfiguration) []string { return v.StatusNotifications }).(pulumi.StringArrayOutput)
+}
+
+type GetAccessConfigurationsConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccessConfigurationsConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (o GetAccessConfigurationsConfigurationArrayOutput) ToGetAccessConfigurationsConfigurationArrayOutput() GetAccessConfigurationsConfigurationArrayOutput {
+	return o
+}
+
+func (o GetAccessConfigurationsConfigurationArrayOutput) ToGetAccessConfigurationsConfigurationArrayOutputWithContext(ctx context.Context) GetAccessConfigurationsConfigurationArrayOutput {
+	return o
+}
+
+func (o GetAccessConfigurationsConfigurationArrayOutput) Index(i pulumi.IntInput) GetAccessConfigurationsConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessConfigurationsConfiguration {
+		return vs[0].([]GetAccessConfigurationsConfiguration)[vs[1].(int)]
+	}).(GetAccessConfigurationsConfigurationOutput)
+}
+
+type GetAccessConfigurationsConfigurationPermissionPolicy struct {
+	// The Creation time of policy.
+	AddTime string `pulumi:"addTime"`
+	// The Content of Policy.
+	PermissionPolicyDocument string `pulumi:"permissionPolicyDocument"`
+	// The Policy Name of policy.
+	PermissionPolicyName string `pulumi:"permissionPolicyName"`
+	// The Policy Type of policy. Valid values: `System`, `Inline`.
+	PermissionPolicyType string `pulumi:"permissionPolicyType"`
+}
+
+// GetAccessConfigurationsConfigurationPermissionPolicyInput is an input type that accepts GetAccessConfigurationsConfigurationPermissionPolicyArgs and GetAccessConfigurationsConfigurationPermissionPolicyOutput values.
+// You can construct a concrete instance of `GetAccessConfigurationsConfigurationPermissionPolicyInput` via:
+//
+//          GetAccessConfigurationsConfigurationPermissionPolicyArgs{...}
+type GetAccessConfigurationsConfigurationPermissionPolicyInput interface {
+	pulumi.Input
+
+	ToGetAccessConfigurationsConfigurationPermissionPolicyOutput() GetAccessConfigurationsConfigurationPermissionPolicyOutput
+	ToGetAccessConfigurationsConfigurationPermissionPolicyOutputWithContext(context.Context) GetAccessConfigurationsConfigurationPermissionPolicyOutput
+}
+
+type GetAccessConfigurationsConfigurationPermissionPolicyArgs struct {
+	// The Creation time of policy.
+	AddTime pulumi.StringInput `pulumi:"addTime"`
+	// The Content of Policy.
+	PermissionPolicyDocument pulumi.StringInput `pulumi:"permissionPolicyDocument"`
+	// The Policy Name of policy.
+	PermissionPolicyName pulumi.StringInput `pulumi:"permissionPolicyName"`
+	// The Policy Type of policy. Valid values: `System`, `Inline`.
+	PermissionPolicyType pulumi.StringInput `pulumi:"permissionPolicyType"`
+}
+
+func (GetAccessConfigurationsConfigurationPermissionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessConfigurationsConfigurationPermissionPolicy)(nil)).Elem()
+}
+
+func (i GetAccessConfigurationsConfigurationPermissionPolicyArgs) ToGetAccessConfigurationsConfigurationPermissionPolicyOutput() GetAccessConfigurationsConfigurationPermissionPolicyOutput {
+	return i.ToGetAccessConfigurationsConfigurationPermissionPolicyOutputWithContext(context.Background())
+}
+
+func (i GetAccessConfigurationsConfigurationPermissionPolicyArgs) ToGetAccessConfigurationsConfigurationPermissionPolicyOutputWithContext(ctx context.Context) GetAccessConfigurationsConfigurationPermissionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessConfigurationsConfigurationPermissionPolicyOutput)
+}
+
+// GetAccessConfigurationsConfigurationPermissionPolicyArrayInput is an input type that accepts GetAccessConfigurationsConfigurationPermissionPolicyArray and GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput values.
+// You can construct a concrete instance of `GetAccessConfigurationsConfigurationPermissionPolicyArrayInput` via:
+//
+//          GetAccessConfigurationsConfigurationPermissionPolicyArray{ GetAccessConfigurationsConfigurationPermissionPolicyArgs{...} }
+type GetAccessConfigurationsConfigurationPermissionPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetAccessConfigurationsConfigurationPermissionPolicyArrayOutput() GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput
+	ToGetAccessConfigurationsConfigurationPermissionPolicyArrayOutputWithContext(context.Context) GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput
+}
+
+type GetAccessConfigurationsConfigurationPermissionPolicyArray []GetAccessConfigurationsConfigurationPermissionPolicyInput
+
+func (GetAccessConfigurationsConfigurationPermissionPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessConfigurationsConfigurationPermissionPolicy)(nil)).Elem()
+}
+
+func (i GetAccessConfigurationsConfigurationPermissionPolicyArray) ToGetAccessConfigurationsConfigurationPermissionPolicyArrayOutput() GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput {
+	return i.ToGetAccessConfigurationsConfigurationPermissionPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccessConfigurationsConfigurationPermissionPolicyArray) ToGetAccessConfigurationsConfigurationPermissionPolicyArrayOutputWithContext(ctx context.Context) GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput)
+}
+
+type GetAccessConfigurationsConfigurationPermissionPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetAccessConfigurationsConfigurationPermissionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessConfigurationsConfigurationPermissionPolicy)(nil)).Elem()
+}
+
+func (o GetAccessConfigurationsConfigurationPermissionPolicyOutput) ToGetAccessConfigurationsConfigurationPermissionPolicyOutput() GetAccessConfigurationsConfigurationPermissionPolicyOutput {
+	return o
+}
+
+func (o GetAccessConfigurationsConfigurationPermissionPolicyOutput) ToGetAccessConfigurationsConfigurationPermissionPolicyOutputWithContext(ctx context.Context) GetAccessConfigurationsConfigurationPermissionPolicyOutput {
+	return o
+}
+
+// The Creation time of policy.
+func (o GetAccessConfigurationsConfigurationPermissionPolicyOutput) AddTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfigurationPermissionPolicy) string { return v.AddTime }).(pulumi.StringOutput)
+}
+
+// The Content of Policy.
+func (o GetAccessConfigurationsConfigurationPermissionPolicyOutput) PermissionPolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfigurationPermissionPolicy) string { return v.PermissionPolicyDocument }).(pulumi.StringOutput)
+}
+
+// The Policy Name of policy.
+func (o GetAccessConfigurationsConfigurationPermissionPolicyOutput) PermissionPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfigurationPermissionPolicy) string { return v.PermissionPolicyName }).(pulumi.StringOutput)
+}
+
+// The Policy Type of policy. Valid values: `System`, `Inline`.
+func (o GetAccessConfigurationsConfigurationPermissionPolicyOutput) PermissionPolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsConfigurationPermissionPolicy) string { return v.PermissionPolicyType }).(pulumi.StringOutput)
+}
+
+type GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessConfigurationsConfigurationPermissionPolicy)(nil)).Elem()
+}
+
+func (o GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput) ToGetAccessConfigurationsConfigurationPermissionPolicyArrayOutput() GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput {
+	return o
+}
+
+func (o GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput) ToGetAccessConfigurationsConfigurationPermissionPolicyArrayOutputWithContext(ctx context.Context) GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput {
+	return o
+}
+
+func (o GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput) Index(i pulumi.IntInput) GetAccessConfigurationsConfigurationPermissionPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessConfigurationsConfigurationPermissionPolicy {
+		return vs[0].([]GetAccessConfigurationsConfigurationPermissionPolicy)[vs[1].(int)]
+	}).(GetAccessConfigurationsConfigurationPermissionPolicyOutput)
 }
 
 type GetDirectoriesDirectory struct {
@@ -1002,9 +1421,344 @@ func (o GetScimServerCredentialsCredentialArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetScimServerCredentialsCredentialOutput)
 }
 
+type GetUsersUser struct {
+	// The create time of the user.
+	CreateTime string `pulumi:"createTime"`
+	// The description of user.
+	Description string `pulumi:"description"`
+	// The ID of the Directory.
+	DirectoryId string `pulumi:"directoryId"`
+	// The display name of user.
+	DisplayName string `pulumi:"displayName"`
+	// The User's Contact Email Address.
+	Email string `pulumi:"email"`
+	// The first name of user.
+	FirstName string `pulumi:"firstName"`
+	// The ID of the User.
+	Id string `pulumi:"id"`
+	// The last name of user.
+	LastName string `pulumi:"lastName"`
+	// The List of MFA Device for User.
+	MfaDevices []GetUsersUserMfaDevice `pulumi:"mfaDevices"`
+	// ProvisionType.
+	ProvisionType string `pulumi:"provisionType"`
+	// User status. Valid values: `Enabled` and `Disabled`.
+	Status string `pulumi:"status"`
+	// The User ID of the group.
+	UserId string `pulumi:"userId"`
+	// The name of user.
+	UserName string `pulumi:"userName"`
+}
+
+// GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
+// You can construct a concrete instance of `GetUsersUserInput` via:
+//
+//          GetUsersUserArgs{...}
+type GetUsersUserInput interface {
+	pulumi.Input
+
+	ToGetUsersUserOutput() GetUsersUserOutput
+	ToGetUsersUserOutputWithContext(context.Context) GetUsersUserOutput
+}
+
+type GetUsersUserArgs struct {
+	// The create time of the user.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of user.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Directory.
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+	// The display name of user.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The User's Contact Email Address.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The first name of user.
+	FirstName pulumi.StringInput `pulumi:"firstName"`
+	// The ID of the User.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The last name of user.
+	LastName pulumi.StringInput `pulumi:"lastName"`
+	// The List of MFA Device for User.
+	MfaDevices GetUsersUserMfaDeviceArrayInput `pulumi:"mfaDevices"`
+	// ProvisionType.
+	ProvisionType pulumi.StringInput `pulumi:"provisionType"`
+	// User status. Valid values: `Enabled` and `Disabled`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The User ID of the group.
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// The name of user.
+	UserName pulumi.StringInput `pulumi:"userName"`
+}
+
+func (GetUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutput() GetUsersUserOutput {
+	return i.ToGetUsersUserOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
+}
+
+// GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserArrayInput` via:
+//
+//          GetUsersUserArray{ GetUsersUserArgs{...} }
+type GetUsersUserArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersUserArrayOutput() GetUsersUserArrayOutput
+	ToGetUsersUserArrayOutputWithContext(context.Context) GetUsersUserArrayOutput
+}
+
+type GetUsersUserArray []GetUsersUserInput
+
+func (GetUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return i.ToGetUsersUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
+}
+
+type GetUsersUserOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
+	return o
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return o
+}
+
+// The create time of the user.
+func (o GetUsersUserOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of user.
+func (o GetUsersUserOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Directory.
+func (o GetUsersUserOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The display name of user.
+func (o GetUsersUserOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The User's Contact Email Address.
+func (o GetUsersUserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The first name of user.
+func (o GetUsersUserOutput) FirstName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.FirstName }).(pulumi.StringOutput)
+}
+
+// The ID of the User.
+func (o GetUsersUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The last name of user.
+func (o GetUsersUserOutput) LastName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.LastName }).(pulumi.StringOutput)
+}
+
+// The List of MFA Device for User.
+func (o GetUsersUserOutput) MfaDevices() GetUsersUserMfaDeviceArrayOutput {
+	return o.ApplyT(func(v GetUsersUser) []GetUsersUserMfaDevice { return v.MfaDevices }).(GetUsersUserMfaDeviceArrayOutput)
+}
+
+// ProvisionType.
+func (o GetUsersUserOutput) ProvisionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.ProvisionType }).(pulumi.StringOutput)
+}
+
+// User status. Valid values: `Enabled` and `Disabled`.
+func (o GetUsersUserOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The User ID of the group.
+func (o GetUsersUserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The name of user.
+func (o GetUsersUserOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type GetUsersUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
+		return vs[0].([]GetUsersUser)[vs[1].(int)]
+	}).(GetUsersUserOutput)
+}
+
+type GetUsersUserMfaDevice struct {
+	// The MFA Device ID.
+	DeviceId string `pulumi:"deviceId"`
+	// The MFA Device Name.
+	DeviceName string `pulumi:"deviceName"`
+	// The MFA Device Type.
+	DeviceType string `pulumi:"deviceType"`
+	// The Effective Time of MFA Device.
+	EffectiveTime string `pulumi:"effectiveTime"`
+}
+
+// GetUsersUserMfaDeviceInput is an input type that accepts GetUsersUserMfaDeviceArgs and GetUsersUserMfaDeviceOutput values.
+// You can construct a concrete instance of `GetUsersUserMfaDeviceInput` via:
+//
+//          GetUsersUserMfaDeviceArgs{...}
+type GetUsersUserMfaDeviceInput interface {
+	pulumi.Input
+
+	ToGetUsersUserMfaDeviceOutput() GetUsersUserMfaDeviceOutput
+	ToGetUsersUserMfaDeviceOutputWithContext(context.Context) GetUsersUserMfaDeviceOutput
+}
+
+type GetUsersUserMfaDeviceArgs struct {
+	// The MFA Device ID.
+	DeviceId pulumi.StringInput `pulumi:"deviceId"`
+	// The MFA Device Name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The MFA Device Type.
+	DeviceType pulumi.StringInput `pulumi:"deviceType"`
+	// The Effective Time of MFA Device.
+	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
+}
+
+func (GetUsersUserMfaDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUserMfaDevice)(nil)).Elem()
+}
+
+func (i GetUsersUserMfaDeviceArgs) ToGetUsersUserMfaDeviceOutput() GetUsersUserMfaDeviceOutput {
+	return i.ToGetUsersUserMfaDeviceOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserMfaDeviceArgs) ToGetUsersUserMfaDeviceOutputWithContext(ctx context.Context) GetUsersUserMfaDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserMfaDeviceOutput)
+}
+
+// GetUsersUserMfaDeviceArrayInput is an input type that accepts GetUsersUserMfaDeviceArray and GetUsersUserMfaDeviceArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserMfaDeviceArrayInput` via:
+//
+//          GetUsersUserMfaDeviceArray{ GetUsersUserMfaDeviceArgs{...} }
+type GetUsersUserMfaDeviceArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersUserMfaDeviceArrayOutput() GetUsersUserMfaDeviceArrayOutput
+	ToGetUsersUserMfaDeviceArrayOutputWithContext(context.Context) GetUsersUserMfaDeviceArrayOutput
+}
+
+type GetUsersUserMfaDeviceArray []GetUsersUserMfaDeviceInput
+
+func (GetUsersUserMfaDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUserMfaDevice)(nil)).Elem()
+}
+
+func (i GetUsersUserMfaDeviceArray) ToGetUsersUserMfaDeviceArrayOutput() GetUsersUserMfaDeviceArrayOutput {
+	return i.ToGetUsersUserMfaDeviceArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserMfaDeviceArray) ToGetUsersUserMfaDeviceArrayOutputWithContext(ctx context.Context) GetUsersUserMfaDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserMfaDeviceArrayOutput)
+}
+
+type GetUsersUserMfaDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserMfaDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUserMfaDevice)(nil)).Elem()
+}
+
+func (o GetUsersUserMfaDeviceOutput) ToGetUsersUserMfaDeviceOutput() GetUsersUserMfaDeviceOutput {
+	return o
+}
+
+func (o GetUsersUserMfaDeviceOutput) ToGetUsersUserMfaDeviceOutputWithContext(ctx context.Context) GetUsersUserMfaDeviceOutput {
+	return o
+}
+
+// The MFA Device ID.
+func (o GetUsersUserMfaDeviceOutput) DeviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUserMfaDevice) string { return v.DeviceId }).(pulumi.StringOutput)
+}
+
+// The MFA Device Name.
+func (o GetUsersUserMfaDeviceOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUserMfaDevice) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// The MFA Device Type.
+func (o GetUsersUserMfaDeviceOutput) DeviceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUserMfaDevice) string { return v.DeviceType }).(pulumi.StringOutput)
+}
+
+// The Effective Time of MFA Device.
+func (o GetUsersUserMfaDeviceOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUserMfaDevice) string { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+type GetUsersUserMfaDeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserMfaDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUserMfaDevice)(nil)).Elem()
+}
+
+func (o GetUsersUserMfaDeviceArrayOutput) ToGetUsersUserMfaDeviceArrayOutput() GetUsersUserMfaDeviceArrayOutput {
+	return o
+}
+
+func (o GetUsersUserMfaDeviceArrayOutput) ToGetUsersUserMfaDeviceArrayOutputWithContext(ctx context.Context) GetUsersUserMfaDeviceArrayOutput {
+	return o
+}
+
+func (o GetUsersUserMfaDeviceArrayOutput) Index(i pulumi.IntInput) GetUsersUserMfaDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUserMfaDevice {
+		return vs[0].([]GetUsersUserMfaDevice)[vs[1].(int)]
+	}).(GetUsersUserMfaDeviceOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AccessConfigurationPermissionPolicyOutput{})
+	pulumi.RegisterOutputType(AccessConfigurationPermissionPolicyArrayOutput{})
 	pulumi.RegisterOutputType(DirectorySamlIdentityProviderConfigurationOutput{})
 	pulumi.RegisterOutputType(DirectorySamlIdentityProviderConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GetAccessConfigurationsConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAccessConfigurationsConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetAccessConfigurationsConfigurationPermissionPolicyOutput{})
+	pulumi.RegisterOutputType(GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetDirectoriesDirectoryOutput{})
 	pulumi.RegisterOutputType(GetDirectoriesDirectoryArrayOutput{})
 	pulumi.RegisterOutputType(GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput{})
@@ -1015,4 +1769,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetScimServerCredentialsCredentialOutput{})
 	pulumi.RegisterOutputType(GetScimServerCredentialsCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetUsersUserOutput{})
+	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
+	pulumi.RegisterOutputType(GetUsersUserMfaDeviceOutput{})
+	pulumi.RegisterOutputType(GetUsersUserMfaDeviceArrayOutput{})
 }

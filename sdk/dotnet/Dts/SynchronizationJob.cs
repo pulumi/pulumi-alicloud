@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Dts
     ///     {
     ///         var defaultSynchronizationInstance = new AliCloud.Dts.SynchronizationInstance("defaultSynchronizationInstance", new AliCloud.Dts.SynchronizationInstanceArgs
     ///         {
-    ///             PaymentType = "PostPaid",
+    ///             PaymentType = "PayAsYouGo",
     ///             SourceEndpointEngineName = "PolarDB",
     ///             SourceEndpointRegion = "cn-hangzhou",
     ///             DestinationEndpointEngineName = "ADB30",

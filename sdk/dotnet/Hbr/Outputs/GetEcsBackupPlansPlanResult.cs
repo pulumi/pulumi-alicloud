@@ -18,8 +18,18 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BackupType;
         public readonly string CreateTime;
+        /// <summary>
+        /// The creation time of the backup plan. UNIX time in seconds.
+        /// </summary>
+        public readonly string CreatedTime;
         public readonly string Detail;
+        /// <summary>
+        /// Whether to be suspended. Valid values: `true`, `false`.
+        /// </summary>
         public readonly bool Disabled;
+        /// <summary>
+        /// The ID of ecs backup plan.
+        /// </summary>
         public readonly string EcsBackupPlanId;
         /// <summary>
         /// The name of the backup plan.
@@ -29,6 +39,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
         /// </summary>
         public readonly string Exclude;
+        /// <summary>
+        /// The ID of ecs backup plan.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
@@ -51,13 +64,21 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Retention;
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         public readonly string Schedule;
+        /// <summary>
+        /// The type of backup source.
+        /// </summary>
+        public readonly string SourceType;
         /// <summary>
         /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         /// </summary>
         public readonly string SpeedLimit;
+        /// <summary>
+        /// The update time of the backup plan. UNIX time in seconds.
+        /// </summary>
+        public readonly string UpdatedTime;
         /// <summary>
         /// The ID of Backup vault.
         /// </summary>
@@ -68,6 +89,8 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             string backupType,
 
             string createTime,
+
+            string createdTime,
 
             string detail,
 
@@ -93,12 +116,17 @@ namespace Pulumi.AliCloud.Hbr.Outputs
 
             string schedule,
 
+            string sourceType,
+
             string speedLimit,
+
+            string updatedTime,
 
             string vaultId)
         {
             BackupType = backupType;
             CreateTime = createTime;
+            CreatedTime = createdTime;
             Detail = detail;
             Disabled = disabled;
             EcsBackupPlanId = ecsBackupPlanId;
@@ -111,7 +139,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             Paths = paths;
             Retention = retention;
             Schedule = schedule;
+            SourceType = sourceType;
             SpeedLimit = speedLimit;
+            UpdatedTime = updatedTime;
             VaultId = vaultId;
         }
     }

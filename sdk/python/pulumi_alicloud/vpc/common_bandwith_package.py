@@ -26,7 +26,7 @@ class CommonBandwithPackageArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CommonBandwithPackage resource.
-        :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package, in Mbps.
+        :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package. Unit: Mbps.
         :param pulumi.Input[str] bandwidth_package_name: The name of the common bandwidth package.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
@@ -68,7 +68,7 @@ class CommonBandwithPackageArgs:
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[str]:
         """
-        The bandwidth of the common bandwidth package, in Mbps.
+        The bandwidth of the common bandwidth package. Unit: Mbps.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -213,7 +213,7 @@ class _CommonBandwithPackageState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CommonBandwithPackage resources.
-        :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package, in Mbps.
+        :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package. Unit: Mbps.
         :param pulumi.Input[str] bandwidth_package_name: The name of the common bandwidth package.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
@@ -259,7 +259,7 @@ class _CommonBandwithPackageState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        The bandwidth of the common bandwidth package, in Mbps.
+        The bandwidth of the common bandwidth package. Unit: Mbps.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -427,7 +427,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package, in Mbps.
+        :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package. Unit: Mbps.
         :param pulumi.Input[str] bandwidth_package_name: The name of the common bandwidth package.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
@@ -539,7 +539,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package, in Mbps.
+        :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package. Unit: Mbps.
         :param pulumi.Input[str] bandwidth_package_name: The name of the common bandwidth package.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
@@ -575,7 +575,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[str]:
         """
-        The bandwidth of the common bandwidth package, in Mbps.
+        The bandwidth of the common bandwidth package. Unit: Mbps.
         """
         return pulumi.get(self, "bandwidth")
 

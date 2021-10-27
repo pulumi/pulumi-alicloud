@@ -295,25 +295,41 @@ func (o GetAccessRulesRuleArrayOutput) Index(i pulumi.IntInput) GetAccessRulesRu
 }
 
 type GetFileSystemsSystem struct {
+	// (Optional, Available in v1.140.0+) The capacity of the file system.
+	Capacity int `pulumi:"capacity"`
 	// Time of creation.
 	CreateTime string `pulumi:"createTime"`
-	// Destription of the FileSystem.
+	// Description of the FileSystem.
 	Description string `pulumi:"description"`
 	// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-	// Valid values:
-	// 0: The file system is not encrypted.
-	// 1: The file system is encrypted with a managed secret key.
+	// * Valid values:
+	// * `0`: The file system is not encrypted.
+	// * `1`: The file system is encrypted with a managed secret key.
+	// * `2`: User management key.
 	EncryptType int `pulumi:"encryptType"`
+	// The type of the file system.
+	// Valid values:
+	// `standard` (Default),
+	// `extreme`.
+	FileSystemType string `pulumi:"fileSystemType"`
 	// ID of the FileSystem.
 	Id string `pulumi:"id"`
+	// (Optional, Available in v1.140.0+) The id of the KMS key.
+	KmsKeyId string `pulumi:"kmsKeyId"`
 	// MeteredSize of the FileSystem.
 	MeteredSize int `pulumi:"meteredSize"`
-	// Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
+	// The protocol type of the file system.
+	// Valid values:
+	// `NFS`,
+	// `SMB` (Available when the `fileSystemType` is `standard`).
 	ProtocolType string `pulumi:"protocolType"`
 	// ID of the region where the FileSystem is located.
 	RegionId string `pulumi:"regionId"`
-	// Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
+	// The storage type of the file system.
+	// * Valid values:
 	StorageType string `pulumi:"storageType"`
+	// (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // GetFileSystemsSystemInput is an input type that accepts GetFileSystemsSystemArgs and GetFileSystemsSystemOutput values.
@@ -328,25 +344,41 @@ type GetFileSystemsSystemInput interface {
 }
 
 type GetFileSystemsSystemArgs struct {
+	// (Optional, Available in v1.140.0+) The capacity of the file system.
+	Capacity pulumi.IntInput `pulumi:"capacity"`
 	// Time of creation.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Destription of the FileSystem.
+	// Description of the FileSystem.
 	Description pulumi.StringInput `pulumi:"description"`
 	// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-	// Valid values:
-	// 0: The file system is not encrypted.
-	// 1: The file system is encrypted with a managed secret key.
+	// * Valid values:
+	// * `0`: The file system is not encrypted.
+	// * `1`: The file system is encrypted with a managed secret key.
+	// * `2`: User management key.
 	EncryptType pulumi.IntInput `pulumi:"encryptType"`
+	// The type of the file system.
+	// Valid values:
+	// `standard` (Default),
+	// `extreme`.
+	FileSystemType pulumi.StringInput `pulumi:"fileSystemType"`
 	// ID of the FileSystem.
 	Id pulumi.StringInput `pulumi:"id"`
+	// (Optional, Available in v1.140.0+) The id of the KMS key.
+	KmsKeyId pulumi.StringInput `pulumi:"kmsKeyId"`
 	// MeteredSize of the FileSystem.
 	MeteredSize pulumi.IntInput `pulumi:"meteredSize"`
-	// Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
+	// The protocol type of the file system.
+	// Valid values:
+	// `NFS`,
+	// `SMB` (Available when the `fileSystemType` is `standard`).
 	ProtocolType pulumi.StringInput `pulumi:"protocolType"`
 	// ID of the region where the FileSystem is located.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
+	// The storage type of the file system.
+	// * Valid values:
 	StorageType pulumi.StringInput `pulumi:"storageType"`
+	// (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetFileSystemsSystemArgs) ElementType() reflect.Type {
@@ -400,22 +432,36 @@ func (o GetFileSystemsSystemOutput) ToGetFileSystemsSystemOutputWithContext(ctx 
 	return o
 }
 
+// (Optional, Available in v1.140.0+) The capacity of the file system.
+func (o GetFileSystemsSystemOutput) Capacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.Capacity }).(pulumi.IntOutput)
+}
+
 // Time of creation.
 func (o GetFileSystemsSystemOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Destription of the FileSystem.
+// Description of the FileSystem.
 func (o GetFileSystemsSystemOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-// Valid values:
-// 0: The file system is not encrypted.
-// 1: The file system is encrypted with a managed secret key.
+// * Valid values:
+// * `0`: The file system is not encrypted.
+// * `1`: The file system is encrypted with a managed secret key.
+// * `2`: User management key.
 func (o GetFileSystemsSystemOutput) EncryptType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.EncryptType }).(pulumi.IntOutput)
+}
+
+// The type of the file system.
+// Valid values:
+// `standard` (Default),
+// `extreme`.
+func (o GetFileSystemsSystemOutput) FileSystemType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.FileSystemType }).(pulumi.StringOutput)
 }
 
 // ID of the FileSystem.
@@ -423,12 +469,20 @@ func (o GetFileSystemsSystemOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Optional, Available in v1.140.0+) The id of the KMS key.
+func (o GetFileSystemsSystemOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
 // MeteredSize of the FileSystem.
 func (o GetFileSystemsSystemOutput) MeteredSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.MeteredSize }).(pulumi.IntOutput)
 }
 
-// Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
+// The protocol type of the file system.
+// Valid values:
+// `NFS`,
+// `SMB` (Available when the `fileSystemType` is `standard`).
 func (o GetFileSystemsSystemOutput) ProtocolType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.ProtocolType }).(pulumi.StringOutput)
 }
@@ -438,9 +492,15 @@ func (o GetFileSystemsSystemOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
+// The storage type of the file system.
+// * Valid values:
 func (o GetFileSystemsSystemOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
+func (o GetFileSystemsSystemOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type GetFileSystemsSystemArrayOutput struct{ *pulumi.OutputState }
@@ -623,6 +683,218 @@ func (o GetMountTargetsTargetArrayOutput) Index(i pulumi.IntInput) GetMountTarge
 	}).(GetMountTargetsTargetOutput)
 }
 
+type GetZonesZone struct {
+	// A list of instance type information collection
+	InstanceTypes []GetZonesZoneInstanceType `pulumi:"instanceTypes"`
+	// String to filter results by zone id.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
+// You can construct a concrete instance of `GetZonesZoneInput` via:
+//
+//          GetZonesZoneArgs{...}
+type GetZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneOutput() GetZonesZoneOutput
+	ToGetZonesZoneOutputWithContext(context.Context) GetZonesZoneOutput
+}
+
+type GetZonesZoneArgs struct {
+	// A list of instance type information collection
+	InstanceTypes GetZonesZoneInstanceTypeArrayInput `pulumi:"instanceTypes"`
+	// String to filter results by zone id.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return i.ToGetZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
+}
+
+// GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
+// You can construct a concrete instance of `GetZonesZoneArrayInput` via:
+//
+//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+type GetZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput
+	ToGetZonesZoneArrayOutputWithContext(context.Context) GetZonesZoneArrayOutput
+}
+
+type GetZonesZoneArray []GetZonesZoneInput
+
+func (GetZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return i.ToGetZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
+}
+
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return o
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return o
+}
+
+// A list of instance type information collection
+func (o GetZonesZoneOutput) InstanceTypes() GetZonesZoneInstanceTypeArrayOutput {
+	return o.ApplyT(func(v GetZonesZone) []GetZonesZoneInstanceType { return v.InstanceTypes }).(GetZonesZoneInstanceTypeArrayOutput)
+}
+
+// String to filter results by zone id.
+func (o GetZonesZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
+		return vs[0].([]GetZonesZone)[vs[1].(int)]
+	}).(GetZonesZoneOutput)
+}
+
+type GetZonesZoneInstanceType struct {
+	// File transfer protocol type. Valid values:
+	ProtocolType string `pulumi:"protocolType"`
+	// The storage type of the nas zones. Valid values:
+	StorageType string `pulumi:"storageType"`
+}
+
+// GetZonesZoneInstanceTypeInput is an input type that accepts GetZonesZoneInstanceTypeArgs and GetZonesZoneInstanceTypeOutput values.
+// You can construct a concrete instance of `GetZonesZoneInstanceTypeInput` via:
+//
+//          GetZonesZoneInstanceTypeArgs{...}
+type GetZonesZoneInstanceTypeInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneInstanceTypeOutput() GetZonesZoneInstanceTypeOutput
+	ToGetZonesZoneInstanceTypeOutputWithContext(context.Context) GetZonesZoneInstanceTypeOutput
+}
+
+type GetZonesZoneInstanceTypeArgs struct {
+	// File transfer protocol type. Valid values:
+	ProtocolType pulumi.StringInput `pulumi:"protocolType"`
+	// The storage type of the nas zones. Valid values:
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+}
+
+func (GetZonesZoneInstanceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZoneInstanceType)(nil)).Elem()
+}
+
+func (i GetZonesZoneInstanceTypeArgs) ToGetZonesZoneInstanceTypeOutput() GetZonesZoneInstanceTypeOutput {
+	return i.ToGetZonesZoneInstanceTypeOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneInstanceTypeArgs) ToGetZonesZoneInstanceTypeOutputWithContext(ctx context.Context) GetZonesZoneInstanceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneInstanceTypeOutput)
+}
+
+// GetZonesZoneInstanceTypeArrayInput is an input type that accepts GetZonesZoneInstanceTypeArray and GetZonesZoneInstanceTypeArrayOutput values.
+// You can construct a concrete instance of `GetZonesZoneInstanceTypeArrayInput` via:
+//
+//          GetZonesZoneInstanceTypeArray{ GetZonesZoneInstanceTypeArgs{...} }
+type GetZonesZoneInstanceTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneInstanceTypeArrayOutput() GetZonesZoneInstanceTypeArrayOutput
+	ToGetZonesZoneInstanceTypeArrayOutputWithContext(context.Context) GetZonesZoneInstanceTypeArrayOutput
+}
+
+type GetZonesZoneInstanceTypeArray []GetZonesZoneInstanceTypeInput
+
+func (GetZonesZoneInstanceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZoneInstanceType)(nil)).Elem()
+}
+
+func (i GetZonesZoneInstanceTypeArray) ToGetZonesZoneInstanceTypeArrayOutput() GetZonesZoneInstanceTypeArrayOutput {
+	return i.ToGetZonesZoneInstanceTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneInstanceTypeArray) ToGetZonesZoneInstanceTypeArrayOutputWithContext(ctx context.Context) GetZonesZoneInstanceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneInstanceTypeArrayOutput)
+}
+
+type GetZonesZoneInstanceTypeOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneInstanceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZoneInstanceType)(nil)).Elem()
+}
+
+func (o GetZonesZoneInstanceTypeOutput) ToGetZonesZoneInstanceTypeOutput() GetZonesZoneInstanceTypeOutput {
+	return o
+}
+
+func (o GetZonesZoneInstanceTypeOutput) ToGetZonesZoneInstanceTypeOutputWithContext(ctx context.Context) GetZonesZoneInstanceTypeOutput {
+	return o
+}
+
+// File transfer protocol type. Valid values:
+func (o GetZonesZoneInstanceTypeOutput) ProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZoneInstanceType) string { return v.ProtocolType }).(pulumi.StringOutput)
+}
+
+// The storage type of the nas zones. Valid values:
+func (o GetZonesZoneInstanceTypeOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZoneInstanceType) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+type GetZonesZoneInstanceTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneInstanceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZoneInstanceType)(nil)).Elem()
+}
+
+func (o GetZonesZoneInstanceTypeArrayOutput) ToGetZonesZoneInstanceTypeArrayOutput() GetZonesZoneInstanceTypeArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneInstanceTypeArrayOutput) ToGetZonesZoneInstanceTypeArrayOutputWithContext(ctx context.Context) GetZonesZoneInstanceTypeArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneInstanceTypeArrayOutput) Index(i pulumi.IntInput) GetZonesZoneInstanceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZoneInstanceType {
+		return vs[0].([]GetZonesZoneInstanceType)[vs[1].(int)]
+	}).(GetZonesZoneInstanceTypeOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetAccessGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupArrayOutput{})
@@ -632,4 +904,8 @@ func init() {
 	pulumi.RegisterOutputType(GetFileSystemsSystemArrayOutput{})
 	pulumi.RegisterOutputType(GetMountTargetsTargetOutput{})
 	pulumi.RegisterOutputType(GetMountTargetsTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneInstanceTypeOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneInstanceTypeArrayOutput{})
 }

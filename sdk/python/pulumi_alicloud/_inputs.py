@@ -68,6 +68,7 @@ class ProviderAssumeRoleArgs:
 @pulumi.input_type
 class ProviderEndpointArgs:
     def __init__(__self__, *,
+                 acr: Optional[pulumi.Input[str]] = None,
                  actiontrail: Optional[pulumi.Input[str]] = None,
                  adb: Optional[pulumi.Input[str]] = None,
                  alb: Optional[pulumi.Input[str]] = None,
@@ -173,6 +174,8 @@ class ProviderEndpointArgs:
                  vs: Optional[pulumi.Input[str]] = None,
                  waf: Optional[pulumi.Input[str]] = None,
                  waf_openapi: Optional[pulumi.Input[str]] = None):
+        if acr is not None:
+            pulumi.set(__self__, "acr", acr)
         if actiontrail is not None:
             pulumi.set(__self__, "actiontrail", actiontrail)
         if adb is not None:
@@ -383,6 +386,15 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "waf", waf)
         if waf_openapi is not None:
             pulumi.set(__self__, "waf_openapi", waf_openapi)
+
+    @property
+    @pulumi.getter
+    def acr(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "acr")
+
+    @acr.setter
+    def acr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acr", value)
 
     @property
     @pulumi.getter

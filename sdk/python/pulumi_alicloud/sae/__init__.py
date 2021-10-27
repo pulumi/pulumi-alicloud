@@ -8,6 +8,7 @@ from .config_map import *
 from .get_applications import *
 from .get_config_maps import *
 from .get_ingresses import *
+from .get_instance_specifications import *
 from .get_namespaces import *
 from .get_service import *
 from .ingress import *

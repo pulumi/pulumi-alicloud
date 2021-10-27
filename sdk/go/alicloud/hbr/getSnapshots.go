@@ -10,6 +10,84 @@ import (
 // This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.133.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "plan-tf-used-dont-delete"
+// 		defaultEcsBackupPlans, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
+// 			NameRegex: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := "plan-tf-used-dont-delete"
+// 		defaultOssBackupPlans, err := hbr.GetOssBackupPlans(ctx, &hbr.GetOssBackupPlansArgs{
+// 			NameRegex: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt2 := "plan-tf-used-dont-delete"
+// 		defaultNasBackupPlans, err := hbr.GetNasBackupPlans(ctx, &hbr.GetNasBackupPlansArgs{
+// 			NameRegex: &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt3 := defaultEcsBackupPlans.Plans[0].InstanceId
+// 		_, err = hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
+// 			SourceType: "ECS_FILE",
+// 			VaultId:    defaultEcsBackupPlans.Plans[0].VaultId,
+// 			InstanceId: &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt4 := defaultOssBackupPlans.Plans[0].Bucket
+// 		opt5 := "2021-07-20T14:17:15CST,2021-07-24T14:17:15CST"
+// 		opt6 := "BETWEEN"
+// 		_, err = hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
+// 			SourceType:          "OSS",
+// 			VaultId:             defaultOssBackupPlans.Plans[0].VaultId,
+// 			Bucket:              &opt4,
+// 			CompleteTime:        &opt5,
+// 			CompleteTimeChecker: &opt6,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt7 := defaultNasBackupPlans.Plans[0].FileSystemId
+// 		opt8 := defaultNasBackupPlans.Plans[0].CreateTime
+// 		opt9 := "2021-08-23T14:17:15CST"
+// 		opt10 := "GREATER_THAN_OR_EQUAL"
+// 		nasSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
+// 			SourceType:          "NAS",
+// 			VaultId:             defaultNasBackupPlans.Plans[0].VaultId,
+// 			FileSystemId:        &opt7,
+// 			CreateTime:          &opt8,
+// 			CompleteTime:        &opt9,
+// 			CompleteTimeChecker: &opt10,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("hbrSnapshotId1", nasSnapshots.Snapshots[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetSnapshotsResult, error) {
 	var rv GetSnapshotsResult
 	err := ctx.Invoke("alicloud:hbr/getSnapshots:getSnapshots", args, &rv, opts...)
@@ -23,7 +101,7 @@ func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.In
 type GetSnapshotsArgs struct {
 	// The name of OSS bucket.
 	Bucket *string `pulumi:"bucket"`
-	// The time when the snapshot was completed. UNIX time in seconds.
+	// The time when the snapshot completed. UNIX time in seconds.
 	CompleteTime *string `pulumi:"completeTime"`
 	// Complete time filter operator. Optional values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
 	CompleteTimeChecker *string `pulumi:"completeTimeChecker"`

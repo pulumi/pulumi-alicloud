@@ -55,7 +55,7 @@ type GetNasBackupPlansArgs struct {
 	// A regex string to filter results by NasBackupPlan name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The backup vault ID of the NasBackupPlan used.
+	// The ID of backup vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 

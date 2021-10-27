@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string> NodeClass { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the shard-node.
+        /// The ID of the Config Server node.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }

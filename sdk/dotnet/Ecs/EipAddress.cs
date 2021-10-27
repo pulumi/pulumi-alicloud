@@ -69,6 +69,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AddressName { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+        /// </summary>
+        [Output("autoPay")]
+        public Output<bool?> AutoPay { get; private set; } = null!;
+
+        /// <summary>
         /// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         /// </summary>
         [Output("bandwidth")]
@@ -91,7 +97,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The metering method of the EIP. 
-        /// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        /// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         /// </summary>
         [Output("internetChargeType")]
         public Output<string> InternetChargeType { get; private set; } = null!;
@@ -206,6 +212,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AddressName { get; set; }
 
         /// <summary>
+        /// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+        /// </summary>
+        [Input("autoPay")]
+        public Input<bool>? AutoPay { get; set; }
+
+        /// <summary>
         /// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         /// </summary>
         [Input("bandwidth")]
@@ -228,7 +240,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The metering method of the EIP. 
-        /// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        /// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -298,6 +310,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AddressName { get; set; }
 
         /// <summary>
+        /// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+        /// </summary>
+        [Input("autoPay")]
+        public Input<bool>? AutoPay { get; set; }
+
+        /// <summary>
         /// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         /// </summary>
         [Input("bandwidth")]
@@ -320,7 +338,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The metering method of the EIP. 
-        /// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        /// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }

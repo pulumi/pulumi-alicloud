@@ -10,13 +10,82 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AccessConfigurationPermissionPolicy',
     'DirectorySamlIdentityProviderConfiguration',
+    'GetAccessConfigurationsConfigurationResult',
+    'GetAccessConfigurationsConfigurationPermissionPolicyResult',
     'GetDirectoriesDirectoryResult',
     'GetDirectoriesDirectorySamlIdentityProviderConfigurationResult',
     'GetDirectoriesDirectoryTaskResult',
     'GetGroupsGroupResult',
     'GetScimServerCredentialsCredentialResult',
+    'GetUsersUserResult',
+    'GetUsersUserMfaDeviceResult',
 ]
+
+@pulumi.output_type
+class AccessConfigurationPermissionPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "permissionPolicyDocument":
+            suggest = "permission_policy_document"
+        elif key == "permissionPolicyName":
+            suggest = "permission_policy_name"
+        elif key == "permissionPolicyType":
+            suggest = "permission_policy_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessConfigurationPermissionPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessConfigurationPermissionPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessConfigurationPermissionPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 permission_policy_document: Optional[str] = None,
+                 permission_policy_name: Optional[str] = None,
+                 permission_policy_type: Optional[str] = None):
+        """
+        :param str permission_policy_document: The Content of Policy.
+        :param str permission_policy_name: The Policy Name of policy.
+        :param str permission_policy_type: The Policy Type of policy. Valid values: `System`, `Inline`.
+        """
+        if permission_policy_document is not None:
+            pulumi.set(__self__, "permission_policy_document", permission_policy_document)
+        if permission_policy_name is not None:
+            pulumi.set(__self__, "permission_policy_name", permission_policy_name)
+        if permission_policy_type is not None:
+            pulumi.set(__self__, "permission_policy_type", permission_policy_type)
+
+    @property
+    @pulumi.getter(name="permissionPolicyDocument")
+    def permission_policy_document(self) -> Optional[str]:
+        """
+        The Content of Policy.
+        """
+        return pulumi.get(self, "permission_policy_document")
+
+    @property
+    @pulumi.getter(name="permissionPolicyName")
+    def permission_policy_name(self) -> Optional[str]:
+        """
+        The Policy Name of policy.
+        """
+        return pulumi.get(self, "permission_policy_name")
+
+    @property
+    @pulumi.getter(name="permissionPolicyType")
+    def permission_policy_type(self) -> Optional[str]:
+        """
+        The Policy Type of policy. Valid values: `System`, `Inline`.
+        """
+        return pulumi.get(self, "permission_policy_type")
+
 
 @pulumi.output_type
 class DirectorySamlIdentityProviderConfiguration(dict):
@@ -66,6 +135,174 @@ class DirectorySamlIdentityProviderConfiguration(dict):
         SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         """
         return pulumi.get(self, "sso_status")
+
+
+@pulumi.output_type
+class GetAccessConfigurationsConfigurationResult(dict):
+    def __init__(__self__, *,
+                 access_configuration_id: str,
+                 access_configuration_name: str,
+                 create_time: str,
+                 description: str,
+                 directory_id: str,
+                 id: str,
+                 permission_policies: Sequence['outputs.GetAccessConfigurationsConfigurationPermissionPolicyResult'],
+                 relay_state: str,
+                 session_duration: int,
+                 status_notifications: Sequence[str]):
+        """
+        :param str access_configuration_id: The AccessConfigurationId of the Access Configuration.
+        :param str access_configuration_name: The AccessConfigurationName of the Access Configuration.
+        :param str create_time: The Created Time of the Directory.
+        :param str description: The Description of the Directory.
+        :param str directory_id: The ID of the Directory.
+        :param str id: The ID of the Access Configuration.
+        :param Sequence['GetAccessConfigurationsConfigurationPermissionPolicyArgs'] permission_policies: The Policy List.
+        :param str relay_state: The RelayState of the Access Configuration.
+        :param int session_duration: The SessionDuration of the Access Configuration.
+        :param Sequence[str] status_notifications: The StatusNotifications of the Access Configuration.
+        """
+        pulumi.set(__self__, "access_configuration_id", access_configuration_id)
+        pulumi.set(__self__, "access_configuration_name", access_configuration_name)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permission_policies", permission_policies)
+        pulumi.set(__self__, "relay_state", relay_state)
+        pulumi.set(__self__, "session_duration", session_duration)
+        pulumi.set(__self__, "status_notifications", status_notifications)
+
+    @property
+    @pulumi.getter(name="accessConfigurationId")
+    def access_configuration_id(self) -> str:
+        """
+        The AccessConfigurationId of the Access Configuration.
+        """
+        return pulumi.get(self, "access_configuration_id")
+
+    @property
+    @pulumi.getter(name="accessConfigurationName")
+    def access_configuration_name(self) -> str:
+        """
+        The AccessConfigurationName of the Access Configuration.
+        """
+        return pulumi.get(self, "access_configuration_name")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The Created Time of the Directory.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The Description of the Directory.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> str:
+        """
+        The ID of the Directory.
+        """
+        return pulumi.get(self, "directory_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Access Configuration.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="permissionPolicies")
+    def permission_policies(self) -> Sequence['outputs.GetAccessConfigurationsConfigurationPermissionPolicyResult']:
+        """
+        The Policy List.
+        """
+        return pulumi.get(self, "permission_policies")
+
+    @property
+    @pulumi.getter(name="relayState")
+    def relay_state(self) -> str:
+        """
+        The RelayState of the Access Configuration.
+        """
+        return pulumi.get(self, "relay_state")
+
+    @property
+    @pulumi.getter(name="sessionDuration")
+    def session_duration(self) -> int:
+        """
+        The SessionDuration of the Access Configuration.
+        """
+        return pulumi.get(self, "session_duration")
+
+    @property
+    @pulumi.getter(name="statusNotifications")
+    def status_notifications(self) -> Sequence[str]:
+        """
+        The StatusNotifications of the Access Configuration.
+        """
+        return pulumi.get(self, "status_notifications")
+
+
+@pulumi.output_type
+class GetAccessConfigurationsConfigurationPermissionPolicyResult(dict):
+    def __init__(__self__, *,
+                 add_time: str,
+                 permission_policy_document: str,
+                 permission_policy_name: str,
+                 permission_policy_type: str):
+        """
+        :param str add_time: The Creation time of policy.
+        :param str permission_policy_document: The Content of Policy.
+        :param str permission_policy_name: The Policy Name of policy.
+        :param str permission_policy_type: The Policy Type of policy. Valid values: `System`, `Inline`.
+        """
+        pulumi.set(__self__, "add_time", add_time)
+        pulumi.set(__self__, "permission_policy_document", permission_policy_document)
+        pulumi.set(__self__, "permission_policy_name", permission_policy_name)
+        pulumi.set(__self__, "permission_policy_type", permission_policy_type)
+
+    @property
+    @pulumi.getter(name="addTime")
+    def add_time(self) -> str:
+        """
+        The Creation time of policy.
+        """
+        return pulumi.get(self, "add_time")
+
+    @property
+    @pulumi.getter(name="permissionPolicyDocument")
+    def permission_policy_document(self) -> str:
+        """
+        The Content of Policy.
+        """
+        return pulumi.get(self, "permission_policy_document")
+
+    @property
+    @pulumi.getter(name="permissionPolicyName")
+    def permission_policy_name(self) -> str:
+        """
+        The Policy Name of policy.
+        """
+        return pulumi.get(self, "permission_policy_name")
+
+    @property
+    @pulumi.getter(name="permissionPolicyType")
+    def permission_policy_type(self) -> str:
+        """
+        The Policy Type of policy. Valid values: `System`, `Inline`.
+        """
+        return pulumi.get(self, "permission_policy_type")
 
 
 @pulumi.output_type
@@ -585,5 +822,206 @@ class GetScimServerCredentialsCredentialResult(dict):
         The Status of the resource. Valid values: `Disabled`, `Enabled`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetUsersUserResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 directory_id: str,
+                 display_name: str,
+                 email: str,
+                 first_name: str,
+                 id: str,
+                 last_name: str,
+                 mfa_devices: Sequence['outputs.GetUsersUserMfaDeviceResult'],
+                 provision_type: str,
+                 status: str,
+                 user_id: str,
+                 user_name: str):
+        """
+        :param str create_time: The create time of the user.
+        :param str description: The description of user.
+        :param str directory_id: The ID of the Directory.
+        :param str display_name: The display name of user.
+        :param str email: The User's Contact Email Address.
+        :param str first_name: The first name of user.
+        :param str id: The ID of the User.
+        :param str last_name: The last name of user.
+        :param Sequence['GetUsersUserMfaDeviceArgs'] mfa_devices: The List of MFA Device for User.
+        :param str provision_type: ProvisionType.
+        :param str status: User status. Valid values: `Enabled` and `Disabled`.
+        :param str user_id: The User ID of the group.
+        :param str user_name: The name of user.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "first_name", first_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_name", last_name)
+        pulumi.set(__self__, "mfa_devices", mfa_devices)
+        pulumi.set(__self__, "provision_type", provision_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The create time of the user.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of user.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> str:
+        """
+        The ID of the Directory.
+        """
+        return pulumi.get(self, "directory_id")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name of user.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The User's Contact Email Address.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="firstName")
+    def first_name(self) -> str:
+        """
+        The first name of user.
+        """
+        return pulumi.get(self, "first_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the User.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastName")
+    def last_name(self) -> str:
+        """
+        The last name of user.
+        """
+        return pulumi.get(self, "last_name")
+
+    @property
+    @pulumi.getter(name="mfaDevices")
+    def mfa_devices(self) -> Sequence['outputs.GetUsersUserMfaDeviceResult']:
+        """
+        The List of MFA Device for User.
+        """
+        return pulumi.get(self, "mfa_devices")
+
+    @property
+    @pulumi.getter(name="provisionType")
+    def provision_type(self) -> str:
+        """
+        ProvisionType.
+        """
+        return pulumi.get(self, "provision_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        User status. Valid values: `Enabled` and `Disabled`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        The User ID of the group.
+        """
+        return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        The name of user.
+        """
+        return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
+class GetUsersUserMfaDeviceResult(dict):
+    def __init__(__self__, *,
+                 device_id: str,
+                 device_name: str,
+                 device_type: str,
+                 effective_time: str):
+        """
+        :param str device_id: The MFA Device ID.
+        :param str device_name: The MFA Device Name.
+        :param str device_type: The MFA Device Type.
+        :param str effective_time: The Effective Time of MFA Device.
+        """
+        pulumi.set(__self__, "device_id", device_id)
+        pulumi.set(__self__, "device_name", device_name)
+        pulumi.set(__self__, "device_type", device_type)
+        pulumi.set(__self__, "effective_time", effective_time)
+
+    @property
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> str:
+        """
+        The MFA Device ID.
+        """
+        return pulumi.get(self, "device_id")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        """
+        The MFA Device Name.
+        """
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter(name="deviceType")
+    def device_type(self) -> str:
+        """
+        The MFA Device Type.
+        """
+        return pulumi.get(self, "device_type")
+
+    @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> str:
+        """
+        The Effective Time of MFA Device.
+        """
+        return pulumi.get(self, "effective_time")
 
 

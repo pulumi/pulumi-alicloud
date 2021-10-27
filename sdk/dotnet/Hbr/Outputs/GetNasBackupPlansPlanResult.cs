@@ -18,23 +18,36 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BackupType;
         /// <summary>
-        /// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST`.
         /// </summary>
         public readonly string CreateTime;
+        public readonly string CreatedTime;
+        /// <summary>
+        /// Whether to be suspended. Valid values: `true`, `false`.
+        /// </summary>
         public readonly bool Disabled;
         /// <summary>
         /// The File System ID of Nas.
         /// </summary>
         public readonly string FileSystemId;
+        /// <summary>
+        /// The ID of Nas backup plan.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of Nas backup plan.
+        /// </summary>
         public readonly string NasBackupPlanId;
         /// <summary>
         /// The name of the resource.
         /// </summary>
         public readonly string NasBackupPlanName;
+        /// <summary>
+        /// Options of nas.
+        /// </summary>
         public readonly string Options;
         /// <summary>
-        /// Backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+        /// List of backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
         /// </summary>
         public readonly ImmutableArray<string> Paths;
         /// <summary>
@@ -42,11 +55,12 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Retention;
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         public readonly string Schedule;
+        public readonly string UpdatedTime;
         /// <summary>
-        /// The backup vault ID of the NasBackupPlan used.
+        /// The ID of backup vault.
         /// </summary>
         public readonly string VaultId;
 
@@ -55,6 +69,8 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             string backupType,
 
             string createTime,
+
+            string createdTime,
 
             bool disabled,
 
@@ -74,10 +90,13 @@ namespace Pulumi.AliCloud.Hbr.Outputs
 
             string schedule,
 
+            string updatedTime,
+
             string vaultId)
         {
             BackupType = backupType;
             CreateTime = createTime;
+            CreatedTime = createdTime;
             Disabled = disabled;
             FileSystemId = fileSystemId;
             Id = id;
@@ -87,6 +106,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             Paths = paths;
             Retention = retention;
             Schedule = schedule;
+            UpdatedTime = updatedTime;
             VaultId = vaultId;
         }
     }

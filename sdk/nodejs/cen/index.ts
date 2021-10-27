@@ -24,6 +24,7 @@ export * from "./getTransitRouterRouteEntries";
 export * from "./getTransitRouterRouteTableAssociations";
 export * from "./getTransitRouterRouteTablePropagations";
 export * from "./getTransitRouterRouteTables";
+export * from "./getTransitRouterService";
 export * from "./getTransitRouterVbrAttachments";
 export * from "./getTransitRouterVpcAttachments";
 export * from "./getTransitRouters";

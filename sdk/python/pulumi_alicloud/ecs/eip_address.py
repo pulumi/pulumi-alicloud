@@ -15,6 +15,7 @@ class EipAddressArgs:
     def __init__(__self__, *,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -31,11 +32,12 @@ class EipAddressArgs:
         The set of arguments for constructing a EipAddress resource.
         :param pulumi.Input[str] activity_id: The activity id.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
         :param pulumi.Input[str] description: The description of the EIP.
         :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
-               Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+               Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -47,6 +49,8 @@ class EipAddressArgs:
             pulumi.set(__self__, "activity_id", activity_id)
         if address_name is not None:
             pulumi.set(__self__, "address_name", address_name)
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if deletion_protection is not None:
@@ -103,6 +107,18 @@ class EipAddressArgs:
         pulumi.set(self, "address_name", value)
 
     @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+        """
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_pay", value)
+
+    @property
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
@@ -152,7 +168,7 @@ class EipAddressArgs:
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         The metering method of the EIP. 
-        Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -247,6 +263,7 @@ class _EipAddressState:
     def __init__(__self__, *,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -265,11 +282,12 @@ class _EipAddressState:
         Input properties used for looking up and filtering EipAddress resources.
         :param pulumi.Input[str] activity_id: The activity id.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
         :param pulumi.Input[str] description: The description of the EIP.
         :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
-               Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+               Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         :param pulumi.Input[str] ip_address: The address of the EIP.
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
@@ -283,6 +301,8 @@ class _EipAddressState:
             pulumi.set(__self__, "activity_id", activity_id)
         if address_name is not None:
             pulumi.set(__self__, "address_name", address_name)
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if deletion_protection is not None:
@@ -343,6 +363,18 @@ class _EipAddressState:
         pulumi.set(self, "address_name", value)
 
     @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+        """
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_pay", value)
+
+    @property
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
@@ -392,7 +424,7 @@ class _EipAddressState:
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         The metering method of the EIP. 
-        Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -513,6 +545,7 @@ class EipAddress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -565,11 +598,12 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] activity_id: The activity id.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
         :param pulumi.Input[str] description: The description of the EIP.
         :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
-               Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+               Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -635,6 +669,7 @@ class EipAddress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -661,6 +696,7 @@ class EipAddress(pulumi.CustomResource):
 
             __props__.__dict__["activity_id"] = activity_id
             __props__.__dict__["address_name"] = address_name
+            __props__.__dict__["auto_pay"] = auto_pay
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
@@ -693,6 +729,7 @@ class EipAddress(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             activity_id: Optional[pulumi.Input[str]] = None,
             address_name: Optional[pulumi.Input[str]] = None,
+            auto_pay: Optional[pulumi.Input[bool]] = None,
             bandwidth: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -716,11 +753,12 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] activity_id: The activity id.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
         :param pulumi.Input[str] description: The description of the EIP.
         :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
-               Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+               Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         :param pulumi.Input[str] ip_address: The address of the EIP.
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
@@ -736,6 +774,7 @@ class EipAddress(pulumi.CustomResource):
 
         __props__.__dict__["activity_id"] = activity_id
         __props__.__dict__["address_name"] = address_name
+        __props__.__dict__["auto_pay"] = auto_pay
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
@@ -767,6 +806,14 @@ class EipAddress(pulumi.CustomResource):
         The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         """
         return pulumi.get(self, "address_name")
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+        """
+        return pulumi.get(self, "auto_pay")
 
     @property
     @pulumi.getter
@@ -802,7 +849,7 @@ class EipAddress(pulumi.CustomResource):
     def internet_charge_type(self) -> pulumi.Output[str]:
         """
         The metering method of the EIP. 
-        Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         """
         return pulumi.get(self, "internet_charge_type")
 

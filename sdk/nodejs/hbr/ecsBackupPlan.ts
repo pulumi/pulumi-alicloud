@@ -19,36 +19,41 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "valut-name";
+ * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: name});
+ * const defaultInstances = alicloud.ecs.getInstances({
+ *     nameRegex: "no-deleteing-hbr-ecs-backup-plan",
+ *     status: "Running",
+ * });
  * const example = new alicloud.hbr.EcsBackupPlan("example", {
- *     backupType: "COMPLETE",
  *     ecsBackupPlanName: "example_value",
- *     exclude: `  ["/home/exclude"]
- *   `,
- *     include: `  ["/home/include"]
- *   `,
- *     instanceId: "i-bp1567rc0oxxxxxxxxxx",
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.instances[0].id),
+ *     vaultId: defaultVault.id,
+ *     retention: "1",
+ *     schedule: "I|1602673264|PT2H",
+ *     backupType: "COMPLETE",
+ *     speedLimit: "0:24:5120",
  *     paths: [
  *         "/home",
  *         "/var",
  *     ],
- *     retention: "1",
- *     schedule: "I|1602673264|PT2H",
- *     speedLimit: "0:24:5120",
- *     vaultId: "v-0003gxoksflhxxxxxxxx",
+ *     exclude: "  [\"/home/exclude\"]\n",
+ *     include: "  [\"/home/include\"]\n",
  * });
  * ```
  * ## Notice
  *
  * **About Backup path rules:**
- * 1. If there is no wildcard `*`, you can enter 8 lines of path.
- * 2. When using wildcard `*`, only one line of path can be input, and wildcards like `/*&#47;*` are supported.
- * 3. Each line only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
+ * 1. If there is no wildcard `*`, you can enter 8 items of path.
+ * 2. When using wildcard `*`, only one item of path can be input, and wildcards like `/*&#47;*` are supported.
+ * 3. Each item of path only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
  *
  * **About Restrictions:**
- * 1. When using VSS, multiple paths, UNC paths, wildcards, and excluded files are not supported.
- * 2. When using UNC, VSS is not supported, wildcards are not supported, and files to be excluded are not supported.
+ * 1. When using `VSS`: multiple paths, UNC paths, wildcards, and excluded files not supported.
+ * 2. When using `UNC`: VSS not supported, wildcards not supported, and files to be excluded are not supported.
  *
- * **About Include/exclude path rules:**
+ * **About include/exclude path rules:**
  * 1. Supports up to 8 paths, including paths using wildcards `*`.
  * 2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
  * 3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*&#47;*&#47;` share will match `/a/b/c/share`, but not `/a/d/share`.
@@ -121,7 +126,7 @@ export class EcsBackupPlan extends pulumi.CustomResource {
      */
     public readonly options!: pulumi.Output<string | undefined>;
     /**
-     * Backup path. e.g. `["/home", "/var"]`
+     * List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
      */
     public readonly paths!: pulumi.Output<string[] | undefined>;
     /**
@@ -129,13 +134,16 @@ export class EcsBackupPlan extends pulumi.CustomResource {
      */
     public readonly retention!: pulumi.Output<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     public readonly schedule!: pulumi.Output<string>;
     /**
-     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+     * Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      */
     public readonly speedLimit!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     */
     public readonly updatePaths!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of Backup vault.
@@ -245,7 +253,7 @@ export interface EcsBackupPlanState {
      */
     readonly options?: pulumi.Input<string>;
     /**
-     * Backup path. e.g. `["/home", "/var"]`
+     * List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
      */
     readonly paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -253,13 +261,16 @@ export interface EcsBackupPlanState {
      */
     readonly retention?: pulumi.Input<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     readonly schedule?: pulumi.Input<string>;
     /**
-     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+     * Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      */
     readonly speedLimit?: pulumi.Input<string>;
+    /**
+     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     */
     readonly updatePaths?: pulumi.Input<boolean>;
     /**
      * The ID of Backup vault.
@@ -301,7 +312,7 @@ export interface EcsBackupPlanArgs {
      */
     readonly options?: pulumi.Input<string>;
     /**
-     * Backup path. e.g. `["/home", "/var"]`
+     * List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
      */
     readonly paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -309,13 +320,16 @@ export interface EcsBackupPlanArgs {
      */
     readonly retention: pulumi.Input<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     readonly schedule: pulumi.Input<string>;
     /**
-     * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+     * Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      */
     readonly speedLimit?: pulumi.Input<string>;
+    /**
+     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     */
     readonly updatePaths?: pulumi.Input<boolean>;
     /**
      * The ID of Backup vault.

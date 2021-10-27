@@ -55,6 +55,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly backupTime!: pulumi.Output<string>;
     /**
+     * The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+     */
+    public /*out*/ readonly configServerLists!: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
      */
     public readonly engineVersion!: pulumi.Output<string>;
@@ -90,7 +94,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number>;
     /**
-     * Instance log backup retention days. Available in 1.42.0+.
+     * Instance log backup retention days. **NOTE:** Available in 1.42.0+.
      */
     public /*out*/ readonly retentionPeriod!: pulumi.Output<number>;
     /**
@@ -140,6 +144,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             inputs["accountPassword"] = state ? state.accountPassword : undefined;
             inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
             inputs["backupTime"] = state ? state.backupTime : undefined;
+            inputs["configServerLists"] = state ? state.configServerLists : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
@@ -187,6 +192,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+            inputs["configServerLists"] = undefined /*out*/;
             inputs["retentionPeriod"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -212,6 +218,10 @@ export interface ShardingInstanceState {
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
     readonly backupTime?: pulumi.Input<string>;
+    /**
+     * The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+     */
+    readonly configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
      */
@@ -248,7 +258,7 @@ export interface ShardingInstanceState {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * Instance log backup retention days. Available in 1.42.0+.
+     * Instance log backup retention days. **NOTE:** Available in 1.42.0+.
      */
     readonly retentionPeriod?: pulumi.Input<number>;
     /**

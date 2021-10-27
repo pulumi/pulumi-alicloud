@@ -25,6 +25,7 @@ class InstanceArgs:
                  waf_log: pulumi.Input[str],
                  modify_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None):
@@ -46,6 +47,7 @@ class InstanceArgs:
         :param pulumi.Input[str] waf_log: Specify whether Log service is supported. Valid values: ["true", "false"]
         :param pulumi.Input[str] modify_type: Type of configuration change. Valid value: Upgrade.
         :param pulumi.Input[int] period: Service time of Web Application Firewall.
+        :param pulumi.Input[str] region: The instance region ID.
         :param pulumi.Input[int] renew_period: Renewal period of WAF service. Unit: month
         :param pulumi.Input[str] renewal_status: Renewal status of WAF service. Valid values: 
                * AutoRenewal: The service time of WAF is renewed automatically.
@@ -66,6 +68,8 @@ class InstanceArgs:
             pulumi.set(__self__, "modify_type", modify_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
@@ -222,6 +226,18 @@ class InstanceArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance region ID.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -273,6 +289,7 @@ class _InstanceState:
                  package_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  prefessional_service: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -295,6 +312,7 @@ class _InstanceState:
                * International site customers can purchase the following versions of International region: ["version_pro", "version_business", "version_enterprise"].
         :param pulumi.Input[int] period: Service time of Web Application Firewall.
         :param pulumi.Input[str] prefessional_service: Specify whether professional service is supported. Valid values: ["true", "false"]
+        :param pulumi.Input[str] region: The instance region ID.
         :param pulumi.Input[int] renew_period: Renewal period of WAF service. Unit: month
         :param pulumi.Input[str] renewal_status: Renewal status of WAF service. Valid values: 
                * AutoRenewal: The service time of WAF is renewed automatically.
@@ -324,6 +342,8 @@ class _InstanceState:
             pulumi.set(__self__, "period", period)
         if prefessional_service is not None:
             pulumi.set(__self__, "prefessional_service", prefessional_service)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
@@ -462,6 +482,18 @@ class _InstanceState:
         pulumi.set(self, "prefessional_service", value)
 
     @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance region ID.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -551,6 +583,7 @@ class Instance(pulumi.CustomResource):
                  package_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  prefessional_service: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -609,6 +642,7 @@ class Instance(pulumi.CustomResource):
                * International site customers can purchase the following versions of International region: ["version_pro", "version_business", "version_enterprise"].
         :param pulumi.Input[int] period: Service time of Web Application Firewall.
         :param pulumi.Input[str] prefessional_service: Specify whether professional service is supported. Valid values: ["true", "false"]
+        :param pulumi.Input[str] region: The instance region ID.
         :param pulumi.Input[int] renew_period: Renewal period of WAF service. Unit: month
         :param pulumi.Input[str] renewal_status: Renewal status of WAF service. Valid values: 
                * AutoRenewal: The service time of WAF is renewed automatically.
@@ -684,6 +718,7 @@ class Instance(pulumi.CustomResource):
                  package_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  prefessional_service: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -727,6 +762,7 @@ class Instance(pulumi.CustomResource):
             if prefessional_service is None and not opts.urn:
                 raise TypeError("Missing required property 'prefessional_service'")
             __props__.__dict__["prefessional_service"] = prefessional_service
+            __props__.__dict__["region"] = region
             __props__.__dict__["renew_period"] = renew_period
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -757,6 +793,7 @@ class Instance(pulumi.CustomResource):
             package_code: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             prefessional_service: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
             renew_period: Optional[pulumi.Input[int]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -784,6 +821,7 @@ class Instance(pulumi.CustomResource):
                * International site customers can purchase the following versions of International region: ["version_pro", "version_business", "version_enterprise"].
         :param pulumi.Input[int] period: Service time of Web Application Firewall.
         :param pulumi.Input[str] prefessional_service: Specify whether professional service is supported. Valid values: ["true", "false"]
+        :param pulumi.Input[str] region: The instance region ID.
         :param pulumi.Input[int] renew_period: Renewal period of WAF service. Unit: month
         :param pulumi.Input[str] renewal_status: Renewal status of WAF service. Valid values: 
                * AutoRenewal: The service time of WAF is renewed automatically.
@@ -807,6 +845,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["package_code"] = package_code
         __props__.__dict__["period"] = period
         __props__.__dict__["prefessional_service"] = prefessional_service
+        __props__.__dict__["region"] = region
         __props__.__dict__["renew_period"] = renew_period
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -898,6 +937,14 @@ class Instance(pulumi.CustomResource):
         Specify whether professional service is supported. Valid values: ["true", "false"]
         """
         return pulumi.get(self, "prefessional_service")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[str]]:
+        """
+        The instance region ID.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="renewPeriod")

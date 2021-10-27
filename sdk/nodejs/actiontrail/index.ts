@@ -6,16 +6,19 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./getConsumerGroups";
+export * from "./getHistoryDeliveryJobs";
 export * from "./getInstances";
 export * from "./getSaslAcls";
 export * from "./getSaslUsers";
 export * from "./getTopics";
 export * from "./getTrails";
 export * from "./getTrailsDeprecated";
+export * from "./historyDeliveryJob";
 export * from "./trail";
 export * from "./trailDeprecated";
 
 // Import resources to register:
+import { HistoryDeliveryJob } from "./historyDeliveryJob";
 import { Trail } from "./trail";
 import { TrailDeprecated } from "./trailDeprecated";
 
@@ -23,6 +26,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob":
+                return new HistoryDeliveryJob(name, <any>undefined, { urn })
             case "alicloud:actiontrail/trail:Trail":
                 return new Trail(name, <any>undefined, { urn })
             case "alicloud:actiontrail/trailDeprecated:TrailDeprecated":
@@ -32,5 +37,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "actiontrail/historyDeliveryJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "actiontrail/trail", _module)
 pulumi.runtime.registerResourceModule("alicloud", "actiontrail/trailDeprecated", _module)

@@ -60,7 +60,7 @@ export interface GetNasBackupPlansArgs {
     readonly nameRegex?: string;
     readonly outputFile?: string;
     /**
-     * The backup vault ID of the NasBackupPlan used.
+     * The ID of backup vault.
      */
     readonly vaultId?: string;
 }

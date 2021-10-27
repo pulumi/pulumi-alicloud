@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Dts
     ///             DestinationEndpointEngineName = "ADB30",
     ///             DestinationEndpointRegion = "cn-hangzhou",
     ///             InstanceClass = "small",
-    ///             PaymentType = "PostPaid",
+    ///             PaymentType = "PayAsYouGo",
     ///             SourceEndpointEngineName = "PolarDB",
     ///             SourceEndpointRegion = "cn-hangzhou",
     ///             SyncArchitecture = "oneway",

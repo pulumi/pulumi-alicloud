@@ -117,6 +117,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> ReplicaSetName { get; private set; } = null!;
 
         /// <summary>
+        /// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+        /// </summary>
+        [Output("replicaSets")]
+        public Output<ImmutableArray<Outputs.InstanceReplicaSet>> ReplicaSets { get; private set; } = null!;
+
+        /// <summary>
         /// Number of replica set nodes. Valid values: [1, 3, 5, 7]
         /// </summary>
         [Output("replicationFactor")]
@@ -512,6 +518,18 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("replicaSetName")]
         public Input<string>? ReplicaSetName { get; set; }
+
+        [Input("replicaSets")]
+        private InputList<Inputs.InstanceReplicaSetGetArgs>? _replicaSets;
+
+        /// <summary>
+        /// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+        /// </summary>
+        public InputList<Inputs.InstanceReplicaSetGetArgs> ReplicaSets
+        {
+            get => _replicaSets ?? (_replicaSets = new InputList<Inputs.InstanceReplicaSetGetArgs>());
+            set => _replicaSets = value;
+        }
 
         /// <summary>
         /// Number of replica set nodes. Valid values: [1, 3, 5, 7]

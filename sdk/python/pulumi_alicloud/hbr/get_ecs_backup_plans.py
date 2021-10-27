@@ -125,7 +125,7 @@ def get_ecs_backup_plans(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.hbr.get_ecs_backup_plans(name_regex="^my-EcsBackupPlan")
+    ids = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
     pulumi.export("hbrEcsBackupPlanId", ids.plans[0].id)
     ```
 

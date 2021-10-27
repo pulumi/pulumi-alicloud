@@ -27,6 +27,8 @@ type ShardingInstance struct {
 	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
+	// The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+	ConfigServerLists ShardingInstanceConfigServerListArrayOutput `pulumi:"configServerLists"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -46,7 +48,7 @@ type ShardingInstance struct {
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntOutput `pulumi:"period"`
-	// Instance log backup retention days. Available in 1.42.0+.
+	// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
@@ -110,6 +112,8 @@ type shardingInstanceState struct {
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
+	// The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+	ConfigServerLists []ShardingInstanceConfigServerList `pulumi:"configServerLists"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -129,7 +133,7 @@ type shardingInstanceState struct {
 	OrderType *string `pulumi:"orderType"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
-	// Instance log backup retention days. Available in 1.42.0+.
+	// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -156,6 +160,8 @@ type ShardingInstanceState struct {
 	BackupPeriods pulumi.StringArrayInput
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
+	// The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+	ConfigServerLists ShardingInstanceConfigServerListArrayInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -175,7 +181,7 @@ type ShardingInstanceState struct {
 	OrderType pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
-	// Instance log backup retention days. Available in 1.42.0+.
+	// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
 	RetentionPeriod pulumi.IntPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput

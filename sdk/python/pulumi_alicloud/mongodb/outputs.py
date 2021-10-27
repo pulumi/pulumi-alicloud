@@ -10,6 +10,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'InstanceReplicaSet',
+    'ShardingInstanceConfigServerList',
     'ShardingInstanceMongoList',
     'ShardingInstanceShardList',
     'GetInstancesInstanceResult',
@@ -17,6 +19,260 @@ __all__ = [
     'GetInstancesInstanceShardResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class InstanceReplicaSet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionDomain":
+            suggest = "connection_domain"
+        elif key == "connectionPort":
+            suggest = "connection_port"
+        elif key == "networkType":
+            suggest = "network_type"
+        elif key == "replicaSetRole":
+            suggest = "replica_set_role"
+        elif key == "vpcCloudInstanceId":
+            suggest = "vpc_cloud_instance_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+        elif key == "vswitchId":
+            suggest = "vswitch_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceReplicaSet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceReplicaSet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceReplicaSet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_domain: Optional[str] = None,
+                 connection_port: Optional[str] = None,
+                 network_type: Optional[str] = None,
+                 replica_set_role: Optional[str] = None,
+                 vpc_cloud_instance_id: Optional[str] = None,
+                 vpc_id: Optional[str] = None,
+                 vswitch_id: Optional[str] = None):
+        """
+        :param str connection_domain: The connection address of the node.
+        :param str connection_port: The connection port of the node.
+        :param str network_type: The network type of the node. Valid values: `Classic`,`VPC`.
+        :param str replica_set_role: The role of the node. Valid values: `Primary`,`Secondary`.
+        :param str vpc_cloud_instance_id: VPC instance ID.
+        :param str vpc_id: The private network ID of the node.
+        :param str vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        """
+        if connection_domain is not None:
+            pulumi.set(__self__, "connection_domain", connection_domain)
+        if connection_port is not None:
+            pulumi.set(__self__, "connection_port", connection_port)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
+        if replica_set_role is not None:
+            pulumi.set(__self__, "replica_set_role", replica_set_role)
+        if vpc_cloud_instance_id is not None:
+            pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="connectionDomain")
+    def connection_domain(self) -> Optional[str]:
+        """
+        The connection address of the node.
+        """
+        return pulumi.get(self, "connection_domain")
+
+    @property
+    @pulumi.getter(name="connectionPort")
+    def connection_port(self) -> Optional[str]:
+        """
+        The connection port of the node.
+        """
+        return pulumi.get(self, "connection_port")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[str]:
+        """
+        The network type of the node. Valid values: `Classic`,`VPC`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="replicaSetRole")
+    def replica_set_role(self) -> Optional[str]:
+        """
+        The role of the node. Valid values: `Primary`,`Secondary`.
+        """
+        return pulumi.get(self, "replica_set_role")
+
+    @property
+    @pulumi.getter(name="vpcCloudInstanceId")
+    def vpc_cloud_instance_id(self) -> Optional[str]:
+        """
+        VPC instance ID.
+        """
+        return pulumi.get(self, "vpc_cloud_instance_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[str]:
+        """
+        The private network ID of the node.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[str]:
+        """
+        The virtual switch ID to launch DB instances in one VPC.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class ShardingInstanceConfigServerList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectString":
+            suggest = "connect_string"
+        elif key == "maxConnections":
+            suggest = "max_connections"
+        elif key == "maxIops":
+            suggest = "max_iops"
+        elif key == "nodeClass":
+            suggest = "node_class"
+        elif key == "nodeDescription":
+            suggest = "node_description"
+        elif key == "nodeId":
+            suggest = "node_id"
+        elif key == "nodeStorage":
+            suggest = "node_storage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShardingInstanceConfigServerList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShardingInstanceConfigServerList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShardingInstanceConfigServerList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connect_string: Optional[str] = None,
+                 max_connections: Optional[int] = None,
+                 max_iops: Optional[int] = None,
+                 node_class: Optional[str] = None,
+                 node_description: Optional[str] = None,
+                 node_id: Optional[str] = None,
+                 node_storage: Optional[int] = None,
+                 port: Optional[int] = None):
+        """
+        :param str connect_string: The connection address of the Config Server node.
+        :param int max_connections: The max connections of the Config Server node.
+        :param int max_iops: The maximum IOPS of the Config Server node.
+        :param str node_class: -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param str node_description: The description of the Config Server node.
+        :param str node_id: The ID of the Config Server node.
+        :param int node_storage: - Custom storage space; value range: [10, 1,000]
+               - 10-GB increments. Unit: GB.
+        :param int port: The connection port of the Config Server node.
+        """
+        if connect_string is not None:
+            pulumi.set(__self__, "connect_string", connect_string)
+        if max_connections is not None:
+            pulumi.set(__self__, "max_connections", max_connections)
+        if max_iops is not None:
+            pulumi.set(__self__, "max_iops", max_iops)
+        if node_class is not None:
+            pulumi.set(__self__, "node_class", node_class)
+        if node_description is not None:
+            pulumi.set(__self__, "node_description", node_description)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+        if node_storage is not None:
+            pulumi.set(__self__, "node_storage", node_storage)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="connectString")
+    def connect_string(self) -> Optional[str]:
+        """
+        The connection address of the Config Server node.
+        """
+        return pulumi.get(self, "connect_string")
+
+    @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> Optional[int]:
+        """
+        The max connections of the Config Server node.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @property
+    @pulumi.getter(name="maxIops")
+    def max_iops(self) -> Optional[int]:
+        """
+        The maximum IOPS of the Config Server node.
+        """
+        return pulumi.get(self, "max_iops")
+
+    @property
+    @pulumi.getter(name="nodeClass")
+    def node_class(self) -> Optional[str]:
+        """
+        -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        """
+        return pulumi.get(self, "node_class")
+
+    @property
+    @pulumi.getter(name="nodeDescription")
+    def node_description(self) -> Optional[str]:
+        """
+        The description of the Config Server node.
+        """
+        return pulumi.get(self, "node_description")
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[str]:
+        """
+        The ID of the Config Server node.
+        """
+        return pulumi.get(self, "node_id")
+
+    @property
+    @pulumi.getter(name="nodeStorage")
+    def node_storage(self) -> Optional[int]:
+        """
+        - Custom storage space; value range: [10, 1,000]
+        - 10-GB increments. Unit: GB.
+        """
+        return pulumi.get(self, "node_storage")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The connection port of the Config Server node.
+        """
+        return pulumi.get(self, "port")
+
 
 @pulumi.output_type
 class ShardingInstanceMongoList(dict):
@@ -48,10 +304,9 @@ class ShardingInstanceMongoList(dict):
                  port: Optional[int] = None):
         """
         :param str node_class: -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-        :param str connect_string: Mongo node connection string
-        :param str node_id: The ID of the shard-node.
-        :param int port: Mongo node port
-               * `shard_list`
+        :param str connect_string: The connection address of the Config Server node.
+        :param str node_id: The ID of the Config Server node.
+        :param int port: The connection port of the Config Server node.
         """
         pulumi.set(__self__, "node_class", node_class)
         if connect_string is not None:
@@ -73,7 +328,7 @@ class ShardingInstanceMongoList(dict):
     @pulumi.getter(name="connectString")
     def connect_string(self) -> Optional[str]:
         """
-        Mongo node connection string
+        The connection address of the Config Server node.
         """
         return pulumi.get(self, "connect_string")
 
@@ -81,7 +336,7 @@ class ShardingInstanceMongoList(dict):
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[str]:
         """
-        The ID of the shard-node.
+        The ID of the Config Server node.
         """
         return pulumi.get(self, "node_id")
 
@@ -89,8 +344,7 @@ class ShardingInstanceMongoList(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        Mongo node port
-        * `shard_list`
+        The connection port of the Config Server node.
         """
         return pulumi.get(self, "port")
 
@@ -129,7 +383,7 @@ class ShardingInstanceShardList(dict):
         :param str node_class: -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param int node_storage: - Custom storage space; value range: [10, 1,000]
                - 10-GB increments. Unit: GB.
-        :param str node_id: The ID of the shard-node.
+        :param str node_id: The ID of the Config Server node.
         :param int readonly_replicas: The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
         """
         pulumi.set(__self__, "node_class", node_class)
@@ -160,7 +414,7 @@ class ShardingInstanceShardList(dict):
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[str]:
         """
-        The ID of the shard-node.
+        The ID of the Config Server node.
         """
         return pulumi.get(self, "node_id")
 

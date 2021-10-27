@@ -21,7 +21,7 @@ import (
 type CommonBandwithPackage struct {
 	pulumi.CustomResourceState
 
-	// The bandwidth of the common bandwidth package, in Mbps.
+	// The bandwidth of the common bandwidth package. Unit: Mbps.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
 	// The name of the common bandwidth package.
 	BandwidthPackageName pulumi.StringOutput `pulumi:"bandwidthPackageName"`
@@ -82,7 +82,7 @@ func GetCommonBandwithPackage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CommonBandwithPackage resources.
 type commonBandwithPackageState struct {
-	// The bandwidth of the common bandwidth package, in Mbps.
+	// The bandwidth of the common bandwidth package. Unit: Mbps.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// The name of the common bandwidth package.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
@@ -112,7 +112,7 @@ type commonBandwithPackageState struct {
 }
 
 type CommonBandwithPackageState struct {
-	// The bandwidth of the common bandwidth package, in Mbps.
+	// The bandwidth of the common bandwidth package. Unit: Mbps.
 	Bandwidth pulumi.StringPtrInput
 	// The name of the common bandwidth package.
 	BandwidthPackageName pulumi.StringPtrInput
@@ -146,7 +146,7 @@ func (CommonBandwithPackageState) ElementType() reflect.Type {
 }
 
 type commonBandwithPackageArgs struct {
-	// The bandwidth of the common bandwidth package, in Mbps.
+	// The bandwidth of the common bandwidth package. Unit: Mbps.
 	Bandwidth string `pulumi:"bandwidth"`
 	// The name of the common bandwidth package.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
@@ -175,7 +175,7 @@ type commonBandwithPackageArgs struct {
 
 // The set of arguments for constructing a CommonBandwithPackage resource.
 type CommonBandwithPackageArgs struct {
-	// The bandwidth of the common bandwidth package, in Mbps.
+	// The bandwidth of the common bandwidth package. Unit: Mbps.
 	Bandwidth pulumi.StringInput
 	// The name of the common bandwidth package.
 	BandwidthPackageName pulumi.StringPtrInput

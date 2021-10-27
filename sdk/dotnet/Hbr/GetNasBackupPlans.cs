@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The backup vault ID of the NasBackupPlan used.
+        /// The ID of backup vault.
         /// </summary>
         [Input("vaultId")]
         public string? VaultId { get; set; }

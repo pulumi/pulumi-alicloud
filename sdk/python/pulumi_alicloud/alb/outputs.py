@@ -315,12 +315,18 @@ class ListenerCertificate(dict):
 
     def __init__(__self__, *,
                  certificate_id: Optional[str] = None):
+        """
+        :param str certificate_id: The ID of the Certificate.
+        """
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
 
     @property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[str]:
+        """
+        The ID of the Certificate.
+        """
         return pulumi.get(self, "certificate_id")
 
 
@@ -2314,7 +2320,7 @@ class GetListenersListenerResult(dict):
         :param bool access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param Sequence['GetListenersListenerAccessLogTracingConfigArgs'] access_log_tracing_configs: Xtrace Configuration Information.
         :param Sequence['GetListenersListenerAclConfigArgs'] acl_configs: The configurations of the access control lists (ACLs).
-        :param Sequence['GetListenersListenerCertificateArgs'] certificates: Certificate.
+        :param Sequence['GetListenersListenerCertificateArgs'] certificates: The Certificate List.
         :param Sequence['GetListenersListenerDefaultActionArgs'] default_actions: The Default Rule Action List.
         :param bool gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
         :param bool http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
@@ -2383,7 +2389,7 @@ class GetListenersListenerResult(dict):
     @pulumi.getter
     def certificates(self) -> Sequence['outputs.GetListenersListenerCertificateResult']:
         """
-        Certificate.
+        The Certificate List.
         """
         return pulumi.get(self, "certificates")
 
@@ -2626,11 +2632,17 @@ class GetListenersListenerAclConfigAclRelationResult(dict):
 class GetListenersListenerCertificateResult(dict):
     def __init__(__self__, *,
                  certificate_id: str):
+        """
+        :param str certificate_id: The ID of the Certificate.
+        """
         pulumi.set(__self__, "certificate_id", certificate_id)
 
     @property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> str:
+        """
+        The ID of the Certificate.
+        """
         return pulumi.get(self, "certificate_id")
 
 

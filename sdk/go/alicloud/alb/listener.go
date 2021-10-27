@@ -33,7 +33,7 @@ type Listener struct {
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrOutput `pulumi:"accessLogTracingConfig"`
 	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
 	AclConfig ListenerAclConfigPtrOutput `pulumi:"aclConfig"`
-	// The Certificates.
+	// The Certificate List. See the following `Block certificates`.
 	Certificates ListenerCertificateArrayOutput `pulumi:"certificates"`
 	// The Default Rule Action List. See the following `Block defaultActions`.
 	DefaultActions ListenerDefaultActionArrayOutput `pulumi:"defaultActions"`
@@ -109,7 +109,7 @@ type listenerState struct {
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
 	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
 	AclConfig *ListenerAclConfig `pulumi:"aclConfig"`
-	// The Certificates.
+	// The Certificate List. See the following `Block certificates`.
 	Certificates []ListenerCertificate `pulumi:"certificates"`
 	// The Default Rule Action List. See the following `Block defaultActions`.
 	DefaultActions []ListenerDefaultAction `pulumi:"defaultActions"`
@@ -148,7 +148,7 @@ type ListenerState struct {
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
 	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
 	AclConfig ListenerAclConfigPtrInput
-	// The Certificates.
+	// The Certificate List. See the following `Block certificates`.
 	Certificates ListenerCertificateArrayInput
 	// The Default Rule Action List. See the following `Block defaultActions`.
 	DefaultActions ListenerDefaultActionArrayInput
@@ -191,7 +191,7 @@ type listenerArgs struct {
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
 	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
 	AclConfig *ListenerAclConfig `pulumi:"aclConfig"`
-	// The Certificates.
+	// The Certificate List. See the following `Block certificates`.
 	Certificates []ListenerCertificate `pulumi:"certificates"`
 	// The Default Rule Action List. See the following `Block defaultActions`.
 	DefaultActions []ListenerDefaultAction `pulumi:"defaultActions"`
@@ -231,7 +231,7 @@ type ListenerArgs struct {
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
 	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
 	AclConfig ListenerAclConfigPtrInput
-	// The Certificates.
+	// The Certificate List. See the following `Block certificates`.
 	Certificates ListenerCertificateArrayInput
 	// The Default Rule Action List. See the following `Block defaultActions`.
 	DefaultActions ListenerDefaultActionArrayInput

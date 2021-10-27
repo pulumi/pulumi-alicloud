@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ControlPolicy{}
 	case "alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder":
 		r = &ControlPolicyOrder{}
+	case "alicloud:cloudfirewall/instance:Instance":
+		r = &Instance{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -46,6 +48,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudfirewall/controlPolicyOrder",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/instance",
 		&module{version},
 	)
 }

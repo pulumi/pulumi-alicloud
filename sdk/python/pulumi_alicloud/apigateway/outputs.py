@@ -48,7 +48,7 @@ class ApiConstantParameter(dict):
                  description: Optional[str] = None):
         """
         :param str in_: System parameter location; values: 'HEAD' and 'QUERY'.
-        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param str value: Constant parameter value.
         :param str description: The description of Constant parameter.
         """
@@ -70,7 +70,7 @@ class ApiConstantParameter(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 
@@ -278,7 +278,7 @@ class ApiHttpVpcServiceConfig(dict):
                  aone_name: Optional[str] = None):
         """
         :param str method: The http method of backend service.
-        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param str path: The path of backend service.
         :param int timeout: Backend service time-out time; unit: millisecond.
         """
@@ -301,7 +301,7 @@ class ApiHttpVpcServiceConfig(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 
@@ -397,10 +397,10 @@ class ApiRequestConfig(dict):
                  body_format: Optional[str] = None):
         """
         :param str method: The http method of backend service.
-        :param str mode: The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+        :param str mode: The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
         :param str path: The path of backend service.
-        :param str protocol: The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
-        :param str body_format: The body format of the api, which support the values of 'STREAM' and 'FORM'
+        :param str protocol: The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
+        :param str body_format: The body format of the api, which support the values of 'STREAM' and 'FORM'.
         """
         pulumi.set(__self__, "method", method)
         pulumi.set(__self__, "mode", mode)
@@ -421,7 +421,7 @@ class ApiRequestConfig(dict):
     @pulumi.getter
     def mode(self) -> str:
         """
-        The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+        The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
         """
         return pulumi.get(self, "mode")
 
@@ -437,7 +437,7 @@ class ApiRequestConfig(dict):
     @pulumi.getter
     def protocol(self) -> str:
         """
-        The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
+        The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
         """
         return pulumi.get(self, "protocol")
 
@@ -445,7 +445,7 @@ class ApiRequestConfig(dict):
     @pulumi.getter(name="bodyFormat")
     def body_format(self) -> Optional[str]:
         """
-        The body format of the api, which support the values of 'STREAM' and 'FORM'
+        The body format of the api, which support the values of 'STREAM' and 'FORM'.
         """
         return pulumi.get(self, "body_format")
 
@@ -487,10 +487,10 @@ class ApiRequestParameter(dict):
         """
         :param str in_: System parameter location; values: 'HEAD' and 'QUERY'.
         :param str in_service: Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param str name_service: Backend service's parameter name.
         :param str required: Parameter required or not; values: REQUIRED and OPTIONAL.
-        :param str type: Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
+        :param str type: Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
         :param str default_value: The default value of the parameter.
         :param str description: The description of Constant parameter.
         """
@@ -525,7 +525,7 @@ class ApiRequestParameter(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 
@@ -549,7 +549,7 @@ class ApiRequestParameter(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
+        Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
         """
         return pulumi.get(self, "type")
 
@@ -597,7 +597,7 @@ class ApiSystemParameter(dict):
                  name_service: str):
         """
         :param str in_: System parameter location; values: 'HEAD' and 'QUERY'.
-        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param str name_service: Backend service's parameter name.
         """
         pulumi.set(__self__, "in_", in_)
@@ -616,7 +616,7 @@ class ApiSystemParameter(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 

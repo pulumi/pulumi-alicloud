@@ -20,7 +20,7 @@ class GetBackupJobsFilterArgs:
                  values: Optional[Sequence[str]] = None):
         """
         :param str key: The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
-        :param str operator: The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+        :param str operator: The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
         :param Sequence[str] values: Set of values that are accepted for the given field.
         """
         if key is not None:
@@ -46,7 +46,7 @@ class GetBackupJobsFilterArgs:
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+        The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
         """
         return pulumi.get(self, "operator")
 

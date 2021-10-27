@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _sourceTypes;
 
         /// <summary>
-        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         /// </summary>
         public List<string> SourceTypes
         {

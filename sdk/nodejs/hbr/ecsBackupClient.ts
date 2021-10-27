@@ -95,11 +95,11 @@ export class EcsBackupClient extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Number of CPU cores used by a single backup task, 0 means no restrictions.
+     * The number of CPU cores used by a single backup task, 0 means no restrictions.
      */
     public readonly maxCpuCore!: pulumi.Output<string>;
     /**
-     * Number of concurrent jobs for a single backup task, 0 means no restrictions.
+     * The number of concurrent jobs for a single backup task, 0 means no restrictions.
      */
     public readonly maxWorker!: pulumi.Output<string>;
     /**
@@ -107,7 +107,7 @@ export class EcsBackupClient extends pulumi.CustomResource {
      */
     public readonly proxyHost!: pulumi.Output<string>;
     /**
-     * Custom data plane proxy server password.
+     * The password of custom data plane proxy server.
      */
     public readonly proxyPassword!: pulumi.Output<string>;
     /**
@@ -115,11 +115,11 @@ export class EcsBackupClient extends pulumi.CustomResource {
      */
     public readonly proxyPort!: pulumi.Output<string>;
     /**
-     * Username of custom data plane proxy server.
+     * The username of custom data plane proxy server.
      */
     public readonly proxyUser!: pulumi.Output<string>;
     /**
-     * Status of client. Valid values: `ACTIVATED`, `STOPPED`.
+     * Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
      */
     public readonly status!: pulumi.Output<string>;
     /**
@@ -192,11 +192,11 @@ export interface EcsBackupClientState {
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
-     * Number of CPU cores used by a single backup task, 0 means no restrictions.
+     * The number of CPU cores used by a single backup task, 0 means no restrictions.
      */
     readonly maxCpuCore?: pulumi.Input<string>;
     /**
-     * Number of concurrent jobs for a single backup task, 0 means no restrictions.
+     * The number of concurrent jobs for a single backup task, 0 means no restrictions.
      */
     readonly maxWorker?: pulumi.Input<string>;
     /**
@@ -204,7 +204,7 @@ export interface EcsBackupClientState {
      */
     readonly proxyHost?: pulumi.Input<string>;
     /**
-     * Custom data plane proxy server password.
+     * The password of custom data plane proxy server.
      */
     readonly proxyPassword?: pulumi.Input<string>;
     /**
@@ -212,11 +212,11 @@ export interface EcsBackupClientState {
      */
     readonly proxyPort?: pulumi.Input<string>;
     /**
-     * Username of custom data plane proxy server.
+     * The username of custom data plane proxy server.
      */
     readonly proxyUser?: pulumi.Input<string>;
     /**
-     * Status of client. Valid values: `ACTIVATED`, `STOPPED`.
+     * Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
      */
     readonly status?: pulumi.Input<string>;
     /**
@@ -242,11 +242,11 @@ export interface EcsBackupClientArgs {
      */
     readonly instanceId: pulumi.Input<string>;
     /**
-     * Number of CPU cores used by a single backup task, 0 means no restrictions.
+     * The number of CPU cores used by a single backup task, 0 means no restrictions.
      */
     readonly maxCpuCore?: pulumi.Input<string>;
     /**
-     * Number of concurrent jobs for a single backup task, 0 means no restrictions.
+     * The number of concurrent jobs for a single backup task, 0 means no restrictions.
      */
     readonly maxWorker?: pulumi.Input<string>;
     /**
@@ -254,7 +254,7 @@ export interface EcsBackupClientArgs {
      */
     readonly proxyHost?: pulumi.Input<string>;
     /**
-     * Custom data plane proxy server password.
+     * The password of custom data plane proxy server.
      */
     readonly proxyPassword?: pulumi.Input<string>;
     /**
@@ -262,11 +262,11 @@ export interface EcsBackupClientArgs {
      */
     readonly proxyPort?: pulumi.Input<string>;
     /**
-     * Username of custom data plane proxy server.
+     * The username of custom data plane proxy server.
      */
     readonly proxyUser?: pulumi.Input<string>;
     /**
-     * Status of client. Valid values: `ACTIVATED`, `STOPPED`.
+     * Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
      */
     readonly status?: pulumi.Input<string>;
     /**

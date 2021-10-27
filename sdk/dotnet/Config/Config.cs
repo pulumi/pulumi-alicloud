@@ -112,6 +112,7 @@ namespace Pulumi.AliCloud
 
              public class Endpoints
              {
+                public string? Acr { get; set; } = null!;
                 public string? Actiontrail { get; set; } = null!;
                 public string? Adb { get; set; } = null!;
                 public string? Alb { get; set; } = null!;

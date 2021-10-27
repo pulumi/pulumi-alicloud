@@ -40,6 +40,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> BackupTime { get; private set; } = null!;
 
         /// <summary>
+        /// The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
+        /// </summary>
+        [Output("configServerLists")]
+        public Output<ImmutableArray<Outputs.ShardingInstanceConfigServerList>> ConfigServerLists { get; private set; } = null!;
+
+        /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
         /// </summary>
         [Output("engineVersion")]
@@ -91,7 +97,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Instance log backup retention days. Available in 1.42.0+.
+        /// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
         /// </summary>
         [Output("retentionPeriod")]
         public Output<int> RetentionPeriod { get; private set; } = null!;
@@ -369,6 +375,18 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
 
+        [Input("configServerLists")]
+        private InputList<Inputs.ShardingInstanceConfigServerListGetArgs>? _configServerLists;
+
+        /// <summary>
+        /// The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
+        /// </summary>
+        public InputList<Inputs.ShardingInstanceConfigServerListGetArgs> ConfigServerLists
+        {
+            get => _configServerLists ?? (_configServerLists = new InputList<Inputs.ShardingInstanceConfigServerListGetArgs>());
+            set => _configServerLists = value;
+        }
+
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
         /// </summary>
@@ -433,7 +451,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Instance log backup retention days. Available in 1.42.0+.
+        /// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }

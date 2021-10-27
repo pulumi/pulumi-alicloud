@@ -15,6 +15,7 @@ __all__ = [
     'GetPolicyGroupsGroupResult',
     'GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult',
     'GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult',
+    'GetSimpleOfficeSitesSiteResult',
 ]
 
 @pulumi.output_type
@@ -493,5 +494,342 @@ class GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult(dict):
         The type of security rules.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetSimpleOfficeSitesSiteResult(dict):
+    def __init__(__self__, *,
+                 bandwidth: int,
+                 cen_id: str,
+                 cidr_block: str,
+                 create_time: str,
+                 custom_security_group_id: str,
+                 desktop_access_type: str,
+                 desktop_vpc_endpoint: str,
+                 dns_addresses: Sequence[str],
+                 dns_user_name: str,
+                 domain_name: str,
+                 domain_password: str,
+                 domain_user_name: str,
+                 enable_admin_access: bool,
+                 enable_cross_desktop_access: bool,
+                 enable_internet_access: bool,
+                 file_system_ids: Sequence[str],
+                 id: str,
+                 mfa_enabled: bool,
+                 network_package_id: str,
+                 office_site_id: str,
+                 office_site_type: str,
+                 simple_office_site_name: str,
+                 sso_enabled: bool,
+                 sso_status: bool,
+                 status: str,
+                 sub_dns_addresses: Sequence[str],
+                 sub_domain_name: str,
+                 trust_password: str,
+                 vpc_id: str,
+                 vswitch_ids: Sequence[str]):
+        """
+        :param int bandwidth: The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+        :param str cen_id: Cloud Enterprise Network Instance Id.
+        :param str cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
+        :param str create_time: Workspace Creation Time.
+        :param str custom_security_group_id: Security Group ID.
+        :param str desktop_access_type: Connect to the Cloud Desktop Allows the Use of the Access Mode of. Possible Values: the Internet: Only Allows the Client to Public Cloud Desktop. Virtual Private Cloud (VPC): Only Allows in the Virtual Private Cloud (VPC) in the Client to Connect to the Cloud Desktop. Any: Not by Way of Limitation. Use Client to Connect to the Cloud Desktop When It Is Possible to Choose the Connection.
+        :param str desktop_vpc_endpoint: The Desktop Vpc Endpoint.
+        :param Sequence[str] dns_addresses: Enterprise Ad Corresponding DNS Address.
+        :param str dns_user_name: Easy-to-Use DNS Name.
+        :param str domain_name: Enterprise of Ad Domain Name.
+        :param str domain_password: Domain of the User Who Will Administer This Target Application Password.
+        :param str domain_user_name: The Domain Administrator's Username.
+        :param bool enable_admin_access: Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+        :param bool enable_cross_desktop_access: Enable Cross-Desktop Access.
+        :param bool enable_internet_access: Whether the Open Internet Access Function.
+        :param Sequence[str] file_system_ids: NAS File System ID.
+        :param str id: The ID of the Simple Office Site.
+        :param bool mfa_enabled: Whether to Enable Multi-Factor Authentication MFA.
+        :param str network_package_id: Internet Access ID.
+        :param str office_site_id: The Workspace ID.
+        :param str office_site_type: Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+        :param str simple_office_site_name: The simple office site name.
+        :param bool sso_enabled: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+        :param bool sso_status: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+        :param str status: Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+        :param Sequence[str] sub_dns_addresses: AD Subdomain of the DNS Address.
+        :param str sub_domain_name: AD Domain DNS Name.
+        :param str trust_password: AD Trust Password.
+        :param str vpc_id: Security Office VPC ID.
+        :param Sequence[str] vswitch_ids: The vswitch ids.
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "custom_security_group_id", custom_security_group_id)
+        pulumi.set(__self__, "desktop_access_type", desktop_access_type)
+        pulumi.set(__self__, "desktop_vpc_endpoint", desktop_vpc_endpoint)
+        pulumi.set(__self__, "dns_addresses", dns_addresses)
+        pulumi.set(__self__, "dns_user_name", dns_user_name)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "domain_password", domain_password)
+        pulumi.set(__self__, "domain_user_name", domain_user_name)
+        pulumi.set(__self__, "enable_admin_access", enable_admin_access)
+        pulumi.set(__self__, "enable_cross_desktop_access", enable_cross_desktop_access)
+        pulumi.set(__self__, "enable_internet_access", enable_internet_access)
+        pulumi.set(__self__, "file_system_ids", file_system_ids)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mfa_enabled", mfa_enabled)
+        pulumi.set(__self__, "network_package_id", network_package_id)
+        pulumi.set(__self__, "office_site_id", office_site_id)
+        pulumi.set(__self__, "office_site_type", office_site_type)
+        pulumi.set(__self__, "simple_office_site_name", simple_office_site_name)
+        pulumi.set(__self__, "sso_enabled", sso_enabled)
+        pulumi.set(__self__, "sso_status", sso_status)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "sub_dns_addresses", sub_dns_addresses)
+        pulumi.set(__self__, "sub_domain_name", sub_domain_name)
+        pulumi.set(__self__, "trust_password", trust_password)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> str:
+        """
+        Cloud Enterprise Network Instance Id.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        Workspace Corresponds to the Security Office Network of IPv4 Segment.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Workspace Creation Time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customSecurityGroupId")
+    def custom_security_group_id(self) -> str:
+        """
+        Security Group ID.
+        """
+        return pulumi.get(self, "custom_security_group_id")
+
+    @property
+    @pulumi.getter(name="desktopAccessType")
+    def desktop_access_type(self) -> str:
+        """
+        Connect to the Cloud Desktop Allows the Use of the Access Mode of. Possible Values: the Internet: Only Allows the Client to Public Cloud Desktop. Virtual Private Cloud (VPC): Only Allows in the Virtual Private Cloud (VPC) in the Client to Connect to the Cloud Desktop. Any: Not by Way of Limitation. Use Client to Connect to the Cloud Desktop When It Is Possible to Choose the Connection.
+        """
+        return pulumi.get(self, "desktop_access_type")
+
+    @property
+    @pulumi.getter(name="desktopVpcEndpoint")
+    def desktop_vpc_endpoint(self) -> str:
+        """
+        The Desktop Vpc Endpoint.
+        """
+        return pulumi.get(self, "desktop_vpc_endpoint")
+
+    @property
+    @pulumi.getter(name="dnsAddresses")
+    def dns_addresses(self) -> Sequence[str]:
+        """
+        Enterprise Ad Corresponding DNS Address.
+        """
+        return pulumi.get(self, "dns_addresses")
+
+    @property
+    @pulumi.getter(name="dnsUserName")
+    def dns_user_name(self) -> str:
+        """
+        Easy-to-Use DNS Name.
+        """
+        return pulumi.get(self, "dns_user_name")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        Enterprise of Ad Domain Name.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter(name="domainPassword")
+    def domain_password(self) -> str:
+        """
+        Domain of the User Who Will Administer This Target Application Password.
+        """
+        return pulumi.get(self, "domain_password")
+
+    @property
+    @pulumi.getter(name="domainUserName")
+    def domain_user_name(self) -> str:
+        """
+        The Domain Administrator's Username.
+        """
+        return pulumi.get(self, "domain_user_name")
+
+    @property
+    @pulumi.getter(name="enableAdminAccess")
+    def enable_admin_access(self) -> bool:
+        """
+        Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+        """
+        return pulumi.get(self, "enable_admin_access")
+
+    @property
+    @pulumi.getter(name="enableCrossDesktopAccess")
+    def enable_cross_desktop_access(self) -> bool:
+        """
+        Enable Cross-Desktop Access.
+        """
+        return pulumi.get(self, "enable_cross_desktop_access")
+
+    @property
+    @pulumi.getter(name="enableInternetAccess")
+    def enable_internet_access(self) -> bool:
+        """
+        Whether the Open Internet Access Function.
+        """
+        return pulumi.get(self, "enable_internet_access")
+
+    @property
+    @pulumi.getter(name="fileSystemIds")
+    def file_system_ids(self) -> Sequence[str]:
+        """
+        NAS File System ID.
+        """
+        return pulumi.get(self, "file_system_ids")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Simple Office Site.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="mfaEnabled")
+    def mfa_enabled(self) -> bool:
+        """
+        Whether to Enable Multi-Factor Authentication MFA.
+        """
+        return pulumi.get(self, "mfa_enabled")
+
+    @property
+    @pulumi.getter(name="networkPackageId")
+    def network_package_id(self) -> str:
+        """
+        Internet Access ID.
+        """
+        return pulumi.get(self, "network_package_id")
+
+    @property
+    @pulumi.getter(name="officeSiteId")
+    def office_site_id(self) -> str:
+        """
+        The Workspace ID.
+        """
+        return pulumi.get(self, "office_site_id")
+
+    @property
+    @pulumi.getter(name="officeSiteType")
+    def office_site_type(self) -> str:
+        """
+        Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+        """
+        return pulumi.get(self, "office_site_type")
+
+    @property
+    @pulumi.getter(name="simpleOfficeSiteName")
+    def simple_office_site_name(self) -> str:
+        """
+        The simple office site name.
+        """
+        return pulumi.get(self, "simple_office_site_name")
+
+    @property
+    @pulumi.getter(name="ssoEnabled")
+    def sso_enabled(self) -> bool:
+        """
+        Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+        """
+        return pulumi.get(self, "sso_enabled")
+
+    @property
+    @pulumi.getter(name="ssoStatus")
+    def sso_status(self) -> bool:
+        """
+        Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+        """
+        return pulumi.get(self, "sso_status")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="subDnsAddresses")
+    def sub_dns_addresses(self) -> Sequence[str]:
+        """
+        AD Subdomain of the DNS Address.
+        """
+        return pulumi.get(self, "sub_dns_addresses")
+
+    @property
+    @pulumi.getter(name="subDomainName")
+    def sub_domain_name(self) -> str:
+        """
+        AD Domain DNS Name.
+        """
+        return pulumi.get(self, "sub_domain_name")
+
+    @property
+    @pulumi.getter(name="trustPassword")
+    def trust_password(self) -> str:
+        """
+        AD Trust Password.
+        """
+        return pulumi.get(self, "trust_password")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        Security Office VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Sequence[str]:
+        """
+        The vswitch ids.
+        """
+        return pulumi.get(self, "vswitch_ids")
 
 

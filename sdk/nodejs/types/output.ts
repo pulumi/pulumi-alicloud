@@ -162,6 +162,7 @@ export interface ProviderAssumeRole {
 }
 
 export interface ProviderEndpoint {
+    acr?: string;
     actiontrail?: string;
     adb?: string;
     alb?: string;
@@ -269,6 +270,57 @@ export interface ProviderEndpoint {
     wafOpenapi?: string;
 }
 export namespace actiontrail {
+    export interface GetHistoryDeliveryJobsJob {
+        /**
+         * The time when the task was created.
+         */
+        createTime: string;
+        /**
+         * The time when the task ended.
+         */
+        endTime: string;
+        historyDeliveryJobId: string;
+        /**
+         * The home region of the trail.
+         */
+        homeRegion: string;
+        /**
+         * The ID of the History Delivery Job.
+         */
+        id: string;
+        /**
+         * Detail status of delivery job.
+         */
+        jobStatuses: outputs.actiontrail.GetHistoryDeliveryJobsJobJobStatus[];
+        /**
+         * The time when the task started.
+         */
+        startTime: string;
+        /**
+         * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+         */
+        status: number;
+        /**
+         * The name of the trail.
+         */
+        trailName: string;
+        /**
+         * The time when the task was updated.
+         */
+        updatedTime: string;
+    }
+
+    export interface GetHistoryDeliveryJobsJobJobStatus {
+        /**
+         * The region of the delivery job.
+         */
+        region: string;
+        /**
+         * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+         */
+        status: number;
+    }
+
     export interface GetInstancesInstance {
         /**
          * The config the instance.
@@ -963,7 +1015,7 @@ export namespace alb {
          */
         aclConfigs: outputs.alb.GetListenersListenerAclConfig[];
         /**
-         * Certificate.
+         * The Certificate List.
          */
         certificates: outputs.alb.GetListenersListenerCertificate[];
         /**
@@ -1074,6 +1126,9 @@ export namespace alb {
     }
 
     export interface GetListenersListenerCertificate {
+        /**
+         * The ID of the Certificate.
+         */
         certificateId: string;
     }
 
@@ -1804,6 +1859,9 @@ export namespace alb {
     }
 
     export interface ListenerCertificate {
+        /**
+         * The ID of the Certificate.
+         */
         certificateId?: string;
     }
 
@@ -2472,7 +2530,7 @@ export namespace apigateway {
          */
         in: string;
         /**
-         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
          */
         name: string;
         /**
@@ -2531,7 +2589,7 @@ export namespace apigateway {
          */
         method: string;
         /**
-         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
          */
         name: string;
         /**
@@ -2554,7 +2612,7 @@ export namespace apigateway {
 
     export interface ApiRequestConfig {
         /**
-         * The body format of the api, which support the values of 'STREAM' and 'FORM'
+         * The body format of the api, which support the values of 'STREAM' and 'FORM'.
          */
         bodyFormat?: string;
         /**
@@ -2562,7 +2620,7 @@ export namespace apigateway {
          */
         method: string;
         /**
-         * The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+         * The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
          */
         mode: string;
         /**
@@ -2570,7 +2628,7 @@ export namespace apigateway {
          */
         path: string;
         /**
-         * The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
+         * The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
          */
         protocol: string;
     }
@@ -2593,7 +2651,7 @@ export namespace apigateway {
          */
         inService: string;
         /**
-         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
          */
         name: string;
         /**
@@ -2605,7 +2663,7 @@ export namespace apigateway {
          */
         required: string;
         /**
-         * Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
+         * Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
          */
         type: string;
     }
@@ -2616,7 +2674,7 @@ export namespace apigateway {
          */
         in: string;
         /**
-         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
          */
         name: string;
         /**
@@ -5688,9 +5746,59 @@ export namespace cloudfirewall {
          */
         sourceType: string;
     }
+
+    export interface GetInstancesInstance {
+        /**
+         * The Creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The end time of the resource..
+         */
+        endTime: string;
+        /**
+         * The ID of the Instance.
+         */
+        id: string;
+        /**
+         * The first ID of the resource.
+         */
+        instanceId: string;
+        /**
+         * The payment type of the resource. Valid values: `Subscription`.
+         */
+        paymentType: string;
+        /**
+         * Automatic renewal period unit. Valid values: `Month`,`Year`.
+         */
+        renewalDurationUnit: string;
+        /**
+         * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+         */
+        renewalStatus: string;
+        /**
+         * The Status of Instance.
+         */
+        status: string;
+    }
 }
 
 export namespace cloudsso {
+    export interface AccessConfigurationPermissionPolicy {
+        /**
+         * The Content of Policy.
+         */
+        permissionPolicyDocument?: string;
+        /**
+         * The Policy Name of policy.
+         */
+        permissionPolicyName?: string;
+        /**
+         * The Policy Type of policy. Valid values: `System`, `Inline`.
+         */
+        permissionPolicyType?: string;
+    }
+
     export interface DirectorySamlIdentityProviderConfiguration {
         /**
          * Base64 encoded IdP metadata document.
@@ -5700,6 +5808,68 @@ export namespace cloudsso {
          * SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
          */
         ssoStatus: string;
+    }
+
+    export interface GetAccessConfigurationsConfiguration {
+        /**
+         * The AccessConfigurationId of the Access Configuration.
+         */
+        accessConfigurationId: string;
+        /**
+         * The AccessConfigurationName of the Access Configuration.
+         */
+        accessConfigurationName: string;
+        /**
+         * The Created Time of the Directory.
+         */
+        createTime: string;
+        /**
+         * The Description of the Directory.
+         */
+        description: string;
+        /**
+         * The ID of the Directory.
+         */
+        directoryId: string;
+        /**
+         * The ID of the Access Configuration.
+         */
+        id: string;
+        /**
+         * The Policy List.
+         */
+        permissionPolicies: outputs.cloudsso.GetAccessConfigurationsConfigurationPermissionPolicy[];
+        /**
+         * The RelayState of the Access Configuration.
+         */
+        relayState: string;
+        /**
+         * The SessionDuration of the Access Configuration.
+         */
+        sessionDuration: number;
+        /**
+         * The StatusNotifications of the Access Configuration.
+         */
+        statusNotifications: string[];
+    }
+
+    export interface GetAccessConfigurationsConfigurationPermissionPolicy {
+        /**
+         * The Creation time of policy.
+         */
+        addTime: string;
+        /**
+         * The Content of Policy.
+         */
+        permissionPolicyDocument: string;
+        /**
+         * The Policy Name of policy.
+         */
+        permissionPolicyName: string;
+        /**
+         * The Policy Type of policy. Valid values: `System`, `Inline`.
+         */
+        permissionPolicyType: string;
     }
 
     export interface GetDirectoriesDirectory {
@@ -5891,6 +6061,80 @@ export namespace cloudsso {
          * The Status of the resource. Valid values: `Disabled`, `Enabled`.
          */
         status: string;
+    }
+
+    export interface GetUsersUser {
+        /**
+         * The create time of the user.
+         */
+        createTime: string;
+        /**
+         * The description of user.
+         */
+        description: string;
+        /**
+         * The ID of the Directory.
+         */
+        directoryId: string;
+        /**
+         * The display name of user.
+         */
+        displayName: string;
+        /**
+         * The User's Contact Email Address.
+         */
+        email: string;
+        /**
+         * The first name of user.
+         */
+        firstName: string;
+        /**
+         * The ID of the User.
+         */
+        id: string;
+        /**
+         * The last name of user.
+         */
+        lastName: string;
+        /**
+         * The List of MFA Device for User.
+         */
+        mfaDevices: outputs.cloudsso.GetUsersUserMfaDevice[];
+        /**
+         * ProvisionType.
+         */
+        provisionType: string;
+        /**
+         * User status. Valid values: `Enabled` and `Disabled`.
+         */
+        status: string;
+        /**
+         * The User ID of the group.
+         */
+        userId: string;
+        /**
+         * The name of user.
+         */
+        userName: string;
+    }
+
+    export interface GetUsersUserMfaDevice {
+        /**
+         * The MFA Device ID.
+         */
+        deviceId: string;
+        /**
+         * The MFA Device Name.
+         */
+        deviceName: string;
+        /**
+         * The MFA Device Type.
+         */
+        deviceType: string;
+        /**
+         * The Effective Time of MFA Device.
+         */
+        effectiveTime: string;
     }
 }
 
@@ -6690,6 +6934,7 @@ export namespace config {
     }
 
     export interface Endpoints {
+        acr?: string;
         actiontrail?: string;
         adb?: string;
         alb?: string;
@@ -6799,6 +7044,29 @@ export namespace config {
 }
 
 export namespace cr {
+    export interface GetEndpointAclPoliciesPolicy {
+        /**
+         * The description of the entry.
+         */
+        description: string;
+        /**
+         * The type of endpoint.
+         */
+        endpointType: string;
+        /**
+         * The IP segment that allowed to access.
+         */
+        entry: string;
+        /**
+         * The ID of the Endpoint Acl Policy.
+         */
+        id: string;
+        /**
+         * The ID of the CR Instance.
+         */
+        instanceId: string;
+    }
+
     export interface GetNamespacesNamespace {
         /**
          * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -8607,6 +8875,177 @@ export namespace dfs {
          * The Number of access rule.
          */
         ruleCount: number;
+    }
+
+    export interface GetAccessRulesRule {
+        /**
+         * The resource ID of the Access Group.
+         */
+        accessGroupId: string;
+        /**
+         * The ID of the Access Rule.
+         */
+        accessRuleId: string;
+        /**
+         * The created time of the Access Rule.
+         */
+        createTime: string;
+        /**
+         * The description of the Access Rule.
+         */
+        description: string;
+        /**
+         * The resource ID of Access Rule.
+         */
+        id: string;
+        /**
+         * The NetworkSegment of the Access Rule.
+         */
+        networkSegment: string;
+        /**
+         * The priority of the Access Rule.
+         */
+        priority: number;
+        /**
+         * RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+         */
+        rwAccessType: string;
+    }
+
+    export interface GetFileSystemsSystem {
+        /**
+         * The creation time of the File system.
+         */
+        createTime: string;
+        /**
+         * The description of the File system.
+         */
+        description: string;
+        /**
+         * The ID of the File System.
+         */
+        fileSystemId: string;
+        /**
+         * The name of the File system.
+         */
+        fileSystemName: string;
+        /**
+         * The ID of the File System.
+         */
+        id: string;
+        /**
+         * The number of Mount points.
+         */
+        mountPointCount: number;
+        /**
+         * The number of directories.
+         */
+        numberOfDirectories: number;
+        /**
+         * The number of files.
+         */
+        numberOfFiles: number;
+        /**
+         * The protocol type. Valid values: `HDFS`.
+         */
+        protocolType: string;
+        /**
+         * The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s.
+         */
+        provisionedThroughputInMiBps: number;
+        /**
+         * The capacity budget of the File system.
+         */
+        spaceCapacity: number;
+        /**
+         * Storage package Id.
+         */
+        storagePackageId: string;
+        /**
+         * The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+         */
+        storageType: string;
+        /**
+         * The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+         */
+        throughputMode: string;
+        /**
+         * The used space of the File system.
+         */
+        usedSpaceSize: number;
+        /**
+         * The zone ID of the File system.
+         */
+        zoneId: string;
+    }
+
+    export interface GetMountPointsPoint {
+        /**
+         * The ID of the Access Group.
+         */
+        accessGroupId: string;
+        /**
+         * The created time of the Mount Point.
+         */
+        createTime: string;
+        /**
+         * The description of the Mount Point.
+         */
+        description: string;
+        /**
+         * The ID of the File System.
+         */
+        fileSystemId: string;
+        /**
+         * The ID of the Mount Point.
+         */
+        id: string;
+        /**
+         * The domain name of the Mount Point.
+         */
+        mountPointDomain: string;
+        /**
+         * The ID of the Mount Point.
+         */
+        mountPointId: string;
+        /**
+         * The network type of the Mount Point. Valid values: `VPC`.
+         */
+        networkType: string;
+        /**
+         * The status of the Mount Point. Valid values: `Active`, `Inactive`.
+         */
+        status: string;
+        /**
+         * The ID of the VPC network.
+         */
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * A list of available configurations of the Zone.
+         */
+        options: outputs.dfs.GetZonesZoneOption[];
+        /**
+         * The zone ID.
+         */
+        zoneId: string;
+    }
+
+    export interface GetZonesZoneOption {
+        /**
+         * The protocol type. Valid values: `HDFS`.
+         */
+        protocolType: string;
+        /**
+         * The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+         */
+        storageType: string;
     }
 }
 
@@ -11026,6 +11465,49 @@ export namespace ecs {
         lockReason?: string;
     }
 
+    export interface GetEcsDeploymentSetsSet {
+        /**
+         * The time when the deployment set was created.
+         */
+        createTime: string;
+        /**
+         * The ID of the Deployment Set.
+         */
+        deploymentSetId: string;
+        /**
+         * The name of the deployment set.
+         */
+        deploymentSetName: string;
+        /**
+         * The description of the deployment set.
+         */
+        description: string;
+        /**
+         * The deployment domain.
+         */
+        domain: string;
+        /**
+         * The deployment granularity.
+         */
+        granularity: string;
+        /**
+         * The ID of the Deployment Set.
+         */
+        id: string;
+        /**
+         * The number of instances in the deployment set.
+         */
+        instanceAmount: number;
+        /**
+         * The IDs of the instances in the deployment set.
+         */
+        instanceIds: string[];
+        /**
+         * The deployment strategy.
+         */
+        strategy: string;
+    }
+
     export interface GetEcsDisksDisk {
         /**
          * A mount of time.
@@ -13256,6 +13738,129 @@ export namespace eds {
          * The type of security rules.
          */
         type: string;
+    }
+
+    export interface GetSimpleOfficeSitesSite {
+        /**
+         * The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+         */
+        bandwidth: number;
+        /**
+         * Cloud Enterprise Network Instance Id.
+         */
+        cenId: string;
+        /**
+         * Workspace Corresponds to the Security Office Network of IPv4 Segment.
+         */
+        cidrBlock: string;
+        /**
+         * Workspace Creation Time.
+         */
+        createTime: string;
+        /**
+         * Security Group ID.
+         */
+        customSecurityGroupId: string;
+        /**
+         * Connect to the Cloud Desktop Allows the Use of the Access Mode of. Possible Values: the Internet: Only Allows the Client to Public Cloud Desktop. Virtual Private Cloud (VPC): Only Allows in the Virtual Private Cloud (VPC) in the Client to Connect to the Cloud Desktop. Any: Not by Way of Limitation. Use Client to Connect to the Cloud Desktop When It Is Possible to Choose the Connection.
+         */
+        desktopAccessType: string;
+        /**
+         * The Desktop Vpc Endpoint.
+         */
+        desktopVpcEndpoint: string;
+        /**
+         * Enterprise Ad Corresponding DNS Address.
+         */
+        dnsAddresses: string[];
+        /**
+         * Easy-to-Use DNS Name.
+         */
+        dnsUserName: string;
+        /**
+         * Enterprise of Ad Domain Name.
+         */
+        domainName: string;
+        /**
+         * Domain of the User Who Will Administer This Target Application Password.
+         */
+        domainPassword: string;
+        /**
+         * The Domain Administrator's Username.
+         */
+        domainUserName: string;
+        /**
+         * Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+         */
+        enableAdminAccess: boolean;
+        /**
+         * Enable Cross-Desktop Access.
+         */
+        enableCrossDesktopAccess: boolean;
+        /**
+         * Whether the Open Internet Access Function.
+         */
+        enableInternetAccess: boolean;
+        /**
+         * NAS File System ID.
+         */
+        fileSystemIds: string[];
+        /**
+         * The ID of the Simple Office Site.
+         */
+        id: string;
+        /**
+         * Whether to Enable Multi-Factor Authentication MFA.
+         */
+        mfaEnabled: boolean;
+        /**
+         * Internet Access ID.
+         */
+        networkPackageId: string;
+        /**
+         * The Workspace ID.
+         */
+        officeSiteId: string;
+        /**
+         * Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+         */
+        officeSiteType: string;
+        /**
+         * The simple office site name.
+         */
+        simpleOfficeSiteName: string;
+        /**
+         * Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+         */
+        ssoEnabled: boolean;
+        /**
+         * Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+         */
+        ssoStatus: boolean;
+        /**
+         * Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+         */
+        status: string;
+        /**
+         * AD Subdomain of the DNS Address.
+         */
+        subDnsAddresses: string[];
+        /**
+         * AD Domain DNS Name.
+         */
+        subDomainName: string;
+        /**
+         * AD Trust Password.
+         */
+        trustPassword: string;
+        /**
+         * Security Office VPC ID.
+         */
+        vpcId: string;
+        /**
+         * The vswitch ids.
+         */
+        vswitchIds: string[];
     }
 }
 
@@ -15878,7 +16483,7 @@ export namespace hbr {
          */
         key?: string;
         /**
-         * The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+         * The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
          */
         operator?: string;
         /**
@@ -15889,11 +16494,11 @@ export namespace hbr {
 
     export interface GetBackupJobsJob {
         /**
-         * The actual size of backup job.
+         * The actual data volume of the backup task (After deduplication) . Unit byte.
          */
         actualBytes: string;
         /**
-         * The actual number of files.
+         * The actual number of items in the backup task. (Currently only file backup is available).
          */
         actualItems: string;
         /**
@@ -15901,7 +16506,7 @@ export namespace hbr {
          */
         backJobName: string;
         /**
-         * The ID of backup job.
+         * The ID of the backup job.
          */
         backupJobId: string;
         /**
@@ -15909,15 +16514,15 @@ export namespace hbr {
          */
         backupType: string;
         /**
-         * The name of target ofo OSS bucket.
+         * The name of target OSS bucket.
          */
         bucket: string;
         /**
-         * The size of backup job recovered.
+         * The amount of backup data (Incremental). Unit byte.
          */
         bytesDone: string;
         /**
-         * The total size of backup job recovered.
+         * The total amount of data sources. Unit byte.
          */
         bytesTotal: string;
         /**
@@ -15928,6 +16533,10 @@ export namespace hbr {
          * The creation time of backup job. UNIX time seconds.
          */
         createTime: string;
+        /**
+         * Error message.
+         */
+        errorMessage: string;
         /**
          * Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
          */
@@ -15961,11 +16570,11 @@ export namespace hbr {
          */
         nasCreateTime: string;
         /**
-         * Backup path. e.g. `["/home", "/var"]`
+         * List of backup path. e.g. `["/home", "/var"]`.
          */
         paths: string[];
         /**
-         * The IF of a backup plan.
+         * The ID of a backup plan.
          */
         planId: string;
         /**
@@ -15973,7 +16582,11 @@ export namespace hbr {
          */
         prefix: string;
         /**
-         * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+         * Backup progress. The value is 100%*100.
+         */
+        progress: string;
+        /**
+         * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
          */
         sourceType: string;
         /**
@@ -16000,7 +16613,7 @@ export namespace hbr {
          */
         archType: string;
         /**
-         * Client protected status.
+         * Client protected status. Valid values: `UNPROTECTED`, `PROTECTED`.
          */
         backupStatus: string;
         /**
@@ -16012,7 +16625,7 @@ export namespace hbr {
          */
         clientVersion: string;
         /**
-         * The creation time of client. Unix time seconds.
+         * The creation time of client. Unix time in seconds.
          */
         createTime: string;
         /**
@@ -16028,7 +16641,7 @@ export namespace hbr {
          */
         ecsBackupClientId: string;
         /**
-         * The name of ECS host.
+         * The hostname of ECS instance.
          */
         hostname: string;
         /**
@@ -16036,7 +16649,7 @@ export namespace hbr {
          */
         id: string;
         /**
-         * The ID of ECS instance.
+         * The ID of ECS instance. When the client type is ECS file backup client, it indicates the ID of ECS instance. When the client type is a local file backup client, it is a hardware fingerprint generated based on system information.
          */
         instanceId: string;
         /**
@@ -16044,19 +16657,19 @@ export namespace hbr {
          */
         instanceName: string;
         /**
-         * Client last heartbeat time. Unix Time Seconds.
+         * The last heartbeat time of client. Unix Time Seconds.
          */
         lastHeartBeatTime: string;
         /**
-         * The latest client version.
+         * The latest version of client.
          */
         maxClientVersion: string;
         /**
-         * Number of CPU cores used by a single backup task, 0 means no restrictions.
+         * The number of CPU cores used by a single backup task, 0 means no restrictions.
          */
         maxCpuCore: string;
         /**
-         * Number of concurrent jobs for a single backup task, 0 means no restrictions.
+         * The number of concurrent jobs for a single backup task, 0 means no restrictions.
          */
         maxWorker: string;
         /**
@@ -16072,7 +16685,7 @@ export namespace hbr {
          */
         proxyHost: string;
         /**
-         * Custom data plane proxy server password.
+         * The password of custom data plane proxy server.
          */
         proxyPassword: string;
         /**
@@ -16080,7 +16693,7 @@ export namespace hbr {
          */
         proxyPort: string;
         /**
-         * Username of custom data plane proxy server.
+         * The username of custom data plane proxy server.
          */
         proxyUser: string;
         /**
@@ -16107,8 +16720,18 @@ export namespace hbr {
          */
         backupType: string;
         createTime: string;
+        /**
+         * The creation time of the backup plan. UNIX time in seconds.
+         */
+        createdTime: string;
         detail: string;
+        /**
+         * Whether to be suspended. Valid values: `true`, `false`.
+         */
         disabled: boolean;
+        /**
+         * The ID of ecs backup plan.
+         */
         ecsBackupPlanId: string;
         /**
          * The name of the backup plan.
@@ -16118,6 +16741,9 @@ export namespace hbr {
          * Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
          */
         exclude: string;
+        /**
+         * The ID of ecs backup plan.
+         */
         id: string;
         /**
          * Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
@@ -16140,13 +16766,21 @@ export namespace hbr {
          */
         retention: string;
         /**
-         * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+         * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
          */
         schedule: string;
+        /**
+         * The type of backup source.
+         */
+        sourceType: string;
         /**
          * Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
          */
         speedLimit: string;
+        /**
+         * The update time of the backup plan. UNIX time in seconds.
+         */
+        updatedTime: string;
         /**
          * The ID of Backup vault.
          */
@@ -16159,23 +16793,36 @@ export namespace hbr {
          */
         backupType: string;
         /**
-         * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+         * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST`.
          */
         createTime: string;
+        createdTime: string;
+        /**
+         * Whether to be suspended. Valid values: `true`, `false`.
+         */
         disabled: boolean;
         /**
          * The File System ID of Nas.
          */
         fileSystemId: string;
+        /**
+         * The ID of Nas backup plan.
+         */
         id: string;
+        /**
+         * The ID of Nas backup plan.
+         */
         nasBackupPlanId: string;
         /**
          * The name of the resource.
          */
         nasBackupPlanName: string;
+        /**
+         * Options of nas.
+         */
         options: string;
         /**
-         * Backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+         * List of backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
          */
         paths: string[];
         /**
@@ -16183,11 +16830,12 @@ export namespace hbr {
          */
         retention: string;
         /**
-         * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+         * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
          */
         schedule: string;
+        updatedTime: string;
         /**
-         * The backup vault ID of the NasBackupPlan used.
+         * The ID of backup vault.
          */
         vaultId: string;
     }
@@ -16201,13 +16849,29 @@ export namespace hbr {
          * The name of OSS bucket.
          */
         bucket: string;
+        /**
+         * The creation time of the backup plan. UNIX time in seconds.
+         */
+        createdTime: string;
+        /**
+         * Whether to be suspended. Valid values: `true`, `false`.
+         */
         disabled: boolean;
+        /**
+         * The ID of Oss backup plan.
+         */
         id: string;
+        /**
+         * The ID of Oss backup plan.
+         */
         ossBackupPlanId: string;
         /**
          * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
          */
         ossBackupPlanName: string;
+        /**
+         * Backup prefix.
+         */
         prefix: string;
         /**
          * Backup retention days, the minimum is 1.
@@ -16217,6 +16881,10 @@ export namespace hbr {
          * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
          */
         schedule: string;
+        /**
+         * The update time of the backup plan. UNIX time in seconds.
+         */
+        updatedTime: string;
         /**
          * The ID of backup vault.
          */
@@ -16273,9 +16941,6 @@ export namespace hbr {
          * Recovery Options.
          */
         options: string;
-        /**
-         * The ID of parent node.
-         */
         parentId: string;
         /**
          * The recovery progress.
@@ -16298,7 +16963,7 @@ export namespace hbr {
          */
         snapshotId: string;
         /**
-         * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+         * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
          */
         sourceType: string;
         /**
@@ -16313,17 +16978,11 @@ export namespace hbr {
          * The name of target ofo OSS bucket.
          */
         targetBucket: string;
-        /**
-         * The ID of target client.
-         */
         targetClientId: string;
         /**
          * The creation time of destination file system.
          */
         targetCreateTime: string;
-        /**
-         * The ID of destination data source.
-         */
         targetDataSourceId: string;
         /**
          * The ID of destination file system.
@@ -16377,7 +17036,11 @@ export namespace hbr {
          */
         bytesTotal: string;
         /**
-         * The time when the snapshot was completed. UNIX time in seconds.
+         * The ID of ECS backup client.
+         */
+        clientId: string;
+        /**
+         * The time when the snapshot completed. UNIX time in seconds.
          */
         completeTime: string;
         /**
@@ -16467,17 +17130,17 @@ export namespace hbr {
         /**
          * The creation time of the Vault. UNIX time in seconds.
          */
-        createTime: string;
+        createdTime: string;
         /**
          * Whether to enable the deduplication function for the database backup Vault.
          */
         dedup: boolean;
         /**
-         * The description of the Vault.
+         * The description of the vault.
          */
         description: string;
         /**
-         * The ID of Vault.
+         * The ID of vault.
          */
         id: string;
         /**
@@ -16534,19 +17197,19 @@ export namespace hbr {
          */
         updatedTime: string;
         /**
-         * The ID of Vault, same as `id`.
+         * The ID of vault, same as `id`.
          */
         vaultId: string;
         /**
-         * The name of Vault.
+         * The name of vault.
          */
         vaultName: string;
         /**
-         * Error status information of Vault. Only valid for remote backup warehouses.
+         * Error status information of Vault. Only valid for remote backup warehouses. Only the remote backup warehouse is valid.
          */
         vaultStatusMessage: string;
         /**
-         * The storage class of Vault. Valid values: `STANDARD`.
+         * The storage class of vault. Valid values: `STANDARD`.
          */
         vaultStorageClass: string;
         /**
@@ -17967,9 +18630,76 @@ export namespace mongodb {
         multiZoneIds: string[];
     }
 
+    export interface InstanceReplicaSet {
+        /**
+         * The connection address of the node.
+         */
+        connectionDomain: string;
+        /**
+         * The connection port of the node.
+         */
+        connectionPort: string;
+        /**
+         * The network type of the node. Valid values: `Classic`,`VPC`.
+         */
+        networkType: string;
+        /**
+         * The role of the node. Valid values: `Primary`,`Secondary`.
+         */
+        replicaSetRole: string;
+        /**
+         * VPC instance ID.
+         */
+        vpcCloudInstanceId: string;
+        /**
+         * The private network ID of the node.
+         */
+        vpcId: string;
+        /**
+         * The virtual switch ID to launch DB instances in one VPC.
+         */
+        vswitchId: string;
+    }
+
+    export interface ShardingInstanceConfigServerList {
+        /**
+         * The connection address of the Config Server node.
+         */
+        connectString: string;
+        /**
+         * The max connections of the Config Server node.
+         */
+        maxConnections: number;
+        /**
+         * The maximum IOPS of the Config Server node.
+         */
+        maxIops: number;
+        /**
+         * -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         */
+        nodeClass: string;
+        /**
+         * The description of the Config Server node.
+         */
+        nodeDescription: string;
+        /**
+         * The ID of the Config Server node.
+         */
+        nodeId: string;
+        /**
+         * - Custom storage space; value range: [10, 1,000]
+         * - 10-GB increments. Unit: GB.
+         */
+        nodeStorage: number;
+        /**
+         * The connection port of the Config Server node.
+         */
+        port: number;
+    }
+
     export interface ShardingInstanceMongoList {
         /**
-         * Mongo node connection string
+         * The connection address of the Config Server node.
          */
         connectString: string;
         /**
@@ -17977,12 +18707,11 @@ export namespace mongodb {
          */
         nodeClass: string;
         /**
-         * The ID of the shard-node.
+         * The ID of the Config Server node.
          */
         nodeId: string;
         /**
-         * Mongo node port
-         * * `shardList`
+         * The connection port of the Config Server node.
          */
         port: number;
     }
@@ -17993,7 +18722,7 @@ export namespace mongodb {
          */
         nodeClass: string;
         /**
-         * The ID of the shard-node.
+         * The ID of the Config Server node.
          */
         nodeId: string;
         /**
@@ -18172,30 +18901,49 @@ export namespace nas {
 
     export interface GetFileSystemsSystem {
         /**
+         * (Optional, Available in v1.140.0+) The capacity of the file system.
+         */
+        capacity: number;
+        /**
          * Time of creation.
          */
         createTime: string;
         /**
-         * Destription of the FileSystem.
+         * Description of the FileSystem.
          */
         description: string;
         /**
-         * (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-         * Valid values:
-         * 0: The file system is not encrypted.
-         * 1: The file system is encrypted with a managed secret key.
+         * (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
+         * * Valid values:
+         * * `0`: The file system is not encrypted.
+         * * `1`: The file system is encrypted with a managed secret key.
+         * * `2`: User management key.
          */
         encryptType: number;
+        /**
+         * The type of the file system.
+         * Valid values:
+         * `standard` (Default),
+         * `extreme`.
+         */
+        fileSystemType: string;
         /**
          * ID of the FileSystem.
          */
         id: string;
         /**
+         * (Optional, Available in v1.140.0+) The id of the KMS key.
+         */
+        kmsKeyId: string;
+        /**
          * MeteredSize of the FileSystem.
          */
         meteredSize: number;
         /**
-         * Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
+         * The protocol type of the file system.
+         * Valid values:
+         * `NFS`,
+         * `SMB` (Available when the `fileSystemType` is `standard`).
          */
         protocolType: string;
         /**
@@ -18203,9 +18951,14 @@ export namespace nas {
          */
         regionId: string;
         /**
-         * Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
+         * The storage type of the file system.
+         * * Valid values:
          */
         storageType: string;
+        /**
+         * (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
+         */
+        zoneId: string;
     }
 
     export interface GetMountTargetsTarget {
@@ -18241,6 +18994,28 @@ export namespace nas {
          * Filter results by a specific VSwitchId.
          */
         vswitchId: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * A list of instance type information collection
+         */
+        instanceTypes: outputs.nas.GetZonesZoneInstanceType[];
+        /**
+         * String to filter results by zone id.
+         */
+        zoneId: string;
+    }
+
+    export interface GetZonesZoneInstanceType {
+        /**
+         * File transfer protocol type. Valid values:
+         */
+        protocolType: string;
+        /**
+         * The storage type of the nas zones. Valid values:
+         */
+        storageType: string;
     }
 }
 
@@ -21655,6 +22430,44 @@ export namespace ros {
 }
 
 export namespace sae {
+    export interface ApplicationInternet {
+        /**
+         * SSL certificate. `httpsCertId` is required when HTTPS is selected
+         */
+        httpsCertId?: string;
+        /**
+         * SLB Port.
+         */
+        port?: number;
+        /**
+         * Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+         */
+        protocol?: string;
+        /**
+         * Container port.
+         */
+        targetPort?: number;
+    }
+
+    export interface ApplicationIntranet {
+        /**
+         * SSL certificate. `httpsCertId` is required when HTTPS is selected
+         */
+        httpsCertId?: string;
+        /**
+         * SLB Port.
+         */
+        port?: number;
+        /**
+         * Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+         */
+        protocol?: string;
+        /**
+         * Container port.
+         */
+        targetPort?: number;
+    }
+
     export interface GetApplicationsApplication {
         /**
          * The ARN of the RAM role required when pulling images across accounts.
@@ -21914,6 +22727,37 @@ export namespace sae {
          * SLB ID.
          */
         slbId: string;
+    }
+
+    export interface GetInstanceSpecificationsSpecification {
+        /**
+         * CPU Size, Specifications for Micronucleus.
+         */
+        cpu: number;
+        /**
+         * Whether the instance is available. The value description is as follows:
+         */
+        enable: boolean;
+        /**
+         * The ID of the Instance Specification.
+         */
+        id: string;
+        /**
+         * The first ID of the resource.
+         */
+        instanceSpecificationId: string;
+        /**
+         * The Memory specifications for the MB.
+         */
+        memory: number;
+        /**
+         * The specification configuration name.
+         */
+        specInfo: string;
+        /**
+         * The specification configuration version.
+         */
+        version: number;
     }
 
     export interface GetNamespacesNamespace {
@@ -25038,6 +25882,76 @@ export namespace vpc {
          * The availability zone of the VSwitch.
          */
         zoneId: string;
+    }
+
+    export interface GetTrafficMirrorFilterEgressRulesRule {
+        /**
+         * The destination CIDR block of the outbound traffic.
+         */
+        destinationCidrBlock: string;
+        /**
+         * The destination port range of the outbound traffic.
+         */
+        destinationPortRange: string;
+        /**
+         * The ID of the Traffic Mirror Filter Egress Rule.
+         */
+        id: string;
+        /**
+         * The priority of the outbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
+         */
+        priority: number;
+        /**
+         * The transport protocol used by outbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
+         */
+        protocol: string;
+        /**
+         * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+         */
+        ruleAction: string;
+        /**
+         * The source CIDR block of the outbound traffic.
+         */
+        sourceCidrBlock: string;
+        /**
+         * The source port range of the outbound traffic.
+         */
+        sourcePortRange: string;
+        /**
+         * The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+         */
+        status: string;
+        /**
+         * The ID of the filter associated with the outbound rule.
+         */
+        trafficMirrorFilterId: string;
+        /**
+         * The first ID of the resource.
+         */
+        trafficMirrorFilterRuleId: string;
+    }
+
+    export interface GetTrafficMirrorFiltersFilter {
+        /**
+         * The ID of the Traffic Mirror Filter.
+         */
+        id: string;
+        /**
+         * The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+         */
+        status: string;
+        /**
+         * The description of the filter.
+         */
+        trafficMirrorFilterDescription: string;
+        /**
+         * The ID of the filter.
+         */
+        trafficMirrorFilterId: string;
+        /**
+         * The name of the filter.
+         */
+        trafficMirrorFilterName: string;
     }
 
     export interface GetVpcFlowLogsLog {

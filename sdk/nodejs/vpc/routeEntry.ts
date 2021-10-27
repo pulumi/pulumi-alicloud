@@ -62,7 +62,7 @@ export class RouteEntry extends pulumi.CustomResource {
      */
     public readonly routeTableId!: pulumi.Output<string>;
     /**
-     * This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+     * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
      * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */
@@ -131,7 +131,7 @@ export interface RouteEntryState {
      */
     readonly routeTableId?: pulumi.Input<string>;
     /**
-     * This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+     * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
      * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */
@@ -163,7 +163,7 @@ export interface RouteEntryArgs {
      */
     readonly routeTableId: pulumi.Input<string>;
     /**
-     * This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+     * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
      * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */

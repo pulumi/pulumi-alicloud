@@ -22,6 +22,7 @@ from .get_transit_router_route_entries import *
 from .get_transit_router_route_table_associations import *
 from .get_transit_router_route_table_propagations import *
 from .get_transit_router_route_tables import *
+from .get_transit_router_service import *
 from .get_transit_router_vbr_attachments import *
 from .get_transit_router_vpc_attachments import *
 from .get_transit_routers import *

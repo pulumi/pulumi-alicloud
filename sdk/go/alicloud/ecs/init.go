@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DiskAttachment{}
 	case "alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment":
 		r = &EcsAutoSnapshotPolicyAttachment{}
+	case "alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet":
+		r = &EcsDeploymentSet{}
 	case "alicloud:ecs/ecsDisk:EcsDisk":
 		r = &EcsDisk{}
 	case "alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment":
@@ -140,6 +142,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/ecsAutoSnapshotPolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/ecsDeploymentSet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

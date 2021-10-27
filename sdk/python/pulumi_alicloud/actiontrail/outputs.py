@@ -7,8 +7,11 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'GetHistoryDeliveryJobsJobResult',
+    'GetHistoryDeliveryJobsJobJobStatusResult',
     'GetInstancesInstanceResult',
     'GetSaslAclsAclResult',
     'GetSaslUsersUserResult',
@@ -18,6 +21,148 @@ __all__ = [
     'GetTrailsDeprecatedTrailResult',
     'GetTrailsTrailResult',
 ]
+
+@pulumi.output_type
+class GetHistoryDeliveryJobsJobResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 end_time: str,
+                 history_delivery_job_id: str,
+                 home_region: str,
+                 id: str,
+                 job_statuses: Sequence['outputs.GetHistoryDeliveryJobsJobJobStatusResult'],
+                 start_time: str,
+                 status: int,
+                 trail_name: str,
+                 updated_time: str):
+        """
+        :param str create_time: The time when the task was created.
+        :param str end_time: The time when the task ended.
+        :param str home_region: The home region of the trail.
+        :param str id: The ID of the History Delivery Job.
+        :param Sequence['GetHistoryDeliveryJobsJobJobStatusArgs'] job_statuses: Detail status of delivery job.
+        :param str start_time: The time when the task started.
+        :param int status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+        :param str trail_name: The name of the trail.
+        :param str updated_time: The time when the task was updated.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "history_delivery_job_id", history_delivery_job_id)
+        pulumi.set(__self__, "home_region", home_region)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "job_statuses", job_statuses)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "trail_name", trail_name)
+        pulumi.set(__self__, "updated_time", updated_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the task was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time when the task ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="historyDeliveryJobId")
+    def history_delivery_job_id(self) -> str:
+        return pulumi.get(self, "history_delivery_job_id")
+
+    @property
+    @pulumi.getter(name="homeRegion")
+    def home_region(self) -> str:
+        """
+        The home region of the trail.
+        """
+        return pulumi.get(self, "home_region")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the History Delivery Job.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="jobStatuses")
+    def job_statuses(self) -> Sequence['outputs.GetHistoryDeliveryJobsJobJobStatusResult']:
+        """
+        Detail status of delivery job.
+        """
+        return pulumi.get(self, "job_statuses")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time when the task started.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> int:
+        """
+        The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trailName")
+    def trail_name(self) -> str:
+        """
+        The name of the trail.
+        """
+        return pulumi.get(self, "trail_name")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> str:
+        """
+        The time when the task was updated.
+        """
+        return pulumi.get(self, "updated_time")
+
+
+@pulumi.output_type
+class GetHistoryDeliveryJobsJobJobStatusResult(dict):
+    def __init__(__self__, *,
+                 region: str,
+                 status: int):
+        """
+        :param str region: The region of the delivery job.
+        :param int status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+        """
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region of the delivery job.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> int:
+        """
+        The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+        """
+        return pulumi.get(self, "status")
+
 
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):

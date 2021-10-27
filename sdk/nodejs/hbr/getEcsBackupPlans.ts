@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.hbr.getEcsBackupPlans({
- *     nameRegex: "^my-EcsBackupPlan",
+ *     nameRegex: "plan-name",
  * });
  * export const hbrEcsBackupPlanId = ids.then(ids => ids.plans[0].id);
  * ```

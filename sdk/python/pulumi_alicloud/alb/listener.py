@@ -41,7 +41,7 @@ class ListenerArgs:
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input['ListenerAccessLogTracingConfigArgs'] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input['ListenerAclConfigArgs'] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
-        :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The Certificates.
+        :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The Certificate List. See the following `Block certificates`.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
@@ -164,7 +164,7 @@ class ListenerArgs:
     @pulumi.getter
     def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
         """
-        The Certificates.
+        The Certificate List. See the following `Block certificates`.
         """
         return pulumi.get(self, "certificates")
 
@@ -331,7 +331,7 @@ class _ListenerState:
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input['ListenerAccessLogTracingConfigArgs'] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input['ListenerAclConfigArgs'] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
-        :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The Certificates.
+        :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The Certificate List. See the following `Block certificates`.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
@@ -424,7 +424,7 @@ class _ListenerState:
     @pulumi.getter
     def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
         """
-        The Certificates.
+        The Certificate List. See the following `Block certificates`.
         """
         return pulumi.get(self, "certificates")
 
@@ -645,7 +645,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The Certificates.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The Certificate List. See the following `Block certificates`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
@@ -789,7 +789,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The Certificates.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The Certificate List. See the following `Block certificates`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
@@ -857,7 +857,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def certificates(self) -> pulumi.Output[Optional[Sequence['outputs.ListenerCertificate']]]:
         """
-        The Certificates.
+        The Certificate List. See the following `Block certificates`.
         """
         return pulumi.get(self, "certificates")
 

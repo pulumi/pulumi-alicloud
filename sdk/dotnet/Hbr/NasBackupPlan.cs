@@ -28,27 +28,43 @@ namespace Pulumi.AliCloud.Hbr
     /// {
     ///     public MyStack()
     ///     {
-    ///         var example = new AliCloud.Hbr.NasBackupPlan("example", new AliCloud.Hbr.NasBackupPlanArgs
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "tf-testAccHBRNas";
+    ///         var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new AliCloud.Hbr.VaultArgs
     ///         {
+    ///             VaultName = name,
+    ///         });
+    ///         var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new AliCloud.Nas.FileSystemArgs
+    ///         {
+    ///             ProtocolType = "NFS",
+    ///             StorageType = "Performance",
+    ///             Description = name,
+    ///             EncryptType = 1,
+    ///         });
+    ///         var defaultFileSystems = defaultFileSystem.Description.Apply(description =&gt; AliCloud.Nas.GetFileSystems.InvokeAsync(new AliCloud.Nas.GetFileSystemsArgs
+    ///         {
+    ///             ProtocolType = "NFS",
+    ///             DescriptionRegex = description,
+    ///         }));
+    ///         var defaultNasBackupPlan = new AliCloud.Hbr.NasBackupPlan("defaultNasBackupPlan", new AliCloud.Hbr.NasBackupPlanArgs
+    ///         {
+    ///             NasBackupPlanName = name,
+    ///             FileSystemId = defaultFileSystem.Id,
+    ///             Schedule = "I|1602673264|PT2H",
     ///             BackupType = "COMPLETE",
-    ///             CreateTime = "1603163444",
-    ///             Exclude = @"  [""/home/exclude""]
-    ///   
-    /// ",
-    ///             FileSystemId = "031cf4964f",
-    ///             Include = @"  [""/home/include""]
-    ///   
-    /// ",
-    ///             NasBackupPlanName = "example_value",
+    ///             VaultId = defaultVault.Id,
+    ///             CreateTime = defaultFileSystems.Apply(defaultFileSystems =&gt; defaultFileSystems.Systems[0].CreateTime),
+    ///             Retention = "2",
     ///             Paths = 
     ///             {
-    ///                 "/home",
-    ///                 "/var",
+    ///                 "/",
     ///             },
-    ///             Retention = "1",
-    ///             Schedule = "I|1602673264|PT2H",
-    ///             SpeedLimit = "I|1602673264|PT2H",
-    ///             VaultId = "v-0003gxoksflhu46w185s",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "alicloud_nas_file_system.default",
+    ///             },
     ///         });
     ///     }
     /// 
@@ -87,9 +103,6 @@ namespace Pulumi.AliCloud.Hbr
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
 
-        /// <summary>
-        /// The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
-        /// </summary>
         [Output("exclude")]
         public Output<string?> Exclude { get; private set; } = null!;
 
@@ -99,9 +112,6 @@ namespace Pulumi.AliCloud.Hbr
         [Output("fileSystemId")]
         public Output<string> FileSystemId { get; private set; } = null!;
 
-        /// <summary>
-        /// The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
-        /// </summary>
         [Output("include")]
         public Output<string?> Include { get; private set; } = null!;
 
@@ -111,11 +121,14 @@ namespace Pulumi.AliCloud.Hbr
         [Output("nasBackupPlanName")]
         public Output<string> NasBackupPlanName { get; private set; } = null!;
 
+        /// <summary>
+        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+        /// </summary>
         [Output("options")]
         public Output<string?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
+        /// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         /// </summary>
         [Output("paths")]
         public Output<ImmutableArray<string>> Paths { get; private set; } = null!;
@@ -127,14 +140,11 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Retention { get; private set; } = null!;
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
 
-        /// <summary>
-        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-        /// </summary>
         [Output("speedLimit")]
         public Output<string?> SpeedLimit { get; private set; } = null!;
 
@@ -214,9 +224,6 @@ namespace Pulumi.AliCloud.Hbr
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
-        /// <summary>
-        /// The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
-        /// </summary>
         [Input("exclude")]
         public Input<string>? Exclude { get; set; }
 
@@ -226,9 +233,6 @@ namespace Pulumi.AliCloud.Hbr
         [Input("fileSystemId", required: true)]
         public Input<string> FileSystemId { get; set; } = null!;
 
-        /// <summary>
-        /// The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
-        /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
 
@@ -238,14 +242,17 @@ namespace Pulumi.AliCloud.Hbr
         [Input("nasBackupPlanName", required: true)]
         public Input<string> NasBackupPlanName { get; set; } = null!;
 
+        /// <summary>
+        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+        /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
 
-        [Input("paths")]
+        [Input("paths", required: true)]
         private InputList<string>? _paths;
 
         /// <summary>
-        /// Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
+        /// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         /// </summary>
         public InputList<string> Paths
         {
@@ -260,14 +267,11 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> Retention { get; set; } = null!;
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<string> Schedule { get; set; } = null!;
 
-        /// <summary>
-        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-        /// </summary>
         [Input("speedLimit")]
         public Input<string>? SpeedLimit { get; set; }
 
@@ -308,9 +312,6 @@ namespace Pulumi.AliCloud.Hbr
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
-        /// <summary>
-        /// The exclude path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
-        /// </summary>
         [Input("exclude")]
         public Input<string>? Exclude { get; set; }
 
@@ -320,9 +321,6 @@ namespace Pulumi.AliCloud.Hbr
         [Input("fileSystemId")]
         public Input<string>? FileSystemId { get; set; }
 
-        /// <summary>
-        /// The include path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
-        /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
 
@@ -332,6 +330,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("nasBackupPlanName")]
         public Input<string>? NasBackupPlanName { get; set; }
 
+        /// <summary>
+        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+        /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
 
@@ -339,7 +340,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _paths;
 
         /// <summary>
-        /// Backup path. Up to 65536 characters. e.g.`["/home", "/var"]`
+        /// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         /// </summary>
         public InputList<string> Paths
         {
@@ -354,14 +355,11 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Retention { get; set; }
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
-        /// <summary>
-        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-        /// </summary>
         [Input("speedLimit")]
         public Input<string>? SpeedLimit { get; set; }
 

@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -415,6 +417,7 @@ class _InstanceState:
                  order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  replica_set_name: Optional[pulumi.Input[str]] = None,
+                 replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -448,6 +451,7 @@ class _InstanceState:
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
@@ -492,6 +496,8 @@ class _InstanceState:
             pulumi.set(__self__, "period", period)
         if replica_set_name is not None:
             pulumi.set(__self__, "replica_set_name", replica_set_name)
+        if replica_sets is not None:
+            pulumi.set(__self__, "replica_sets", replica_sets)
         if replication_factor is not None:
             pulumi.set(__self__, "replication_factor", replication_factor)
         if retention_period is not None:
@@ -699,6 +705,18 @@ class _InstanceState:
     @replica_set_name.setter
     def replica_set_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "replica_set_name", value)
+
+    @property
+    @pulumi.getter(name="replicaSets")
+    def replica_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]]]:
+        """
+        Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+        """
+        return pulumi.get(self, "replica_sets")
+
+    @replica_sets.setter
+    def replica_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]]]):
+        pulumi.set(self, "replica_sets", value)
 
     @property
     @pulumi.getter(name="replicationFactor")
@@ -1001,6 +1019,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["replica_set_name"] = None
+            __props__.__dict__["replica_sets"] = None
             __props__.__dict__["retention_period"] = None
             __props__.__dict__["ssl_status"] = None
         super(Instance, __self__).__init__(
@@ -1028,6 +1047,7 @@ class Instance(pulumi.CustomResource):
             order_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             replica_set_name: Optional[pulumi.Input[str]] = None,
+            replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]]] = None,
             replication_factor: Optional[pulumi.Input[int]] = None,
             retention_period: Optional[pulumi.Input[int]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
@@ -1066,6 +1086,7 @@ class Instance(pulumi.CustomResource):
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
@@ -1099,6 +1120,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["order_type"] = order_type
         __props__.__dict__["period"] = period
         __props__.__dict__["replica_set_name"] = replica_set_name
+        __props__.__dict__["replica_sets"] = replica_sets
         __props__.__dict__["replication_factor"] = replication_factor
         __props__.__dict__["retention_period"] = retention_period
         __props__.__dict__["security_group_id"] = security_group_id
@@ -1236,6 +1258,14 @@ class Instance(pulumi.CustomResource):
         The name of the mongo replica set
         """
         return pulumi.get(self, "replica_set_name")
+
+    @property
+    @pulumi.getter(name="replicaSets")
+    def replica_sets(self) -> pulumi.Output[Sequence['outputs.InstanceReplicaSet']]:
+        """
+        Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+        """
+        return pulumi.get(self, "replica_sets")
 
     @property
     @pulumi.getter(name="replicationFactor")

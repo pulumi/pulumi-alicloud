@@ -3,6 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .endpoint_acl_policy import *
+from .get_endpoint_acl_policies import *
+from .get_endpoint_acl_service import *
 from .get_namespaces import *
 from .get_repos import *
 from .get_service import *
@@ -24,7 +27,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:cr/namespace:Namespace":
+            if typ == "alicloud:cr/endpointAclPolicy:EndpointAclPolicy":
+                return EndpointAclPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cr/namespace:Namespace":
                 return Namespace(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance":
                 return RegistryEnterpriseInstance(name, pulumi.ResourceOptions(urn=urn))
@@ -35,6 +40,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "cr/endpointAclPolicy", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cr/namespace", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cr/registryEnterpriseInstance", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cr/repo", _module_instance)

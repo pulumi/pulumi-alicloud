@@ -33,14 +33,14 @@ class EcsBackupPlanArgs:
         :param pulumi.Input[str] ecs_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[str] instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] exclude: Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         :param pulumi.Input[str] include: Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. e.g. `["/home", "/var"]`
-        :param pulumi.Input[str] speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
+        :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "ecs_backup_plan_name", ecs_backup_plan_name)
@@ -62,6 +62,9 @@ class EcsBackupPlanArgs:
             pulumi.set(__self__, "paths", paths)
         if speed_limit is not None:
             pulumi.set(__self__, "speed_limit", speed_limit)
+        if update_paths is not None:
+            warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
+            pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
         if update_paths is not None:
             pulumi.set(__self__, "update_paths", update_paths)
 
@@ -117,7 +120,7 @@ class EcsBackupPlanArgs:
     @pulumi.getter
     def schedule(self) -> pulumi.Input[str]:
         """
-        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -198,7 +201,7 @@ class EcsBackupPlanArgs:
     @pulumi.getter
     def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Backup path. e.g. `["/home", "/var"]`
+        List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         """
         return pulumi.get(self, "paths")
 
@@ -210,7 +213,7 @@ class EcsBackupPlanArgs:
     @pulumi.getter(name="speedLimit")
     def speed_limit(self) -> Optional[pulumi.Input[str]]:
         """
-        Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         """
         return pulumi.get(self, "speed_limit")
 
@@ -254,10 +257,10 @@ class _EcsBackupPlanState:
         :param pulumi.Input[str] include: Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         :param pulumi.Input[str] instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host.
         :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. e.g. `["/home", "/var"]`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-        :param pulumi.Input[str] speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         if backup_type is not None:
@@ -284,6 +287,9 @@ class _EcsBackupPlanState:
             pulumi.set(__self__, "schedule", schedule)
         if speed_limit is not None:
             pulumi.set(__self__, "speed_limit", speed_limit)
+        if update_paths is not None:
+            warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
+            pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
         if update_paths is not None:
             pulumi.set(__self__, "update_paths", update_paths)
         if vault_id is not None:
@@ -386,7 +392,7 @@ class _EcsBackupPlanState:
     @pulumi.getter
     def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Backup path. e.g. `["/home", "/var"]`
+        List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         """
         return pulumi.get(self, "paths")
 
@@ -410,7 +416,7 @@ class _EcsBackupPlanState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -422,7 +428,7 @@ class _EcsBackupPlanState:
     @pulumi.getter(name="speedLimit")
     def speed_limit(self) -> Optional[pulumi.Input[str]]:
         """
-        Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         """
         return pulumi.get(self, "speed_limit")
 
@@ -487,37 +493,40 @@ class EcsBackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "valut-name"
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
+        default_instances = alicloud.ecs.get_instances(name_regex="no-deleteing-hbr-ecs-backup-plan",
+            status="Running")
         example = alicloud.hbr.EcsBackupPlan("example",
-            backup_type="COMPLETE",
             ecs_backup_plan_name="example_value",
-            exclude=\"\"\"  ["/home/exclude"]
-          
-        \"\"\",
-            include=\"\"\"  ["/home/include"]
-          
-        \"\"\",
-            instance_id="i-bp1567rc0oxxxxxxxxxx",
+            instance_id=default_instances.instances[0].id,
+            vault_id=default_vault.id,
+            retention="1",
+            schedule="I|1602673264|PT2H",
+            backup_type="COMPLETE",
+            speed_limit="0:24:5120",
             paths=[
                 "/home",
                 "/var",
             ],
-            retention="1",
-            schedule="I|1602673264|PT2H",
-            speed_limit="0:24:5120",
-            vault_id="v-0003gxoksflhxxxxxxxx")
+            exclude="  [\"/home/exclude\"]\n",
+            include="  [\"/home/include\"]\n")
         ```
         ## Notice
 
         **About Backup path rules:**
-        1. If there is no wildcard `*`, you can enter 8 lines of path.
-        2. When using wildcard `*`, only one line of path can be input, and wildcards like `/*/*` are supported.
-        3. Each line only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
+        1. If there is no wildcard `*`, you can enter 8 items of path.
+        2. When using wildcard `*`, only one item of path can be input, and wildcards like `/*/*` are supported.
+        3. Each item of path only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
 
         **About Restrictions:**
-        1. When using VSS, multiple paths, UNC paths, wildcards, and excluded files are not supported.
-        2. When using UNC, VSS is not supported, wildcards are not supported, and files to be excluded are not supported.
+        1. When using `VSS`: multiple paths, UNC paths, wildcards, and excluded files not supported.
+        2. When using `UNC`: VSS not supported, wildcards not supported, and files to be excluded are not supported.
 
-        **About Include/exclude path rules:**
+        **About include/exclude path rules:**
         1. Supports up to 8 paths, including paths using wildcards `*`.
         2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
         3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*/*/` share will match `/a/b/c/share`, but not `/a/d/share`.
@@ -541,10 +550,10 @@ class EcsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] include: Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         :param pulumi.Input[str] instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host.
         :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. e.g. `["/home", "/var"]`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-        :param pulumi.Input[str] speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         ...
@@ -568,37 +577,40 @@ class EcsBackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "valut-name"
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
+        default_instances = alicloud.ecs.get_instances(name_regex="no-deleteing-hbr-ecs-backup-plan",
+            status="Running")
         example = alicloud.hbr.EcsBackupPlan("example",
-            backup_type="COMPLETE",
             ecs_backup_plan_name="example_value",
-            exclude=\"\"\"  ["/home/exclude"]
-          
-        \"\"\",
-            include=\"\"\"  ["/home/include"]
-          
-        \"\"\",
-            instance_id="i-bp1567rc0oxxxxxxxxxx",
+            instance_id=default_instances.instances[0].id,
+            vault_id=default_vault.id,
+            retention="1",
+            schedule="I|1602673264|PT2H",
+            backup_type="COMPLETE",
+            speed_limit="0:24:5120",
             paths=[
                 "/home",
                 "/var",
             ],
-            retention="1",
-            schedule="I|1602673264|PT2H",
-            speed_limit="0:24:5120",
-            vault_id="v-0003gxoksflhxxxxxxxx")
+            exclude="  [\"/home/exclude\"]\n",
+            include="  [\"/home/include\"]\n")
         ```
         ## Notice
 
         **About Backup path rules:**
-        1. If there is no wildcard `*`, you can enter 8 lines of path.
-        2. When using wildcard `*`, only one line of path can be input, and wildcards like `/*/*` are supported.
-        3. Each line only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
+        1. If there is no wildcard `*`, you can enter 8 items of path.
+        2. When using wildcard `*`, only one item of path can be input, and wildcards like `/*/*` are supported.
+        3. Each item of path only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
 
         **About Restrictions:**
-        1. When using VSS, multiple paths, UNC paths, wildcards, and excluded files are not supported.
-        2. When using UNC, VSS is not supported, wildcards are not supported, and files to be excluded are not supported.
+        1. When using `VSS`: multiple paths, UNC paths, wildcards, and excluded files not supported.
+        2. When using `UNC`: VSS not supported, wildcards not supported, and files to be excluded are not supported.
 
-        **About Include/exclude path rules:**
+        **About include/exclude path rules:**
         1. Supports up to 8 paths, including paths using wildcards `*`.
         2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
         3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*/*/` share will match `/a/b/c/share`, but not `/a/d/share`.
@@ -676,6 +688,9 @@ class EcsBackupPlan(pulumi.CustomResource):
                 raise TypeError("Missing required property 'schedule'")
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["speed_limit"] = speed_limit
+            if update_paths is not None and not opts.urn:
+                warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
+                pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
             __props__.__dict__["update_paths"] = update_paths
             if vault_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vault_id'")
@@ -718,10 +733,10 @@ class EcsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] include: Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         :param pulumi.Input[str] instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host.
         :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Backup path. e.g. `["/home", "/var"]`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-        :param pulumi.Input[str] speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -809,7 +824,7 @@ class EcsBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def paths(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Backup path. e.g. `["/home", "/var"]`
+        List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         """
         return pulumi.get(self, "paths")
 
@@ -825,7 +840,7 @@ class EcsBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[str]:
         """
-        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -833,7 +848,7 @@ class EcsBackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="speedLimit")
     def speed_limit(self) -> pulumi.Output[Optional[str]]:
         """
-        Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         """
         return pulumi.get(self, "speed_limit")
 

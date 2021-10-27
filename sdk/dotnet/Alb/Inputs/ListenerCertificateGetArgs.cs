@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
     public sealed class ListenerCertificateGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the Certificate.
+        /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
 

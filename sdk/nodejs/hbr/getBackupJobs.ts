@@ -39,11 +39,11 @@ export interface GetBackupJobsArgs {
     readonly ids?: string[];
     readonly outputFile?: string;
     /**
-     * The sort direction.
+     * The sort direction. Valid values: `ASCEND`, `DESCEND`.
      */
     readonly sortDirection?: string;
     /**
-     * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
      */
     readonly sourceType: string;
     /**

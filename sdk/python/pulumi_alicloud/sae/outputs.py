@@ -9,13 +9,164 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'ApplicationInternet',
+    'ApplicationIntranet',
     'IngressDefaultRule',
     'IngressRule',
     'GetApplicationsApplicationResult',
     'GetConfigMapsMapResult',
     'GetIngressesIngressResult',
+    'GetInstanceSpecificationsSpecificationResult',
     'GetNamespacesNamespaceResult',
 ]
+
+@pulumi.output_type
+class ApplicationInternet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpsCertId":
+            suggest = "https_cert_id"
+        elif key == "targetPort":
+            suggest = "target_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationInternet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationInternet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationInternet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 https_cert_id: Optional[str] = None,
+                 port: Optional[int] = None,
+                 protocol: Optional[str] = None,
+                 target_port: Optional[int] = None):
+        """
+        :param str https_cert_id: SSL certificate. `https_cert_id` is required when HTTPS is selected
+        :param int port: SLB Port.
+        :param str protocol: Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        :param int target_port: Container port.
+        """
+        if https_cert_id is not None:
+            pulumi.set(__self__, "https_cert_id", https_cert_id)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if target_port is not None:
+            pulumi.set(__self__, "target_port", target_port)
+
+    @property
+    @pulumi.getter(name="httpsCertId")
+    def https_cert_id(self) -> Optional[str]:
+        """
+        SSL certificate. `https_cert_id` is required when HTTPS is selected
+        """
+        return pulumi.get(self, "https_cert_id")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        SLB Port.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> Optional[int]:
+        """
+        Container port.
+        """
+        return pulumi.get(self, "target_port")
+
+
+@pulumi.output_type
+class ApplicationIntranet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpsCertId":
+            suggest = "https_cert_id"
+        elif key == "targetPort":
+            suggest = "target_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationIntranet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationIntranet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationIntranet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 https_cert_id: Optional[str] = None,
+                 port: Optional[int] = None,
+                 protocol: Optional[str] = None,
+                 target_port: Optional[int] = None):
+        """
+        :param str https_cert_id: SSL certificate. `https_cert_id` is required when HTTPS is selected
+        :param int port: SLB Port.
+        :param str protocol: Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        :param int target_port: Container port.
+        """
+        if https_cert_id is not None:
+            pulumi.set(__self__, "https_cert_id", https_cert_id)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if target_port is not None:
+            pulumi.set(__self__, "target_port", target_port)
+
+    @property
+    @pulumi.getter(name="httpsCertId")
+    def https_cert_id(self) -> Optional[str]:
+        """
+        SSL certificate. `https_cert_id` is required when HTTPS is selected
+        """
+        return pulumi.get(self, "https_cert_id")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        SLB Port.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> Optional[int]:
+        """
+        Container port.
+        """
+        return pulumi.get(self, "target_port")
+
 
 @pulumi.output_type
 class IngressDefaultRule(dict):
@@ -893,6 +1044,90 @@ class GetIngressesIngressResult(dict):
         SLB ID.
         """
         return pulumi.get(self, "slb_id")
+
+
+@pulumi.output_type
+class GetInstanceSpecificationsSpecificationResult(dict):
+    def __init__(__self__, *,
+                 cpu: int,
+                 enable: bool,
+                 id: str,
+                 instance_specification_id: str,
+                 memory: int,
+                 spec_info: str,
+                 version: int):
+        """
+        :param int cpu: CPU Size, Specifications for Micronucleus.
+        :param bool enable: Whether the instance is available. The value description is as follows:
+        :param str id: The ID of the Instance Specification.
+        :param str instance_specification_id: The first ID of the resource.
+        :param int memory: The Memory specifications for the MB.
+        :param str spec_info: The specification configuration name.
+        :param int version: The specification configuration version.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_specification_id", instance_specification_id)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "spec_info", spec_info)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> int:
+        """
+        CPU Size, Specifications for Micronucleus.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        """
+        Whether the instance is available. The value description is as follows:
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Instance Specification.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceSpecificationId")
+    def instance_specification_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "instance_specification_id")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> int:
+        """
+        The Memory specifications for the MB.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter(name="specInfo")
+    def spec_info(self) -> str:
+        """
+        The specification configuration name.
+        """
+        return pulumi.get(self, "spec_info")
+
+    @property
+    @pulumi.getter
+    def version(self) -> int:
+        """
+        The specification configuration version.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

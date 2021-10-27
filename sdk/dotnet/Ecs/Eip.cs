@@ -31,6 +31,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("addressName")]
         public Output<string> AddressName { get; private set; } = null!;
 
+        [Output("autoPay")]
+        public Output<bool?> AutoPay { get; private set; } = null!;
+
         /// <summary>
         /// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         /// </summary>
@@ -166,6 +169,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("addressName")]
         public Input<string>? AddressName { get; set; }
 
+        [Input("autoPay")]
+        public Input<bool>? AutoPay { get; set; }
+
         /// <summary>
         /// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         /// </summary>
@@ -255,6 +261,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("addressName")]
         public Input<string>? AddressName { get; set; }
+
+        [Input("autoPay")]
+        public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
         /// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.

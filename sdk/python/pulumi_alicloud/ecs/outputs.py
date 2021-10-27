@@ -32,6 +32,7 @@ __all__ = [
     'GetDisksDiskMountInstanceResult',
     'GetDisksDiskOperationLockResult',
     'GetDisksOperationLockResult',
+    'GetEcsDeploymentSetsSetResult',
     'GetEcsDisksDiskResult',
     'GetEcsDisksDiskMountInstanceResult',
     'GetEcsDisksDiskOperationLockResult',
@@ -2381,6 +2382,123 @@ class GetDisksOperationLockResult(dict):
     @pulumi.getter(name="lockReason")
     def lock_reason(self) -> Optional[str]:
         return pulumi.get(self, "lock_reason")
+
+
+@pulumi.output_type
+class GetEcsDeploymentSetsSetResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 deployment_set_id: str,
+                 deployment_set_name: str,
+                 description: str,
+                 domain: str,
+                 granularity: str,
+                 id: str,
+                 instance_amount: int,
+                 instance_ids: Sequence[str],
+                 strategy: str):
+        """
+        :param str create_time: The time when the deployment set was created.
+        :param str deployment_set_id: The ID of the Deployment Set.
+        :param str deployment_set_name: The name of the deployment set.
+        :param str description: The description of the deployment set.
+        :param str domain: The deployment domain.
+        :param str granularity: The deployment granularity.
+        :param str id: The ID of the Deployment Set.
+        :param int instance_amount: The number of instances in the deployment set.
+        :param Sequence[str] instance_ids: The IDs of the instances in the deployment set.
+        :param str strategy: The deployment strategy.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+        pulumi.set(__self__, "deployment_set_name", deployment_set_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "granularity", granularity)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_amount", instance_amount)
+        pulumi.set(__self__, "instance_ids", instance_ids)
+        pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the deployment set was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deploymentSetId")
+    def deployment_set_id(self) -> str:
+        """
+        The ID of the Deployment Set.
+        """
+        return pulumi.get(self, "deployment_set_id")
+
+    @property
+    @pulumi.getter(name="deploymentSetName")
+    def deployment_set_name(self) -> str:
+        """
+        The name of the deployment set.
+        """
+        return pulumi.get(self, "deployment_set_name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the deployment set.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The deployment domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def granularity(self) -> str:
+        """
+        The deployment granularity.
+        """
+        return pulumi.get(self, "granularity")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Deployment Set.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceAmount")
+    def instance_amount(self) -> int:
+        """
+        The number of instances in the deployment set.
+        """
+        return pulumi.get(self, "instance_amount")
+
+    @property
+    @pulumi.getter(name="instanceIds")
+    def instance_ids(self) -> Sequence[str]:
+        """
+        The IDs of the instances in the deployment set.
+        """
+        return pulumi.get(self, "instance_ids")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> str:
+        """
+        The deployment strategy.
+        """
+        return pulumi.get(self, "strategy")
 
 
 @pulumi.output_type

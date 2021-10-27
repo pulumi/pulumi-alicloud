@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class GetBackupJobsJobResult
     {
         /// <summary>
-        /// The actual size of backup job.
+        /// The actual data volume of the backup task (After deduplication) . Unit byte.
         /// </summary>
         public readonly string ActualBytes;
         /// <summary>
-        /// The actual number of files.
+        /// The actual number of items in the backup task. (Currently only file backup is available).
         /// </summary>
         public readonly string ActualItems;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BackJobName;
         /// <summary>
-        /// The ID of backup job.
+        /// The ID of the backup job.
         /// </summary>
         public readonly string BackupJobId;
         /// <summary>
@@ -34,15 +34,15 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BackupType;
         /// <summary>
-        /// The name of target ofo OSS bucket.
+        /// The name of target OSS bucket.
         /// </summary>
         public readonly string Bucket;
         /// <summary>
-        /// The size of backup job recovered.
+        /// The amount of backup data (Incremental). Unit byte.
         /// </summary>
         public readonly string BytesDone;
         /// <summary>
-        /// The total size of backup job recovered.
+        /// The total amount of data sources. Unit byte.
         /// </summary>
         public readonly string BytesTotal;
         /// <summary>
@@ -53,6 +53,10 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// The creation time of backup job. UNIX time seconds.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Error message.
+        /// </summary>
+        public readonly string ErrorMessage;
         /// <summary>
         /// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
         /// </summary>
@@ -86,11 +90,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string NasCreateTime;
         /// <summary>
-        /// Backup path. e.g. `["/home", "/var"]`
+        /// List of backup path. e.g. `["/home", "/var"]`.
         /// </summary>
         public readonly ImmutableArray<string> Paths;
         /// <summary>
-        /// The IF of a backup plan.
+        /// The ID of a backup plan.
         /// </summary>
         public readonly string PlanId;
         /// <summary>
@@ -98,7 +102,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Prefix;
         /// <summary>
-        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// Backup progress. The value is 100%*100.
+        /// </summary>
+        public readonly string Progress;
+        /// <summary>
+        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
         /// </summary>
         public readonly string SourceType;
         /// <summary>
@@ -140,6 +148,8 @@ namespace Pulumi.AliCloud.Hbr.Outputs
 
             string createTime,
 
+            string errorMessage,
+
             string exclude,
 
             string fileSystemId,
@@ -162,6 +172,8 @@ namespace Pulumi.AliCloud.Hbr.Outputs
 
             string prefix,
 
+            string progress,
+
             string sourceType,
 
             string startTime,
@@ -182,6 +194,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             BytesTotal = bytesTotal;
             CompleteTime = completeTime;
             CreateTime = createTime;
+            ErrorMessage = errorMessage;
             Exclude = exclude;
             FileSystemId = fileSystemId;
             Id = id;
@@ -193,6 +206,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             Paths = paths;
             PlanId = planId;
             Prefix = prefix;
+            Progress = progress;
             SourceType = sourceType;
             StartTime = startTime;
             Status = status;

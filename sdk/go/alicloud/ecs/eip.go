@@ -24,7 +24,8 @@ type Eip struct {
 
 	ActivityId pulumi.StringPtrOutput `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	AddressName pulumi.StringOutput `pulumi:"addressName"`
+	AddressName pulumi.StringOutput  `pulumi:"addressName"`
+	AutoPay     pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -91,6 +92,7 @@ type eipState struct {
 	ActivityId *string `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName *string `pulumi:"addressName"`
+	AutoPay     *bool   `pulumi:"autoPay"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -129,6 +131,7 @@ type EipState struct {
 	ActivityId pulumi.StringPtrInput
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringPtrInput
+	AutoPay     pulumi.BoolPtrInput
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -171,6 +174,7 @@ type eipArgs struct {
 	ActivityId *string `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName *string `pulumi:"addressName"`
+	AutoPay     *bool   `pulumi:"autoPay"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -206,6 +210,7 @@ type EipArgs struct {
 	ActivityId pulumi.StringPtrInput
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringPtrInput
+	AutoPay     pulumi.BoolPtrInput
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. Default value: `false`.

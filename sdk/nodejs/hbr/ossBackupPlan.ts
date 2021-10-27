@@ -20,19 +20,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "example_value";
+ * const name = config.get("name") || "tf-test112358";
  * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: name});
- * const defaultBuckets = alicloud.oss.getBuckets({
- *     nameRegex: "oss_bucket_example_name",
- * });
- * const example = new alicloud.hbr.OssBackupPlan("example", {
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: name});
+ * const defaultOssBackupPlan = new alicloud.hbr.OssBackupPlan("defaultOssBackupPlan", {
  *     ossBackupPlanName: name,
+ *     prefix: "/",
+ *     bucket: defaultBucket.bucket,
  *     vaultId: defaultVault.id,
- *     bucket: alicloud_oss_bucket["default"].bucket,
- *     prefix: "/home",
- *     retention: "1",
  *     schedule: "I|1602673264|PT2H",
  *     backupType: "COMPLETE",
+ *     retention: "2",
  * });
  * ```
  *
@@ -88,13 +86,16 @@ export class OssBackupPlan extends pulumi.CustomResource {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     public readonly ossBackupPlanName!: pulumi.Output<string>;
+    /**
+     * Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+     */
     public readonly prefix!: pulumi.Output<string | undefined>;
     /**
      * Backup retention days, the minimum is 1.
      */
     public readonly retention!: pulumi.Output<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     public readonly schedule!: pulumi.Output<string>;
     /**
@@ -179,13 +180,16 @@ export interface OssBackupPlanState {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     readonly ossBackupPlanName?: pulumi.Input<string>;
+    /**
+     * Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+     */
     readonly prefix?: pulumi.Input<string>;
     /**
      * Backup retention days, the minimum is 1.
      */
     readonly retention?: pulumi.Input<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     readonly schedule?: pulumi.Input<string>;
     /**
@@ -214,13 +218,16 @@ export interface OssBackupPlanArgs {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     readonly ossBackupPlanName: pulumi.Input<string>;
+    /**
+     * Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+     */
     readonly prefix?: pulumi.Input<string>;
     /**
      * Backup retention days, the minimum is 1.
      */
     readonly retention: pulumi.Input<string>;
     /**
-     * Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     readonly schedule: pulumi.Input<string>;
     /**

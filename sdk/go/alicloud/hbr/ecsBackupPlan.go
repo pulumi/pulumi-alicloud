@@ -25,28 +25,48 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
-//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := hbr.NewEcsBackupPlan(ctx, "example", &hbr.EcsBackupPlanArgs{
-// 			BackupType:        pulumi.String("COMPLETE"),
+// 		cfg := config.New(ctx, "")
+// 		name := "valut-name"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
+// 			VaultName: pulumi.String(name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "no-deleteing-hbr-ecs-backup-plan"
+// 		opt1 := "Running"
+// 		defaultInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+// 			NameRegex: &opt0,
+// 			Status:    &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = hbr.NewEcsBackupPlan(ctx, "example", &hbr.EcsBackupPlanArgs{
 // 			EcsBackupPlanName: pulumi.String("example_value"),
-// 			Exclude:           pulumi.String(fmt.Sprintf("%v%v", "  [\"/home/exclude\"]\n", "  \n")),
-// 			Include:           pulumi.String(fmt.Sprintf("%v%v", "  [\"/home/include\"]\n", "  \n")),
-// 			InstanceId:        pulumi.String("i-bp1567rc0oxxxxxxxxxx"),
+// 			InstanceId:        pulumi.String(defaultInstances.Instances[0].Id),
+// 			VaultId:           defaultVault.ID(),
+// 			Retention:         pulumi.String("1"),
+// 			Schedule:          pulumi.String("I|1602673264|PT2H"),
+// 			BackupType:        pulumi.String("COMPLETE"),
+// 			SpeedLimit:        pulumi.String("0:24:5120"),
 // 			Paths: pulumi.StringArray{
 // 				pulumi.String("/home"),
 // 				pulumi.String("/var"),
 // 			},
-// 			Retention:  pulumi.String("1"),
-// 			Schedule:   pulumi.String("I|1602673264|PT2H"),
-// 			SpeedLimit: pulumi.String("0:24:5120"),
-// 			VaultId:    pulumi.String("v-0003gxoksflhxxxxxxxx"),
+// 			Exclude: pulumi.String("  [\"/home/exclude\"]\n"),
+// 			Include: pulumi.String("  [\"/home/include\"]\n"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -58,15 +78,15 @@ import (
 // ## Notice
 //
 // **About Backup path rules:**
-// 1. If there is no wildcard `*`, you can enter 8 lines of path.
-// 2. When using wildcard `*`, only one line of path can be input, and wildcards like `/*/*` are supported.
-// 3. Each line only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
+// 1. If there is no wildcard `*`, you can enter 8 items of path.
+// 2. When using wildcard `*`, only one item of path can be input, and wildcards like `/*/*` are supported.
+// 3. Each item of path only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
 //
 // **About Restrictions:**
-// 1. When using VSS, multiple paths, UNC paths, wildcards, and excluded files are not supported.
-// 2. When using UNC, VSS is not supported, wildcards are not supported, and files to be excluded are not supported.
+// 1. When using `VSS`: multiple paths, UNC paths, wildcards, and excluded files not supported.
+// 2. When using `UNC`: VSS not supported, wildcards not supported, and files to be excluded are not supported.
 //
-// **About Include/exclude path rules:**
+// **About include/exclude path rules:**
 // 1. Supports up to 8 paths, including paths using wildcards `*`.
 // 2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
 // 3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*/*/` share will match `/a/b/c/share`, but not `/a/d/share`.
@@ -98,15 +118,16 @@ type EcsBackupPlan struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
 	Options pulumi.StringPtrOutput `pulumi:"options"`
-	// Backup path. e.g. `["/home", "/var"]`
+	// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
 	Paths pulumi.StringArrayOutput `pulumi:"paths"`
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringOutput `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
-	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-	SpeedLimit  pulumi.StringPtrOutput `pulumi:"speedLimit"`
-	UpdatePaths pulumi.BoolPtrOutput   `pulumi:"updatePaths"`
+	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+	SpeedLimit pulumi.StringPtrOutput `pulumi:"speedLimit"`
+	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+	UpdatePaths pulumi.BoolPtrOutput `pulumi:"updatePaths"`
 	// The ID of Backup vault.
 	VaultId pulumi.StringOutput `pulumi:"vaultId"`
 }
@@ -173,15 +194,16 @@ type ecsBackupPlanState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
 	Options *string `pulumi:"options"`
-	// Backup path. e.g. `["/home", "/var"]`
+	// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
 	Paths []string `pulumi:"paths"`
 	// Backup retention days, the minimum is 1.
 	Retention *string `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule *string `pulumi:"schedule"`
-	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-	SpeedLimit  *string `pulumi:"speedLimit"`
-	UpdatePaths *bool   `pulumi:"updatePaths"`
+	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+	SpeedLimit *string `pulumi:"speedLimit"`
+	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+	UpdatePaths *bool `pulumi:"updatePaths"`
 	// The ID of Backup vault.
 	VaultId *string `pulumi:"vaultId"`
 }
@@ -202,14 +224,15 @@ type EcsBackupPlanState struct {
 	InstanceId pulumi.StringPtrInput
 	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
 	Options pulumi.StringPtrInput
-	// Backup path. e.g. `["/home", "/var"]`
+	// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
 	Paths pulumi.StringArrayInput
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringPtrInput
-	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringPtrInput
-	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-	SpeedLimit  pulumi.StringPtrInput
+	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+	SpeedLimit pulumi.StringPtrInput
+	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths pulumi.BoolPtrInput
 	// The ID of Backup vault.
 	VaultId pulumi.StringPtrInput
@@ -235,15 +258,16 @@ type ecsBackupPlanArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
 	Options *string `pulumi:"options"`
-	// Backup path. e.g. `["/home", "/var"]`
+	// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
 	Paths []string `pulumi:"paths"`
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule string `pulumi:"schedule"`
-	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-	SpeedLimit  *string `pulumi:"speedLimit"`
-	UpdatePaths *bool   `pulumi:"updatePaths"`
+	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+	SpeedLimit *string `pulumi:"speedLimit"`
+	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+	UpdatePaths *bool `pulumi:"updatePaths"`
 	// The ID of Backup vault.
 	VaultId string `pulumi:"vaultId"`
 }
@@ -265,14 +289,15 @@ type EcsBackupPlanArgs struct {
 	InstanceId pulumi.StringInput
 	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
 	Options pulumi.StringPtrInput
-	// Backup path. e.g. `["/home", "/var"]`
+	// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
 	Paths pulumi.StringArrayInput
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput
-	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringInput
-	// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-	SpeedLimit  pulumi.StringPtrInput
+	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+	SpeedLimit pulumi.StringPtrInput
+	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths pulumi.BoolPtrInput
 	// The ID of Backup vault.
 	VaultId pulumi.StringInput

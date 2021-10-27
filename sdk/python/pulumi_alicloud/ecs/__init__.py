@@ -11,6 +11,7 @@ from .dedicated_host import *
 from .disk import *
 from .disk_attachment import *
 from .ecs_auto_snapshot_policy_attachment import *
+from .ecs_deployment_set import *
 from .ecs_disk import *
 from .ecs_disk_attachment import *
 from .ecs_key_pair import *
@@ -26,6 +27,7 @@ from .get_auto_snapshot_policies import *
 from .get_commands import *
 from .get_dedicated_hosts import *
 from .get_disks import *
+from .get_ecs_deployment_sets import *
 from .get_ecs_disks import *
 from .get_ecs_key_pairs import *
 from .get_ecs_launch_templates import *
@@ -89,6 +91,8 @@ def _register_module():
                 return DiskAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment":
                 return EcsAutoSnapshotPolicyAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet":
+                return EcsDeploymentSet(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/ecsDisk:EcsDisk":
                 return EcsDisk(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment":
@@ -154,6 +158,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "ecs/disk", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/diskAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/ecsAutoSnapshotPolicyAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/ecsDeploymentSet", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/ecsDisk", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/ecsDiskAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/ecsKeyPair", _module_instance)

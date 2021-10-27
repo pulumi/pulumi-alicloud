@@ -56,6 +56,8 @@ type Instance struct {
 	Period pulumi.IntOutput `pulumi:"period"`
 	// The name of the mongo replica set
 	ReplicaSetName pulumi.StringOutput `pulumi:"replicaSetName"`
+	// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+	ReplicaSets InstanceReplicaSetArrayOutput `pulumi:"replicaSets"`
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
 	// Instance log backup retention days. Available in 1.42.0+.
@@ -155,6 +157,8 @@ type instanceState struct {
 	Period *int `pulumi:"period"`
 	// The name of the mongo replica set
 	ReplicaSetName *string `pulumi:"replicaSetName"`
+	// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+	ReplicaSets []InstanceReplicaSet `pulumi:"replicaSets"`
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 	// Instance log backup retention days. Available in 1.42.0+.
@@ -217,6 +221,8 @@ type InstanceState struct {
 	Period pulumi.IntPtrInput
 	// The name of the mongo replica set
 	ReplicaSetName pulumi.StringPtrInput
+	// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+	ReplicaSets InstanceReplicaSetArrayInput
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor pulumi.IntPtrInput
 	// Instance log backup retention days. Available in 1.42.0+.

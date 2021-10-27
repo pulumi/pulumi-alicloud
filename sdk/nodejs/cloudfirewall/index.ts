@@ -8,10 +8,13 @@ import * as utilities from "../utilities";
 export * from "./controlPolicy";
 export * from "./controlPolicyOrder";
 export * from "./getControlPolicies";
+export * from "./getInstances";
+export * from "./instance";
 
 // Import resources to register:
 import { ControlPolicy } from "./controlPolicy";
 import { ControlPolicyOrder } from "./controlPolicyOrder";
+import { Instance } from "./instance";
 
 const _module = {
     version: utilities.getVersion(),
@@ -21,6 +24,8 @@ const _module = {
                 return new ControlPolicy(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder":
                 return new ControlPolicyOrder(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/instance:Instance":
+                return new Instance(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -28,3 +33,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/controlPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/controlPolicyOrder", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instance", _module)

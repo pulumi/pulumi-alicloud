@@ -90,13 +90,13 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Number of CPU cores used by a single backup task, 0 means no restrictions.
+        /// The number of CPU cores used by a single backup task, 0 means no restrictions.
         /// </summary>
         [Output("maxCpuCore")]
         public Output<string> MaxCpuCore { get; private set; } = null!;
 
         /// <summary>
-        /// Number of concurrent jobs for a single backup task, 0 means no restrictions.
+        /// The number of concurrent jobs for a single backup task, 0 means no restrictions.
         /// </summary>
         [Output("maxWorker")]
         public Output<string> MaxWorker { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> ProxyHost { get; private set; } = null!;
 
         /// <summary>
-        /// Custom data plane proxy server password.
+        /// The password of custom data plane proxy server.
         /// </summary>
         [Output("proxyPassword")]
         public Output<string> ProxyPassword { get; private set; } = null!;
@@ -120,13 +120,13 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> ProxyPort { get; private set; } = null!;
 
         /// <summary>
-        /// Username of custom data plane proxy server.
+        /// The username of custom data plane proxy server.
         /// </summary>
         [Output("proxyUser")]
         public Output<string> ProxyUser { get; private set; } = null!;
 
         /// <summary>
-        /// Status of client. Valid values: `ACTIVATED`, `STOPPED`.
+        /// Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -202,13 +202,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Number of CPU cores used by a single backup task, 0 means no restrictions.
+        /// The number of CPU cores used by a single backup task, 0 means no restrictions.
         /// </summary>
         [Input("maxCpuCore")]
         public Input<string>? MaxCpuCore { get; set; }
 
         /// <summary>
-        /// Number of concurrent jobs for a single backup task, 0 means no restrictions.
+        /// The number of concurrent jobs for a single backup task, 0 means no restrictions.
         /// </summary>
         [Input("maxWorker")]
         public Input<string>? MaxWorker { get; set; }
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? ProxyHost { get; set; }
 
         /// <summary>
-        /// Custom data plane proxy server password.
+        /// The password of custom data plane proxy server.
         /// </summary>
         [Input("proxyPassword")]
         public Input<string>? ProxyPassword { get; set; }
@@ -232,13 +232,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? ProxyPort { get; set; }
 
         /// <summary>
-        /// Username of custom data plane proxy server.
+        /// The username of custom data plane proxy server.
         /// </summary>
         [Input("proxyUser")]
         public Input<string>? ProxyUser { get; set; }
 
         /// <summary>
-        /// Status of client. Valid values: `ACTIVATED`, `STOPPED`.
+        /// Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -275,13 +275,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Number of CPU cores used by a single backup task, 0 means no restrictions.
+        /// The number of CPU cores used by a single backup task, 0 means no restrictions.
         /// </summary>
         [Input("maxCpuCore")]
         public Input<string>? MaxCpuCore { get; set; }
 
         /// <summary>
-        /// Number of concurrent jobs for a single backup task, 0 means no restrictions.
+        /// The number of concurrent jobs for a single backup task, 0 means no restrictions.
         /// </summary>
         [Input("maxWorker")]
         public Input<string>? MaxWorker { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? ProxyHost { get; set; }
 
         /// <summary>
-        /// Custom data plane proxy server password.
+        /// The password of custom data plane proxy server.
         /// </summary>
         [Input("proxyPassword")]
         public Input<string>? ProxyPassword { get; set; }
@@ -305,13 +305,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? ProxyPort { get; set; }
 
         /// <summary>
-        /// Username of custom data plane proxy server.
+        /// The username of custom data plane proxy server.
         /// </summary>
         [Input("proxyUser")]
         public Input<string>? ProxyUser { get; set; }
 
         /// <summary>
-        /// Status of client. Valid values: `ACTIVATED`, `STOPPED`.
+        /// Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

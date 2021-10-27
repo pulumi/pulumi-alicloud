@@ -63,6 +63,10 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly fcServiceConfig!: pulumi.Output<outputs.apigateway.ApiFcServiceConfig | undefined>;
     /**
+     * Whether to prevent API replay attack. Default value: `false`.
+     */
+    public readonly forceNonceCheck!: pulumi.Output<boolean>;
+    /**
      * The api gateway that the api belongs to. Defaults to null.
      */
     public readonly groupId!: pulumi.Output<string>;
@@ -79,7 +83,7 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly mockServiceConfig!: pulumi.Output<outputs.apigateway.ApiMockServiceConfig | undefined>;
     /**
-     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -95,7 +99,7 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly serviceType!: pulumi.Output<string>;
     /**
-     * Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+     * Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
      */
     public readonly stageNames!: pulumi.Output<string[] | undefined>;
     /**
@@ -121,6 +125,7 @@ export class Api extends pulumi.CustomResource {
             inputs["constantParameters"] = state ? state.constantParameters : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["fcServiceConfig"] = state ? state.fcServiceConfig : undefined;
+            inputs["forceNonceCheck"] = state ? state.forceNonceCheck : undefined;
             inputs["groupId"] = state ? state.groupId : undefined;
             inputs["httpServiceConfig"] = state ? state.httpServiceConfig : undefined;
             inputs["httpVpcServiceConfig"] = state ? state.httpVpcServiceConfig : undefined;
@@ -152,6 +157,7 @@ export class Api extends pulumi.CustomResource {
             inputs["constantParameters"] = args ? args.constantParameters : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fcServiceConfig"] = args ? args.fcServiceConfig : undefined;
+            inputs["forceNonceCheck"] = args ? args.forceNonceCheck : undefined;
             inputs["groupId"] = args ? args.groupId : undefined;
             inputs["httpServiceConfig"] = args ? args.httpServiceConfig : undefined;
             inputs["httpVpcServiceConfig"] = args ? args.httpVpcServiceConfig : undefined;
@@ -196,6 +202,10 @@ export interface ApiState {
      */
     readonly fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig>;
     /**
+     * Whether to prevent API replay attack. Default value: `false`.
+     */
+    readonly forceNonceCheck?: pulumi.Input<boolean>;
+    /**
      * The api gateway that the api belongs to. Defaults to null.
      */
     readonly groupId?: pulumi.Input<string>;
@@ -212,7 +222,7 @@ export interface ApiState {
      */
     readonly mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
     /**
-     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -228,7 +238,7 @@ export interface ApiState {
      */
     readonly serviceType?: pulumi.Input<string>;
     /**
-     * Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+     * Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
      */
     readonly stageNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -258,6 +268,10 @@ export interface ApiArgs {
      */
     readonly fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig>;
     /**
+     * Whether to prevent API replay attack. Default value: `false`.
+     */
+    readonly forceNonceCheck?: pulumi.Input<boolean>;
+    /**
      * The api gateway that the api belongs to. Defaults to null.
      */
     readonly groupId: pulumi.Input<string>;
@@ -274,7 +288,7 @@ export interface ApiArgs {
      */
     readonly mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
     /**
-     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -290,7 +304,7 @@ export interface ApiArgs {
      */
     readonly serviceType: pulumi.Input<string>;
     /**
-     * Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+     * Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
      */
     readonly stageNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -31,10 +31,10 @@ namespace Pulumi.AliCloud.CR
     ///         var my_instance = new AliCloud.CR.RegistryEnterpriseInstance("my-instance", new AliCloud.CR.RegistryEnterpriseInstanceArgs
     ///         {
     ///             InstanceName = "test",
-    ///             InstanceType = "Standard",
+    ///             InstanceType = "Advanced",
     ///             PaymentType = "Subscription",
-    ///             Period = 12,
-    ///             RenewPeriod = 12,
+    ///             Period = 1,
+    ///             RenewPeriod = 1,
     ///             RenewalStatus = "AutoRenewal",
     ///         });
     ///     }
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.CR
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        /// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.CR
         public Input<string> InstanceName { get; set; } = null!;
 
         /// <summary>
-        /// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        /// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+        /// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }

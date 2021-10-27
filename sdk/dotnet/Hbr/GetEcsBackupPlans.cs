@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Hbr
         ///     {
         ///         var ids = Output.Create(AliCloud.Hbr.GetEcsBackupPlans.InvokeAsync(new AliCloud.Hbr.GetEcsBackupPlansArgs
         ///         {
-        ///             NameRegex = "^my-EcsBackupPlan",
+        ///             NameRegex = "plan-name",
         ///         }));
         ///         this.HbrEcsBackupPlanId = ids.Apply(ids =&gt; ids.Plans[0].Id);
         ///     }

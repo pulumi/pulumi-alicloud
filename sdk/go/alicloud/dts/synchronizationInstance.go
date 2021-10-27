@@ -35,7 +35,7 @@ import (
 // 			DestinationEndpointEngineName: pulumi.String("ADB30"),
 // 			DestinationEndpointRegion:     pulumi.String("cn-hangzhou"),
 // 			InstanceClass:                 pulumi.String("small"),
-// 			PaymentType:                   pulumi.String("PostPaid"),
+// 			PaymentType:                   pulumi.String("PayAsYouGo"),
 // 			SourceEndpointEngineName:      pulumi.String("PolarDB"),
 // 			SourceEndpointRegion:          pulumi.String("cn-hangzhou"),
 // 			SyncArchitecture:              pulumi.String("oneway"),

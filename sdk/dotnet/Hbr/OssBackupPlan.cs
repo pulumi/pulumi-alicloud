@@ -29,24 +29,24 @@ namespace Pulumi.AliCloud.Hbr
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "example_value";
+    ///         var name = config.Get("name") ?? "tf-test112358";
     ///         var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new AliCloud.Hbr.VaultArgs
     ///         {
     ///             VaultName = name,
     ///         });
-    ///         var defaultBuckets = Output.Create(AliCloud.Oss.GetBuckets.InvokeAsync(new AliCloud.Oss.GetBucketsArgs
+    ///         var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             NameRegex = "oss_bucket_example_name",
-    ///         }));
-    ///         var example = new AliCloud.Hbr.OssBackupPlan("example", new AliCloud.Hbr.OssBackupPlanArgs
+    ///             Bucket = name,
+    ///         });
+    ///         var defaultOssBackupPlan = new AliCloud.Hbr.OssBackupPlan("defaultOssBackupPlan", new AliCloud.Hbr.OssBackupPlanArgs
     ///         {
     ///             OssBackupPlanName = name,
+    ///             Prefix = "/",
+    ///             Bucket = defaultBucket.BucketName,
     ///             VaultId = defaultVault.Id,
-    ///             Bucket = alicloud_oss_bucket.Default.Bucket,
-    ///             Prefix = "/home",
-    ///             Retention = "1",
     ///             Schedule = "I|1602673264|PT2H",
     ///             BackupType = "COMPLETE",
+    ///             Retention = "2",
     ///         });
     ///     }
     /// 
@@ -88,6 +88,9 @@ namespace Pulumi.AliCloud.Hbr
         [Output("ossBackupPlanName")]
         public Output<string> OssBackupPlanName { get; private set; } = null!;
 
+        /// <summary>
+        /// Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+        /// </summary>
         [Output("prefix")]
         public Output<string?> Prefix { get; private set; } = null!;
 
@@ -98,7 +101,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Retention { get; private set; } = null!;
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
@@ -179,6 +182,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("ossBackupPlanName", required: true)]
         public Input<string> OssBackupPlanName { get; set; } = null!;
 
+        /// <summary>
+        /// Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
@@ -189,7 +195,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> Retention { get; set; } = null!;
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<string> Schedule { get; set; } = null!;
@@ -231,6 +237,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("ossBackupPlanName")]
         public Input<string>? OssBackupPlanName { get; set; }
 
+        /// <summary>
+        /// Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
@@ -241,7 +250,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Retention { get; set; }
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }

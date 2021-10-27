@@ -77,6 +77,10 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly addressName!: pulumi.Output<string>;
     /**
+     * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+     */
+    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    /**
      * The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
      */
     public readonly bandwidth!: pulumi.Output<string>;
@@ -94,7 +98,7 @@ export class EipAddress extends pulumi.CustomResource {
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
      * The metering method of the EIP. 
-     * Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
+     * Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
      */
     public readonly internetChargeType!: pulumi.Output<string>;
     /**
@@ -149,6 +153,7 @@ export class EipAddress extends pulumi.CustomResource {
             const state = argsOrState as EipAddressState | undefined;
             inputs["activityId"] = state ? state.activityId : undefined;
             inputs["addressName"] = state ? state.addressName : undefined;
+            inputs["autoPay"] = state ? state.autoPay : undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -167,6 +172,7 @@ export class EipAddress extends pulumi.CustomResource {
             const args = argsOrState as EipAddressArgs | undefined;
             inputs["activityId"] = args ? args.activityId : undefined;
             inputs["addressName"] = args ? args.addressName : undefined;
+            inputs["autoPay"] = args ? args.autoPay : undefined;
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -202,6 +208,10 @@ export interface EipAddressState {
      */
     readonly addressName?: pulumi.Input<string>;
     /**
+     * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+     */
+    readonly autoPay?: pulumi.Input<boolean>;
+    /**
      * The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
      */
     readonly bandwidth?: pulumi.Input<string>;
@@ -219,7 +229,7 @@ export interface EipAddressState {
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
      * The metering method of the EIP. 
-     * Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
+     * Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
      */
     readonly internetChargeType?: pulumi.Input<string>;
     /**
@@ -273,6 +283,10 @@ export interface EipAddressArgs {
      */
     readonly addressName?: pulumi.Input<string>;
     /**
+     * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+     */
+    readonly autoPay?: pulumi.Input<boolean>;
+    /**
      * The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
      */
     readonly bandwidth?: pulumi.Input<string>;
@@ -290,7 +304,7 @@ export interface EipAddressArgs {
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
      * The metering method of the EIP. 
-     * Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
+     * Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
      */
     readonly internetChargeType?: pulumi.Input<string>;
     /**

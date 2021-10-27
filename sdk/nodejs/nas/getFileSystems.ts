@@ -56,11 +56,15 @@ export interface GetFileSystemsArgs {
     readonly ids?: string[];
     readonly outputFile?: string;
     /**
-     * Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
+     * The protocol type of the file system.
+     * Valid values:
+     * `NFS`,
+     * `SMB` (Available when the `fileSystemType` is `standard`).
      */
     readonly protocolType?: string;
     /**
-     * Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
+     * The storage type of the file system.
+     * * Valid values:
      */
     readonly storageType?: string;
 }

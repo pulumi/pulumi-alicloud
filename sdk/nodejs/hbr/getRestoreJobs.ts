@@ -63,7 +63,7 @@ export interface GetRestoreJobsArgs {
      */
     readonly restoreType: string;
     /**
-     * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
      */
     readonly sourceTypes?: string[];
     /**

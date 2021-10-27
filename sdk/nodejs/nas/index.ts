@@ -14,6 +14,7 @@ export * from "./getFileSystems";
 export * from "./getMountTargets";
 export * from "./getProtocols";
 export * from "./getService";
+export * from "./getZones";
 export * from "./mountTarget";
 
 // Import resources to register:

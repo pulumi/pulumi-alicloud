@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
     public sealed class ShardingInstanceMongoListArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Mongo node connection string
+        /// The connection address of the Config Server node.
         /// </summary>
         [Input("connectString")]
         public Input<string>? ConnectString { get; set; }
@@ -25,14 +25,13 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string> NodeClass { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the shard-node.
+        /// The ID of the Config Server node.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
         /// <summary>
-        /// Mongo node port
-        /// * `shard_list`
+        /// The connection port of the Config Server node.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

@@ -85,6 +85,8 @@ type Instance struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Specify whether professional service is supported. Valid values: ["true", "false"]
 	PrefessionalService pulumi.StringOutput `pulumi:"prefessionalService"`
+	// The instance region ID.
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Renewal period of WAF service. Unit: month
 	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
 	// Renewal status of WAF service. Valid values:
@@ -184,6 +186,8 @@ type instanceState struct {
 	Period *int `pulumi:"period"`
 	// Specify whether professional service is supported. Valid values: ["true", "false"]
 	PrefessionalService *string `pulumi:"prefessionalService"`
+	// The instance region ID.
+	Region *string `pulumi:"region"`
 	// Renewal period of WAF service. Unit: month
 	RenewPeriod *int `pulumi:"renewPeriod"`
 	// Renewal status of WAF service. Valid values:
@@ -225,6 +229,8 @@ type InstanceState struct {
 	Period pulumi.IntPtrInput
 	// Specify whether professional service is supported. Valid values: ["true", "false"]
 	PrefessionalService pulumi.StringPtrInput
+	// The instance region ID.
+	Region pulumi.StringPtrInput
 	// Renewal period of WAF service. Unit: month
 	RenewPeriod pulumi.IntPtrInput
 	// Renewal status of WAF service. Valid values:
@@ -270,6 +276,8 @@ type instanceArgs struct {
 	Period *int `pulumi:"period"`
 	// Specify whether professional service is supported. Valid values: ["true", "false"]
 	PrefessionalService string `pulumi:"prefessionalService"`
+	// The instance region ID.
+	Region *string `pulumi:"region"`
 	// Renewal period of WAF service. Unit: month
 	RenewPeriod *int `pulumi:"renewPeriod"`
 	// Renewal status of WAF service. Valid values:
@@ -310,6 +318,8 @@ type InstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// Specify whether professional service is supported. Valid values: ["true", "false"]
 	PrefessionalService pulumi.StringInput
+	// The instance region ID.
+	Region pulumi.StringPtrInput
 	// Renewal period of WAF service. Unit: month
 	RenewPeriod pulumi.IntPtrInput
 	// Renewal status of WAF service. Valid values:
