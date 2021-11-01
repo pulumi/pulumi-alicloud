@@ -5021,6 +5021,193 @@ func (o GetTrafficMirrorFilterEgressRulesRuleArrayOutput) Index(i pulumi.IntInpu
 	}).(GetTrafficMirrorFilterEgressRulesRuleOutput)
 }
 
+type GetTrafficMirrorFilterIngressRulesRule struct {
+	// The destination CIDR block of the inbound traffic.
+	DestinationCidrBlock string `pulumi:"destinationCidrBlock"`
+	// The destination port range of the inbound traffic.
+	DestinationPortRange string `pulumi:"destinationPortRange"`
+	// The ID of the Traffic Mirror Filter Egress Rule.
+	Id string `pulumi:"id"`
+	// The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
+	Priority int `pulumi:"priority"`
+	// The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
+	Protocol string `pulumi:"protocol"`
+	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+	RuleAction string `pulumi:"ruleAction"`
+	// The source CIDR block of the inbound traffic.
+	SourceCidrBlock string `pulumi:"sourceCidrBlock"`
+	// The source port range of the inbound traffic.
+	SourcePortRange string `pulumi:"sourcePortRange"`
+	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+	Status string `pulumi:"status"`
+	// The ID of the filter associated with the inbound rule.
+	TrafficMirrorFilterId string `pulumi:"trafficMirrorFilterId"`
+	// The first ID of the resource.
+	TrafficMirrorFilterRuleId string `pulumi:"trafficMirrorFilterRuleId"`
+}
+
+// GetTrafficMirrorFilterIngressRulesRuleInput is an input type that accepts GetTrafficMirrorFilterIngressRulesRuleArgs and GetTrafficMirrorFilterIngressRulesRuleOutput values.
+// You can construct a concrete instance of `GetTrafficMirrorFilterIngressRulesRuleInput` via:
+//
+//          GetTrafficMirrorFilterIngressRulesRuleArgs{...}
+type GetTrafficMirrorFilterIngressRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetTrafficMirrorFilterIngressRulesRuleOutput() GetTrafficMirrorFilterIngressRulesRuleOutput
+	ToGetTrafficMirrorFilterIngressRulesRuleOutputWithContext(context.Context) GetTrafficMirrorFilterIngressRulesRuleOutput
+}
+
+type GetTrafficMirrorFilterIngressRulesRuleArgs struct {
+	// The destination CIDR block of the inbound traffic.
+	DestinationCidrBlock pulumi.StringInput `pulumi:"destinationCidrBlock"`
+	// The destination port range of the inbound traffic.
+	DestinationPortRange pulumi.StringInput `pulumi:"destinationPortRange"`
+	// The ID of the Traffic Mirror Filter Egress Rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+	RuleAction pulumi.StringInput `pulumi:"ruleAction"`
+	// The source CIDR block of the inbound traffic.
+	SourceCidrBlock pulumi.StringInput `pulumi:"sourceCidrBlock"`
+	// The source port range of the inbound traffic.
+	SourcePortRange pulumi.StringInput `pulumi:"sourcePortRange"`
+	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the filter associated with the inbound rule.
+	TrafficMirrorFilterId pulumi.StringInput `pulumi:"trafficMirrorFilterId"`
+	// The first ID of the resource.
+	TrafficMirrorFilterRuleId pulumi.StringInput `pulumi:"trafficMirrorFilterRuleId"`
+}
+
+func (GetTrafficMirrorFilterIngressRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficMirrorFilterIngressRulesRule)(nil)).Elem()
+}
+
+func (i GetTrafficMirrorFilterIngressRulesRuleArgs) ToGetTrafficMirrorFilterIngressRulesRuleOutput() GetTrafficMirrorFilterIngressRulesRuleOutput {
+	return i.ToGetTrafficMirrorFilterIngressRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetTrafficMirrorFilterIngressRulesRuleArgs) ToGetTrafficMirrorFilterIngressRulesRuleOutputWithContext(ctx context.Context) GetTrafficMirrorFilterIngressRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrafficMirrorFilterIngressRulesRuleOutput)
+}
+
+// GetTrafficMirrorFilterIngressRulesRuleArrayInput is an input type that accepts GetTrafficMirrorFilterIngressRulesRuleArray and GetTrafficMirrorFilterIngressRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetTrafficMirrorFilterIngressRulesRuleArrayInput` via:
+//
+//          GetTrafficMirrorFilterIngressRulesRuleArray{ GetTrafficMirrorFilterIngressRulesRuleArgs{...} }
+type GetTrafficMirrorFilterIngressRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetTrafficMirrorFilterIngressRulesRuleArrayOutput() GetTrafficMirrorFilterIngressRulesRuleArrayOutput
+	ToGetTrafficMirrorFilterIngressRulesRuleArrayOutputWithContext(context.Context) GetTrafficMirrorFilterIngressRulesRuleArrayOutput
+}
+
+type GetTrafficMirrorFilterIngressRulesRuleArray []GetTrafficMirrorFilterIngressRulesRuleInput
+
+func (GetTrafficMirrorFilterIngressRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrafficMirrorFilterIngressRulesRule)(nil)).Elem()
+}
+
+func (i GetTrafficMirrorFilterIngressRulesRuleArray) ToGetTrafficMirrorFilterIngressRulesRuleArrayOutput() GetTrafficMirrorFilterIngressRulesRuleArrayOutput {
+	return i.ToGetTrafficMirrorFilterIngressRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetTrafficMirrorFilterIngressRulesRuleArray) ToGetTrafficMirrorFilterIngressRulesRuleArrayOutputWithContext(ctx context.Context) GetTrafficMirrorFilterIngressRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrafficMirrorFilterIngressRulesRuleArrayOutput)
+}
+
+type GetTrafficMirrorFilterIngressRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetTrafficMirrorFilterIngressRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficMirrorFilterIngressRulesRule)(nil)).Elem()
+}
+
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) ToGetTrafficMirrorFilterIngressRulesRuleOutput() GetTrafficMirrorFilterIngressRulesRuleOutput {
+	return o
+}
+
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) ToGetTrafficMirrorFilterIngressRulesRuleOutputWithContext(ctx context.Context) GetTrafficMirrorFilterIngressRulesRuleOutput {
+	return o
+}
+
+// The destination CIDR block of the inbound traffic.
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) DestinationCidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.DestinationCidrBlock }).(pulumi.StringOutput)
+}
+
+// The destination port range of the inbound traffic.
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) DestinationPortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.DestinationPortRange }).(pulumi.StringOutput)
+}
+
+// The ID of the Traffic Mirror Filter Egress Rule.
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) RuleAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.RuleAction }).(pulumi.StringOutput)
+}
+
+// The source CIDR block of the inbound traffic.
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) SourceCidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.SourceCidrBlock }).(pulumi.StringOutput)
+}
+
+// The source port range of the inbound traffic.
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) SourcePortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.SourcePortRange }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the filter associated with the inbound rule.
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) TrafficMirrorFilterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.TrafficMirrorFilterId }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetTrafficMirrorFilterIngressRulesRuleOutput) TrafficMirrorFilterRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.TrafficMirrorFilterRuleId }).(pulumi.StringOutput)
+}
+
+type GetTrafficMirrorFilterIngressRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTrafficMirrorFilterIngressRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrafficMirrorFilterIngressRulesRule)(nil)).Elem()
+}
+
+func (o GetTrafficMirrorFilterIngressRulesRuleArrayOutput) ToGetTrafficMirrorFilterIngressRulesRuleArrayOutput() GetTrafficMirrorFilterIngressRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetTrafficMirrorFilterIngressRulesRuleArrayOutput) ToGetTrafficMirrorFilterIngressRulesRuleArrayOutputWithContext(ctx context.Context) GetTrafficMirrorFilterIngressRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetTrafficMirrorFilterIngressRulesRuleArrayOutput) Index(i pulumi.IntInput) GetTrafficMirrorFilterIngressRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTrafficMirrorFilterIngressRulesRule {
+		return vs[0].([]GetTrafficMirrorFilterIngressRulesRule)[vs[1].(int)]
+	}).(GetTrafficMirrorFilterIngressRulesRuleOutput)
+}
+
 type GetTrafficMirrorFiltersFilter struct {
 	// The ID of the Traffic Mirror Filter.
 	Id string `pulumi:"id"`
@@ -5393,6 +5580,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSwitchesVswitchArrayOutput{})
 	pulumi.RegisterOutputType(GetTrafficMirrorFilterEgressRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetTrafficMirrorFilterEgressRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetTrafficMirrorFilterIngressRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetTrafficMirrorFilterIngressRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetTrafficMirrorFiltersFilterOutput{})
 	pulumi.RegisterOutputType(GetTrafficMirrorFiltersFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcFlowLogsLogOutput{})

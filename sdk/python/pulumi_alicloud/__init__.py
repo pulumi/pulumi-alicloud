@@ -8,10 +8,12 @@ from .get_caller_identity import *
 from .get_file_crc64_checksum import *
 from .get_msc_sub_contacts import *
 from .get_msc_sub_subscriptions import *
+from .get_msc_sub_webhooks import *
 from .get_regions import *
 from .get_zones import *
 from .msc_sub_contract import *
 from .msc_sub_subscription import *
+from .msc_sub_webhook import *
 from .provider import *
 from ._inputs import *
 from . import outputs
@@ -139,6 +141,8 @@ def _register_module():
                 return MscSubContract(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:index/mscSubSubscription:MscSubSubscription":
                 return MscSubSubscription(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:index/mscSubWebhook:MscSubWebhook":
+                return MscSubWebhook(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
@@ -146,6 +150,7 @@ def _register_module():
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "index/mscSubContract", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "index/mscSubSubscription", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "index/mscSubWebhook", _module_instance)
 
 
     class Package(pulumi.runtime.ResourcePackage):

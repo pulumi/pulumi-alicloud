@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// The name of user.
         /// </summary>
         [Output("userName")]
-        public Output<string?> UserName { get; private set; } = null!;
+        public Output<string> UserName { get; private set; } = null!;
 
 
         /// <summary>
@@ -174,8 +174,8 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// The name of user.
         /// </summary>
-        [Input("userName")]
-        public Input<string>? UserName { get; set; }
+        [Input("userName", required: true)]
+        public Input<string> UserName { get; set; } = null!;
 
         public UserArgs()
         {

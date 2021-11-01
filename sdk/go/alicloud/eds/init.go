@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:eds/ecdPolicyGroup:EcdPolicyGroup":
 		r = &EcdPolicyGroup{}
+	case "alicloud:eds/nasFileSystem:NasFileSystem":
+		r = &NasFileSystem{}
 	case "alicloud:eds/simpleOfficeSite:SimpleOfficeSite":
 		r = &SimpleOfficeSite{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eds/ecdPolicyGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eds/nasFileSystem",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

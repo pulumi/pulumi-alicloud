@@ -110,6 +110,25 @@ export interface GetMscSubSubscriptionsSubscription {
     webhookStatus: number;
 }
 
+export interface GetMscSubWebhooksWebhook {
+    /**
+     * The ID of the Webhook.
+     */
+    id: string;
+    /**
+     * The serverUrl of the Subscription.
+     */
+    serverUrl: string;
+    /**
+     * The first ID of the resource.
+     */
+    webhookId: string;
+    /**
+     * The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
+     */
+    webhookName: string;
+}
+
 export interface GetRegionsRegion {
     /**
      * ID of the region.
@@ -4929,6 +4948,13 @@ export namespace cfg {
         parameterValue?: string;
     }
 
+    export interface AggregateCompliancePackConfigRuleId {
+        /**
+         * The rule ID of Aggregate Config Rule.
+         */
+        configRuleId?: string;
+    }
+
     export interface AggregatorAggregatorAccount {
         /**
          * Aggregator account Uid.
@@ -4964,6 +4990,13 @@ export namespace cfg {
          * The parameter value.
          */
         parameterValue?: string;
+    }
+
+    export interface CompliancePackConfigRuleId {
+        /**
+         * The rule ID of Config Rule.
+         */
+        configRuleId?: string;
     }
 
     export interface GetAggregateCompliancePacksPack {
@@ -10245,6 +10278,21 @@ export namespace eci {
         ip?: string;
     }
 
+    export interface ContainerGroupImageRegistryCredential {
+        /**
+         * The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+         */
+        password: string;
+        /**
+         * The address of the image repository. It is required when `imageRegistryCredential` is configured.
+         */
+        server: string;
+        /**
+         * The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+         */
+        userName: string;
+    }
+
     export interface ContainerGroupInitContainer {
         /**
          * The arguments passed to the commands.
@@ -13621,6 +13669,73 @@ export namespace eds {
          * The type of security rules.
          */
         type?: string;
+    }
+
+    export interface GetNasFileSystemsSystem {
+        /**
+         * The capacity of nas file system.
+         */
+        capacity: string;
+        /**
+         * The create time of nas file system.
+         */
+        createTime: string;
+        /**
+         * The description of nas file system.
+         */
+        description: string;
+        /**
+         * The filesystem id of nas file system.
+         */
+        fileSystemId: string;
+        /**
+         * The type of nas file system.
+         */
+        fileSystemType: string;
+        /**
+         * The ID of the Nas File System.
+         */
+        id: string;
+        /**
+         * The size of metered.
+         */
+        meteredSize: string;
+        /**
+         * The domain of mount target.
+         */
+        mountTargetDomain: string;
+        /**
+         * The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
+         */
+        mountTargetStatus: string;
+        /**
+         * The name of nas file system.
+         */
+        nasFileSystemName: string;
+        /**
+         * The ID of office site.
+         */
+        officeSiteId: string;
+        /**
+         * The name of office site.
+         */
+        officeSiteName: string;
+        /**
+         * The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+         */
+        status: string;
+        /**
+         * The storage type of nas file system.
+         */
+        storageType: string;
+        /**
+         * Whether to support Acl.
+         */
+        supportAcl: boolean;
+        /**
+         * The zone id of nas file system.
+         */
+        zoneId: string;
     }
 
     export interface GetPolicyGroupsGroup {
@@ -25923,6 +26038,53 @@ export namespace vpc {
         status: string;
         /**
          * The ID of the filter associated with the outbound rule.
+         */
+        trafficMirrorFilterId: string;
+        /**
+         * The first ID of the resource.
+         */
+        trafficMirrorFilterRuleId: string;
+    }
+
+    export interface GetTrafficMirrorFilterIngressRulesRule {
+        /**
+         * The destination CIDR block of the inbound traffic.
+         */
+        destinationCidrBlock: string;
+        /**
+         * The destination port range of the inbound traffic.
+         */
+        destinationPortRange: string;
+        /**
+         * The ID of the Traffic Mirror Filter Egress Rule.
+         */
+        id: string;
+        /**
+         * The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
+         */
+        priority: number;
+        /**
+         * The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
+         */
+        protocol: string;
+        /**
+         * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+         */
+        ruleAction: string;
+        /**
+         * The source CIDR block of the inbound traffic.
+         */
+        sourceCidrBlock: string;
+        /**
+         * The source port range of the inbound traffic.
+         */
+        sourcePortRange: string;
+        /**
+         * The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+         */
+        status: string;
+        /**
+         * The ID of the filter associated with the inbound rule.
          */
         trafficMirrorFilterId: string;
         /**

@@ -13,69 +13,26 @@ __all__ = ['MonitorGroupArgs', 'MonitorGroup']
 @pulumi.input_type
 class MonitorGroupArgs:
     def __init__(__self__, *,
-                 monitor_group_name: pulumi.Input[str],
                  contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 monitor_group_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a MonitorGroup resource.
-        :param pulumi.Input[str] monitor_group_name: The name of the application group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: The alert group to which alert notifications will be sent.
-        """
-        pulumi.set(__self__, "monitor_group_name", monitor_group_name)
-        if contact_groups is not None:
-            pulumi.set(__self__, "contact_groups", contact_groups)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="monitorGroupName")
-    def monitor_group_name(self) -> pulumi.Input[str]:
-        """
-        The name of the application group.
-        """
-        return pulumi.get(self, "monitor_group_name")
-
-    @monitor_group_name.setter
-    def monitor_group_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "monitor_group_name", value)
-
-    @property
-    @pulumi.getter(name="contactGroups")
-    def contact_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The alert group to which alert notifications will be sent.
-        """
-        return pulumi.get(self, "contact_groups")
-
-    @contact_groups.setter
-    def contact_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "contact_groups", value)
-
-    @property
-    @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "tags")
-
-    @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "tags", value)
-
-
-@pulumi.input_type
-class _MonitorGroupState:
-    def __init__(__self__, *,
-                 contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 monitor_group_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
-        """
-        Input properties used for looking up and filtering MonitorGroup resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: The alert group to which alert notifications will be sent.
         :param pulumi.Input[str] monitor_group_name: The name of the application group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
         """
         if contact_groups is not None:
             pulumi.set(__self__, "contact_groups", contact_groups)
         if monitor_group_name is not None:
             pulumi.set(__self__, "monitor_group_name", monitor_group_name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_group_name is not None:
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -104,6 +61,114 @@ class _MonitorGroupState:
         pulumi.set(self, "monitor_group_name", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _MonitorGroupState:
+    def __init__(__self__, *,
+                 contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 monitor_group_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering MonitorGroup resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: The alert group to which alert notifications will be sent.
+        :param pulumi.Input[str] monitor_group_name: The name of the application group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        """
+        if contact_groups is not None:
+            pulumi.set(__self__, "contact_groups", contact_groups)
+        if monitor_group_name is not None:
+            pulumi.set(__self__, "monitor_group_name", monitor_group_name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_group_name is not None:
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="contactGroups")
+    def contact_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The alert group to which alert notifications will be sent.
+        """
+        return pulumi.get(self, "contact_groups")
+
+    @contact_groups.setter
+    def contact_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "contact_groups", value)
+
+    @property
+    @pulumi.getter(name="monitorGroupName")
+    def monitor_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the application group.
+        """
+        return pulumi.get(self, "monitor_group_name")
+
+    @monitor_group_name.setter
+    def monitor_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "monitor_group_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "tags")
@@ -120,6 +185,8 @@ class MonitorGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  monitor_group_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
@@ -138,6 +205,14 @@ class MonitorGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cms.MonitorGroup("example", monitor_group_name="tf-testaccmonitorgroup")
+        default2 = alicloud.cms.MonitorGroup("default2",
+            contact_groups=["your_contact_groups"],
+            resource_group_id="your_resource_group_id",
+            resource_group_name="resource_group_name",
+            tags={
+                "Created": "TF",
+                "For": "Acceptance-test",
+            })
         ```
 
         ## Import
@@ -152,12 +227,14 @@ class MonitorGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: The alert group to which alert notifications will be sent.
         :param pulumi.Input[str] monitor_group_name: The name of the application group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MonitorGroupArgs,
+                 args: Optional[MonitorGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloud Monitor Service Monitor Group resource.
@@ -175,6 +252,14 @@ class MonitorGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cms.MonitorGroup("example", monitor_group_name="tf-testaccmonitorgroup")
+        default2 = alicloud.cms.MonitorGroup("default2",
+            contact_groups=["your_contact_groups"],
+            resource_group_id="your_resource_group_id",
+            resource_group_name="resource_group_name",
+            tags={
+                "Created": "TF",
+                "For": "Acceptance-test",
+            })
         ```
 
         ## Import
@@ -202,6 +287,8 @@ class MonitorGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  monitor_group_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         if opts is None:
@@ -216,9 +303,9 @@ class MonitorGroup(pulumi.CustomResource):
             __props__ = MonitorGroupArgs.__new__(MonitorGroupArgs)
 
             __props__.__dict__["contact_groups"] = contact_groups
-            if monitor_group_name is None and not opts.urn:
-                raise TypeError("Missing required property 'monitor_group_name'")
             __props__.__dict__["monitor_group_name"] = monitor_group_name
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["resource_group_name"] = resource_group_name
             __props__.__dict__["tags"] = tags
         super(MonitorGroup, __self__).__init__(
             'alicloud:cms/monitorGroup:MonitorGroup',
@@ -232,6 +319,8 @@ class MonitorGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             monitor_group_name: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'MonitorGroup':
         """
         Get an existing MonitorGroup resource's state with the given name, id, and optional extra
@@ -242,6 +331,8 @@ class MonitorGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: The alert group to which alert notifications will be sent.
         :param pulumi.Input[str] monitor_group_name: The name of the application group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -249,6 +340,8 @@ class MonitorGroup(pulumi.CustomResource):
 
         __props__.__dict__["contact_groups"] = contact_groups
         __props__.__dict__["monitor_group_name"] = monitor_group_name
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["tags"] = tags
         return MonitorGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -267,6 +360,22 @@ class MonitorGroup(pulumi.CustomResource):
         The name of the application group.
         """
         return pulumi.get(self, "monitor_group_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
 
     @property
     @pulumi.getter

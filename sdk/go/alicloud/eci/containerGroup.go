@@ -135,6 +135,8 @@ type ContainerGroup struct {
 	EciSecurityContext ContainerGroupEciSecurityContextPtrOutput `pulumi:"eciSecurityContext"`
 	// HostAliases.
 	HostAliases ContainerGroupHostAliasArrayOutput `pulumi:"hostAliases"`
+	// The image registry credential. The details see Block `imageRegistryCredential`.
+	ImageRegistryCredentials ContainerGroupImageRegistryCredentialArrayOutput `pulumi:"imageRegistryCredentials"`
 	// The list of initContainers.
 	InitContainers ContainerGroupInitContainerArrayOutput `pulumi:"initContainers"`
 	// The type of the ECS instance.
@@ -212,6 +214,8 @@ type containerGroupState struct {
 	EciSecurityContext *ContainerGroupEciSecurityContext `pulumi:"eciSecurityContext"`
 	// HostAliases.
 	HostAliases []ContainerGroupHostAlias `pulumi:"hostAliases"`
+	// The image registry credential. The details see Block `imageRegistryCredential`.
+	ImageRegistryCredentials []ContainerGroupImageRegistryCredential `pulumi:"imageRegistryCredentials"`
 	// The list of initContainers.
 	InitContainers []ContainerGroupInitContainer `pulumi:"initContainers"`
 	// The type of the ECS instance.
@@ -249,6 +253,8 @@ type ContainerGroupState struct {
 	EciSecurityContext ContainerGroupEciSecurityContextPtrInput
 	// HostAliases.
 	HostAliases ContainerGroupHostAliasArrayInput
+	// The image registry credential. The details see Block `imageRegistryCredential`.
+	ImageRegistryCredentials ContainerGroupImageRegistryCredentialArrayInput
 	// The list of initContainers.
 	InitContainers ContainerGroupInitContainerArrayInput
 	// The type of the ECS instance.
@@ -290,6 +296,8 @@ type containerGroupArgs struct {
 	EciSecurityContext *ContainerGroupEciSecurityContext `pulumi:"eciSecurityContext"`
 	// HostAliases.
 	HostAliases []ContainerGroupHostAlias `pulumi:"hostAliases"`
+	// The image registry credential. The details see Block `imageRegistryCredential`.
+	ImageRegistryCredentials []ContainerGroupImageRegistryCredential `pulumi:"imageRegistryCredentials"`
 	// The list of initContainers.
 	InitContainers []ContainerGroupInitContainer `pulumi:"initContainers"`
 	// The type of the ECS instance.
@@ -326,6 +334,8 @@ type ContainerGroupArgs struct {
 	EciSecurityContext ContainerGroupEciSecurityContextPtrInput
 	// HostAliases.
 	HostAliases ContainerGroupHostAliasArrayInput
+	// The image registry credential. The details see Block `imageRegistryCredential`.
+	ImageRegistryCredentials ContainerGroupImageRegistryCredentialArrayInput
 	// The list of initContainers.
 	InitContainers ContainerGroupInitContainerArrayInput
 	// The type of the ECS instance.

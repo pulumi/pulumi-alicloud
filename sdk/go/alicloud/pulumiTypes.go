@@ -1306,6 +1306,130 @@ func (o GetMscSubSubscriptionsSubscriptionArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetMscSubSubscriptionsSubscriptionOutput)
 }
 
+type GetMscSubWebhooksWebhook struct {
+	// The ID of the Webhook.
+	Id string `pulumi:"id"`
+	// The serverUrl of the Subscription.
+	ServerUrl string `pulumi:"serverUrl"`
+	// The first ID of the resource.
+	WebhookId string `pulumi:"webhookId"`
+	// The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
+	WebhookName string `pulumi:"webhookName"`
+}
+
+// GetMscSubWebhooksWebhookInput is an input type that accepts GetMscSubWebhooksWebhookArgs and GetMscSubWebhooksWebhookOutput values.
+// You can construct a concrete instance of `GetMscSubWebhooksWebhookInput` via:
+//
+//          GetMscSubWebhooksWebhookArgs{...}
+type GetMscSubWebhooksWebhookInput interface {
+	pulumi.Input
+
+	ToGetMscSubWebhooksWebhookOutput() GetMscSubWebhooksWebhookOutput
+	ToGetMscSubWebhooksWebhookOutputWithContext(context.Context) GetMscSubWebhooksWebhookOutput
+}
+
+type GetMscSubWebhooksWebhookArgs struct {
+	// The ID of the Webhook.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The serverUrl of the Subscription.
+	ServerUrl pulumi.StringInput `pulumi:"serverUrl"`
+	// The first ID of the resource.
+	WebhookId pulumi.StringInput `pulumi:"webhookId"`
+	// The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
+	WebhookName pulumi.StringInput `pulumi:"webhookName"`
+}
+
+func (GetMscSubWebhooksWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMscSubWebhooksWebhook)(nil)).Elem()
+}
+
+func (i GetMscSubWebhooksWebhookArgs) ToGetMscSubWebhooksWebhookOutput() GetMscSubWebhooksWebhookOutput {
+	return i.ToGetMscSubWebhooksWebhookOutputWithContext(context.Background())
+}
+
+func (i GetMscSubWebhooksWebhookArgs) ToGetMscSubWebhooksWebhookOutputWithContext(ctx context.Context) GetMscSubWebhooksWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubWebhooksWebhookOutput)
+}
+
+// GetMscSubWebhooksWebhookArrayInput is an input type that accepts GetMscSubWebhooksWebhookArray and GetMscSubWebhooksWebhookArrayOutput values.
+// You can construct a concrete instance of `GetMscSubWebhooksWebhookArrayInput` via:
+//
+//          GetMscSubWebhooksWebhookArray{ GetMscSubWebhooksWebhookArgs{...} }
+type GetMscSubWebhooksWebhookArrayInput interface {
+	pulumi.Input
+
+	ToGetMscSubWebhooksWebhookArrayOutput() GetMscSubWebhooksWebhookArrayOutput
+	ToGetMscSubWebhooksWebhookArrayOutputWithContext(context.Context) GetMscSubWebhooksWebhookArrayOutput
+}
+
+type GetMscSubWebhooksWebhookArray []GetMscSubWebhooksWebhookInput
+
+func (GetMscSubWebhooksWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMscSubWebhooksWebhook)(nil)).Elem()
+}
+
+func (i GetMscSubWebhooksWebhookArray) ToGetMscSubWebhooksWebhookArrayOutput() GetMscSubWebhooksWebhookArrayOutput {
+	return i.ToGetMscSubWebhooksWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GetMscSubWebhooksWebhookArray) ToGetMscSubWebhooksWebhookArrayOutputWithContext(ctx context.Context) GetMscSubWebhooksWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubWebhooksWebhookArrayOutput)
+}
+
+type GetMscSubWebhooksWebhookOutput struct{ *pulumi.OutputState }
+
+func (GetMscSubWebhooksWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMscSubWebhooksWebhook)(nil)).Elem()
+}
+
+func (o GetMscSubWebhooksWebhookOutput) ToGetMscSubWebhooksWebhookOutput() GetMscSubWebhooksWebhookOutput {
+	return o
+}
+
+func (o GetMscSubWebhooksWebhookOutput) ToGetMscSubWebhooksWebhookOutputWithContext(ctx context.Context) GetMscSubWebhooksWebhookOutput {
+	return o
+}
+
+// The ID of the Webhook.
+func (o GetMscSubWebhooksWebhookOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubWebhooksWebhook) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The serverUrl of the Subscription.
+func (o GetMscSubWebhooksWebhookOutput) ServerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubWebhooksWebhook) string { return v.ServerUrl }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetMscSubWebhooksWebhookOutput) WebhookId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubWebhooksWebhook) string { return v.WebhookId }).(pulumi.StringOutput)
+}
+
+// The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
+func (o GetMscSubWebhooksWebhookOutput) WebhookName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubWebhooksWebhook) string { return v.WebhookName }).(pulumi.StringOutput)
+}
+
+type GetMscSubWebhooksWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMscSubWebhooksWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMscSubWebhooksWebhook)(nil)).Elem()
+}
+
+func (o GetMscSubWebhooksWebhookArrayOutput) ToGetMscSubWebhooksWebhookArrayOutput() GetMscSubWebhooksWebhookArrayOutput {
+	return o
+}
+
+func (o GetMscSubWebhooksWebhookArrayOutput) ToGetMscSubWebhooksWebhookArrayOutputWithContext(ctx context.Context) GetMscSubWebhooksWebhookArrayOutput {
+	return o
+}
+
+func (o GetMscSubWebhooksWebhookArrayOutput) Index(i pulumi.IntInput) GetMscSubWebhooksWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMscSubWebhooksWebhook {
+		return vs[0].([]GetMscSubWebhooksWebhook)[vs[1].(int)]
+	}).(GetMscSubWebhooksWebhookOutput)
+}
+
 type GetRegionsRegion struct {
 	// ID of the region.
 	Id string `pulumi:"id"`
@@ -1581,6 +1705,8 @@ func init() {
 	pulumi.RegisterOutputType(GetMscSubContactsContactArrayOutput{})
 	pulumi.RegisterOutputType(GetMscSubSubscriptionsSubscriptionOutput{})
 	pulumi.RegisterOutputType(GetMscSubSubscriptionsSubscriptionArrayOutput{})
+	pulumi.RegisterOutputType(GetMscSubWebhooksWebhookOutput{})
+	pulumi.RegisterOutputType(GetMscSubWebhooksWebhookArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})

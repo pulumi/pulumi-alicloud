@@ -1151,6 +1151,13 @@ export namespace cfg {
         parameterValue?: pulumi.Input<string>;
     }
 
+    export interface AggregateCompliancePackConfigRuleId {
+        /**
+         * The rule ID of Aggregate Config Rule.
+         */
+        configRuleId?: pulumi.Input<string>;
+    }
+
     export interface AggregatorAggregatorAccount {
         /**
          * Aggregator account Uid.
@@ -1186,6 +1193,13 @@ export namespace cfg {
          * The parameter value.
          */
         parameterValue?: pulumi.Input<string>;
+    }
+
+    export interface CompliancePackConfigRuleId {
+        /**
+         * The rule ID of Config Rule.
+         */
+        configRuleId?: pulumi.Input<string>;
     }
 
 }
@@ -2284,6 +2298,21 @@ export namespace eci {
          * Adds an IP address.
          */
         ip?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupImageRegistryCredential {
+        /**
+         * The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+         */
+        password: pulumi.Input<string>;
+        /**
+         * The address of the image repository. It is required when `imageRegistryCredential` is configured.
+         */
+        server: pulumi.Input<string>;
+        /**
+         * The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+         */
+        userName: pulumi.Input<string>;
     }
 
     export interface ContainerGroupInitContainer {

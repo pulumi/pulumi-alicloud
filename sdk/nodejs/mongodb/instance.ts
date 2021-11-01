@@ -47,6 +47,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly accountPassword!: pulumi.Output<string | undefined>;
     /**
+     * Auto renew for prepaid, true of false. Default is false.
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     */
+    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     public readonly backupPeriods!: pulumi.Output<string[]>;
@@ -69,7 +74,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
@@ -172,6 +177,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["accountPassword"] = state ? state.accountPassword : undefined;
+            inputs["autoRenew"] = state ? state.autoRenew : undefined;
             inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
             inputs["backupTime"] = state ? state.backupTime : undefined;
             inputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
@@ -210,6 +216,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'engineVersion'");
             }
             inputs["accountPassword"] = args ? args.accountPassword : undefined;
+            inputs["autoRenew"] = args ? args.autoRenew : undefined;
             inputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             inputs["backupTime"] = args ? args.backupTime : undefined;
             inputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
@@ -253,6 +260,11 @@ export interface InstanceState {
      */
     readonly accountPassword?: pulumi.Input<string>;
     /**
+     * Auto renew for prepaid, true of false. Default is false.
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     */
+    readonly autoRenew?: pulumi.Input<boolean>;
+    /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
@@ -275,7 +287,7 @@ export interface InstanceState {
      */
     readonly engineVersion?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -374,6 +386,11 @@ export interface InstanceArgs {
      */
     readonly accountPassword?: pulumi.Input<string>;
     /**
+     * Auto renew for prepaid, true of false. Default is false.
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     */
+    readonly autoRenew?: pulumi.Input<boolean>;
+    /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
@@ -396,7 +413,7 @@ export interface InstanceArgs {
      */
     readonly engineVersion: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**

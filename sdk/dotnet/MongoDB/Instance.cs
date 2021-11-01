@@ -28,6 +28,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
+        /// Auto renew for prepaid, true of false. Default is false.
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
         /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         /// </summary>
         [Output("backupPeriods")]
@@ -60,7 +67,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
@@ -242,6 +249,13 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("accountPassword")]
         public Input<string>? AccountPassword { get; set; }
 
+        /// <summary>
+        /// Auto renew for prepaid, true of false. Default is false.
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
 
@@ -281,7 +295,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -418,6 +432,13 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("accountPassword")]
         public Input<string>? AccountPassword { get; set; }
 
+        /// <summary>
+        /// Auto renew for prepaid, true of false. Default is false.
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
 
@@ -457,7 +478,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }

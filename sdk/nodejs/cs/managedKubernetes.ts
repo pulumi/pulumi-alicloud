@@ -82,6 +82,18 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly connections!: pulumi.Output<outputs.cs.ManagedKubernetesConnections>;
     /**
+     * List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+     */
+    public readonly controlPlaneLogComponents!: pulumi.Output<string[] | undefined>;
+    /**
+     * Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+     */
+    public readonly controlPlaneLogProject!: pulumi.Output<string | undefined>;
+    /**
+     * Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+     */
+    public readonly controlPlaneLogTtl!: pulumi.Output<string | undefined>;
+    /**
      * Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
      */
     public readonly cpuPolicy!: pulumi.Output<string | undefined>;
@@ -198,8 +210,9 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    public readonly retainResources!: pulumi.Output<string[] | undefined>;
     /**
-     * The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      */
     public readonly runtime!: pulumi.Output<outputs.cs.ManagedKubernetesRuntime | undefined>;
     /**
@@ -338,6 +351,9 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["clusterDomain"] = state ? state.clusterDomain : undefined;
             inputs["clusterSpec"] = state ? state.clusterSpec : undefined;
             inputs["connections"] = state ? state.connections : undefined;
+            inputs["controlPlaneLogComponents"] = state ? state.controlPlaneLogComponents : undefined;
+            inputs["controlPlaneLogProject"] = state ? state.controlPlaneLogProject : undefined;
+            inputs["controlPlaneLogTtl"] = state ? state.controlPlaneLogTtl : undefined;
             inputs["cpuPolicy"] = state ? state.cpuPolicy : undefined;
             inputs["customSan"] = state ? state.customSan : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
@@ -368,6 +384,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["proxyMode"] = state ? state.proxyMode : undefined;
             inputs["rdsInstances"] = state ? state.rdsInstances : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["retainResources"] = state ? state.retainResources : undefined;
             inputs["runtime"] = state ? state.runtime : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["serviceAccountIssuer"] = state ? state.serviceAccountIssuer : undefined;
@@ -413,6 +430,9 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
             inputs["clusterDomain"] = args ? args.clusterDomain : undefined;
             inputs["clusterSpec"] = args ? args.clusterSpec : undefined;
+            inputs["controlPlaneLogComponents"] = args ? args.controlPlaneLogComponents : undefined;
+            inputs["controlPlaneLogProject"] = args ? args.controlPlaneLogProject : undefined;
+            inputs["controlPlaneLogTtl"] = args ? args.controlPlaneLogTtl : undefined;
             inputs["cpuPolicy"] = args ? args.cpuPolicy : undefined;
             inputs["customSan"] = args ? args.customSan : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
@@ -442,6 +462,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["proxyMode"] = args ? args.proxyMode : undefined;
             inputs["rdsInstances"] = args ? args.rdsInstances : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["retainResources"] = args ? args.retainResources : undefined;
             inputs["runtime"] = args ? args.runtime : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["serviceAccountIssuer"] = args ? args.serviceAccountIssuer : undefined;
@@ -528,6 +549,18 @@ export interface ManagedKubernetesState {
      * Map of kubernetes cluster connection information.
      */
     readonly connections?: pulumi.Input<inputs.cs.ManagedKubernetesConnections>;
+    /**
+     * List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+     */
+    readonly controlPlaneLogComponents?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+     */
+    readonly controlPlaneLogProject?: pulumi.Input<string>;
+    /**
+     * Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+     */
+    readonly controlPlaneLogTtl?: pulumi.Input<string>;
     /**
      * Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
      */
@@ -645,8 +678,9 @@ export interface ManagedKubernetesState {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    readonly retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      */
     readonly runtime?: pulumi.Input<inputs.cs.ManagedKubernetesRuntime>;
     /**
@@ -799,6 +833,18 @@ export interface ManagedKubernetesArgs {
      */
     readonly clusterSpec?: pulumi.Input<string>;
     /**
+     * List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+     */
+    readonly controlPlaneLogComponents?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+     */
+    readonly controlPlaneLogProject?: pulumi.Input<string>;
+    /**
+     * Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+     */
+    readonly controlPlaneLogTtl?: pulumi.Input<string>;
+    /**
      * Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
      */
     readonly cpuPolicy?: pulumi.Input<string>;
@@ -911,8 +957,9 @@ export interface ManagedKubernetesArgs {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    readonly retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      */
     readonly runtime?: pulumi.Input<inputs.cs.ManagedKubernetesRuntime>;
     /**

@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string?> DirectoryName { get; private set; } = null!;
 
         /// <summary>
-        /// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        /// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
         /// </summary>
         [Output("mfaAuthenticationStatus")]
         public Output<string> MfaAuthenticationStatus { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? DirectoryName { get; set; }
 
         /// <summary>
-        /// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        /// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
         /// </summary>
         [Input("mfaAuthenticationStatus")]
         public Input<string>? MfaAuthenticationStatus { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? DirectoryName { get; set; }
 
         /// <summary>
-        /// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        /// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
         /// </summary>
         [Input("mfaAuthenticationStatus")]
         public Input<string>? MfaAuthenticationStatus { get; set; }

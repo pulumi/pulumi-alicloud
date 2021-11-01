@@ -56,6 +56,8 @@ type providerArgs struct {
 	ClientReadTimeout *int `pulumi:"clientReadTimeout"`
 	// Use this to mark a terraform configuration file source.
 	ConfigurationSource *string `pulumi:"configurationSource"`
+	// The URI of sidecar credentials service.
+	CredentialsUri *string `pulumi:"credentialsUri"`
 	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
 	// of the Alibaba Cloud console.
 	EcsRoleName *string            `pulumi:"ecsRoleName"`
@@ -105,6 +107,8 @@ type ProviderArgs struct {
 	ClientReadTimeout pulumi.IntPtrInput
 	// Use this to mark a terraform configuration file source.
 	ConfigurationSource pulumi.StringPtrInput
+	// The URI of sidecar credentials service.
+	CredentialsUri pulumi.StringPtrInput
 	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
 	// of the Alibaba Cloud console.
 	EcsRoleName pulumi.StringPtrInput

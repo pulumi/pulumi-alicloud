@@ -19,6 +19,7 @@ __all__ = [
     'ContainerGroupEciSecurityContext',
     'ContainerGroupEciSecurityContextSysctl',
     'ContainerGroupHostAlias',
+    'ContainerGroupImageRegistryCredential',
     'ContainerGroupInitContainer',
     'ContainerGroupInitContainerEnvironmentVar',
     'ContainerGroupInitContainerPort',
@@ -526,6 +527,63 @@ class ContainerGroupHostAlias(dict):
         Adds an IP address.
         """
         return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class ContainerGroupImageRegistryCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerGroupImageRegistryCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerGroupImageRegistryCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerGroupImageRegistryCredential.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password: str,
+                 server: str,
+                 user_name: str):
+        """
+        :param str password: The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        :param str server: The address of the image repository. It is required when `image_registry_credential` is configured.
+        :param str user_name: The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "server", server)
+        pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def server(self) -> str:
+        """
+        The address of the image repository. It is required when `image_registry_credential` is configured.
+        """
+        return pulumi.get(self, "server")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        """
+        return pulumi.get(self, "user_name")
 
 
 @pulumi.output_type

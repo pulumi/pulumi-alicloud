@@ -267,6 +267,238 @@ func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput) Index(i pulumi.Int
 	}).(EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput)
 }
 
+type GetNasFileSystemsSystem struct {
+	// The capacity of nas file system.
+	Capacity string `pulumi:"capacity"`
+	// The create time of nas file system.
+	CreateTime string `pulumi:"createTime"`
+	// The description of nas file system.
+	Description string `pulumi:"description"`
+	// The filesystem id of nas file system.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The type of nas file system.
+	FileSystemType string `pulumi:"fileSystemType"`
+	// The ID of the Nas File System.
+	Id string `pulumi:"id"`
+	// The size of metered.
+	MeteredSize string `pulumi:"meteredSize"`
+	// The domain of mount target.
+	MountTargetDomain string `pulumi:"mountTargetDomain"`
+	// The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
+	MountTargetStatus string `pulumi:"mountTargetStatus"`
+	// The name of nas file system.
+	NasFileSystemName string `pulumi:"nasFileSystemName"`
+	// The ID of office site.
+	OfficeSiteId string `pulumi:"officeSiteId"`
+	// The name of office site.
+	OfficeSiteName string `pulumi:"officeSiteName"`
+	// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+	Status string `pulumi:"status"`
+	// The storage type of nas file system.
+	StorageType string `pulumi:"storageType"`
+	// Whether to support Acl.
+	SupportAcl bool `pulumi:"supportAcl"`
+	// The zone id of nas file system.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetNasFileSystemsSystemInput is an input type that accepts GetNasFileSystemsSystemArgs and GetNasFileSystemsSystemOutput values.
+// You can construct a concrete instance of `GetNasFileSystemsSystemInput` via:
+//
+//          GetNasFileSystemsSystemArgs{...}
+type GetNasFileSystemsSystemInput interface {
+	pulumi.Input
+
+	ToGetNasFileSystemsSystemOutput() GetNasFileSystemsSystemOutput
+	ToGetNasFileSystemsSystemOutputWithContext(context.Context) GetNasFileSystemsSystemOutput
+}
+
+type GetNasFileSystemsSystemArgs struct {
+	// The capacity of nas file system.
+	Capacity pulumi.StringInput `pulumi:"capacity"`
+	// The create time of nas file system.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of nas file system.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The filesystem id of nas file system.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The type of nas file system.
+	FileSystemType pulumi.StringInput `pulumi:"fileSystemType"`
+	// The ID of the Nas File System.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The size of metered.
+	MeteredSize pulumi.StringInput `pulumi:"meteredSize"`
+	// The domain of mount target.
+	MountTargetDomain pulumi.StringInput `pulumi:"mountTargetDomain"`
+	// The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
+	MountTargetStatus pulumi.StringInput `pulumi:"mountTargetStatus"`
+	// The name of nas file system.
+	NasFileSystemName pulumi.StringInput `pulumi:"nasFileSystemName"`
+	// The ID of office site.
+	OfficeSiteId pulumi.StringInput `pulumi:"officeSiteId"`
+	// The name of office site.
+	OfficeSiteName pulumi.StringInput `pulumi:"officeSiteName"`
+	// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The storage type of nas file system.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+	// Whether to support Acl.
+	SupportAcl pulumi.BoolInput `pulumi:"supportAcl"`
+	// The zone id of nas file system.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetNasFileSystemsSystemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNasFileSystemsSystem)(nil)).Elem()
+}
+
+func (i GetNasFileSystemsSystemArgs) ToGetNasFileSystemsSystemOutput() GetNasFileSystemsSystemOutput {
+	return i.ToGetNasFileSystemsSystemOutputWithContext(context.Background())
+}
+
+func (i GetNasFileSystemsSystemArgs) ToGetNasFileSystemsSystemOutputWithContext(ctx context.Context) GetNasFileSystemsSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNasFileSystemsSystemOutput)
+}
+
+// GetNasFileSystemsSystemArrayInput is an input type that accepts GetNasFileSystemsSystemArray and GetNasFileSystemsSystemArrayOutput values.
+// You can construct a concrete instance of `GetNasFileSystemsSystemArrayInput` via:
+//
+//          GetNasFileSystemsSystemArray{ GetNasFileSystemsSystemArgs{...} }
+type GetNasFileSystemsSystemArrayInput interface {
+	pulumi.Input
+
+	ToGetNasFileSystemsSystemArrayOutput() GetNasFileSystemsSystemArrayOutput
+	ToGetNasFileSystemsSystemArrayOutputWithContext(context.Context) GetNasFileSystemsSystemArrayOutput
+}
+
+type GetNasFileSystemsSystemArray []GetNasFileSystemsSystemInput
+
+func (GetNasFileSystemsSystemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNasFileSystemsSystem)(nil)).Elem()
+}
+
+func (i GetNasFileSystemsSystemArray) ToGetNasFileSystemsSystemArrayOutput() GetNasFileSystemsSystemArrayOutput {
+	return i.ToGetNasFileSystemsSystemArrayOutputWithContext(context.Background())
+}
+
+func (i GetNasFileSystemsSystemArray) ToGetNasFileSystemsSystemArrayOutputWithContext(ctx context.Context) GetNasFileSystemsSystemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNasFileSystemsSystemArrayOutput)
+}
+
+type GetNasFileSystemsSystemOutput struct{ *pulumi.OutputState }
+
+func (GetNasFileSystemsSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNasFileSystemsSystem)(nil)).Elem()
+}
+
+func (o GetNasFileSystemsSystemOutput) ToGetNasFileSystemsSystemOutput() GetNasFileSystemsSystemOutput {
+	return o
+}
+
+func (o GetNasFileSystemsSystemOutput) ToGetNasFileSystemsSystemOutputWithContext(ctx context.Context) GetNasFileSystemsSystemOutput {
+	return o
+}
+
+// The capacity of nas file system.
+func (o GetNasFileSystemsSystemOutput) Capacity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.Capacity }).(pulumi.StringOutput)
+}
+
+// The create time of nas file system.
+func (o GetNasFileSystemsSystemOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of nas file system.
+func (o GetNasFileSystemsSystemOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The filesystem id of nas file system.
+func (o GetNasFileSystemsSystemOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The type of nas file system.
+func (o GetNasFileSystemsSystemOutput) FileSystemType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.FileSystemType }).(pulumi.StringOutput)
+}
+
+// The ID of the Nas File System.
+func (o GetNasFileSystemsSystemOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The size of metered.
+func (o GetNasFileSystemsSystemOutput) MeteredSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.MeteredSize }).(pulumi.StringOutput)
+}
+
+// The domain of mount target.
+func (o GetNasFileSystemsSystemOutput) MountTargetDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.MountTargetDomain }).(pulumi.StringOutput)
+}
+
+// The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
+func (o GetNasFileSystemsSystemOutput) MountTargetStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.MountTargetStatus }).(pulumi.StringOutput)
+}
+
+// The name of nas file system.
+func (o GetNasFileSystemsSystemOutput) NasFileSystemName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.NasFileSystemName }).(pulumi.StringOutput)
+}
+
+// The ID of office site.
+func (o GetNasFileSystemsSystemOutput) OfficeSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.OfficeSiteId }).(pulumi.StringOutput)
+}
+
+// The name of office site.
+func (o GetNasFileSystemsSystemOutput) OfficeSiteName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.OfficeSiteName }).(pulumi.StringOutput)
+}
+
+// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+func (o GetNasFileSystemsSystemOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage type of nas file system.
+func (o GetNasFileSystemsSystemOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// Whether to support Acl.
+func (o GetNasFileSystemsSystemOutput) SupportAcl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) bool { return v.SupportAcl }).(pulumi.BoolOutput)
+}
+
+// The zone id of nas file system.
+func (o GetNasFileSystemsSystemOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetNasFileSystemsSystemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNasFileSystemsSystemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNasFileSystemsSystem)(nil)).Elem()
+}
+
+func (o GetNasFileSystemsSystemArrayOutput) ToGetNasFileSystemsSystemArrayOutput() GetNasFileSystemsSystemArrayOutput {
+	return o
+}
+
+func (o GetNasFileSystemsSystemArrayOutput) ToGetNasFileSystemsSystemArrayOutputWithContext(ctx context.Context) GetNasFileSystemsSystemArrayOutput {
+	return o
+}
+
+func (o GetNasFileSystemsSystemArrayOutput) Index(i pulumi.IntInput) GetNasFileSystemsSystemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNasFileSystemsSystem {
+		return vs[0].([]GetNasFileSystemsSystem)[vs[1].(int)]
+	}).(GetNasFileSystemsSystemOutput)
+}
+
 type GetPolicyGroupsGroup struct {
 	// The rule of authorize access rule.
 	AuthorizeAccessPolicyRules []GetPolicyGroupsGroupAuthorizeAccessPolicyRule `pulumi:"authorizeAccessPolicyRules"`
@@ -1141,6 +1373,8 @@ func init() {
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetNasFileSystemsSystemOutput{})
+	pulumi.RegisterOutputType(GetNasFileSystemsSystemArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput{})

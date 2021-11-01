@@ -81,6 +81,24 @@ namespace Pulumi.AliCloud.CS
         public Output<Outputs.ManagedKubernetesConnections> Connections { get; private set; } = null!;
 
         /// <summary>
+        /// List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+        /// </summary>
+        [Output("controlPlaneLogComponents")]
+        public Output<ImmutableArray<string>> ControlPlaneLogComponents { get; private set; } = null!;
+
+        /// <summary>
+        /// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+        /// </summary>
+        [Output("controlPlaneLogProject")]
+        public Output<string?> ControlPlaneLogProject { get; private set; } = null!;
+
+        /// <summary>
+        /// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        /// </summary>
+        [Output("controlPlaneLogTtl")]
+        public Output<string?> ControlPlaneLogTtl { get; private set; } = null!;
+
+        /// <summary>
         /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         /// </summary>
         [Output("cpuPolicy")]
@@ -257,8 +275,11 @@ namespace Pulumi.AliCloud.CS
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
+        [Output("retainResources")]
+        public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
+
         /// <summary>
-        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         /// </summary>
         [Output("runtime")]
         public Output<Outputs.ManagedKubernetesRuntime?> Runtime { get; private set; } = null!;
@@ -538,6 +559,30 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
+        [Input("controlPlaneLogComponents")]
+        private InputList<string>? _controlPlaneLogComponents;
+
+        /// <summary>
+        /// List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+        /// </summary>
+        public InputList<string> ControlPlaneLogComponents
+        {
+            get => _controlPlaneLogComponents ?? (_controlPlaneLogComponents = new InputList<string>());
+            set => _controlPlaneLogComponents = value;
+        }
+
+        /// <summary>
+        /// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+        /// </summary>
+        [Input("controlPlaneLogProject")]
+        public Input<string>? ControlPlaneLogProject { get; set; }
+
+        /// <summary>
+        /// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        /// </summary>
+        [Input("controlPlaneLogTtl")]
+        public Input<string>? ControlPlaneLogTtl { get; set; }
+
         /// <summary>
         /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         /// </summary>
@@ -727,8 +772,16 @@ namespace Pulumi.AliCloud.CS
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("retainResources")]
+        private InputList<string>? _retainResources;
+        public InputList<string> RetainResources
+        {
+            get => _retainResources ?? (_retainResources = new InputList<string>());
+            set => _retainResources = value;
+        }
+
         /// <summary>
-        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.ManagedKubernetesRuntimeArgs>? Runtime { get; set; }
@@ -980,6 +1033,30 @@ namespace Pulumi.AliCloud.CS
         [Input("connections")]
         public Input<Inputs.ManagedKubernetesConnectionsGetArgs>? Connections { get; set; }
 
+        [Input("controlPlaneLogComponents")]
+        private InputList<string>? _controlPlaneLogComponents;
+
+        /// <summary>
+        /// List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+        /// </summary>
+        public InputList<string> ControlPlaneLogComponents
+        {
+            get => _controlPlaneLogComponents ?? (_controlPlaneLogComponents = new InputList<string>());
+            set => _controlPlaneLogComponents = value;
+        }
+
+        /// <summary>
+        /// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+        /// </summary>
+        [Input("controlPlaneLogProject")]
+        public Input<string>? ControlPlaneLogProject { get; set; }
+
+        /// <summary>
+        /// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        /// </summary>
+        [Input("controlPlaneLogTtl")]
+        public Input<string>? ControlPlaneLogTtl { get; set; }
+
         /// <summary>
         /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         /// </summary>
@@ -1175,8 +1252,16 @@ namespace Pulumi.AliCloud.CS
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("retainResources")]
+        private InputList<string>? _retainResources;
+        public InputList<string> RetainResources
+        {
+            get => _retainResources ?? (_retainResources = new InputList<string>());
+            set => _retainResources = value;
+        }
+
         /// <summary>
-        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.ManagedKubernetesRuntimeGetArgs>? Runtime { get; set; }

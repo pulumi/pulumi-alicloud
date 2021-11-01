@@ -4,7 +4,7 @@ go 1.16
 
 replace (
 	github.com/Sirupsen/logrus => github.com/sirupsen/logrus v0.0.0-20181010200618-458213699411
-	github.com/denverdino/aliyungo => github.com/denverdino/aliyungo v0.0.0-20210518071019-eb3bbb144d8a
+	github.com/denverdino/aliyungo => github.com/denverdino/aliyungo v0.0.0-20210910083501-4f11020c0bfb
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	k8s.io/api => k8s.io/api v0.21.0-rc.0
@@ -12,7 +12,7 @@ replace (
 )
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.140.0
+	github.com/aliyun/terraform-provider-alicloud v1.141.0
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0
 	github.com/pulumi/pulumi/sdk/v3 v3.0.0

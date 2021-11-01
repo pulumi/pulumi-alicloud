@@ -31,6 +31,7 @@ class ServerlessKubernetesArgs:
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -105,6 +106,8 @@ class ServerlessKubernetesArgs:
             pulumi.set(__self__, "private_zone", private_zone)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if retain_resources is not None:
+            pulumi.set(__self__, "retain_resources", retain_resources)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if service_cidr is not None:
@@ -321,6 +324,15 @@ class ServerlessKubernetesArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="retainResources")
+    def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "retain_resources")
+
+    @retain_resources.setter
+    def retain_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "retain_resources", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -459,6 +471,7 @@ class _ServerlessKubernetesState:
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -533,6 +546,8 @@ class _ServerlessKubernetesState:
             pulumi.set(__self__, "private_zone", private_zone)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if retain_resources is not None:
+            pulumi.set(__self__, "retain_resources", retain_resources)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if service_cidr is not None:
@@ -739,6 +754,15 @@ class _ServerlessKubernetesState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="retainResources")
+    def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "retain_resources")
+
+    @retain_resources.setter
+    def retain_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "retain_resources", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -891,6 +915,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -987,6 +1012,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1028,6 +1054,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                 pulumi.log.warn("""private_zone is deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
             __props__.__dict__["private_zone"] = private_zone
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["retain_resources"] = retain_resources
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_cidr"] = service_cidr
             __props__.__dict__["service_discovery_types"] = service_discovery_types
@@ -1069,6 +1096,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             new_nat_gateway: Optional[pulumi.Input[bool]] = None,
             private_zone: Optional[pulumi.Input[bool]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             service_cidr: Optional[pulumi.Input[str]] = None,
             service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1134,6 +1162,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__.__dict__["new_nat_gateway"] = new_nat_gateway
         __props__.__dict__["private_zone"] = private_zone
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["retain_resources"] = retain_resources
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["service_cidr"] = service_cidr
         __props__.__dict__["service_discovery_types"] = service_discovery_types
@@ -1265,6 +1294,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
         The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="retainResources")
+    def retain_resources(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "retain_resources")
 
     @property
     @pulumi.getter(name="securityGroupId")

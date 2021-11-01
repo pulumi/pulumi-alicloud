@@ -11,11 +11,13 @@ export * from "./getCertificates";
 export * from "./getDomains";
 export * from "./getInstances";
 export * from "./instance";
+export * from "./protectionModule";
 
 // Import resources to register:
 import { Certificate } from "./certificate";
 import { Domain } from "./domain";
 import { Instance } from "./instance";
+import { ProtectionModule } from "./protectionModule";
 
 const _module = {
     version: utilities.getVersion(),
@@ -27,6 +29,8 @@ const _module = {
                 return new Domain(name, <any>undefined, { urn })
             case "alicloud:waf/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:waf/protectionModule:ProtectionModule":
+                return new ProtectionModule(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -35,3 +39,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "waf/certificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "waf/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "waf/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "waf/protectionModule", _module)

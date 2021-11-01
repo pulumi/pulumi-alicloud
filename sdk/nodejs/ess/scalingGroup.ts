@@ -60,6 +60,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly groupDeletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+     */
+    public readonly launchTemplateId!: pulumi.Output<string | undefined>;
+    /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
      * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -136,6 +140,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             inputs["defaultCooldown"] = state ? state.defaultCooldown : undefined;
             inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             inputs["groupDeletionProtection"] = state ? state.groupDeletionProtection : undefined;
+            inputs["launchTemplateId"] = state ? state.launchTemplateId : undefined;
             inputs["loadbalancerIds"] = state ? state.loadbalancerIds : undefined;
             inputs["maxSize"] = state ? state.maxSize : undefined;
             inputs["minSize"] = state ? state.minSize : undefined;
@@ -160,6 +165,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             inputs["defaultCooldown"] = args ? args.defaultCooldown : undefined;
             inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             inputs["groupDeletionProtection"] = args ? args.groupDeletionProtection : undefined;
+            inputs["launchTemplateId"] = args ? args.launchTemplateId : undefined;
             inputs["loadbalancerIds"] = args ? args.loadbalancerIds : undefined;
             inputs["maxSize"] = args ? args.maxSize : undefined;
             inputs["minSize"] = args ? args.minSize : undefined;
@@ -202,6 +208,10 @@ export interface ScalingGroupState {
      * Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
      */
     readonly groupDeletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+     */
+    readonly launchTemplateId?: pulumi.Input<string>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
@@ -285,6 +295,10 @@ export interface ScalingGroupArgs {
      * Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
      */
     readonly groupDeletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+     */
+    readonly launchTemplateId?: pulumi.Input<string>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.

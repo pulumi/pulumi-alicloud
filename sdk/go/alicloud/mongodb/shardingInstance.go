@@ -23,6 +23,8 @@ type ShardingInstance struct {
 
 	// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
+	// Auto renew for prepaid, true of false. Default is false.
+	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
@@ -31,7 +33,7 @@ type ShardingInstance struct {
 	ConfigServerLists ShardingInstanceConfigServerListArrayOutput `pulumi:"configServerLists"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
-	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
@@ -108,6 +110,8 @@ func GetShardingInstance(ctx *pulumi.Context,
 type shardingInstanceState struct {
 	// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
 	AccountPassword *string `pulumi:"accountPassword"`
+	// Auto renew for prepaid, true of false. Default is false.
+	AutoRenew *bool `pulumi:"autoRenew"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
@@ -116,7 +120,7 @@ type shardingInstanceState struct {
 	ConfigServerLists []ShardingInstanceConfigServerList `pulumi:"configServerLists"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
-	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -156,6 +160,8 @@ type shardingInstanceState struct {
 type ShardingInstanceState struct {
 	// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
 	AccountPassword pulumi.StringPtrInput
+	// Auto renew for prepaid, true of false. Default is false.
+	AutoRenew pulumi.BoolPtrInput
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods pulumi.StringArrayInput
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
@@ -164,7 +170,7 @@ type ShardingInstanceState struct {
 	ConfigServerLists ShardingInstanceConfigServerListArrayInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion pulumi.StringPtrInput
-	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType pulumi.StringPtrInput
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -208,13 +214,15 @@ func (ShardingInstanceState) ElementType() reflect.Type {
 type shardingInstanceArgs struct {
 	// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
 	AccountPassword *string `pulumi:"accountPassword"`
+	// Auto renew for prepaid, true of false. Default is false.
+	AutoRenew *bool `pulumi:"autoRenew"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion string `pulumi:"engineVersion"`
-	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -253,13 +261,15 @@ type shardingInstanceArgs struct {
 type ShardingInstanceArgs struct {
 	// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
 	AccountPassword pulumi.StringPtrInput
+	// Auto renew for prepaid, true of false. Default is false.
+	AutoRenew pulumi.BoolPtrInput
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods pulumi.StringArrayInput
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion pulumi.StringInput
-	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType pulumi.StringPtrInput
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput

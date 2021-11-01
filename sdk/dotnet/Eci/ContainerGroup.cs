@@ -173,6 +173,12 @@ namespace Pulumi.AliCloud.Eci
         public Output<ImmutableArray<Outputs.ContainerGroupHostAlias>> HostAliases { get; private set; } = null!;
 
         /// <summary>
+        /// The image registry credential. The details see Block `image_registry_credential`.
+        /// </summary>
+        [Output("imageRegistryCredentials")]
+        public Output<ImmutableArray<Outputs.ContainerGroupImageRegistryCredential>> ImageRegistryCredentials { get; private set; } = null!;
+
+        /// <summary>
         /// The list of initContainers.
         /// </summary>
         [Output("initContainers")]
@@ -332,6 +338,18 @@ namespace Pulumi.AliCloud.Eci
             set => _hostAliases = value;
         }
 
+        [Input("imageRegistryCredentials")]
+        private InputList<Inputs.ContainerGroupImageRegistryCredentialArgs>? _imageRegistryCredentials;
+
+        /// <summary>
+        /// The image registry credential. The details see Block `image_registry_credential`.
+        /// </summary>
+        public InputList<Inputs.ContainerGroupImageRegistryCredentialArgs> ImageRegistryCredentials
+        {
+            get => _imageRegistryCredentials ?? (_imageRegistryCredentials = new InputList<Inputs.ContainerGroupImageRegistryCredentialArgs>());
+            set => _imageRegistryCredentials = value;
+        }
+
         [Input("initContainers")]
         private InputList<Inputs.ContainerGroupInitContainerArgs>? _initContainers;
 
@@ -462,6 +480,18 @@ namespace Pulumi.AliCloud.Eci
         {
             get => _hostAliases ?? (_hostAliases = new InputList<Inputs.ContainerGroupHostAliasGetArgs>());
             set => _hostAliases = value;
+        }
+
+        [Input("imageRegistryCredentials")]
+        private InputList<Inputs.ContainerGroupImageRegistryCredentialGetArgs>? _imageRegistryCredentials;
+
+        /// <summary>
+        /// The image registry credential. The details see Block `image_registry_credential`.
+        /// </summary>
+        public InputList<Inputs.ContainerGroupImageRegistryCredentialGetArgs> ImageRegistryCredentials
+        {
+            get => _imageRegistryCredentials ?? (_imageRegistryCredentials = new InputList<Inputs.ContainerGroupImageRegistryCredentialGetArgs>());
+            set => _imageRegistryCredentials = value;
         }
 
         [Input("initContainers")]

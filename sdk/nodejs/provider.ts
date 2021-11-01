@@ -44,6 +44,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["clientConnectTimeout"] = pulumi.output(args ? args.clientConnectTimeout : undefined).apply(JSON.stringify);
             inputs["clientReadTimeout"] = pulumi.output(args ? args.clientReadTimeout : undefined).apply(JSON.stringify);
             inputs["configurationSource"] = args ? args.configurationSource : undefined;
+            inputs["credentialsUri"] = args ? args.credentialsUri : undefined;
             inputs["ecsRoleName"] = (args ? args.ecsRoleName : undefined) ?? utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
             inputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
             inputs["fc"] = args ? args.fc : undefined;
@@ -95,6 +96,10 @@ export interface ProviderArgs {
      * Use this to mark a terraform configuration file source.
      */
     readonly configurationSource?: pulumi.Input<string>;
+    /**
+     * The URI of sidecar credentials service.
+     */
+    readonly credentialsUri?: pulumi.Input<string>;
     /**
      * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
      * of the Alibaba Cloud console.

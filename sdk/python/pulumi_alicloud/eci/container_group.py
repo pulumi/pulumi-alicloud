@@ -23,6 +23,7 @@ class ContainerGroupArgs:
                  dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
                  eci_security_context: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
@@ -41,6 +42,7 @@ class ContainerGroupArgs:
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
         :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]] init_containers: The list of initContainers.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
@@ -62,6 +64,8 @@ class ContainerGroupArgs:
             pulumi.set(__self__, "eci_security_context", eci_security_context)
         if host_aliases is not None:
             pulumi.set(__self__, "host_aliases", host_aliases)
+        if image_registry_credentials is not None:
+            pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
         if init_containers is not None:
             pulumi.set(__self__, "init_containers", init_containers)
         if instance_type is not None:
@@ -173,6 +177,18 @@ class ContainerGroupArgs:
     @host_aliases.setter
     def host_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]):
         pulumi.set(self, "host_aliases", value)
+
+    @property
+    @pulumi.getter(name="imageRegistryCredentials")
+    def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]:
+        """
+        The image registry credential. The details see Block `image_registry_credential`.
+        """
+        return pulumi.get(self, "image_registry_credentials")
+
+    @image_registry_credentials.setter
+    def image_registry_credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]):
+        pulumi.set(self, "image_registry_credentials", value)
 
     @property
     @pulumi.getter(name="initContainers")
@@ -289,6 +305,7 @@ class _ContainerGroupState:
                  dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
                  eci_security_context: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
@@ -308,6 +325,7 @@ class _ContainerGroupState:
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
         :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]] init_containers: The list of initContainers.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
@@ -332,6 +350,8 @@ class _ContainerGroupState:
             pulumi.set(__self__, "eci_security_context", eci_security_context)
         if host_aliases is not None:
             pulumi.set(__self__, "host_aliases", host_aliases)
+        if image_registry_credentials is not None:
+            pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
         if init_containers is not None:
             pulumi.set(__self__, "init_containers", init_containers)
         if instance_type is not None:
@@ -425,6 +445,18 @@ class _ContainerGroupState:
     @host_aliases.setter
     def host_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]):
         pulumi.set(self, "host_aliases", value)
+
+    @property
+    @pulumi.getter(name="imageRegistryCredentials")
+    def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]:
+        """
+        The image registry credential. The details see Block `image_registry_credential`.
+        """
+        return pulumi.get(self, "image_registry_credentials")
+
+    @image_registry_credentials.setter
+    def image_registry_credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]):
+        pulumi.set(self, "image_registry_credentials", value)
 
     @property
     @pulumi.getter(name="initContainers")
@@ -579,6 +611,7 @@ class ContainerGroup(pulumi.CustomResource):
                  dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
                  eci_security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
@@ -685,6 +718,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
         :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]] init_containers: The list of initContainers.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
@@ -810,6 +844,7 @@ class ContainerGroup(pulumi.CustomResource):
                  dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
                  eci_security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
@@ -843,6 +878,7 @@ class ContainerGroup(pulumi.CustomResource):
             __props__.__dict__["dns_config"] = dns_config
             __props__.__dict__["eci_security_context"] = eci_security_context
             __props__.__dict__["host_aliases"] = host_aliases
+            __props__.__dict__["image_registry_credentials"] = image_registry_credentials
             __props__.__dict__["init_containers"] = init_containers
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["memory"] = memory
@@ -875,6 +911,7 @@ class ContainerGroup(pulumi.CustomResource):
             dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
             eci_security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']]] = None,
             host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
+            image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]]] = None,
             init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             memory: Optional[pulumi.Input[float]] = None,
@@ -899,6 +936,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
         :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]] init_containers: The list of initContainers.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
@@ -921,6 +959,7 @@ class ContainerGroup(pulumi.CustomResource):
         __props__.__dict__["dns_config"] = dns_config
         __props__.__dict__["eci_security_context"] = eci_security_context
         __props__.__dict__["host_aliases"] = host_aliases
+        __props__.__dict__["image_registry_credentials"] = image_registry_credentials
         __props__.__dict__["init_containers"] = init_containers
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["memory"] = memory
@@ -979,6 +1018,14 @@ class ContainerGroup(pulumi.CustomResource):
         HostAliases.
         """
         return pulumi.get(self, "host_aliases")
+
+    @property
+    @pulumi.getter(name="imageRegistryCredentials")
+    def image_registry_credentials(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerGroupImageRegistryCredential']]]:
+        """
+        The image registry credential. The details see Block `image_registry_credential`.
+        """
+        return pulumi.get(self, "image_registry_credentials")
 
     @property
     @pulumi.getter(name="initContainers")

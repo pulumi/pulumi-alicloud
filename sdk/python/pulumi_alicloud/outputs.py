@@ -13,6 +13,7 @@ __all__ = [
     'ProviderEndpoint',
     'GetMscSubContactsContactResult',
     'GetMscSubSubscriptionsSubscriptionResult',
+    'GetMscSubWebhooksWebhookResult',
     'GetRegionsRegionResult',
     'GetZonesZoneResult',
 ]
@@ -1239,6 +1240,57 @@ class GetMscSubSubscriptionsSubscriptionResult(dict):
         The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
         return pulumi.get(self, "webhook_status")
+
+
+@pulumi.output_type
+class GetMscSubWebhooksWebhookResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 server_url: str,
+                 webhook_id: str,
+                 webhook_name: str):
+        """
+        :param str id: The ID of the Webhook.
+        :param str server_url: The serverUrl of the Subscription.
+        :param str webhook_id: The first ID of the resource.
+        :param str webhook_name: The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "server_url", server_url)
+        pulumi.set(__self__, "webhook_id", webhook_id)
+        pulumi.set(__self__, "webhook_name", webhook_name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Webhook.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="serverUrl")
+    def server_url(self) -> str:
+        """
+        The serverUrl of the Subscription.
+        """
+        return pulumi.get(self, "server_url")
+
+    @property
+    @pulumi.getter(name="webhookId")
+    def webhook_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "webhook_id")
+
+    @property
+    @pulumi.getter(name="webhookName")
+    def webhook_name(self) -> str:
+        """
+        The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
+        """
+        return pulumi.get(self, "webhook_name")
 
 
 @pulumi.output_type

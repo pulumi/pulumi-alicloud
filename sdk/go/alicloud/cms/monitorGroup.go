@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +36,20 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_, err = cms.NewMonitorGroup(ctx, "default2", &cms.MonitorGroupArgs{
+// 			ContactGroups: pulumi.StringArray{
+// 				pulumi.String("your_contact_groups"),
+// 			},
+// 			ResourceGroupId:   pulumi.String("your_resource_group_id"),
+// 			ResourceGroupName: pulumi.String("resource_group_name"),
+// 			Tags: pulumi.StringMap{
+// 				"Created": pulumi.String("TF"),
+// 				"For":     pulumi.String("Acceptance-test"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		return nil
 // 	})
 // }
@@ -56,19 +69,20 @@ type MonitorGroup struct {
 	ContactGroups pulumi.StringArrayOutput `pulumi:"contactGroups"`
 	// The name of the application group.
 	MonitorGroupName pulumi.StringOutput `pulumi:"monitorGroupName"`
-	Tags             pulumi.MapOutput    `pulumi:"tags"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringPtrOutput `pulumi:"resourceGroupName"`
+	Tags              pulumi.MapOutput       `pulumi:"tags"`
 }
 
 // NewMonitorGroup registers a new resource with the given unique name, arguments, and options.
 func NewMonitorGroup(ctx *pulumi.Context,
 	name string, args *MonitorGroupArgs, opts ...pulumi.ResourceOption) (*MonitorGroup, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &MonitorGroupArgs{}
 	}
 
-	if args.MonitorGroupName == nil {
-		return nil, errors.New("invalid value for required argument 'MonitorGroupName'")
-	}
 	var resource MonitorGroup
 	err := ctx.RegisterResource("alicloud:cms/monitorGroup:MonitorGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -94,8 +108,12 @@ type monitorGroupState struct {
 	// The alert group to which alert notifications will be sent.
 	ContactGroups []string `pulumi:"contactGroups"`
 	// The name of the application group.
-	MonitorGroupName *string                `pulumi:"monitorGroupName"`
-	Tags             map[string]interface{} `pulumi:"tags"`
+	MonitorGroupName *string `pulumi:"monitorGroupName"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The name of the resource group.
+	ResourceGroupName *string                `pulumi:"resourceGroupName"`
+	Tags              map[string]interface{} `pulumi:"tags"`
 }
 
 type MonitorGroupState struct {
@@ -103,7 +121,11 @@ type MonitorGroupState struct {
 	ContactGroups pulumi.StringArrayInput
 	// The name of the application group.
 	MonitorGroupName pulumi.StringPtrInput
-	Tags             pulumi.MapInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringPtrInput
+	Tags              pulumi.MapInput
 }
 
 func (MonitorGroupState) ElementType() reflect.Type {
@@ -114,8 +136,12 @@ type monitorGroupArgs struct {
 	// The alert group to which alert notifications will be sent.
 	ContactGroups []string `pulumi:"contactGroups"`
 	// The name of the application group.
-	MonitorGroupName string                 `pulumi:"monitorGroupName"`
-	Tags             map[string]interface{} `pulumi:"tags"`
+	MonitorGroupName *string `pulumi:"monitorGroupName"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The name of the resource group.
+	ResourceGroupName *string                `pulumi:"resourceGroupName"`
+	Tags              map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a MonitorGroup resource.
@@ -123,8 +149,12 @@ type MonitorGroupArgs struct {
 	// The alert group to which alert notifications will be sent.
 	ContactGroups pulumi.StringArrayInput
 	// The name of the application group.
-	MonitorGroupName pulumi.StringInput
-	Tags             pulumi.MapInput
+	MonitorGroupName pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringPtrInput
+	Tags              pulumi.MapInput
 }
 
 func (MonitorGroupArgs) ElementType() reflect.Type {

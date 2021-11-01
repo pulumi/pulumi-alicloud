@@ -22,6 +22,15 @@ import * as utilities from "../utilities";
  * const example = new alicloud.cms.MonitorGroup("example", {
  *     monitorGroupName: "tf-testaccmonitorgroup",
  * });
+ * const default2 = new alicloud.cms.MonitorGroup("default2", {
+ *     contactGroups: ["your_contact_groups"],
+ *     resourceGroupId: "your_resource_group_id",
+ *     resourceGroupName: "resource_group_name",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Acceptance-test",
+ *     },
+ * });
  * ```
  *
  * ## Import
@@ -68,6 +77,14 @@ export class MonitorGroup extends pulumi.CustomResource {
      * The name of the application group.
      */
     public readonly monitorGroupName!: pulumi.Output<string>;
+    /**
+     * The ID of the resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the resource group.
+     */
+    public readonly resourceGroupName!: pulumi.Output<string | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
@@ -77,7 +94,7 @@ export class MonitorGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: MonitorGroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: MonitorGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MonitorGroupArgs | MonitorGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -85,14 +102,15 @@ export class MonitorGroup extends pulumi.CustomResource {
             const state = argsOrState as MonitorGroupState | undefined;
             inputs["contactGroups"] = state ? state.contactGroups : undefined;
             inputs["monitorGroupName"] = state ? state.monitorGroupName : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as MonitorGroupArgs | undefined;
-            if ((!args || args.monitorGroupName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'monitorGroupName'");
-            }
             inputs["contactGroups"] = args ? args.contactGroups : undefined;
             inputs["monitorGroupName"] = args ? args.monitorGroupName : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
         if (!opts.version) {
@@ -114,6 +132,14 @@ export interface MonitorGroupState {
      * The name of the application group.
      */
     readonly monitorGroupName?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The name of the resource group.
+     */
+    readonly resourceGroupName?: pulumi.Input<string>;
     readonly tags?: pulumi.Input<{[key: string]: any}>;
 }
 
@@ -128,6 +154,14 @@ export interface MonitorGroupArgs {
     /**
      * The name of the application group.
      */
-    readonly monitorGroupName: pulumi.Input<string>;
+    readonly monitorGroupName?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The name of the resource group.
+     */
+    readonly resourceGroupName?: pulumi.Input<string>;
     readonly tags?: pulumi.Input<{[key: string]: any}>;
 }

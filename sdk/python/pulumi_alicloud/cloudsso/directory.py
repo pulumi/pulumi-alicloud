@@ -22,7 +22,7 @@ class DirectoryArgs:
         """
         The set of arguments for constructing a Directory resource.
         :param pulumi.Input[str] directory_name: The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
-        :param pulumi.Input[str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        :param pulumi.Input[str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
         :param pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs'] saml_identity_provider_configuration: The saml identity provider configuration.
         :param pulumi.Input[str] scim_synchronization_status: The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         """
@@ -51,7 +51,7 @@ class DirectoryArgs:
     @pulumi.getter(name="mfaAuthenticationStatus")
     def mfa_authentication_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
         """
         return pulumi.get(self, "mfa_authentication_status")
 
@@ -94,7 +94,7 @@ class _DirectoryState:
         """
         Input properties used for looking up and filtering Directory resources.
         :param pulumi.Input[str] directory_name: The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
-        :param pulumi.Input[str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        :param pulumi.Input[str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
         :param pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs'] saml_identity_provider_configuration: The saml identity provider configuration.
         :param pulumi.Input[str] scim_synchronization_status: The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         """
@@ -123,7 +123,7 @@ class _DirectoryState:
     @pulumi.getter(name="mfaAuthenticationStatus")
     def mfa_authentication_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
         """
         return pulumi.get(self, "mfa_authentication_status")
 
@@ -197,7 +197,7 @@ class Directory(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] directory_name: The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
-        :param pulumi.Input[str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        :param pulumi.Input[str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
         :param pulumi.Input[pulumi.InputType['DirectorySamlIdentityProviderConfigurationArgs']] saml_identity_provider_configuration: The saml identity provider configuration.
         :param pulumi.Input[str] scim_synchronization_status: The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         """
@@ -292,7 +292,7 @@ class Directory(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] directory_name: The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
-        :param pulumi.Input[str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        :param pulumi.Input[str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
         :param pulumi.Input[pulumi.InputType['DirectorySamlIdentityProviderConfigurationArgs']] saml_identity_provider_configuration: The saml identity provider configuration.
         :param pulumi.Input[str] scim_synchronization_status: The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         """
@@ -318,7 +318,7 @@ class Directory(pulumi.CustomResource):
     @pulumi.getter(name="mfaAuthenticationStatus")
     def mfa_authentication_status(self) -> pulumi.Output[str]:
         """
-        The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
         """
         return pulumi.get(self, "mfa_authentication_status")
 

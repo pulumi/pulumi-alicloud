@@ -6,12 +6,15 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./ecdPolicyGroup";
+export * from "./getNasFileSystems";
 export * from "./getPolicyGroups";
 export * from "./getSimpleOfficeSites";
+export * from "./nasFileSystem";
 export * from "./simpleOfficeSite";
 
 // Import resources to register:
 import { EcdPolicyGroup } from "./ecdPolicyGroup";
+import { NasFileSystem } from "./nasFileSystem";
 import { SimpleOfficeSite } from "./simpleOfficeSite";
 
 const _module = {
@@ -20,6 +23,8 @@ const _module = {
         switch (type) {
             case "alicloud:eds/ecdPolicyGroup:EcdPolicyGroup":
                 return new EcdPolicyGroup(name, <any>undefined, { urn })
+            case "alicloud:eds/nasFileSystem:NasFileSystem":
+                return new NasFileSystem(name, <any>undefined, { urn })
             case "alicloud:eds/simpleOfficeSite:SimpleOfficeSite":
                 return new SimpleOfficeSite(name, <any>undefined, { urn })
             default:
@@ -28,4 +33,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "eds/ecdPolicyGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eds/nasFileSystem", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/simpleOfficeSite", _module)

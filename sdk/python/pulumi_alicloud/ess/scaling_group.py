@@ -19,6 +19,7 @@ class ScalingGroupArgs:
                  default_cooldown: Optional[pulumi.Input[int]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 launch_template_id: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_az_policy: Optional[pulumi.Input[str]] = None,
                  on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
@@ -39,6 +40,7 @@ class ScalingGroupArgs:
         :param pulumi.Input[int] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        :param pulumi.Input[str] launch_template_id: Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -69,6 +71,8 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
         if group_deletion_protection is not None:
             pulumi.set(__self__, "group_deletion_protection", group_deletion_protection)
+        if launch_template_id is not None:
+            pulumi.set(__self__, "launch_template_id", launch_template_id)
         if loadbalancer_ids is not None:
             pulumi.set(__self__, "loadbalancer_ids", loadbalancer_ids)
         if multi_az_policy is not None:
@@ -166,6 +170,18 @@ class ScalingGroupArgs:
     @group_deletion_protection.setter
     def group_deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "group_deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="launchTemplateId")
+    def launch_template_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        """
+        return pulumi.get(self, "launch_template_id")
+
+    @launch_template_id.setter
+    def launch_template_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "launch_template_id", value)
 
     @property
     @pulumi.getter(name="loadbalancerIds")
@@ -304,6 +320,7 @@ class _ScalingGroupState:
                  default_cooldown: Optional[pulumi.Input[int]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 launch_template_id: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -324,6 +341,7 @@ class _ScalingGroupState:
         :param pulumi.Input[int] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        :param pulumi.Input[str] launch_template_id: Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -354,6 +372,8 @@ class _ScalingGroupState:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
         if group_deletion_protection is not None:
             pulumi.set(__self__, "group_deletion_protection", group_deletion_protection)
+        if launch_template_id is not None:
+            pulumi.set(__self__, "launch_template_id", launch_template_id)
         if loadbalancer_ids is not None:
             pulumi.set(__self__, "loadbalancer_ids", loadbalancer_ids)
         if max_size is not None:
@@ -431,6 +451,18 @@ class _ScalingGroupState:
     @group_deletion_protection.setter
     def group_deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "group_deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="launchTemplateId")
+    def launch_template_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        """
+        return pulumi.get(self, "launch_template_id")
+
+    @launch_template_id.setter
+    def launch_template_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "launch_template_id", value)
 
     @property
     @pulumi.getter(name="loadbalancerIds")
@@ -595,6 +627,7 @@ class ScalingGroup(pulumi.CustomResource):
                  default_cooldown: Optional[pulumi.Input[int]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 launch_template_id: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -625,6 +658,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[int] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        :param pulumi.Input[str] launch_template_id: Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -681,6 +715,7 @@ class ScalingGroup(pulumi.CustomResource):
                  default_cooldown: Optional[pulumi.Input[int]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 launch_template_id: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -709,6 +744,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["default_cooldown"] = default_cooldown
             __props__.__dict__["desired_capacity"] = desired_capacity
             __props__.__dict__["group_deletion_protection"] = group_deletion_protection
+            __props__.__dict__["launch_template_id"] = launch_template_id
             __props__.__dict__["loadbalancer_ids"] = loadbalancer_ids
             if max_size is None and not opts.urn:
                 raise TypeError("Missing required property 'max_size'")
@@ -742,6 +778,7 @@ class ScalingGroup(pulumi.CustomResource):
             default_cooldown: Optional[pulumi.Input[int]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
             group_deletion_protection: Optional[pulumi.Input[bool]] = None,
+            launch_template_id: Optional[pulumi.Input[str]] = None,
             loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
@@ -767,6 +804,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[int] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        :param pulumi.Input[str] launch_template_id: Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -797,6 +835,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["default_cooldown"] = default_cooldown
         __props__.__dict__["desired_capacity"] = desired_capacity
         __props__.__dict__["group_deletion_protection"] = group_deletion_protection
+        __props__.__dict__["launch_template_id"] = launch_template_id
         __props__.__dict__["loadbalancer_ids"] = loadbalancer_ids
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["min_size"] = min_size
@@ -844,6 +883,14 @@ class ScalingGroup(pulumi.CustomResource):
         Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         """
         return pulumi.get(self, "group_deletion_protection")
+
+    @property
+    @pulumi.getter(name="launchTemplateId")
+    def launch_template_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        """
+        return pulumi.get(self, "launch_template_id")
 
     @property
     @pulumi.getter(name="loadbalancerIds")

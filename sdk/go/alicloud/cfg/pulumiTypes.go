@@ -224,6 +224,103 @@ func (o AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput) Index(i
 	}).(AggregateCompliancePackConfigRuleConfigRuleParameterOutput)
 }
 
+type AggregateCompliancePackConfigRuleId struct {
+	// The rule ID of Aggregate Config Rule.
+	ConfigRuleId *string `pulumi:"configRuleId"`
+}
+
+// AggregateCompliancePackConfigRuleIdInput is an input type that accepts AggregateCompliancePackConfigRuleIdArgs and AggregateCompliancePackConfigRuleIdOutput values.
+// You can construct a concrete instance of `AggregateCompliancePackConfigRuleIdInput` via:
+//
+//          AggregateCompliancePackConfigRuleIdArgs{...}
+type AggregateCompliancePackConfigRuleIdInput interface {
+	pulumi.Input
+
+	ToAggregateCompliancePackConfigRuleIdOutput() AggregateCompliancePackConfigRuleIdOutput
+	ToAggregateCompliancePackConfigRuleIdOutputWithContext(context.Context) AggregateCompliancePackConfigRuleIdOutput
+}
+
+type AggregateCompliancePackConfigRuleIdArgs struct {
+	// The rule ID of Aggregate Config Rule.
+	ConfigRuleId pulumi.StringPtrInput `pulumi:"configRuleId"`
+}
+
+func (AggregateCompliancePackConfigRuleIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregateCompliancePackConfigRuleId)(nil)).Elem()
+}
+
+func (i AggregateCompliancePackConfigRuleIdArgs) ToAggregateCompliancePackConfigRuleIdOutput() AggregateCompliancePackConfigRuleIdOutput {
+	return i.ToAggregateCompliancePackConfigRuleIdOutputWithContext(context.Background())
+}
+
+func (i AggregateCompliancePackConfigRuleIdArgs) ToAggregateCompliancePackConfigRuleIdOutputWithContext(ctx context.Context) AggregateCompliancePackConfigRuleIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackConfigRuleIdOutput)
+}
+
+// AggregateCompliancePackConfigRuleIdArrayInput is an input type that accepts AggregateCompliancePackConfigRuleIdArray and AggregateCompliancePackConfigRuleIdArrayOutput values.
+// You can construct a concrete instance of `AggregateCompliancePackConfigRuleIdArrayInput` via:
+//
+//          AggregateCompliancePackConfigRuleIdArray{ AggregateCompliancePackConfigRuleIdArgs{...} }
+type AggregateCompliancePackConfigRuleIdArrayInput interface {
+	pulumi.Input
+
+	ToAggregateCompliancePackConfigRuleIdArrayOutput() AggregateCompliancePackConfigRuleIdArrayOutput
+	ToAggregateCompliancePackConfigRuleIdArrayOutputWithContext(context.Context) AggregateCompliancePackConfigRuleIdArrayOutput
+}
+
+type AggregateCompliancePackConfigRuleIdArray []AggregateCompliancePackConfigRuleIdInput
+
+func (AggregateCompliancePackConfigRuleIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AggregateCompliancePackConfigRuleId)(nil)).Elem()
+}
+
+func (i AggregateCompliancePackConfigRuleIdArray) ToAggregateCompliancePackConfigRuleIdArrayOutput() AggregateCompliancePackConfigRuleIdArrayOutput {
+	return i.ToAggregateCompliancePackConfigRuleIdArrayOutputWithContext(context.Background())
+}
+
+func (i AggregateCompliancePackConfigRuleIdArray) ToAggregateCompliancePackConfigRuleIdArrayOutputWithContext(ctx context.Context) AggregateCompliancePackConfigRuleIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackConfigRuleIdArrayOutput)
+}
+
+type AggregateCompliancePackConfigRuleIdOutput struct{ *pulumi.OutputState }
+
+func (AggregateCompliancePackConfigRuleIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregateCompliancePackConfigRuleId)(nil)).Elem()
+}
+
+func (o AggregateCompliancePackConfigRuleIdOutput) ToAggregateCompliancePackConfigRuleIdOutput() AggregateCompliancePackConfigRuleIdOutput {
+	return o
+}
+
+func (o AggregateCompliancePackConfigRuleIdOutput) ToAggregateCompliancePackConfigRuleIdOutputWithContext(ctx context.Context) AggregateCompliancePackConfigRuleIdOutput {
+	return o
+}
+
+// The rule ID of Aggregate Config Rule.
+func (o AggregateCompliancePackConfigRuleIdOutput) ConfigRuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AggregateCompliancePackConfigRuleId) *string { return v.ConfigRuleId }).(pulumi.StringPtrOutput)
+}
+
+type AggregateCompliancePackConfigRuleIdArrayOutput struct{ *pulumi.OutputState }
+
+func (AggregateCompliancePackConfigRuleIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AggregateCompliancePackConfigRuleId)(nil)).Elem()
+}
+
+func (o AggregateCompliancePackConfigRuleIdArrayOutput) ToAggregateCompliancePackConfigRuleIdArrayOutput() AggregateCompliancePackConfigRuleIdArrayOutput {
+	return o
+}
+
+func (o AggregateCompliancePackConfigRuleIdArrayOutput) ToAggregateCompliancePackConfigRuleIdArrayOutputWithContext(ctx context.Context) AggregateCompliancePackConfigRuleIdArrayOutput {
+	return o
+}
+
+func (o AggregateCompliancePackConfigRuleIdArrayOutput) Index(i pulumi.IntInput) AggregateCompliancePackConfigRuleIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AggregateCompliancePackConfigRuleId {
+		return vs[0].([]AggregateCompliancePackConfigRuleId)[vs[1].(int)]
+	}).(AggregateCompliancePackConfigRuleIdOutput)
+}
+
 type AggregatorAggregatorAccount struct {
 	// Aggregator account Uid.
 	AccountId string `pulumi:"accountId"`
@@ -551,6 +648,103 @@ func (o CompliancePackConfigRuleConfigRuleParameterArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompliancePackConfigRuleConfigRuleParameter {
 		return vs[0].([]CompliancePackConfigRuleConfigRuleParameter)[vs[1].(int)]
 	}).(CompliancePackConfigRuleConfigRuleParameterOutput)
+}
+
+type CompliancePackConfigRuleId struct {
+	// The rule ID of Config Rule.
+	ConfigRuleId *string `pulumi:"configRuleId"`
+}
+
+// CompliancePackConfigRuleIdInput is an input type that accepts CompliancePackConfigRuleIdArgs and CompliancePackConfigRuleIdOutput values.
+// You can construct a concrete instance of `CompliancePackConfigRuleIdInput` via:
+//
+//          CompliancePackConfigRuleIdArgs{...}
+type CompliancePackConfigRuleIdInput interface {
+	pulumi.Input
+
+	ToCompliancePackConfigRuleIdOutput() CompliancePackConfigRuleIdOutput
+	ToCompliancePackConfigRuleIdOutputWithContext(context.Context) CompliancePackConfigRuleIdOutput
+}
+
+type CompliancePackConfigRuleIdArgs struct {
+	// The rule ID of Config Rule.
+	ConfigRuleId pulumi.StringPtrInput `pulumi:"configRuleId"`
+}
+
+func (CompliancePackConfigRuleIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompliancePackConfigRuleId)(nil)).Elem()
+}
+
+func (i CompliancePackConfigRuleIdArgs) ToCompliancePackConfigRuleIdOutput() CompliancePackConfigRuleIdOutput {
+	return i.ToCompliancePackConfigRuleIdOutputWithContext(context.Background())
+}
+
+func (i CompliancePackConfigRuleIdArgs) ToCompliancePackConfigRuleIdOutputWithContext(ctx context.Context) CompliancePackConfigRuleIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackConfigRuleIdOutput)
+}
+
+// CompliancePackConfigRuleIdArrayInput is an input type that accepts CompliancePackConfigRuleIdArray and CompliancePackConfigRuleIdArrayOutput values.
+// You can construct a concrete instance of `CompliancePackConfigRuleIdArrayInput` via:
+//
+//          CompliancePackConfigRuleIdArray{ CompliancePackConfigRuleIdArgs{...} }
+type CompliancePackConfigRuleIdArrayInput interface {
+	pulumi.Input
+
+	ToCompliancePackConfigRuleIdArrayOutput() CompliancePackConfigRuleIdArrayOutput
+	ToCompliancePackConfigRuleIdArrayOutputWithContext(context.Context) CompliancePackConfigRuleIdArrayOutput
+}
+
+type CompliancePackConfigRuleIdArray []CompliancePackConfigRuleIdInput
+
+func (CompliancePackConfigRuleIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompliancePackConfigRuleId)(nil)).Elem()
+}
+
+func (i CompliancePackConfigRuleIdArray) ToCompliancePackConfigRuleIdArrayOutput() CompliancePackConfigRuleIdArrayOutput {
+	return i.ToCompliancePackConfigRuleIdArrayOutputWithContext(context.Background())
+}
+
+func (i CompliancePackConfigRuleIdArray) ToCompliancePackConfigRuleIdArrayOutputWithContext(ctx context.Context) CompliancePackConfigRuleIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackConfigRuleIdArrayOutput)
+}
+
+type CompliancePackConfigRuleIdOutput struct{ *pulumi.OutputState }
+
+func (CompliancePackConfigRuleIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompliancePackConfigRuleId)(nil)).Elem()
+}
+
+func (o CompliancePackConfigRuleIdOutput) ToCompliancePackConfigRuleIdOutput() CompliancePackConfigRuleIdOutput {
+	return o
+}
+
+func (o CompliancePackConfigRuleIdOutput) ToCompliancePackConfigRuleIdOutputWithContext(ctx context.Context) CompliancePackConfigRuleIdOutput {
+	return o
+}
+
+// The rule ID of Config Rule.
+func (o CompliancePackConfigRuleIdOutput) ConfigRuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompliancePackConfigRuleId) *string { return v.ConfigRuleId }).(pulumi.StringPtrOutput)
+}
+
+type CompliancePackConfigRuleIdArrayOutput struct{ *pulumi.OutputState }
+
+func (CompliancePackConfigRuleIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompliancePackConfigRuleId)(nil)).Elem()
+}
+
+func (o CompliancePackConfigRuleIdArrayOutput) ToCompliancePackConfigRuleIdArrayOutput() CompliancePackConfigRuleIdArrayOutput {
+	return o
+}
+
+func (o CompliancePackConfigRuleIdArrayOutput) ToCompliancePackConfigRuleIdArrayOutputWithContext(ctx context.Context) CompliancePackConfigRuleIdArrayOutput {
+	return o
+}
+
+func (o CompliancePackConfigRuleIdArrayOutput) Index(i pulumi.IntInput) CompliancePackConfigRuleIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompliancePackConfigRuleId {
+		return vs[0].([]CompliancePackConfigRuleId)[vs[1].(int)]
+	}).(CompliancePackConfigRuleIdOutput)
 }
 
 type GetAggregateCompliancePacksPack struct {
@@ -2791,12 +2985,16 @@ func init() {
 	pulumi.RegisterOutputType(AggregateCompliancePackConfigRuleArrayOutput{})
 	pulumi.RegisterOutputType(AggregateCompliancePackConfigRuleConfigRuleParameterOutput{})
 	pulumi.RegisterOutputType(AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput{})
+	pulumi.RegisterOutputType(AggregateCompliancePackConfigRuleIdOutput{})
+	pulumi.RegisterOutputType(AggregateCompliancePackConfigRuleIdArrayOutput{})
 	pulumi.RegisterOutputType(AggregatorAggregatorAccountOutput{})
 	pulumi.RegisterOutputType(AggregatorAggregatorAccountArrayOutput{})
 	pulumi.RegisterOutputType(CompliancePackConfigRuleOutput{})
 	pulumi.RegisterOutputType(CompliancePackConfigRuleArrayOutput{})
 	pulumi.RegisterOutputType(CompliancePackConfigRuleConfigRuleParameterOutput{})
 	pulumi.RegisterOutputType(CompliancePackConfigRuleConfigRuleParameterArrayOutput{})
+	pulumi.RegisterOutputType(CompliancePackConfigRuleIdOutput{})
+	pulumi.RegisterOutputType(CompliancePackConfigRuleIdArrayOutput{})
 	pulumi.RegisterOutputType(GetAggregateCompliancePacksPackOutput{})
 	pulumi.RegisterOutputType(GetAggregateCompliancePacksPackArrayOutput{})
 	pulumi.RegisterOutputType(GetAggregateCompliancePacksPackConfigRuleOutput{})

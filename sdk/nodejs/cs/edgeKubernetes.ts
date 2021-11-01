@@ -123,6 +123,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    public readonly retainResources!: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -228,6 +229,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["proxyMode"] = state ? state.proxyMode : undefined;
             inputs["rdsInstances"] = state ? state.rdsInstances : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["retainResources"] = state ? state.retainResources : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["serviceCidr"] = state ? state.serviceCidr : undefined;
             inputs["slbInternet"] = state ? state.slbInternet : undefined;
@@ -279,6 +281,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["proxyMode"] = args ? args.proxyMode : undefined;
             inputs["rdsInstances"] = args ? args.rdsInstances : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["retainResources"] = args ? args.retainResources : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             inputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
@@ -394,6 +397,7 @@ export interface EdgeKubernetesState {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    readonly retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -539,6 +543,7 @@ export interface EdgeKubernetesArgs {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    readonly retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */

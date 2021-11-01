@@ -306,6 +306,9 @@ namespace Pulumi.AliCloud.CS
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
+        [Output("retainResources")]
+        public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
+
         /// <summary>
         /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
         /// </summary>
@@ -830,6 +833,14 @@ namespace Pulumi.AliCloud.CS
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("retainResources")]
+        private InputList<string>? _retainResources;
+        public InputList<string> RetainResources
+        {
+            get => _retainResources ?? (_retainResources = new InputList<string>());
+            set => _retainResources = value;
+        }
+
         /// <summary>
         /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
         /// </summary>
@@ -1343,6 +1354,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("retainResources")]
+        private InputList<string>? _retainResources;
+        public InputList<string> RetainResources
+        {
+            get => _retainResources ?? (_retainResources = new InputList<string>());
+            set => _retainResources = value;
+        }
 
         /// <summary>
         /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.

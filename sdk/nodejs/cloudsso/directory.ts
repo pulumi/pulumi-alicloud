@@ -68,7 +68,7 @@ export class Directory extends pulumi.CustomResource {
      */
     public readonly directoryName!: pulumi.Output<string | undefined>;
     /**
-     * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
      */
     public readonly mfaAuthenticationStatus!: pulumi.Output<string>;
     /**
@@ -120,7 +120,7 @@ export interface DirectoryState {
      */
     readonly directoryName?: pulumi.Input<string>;
     /**
-     * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
      */
     readonly mfaAuthenticationStatus?: pulumi.Input<string>;
     /**
@@ -142,7 +142,7 @@ export interface DirectoryArgs {
      */
     readonly directoryName?: pulumi.Input<string>;
     /**
-     * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
      */
     readonly mfaAuthenticationStatus?: pulumi.Input<string>;
     /**

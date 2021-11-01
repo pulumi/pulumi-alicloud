@@ -63,6 +63,7 @@ class KubernetesArgs:
                  proxy_mode: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime: Optional[pulumi.Input['KubernetesRuntimeArgs']] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -248,6 +249,8 @@ class KubernetesArgs:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if retain_resources is not None:
+            pulumi.set(__self__, "retain_resources", retain_resources)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
         if security_group_id is not None:
@@ -860,6 +863,15 @@ class KubernetesArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="retainResources")
+    def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "retain_resources")
+
+    @retain_resources.setter
+    def retain_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "retain_resources", value)
+
+    @property
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input['KubernetesRuntimeArgs']]:
         """
@@ -1182,6 +1194,7 @@ class _KubernetesState:
                  proxy_mode: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime: Optional[pulumi.Input['KubernetesRuntimeArgs']] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -1391,6 +1404,8 @@ class _KubernetesState:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if retain_resources is not None:
+            pulumi.set(__self__, "retain_resources", retain_resources)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
         if security_group_id is not None:
@@ -2039,6 +2054,15 @@ class _KubernetesState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="retainResources")
+    def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "retain_resources")
+
+    @retain_resources.setter
+    def retain_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "retain_resources", value)
+
+    @property
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input['KubernetesRuntimeArgs']]:
         """
@@ -2458,6 +2482,7 @@ class Kubernetes(pulumi.CustomResource):
                  proxy_mode: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime: Optional[pulumi.Input[pulumi.InputType['KubernetesRuntimeArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -2637,6 +2662,7 @@ class Kubernetes(pulumi.CustomResource):
                  proxy_mode: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime: Optional[pulumi.Input[pulumi.InputType['KubernetesRuntimeArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -2727,6 +2753,7 @@ class Kubernetes(pulumi.CustomResource):
             __props__.__dict__["proxy_mode"] = proxy_mode
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["retain_resources"] = retain_resources
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_account_issuer"] = service_account_issuer
@@ -2828,6 +2855,7 @@ class Kubernetes(pulumi.CustomResource):
             proxy_mode: Optional[pulumi.Input[str]] = None,
             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             runtime: Optional[pulumi.Input[pulumi.InputType['KubernetesRuntimeArgs']]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -2994,6 +3022,7 @@ class Kubernetes(pulumi.CustomResource):
         __props__.__dict__["proxy_mode"] = proxy_mode
         __props__.__dict__["rds_instances"] = rds_instances
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["retain_resources"] = retain_resources
         __props__.__dict__["runtime"] = runtime
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["service_account_issuer"] = service_account_issuer
@@ -3410,6 +3439,11 @@ class Kubernetes(pulumi.CustomResource):
         The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="retainResources")
+    def retain_resources(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "retain_resources")
 
     @property
     @pulumi.getter

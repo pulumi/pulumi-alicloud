@@ -84,7 +84,7 @@ export class User extends pulumi.CustomResource {
     /**
      * The name of user.
      */
-    public readonly userName!: pulumi.Output<string | undefined>;
+    public readonly userName!: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -112,6 +112,9 @@ export class User extends pulumi.CustomResource {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.directoryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'directoryId'");
+            }
+            if ((!args || args.userName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'userName'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["directoryId"] = args ? args.directoryId : undefined;
@@ -207,5 +210,5 @@ export interface UserArgs {
     /**
      * The name of user.
      */
-    readonly userName?: pulumi.Input<string>;
+    readonly userName: pulumi.Input<string>;
 }

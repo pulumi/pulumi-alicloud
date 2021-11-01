@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./accessConfiguration";
+export * from "./accessManagement";
 export * from "./directory";
 export * from "./getAccessConfigurations";
 export * from "./getDirectories";
@@ -15,13 +16,16 @@ export * from "./getUsers";
 export * from "./group";
 export * from "./scimServerCredential";
 export * from "./user";
+export * from "./userAttachment";
 
 // Import resources to register:
 import { AccessConfiguration } from "./accessConfiguration";
+import { AccessManagement } from "./accessManagement";
 import { Directory } from "./directory";
 import { Group } from "./group";
 import { ScimServerCredential } from "./scimServerCredential";
 import { User } from "./user";
+import { UserAttachment } from "./userAttachment";
 
 const _module = {
     version: utilities.getVersion(),
@@ -29,6 +33,8 @@ const _module = {
         switch (type) {
             case "alicloud:cloudsso/accessConfiguration:AccessConfiguration":
                 return new AccessConfiguration(name, <any>undefined, { urn })
+            case "alicloud:cloudsso/accessManagement:AccessManagement":
+                return new AccessManagement(name, <any>undefined, { urn })
             case "alicloud:cloudsso/directory:Directory":
                 return new Directory(name, <any>undefined, { urn })
             case "alicloud:cloudsso/group:Group":
@@ -37,13 +43,17 @@ const _module = {
                 return new ScimServerCredential(name, <any>undefined, { urn })
             case "alicloud:cloudsso/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "alicloud:cloudsso/userAttachment:UserAttachment":
+                return new UserAttachment(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/accessConfiguration", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudsso/accessManagement", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/directory", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/group", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/scimServerCredential", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/user", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudsso/userAttachment", _module)

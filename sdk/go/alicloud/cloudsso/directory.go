@@ -55,7 +55,7 @@ type Directory struct {
 
 	// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
 	DirectoryName pulumi.StringPtrOutput `pulumi:"directoryName"`
-	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
 	MfaAuthenticationStatus pulumi.StringOutput `pulumi:"mfaAuthenticationStatus"`
 	// The saml identity provider configuration.
 	SamlIdentityProviderConfiguration DirectorySamlIdentityProviderConfigurationOutput `pulumi:"samlIdentityProviderConfiguration"`
@@ -94,7 +94,7 @@ func GetDirectory(ctx *pulumi.Context,
 type directoryState struct {
 	// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
 	DirectoryName *string `pulumi:"directoryName"`
-	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
 	MfaAuthenticationStatus *string `pulumi:"mfaAuthenticationStatus"`
 	// The saml identity provider configuration.
 	SamlIdentityProviderConfiguration *DirectorySamlIdentityProviderConfiguration `pulumi:"samlIdentityProviderConfiguration"`
@@ -105,7 +105,7 @@ type directoryState struct {
 type DirectoryState struct {
 	// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
 	DirectoryName pulumi.StringPtrInput
-	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
 	MfaAuthenticationStatus pulumi.StringPtrInput
 	// The saml identity provider configuration.
 	SamlIdentityProviderConfiguration DirectorySamlIdentityProviderConfigurationPtrInput
@@ -120,7 +120,7 @@ func (DirectoryState) ElementType() reflect.Type {
 type directoryArgs struct {
 	// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
 	DirectoryName *string `pulumi:"directoryName"`
-	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
 	MfaAuthenticationStatus *string `pulumi:"mfaAuthenticationStatus"`
 	// The saml identity provider configuration.
 	SamlIdentityProviderConfiguration *DirectorySamlIdentityProviderConfiguration `pulumi:"samlIdentityProviderConfiguration"`
@@ -132,7 +132,7 @@ type directoryArgs struct {
 type DirectoryArgs struct {
 	// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
 	DirectoryName pulumi.StringPtrInput
-	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
 	MfaAuthenticationStatus pulumi.StringPtrInput
 	// The saml identity provider configuration.
 	SamlIdentityProviderConfiguration DirectorySamlIdentityProviderConfigurationPtrInput

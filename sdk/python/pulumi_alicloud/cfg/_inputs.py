@@ -11,9 +11,11 @@ from .. import _utilities
 __all__ = [
     'AggregateCompliancePackConfigRuleArgs',
     'AggregateCompliancePackConfigRuleConfigRuleParameterArgs',
+    'AggregateCompliancePackConfigRuleIdArgs',
     'AggregatorAggregatorAccountArgs',
     'CompliancePackConfigRuleArgs',
     'CompliancePackConfigRuleConfigRuleParameterArgs',
+    'CompliancePackConfigRuleIdArgs',
 ]
 
 @pulumi.input_type
@@ -91,6 +93,29 @@ class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
     @parameter_value.setter
     def parameter_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parameter_value", value)
+
+
+@pulumi.input_type
+class AggregateCompliancePackConfigRuleIdArgs:
+    def __init__(__self__, *,
+                 config_rule_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] config_rule_id: The rule ID of Aggregate Config Rule.
+        """
+        if config_rule_id is not None:
+            pulumi.set(__self__, "config_rule_id", config_rule_id)
+
+    @property
+    @pulumi.getter(name="configRuleId")
+    def config_rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule ID of Aggregate Config Rule.
+        """
+        return pulumi.get(self, "config_rule_id")
+
+    @config_rule_id.setter
+    def config_rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_rule_id", value)
 
 
 @pulumi.input_type
@@ -220,5 +245,28 @@ class CompliancePackConfigRuleConfigRuleParameterArgs:
     @parameter_value.setter
     def parameter_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parameter_value", value)
+
+
+@pulumi.input_type
+class CompliancePackConfigRuleIdArgs:
+    def __init__(__self__, *,
+                 config_rule_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] config_rule_id: The rule ID of Config Rule.
+        """
+        if config_rule_id is not None:
+            pulumi.set(__self__, "config_rule_id", config_rule_id)
+
+    @property
+    @pulumi.getter(name="configRuleId")
+    def config_rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule ID of Config Rule.
+        """
+        return pulumi.get(self, "config_rule_id")
+
+    @config_rule_id.setter
+    def config_rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_rule_id", value)
 
 

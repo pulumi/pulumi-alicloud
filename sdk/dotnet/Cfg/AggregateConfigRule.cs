@@ -40,6 +40,12 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> AggregatorId { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+        /// </summary>
+        [Output("configRuleId")]
+        public Output<string> ConfigRuleId { get; private set; } = null!;
+
+        /// <summary>
         /// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         /// </summary>
         [Output("configRuleTriggerTypes")]
@@ -286,6 +292,12 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         [Input("aggregatorId")]
         public Input<string>? AggregatorId { get; set; }
+
+        /// <summary>
+        /// (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+        /// </summary>
+        [Input("configRuleId")]
+        public Input<string>? ConfigRuleId { get; set; }
 
         /// <summary>
         /// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.

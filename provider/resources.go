@@ -210,6 +210,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Mainmod
 			"alicloud_msc_sub_contact":      {Tok: resource(alicloudMod, "MscSubContract")},
 			"alicloud_msc_sub_subscription": {Tok: resource(alicloudMod, "MscSubSubscription")},
+			"alicloud_msc_sub_webhook":      {Tok: resource(alicloudMod, "MscSubWebhook")},
 
 			// ActionTrail
 			"alicloud_actiontrail_trail":                {Tok: resource(actionTrailMod, "Trail")},
@@ -369,6 +370,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cloud_sso_group":                  {Tok: resource(cloudSsoMod, "Group")},
 			"alicloud_cloud_sso_access_configuration":   {Tok: resource(cloudSsoMod, "AccessConfiguration")},
 			"alicloud_cloud_sso_user":                   {Tok: resource(cloudSsoMod, "User")},
+			"alicloud_cloud_sso_user_attachment":        {Tok: resource(cloudSsoMod, "UserAttachment")},
+			"alicloud_cloud_sso_access_assignment":      {Tok: resource(cloudSsoMod, "AccessManagement")},
 
 			// CMS
 			"alicloud_cms_alarm":               {Tok: resource(cmsMod, "Alarm")},
@@ -564,6 +567,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Eds
 			"alicloud_ecd_policy_group":       {Tok: resource(edsMod, "EcdPolicyGroup")},
 			"alicloud_ecd_simple_office_site": {Tok: resource(edsMod, "SimpleOfficeSite")},
+			"alicloud_ecd_nas_file_system":    {Tok: resource(edsMod, "NasFileSystem")},
 
 			// Ehpc
 			"alicloud_ehpc_job_template": {Tok: resource(ehpcMod, "JobTemplate")},
@@ -975,8 +979,10 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"alicloud_vpc_traffic_mirror_filter":             {Tok: resource(vpcMod, "TrafficMirrorFilter")},
-			"alicloud_vpc_traffic_mirror_filter_egress_rule": {Tok: resource(vpcMod, "TrafficMirrorFilterEgressRule")},
+			"alicloud_vpc_traffic_mirror_filter":              {Tok: resource(vpcMod, "TrafficMirrorFilter")},
+			"alicloud_vpc_traffic_mirror_filter_egress_rule":  {Tok: resource(vpcMod, "TrafficMirrorFilterEgressRule")},
+			"alicloud_vpc_traffic_mirror_service":             {Tok: resource(vpcMod, "TrafficMirrorService")},
+			"alicloud_vpc_traffic_mirror_filter_ingress_rule": {Tok: resource(vpcMod, "TrafficMirrorFilterIngressRule")},
 
 			// Vod
 			"alicloud_vod_domain": {Tok: resource(vodMod, "Domain")},
@@ -1001,7 +1007,8 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"alicloud_waf_instance": {Tok: resource(wafMod, "Instance")},
+			"alicloud_waf_instance":          {Tok: resource(wafMod, "Instance")},
+			"alicloud_waf_protection_module": {Tok: resource(wafMod, "ProtectionModule")},
 			"alicloud_waf_certificate": {
 				Tok: resource(wafMod, "Certificate"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -1023,6 +1030,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_file_crc64_checksum":   {Tok: dataSource(alicloudMod, "getFileCrc64Checksum")},
 			"alicloud_msc_sub_contacts":      {Tok: dataSource(alicloudMod, "getMscSubContacts")},
 			"alicloud_msc_sub_subscriptions": {Tok: dataSource(alicloudMod, "getMscSubSubscriptions")},
+			"alicloud_msc_sub_webhooks":      {Tok: dataSource(alicloudMod, "getMscSubWebhooks")},
 
 			// ActionTrail
 			"alicloud_actiontrails": {
@@ -1204,8 +1212,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_datahub_service": {Tok: dataSource(datahubMod, "getService")},
 
 			// DataWorks
-			"alicloud_dataworks_service":  {Tok: dataSource(dataWorksMod, "getService")},
 			"alicloud_data_works_folders": {Tok: dataSource(dataWorksMod, "getFolders")},
+			"alicloud_data_works_service": {Tok: dataSource(dataWorksMod, "getService")},
 
 			// Dcdn
 			"alicloud_dcdn_domains": {Tok: dataSource(dcdnMod, "getDomains")},
@@ -1303,6 +1311,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Eds
 			"alicloud_ecd_policy_groups":       {Tok: dataSource(edsMod, "getPolicyGroups")},
 			"alicloud_ecd_simple_office_sites": {Tok: dataSource(edsMod, "getSimpleOfficeSites")},
+			"alicloud_ecd_nas_file_systems":    {Tok: dataSource(edsMod, "getNasFileSystems")},
 
 			// Ehpc
 			"alicloud_ehpc_job_templates": {Tok: dataSource(ehpcMod, "getJobTemplates")},
@@ -1636,6 +1645,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_vpc_traffic_mirror_filter_egress_rules": {
 				Tok: dataSource(vpcMod, "getTrafficMirrorFilterEgressRules"),
 			},
+			"alicloud_vpc_traffic_mirror_filter_ingress_rules": {
+				Tok: dataSource(vpcMod, "getTrafficMirrorFilterIngressRules"),
+			},
+			"alicloud_vpc_traffic_mirror_service": {Tok: dataSource(vpcMod, "getTrafficMirrorService")},
 
 			// Vod
 			"alicloud_vod_domains": {Tok: dataSource(vodMod, "getDomains")},

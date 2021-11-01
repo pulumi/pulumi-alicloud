@@ -42,6 +42,12 @@ type ManagedKubernetes struct {
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information.
 	Connections ManagedKubernetesConnectionsOutput `pulumi:"connections"`
+	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+	ControlPlaneLogComponents pulumi.StringArrayOutput `pulumi:"controlPlaneLogComponents"`
+	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+	ControlPlaneLogProject pulumi.StringPtrOutput `pulumi:"controlPlaneLogProject"`
+	// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+	ControlPlaneLogTtl pulumi.StringPtrOutput `pulumi:"controlPlaneLogTtl"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrOutput `pulumi:"cpuPolicy"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -100,8 +106,9 @@ type ManagedKubernetes struct {
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	ResourceGroupId pulumi.StringOutput      `pulumi:"resourceGroupId"`
+	RetainResources pulumi.StringArrayOutput `pulumi:"retainResources"`
+	// The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
 	Runtime ManagedKubernetesRuntimePtrOutput `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
@@ -216,6 +223,12 @@ type managedKubernetesState struct {
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information.
 	Connections *ManagedKubernetesConnections `pulumi:"connections"`
+	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+	ControlPlaneLogComponents []string `pulumi:"controlPlaneLogComponents"`
+	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+	ControlPlaneLogProject *string `pulumi:"controlPlaneLogProject"`
+	// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+	ControlPlaneLogTtl *string `pulumi:"controlPlaneLogTtl"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -274,8 +287,9 @@ type managedKubernetesState struct {
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	ResourceGroupId *string  `pulumi:"resourceGroupId"`
+	RetainResources []string `pulumi:"retainResources"`
+	// The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
 	Runtime *ManagedKubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -359,6 +373,12 @@ type ManagedKubernetesState struct {
 	ClusterSpec pulumi.StringPtrInput
 	// Map of kubernetes cluster connection information.
 	Connections ManagedKubernetesConnectionsPtrInput
+	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+	ControlPlaneLogComponents pulumi.StringArrayInput
+	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+	ControlPlaneLogProject pulumi.StringPtrInput
+	// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+	ControlPlaneLogTtl pulumi.StringPtrInput
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -418,7 +438,8 @@ type ManagedKubernetesState struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	RetainResources pulumi.StringArrayInput
+	// The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
 	Runtime ManagedKubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
@@ -502,6 +523,12 @@ type managedKubernetesArgs struct {
 	// * ack.standard : Standard managed clusters.
 	// * ack.pro.small : Professional managed clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
+	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+	ControlPlaneLogComponents []string `pulumi:"controlPlaneLogComponents"`
+	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+	ControlPlaneLogProject *string `pulumi:"controlPlaneLogProject"`
+	// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+	ControlPlaneLogTtl *string `pulumi:"controlPlaneLogTtl"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -558,8 +585,9 @@ type managedKubernetesArgs struct {
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	ResourceGroupId *string  `pulumi:"resourceGroupId"`
+	RetainResources []string `pulumi:"retainResources"`
+	// The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
 	Runtime *ManagedKubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -629,6 +657,12 @@ type ManagedKubernetesArgs struct {
 	// * ack.standard : Standard managed clusters.
 	// * ack.pro.small : Professional managed clusters.
 	ClusterSpec pulumi.StringPtrInput
+	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+	ControlPlaneLogComponents pulumi.StringArrayInput
+	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+	ControlPlaneLogProject pulumi.StringPtrInput
+	// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+	ControlPlaneLogTtl pulumi.StringPtrInput
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -686,7 +720,8 @@ type ManagedKubernetesArgs struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	RetainResources pulumi.StringArrayInput
+	// The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
 	Runtime ManagedKubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput

@@ -38,6 +38,11 @@ func GetConfigurationSource(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:configurationSource")
 }
 
+// The URI of sidecar credentials service.
+func GetCredentialsUri(ctx *pulumi.Context) string {
+	return config.Get(ctx, "alicloud:credentialsUri")
+}
+
 // The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
 // of the Alibaba Cloud console.
 func GetEcsRoleName(ctx *pulumi.Context) string {

@@ -81,6 +81,12 @@ namespace Pulumi.AliCloud
         public Input<string>? ConfigurationSource { get; set; }
 
         /// <summary>
+        /// The URI of sidecar credentials service.
+        /// </summary>
+        [Input("credentialsUri")]
+        public Input<string>? CredentialsUri { get; set; }
+
+        /// <summary>
         /// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
         /// of the Alibaba Cloud console.
         /// </summary>

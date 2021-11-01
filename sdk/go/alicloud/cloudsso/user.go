@@ -46,7 +46,7 @@ type User struct {
 	// The User ID of the group.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 	// The name of user.
-	UserName pulumi.StringPtrOutput `pulumi:"userName"`
+	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
 // NewUser registers a new resource with the given unique name, arguments, and options.
@@ -58,6 +58,9 @@ func NewUser(ctx *pulumi.Context,
 
 	if args.DirectoryId == nil {
 		return nil, errors.New("invalid value for required argument 'DirectoryId'")
+	}
+	if args.UserName == nil {
+		return nil, errors.New("invalid value for required argument 'UserName'")
 	}
 	var resource User
 	err := ctx.RegisterResource("alicloud:cloudsso/user:User", name, args, &resource, opts...)
@@ -142,7 +145,7 @@ type userArgs struct {
 	// The status of user. Valid values: `Disabled`, `Enabled`.
 	Status *string `pulumi:"status"`
 	// The name of user.
-	UserName *string `pulumi:"userName"`
+	UserName string `pulumi:"userName"`
 }
 
 // The set of arguments for constructing a User resource.
@@ -162,7 +165,7 @@ type UserArgs struct {
 	// The status of user. Valid values: `Disabled`, `Enabled`.
 	Status pulumi.StringPtrInput
 	// The name of user.
-	UserName pulumi.StringPtrInput
+	UserName pulumi.StringInput
 }
 
 func (UserArgs) ElementType() reflect.Type {

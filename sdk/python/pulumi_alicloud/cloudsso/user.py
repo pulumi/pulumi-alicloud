@@ -14,25 +14,26 @@ __all__ = ['UserArgs', 'User']
 class UserArgs:
     def __init__(__self__, *,
                  directory_id: pulumi.Input[str],
+                 user_name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  first_name: Optional[pulumi.Input[str]] = None,
                  last_name: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 user_name: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a User resource.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
+        :param pulumi.Input[str] user_name: The name of user.
         :param pulumi.Input[str] description: The description of user.
         :param pulumi.Input[str] display_name: The display name of user.
         :param pulumi.Input[str] email: The User's Contact Email Address.
         :param pulumi.Input[str] first_name: The first name of user.
         :param pulumi.Input[str] last_name: The last name of user.
         :param pulumi.Input[str] status: The status of user. Valid values: `Disabled`, `Enabled`.
-        :param pulumi.Input[str] user_name: The name of user.
         """
         pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "user_name", user_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -45,8 +46,6 @@ class UserArgs:
             pulumi.set(__self__, "last_name", last_name)
         if status is not None:
             pulumi.set(__self__, "status", status)
-        if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter(name="directoryId")
@@ -59,6 +58,18 @@ class UserArgs:
     @directory_id.setter
     def directory_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "directory_id", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> pulumi.Input[str]:
+        """
+        The name of user.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_name", value)
 
     @property
     @pulumi.getter
@@ -131,18 +142,6 @@ class UserArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of user.
-        """
-        return pulumi.get(self, "user_name")
-
-    @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type
@@ -406,6 +405,8 @@ class User(pulumi.CustomResource):
             __props__.__dict__["first_name"] = first_name
             __props__.__dict__["last_name"] = last_name
             __props__.__dict__["status"] = status
+            if user_name is None and not opts.urn:
+                raise TypeError("Missing required property 'user_name'")
             __props__.__dict__["user_name"] = user_name
             __props__.__dict__["user_id"] = None
         super(User, __self__).__init__(
@@ -525,7 +526,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userName")
-    def user_name(self) -> pulumi.Output[Optional[str]]:
+    def user_name(self) -> pulumi.Output[str]:
         """
         The name of user.
         """

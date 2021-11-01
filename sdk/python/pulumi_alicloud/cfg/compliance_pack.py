@@ -16,23 +16,32 @@ __all__ = ['CompliancePackArgs', 'CompliancePack']
 class CompliancePackArgs:
     def __init__(__self__, *,
                  compliance_pack_name: pulumi.Input[str],
-                 compliance_pack_template_id: pulumi.Input[str],
-                 config_rules: pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]],
                  description: pulumi.Input[str],
-                 risk_level: pulumi.Input[int]):
+                 risk_level: pulumi.Input[int],
+                 compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
+                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]] = None,
+                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None):
         """
         The set of arguments for constructing a CompliancePack resource.
         :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name.
-        :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
-        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules.
         :param pulumi.Input[str] description: The Description of compliance pack.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+        :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
+        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs.
+        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules.
         """
         pulumi.set(__self__, "compliance_pack_name", compliance_pack_name)
-        pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
-        pulumi.set(__self__, "config_rules", config_rules)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "risk_level", risk_level)
+        if compliance_pack_template_id is not None:
+            pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
+        if config_rule_ids is not None:
+            pulumi.set(__self__, "config_rule_ids", config_rule_ids)
+        if config_rules is not None:
+            warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
+            pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+        if config_rules is not None:
+            pulumi.set(__self__, "config_rules", config_rules)
 
     @property
     @pulumi.getter(name="compliancePackName")
@@ -45,30 +54,6 @@ class CompliancePackArgs:
     @compliance_pack_name.setter
     def compliance_pack_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "compliance_pack_name", value)
-
-    @property
-    @pulumi.getter(name="compliancePackTemplateId")
-    def compliance_pack_template_id(self) -> pulumi.Input[str]:
-        """
-        Compliance Package Template Id.
-        """
-        return pulumi.get(self, "compliance_pack_template_id")
-
-    @compliance_pack_template_id.setter
-    def compliance_pack_template_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "compliance_pack_template_id", value)
-
-    @property
-    @pulumi.getter(name="configRules")
-    def config_rules(self) -> pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]:
-        """
-        A list of Config Rules.
-        """
-        return pulumi.get(self, "config_rules")
-
-    @config_rules.setter
-    def config_rules(self, value: pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]):
-        pulumi.set(self, "config_rules", value)
 
     @property
     @pulumi.getter
@@ -94,12 +79,49 @@ class CompliancePackArgs:
     def risk_level(self, value: pulumi.Input[int]):
         pulumi.set(self, "risk_level", value)
 
+    @property
+    @pulumi.getter(name="compliancePackTemplateId")
+    def compliance_pack_template_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Compliance Package Template Id.
+        """
+        return pulumi.get(self, "compliance_pack_template_id")
+
+    @compliance_pack_template_id.setter
+    def compliance_pack_template_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compliance_pack_template_id", value)
+
+    @property
+    @pulumi.getter(name="configRuleIds")
+    def config_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]:
+        """
+        A list of Config Rule IDs.
+        """
+        return pulumi.get(self, "config_rule_ids")
+
+    @config_rule_ids.setter
+    def config_rule_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]):
+        pulumi.set(self, "config_rule_ids", value)
+
+    @property
+    @pulumi.getter(name="configRules")
+    def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]:
+        """
+        A list of Config Rules.
+        """
+        return pulumi.get(self, "config_rules")
+
+    @config_rules.setter
+    def config_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]):
+        pulumi.set(self, "config_rules", value)
+
 
 @pulumi.input_type
 class _CompliancePackState:
     def __init__(__self__, *,
                  compliance_pack_name: Optional[pulumi.Input[str]] = None,
                  compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
+                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]] = None,
                  config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  risk_level: Optional[pulumi.Input[int]] = None,
@@ -108,6 +130,7 @@ class _CompliancePackState:
         Input properties used for looking up and filtering CompliancePack resources.
         :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
+        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules.
         :param pulumi.Input[str] description: The Description of compliance pack.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
@@ -117,6 +140,11 @@ class _CompliancePackState:
             pulumi.set(__self__, "compliance_pack_name", compliance_pack_name)
         if compliance_pack_template_id is not None:
             pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
+        if config_rule_ids is not None:
+            pulumi.set(__self__, "config_rule_ids", config_rule_ids)
+        if config_rules is not None:
+            warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
+            pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
         if config_rules is not None:
             pulumi.set(__self__, "config_rules", config_rules)
         if description is not None:
@@ -149,6 +177,18 @@ class _CompliancePackState:
     @compliance_pack_template_id.setter
     def compliance_pack_template_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "compliance_pack_template_id", value)
+
+    @property
+    @pulumi.getter(name="configRuleIds")
+    def config_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]:
+        """
+        A list of Config Rule IDs.
+        """
+        return pulumi.get(self, "config_rule_ids")
+
+    @config_rule_ids.setter
+    def config_rule_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]):
+        pulumi.set(self, "config_rule_ids", value)
 
     @property
     @pulumi.getter(name="configRules")
@@ -206,6 +246,7 @@ class CompliancePack(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compliance_pack_name: Optional[pulumi.Input[str]] = None,
                  compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
+                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]]] = None,
                  config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  risk_level: Optional[pulumi.Input[int]] = None,
@@ -225,27 +266,35 @@ class CompliancePack(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cfg.CompliancePack("example",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example_name"
+        default_instances = alicloud.ecs.get_instances()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_rule = alicloud.cfg.Rule("defaultRule",
+            rule_name=name,
+            description=name,
+            source_identifier="ecs-instances-in-vpc",
+            source_owner="ALIYUN",
+            resource_types_scopes=["ACS::ECS::Instance"],
+            risk_level=1,
+            config_rule_trigger_types="ConfigurationItemChangeNotification",
+            tag_key_scope="tfTest",
+            tag_value_scope="tfTest 123",
+            resource_group_ids_scope=default_resource_groups.ids[0],
+            exclude_resource_ids_scope=default_instances.instances[0].id,
+            region_ids_scope="cn-hangzhou",
+            input_parameters={
+                "vpc_ids": default_instances.instances[0].vpc_id,
+            })
+        default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
             compliance_pack_name="tf-testaccConfig1234",
-            compliance_pack_template_id="ct-3d20ff4e06a30027f76e",
-            config_rules=[
-                alicloud.cfg.CompliancePackConfigRuleArgs(
-                    config_rule_parameters=[alicloud.cfg.CompliancePackConfigRuleConfigRuleParameterArgs(
-                        parameter_name="days",
-                        parameter_value="7",
-                    )],
-                    managed_rule_identifier="ecs-snapshot-retention-days",
-                ),
-                alicloud.cfg.CompliancePackConfigRuleArgs(
-                    config_rule_parameters=[alicloud.cfg.CompliancePackConfigRuleConfigRuleParameterArgs(
-                        parameter_name="days",
-                        parameter_value="60",
-                    )],
-                    managed_rule_identifier="ecs-instance-expired-check",
-                ),
-            ],
             description="tf-testaccConfig1234",
-            risk_level=1)
+            risk_level=1,
+            config_rule_ids=[alicloud.cfg.CompliancePackConfigRuleIdArgs(
+                config_rule_id=default_rule.id,
+            )])
         ```
 
         ## Import
@@ -260,6 +309,7 @@ class CompliancePack(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules.
         :param pulumi.Input[str] description: The Description of compliance pack.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
@@ -285,27 +335,35 @@ class CompliancePack(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cfg.CompliancePack("example",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example_name"
+        default_instances = alicloud.ecs.get_instances()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_rule = alicloud.cfg.Rule("defaultRule",
+            rule_name=name,
+            description=name,
+            source_identifier="ecs-instances-in-vpc",
+            source_owner="ALIYUN",
+            resource_types_scopes=["ACS::ECS::Instance"],
+            risk_level=1,
+            config_rule_trigger_types="ConfigurationItemChangeNotification",
+            tag_key_scope="tfTest",
+            tag_value_scope="tfTest 123",
+            resource_group_ids_scope=default_resource_groups.ids[0],
+            exclude_resource_ids_scope=default_instances.instances[0].id,
+            region_ids_scope="cn-hangzhou",
+            input_parameters={
+                "vpc_ids": default_instances.instances[0].vpc_id,
+            })
+        default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
             compliance_pack_name="tf-testaccConfig1234",
-            compliance_pack_template_id="ct-3d20ff4e06a30027f76e",
-            config_rules=[
-                alicloud.cfg.CompliancePackConfigRuleArgs(
-                    config_rule_parameters=[alicloud.cfg.CompliancePackConfigRuleConfigRuleParameterArgs(
-                        parameter_name="days",
-                        parameter_value="7",
-                    )],
-                    managed_rule_identifier="ecs-snapshot-retention-days",
-                ),
-                alicloud.cfg.CompliancePackConfigRuleArgs(
-                    config_rule_parameters=[alicloud.cfg.CompliancePackConfigRuleConfigRuleParameterArgs(
-                        parameter_name="days",
-                        parameter_value="60",
-                    )],
-                    managed_rule_identifier="ecs-instance-expired-check",
-                ),
-            ],
             description="tf-testaccConfig1234",
-            risk_level=1)
+            risk_level=1,
+            config_rule_ids=[alicloud.cfg.CompliancePackConfigRuleIdArgs(
+                config_rule_id=default_rule.id,
+            )])
         ```
 
         ## Import
@@ -333,6 +391,7 @@ class CompliancePack(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compliance_pack_name: Optional[pulumi.Input[str]] = None,
                  compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
+                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]]] = None,
                  config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  risk_level: Optional[pulumi.Input[int]] = None,
@@ -351,11 +410,11 @@ class CompliancePack(pulumi.CustomResource):
             if compliance_pack_name is None and not opts.urn:
                 raise TypeError("Missing required property 'compliance_pack_name'")
             __props__.__dict__["compliance_pack_name"] = compliance_pack_name
-            if compliance_pack_template_id is None and not opts.urn:
-                raise TypeError("Missing required property 'compliance_pack_template_id'")
             __props__.__dict__["compliance_pack_template_id"] = compliance_pack_template_id
-            if config_rules is None and not opts.urn:
-                raise TypeError("Missing required property 'config_rules'")
+            __props__.__dict__["config_rule_ids"] = config_rule_ids
+            if config_rules is not None and not opts.urn:
+                warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
+                pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
             __props__.__dict__["config_rules"] = config_rules
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
@@ -376,6 +435,7 @@ class CompliancePack(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             compliance_pack_name: Optional[pulumi.Input[str]] = None,
             compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
+            config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]]] = None,
             config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             risk_level: Optional[pulumi.Input[int]] = None,
@@ -389,6 +449,7 @@ class CompliancePack(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules.
         :param pulumi.Input[str] description: The Description of compliance pack.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
@@ -400,6 +461,7 @@ class CompliancePack(pulumi.CustomResource):
 
         __props__.__dict__["compliance_pack_name"] = compliance_pack_name
         __props__.__dict__["compliance_pack_template_id"] = compliance_pack_template_id
+        __props__.__dict__["config_rule_ids"] = config_rule_ids
         __props__.__dict__["config_rules"] = config_rules
         __props__.__dict__["description"] = description
         __props__.__dict__["risk_level"] = risk_level
@@ -416,15 +478,23 @@ class CompliancePack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="compliancePackTemplateId")
-    def compliance_pack_template_id(self) -> pulumi.Output[str]:
+    def compliance_pack_template_id(self) -> pulumi.Output[Optional[str]]:
         """
         Compliance Package Template Id.
         """
         return pulumi.get(self, "compliance_pack_template_id")
 
     @property
+    @pulumi.getter(name="configRuleIds")
+    def config_rule_ids(self) -> pulumi.Output[Optional[Sequence['outputs.CompliancePackConfigRuleId']]]:
+        """
+        A list of Config Rule IDs.
+        """
+        return pulumi.get(self, "config_rule_ids")
+
+    @property
     @pulumi.getter(name="configRules")
-    def config_rules(self) -> pulumi.Output[Sequence['outputs.CompliancePackConfigRule']]:
+    def config_rules(self) -> pulumi.Output[Optional[Sequence['outputs.CompliancePackConfigRule']]]:
         """
         A list of Config Rules.
         """

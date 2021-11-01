@@ -12,6 +12,7 @@ from . import outputs
 __all__ = [
     'EcdPolicyGroupAuthorizeAccessPolicyRule',
     'EcdPolicyGroupAuthorizeSecurityPolicyRule',
+    'GetNasFileSystemsSystemResult',
     'GetPolicyGroupsGroupResult',
     'GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult',
     'GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult',
@@ -176,6 +177,189 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule(dict):
         The type of security rules.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetNasFileSystemsSystemResult(dict):
+    def __init__(__self__, *,
+                 capacity: str,
+                 create_time: str,
+                 description: str,
+                 file_system_id: str,
+                 file_system_type: str,
+                 id: str,
+                 metered_size: str,
+                 mount_target_domain: str,
+                 mount_target_status: str,
+                 nas_file_system_name: str,
+                 office_site_id: str,
+                 office_site_name: str,
+                 status: str,
+                 storage_type: str,
+                 support_acl: bool,
+                 zone_id: str):
+        """
+        :param str capacity: The capacity of nas file system.
+        :param str create_time: The create time of nas file system.
+        :param str description: The description of nas file system.
+        :param str file_system_id: The filesystem id of nas file system.
+        :param str file_system_type: The type of nas file system.
+        :param str id: The ID of the Nas File System.
+        :param str metered_size: The size of metered.
+        :param str mount_target_domain: The domain of mount target.
+        :param str mount_target_status: The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
+        :param str nas_file_system_name: The name of nas file system.
+        :param str office_site_id: The ID of office site.
+        :param str office_site_name: The name of office site.
+        :param str status: The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+        :param str storage_type: The storage type of nas file system.
+        :param bool support_acl: Whether to support Acl.
+        :param str zone_id: The zone id of nas file system.
+        """
+        pulumi.set(__self__, "capacity", capacity)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "file_system_id", file_system_id)
+        pulumi.set(__self__, "file_system_type", file_system_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "metered_size", metered_size)
+        pulumi.set(__self__, "mount_target_domain", mount_target_domain)
+        pulumi.set(__self__, "mount_target_status", mount_target_status)
+        pulumi.set(__self__, "nas_file_system_name", nas_file_system_name)
+        pulumi.set(__self__, "office_site_id", office_site_id)
+        pulumi.set(__self__, "office_site_name", office_site_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "support_acl", support_acl)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def capacity(self) -> str:
+        """
+        The capacity of nas file system.
+        """
+        return pulumi.get(self, "capacity")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The create time of nas file system.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of nas file system.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="fileSystemId")
+    def file_system_id(self) -> str:
+        """
+        The filesystem id of nas file system.
+        """
+        return pulumi.get(self, "file_system_id")
+
+    @property
+    @pulumi.getter(name="fileSystemType")
+    def file_system_type(self) -> str:
+        """
+        The type of nas file system.
+        """
+        return pulumi.get(self, "file_system_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Nas File System.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="meteredSize")
+    def metered_size(self) -> str:
+        """
+        The size of metered.
+        """
+        return pulumi.get(self, "metered_size")
+
+    @property
+    @pulumi.getter(name="mountTargetDomain")
+    def mount_target_domain(self) -> str:
+        """
+        The domain of mount target.
+        """
+        return pulumi.get(self, "mount_target_domain")
+
+    @property
+    @pulumi.getter(name="mountTargetStatus")
+    def mount_target_status(self) -> str:
+        """
+        The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
+        """
+        return pulumi.get(self, "mount_target_status")
+
+    @property
+    @pulumi.getter(name="nasFileSystemName")
+    def nas_file_system_name(self) -> str:
+        """
+        The name of nas file system.
+        """
+        return pulumi.get(self, "nas_file_system_name")
+
+    @property
+    @pulumi.getter(name="officeSiteId")
+    def office_site_id(self) -> str:
+        """
+        The ID of office site.
+        """
+        return pulumi.get(self, "office_site_id")
+
+    @property
+    @pulumi.getter(name="officeSiteName")
+    def office_site_name(self) -> str:
+        """
+        The name of office site.
+        """
+        return pulumi.get(self, "office_site_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> str:
+        """
+        The storage type of nas file system.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @property
+    @pulumi.getter(name="supportAcl")
+    def support_acl(self) -> bool:
+        """
+        Whether to support Acl.
+        """
+        return pulumi.get(self, "support_acl")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone id of nas file system.
+        """
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type

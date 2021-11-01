@@ -10,10 +10,12 @@ export * from "./getCallerIdentity";
 export * from "./getFileCrc64Checksum";
 export * from "./getMscSubContacts";
 export * from "./getMscSubSubscriptions";
+export * from "./getMscSubWebhooks";
 export * from "./getRegions";
 export * from "./getZones";
 export * from "./mscSubContract";
 export * from "./mscSubSubscription";
+export * from "./mscSubWebhook";
 export * from "./provider";
 
 // Export sub-modules:
@@ -232,6 +234,7 @@ export {
 // Import resources to register:
 import { MscSubContract } from "./mscSubContract";
 import { MscSubSubscription } from "./mscSubSubscription";
+import { MscSubWebhook } from "./mscSubWebhook";
 
 const _module = {
     version: utilities.getVersion(),
@@ -241,6 +244,8 @@ const _module = {
                 return new MscSubContract(name, <any>undefined, { urn })
             case "alicloud:index/mscSubSubscription:MscSubSubscription":
                 return new MscSubSubscription(name, <any>undefined, { urn })
+            case "alicloud:index/mscSubWebhook:MscSubWebhook":
+                return new MscSubWebhook(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -248,6 +253,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "index/mscSubContract", _module)
 pulumi.runtime.registerResourceModule("alicloud", "index/mscSubSubscription", _module)
+pulumi.runtime.registerResourceModule("alicloud", "index/mscSubWebhook", _module)
 
 import { Provider } from "./provider";
 

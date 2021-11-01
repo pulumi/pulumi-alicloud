@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .access_configuration import *
+from .access_management import *
 from .directory import *
 from .get_access_configurations import *
 from .get_directories import *
@@ -13,6 +14,7 @@ from .get_users import *
 from .group import *
 from .scim_server_credential import *
 from .user import *
+from .user_attachment import *
 from ._inputs import *
 from . import outputs
 
@@ -30,6 +32,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:cloudsso/accessConfiguration:AccessConfiguration":
                 return AccessConfiguration(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cloudsso/accessManagement:AccessManagement":
+                return AccessManagement(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cloudsso/directory:Directory":
                 return Directory(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cloudsso/group:Group":
@@ -38,15 +42,19 @@ def _register_module():
                 return ScimServerCredential(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cloudsso/user:User":
                 return User(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cloudsso/userAttachment:UserAttachment":
+                return UserAttachment(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "cloudsso/accessConfiguration", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cloudsso/accessManagement", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cloudsso/directory", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cloudsso/group", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cloudsso/scimServerCredential", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cloudsso/user", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cloudsso/userAttachment", _module_instance)
 
 _register_module()

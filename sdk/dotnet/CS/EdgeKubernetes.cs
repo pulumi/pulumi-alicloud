@@ -150,6 +150,9 @@ namespace Pulumi.AliCloud.CS
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
+        [Output("retainResources")]
+        public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
@@ -425,6 +428,14 @@ namespace Pulumi.AliCloud.CS
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("retainResources")]
+        private InputList<string>? _retainResources;
+        public InputList<string> RetainResources
+        {
+            get => _retainResources ?? (_retainResources = new InputList<string>());
+            set => _retainResources = value;
+        }
+
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
@@ -677,6 +688,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("retainResources")]
+        private InputList<string>? _retainResources;
+        public InputList<string> RetainResources
+        {
+            get => _retainResources ?? (_retainResources = new InputList<string>());
+            set => _retainResources = value;
+        }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

@@ -256,6 +256,7 @@ class _AggregateConfigRuleState:
     def __init__(__self__, *,
                  aggregate_config_rule_name: Optional[pulumi.Input[str]] = None,
                  aggregator_id: Optional[pulumi.Input[str]] = None,
+                 config_rule_id: Optional[pulumi.Input[str]] = None,
                  config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
@@ -274,6 +275,7 @@ class _AggregateConfigRuleState:
         Input properties used for looking up and filtering AggregateConfigRule resources.
         :param pulumi.Input[str] aggregate_config_rule_name: The name of the rule.
         :param pulumi.Input[str] aggregator_id: The Aggregator Id.
+        :param pulumi.Input[str] config_rule_id: (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
         :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
@@ -292,6 +294,8 @@ class _AggregateConfigRuleState:
             pulumi.set(__self__, "aggregate_config_rule_name", aggregate_config_rule_name)
         if aggregator_id is not None:
             pulumi.set(__self__, "aggregator_id", aggregator_id)
+        if config_rule_id is not None:
+            pulumi.set(__self__, "config_rule_id", config_rule_id)
         if config_rule_trigger_types is not None:
             pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
         if description is not None:
@@ -344,6 +348,18 @@ class _AggregateConfigRuleState:
     @aggregator_id.setter
     def aggregator_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aggregator_id", value)
+
+    @property
+    @pulumi.getter(name="configRuleId")
+    def config_rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+        """
+        return pulumi.get(self, "config_rule_id")
+
+    @config_rule_id.setter
+    def config_rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_rule_id", value)
 
     @property
     @pulumi.getter(name="configRuleTriggerTypes")
@@ -657,6 +673,7 @@ class AggregateConfigRule(pulumi.CustomResource):
             __props__.__dict__["source_owner"] = source_owner
             __props__.__dict__["tag_key_scope"] = tag_key_scope
             __props__.__dict__["tag_value_scope"] = tag_value_scope
+            __props__.__dict__["config_rule_id"] = None
             __props__.__dict__["status"] = None
         super(AggregateConfigRule, __self__).__init__(
             'alicloud:cfg/aggregateConfigRule:AggregateConfigRule',
@@ -670,6 +687,7 @@ class AggregateConfigRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aggregate_config_rule_name: Optional[pulumi.Input[str]] = None,
             aggregator_id: Optional[pulumi.Input[str]] = None,
+            config_rule_id: Optional[pulumi.Input[str]] = None,
             config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
@@ -693,6 +711,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aggregate_config_rule_name: The name of the rule.
         :param pulumi.Input[str] aggregator_id: The Aggregator Id.
+        :param pulumi.Input[str] config_rule_id: (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
         :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
@@ -713,6 +732,7 @@ class AggregateConfigRule(pulumi.CustomResource):
 
         __props__.__dict__["aggregate_config_rule_name"] = aggregate_config_rule_name
         __props__.__dict__["aggregator_id"] = aggregator_id
+        __props__.__dict__["config_rule_id"] = config_rule_id
         __props__.__dict__["config_rule_trigger_types"] = config_rule_trigger_types
         __props__.__dict__["description"] = description
         __props__.__dict__["exclude_resource_ids_scope"] = exclude_resource_ids_scope
@@ -744,6 +764,14 @@ class AggregateConfigRule(pulumi.CustomResource):
         The Aggregator Id.
         """
         return pulumi.get(self, "aggregator_id")
+
+    @property
+    @pulumi.getter(name="configRuleId")
+    def config_rule_id(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+        """
+        return pulumi.get(self, "config_rule_id")
 
     @property
     @pulumi.getter(name="configRuleTriggerTypes")

@@ -4,8 +4,10 @@
 
 # Export this package's modules as members:
 from .ecd_policy_group import *
+from .get_nas_file_systems import *
 from .get_policy_groups import *
 from .get_simple_office_sites import *
+from .nas_file_system import *
 from .simple_office_site import *
 from ._inputs import *
 from . import outputs
@@ -24,6 +26,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:eds/ecdPolicyGroup:EcdPolicyGroup":
                 return EcdPolicyGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:eds/nasFileSystem:NasFileSystem":
+                return NasFileSystem(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:eds/simpleOfficeSite:SimpleOfficeSite":
                 return SimpleOfficeSite(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -32,6 +36,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "eds/ecdPolicyGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "eds/nasFileSystem", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "eds/simpleOfficeSite", _module_instance)
 
 _register_module()

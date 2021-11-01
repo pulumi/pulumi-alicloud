@@ -1158,6 +1158,121 @@ func (o ContainerGroupHostAliasArrayOutput) Index(i pulumi.IntInput) ContainerGr
 	}).(ContainerGroupHostAliasOutput)
 }
 
+type ContainerGroupImageRegistryCredential struct {
+	// The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+	Password string `pulumi:"password"`
+	// The address of the image repository. It is required when `imageRegistryCredential` is configured.
+	Server string `pulumi:"server"`
+	// The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+	UserName string `pulumi:"userName"`
+}
+
+// ContainerGroupImageRegistryCredentialInput is an input type that accepts ContainerGroupImageRegistryCredentialArgs and ContainerGroupImageRegistryCredentialOutput values.
+// You can construct a concrete instance of `ContainerGroupImageRegistryCredentialInput` via:
+//
+//          ContainerGroupImageRegistryCredentialArgs{...}
+type ContainerGroupImageRegistryCredentialInput interface {
+	pulumi.Input
+
+	ToContainerGroupImageRegistryCredentialOutput() ContainerGroupImageRegistryCredentialOutput
+	ToContainerGroupImageRegistryCredentialOutputWithContext(context.Context) ContainerGroupImageRegistryCredentialOutput
+}
+
+type ContainerGroupImageRegistryCredentialArgs struct {
+	// The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The address of the image repository. It is required when `imageRegistryCredential` is configured.
+	Server pulumi.StringInput `pulumi:"server"`
+	// The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+	UserName pulumi.StringInput `pulumi:"userName"`
+}
+
+func (ContainerGroupImageRegistryCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupImageRegistryCredential)(nil)).Elem()
+}
+
+func (i ContainerGroupImageRegistryCredentialArgs) ToContainerGroupImageRegistryCredentialOutput() ContainerGroupImageRegistryCredentialOutput {
+	return i.ToContainerGroupImageRegistryCredentialOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupImageRegistryCredentialArgs) ToContainerGroupImageRegistryCredentialOutputWithContext(ctx context.Context) ContainerGroupImageRegistryCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupImageRegistryCredentialOutput)
+}
+
+// ContainerGroupImageRegistryCredentialArrayInput is an input type that accepts ContainerGroupImageRegistryCredentialArray and ContainerGroupImageRegistryCredentialArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupImageRegistryCredentialArrayInput` via:
+//
+//          ContainerGroupImageRegistryCredentialArray{ ContainerGroupImageRegistryCredentialArgs{...} }
+type ContainerGroupImageRegistryCredentialArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupImageRegistryCredentialArrayOutput() ContainerGroupImageRegistryCredentialArrayOutput
+	ToContainerGroupImageRegistryCredentialArrayOutputWithContext(context.Context) ContainerGroupImageRegistryCredentialArrayOutput
+}
+
+type ContainerGroupImageRegistryCredentialArray []ContainerGroupImageRegistryCredentialInput
+
+func (ContainerGroupImageRegistryCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupImageRegistryCredential)(nil)).Elem()
+}
+
+func (i ContainerGroupImageRegistryCredentialArray) ToContainerGroupImageRegistryCredentialArrayOutput() ContainerGroupImageRegistryCredentialArrayOutput {
+	return i.ToContainerGroupImageRegistryCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupImageRegistryCredentialArray) ToContainerGroupImageRegistryCredentialArrayOutputWithContext(ctx context.Context) ContainerGroupImageRegistryCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupImageRegistryCredentialArrayOutput)
+}
+
+type ContainerGroupImageRegistryCredentialOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupImageRegistryCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupImageRegistryCredential)(nil)).Elem()
+}
+
+func (o ContainerGroupImageRegistryCredentialOutput) ToContainerGroupImageRegistryCredentialOutput() ContainerGroupImageRegistryCredentialOutput {
+	return o
+}
+
+func (o ContainerGroupImageRegistryCredentialOutput) ToContainerGroupImageRegistryCredentialOutputWithContext(ctx context.Context) ContainerGroupImageRegistryCredentialOutput {
+	return o
+}
+
+// The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+func (o ContainerGroupImageRegistryCredentialOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerGroupImageRegistryCredential) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The address of the image repository. It is required when `imageRegistryCredential` is configured.
+func (o ContainerGroupImageRegistryCredentialOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerGroupImageRegistryCredential) string { return v.Server }).(pulumi.StringOutput)
+}
+
+// The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+func (o ContainerGroupImageRegistryCredentialOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerGroupImageRegistryCredential) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type ContainerGroupImageRegistryCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupImageRegistryCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupImageRegistryCredential)(nil)).Elem()
+}
+
+func (o ContainerGroupImageRegistryCredentialArrayOutput) ToContainerGroupImageRegistryCredentialArrayOutput() ContainerGroupImageRegistryCredentialArrayOutput {
+	return o
+}
+
+func (o ContainerGroupImageRegistryCredentialArrayOutput) ToContainerGroupImageRegistryCredentialArrayOutputWithContext(ctx context.Context) ContainerGroupImageRegistryCredentialArrayOutput {
+	return o
+}
+
+func (o ContainerGroupImageRegistryCredentialArrayOutput) Index(i pulumi.IntInput) ContainerGroupImageRegistryCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupImageRegistryCredential {
+		return vs[0].([]ContainerGroupImageRegistryCredential)[vs[1].(int)]
+	}).(ContainerGroupImageRegistryCredentialOutput)
+}
+
 type ContainerGroupInitContainer struct {
 	// The arguments passed to the commands.
 	Args []string `pulumi:"args"`
@@ -4974,6 +5089,8 @@ func init() {
 	pulumi.RegisterOutputType(ContainerGroupEciSecurityContextSysctlArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupHostAliasOutput{})
 	pulumi.RegisterOutputType(ContainerGroupHostAliasArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupImageRegistryCredentialOutput{})
+	pulumi.RegisterOutputType(ContainerGroupImageRegistryCredentialArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupInitContainerOutput{})
 	pulumi.RegisterOutputType(ContainerGroupInitContainerArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupInitContainerEnvironmentVarOutput{})
