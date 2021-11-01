@@ -63,6 +63,8 @@ type EipAddress struct {
 	ActivityId pulumi.StringPtrOutput `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringOutput `pulumi:"addressName"`
+	// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -72,7 +74,7 @@ type EipAddress struct {
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// The metering method of the EIP.
-	// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
+	// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
 	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
 	// The address of the EIP.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
@@ -127,6 +129,8 @@ type eipAddressState struct {
 	ActivityId *string `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName *string `pulumi:"addressName"`
+	// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+	AutoPay *bool `pulumi:"autoPay"`
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -136,7 +140,7 @@ type eipAddressState struct {
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The metering method of the EIP.
-	// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
+	// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The address of the EIP.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -163,6 +167,8 @@ type EipAddressState struct {
 	ActivityId pulumi.StringPtrInput
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringPtrInput
+	// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+	AutoPay pulumi.BoolPtrInput
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
 	Bandwidth pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -172,7 +178,7 @@ type EipAddressState struct {
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// The metering method of the EIP.
-	// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
+	// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
 	InternetChargeType pulumi.StringPtrInput
 	// The address of the EIP.
 	IpAddress pulumi.StringPtrInput
@@ -203,6 +209,8 @@ type eipAddressArgs struct {
 	ActivityId *string `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName *string `pulumi:"addressName"`
+	// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+	AutoPay *bool `pulumi:"autoPay"`
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -212,7 +220,7 @@ type eipAddressArgs struct {
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The metering method of the EIP.
-	// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
+	// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
 	Isp *string `pulumi:"isp"`
@@ -236,6 +244,8 @@ type EipAddressArgs struct {
 	ActivityId pulumi.StringPtrInput
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringPtrInput
+	// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+	AutoPay pulumi.BoolPtrInput
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
 	Bandwidth pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -245,7 +255,7 @@ type EipAddressArgs struct {
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// The metering method of the EIP.
-	// Valid values: `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
+	// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
 	InternetChargeType pulumi.StringPtrInput
 	// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
 	Isp pulumi.StringPtrInput

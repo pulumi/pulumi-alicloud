@@ -28,7 +28,14 @@ namespace Pulumi.AliCloud.Cfg
     /// {
     ///     public MyStack()
     ///     {
-    ///         var exampleAggregator = new AliCloud.Cfg.Aggregator("exampleAggregator", new AliCloud.Cfg.AggregatorArgs
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "example_name";
+    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
+    ///         {
+    ///             Status = "OK",
+    ///         }));
+    ///         var defaultInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync());
+    ///         var defaultAggregator = new AliCloud.Cfg.Aggregator("defaultAggregator", new AliCloud.Cfg.AggregatorArgs
     ///         {
     ///             AggregatorAccounts = 
     ///             {
@@ -42,38 +49,40 @@ namespace Pulumi.AliCloud.Cfg
     ///             AggregatorName = "tf-testaccaggregator",
     ///             Description = "tf-testaccaggregator",
     ///         });
-    ///         var exampleAggregateCompliancePack = new AliCloud.Cfg.AggregateCompliancePack("exampleAggregateCompliancePack", new AliCloud.Cfg.AggregateCompliancePackArgs
+    ///         var defaultAggregateConfigRule = new AliCloud.Cfg.AggregateConfigRule("defaultAggregateConfigRule", new AliCloud.Cfg.AggregateConfigRuleArgs
+    ///         {
+    ///             AggregatorId = defaultAggregator.Id,
+    ///             AggregateConfigRuleName = name,
+    ///             SourceOwner = "ALIYUN",
+    ///             SourceIdentifier = "ecs-cpu-min-count-limit",
+    ///             ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
+    ///             ResourceTypesScopes = 
+    ///             {
+    ///                 "ACS::ECS::Instance",
+    ///             },
+    ///             RiskLevel = 1,
+    ///             Description = name,
+    ///             ExcludeResourceIdsScope = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Ids[0]),
+    ///             InputParameters = 
+    ///             {
+    ///                 { "cpuCount", "4" },
+    ///             },
+    ///             RegionIdsScope = "cn-hangzhou",
+    ///             ResourceGroupIdsScope = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids[0]),
+    ///             TagKeyScope = "tFTest",
+    ///             TagValueScope = "forTF 123",
+    ///         });
+    ///         var defaultAggregateCompliancePack = new AliCloud.Cfg.AggregateCompliancePack("defaultAggregateCompliancePack", new AliCloud.Cfg.AggregateCompliancePackArgs
     ///         {
     ///             AggregateCompliancePackName = "tf-testaccConfig1234",
-    ///             AggregatorId = alicloud_config_aggregators.Example.Id,
-    ///             CompliancePackTemplateId = "ct-3d20ff4e06a30027f76e",
+    ///             AggregatorId = defaultAggregator.Id,
     ///             Description = "tf-testaccConfig1234",
     ///             RiskLevel = 1,
-    ///             ConfigRules = 
+    ///             ConfigRuleIds = 
     ///             {
-    ///                 new AliCloud.Cfg.Inputs.AggregateCompliancePackConfigRuleArgs
+    ///                 new AliCloud.Cfg.Inputs.AggregateCompliancePackConfigRuleIdArgs
     ///                 {
-    ///                     ManagedRuleIdentifier = "ecs-instance-expired-check",
-    ///                     ConfigRuleParameters = 
-    ///                     {
-    ///                         new AliCloud.Cfg.Inputs.AggregateCompliancePackConfigRuleConfigRuleParameterArgs
-    ///                         {
-    ///                             ParameterName = "days",
-    ///                             ParameterValue = "60",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new AliCloud.Cfg.Inputs.AggregateCompliancePackConfigRuleArgs
-    ///                 {
-    ///                     ManagedRuleIdentifier = "ecs-snapshot-retention-days",
-    ///                     ConfigRuleParameters = 
-    ///                     {
-    ///                         new AliCloud.Cfg.Inputs.AggregateCompliancePackConfigRuleConfigRuleParameterArgs
-    ///                         {
-    ///                             ParameterName = "days",
-    ///                             ParameterValue = "7",
-    ///                         },
-    ///                     },
+    ///                     ConfigRuleId = defaultAggregateConfigRule.ConfigRuleId,
     ///                 },
     ///             },
     ///         });
@@ -109,10 +118,16 @@ namespace Pulumi.AliCloud.Cfg
         /// The Template ID of compliance package.
         /// </summary>
         [Output("compliancePackTemplateId")]
-        public Output<string> CompliancePackTemplateId { get; private set; } = null!;
+        public Output<string?> CompliancePackTemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of  compliance package rules.
+        /// A list of Config Rule IDs.
+        /// </summary>
+        [Output("configRuleIds")]
+        public Output<ImmutableArray<Outputs.AggregateCompliancePackConfigRuleId>> ConfigRuleIds { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of Config Rules.
         /// </summary>
         [Output("configRules")]
         public Output<ImmutableArray<Outputs.AggregateCompliancePackConfigRule>> ConfigRules { get; private set; } = null!;
@@ -196,15 +211,28 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// The Template ID of compliance package.
         /// </summary>
-        [Input("compliancePackTemplateId", required: true)]
-        public Input<string> CompliancePackTemplateId { get; set; } = null!;
+        [Input("compliancePackTemplateId")]
+        public Input<string>? CompliancePackTemplateId { get; set; }
 
-        [Input("configRules", required: true)]
+        [Input("configRuleIds")]
+        private InputList<Inputs.AggregateCompliancePackConfigRuleIdArgs>? _configRuleIds;
+
+        /// <summary>
+        /// A list of Config Rule IDs.
+        /// </summary>
+        public InputList<Inputs.AggregateCompliancePackConfigRuleIdArgs> ConfigRuleIds
+        {
+            get => _configRuleIds ?? (_configRuleIds = new InputList<Inputs.AggregateCompliancePackConfigRuleIdArgs>());
+            set => _configRuleIds = value;
+        }
+
+        [Input("configRules")]
         private InputList<Inputs.AggregateCompliancePackConfigRuleArgs>? _configRules;
 
         /// <summary>
-        /// A list of  compliance package rules.
+        /// A list of Config Rules.
         /// </summary>
+        [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
         public InputList<Inputs.AggregateCompliancePackConfigRuleArgs> ConfigRules
         {
             get => _configRules ?? (_configRules = new InputList<Inputs.AggregateCompliancePackConfigRuleArgs>());
@@ -248,12 +276,25 @@ namespace Pulumi.AliCloud.Cfg
         [Input("compliancePackTemplateId")]
         public Input<string>? CompliancePackTemplateId { get; set; }
 
+        [Input("configRuleIds")]
+        private InputList<Inputs.AggregateCompliancePackConfigRuleIdGetArgs>? _configRuleIds;
+
+        /// <summary>
+        /// A list of Config Rule IDs.
+        /// </summary>
+        public InputList<Inputs.AggregateCompliancePackConfigRuleIdGetArgs> ConfigRuleIds
+        {
+            get => _configRuleIds ?? (_configRuleIds = new InputList<Inputs.AggregateCompliancePackConfigRuleIdGetArgs>());
+            set => _configRuleIds = value;
+        }
+
         [Input("configRules")]
         private InputList<Inputs.AggregateCompliancePackConfigRuleGetArgs>? _configRules;
 
         /// <summary>
-        /// A list of  compliance package rules.
+        /// A list of Config Rules.
         /// </summary>
+        [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
         public InputList<Inputs.AggregateCompliancePackConfigRuleGetArgs> ConfigRules
         {
             get => _configRules ?? (_configRules = new InputList<Inputs.AggregateCompliancePackConfigRuleGetArgs>());

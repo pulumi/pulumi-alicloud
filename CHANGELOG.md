@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v1.141.0 of the AliCloud Terraform Provider
+  **PLEASE NOTE:* `alicloud.hbr.getVaults` will no longer accept the `createTime` parameter.
 
 ---
 

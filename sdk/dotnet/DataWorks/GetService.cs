@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.DataWorks
         /// 
         /// For information about DataWorks and how to use it, see [What is DataWorks](https://www.alibabacloud.com/help/en/product/72772.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.118.0+
+        /// &gt; **NOTE:** Available in v1.118.0+. After the version 1.141.0, the data source is renamed as `alicloud.dataworks.getService`.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

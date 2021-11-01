@@ -143,6 +143,10 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly hostAliases!: pulumi.Output<outputs.eci.ContainerGroupHostAlias[] | undefined>;
     /**
+     * The image registry credential. The details see Block `imageRegistryCredential`.
+     */
+    public readonly imageRegistryCredentials!: pulumi.Output<outputs.eci.ContainerGroupImageRegistryCredential[] | undefined>;
+    /**
      * The list of initContainers.
      */
     public readonly initContainers!: pulumi.Output<outputs.eci.ContainerGroupInitContainer[] | undefined>;
@@ -207,6 +211,7 @@ export class ContainerGroup extends pulumi.CustomResource {
             inputs["dnsConfig"] = state ? state.dnsConfig : undefined;
             inputs["eciSecurityContext"] = state ? state.eciSecurityContext : undefined;
             inputs["hostAliases"] = state ? state.hostAliases : undefined;
+            inputs["imageRegistryCredentials"] = state ? state.imageRegistryCredentials : undefined;
             inputs["initContainers"] = state ? state.initContainers : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
             inputs["memory"] = state ? state.memory : undefined;
@@ -239,6 +244,7 @@ export class ContainerGroup extends pulumi.CustomResource {
             inputs["dnsConfig"] = args ? args.dnsConfig : undefined;
             inputs["eciSecurityContext"] = args ? args.eciSecurityContext : undefined;
             inputs["hostAliases"] = args ? args.hostAliases : undefined;
+            inputs["imageRegistryCredentials"] = args ? args.imageRegistryCredentials : undefined;
             inputs["initContainers"] = args ? args.initContainers : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["memory"] = args ? args.memory : undefined;
@@ -284,6 +290,10 @@ export interface ContainerGroupState {
      * HostAliases.
      */
     readonly hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[]>;
+    /**
+     * The image registry credential. The details see Block `imageRegistryCredential`.
+     */
+    readonly imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[]>;
     /**
      * The list of initContainers.
      */
@@ -356,6 +366,10 @@ export interface ContainerGroupArgs {
      * HostAliases.
      */
     readonly hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[]>;
+    /**
+     * The image registry credential. The details see Block `imageRegistryCredential`.
+     */
+    readonly imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[]>;
     /**
      * The list of initContainers.
      */

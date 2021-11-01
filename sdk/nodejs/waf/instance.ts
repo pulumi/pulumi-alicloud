@@ -114,6 +114,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly prefessionalService!: pulumi.Output<string>;
     /**
+     * The instance region ID.
+     */
+    public readonly region!: pulumi.Output<string | undefined>;
+    /**
      * Renewal period of WAF service. Unit: month
      */
     public readonly renewPeriod!: pulumi.Output<number | undefined>;
@@ -163,6 +167,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["packageCode"] = state ? state.packageCode : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["prefessionalService"] = state ? state.prefessionalService : undefined;
+            inputs["region"] = state ? state.region : undefined;
             inputs["renewPeriod"] = state ? state.renewPeriod : undefined;
             inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -211,6 +216,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["packageCode"] = args ? args.packageCode : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["prefessionalService"] = args ? args.prefessionalService : undefined;
+            inputs["region"] = args ? args.region : undefined;
             inputs["renewPeriod"] = args ? args.renewPeriod : undefined;
             inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -273,6 +279,10 @@ export interface InstanceState {
      * Specify whether professional service is supported. Valid values: ["true", "false"]
      */
     readonly prefessionalService?: pulumi.Input<string>;
+    /**
+     * The instance region ID.
+     */
+    readonly region?: pulumi.Input<string>;
     /**
      * Renewal period of WAF service. Unit: month
      */
@@ -349,6 +359,10 @@ export interface InstanceArgs {
      * Specify whether professional service is supported. Valid values: ["true", "false"]
      */
     readonly prefessionalService: pulumi.Input<string>;
+    /**
+     * The instance region ID.
+     */
+    readonly region?: pulumi.Input<string>;
     /**
      * Renewal period of WAF service. Unit: month
      */

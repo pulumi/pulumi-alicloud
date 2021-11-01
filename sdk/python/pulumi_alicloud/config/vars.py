@@ -16,6 +16,7 @@ __all__ = [
     'client_connect_timeout',
     'client_read_timeout',
     'configuration_source',
+    'credentials_uri',
     'ecs_role_name',
     'endpoints',
     'fc',
@@ -63,6 +64,11 @@ The maximum timeout of the client read request.
 configuration_source = __config__.get('configurationSource')
 """
 Use this to mark a terraform configuration file source.
+"""
+
+credentials_uri = __config__.get('credentialsUri')
+"""
+The URI of sidecar credentials service.
 """
 
 ecs_role_name = __config__.get('ecsRoleName') or _utilities.get_env('ALICLOUD_ECS_ROLE_NAME')

@@ -18,6 +18,7 @@ __all__ = [
     'ContainerGroupEciSecurityContextArgs',
     'ContainerGroupEciSecurityContextSysctlArgs',
     'ContainerGroupHostAliasArgs',
+    'ContainerGroupImageRegistryCredentialArgs',
     'ContainerGroupInitContainerArgs',
     'ContainerGroupInitContainerEnvironmentVarArgs',
     'ContainerGroupInitContainerPortArgs',
@@ -569,6 +570,58 @@ class ContainerGroupHostAliasArgs:
     @ip.setter
     def ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip", value)
+
+
+@pulumi.input_type
+class ContainerGroupImageRegistryCredentialArgs:
+    def __init__(__self__, *,
+                 password: pulumi.Input[str],
+                 server: pulumi.Input[str],
+                 user_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] password: The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        :param pulumi.Input[str] server: The address of the image repository. It is required when `image_registry_credential` is configured.
+        :param pulumi.Input[str] user_name: The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "server", server)
+        pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def server(self) -> pulumi.Input[str]:
+        """
+        The address of the image repository. It is required when `image_registry_credential` is configured.
+        """
+        return pulumi.get(self, "server")
+
+    @server.setter
+    def server(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> pulumi.Input[str]:
+        """
+        The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type

@@ -42,6 +42,28 @@ namespace Pulumi.AliCloud.Nas
     /// }
     /// ```
     /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.Nas.FileSystem("foo", new AliCloud.Nas.FileSystemArgs
+    ///         {
+    ///             Capacity = 100,
+    ///             Description = "tf-testAccNasConfig",
+    ///             FileSystemType = "extreme",
+    ///             ProtocolType = "NFS",
+    ///             StorageType = "standard",
+    ///             ZoneId = "cn-hangzhou-f",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Nas File System can be imported using the id, e.g.
@@ -54,31 +76,61 @@ namespace Pulumi.AliCloud.Nas
     public partial class FileSystem : Pulumi.CustomResource
     {
         /// <summary>
+        /// The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
+        /// Unit: gib; **Note**: The minimum value is 100.
+        /// </summary>
+        [Output("capacity")]
+        public Output<int> Capacity { get; private set; } = null!;
+
+        /// <summary>
         /// The File System description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-        /// Valid values:
-        /// 0: The file system is not encrypted.
-        /// 1: The file system is encrypted with a managed secret key.
+        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        /// * Valid values:
         /// </summary>
         [Output("encryptType")]
         public Output<int?> EncryptType { get; private set; } = null!;
 
         /// <summary>
-        /// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
+        /// the type of the file system. 
+        /// Valid values:
+        /// `standard` (Default),
+        /// `extreme`.
+        /// </summary>
+        [Output("fileSystemType")]
+        public Output<string?> FileSystemType { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+        /// </summary>
+        [Output("kmsKeyId")]
+        public Output<string> KmsKeyId { get; private set; } = null!;
+
+        /// <summary>
+        /// The protocol type of the file system.
+        /// Valid values:
+        /// `NFS`,
+        /// `SMB` (Available when the `file_system_type` is `standard`).
         /// </summary>
         [Output("protocolType")]
         public Output<string> ProtocolType { get; private set; } = null!;
 
         /// <summary>
-        /// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
+        /// The storage type of the file System. 
+        /// * Valid values:
         /// </summary>
         [Output("storageType")]
         public Output<string> StorageType { get; private set; } = null!;
+
+        /// <summary>
+        /// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -127,31 +179,61 @@ namespace Pulumi.AliCloud.Nas
     public sealed class FileSystemArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
+        /// Unit: gib; **Note**: The minimum value is 100.
+        /// </summary>
+        [Input("capacity")]
+        public Input<int>? Capacity { get; set; }
+
+        /// <summary>
         /// The File System description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-        /// Valid values:
-        /// 0: The file system is not encrypted.
-        /// 1: The file system is encrypted with a managed secret key.
+        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        /// * Valid values:
         /// </summary>
         [Input("encryptType")]
         public Input<int>? EncryptType { get; set; }
 
         /// <summary>
-        /// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
+        /// the type of the file system. 
+        /// Valid values:
+        /// `standard` (Default),
+        /// `extreme`.
+        /// </summary>
+        [Input("fileSystemType")]
+        public Input<string>? FileSystemType { get; set; }
+
+        /// <summary>
+        /// The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
+        /// The protocol type of the file system.
+        /// Valid values:
+        /// `NFS`,
+        /// `SMB` (Available when the `file_system_type` is `standard`).
         /// </summary>
         [Input("protocolType", required: true)]
         public Input<string> ProtocolType { get; set; } = null!;
 
         /// <summary>
-        /// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
+        /// The storage type of the file System. 
+        /// * Valid values:
         /// </summary>
         [Input("storageType", required: true)]
         public Input<string> StorageType { get; set; } = null!;
+
+        /// <summary>
+        /// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public FileSystemArgs()
         {
@@ -161,31 +243,61 @@ namespace Pulumi.AliCloud.Nas
     public sealed class FileSystemState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
+        /// Unit: gib; **Note**: The minimum value is 100.
+        /// </summary>
+        [Input("capacity")]
+        public Input<int>? Capacity { get; set; }
+
+        /// <summary>
         /// The File System description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-        /// Valid values:
-        /// 0: The file system is not encrypted.
-        /// 1: The file system is encrypted with a managed secret key.
+        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        /// * Valid values:
         /// </summary>
         [Input("encryptType")]
         public Input<int>? EncryptType { get; set; }
 
         /// <summary>
-        /// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
+        /// the type of the file system. 
+        /// Valid values:
+        /// `standard` (Default),
+        /// `extreme`.
+        /// </summary>
+        [Input("fileSystemType")]
+        public Input<string>? FileSystemType { get; set; }
+
+        /// <summary>
+        /// The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
+        /// The protocol type of the file system.
+        /// Valid values:
+        /// `NFS`,
+        /// `SMB` (Available when the `file_system_type` is `standard`).
         /// </summary>
         [Input("protocolType")]
         public Input<string>? ProtocolType { get; set; }
 
         /// <summary>
-        /// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
+        /// The storage type of the file System. 
+        /// * Valid values:
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }
+
+        /// <summary>
+        /// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public FileSystemState()
         {

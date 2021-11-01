@@ -458,7 +458,7 @@ class SynchronizationInstance(pulumi.CustomResource):
             destination_endpoint_engine_name="ADB30",
             destination_endpoint_region="cn-hangzhou",
             instance_class="small",
-            payment_type="PostPaid",
+            payment_type="PayAsYouGo",
             source_endpoint_engine_name="PolarDB",
             source_endpoint_region="cn-hangzhou",
             sync_architecture="oneway")
@@ -512,7 +512,7 @@ class SynchronizationInstance(pulumi.CustomResource):
             destination_endpoint_engine_name="ADB30",
             destination_endpoint_region="cn-hangzhou",
             instance_class="small",
-            payment_type="PostPaid",
+            payment_type="PayAsYouGo",
             source_endpoint_engine_name="PolarDB",
             source_endpoint_region="cn-hangzhou",
             sync_architecture="oneway")

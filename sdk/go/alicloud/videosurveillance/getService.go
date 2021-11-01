@@ -7,9 +7,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Using this data source can open Video Surveillance (VS) service automatically. If the service has been opened, it will return opened.
+// Using this data source can open Video Surveillance System service automatically. If the service has been opened, it will return opened.
 //
-// For information about Video Surveillance (VS) and how to use it, see [What is VS](https://help.aliyun.com/product/108765.html).
+// For information about Video Surveillance System and how to use it, see [What is VS](https://help.aliyun.com/product/108765.html).
 //
 // > **NOTE:** Available in v1.116.0+
 //

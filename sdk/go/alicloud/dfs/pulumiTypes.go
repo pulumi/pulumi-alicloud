@@ -170,7 +170,808 @@ func (o GetAccessGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetAccessGroup
 	}).(GetAccessGroupsGroupOutput)
 }
 
+type GetAccessRulesRule struct {
+	// The resource ID of the Access Group.
+	AccessGroupId string `pulumi:"accessGroupId"`
+	// The ID of the Access Rule.
+	AccessRuleId string `pulumi:"accessRuleId"`
+	// The created time of the Access Rule.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the Access Rule.
+	Description string `pulumi:"description"`
+	// The resource ID of Access Rule.
+	Id string `pulumi:"id"`
+	// The NetworkSegment of the Access Rule.
+	NetworkSegment string `pulumi:"networkSegment"`
+	// The priority of the Access Rule.
+	Priority int `pulumi:"priority"`
+	// RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+	RwAccessType string `pulumi:"rwAccessType"`
+}
+
+// GetAccessRulesRuleInput is an input type that accepts GetAccessRulesRuleArgs and GetAccessRulesRuleOutput values.
+// You can construct a concrete instance of `GetAccessRulesRuleInput` via:
+//
+//          GetAccessRulesRuleArgs{...}
+type GetAccessRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetAccessRulesRuleOutput() GetAccessRulesRuleOutput
+	ToGetAccessRulesRuleOutputWithContext(context.Context) GetAccessRulesRuleOutput
+}
+
+type GetAccessRulesRuleArgs struct {
+	// The resource ID of the Access Group.
+	AccessGroupId pulumi.StringInput `pulumi:"accessGroupId"`
+	// The ID of the Access Rule.
+	AccessRuleId pulumi.StringInput `pulumi:"accessRuleId"`
+	// The created time of the Access Rule.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the Access Rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The resource ID of Access Rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The NetworkSegment of the Access Rule.
+	NetworkSegment pulumi.StringInput `pulumi:"networkSegment"`
+	// The priority of the Access Rule.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+	RwAccessType pulumi.StringInput `pulumi:"rwAccessType"`
+}
+
+func (GetAccessRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesRule)(nil)).Elem()
+}
+
+func (i GetAccessRulesRuleArgs) ToGetAccessRulesRuleOutput() GetAccessRulesRuleOutput {
+	return i.ToGetAccessRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetAccessRulesRuleArgs) ToGetAccessRulesRuleOutputWithContext(ctx context.Context) GetAccessRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRulesRuleOutput)
+}
+
+// GetAccessRulesRuleArrayInput is an input type that accepts GetAccessRulesRuleArray and GetAccessRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetAccessRulesRuleArrayInput` via:
+//
+//          GetAccessRulesRuleArray{ GetAccessRulesRuleArgs{...} }
+type GetAccessRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetAccessRulesRuleArrayOutput() GetAccessRulesRuleArrayOutput
+	ToGetAccessRulesRuleArrayOutputWithContext(context.Context) GetAccessRulesRuleArrayOutput
+}
+
+type GetAccessRulesRuleArray []GetAccessRulesRuleInput
+
+func (GetAccessRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessRulesRule)(nil)).Elem()
+}
+
+func (i GetAccessRulesRuleArray) ToGetAccessRulesRuleArrayOutput() GetAccessRulesRuleArrayOutput {
+	return i.ToGetAccessRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccessRulesRuleArray) ToGetAccessRulesRuleArrayOutputWithContext(ctx context.Context) GetAccessRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRulesRuleArrayOutput)
+}
+
+type GetAccessRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesRule)(nil)).Elem()
+}
+
+func (o GetAccessRulesRuleOutput) ToGetAccessRulesRuleOutput() GetAccessRulesRuleOutput {
+	return o
+}
+
+func (o GetAccessRulesRuleOutput) ToGetAccessRulesRuleOutputWithContext(ctx context.Context) GetAccessRulesRuleOutput {
+	return o
+}
+
+// The resource ID of the Access Group.
+func (o GetAccessRulesRuleOutput) AccessGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesRule) string { return v.AccessGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the Access Rule.
+func (o GetAccessRulesRuleOutput) AccessRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesRule) string { return v.AccessRuleId }).(pulumi.StringOutput)
+}
+
+// The created time of the Access Rule.
+func (o GetAccessRulesRuleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesRule) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the Access Rule.
+func (o GetAccessRulesRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The resource ID of Access Rule.
+func (o GetAccessRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The NetworkSegment of the Access Rule.
+func (o GetAccessRulesRuleOutput) NetworkSegment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesRule) string { return v.NetworkSegment }).(pulumi.StringOutput)
+}
+
+// The priority of the Access Rule.
+func (o GetAccessRulesRuleOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessRulesRule) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+func (o GetAccessRulesRuleOutput) RwAccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesRule) string { return v.RwAccessType }).(pulumi.StringOutput)
+}
+
+type GetAccessRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessRulesRule)(nil)).Elem()
+}
+
+func (o GetAccessRulesRuleArrayOutput) ToGetAccessRulesRuleArrayOutput() GetAccessRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetAccessRulesRuleArrayOutput) ToGetAccessRulesRuleArrayOutputWithContext(ctx context.Context) GetAccessRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetAccessRulesRuleArrayOutput) Index(i pulumi.IntInput) GetAccessRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessRulesRule {
+		return vs[0].([]GetAccessRulesRule)[vs[1].(int)]
+	}).(GetAccessRulesRuleOutput)
+}
+
+type GetFileSystemsSystem struct {
+	// The creation time of the File system.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the File system.
+	Description string `pulumi:"description"`
+	// The ID of the File System.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The name of the File system.
+	FileSystemName string `pulumi:"fileSystemName"`
+	// The ID of the File System.
+	Id string `pulumi:"id"`
+	// The number of Mount points.
+	MountPointCount int `pulumi:"mountPointCount"`
+	// The number of directories.
+	NumberOfDirectories int `pulumi:"numberOfDirectories"`
+	// The number of files.
+	NumberOfFiles int `pulumi:"numberOfFiles"`
+	// The protocol type. Valid values: `HDFS`.
+	ProtocolType string `pulumi:"protocolType"`
+	// The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s.
+	ProvisionedThroughputInMiBps int `pulumi:"provisionedThroughputInMiBps"`
+	// The capacity budget of the File system.
+	SpaceCapacity int `pulumi:"spaceCapacity"`
+	// Storage package Id.
+	StoragePackageId string `pulumi:"storagePackageId"`
+	// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+	StorageType string `pulumi:"storageType"`
+	// The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+	ThroughputMode string `pulumi:"throughputMode"`
+	// The used space of the File system.
+	UsedSpaceSize float64 `pulumi:"usedSpaceSize"`
+	// The zone ID of the File system.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetFileSystemsSystemInput is an input type that accepts GetFileSystemsSystemArgs and GetFileSystemsSystemOutput values.
+// You can construct a concrete instance of `GetFileSystemsSystemInput` via:
+//
+//          GetFileSystemsSystemArgs{...}
+type GetFileSystemsSystemInput interface {
+	pulumi.Input
+
+	ToGetFileSystemsSystemOutput() GetFileSystemsSystemOutput
+	ToGetFileSystemsSystemOutputWithContext(context.Context) GetFileSystemsSystemOutput
+}
+
+type GetFileSystemsSystemArgs struct {
+	// The creation time of the File system.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the File system.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the File System.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The name of the File system.
+	FileSystemName pulumi.StringInput `pulumi:"fileSystemName"`
+	// The ID of the File System.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The number of Mount points.
+	MountPointCount pulumi.IntInput `pulumi:"mountPointCount"`
+	// The number of directories.
+	NumberOfDirectories pulumi.IntInput `pulumi:"numberOfDirectories"`
+	// The number of files.
+	NumberOfFiles pulumi.IntInput `pulumi:"numberOfFiles"`
+	// The protocol type. Valid values: `HDFS`.
+	ProtocolType pulumi.StringInput `pulumi:"protocolType"`
+	// The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s.
+	ProvisionedThroughputInMiBps pulumi.IntInput `pulumi:"provisionedThroughputInMiBps"`
+	// The capacity budget of the File system.
+	SpaceCapacity pulumi.IntInput `pulumi:"spaceCapacity"`
+	// Storage package Id.
+	StoragePackageId pulumi.StringInput `pulumi:"storagePackageId"`
+	// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+	// The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+	ThroughputMode pulumi.StringInput `pulumi:"throughputMode"`
+	// The used space of the File system.
+	UsedSpaceSize pulumi.Float64Input `pulumi:"usedSpaceSize"`
+	// The zone ID of the File system.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetFileSystemsSystemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFileSystemsSystem)(nil)).Elem()
+}
+
+func (i GetFileSystemsSystemArgs) ToGetFileSystemsSystemOutput() GetFileSystemsSystemOutput {
+	return i.ToGetFileSystemsSystemOutputWithContext(context.Background())
+}
+
+func (i GetFileSystemsSystemArgs) ToGetFileSystemsSystemOutputWithContext(ctx context.Context) GetFileSystemsSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFileSystemsSystemOutput)
+}
+
+// GetFileSystemsSystemArrayInput is an input type that accepts GetFileSystemsSystemArray and GetFileSystemsSystemArrayOutput values.
+// You can construct a concrete instance of `GetFileSystemsSystemArrayInput` via:
+//
+//          GetFileSystemsSystemArray{ GetFileSystemsSystemArgs{...} }
+type GetFileSystemsSystemArrayInput interface {
+	pulumi.Input
+
+	ToGetFileSystemsSystemArrayOutput() GetFileSystemsSystemArrayOutput
+	ToGetFileSystemsSystemArrayOutputWithContext(context.Context) GetFileSystemsSystemArrayOutput
+}
+
+type GetFileSystemsSystemArray []GetFileSystemsSystemInput
+
+func (GetFileSystemsSystemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFileSystemsSystem)(nil)).Elem()
+}
+
+func (i GetFileSystemsSystemArray) ToGetFileSystemsSystemArrayOutput() GetFileSystemsSystemArrayOutput {
+	return i.ToGetFileSystemsSystemArrayOutputWithContext(context.Background())
+}
+
+func (i GetFileSystemsSystemArray) ToGetFileSystemsSystemArrayOutputWithContext(ctx context.Context) GetFileSystemsSystemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFileSystemsSystemArrayOutput)
+}
+
+type GetFileSystemsSystemOutput struct{ *pulumi.OutputState }
+
+func (GetFileSystemsSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFileSystemsSystem)(nil)).Elem()
+}
+
+func (o GetFileSystemsSystemOutput) ToGetFileSystemsSystemOutput() GetFileSystemsSystemOutput {
+	return o
+}
+
+func (o GetFileSystemsSystemOutput) ToGetFileSystemsSystemOutputWithContext(ctx context.Context) GetFileSystemsSystemOutput {
+	return o
+}
+
+// The creation time of the File system.
+func (o GetFileSystemsSystemOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the File system.
+func (o GetFileSystemsSystemOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the File System.
+func (o GetFileSystemsSystemOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The name of the File system.
+func (o GetFileSystemsSystemOutput) FileSystemName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.FileSystemName }).(pulumi.StringOutput)
+}
+
+// The ID of the File System.
+func (o GetFileSystemsSystemOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The number of Mount points.
+func (o GetFileSystemsSystemOutput) MountPointCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.MountPointCount }).(pulumi.IntOutput)
+}
+
+// The number of directories.
+func (o GetFileSystemsSystemOutput) NumberOfDirectories() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.NumberOfDirectories }).(pulumi.IntOutput)
+}
+
+// The number of files.
+func (o GetFileSystemsSystemOutput) NumberOfFiles() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.NumberOfFiles }).(pulumi.IntOutput)
+}
+
+// The protocol type. Valid values: `HDFS`.
+func (o GetFileSystemsSystemOutput) ProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.ProtocolType }).(pulumi.StringOutput)
+}
+
+// The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s.
+func (o GetFileSystemsSystemOutput) ProvisionedThroughputInMiBps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.ProvisionedThroughputInMiBps }).(pulumi.IntOutput)
+}
+
+// The capacity budget of the File system.
+func (o GetFileSystemsSystemOutput) SpaceCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.SpaceCapacity }).(pulumi.IntOutput)
+}
+
+// Storage package Id.
+func (o GetFileSystemsSystemOutput) StoragePackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.StoragePackageId }).(pulumi.StringOutput)
+}
+
+// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+func (o GetFileSystemsSystemOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+func (o GetFileSystemsSystemOutput) ThroughputMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.ThroughputMode }).(pulumi.StringOutput)
+}
+
+// The used space of the File system.
+func (o GetFileSystemsSystemOutput) UsedSpaceSize() pulumi.Float64Output {
+	return o.ApplyT(func(v GetFileSystemsSystem) float64 { return v.UsedSpaceSize }).(pulumi.Float64Output)
+}
+
+// The zone ID of the File system.
+func (o GetFileSystemsSystemOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetFileSystemsSystemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFileSystemsSystemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFileSystemsSystem)(nil)).Elem()
+}
+
+func (o GetFileSystemsSystemArrayOutput) ToGetFileSystemsSystemArrayOutput() GetFileSystemsSystemArrayOutput {
+	return o
+}
+
+func (o GetFileSystemsSystemArrayOutput) ToGetFileSystemsSystemArrayOutputWithContext(ctx context.Context) GetFileSystemsSystemArrayOutput {
+	return o
+}
+
+func (o GetFileSystemsSystemArrayOutput) Index(i pulumi.IntInput) GetFileSystemsSystemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFileSystemsSystem {
+		return vs[0].([]GetFileSystemsSystem)[vs[1].(int)]
+	}).(GetFileSystemsSystemOutput)
+}
+
+type GetMountPointsPoint struct {
+	// The ID of the Access Group.
+	AccessGroupId string `pulumi:"accessGroupId"`
+	// The created time of the Mount Point.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the Mount Point.
+	Description string `pulumi:"description"`
+	// The ID of the File System.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The ID of the Mount Point.
+	Id string `pulumi:"id"`
+	// The domain name of the Mount Point.
+	MountPointDomain string `pulumi:"mountPointDomain"`
+	// The ID of the Mount Point.
+	MountPointId string `pulumi:"mountPointId"`
+	// The network type of the Mount Point. Valid values: `VPC`.
+	NetworkType string `pulumi:"networkType"`
+	// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+	Status string `pulumi:"status"`
+	// The ID of the VPC network.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetMountPointsPointInput is an input type that accepts GetMountPointsPointArgs and GetMountPointsPointOutput values.
+// You can construct a concrete instance of `GetMountPointsPointInput` via:
+//
+//          GetMountPointsPointArgs{...}
+type GetMountPointsPointInput interface {
+	pulumi.Input
+
+	ToGetMountPointsPointOutput() GetMountPointsPointOutput
+	ToGetMountPointsPointOutputWithContext(context.Context) GetMountPointsPointOutput
+}
+
+type GetMountPointsPointArgs struct {
+	// The ID of the Access Group.
+	AccessGroupId pulumi.StringInput `pulumi:"accessGroupId"`
+	// The created time of the Mount Point.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the Mount Point.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the File System.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The ID of the Mount Point.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The domain name of the Mount Point.
+	MountPointDomain pulumi.StringInput `pulumi:"mountPointDomain"`
+	// The ID of the Mount Point.
+	MountPointId pulumi.StringInput `pulumi:"mountPointId"`
+	// The network type of the Mount Point. Valid values: `VPC`.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the VPC network.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetMountPointsPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMountPointsPoint)(nil)).Elem()
+}
+
+func (i GetMountPointsPointArgs) ToGetMountPointsPointOutput() GetMountPointsPointOutput {
+	return i.ToGetMountPointsPointOutputWithContext(context.Background())
+}
+
+func (i GetMountPointsPointArgs) ToGetMountPointsPointOutputWithContext(ctx context.Context) GetMountPointsPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMountPointsPointOutput)
+}
+
+// GetMountPointsPointArrayInput is an input type that accepts GetMountPointsPointArray and GetMountPointsPointArrayOutput values.
+// You can construct a concrete instance of `GetMountPointsPointArrayInput` via:
+//
+//          GetMountPointsPointArray{ GetMountPointsPointArgs{...} }
+type GetMountPointsPointArrayInput interface {
+	pulumi.Input
+
+	ToGetMountPointsPointArrayOutput() GetMountPointsPointArrayOutput
+	ToGetMountPointsPointArrayOutputWithContext(context.Context) GetMountPointsPointArrayOutput
+}
+
+type GetMountPointsPointArray []GetMountPointsPointInput
+
+func (GetMountPointsPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMountPointsPoint)(nil)).Elem()
+}
+
+func (i GetMountPointsPointArray) ToGetMountPointsPointArrayOutput() GetMountPointsPointArrayOutput {
+	return i.ToGetMountPointsPointArrayOutputWithContext(context.Background())
+}
+
+func (i GetMountPointsPointArray) ToGetMountPointsPointArrayOutputWithContext(ctx context.Context) GetMountPointsPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMountPointsPointArrayOutput)
+}
+
+type GetMountPointsPointOutput struct{ *pulumi.OutputState }
+
+func (GetMountPointsPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMountPointsPoint)(nil)).Elem()
+}
+
+func (o GetMountPointsPointOutput) ToGetMountPointsPointOutput() GetMountPointsPointOutput {
+	return o
+}
+
+func (o GetMountPointsPointOutput) ToGetMountPointsPointOutputWithContext(ctx context.Context) GetMountPointsPointOutput {
+	return o
+}
+
+// The ID of the Access Group.
+func (o GetMountPointsPointOutput) AccessGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsPoint) string { return v.AccessGroupId }).(pulumi.StringOutput)
+}
+
+// The created time of the Mount Point.
+func (o GetMountPointsPointOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsPoint) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the Mount Point.
+func (o GetMountPointsPointOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsPoint) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the File System.
+func (o GetMountPointsPointOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsPoint) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The ID of the Mount Point.
+func (o GetMountPointsPointOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsPoint) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The domain name of the Mount Point.
+func (o GetMountPointsPointOutput) MountPointDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsPoint) string { return v.MountPointDomain }).(pulumi.StringOutput)
+}
+
+// The ID of the Mount Point.
+func (o GetMountPointsPointOutput) MountPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsPoint) string { return v.MountPointId }).(pulumi.StringOutput)
+}
+
+// The network type of the Mount Point. Valid values: `VPC`.
+func (o GetMountPointsPointOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsPoint) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+func (o GetMountPointsPointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsPoint) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC network.
+func (o GetMountPointsPointOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsPoint) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetMountPointsPointOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsPoint) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetMountPointsPointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMountPointsPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMountPointsPoint)(nil)).Elem()
+}
+
+func (o GetMountPointsPointArrayOutput) ToGetMountPointsPointArrayOutput() GetMountPointsPointArrayOutput {
+	return o
+}
+
+func (o GetMountPointsPointArrayOutput) ToGetMountPointsPointArrayOutputWithContext(ctx context.Context) GetMountPointsPointArrayOutput {
+	return o
+}
+
+func (o GetMountPointsPointArrayOutput) Index(i pulumi.IntInput) GetMountPointsPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMountPointsPoint {
+		return vs[0].([]GetMountPointsPoint)[vs[1].(int)]
+	}).(GetMountPointsPointOutput)
+}
+
+type GetZonesZone struct {
+	// A list of available configurations of the Zone.
+	Options []GetZonesZoneOption `pulumi:"options"`
+	// The zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
+// You can construct a concrete instance of `GetZonesZoneInput` via:
+//
+//          GetZonesZoneArgs{...}
+type GetZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneOutput() GetZonesZoneOutput
+	ToGetZonesZoneOutputWithContext(context.Context) GetZonesZoneOutput
+}
+
+type GetZonesZoneArgs struct {
+	// A list of available configurations of the Zone.
+	Options GetZonesZoneOptionArrayInput `pulumi:"options"`
+	// The zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return i.ToGetZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
+}
+
+// GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
+// You can construct a concrete instance of `GetZonesZoneArrayInput` via:
+//
+//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+type GetZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput
+	ToGetZonesZoneArrayOutputWithContext(context.Context) GetZonesZoneArrayOutput
+}
+
+type GetZonesZoneArray []GetZonesZoneInput
+
+func (GetZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return i.ToGetZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
+}
+
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return o
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return o
+}
+
+// A list of available configurations of the Zone.
+func (o GetZonesZoneOutput) Options() GetZonesZoneOptionArrayOutput {
+	return o.ApplyT(func(v GetZonesZone) []GetZonesZoneOption { return v.Options }).(GetZonesZoneOptionArrayOutput)
+}
+
+// The zone ID.
+func (o GetZonesZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
+		return vs[0].([]GetZonesZone)[vs[1].(int)]
+	}).(GetZonesZoneOutput)
+}
+
+type GetZonesZoneOption struct {
+	// The protocol type. Valid values: `HDFS`.
+	ProtocolType string `pulumi:"protocolType"`
+	// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+	StorageType string `pulumi:"storageType"`
+}
+
+// GetZonesZoneOptionInput is an input type that accepts GetZonesZoneOptionArgs and GetZonesZoneOptionOutput values.
+// You can construct a concrete instance of `GetZonesZoneOptionInput` via:
+//
+//          GetZonesZoneOptionArgs{...}
+type GetZonesZoneOptionInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneOptionOutput() GetZonesZoneOptionOutput
+	ToGetZonesZoneOptionOutputWithContext(context.Context) GetZonesZoneOptionOutput
+}
+
+type GetZonesZoneOptionArgs struct {
+	// The protocol type. Valid values: `HDFS`.
+	ProtocolType pulumi.StringInput `pulumi:"protocolType"`
+	// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+}
+
+func (GetZonesZoneOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZoneOption)(nil)).Elem()
+}
+
+func (i GetZonesZoneOptionArgs) ToGetZonesZoneOptionOutput() GetZonesZoneOptionOutput {
+	return i.ToGetZonesZoneOptionOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneOptionArgs) ToGetZonesZoneOptionOutputWithContext(ctx context.Context) GetZonesZoneOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOptionOutput)
+}
+
+// GetZonesZoneOptionArrayInput is an input type that accepts GetZonesZoneOptionArray and GetZonesZoneOptionArrayOutput values.
+// You can construct a concrete instance of `GetZonesZoneOptionArrayInput` via:
+//
+//          GetZonesZoneOptionArray{ GetZonesZoneOptionArgs{...} }
+type GetZonesZoneOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneOptionArrayOutput() GetZonesZoneOptionArrayOutput
+	ToGetZonesZoneOptionArrayOutputWithContext(context.Context) GetZonesZoneOptionArrayOutput
+}
+
+type GetZonesZoneOptionArray []GetZonesZoneOptionInput
+
+func (GetZonesZoneOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZoneOption)(nil)).Elem()
+}
+
+func (i GetZonesZoneOptionArray) ToGetZonesZoneOptionArrayOutput() GetZonesZoneOptionArrayOutput {
+	return i.ToGetZonesZoneOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneOptionArray) ToGetZonesZoneOptionArrayOutputWithContext(ctx context.Context) GetZonesZoneOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOptionArrayOutput)
+}
+
+type GetZonesZoneOptionOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZoneOption)(nil)).Elem()
+}
+
+func (o GetZonesZoneOptionOutput) ToGetZonesZoneOptionOutput() GetZonesZoneOptionOutput {
+	return o
+}
+
+func (o GetZonesZoneOptionOutput) ToGetZonesZoneOptionOutputWithContext(ctx context.Context) GetZonesZoneOptionOutput {
+	return o
+}
+
+// The protocol type. Valid values: `HDFS`.
+func (o GetZonesZoneOptionOutput) ProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZoneOption) string { return v.ProtocolType }).(pulumi.StringOutput)
+}
+
+// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+func (o GetZonesZoneOptionOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZoneOption) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+type GetZonesZoneOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZoneOption)(nil)).Elem()
+}
+
+func (o GetZonesZoneOptionArrayOutput) ToGetZonesZoneOptionArrayOutput() GetZonesZoneOptionArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneOptionArrayOutput) ToGetZonesZoneOptionArrayOutputWithContext(ctx context.Context) GetZonesZoneOptionArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneOptionArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZoneOption {
+		return vs[0].([]GetZonesZoneOption)[vs[1].(int)]
+	}).(GetZonesZoneOptionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetAccessGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetAccessRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetAccessRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetFileSystemsSystemOutput{})
+	pulumi.RegisterOutputType(GetFileSystemsSystemArrayOutput{})
+	pulumi.RegisterOutputType(GetMountPointsPointOutput{})
+	pulumi.RegisterOutputType(GetMountPointsPointArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneOptionOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneOptionArrayOutput{})
 }

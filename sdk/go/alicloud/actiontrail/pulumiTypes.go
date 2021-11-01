@@ -10,6 +10,287 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetHistoryDeliveryJobsJob struct {
+	// The time when the task was created.
+	CreateTime string `pulumi:"createTime"`
+	// The time when the task ended.
+	EndTime              string `pulumi:"endTime"`
+	HistoryDeliveryJobId string `pulumi:"historyDeliveryJobId"`
+	// The home region of the trail.
+	HomeRegion string `pulumi:"homeRegion"`
+	// The ID of the History Delivery Job.
+	Id string `pulumi:"id"`
+	// Detail status of delivery job.
+	JobStatuses []GetHistoryDeliveryJobsJobJobStatus `pulumi:"jobStatuses"`
+	// The time when the task started.
+	StartTime string `pulumi:"startTime"`
+	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+	Status int `pulumi:"status"`
+	// The name of the trail.
+	TrailName string `pulumi:"trailName"`
+	// The time when the task was updated.
+	UpdatedTime string `pulumi:"updatedTime"`
+}
+
+// GetHistoryDeliveryJobsJobInput is an input type that accepts GetHistoryDeliveryJobsJobArgs and GetHistoryDeliveryJobsJobOutput values.
+// You can construct a concrete instance of `GetHistoryDeliveryJobsJobInput` via:
+//
+//          GetHistoryDeliveryJobsJobArgs{...}
+type GetHistoryDeliveryJobsJobInput interface {
+	pulumi.Input
+
+	ToGetHistoryDeliveryJobsJobOutput() GetHistoryDeliveryJobsJobOutput
+	ToGetHistoryDeliveryJobsJobOutputWithContext(context.Context) GetHistoryDeliveryJobsJobOutput
+}
+
+type GetHistoryDeliveryJobsJobArgs struct {
+	// The time when the task was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The time when the task ended.
+	EndTime              pulumi.StringInput `pulumi:"endTime"`
+	HistoryDeliveryJobId pulumi.StringInput `pulumi:"historyDeliveryJobId"`
+	// The home region of the trail.
+	HomeRegion pulumi.StringInput `pulumi:"homeRegion"`
+	// The ID of the History Delivery Job.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Detail status of delivery job.
+	JobStatuses GetHistoryDeliveryJobsJobJobStatusArrayInput `pulumi:"jobStatuses"`
+	// The time when the task started.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+	Status pulumi.IntInput `pulumi:"status"`
+	// The name of the trail.
+	TrailName pulumi.StringInput `pulumi:"trailName"`
+	// The time when the task was updated.
+	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
+}
+
+func (GetHistoryDeliveryJobsJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHistoryDeliveryJobsJob)(nil)).Elem()
+}
+
+func (i GetHistoryDeliveryJobsJobArgs) ToGetHistoryDeliveryJobsJobOutput() GetHistoryDeliveryJobsJobOutput {
+	return i.ToGetHistoryDeliveryJobsJobOutputWithContext(context.Background())
+}
+
+func (i GetHistoryDeliveryJobsJobArgs) ToGetHistoryDeliveryJobsJobOutputWithContext(ctx context.Context) GetHistoryDeliveryJobsJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHistoryDeliveryJobsJobOutput)
+}
+
+// GetHistoryDeliveryJobsJobArrayInput is an input type that accepts GetHistoryDeliveryJobsJobArray and GetHistoryDeliveryJobsJobArrayOutput values.
+// You can construct a concrete instance of `GetHistoryDeliveryJobsJobArrayInput` via:
+//
+//          GetHistoryDeliveryJobsJobArray{ GetHistoryDeliveryJobsJobArgs{...} }
+type GetHistoryDeliveryJobsJobArrayInput interface {
+	pulumi.Input
+
+	ToGetHistoryDeliveryJobsJobArrayOutput() GetHistoryDeliveryJobsJobArrayOutput
+	ToGetHistoryDeliveryJobsJobArrayOutputWithContext(context.Context) GetHistoryDeliveryJobsJobArrayOutput
+}
+
+type GetHistoryDeliveryJobsJobArray []GetHistoryDeliveryJobsJobInput
+
+func (GetHistoryDeliveryJobsJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHistoryDeliveryJobsJob)(nil)).Elem()
+}
+
+func (i GetHistoryDeliveryJobsJobArray) ToGetHistoryDeliveryJobsJobArrayOutput() GetHistoryDeliveryJobsJobArrayOutput {
+	return i.ToGetHistoryDeliveryJobsJobArrayOutputWithContext(context.Background())
+}
+
+func (i GetHistoryDeliveryJobsJobArray) ToGetHistoryDeliveryJobsJobArrayOutputWithContext(ctx context.Context) GetHistoryDeliveryJobsJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHistoryDeliveryJobsJobArrayOutput)
+}
+
+type GetHistoryDeliveryJobsJobOutput struct{ *pulumi.OutputState }
+
+func (GetHistoryDeliveryJobsJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHistoryDeliveryJobsJob)(nil)).Elem()
+}
+
+func (o GetHistoryDeliveryJobsJobOutput) ToGetHistoryDeliveryJobsJobOutput() GetHistoryDeliveryJobsJobOutput {
+	return o
+}
+
+func (o GetHistoryDeliveryJobsJobOutput) ToGetHistoryDeliveryJobsJobOutputWithContext(ctx context.Context) GetHistoryDeliveryJobsJobOutput {
+	return o
+}
+
+// The time when the task was created.
+func (o GetHistoryDeliveryJobsJobOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time when the task ended.
+func (o GetHistoryDeliveryJobsJobOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+func (o GetHistoryDeliveryJobsJobOutput) HistoryDeliveryJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) string { return v.HistoryDeliveryJobId }).(pulumi.StringOutput)
+}
+
+// The home region of the trail.
+func (o GetHistoryDeliveryJobsJobOutput) HomeRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) string { return v.HomeRegion }).(pulumi.StringOutput)
+}
+
+// The ID of the History Delivery Job.
+func (o GetHistoryDeliveryJobsJobOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Detail status of delivery job.
+func (o GetHistoryDeliveryJobsJobOutput) JobStatuses() GetHistoryDeliveryJobsJobJobStatusArrayOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) []GetHistoryDeliveryJobsJobJobStatus { return v.JobStatuses }).(GetHistoryDeliveryJobsJobJobStatusArrayOutput)
+}
+
+// The time when the task started.
+func (o GetHistoryDeliveryJobsJobOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+func (o GetHistoryDeliveryJobsJobOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) int { return v.Status }).(pulumi.IntOutput)
+}
+
+// The name of the trail.
+func (o GetHistoryDeliveryJobsJobOutput) TrailName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) string { return v.TrailName }).(pulumi.StringOutput)
+}
+
+// The time when the task was updated.
+func (o GetHistoryDeliveryJobsJobOutput) UpdatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) string { return v.UpdatedTime }).(pulumi.StringOutput)
+}
+
+type GetHistoryDeliveryJobsJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHistoryDeliveryJobsJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHistoryDeliveryJobsJob)(nil)).Elem()
+}
+
+func (o GetHistoryDeliveryJobsJobArrayOutput) ToGetHistoryDeliveryJobsJobArrayOutput() GetHistoryDeliveryJobsJobArrayOutput {
+	return o
+}
+
+func (o GetHistoryDeliveryJobsJobArrayOutput) ToGetHistoryDeliveryJobsJobArrayOutputWithContext(ctx context.Context) GetHistoryDeliveryJobsJobArrayOutput {
+	return o
+}
+
+func (o GetHistoryDeliveryJobsJobArrayOutput) Index(i pulumi.IntInput) GetHistoryDeliveryJobsJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHistoryDeliveryJobsJob {
+		return vs[0].([]GetHistoryDeliveryJobsJob)[vs[1].(int)]
+	}).(GetHistoryDeliveryJobsJobOutput)
+}
+
+type GetHistoryDeliveryJobsJobJobStatus struct {
+	// The region of the delivery job.
+	Region string `pulumi:"region"`
+	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+	Status int `pulumi:"status"`
+}
+
+// GetHistoryDeliveryJobsJobJobStatusInput is an input type that accepts GetHistoryDeliveryJobsJobJobStatusArgs and GetHistoryDeliveryJobsJobJobStatusOutput values.
+// You can construct a concrete instance of `GetHistoryDeliveryJobsJobJobStatusInput` via:
+//
+//          GetHistoryDeliveryJobsJobJobStatusArgs{...}
+type GetHistoryDeliveryJobsJobJobStatusInput interface {
+	pulumi.Input
+
+	ToGetHistoryDeliveryJobsJobJobStatusOutput() GetHistoryDeliveryJobsJobJobStatusOutput
+	ToGetHistoryDeliveryJobsJobJobStatusOutputWithContext(context.Context) GetHistoryDeliveryJobsJobJobStatusOutput
+}
+
+type GetHistoryDeliveryJobsJobJobStatusArgs struct {
+	// The region of the delivery job.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+	Status pulumi.IntInput `pulumi:"status"`
+}
+
+func (GetHistoryDeliveryJobsJobJobStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHistoryDeliveryJobsJobJobStatus)(nil)).Elem()
+}
+
+func (i GetHistoryDeliveryJobsJobJobStatusArgs) ToGetHistoryDeliveryJobsJobJobStatusOutput() GetHistoryDeliveryJobsJobJobStatusOutput {
+	return i.ToGetHistoryDeliveryJobsJobJobStatusOutputWithContext(context.Background())
+}
+
+func (i GetHistoryDeliveryJobsJobJobStatusArgs) ToGetHistoryDeliveryJobsJobJobStatusOutputWithContext(ctx context.Context) GetHistoryDeliveryJobsJobJobStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHistoryDeliveryJobsJobJobStatusOutput)
+}
+
+// GetHistoryDeliveryJobsJobJobStatusArrayInput is an input type that accepts GetHistoryDeliveryJobsJobJobStatusArray and GetHistoryDeliveryJobsJobJobStatusArrayOutput values.
+// You can construct a concrete instance of `GetHistoryDeliveryJobsJobJobStatusArrayInput` via:
+//
+//          GetHistoryDeliveryJobsJobJobStatusArray{ GetHistoryDeliveryJobsJobJobStatusArgs{...} }
+type GetHistoryDeliveryJobsJobJobStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetHistoryDeliveryJobsJobJobStatusArrayOutput() GetHistoryDeliveryJobsJobJobStatusArrayOutput
+	ToGetHistoryDeliveryJobsJobJobStatusArrayOutputWithContext(context.Context) GetHistoryDeliveryJobsJobJobStatusArrayOutput
+}
+
+type GetHistoryDeliveryJobsJobJobStatusArray []GetHistoryDeliveryJobsJobJobStatusInput
+
+func (GetHistoryDeliveryJobsJobJobStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHistoryDeliveryJobsJobJobStatus)(nil)).Elem()
+}
+
+func (i GetHistoryDeliveryJobsJobJobStatusArray) ToGetHistoryDeliveryJobsJobJobStatusArrayOutput() GetHistoryDeliveryJobsJobJobStatusArrayOutput {
+	return i.ToGetHistoryDeliveryJobsJobJobStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetHistoryDeliveryJobsJobJobStatusArray) ToGetHistoryDeliveryJobsJobJobStatusArrayOutputWithContext(ctx context.Context) GetHistoryDeliveryJobsJobJobStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHistoryDeliveryJobsJobJobStatusArrayOutput)
+}
+
+type GetHistoryDeliveryJobsJobJobStatusOutput struct{ *pulumi.OutputState }
+
+func (GetHistoryDeliveryJobsJobJobStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHistoryDeliveryJobsJobJobStatus)(nil)).Elem()
+}
+
+func (o GetHistoryDeliveryJobsJobJobStatusOutput) ToGetHistoryDeliveryJobsJobJobStatusOutput() GetHistoryDeliveryJobsJobJobStatusOutput {
+	return o
+}
+
+func (o GetHistoryDeliveryJobsJobJobStatusOutput) ToGetHistoryDeliveryJobsJobJobStatusOutputWithContext(ctx context.Context) GetHistoryDeliveryJobsJobJobStatusOutput {
+	return o
+}
+
+// The region of the delivery job.
+func (o GetHistoryDeliveryJobsJobJobStatusOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJobJobStatus) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+func (o GetHistoryDeliveryJobsJobJobStatusOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsJobJobStatus) int { return v.Status }).(pulumi.IntOutput)
+}
+
+type GetHistoryDeliveryJobsJobJobStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHistoryDeliveryJobsJobJobStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHistoryDeliveryJobsJobJobStatus)(nil)).Elem()
+}
+
+func (o GetHistoryDeliveryJobsJobJobStatusArrayOutput) ToGetHistoryDeliveryJobsJobJobStatusArrayOutput() GetHistoryDeliveryJobsJobJobStatusArrayOutput {
+	return o
+}
+
+func (o GetHistoryDeliveryJobsJobJobStatusArrayOutput) ToGetHistoryDeliveryJobsJobJobStatusArrayOutputWithContext(ctx context.Context) GetHistoryDeliveryJobsJobJobStatusArrayOutput {
+	return o
+}
+
+func (o GetHistoryDeliveryJobsJobJobStatusArrayOutput) Index(i pulumi.IntInput) GetHistoryDeliveryJobsJobJobStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHistoryDeliveryJobsJobJobStatus {
+		return vs[0].([]GetHistoryDeliveryJobsJobJobStatus)[vs[1].(int)]
+	}).(GetHistoryDeliveryJobsJobJobStatusOutput)
+}
+
 type GetInstancesInstance struct {
 	// The config the instance.
 	Config string `pulumi:"config"`
@@ -1369,6 +1650,10 @@ func (o GetTrailsTrailArrayOutput) Index(i pulumi.IntInput) GetTrailsTrailOutput
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetHistoryDeliveryJobsJobOutput{})
+	pulumi.RegisterOutputType(GetHistoryDeliveryJobsJobArrayOutput{})
+	pulumi.RegisterOutputType(GetHistoryDeliveryJobsJobJobStatusOutput{})
+	pulumi.RegisterOutputType(GetHistoryDeliveryJobsJobJobStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetSaslAclsAclOutput{})

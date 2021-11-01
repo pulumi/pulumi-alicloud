@@ -24,6 +24,9 @@ class ManagedKubernetesArgs:
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
                  cluster_domain: Optional[pulumi.Input[str]] = None,
                  cluster_spec: Optional[pulumi.Input[str]] = None,
+                 control_plane_log_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 control_plane_log_project: Optional[pulumi.Input[str]] = None,
+                 control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -53,6 +56,7 @@ class ManagedKubernetesArgs:
                  proxy_mode: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime: Optional[pulumi.Input['ManagedKubernetesRuntimeArgs']] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -89,6 +93,9 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty.Valid values:
                * ack.standard : Standard managed clusters.
                * ack.pro.small : Professional managed clusters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+        :param pulumi.Input[str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+        :param pulumi.Input[str] control_plane_log_ttl: Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -117,7 +124,7 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['ManagedKubernetesRuntimeArgs'] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        :param pulumi.Input['ManagedKubernetesRuntimeArgs'] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -158,6 +165,12 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "cluster_domain", cluster_domain)
         if cluster_spec is not None:
             pulumi.set(__self__, "cluster_spec", cluster_spec)
+        if control_plane_log_components is not None:
+            pulumi.set(__self__, "control_plane_log_components", control_plane_log_components)
+        if control_plane_log_project is not None:
+            pulumi.set(__self__, "control_plane_log_project", control_plane_log_project)
+        if control_plane_log_ttl is not None:
+            pulumi.set(__self__, "control_plane_log_ttl", control_plane_log_ttl)
         if cpu_policy is not None:
             pulumi.set(__self__, "cpu_policy", cpu_policy)
         if custom_san is not None:
@@ -216,6 +229,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if retain_resources is not None:
+            pulumi.set(__self__, "retain_resources", retain_resources)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
         if security_group_id is not None:
@@ -370,6 +385,42 @@ class ManagedKubernetesArgs:
     @cluster_spec.setter
     def cluster_spec(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_spec", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneLogComponents")
+    def control_plane_log_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+        """
+        return pulumi.get(self, "control_plane_log_components")
+
+    @control_plane_log_components.setter
+    def control_plane_log_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "control_plane_log_components", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneLogProject")
+    def control_plane_log_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+        """
+        return pulumi.get(self, "control_plane_log_project")
+
+    @control_plane_log_project.setter
+    def control_plane_log_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "control_plane_log_project", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneLogTtl")
+    def control_plane_log_ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        """
+        return pulumi.get(self, "control_plane_log_ttl")
+
+    @control_plane_log_ttl.setter
+    def control_plane_log_ttl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "control_plane_log_ttl", value)
 
     @property
     @pulumi.getter(name="cpuPolicy")
@@ -717,10 +768,19 @@ class ManagedKubernetesArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="retainResources")
+    def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "retain_resources")
+
+    @retain_resources.setter
+    def retain_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "retain_resources", value)
+
+    @property
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input['ManagedKubernetesRuntimeArgs']]:
         """
-        The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         """
         return pulumi.get(self, "runtime")
 
@@ -1024,6 +1084,9 @@ class _ManagedKubernetesState:
                  cluster_domain: Optional[pulumi.Input[str]] = None,
                  cluster_spec: Optional[pulumi.Input[str]] = None,
                  connections: Optional[pulumi.Input['ManagedKubernetesConnectionsArgs']] = None,
+                 control_plane_log_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 control_plane_log_project: Optional[pulumi.Input[str]] = None,
+                 control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -1054,6 +1117,7 @@ class _ManagedKubernetesState:
                  proxy_mode: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime: Optional[pulumi.Input['ManagedKubernetesRuntimeArgs']] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -1099,6 +1163,9 @@ class _ManagedKubernetesState:
                * ack.standard : Standard managed clusters.
                * ack.pro.small : Professional managed clusters.
         :param pulumi.Input['ManagedKubernetesConnectionsArgs'] connections: Map of kubernetes cluster connection information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+        :param pulumi.Input[str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+        :param pulumi.Input[str] control_plane_log_ttl: Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -1128,7 +1195,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['ManagedKubernetesRuntimeArgs'] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        :param pulumi.Input['ManagedKubernetesRuntimeArgs'] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -1176,6 +1243,12 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "cluster_spec", cluster_spec)
         if connections is not None:
             pulumi.set(__self__, "connections", connections)
+        if control_plane_log_components is not None:
+            pulumi.set(__self__, "control_plane_log_components", control_plane_log_components)
+        if control_plane_log_project is not None:
+            pulumi.set(__self__, "control_plane_log_project", control_plane_log_project)
+        if control_plane_log_ttl is not None:
+            pulumi.set(__self__, "control_plane_log_ttl", control_plane_log_ttl)
         if cpu_policy is not None:
             pulumi.set(__self__, "cpu_policy", cpu_policy)
         if custom_san is not None:
@@ -1236,6 +1309,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if retain_resources is not None:
+            pulumi.set(__self__, "retain_resources", retain_resources)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
         if security_group_id is not None:
@@ -1422,6 +1497,42 @@ class _ManagedKubernetesState:
     @connections.setter
     def connections(self, value: Optional[pulumi.Input['ManagedKubernetesConnectionsArgs']]):
         pulumi.set(self, "connections", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneLogComponents")
+    def control_plane_log_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+        """
+        return pulumi.get(self, "control_plane_log_components")
+
+    @control_plane_log_components.setter
+    def control_plane_log_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "control_plane_log_components", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneLogProject")
+    def control_plane_log_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+        """
+        return pulumi.get(self, "control_plane_log_project")
+
+    @control_plane_log_project.setter
+    def control_plane_log_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "control_plane_log_project", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneLogTtl")
+    def control_plane_log_ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        """
+        return pulumi.get(self, "control_plane_log_ttl")
+
+    @control_plane_log_ttl.setter
+    def control_plane_log_ttl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "control_plane_log_ttl", value)
 
     @property
     @pulumi.getter(name="cpuPolicy")
@@ -1781,10 +1892,19 @@ class _ManagedKubernetesState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="retainResources")
+    def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "retain_resources")
+
+    @retain_resources.setter
+    def retain_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "retain_resources", value)
+
+    @property
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input['ManagedKubernetesRuntimeArgs']]:
         """
-        The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         """
         return pulumi.get(self, "runtime")
 
@@ -2163,6 +2283,9 @@ class ManagedKubernetes(pulumi.CustomResource):
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
                  cluster_domain: Optional[pulumi.Input[str]] = None,
                  cluster_spec: Optional[pulumi.Input[str]] = None,
+                 control_plane_log_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 control_plane_log_project: Optional[pulumi.Input[str]] = None,
+                 control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -2192,6 +2315,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  proxy_mode: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -2239,6 +2363,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty.Valid values:
                * ack.standard : Standard managed clusters.
                * ack.pro.small : Professional managed clusters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+        :param pulumi.Input[str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+        :param pulumi.Input[str] control_plane_log_ttl: Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -2267,7 +2394,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        :param pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -2329,6 +2456,9 @@ class ManagedKubernetes(pulumi.CustomResource):
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
                  cluster_domain: Optional[pulumi.Input[str]] = None,
                  cluster_spec: Optional[pulumi.Input[str]] = None,
+                 control_plane_log_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 control_plane_log_project: Optional[pulumi.Input[str]] = None,
+                 control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -2358,6 +2488,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  proxy_mode: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -2404,6 +2535,9 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
             __props__.__dict__["cluster_domain"] = cluster_domain
             __props__.__dict__["cluster_spec"] = cluster_spec
+            __props__.__dict__["control_plane_log_components"] = control_plane_log_components
+            __props__.__dict__["control_plane_log_project"] = control_plane_log_project
+            __props__.__dict__["control_plane_log_ttl"] = control_plane_log_ttl
             __props__.__dict__["cpu_policy"] = cpu_policy
             __props__.__dict__["custom_san"] = custom_san
             __props__.__dict__["deletion_protection"] = deletion_protection
@@ -2433,6 +2567,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["proxy_mode"] = proxy_mode
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["retain_resources"] = retain_resources
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_account_issuer"] = service_account_issuer
@@ -2490,6 +2625,9 @@ class ManagedKubernetes(pulumi.CustomResource):
             cluster_domain: Optional[pulumi.Input[str]] = None,
             cluster_spec: Optional[pulumi.Input[str]] = None,
             connections: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesConnectionsArgs']]] = None,
+            control_plane_log_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            control_plane_log_project: Optional[pulumi.Input[str]] = None,
+            control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
             cpu_policy: Optional[pulumi.Input[str]] = None,
             custom_san: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -2520,6 +2658,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             proxy_mode: Optional[pulumi.Input[str]] = None,
             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             runtime: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -2570,6 +2709,9 @@ class ManagedKubernetes(pulumi.CustomResource):
                * ack.standard : Standard managed clusters.
                * ack.pro.small : Professional managed clusters.
         :param pulumi.Input[pulumi.InputType['ManagedKubernetesConnectionsArgs']] connections: Map of kubernetes cluster connection information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+        :param pulumi.Input[str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+        :param pulumi.Input[str] control_plane_log_ttl: Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -2599,7 +2741,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        :param pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -2641,6 +2783,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["cluster_domain"] = cluster_domain
         __props__.__dict__["cluster_spec"] = cluster_spec
         __props__.__dict__["connections"] = connections
+        __props__.__dict__["control_plane_log_components"] = control_plane_log_components
+        __props__.__dict__["control_plane_log_project"] = control_plane_log_project
+        __props__.__dict__["control_plane_log_ttl"] = control_plane_log_ttl
         __props__.__dict__["cpu_policy"] = cpu_policy
         __props__.__dict__["custom_san"] = custom_san
         __props__.__dict__["deletion_protection"] = deletion_protection
@@ -2671,6 +2816,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["proxy_mode"] = proxy_mode
         __props__.__dict__["rds_instances"] = rds_instances
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["retain_resources"] = retain_resources
         __props__.__dict__["runtime"] = runtime
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["service_account_issuer"] = service_account_issuer
@@ -2783,6 +2929,30 @@ class ManagedKubernetes(pulumi.CustomResource):
         Map of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
+
+    @property
+    @pulumi.getter(name="controlPlaneLogComponents")
+    def control_plane_log_components(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+        """
+        return pulumi.get(self, "control_plane_log_components")
+
+    @property
+    @pulumi.getter(name="controlPlaneLogProject")
+    def control_plane_log_project(self) -> pulumi.Output[Optional[str]]:
+        """
+        Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
+        """
+        return pulumi.get(self, "control_plane_log_project")
+
+    @property
+    @pulumi.getter(name="controlPlaneLogTtl")
+    def control_plane_log_ttl(self) -> pulumi.Output[Optional[str]]:
+        """
+        Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        """
+        return pulumi.get(self, "control_plane_log_ttl")
 
     @property
     @pulumi.getter(name="cpuPolicy")
@@ -3022,10 +3192,15 @@ class ManagedKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="retainResources")
+    def retain_resources(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "retain_resources")
+
+    @property
     @pulumi.getter
     def runtime(self) -> pulumi.Output[Optional['outputs.ManagedKubernetesRuntime']]:
         """
-        The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         """
         return pulumi.get(self, "runtime")
 

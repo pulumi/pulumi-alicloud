@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -46,6 +47,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly accountPassword!: pulumi.Output<string | undefined>;
     /**
+     * Auto renew for prepaid, true of false. Default is false.
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     */
+    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     public readonly backupPeriods!: pulumi.Output<string[]>;
@@ -68,7 +74,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
@@ -106,6 +112,10 @@ export class Instance extends pulumi.CustomResource {
      * The name of the mongo replica set
      */
     public /*out*/ readonly replicaSetName!: pulumi.Output<string>;
+    /**
+     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+     */
+    public /*out*/ readonly replicaSets!: pulumi.Output<outputs.mongodb.InstanceReplicaSet[]>;
     /**
      * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */
@@ -167,6 +177,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["accountPassword"] = state ? state.accountPassword : undefined;
+            inputs["autoRenew"] = state ? state.autoRenew : undefined;
             inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
             inputs["backupTime"] = state ? state.backupTime : undefined;
             inputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
@@ -181,6 +192,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["orderType"] = state ? state.orderType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["replicaSetName"] = state ? state.replicaSetName : undefined;
+            inputs["replicaSets"] = state ? state.replicaSets : undefined;
             inputs["replicationFactor"] = state ? state.replicationFactor : undefined;
             inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
@@ -204,6 +216,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'engineVersion'");
             }
             inputs["accountPassword"] = args ? args.accountPassword : undefined;
+            inputs["autoRenew"] = args ? args.autoRenew : undefined;
             inputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             inputs["backupTime"] = args ? args.backupTime : undefined;
             inputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
@@ -227,6 +240,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["replicaSetName"] = undefined /*out*/;
+            inputs["replicaSets"] = undefined /*out*/;
             inputs["retentionPeriod"] = undefined /*out*/;
             inputs["sslStatus"] = undefined /*out*/;
         }
@@ -245,6 +259,11 @@ export interface InstanceState {
      * Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
      */
     readonly accountPassword?: pulumi.Input<string>;
+    /**
+     * Auto renew for prepaid, true of false. Default is false.
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     */
+    readonly autoRenew?: pulumi.Input<boolean>;
     /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
@@ -268,7 +287,7 @@ export interface InstanceState {
      */
     readonly engineVersion?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -306,6 +325,10 @@ export interface InstanceState {
      * The name of the mongo replica set
      */
     readonly replicaSetName?: pulumi.Input<string>;
+    /**
+     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+     */
+    readonly replicaSets?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceReplicaSet>[]>;
     /**
      * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */
@@ -363,6 +386,11 @@ export interface InstanceArgs {
      */
     readonly accountPassword?: pulumi.Input<string>;
     /**
+     * Auto renew for prepaid, true of false. Default is false.
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     */
+    readonly autoRenew?: pulumi.Input<boolean>;
+    /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
@@ -385,7 +413,7 @@ export interface InstanceArgs {
      */
     readonly engineVersion: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**

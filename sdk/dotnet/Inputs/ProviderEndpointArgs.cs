@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Inputs
 
     public sealed class ProviderEndpointArgs : Pulumi.ResourceArgs
     {
+        [Input("acr")]
+        public Input<string>? Acr { get; set; }
+
         [Input("actiontrail")]
         public Input<string>? Actiontrail { get; set; }
 

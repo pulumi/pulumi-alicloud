@@ -53,9 +53,13 @@ type GetFileSystemsArgs struct {
 	// A list of FileSystemId.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
+	// The protocol type of the file system.
+	// Valid values:
+	// `NFS`,
+	// `SMB` (Available when the `fileSystemType` is `standard`).
 	ProtocolType *string `pulumi:"protocolType"`
-	// Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
+	// The storage type of the file system.
+	// * Valid values:
 	StorageType *string `pulumi:"storageType"`
 }
 

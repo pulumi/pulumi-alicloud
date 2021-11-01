@@ -7,9 +7,15 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetAccessGroupsGroupResult',
+    'GetAccessRulesRuleResult',
+    'GetFileSystemsSystemResult',
+    'GetMountPointsPointResult',
+    'GetZonesZoneResult',
+    'GetZonesZoneOptionResult',
 ]
 
 @pulumi.output_type
@@ -105,5 +111,469 @@ class GetAccessGroupsGroupResult(dict):
         The Number of access rule.
         """
         return pulumi.get(self, "rule_count")
+
+
+@pulumi.output_type
+class GetAccessRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 access_group_id: str,
+                 access_rule_id: str,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 network_segment: str,
+                 priority: int,
+                 rw_access_type: str):
+        """
+        :param str access_group_id: The resource ID of the Access Group.
+        :param str access_rule_id: The ID of the Access Rule.
+        :param str create_time: The created time of the Access Rule.
+        :param str description: The description of the Access Rule.
+        :param str id: The resource ID of Access Rule.
+        :param str network_segment: The NetworkSegment of the Access Rule.
+        :param int priority: The priority of the Access Rule.
+        :param str rw_access_type: RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+        """
+        pulumi.set(__self__, "access_group_id", access_group_id)
+        pulumi.set(__self__, "access_rule_id", access_rule_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "network_segment", network_segment)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "rw_access_type", rw_access_type)
+
+    @property
+    @pulumi.getter(name="accessGroupId")
+    def access_group_id(self) -> str:
+        """
+        The resource ID of the Access Group.
+        """
+        return pulumi.get(self, "access_group_id")
+
+    @property
+    @pulumi.getter(name="accessRuleId")
+    def access_rule_id(self) -> str:
+        """
+        The ID of the Access Rule.
+        """
+        return pulumi.get(self, "access_rule_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The created time of the Access Rule.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Access Rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The resource ID of Access Rule.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="networkSegment")
+    def network_segment(self) -> str:
+        """
+        The NetworkSegment of the Access Rule.
+        """
+        return pulumi.get(self, "network_segment")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        """
+        The priority of the Access Rule.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="rwAccessType")
+    def rw_access_type(self) -> str:
+        """
+        RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+        """
+        return pulumi.get(self, "rw_access_type")
+
+
+@pulumi.output_type
+class GetFileSystemsSystemResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 file_system_id: str,
+                 file_system_name: str,
+                 id: str,
+                 mount_point_count: int,
+                 number_of_directories: int,
+                 number_of_files: int,
+                 protocol_type: str,
+                 provisioned_throughput_in_mi_bps: int,
+                 space_capacity: int,
+                 storage_package_id: str,
+                 storage_type: str,
+                 throughput_mode: str,
+                 used_space_size: float,
+                 zone_id: str):
+        """
+        :param str create_time: The creation time of the File system.
+        :param str description: The description of the File system.
+        :param str file_system_id: The ID of the File System.
+        :param str file_system_name: The name of the File system.
+        :param str id: The ID of the File System.
+        :param int mount_point_count: The number of Mount points.
+        :param int number_of_directories: The number of directories.
+        :param int number_of_files: The number of files.
+        :param str protocol_type: The protocol type. Valid values: `HDFS`.
+        :param int provisioned_throughput_in_mi_bps: The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s.
+        :param int space_capacity: The capacity budget of the File system.
+        :param str storage_package_id: Storage package Id.
+        :param str storage_type: The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+        :param str throughput_mode: The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+        :param float used_space_size: The used space of the File system.
+        :param str zone_id: The zone ID of the File system.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "file_system_id", file_system_id)
+        pulumi.set(__self__, "file_system_name", file_system_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mount_point_count", mount_point_count)
+        pulumi.set(__self__, "number_of_directories", number_of_directories)
+        pulumi.set(__self__, "number_of_files", number_of_files)
+        pulumi.set(__self__, "protocol_type", protocol_type)
+        pulumi.set(__self__, "provisioned_throughput_in_mi_bps", provisioned_throughput_in_mi_bps)
+        pulumi.set(__self__, "space_capacity", space_capacity)
+        pulumi.set(__self__, "storage_package_id", storage_package_id)
+        pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "throughput_mode", throughput_mode)
+        pulumi.set(__self__, "used_space_size", used_space_size)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the File system.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the File system.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="fileSystemId")
+    def file_system_id(self) -> str:
+        """
+        The ID of the File System.
+        """
+        return pulumi.get(self, "file_system_id")
+
+    @property
+    @pulumi.getter(name="fileSystemName")
+    def file_system_name(self) -> str:
+        """
+        The name of the File system.
+        """
+        return pulumi.get(self, "file_system_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the File System.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="mountPointCount")
+    def mount_point_count(self) -> int:
+        """
+        The number of Mount points.
+        """
+        return pulumi.get(self, "mount_point_count")
+
+    @property
+    @pulumi.getter(name="numberOfDirectories")
+    def number_of_directories(self) -> int:
+        """
+        The number of directories.
+        """
+        return pulumi.get(self, "number_of_directories")
+
+    @property
+    @pulumi.getter(name="numberOfFiles")
+    def number_of_files(self) -> int:
+        """
+        The number of files.
+        """
+        return pulumi.get(self, "number_of_files")
+
+    @property
+    @pulumi.getter(name="protocolType")
+    def protocol_type(self) -> str:
+        """
+        The protocol type. Valid values: `HDFS`.
+        """
+        return pulumi.get(self, "protocol_type")
+
+    @property
+    @pulumi.getter(name="provisionedThroughputInMiBps")
+    def provisioned_throughput_in_mi_bps(self) -> int:
+        """
+        The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s.
+        """
+        return pulumi.get(self, "provisioned_throughput_in_mi_bps")
+
+    @property
+    @pulumi.getter(name="spaceCapacity")
+    def space_capacity(self) -> int:
+        """
+        The capacity budget of the File system.
+        """
+        return pulumi.get(self, "space_capacity")
+
+    @property
+    @pulumi.getter(name="storagePackageId")
+    def storage_package_id(self) -> str:
+        """
+        Storage package Id.
+        """
+        return pulumi.get(self, "storage_package_id")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> str:
+        """
+        The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @property
+    @pulumi.getter(name="throughputMode")
+    def throughput_mode(self) -> str:
+        """
+        The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+        """
+        return pulumi.get(self, "throughput_mode")
+
+    @property
+    @pulumi.getter(name="usedSpaceSize")
+    def used_space_size(self) -> float:
+        """
+        The used space of the File system.
+        """
+        return pulumi.get(self, "used_space_size")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID of the File system.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetMountPointsPointResult(dict):
+    def __init__(__self__, *,
+                 access_group_id: str,
+                 create_time: str,
+                 description: str,
+                 file_system_id: str,
+                 id: str,
+                 mount_point_domain: str,
+                 mount_point_id: str,
+                 network_type: str,
+                 status: str,
+                 vpc_id: str,
+                 vswitch_id: str):
+        """
+        :param str access_group_id: The ID of the Access Group.
+        :param str create_time: The created time of the Mount Point.
+        :param str description: The description of the Mount Point.
+        :param str file_system_id: The ID of the File System.
+        :param str id: The ID of the Mount Point.
+        :param str mount_point_domain: The domain name of the Mount Point.
+        :param str mount_point_id: The ID of the Mount Point.
+        :param str network_type: The network type of the Mount Point. Valid values: `VPC`.
+        :param str status: The status of the Mount Point. Valid values: `Active`, `Inactive`.
+        :param str vpc_id: The ID of the VPC network.
+        :param str vswitch_id: The vswitch id.
+        """
+        pulumi.set(__self__, "access_group_id", access_group_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "file_system_id", file_system_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mount_point_domain", mount_point_domain)
+        pulumi.set(__self__, "mount_point_id", mount_point_id)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="accessGroupId")
+    def access_group_id(self) -> str:
+        """
+        The ID of the Access Group.
+        """
+        return pulumi.get(self, "access_group_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The created time of the Mount Point.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Mount Point.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="fileSystemId")
+    def file_system_id(self) -> str:
+        """
+        The ID of the File System.
+        """
+        return pulumi.get(self, "file_system_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Mount Point.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="mountPointDomain")
+    def mount_point_domain(self) -> str:
+        """
+        The domain name of the Mount Point.
+        """
+        return pulumi.get(self, "mount_point_domain")
+
+    @property
+    @pulumi.getter(name="mountPointId")
+    def mount_point_id(self) -> str:
+        """
+        The ID of the Mount Point.
+        """
+        return pulumi.get(self, "mount_point_id")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        The network type of the Mount Point. Valid values: `VPC`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Mount Point. Valid values: `Active`, `Inactive`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC network.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetZonesZoneResult(dict):
+    def __init__(__self__, *,
+                 options: Sequence['outputs.GetZonesZoneOptionResult'],
+                 zone_id: str):
+        """
+        :param Sequence['GetZonesZoneOptionArgs'] options: A list of available configurations of the Zone.
+        :param str zone_id: The zone ID.
+        """
+        pulumi.set(__self__, "options", options)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Sequence['outputs.GetZonesZoneOptionResult']:
+        """
+        A list of available configurations of the Zone.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetZonesZoneOptionResult(dict):
+    def __init__(__self__, *,
+                 protocol_type: str,
+                 storage_type: str):
+        """
+        :param str protocol_type: The protocol type. Valid values: `HDFS`.
+        :param str storage_type: The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+        """
+        pulumi.set(__self__, "protocol_type", protocol_type)
+        pulumi.set(__self__, "storage_type", storage_type)
+
+    @property
+    @pulumi.getter(name="protocolType")
+    def protocol_type(self) -> str:
+        """
+        The protocol type. Valid values: `HDFS`.
+        """
+        return pulumi.get(self, "protocol_type")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> str:
+        """
+        The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+        """
+        return pulumi.get(self, "storage_type")
 
 

@@ -33,10 +33,10 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cr.NewRegistryEnterpriseInstance(ctx, "my_instance", &cr.RegistryEnterpriseInstanceArgs{
 // 			InstanceName:  pulumi.String("test"),
-// 			InstanceType:  pulumi.String("Standard"),
+// 			InstanceType:  pulumi.String("Advanced"),
 // 			PaymentType:   pulumi.String("Subscription"),
-// 			Period:        pulumi.Int(12),
-// 			RenewPeriod:   pulumi.Int(12),
+// 			Period:        pulumi.Int(1),
+// 			RenewPeriod:   pulumi.Int(1),
 // 			RenewalStatus: pulumi.String("AutoRenewal"),
 // 		})
 // 		if err != nil {
@@ -65,7 +65,7 @@ type RegistryEnterpriseInstance struct {
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// Name of Container Registry Enterprise Edition instance.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
@@ -128,7 +128,7 @@ type registryEnterpriseInstanceState struct {
 	EndTime *string `pulumi:"endTime"`
 	// Name of Container Registry Enterprise Edition instance.
 	InstanceName *string `pulumi:"instanceName"`
-	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
 	InstanceType *string `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -157,7 +157,7 @@ type RegistryEnterpriseInstanceState struct {
 	EndTime pulumi.StringPtrInput
 	// Name of Container Registry Enterprise Edition instance.
 	InstanceName pulumi.StringPtrInput
-	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
 	InstanceType pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -186,7 +186,7 @@ type registryEnterpriseInstanceArgs struct {
 	CustomOssBucket *string `pulumi:"customOssBucket"`
 	// Name of Container Registry Enterprise Edition instance.
 	InstanceName string `pulumi:"instanceName"`
-	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
 	InstanceType string `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -210,7 +210,7 @@ type RegistryEnterpriseInstanceArgs struct {
 	CustomOssBucket pulumi.StringPtrInput
 	// Name of Container Registry Enterprise Edition instance.
 	InstanceName pulumi.StringInput
-	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
 	InstanceType pulumi.StringInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput

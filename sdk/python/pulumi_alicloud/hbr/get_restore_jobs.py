@@ -174,7 +174,7 @@ def get_restore_jobs(output_file: Optional[str] = None,
 
     :param Sequence[str] restore_ids: The ID of restore job.
     :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
-    :param Sequence[str] source_types: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+    :param Sequence[str] source_types: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
     :param str status: The status of restore job.
     :param Sequence[str] target_buckets: The name of target ofo OSS bucket.
     :param Sequence[str] target_file_system_ids: The ID of destination file system.

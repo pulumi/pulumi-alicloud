@@ -31,6 +31,8 @@ type ScalingGroup struct {
 	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection pulumi.BoolPtrOutput `pulumi:"groupDeletionProtection"`
+	// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+	LaunchTemplateId pulumi.StringPtrOutput `pulumi:"launchTemplateId"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -113,6 +115,8 @@ type scalingGroupState struct {
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection *bool `pulumi:"groupDeletionProtection"`
+	// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+	LaunchTemplateId *string `pulumi:"launchTemplateId"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -161,6 +165,8 @@ type ScalingGroupState struct {
 	DesiredCapacity pulumi.IntPtrInput
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection pulumi.BoolPtrInput
+	// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+	LaunchTemplateId pulumi.StringPtrInput
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -213,6 +219,8 @@ type scalingGroupArgs struct {
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection *bool `pulumi:"groupDeletionProtection"`
+	// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+	LaunchTemplateId *string `pulumi:"launchTemplateId"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -262,6 +270,8 @@ type ScalingGroupArgs struct {
 	DesiredCapacity pulumi.IntPtrInput
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection pulumi.BoolPtrInput
+	// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+	LaunchTemplateId pulumi.StringPtrInput
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument

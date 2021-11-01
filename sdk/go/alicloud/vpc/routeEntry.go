@@ -31,7 +31,7 @@ type RouteEntry struct {
 	NexthopType pulumi.StringPtrOutput `pulumi:"nexthopType"`
 	// The ID of the route table.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
-	// This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
 	// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
@@ -79,7 +79,7 @@ type routeEntryState struct {
 	NexthopType *string `pulumi:"nexthopType"`
 	// The ID of the route table.
 	RouteTableId *string `pulumi:"routeTableId"`
-	// This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
 	// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
 	RouterId *string `pulumi:"routerId"`
@@ -96,7 +96,7 @@ type RouteEntryState struct {
 	NexthopType pulumi.StringPtrInput
 	// The ID of the route table.
 	RouteTableId pulumi.StringPtrInput
-	// This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
 	// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
 	RouterId pulumi.StringPtrInput
@@ -117,7 +117,7 @@ type routeEntryArgs struct {
 	NexthopType *string `pulumi:"nexthopType"`
 	// The ID of the route table.
 	RouteTableId string `pulumi:"routeTableId"`
-	// This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
 	// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
 	RouterId *string `pulumi:"routerId"`
@@ -135,7 +135,7 @@ type RouteEntryArgs struct {
 	NexthopType pulumi.StringPtrInput
 	// The ID of the route table.
 	RouteTableId pulumi.StringInput
-	// This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
 	// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
 	RouterId pulumi.StringPtrInput

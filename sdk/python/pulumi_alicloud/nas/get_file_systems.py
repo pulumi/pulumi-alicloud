@@ -146,8 +146,12 @@ def get_file_systems(description_regex: Optional[str] = None,
 
     :param str description_regex: A regex string to filter the results by the ：FileSystem description.
     :param Sequence[str] ids: A list of FileSystemId.
-    :param str protocol_type: Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
-    :param str storage_type: Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
+    :param str protocol_type: The protocol type of the file system.
+           Valid values:
+           `NFS`,
+           `SMB` (Available when the `file_system_type` is `standard`).
+    :param str storage_type: The storage type of the file system.
+           * Valid values:
     """
     __args__ = dict()
     __args__['descriptionRegex'] = description_regex

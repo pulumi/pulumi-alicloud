@@ -28,10 +28,40 @@ namespace Pulumi.AliCloud.Hbr
     /// {
     ///     public MyStack()
     ///     {
+    ///         var defaultEcsBackupPlans = Output.Create(AliCloud.Hbr.GetEcsBackupPlans.InvokeAsync(new AliCloud.Hbr.GetEcsBackupPlansArgs
+    ///         {
+    ///             NameRegex = "plan-tf-used-dont-delete",
+    ///         }));
+    ///         var defaultOssBackupPlans = Output.Create(AliCloud.Hbr.GetOssBackupPlans.InvokeAsync(new AliCloud.Hbr.GetOssBackupPlansArgs
+    ///         {
+    ///             NameRegex = "plan-tf-used-dont-delete",
+    ///         }));
     ///         var defaultNasBackupPlans = Output.Create(AliCloud.Hbr.GetNasBackupPlans.InvokeAsync(new AliCloud.Hbr.GetNasBackupPlansArgs
     ///         {
     ///             NameRegex = "plan-tf-used-dont-delete",
     ///         }));
+    ///         var ecsSnapshots = Output.Tuple(defaultEcsBackupPlans, defaultEcsBackupPlans).Apply(values =&gt;
+    ///         {
+    ///             var defaultEcsBackupPlans = values.Item1;
+    ///             var defaultEcsBackupPlans1 = values.Item2;
+    ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
+    ///             {
+    ///                 SourceType = "ECS_FILE",
+    ///                 VaultId = defaultEcsBackupPlans.Plans[0].VaultId,
+    ///                 InstanceId = defaultEcsBackupPlans1.Plans[0].InstanceId,
+    ///             }));
+    ///         });
+    ///         var ossSnapshots = Output.Tuple(defaultOssBackupPlans, defaultOssBackupPlans).Apply(values =&gt;
+    ///         {
+    ///             var defaultOssBackupPlans = values.Item1;
+    ///             var defaultOssBackupPlans1 = values.Item2;
+    ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
+    ///             {
+    ///                 SourceType = "OSS",
+    ///                 VaultId = defaultOssBackupPlans.Plans[0].VaultId,
+    ///                 Bucket = defaultOssBackupPlans1.Plans[0].Bucket,
+    ///             }));
+    ///         });
     ///         var nasSnapshots = Output.Tuple(defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans).Apply(values =&gt;
     ///         {
     ///             var defaultNasBackupPlans = values.Item1;
@@ -45,9 +75,8 @@ namespace Pulumi.AliCloud.Hbr
     ///                 CreateTime = defaultNasBackupPlans2.Plans[0].CreateTime,
     ///             }));
     ///         });
-    ///         var defaultRestoreJob = new AliCloud.Hbr.RestoreJob("defaultRestoreJob", new AliCloud.Hbr.RestoreJobArgs
+    ///         var nasJob = new AliCloud.Hbr.RestoreJob("nasJob", new AliCloud.Hbr.RestoreJobArgs
     ///         {
-    ///             RestoreJobId = "tftestacc112358",
     ///             SnapshotHash = nasSnapshots.Apply(nasSnapshots =&gt; nasSnapshots.Snapshots[0].SnapshotHash),
     ///             VaultId = defaultNasBackupPlans.Apply(defaultNasBackupPlans =&gt; defaultNasBackupPlans.Plans[0].VaultId),
     ///             SourceType = "NAS",
@@ -58,6 +87,28 @@ namespace Pulumi.AliCloud.Hbr
     ///             TargetPath = "/",
     ///             Options = @"    {""includes"":[], ""excludes"":[]}
     /// ",
+    ///         });
+    ///         var ossJob = new AliCloud.Hbr.RestoreJob("ossJob", new AliCloud.Hbr.RestoreJobArgs
+    ///         {
+    ///             SnapshotHash = ossSnapshots.Apply(ossSnapshots =&gt; ossSnapshots.Snapshots[0].SnapshotHash),
+    ///             VaultId = defaultOssBackupPlans.Apply(defaultOssBackupPlans =&gt; defaultOssBackupPlans.Plans[0].VaultId),
+    ///             SourceType = "OSS",
+    ///             RestoreType = "OSS",
+    ///             SnapshotId = ossSnapshots.Apply(ossSnapshots =&gt; ossSnapshots.Snapshots[0].SnapshotId),
+    ///             TargetBucket = defaultOssBackupPlans.Apply(defaultOssBackupPlans =&gt; defaultOssBackupPlans.Plans[0].Bucket),
+    ///             TargetPrefix = "",
+    ///             Options = @"    {""includes"":[], ""excludes"":[]}
+    /// ",
+    ///         });
+    ///         var ecsJob = new AliCloud.Hbr.RestoreJob("ecsJob", new AliCloud.Hbr.RestoreJobArgs
+    ///         {
+    ///             SnapshotHash = ecsSnapshots.Apply(ecsSnapshots =&gt; ecsSnapshots.Snapshots[0].SnapshotHash),
+    ///             VaultId = defaultEcsBackupPlans.Apply(defaultEcsBackupPlans =&gt; defaultEcsBackupPlans.Plans[0].VaultId),
+    ///             SourceType = "ECS_FILE",
+    ///             RestoreType = "ECS_FILE",
+    ///             SnapshotId = ecsSnapshots.Apply(ecsSnapshots =&gt; ecsSnapshots.Snapshots[0].SnapshotId),
+    ///             TargetInstanceId = defaultEcsBackupPlans.Apply(defaultEcsBackupPlans =&gt; defaultEcsBackupPlans.Plans[0].InstanceId),
+    ///             TargetPath = "/",
     ///         });
     ///     }
     /// 
@@ -78,13 +129,13 @@ namespace Pulumi.AliCloud.Hbr
     public partial class RestoreJob : Pulumi.CustomResource
     {
         /// <summary>
-        /// The exclude path. It's a json string with format:`["/home", "/exclude"]`.
+        /// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Output("exclude")]
         public Output<string?> Exclude { get; private set; } = null!;
 
         /// <summary>
-        /// The include path. It's a json string with format:`["/home", "/include"]`.
+        /// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Output("include")]
         public Output<string?> Include { get; private set; } = null!;
@@ -96,7 +147,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
+        /// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         /// </summary>
         [Output("restoreJobId")]
         public Output<string> RestoreJobId { get; private set; } = null!;
@@ -108,7 +159,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> RestoreType { get; private set; } = null!;
 
         /// <summary>
-        /// The hashcode of restore Snapshot.
+        /// The hashcode of Snapshot.
         /// </summary>
         [Output("snapshotHash")]
         public Output<string> SnapshotHash { get; private set; } = null!;
@@ -132,7 +183,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The target ofo OSS bucket name.
+        /// The target name of OSS bucket.
         /// </summary>
         [Output("targetBucket")]
         public Output<string?> TargetBucket { get; private set; } = null!;
@@ -147,7 +198,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> TargetContainerClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Output("targetCreateTime")]
         public Output<string?> TargetCreateTime { get; private set; } = null!;
@@ -168,13 +219,13 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> TargetInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The target file path of (ECS) instance.
+        /// The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Output("targetPath")]
         public Output<string?> TargetPath { get; private set; } = null!;
 
         /// <summary>
-        /// The target of the OSS object prefix.
+        /// The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Output("targetPrefix")]
         public Output<string?> TargetPrefix { get; private set; } = null!;
@@ -232,13 +283,13 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class RestoreJobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The exclude path. It's a json string with format:`["/home", "/exclude"]`.
+        /// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("exclude")]
         public Input<string>? Exclude { get; set; }
 
         /// <summary>
-        /// The include path. It's a json string with format:`["/home", "/include"]`.
+        /// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
@@ -250,10 +301,10 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Options { get; set; }
 
         /// <summary>
-        /// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
+        /// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         /// </summary>
-        [Input("restoreJobId", required: true)]
-        public Input<string> RestoreJobId { get; set; } = null!;
+        [Input("restoreJobId")]
+        public Input<string>? RestoreJobId { get; set; }
 
         /// <summary>
         /// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
@@ -262,7 +313,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> RestoreType { get; set; } = null!;
 
         /// <summary>
-        /// The hashcode of restore Snapshot.
+        /// The hashcode of Snapshot.
         /// </summary>
         [Input("snapshotHash", required: true)]
         public Input<string> SnapshotHash { get; set; } = null!;
@@ -280,7 +331,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> SourceType { get; set; } = null!;
 
         /// <summary>
-        /// The target ofo OSS bucket name.
+        /// The target name of OSS bucket.
         /// </summary>
         [Input("targetBucket")]
         public Input<string>? TargetBucket { get; set; }
@@ -295,7 +346,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? TargetContainerClusterId { get; set; }
 
         /// <summary>
-        /// The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Input("targetCreateTime")]
         public Input<string>? TargetCreateTime { get; set; }
@@ -316,13 +367,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? TargetInstanceId { get; set; }
 
         /// <summary>
-        /// The target file path of (ECS) instance.
+        /// The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("targetPath")]
         public Input<string>? TargetPath { get; set; }
 
         /// <summary>
-        /// The target of the OSS object prefix.
+        /// The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("targetPrefix")]
         public Input<string>? TargetPrefix { get; set; }
@@ -341,13 +392,13 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class RestoreJobState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The exclude path. It's a json string with format:`["/home", "/exclude"]`.
+        /// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("exclude")]
         public Input<string>? Exclude { get; set; }
 
         /// <summary>
-        /// The include path. It's a json string with format:`["/home", "/include"]`.
+        /// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
@@ -359,7 +410,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Options { get; set; }
 
         /// <summary>
-        /// Restore Job ID. It's the unique key of this resource, you must specify a unique keyword.
+        /// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         /// </summary>
         [Input("restoreJobId")]
         public Input<string>? RestoreJobId { get; set; }
@@ -371,7 +422,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? RestoreType { get; set; }
 
         /// <summary>
-        /// The hashcode of restore Snapshot.
+        /// The hashcode of Snapshot.
         /// </summary>
         [Input("snapshotHash")]
         public Input<string>? SnapshotHash { get; set; }
@@ -395,7 +446,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The target ofo OSS bucket name.
+        /// The target name of OSS bucket.
         /// </summary>
         [Input("targetBucket")]
         public Input<string>? TargetBucket { get; set; }
@@ -410,7 +461,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? TargetContainerClusterId { get; set; }
 
         /// <summary>
-        /// The creation Time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Input("targetCreateTime")]
         public Input<string>? TargetCreateTime { get; set; }
@@ -431,13 +482,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? TargetInstanceId { get; set; }
 
         /// <summary>
-        /// The target file path of (ECS) instance.
+        /// The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("targetPath")]
         public Input<string>? TargetPath { get; set; }
 
         /// <summary>
-        /// The target of the OSS object prefix.
+        /// The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("targetPrefix")]
         public Input<string>? TargetPrefix { get; set; }

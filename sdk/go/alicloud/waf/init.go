@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Domain{}
 	case "alicloud:waf/instance:Instance":
 		r = &Instance{}
+	case "alicloud:waf/protectionModule:ProtectionModule":
+		r = &ProtectionModule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"waf/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"waf/protectionModule",
 		&module{version},
 	)
 }

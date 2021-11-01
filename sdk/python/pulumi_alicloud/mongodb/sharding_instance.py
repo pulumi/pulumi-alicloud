@@ -19,6 +19,7 @@ class ShardingInstanceArgs:
                  mongo_lists: pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]],
                  shard_lists: pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]],
                  account_password: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -40,9 +41,10 @@ class ShardingInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]] mongo_lists: The mongo-node count can be purchased is in range of [2, 32].
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]] shard_lists: the shard-node count can be purchased is in range of [2, 32].
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, true of false. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
@@ -64,6 +66,8 @@ class ShardingInstanceArgs:
         pulumi.set(__self__, "shard_lists", shard_lists)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if backup_periods is not None:
             pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_time is not None:
@@ -144,6 +148,18 @@ class ShardingInstanceArgs:
         pulumi.set(self, "account_password", value)
 
     @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Auto renew for prepaid, true of false. Default is false.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
     @pulumi.getter(name="backupPeriods")
     def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -171,7 +187,7 @@ class ShardingInstanceArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -329,8 +345,10 @@ class ShardingInstanceArgs:
 class _ShardingInstanceState:
     def __init__(__self__, *,
                  account_password: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
+                 config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -351,10 +369,12 @@ class _ShardingInstanceState:
         """
         Input properties used for looking up and filtering ShardingInstance resources.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, true of false. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]] config_server_lists: The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]] mongo_lists: The mongo-node count can be purchased is in range of [2, 32].
@@ -364,7 +384,7 @@ class _ShardingInstanceState:
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
-        :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
+        :param pulumi.Input[int] retention_period: Instance log backup retention days. **NOTE:** Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]] shard_lists: the shard-node count can be purchased is in range of [2, 32].
@@ -376,10 +396,14 @@ class _ShardingInstanceState:
         """
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if backup_periods is not None:
             pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
+        if config_server_lists is not None:
+            pulumi.set(__self__, "config_server_lists", config_server_lists)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
         if instance_charge_type is not None:
@@ -428,6 +452,18 @@ class _ShardingInstanceState:
         pulumi.set(self, "account_password", value)
 
     @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Auto renew for prepaid, true of false. Default is false.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
     @pulumi.getter(name="backupPeriods")
     def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -452,6 +488,18 @@ class _ShardingInstanceState:
         pulumi.set(self, "backup_time", value)
 
     @property
+    @pulumi.getter(name="configServerLists")
+    def config_server_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]:
+        """
+        The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
+        """
+        return pulumi.get(self, "config_server_lists")
+
+    @config_server_lists.setter
+    def config_server_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]):
+        pulumi.set(self, "config_server_lists", value)
+
+    @property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -467,7 +515,7 @@ class _ShardingInstanceState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -554,7 +602,7 @@ class _ShardingInstanceState:
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Instance log backup retention days. Available in 1.42.0+.
+        Instance log backup retention days. **NOTE:** Available in 1.42.0+.
         """
         return pulumi.get(self, "retention_period")
 
@@ -663,6 +711,7 @@ class ShardingInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -694,10 +743,11 @@ class ShardingInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, true of false. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]] mongo_lists: The mongo-node count can be purchased is in range of [2, 32].
@@ -747,6 +797,7 @@ class ShardingInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -778,6 +829,7 @@ class ShardingInstance(pulumi.CustomResource):
             __props__ = ShardingInstanceArgs.__new__(ShardingInstanceArgs)
 
             __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["backup_periods"] = backup_periods
             __props__.__dict__["backup_time"] = backup_time
             if engine_version is None and not opts.urn:
@@ -802,6 +854,7 @@ class ShardingInstance(pulumi.CustomResource):
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["config_server_lists"] = None
             __props__.__dict__["retention_period"] = None
         super(ShardingInstance, __self__).__init__(
             'alicloud:mongodb/shardingInstance:ShardingInstance',
@@ -814,8 +867,10 @@ class ShardingInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_password: Optional[pulumi.Input[str]] = None,
+            auto_renew: Optional[pulumi.Input[bool]] = None,
             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             backup_time: Optional[pulumi.Input[str]] = None,
+            config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceConfigServerListArgs']]]]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -841,10 +896,12 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, true of false. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceConfigServerListArgs']]]] config_server_lists: The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]] mongo_lists: The mongo-node count can be purchased is in range of [2, 32].
@@ -854,7 +911,7 @@ class ShardingInstance(pulumi.CustomResource):
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
-        :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
+        :param pulumi.Input[int] retention_period: Instance log backup retention days. **NOTE:** Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceShardListArgs']]]] shard_lists: the shard-node count can be purchased is in range of [2, 32].
@@ -869,8 +926,10 @@ class ShardingInstance(pulumi.CustomResource):
         __props__ = _ShardingInstanceState.__new__(_ShardingInstanceState)
 
         __props__.__dict__["account_password"] = account_password
+        __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["backup_periods"] = backup_periods
         __props__.__dict__["backup_time"] = backup_time
+        __props__.__dict__["config_server_lists"] = config_server_lists
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -899,6 +958,14 @@ class ShardingInstance(pulumi.CustomResource):
         return pulumi.get(self, "account_password")
 
     @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Auto renew for prepaid, true of false. Default is false.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @property
     @pulumi.getter(name="backupPeriods")
     def backup_periods(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -915,6 +982,14 @@ class ShardingInstance(pulumi.CustomResource):
         return pulumi.get(self, "backup_time")
 
     @property
+    @pulumi.getter(name="configServerLists")
+    def config_server_lists(self) -> pulumi.Output[Sequence['outputs.ShardingInstanceConfigServerList']]:
+        """
+        The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
+        """
+        return pulumi.get(self, "config_server_lists")
+
+    @property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Output[str]:
         """
@@ -926,7 +1001,7 @@ class ShardingInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
-        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -985,7 +1060,7 @@ class ShardingInstance(pulumi.CustomResource):
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> pulumi.Output[int]:
         """
-        Instance log backup retention days. Available in 1.42.0+.
+        Instance log backup retention days. **NOTE:** Available in 1.42.0+.
         """
         return pulumi.get(self, "retention_period")
 

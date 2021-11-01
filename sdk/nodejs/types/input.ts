@@ -12,6 +12,7 @@ export interface ProviderAssumeRole {
 }
 
 export interface ProviderEndpoint {
+    acr?: pulumi.Input<string>;
     actiontrail?: pulumi.Input<string>;
     adb?: pulumi.Input<string>;
     alb?: pulumi.Input<string>;
@@ -178,6 +179,9 @@ export namespace alb {
     }
 
     export interface ListenerCertificate {
+        /**
+         * The ID of the Certificate.
+         */
         certificateId?: pulumi.Input<string>;
     }
 
@@ -664,7 +668,7 @@ export namespace apigateway {
          */
         in: pulumi.Input<string>;
         /**
-         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
          */
         name: pulumi.Input<string>;
         /**
@@ -723,7 +727,7 @@ export namespace apigateway {
          */
         method: pulumi.Input<string>;
         /**
-         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
          */
         name: pulumi.Input<string>;
         /**
@@ -746,7 +750,7 @@ export namespace apigateway {
 
     export interface ApiRequestConfig {
         /**
-         * The body format of the api, which support the values of 'STREAM' and 'FORM'
+         * The body format of the api, which support the values of 'STREAM' and 'FORM'.
          */
         bodyFormat?: pulumi.Input<string>;
         /**
@@ -754,7 +758,7 @@ export namespace apigateway {
          */
         method: pulumi.Input<string>;
         /**
-         * The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+         * The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
          */
         mode: pulumi.Input<string>;
         /**
@@ -762,7 +766,7 @@ export namespace apigateway {
          */
         path: pulumi.Input<string>;
         /**
-         * The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
+         * The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
          */
         protocol: pulumi.Input<string>;
     }
@@ -785,7 +789,7 @@ export namespace apigateway {
          */
         inService: pulumi.Input<string>;
         /**
-         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
          */
         name: pulumi.Input<string>;
         /**
@@ -797,7 +801,7 @@ export namespace apigateway {
          */
         required: pulumi.Input<string>;
         /**
-         * Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
+         * Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
          */
         type: pulumi.Input<string>;
     }
@@ -808,7 +812,7 @@ export namespace apigateway {
          */
         in: pulumi.Input<string>;
         /**
-         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+         * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
          */
         name: pulumi.Input<string>;
         /**
@@ -1147,6 +1151,13 @@ export namespace cfg {
         parameterValue?: pulumi.Input<string>;
     }
 
+    export interface AggregateCompliancePackConfigRuleId {
+        /**
+         * The rule ID of Aggregate Config Rule.
+         */
+        configRuleId?: pulumi.Input<string>;
+    }
+
     export interface AggregatorAggregatorAccount {
         /**
          * Aggregator account Uid.
@@ -1184,6 +1195,13 @@ export namespace cfg {
         parameterValue?: pulumi.Input<string>;
     }
 
+    export interface CompliancePackConfigRuleId {
+        /**
+         * The rule ID of Config Rule.
+         */
+        configRuleId?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace clickhouse {
@@ -1199,6 +1217,21 @@ export namespace cloudfirewall {
 }
 
 export namespace cloudsso {
+    export interface AccessConfigurationPermissionPolicy {
+        /**
+         * The Content of Policy.
+         */
+        permissionPolicyDocument?: pulumi.Input<string>;
+        /**
+         * The Policy Name of policy.
+         */
+        permissionPolicyName?: pulumi.Input<string>;
+        /**
+         * The Policy Type of policy. Valid values: `System`, `Inline`.
+         */
+        permissionPolicyType?: pulumi.Input<string>;
+    }
+
     export interface DirectorySamlIdentityProviderConfiguration {
         /**
          * Base64 encoded IdP metadata document.
@@ -2267,6 +2300,21 @@ export namespace eci {
         ip?: pulumi.Input<string>;
     }
 
+    export interface ContainerGroupImageRegistryCredential {
+        /**
+         * The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+         */
+        password: pulumi.Input<string>;
+        /**
+         * The address of the image repository. It is required when `imageRegistryCredential` is configured.
+         */
+        server: pulumi.Input<string>;
+        /**
+         * The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
+         */
+        userName: pulumi.Input<string>;
+    }
+
     export interface ContainerGroupInitContainer {
         /**
          * The arguments passed to the commands.
@@ -3283,7 +3331,7 @@ export namespace hbr {
          */
         key?: string;
         /**
-         * The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+         * The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
          */
         operator?: string;
         /**
@@ -3546,9 +3594,76 @@ export namespace mns {
 }
 
 export namespace mongodb {
+    export interface InstanceReplicaSet {
+        /**
+         * The connection address of the node.
+         */
+        connectionDomain?: pulumi.Input<string>;
+        /**
+         * The connection port of the node.
+         */
+        connectionPort?: pulumi.Input<string>;
+        /**
+         * The network type of the node. Valid values: `Classic`,`VPC`.
+         */
+        networkType?: pulumi.Input<string>;
+        /**
+         * The role of the node. Valid values: `Primary`,`Secondary`.
+         */
+        replicaSetRole?: pulumi.Input<string>;
+        /**
+         * VPC instance ID.
+         */
+        vpcCloudInstanceId?: pulumi.Input<string>;
+        /**
+         * The private network ID of the node.
+         */
+        vpcId?: pulumi.Input<string>;
+        /**
+         * The virtual switch ID to launch DB instances in one VPC.
+         */
+        vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface ShardingInstanceConfigServerList {
+        /**
+         * The connection address of the Config Server node.
+         */
+        connectString?: pulumi.Input<string>;
+        /**
+         * The max connections of the Config Server node.
+         */
+        maxConnections?: pulumi.Input<number>;
+        /**
+         * The maximum IOPS of the Config Server node.
+         */
+        maxIops?: pulumi.Input<number>;
+        /**
+         * -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         */
+        nodeClass?: pulumi.Input<string>;
+        /**
+         * The description of the Config Server node.
+         */
+        nodeDescription?: pulumi.Input<string>;
+        /**
+         * The ID of the Config Server node.
+         */
+        nodeId?: pulumi.Input<string>;
+        /**
+         * - Custom storage space; value range: [10, 1,000]
+         * - 10-GB increments. Unit: GB.
+         */
+        nodeStorage?: pulumi.Input<number>;
+        /**
+         * The connection port of the Config Server node.
+         */
+        port?: pulumi.Input<number>;
+    }
+
     export interface ShardingInstanceMongoList {
         /**
-         * Mongo node connection string
+         * The connection address of the Config Server node.
          */
         connectString?: pulumi.Input<string>;
         /**
@@ -3556,12 +3671,11 @@ export namespace mongodb {
          */
         nodeClass: pulumi.Input<string>;
         /**
-         * The ID of the shard-node.
+         * The ID of the Config Server node.
          */
         nodeId?: pulumi.Input<string>;
         /**
-         * Mongo node port
-         * * `shardList`
+         * The connection port of the Config Server node.
          */
         port?: pulumi.Input<number>;
     }
@@ -3572,7 +3686,7 @@ export namespace mongodb {
          */
         nodeClass: pulumi.Input<string>;
         /**
-         * The ID of the shard-node.
+         * The ID of the Config Server node.
          */
         nodeId?: pulumi.Input<string>;
         /**
@@ -4037,6 +4151,44 @@ export namespace ros {
 }
 
 export namespace sae {
+    export interface ApplicationInternet {
+        /**
+         * SSL certificate. `httpsCertId` is required when HTTPS is selected
+         */
+        httpsCertId?: pulumi.Input<string>;
+        /**
+         * SLB Port.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+         */
+        protocol?: pulumi.Input<string>;
+        /**
+         * Container port.
+         */
+        targetPort?: pulumi.Input<number>;
+    }
+
+    export interface ApplicationIntranet {
+        /**
+         * SSL certificate. `httpsCertId` is required when HTTPS is selected
+         */
+        httpsCertId?: pulumi.Input<string>;
+        /**
+         * SLB Port.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+         */
+        protocol?: pulumi.Input<string>;
+        /**
+         * Container port.
+         */
+        targetPort?: pulumi.Input<number>;
+    }
+
     export interface IngressDefaultRule {
         /**
          * Target application ID.

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const defaultSynchronizationInstance = new alicloud.dts.SynchronizationInstance("defaultSynchronizationInstance", {
- *     paymentType: "PostPaid",
+ *     paymentType: "PayAsYouGo",
  *     sourceEndpointEngineName: "PolarDB",
  *     sourceEndpointRegion: "cn-hangzhou",
  *     destinationEndpointEngineName: "ADB30",

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
     public sealed class ApiRequestConfig
     {
         /// <summary>
-        /// The body format of the api, which support the values of 'STREAM' and 'FORM'
+        /// The body format of the api, which support the values of 'STREAM' and 'FORM'.
         /// </summary>
         public readonly string? BodyFormat;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string Method;
         /// <summary>
-        /// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+        /// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
         /// </summary>
         public readonly string Mode;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
+        /// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
         /// </summary>
         public readonly string Protocol;
 

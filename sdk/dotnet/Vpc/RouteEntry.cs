@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouteTableId { get; private set; } = null!;
 
         /// <summary>
-        /// This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        /// This argument has been deprecated. Please use other arguments to launch a custom route entry.
         /// </summary>
         [Output("routerId")]
         public Output<string> RouterId { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> RouteTableId { get; set; } = null!;
 
         /// <summary>
-        /// This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        /// This argument has been deprecated. Please use other arguments to launch a custom route entry.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
-        /// This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        /// This argument has been deprecated. Please use other arguments to launch a custom route entry.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }

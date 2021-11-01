@@ -56,6 +56,10 @@ export class AggregateConfigRule extends pulumi.CustomResource {
      */
     public readonly aggregatorId!: pulumi.Output<string>;
     /**
+     * (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+     */
+    public /*out*/ readonly configRuleId!: pulumi.Output<string>;
+    /**
      * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      */
     public readonly configRuleTriggerTypes!: pulumi.Output<string>;
@@ -124,6 +128,7 @@ export class AggregateConfigRule extends pulumi.CustomResource {
             const state = argsOrState as AggregateConfigRuleState | undefined;
             inputs["aggregateConfigRuleName"] = state ? state.aggregateConfigRuleName : undefined;
             inputs["aggregatorId"] = state ? state.aggregatorId : undefined;
+            inputs["configRuleId"] = state ? state.configRuleId : undefined;
             inputs["configRuleTriggerTypes"] = state ? state.configRuleTriggerTypes : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["excludeResourceIdsScope"] = state ? state.excludeResourceIdsScope : undefined;
@@ -176,6 +181,7 @@ export class AggregateConfigRule extends pulumi.CustomResource {
             inputs["sourceOwner"] = args ? args.sourceOwner : undefined;
             inputs["tagKeyScope"] = args ? args.tagKeyScope : undefined;
             inputs["tagValueScope"] = args ? args.tagValueScope : undefined;
+            inputs["configRuleId"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -197,6 +203,10 @@ export interface AggregateConfigRuleState {
      * The Aggregator Id.
      */
     readonly aggregatorId?: pulumi.Input<string>;
+    /**
+     * (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+     */
+    readonly configRuleId?: pulumi.Input<string>;
     /**
      * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      */

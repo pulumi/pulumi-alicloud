@@ -47,13 +47,13 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The sort direction.
+        /// The sort direction. Valid values: `ASCEND`, `DESCEND`.
         /// </summary>
         [Input("sortDirection")]
         public string? SortDirection { get; set; }
 
         /// <summary>
-        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
         /// </summary>
         [Input("sourceType", required: true)]
         public string SourceType { get; set; } = null!;

@@ -38,6 +38,11 @@ namespace Pulumi.AliCloud
         public static string? ConfigurationSource { get; set; } = __config.Get("configurationSource");
 
         /// <summary>
+        /// The URI of sidecar credentials service.
+        /// </summary>
+        public static string? CredentialsUri { get; set; } = __config.Get("credentialsUri");
+
+        /// <summary>
         /// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
         /// of the Alibaba Cloud console.
         /// </summary>
@@ -112,6 +117,7 @@ namespace Pulumi.AliCloud
 
              public class Endpoints
              {
+                public string? Acr { get; set; } = null!;
                 public string? Actiontrail { get; set; } = null!;
                 public string? Adb { get; set; } = null!;
                 public string? Alb { get; set; } = null!;

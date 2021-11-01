@@ -28,6 +28,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
+        /// Auto renew for prepaid, true of false. Default is false.
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
         /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         /// </summary>
         [Output("backupPeriods")]
@@ -40,13 +46,19 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> BackupTime { get; private set; } = null!;
 
         /// <summary>
+        /// The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
+        /// </summary>
+        [Output("configServerLists")]
+        public Output<ImmutableArray<Outputs.ShardingInstanceConfigServerList>> ConfigServerLists { get; private set; } = null!;
+
+        /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
@@ -91,7 +103,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Instance log backup retention days. Available in 1.42.0+.
+        /// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
         /// </summary>
         [Output("retentionPeriod")]
         public Output<int> RetentionPeriod { get; private set; } = null!;
@@ -194,6 +206,12 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("accountPassword")]
         public Input<string>? AccountPassword { get; set; }
 
+        /// <summary>
+        /// Auto renew for prepaid, true of false. Default is false.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
 
@@ -219,7 +237,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -351,6 +369,12 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("accountPassword")]
         public Input<string>? AccountPassword { get; set; }
 
+        /// <summary>
+        /// Auto renew for prepaid, true of false. Default is false.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
 
@@ -369,6 +393,18 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
 
+        [Input("configServerLists")]
+        private InputList<Inputs.ShardingInstanceConfigServerListGetArgs>? _configServerLists;
+
+        /// <summary>
+        /// The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
+        /// </summary>
+        public InputList<Inputs.ShardingInstanceConfigServerListGetArgs> ConfigServerLists
+        {
+            get => _configServerLists ?? (_configServerLists = new InputList<Inputs.ShardingInstanceConfigServerListGetArgs>());
+            set => _configServerLists = value;
+        }
+
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
         /// </summary>
@@ -376,7 +412,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -433,7 +469,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Instance log backup retention days. Available in 1.42.0+.
+        /// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }

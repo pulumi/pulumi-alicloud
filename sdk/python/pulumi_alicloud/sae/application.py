@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ApplicationArgs', 'Application']
 
@@ -32,6 +34,10 @@ class ApplicationArgs:
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
+                 internet_slb_id: Optional[pulumi.Input[str]] = None,
+                 internets: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]] = None,
+                 intranet_slb_id: Optional[pulumi.Input[str]] = None,
+                 intranets: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
@@ -61,6 +67,7 @@ class ApplicationArgs:
                  tomcat_config: Optional[pulumi.Input[str]] = None,
                  update_strategy: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  war_start_options: Optional[pulumi.Input[str]] = None,
                  web_container: Optional[pulumi.Input[str]] = None):
@@ -85,6 +92,10 @@ class ApplicationArgs:
         :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
         :param pulumi.Input[str] envs: The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
+        :param pulumi.Input[str] internet_slb_id: public network SLB ID.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]] internets: Bound private network SLB. The details see Block internet.
+        :param pulumi.Input[str] intranet_slb_id: private network SLB ID.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]] intranets: Bound public network SLB. The details see Block intranet.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
@@ -114,6 +125,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
         :param pulumi.Input[str] update_strategy: The update strategy.
         :param pulumi.Input[str] version_id: Application version id.
+        :param pulumi.Input[str] vpc_id: The vpc id.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param pulumi.Input[str] web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
@@ -153,6 +165,14 @@ class ApplicationArgs:
             pulumi.set(__self__, "envs", envs)
         if image_url is not None:
             pulumi.set(__self__, "image_url", image_url)
+        if internet_slb_id is not None:
+            pulumi.set(__self__, "internet_slb_id", internet_slb_id)
+        if internets is not None:
+            pulumi.set(__self__, "internets", internets)
+        if intranet_slb_id is not None:
+            pulumi.set(__self__, "intranet_slb_id", intranet_slb_id)
+        if intranets is not None:
+            pulumi.set(__self__, "intranets", intranets)
         if jar_start_args is not None:
             pulumi.set(__self__, "jar_start_args", jar_start_args)
         if jar_start_options is not None:
@@ -211,6 +231,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "update_strategy", update_strategy)
         if version_id is not None:
             pulumi.set(__self__, "version_id", version_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if war_start_options is not None:
@@ -445,6 +467,54 @@ class ApplicationArgs:
     @image_url.setter
     def image_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_url", value)
+
+    @property
+    @pulumi.getter(name="internetSlbId")
+    def internet_slb_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        public network SLB ID.
+        """
+        return pulumi.get(self, "internet_slb_id")
+
+    @internet_slb_id.setter
+    def internet_slb_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_slb_id", value)
+
+    @property
+    @pulumi.getter
+    def internets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]]:
+        """
+        Bound private network SLB. The details see Block internet.
+        """
+        return pulumi.get(self, "internets")
+
+    @internets.setter
+    def internets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]]):
+        pulumi.set(self, "internets", value)
+
+    @property
+    @pulumi.getter(name="intranetSlbId")
+    def intranet_slb_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        private network SLB ID.
+        """
+        return pulumi.get(self, "intranet_slb_id")
+
+    @intranet_slb_id.setter
+    def intranet_slb_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "intranet_slb_id", value)
+
+    @property
+    @pulumi.getter
+    def intranets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]]:
+        """
+        Bound public network SLB. The details see Block intranet.
+        """
+        return pulumi.get(self, "intranets")
+
+    @intranets.setter
+    def intranets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]]):
+        pulumi.set(self, "intranets", value)
 
     @property
     @pulumi.getter(name="jarStartArgs")
@@ -795,6 +865,18 @@ class ApplicationArgs:
         pulumi.set(self, "version_id", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vpc id.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -851,6 +933,12 @@ class _ApplicationState:
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
+                 internet_ip: Optional[pulumi.Input[str]] = None,
+                 internet_slb_id: Optional[pulumi.Input[str]] = None,
+                 internets: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]] = None,
+                 intranet_ip: Optional[pulumi.Input[str]] = None,
+                 intranet_slb_id: Optional[pulumi.Input[str]] = None,
+                 intranets: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
@@ -882,6 +970,7 @@ class _ApplicationState:
                  tomcat_config: Optional[pulumi.Input[str]] = None,
                  update_strategy: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  war_start_options: Optional[pulumi.Input[str]] = None,
                  web_container: Optional[pulumi.Input[str]] = None):
@@ -904,6 +993,12 @@ class _ApplicationState:
         :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
         :param pulumi.Input[str] envs: The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
+        :param pulumi.Input[str] internet_ip: Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        :param pulumi.Input[str] internet_slb_id: public network SLB ID.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]] internets: Bound private network SLB. The details see Block internet.
+        :param pulumi.Input[str] intranet_ip: Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        :param pulumi.Input[str] intranet_slb_id: private network SLB ID.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]] intranets: Bound public network SLB. The details see Block intranet.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
@@ -935,6 +1030,7 @@ class _ApplicationState:
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
         :param pulumi.Input[str] update_strategy: The update strategy.
         :param pulumi.Input[str] version_id: Application version id.
+        :param pulumi.Input[str] vpc_id: The vpc id.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param pulumi.Input[str] web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
@@ -973,6 +1069,18 @@ class _ApplicationState:
             pulumi.set(__self__, "envs", envs)
         if image_url is not None:
             pulumi.set(__self__, "image_url", image_url)
+        if internet_ip is not None:
+            pulumi.set(__self__, "internet_ip", internet_ip)
+        if internet_slb_id is not None:
+            pulumi.set(__self__, "internet_slb_id", internet_slb_id)
+        if internets is not None:
+            pulumi.set(__self__, "internets", internets)
+        if intranet_ip is not None:
+            pulumi.set(__self__, "intranet_ip", intranet_ip)
+        if intranet_slb_id is not None:
+            pulumi.set(__self__, "intranet_slb_id", intranet_slb_id)
+        if intranets is not None:
+            pulumi.set(__self__, "intranets", intranets)
         if jar_start_args is not None:
             pulumi.set(__self__, "jar_start_args", jar_start_args)
         if jar_start_options is not None:
@@ -1035,6 +1143,8 @@ class _ApplicationState:
             pulumi.set(__self__, "update_strategy", update_strategy)
         if version_id is not None:
             pulumi.set(__self__, "version_id", version_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if war_start_options is not None:
@@ -1245,6 +1355,78 @@ class _ApplicationState:
     @image_url.setter
     def image_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_url", value)
+
+    @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        """
+        return pulumi.get(self, "internet_ip")
+
+    @internet_ip.setter
+    def internet_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_ip", value)
+
+    @property
+    @pulumi.getter(name="internetSlbId")
+    def internet_slb_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        public network SLB ID.
+        """
+        return pulumi.get(self, "internet_slb_id")
+
+    @internet_slb_id.setter
+    def internet_slb_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_slb_id", value)
+
+    @property
+    @pulumi.getter
+    def internets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]]:
+        """
+        Bound private network SLB. The details see Block internet.
+        """
+        return pulumi.get(self, "internets")
+
+    @internets.setter
+    def internets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]]):
+        pulumi.set(self, "internets", value)
+
+    @property
+    @pulumi.getter(name="intranetIp")
+    def intranet_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        """
+        return pulumi.get(self, "intranet_ip")
+
+    @intranet_ip.setter
+    def intranet_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "intranet_ip", value)
+
+    @property
+    @pulumi.getter(name="intranetSlbId")
+    def intranet_slb_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        private network SLB ID.
+        """
+        return pulumi.get(self, "intranet_slb_id")
+
+    @intranet_slb_id.setter
+    def intranet_slb_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "intranet_slb_id", value)
+
+    @property
+    @pulumi.getter
+    def intranets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]]:
+        """
+        Bound public network SLB. The details see Block intranet.
+        """
+        return pulumi.get(self, "intranets")
+
+    @intranets.setter
+    def intranets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]]):
+        pulumi.set(self, "intranets", value)
 
     @property
     @pulumi.getter(name="jarStartArgs")
@@ -1619,6 +1801,18 @@ class _ApplicationState:
         pulumi.set(self, "version_id", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vpc id.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1677,6 +1871,10 @@ class Application(pulumi.CustomResource):
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
+                 internet_slb_id: Optional[pulumi.Input[str]] = None,
+                 internets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInternetArgs']]]]] = None,
+                 intranet_slb_id: Optional[pulumi.Input[str]] = None,
+                 intranets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationIntranetArgs']]]]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
@@ -1708,6 +1906,7 @@ class Application(pulumi.CustomResource):
                  tomcat_config: Optional[pulumi.Input[str]] = None,
                  update_strategy: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  war_start_options: Optional[pulumi.Input[str]] = None,
                  web_container: Optional[pulumi.Input[str]] = None,
@@ -1784,6 +1983,10 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
         :param pulumi.Input[str] envs: The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
+        :param pulumi.Input[str] internet_slb_id: public network SLB ID.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInternetArgs']]]] internets: Bound private network SLB. The details see Block internet.
+        :param pulumi.Input[str] intranet_slb_id: private network SLB ID.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationIntranetArgs']]]] intranets: Bound public network SLB. The details see Block intranet.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
@@ -1815,6 +2018,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
         :param pulumi.Input[str] update_strategy: The update strategy.
         :param pulumi.Input[str] version_id: Application version id.
+        :param pulumi.Input[str] vpc_id: The vpc id.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param pulumi.Input[str] web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
@@ -1910,6 +2114,10 @@ class Application(pulumi.CustomResource):
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
+                 internet_slb_id: Optional[pulumi.Input[str]] = None,
+                 internets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInternetArgs']]]]] = None,
+                 intranet_slb_id: Optional[pulumi.Input[str]] = None,
+                 intranets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationIntranetArgs']]]]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
@@ -1941,6 +2149,7 @@ class Application(pulumi.CustomResource):
                  tomcat_config: Optional[pulumi.Input[str]] = None,
                  update_strategy: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  war_start_options: Optional[pulumi.Input[str]] = None,
                  web_container: Optional[pulumi.Input[str]] = None,
@@ -1975,6 +2184,10 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["enable_grey_tag_route"] = enable_grey_tag_route
             __props__.__dict__["envs"] = envs
             __props__.__dict__["image_url"] = image_url
+            __props__.__dict__["internet_slb_id"] = internet_slb_id
+            __props__.__dict__["internets"] = internets
+            __props__.__dict__["intranet_slb_id"] = intranet_slb_id
+            __props__.__dict__["intranets"] = intranets
             __props__.__dict__["jar_start_args"] = jar_start_args
             __props__.__dict__["jar_start_options"] = jar_start_options
             __props__.__dict__["jdk"] = jdk
@@ -2010,9 +2223,12 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["tomcat_config"] = tomcat_config
             __props__.__dict__["update_strategy"] = update_strategy
             __props__.__dict__["version_id"] = version_id
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["war_start_options"] = war_start_options
             __props__.__dict__["web_container"] = web_container
+            __props__.__dict__["internet_ip"] = None
+            __props__.__dict__["intranet_ip"] = None
         super(Application, __self__).__init__(
             'alicloud:sae/application:Application',
             resource_name,
@@ -2040,6 +2256,12 @@ class Application(pulumi.CustomResource):
             enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
             envs: Optional[pulumi.Input[str]] = None,
             image_url: Optional[pulumi.Input[str]] = None,
+            internet_ip: Optional[pulumi.Input[str]] = None,
+            internet_slb_id: Optional[pulumi.Input[str]] = None,
+            internets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInternetArgs']]]]] = None,
+            intranet_ip: Optional[pulumi.Input[str]] = None,
+            intranet_slb_id: Optional[pulumi.Input[str]] = None,
+            intranets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationIntranetArgs']]]]] = None,
             jar_start_args: Optional[pulumi.Input[str]] = None,
             jar_start_options: Optional[pulumi.Input[str]] = None,
             jdk: Optional[pulumi.Input[str]] = None,
@@ -2071,6 +2293,7 @@ class Application(pulumi.CustomResource):
             tomcat_config: Optional[pulumi.Input[str]] = None,
             update_strategy: Optional[pulumi.Input[str]] = None,
             version_id: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             war_start_options: Optional[pulumi.Input[str]] = None,
             web_container: Optional[pulumi.Input[str]] = None) -> 'Application':
@@ -2098,6 +2321,12 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
         :param pulumi.Input[str] envs: The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
+        :param pulumi.Input[str] internet_ip: Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        :param pulumi.Input[str] internet_slb_id: public network SLB ID.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInternetArgs']]]] internets: Bound private network SLB. The details see Block internet.
+        :param pulumi.Input[str] intranet_ip: Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        :param pulumi.Input[str] intranet_slb_id: private network SLB ID.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationIntranetArgs']]]] intranets: Bound public network SLB. The details see Block intranet.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
@@ -2129,6 +2358,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
         :param pulumi.Input[str] update_strategy: The update strategy.
         :param pulumi.Input[str] version_id: Application version id.
+        :param pulumi.Input[str] vpc_id: The vpc id.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param pulumi.Input[str] web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
@@ -2154,6 +2384,12 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["enable_grey_tag_route"] = enable_grey_tag_route
         __props__.__dict__["envs"] = envs
         __props__.__dict__["image_url"] = image_url
+        __props__.__dict__["internet_ip"] = internet_ip
+        __props__.__dict__["internet_slb_id"] = internet_slb_id
+        __props__.__dict__["internets"] = internets
+        __props__.__dict__["intranet_ip"] = intranet_ip
+        __props__.__dict__["intranet_slb_id"] = intranet_slb_id
+        __props__.__dict__["intranets"] = intranets
         __props__.__dict__["jar_start_args"] = jar_start_args
         __props__.__dict__["jar_start_options"] = jar_start_options
         __props__.__dict__["jdk"] = jdk
@@ -2185,6 +2421,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["tomcat_config"] = tomcat_config
         __props__.__dict__["update_strategy"] = update_strategy
         __props__.__dict__["version_id"] = version_id
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["war_start_options"] = war_start_options
         __props__.__dict__["web_container"] = web_container
@@ -2325,6 +2562,54 @@ class Application(pulumi.CustomResource):
         Mirror address. Only Image type applications can configure the mirror address.
         """
         return pulumi.get(self, "image_url")
+
+    @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> pulumi.Output[str]:
+        """
+        Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        """
+        return pulumi.get(self, "internet_ip")
+
+    @property
+    @pulumi.getter(name="internetSlbId")
+    def internet_slb_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        public network SLB ID.
+        """
+        return pulumi.get(self, "internet_slb_id")
+
+    @property
+    @pulumi.getter
+    def internets(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationInternet']]]:
+        """
+        Bound private network SLB. The details see Block internet.
+        """
+        return pulumi.get(self, "internets")
+
+    @property
+    @pulumi.getter(name="intranetIp")
+    def intranet_ip(self) -> pulumi.Output[str]:
+        """
+        Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+        """
+        return pulumi.get(self, "intranet_ip")
+
+    @property
+    @pulumi.getter(name="intranetSlbId")
+    def intranet_slb_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        private network SLB ID.
+        """
+        return pulumi.get(self, "intranet_slb_id")
+
+    @property
+    @pulumi.getter
+    def intranets(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationIntranet']]]:
+        """
+        Bound public network SLB. The details see Block intranet.
+        """
+        return pulumi.get(self, "intranets")
 
     @property
     @pulumi.getter(name="jarStartArgs")
@@ -2573,6 +2858,14 @@ class Application(pulumi.CustomResource):
         Application version id.
         """
         return pulumi.get(self, "version_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The vpc id.
+        """
+        return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")

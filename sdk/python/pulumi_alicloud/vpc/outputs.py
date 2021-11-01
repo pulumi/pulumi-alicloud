@@ -39,6 +39,9 @@ __all__ = [
     'GetSslVpnClientCertsCertResult',
     'GetSslVpnServersServerResult',
     'GetSwitchesVswitchResult',
+    'GetTrafficMirrorFilterEgressRulesRuleResult',
+    'GetTrafficMirrorFilterIngressRulesRuleResult',
+    'GetTrafficMirrorFiltersFilterResult',
     'GetVpcFlowLogsLogResult',
 ]
 
@@ -3160,6 +3163,324 @@ class GetSwitchesVswitchResult(dict):
         The availability zone of the VSwitch.
         """
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetTrafficMirrorFilterEgressRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 destination_cidr_block: str,
+                 destination_port_range: str,
+                 id: str,
+                 priority: int,
+                 protocol: str,
+                 rule_action: str,
+                 source_cidr_block: str,
+                 source_port_range: str,
+                 status: str,
+                 traffic_mirror_filter_id: str,
+                 traffic_mirror_filter_rule_id: str):
+        """
+        :param str destination_cidr_block: The destination CIDR block of the outbound traffic.
+        :param str destination_port_range: The destination port range of the outbound traffic.
+        :param str id: The ID of the Traffic Mirror Filter Egress Rule.
+        :param int priority: The priority of the outbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
+        :param str protocol: The transport protocol used by outbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
+        :param str rule_action: The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        :param str source_cidr_block: The source CIDR block of the outbound traffic.
+        :param str source_port_range: The source port range of the outbound traffic.
+        :param str status: The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+        :param str traffic_mirror_filter_id: The ID of the filter associated with the outbound rule.
+        :param str traffic_mirror_filter_rule_id: The first ID of the resource.
+        """
+        pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+        pulumi.set(__self__, "destination_port_range", destination_port_range)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "rule_action", rule_action)
+        pulumi.set(__self__, "source_cidr_block", source_cidr_block)
+        pulumi.set(__self__, "source_port_range", source_port_range)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
+        pulumi.set(__self__, "traffic_mirror_filter_rule_id", traffic_mirror_filter_rule_id)
+
+    @property
+    @pulumi.getter(name="destinationCidrBlock")
+    def destination_cidr_block(self) -> str:
+        """
+        The destination CIDR block of the outbound traffic.
+        """
+        return pulumi.get(self, "destination_cidr_block")
+
+    @property
+    @pulumi.getter(name="destinationPortRange")
+    def destination_port_range(self) -> str:
+        """
+        The destination port range of the outbound traffic.
+        """
+        return pulumi.get(self, "destination_port_range")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Traffic Mirror Filter Egress Rule.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        """
+        The priority of the outbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The transport protocol used by outbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="ruleAction")
+    def rule_action(self) -> str:
+        """
+        The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        """
+        return pulumi.get(self, "rule_action")
+
+    @property
+    @pulumi.getter(name="sourceCidrBlock")
+    def source_cidr_block(self) -> str:
+        """
+        The source CIDR block of the outbound traffic.
+        """
+        return pulumi.get(self, "source_cidr_block")
+
+    @property
+    @pulumi.getter(name="sourcePortRange")
+    def source_port_range(self) -> str:
+        """
+        The source port range of the outbound traffic.
+        """
+        return pulumi.get(self, "source_port_range")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trafficMirrorFilterId")
+    def traffic_mirror_filter_id(self) -> str:
+        """
+        The ID of the filter associated with the outbound rule.
+        """
+        return pulumi.get(self, "traffic_mirror_filter_id")
+
+    @property
+    @pulumi.getter(name="trafficMirrorFilterRuleId")
+    def traffic_mirror_filter_rule_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "traffic_mirror_filter_rule_id")
+
+
+@pulumi.output_type
+class GetTrafficMirrorFilterIngressRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 destination_cidr_block: str,
+                 destination_port_range: str,
+                 id: str,
+                 priority: int,
+                 protocol: str,
+                 rule_action: str,
+                 source_cidr_block: str,
+                 source_port_range: str,
+                 status: str,
+                 traffic_mirror_filter_id: str,
+                 traffic_mirror_filter_rule_id: str):
+        """
+        :param str destination_cidr_block: The destination CIDR block of the inbound traffic.
+        :param str destination_port_range: The destination port range of the inbound traffic.
+        :param str id: The ID of the Traffic Mirror Filter Egress Rule.
+        :param int priority: The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
+        :param str protocol: The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
+        :param str rule_action: The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        :param str source_cidr_block: The source CIDR block of the inbound traffic.
+        :param str source_port_range: The source port range of the inbound traffic.
+        :param str status: The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+        :param str traffic_mirror_filter_id: The ID of the filter associated with the inbound rule.
+        :param str traffic_mirror_filter_rule_id: The first ID of the resource.
+        """
+        pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+        pulumi.set(__self__, "destination_port_range", destination_port_range)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "rule_action", rule_action)
+        pulumi.set(__self__, "source_cidr_block", source_cidr_block)
+        pulumi.set(__self__, "source_port_range", source_port_range)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
+        pulumi.set(__self__, "traffic_mirror_filter_rule_id", traffic_mirror_filter_rule_id)
+
+    @property
+    @pulumi.getter(name="destinationCidrBlock")
+    def destination_cidr_block(self) -> str:
+        """
+        The destination CIDR block of the inbound traffic.
+        """
+        return pulumi.get(self, "destination_cidr_block")
+
+    @property
+    @pulumi.getter(name="destinationPortRange")
+    def destination_port_range(self) -> str:
+        """
+        The destination port range of the inbound traffic.
+        """
+        return pulumi.get(self, "destination_port_range")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Traffic Mirror Filter Egress Rule.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        """
+        The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="ruleAction")
+    def rule_action(self) -> str:
+        """
+        The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        """
+        return pulumi.get(self, "rule_action")
+
+    @property
+    @pulumi.getter(name="sourceCidrBlock")
+    def source_cidr_block(self) -> str:
+        """
+        The source CIDR block of the inbound traffic.
+        """
+        return pulumi.get(self, "source_cidr_block")
+
+    @property
+    @pulumi.getter(name="sourcePortRange")
+    def source_port_range(self) -> str:
+        """
+        The source port range of the inbound traffic.
+        """
+        return pulumi.get(self, "source_port_range")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trafficMirrorFilterId")
+    def traffic_mirror_filter_id(self) -> str:
+        """
+        The ID of the filter associated with the inbound rule.
+        """
+        return pulumi.get(self, "traffic_mirror_filter_id")
+
+    @property
+    @pulumi.getter(name="trafficMirrorFilterRuleId")
+    def traffic_mirror_filter_rule_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "traffic_mirror_filter_rule_id")
+
+
+@pulumi.output_type
+class GetTrafficMirrorFiltersFilterResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 status: str,
+                 traffic_mirror_filter_description: str,
+                 traffic_mirror_filter_id: str,
+                 traffic_mirror_filter_name: str):
+        """
+        :param str id: The ID of the Traffic Mirror Filter.
+        :param str status: The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+        :param str traffic_mirror_filter_description: The description of the filter.
+        :param str traffic_mirror_filter_id: The ID of the filter.
+        :param str traffic_mirror_filter_name: The name of the filter.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "traffic_mirror_filter_description", traffic_mirror_filter_description)
+        pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
+        pulumi.set(__self__, "traffic_mirror_filter_name", traffic_mirror_filter_name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Traffic Mirror Filter.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trafficMirrorFilterDescription")
+    def traffic_mirror_filter_description(self) -> str:
+        """
+        The description of the filter.
+        """
+        return pulumi.get(self, "traffic_mirror_filter_description")
+
+    @property
+    @pulumi.getter(name="trafficMirrorFilterId")
+    def traffic_mirror_filter_id(self) -> str:
+        """
+        The ID of the filter.
+        """
+        return pulumi.get(self, "traffic_mirror_filter_id")
+
+    @property
+    @pulumi.getter(name="trafficMirrorFilterName")
+    def traffic_mirror_filter_name(self) -> str:
+        """
+        The name of the filter.
+        """
+        return pulumi.get(self, "traffic_mirror_filter_name")
 
 
 @pulumi.output_type

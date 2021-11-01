@@ -25,6 +25,10 @@ from .get_snat_entries import *
 from .get_ssl_vpn_client_certs import *
 from .get_ssl_vpn_servers import *
 from .get_switches import *
+from .get_traffic_mirror_filter_egress_rules import *
+from .get_traffic_mirror_filter_ingress_rules import *
+from .get_traffic_mirror_filters import *
+from .get_traffic_mirror_service import *
 from .get_vpc_flow_logs import *
 from .ha_vip import *
 from .ha_vip_attachment import *
@@ -45,6 +49,9 @@ from .router_interface_connection import *
 from .snat_entry import *
 from .subnet import *
 from .switch import *
+from .traffic_mirror_filter import *
+from .traffic_mirror_filter_egress_rule import *
+from .traffic_mirror_filter_ingress_rule import *
 from ._inputs import *
 from . import outputs
 
@@ -108,6 +115,12 @@ def _register_module():
                 return Subnet(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:vpc/switch:Switch":
                 return Switch(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter":
+                return TrafficMirrorFilter(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/trafficMirrorFilterEgressRule:TrafficMirrorFilterEgressRule":
+                return TrafficMirrorFilterEgressRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule":
+                return TrafficMirrorFilterIngressRule(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
@@ -137,5 +150,8 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "vpc/snatEntry", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/subnet", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/switch", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/trafficMirrorFilter", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/trafficMirrorFilterEgressRule", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/trafficMirrorFilterIngressRule", _module_instance)
 
 _register_module()

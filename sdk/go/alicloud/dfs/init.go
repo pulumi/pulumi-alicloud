@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:dfs/accessGroup:AccessGroup":
 		r = &AccessGroup{}
+	case "alicloud:dfs/accessRule:AccessRule":
+		r = &AccessRule{}
+	case "alicloud:dfs/fileSystem:FileSystem":
+		r = &FileSystem{}
+	case "alicloud:dfs/mountPoint:MountPoint":
+		r = &MountPoint{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +45,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dfs/accessGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dfs/accessRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dfs/fileSystem",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dfs/mountPoint",
 		&module{version},
 	)
 }

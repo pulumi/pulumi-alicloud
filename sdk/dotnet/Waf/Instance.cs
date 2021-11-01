@@ -122,6 +122,12 @@ namespace Pulumi.AliCloud.Waf
         public Output<string> PrefessionalService { get; private set; } = null!;
 
         /// <summary>
+        /// The instance region ID.
+        /// </summary>
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
         /// Renewal period of WAF service. Unit: month
         /// </summary>
         [Output("renewPeriod")]
@@ -270,6 +276,12 @@ namespace Pulumi.AliCloud.Waf
         public Input<string> PrefessionalService { get; set; } = null!;
 
         /// <summary>
+        /// The instance region ID.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// Renewal period of WAF service. Unit: month
         /// </summary>
         [Input("renewPeriod")]
@@ -371,6 +383,12 @@ namespace Pulumi.AliCloud.Waf
         /// </summary>
         [Input("prefessionalService")]
         public Input<string>? PrefessionalService { get; set; }
+
+        /// <summary>
+        /// The instance region ID.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// Renewal period of WAF service. Unit: month

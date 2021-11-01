@@ -34,7 +34,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		cfg := config.New(ctx, "")
-// 		name := "example_value"
+// 		name := "tf-test112358"
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
@@ -44,21 +44,20 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "oss_bucket_example_name"
-// 		_, err = oss.GetBuckets(ctx, &oss.GetBucketsArgs{
-// 			NameRegex: &opt0,
-// 		}, nil)
+// 		defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+// 			Bucket: pulumi.String(name),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = hbr.NewOssBackupPlan(ctx, "example", &hbr.OssBackupPlanArgs{
+// 		_, err = hbr.NewOssBackupPlan(ctx, "defaultOssBackupPlan", &hbr.OssBackupPlanArgs{
 // 			OssBackupPlanName: pulumi.String(name),
+// 			Prefix:            pulumi.String("/"),
+// 			Bucket:            defaultBucket.Bucket,
 // 			VaultId:           defaultVault.ID(),
-// 			Bucket:            pulumi.Any(alicloud_oss_bucket.Default.Bucket),
-// 			Prefix:            pulumi.String("/home"),
-// 			Retention:         pulumi.String("1"),
 // 			Schedule:          pulumi.String("I|1602673264|PT2H"),
 // 			BackupType:        pulumi.String("COMPLETE"),
+// 			Retention:         pulumi.String("2"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -85,11 +84,12 @@ type OssBackupPlan struct {
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-	OssBackupPlanName pulumi.StringOutput    `pulumi:"ossBackupPlanName"`
-	Prefix            pulumi.StringPtrOutput `pulumi:"prefix"`
+	OssBackupPlanName pulumi.StringOutput `pulumi:"ossBackupPlanName"`
+	// Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+	Prefix pulumi.StringPtrOutput `pulumi:"prefix"`
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringOutput `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// The ID of backup vault.
 	VaultId pulumi.StringOutput `pulumi:"vaultId"`
@@ -150,10 +150,11 @@ type ossBackupPlanState struct {
 	Disabled *bool `pulumi:"disabled"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OssBackupPlanName *string `pulumi:"ossBackupPlanName"`
-	Prefix            *string `pulumi:"prefix"`
+	// Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+	Prefix *string `pulumi:"prefix"`
 	// Backup retention days, the minimum is 1.
 	Retention *string `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule *string `pulumi:"schedule"`
 	// The ID of backup vault.
 	VaultId *string `pulumi:"vaultId"`
@@ -168,10 +169,11 @@ type OssBackupPlanState struct {
 	Disabled pulumi.BoolPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OssBackupPlanName pulumi.StringPtrInput
-	Prefix            pulumi.StringPtrInput
+	// Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+	Prefix pulumi.StringPtrInput
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringPtrInput
-	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringPtrInput
 	// The ID of backup vault.
 	VaultId pulumi.StringPtrInput
@@ -189,11 +191,12 @@ type ossBackupPlanArgs struct {
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-	OssBackupPlanName string  `pulumi:"ossBackupPlanName"`
-	Prefix            *string `pulumi:"prefix"`
+	OssBackupPlanName string `pulumi:"ossBackupPlanName"`
+	// Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+	Prefix *string `pulumi:"prefix"`
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
-	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule string `pulumi:"schedule"`
 	// The ID of backup vault.
 	VaultId string `pulumi:"vaultId"`
@@ -209,10 +212,11 @@ type OssBackupPlanArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	OssBackupPlanName pulumi.StringInput
-	Prefix            pulumi.StringPtrInput
+	// Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+	Prefix pulumi.StringPtrInput
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput
-	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringInput
 	// The ID of backup vault.
 	VaultId pulumi.StringInput

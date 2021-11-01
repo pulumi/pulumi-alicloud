@@ -21,10 +21,10 @@ import * as utilities from "../utilities";
  *
  * const my_instance = new alicloud.cr.RegistryEnterpriseInstance("my-instance", {
  *     instanceName: "test",
- *     instanceType: "Standard",
+ *     instanceType: "Advanced",
  *     paymentType: "Subscription",
- *     period: 12,
- *     renewPeriod: 12,
+ *     period: 1,
+ *     renewPeriod: 1,
  *     renewalStatus: "AutoRenewal",
  * });
  * ```
@@ -82,7 +82,7 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+     * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -194,7 +194,7 @@ export interface RegistryEnterpriseInstanceState {
      */
     readonly instanceName?: pulumi.Input<string>;
     /**
-     * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+     * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
      */
     readonly instanceType?: pulumi.Input<string>;
     /**
@@ -244,7 +244,7 @@ export interface RegistryEnterpriseInstanceArgs {
      */
     readonly instanceName: pulumi.Input<string>;
     /**
-     * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`.
+     * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
      */
     readonly instanceType: pulumi.Input<string>;
     /**

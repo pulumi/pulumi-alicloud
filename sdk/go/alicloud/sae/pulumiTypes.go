@@ -10,6 +10,254 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ApplicationInternet struct {
+	// SSL certificate. `httpsCertId` is required when HTTPS is selected
+	HttpsCertId *string `pulumi:"httpsCertId"`
+	// SLB Port.
+	Port *int `pulumi:"port"`
+	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+	Protocol *string `pulumi:"protocol"`
+	// Container port.
+	TargetPort *int `pulumi:"targetPort"`
+}
+
+// ApplicationInternetInput is an input type that accepts ApplicationInternetArgs and ApplicationInternetOutput values.
+// You can construct a concrete instance of `ApplicationInternetInput` via:
+//
+//          ApplicationInternetArgs{...}
+type ApplicationInternetInput interface {
+	pulumi.Input
+
+	ToApplicationInternetOutput() ApplicationInternetOutput
+	ToApplicationInternetOutputWithContext(context.Context) ApplicationInternetOutput
+}
+
+type ApplicationInternetArgs struct {
+	// SSL certificate. `httpsCertId` is required when HTTPS is selected
+	HttpsCertId pulumi.StringPtrInput `pulumi:"httpsCertId"`
+	// SLB Port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Container port.
+	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
+}
+
+func (ApplicationInternetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationInternet)(nil)).Elem()
+}
+
+func (i ApplicationInternetArgs) ToApplicationInternetOutput() ApplicationInternetOutput {
+	return i.ToApplicationInternetOutputWithContext(context.Background())
+}
+
+func (i ApplicationInternetArgs) ToApplicationInternetOutputWithContext(ctx context.Context) ApplicationInternetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInternetOutput)
+}
+
+// ApplicationInternetArrayInput is an input type that accepts ApplicationInternetArray and ApplicationInternetArrayOutput values.
+// You can construct a concrete instance of `ApplicationInternetArrayInput` via:
+//
+//          ApplicationInternetArray{ ApplicationInternetArgs{...} }
+type ApplicationInternetArrayInput interface {
+	pulumi.Input
+
+	ToApplicationInternetArrayOutput() ApplicationInternetArrayOutput
+	ToApplicationInternetArrayOutputWithContext(context.Context) ApplicationInternetArrayOutput
+}
+
+type ApplicationInternetArray []ApplicationInternetInput
+
+func (ApplicationInternetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationInternet)(nil)).Elem()
+}
+
+func (i ApplicationInternetArray) ToApplicationInternetArrayOutput() ApplicationInternetArrayOutput {
+	return i.ToApplicationInternetArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationInternetArray) ToApplicationInternetArrayOutputWithContext(ctx context.Context) ApplicationInternetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInternetArrayOutput)
+}
+
+type ApplicationInternetOutput struct{ *pulumi.OutputState }
+
+func (ApplicationInternetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationInternet)(nil)).Elem()
+}
+
+func (o ApplicationInternetOutput) ToApplicationInternetOutput() ApplicationInternetOutput {
+	return o
+}
+
+func (o ApplicationInternetOutput) ToApplicationInternetOutputWithContext(ctx context.Context) ApplicationInternetOutput {
+	return o
+}
+
+// SSL certificate. `httpsCertId` is required when HTTPS is selected
+func (o ApplicationInternetOutput) HttpsCertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationInternet) *string { return v.HttpsCertId }).(pulumi.StringPtrOutput)
+}
+
+// SLB Port.
+func (o ApplicationInternetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationInternet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+func (o ApplicationInternetOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationInternet) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Container port.
+func (o ApplicationInternetOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationInternet) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
+}
+
+type ApplicationInternetArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationInternetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationInternet)(nil)).Elem()
+}
+
+func (o ApplicationInternetArrayOutput) ToApplicationInternetArrayOutput() ApplicationInternetArrayOutput {
+	return o
+}
+
+func (o ApplicationInternetArrayOutput) ToApplicationInternetArrayOutputWithContext(ctx context.Context) ApplicationInternetArrayOutput {
+	return o
+}
+
+func (o ApplicationInternetArrayOutput) Index(i pulumi.IntInput) ApplicationInternetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationInternet {
+		return vs[0].([]ApplicationInternet)[vs[1].(int)]
+	}).(ApplicationInternetOutput)
+}
+
+type ApplicationIntranet struct {
+	// SSL certificate. `httpsCertId` is required when HTTPS is selected
+	HttpsCertId *string `pulumi:"httpsCertId"`
+	// SLB Port.
+	Port *int `pulumi:"port"`
+	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+	Protocol *string `pulumi:"protocol"`
+	// Container port.
+	TargetPort *int `pulumi:"targetPort"`
+}
+
+// ApplicationIntranetInput is an input type that accepts ApplicationIntranetArgs and ApplicationIntranetOutput values.
+// You can construct a concrete instance of `ApplicationIntranetInput` via:
+//
+//          ApplicationIntranetArgs{...}
+type ApplicationIntranetInput interface {
+	pulumi.Input
+
+	ToApplicationIntranetOutput() ApplicationIntranetOutput
+	ToApplicationIntranetOutputWithContext(context.Context) ApplicationIntranetOutput
+}
+
+type ApplicationIntranetArgs struct {
+	// SSL certificate. `httpsCertId` is required when HTTPS is selected
+	HttpsCertId pulumi.StringPtrInput `pulumi:"httpsCertId"`
+	// SLB Port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Container port.
+	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
+}
+
+func (ApplicationIntranetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationIntranet)(nil)).Elem()
+}
+
+func (i ApplicationIntranetArgs) ToApplicationIntranetOutput() ApplicationIntranetOutput {
+	return i.ToApplicationIntranetOutputWithContext(context.Background())
+}
+
+func (i ApplicationIntranetArgs) ToApplicationIntranetOutputWithContext(ctx context.Context) ApplicationIntranetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIntranetOutput)
+}
+
+// ApplicationIntranetArrayInput is an input type that accepts ApplicationIntranetArray and ApplicationIntranetArrayOutput values.
+// You can construct a concrete instance of `ApplicationIntranetArrayInput` via:
+//
+//          ApplicationIntranetArray{ ApplicationIntranetArgs{...} }
+type ApplicationIntranetArrayInput interface {
+	pulumi.Input
+
+	ToApplicationIntranetArrayOutput() ApplicationIntranetArrayOutput
+	ToApplicationIntranetArrayOutputWithContext(context.Context) ApplicationIntranetArrayOutput
+}
+
+type ApplicationIntranetArray []ApplicationIntranetInput
+
+func (ApplicationIntranetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationIntranet)(nil)).Elem()
+}
+
+func (i ApplicationIntranetArray) ToApplicationIntranetArrayOutput() ApplicationIntranetArrayOutput {
+	return i.ToApplicationIntranetArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationIntranetArray) ToApplicationIntranetArrayOutputWithContext(ctx context.Context) ApplicationIntranetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIntranetArrayOutput)
+}
+
+type ApplicationIntranetOutput struct{ *pulumi.OutputState }
+
+func (ApplicationIntranetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationIntranet)(nil)).Elem()
+}
+
+func (o ApplicationIntranetOutput) ToApplicationIntranetOutput() ApplicationIntranetOutput {
+	return o
+}
+
+func (o ApplicationIntranetOutput) ToApplicationIntranetOutputWithContext(ctx context.Context) ApplicationIntranetOutput {
+	return o
+}
+
+// SSL certificate. `httpsCertId` is required when HTTPS is selected
+func (o ApplicationIntranetOutput) HttpsCertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationIntranet) *string { return v.HttpsCertId }).(pulumi.StringPtrOutput)
+}
+
+// SLB Port.
+func (o ApplicationIntranetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationIntranet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+func (o ApplicationIntranetOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationIntranet) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Container port.
+func (o ApplicationIntranetOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationIntranet) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
+}
+
+type ApplicationIntranetArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationIntranetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationIntranet)(nil)).Elem()
+}
+
+func (o ApplicationIntranetArrayOutput) ToApplicationIntranetArrayOutput() ApplicationIntranetArrayOutput {
+	return o
+}
+
+func (o ApplicationIntranetArrayOutput) ToApplicationIntranetArrayOutputWithContext(ctx context.Context) ApplicationIntranetArrayOutput {
+	return o
+}
+
+func (o ApplicationIntranetArrayOutput) Index(i pulumi.IntInput) ApplicationIntranetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationIntranet {
+		return vs[0].([]ApplicationIntranet)[vs[1].(int)]
+	}).(ApplicationIntranetOutput)
+}
+
 type IngressDefaultRule struct {
 	// Target application ID.
 	AppId *string `pulumi:"appId"`
@@ -1158,6 +1406,157 @@ func (o GetIngressesIngressArrayOutput) Index(i pulumi.IntInput) GetIngressesIng
 	}).(GetIngressesIngressOutput)
 }
 
+type GetInstanceSpecificationsSpecification struct {
+	// CPU Size, Specifications for Micronucleus.
+	Cpu int `pulumi:"cpu"`
+	// Whether the instance is available. The value description is as follows:
+	Enable bool `pulumi:"enable"`
+	// The ID of the Instance Specification.
+	Id string `pulumi:"id"`
+	// The first ID of the resource.
+	InstanceSpecificationId string `pulumi:"instanceSpecificationId"`
+	// The Memory specifications for the MB.
+	Memory int `pulumi:"memory"`
+	// The specification configuration name.
+	SpecInfo string `pulumi:"specInfo"`
+	// The specification configuration version.
+	Version int `pulumi:"version"`
+}
+
+// GetInstanceSpecificationsSpecificationInput is an input type that accepts GetInstanceSpecificationsSpecificationArgs and GetInstanceSpecificationsSpecificationOutput values.
+// You can construct a concrete instance of `GetInstanceSpecificationsSpecificationInput` via:
+//
+//          GetInstanceSpecificationsSpecificationArgs{...}
+type GetInstanceSpecificationsSpecificationInput interface {
+	pulumi.Input
+
+	ToGetInstanceSpecificationsSpecificationOutput() GetInstanceSpecificationsSpecificationOutput
+	ToGetInstanceSpecificationsSpecificationOutputWithContext(context.Context) GetInstanceSpecificationsSpecificationOutput
+}
+
+type GetInstanceSpecificationsSpecificationArgs struct {
+	// CPU Size, Specifications for Micronucleus.
+	Cpu pulumi.IntInput `pulumi:"cpu"`
+	// Whether the instance is available. The value description is as follows:
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// The ID of the Instance Specification.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The first ID of the resource.
+	InstanceSpecificationId pulumi.StringInput `pulumi:"instanceSpecificationId"`
+	// The Memory specifications for the MB.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// The specification configuration name.
+	SpecInfo pulumi.StringInput `pulumi:"specInfo"`
+	// The specification configuration version.
+	Version pulumi.IntInput `pulumi:"version"`
+}
+
+func (GetInstanceSpecificationsSpecificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSpecificationsSpecification)(nil)).Elem()
+}
+
+func (i GetInstanceSpecificationsSpecificationArgs) ToGetInstanceSpecificationsSpecificationOutput() GetInstanceSpecificationsSpecificationOutput {
+	return i.ToGetInstanceSpecificationsSpecificationOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSpecificationsSpecificationArgs) ToGetInstanceSpecificationsSpecificationOutputWithContext(ctx context.Context) GetInstanceSpecificationsSpecificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSpecificationsSpecificationOutput)
+}
+
+// GetInstanceSpecificationsSpecificationArrayInput is an input type that accepts GetInstanceSpecificationsSpecificationArray and GetInstanceSpecificationsSpecificationArrayOutput values.
+// You can construct a concrete instance of `GetInstanceSpecificationsSpecificationArrayInput` via:
+//
+//          GetInstanceSpecificationsSpecificationArray{ GetInstanceSpecificationsSpecificationArgs{...} }
+type GetInstanceSpecificationsSpecificationArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceSpecificationsSpecificationArrayOutput() GetInstanceSpecificationsSpecificationArrayOutput
+	ToGetInstanceSpecificationsSpecificationArrayOutputWithContext(context.Context) GetInstanceSpecificationsSpecificationArrayOutput
+}
+
+type GetInstanceSpecificationsSpecificationArray []GetInstanceSpecificationsSpecificationInput
+
+func (GetInstanceSpecificationsSpecificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSpecificationsSpecification)(nil)).Elem()
+}
+
+func (i GetInstanceSpecificationsSpecificationArray) ToGetInstanceSpecificationsSpecificationArrayOutput() GetInstanceSpecificationsSpecificationArrayOutput {
+	return i.ToGetInstanceSpecificationsSpecificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSpecificationsSpecificationArray) ToGetInstanceSpecificationsSpecificationArrayOutputWithContext(ctx context.Context) GetInstanceSpecificationsSpecificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSpecificationsSpecificationArrayOutput)
+}
+
+type GetInstanceSpecificationsSpecificationOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSpecificationsSpecificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSpecificationsSpecification)(nil)).Elem()
+}
+
+func (o GetInstanceSpecificationsSpecificationOutput) ToGetInstanceSpecificationsSpecificationOutput() GetInstanceSpecificationsSpecificationOutput {
+	return o
+}
+
+func (o GetInstanceSpecificationsSpecificationOutput) ToGetInstanceSpecificationsSpecificationOutputWithContext(ctx context.Context) GetInstanceSpecificationsSpecificationOutput {
+	return o
+}
+
+// CPU Size, Specifications for Micronucleus.
+func (o GetInstanceSpecificationsSpecificationOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSpecificationsSpecification) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// Whether the instance is available. The value description is as follows:
+func (o GetInstanceSpecificationsSpecificationOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceSpecificationsSpecification) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// The ID of the Instance Specification.
+func (o GetInstanceSpecificationsSpecificationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceSpecificationsSpecification) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetInstanceSpecificationsSpecificationOutput) InstanceSpecificationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceSpecificationsSpecification) string { return v.InstanceSpecificationId }).(pulumi.StringOutput)
+}
+
+// The Memory specifications for the MB.
+func (o GetInstanceSpecificationsSpecificationOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSpecificationsSpecification) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// The specification configuration name.
+func (o GetInstanceSpecificationsSpecificationOutput) SpecInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceSpecificationsSpecification) string { return v.SpecInfo }).(pulumi.StringOutput)
+}
+
+// The specification configuration version.
+func (o GetInstanceSpecificationsSpecificationOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSpecificationsSpecification) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetInstanceSpecificationsSpecificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSpecificationsSpecificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSpecificationsSpecification)(nil)).Elem()
+}
+
+func (o GetInstanceSpecificationsSpecificationArrayOutput) ToGetInstanceSpecificationsSpecificationArrayOutput() GetInstanceSpecificationsSpecificationArrayOutput {
+	return o
+}
+
+func (o GetInstanceSpecificationsSpecificationArrayOutput) ToGetInstanceSpecificationsSpecificationArrayOutputWithContext(ctx context.Context) GetInstanceSpecificationsSpecificationArrayOutput {
+	return o
+}
+
+func (o GetInstanceSpecificationsSpecificationArrayOutput) Index(i pulumi.IntInput) GetInstanceSpecificationsSpecificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceSpecificationsSpecification {
+		return vs[0].([]GetInstanceSpecificationsSpecification)[vs[1].(int)]
+	}).(GetInstanceSpecificationsSpecificationOutput)
+}
+
 type GetNamespacesNamespace struct {
 	// The ID of the Namespace.
 	Id string `pulumi:"id"`
@@ -1283,6 +1682,10 @@ func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespace
 }
 
 func init() {
+	pulumi.RegisterOutputType(ApplicationInternetOutput{})
+	pulumi.RegisterOutputType(ApplicationInternetArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationIntranetOutput{})
+	pulumi.RegisterOutputType(ApplicationIntranetArrayOutput{})
 	pulumi.RegisterOutputType(IngressDefaultRuleOutput{})
 	pulumi.RegisterOutputType(IngressDefaultRulePtrOutput{})
 	pulumi.RegisterOutputType(IngressRuleOutput{})
@@ -1293,6 +1696,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConfigMapsMapArrayOutput{})
 	pulumi.RegisterOutputType(GetIngressesIngressOutput{})
 	pulumi.RegisterOutputType(GetIngressesIngressArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceSpecificationsSpecificationOutput{})
+	pulumi.RegisterOutputType(GetInstanceSpecificationsSpecificationArrayOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceArrayOutput{})
 }

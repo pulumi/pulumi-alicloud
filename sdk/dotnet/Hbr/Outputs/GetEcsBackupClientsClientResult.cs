@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string ArchType;
         /// <summary>
-        /// Client protected status.
+        /// Client protected status. Valid values: `UNPROTECTED`, `PROTECTED`.
         /// </summary>
         public readonly string BackupStatus;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string ClientVersion;
         /// <summary>
-        /// The creation time of client. Unix time seconds.
+        /// The creation time of client. Unix time in seconds.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string EcsBackupClientId;
         /// <summary>
-        /// The name of ECS host.
+        /// The hostname of ECS instance.
         /// </summary>
         public readonly string Hostname;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of ECS instance.
+        /// The ID of ECS instance. When the client type is ECS file backup client, it indicates the ID of ECS instance. When the client type is a local file backup client, it is a hardware fingerprint generated based on system information.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
@@ -62,19 +62,19 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string InstanceName;
         /// <summary>
-        /// Client last heartbeat time. Unix Time Seconds.
+        /// The last heartbeat time of client. Unix Time Seconds.
         /// </summary>
         public readonly string LastHeartBeatTime;
         /// <summary>
-        /// The latest client version.
+        /// The latest version of client.
         /// </summary>
         public readonly string MaxClientVersion;
         /// <summary>
-        /// Number of CPU cores used by a single backup task, 0 means no restrictions.
+        /// The number of CPU cores used by a single backup task, 0 means no restrictions.
         /// </summary>
         public readonly string MaxCpuCore;
         /// <summary>
-        /// Number of concurrent jobs for a single backup task, 0 means no restrictions.
+        /// The number of concurrent jobs for a single backup task, 0 means no restrictions.
         /// </summary>
         public readonly string MaxWorker;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string ProxyHost;
         /// <summary>
-        /// Custom data plane proxy server password.
+        /// The password of custom data plane proxy server.
         /// </summary>
         public readonly string ProxyPassword;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string ProxyPort;
         /// <summary>
-        /// Username of custom data plane proxy server.
+        /// The username of custom data plane proxy server.
         /// </summary>
         public readonly string ProxyUser;
         /// <summary>

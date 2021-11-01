@@ -28,26 +28,35 @@ namespace Pulumi.AliCloud.Hbr
     /// {
     ///     public MyStack()
     ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "valut-name";
+    ///         var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new AliCloud.Hbr.VaultArgs
+    ///         {
+    ///             VaultName = name,
+    ///         });
+    ///         var defaultInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+    ///         {
+    ///             NameRegex = "no-deleteing-hbr-ecs-backup-plan",
+    ///             Status = "Running",
+    ///         }));
     ///         var example = new AliCloud.Hbr.EcsBackupPlan("example", new AliCloud.Hbr.EcsBackupPlanArgs
     ///         {
-    ///             BackupType = "COMPLETE",
     ///             EcsBackupPlanName = "example_value",
-    ///             Exclude = @"  [""/home/exclude""]
-    ///   
-    /// ",
-    ///             Include = @"  [""/home/include""]
-    ///   
-    /// ",
-    ///             InstanceId = "i-bp1567rc0oxxxxxxxxxx",
+    ///             InstanceId = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances[0].Id),
+    ///             VaultId = defaultVault.Id,
+    ///             Retention = "1",
+    ///             Schedule = "I|1602673264|PT2H",
+    ///             BackupType = "COMPLETE",
+    ///             SpeedLimit = "0:24:5120",
     ///             Paths = 
     ///             {
     ///                 "/home",
     ///                 "/var",
     ///             },
-    ///             Retention = "1",
-    ///             Schedule = "I|1602673264|PT2H",
-    ///             SpeedLimit = "0:24:5120",
-    ///             VaultId = "v-0003gxoksflhxxxxxxxx",
+    ///             Exclude = @"  [""/home/exclude""]
+    /// ",
+    ///             Include = @"  [""/home/include""]
+    /// ",
     ///         });
     ///     }
     /// 
@@ -56,15 +65,15 @@ namespace Pulumi.AliCloud.Hbr
     /// ## Notice
     /// 
     /// **About Backup path rules:**
-    /// 1. If there is no wildcard `*`, you can enter 8 lines of path.
-    /// 2. When using wildcard `*`, only one line of path can be input, and wildcards like `/*/*` are supported.
-    /// 3. Each line only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
+    /// 1. If there is no wildcard `*`, you can enter 8 items of path.
+    /// 2. When using wildcard `*`, only one item of path can be input, and wildcards like `/*/*` are supported.
+    /// 3. Each item of path only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
     /// 
     /// **About Restrictions:**
-    /// 1. When using VSS, multiple paths, UNC paths, wildcards, and excluded files are not supported.
-    /// 2. When using UNC, VSS is not supported, wildcards are not supported, and files to be excluded are not supported.
+    /// 1. When using `VSS`: multiple paths, UNC paths, wildcards, and excluded files not supported.
+    /// 2. When using `UNC`: VSS not supported, wildcards not supported, and files to be excluded are not supported.
     /// 
-    /// **About Include/exclude path rules:**
+    /// **About include/exclude path rules:**
     /// 1. Supports up to 8 paths, including paths using wildcards `*`.
     /// 2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
     /// 3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*/*/` share will match `/a/b/c/share`, but not `/a/d/share`.
@@ -128,7 +137,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// Backup path. e.g. `["/home", "/var"]`
+        /// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         /// </summary>
         [Output("paths")]
         public Output<ImmutableArray<string>> Paths { get; private set; } = null!;
@@ -140,13 +149,13 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Retention { get; private set; } = null!;
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        /// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         /// </summary>
         [Output("speedLimit")]
         public Output<string?> SpeedLimit { get; private set; } = null!;
@@ -255,7 +264,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _paths;
 
         /// <summary>
-        /// Backup path. e.g. `["/home", "/var"]`
+        /// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         /// </summary>
         public InputList<string> Paths
         {
@@ -270,13 +279,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> Retention { get; set; } = null!;
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<string> Schedule { get; set; } = null!;
 
         /// <summary>
-        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        /// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         /// </summary>
         [Input("speedLimit")]
         public Input<string>? SpeedLimit { get; set; }
@@ -346,7 +355,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _paths;
 
         /// <summary>
-        /// Backup path. e.g. `["/home", "/var"]`
+        /// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         /// </summary>
         public InputList<string> Paths
         {
@@ -361,13 +370,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Retention { get; set; }
 
         /// <summary>
-        /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        /// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         /// </summary>
         [Input("speedLimit")]
         public Input<string>? SpeedLimit { get; set; }

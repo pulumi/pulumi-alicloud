@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     destinationEndpointEngineName: "ADB30",
  *     destinationEndpointRegion: "cn-hangzhou",
  *     instanceClass: "small",
- *     paymentType: "PostPaid",
+ *     paymentType: "PayAsYouGo",
  *     sourceEndpointEngineName: "PolarDB",
  *     sourceEndpointRegion: "cn-hangzhou",
  *     syncArchitecture: "oneway",

@@ -47,6 +47,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly accountPassword!: pulumi.Output<string | undefined>;
     /**
+     * Auto renew for prepaid, true of false. Default is false.
+     */
+    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     public readonly backupPeriods!: pulumi.Output<string[]>;
@@ -55,11 +59,15 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly backupTime!: pulumi.Output<string>;
     /**
+     * The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+     */
+    public /*out*/ readonly configServerLists!: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
@@ -90,7 +98,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number>;
     /**
-     * Instance log backup retention days. Available in 1.42.0+.
+     * Instance log backup retention days. **NOTE:** Available in 1.42.0+.
      */
     public /*out*/ readonly retentionPeriod!: pulumi.Output<number>;
     /**
@@ -138,8 +146,10 @@ export class ShardingInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ShardingInstanceState | undefined;
             inputs["accountPassword"] = state ? state.accountPassword : undefined;
+            inputs["autoRenew"] = state ? state.autoRenew : undefined;
             inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
             inputs["backupTime"] = state ? state.backupTime : undefined;
+            inputs["configServerLists"] = state ? state.configServerLists : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
@@ -169,6 +179,7 @@ export class ShardingInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'shardLists'");
             }
             inputs["accountPassword"] = args ? args.accountPassword : undefined;
+            inputs["autoRenew"] = args ? args.autoRenew : undefined;
             inputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             inputs["backupTime"] = args ? args.backupTime : undefined;
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
@@ -187,6 +198,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+            inputs["configServerLists"] = undefined /*out*/;
             inputs["retentionPeriod"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -205,6 +217,10 @@ export interface ShardingInstanceState {
      */
     readonly accountPassword?: pulumi.Input<string>;
     /**
+     * Auto renew for prepaid, true of false. Default is false.
+     */
+    readonly autoRenew?: pulumi.Input<boolean>;
+    /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
@@ -213,11 +229,15 @@ export interface ShardingInstanceState {
      */
     readonly backupTime?: pulumi.Input<string>;
     /**
+     * The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+     */
+    readonly configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
      */
     readonly engineVersion?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -248,7 +268,7 @@ export interface ShardingInstanceState {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * Instance log backup retention days. Available in 1.42.0+.
+     * Instance log backup retention days. **NOTE:** Available in 1.42.0+.
      */
     readonly retentionPeriod?: pulumi.Input<number>;
     /**
@@ -292,6 +312,10 @@ export interface ShardingInstanceArgs {
      */
     readonly accountPassword?: pulumi.Input<string>;
     /**
+     * Auto renew for prepaid, true of false. Default is false.
+     */
+    readonly autoRenew?: pulumi.Input<boolean>;
+    /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
@@ -304,7 +328,7 @@ export interface ShardingInstanceArgs {
      */
     readonly engineVersion: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**

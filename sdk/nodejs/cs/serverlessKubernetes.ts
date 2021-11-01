@@ -103,6 +103,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    public readonly retainResources!: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -178,6 +179,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["newNatGateway"] = state ? state.newNatGateway : undefined;
             inputs["privateZone"] = state ? state.privateZone : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["retainResources"] = state ? state.retainResources : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["serviceCidr"] = state ? state.serviceCidr : undefined;
             inputs["serviceDiscoveryTypes"] = state ? state.serviceDiscoveryTypes : undefined;
@@ -209,6 +211,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["newNatGateway"] = args ? args.newNatGateway : undefined;
             inputs["privateZone"] = args ? args.privateZone : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["retainResources"] = args ? args.retainResources : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             inputs["serviceDiscoveryTypes"] = args ? args.serviceDiscoveryTypes : undefined;
@@ -293,6 +296,7 @@ export interface ServerlessKubernetesState {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    readonly retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -406,6 +410,7 @@ export interface ServerlessKubernetesArgs {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    readonly retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */

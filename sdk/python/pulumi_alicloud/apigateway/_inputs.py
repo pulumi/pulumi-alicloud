@@ -28,7 +28,7 @@ class ApiConstantParameterArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] in_: System parameter location; values: 'HEAD' and 'QUERY'.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param pulumi.Input[str] value: Constant parameter value.
         :param pulumi.Input[str] description: The description of Constant parameter.
         """
@@ -54,7 +54,7 @@ class ApiConstantParameterArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 
@@ -259,7 +259,7 @@ class ApiHttpVpcServiceConfigArgs:
                  aone_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] method: The http method of backend service.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param pulumi.Input[str] path: The path of backend service.
         :param pulumi.Input[int] timeout: Backend service time-out time; unit: millisecond.
         """
@@ -286,7 +286,7 @@ class ApiHttpVpcServiceConfigArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 
@@ -372,10 +372,10 @@ class ApiRequestConfigArgs:
                  body_format: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] method: The http method of backend service.
-        :param pulumi.Input[str] mode: The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+        :param pulumi.Input[str] mode: The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
         :param pulumi.Input[str] path: The path of backend service.
-        :param pulumi.Input[str] protocol: The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
-        :param pulumi.Input[str] body_format: The body format of the api, which support the values of 'STREAM' and 'FORM'
+        :param pulumi.Input[str] protocol: The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
+        :param pulumi.Input[str] body_format: The body format of the api, which support the values of 'STREAM' and 'FORM'.
         """
         pulumi.set(__self__, "method", method)
         pulumi.set(__self__, "mode", mode)
@@ -400,7 +400,7 @@ class ApiRequestConfigArgs:
     @pulumi.getter
     def mode(self) -> pulumi.Input[str]:
         """
-        The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+        The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
         """
         return pulumi.get(self, "mode")
 
@@ -424,7 +424,7 @@ class ApiRequestConfigArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
         """
-        The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
+        The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
         """
         return pulumi.get(self, "protocol")
 
@@ -436,7 +436,7 @@ class ApiRequestConfigArgs:
     @pulumi.getter(name="bodyFormat")
     def body_format(self) -> Optional[pulumi.Input[str]]:
         """
-        The body format of the api, which support the values of 'STREAM' and 'FORM'
+        The body format of the api, which support the values of 'STREAM' and 'FORM'.
         """
         return pulumi.get(self, "body_format")
 
@@ -459,10 +459,10 @@ class ApiRequestParameterArgs:
         """
         :param pulumi.Input[str] in_: System parameter location; values: 'HEAD' and 'QUERY'.
         :param pulumi.Input[str] in_service: Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param pulumi.Input[str] name_service: Backend service's parameter name.
         :param pulumi.Input[str] required: Parameter required or not; values: REQUIRED and OPTIONAL.
-        :param pulumi.Input[str] type: Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
+        :param pulumi.Input[str] type: Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
         :param pulumi.Input[str] default_value: The default value of the parameter.
         :param pulumi.Input[str] description: The description of Constant parameter.
         """
@@ -505,7 +505,7 @@ class ApiRequestParameterArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 
@@ -541,7 +541,7 @@ class ApiRequestParameterArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
+        Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
         """
         return pulumi.get(self, "type")
 
@@ -582,7 +582,7 @@ class ApiSystemParameterArgs:
                  name_service: pulumi.Input[str]):
         """
         :param pulumi.Input[str] in_: System parameter location; values: 'HEAD' and 'QUERY'.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param pulumi.Input[str] name_service: Backend service's parameter name.
         """
         pulumi.set(__self__, "in_", in_)
@@ -605,7 +605,7 @@ class ApiSystemParameterArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 

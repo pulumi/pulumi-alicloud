@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         public string? Key { get; set; }
 
         /// <summary>
-        /// The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+        /// The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
         /// </summary>
         [Input("operator")]
         public string? Operator { get; set; }

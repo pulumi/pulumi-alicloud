@@ -10,15 +10,328 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type InstanceReplicaSet struct {
+	// The connection address of the node.
+	ConnectionDomain *string `pulumi:"connectionDomain"`
+	// The connection port of the node.
+	ConnectionPort *string `pulumi:"connectionPort"`
+	// The network type of the node. Valid values: `Classic`,`VPC`.
+	NetworkType *string `pulumi:"networkType"`
+	// The role of the node. Valid values: `Primary`,`Secondary`.
+	ReplicaSetRole *string `pulumi:"replicaSetRole"`
+	// VPC instance ID.
+	VpcCloudInstanceId *string `pulumi:"vpcCloudInstanceId"`
+	// The private network ID of the node.
+	VpcId *string `pulumi:"vpcId"`
+	// The virtual switch ID to launch DB instances in one VPC.
+	VswitchId *string `pulumi:"vswitchId"`
+}
+
+// InstanceReplicaSetInput is an input type that accepts InstanceReplicaSetArgs and InstanceReplicaSetOutput values.
+// You can construct a concrete instance of `InstanceReplicaSetInput` via:
+//
+//          InstanceReplicaSetArgs{...}
+type InstanceReplicaSetInput interface {
+	pulumi.Input
+
+	ToInstanceReplicaSetOutput() InstanceReplicaSetOutput
+	ToInstanceReplicaSetOutputWithContext(context.Context) InstanceReplicaSetOutput
+}
+
+type InstanceReplicaSetArgs struct {
+	// The connection address of the node.
+	ConnectionDomain pulumi.StringPtrInput `pulumi:"connectionDomain"`
+	// The connection port of the node.
+	ConnectionPort pulumi.StringPtrInput `pulumi:"connectionPort"`
+	// The network type of the node. Valid values: `Classic`,`VPC`.
+	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+	// The role of the node. Valid values: `Primary`,`Secondary`.
+	ReplicaSetRole pulumi.StringPtrInput `pulumi:"replicaSetRole"`
+	// VPC instance ID.
+	VpcCloudInstanceId pulumi.StringPtrInput `pulumi:"vpcCloudInstanceId"`
+	// The private network ID of the node.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// The virtual switch ID to launch DB instances in one VPC.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (InstanceReplicaSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReplicaSet)(nil)).Elem()
+}
+
+func (i InstanceReplicaSetArgs) ToInstanceReplicaSetOutput() InstanceReplicaSetOutput {
+	return i.ToInstanceReplicaSetOutputWithContext(context.Background())
+}
+
+func (i InstanceReplicaSetArgs) ToInstanceReplicaSetOutputWithContext(ctx context.Context) InstanceReplicaSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReplicaSetOutput)
+}
+
+// InstanceReplicaSetArrayInput is an input type that accepts InstanceReplicaSetArray and InstanceReplicaSetArrayOutput values.
+// You can construct a concrete instance of `InstanceReplicaSetArrayInput` via:
+//
+//          InstanceReplicaSetArray{ InstanceReplicaSetArgs{...} }
+type InstanceReplicaSetArrayInput interface {
+	pulumi.Input
+
+	ToInstanceReplicaSetArrayOutput() InstanceReplicaSetArrayOutput
+	ToInstanceReplicaSetArrayOutputWithContext(context.Context) InstanceReplicaSetArrayOutput
+}
+
+type InstanceReplicaSetArray []InstanceReplicaSetInput
+
+func (InstanceReplicaSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceReplicaSet)(nil)).Elem()
+}
+
+func (i InstanceReplicaSetArray) ToInstanceReplicaSetArrayOutput() InstanceReplicaSetArrayOutput {
+	return i.ToInstanceReplicaSetArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceReplicaSetArray) ToInstanceReplicaSetArrayOutputWithContext(ctx context.Context) InstanceReplicaSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReplicaSetArrayOutput)
+}
+
+type InstanceReplicaSetOutput struct{ *pulumi.OutputState }
+
+func (InstanceReplicaSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReplicaSet)(nil)).Elem()
+}
+
+func (o InstanceReplicaSetOutput) ToInstanceReplicaSetOutput() InstanceReplicaSetOutput {
+	return o
+}
+
+func (o InstanceReplicaSetOutput) ToInstanceReplicaSetOutputWithContext(ctx context.Context) InstanceReplicaSetOutput {
+	return o
+}
+
+// The connection address of the node.
+func (o InstanceReplicaSetOutput) ConnectionDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.ConnectionDomain }).(pulumi.StringPtrOutput)
+}
+
+// The connection port of the node.
+func (o InstanceReplicaSetOutput) ConnectionPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.ConnectionPort }).(pulumi.StringPtrOutput)
+}
+
+// The network type of the node. Valid values: `Classic`,`VPC`.
+func (o InstanceReplicaSetOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
+}
+
+// The role of the node. Valid values: `Primary`,`Secondary`.
+func (o InstanceReplicaSetOutput) ReplicaSetRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.ReplicaSetRole }).(pulumi.StringPtrOutput)
+}
+
+// VPC instance ID.
+func (o InstanceReplicaSetOutput) VpcCloudInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.VpcCloudInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The private network ID of the node.
+func (o InstanceReplicaSetOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The virtual switch ID to launch DB instances in one VPC.
+func (o InstanceReplicaSetOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type InstanceReplicaSetArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceReplicaSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceReplicaSet)(nil)).Elem()
+}
+
+func (o InstanceReplicaSetArrayOutput) ToInstanceReplicaSetArrayOutput() InstanceReplicaSetArrayOutput {
+	return o
+}
+
+func (o InstanceReplicaSetArrayOutput) ToInstanceReplicaSetArrayOutputWithContext(ctx context.Context) InstanceReplicaSetArrayOutput {
+	return o
+}
+
+func (o InstanceReplicaSetArrayOutput) Index(i pulumi.IntInput) InstanceReplicaSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceReplicaSet {
+		return vs[0].([]InstanceReplicaSet)[vs[1].(int)]
+	}).(InstanceReplicaSetOutput)
+}
+
+type ShardingInstanceConfigServerList struct {
+	// The connection address of the Config Server node.
+	ConnectString *string `pulumi:"connectString"`
+	// The max connections of the Config Server node.
+	MaxConnections *int `pulumi:"maxConnections"`
+	// The maximum IOPS of the Config Server node.
+	MaxIops *int `pulumi:"maxIops"`
+	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	NodeClass *string `pulumi:"nodeClass"`
+	// The description of the Config Server node.
+	NodeDescription *string `pulumi:"nodeDescription"`
+	// The ID of the Config Server node.
+	NodeId *string `pulumi:"nodeId"`
+	// - Custom storage space; value range: [10, 1,000]
+	// - 10-GB increments. Unit: GB.
+	NodeStorage *int `pulumi:"nodeStorage"`
+	// The connection port of the Config Server node.
+	Port *int `pulumi:"port"`
+}
+
+// ShardingInstanceConfigServerListInput is an input type that accepts ShardingInstanceConfigServerListArgs and ShardingInstanceConfigServerListOutput values.
+// You can construct a concrete instance of `ShardingInstanceConfigServerListInput` via:
+//
+//          ShardingInstanceConfigServerListArgs{...}
+type ShardingInstanceConfigServerListInput interface {
+	pulumi.Input
+
+	ToShardingInstanceConfigServerListOutput() ShardingInstanceConfigServerListOutput
+	ToShardingInstanceConfigServerListOutputWithContext(context.Context) ShardingInstanceConfigServerListOutput
+}
+
+type ShardingInstanceConfigServerListArgs struct {
+	// The connection address of the Config Server node.
+	ConnectString pulumi.StringPtrInput `pulumi:"connectString"`
+	// The max connections of the Config Server node.
+	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
+	// The maximum IOPS of the Config Server node.
+	MaxIops pulumi.IntPtrInput `pulumi:"maxIops"`
+	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	NodeClass pulumi.StringPtrInput `pulumi:"nodeClass"`
+	// The description of the Config Server node.
+	NodeDescription pulumi.StringPtrInput `pulumi:"nodeDescription"`
+	// The ID of the Config Server node.
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	// - Custom storage space; value range: [10, 1,000]
+	// - 10-GB increments. Unit: GB.
+	NodeStorage pulumi.IntPtrInput `pulumi:"nodeStorage"`
+	// The connection port of the Config Server node.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ShardingInstanceConfigServerListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingInstanceConfigServerList)(nil)).Elem()
+}
+
+func (i ShardingInstanceConfigServerListArgs) ToShardingInstanceConfigServerListOutput() ShardingInstanceConfigServerListOutput {
+	return i.ToShardingInstanceConfigServerListOutputWithContext(context.Background())
+}
+
+func (i ShardingInstanceConfigServerListArgs) ToShardingInstanceConfigServerListOutputWithContext(ctx context.Context) ShardingInstanceConfigServerListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceConfigServerListOutput)
+}
+
+// ShardingInstanceConfigServerListArrayInput is an input type that accepts ShardingInstanceConfigServerListArray and ShardingInstanceConfigServerListArrayOutput values.
+// You can construct a concrete instance of `ShardingInstanceConfigServerListArrayInput` via:
+//
+//          ShardingInstanceConfigServerListArray{ ShardingInstanceConfigServerListArgs{...} }
+type ShardingInstanceConfigServerListArrayInput interface {
+	pulumi.Input
+
+	ToShardingInstanceConfigServerListArrayOutput() ShardingInstanceConfigServerListArrayOutput
+	ToShardingInstanceConfigServerListArrayOutputWithContext(context.Context) ShardingInstanceConfigServerListArrayOutput
+}
+
+type ShardingInstanceConfigServerListArray []ShardingInstanceConfigServerListInput
+
+func (ShardingInstanceConfigServerListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShardingInstanceConfigServerList)(nil)).Elem()
+}
+
+func (i ShardingInstanceConfigServerListArray) ToShardingInstanceConfigServerListArrayOutput() ShardingInstanceConfigServerListArrayOutput {
+	return i.ToShardingInstanceConfigServerListArrayOutputWithContext(context.Background())
+}
+
+func (i ShardingInstanceConfigServerListArray) ToShardingInstanceConfigServerListArrayOutputWithContext(ctx context.Context) ShardingInstanceConfigServerListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceConfigServerListArrayOutput)
+}
+
+type ShardingInstanceConfigServerListOutput struct{ *pulumi.OutputState }
+
+func (ShardingInstanceConfigServerListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingInstanceConfigServerList)(nil)).Elem()
+}
+
+func (o ShardingInstanceConfigServerListOutput) ToShardingInstanceConfigServerListOutput() ShardingInstanceConfigServerListOutput {
+	return o
+}
+
+func (o ShardingInstanceConfigServerListOutput) ToShardingInstanceConfigServerListOutputWithContext(ctx context.Context) ShardingInstanceConfigServerListOutput {
+	return o
+}
+
+// The connection address of the Config Server node.
+func (o ShardingInstanceConfigServerListOutput) ConnectString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceConfigServerList) *string { return v.ConnectString }).(pulumi.StringPtrOutput)
+}
+
+// The max connections of the Config Server node.
+func (o ShardingInstanceConfigServerListOutput) MaxConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceConfigServerList) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
+}
+
+// The maximum IOPS of the Config Server node.
+func (o ShardingInstanceConfigServerListOutput) MaxIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceConfigServerList) *int { return v.MaxIops }).(pulumi.IntPtrOutput)
+}
+
+// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+func (o ShardingInstanceConfigServerListOutput) NodeClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceConfigServerList) *string { return v.NodeClass }).(pulumi.StringPtrOutput)
+}
+
+// The description of the Config Server node.
+func (o ShardingInstanceConfigServerListOutput) NodeDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceConfigServerList) *string { return v.NodeDescription }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Config Server node.
+func (o ShardingInstanceConfigServerListOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceConfigServerList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+// - Custom storage space; value range: [10, 1,000]
+// - 10-GB increments. Unit: GB.
+func (o ShardingInstanceConfigServerListOutput) NodeStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceConfigServerList) *int { return v.NodeStorage }).(pulumi.IntPtrOutput)
+}
+
+// The connection port of the Config Server node.
+func (o ShardingInstanceConfigServerListOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceConfigServerList) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ShardingInstanceConfigServerListArrayOutput struct{ *pulumi.OutputState }
+
+func (ShardingInstanceConfigServerListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShardingInstanceConfigServerList)(nil)).Elem()
+}
+
+func (o ShardingInstanceConfigServerListArrayOutput) ToShardingInstanceConfigServerListArrayOutput() ShardingInstanceConfigServerListArrayOutput {
+	return o
+}
+
+func (o ShardingInstanceConfigServerListArrayOutput) ToShardingInstanceConfigServerListArrayOutputWithContext(ctx context.Context) ShardingInstanceConfigServerListArrayOutput {
+	return o
+}
+
+func (o ShardingInstanceConfigServerListArrayOutput) Index(i pulumi.IntInput) ShardingInstanceConfigServerListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShardingInstanceConfigServerList {
+		return vs[0].([]ShardingInstanceConfigServerList)[vs[1].(int)]
+	}).(ShardingInstanceConfigServerListOutput)
+}
+
 type ShardingInstanceMongoList struct {
-	// Mongo node connection string
+	// The connection address of the Config Server node.
 	ConnectString *string `pulumi:"connectString"`
 	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass string `pulumi:"nodeClass"`
-	// The ID of the shard-node.
+	// The ID of the Config Server node.
 	NodeId *string `pulumi:"nodeId"`
-	// Mongo node port
-	// * `shardList`
+	// The connection port of the Config Server node.
 	Port *int `pulumi:"port"`
 }
 
@@ -34,14 +347,13 @@ type ShardingInstanceMongoListInput interface {
 }
 
 type ShardingInstanceMongoListArgs struct {
-	// Mongo node connection string
+	// The connection address of the Config Server node.
 	ConnectString pulumi.StringPtrInput `pulumi:"connectString"`
 	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass pulumi.StringInput `pulumi:"nodeClass"`
-	// The ID of the shard-node.
+	// The ID of the Config Server node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
-	// Mongo node port
-	// * `shardList`
+	// The connection port of the Config Server node.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -96,7 +408,7 @@ func (o ShardingInstanceMongoListOutput) ToShardingInstanceMongoListOutputWithCo
 	return o
 }
 
-// Mongo node connection string
+// The connection address of the Config Server node.
 func (o ShardingInstanceMongoListOutput) ConnectString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceMongoList) *string { return v.ConnectString }).(pulumi.StringPtrOutput)
 }
@@ -106,13 +418,12 @@ func (o ShardingInstanceMongoListOutput) NodeClass() pulumi.StringOutput {
 	return o.ApplyT(func(v ShardingInstanceMongoList) string { return v.NodeClass }).(pulumi.StringOutput)
 }
 
-// The ID of the shard-node.
+// The ID of the Config Server node.
 func (o ShardingInstanceMongoListOutput) NodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceMongoList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
 
-// Mongo node port
-// * `shardList`
+// The connection port of the Config Server node.
 func (o ShardingInstanceMongoListOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceMongoList) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -140,7 +451,7 @@ func (o ShardingInstanceMongoListArrayOutput) Index(i pulumi.IntInput) ShardingI
 type ShardingInstanceShardList struct {
 	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass string `pulumi:"nodeClass"`
-	// The ID of the shard-node.
+	// The ID of the Config Server node.
 	NodeId *string `pulumi:"nodeId"`
 	// - Custom storage space; value range: [10, 1,000]
 	// - 10-GB increments. Unit: GB.
@@ -163,7 +474,7 @@ type ShardingInstanceShardListInput interface {
 type ShardingInstanceShardListArgs struct {
 	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass pulumi.StringInput `pulumi:"nodeClass"`
-	// The ID of the shard-node.
+	// The ID of the Config Server node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
 	// - Custom storage space; value range: [10, 1,000]
 	// - 10-GB increments. Unit: GB.
@@ -228,7 +539,7 @@ func (o ShardingInstanceShardListOutput) NodeClass() pulumi.StringOutput {
 	return o.ApplyT(func(v ShardingInstanceShardList) string { return v.NodeClass }).(pulumi.StringOutput)
 }
 
-// The ID of the shard-node.
+// The ID of the Config Server node.
 func (o ShardingInstanceShardListOutput) NodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceShardList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
@@ -869,6 +1180,10 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(InstanceReplicaSetOutput{})
+	pulumi.RegisterOutputType(InstanceReplicaSetArrayOutput{})
+	pulumi.RegisterOutputType(ShardingInstanceConfigServerListOutput{})
+	pulumi.RegisterOutputType(ShardingInstanceConfigServerListArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceMongoListOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceMongoListArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceShardListOutput{})

@@ -28,7 +28,7 @@ class GetBackupJobsFilterResult(dict):
                  values: Optional[Sequence[str]] = None):
         """
         :param str key: The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
-        :param str operator: The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+        :param str operator: The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
         :param Sequence[str] values: Set of values that are accepted for the given field.
         """
         if key is not None:
@@ -50,7 +50,7 @@ class GetBackupJobsFilterResult(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The operator of the field to filter. Valid values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+        The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
         """
         return pulumi.get(self, "operator")
 
@@ -76,6 +76,7 @@ class GetBackupJobsJobResult(dict):
                  bytes_total: str,
                  complete_time: str,
                  create_time: str,
+                 error_message: str,
                  exclude: str,
                  file_system_id: str,
                  id: str,
@@ -87,22 +88,24 @@ class GetBackupJobsJobResult(dict):
                  paths: Sequence[str],
                  plan_id: str,
                  prefix: str,
+                 progress: str,
                  source_type: str,
                  start_time: str,
                  status: str,
                  updated_time: str,
                  vault_id: str):
         """
-        :param str actual_bytes: The actual size of backup job.
-        :param str actual_items: The actual number of files.
+        :param str actual_bytes: The actual data volume of the backup task (After deduplication) . Unit byte.
+        :param str actual_items: The actual number of items in the backup task. (Currently only file backup is available).
         :param str back_job_name: The name of backup job.
-        :param str backup_job_id: The ID of backup job.
+        :param str backup_job_id: The ID of the backup job.
         :param str backup_type: Backup type. Valid values: `COMPLETE`(full backup).
-        :param str bucket: The name of target ofo OSS bucket.
-        :param str bytes_done: The size of backup job recovered.
-        :param str bytes_total: The total size of backup job recovered.
+        :param str bucket: The name of target OSS bucket.
+        :param str bytes_done: The amount of backup data (Incremental). Unit byte.
+        :param str bytes_total: The total amount of data sources. Unit byte.
         :param str complete_time: The completion time of backup job. UNIX time seconds.
         :param str create_time: The creation time of backup job. UNIX time seconds.
+        :param str error_message: Error message.
         :param str exclude: Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
         :param str file_system_id: The ID of destination file system.
         :param str id: The ID of the backup job.
@@ -111,10 +114,11 @@ class GetBackupJobsJobResult(dict):
         :param str items_done: The number of items restore job recovered.
         :param str items_total: The total number of items restore job recovered.
         :param str nas_create_time: File system creation time. UNIX time in seconds.
-        :param Sequence[str] paths: Backup path. e.g. `["/home", "/var"]`
-        :param str plan_id: The IF of a backup plan.
+        :param Sequence[str] paths: List of backup path. e.g. `["/home", "/var"]`.
+        :param str plan_id: The ID of a backup plan.
         :param str prefix: The prefix of Oss bucket files.
-        :param str source_type: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        :param str progress: Backup progress. The value is 100%*100.
+        :param str source_type: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
         :param str start_time: The scheduled backup start time. UNIX time seconds.
         :param str status: The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
         :param str updated_time: The update time of backup job. UNIX time seconds.
@@ -130,6 +134,7 @@ class GetBackupJobsJobResult(dict):
         pulumi.set(__self__, "bytes_total", bytes_total)
         pulumi.set(__self__, "complete_time", complete_time)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "error_message", error_message)
         pulumi.set(__self__, "exclude", exclude)
         pulumi.set(__self__, "file_system_id", file_system_id)
         pulumi.set(__self__, "id", id)
@@ -141,6 +146,7 @@ class GetBackupJobsJobResult(dict):
         pulumi.set(__self__, "paths", paths)
         pulumi.set(__self__, "plan_id", plan_id)
         pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "source_type", source_type)
         pulumi.set(__self__, "start_time", start_time)
         pulumi.set(__self__, "status", status)
@@ -151,7 +157,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="actualBytes")
     def actual_bytes(self) -> str:
         """
-        The actual size of backup job.
+        The actual data volume of the backup task (After deduplication) . Unit byte.
         """
         return pulumi.get(self, "actual_bytes")
 
@@ -159,7 +165,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="actualItems")
     def actual_items(self) -> str:
         """
-        The actual number of files.
+        The actual number of items in the backup task. (Currently only file backup is available).
         """
         return pulumi.get(self, "actual_items")
 
@@ -175,7 +181,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="backupJobId")
     def backup_job_id(self) -> str:
         """
-        The ID of backup job.
+        The ID of the backup job.
         """
         return pulumi.get(self, "backup_job_id")
 
@@ -191,7 +197,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter
     def bucket(self) -> str:
         """
-        The name of target ofo OSS bucket.
+        The name of target OSS bucket.
         """
         return pulumi.get(self, "bucket")
 
@@ -199,7 +205,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="bytesDone")
     def bytes_done(self) -> str:
         """
-        The size of backup job recovered.
+        The amount of backup data (Incremental). Unit byte.
         """
         return pulumi.get(self, "bytes_done")
 
@@ -207,7 +213,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="bytesTotal")
     def bytes_total(self) -> str:
         """
-        The total size of backup job recovered.
+        The total amount of data sources. Unit byte.
         """
         return pulumi.get(self, "bytes_total")
 
@@ -226,6 +232,14 @@ class GetBackupJobsJobResult(dict):
         The creation time of backup job. UNIX time seconds.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> str:
+        """
+        Error message.
+        """
+        return pulumi.get(self, "error_message")
 
     @property
     @pulumi.getter
@@ -295,7 +309,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter
     def paths(self) -> Sequence[str]:
         """
-        Backup path. e.g. `["/home", "/var"]`
+        List of backup path. e.g. `["/home", "/var"]`.
         """
         return pulumi.get(self, "paths")
 
@@ -303,7 +317,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="planId")
     def plan_id(self) -> str:
         """
-        The IF of a backup plan.
+        The ID of a backup plan.
         """
         return pulumi.get(self, "plan_id")
 
@@ -316,10 +330,18 @@ class GetBackupJobsJobResult(dict):
         return pulumi.get(self, "prefix")
 
     @property
+    @pulumi.getter
+    def progress(self) -> str:
+        """
+        Backup progress. The value is 100%*100.
+        """
+        return pulumi.get(self, "progress")
+
+    @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> str:
         """
-        The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
         """
         return pulumi.get(self, "source_type")
 
@@ -387,27 +409,27 @@ class GetEcsBackupClientsClientResult(dict):
                  zone_id: str):
         """
         :param str arch_type: The system architecture of client, only the ECS File Backup Client is available. Valid values: `AMD64` , `386`.
-        :param str backup_status: Client protected status.
+        :param str backup_status: Client protected status. Valid values: `UNPROTECTED`, `PROTECTED`.
         :param str client_type: The type of client. Valid values: `ECS_CLIENT` (ECS File Backup Client).
         :param str client_version: The version of client.
-        :param str create_time: The creation time of client. Unix time seconds.
+        :param str create_time: The creation time of client. Unix time in seconds.
         :param str data_network_type: The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
         :param str data_proxy_setting: The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
         :param str ecs_backup_client_id: The first ID of the resource.
-        :param str hostname: The name of ECS host.
+        :param str hostname: The hostname of ECS instance.
         :param str id: The ID of the Ecs Backup Client.
-        :param str instance_id: The ID of ECS instance.
+        :param str instance_id: The ID of ECS instance. When the client type is ECS file backup client, it indicates the ID of ECS instance. When the client type is a local file backup client, it is a hardware fingerprint generated based on system information.
         :param str instance_name: The name of ECS instance.
-        :param str last_heart_beat_time: Client last heartbeat time. Unix Time Seconds.
-        :param str max_client_version: The latest client version.
-        :param str max_cpu_core: Number of CPU cores used by a single backup task, 0 means no restrictions.
-        :param str max_worker: Number of concurrent jobs for a single backup task, 0 means no restrictions.
+        :param str last_heart_beat_time: The last heartbeat time of client. Unix Time Seconds.
+        :param str max_client_version: The latest version of client.
+        :param str max_cpu_core: The number of CPU cores used by a single backup task, 0 means no restrictions.
+        :param str max_worker: The number of concurrent jobs for a single backup task, 0 means no restrictions.
         :param str os_type: The operating system type of client, only the ECS File Backup Client is available. Valid values: `windows`, `linux`.
         :param str private_ipv4: Intranet IP address of the instance, only available for ECS file backup client.
         :param str proxy_host: Custom data plane proxy server host address.
-        :param str proxy_password: Custom data plane proxy server password.
+        :param str proxy_password: The password of custom data plane proxy server.
         :param str proxy_port: Custom data plane proxy server host port.
-        :param str proxy_user: Username of custom data plane proxy server.
+        :param str proxy_user: The username of custom data plane proxy server.
         :param str status: The status of the resource.
         :param str updated_time: The update time of client. Unix Time Seconds.
         :param bool use_https: Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
@@ -452,7 +474,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="backupStatus")
     def backup_status(self) -> str:
         """
-        Client protected status.
+        Client protected status. Valid values: `UNPROTECTED`, `PROTECTED`.
         """
         return pulumi.get(self, "backup_status")
 
@@ -476,7 +498,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The creation time of client. Unix time seconds.
+        The creation time of client. Unix time in seconds.
         """
         return pulumi.get(self, "create_time")
 
@@ -508,7 +530,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter
     def hostname(self) -> str:
         """
-        The name of ECS host.
+        The hostname of ECS instance.
         """
         return pulumi.get(self, "hostname")
 
@@ -524,7 +546,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        The ID of ECS instance.
+        The ID of ECS instance. When the client type is ECS file backup client, it indicates the ID of ECS instance. When the client type is a local file backup client, it is a hardware fingerprint generated based on system information.
         """
         return pulumi.get(self, "instance_id")
 
@@ -540,7 +562,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="lastHeartBeatTime")
     def last_heart_beat_time(self) -> str:
         """
-        Client last heartbeat time. Unix Time Seconds.
+        The last heartbeat time of client. Unix Time Seconds.
         """
         return pulumi.get(self, "last_heart_beat_time")
 
@@ -548,7 +570,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="maxClientVersion")
     def max_client_version(self) -> str:
         """
-        The latest client version.
+        The latest version of client.
         """
         return pulumi.get(self, "max_client_version")
 
@@ -556,7 +578,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="maxCpuCore")
     def max_cpu_core(self) -> str:
         """
-        Number of CPU cores used by a single backup task, 0 means no restrictions.
+        The number of CPU cores used by a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_cpu_core")
 
@@ -564,7 +586,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="maxWorker")
     def max_worker(self) -> str:
         """
-        Number of concurrent jobs for a single backup task, 0 means no restrictions.
+        The number of concurrent jobs for a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_worker")
 
@@ -596,7 +618,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="proxyPassword")
     def proxy_password(self) -> str:
         """
-        Custom data plane proxy server password.
+        The password of custom data plane proxy server.
         """
         return pulumi.get(self, "proxy_password")
 
@@ -612,7 +634,7 @@ class GetEcsBackupClientsClientResult(dict):
     @pulumi.getter(name="proxyUser")
     def proxy_user(self) -> str:
         """
-        Username of custom data plane proxy server.
+        The username of custom data plane proxy server.
         """
         return pulumi.get(self, "proxy_user")
 
@@ -654,6 +676,7 @@ class GetEcsBackupPlansPlanResult(dict):
     def __init__(__self__, *,
                  backup_type: str,
                  create_time: str,
+                 created_time: str,
                  detail: str,
                  disabled: bool,
                  ecs_backup_plan_id: str,
@@ -666,23 +689,32 @@ class GetEcsBackupPlansPlanResult(dict):
                  paths: Sequence[str],
                  retention: str,
                  schedule: str,
+                 source_type: str,
                  speed_limit: str,
+                 updated_time: str,
                  vault_id: str):
         """
         :param str backup_type: Backup type. Valid values: `COMPLETE`.
+        :param str created_time: The creation time of the backup plan. UNIX time in seconds.
+        :param bool disabled: Whether to be suspended. Valid values: `true`, `false`.
+        :param str ecs_backup_plan_id: The ID of ecs backup plan.
         :param str ecs_backup_plan_name: The name of the backup plan.
         :param str exclude: Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
+        :param str id: The ID of ecs backup plan.
         :param str include: Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
         :param str instance_id: The ID of ECS instance.
         :param str options: Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
         :param Sequence[str] paths: Backup path. e.g. `["/home", "/var"]`
         :param str retention: Backup retention days, the minimum is 1.
-        :param str schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        :param str source_type: The type of backup source.
         :param str speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of Backup vault.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_time", created_time)
         pulumi.set(__self__, "detail", detail)
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "ecs_backup_plan_id", ecs_backup_plan_id)
@@ -695,7 +727,9 @@ class GetEcsBackupPlansPlanResult(dict):
         pulumi.set(__self__, "paths", paths)
         pulumi.set(__self__, "retention", retention)
         pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "source_type", source_type)
         pulumi.set(__self__, "speed_limit", speed_limit)
+        pulumi.set(__self__, "updated_time", updated_time)
         pulumi.set(__self__, "vault_id", vault_id)
 
     @property
@@ -712,6 +746,14 @@ class GetEcsBackupPlansPlanResult(dict):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> str:
+        """
+        The creation time of the backup plan. UNIX time in seconds.
+        """
+        return pulumi.get(self, "created_time")
+
+    @property
     @pulumi.getter
     def detail(self) -> str:
         return pulumi.get(self, "detail")
@@ -719,11 +761,17 @@ class GetEcsBackupPlansPlanResult(dict):
     @property
     @pulumi.getter
     def disabled(self) -> bool:
+        """
+        Whether to be suspended. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="ecsBackupPlanId")
     def ecs_backup_plan_id(self) -> str:
+        """
+        The ID of ecs backup plan.
+        """
         return pulumi.get(self, "ecs_backup_plan_id")
 
     @property
@@ -745,6 +793,9 @@ class GetEcsBackupPlansPlanResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of ecs backup plan.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -791,9 +842,17 @@ class GetEcsBackupPlansPlanResult(dict):
     @pulumi.getter
     def schedule(self) -> str:
         """
-        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> str:
+        """
+        The type of backup source.
+        """
+        return pulumi.get(self, "source_type")
 
     @property
     @pulumi.getter(name="speedLimit")
@@ -802,6 +861,14 @@ class GetEcsBackupPlansPlanResult(dict):
         Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         """
         return pulumi.get(self, "speed_limit")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> str:
+        """
+        The update time of the backup plan. UNIX time in seconds.
+        """
+        return pulumi.get(self, "updated_time")
 
     @property
     @pulumi.getter(name="vaultId")
@@ -817,6 +884,7 @@ class GetNasBackupPlansPlanResult(dict):
     def __init__(__self__, *,
                  backup_type: str,
                  create_time: str,
+                 created_time: str,
                  disabled: bool,
                  file_system_id: str,
                  id: str,
@@ -826,19 +894,25 @@ class GetNasBackupPlansPlanResult(dict):
                  paths: Sequence[str],
                  retention: str,
                  schedule: str,
+                 updated_time: str,
                  vault_id: str):
         """
         :param str backup_type: Backup type. Valid values: `COMPLETE`.
-        :param str create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param str create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST`.
+        :param bool disabled: Whether to be suspended. Valid values: `true`, `false`.
         :param str file_system_id: The File System ID of Nas.
+        :param str id: The ID of Nas backup plan.
+        :param str nas_backup_plan_id: The ID of Nas backup plan.
         :param str nas_backup_plan_name: The name of the resource.
-        :param Sequence[str] paths: Backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+        :param str options: Options of nas.
+        :param Sequence[str] paths: List of backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
         :param str retention: Backup retention days, the minimum is 1.
-        :param str schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-        :param str vault_id: The backup vault ID of the NasBackupPlan used.
+        :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        :param str vault_id: The ID of backup vault.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_time", created_time)
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "file_system_id", file_system_id)
         pulumi.set(__self__, "id", id)
@@ -848,6 +922,7 @@ class GetNasBackupPlansPlanResult(dict):
         pulumi.set(__self__, "paths", paths)
         pulumi.set(__self__, "retention", retention)
         pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "updated_time", updated_time)
         pulumi.set(__self__, "vault_id", vault_id)
 
     @property
@@ -862,13 +937,21 @@ class GetNasBackupPlansPlanResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST`.
         """
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> str:
+        return pulumi.get(self, "created_time")
+
+    @property
     @pulumi.getter
     def disabled(self) -> bool:
+        """
+        Whether to be suspended. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "disabled")
 
     @property
@@ -882,11 +965,17 @@ class GetNasBackupPlansPlanResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of Nas backup plan.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="nasBackupPlanId")
     def nas_backup_plan_id(self) -> str:
+        """
+        The ID of Nas backup plan.
+        """
         return pulumi.get(self, "nas_backup_plan_id")
 
     @property
@@ -900,13 +989,16 @@ class GetNasBackupPlansPlanResult(dict):
     @property
     @pulumi.getter
     def options(self) -> str:
+        """
+        Options of nas.
+        """
         return pulumi.get(self, "options")
 
     @property
     @pulumi.getter
     def paths(self) -> Sequence[str]:
         """
-        Backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
+        List of backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
         """
         return pulumi.get(self, "paths")
 
@@ -922,15 +1014,20 @@ class GetNasBackupPlansPlanResult(dict):
     @pulumi.getter
     def schedule(self) -> str:
         """
-        Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> str:
+        return pulumi.get(self, "updated_time")
 
     @property
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> str:
         """
-        The backup vault ID of the NasBackupPlan used.
+        The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
 
@@ -940,6 +1037,7 @@ class GetOssBackupPlansPlanResult(dict):
     def __init__(__self__, *,
                  backup_type: str,
                  bucket: str,
+                 created_time: str,
                  disabled: bool,
                  id: str,
                  oss_backup_plan_id: str,
@@ -947,17 +1045,25 @@ class GetOssBackupPlansPlanResult(dict):
                  prefix: str,
                  retention: str,
                  schedule: str,
+                 updated_time: str,
                  vault_id: str):
         """
         :param str backup_type: Backup type. Valid values: `COMPLETE`.
         :param str bucket: The name of OSS bucket.
+        :param str created_time: The creation time of the backup plan. UNIX time in seconds.
+        :param bool disabled: Whether to be suspended. Valid values: `true`, `false`.
+        :param str id: The ID of Oss backup plan.
+        :param str oss_backup_plan_id: The ID of Oss backup plan.
         :param str oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param str prefix: Backup prefix.
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of backup vault.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "created_time", created_time)
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "oss_backup_plan_id", oss_backup_plan_id)
@@ -965,6 +1071,7 @@ class GetOssBackupPlansPlanResult(dict):
         pulumi.set(__self__, "prefix", prefix)
         pulumi.set(__self__, "retention", retention)
         pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "updated_time", updated_time)
         pulumi.set(__self__, "vault_id", vault_id)
 
     @property
@@ -984,18 +1091,35 @@ class GetOssBackupPlansPlanResult(dict):
         return pulumi.get(self, "bucket")
 
     @property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> str:
+        """
+        The creation time of the backup plan. UNIX time in seconds.
+        """
+        return pulumi.get(self, "created_time")
+
+    @property
     @pulumi.getter
     def disabled(self) -> bool:
+        """
+        Whether to be suspended. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of Oss backup plan.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ossBackupPlanId")
     def oss_backup_plan_id(self) -> str:
+        """
+        The ID of Oss backup plan.
+        """
         return pulumi.get(self, "oss_backup_plan_id")
 
     @property
@@ -1009,6 +1133,9 @@ class GetOssBackupPlansPlanResult(dict):
     @property
     @pulumi.getter
     def prefix(self) -> str:
+        """
+        Backup prefix.
+        """
         return pulumi.get(self, "prefix")
 
     @property
@@ -1026,6 +1153,14 @@ class GetOssBackupPlansPlanResult(dict):
         Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> str:
+        """
+        The update time of the backup plan. UNIX time in seconds.
+        """
+        return pulumi.get(self, "updated_time")
 
     @property
     @pulumi.getter(name="vaultId")
@@ -1084,19 +1219,16 @@ class GetRestoreJobsJobResult(dict):
         :param str items_done: The number of items restore job recovered.
         :param str items_total: The total number of items restore job recovered.
         :param str options: Recovery Options.
-        :param str parent_id: The ID of parent node.
         :param int progress: The recovery progress.
         :param str restore_job_id: The ID of restore job.
         :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
         :param str snapshot_hash: The hashcode of Snapshot.
         :param str snapshot_id: The ID of Snapshot.
-        :param str source_type: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        :param str source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         :param str start_time: The start time of restore job. Unix Time in Seconds.
         :param str status: The status of restore job.
         :param str target_bucket: The name of target ofo OSS bucket.
-        :param str target_client_id: The ID of target client.
         :param str target_create_time: The creation time of destination file system.
-        :param str target_data_source_id: The ID of destination data source.
         :param str target_file_system_id: The ID of destination file system.
         :param str target_instance_id: The ID of target ECS instance.
         :param str target_path: The target file path of ECS instance.
@@ -1241,9 +1373,6 @@ class GetRestoreJobsJobResult(dict):
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> str:
-        """
-        The ID of parent node.
-        """
         return pulumi.get(self, "parent_id")
 
     @property
@@ -1290,7 +1419,7 @@ class GetRestoreJobsJobResult(dict):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> str:
         """
-        The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         """
         return pulumi.get(self, "source_type")
 
@@ -1321,9 +1450,6 @@ class GetRestoreJobsJobResult(dict):
     @property
     @pulumi.getter(name="targetClientId")
     def target_client_id(self) -> str:
-        """
-        The ID of target client.
-        """
         return pulumi.get(self, "target_client_id")
 
     @property
@@ -1337,9 +1463,6 @@ class GetRestoreJobsJobResult(dict):
     @property
     @pulumi.getter(name="targetDataSourceId")
     def target_data_source_id(self) -> str:
-        """
-        The ID of destination data source.
-        """
         return pulumi.get(self, "target_data_source_id")
 
     @property
@@ -1400,6 +1523,7 @@ class GetSnapshotsSnapshotResult(dict):
                  bucket: str,
                  bytes_done: str,
                  bytes_total: str,
+                 client_id: str,
                  complete_time: str,
                  create_time: str,
                  created_time: str,
@@ -1427,7 +1551,8 @@ class GetSnapshotsSnapshotResult(dict):
         :param str bucket: The name of OSS bucket.
         :param str bytes_done: The incremental amount of backup data. Unit byte.
         :param str bytes_total: The total amount of data sources. Unit byte.
-        :param str complete_time: The time when the snapshot was completed. UNIX time in seconds.
+        :param str client_id: The ID of ECS backup client.
+        :param str complete_time: The time when the snapshot completed. UNIX time in seconds.
         :param str create_time: File System Creation Time of Nas. Unix Time Seconds.
         :param str created_time: Snapshot creation time. UNIX time in seconds.
         :param str file_system_id: The ID of NAS File system.
@@ -1453,6 +1578,7 @@ class GetSnapshotsSnapshotResult(dict):
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "bytes_done", bytes_done)
         pulumi.set(__self__, "bytes_total", bytes_total)
+        pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "complete_time", complete_time)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "created_time", created_time)
@@ -1523,10 +1649,18 @@ class GetSnapshotsSnapshotResult(dict):
         return pulumi.get(self, "bytes_total")
 
     @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The ID of ECS backup client.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
     @pulumi.getter(name="completeTime")
     def complete_time(self) -> str:
         """
-        The time when the snapshot was completed. UNIX time in seconds.
+        The time when the snapshot completed. UNIX time in seconds.
         """
         return pulumi.get(self, "complete_time")
 
@@ -1685,7 +1819,7 @@ class GetVaultsVaultResult(dict):
     def __init__(__self__, *,
                  bucket_name: str,
                  bytes_done: str,
-                 create_time: str,
+                 created_time: str,
                  dedup: bool,
                  description: str,
                  id: str,
@@ -1711,10 +1845,10 @@ class GetVaultsVaultResult(dict):
         """
         :param str bucket_name: The name of the OSS bucket of the Vault.
         :param str bytes_done: The amount of backup data. The unit is Byte.
-        :param str create_time: The creation time of the Vault. UNIX time in seconds.
+        :param str created_time: The creation time of the Vault. UNIX time in seconds.
         :param bool dedup: Whether to enable the deduplication function for the database backup Vault.
-        :param str description: The description of the Vault.
-        :param str id: The ID of Vault.
+        :param str description: The description of the vault.
+        :param str id: The ID of vault.
         :param bool index_available: Index available.
         :param str index_level: Index level.
         :param str index_update_time: Index update time.
@@ -1728,15 +1862,15 @@ class GetVaultsVaultResult(dict):
         :param str status: The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
         :param str storage_size: Backup vault storage usage. The unit is Byte.
         :param str updated_time: The update time of the Vault. UNIX time in seconds.
-        :param str vault_id: The ID of Vault, same as `id`.
-        :param str vault_name: The name of Vault.
-        :param str vault_status_message: Error status information of Vault. Only valid for remote backup warehouses.
-        :param str vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
+        :param str vault_id: The ID of vault, same as `id`.
+        :param str vault_name: The name of vault.
+        :param str vault_status_message: Error status information of Vault. Only valid for remote backup warehouses. Only the remote backup warehouse is valid.
+        :param str vault_storage_class: The storage class of vault. Valid values: `STANDARD`.
         :param str vault_type: The type of Vault. Valid values: `STANDARD`.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "bytes_done", bytes_done)
-        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_time", created_time)
         pulumi.set(__self__, "dedup", dedup)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -1777,12 +1911,12 @@ class GetVaultsVaultResult(dict):
         return pulumi.get(self, "bytes_done")
 
     @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> str:
         """
         The creation time of the Vault. UNIX time in seconds.
         """
-        return pulumi.get(self, "create_time")
+        return pulumi.get(self, "created_time")
 
     @property
     @pulumi.getter
@@ -1796,7 +1930,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        The description of the Vault.
+        The description of the vault.
         """
         return pulumi.get(self, "description")
 
@@ -1804,7 +1938,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The ID of Vault.
+        The ID of vault.
         """
         return pulumi.get(self, "id")
 
@@ -1921,7 +2055,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> str:
         """
-        The ID of Vault, same as `id`.
+        The ID of vault, same as `id`.
         """
         return pulumi.get(self, "vault_id")
 
@@ -1929,7 +2063,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="vaultName")
     def vault_name(self) -> str:
         """
-        The name of Vault.
+        The name of vault.
         """
         return pulumi.get(self, "vault_name")
 
@@ -1937,7 +2071,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="vaultStatusMessage")
     def vault_status_message(self) -> str:
         """
-        Error status information of Vault. Only valid for remote backup warehouses.
+        Error status information of Vault. Only valid for remote backup warehouses. Only the remote backup warehouse is valid.
         """
         return pulumi.get(self, "vault_status_message")
 
@@ -1945,7 +2079,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="vaultStorageClass")
     def vault_storage_class(self) -> str:
         """
-        The storage class of Vault. Valid values: `STANDARD`.
+        The storage class of vault. Valid values: `STANDARD`.
         """
         return pulumi.get(self, "vault_storage_class")
 

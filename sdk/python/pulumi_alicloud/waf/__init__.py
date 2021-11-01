@@ -9,6 +9,7 @@ from .get_certificates import *
 from .get_domains import *
 from .get_instances import *
 from .instance import *
+from .protection_module import *
 from ._inputs import *
 from . import outputs
 
@@ -30,6 +31,8 @@ def _register_module():
                 return Domain(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:waf/instance:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:waf/protectionModule:ProtectionModule":
+                return ProtectionModule(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
@@ -38,5 +41,6 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "waf/certificate", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "waf/domain", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "waf/instance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "waf/protectionModule", _module_instance)
 
 _register_module()

@@ -13,7 +13,7 @@ import (
 
 // Provides a Apsara Agile Live (IMP) App Template resource.
 //
-// For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://help.aliyun.com/document_detail/273168.html).
+// For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://help.aliyun.com/document_detail/270121.html).
 //
 // > **NOTE:** Available in v1.137.0+.
 //

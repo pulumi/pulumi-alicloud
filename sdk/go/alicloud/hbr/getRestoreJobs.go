@@ -64,7 +64,7 @@ type GetRestoreJobsArgs struct {
 	RestoreIds []string `pulumi:"restoreIds"`
 	// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 	RestoreType string `pulumi:"restoreType"`
-	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceTypes []string `pulumi:"sourceTypes"`
 	// The status of restore job.
 	Status *string `pulumi:"status"`

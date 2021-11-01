@@ -32,7 +32,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		defaultSynchronizationInstance, err := dts.NewSynchronizationInstance(ctx, "defaultSynchronizationInstance", &dts.SynchronizationInstanceArgs{
-// 			PaymentType:                   pulumi.String("PostPaid"),
+// 			PaymentType:                   pulumi.String("PayAsYouGo"),
 // 			SourceEndpointEngineName:      pulumi.String("PolarDB"),
 // 			SourceEndpointRegion:          pulumi.String("cn-hangzhou"),
 // 			DestinationEndpointEngineName: pulumi.String("ADB30"),

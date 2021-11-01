@@ -12,9 +12,11 @@ from . import outputs
 __all__ = [
     'AggregateCompliancePackConfigRule',
     'AggregateCompliancePackConfigRuleConfigRuleParameter',
+    'AggregateCompliancePackConfigRuleId',
     'AggregatorAggregatorAccount',
     'CompliancePackConfigRule',
     'CompliancePackConfigRuleConfigRuleParameter',
+    'CompliancePackConfigRuleId',
     'GetAggregateCompliancePacksPackResult',
     'GetAggregateCompliancePacksPackConfigRuleResult',
     'GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult',
@@ -128,6 +130,42 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter(dict):
         The Parameter Value.
         """
         return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class AggregateCompliancePackConfigRuleId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configRuleId":
+            suggest = "config_rule_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AggregateCompliancePackConfigRuleId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AggregateCompliancePackConfigRuleId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AggregateCompliancePackConfigRuleId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_rule_id: Optional[str] = None):
+        """
+        :param str config_rule_id: The rule ID of Aggregate Config Rule.
+        """
+        if config_rule_id is not None:
+            pulumi.set(__self__, "config_rule_id", config_rule_id)
+
+    @property
+    @pulumi.getter(name="configRuleId")
+    def config_rule_id(self) -> Optional[str]:
+        """
+        The rule ID of Aggregate Config Rule.
+        """
+        return pulumi.get(self, "config_rule_id")
 
 
 @pulumi.output_type
@@ -288,6 +326,42 @@ class CompliancePackConfigRuleConfigRuleParameter(dict):
         The parameter value.
         """
         return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class CompliancePackConfigRuleId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configRuleId":
+            suggest = "config_rule_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompliancePackConfigRuleId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompliancePackConfigRuleId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompliancePackConfigRuleId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_rule_id: Optional[str] = None):
+        """
+        :param str config_rule_id: The rule ID of Config Rule.
+        """
+        if config_rule_id is not None:
+            pulumi.set(__self__, "config_rule_id", config_rule_id)
+
+    @property
+    @pulumi.getter(name="configRuleId")
+    def config_rule_id(self) -> Optional[str]:
+        """
+        The rule ID of Config Rule.
+        """
+        return pulumi.get(self, "config_rule_id")
 
 
 @pulumi.output_type

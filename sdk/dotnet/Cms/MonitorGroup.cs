@@ -32,6 +32,20 @@ namespace Pulumi.AliCloud.Cms
     ///         {
     ///             MonitorGroupName = "tf-testaccmonitorgroup",
     ///         });
+    ///         var default2 = new AliCloud.Cms.MonitorGroup("default2", new AliCloud.Cms.MonitorGroupArgs
+    ///         {
+    ///             ContactGroups = 
+    ///             {
+    ///                 "your_contact_groups",
+    ///             },
+    ///             ResourceGroupId = "your_resource_group_id",
+    ///             ResourceGroupName = "resource_group_name",
+    ///             Tags = 
+    ///             {
+    ///                 { "Created", "TF" },
+    ///                 { "For", "Acceptance-test" },
+    ///             },
+    ///         });
     ///     }
     /// 
     /// }
@@ -60,6 +74,18 @@ namespace Pulumi.AliCloud.Cms
         [Output("monitorGroupName")]
         public Output<string> MonitorGroupName { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group.
+        /// </summary>
+        [Output("resourceGroupName")]
+        public Output<string?> ResourceGroupName { get; private set; } = null!;
+
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
@@ -71,7 +97,7 @@ namespace Pulumi.AliCloud.Cms
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public MonitorGroup(string name, MonitorGroupArgs args, CustomResourceOptions? options = null)
+        public MonitorGroup(string name, MonitorGroupArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:cms/monitorGroup:MonitorGroup", name, args ?? new MonitorGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -124,8 +150,20 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// The name of the application group.
         /// </summary>
-        [Input("monitorGroupName", required: true)]
-        public Input<string> MonitorGroupName { get; set; } = null!;
+        [Input("monitorGroupName")]
+        public Input<string>? MonitorGroupName { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The name of the resource group.
+        /// </summary>
+        [Input("resourceGroupName")]
+        public Input<string>? ResourceGroupName { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -159,6 +197,18 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         [Input("monitorGroupName")]
         public Input<string>? MonitorGroupName { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The name of the resource group.
+        /// </summary>
+        [Input("resourceGroupName")]
+        public Input<string>? ResourceGroupName { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

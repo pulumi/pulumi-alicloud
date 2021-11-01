@@ -267,6 +267,238 @@ func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput) Index(i pulumi.Int
 	}).(EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput)
 }
 
+type GetNasFileSystemsSystem struct {
+	// The capacity of nas file system.
+	Capacity string `pulumi:"capacity"`
+	// The create time of nas file system.
+	CreateTime string `pulumi:"createTime"`
+	// The description of nas file system.
+	Description string `pulumi:"description"`
+	// The filesystem id of nas file system.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The type of nas file system.
+	FileSystemType string `pulumi:"fileSystemType"`
+	// The ID of the Nas File System.
+	Id string `pulumi:"id"`
+	// The size of metered.
+	MeteredSize string `pulumi:"meteredSize"`
+	// The domain of mount target.
+	MountTargetDomain string `pulumi:"mountTargetDomain"`
+	// The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
+	MountTargetStatus string `pulumi:"mountTargetStatus"`
+	// The name of nas file system.
+	NasFileSystemName string `pulumi:"nasFileSystemName"`
+	// The ID of office site.
+	OfficeSiteId string `pulumi:"officeSiteId"`
+	// The name of office site.
+	OfficeSiteName string `pulumi:"officeSiteName"`
+	// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+	Status string `pulumi:"status"`
+	// The storage type of nas file system.
+	StorageType string `pulumi:"storageType"`
+	// Whether to support Acl.
+	SupportAcl bool `pulumi:"supportAcl"`
+	// The zone id of nas file system.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetNasFileSystemsSystemInput is an input type that accepts GetNasFileSystemsSystemArgs and GetNasFileSystemsSystemOutput values.
+// You can construct a concrete instance of `GetNasFileSystemsSystemInput` via:
+//
+//          GetNasFileSystemsSystemArgs{...}
+type GetNasFileSystemsSystemInput interface {
+	pulumi.Input
+
+	ToGetNasFileSystemsSystemOutput() GetNasFileSystemsSystemOutput
+	ToGetNasFileSystemsSystemOutputWithContext(context.Context) GetNasFileSystemsSystemOutput
+}
+
+type GetNasFileSystemsSystemArgs struct {
+	// The capacity of nas file system.
+	Capacity pulumi.StringInput `pulumi:"capacity"`
+	// The create time of nas file system.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of nas file system.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The filesystem id of nas file system.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The type of nas file system.
+	FileSystemType pulumi.StringInput `pulumi:"fileSystemType"`
+	// The ID of the Nas File System.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The size of metered.
+	MeteredSize pulumi.StringInput `pulumi:"meteredSize"`
+	// The domain of mount target.
+	MountTargetDomain pulumi.StringInput `pulumi:"mountTargetDomain"`
+	// The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
+	MountTargetStatus pulumi.StringInput `pulumi:"mountTargetStatus"`
+	// The name of nas file system.
+	NasFileSystemName pulumi.StringInput `pulumi:"nasFileSystemName"`
+	// The ID of office site.
+	OfficeSiteId pulumi.StringInput `pulumi:"officeSiteId"`
+	// The name of office site.
+	OfficeSiteName pulumi.StringInput `pulumi:"officeSiteName"`
+	// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The storage type of nas file system.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+	// Whether to support Acl.
+	SupportAcl pulumi.BoolInput `pulumi:"supportAcl"`
+	// The zone id of nas file system.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetNasFileSystemsSystemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNasFileSystemsSystem)(nil)).Elem()
+}
+
+func (i GetNasFileSystemsSystemArgs) ToGetNasFileSystemsSystemOutput() GetNasFileSystemsSystemOutput {
+	return i.ToGetNasFileSystemsSystemOutputWithContext(context.Background())
+}
+
+func (i GetNasFileSystemsSystemArgs) ToGetNasFileSystemsSystemOutputWithContext(ctx context.Context) GetNasFileSystemsSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNasFileSystemsSystemOutput)
+}
+
+// GetNasFileSystemsSystemArrayInput is an input type that accepts GetNasFileSystemsSystemArray and GetNasFileSystemsSystemArrayOutput values.
+// You can construct a concrete instance of `GetNasFileSystemsSystemArrayInput` via:
+//
+//          GetNasFileSystemsSystemArray{ GetNasFileSystemsSystemArgs{...} }
+type GetNasFileSystemsSystemArrayInput interface {
+	pulumi.Input
+
+	ToGetNasFileSystemsSystemArrayOutput() GetNasFileSystemsSystemArrayOutput
+	ToGetNasFileSystemsSystemArrayOutputWithContext(context.Context) GetNasFileSystemsSystemArrayOutput
+}
+
+type GetNasFileSystemsSystemArray []GetNasFileSystemsSystemInput
+
+func (GetNasFileSystemsSystemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNasFileSystemsSystem)(nil)).Elem()
+}
+
+func (i GetNasFileSystemsSystemArray) ToGetNasFileSystemsSystemArrayOutput() GetNasFileSystemsSystemArrayOutput {
+	return i.ToGetNasFileSystemsSystemArrayOutputWithContext(context.Background())
+}
+
+func (i GetNasFileSystemsSystemArray) ToGetNasFileSystemsSystemArrayOutputWithContext(ctx context.Context) GetNasFileSystemsSystemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNasFileSystemsSystemArrayOutput)
+}
+
+type GetNasFileSystemsSystemOutput struct{ *pulumi.OutputState }
+
+func (GetNasFileSystemsSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNasFileSystemsSystem)(nil)).Elem()
+}
+
+func (o GetNasFileSystemsSystemOutput) ToGetNasFileSystemsSystemOutput() GetNasFileSystemsSystemOutput {
+	return o
+}
+
+func (o GetNasFileSystemsSystemOutput) ToGetNasFileSystemsSystemOutputWithContext(ctx context.Context) GetNasFileSystemsSystemOutput {
+	return o
+}
+
+// The capacity of nas file system.
+func (o GetNasFileSystemsSystemOutput) Capacity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.Capacity }).(pulumi.StringOutput)
+}
+
+// The create time of nas file system.
+func (o GetNasFileSystemsSystemOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of nas file system.
+func (o GetNasFileSystemsSystemOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The filesystem id of nas file system.
+func (o GetNasFileSystemsSystemOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The type of nas file system.
+func (o GetNasFileSystemsSystemOutput) FileSystemType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.FileSystemType }).(pulumi.StringOutput)
+}
+
+// The ID of the Nas File System.
+func (o GetNasFileSystemsSystemOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The size of metered.
+func (o GetNasFileSystemsSystemOutput) MeteredSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.MeteredSize }).(pulumi.StringOutput)
+}
+
+// The domain of mount target.
+func (o GetNasFileSystemsSystemOutput) MountTargetDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.MountTargetDomain }).(pulumi.StringOutput)
+}
+
+// The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
+func (o GetNasFileSystemsSystemOutput) MountTargetStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.MountTargetStatus }).(pulumi.StringOutput)
+}
+
+// The name of nas file system.
+func (o GetNasFileSystemsSystemOutput) NasFileSystemName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.NasFileSystemName }).(pulumi.StringOutput)
+}
+
+// The ID of office site.
+func (o GetNasFileSystemsSystemOutput) OfficeSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.OfficeSiteId }).(pulumi.StringOutput)
+}
+
+// The name of office site.
+func (o GetNasFileSystemsSystemOutput) OfficeSiteName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.OfficeSiteName }).(pulumi.StringOutput)
+}
+
+// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+func (o GetNasFileSystemsSystemOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage type of nas file system.
+func (o GetNasFileSystemsSystemOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// Whether to support Acl.
+func (o GetNasFileSystemsSystemOutput) SupportAcl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) bool { return v.SupportAcl }).(pulumi.BoolOutput)
+}
+
+// The zone id of nas file system.
+func (o GetNasFileSystemsSystemOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsSystem) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetNasFileSystemsSystemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNasFileSystemsSystemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNasFileSystemsSystem)(nil)).Elem()
+}
+
+func (o GetNasFileSystemsSystemArrayOutput) ToGetNasFileSystemsSystemArrayOutput() GetNasFileSystemsSystemArrayOutput {
+	return o
+}
+
+func (o GetNasFileSystemsSystemArrayOutput) ToGetNasFileSystemsSystemArrayOutputWithContext(ctx context.Context) GetNasFileSystemsSystemArrayOutput {
+	return o
+}
+
+func (o GetNasFileSystemsSystemArrayOutput) Index(i pulumi.IntInput) GetNasFileSystemsSystemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNasFileSystemsSystem {
+		return vs[0].([]GetNasFileSystemsSystem)[vs[1].(int)]
+	}).(GetNasFileSystemsSystemOutput)
+}
+
 type GetPolicyGroupsGroup struct {
 	// The rule of authorize access rule.
 	AuthorizeAccessPolicyRules []GetPolicyGroupsGroupAuthorizeAccessPolicyRule `pulumi:"authorizeAccessPolicyRules"`
@@ -778,15 +1010,377 @@ func (o GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput) Index(i pulu
 	}).(GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutput)
 }
 
+type GetSimpleOfficeSitesSite struct {
+	// The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+	Bandwidth int `pulumi:"bandwidth"`
+	// Cloud Enterprise Network Instance Id.
+	CenId string `pulumi:"cenId"`
+	// Workspace Corresponds to the Security Office Network of IPv4 Segment.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// Workspace Creation Time.
+	CreateTime string `pulumi:"createTime"`
+	// Security Group ID.
+	CustomSecurityGroupId string `pulumi:"customSecurityGroupId"`
+	// Connect to the Cloud Desktop Allows the Use of the Access Mode of. Possible Values: the Internet: Only Allows the Client to Public Cloud Desktop. Virtual Private Cloud (VPC): Only Allows in the Virtual Private Cloud (VPC) in the Client to Connect to the Cloud Desktop. Any: Not by Way of Limitation. Use Client to Connect to the Cloud Desktop When It Is Possible to Choose the Connection.
+	DesktopAccessType string `pulumi:"desktopAccessType"`
+	// The Desktop Vpc Endpoint.
+	DesktopVpcEndpoint string `pulumi:"desktopVpcEndpoint"`
+	// Enterprise Ad Corresponding DNS Address.
+	DnsAddresses []string `pulumi:"dnsAddresses"`
+	// Easy-to-Use DNS Name.
+	DnsUserName string `pulumi:"dnsUserName"`
+	// Enterprise of Ad Domain Name.
+	DomainName string `pulumi:"domainName"`
+	// Domain of the User Who Will Administer This Target Application Password.
+	DomainPassword string `pulumi:"domainPassword"`
+	// The Domain Administrator's Username.
+	DomainUserName string `pulumi:"domainUserName"`
+	// Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+	EnableAdminAccess bool `pulumi:"enableAdminAccess"`
+	// Enable Cross-Desktop Access.
+	EnableCrossDesktopAccess bool `pulumi:"enableCrossDesktopAccess"`
+	// Whether the Open Internet Access Function.
+	EnableInternetAccess bool `pulumi:"enableInternetAccess"`
+	// NAS File System ID.
+	FileSystemIds []string `pulumi:"fileSystemIds"`
+	// The ID of the Simple Office Site.
+	Id string `pulumi:"id"`
+	// Whether to Enable Multi-Factor Authentication MFA.
+	MfaEnabled bool `pulumi:"mfaEnabled"`
+	// Internet Access ID.
+	NetworkPackageId string `pulumi:"networkPackageId"`
+	// The Workspace ID.
+	OfficeSiteId string `pulumi:"officeSiteId"`
+	// Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+	OfficeSiteType string `pulumi:"officeSiteType"`
+	// The simple office site name.
+	SimpleOfficeSiteName string `pulumi:"simpleOfficeSiteName"`
+	// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+	SsoEnabled bool `pulumi:"ssoEnabled"`
+	// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+	SsoStatus bool `pulumi:"ssoStatus"`
+	// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+	Status string `pulumi:"status"`
+	// AD Subdomain of the DNS Address.
+	SubDnsAddresses []string `pulumi:"subDnsAddresses"`
+	// AD Domain DNS Name.
+	SubDomainName string `pulumi:"subDomainName"`
+	// AD Trust Password.
+	TrustPassword string `pulumi:"trustPassword"`
+	// Security Office VPC ID.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch ids.
+	VswitchIds []string `pulumi:"vswitchIds"`
+}
+
+// GetSimpleOfficeSitesSiteInput is an input type that accepts GetSimpleOfficeSitesSiteArgs and GetSimpleOfficeSitesSiteOutput values.
+// You can construct a concrete instance of `GetSimpleOfficeSitesSiteInput` via:
+//
+//          GetSimpleOfficeSitesSiteArgs{...}
+type GetSimpleOfficeSitesSiteInput interface {
+	pulumi.Input
+
+	ToGetSimpleOfficeSitesSiteOutput() GetSimpleOfficeSitesSiteOutput
+	ToGetSimpleOfficeSitesSiteOutputWithContext(context.Context) GetSimpleOfficeSitesSiteOutput
+}
+
+type GetSimpleOfficeSitesSiteArgs struct {
+	// The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// Cloud Enterprise Network Instance Id.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// Workspace Corresponds to the Security Office Network of IPv4 Segment.
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// Workspace Creation Time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Security Group ID.
+	CustomSecurityGroupId pulumi.StringInput `pulumi:"customSecurityGroupId"`
+	// Connect to the Cloud Desktop Allows the Use of the Access Mode of. Possible Values: the Internet: Only Allows the Client to Public Cloud Desktop. Virtual Private Cloud (VPC): Only Allows in the Virtual Private Cloud (VPC) in the Client to Connect to the Cloud Desktop. Any: Not by Way of Limitation. Use Client to Connect to the Cloud Desktop When It Is Possible to Choose the Connection.
+	DesktopAccessType pulumi.StringInput `pulumi:"desktopAccessType"`
+	// The Desktop Vpc Endpoint.
+	DesktopVpcEndpoint pulumi.StringInput `pulumi:"desktopVpcEndpoint"`
+	// Enterprise Ad Corresponding DNS Address.
+	DnsAddresses pulumi.StringArrayInput `pulumi:"dnsAddresses"`
+	// Easy-to-Use DNS Name.
+	DnsUserName pulumi.StringInput `pulumi:"dnsUserName"`
+	// Enterprise of Ad Domain Name.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Domain of the User Who Will Administer This Target Application Password.
+	DomainPassword pulumi.StringInput `pulumi:"domainPassword"`
+	// The Domain Administrator's Username.
+	DomainUserName pulumi.StringInput `pulumi:"domainUserName"`
+	// Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+	EnableAdminAccess pulumi.BoolInput `pulumi:"enableAdminAccess"`
+	// Enable Cross-Desktop Access.
+	EnableCrossDesktopAccess pulumi.BoolInput `pulumi:"enableCrossDesktopAccess"`
+	// Whether the Open Internet Access Function.
+	EnableInternetAccess pulumi.BoolInput `pulumi:"enableInternetAccess"`
+	// NAS File System ID.
+	FileSystemIds pulumi.StringArrayInput `pulumi:"fileSystemIds"`
+	// The ID of the Simple Office Site.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether to Enable Multi-Factor Authentication MFA.
+	MfaEnabled pulumi.BoolInput `pulumi:"mfaEnabled"`
+	// Internet Access ID.
+	NetworkPackageId pulumi.StringInput `pulumi:"networkPackageId"`
+	// The Workspace ID.
+	OfficeSiteId pulumi.StringInput `pulumi:"officeSiteId"`
+	// Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+	OfficeSiteType pulumi.StringInput `pulumi:"officeSiteType"`
+	// The simple office site name.
+	SimpleOfficeSiteName pulumi.StringInput `pulumi:"simpleOfficeSiteName"`
+	// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+	SsoEnabled pulumi.BoolInput `pulumi:"ssoEnabled"`
+	// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+	SsoStatus pulumi.BoolInput `pulumi:"ssoStatus"`
+	// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+	Status pulumi.StringInput `pulumi:"status"`
+	// AD Subdomain of the DNS Address.
+	SubDnsAddresses pulumi.StringArrayInput `pulumi:"subDnsAddresses"`
+	// AD Domain DNS Name.
+	SubDomainName pulumi.StringInput `pulumi:"subDomainName"`
+	// AD Trust Password.
+	TrustPassword pulumi.StringInput `pulumi:"trustPassword"`
+	// Security Office VPC ID.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch ids.
+	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
+}
+
+func (GetSimpleOfficeSitesSiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSimpleOfficeSitesSite)(nil)).Elem()
+}
+
+func (i GetSimpleOfficeSitesSiteArgs) ToGetSimpleOfficeSitesSiteOutput() GetSimpleOfficeSitesSiteOutput {
+	return i.ToGetSimpleOfficeSitesSiteOutputWithContext(context.Background())
+}
+
+func (i GetSimpleOfficeSitesSiteArgs) ToGetSimpleOfficeSitesSiteOutputWithContext(ctx context.Context) GetSimpleOfficeSitesSiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSimpleOfficeSitesSiteOutput)
+}
+
+// GetSimpleOfficeSitesSiteArrayInput is an input type that accepts GetSimpleOfficeSitesSiteArray and GetSimpleOfficeSitesSiteArrayOutput values.
+// You can construct a concrete instance of `GetSimpleOfficeSitesSiteArrayInput` via:
+//
+//          GetSimpleOfficeSitesSiteArray{ GetSimpleOfficeSitesSiteArgs{...} }
+type GetSimpleOfficeSitesSiteArrayInput interface {
+	pulumi.Input
+
+	ToGetSimpleOfficeSitesSiteArrayOutput() GetSimpleOfficeSitesSiteArrayOutput
+	ToGetSimpleOfficeSitesSiteArrayOutputWithContext(context.Context) GetSimpleOfficeSitesSiteArrayOutput
+}
+
+type GetSimpleOfficeSitesSiteArray []GetSimpleOfficeSitesSiteInput
+
+func (GetSimpleOfficeSitesSiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSimpleOfficeSitesSite)(nil)).Elem()
+}
+
+func (i GetSimpleOfficeSitesSiteArray) ToGetSimpleOfficeSitesSiteArrayOutput() GetSimpleOfficeSitesSiteArrayOutput {
+	return i.ToGetSimpleOfficeSitesSiteArrayOutputWithContext(context.Background())
+}
+
+func (i GetSimpleOfficeSitesSiteArray) ToGetSimpleOfficeSitesSiteArrayOutputWithContext(ctx context.Context) GetSimpleOfficeSitesSiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSimpleOfficeSitesSiteArrayOutput)
+}
+
+type GetSimpleOfficeSitesSiteOutput struct{ *pulumi.OutputState }
+
+func (GetSimpleOfficeSitesSiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSimpleOfficeSitesSite)(nil)).Elem()
+}
+
+func (o GetSimpleOfficeSitesSiteOutput) ToGetSimpleOfficeSitesSiteOutput() GetSimpleOfficeSitesSiteOutput {
+	return o
+}
+
+func (o GetSimpleOfficeSitesSiteOutput) ToGetSimpleOfficeSitesSiteOutputWithContext(ctx context.Context) GetSimpleOfficeSitesSiteOutput {
+	return o
+}
+
+// The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+func (o GetSimpleOfficeSitesSiteOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// Cloud Enterprise Network Instance Id.
+func (o GetSimpleOfficeSitesSiteOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// Workspace Corresponds to the Security Office Network of IPv4 Segment.
+func (o GetSimpleOfficeSitesSiteOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// Workspace Creation Time.
+func (o GetSimpleOfficeSitesSiteOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Security Group ID.
+func (o GetSimpleOfficeSitesSiteOutput) CustomSecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.CustomSecurityGroupId }).(pulumi.StringOutput)
+}
+
+// Connect to the Cloud Desktop Allows the Use of the Access Mode of. Possible Values: the Internet: Only Allows the Client to Public Cloud Desktop. Virtual Private Cloud (VPC): Only Allows in the Virtual Private Cloud (VPC) in the Client to Connect to the Cloud Desktop. Any: Not by Way of Limitation. Use Client to Connect to the Cloud Desktop When It Is Possible to Choose the Connection.
+func (o GetSimpleOfficeSitesSiteOutput) DesktopAccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.DesktopAccessType }).(pulumi.StringOutput)
+}
+
+// The Desktop Vpc Endpoint.
+func (o GetSimpleOfficeSitesSiteOutput) DesktopVpcEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.DesktopVpcEndpoint }).(pulumi.StringOutput)
+}
+
+// Enterprise Ad Corresponding DNS Address.
+func (o GetSimpleOfficeSitesSiteOutput) DnsAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) []string { return v.DnsAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Easy-to-Use DNS Name.
+func (o GetSimpleOfficeSitesSiteOutput) DnsUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.DnsUserName }).(pulumi.StringOutput)
+}
+
+// Enterprise of Ad Domain Name.
+func (o GetSimpleOfficeSitesSiteOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Domain of the User Who Will Administer This Target Application Password.
+func (o GetSimpleOfficeSitesSiteOutput) DomainPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.DomainPassword }).(pulumi.StringOutput)
+}
+
+// The Domain Administrator's Username.
+func (o GetSimpleOfficeSitesSiteOutput) DomainUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.DomainUserName }).(pulumi.StringOutput)
+}
+
+// Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+func (o GetSimpleOfficeSitesSiteOutput) EnableAdminAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) bool { return v.EnableAdminAccess }).(pulumi.BoolOutput)
+}
+
+// Enable Cross-Desktop Access.
+func (o GetSimpleOfficeSitesSiteOutput) EnableCrossDesktopAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) bool { return v.EnableCrossDesktopAccess }).(pulumi.BoolOutput)
+}
+
+// Whether the Open Internet Access Function.
+func (o GetSimpleOfficeSitesSiteOutput) EnableInternetAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) bool { return v.EnableInternetAccess }).(pulumi.BoolOutput)
+}
+
+// NAS File System ID.
+func (o GetSimpleOfficeSitesSiteOutput) FileSystemIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) []string { return v.FileSystemIds }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the Simple Office Site.
+func (o GetSimpleOfficeSitesSiteOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether to Enable Multi-Factor Authentication MFA.
+func (o GetSimpleOfficeSitesSiteOutput) MfaEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) bool { return v.MfaEnabled }).(pulumi.BoolOutput)
+}
+
+// Internet Access ID.
+func (o GetSimpleOfficeSitesSiteOutput) NetworkPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.NetworkPackageId }).(pulumi.StringOutput)
+}
+
+// The Workspace ID.
+func (o GetSimpleOfficeSitesSiteOutput) OfficeSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.OfficeSiteId }).(pulumi.StringOutput)
+}
+
+// Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+func (o GetSimpleOfficeSitesSiteOutput) OfficeSiteType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.OfficeSiteType }).(pulumi.StringOutput)
+}
+
+// The simple office site name.
+func (o GetSimpleOfficeSitesSiteOutput) SimpleOfficeSiteName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.SimpleOfficeSiteName }).(pulumi.StringOutput)
+}
+
+// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+func (o GetSimpleOfficeSitesSiteOutput) SsoEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) bool { return v.SsoEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+func (o GetSimpleOfficeSitesSiteOutput) SsoStatus() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) bool { return v.SsoStatus }).(pulumi.BoolOutput)
+}
+
+// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+func (o GetSimpleOfficeSitesSiteOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// AD Subdomain of the DNS Address.
+func (o GetSimpleOfficeSitesSiteOutput) SubDnsAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) []string { return v.SubDnsAddresses }).(pulumi.StringArrayOutput)
+}
+
+// AD Domain DNS Name.
+func (o GetSimpleOfficeSitesSiteOutput) SubDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.SubDomainName }).(pulumi.StringOutput)
+}
+
+// AD Trust Password.
+func (o GetSimpleOfficeSitesSiteOutput) TrustPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.TrustPassword }).(pulumi.StringOutput)
+}
+
+// Security Office VPC ID.
+func (o GetSimpleOfficeSitesSiteOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch ids.
+func (o GetSimpleOfficeSitesSiteOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesSite) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+}
+
+type GetSimpleOfficeSitesSiteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSimpleOfficeSitesSiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSimpleOfficeSitesSite)(nil)).Elem()
+}
+
+func (o GetSimpleOfficeSitesSiteArrayOutput) ToGetSimpleOfficeSitesSiteArrayOutput() GetSimpleOfficeSitesSiteArrayOutput {
+	return o
+}
+
+func (o GetSimpleOfficeSitesSiteArrayOutput) ToGetSimpleOfficeSitesSiteArrayOutputWithContext(ctx context.Context) GetSimpleOfficeSitesSiteArrayOutput {
+	return o
+}
+
+func (o GetSimpleOfficeSitesSiteArrayOutput) Index(i pulumi.IntInput) GetSimpleOfficeSitesSiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSimpleOfficeSitesSite {
+		return vs[0].([]GetSimpleOfficeSitesSite)[vs[1].(int)]
+	}).(GetSimpleOfficeSitesSiteOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetNasFileSystemsSystemOutput{})
+	pulumi.RegisterOutputType(GetNasFileSystemsSystemArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetSimpleOfficeSitesSiteOutput{})
+	pulumi.RegisterOutputType(GetSimpleOfficeSitesSiteArrayOutput{})
 }

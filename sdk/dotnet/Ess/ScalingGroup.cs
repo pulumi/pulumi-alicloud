@@ -48,6 +48,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> GroupDeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        /// </summary>
+        [Output("launchTemplateId")]
+        public Output<string?> LaunchTemplateId { get; private set; } = null!;
+
+        /// <summary>
         /// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         /// - The Server Load Balancer instance must be enabled.
         /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -206,6 +212,12 @@ namespace Pulumi.AliCloud.Ess
         [Input("groupDeletionProtection")]
         public Input<bool>? GroupDeletionProtection { get; set; }
 
+        /// <summary>
+        /// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        /// </summary>
+        [Input("launchTemplateId")]
+        public Input<string>? LaunchTemplateId { get; set; }
+
         [Input("loadbalancerIds")]
         private InputList<string>? _loadbalancerIds;
 
@@ -343,6 +355,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("groupDeletionProtection")]
         public Input<bool>? GroupDeletionProtection { get; set; }
+
+        /// <summary>
+        /// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        /// </summary>
+        [Input("launchTemplateId")]
+        public Input<string>? LaunchTemplateId { get; set; }
 
         [Input("loadbalancerIds")]
         private InputList<string>? _loadbalancerIds;

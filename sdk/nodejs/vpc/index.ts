@@ -27,6 +27,10 @@ export * from "./getSnatEntries";
 export * from "./getSslVpnClientCerts";
 export * from "./getSslVpnServers";
 export * from "./getSwitches";
+export * from "./getTrafficMirrorFilterEgressRules";
+export * from "./getTrafficMirrorFilterIngressRules";
+export * from "./getTrafficMirrorFilters";
+export * from "./getTrafficMirrorService";
 export * from "./getVpcFlowLogs";
 export * from "./havip";
 export * from "./havipAttachment";
@@ -47,6 +51,9 @@ export * from "./routerInterfaceConnection";
 export * from "./snatEntry";
 export * from "./subnet";
 export * from "./switch";
+export * from "./trafficMirrorFilter";
+export * from "./trafficMirrorFilterEgressRule";
+export * from "./trafficMirrorFilterIngressRule";
 
 // Import resources to register:
 import { CommonBandwithPackage } from "./commonBandwithPackage";
@@ -73,6 +80,9 @@ import { RouterInterfaceConnection } from "./routerInterfaceConnection";
 import { SnatEntry } from "./snatEntry";
 import { Subnet } from "./subnet";
 import { Switch } from "./switch";
+import { TrafficMirrorFilter } from "./trafficMirrorFilter";
+import { TrafficMirrorFilterEgressRule } from "./trafficMirrorFilterEgressRule";
+import { TrafficMirrorFilterIngressRule } from "./trafficMirrorFilterIngressRule";
 
 const _module = {
     version: utilities.getVersion(),
@@ -126,6 +136,12 @@ const _module = {
                 return new Subnet(name, <any>undefined, { urn })
             case "alicloud:vpc/switch:Switch":
                 return new Switch(name, <any>undefined, { urn })
+            case "alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter":
+                return new TrafficMirrorFilter(name, <any>undefined, { urn })
+            case "alicloud:vpc/trafficMirrorFilterEgressRule:TrafficMirrorFilterEgressRule":
+                return new TrafficMirrorFilterEgressRule(name, <any>undefined, { urn })
+            case "alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule":
+                return new TrafficMirrorFilterIngressRule(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -155,3 +171,6 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/routerInterfaceConnection
 pulumi.runtime.registerResourceModule("alicloud", "vpc/snatEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/subnet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/switch", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilter", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilterEgressRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilterIngressRule", _module)

@@ -15,7 +15,7 @@ type ApiConstantParameter struct {
 	Description *string `pulumi:"description"`
 	// System parameter location; values: 'HEAD' and 'QUERY'.
 	In string `pulumi:"in"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name string `pulumi:"name"`
 	// Constant parameter value.
 	Value string `pulumi:"value"`
@@ -37,7 +37,7 @@ type ApiConstantParameterArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// System parameter location; values: 'HEAD' and 'QUERY'.
 	In pulumi.StringInput `pulumi:"in"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name pulumi.StringInput `pulumi:"name"`
 	// Constant parameter value.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -104,7 +104,7 @@ func (o ApiConstantParameterOutput) In() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiConstantParameter) string { return v.In }).(pulumi.StringOutput)
 }
 
-// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 func (o ApiConstantParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiConstantParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -548,7 +548,7 @@ type ApiHttpVpcServiceConfig struct {
 	AoneName *string `pulumi:"aoneName"`
 	// The http method of backend service.
 	Method string `pulumi:"method"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name string `pulumi:"name"`
 	// The path of backend service.
 	Path string `pulumi:"path"`
@@ -571,7 +571,7 @@ type ApiHttpVpcServiceConfigArgs struct {
 	AoneName pulumi.StringPtrInput `pulumi:"aoneName"`
 	// The http method of backend service.
 	Method pulumi.StringInput `pulumi:"method"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name pulumi.StringInput `pulumi:"name"`
 	// The path of backend service.
 	Path pulumi.StringInput `pulumi:"path"`
@@ -664,7 +664,7 @@ func (o ApiHttpVpcServiceConfigOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
-// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 func (o ApiHttpVpcServiceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -716,7 +716,7 @@ func (o ApiHttpVpcServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 func (o ApiHttpVpcServiceConfigPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
 		if v == nil {
@@ -892,15 +892,15 @@ func (o ApiMockServiceConfigPtrOutput) Result() pulumi.StringPtrOutput {
 }
 
 type ApiRequestConfig struct {
-	// The body format of the api, which support the values of 'STREAM' and 'FORM'
+	// The body format of the api, which support the values of 'STREAM' and 'FORM'.
 	BodyFormat *string `pulumi:"bodyFormat"`
 	// The http method of backend service.
 	Method string `pulumi:"method"`
-	// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+	// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
 	Mode string `pulumi:"mode"`
 	// The path of backend service.
 	Path string `pulumi:"path"`
-	// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
+	// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -916,15 +916,15 @@ type ApiRequestConfigInput interface {
 }
 
 type ApiRequestConfigArgs struct {
-	// The body format of the api, which support the values of 'STREAM' and 'FORM'
+	// The body format of the api, which support the values of 'STREAM' and 'FORM'.
 	BodyFormat pulumi.StringPtrInput `pulumi:"bodyFormat"`
 	// The http method of backend service.
 	Method pulumi.StringInput `pulumi:"method"`
-	// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+	// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// The path of backend service.
 	Path pulumi.StringInput `pulumi:"path"`
-	// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
+	// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -1005,7 +1005,7 @@ func (o ApiRequestConfigOutput) ToApiRequestConfigPtrOutputWithContext(ctx conte
 	}).(ApiRequestConfigPtrOutput)
 }
 
-// The body format of the api, which support the values of 'STREAM' and 'FORM'
+// The body format of the api, which support the values of 'STREAM' and 'FORM'.
 func (o ApiRequestConfigOutput) BodyFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiRequestConfig) *string { return v.BodyFormat }).(pulumi.StringPtrOutput)
 }
@@ -1015,7 +1015,7 @@ func (o ApiRequestConfigOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
-// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
 func (o ApiRequestConfigOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestConfig) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -1025,7 +1025,7 @@ func (o ApiRequestConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestConfig) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
+// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
 func (o ApiRequestConfigOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestConfig) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -1048,7 +1048,7 @@ func (o ApiRequestConfigPtrOutput) Elem() ApiRequestConfigOutput {
 	return o.ApplyT(func(v *ApiRequestConfig) ApiRequestConfig { return *v }).(ApiRequestConfigOutput)
 }
 
-// The body format of the api, which support the values of 'STREAM' and 'FORM'
+// The body format of the api, which support the values of 'STREAM' and 'FORM'.
 func (o ApiRequestConfigPtrOutput) BodyFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiRequestConfig) *string {
 		if v == nil {
@@ -1068,7 +1068,7 @@ func (o ApiRequestConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
+// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
 func (o ApiRequestConfigPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiRequestConfig) *string {
 		if v == nil {
@@ -1088,7 +1088,7 @@ func (o ApiRequestConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
+// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
 func (o ApiRequestConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiRequestConfig) *string {
 		if v == nil {
@@ -1107,13 +1107,13 @@ type ApiRequestParameter struct {
 	In string `pulumi:"in"`
 	// Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	InService string `pulumi:"inService"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name string `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService string `pulumi:"nameService"`
 	// Parameter required or not; values: REQUIRED and OPTIONAL.
 	Required string `pulumi:"required"`
-	// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
+	// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
 	Type string `pulumi:"type"`
 }
 
@@ -1137,13 +1137,13 @@ type ApiRequestParameterArgs struct {
 	In pulumi.StringInput `pulumi:"in"`
 	// Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	InService pulumi.StringInput `pulumi:"inService"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name pulumi.StringInput `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService pulumi.StringInput `pulumi:"nameService"`
 	// Parameter required or not; values: REQUIRED and OPTIONAL.
 	Required pulumi.StringInput `pulumi:"required"`
-	// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
+	// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1218,7 +1218,7 @@ func (o ApiRequestParameterOutput) InService() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestParameter) string { return v.InService }).(pulumi.StringOutput)
 }
 
-// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 func (o ApiRequestParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1233,7 +1233,7 @@ func (o ApiRequestParameterOutput) Required() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestParameter) string { return v.Required }).(pulumi.StringOutput)
 }
 
-// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
+// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
 func (o ApiRequestParameterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestParameter) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1261,7 +1261,7 @@ func (o ApiRequestParameterArrayOutput) Index(i pulumi.IntInput) ApiRequestParam
 type ApiSystemParameter struct {
 	// System parameter location; values: 'HEAD' and 'QUERY'.
 	In string `pulumi:"in"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name string `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService string `pulumi:"nameService"`
@@ -1281,7 +1281,7 @@ type ApiSystemParameterInput interface {
 type ApiSystemParameterArgs struct {
 	// System parameter location; values: 'HEAD' and 'QUERY'.
 	In pulumi.StringInput `pulumi:"in"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name pulumi.StringInput `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService pulumi.StringInput `pulumi:"nameService"`
@@ -1343,7 +1343,7 @@ func (o ApiSystemParameterOutput) In() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiSystemParameter) string { return v.In }).(pulumi.StringOutput)
 }
 
-// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 func (o ApiSystemParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiSystemParameter) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -158,6 +159,30 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly imageUrl!: pulumi.Output<string | undefined>;
     /**
+     * Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+     */
+    public /*out*/ readonly internetIp!: pulumi.Output<string>;
+    /**
+     * public network SLB ID.
+     */
+    public readonly internetSlbId!: pulumi.Output<string | undefined>;
+    /**
+     * Bound private network SLB. The details see Block internet.
+     */
+    public readonly internets!: pulumi.Output<outputs.sae.ApplicationInternet[] | undefined>;
+    /**
+     * Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+     */
+    public /*out*/ readonly intranetIp!: pulumi.Output<string>;
+    /**
+     * private network SLB ID.
+     */
+    public readonly intranetSlbId!: pulumi.Output<string | undefined>;
+    /**
+     * Bound public network SLB. The details see Block intranet.
+     */
+    public readonly intranets!: pulumi.Output<outputs.sae.ApplicationIntranet[] | undefined>;
+    /**
      * The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
     public readonly jarStartArgs!: pulumi.Output<string | undefined>;
@@ -282,6 +307,10 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly versionId!: pulumi.Output<string | undefined>;
     /**
+     * The vpc id.
+     */
+    public readonly vpcId!: pulumi.Output<string | undefined>;
+    /**
      * The vswitch id.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
@@ -324,6 +353,12 @@ export class Application extends pulumi.CustomResource {
             inputs["enableGreyTagRoute"] = state ? state.enableGreyTagRoute : undefined;
             inputs["envs"] = state ? state.envs : undefined;
             inputs["imageUrl"] = state ? state.imageUrl : undefined;
+            inputs["internetIp"] = state ? state.internetIp : undefined;
+            inputs["internetSlbId"] = state ? state.internetSlbId : undefined;
+            inputs["internets"] = state ? state.internets : undefined;
+            inputs["intranetIp"] = state ? state.intranetIp : undefined;
+            inputs["intranetSlbId"] = state ? state.intranetSlbId : undefined;
+            inputs["intranets"] = state ? state.intranets : undefined;
             inputs["jarStartArgs"] = state ? state.jarStartArgs : undefined;
             inputs["jarStartOptions"] = state ? state.jarStartOptions : undefined;
             inputs["jdk"] = state ? state.jdk : undefined;
@@ -355,6 +390,7 @@ export class Application extends pulumi.CustomResource {
             inputs["tomcatConfig"] = state ? state.tomcatConfig : undefined;
             inputs["updateStrategy"] = state ? state.updateStrategy : undefined;
             inputs["versionId"] = state ? state.versionId : undefined;
+            inputs["vpcId"] = state ? state.vpcId : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["warStartOptions"] = state ? state.warStartOptions : undefined;
             inputs["webContainer"] = state ? state.webContainer : undefined;
@@ -386,6 +422,10 @@ export class Application extends pulumi.CustomResource {
             inputs["enableGreyTagRoute"] = args ? args.enableGreyTagRoute : undefined;
             inputs["envs"] = args ? args.envs : undefined;
             inputs["imageUrl"] = args ? args.imageUrl : undefined;
+            inputs["internetSlbId"] = args ? args.internetSlbId : undefined;
+            inputs["internets"] = args ? args.internets : undefined;
+            inputs["intranetSlbId"] = args ? args.intranetSlbId : undefined;
+            inputs["intranets"] = args ? args.intranets : undefined;
             inputs["jarStartArgs"] = args ? args.jarStartArgs : undefined;
             inputs["jarStartOptions"] = args ? args.jarStartOptions : undefined;
             inputs["jdk"] = args ? args.jdk : undefined;
@@ -417,9 +457,12 @@ export class Application extends pulumi.CustomResource {
             inputs["tomcatConfig"] = args ? args.tomcatConfig : undefined;
             inputs["updateStrategy"] = args ? args.updateStrategy : undefined;
             inputs["versionId"] = args ? args.versionId : undefined;
+            inputs["vpcId"] = args ? args.vpcId : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["warStartOptions"] = args ? args.warStartOptions : undefined;
             inputs["webContainer"] = args ? args.webContainer : undefined;
+            inputs["internetIp"] = undefined /*out*/;
+            inputs["intranetIp"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -500,6 +543,30 @@ export interface ApplicationState {
      * Mirror address. Only Image type applications can configure the mirror address.
      */
     readonly imageUrl?: pulumi.Input<string>;
+    /**
+     * Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+     */
+    readonly internetIp?: pulumi.Input<string>;
+    /**
+     * public network SLB ID.
+     */
+    readonly internetSlbId?: pulumi.Input<string>;
+    /**
+     * Bound private network SLB. The details see Block internet.
+     */
+    readonly internets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationInternet>[]>;
+    /**
+     * Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
+     */
+    readonly intranetIp?: pulumi.Input<string>;
+    /**
+     * private network SLB ID.
+     */
+    readonly intranetSlbId?: pulumi.Input<string>;
+    /**
+     * Bound public network SLB. The details see Block intranet.
+     */
+    readonly intranets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationIntranet>[]>;
     /**
      * The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
@@ -625,6 +692,10 @@ export interface ApplicationState {
      */
     readonly versionId?: pulumi.Input<string>;
     /**
+     * The vpc id.
+     */
+    readonly vpcId?: pulumi.Input<string>;
+    /**
      * The vswitch id.
      */
     readonly vswitchId?: pulumi.Input<string>;
@@ -710,6 +781,22 @@ export interface ApplicationArgs {
      * Mirror address. Only Image type applications can configure the mirror address.
      */
     readonly imageUrl?: pulumi.Input<string>;
+    /**
+     * public network SLB ID.
+     */
+    readonly internetSlbId?: pulumi.Input<string>;
+    /**
+     * Bound private network SLB. The details see Block internet.
+     */
+    readonly internets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationInternet>[]>;
+    /**
+     * private network SLB ID.
+     */
+    readonly intranetSlbId?: pulumi.Input<string>;
+    /**
+     * Bound public network SLB. The details see Block intranet.
+     */
+    readonly intranets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationIntranet>[]>;
     /**
      * The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
@@ -834,6 +921,10 @@ export interface ApplicationArgs {
      * Application version id.
      */
     readonly versionId?: pulumi.Input<string>;
+    /**
+     * The vpc id.
+     */
+    readonly vpcId?: pulumi.Input<string>;
     /**
      * The vswitch id.
      */

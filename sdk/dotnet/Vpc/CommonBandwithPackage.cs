@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class CommonBandwithPackage : Pulumi.CustomResource
     {
         /// <summary>
-        /// The bandwidth of the common bandwidth package, in Mbps.
+        /// The bandwidth of the common bandwidth package. Unit: Mbps.
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class CommonBandwithPackageArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The bandwidth of the common bandwidth package, in Mbps.
+        /// The bandwidth of the common bandwidth package. Unit: Mbps.
         /// </summary>
         [Input("bandwidth", required: true)]
         public Input<string> Bandwidth { get; set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class CommonBandwithPackageState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The bandwidth of the common bandwidth package, in Mbps.
+        /// The bandwidth of the common bandwidth package. Unit: Mbps.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }

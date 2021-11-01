@@ -179,6 +179,139 @@ func (o RepoDomainListPtrOutput) Vpc() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetEndpointAclPoliciesPolicy struct {
+	// The description of the entry.
+	Description string `pulumi:"description"`
+	// The type of endpoint.
+	EndpointType string `pulumi:"endpointType"`
+	// The IP segment that allowed to access.
+	Entry string `pulumi:"entry"`
+	// The ID of the Endpoint Acl Policy.
+	Id string `pulumi:"id"`
+	// The ID of the CR Instance.
+	InstanceId string `pulumi:"instanceId"`
+}
+
+// GetEndpointAclPoliciesPolicyInput is an input type that accepts GetEndpointAclPoliciesPolicyArgs and GetEndpointAclPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetEndpointAclPoliciesPolicyInput` via:
+//
+//          GetEndpointAclPoliciesPolicyArgs{...}
+type GetEndpointAclPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetEndpointAclPoliciesPolicyOutput() GetEndpointAclPoliciesPolicyOutput
+	ToGetEndpointAclPoliciesPolicyOutputWithContext(context.Context) GetEndpointAclPoliciesPolicyOutput
+}
+
+type GetEndpointAclPoliciesPolicyArgs struct {
+	// The description of the entry.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The type of endpoint.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The IP segment that allowed to access.
+	Entry pulumi.StringInput `pulumi:"entry"`
+	// The ID of the Endpoint Acl Policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the CR Instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+}
+
+func (GetEndpointAclPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointAclPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetEndpointAclPoliciesPolicyArgs) ToGetEndpointAclPoliciesPolicyOutput() GetEndpointAclPoliciesPolicyOutput {
+	return i.ToGetEndpointAclPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetEndpointAclPoliciesPolicyArgs) ToGetEndpointAclPoliciesPolicyOutputWithContext(ctx context.Context) GetEndpointAclPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointAclPoliciesPolicyOutput)
+}
+
+// GetEndpointAclPoliciesPolicyArrayInput is an input type that accepts GetEndpointAclPoliciesPolicyArray and GetEndpointAclPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetEndpointAclPoliciesPolicyArrayInput` via:
+//
+//          GetEndpointAclPoliciesPolicyArray{ GetEndpointAclPoliciesPolicyArgs{...} }
+type GetEndpointAclPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetEndpointAclPoliciesPolicyArrayOutput() GetEndpointAclPoliciesPolicyArrayOutput
+	ToGetEndpointAclPoliciesPolicyArrayOutputWithContext(context.Context) GetEndpointAclPoliciesPolicyArrayOutput
+}
+
+type GetEndpointAclPoliciesPolicyArray []GetEndpointAclPoliciesPolicyInput
+
+func (GetEndpointAclPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointAclPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetEndpointAclPoliciesPolicyArray) ToGetEndpointAclPoliciesPolicyArrayOutput() GetEndpointAclPoliciesPolicyArrayOutput {
+	return i.ToGetEndpointAclPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetEndpointAclPoliciesPolicyArray) ToGetEndpointAclPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetEndpointAclPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointAclPoliciesPolicyArrayOutput)
+}
+
+type GetEndpointAclPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointAclPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointAclPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetEndpointAclPoliciesPolicyOutput) ToGetEndpointAclPoliciesPolicyOutput() GetEndpointAclPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetEndpointAclPoliciesPolicyOutput) ToGetEndpointAclPoliciesPolicyOutputWithContext(ctx context.Context) GetEndpointAclPoliciesPolicyOutput {
+	return o
+}
+
+// The description of the entry.
+func (o GetEndpointAclPoliciesPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The type of endpoint.
+func (o GetEndpointAclPoliciesPolicyOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesPolicy) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The IP segment that allowed to access.
+func (o GetEndpointAclPoliciesPolicyOutput) Entry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesPolicy) string { return v.Entry }).(pulumi.StringOutput)
+}
+
+// The ID of the Endpoint Acl Policy.
+func (o GetEndpointAclPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the CR Instance.
+func (o GetEndpointAclPoliciesPolicyOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesPolicy) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+type GetEndpointAclPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointAclPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointAclPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetEndpointAclPoliciesPolicyArrayOutput) ToGetEndpointAclPoliciesPolicyArrayOutput() GetEndpointAclPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetEndpointAclPoliciesPolicyArrayOutput) ToGetEndpointAclPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetEndpointAclPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetEndpointAclPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetEndpointAclPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEndpointAclPoliciesPolicy {
+		return vs[0].([]GetEndpointAclPoliciesPolicy)[vs[1].(int)]
+	}).(GetEndpointAclPoliciesPolicyOutput)
+}
+
 type GetNamespacesNamespace struct {
 	// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
 	AutoCreate bool `pulumi:"autoCreate"`
@@ -660,6 +793,8 @@ func (o GetReposRepoTagArrayOutput) Index(i pulumi.IntInput) GetReposRepoTagOutp
 func init() {
 	pulumi.RegisterOutputType(RepoDomainListOutput{})
 	pulumi.RegisterOutputType(RepoDomainListPtrOutput{})
+	pulumi.RegisterOutputType(GetEndpointAclPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetEndpointAclPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(GetReposRepoOutput{})

@@ -31,6 +31,10 @@ export let clientReadTimeout: number | undefined = __config.getObject<number>("c
  */
 export let configurationSource: string | undefined = __config.get("configurationSource");
 /**
+ * The URI of sidecar credentials service.
+ */
+export let credentialsUri: string | undefined = __config.get("credentialsUri");
+/**
  * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
  * of the Alibaba Cloud console.
  */

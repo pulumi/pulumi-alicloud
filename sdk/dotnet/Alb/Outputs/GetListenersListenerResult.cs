@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetListenersListenerAclConfigResult> AclConfigs;
         /// <summary>
-        /// Certificate.
+        /// The Certificate List.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetListenersListenerCertificateResult> Certificates;
         /// <summary>

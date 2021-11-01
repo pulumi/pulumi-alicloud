@@ -52,6 +52,12 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<Outputs.ApiFcServiceConfig?> FcServiceConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to prevent API replay attack. Default value: `false`.
+        /// </summary>
+        [Output("forceNonceCheck")]
+        public Output<bool> ForceNonceCheck { get; private set; } = null!;
+
+        /// <summary>
         /// The api gateway that the api belongs to. Defaults to null.
         /// </summary>
         [Output("groupId")]
@@ -76,7 +82,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<Outputs.ApiMockServiceConfig?> MockServiceConfig { get; private set; } = null!;
 
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -100,7 +106,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> ServiceType { get; private set; } = null!;
 
         /// <summary>
-        /// Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        /// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         /// </summary>
         [Output("stageNames")]
         public Output<ImmutableArray<string>> StageNames { get; private set; } = null!;
@@ -188,6 +194,12 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<Inputs.ApiFcServiceConfigArgs>? FcServiceConfig { get; set; }
 
         /// <summary>
+        /// Whether to prevent API replay attack. Default value: `false`.
+        /// </summary>
+        [Input("forceNonceCheck")]
+        public Input<bool>? ForceNonceCheck { get; set; }
+
+        /// <summary>
         /// The api gateway that the api belongs to. Defaults to null.
         /// </summary>
         [Input("groupId", required: true)]
@@ -212,7 +224,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<Inputs.ApiMockServiceConfigArgs>? MockServiceConfig { get; set; }
 
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -245,7 +257,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<string>? _stageNames;
 
         /// <summary>
-        /// Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        /// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         /// </summary>
         public InputList<string> StageNames
         {
@@ -309,6 +321,12 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<Inputs.ApiFcServiceConfigGetArgs>? FcServiceConfig { get; set; }
 
         /// <summary>
+        /// Whether to prevent API replay attack. Default value: `false`.
+        /// </summary>
+        [Input("forceNonceCheck")]
+        public Input<bool>? ForceNonceCheck { get; set; }
+
+        /// <summary>
         /// The api gateway that the api belongs to. Defaults to null.
         /// </summary>
         [Input("groupId")]
@@ -333,7 +351,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<Inputs.ApiMockServiceConfigGetArgs>? MockServiceConfig { get; set; }
 
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -366,7 +384,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<string>? _stageNames;
 
         /// <summary>
-        /// Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        /// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         /// </summary>
         public InputList<string> StageNames
         {

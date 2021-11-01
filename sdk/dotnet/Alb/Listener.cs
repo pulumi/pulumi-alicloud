@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<Outputs.ListenerAclConfig?> AclConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Certificates.
+        /// The Certificate List. See the following `Block certificates`.
         /// </summary>
         [Output("certificates")]
         public Output<ImmutableArray<Outputs.ListenerCertificate>> Certificates { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ListenerCertificateArgs>? _certificates;
 
         /// <summary>
-        /// The Certificates.
+        /// The Certificate List. See the following `Block certificates`.
         /// </summary>
         public InputList<Inputs.ListenerCertificateArgs> Certificates
         {
@@ -330,7 +330,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ListenerCertificateGetArgs>? _certificates;
 
         /// <summary>
-        /// The Certificates.
+        /// The Certificate List. See the following `Block certificates`.
         /// </summary>
         public InputList<Inputs.ListenerCertificateGetArgs> Certificates
         {

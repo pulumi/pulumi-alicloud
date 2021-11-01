@@ -25,9 +25,9 @@ type GetBackupJobsArgs struct {
 	// A list of Backup Job IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// The sort direction.
+	// The sort direction. Valid values: `ASCEND`, `DESCEND`.
 	SortDirection *string `pulumi:"sortDirection"`
-	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
 	SourceType string `pulumi:"sourceType"`
 	// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
 	Status *string `pulumi:"status"`

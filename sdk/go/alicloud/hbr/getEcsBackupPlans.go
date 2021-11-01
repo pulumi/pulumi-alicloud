@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^my-EcsBackupPlan"
+// 		opt0 := "plan-name"
 // 		ids, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
 // 			NameRegex: &opt0,
 // 		}, nil)

@@ -61,7 +61,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly aclConfig!: pulumi.Output<outputs.alb.ListenerAclConfig | undefined>;
     /**
-     * The Certificates.
+     * The Certificate List. See the following `Block certificates`.
      */
     public readonly certificates!: pulumi.Output<outputs.alb.ListenerCertificate[] | undefined>;
     /**
@@ -206,7 +206,7 @@ export interface ListenerState {
      */
     readonly aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
     /**
-     * The Certificates.
+     * The Certificate List. See the following `Block certificates`.
      */
     readonly certificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCertificate>[]>;
     /**
@@ -284,7 +284,7 @@ export interface ListenerArgs {
      */
     readonly aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
     /**
-     * The Certificates.
+     * The Certificate List. See the following `Block certificates`.
      */
     readonly certificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCertificate>[]>;
     /**

@@ -4,12 +4,14 @@
 
 # Export this package's modules as members:
 from .get_consumer_groups import *
+from .get_history_delivery_jobs import *
 from .get_instances import *
 from .get_sasl_acls import *
 from .get_sasl_users import *
 from .get_topics import *
 from .get_trails import *
 from .get_trails_deprecated import *
+from .history_delivery_job import *
 from .trail import *
 from .trail_deprecated import *
 from . import outputs
@@ -26,7 +28,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:actiontrail/trail:Trail":
+            if typ == "alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob":
+                return HistoryDeliveryJob(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:actiontrail/trail:Trail":
                 return Trail(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:actiontrail/trailDeprecated:TrailDeprecated":
                 return TrailDeprecated(name, pulumi.ResourceOptions(urn=urn))
@@ -35,6 +39,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "actiontrail/historyDeliveryJob", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "actiontrail/trail", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "actiontrail/trailDeprecated", _module_instance)
 

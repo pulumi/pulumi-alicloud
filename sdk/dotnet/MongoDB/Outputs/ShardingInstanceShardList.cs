@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string NodeClass;
         /// <summary>
-        /// The ID of the shard-node.
+        /// The ID of the Config Server node.
         /// </summary>
         public readonly string? NodeId;
         /// <summary>

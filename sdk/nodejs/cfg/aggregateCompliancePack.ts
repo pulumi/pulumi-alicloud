@@ -20,7 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleAggregator = new alicloud.cfg.Aggregator("exampleAggregator", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_name";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultInstances = alicloud.ecs.getInstances({});
+ * const defaultAggregator = new alicloud.cfg.Aggregator("defaultAggregator", {
  *     aggregatorAccounts: [{
  *         accountId: "140278452670****",
  *         accountName: "test-2",
@@ -29,28 +35,32 @@ import * as utilities from "../utilities";
  *     aggregatorName: "tf-testaccaggregator",
  *     description: "tf-testaccaggregator",
  * });
- * const exampleAggregateCompliancePack = new alicloud.cfg.AggregateCompliancePack("exampleAggregateCompliancePack", {
+ * const defaultAggregateConfigRule = new alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule", {
+ *     aggregatorId: defaultAggregator.id,
+ *     aggregateConfigRuleName: name,
+ *     sourceOwner: "ALIYUN",
+ *     sourceIdentifier: "ecs-cpu-min-count-limit",
+ *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
+ *     resourceTypesScopes: ["ACS::ECS::Instance"],
+ *     riskLevel: 1,
+ *     description: name,
+ *     excludeResourceIdsScope: defaultInstances.then(defaultInstances => defaultInstances.ids[0]),
+ *     inputParameters: {
+ *         cpuCount: "4",
+ *     },
+ *     regionIdsScope: "cn-hangzhou",
+ *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids[0]),
+ *     tagKeyScope: "tFTest",
+ *     tagValueScope: "forTF 123",
+ * });
+ * const defaultAggregateCompliancePack = new alicloud.cfg.AggregateCompliancePack("defaultAggregateCompliancePack", {
  *     aggregateCompliancePackName: "tf-testaccConfig1234",
- *     aggregatorId: alicloud_config_aggregators.example.id,
- *     compliancePackTemplateId: "ct-3d20ff4e06a30027f76e",
+ *     aggregatorId: defaultAggregator.id,
  *     description: "tf-testaccConfig1234",
  *     riskLevel: 1,
- *     configRules: [
- *         {
- *             managedRuleIdentifier: "ecs-instance-expired-check",
- *             configRuleParameters: [{
- *                 parameterName: "days",
- *                 parameterValue: "60",
- *             }],
- *         },
- *         {
- *             managedRuleIdentifier: "ecs-snapshot-retention-days",
- *             configRuleParameters: [{
- *                 parameterName: "days",
- *                 parameterValue: "7",
- *             }],
- *         },
- *     ],
+ *     configRuleIds: [{
+ *         configRuleId: defaultAggregateConfigRule.configRuleId,
+ *     }],
  * });
  * ```
  *
@@ -101,11 +111,17 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
     /**
      * The Template ID of compliance package.
      */
-    public readonly compliancePackTemplateId!: pulumi.Output<string>;
+    public readonly compliancePackTemplateId!: pulumi.Output<string | undefined>;
     /**
-     * A list of  compliance package rules.
+     * A list of Config Rule IDs.
      */
-    public readonly configRules!: pulumi.Output<outputs.cfg.AggregateCompliancePackConfigRule[]>;
+    public readonly configRuleIds!: pulumi.Output<outputs.cfg.AggregateCompliancePackConfigRuleId[] | undefined>;
+    /**
+     * A list of Config Rules.
+     *
+     * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+     */
+    public readonly configRules!: pulumi.Output<outputs.cfg.AggregateCompliancePackConfigRule[] | undefined>;
     /**
      * Teh description of compliance package.
      */
@@ -135,6 +151,7 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
             inputs["aggregateCompliancePackName"] = state ? state.aggregateCompliancePackName : undefined;
             inputs["aggregatorId"] = state ? state.aggregatorId : undefined;
             inputs["compliancePackTemplateId"] = state ? state.compliancePackTemplateId : undefined;
+            inputs["configRuleIds"] = state ? state.configRuleIds : undefined;
             inputs["configRules"] = state ? state.configRules : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["riskLevel"] = state ? state.riskLevel : undefined;
@@ -147,12 +164,6 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
             if ((!args || args.aggregatorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aggregatorId'");
             }
-            if ((!args || args.compliancePackTemplateId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'compliancePackTemplateId'");
-            }
-            if ((!args || args.configRules === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'configRules'");
-            }
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
@@ -162,6 +173,7 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
             inputs["aggregateCompliancePackName"] = args ? args.aggregateCompliancePackName : undefined;
             inputs["aggregatorId"] = args ? args.aggregatorId : undefined;
             inputs["compliancePackTemplateId"] = args ? args.compliancePackTemplateId : undefined;
+            inputs["configRuleIds"] = args ? args.configRuleIds : undefined;
             inputs["configRules"] = args ? args.configRules : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["riskLevel"] = args ? args.riskLevel : undefined;
@@ -191,7 +203,13 @@ export interface AggregateCompliancePackState {
      */
     readonly compliancePackTemplateId?: pulumi.Input<string>;
     /**
-     * A list of  compliance package rules.
+     * A list of Config Rule IDs.
+     */
+    readonly configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleId>[]>;
+    /**
+     * A list of Config Rules.
+     *
+     * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
      */
     readonly configRules?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRule>[]>;
     /**
@@ -223,11 +241,17 @@ export interface AggregateCompliancePackArgs {
     /**
      * The Template ID of compliance package.
      */
-    readonly compliancePackTemplateId: pulumi.Input<string>;
+    readonly compliancePackTemplateId?: pulumi.Input<string>;
     /**
-     * A list of  compliance package rules.
+     * A list of Config Rule IDs.
      */
-    readonly configRules: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRule>[]>;
+    readonly configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleId>[]>;
+    /**
+     * A list of Config Rules.
+     *
+     * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+     */
+    readonly configRules?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRule>[]>;
     /**
      * Teh description of compliance package.
      */

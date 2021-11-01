@@ -72,13 +72,17 @@ namespace Pulumi.AliCloud.Nas
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
+        /// The protocol type of the file system.
+        /// Valid values:
+        /// `NFS`,
+        /// `SMB` (Available when the `file_system_type` is `standard`).
         /// </summary>
         [Input("protocolType")]
         public string? ProtocolType { get; set; }
 
         /// <summary>
-        /// Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
+        /// The storage type of the file system.
+        /// * Valid values:
         /// </summary>
         [Input("storageType")]
         public string? StorageType { get; set; }

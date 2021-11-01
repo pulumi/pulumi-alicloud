@@ -20,6 +20,7 @@ class ProviderArgs:
                  client_connect_timeout: Optional[pulumi.Input[int]] = None,
                  client_read_timeout: Optional[pulumi.Input[int]] = None,
                  configuration_source: Optional[pulumi.Input[str]] = None,
+                 credentials_uri: Optional[pulumi.Input[str]] = None,
                  ecs_role_name: Optional[pulumi.Input[str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None,
                  fc: Optional[pulumi.Input[str]] = None,
@@ -45,6 +46,7 @@ class ProviderArgs:
         :param pulumi.Input[int] client_connect_timeout: The maximum timeout of the client connection server.
         :param pulumi.Input[int] client_read_timeout: The maximum timeout of the client read request.
         :param pulumi.Input[str] configuration_source: Use this to mark a terraform configuration file source.
+        :param pulumi.Input[str] credentials_uri: The URI of sidecar credentials service.
         :param pulumi.Input[str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
                of the Alibaba Cloud console.
         :param pulumi.Input[str] profile: The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
@@ -70,6 +72,8 @@ class ProviderArgs:
             pulumi.set(__self__, "client_read_timeout", client_read_timeout)
         if configuration_source is not None:
             pulumi.set(__self__, "configuration_source", configuration_source)
+        if credentials_uri is not None:
+            pulumi.set(__self__, "credentials_uri", credentials_uri)
         if ecs_role_name is None:
             ecs_role_name = _utilities.get_env('ALICLOUD_ECS_ROLE_NAME')
         if ecs_role_name is not None:
@@ -191,6 +195,18 @@ class ProviderArgs:
     @configuration_source.setter
     def configuration_source(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "configuration_source", value)
+
+    @property
+    @pulumi.getter(name="credentialsUri")
+    def credentials_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of sidecar credentials service.
+        """
+        return pulumi.get(self, "credentials_uri")
+
+    @credentials_uri.setter
+    def credentials_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credentials_uri", value)
 
     @property
     @pulumi.getter(name="ecsRoleName")
@@ -378,6 +394,7 @@ class Provider(pulumi.ProviderResource):
                  client_connect_timeout: Optional[pulumi.Input[int]] = None,
                  client_read_timeout: Optional[pulumi.Input[int]] = None,
                  configuration_source: Optional[pulumi.Input[str]] = None,
+                 credentials_uri: Optional[pulumi.Input[str]] = None,
                  ecs_role_name: Optional[pulumi.Input[str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
                  fc: Optional[pulumi.Input[str]] = None,
@@ -410,6 +427,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[int] client_connect_timeout: The maximum timeout of the client connection server.
         :param pulumi.Input[int] client_read_timeout: The maximum timeout of the client read request.
         :param pulumi.Input[str] configuration_source: Use this to mark a terraform configuration file source.
+        :param pulumi.Input[str] credentials_uri: The URI of sidecar credentials service.
         :param pulumi.Input[str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
                of the Alibaba Cloud console.
         :param pulumi.Input[str] profile: The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
@@ -456,6 +474,7 @@ class Provider(pulumi.ProviderResource):
                  client_connect_timeout: Optional[pulumi.Input[int]] = None,
                  client_read_timeout: Optional[pulumi.Input[int]] = None,
                  configuration_source: Optional[pulumi.Input[str]] = None,
+                 credentials_uri: Optional[pulumi.Input[str]] = None,
                  ecs_role_name: Optional[pulumi.Input[str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
                  fc: Optional[pulumi.Input[str]] = None,
@@ -490,6 +509,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_connect_timeout"] = pulumi.Output.from_input(client_connect_timeout).apply(pulumi.runtime.to_json) if client_connect_timeout is not None else None
             __props__.__dict__["client_read_timeout"] = pulumi.Output.from_input(client_read_timeout).apply(pulumi.runtime.to_json) if client_read_timeout is not None else None
             __props__.__dict__["configuration_source"] = configuration_source
+            __props__.__dict__["credentials_uri"] = credentials_uri
             if ecs_role_name is None:
                 ecs_role_name = _utilities.get_env('ALICLOUD_ECS_ROLE_NAME')
             __props__.__dict__["ecs_role_name"] = ecs_role_name

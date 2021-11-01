@@ -22,6 +22,7 @@ class ApiArgs:
                  service_type: pulumi.Input[str],
                  constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]]] = None,
                  fc_service_config: Optional[pulumi.Input['ApiFcServiceConfigArgs']] = None,
+                 force_nonce_check: Optional[pulumi.Input[bool]] = None,
                  http_service_config: Optional[pulumi.Input['ApiHttpServiceConfigArgs']] = None,
                  http_vpc_service_config: Optional[pulumi.Input['ApiHttpVpcServiceConfigArgs']] = None,
                  mock_service_config: Optional[pulumi.Input['ApiMockServiceConfigArgs']] = None,
@@ -38,12 +39,13 @@ class ApiArgs:
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api.
         :param pulumi.Input['ApiFcServiceConfigArgs'] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input['ApiHttpServiceConfigArgs'] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
         :param pulumi.Input['ApiHttpVpcServiceConfigArgs'] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
         :param pulumi.Input['ApiMockServiceConfigArgs'] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api.
         """
         pulumi.set(__self__, "auth_type", auth_type)
@@ -55,6 +57,8 @@ class ApiArgs:
             pulumi.set(__self__, "constant_parameters", constant_parameters)
         if fc_service_config is not None:
             pulumi.set(__self__, "fc_service_config", fc_service_config)
+        if force_nonce_check is not None:
+            pulumi.set(__self__, "force_nonce_check", force_nonce_check)
         if http_service_config is not None:
             pulumi.set(__self__, "http_service_config", http_service_config)
         if http_vpc_service_config is not None:
@@ -155,6 +159,18 @@ class ApiArgs:
         pulumi.set(self, "fc_service_config", value)
 
     @property
+    @pulumi.getter(name="forceNonceCheck")
+    def force_nonce_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to prevent API replay attack. Default value: `false`.
+        """
+        return pulumi.get(self, "force_nonce_check")
+
+    @force_nonce_check.setter
+    def force_nonce_check(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_nonce_check", value)
+
+    @property
     @pulumi.getter(name="httpServiceConfig")
     def http_service_config(self) -> Optional[pulumi.Input['ApiHttpServiceConfigArgs']]:
         """
@@ -194,7 +210,7 @@ class ApiArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 
@@ -218,7 +234,7 @@ class ApiArgs:
     @pulumi.getter(name="stageNames")
     def stage_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         """
         return pulumi.get(self, "stage_names")
 
@@ -247,6 +263,7 @@ class _ApiState:
                  constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fc_service_config: Optional[pulumi.Input['ApiFcServiceConfigArgs']] = None,
+                 force_nonce_check: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  http_service_config: Optional[pulumi.Input['ApiHttpServiceConfigArgs']] = None,
                  http_vpc_service_config: Optional[pulumi.Input['ApiHttpVpcServiceConfigArgs']] = None,
@@ -264,15 +281,16 @@ class _ApiState:
         :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api.
         :param pulumi.Input[str] description: The description of Constant parameter.
         :param pulumi.Input['ApiFcServiceConfigArgs'] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
         :param pulumi.Input['ApiHttpServiceConfigArgs'] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
         :param pulumi.Input['ApiHttpVpcServiceConfigArgs'] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
         :param pulumi.Input['ApiMockServiceConfigArgs'] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API.
         :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api.
         """
         if api_id is not None:
@@ -285,6 +303,8 @@ class _ApiState:
             pulumi.set(__self__, "description", description)
         if fc_service_config is not None:
             pulumi.set(__self__, "fc_service_config", fc_service_config)
+        if force_nonce_check is not None:
+            pulumi.set(__self__, "force_nonce_check", force_nonce_check)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if http_service_config is not None:
@@ -367,6 +387,18 @@ class _ApiState:
         pulumi.set(self, "fc_service_config", value)
 
     @property
+    @pulumi.getter(name="forceNonceCheck")
+    def force_nonce_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to prevent API replay attack. Default value: `false`.
+        """
+        return pulumi.get(self, "force_nonce_check")
+
+    @force_nonce_check.setter
+    def force_nonce_check(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_nonce_check", value)
+
+    @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -418,7 +450,7 @@ class _ApiState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 
@@ -466,7 +498,7 @@ class _ApiState:
     @pulumi.getter(name="stageNames")
     def stage_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         """
         return pulumi.get(self, "stage_names")
 
@@ -496,6 +528,7 @@ class Api(pulumi.CustomResource):
                  constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']]] = None,
+                 force_nonce_check: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  http_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']]] = None,
                  http_vpc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']]] = None,
@@ -522,15 +555,16 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api.
         :param pulumi.Input[str] description: The description of Constant parameter.
         :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
         :param pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
         :param pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
         :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api.
         """
         ...
@@ -567,6 +601,7 @@ class Api(pulumi.CustomResource):
                  constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']]] = None,
+                 force_nonce_check: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  http_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']]] = None,
                  http_vpc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']]] = None,
@@ -597,6 +632,7 @@ class Api(pulumi.CustomResource):
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
             __props__.__dict__["fc_service_config"] = fc_service_config
+            __props__.__dict__["force_nonce_check"] = force_nonce_check
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
@@ -629,6 +665,7 @@ class Api(pulumi.CustomResource):
             constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']]] = None,
+            force_nonce_check: Optional[pulumi.Input[bool]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             http_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']]] = None,
             http_vpc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']]] = None,
@@ -651,15 +688,16 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api.
         :param pulumi.Input[str] description: The description of Constant parameter.
         :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
         :param pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
         :param pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
         :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -671,6 +709,7 @@ class Api(pulumi.CustomResource):
         __props__.__dict__["constant_parameters"] = constant_parameters
         __props__.__dict__["description"] = description
         __props__.__dict__["fc_service_config"] = fc_service_config
+        __props__.__dict__["force_nonce_check"] = force_nonce_check
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["http_service_config"] = http_service_config
         __props__.__dict__["http_vpc_service_config"] = http_vpc_service_config
@@ -724,6 +763,14 @@ class Api(pulumi.CustomResource):
         return pulumi.get(self, "fc_service_config")
 
     @property
+    @pulumi.getter(name="forceNonceCheck")
+    def force_nonce_check(self) -> pulumi.Output[bool]:
+        """
+        Whether to prevent API replay attack. Default value: `false`.
+        """
+        return pulumi.get(self, "force_nonce_check")
+
+    @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[str]:
         """
@@ -759,7 +806,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 
@@ -791,7 +838,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="stageNames")
     def stage_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         """
         return pulumi.get(self, "stage_names")
 

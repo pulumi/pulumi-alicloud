@@ -24,17 +24,17 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// <summary>
         /// The creation time of the Vault. UNIX time in seconds.
         /// </summary>
-        public readonly string CreateTime;
+        public readonly string CreatedTime;
         /// <summary>
         /// Whether to enable the deduplication function for the database backup Vault.
         /// </summary>
         public readonly bool Dedup;
         /// <summary>
-        /// The description of the Vault.
+        /// The description of the vault.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The ID of Vault.
+        /// The ID of vault.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -91,19 +91,19 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
-        /// The ID of Vault, same as `id`.
+        /// The ID of vault, same as `id`.
         /// </summary>
         public readonly string VaultId;
         /// <summary>
-        /// The name of Vault.
+        /// The name of vault.
         /// </summary>
         public readonly string VaultName;
         /// <summary>
-        /// Error status information of Vault. Only valid for remote backup warehouses.
+        /// Error status information of Vault. Only valid for remote backup warehouses. Only the remote backup warehouse is valid.
         /// </summary>
         public readonly string VaultStatusMessage;
         /// <summary>
-        /// The storage class of Vault. Valid values: `STANDARD`.
+        /// The storage class of vault. Valid values: `STANDARD`.
         /// </summary>
         public readonly string VaultStorageClass;
         /// <summary>
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
 
             string bytesDone,
 
-            string createTime,
+            string createdTime,
 
             bool dedup,
 
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         {
             BucketName = bucketName;
             BytesDone = bytesDone;
-            CreateTime = createTime;
+            CreatedTime = createdTime;
             Dedup = dedup;
             Description = description;
             Id = id;

@@ -3934,6 +3934,184 @@ func (o GetDisksOperationLockArrayOutput) Index(i pulumi.IntInput) GetDisksOpera
 	}).(GetDisksOperationLockOutput)
 }
 
+type GetEcsDeploymentSetsSet struct {
+	// The time when the deployment set was created.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Deployment Set.
+	DeploymentSetId string `pulumi:"deploymentSetId"`
+	// The name of the deployment set.
+	DeploymentSetName string `pulumi:"deploymentSetName"`
+	// The description of the deployment set.
+	Description string `pulumi:"description"`
+	// The deployment domain.
+	Domain string `pulumi:"domain"`
+	// The deployment granularity.
+	Granularity string `pulumi:"granularity"`
+	// The ID of the Deployment Set.
+	Id string `pulumi:"id"`
+	// The number of instances in the deployment set.
+	InstanceAmount int `pulumi:"instanceAmount"`
+	// The IDs of the instances in the deployment set.
+	InstanceIds []string `pulumi:"instanceIds"`
+	// The deployment strategy.
+	Strategy string `pulumi:"strategy"`
+}
+
+// GetEcsDeploymentSetsSetInput is an input type that accepts GetEcsDeploymentSetsSetArgs and GetEcsDeploymentSetsSetOutput values.
+// You can construct a concrete instance of `GetEcsDeploymentSetsSetInput` via:
+//
+//          GetEcsDeploymentSetsSetArgs{...}
+type GetEcsDeploymentSetsSetInput interface {
+	pulumi.Input
+
+	ToGetEcsDeploymentSetsSetOutput() GetEcsDeploymentSetsSetOutput
+	ToGetEcsDeploymentSetsSetOutputWithContext(context.Context) GetEcsDeploymentSetsSetOutput
+}
+
+type GetEcsDeploymentSetsSetArgs struct {
+	// The time when the deployment set was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Deployment Set.
+	DeploymentSetId pulumi.StringInput `pulumi:"deploymentSetId"`
+	// The name of the deployment set.
+	DeploymentSetName pulumi.StringInput `pulumi:"deploymentSetName"`
+	// The description of the deployment set.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The deployment domain.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The deployment granularity.
+	Granularity pulumi.StringInput `pulumi:"granularity"`
+	// The ID of the Deployment Set.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The number of instances in the deployment set.
+	InstanceAmount pulumi.IntInput `pulumi:"instanceAmount"`
+	// The IDs of the instances in the deployment set.
+	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
+	// The deployment strategy.
+	Strategy pulumi.StringInput `pulumi:"strategy"`
+}
+
+func (GetEcsDeploymentSetsSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDeploymentSetsSet)(nil)).Elem()
+}
+
+func (i GetEcsDeploymentSetsSetArgs) ToGetEcsDeploymentSetsSetOutput() GetEcsDeploymentSetsSetOutput {
+	return i.ToGetEcsDeploymentSetsSetOutputWithContext(context.Background())
+}
+
+func (i GetEcsDeploymentSetsSetArgs) ToGetEcsDeploymentSetsSetOutputWithContext(ctx context.Context) GetEcsDeploymentSetsSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDeploymentSetsSetOutput)
+}
+
+// GetEcsDeploymentSetsSetArrayInput is an input type that accepts GetEcsDeploymentSetsSetArray and GetEcsDeploymentSetsSetArrayOutput values.
+// You can construct a concrete instance of `GetEcsDeploymentSetsSetArrayInput` via:
+//
+//          GetEcsDeploymentSetsSetArray{ GetEcsDeploymentSetsSetArgs{...} }
+type GetEcsDeploymentSetsSetArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsDeploymentSetsSetArrayOutput() GetEcsDeploymentSetsSetArrayOutput
+	ToGetEcsDeploymentSetsSetArrayOutputWithContext(context.Context) GetEcsDeploymentSetsSetArrayOutput
+}
+
+type GetEcsDeploymentSetsSetArray []GetEcsDeploymentSetsSetInput
+
+func (GetEcsDeploymentSetsSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDeploymentSetsSet)(nil)).Elem()
+}
+
+func (i GetEcsDeploymentSetsSetArray) ToGetEcsDeploymentSetsSetArrayOutput() GetEcsDeploymentSetsSetArrayOutput {
+	return i.ToGetEcsDeploymentSetsSetArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsDeploymentSetsSetArray) ToGetEcsDeploymentSetsSetArrayOutputWithContext(ctx context.Context) GetEcsDeploymentSetsSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDeploymentSetsSetArrayOutput)
+}
+
+type GetEcsDeploymentSetsSetOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDeploymentSetsSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDeploymentSetsSet)(nil)).Elem()
+}
+
+func (o GetEcsDeploymentSetsSetOutput) ToGetEcsDeploymentSetsSetOutput() GetEcsDeploymentSetsSetOutput {
+	return o
+}
+
+func (o GetEcsDeploymentSetsSetOutput) ToGetEcsDeploymentSetsSetOutputWithContext(ctx context.Context) GetEcsDeploymentSetsSetOutput {
+	return o
+}
+
+// The time when the deployment set was created.
+func (o GetEcsDeploymentSetsSetOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsSet) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Deployment Set.
+func (o GetEcsDeploymentSetsSetOutput) DeploymentSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsSet) string { return v.DeploymentSetId }).(pulumi.StringOutput)
+}
+
+// The name of the deployment set.
+func (o GetEcsDeploymentSetsSetOutput) DeploymentSetName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsSet) string { return v.DeploymentSetName }).(pulumi.StringOutput)
+}
+
+// The description of the deployment set.
+func (o GetEcsDeploymentSetsSetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsSet) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The deployment domain.
+func (o GetEcsDeploymentSetsSetOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsSet) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The deployment granularity.
+func (o GetEcsDeploymentSetsSetOutput) Granularity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsSet) string { return v.Granularity }).(pulumi.StringOutput)
+}
+
+// The ID of the Deployment Set.
+func (o GetEcsDeploymentSetsSetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsSet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The number of instances in the deployment set.
+func (o GetEcsDeploymentSetsSetOutput) InstanceAmount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsSet) int { return v.InstanceAmount }).(pulumi.IntOutput)
+}
+
+// The IDs of the instances in the deployment set.
+func (o GetEcsDeploymentSetsSetOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsSet) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// The deployment strategy.
+func (o GetEcsDeploymentSetsSetOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsSet) string { return v.Strategy }).(pulumi.StringOutput)
+}
+
+type GetEcsDeploymentSetsSetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDeploymentSetsSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDeploymentSetsSet)(nil)).Elem()
+}
+
+func (o GetEcsDeploymentSetsSetArrayOutput) ToGetEcsDeploymentSetsSetArrayOutput() GetEcsDeploymentSetsSetArrayOutput {
+	return o
+}
+
+func (o GetEcsDeploymentSetsSetArrayOutput) ToGetEcsDeploymentSetsSetArrayOutputWithContext(ctx context.Context) GetEcsDeploymentSetsSetArrayOutput {
+	return o
+}
+
+func (o GetEcsDeploymentSetsSetArrayOutput) Index(i pulumi.IntInput) GetEcsDeploymentSetsSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsDeploymentSetsSet {
+		return vs[0].([]GetEcsDeploymentSetsSet)[vs[1].(int)]
+	}).(GetEcsDeploymentSetsSetOutput)
+}
+
 type GetEcsDisksDisk struct {
 	// A mount of time.
 	AttachedTime string `pulumi:"attachedTime"`
@@ -11108,6 +11286,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDisksDiskOperationLockArrayOutput{})
 	pulumi.RegisterOutputType(GetDisksOperationLockOutput{})
 	pulumi.RegisterOutputType(GetDisksOperationLockArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsDeploymentSetsSetOutput{})
+	pulumi.RegisterOutputType(GetEcsDeploymentSetsSetArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsDisksDiskOutput{})
 	pulumi.RegisterOutputType(GetEcsDisksDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsDisksDiskMountInstanceOutput{})

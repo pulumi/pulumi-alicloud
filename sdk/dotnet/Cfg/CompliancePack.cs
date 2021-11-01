@@ -28,39 +28,47 @@ namespace Pulumi.AliCloud.Cfg
     /// {
     ///     public MyStack()
     ///     {
-    ///         var example = new AliCloud.Cfg.CompliancePack("example", new AliCloud.Cfg.CompliancePackArgs
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "example_name";
+    ///         var defaultInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync());
+    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
+    ///         {
+    ///             Status = "OK",
+    ///         }));
+    ///         var defaultRule = new AliCloud.Cfg.Rule("defaultRule", new AliCloud.Cfg.RuleArgs
+    ///         {
+    ///             RuleName = name,
+    ///             Description = name,
+    ///             SourceIdentifier = "ecs-instances-in-vpc",
+    ///             SourceOwner = "ALIYUN",
+    ///             ResourceTypesScopes = 
+    ///             {
+    ///                 "ACS::ECS::Instance",
+    ///             },
+    ///             RiskLevel = 1,
+    ///             ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
+    ///             TagKeyScope = "tfTest",
+    ///             TagValueScope = "tfTest 123",
+    ///             ResourceGroupIdsScope = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids[0]),
+    ///             ExcludeResourceIdsScope = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances[0].Id),
+    ///             RegionIdsScope = "cn-hangzhou",
+    ///             InputParameters = 
+    ///             {
+    ///                 { "vpcIds", defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances[0].VpcId) },
+    ///             },
+    ///         });
+    ///         var defaultCompliancePack = new AliCloud.Cfg.CompliancePack("defaultCompliancePack", new AliCloud.Cfg.CompliancePackArgs
     ///         {
     ///             CompliancePackName = "tf-testaccConfig1234",
-    ///             CompliancePackTemplateId = "ct-3d20ff4e06a30027f76e",
-    ///             ConfigRules = 
-    ///             {
-    ///                 new AliCloud.Cfg.Inputs.CompliancePackConfigRuleArgs
-    ///                 {
-    ///                     ConfigRuleParameters = 
-    ///                     {
-    ///                         new AliCloud.Cfg.Inputs.CompliancePackConfigRuleConfigRuleParameterArgs
-    ///                         {
-    ///                             ParameterName = "days",
-    ///                             ParameterValue = "7",
-    ///                         },
-    ///                     },
-    ///                     ManagedRuleIdentifier = "ecs-snapshot-retention-days",
-    ///                 },
-    ///                 new AliCloud.Cfg.Inputs.CompliancePackConfigRuleArgs
-    ///                 {
-    ///                     ConfigRuleParameters = 
-    ///                     {
-    ///                         new AliCloud.Cfg.Inputs.CompliancePackConfigRuleConfigRuleParameterArgs
-    ///                         {
-    ///                             ParameterName = "days",
-    ///                             ParameterValue = "60",
-    ///                         },
-    ///                     },
-    ///                     ManagedRuleIdentifier = "ecs-instance-expired-check",
-    ///                 },
-    ///             },
     ///             Description = "tf-testaccConfig1234",
     ///             RiskLevel = 1,
+    ///             ConfigRuleIds = 
+    ///             {
+    ///                 new AliCloud.Cfg.Inputs.CompliancePackConfigRuleIdArgs
+    ///                 {
+    ///                     ConfigRuleId = defaultRule.Id,
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -88,7 +96,13 @@ namespace Pulumi.AliCloud.Cfg
         /// Compliance Package Template Id.
         /// </summary>
         [Output("compliancePackTemplateId")]
-        public Output<string> CompliancePackTemplateId { get; private set; } = null!;
+        public Output<string?> CompliancePackTemplateId { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of Config Rule IDs.
+        /// </summary>
+        [Output("configRuleIds")]
+        public Output<ImmutableArray<Outputs.CompliancePackConfigRuleId>> ConfigRuleIds { get; private set; } = null!;
 
         /// <summary>
         /// A list of Config Rules.
@@ -169,15 +183,28 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// Compliance Package Template Id.
         /// </summary>
-        [Input("compliancePackTemplateId", required: true)]
-        public Input<string> CompliancePackTemplateId { get; set; } = null!;
+        [Input("compliancePackTemplateId")]
+        public Input<string>? CompliancePackTemplateId { get; set; }
 
-        [Input("configRules", required: true)]
+        [Input("configRuleIds")]
+        private InputList<Inputs.CompliancePackConfigRuleIdArgs>? _configRuleIds;
+
+        /// <summary>
+        /// A list of Config Rule IDs.
+        /// </summary>
+        public InputList<Inputs.CompliancePackConfigRuleIdArgs> ConfigRuleIds
+        {
+            get => _configRuleIds ?? (_configRuleIds = new InputList<Inputs.CompliancePackConfigRuleIdArgs>());
+            set => _configRuleIds = value;
+        }
+
+        [Input("configRules")]
         private InputList<Inputs.CompliancePackConfigRuleArgs>? _configRules;
 
         /// <summary>
         /// A list of Config Rules.
         /// </summary>
+        [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
         public InputList<Inputs.CompliancePackConfigRuleArgs> ConfigRules
         {
             get => _configRules ?? (_configRules = new InputList<Inputs.CompliancePackConfigRuleArgs>());
@@ -215,12 +242,25 @@ namespace Pulumi.AliCloud.Cfg
         [Input("compliancePackTemplateId")]
         public Input<string>? CompliancePackTemplateId { get; set; }
 
+        [Input("configRuleIds")]
+        private InputList<Inputs.CompliancePackConfigRuleIdGetArgs>? _configRuleIds;
+
+        /// <summary>
+        /// A list of Config Rule IDs.
+        /// </summary>
+        public InputList<Inputs.CompliancePackConfigRuleIdGetArgs> ConfigRuleIds
+        {
+            get => _configRuleIds ?? (_configRuleIds = new InputList<Inputs.CompliancePackConfigRuleIdGetArgs>());
+            set => _configRuleIds = value;
+        }
+
         [Input("configRules")]
         private InputList<Inputs.CompliancePackConfigRuleGetArgs>? _configRules;
 
         /// <summary>
         /// A list of Config Rules.
         /// </summary>
+        [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
         public InputList<Inputs.CompliancePackConfigRuleGetArgs> ConfigRules
         {
             get => _configRules ?? (_configRules = new InputList<Inputs.CompliancePackConfigRuleGetArgs>());

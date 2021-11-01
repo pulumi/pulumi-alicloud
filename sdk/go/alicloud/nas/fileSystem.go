@@ -47,6 +47,32 @@ import (
 // }
 // ```
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
+// 			Capacity:       pulumi.Int(100),
+// 			Description:    pulumi.String("tf-testAccNasConfig"),
+// 			FileSystemType: pulumi.String("extreme"),
+// 			ProtocolType:   pulumi.String("NFS"),
+// 			StorageType:    pulumi.String("standard"),
+// 			ZoneId:         pulumi.String("cn-hangzhou-f"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Nas File System can be imported using the id, e.g.
@@ -57,17 +83,31 @@ import (
 type FileSystem struct {
 	pulumi.CustomResourceState
 
+	// The capacity of the file system. The `capacity` is required when the `fileSystemType` is `extreme`.
+	// Unit: gib; **Note**: The minimum value is 100.
+	Capacity pulumi.IntOutput `pulumi:"capacity"`
 	// The File System description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-	// Valid values:
-	// 0: The file system is not encrypted.
-	// 1: The file system is encrypted with a managed secret key.
+	// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+	// * Valid values:
 	EncryptType pulumi.IntPtrOutput `pulumi:"encryptType"`
-	// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
+	// the type of the file system.
+	// Valid values:
+	// `standard` (Default),
+	// `extreme`.
+	FileSystemType pulumi.StringPtrOutput `pulumi:"fileSystemType"`
+	// The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
+	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
+	// The protocol type of the file system.
+	// Valid values:
+	// `NFS`,
+	// `SMB` (Available when the `fileSystemType` is `standard`).
 	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
-	// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
+	// The storage type of the file System.
+	// * Valid values:
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
+	// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewFileSystem registers a new resource with the given unique name, arguments, and options.
@@ -105,31 +145,59 @@ func GetFileSystem(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FileSystem resources.
 type fileSystemState struct {
+	// The capacity of the file system. The `capacity` is required when the `fileSystemType` is `extreme`.
+	// Unit: gib; **Note**: The minimum value is 100.
+	Capacity *int `pulumi:"capacity"`
 	// The File System description.
 	Description *string `pulumi:"description"`
-	// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-	// Valid values:
-	// 0: The file system is not encrypted.
-	// 1: The file system is encrypted with a managed secret key.
+	// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+	// * Valid values:
 	EncryptType *int `pulumi:"encryptType"`
-	// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
+	// the type of the file system.
+	// Valid values:
+	// `standard` (Default),
+	// `extreme`.
+	FileSystemType *string `pulumi:"fileSystemType"`
+	// The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The protocol type of the file system.
+	// Valid values:
+	// `NFS`,
+	// `SMB` (Available when the `fileSystemType` is `standard`).
 	ProtocolType *string `pulumi:"protocolType"`
-	// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
+	// The storage type of the file System.
+	// * Valid values:
 	StorageType *string `pulumi:"storageType"`
+	// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type FileSystemState struct {
+	// The capacity of the file system. The `capacity` is required when the `fileSystemType` is `extreme`.
+	// Unit: gib; **Note**: The minimum value is 100.
+	Capacity pulumi.IntPtrInput
 	// The File System description.
 	Description pulumi.StringPtrInput
-	// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-	// Valid values:
-	// 0: The file system is not encrypted.
-	// 1: The file system is encrypted with a managed secret key.
+	// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+	// * Valid values:
 	EncryptType pulumi.IntPtrInput
-	// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
+	// the type of the file system.
+	// Valid values:
+	// `standard` (Default),
+	// `extreme`.
+	FileSystemType pulumi.StringPtrInput
+	// The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
+	KmsKeyId pulumi.StringPtrInput
+	// The protocol type of the file system.
+	// Valid values:
+	// `NFS`,
+	// `SMB` (Available when the `fileSystemType` is `standard`).
 	ProtocolType pulumi.StringPtrInput
-	// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
+	// The storage type of the file System.
+	// * Valid values:
 	StorageType pulumi.StringPtrInput
+	// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (FileSystemState) ElementType() reflect.Type {
@@ -137,32 +205,60 @@ func (FileSystemState) ElementType() reflect.Type {
 }
 
 type fileSystemArgs struct {
+	// The capacity of the file system. The `capacity` is required when the `fileSystemType` is `extreme`.
+	// Unit: gib; **Note**: The minimum value is 100.
+	Capacity *int `pulumi:"capacity"`
 	// The File System description.
 	Description *string `pulumi:"description"`
-	// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-	// Valid values:
-	// 0: The file system is not encrypted.
-	// 1: The file system is encrypted with a managed secret key.
+	// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+	// * Valid values:
 	EncryptType *int `pulumi:"encryptType"`
-	// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
+	// the type of the file system.
+	// Valid values:
+	// `standard` (Default),
+	// `extreme`.
+	FileSystemType *string `pulumi:"fileSystemType"`
+	// The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The protocol type of the file system.
+	// Valid values:
+	// `NFS`,
+	// `SMB` (Available when the `fileSystemType` is `standard`).
 	ProtocolType string `pulumi:"protocolType"`
-	// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
+	// The storage type of the file System.
+	// * Valid values:
 	StorageType string `pulumi:"storageType"`
+	// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a FileSystem resource.
 type FileSystemArgs struct {
+	// The capacity of the file system. The `capacity` is required when the `fileSystemType` is `extreme`.
+	// Unit: gib; **Note**: The minimum value is 100.
+	Capacity pulumi.IntPtrInput
 	// The File System description.
 	Description pulumi.StringPtrInput
-	// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-	// Valid values:
-	// 0: The file system is not encrypted.
-	// 1: The file system is encrypted with a managed secret key.
+	// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+	// * Valid values:
 	EncryptType pulumi.IntPtrInput
-	// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
+	// the type of the file system.
+	// Valid values:
+	// `standard` (Default),
+	// `extreme`.
+	FileSystemType pulumi.StringPtrInput
+	// The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
+	KmsKeyId pulumi.StringPtrInput
+	// The protocol type of the file system.
+	// Valid values:
+	// `NFS`,
+	// `SMB` (Available when the `fileSystemType` is `standard`).
 	ProtocolType pulumi.StringInput
-	// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
+	// The storage type of the file System.
+	// * Valid values:
 	StorageType pulumi.StringInput
+	// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (FileSystemArgs) ElementType() reflect.Type {

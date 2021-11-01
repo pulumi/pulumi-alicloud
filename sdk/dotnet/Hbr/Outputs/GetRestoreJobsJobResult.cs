@@ -62,9 +62,6 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// Recovery Options.
         /// </summary>
         public readonly string Options;
-        /// <summary>
-        /// The ID of parent node.
-        /// </summary>
         public readonly string ParentId;
         /// <summary>
         /// The recovery progress.
@@ -87,7 +84,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>
-        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         /// </summary>
         public readonly string SourceType;
         /// <summary>
@@ -102,17 +99,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// The name of target ofo OSS bucket.
         /// </summary>
         public readonly string TargetBucket;
-        /// <summary>
-        /// The ID of target client.
-        /// </summary>
         public readonly string TargetClientId;
         /// <summary>
         /// The creation time of destination file system.
         /// </summary>
         public readonly string TargetCreateTime;
-        /// <summary>
-        /// The ID of destination data source.
-        /// </summary>
         public readonly string TargetDataSourceId;
         /// <summary>
         /// The ID of destination file system.

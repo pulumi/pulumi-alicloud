@@ -70,7 +70,7 @@ def get_service(enable: Optional[str] = None,
 
     For information about DataWorks and how to use it, see [What is DataWorks](https://www.alibabacloud.com/help/en/product/72772.htm).
 
-    > **NOTE:** Available in v1.118.0+
+    > **NOTE:** Available in v1.118.0+. After the version 1.141.0, the data source is renamed as `dataworks.getService`.
 
     ## Example Usage
 

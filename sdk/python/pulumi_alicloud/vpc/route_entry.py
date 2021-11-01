@@ -26,7 +26,7 @@ class RouteEntryArgs:
         :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
         :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
-        :param pulumi.Input[str] router_id: This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         pulumi.set(__self__, "route_table_id", route_table_id)
         if destination_cidrblock is not None:
@@ -107,7 +107,7 @@ class RouteEntryArgs:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         return pulumi.get(self, "router_id")
 
@@ -132,7 +132,7 @@ class _RouteEntryState:
         :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
         :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
         :param pulumi.Input[str] route_table_id: The ID of the route table.
-        :param pulumi.Input[str] router_id: This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         if destination_cidrblock is not None:
             pulumi.set(__self__, "destination_cidrblock", destination_cidrblock)
@@ -214,7 +214,7 @@ class _RouteEntryState:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         return pulumi.get(self, "router_id")
 
@@ -251,7 +251,7 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
         :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
         :param pulumi.Input[str] route_table_id: The ID of the route table.
-        :param pulumi.Input[str] router_id: This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         ...
     @overload
@@ -340,7 +340,7 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
         :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
         :param pulumi.Input[str] route_table_id: The ID of the route table.
-        :param pulumi.Input[str] router_id: This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -398,7 +398,7 @@ class RouteEntry(pulumi.CustomResource):
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[str]:
         """
-        This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         return pulumi.get(self, "router_id")
 

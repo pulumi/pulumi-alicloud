@@ -42,7 +42,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
     }
 
     /**
-     * The bandwidth of the common bandwidth package, in Mbps.
+     * The bandwidth of the common bandwidth package. Unit: Mbps.
      */
     public readonly bandwidth!: pulumi.Output<string>;
     /**
@@ -146,7 +146,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
  */
 export interface CommonBandwithPackageState {
     /**
-     * The bandwidth of the common bandwidth package, in Mbps.
+     * The bandwidth of the common bandwidth package. Unit: Mbps.
      */
     readonly bandwidth?: pulumi.Input<string>;
     /**
@@ -201,7 +201,7 @@ export interface CommonBandwithPackageState {
  */
 export interface CommonBandwithPackageArgs {
     /**
-     * The bandwidth of the common bandwidth package, in Mbps.
+     * The bandwidth of the common bandwidth package. Unit: Mbps.
      */
     readonly bandwidth: pulumi.Input<string>;
     /**

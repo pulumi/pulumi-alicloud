@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
     public sealed class ShardingInstanceMongoList
     {
         /// <summary>
-        /// Mongo node connection string
+        /// The connection address of the Config Server node.
         /// </summary>
         public readonly string? ConnectString;
         /// <summary>
@@ -22,12 +22,11 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string NodeClass;
         /// <summary>
-        /// The ID of the shard-node.
+        /// The ID of the Config Server node.
         /// </summary>
         public readonly string? NodeId;
         /// <summary>
-        /// Mongo node port
-        /// * `shard_list`
+        /// The connection port of the Config Server node.
         /// </summary>
         public readonly int? Port;
 

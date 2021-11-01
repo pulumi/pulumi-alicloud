@@ -6,10 +6,20 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./accessGroup";
+export * from "./accessRule";
+export * from "./fileSystem";
 export * from "./getAccessGroups";
+export * from "./getAccessRules";
+export * from "./getFileSystems";
+export * from "./getMountPoints";
+export * from "./getZones";
+export * from "./mountPoint";
 
 // Import resources to register:
 import { AccessGroup } from "./accessGroup";
+import { AccessRule } from "./accessRule";
+import { FileSystem } from "./fileSystem";
+import { MountPoint } from "./mountPoint";
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +27,18 @@ const _module = {
         switch (type) {
             case "alicloud:dfs/accessGroup:AccessGroup":
                 return new AccessGroup(name, <any>undefined, { urn })
+            case "alicloud:dfs/accessRule:AccessRule":
+                return new AccessRule(name, <any>undefined, { urn })
+            case "alicloud:dfs/fileSystem:FileSystem":
+                return new FileSystem(name, <any>undefined, { urn })
+            case "alicloud:dfs/mountPoint:MountPoint":
+                return new MountPoint(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "dfs/accessGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dfs/accessRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dfs/fileSystem", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dfs/mountPoint", _module)

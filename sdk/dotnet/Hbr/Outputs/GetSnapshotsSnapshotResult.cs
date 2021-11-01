@@ -38,7 +38,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BytesTotal;
         /// <summary>
-        /// The time when the snapshot was completed. UNIX time in seconds.
+        /// The ID of ECS backup client.
+        /// </summary>
+        public readonly string ClientId;
+        /// <summary>
+        /// The time when the snapshot completed. UNIX time in seconds.
         /// </summary>
         public readonly string CompleteTime;
         /// <summary>
@@ -129,6 +133,8 @@ namespace Pulumi.AliCloud.Hbr.Outputs
 
             string bytesTotal,
 
+            string clientId,
+
             string completeTime,
 
             string createTime,
@@ -175,6 +181,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             Bucket = bucket;
             BytesDone = bytesDone;
             BytesTotal = bytesTotal;
+            ClientId = clientId;
             CompleteTime = completeTime;
             CreateTime = createTime;
             CreatedTime = createdTime;

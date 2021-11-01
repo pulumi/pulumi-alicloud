@@ -9,8 +9,64 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AccessConfigurationPermissionPolicyArgs',
     'DirectorySamlIdentityProviderConfigurationArgs',
 ]
+
+@pulumi.input_type
+class AccessConfigurationPermissionPolicyArgs:
+    def __init__(__self__, *,
+                 permission_policy_document: Optional[pulumi.Input[str]] = None,
+                 permission_policy_name: Optional[pulumi.Input[str]] = None,
+                 permission_policy_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] permission_policy_document: The Content of Policy.
+        :param pulumi.Input[str] permission_policy_name: The Policy Name of policy.
+        :param pulumi.Input[str] permission_policy_type: The Policy Type of policy. Valid values: `System`, `Inline`.
+        """
+        if permission_policy_document is not None:
+            pulumi.set(__self__, "permission_policy_document", permission_policy_document)
+        if permission_policy_name is not None:
+            pulumi.set(__self__, "permission_policy_name", permission_policy_name)
+        if permission_policy_type is not None:
+            pulumi.set(__self__, "permission_policy_type", permission_policy_type)
+
+    @property
+    @pulumi.getter(name="permissionPolicyDocument")
+    def permission_policy_document(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Content of Policy.
+        """
+        return pulumi.get(self, "permission_policy_document")
+
+    @permission_policy_document.setter
+    def permission_policy_document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "permission_policy_document", value)
+
+    @property
+    @pulumi.getter(name="permissionPolicyName")
+    def permission_policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Policy Name of policy.
+        """
+        return pulumi.get(self, "permission_policy_name")
+
+    @permission_policy_name.setter
+    def permission_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "permission_policy_name", value)
+
+    @property
+    @pulumi.getter(name="permissionPolicyType")
+    def permission_policy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Policy Type of policy. Valid values: `System`, `Inline`.
+        """
+        return pulumi.get(self, "permission_policy_type")
+
+    @permission_policy_type.setter
+    def permission_policy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "permission_policy_type", value)
+
 
 @pulumi.input_type
 class DirectorySamlIdentityProviderConfigurationArgs:

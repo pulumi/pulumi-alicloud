@@ -10,6 +10,7 @@ from .. import _utilities
 
 __all__ = [
     'GetControlPoliciesPolicyResult',
+    'GetInstancesInstanceResult',
 ]
 
 @pulumi.output_type
@@ -252,5 +253,100 @@ class GetControlPoliciesPolicyResult(dict):
         The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
         """
         return pulumi.get(self, "source_type")
+
+
+@pulumi.output_type
+class GetInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 end_time: str,
+                 id: str,
+                 instance_id: str,
+                 payment_type: str,
+                 renewal_duration_unit: str,
+                 renewal_status: str,
+                 status: str):
+        """
+        :param str create_time: The Creation time of the resource.
+        :param str end_time: The end time of the resource..
+        :param str id: The ID of the Instance.
+        :param str instance_id: The first ID of the resource.
+        :param str payment_type: The payment type of the resource. Valid values: `Subscription`.
+        :param str renewal_duration_unit: Automatic renewal period unit. Valid values: `Month`,`Year`.
+        :param str renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        :param str status: The Status of Instance.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
+        pulumi.set(__self__, "renewal_status", renewal_status)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The Creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The end time of the resource..
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Instance.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the resource. Valid values: `Subscription`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="renewalDurationUnit")
+    def renewal_duration_unit(self) -> str:
+        """
+        Automatic renewal period unit. Valid values: `Month`,`Year`.
+        """
+        return pulumi.get(self, "renewal_duration_unit")
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> str:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The Status of Instance.
+        """
+        return pulumi.get(self, "status")
 
 
