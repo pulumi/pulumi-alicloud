@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,121 @@ type GetRouteTablesResult struct {
 	Tags   map[string]interface{} `pulumi:"tags"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
+}
+
+func GetRouteTablesOutput(ctx *pulumi.Context, args GetRouteTablesOutputArgs, opts ...pulumi.InvokeOption) GetRouteTablesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRouteTablesResult, error) {
+			args := v.(GetRouteTablesArgs)
+			r, err := GetRouteTables(ctx, &args, opts...)
+			return *r, err
+		}).(GetRouteTablesResultOutput)
+}
+
+// A collection of arguments for invoking getRouteTables.
+type GetRouteTablesOutputArgs struct {
+	// A list of Route Tables IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter route tables by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Id of resource group which route tables belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The route table name.
+	RouteTableName pulumi.StringPtrInput `pulumi:"routeTableName"`
+	// The router ID.
+	RouterId pulumi.StringPtrInput `pulumi:"routerId"`
+	// The route type of route table. Valid values: `VRouter` and `VBR`.
+	RouterType pulumi.StringPtrInput `pulumi:"routerType"`
+	// The status of resource. Valid values: `Available` and `Pending`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Vpc id of the route table.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (GetRouteTablesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTablesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRouteTables.
+type GetRouteTablesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRouteTablesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTablesResult)(nil)).Elem()
+}
+
+func (o GetRouteTablesResultOutput) ToGetRouteTablesResultOutput() GetRouteTablesResultOutput {
+	return o
+}
+
+func (o GetRouteTablesResultOutput) ToGetRouteTablesResultOutputWithContext(ctx context.Context) GetRouteTablesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRouteTablesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Optional) A list of Route Tables IDs.
+func (o GetRouteTablesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRouteTablesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of Route Tables names.
+func (o GetRouteTablesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRouteTablesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The Id of resource group which route tables belongs.
+func (o GetRouteTablesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The route table name.
+func (o GetRouteTablesResultOutput) RouteTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.RouteTableName }).(pulumi.StringPtrOutput)
+}
+
+// Router Id of the route table.
+func (o GetRouteTablesResultOutput) RouterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.RouterId }).(pulumi.StringPtrOutput)
+}
+
+// The route type.
+func (o GetRouteTablesResultOutput) RouterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.RouterType }).(pulumi.StringPtrOutput)
+}
+
+// The status of route table.
+func (o GetRouteTablesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A list of Route Tables. Each element contains the following attributes:
+func (o GetRouteTablesResultOutput) Tables() GetRouteTablesTableArrayOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) []GetRouteTablesTable { return v.Tables }).(GetRouteTablesTableArrayOutput)
+}
+
+func (o GetRouteTablesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The VPC ID.
+func (o GetRouteTablesResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRouteTablesResultOutput{})
 }

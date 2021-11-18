@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Edas
 {
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.Edas
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:edas/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of EDAS clusters in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.82.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var clusters = Output.Create(AliCloud.Edas.GetClusters.InvokeAsync(new AliCloud.Edas.GetClustersArgs
+        ///         {
+        ///             LogicalRegionId = "cn-shenzhen:xxx",
+        ///             Ids = 
+        ///             {
+        ///                 "addfs-dfsasd",
+        ///             },
+        ///             OutputFile = "clusters.txt",
+        ///         }));
+        ///         this.FirstClusterName = data.Alicloud_alikafka_consumer_groups.Clusters.Clusters[0].Cluster_name;
+        ///     }
+        /// 
+        ///     [Output("firstClusterName")]
+        ///     public Output&lt;string&gt; FirstClusterName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:edas/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -82,6 +122,40 @@ namespace Pulumi.AliCloud.Edas
         public string? OutputFile { get; set; }
 
         public GetClustersArgs()
+        {
+        }
+    }
+
+    public sealed class GetClustersInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// An ids string to filter results by the cluster id.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// ID of the namespace in EDAS.
+        /// </summary>
+        [Input("logicalRegionId", required: true)]
+        public Input<string> LogicalRegionId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by the cluster name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetClustersInvokeArgs()
         {
         }
     }

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const ds = pulumi.output(alicloud.ess.getScheduledTasks({
  *     nameRegex: "scheduled_task_name",
  *     scheduledTaskId: "scheduled_task_id",
- * }, { async: true }));
+ * }));
  *
  * export const firstScheduledTask = ds.tasks[0].id;
  * ```
@@ -49,20 +49,20 @@ export interface GetScheduledTasksArgs {
     /**
      * A list of scheduled task IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter resulting scheduled tasks by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The operation to be performed when a scheduled task is triggered.
      */
-    readonly scheduledAction?: string;
+    scheduledAction?: string;
     /**
      * The id of the scheduled task.
      */
-    readonly scheduledTaskId?: string;
+    scheduledTaskId?: string;
 }
 
 /**
@@ -92,4 +92,31 @@ export interface GetScheduledTasksResult {
      * A list of scheduled tasks. Each element contains the following attributes:
      */
     readonly tasks: outputs.ess.GetScheduledTasksTask[];
+}
+
+export function getScheduledTasksOutput(args?: GetScheduledTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduledTasksResult> {
+    return pulumi.output(args).apply(a => getScheduledTasks(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getScheduledTasks.
+ */
+export interface GetScheduledTasksOutputArgs {
+    /**
+     * A list of scheduled task IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter resulting scheduled tasks by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The operation to be performed when a scheduled task is triggered.
+     */
+    scheduledAction?: pulumi.Input<string>;
+    /**
+     * The id of the scheduled task.
+     */
+    scheduledTaskId?: pulumi.Input<string>;
 }

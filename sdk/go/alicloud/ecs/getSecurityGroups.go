@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -107,4 +110,117 @@ type GetSecurityGroupsResult struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC that owns the security group.
 	VpcId *string `pulumi:"vpcId"`
+}
+
+func GetSecurityGroupsOutput(ctx *pulumi.Context, args GetSecurityGroupsOutputArgs, opts ...pulumi.InvokeOption) GetSecurityGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSecurityGroupsResult, error) {
+			args := v.(GetSecurityGroupsArgs)
+			r, err := GetSecurityGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetSecurityGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getSecurityGroups.
+type GetSecurityGroupsOutputArgs struct {
+	// A list of Security Group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter the resulting security groups by their names.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Id of resource group which the securityGroup belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// A map of tags assigned to the ECS instances. It must be in the format:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Used to retrieve security groups that belong to the specified VPC ID.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (GetSecurityGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSecurityGroups.
+type GetSecurityGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGroupsResult)(nil)).Elem()
+}
+
+func (o GetSecurityGroupsResultOutput) ToGetSecurityGroupsResultOutput() GetSecurityGroupsResultOutput {
+	return o
+}
+
+func (o GetSecurityGroupsResultOutput) ToGetSecurityGroupsResultOutputWithContext(ctx context.Context) GetSecurityGroupsResultOutput {
+	return o
+}
+
+// A list of Security Groups. Each element contains the following attributes:
+func (o GetSecurityGroupsResultOutput) Groups() GetSecurityGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetSecurityGroupsResult) []GetSecurityGroupsGroup { return v.Groups }).(GetSecurityGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSecurityGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of Security Group IDs.
+func (o GetSecurityGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSecurityGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of Security Group names.
+func (o GetSecurityGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSecurityGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The Id of resource group which the securityGroup belongs.
+func (o GetSecurityGroupsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityGroupsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// A map of tags assigned to the ECS instance.
+func (o GetSecurityGroupsResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSecurityGroupsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the VPC that owns the security group.
+func (o GetSecurityGroupsResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityGroupsResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSecurityGroupsResultOutput{})
 }

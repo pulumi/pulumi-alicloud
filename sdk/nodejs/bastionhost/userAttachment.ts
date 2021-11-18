@@ -118,15 +118,15 @@ export interface UserAttachmentState {
     /**
      * Specifies the user group to add the user's bastion host ID of.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Specifies the user group to which you want to add the user ID.
      */
-    readonly userGroupId?: pulumi.Input<string>;
+    userGroupId?: pulumi.Input<string>;
     /**
      * Specify that you want to add to the policy attached to the user group ID. This includes response parameters in a Json-formatted string supports up to set up 100 USER ID.
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }
 
 /**
@@ -136,13 +136,13 @@ export interface UserAttachmentArgs {
     /**
      * Specifies the user group to add the user's bastion host ID of.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Specifies the user group to which you want to add the user ID.
      */
-    readonly userGroupId: pulumi.Input<string>;
+    userGroupId: pulumi.Input<string>;
     /**
      * Specify that you want to add to the policy attached to the user group ID. This includes response parameters in a Json-formatted string supports up to set up 100 USER ID.
      */
-    readonly userId: pulumi.Input<string>;
+    userId: pulumi.Input<string>;
 }

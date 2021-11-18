@@ -13,6 +13,7 @@ __all__ = [
     'GetZonesResult',
     'AwaitableGetZonesResult',
     'get_zones',
+    'get_zones_output',
 ]
 
 @pulumi.output_type
@@ -91,3 +92,25 @@ def get_zones(output_file: Optional[str] = None,
         id=__ret__.id,
         output_file=__ret__.output_file,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_zones)
+def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+    """
+    This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.140.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.dfs.get_zones()
+    ```
+    """
+    ...

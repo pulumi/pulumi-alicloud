@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eds
 {
@@ -63,7 +64,7 @@ namespace Pulumi.AliCloud.Eds
         ///         {
         ///             NameRegex = "^my-policy",
         ///         }));
-        ///         this.EcdPolicyGroupId = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups[0].Id);
+        ///         this.EcdPolicyGroupId = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
         ///     }
         /// 
         ///     [Output("ecdPolicyGroupId")]
@@ -75,6 +76,71 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public static Task<GetPolicyGroupsResult> InvokeAsync(GetPolicyGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyGroupsResult>("alicloud:eds/getPolicyGroups:getPolicyGroups", args ?? new GetPolicyGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = new AliCloud.Eds.EcdPolicyGroup("default", new AliCloud.Eds.EcdPolicyGroupArgs
+        ///         {
+        ///             PolicyGroupName = "my-policy-group",
+        ///             Clipboard = "read",
+        ///             LocalDrive = "read",
+        ///             UsbRedirect = "off",
+        ///             Watermark = "off",
+        ///             AuthorizeAccessPolicyRules = 
+        ///             {
+        ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
+        ///                 {
+        ///                     Description = "my-description1",
+        ///                     CidrIp = "1.2.3.45/24",
+        ///                 },
+        ///             },
+        ///             AuthorizeSecurityPolicyRules = 
+        ///             {
+        ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
+        ///                 {
+        ///                     Type = "inflow",
+        ///                     Policy = "accept",
+        ///                     Description = "my-description",
+        ///                     PortRange = "80/80",
+        ///                     IpProtocol = "TCP",
+        ///                     Priority = "1",
+        ///                     CidrIp = "1.2.3.4/24",
+        ///                 },
+        ///             },
+        ///         });
+        ///         var nameRegex = Output.Create(AliCloud.Eds.GetPolicyGroups.InvokeAsync(new AliCloud.Eds.GetPolicyGroupsArgs
+        ///         {
+        ///             NameRegex = "^my-policy",
+        ///         }));
+        ///         this.EcdPolicyGroupId = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("ecdPolicyGroupId")]
+        ///     public Output&lt;string&gt; EcdPolicyGroupId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPolicyGroupsResult> Invoke(GetPolicyGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPolicyGroupsResult>("alicloud:eds/getPolicyGroups:getPolicyGroups", args ?? new GetPolicyGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -108,6 +174,40 @@ namespace Pulumi.AliCloud.Eds
         public string? Status { get; set; }
 
         public GetPolicyGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetPolicyGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Policy Group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Policy Group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of policy.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetPolicyGroupsInvokeArgs()
         {
         }
     }

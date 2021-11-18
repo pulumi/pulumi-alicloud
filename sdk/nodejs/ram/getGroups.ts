@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "^group[0-9]*",
  *     outputFile: "groups.txt",
  *     userName: "user1",
- * }, { async: true }));
+ * }));
  *
  * export const firstGroupName = groupsDs.groups[0].name;
  * ```
@@ -48,20 +48,20 @@ export interface GetGroupsArgs {
     /**
      * A regex string to filter the returned groups by their names.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
      */
-    readonly policyName?: string;
+    policyName?: string;
     /**
      * Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
      */
-    readonly policyType?: string;
+    policyType?: string;
     /**
      * Filter the results by a specific the user name.
      */
-    readonly userName?: string;
+    userName?: string;
 }
 
 /**
@@ -85,4 +85,31 @@ export interface GetGroupsResult {
     readonly policyName?: string;
     readonly policyType?: string;
     readonly userName?: string;
+}
+
+export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+    return pulumi.output(args).apply(a => getGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroups.
+ */
+export interface GetGroupsOutputArgs {
+    /**
+     * A regex string to filter the returned groups by their names.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
+     */
+    policyName?: pulumi.Input<string>;
+    /**
+     * Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
+     */
+    policyType?: pulumi.Input<string>;
+    /**
+     * Filter the results by a specific the user name.
+     */
+    userName?: pulumi.Input<string>;
 }

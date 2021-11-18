@@ -441,7 +441,7 @@ type RestoreJobArrayInput interface {
 type RestoreJobArray []RestoreJobInput
 
 func (RestoreJobArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RestoreJob)(nil))
+	return reflect.TypeOf((*[]*RestoreJob)(nil)).Elem()
 }
 
 func (i RestoreJobArray) ToRestoreJobArrayOutput() RestoreJobArrayOutput {
@@ -466,7 +466,7 @@ type RestoreJobMapInput interface {
 type RestoreJobMap map[string]RestoreJobInput
 
 func (RestoreJobMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RestoreJob)(nil))
+	return reflect.TypeOf((*map[string]*RestoreJob)(nil)).Elem()
 }
 
 func (i RestoreJobMap) ToRestoreJobMapOutput() RestoreJobMapOutput {
@@ -477,9 +477,7 @@ func (i RestoreJobMap) ToRestoreJobMapOutputWithContext(ctx context.Context) Res
 	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobMapOutput)
 }
 
-type RestoreJobOutput struct {
-	*pulumi.OutputState
-}
+type RestoreJobOutput struct{ *pulumi.OutputState }
 
 func (RestoreJobOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RestoreJob)(nil))
@@ -498,14 +496,12 @@ func (o RestoreJobOutput) ToRestoreJobPtrOutput() RestoreJobPtrOutput {
 }
 
 func (o RestoreJobOutput) ToRestoreJobPtrOutputWithContext(ctx context.Context) RestoreJobPtrOutput {
-	return o.ApplyT(func(v RestoreJob) *RestoreJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreJob) *RestoreJob {
 		return &v
 	}).(RestoreJobPtrOutput)
 }
 
-type RestoreJobPtrOutput struct {
-	*pulumi.OutputState
-}
+type RestoreJobPtrOutput struct{ *pulumi.OutputState }
 
 func (RestoreJobPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RestoreJob)(nil))
@@ -517,6 +513,16 @@ func (o RestoreJobPtrOutput) ToRestoreJobPtrOutput() RestoreJobPtrOutput {
 
 func (o RestoreJobPtrOutput) ToRestoreJobPtrOutputWithContext(ctx context.Context) RestoreJobPtrOutput {
 	return o
+}
+
+func (o RestoreJobPtrOutput) Elem() RestoreJobOutput {
+	return o.ApplyT(func(v *RestoreJob) RestoreJob {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreJob
+		return ret
+	}).(RestoreJobOutput)
 }
 
 type RestoreJobArrayOutput struct{ *pulumi.OutputState }
@@ -560,6 +566,10 @@ func (o RestoreJobMapOutput) MapIndex(k pulumi.StringInput) RestoreJobOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobInput)(nil)).Elem(), &RestoreJob{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobPtrInput)(nil)).Elem(), &RestoreJob{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobArrayInput)(nil)).Elem(), RestoreJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobMapInput)(nil)).Elem(), RestoreJobMap{})
 	pulumi.RegisterOutputType(RestoreJobOutput{})
 	pulumi.RegisterOutputType(RestoreJobPtrOutput{})
 	pulumi.RegisterOutputType(RestoreJobArrayOutput{})

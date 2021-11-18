@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.hbr.getVaults({
  *     nameRegex: "^my-Vault",
  * });
- * export const hbrVaultId1 = ids.then(ids => ids.vaults[0].id);
+ * export const hbrVaultId1 = ids.then(ids => ids.vaults?[0]?.id);
  * ```
  */
 export function getVaults(args?: GetVaultsArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultsResult> {
@@ -49,20 +49,20 @@ export interface GetVaultsArgs {
     /**
      * A list of Vault IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Vault name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The type of Vault. Valid values: `STANDARD`.
      */
-    readonly vaultType?: string;
+    vaultType?: string;
 }
 
 /**
@@ -80,4 +80,31 @@ export interface GetVaultsResult {
     readonly status?: string;
     readonly vaultType?: string;
     readonly vaults: outputs.hbr.GetVaultsVault[];
+}
+
+export function getVaultsOutput(args?: GetVaultsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultsResult> {
+    return pulumi.output(args).apply(a => getVaults(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVaults.
+ */
+export interface GetVaultsOutputArgs {
+    /**
+     * A list of Vault IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Vault name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The type of Vault. Valid values: `STANDARD`.
+     */
+    vaultType?: pulumi.Input<string>;
 }

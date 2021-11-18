@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eci
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Eci
         /// </summary>
         public static Task<GetImageCachesResult> InvokeAsync(GetImageCachesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageCachesResult>("alicloud:eci/getImageCaches:getImageCaches", args ?? new GetImageCachesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides a collection of ECI Image Cache to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.90.0+.
+        /// </summary>
+        public static Output<GetImageCachesResult> Invoke(GetImageCachesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetImageCachesResult>("alicloud:eci/getImageCaches:getImageCaches", args ?? new GetImageCachesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -69,6 +78,58 @@ namespace Pulumi.AliCloud.Eci
         public string? Status { get; set; }
 
         public GetImageCachesArgs()
+        {
+        }
+    }
+
+    public sealed class GetImageCachesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list ids of ECI Image Cache.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Find the mirror cache containing it according to the image name.
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// The name of ECI Image Cache.
+        /// </summary>
+        [Input("imageCacheName")]
+        public Input<string>? ImageCacheName { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by the image cache name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The id of snapshot.
+        /// </summary>
+        [Input("snapshotId")]
+        public Input<string>? SnapshotId { get; set; }
+
+        /// <summary>
+        /// The status of ECI Image Cache.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetImageCachesInvokeArgs()
         {
         }
     }

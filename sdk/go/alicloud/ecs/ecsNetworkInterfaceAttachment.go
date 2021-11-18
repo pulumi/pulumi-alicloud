@@ -41,7 +41,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := "Instance"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -119,9 +119,9 @@ import (
 // 			},
 // 			Description:      pulumi.String("Basic test"),
 // 			PrimaryIpAddress: pulumi.String("192.168.0.2"),
-// 			Tags: pulumi.StringMap{
-// 				"Created": pulumi.String("TF"),
-// 				"For":     pulumi.String("Test"),
+// 			Tags: pulumi.AnyMap{
+// 				"Created": pulumi.Any("TF"),
+// 				"For":     pulumi.Any("Test"),
 // 			},
 // 			ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
 // 		})
@@ -309,7 +309,7 @@ type EcsNetworkInterfaceAttachmentArrayInput interface {
 type EcsNetworkInterfaceAttachmentArray []EcsNetworkInterfaceAttachmentInput
 
 func (EcsNetworkInterfaceAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EcsNetworkInterfaceAttachment)(nil))
+	return reflect.TypeOf((*[]*EcsNetworkInterfaceAttachment)(nil)).Elem()
 }
 
 func (i EcsNetworkInterfaceAttachmentArray) ToEcsNetworkInterfaceAttachmentArrayOutput() EcsNetworkInterfaceAttachmentArrayOutput {
@@ -334,7 +334,7 @@ type EcsNetworkInterfaceAttachmentMapInput interface {
 type EcsNetworkInterfaceAttachmentMap map[string]EcsNetworkInterfaceAttachmentInput
 
 func (EcsNetworkInterfaceAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EcsNetworkInterfaceAttachment)(nil))
+	return reflect.TypeOf((*map[string]*EcsNetworkInterfaceAttachment)(nil)).Elem()
 }
 
 func (i EcsNetworkInterfaceAttachmentMap) ToEcsNetworkInterfaceAttachmentMapOutput() EcsNetworkInterfaceAttachmentMapOutput {
@@ -345,9 +345,7 @@ func (i EcsNetworkInterfaceAttachmentMap) ToEcsNetworkInterfaceAttachmentMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfaceAttachmentMapOutput)
 }
 
-type EcsNetworkInterfaceAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type EcsNetworkInterfaceAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfaceAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EcsNetworkInterfaceAttachment)(nil))
@@ -366,14 +364,12 @@ func (o EcsNetworkInterfaceAttachmentOutput) ToEcsNetworkInterfaceAttachmentPtrO
 }
 
 func (o EcsNetworkInterfaceAttachmentOutput) ToEcsNetworkInterfaceAttachmentPtrOutputWithContext(ctx context.Context) EcsNetworkInterfaceAttachmentPtrOutput {
-	return o.ApplyT(func(v EcsNetworkInterfaceAttachment) *EcsNetworkInterfaceAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsNetworkInterfaceAttachment) *EcsNetworkInterfaceAttachment {
 		return &v
 	}).(EcsNetworkInterfaceAttachmentPtrOutput)
 }
 
-type EcsNetworkInterfaceAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type EcsNetworkInterfaceAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfaceAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EcsNetworkInterfaceAttachment)(nil))
@@ -385,6 +381,16 @@ func (o EcsNetworkInterfaceAttachmentPtrOutput) ToEcsNetworkInterfaceAttachmentP
 
 func (o EcsNetworkInterfaceAttachmentPtrOutput) ToEcsNetworkInterfaceAttachmentPtrOutputWithContext(ctx context.Context) EcsNetworkInterfaceAttachmentPtrOutput {
 	return o
+}
+
+func (o EcsNetworkInterfaceAttachmentPtrOutput) Elem() EcsNetworkInterfaceAttachmentOutput {
+	return o.ApplyT(func(v *EcsNetworkInterfaceAttachment) EcsNetworkInterfaceAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret EcsNetworkInterfaceAttachment
+		return ret
+	}).(EcsNetworkInterfaceAttachmentOutput)
 }
 
 type EcsNetworkInterfaceAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -428,6 +434,10 @@ func (o EcsNetworkInterfaceAttachmentMapOutput) MapIndex(k pulumi.StringInput) E
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfaceAttachmentInput)(nil)).Elem(), &EcsNetworkInterfaceAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfaceAttachmentPtrInput)(nil)).Elem(), &EcsNetworkInterfaceAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfaceAttachmentArrayInput)(nil)).Elem(), EcsNetworkInterfaceAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfaceAttachmentMapInput)(nil)).Elem(), EcsNetworkInterfaceAttachmentMap{})
 	pulumi.RegisterOutputType(EcsNetworkInterfaceAttachmentOutput{})
 	pulumi.RegisterOutputType(EcsNetworkInterfaceAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(EcsNetworkInterfaceAttachmentArrayOutput{})

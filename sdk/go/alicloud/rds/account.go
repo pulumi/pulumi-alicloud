@@ -291,7 +291,7 @@ type AccountArrayInput interface {
 type AccountArray []AccountInput
 
 func (AccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Account)(nil))
+	return reflect.TypeOf((*[]*Account)(nil)).Elem()
 }
 
 func (i AccountArray) ToAccountArrayOutput() AccountArrayOutput {
@@ -316,7 +316,7 @@ type AccountMapInput interface {
 type AccountMap map[string]AccountInput
 
 func (AccountMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Account)(nil))
+	return reflect.TypeOf((*map[string]*Account)(nil)).Elem()
 }
 
 func (i AccountMap) ToAccountMapOutput() AccountMapOutput {
@@ -327,9 +327,7 @@ func (i AccountMap) ToAccountMapOutputWithContext(ctx context.Context) AccountMa
 	return pulumi.ToOutputWithContext(ctx, i).(AccountMapOutput)
 }
 
-type AccountOutput struct {
-	*pulumi.OutputState
-}
+type AccountOutput struct{ *pulumi.OutputState }
 
 func (AccountOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Account)(nil))
@@ -348,14 +346,12 @@ func (o AccountOutput) ToAccountPtrOutput() AccountPtrOutput {
 }
 
 func (o AccountOutput) ToAccountPtrOutputWithContext(ctx context.Context) AccountPtrOutput {
-	return o.ApplyT(func(v Account) *Account {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Account) *Account {
 		return &v
 	}).(AccountPtrOutput)
 }
 
-type AccountPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccountPtrOutput struct{ *pulumi.OutputState }
 
 func (AccountPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Account)(nil))
@@ -367,6 +363,16 @@ func (o AccountPtrOutput) ToAccountPtrOutput() AccountPtrOutput {
 
 func (o AccountPtrOutput) ToAccountPtrOutputWithContext(ctx context.Context) AccountPtrOutput {
 	return o
+}
+
+func (o AccountPtrOutput) Elem() AccountOutput {
+	return o.ApplyT(func(v *Account) Account {
+		if v != nil {
+			return *v
+		}
+		var ret Account
+		return ret
+	}).(AccountOutput)
 }
 
 type AccountArrayOutput struct{ *pulumi.OutputState }
@@ -410,6 +416,10 @@ func (o AccountMapOutput) MapIndex(k pulumi.StringInput) AccountOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountInput)(nil)).Elem(), &Account{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPtrInput)(nil)).Elem(), &Account{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountArrayInput)(nil)).Elem(), AccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountMapInput)(nil)).Elem(), AccountMap{})
 	pulumi.RegisterOutputType(AccountOutput{})
 	pulumi.RegisterOutputType(AccountPtrOutput{})
 	pulumi.RegisterOutputType(AccountArrayOutput{})

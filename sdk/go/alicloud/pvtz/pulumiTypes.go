@@ -639,6 +639,14 @@ func (o GetZonesZoneBindVpcArrayOutput) Index(i pulumi.IntInput) GetZonesZoneBin
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAttachmentVpcInput)(nil)).Elem(), ZoneAttachmentVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAttachmentVpcArrayInput)(nil)).Elem(), ZoneAttachmentVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZoneRecordsRecordInput)(nil)).Elem(), GetZoneRecordsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZoneRecordsRecordArrayInput)(nil)).Elem(), GetZoneRecordsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneBindVpcInput)(nil)).Elem(), GetZonesZoneBindVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneBindVpcArrayInput)(nil)).Elem(), GetZonesZoneBindVpcArray{})
 	pulumi.RegisterOutputType(ZoneAttachmentVpcOutput{})
 	pulumi.RegisterOutputType(ZoneAttachmentVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetZoneRecordsRecordOutput{})

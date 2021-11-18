@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const kmsAliases = pulumi.output(alicloud.kms.getAliases({
  *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
  *     nameRegex: "alias/tf-testKmsAlias_123",
- * }, { async: true }));
+ * }));
  *
  * export const firstKeyId = alicloud_kms_keys_kms_keys_ds.keys.0.id;
  * ```
@@ -48,12 +48,12 @@ export interface GetAliasesArgs {
     /**
      * A list of KMS aliases IDs. The value is same as KMS alias_name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter the results by the KMS alias name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -78,4 +78,23 @@ export interface GetAliasesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getAliasesOutput(args?: GetAliasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAliasesResult> {
+    return pulumi.output(args).apply(a => getAliases(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAliases.
+ */
+export interface GetAliasesOutputArgs {
+    /**
+     * A list of KMS aliases IDs. The value is same as KMS alias_name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter the results by the KMS alias name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

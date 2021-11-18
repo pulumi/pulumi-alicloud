@@ -4,6 +4,9 @@
 package polardb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,63 @@ type GetEndpointsResult struct {
 	Endpoints []GetEndpointsEndpoint `pulumi:"endpoints"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetEndpointsOutput(ctx *pulumi.Context, args GetEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetEndpointsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEndpointsResult, error) {
+			args := v.(GetEndpointsArgs)
+			r, err := GetEndpoints(ctx, &args, opts...)
+			return *r, err
+		}).(GetEndpointsResultOutput)
+}
+
+// A collection of arguments for invoking getEndpoints.
+type GetEndpointsOutputArgs struct {
+	// PolarDB cluster ID.
+	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
+	// endpoint of the cluster.
+	DbEndpointId pulumi.StringPtrInput `pulumi:"dbEndpointId"`
+}
+
+func (GetEndpointsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEndpoints.
+type GetEndpointsResultOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointsResult)(nil)).Elem()
+}
+
+func (o GetEndpointsResultOutput) ToGetEndpointsResultOutput() GetEndpointsResultOutput {
+	return o
+}
+
+func (o GetEndpointsResultOutput) ToGetEndpointsResultOutputWithContext(ctx context.Context) GetEndpointsResultOutput {
+	return o
+}
+
+func (o GetEndpointsResultOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsResult) string { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// The endpoint ID.
+func (o GetEndpointsResultOutput) DbEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointsResult) *string { return v.DbEndpointId }).(pulumi.StringPtrOutput)
+}
+
+// A list of PolarDB cluster endpoints. Each element contains the following attributes:
+func (o GetEndpointsResultOutput) Endpoints() GetEndpointsEndpointArrayOutput {
+	return o.ApplyT(func(v GetEndpointsResult) []GetEndpointsEndpoint { return v.Endpoints }).(GetEndpointsEndpointArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEndpointsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEndpointsResultOutput{})
 }

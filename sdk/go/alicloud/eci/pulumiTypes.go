@@ -646,7 +646,7 @@ func (o ContainerGroupDnsConfigOutput) ToContainerGroupDnsConfigPtrOutput() Cont
 }
 
 func (o ContainerGroupDnsConfigOutput) ToContainerGroupDnsConfigPtrOutputWithContext(ctx context.Context) ContainerGroupDnsConfigPtrOutput {
-	return o.ApplyT(func(v ContainerGroupDnsConfig) *ContainerGroupDnsConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerGroupDnsConfig) *ContainerGroupDnsConfig {
 		return &v
 	}).(ContainerGroupDnsConfigPtrOutput)
 }
@@ -681,7 +681,13 @@ func (o ContainerGroupDnsConfigPtrOutput) ToContainerGroupDnsConfigPtrOutputWith
 }
 
 func (o ContainerGroupDnsConfigPtrOutput) Elem() ContainerGroupDnsConfigOutput {
-	return o.ApplyT(func(v *ContainerGroupDnsConfig) ContainerGroupDnsConfig { return *v }).(ContainerGroupDnsConfigOutput)
+	return o.ApplyT(func(v *ContainerGroupDnsConfig) ContainerGroupDnsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerGroupDnsConfig
+		return ret
+	}).(ContainerGroupDnsConfigOutput)
 }
 
 // The list of DNS server IP addresses.
@@ -911,10 +917,11 @@ func (o ContainerGroupEciSecurityContextOutput) ToContainerGroupEciSecurityConte
 }
 
 func (o ContainerGroupEciSecurityContextOutput) ToContainerGroupEciSecurityContextPtrOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextPtrOutput {
-	return o.ApplyT(func(v ContainerGroupEciSecurityContext) *ContainerGroupEciSecurityContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerGroupEciSecurityContext) *ContainerGroupEciSecurityContext {
 		return &v
 	}).(ContainerGroupEciSecurityContextPtrOutput)
 }
+
 func (o ContainerGroupEciSecurityContextOutput) Sysctls() ContainerGroupEciSecurityContextSysctlArrayOutput {
 	return o.ApplyT(func(v ContainerGroupEciSecurityContext) []ContainerGroupEciSecurityContextSysctl { return v.Sysctls }).(ContainerGroupEciSecurityContextSysctlArrayOutput)
 }
@@ -934,7 +941,13 @@ func (o ContainerGroupEciSecurityContextPtrOutput) ToContainerGroupEciSecurityCo
 }
 
 func (o ContainerGroupEciSecurityContextPtrOutput) Elem() ContainerGroupEciSecurityContextOutput {
-	return o.ApplyT(func(v *ContainerGroupEciSecurityContext) ContainerGroupEciSecurityContext { return *v }).(ContainerGroupEciSecurityContextOutput)
+	return o.ApplyT(func(v *ContainerGroupEciSecurityContext) ContainerGroupEciSecurityContext {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerGroupEciSecurityContext
+		return ret
+	}).(ContainerGroupEciSecurityContextOutput)
 }
 
 func (o ContainerGroupEciSecurityContextPtrOutput) Sysctls() ContainerGroupEciSecurityContextSysctlArrayOutput {
@@ -5071,6 +5084,80 @@ func (o GetImageCachesCachEventArrayOutput) Index(i pulumi.IntInput) GetImageCac
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerInput)(nil)).Elem(), ContainerGroupContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerArrayInput)(nil)).Elem(), ContainerGroupContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerEnvironmentVarInput)(nil)).Elem(), ContainerGroupContainerEnvironmentVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerEnvironmentVarArrayInput)(nil)).Elem(), ContainerGroupContainerEnvironmentVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerPortInput)(nil)).Elem(), ContainerGroupContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerPortArrayInput)(nil)).Elem(), ContainerGroupContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerVolumeMountInput)(nil)).Elem(), ContainerGroupContainerVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerVolumeMountArrayInput)(nil)).Elem(), ContainerGroupContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupDnsConfigInput)(nil)).Elem(), ContainerGroupDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupDnsConfigPtrInput)(nil)).Elem(), ContainerGroupDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupDnsConfigOptionInput)(nil)).Elem(), ContainerGroupDnsConfigOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupDnsConfigOptionArrayInput)(nil)).Elem(), ContainerGroupDnsConfigOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupEciSecurityContextInput)(nil)).Elem(), ContainerGroupEciSecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupEciSecurityContextPtrInput)(nil)).Elem(), ContainerGroupEciSecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupEciSecurityContextSysctlInput)(nil)).Elem(), ContainerGroupEciSecurityContextSysctlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupEciSecurityContextSysctlArrayInput)(nil)).Elem(), ContainerGroupEciSecurityContextSysctlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupHostAliasInput)(nil)).Elem(), ContainerGroupHostAliasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupHostAliasArrayInput)(nil)).Elem(), ContainerGroupHostAliasArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupImageRegistryCredentialInput)(nil)).Elem(), ContainerGroupImageRegistryCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupImageRegistryCredentialArrayInput)(nil)).Elem(), ContainerGroupImageRegistryCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerInput)(nil)).Elem(), ContainerGroupInitContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerArrayInput)(nil)).Elem(), ContainerGroupInitContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerEnvironmentVarInput)(nil)).Elem(), ContainerGroupInitContainerEnvironmentVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerEnvironmentVarArrayInput)(nil)).Elem(), ContainerGroupInitContainerEnvironmentVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerPortInput)(nil)).Elem(), ContainerGroupInitContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerPortArrayInput)(nil)).Elem(), ContainerGroupInitContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerVolumeMountInput)(nil)).Elem(), ContainerGroupInitContainerVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerVolumeMountArrayInput)(nil)).Elem(), ContainerGroupInitContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupVolumeInput)(nil)).Elem(), ContainerGroupVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupVolumeArrayInput)(nil)).Elem(), ContainerGroupVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupVolumeConfigFileVolumeConfigFileToPathInput)(nil)).Elem(), ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayInput)(nil)).Elem(), ContainerGroupVolumeConfigFileVolumeConfigFileToPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageCacheImageRegistryCredentialInput)(nil)).Elem(), ImageCacheImageRegistryCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageCacheImageRegistryCredentialArrayInput)(nil)).Elem(), ImageCacheImageRegistryCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiImageCacheImageRegistryCredentialInput)(nil)).Elem(), OpenApiImageCacheImageRegistryCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiImageCacheImageRegistryCredentialArrayInput)(nil)).Elem(), OpenApiImageCacheImageRegistryCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupInput)(nil)).Elem(), GetContainerGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupArrayInput)(nil)).Elem(), GetContainerGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupContainerInput)(nil)).Elem(), GetContainerGroupsGroupContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupContainerArrayInput)(nil)).Elem(), GetContainerGroupsGroupContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupContainerEnvironmentVarInput)(nil)).Elem(), GetContainerGroupsGroupContainerEnvironmentVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupContainerEnvironmentVarArrayInput)(nil)).Elem(), GetContainerGroupsGroupContainerEnvironmentVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupContainerPortInput)(nil)).Elem(), GetContainerGroupsGroupContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupContainerPortArrayInput)(nil)).Elem(), GetContainerGroupsGroupContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupContainerVolumeMountInput)(nil)).Elem(), GetContainerGroupsGroupContainerVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupContainerVolumeMountArrayInput)(nil)).Elem(), GetContainerGroupsGroupContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupDnsConfigInput)(nil)).Elem(), GetContainerGroupsGroupDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupDnsConfigArrayInput)(nil)).Elem(), GetContainerGroupsGroupDnsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupDnsConfigOptionInput)(nil)).Elem(), GetContainerGroupsGroupDnsConfigOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupDnsConfigOptionArrayInput)(nil)).Elem(), GetContainerGroupsGroupDnsConfigOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupEciSecurityContextInput)(nil)).Elem(), GetContainerGroupsGroupEciSecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupEciSecurityContextArrayInput)(nil)).Elem(), GetContainerGroupsGroupEciSecurityContextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupEciSecurityContextSysctlInput)(nil)).Elem(), GetContainerGroupsGroupEciSecurityContextSysctlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupEciSecurityContextSysctlArrayInput)(nil)).Elem(), GetContainerGroupsGroupEciSecurityContextSysctlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupEventInput)(nil)).Elem(), GetContainerGroupsGroupEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupEventArrayInput)(nil)).Elem(), GetContainerGroupsGroupEventArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupHostAliasInput)(nil)).Elem(), GetContainerGroupsGroupHostAliasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupHostAliasArrayInput)(nil)).Elem(), GetContainerGroupsGroupHostAliasArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupInitContainerInput)(nil)).Elem(), GetContainerGroupsGroupInitContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupInitContainerArrayInput)(nil)).Elem(), GetContainerGroupsGroupInitContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupInitContainerEnvironmentVarInput)(nil)).Elem(), GetContainerGroupsGroupInitContainerEnvironmentVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupInitContainerEnvironmentVarArrayInput)(nil)).Elem(), GetContainerGroupsGroupInitContainerEnvironmentVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupInitContainerPortInput)(nil)).Elem(), GetContainerGroupsGroupInitContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupInitContainerPortArrayInput)(nil)).Elem(), GetContainerGroupsGroupInitContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupInitContainerVolumeMountInput)(nil)).Elem(), GetContainerGroupsGroupInitContainerVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupInitContainerVolumeMountArrayInput)(nil)).Elem(), GetContainerGroupsGroupInitContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupVolumeInput)(nil)).Elem(), GetContainerGroupsGroupVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupVolumeArrayInput)(nil)).Elem(), GetContainerGroupsGroupVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathInput)(nil)).Elem(), GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayInput)(nil)).Elem(), GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCachInput)(nil)).Elem(), GetImageCachesCachArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCachArrayInput)(nil)).Elem(), GetImageCachesCachArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCachEventInput)(nil)).Elem(), GetImageCachesCachEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCachEventArrayInput)(nil)).Elem(), GetImageCachesCachEventArray{})
 	pulumi.RegisterOutputType(ContainerGroupContainerOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerEnvironmentVarOutput{})

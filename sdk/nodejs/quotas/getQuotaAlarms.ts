@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["5VR90-421F886-81E9-xxx"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstQuotasQuotaAlarmId = example.then(example => example.alarms[0].id);
+ * export const firstQuotasQuotaAlarmId = example.then(example => example.alarms?[0]?.id);
  * ```
  */
 export function getQuotaAlarms(args?: GetQuotaAlarmsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaAlarmsResult> {
@@ -53,32 +53,32 @@ export interface GetQuotaAlarmsArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Quota Alarm IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Quota Alarm name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Product Code.
      */
-    readonly productCode?: string;
+    productCode?: string;
     /**
      * The Quota Action Code.
      */
-    readonly quotaActionCode?: string;
+    quotaActionCode?: string;
     /**
      * The name of Quota Alarm.
      */
-    readonly quotaAlarmName?: string;
+    quotaAlarmName?: string;
     /**
      * The Quota Dimensions.
      */
-    readonly quotaDimensions?: inputs.quotas.GetQuotaAlarmsQuotaDimension[];
+    quotaDimensions?: inputs.quotas.GetQuotaAlarmsQuotaDimension[];
 }
 
 /**
@@ -99,4 +99,43 @@ export interface GetQuotaAlarmsResult {
     readonly quotaActionCode?: string;
     readonly quotaAlarmName?: string;
     readonly quotaDimensions?: outputs.quotas.GetQuotaAlarmsQuotaDimension[];
+}
+
+export function getQuotaAlarmsOutput(args?: GetQuotaAlarmsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaAlarmsResult> {
+    return pulumi.output(args).apply(a => getQuotaAlarms(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getQuotaAlarms.
+ */
+export interface GetQuotaAlarmsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Quota Alarm IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Quota Alarm name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Product Code.
+     */
+    productCode?: pulumi.Input<string>;
+    /**
+     * The Quota Action Code.
+     */
+    quotaActionCode?: pulumi.Input<string>;
+    /**
+     * The name of Quota Alarm.
+     */
+    quotaAlarmName?: pulumi.Input<string>;
+    /**
+     * The Quota Dimensions.
+     */
+    quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotaAlarmsQuotaDimensionArgs>[]>;
 }

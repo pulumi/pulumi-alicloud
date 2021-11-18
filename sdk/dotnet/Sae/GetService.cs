@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sae
 {
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("alicloud:sae/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Using this data source can open SAE service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about SAE and how to use it, see [What is SAE](https://help.aliyun.com/document_detail/125720.html).
+        /// 
+        /// &gt; **NOTE:** Available in v1.120.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var open = Output.Create(AliCloud.Sae.GetService.InvokeAsync(new AliCloud.Sae.GetServiceArgs
+        ///         {
+        ///             Enable = "On",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:sae/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -55,6 +89,19 @@ namespace Pulumi.AliCloud.Sae
         public string? Enable { get; set; }
 
         public GetServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+        /// </summary>
+        [Input("enable")]
+        public Input<string>? Enable { get; set; }
+
+        public GetServiceInvokeArgs()
         {
         }
     }

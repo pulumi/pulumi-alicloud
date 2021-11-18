@@ -13,6 +13,7 @@ __all__ = [
     'GetVaultsResult',
     'AwaitableGetVaultsResult',
     'get_vaults',
+    'get_vaults_output',
 ]
 
 @pulumi.output_type
@@ -156,3 +157,36 @@ def get_vaults(ids: Optional[Sequence[str]] = None,
         status=__ret__.status,
         vault_type=__ret__.vault_type,
         vaults=__ret__.vaults)
+
+
+@_utilities.lift_output_func(get_vaults)
+def get_vaults_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      status: Optional[pulumi.Input[Optional[str]]] = None,
+                      vault_type: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVaultsResult]:
+    """
+    This data source provides the Hbr Vaults of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.129.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_vaults(name_regex="^my-Vault")
+    pulumi.export("hbrVaultId1", ids.vaults[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Vault IDs.
+    :param str name_regex: A regex string to filter results by Vault name.
+    :param str status: The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+    :param str vault_type: The type of Vault. Valid values: `STANDARD`.
+    """
+    ...

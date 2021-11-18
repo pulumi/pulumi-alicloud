@@ -13,6 +13,7 @@ __all__ = [
     'GetHistoryDeliveryJobsResult',
     'AwaitableGetHistoryDeliveryJobsResult',
     'get_history_delivery_jobs',
+    'get_history_delivery_jobs_output',
 ]
 
 @pulumi.output_type
@@ -135,3 +136,36 @@ def get_history_delivery_jobs(enable_details: Optional[bool] = None,
         jobs=__ret__.jobs,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_history_delivery_jobs)
+def get_history_delivery_jobs_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                     status: Optional[pulumi.Input[Optional[int]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHistoryDeliveryJobsResult]:
+    """
+    This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.139.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.actiontrail.get_history_delivery_jobs(ids=["example_id"])
+    pulumi.export("actiontrailHistoryDeliveryJobId1", ids.jobs[0].id)
+    status = alicloud.actiontrail.get_history_delivery_jobs(ids=["example_id"],
+        status=2)
+    pulumi.export("actiontrailHistoryDeliveryJobId2", status.jobs[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of History Delivery Job IDs.
+    :param int status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+    """
+    ...

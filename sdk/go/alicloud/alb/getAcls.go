@@ -4,6 +4,9 @@
 package alb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,100 @@ type GetAclsResult struct {
 	OutputFile      *string  `pulumi:"outputFile"`
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	Status          *string  `pulumi:"status"`
+}
+
+func GetAclsOutput(ctx *pulumi.Context, args GetAclsOutputArgs, opts ...pulumi.InvokeOption) GetAclsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAclsResult, error) {
+			args := v.(GetAclsArgs)
+			r, err := GetAcls(ctx, &args, opts...)
+			return *r, err
+		}).(GetAclsResultOutput)
+}
+
+// A collection of arguments for invoking getAcls.
+type GetAclsOutputArgs struct {
+	// The acl ids.
+	AclIds pulumi.StringArrayInput `pulumi:"aclIds"`
+	// The ACL Name.
+	AclName pulumi.StringPtrInput `pulumi:"aclName"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Acl IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Acl name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Resource Group to Which the Number.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetAclsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAcls.
+type GetAclsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAclsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsResult)(nil)).Elem()
+}
+
+func (o GetAclsResultOutput) ToGetAclsResultOutput() GetAclsResultOutput {
+	return o
+}
+
+func (o GetAclsResultOutput) ToGetAclsResultOutputWithContext(ctx context.Context) GetAclsResultOutput {
+	return o
+}
+
+func (o GetAclsResultOutput) AclIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAclsResult) []string { return v.AclIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAclsResultOutput) AclName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAclsResult) *string { return v.AclName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAclsResultOutput) Acls() GetAclsAclArrayOutput {
+	return o.ApplyT(func(v GetAclsResult) []GetAclsAcl { return v.Acls }).(GetAclsAclArrayOutput)
+}
+
+func (o GetAclsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAclsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAclsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAclsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAclsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAclsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAclsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAclsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAclsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAclsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAclsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAclsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAclsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAclsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAclsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAclsResultOutput{})
 }

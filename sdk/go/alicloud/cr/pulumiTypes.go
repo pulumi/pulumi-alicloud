@@ -111,7 +111,7 @@ func (o RepoDomainListOutput) ToRepoDomainListPtrOutput() RepoDomainListPtrOutpu
 }
 
 func (o RepoDomainListOutput) ToRepoDomainListPtrOutputWithContext(ctx context.Context) RepoDomainListPtrOutput {
-	return o.ApplyT(func(v RepoDomainList) *RepoDomainList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoDomainList) *RepoDomainList {
 		return &v
 	}).(RepoDomainListPtrOutput)
 }
@@ -146,7 +146,13 @@ func (o RepoDomainListPtrOutput) ToRepoDomainListPtrOutputWithContext(ctx contex
 }
 
 func (o RepoDomainListPtrOutput) Elem() RepoDomainListOutput {
-	return o.ApplyT(func(v *RepoDomainList) RepoDomainList { return *v }).(RepoDomainListOutput)
+	return o.ApplyT(func(v *RepoDomainList) RepoDomainList {
+		if v != nil {
+			return *v
+		}
+		var ret RepoDomainList
+		return ret
+	}).(RepoDomainListOutput)
 }
 
 // Domain of internal endpoint, only in some regions.
@@ -791,6 +797,17 @@ func (o GetReposRepoTagArrayOutput) Index(i pulumi.IntInput) GetReposRepoTagOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListInput)(nil)).Elem(), RepoDomainListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListPtrInput)(nil)).Elem(), RepoDomainListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointAclPoliciesPolicyInput)(nil)).Elem(), GetEndpointAclPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointAclPoliciesPolicyArrayInput)(nil)).Elem(), GetEndpointAclPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceInput)(nil)).Elem(), GetNamespacesNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceArrayInput)(nil)).Elem(), GetNamespacesNamespaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoInput)(nil)).Elem(), GetReposRepoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoArrayInput)(nil)).Elem(), GetReposRepoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoDomainListInput)(nil)).Elem(), GetReposRepoDomainListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoTagInput)(nil)).Elem(), GetReposRepoTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoTagArrayInput)(nil)).Elem(), GetReposRepoTagArray{})
 	pulumi.RegisterOutputType(RepoDomainListOutput{})
 	pulumi.RegisterOutputType(RepoDomainListPtrOutput{})
 	pulumi.RegisterOutputType(GetEndpointAclPoliciesPolicyOutput{})

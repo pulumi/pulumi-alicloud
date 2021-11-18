@@ -188,7 +188,7 @@ type EventBusArrayInput interface {
 type EventBusArray []EventBusInput
 
 func (EventBusArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EventBus)(nil))
+	return reflect.TypeOf((*[]*EventBus)(nil)).Elem()
 }
 
 func (i EventBusArray) ToEventBusArrayOutput() EventBusArrayOutput {
@@ -213,7 +213,7 @@ type EventBusMapInput interface {
 type EventBusMap map[string]EventBusInput
 
 func (EventBusMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EventBus)(nil))
+	return reflect.TypeOf((*map[string]*EventBus)(nil)).Elem()
 }
 
 func (i EventBusMap) ToEventBusMapOutput() EventBusMapOutput {
@@ -224,9 +224,7 @@ func (i EventBusMap) ToEventBusMapOutputWithContext(ctx context.Context) EventBu
 	return pulumi.ToOutputWithContext(ctx, i).(EventBusMapOutput)
 }
 
-type EventBusOutput struct {
-	*pulumi.OutputState
-}
+type EventBusOutput struct{ *pulumi.OutputState }
 
 func (EventBusOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EventBus)(nil))
@@ -245,14 +243,12 @@ func (o EventBusOutput) ToEventBusPtrOutput() EventBusPtrOutput {
 }
 
 func (o EventBusOutput) ToEventBusPtrOutputWithContext(ctx context.Context) EventBusPtrOutput {
-	return o.ApplyT(func(v EventBus) *EventBus {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventBus) *EventBus {
 		return &v
 	}).(EventBusPtrOutput)
 }
 
-type EventBusPtrOutput struct {
-	*pulumi.OutputState
-}
+type EventBusPtrOutput struct{ *pulumi.OutputState }
 
 func (EventBusPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EventBus)(nil))
@@ -264,6 +260,16 @@ func (o EventBusPtrOutput) ToEventBusPtrOutput() EventBusPtrOutput {
 
 func (o EventBusPtrOutput) ToEventBusPtrOutputWithContext(ctx context.Context) EventBusPtrOutput {
 	return o
+}
+
+func (o EventBusPtrOutput) Elem() EventBusOutput {
+	return o.ApplyT(func(v *EventBus) EventBus {
+		if v != nil {
+			return *v
+		}
+		var ret EventBus
+		return ret
+	}).(EventBusOutput)
 }
 
 type EventBusArrayOutput struct{ *pulumi.OutputState }
@@ -307,6 +313,10 @@ func (o EventBusMapOutput) MapIndex(k pulumi.StringInput) EventBusOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EventBusInput)(nil)).Elem(), &EventBus{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventBusPtrInput)(nil)).Elem(), &EventBus{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventBusArrayInput)(nil)).Elem(), EventBusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventBusMapInput)(nil)).Elem(), EventBusMap{})
 	pulumi.RegisterOutputType(EventBusOutput{})
 	pulumi.RegisterOutputType(EventBusPtrOutput{})
 	pulumi.RegisterOutputType(EventBusArrayOutput{})

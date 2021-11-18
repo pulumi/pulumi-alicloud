@@ -179,48 +179,48 @@ export interface ImageCacheState {
      * The ID of the container group job that is used to create the image cache.
      * * `status` -The status of the image cache.
      */
-    readonly containerGroupId?: pulumi.Input<string>;
+    containerGroupId?: pulumi.Input<string>;
     /**
      * The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
      */
-    readonly eipInstanceId?: pulumi.Input<string>;
+    eipInstanceId?: pulumi.Input<string>;
     /**
      * The name of the image cache.
      */
-    readonly imageCacheName?: pulumi.Input<string>;
+    imageCacheName?: pulumi.Input<string>;
     /**
      * The size of the image cache. Default to `20`. Unit: GiB.
      */
-    readonly imageCacheSize?: pulumi.Input<number>;
+    imageCacheSize?: pulumi.Input<number>;
     /**
      * The Image Registry parameters about the image to be cached.
      */
-    readonly imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ImageCacheImageRegistryCredential>[]>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ImageCacheImageRegistryCredential>[]>;
     /**
      * The images to be cached. The image name must be versioned.
      */
-    readonly images?: pulumi.Input<pulumi.Input<string>[]>;
+    images?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
      */
-    readonly retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number>;
     /**
      * The ID of the security group. You do not need to specify the same security group as the container group.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The zone id to cache image.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -230,41 +230,41 @@ export interface ImageCacheArgs {
     /**
      * The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
      */
-    readonly eipInstanceId?: pulumi.Input<string>;
+    eipInstanceId?: pulumi.Input<string>;
     /**
      * The name of the image cache.
      */
-    readonly imageCacheName: pulumi.Input<string>;
+    imageCacheName: pulumi.Input<string>;
     /**
      * The size of the image cache. Default to `20`. Unit: GiB.
      */
-    readonly imageCacheSize?: pulumi.Input<number>;
+    imageCacheSize?: pulumi.Input<number>;
     /**
      * The Image Registry parameters about the image to be cached.
      */
-    readonly imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ImageCacheImageRegistryCredential>[]>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ImageCacheImageRegistryCredential>[]>;
     /**
      * The images to be cached. The image name must be versioned.
      */
-    readonly images: pulumi.Input<pulumi.Input<string>[]>;
+    images: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
      */
-    readonly retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number>;
     /**
      * The ID of the security group. You do not need to specify the same security group as the container group.
      */
-    readonly securityGroupId: pulumi.Input<string>;
+    securityGroupId: pulumi.Input<string>;
     /**
      * The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
     /**
      * The zone id to cache image.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Kms
 {
@@ -33,7 +34,7 @@ namespace Pulumi.AliCloud.Kms
         ///             EnableDetails = true,
         ///             SecretName = "secret_name",
         ///         }));
-        ///         this.FirstSecretData = kmsSecretVersionsDs.Apply(kmsSecretVersionsDs =&gt; kmsSecretVersionsDs.Versions[0].SecretData);
+        ///         this.FirstSecretData = kmsSecretVersionsDs.Apply(kmsSecretVersionsDs =&gt; kmsSecretVersionsDs.Versions?[0]?.SecretData);
         ///     }
         /// 
         ///     [Output("firstSecretData")]
@@ -45,6 +46,41 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public static Task<GetSecretVersionsResult> InvokeAsync(GetSecretVersionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionsResult>("alicloud:kms/getSecretVersions:getSecretVersions", args ?? new GetSecretVersionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
+        ///  
+        /// &gt; **NOTE:** Available in v1.88.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kmsSecretVersionsDs = Output.Create(AliCloud.Kms.GetSecretVersions.InvokeAsync(new AliCloud.Kms.GetSecretVersionsArgs
+        ///         {
+        ///             EnableDetails = true,
+        ///             SecretName = "secret_name",
+        ///         }));
+        ///         this.FirstSecretData = kmsSecretVersionsDs.Apply(kmsSecretVersionsDs =&gt; kmsSecretVersionsDs.Versions?[0]?.SecretData);
+        ///     }
+        /// 
+        ///     [Output("firstSecretData")]
+        ///     public Output&lt;string&gt; FirstSecretData { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSecretVersionsResult> Invoke(GetSecretVersionsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSecretVersionsResult>("alicloud:kms/getSecretVersions:getSecretVersions", args ?? new GetSecretVersionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -90,6 +126,52 @@ namespace Pulumi.AliCloud.Kms
         public string? VersionStage { get; set; }
 
         public GetSecretVersionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecretVersionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of KMS Secret Version ids.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Specifies whether to return deprecated secret versions. Default to `false`.
+        /// </summary>
+        [Input("includeDeprecated")]
+        public Input<string>? IncludeDeprecated { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The name of the secret.
+        /// </summary>
+        [Input("secretName", required: true)]
+        public Input<string> SecretName { get; set; } = null!;
+
+        /// <summary>
+        /// The stage of the secret version.
+        /// </summary>
+        [Input("versionStage")]
+        public Input<string>? VersionStage { get; set; }
+
+        public GetSecretVersionsInvokeArgs()
         {
         }
     }

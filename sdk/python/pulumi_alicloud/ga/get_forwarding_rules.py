@@ -13,6 +13,7 @@ __all__ = [
     'GetForwardingRulesResult',
     'AwaitableGetForwardingRulesResult',
     'get_forwarding_rules',
+    'get_forwarding_rules_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,38 @@ def get_forwarding_rules(accelerator_id: Optional[str] = None,
         listener_id=__ret__.listener_id,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_forwarding_rules)
+def get_forwarding_rules_output(accelerator_id: Optional[pulumi.Input[str]] = None,
+                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                listener_id: Optional[pulumi.Input[str]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                status: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetForwardingRulesResult]:
+    """
+    This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.120.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ga.get_forwarding_rules(accelerator_id="example_value",
+        listener_id="example_value",
+        ids=["example_value"])
+    pulumi.export("firstGaForwardingRuleId", example.forwarding_rules[0].id)
+    ```
+
+
+    :param str accelerator_id: The ID of the Global Accelerator instance.
+    :param Sequence[str] ids: A list of Forwarding Rule IDs.
+    :param str listener_id: The ID of the listener.
+    :param str status: The status of the acceleration region. Valid values: `active`, `configuring`.
+    """
+    ...

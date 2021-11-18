@@ -160,7 +160,7 @@ type DomainAttachmentArrayInput interface {
 type DomainAttachmentArray []DomainAttachmentInput
 
 func (DomainAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DomainAttachment)(nil))
+	return reflect.TypeOf((*[]*DomainAttachment)(nil)).Elem()
 }
 
 func (i DomainAttachmentArray) ToDomainAttachmentArrayOutput() DomainAttachmentArrayOutput {
@@ -185,7 +185,7 @@ type DomainAttachmentMapInput interface {
 type DomainAttachmentMap map[string]DomainAttachmentInput
 
 func (DomainAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DomainAttachment)(nil))
+	return reflect.TypeOf((*map[string]*DomainAttachment)(nil)).Elem()
 }
 
 func (i DomainAttachmentMap) ToDomainAttachmentMapOutput() DomainAttachmentMapOutput {
@@ -196,9 +196,7 @@ func (i DomainAttachmentMap) ToDomainAttachmentMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DomainAttachmentMapOutput)
 }
 
-type DomainAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type DomainAttachmentOutput struct{ *pulumi.OutputState }
 
 func (DomainAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainAttachment)(nil))
@@ -217,14 +215,12 @@ func (o DomainAttachmentOutput) ToDomainAttachmentPtrOutput() DomainAttachmentPt
 }
 
 func (o DomainAttachmentOutput) ToDomainAttachmentPtrOutputWithContext(ctx context.Context) DomainAttachmentPtrOutput {
-	return o.ApplyT(func(v DomainAttachment) *DomainAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainAttachment) *DomainAttachment {
 		return &v
 	}).(DomainAttachmentPtrOutput)
 }
 
-type DomainAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type DomainAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainAttachment)(nil))
@@ -236,6 +232,16 @@ func (o DomainAttachmentPtrOutput) ToDomainAttachmentPtrOutput() DomainAttachmen
 
 func (o DomainAttachmentPtrOutput) ToDomainAttachmentPtrOutputWithContext(ctx context.Context) DomainAttachmentPtrOutput {
 	return o
+}
+
+func (o DomainAttachmentPtrOutput) Elem() DomainAttachmentOutput {
+	return o.ApplyT(func(v *DomainAttachment) DomainAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret DomainAttachment
+		return ret
+	}).(DomainAttachmentOutput)
 }
 
 type DomainAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -279,6 +285,10 @@ func (o DomainAttachmentMapOutput) MapIndex(k pulumi.StringInput) DomainAttachme
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainAttachmentInput)(nil)).Elem(), &DomainAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainAttachmentPtrInput)(nil)).Elem(), &DomainAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainAttachmentArrayInput)(nil)).Elem(), DomainAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainAttachmentMapInput)(nil)).Elem(), DomainAttachmentMap{})
 	pulumi.RegisterOutputType(DomainAttachmentOutput{})
 	pulumi.RegisterOutputType(DomainAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(DomainAttachmentArrayOutput{})

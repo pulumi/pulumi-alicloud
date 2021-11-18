@@ -4,6 +4,9 @@
 package videosurveillance
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,4 +81,88 @@ type GetSystemGroupsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetSystemGroupsOutput(ctx *pulumi.Context, args GetSystemGroupsOutputArgs, opts ...pulumi.InvokeOption) GetSystemGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSystemGroupsResult, error) {
+			args := v.(GetSystemGroupsArgs)
+			r, err := GetSystemGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetSystemGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getSystemGroups.
+type GetSystemGroupsOutputArgs struct {
+	// A list of Group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+	InProtocol pulumi.StringPtrInput `pulumi:"inProtocol"`
+	// The name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A regex string to filter results by Group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status. Valid values: `on`,`off`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetSystemGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSystemGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSystemGroups.
+type GetSystemGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSystemGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSystemGroupsResult)(nil)).Elem()
+}
+
+func (o GetSystemGroupsResultOutput) ToGetSystemGroupsResultOutput() GetSystemGroupsResultOutput {
+	return o
+}
+
+func (o GetSystemGroupsResultOutput) ToGetSystemGroupsResultOutputWithContext(ctx context.Context) GetSystemGroupsResultOutput {
+	return o
+}
+
+func (o GetSystemGroupsResultOutput) Groups() GetSystemGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetSystemGroupsResult) []GetSystemGroupsGroup { return v.Groups }).(GetSystemGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSystemGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSystemGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSystemGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSystemGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSystemGroupsResultOutput) InProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSystemGroupsResult) *string { return v.InProtocol }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSystemGroupsResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSystemGroupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSystemGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSystemGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSystemGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSystemGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSystemGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSystemGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSystemGroupsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSystemGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSystemGroupsResultOutput{})
 }

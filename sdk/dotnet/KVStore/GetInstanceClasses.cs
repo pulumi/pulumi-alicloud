@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.KVStore
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.KVStore
         ///             EngineVersion = "5.0",
         ///             InstanceChargeType = "PrePaid",
         ///             OutputFile = "./classes.txt",
-        ///             ZoneId = resourcesZones.Zones[0].Id,
+        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
         ///         })));
         ///         this.FirstKvstoreInstanceClass = resourcesInstanceClasses.Apply(resourcesInstanceClasses =&gt; resourcesInstanceClasses.InstanceClasses);
         ///     }
@@ -52,6 +53,48 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public static Task<GetInstanceClassesResult> InvokeAsync(GetInstanceClassesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.49.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "KVStore",
+        ///         }));
+        ///         var resourcesInstanceClasses = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.KVStore.GetInstanceClasses.InvokeAsync(new AliCloud.KVStore.GetInstanceClassesArgs
+        ///         {
+        ///             Engine = "Redis",
+        ///             EngineVersion = "5.0",
+        ///             InstanceChargeType = "PrePaid",
+        ///             OutputFile = "./classes.txt",
+        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
+        ///         })));
+        ///         this.FirstKvstoreInstanceClass = resourcesInstanceClasses.Apply(resourcesInstanceClasses =&gt; resourcesInstanceClasses.InstanceClasses);
+        ///     }
+        /// 
+        ///     [Output("firstKvstoreInstanceClass")]
+        ///     public Output&lt;string&gt; FirstKvstoreInstanceClass { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceClassesResult> Invoke(GetInstanceClassesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -142,6 +185,97 @@ namespace Pulumi.AliCloud.KVStore
         public string ZoneId { get; set; } = null!;
 
         public GetInstanceClassesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceClassesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+        /// </summary>
+        [Input("architecture")]
+        public Input<string>? Architecture { get; set; }
+
+        /// <summary>
+        /// The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+        /// </summary>
+        [Input("editionType")]
+        public Input<string>? EditionType { get; set; }
+
+        /// <summary>
+        /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+        /// </summary>
+        [Input("engine")]
+        public Input<string>? Engine { get; set; }
+
+        /// <summary>
+        /// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+        /// </summary>
+        [Input("engineVersion")]
+        public Input<string>? EngineVersion { get; set; }
+
+        /// <summary>
+        /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+        /// </summary>
+        [Input("nodeType")]
+        public Input<string>? NodeType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from 1.68.0.
+        /// </summary>
+        [Input("packageType")]
+        public Input<string>? PackageType { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from 1.68.0.
+        /// </summary>
+        [Input("performanceType")]
+        public Input<string>? PerformanceType { get; set; }
+
+        [Input("productType")]
+        public Input<string>? ProductType { get; set; }
+
+        /// <summary>
+        /// The KVStore instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+        /// </summary>
+        [Input("seriesType")]
+        public Input<string>? SeriesType { get; set; }
+
+        /// <summary>
+        /// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
+        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+        /// * Local: an ApsaraDB for Redis instance with a local disk.
+        /// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+        /// </summary>
+        [Input("shardNumber")]
+        public Input<int>? ShardNumber { get; set; }
+
+        [Input("sortedBy")]
+        public Input<string>? SortedBy { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from 1.68.0.
+        /// </summary>
+        [Input("storageType")]
+        public Input<string>? StorageType { get; set; }
+
+        /// <summary>
+        /// The Zone to launch the KVStore instance.
+        /// </summary>
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
+
+        public GetInstanceClassesInvokeArgs()
         {
         }
     }

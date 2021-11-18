@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  *         "2",
  *     ],
  * });
- * export const bastionhostUserGroupId1 = ids.then(ids => ids.groups[0].id);
+ * export const bastionhostUserGroupId1 = ids.then(ids => ids.groups?[0]?.id);
  * const nameRegex = alicloud.bastionhost.getUserGroups({
  *     instanceId: "bastionhost-cn-xxxx",
  *     nameRegex: "^my-UserGroup",
  * });
- * export const bastionhostUserGroupId2 = nameRegex.then(nameRegex => nameRegex.groups[0].id);
+ * export const bastionhostUserGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
  * ```
  */
 export function getUserGroups(args: GetUserGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserGroupsResult> {
@@ -57,20 +57,20 @@ export interface GetUserGroupsArgs {
     /**
      * A list of User Group self IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Specify the New Group of the Bastion Host of Instance Id.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by User Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Specify the New Group Name. Supports up to 128 Characters.
      */
-    readonly userGroupName?: string;
+    userGroupName?: string;
 }
 
 /**
@@ -88,4 +88,31 @@ export interface GetUserGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly userGroupName?: string;
+}
+
+export function getUserGroupsOutput(args: GetUserGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserGroupsResult> {
+    return pulumi.output(args).apply(a => getUserGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUserGroups.
+ */
+export interface GetUserGroupsOutputArgs {
+    /**
+     * A list of User Group self IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specify the New Group of the Bastion Host of Instance Id.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by User Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Specify the New Group Name. Supports up to 128 Characters.
+     */
+    userGroupName?: pulumi.Input<string>;
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetClustersResult',
     'AwaitableGetClustersResult',
     'get_clusters',
+    'get_clusters_output',
 ]
 
 @pulumi.output_type
@@ -195,3 +196,27 @@ def get_clusters(description: Optional[str] = None,
         resource_group_id=__ret__.resource_group_id,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_clusters)
+def get_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                        description_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str description: The description of the ADB cluster.
+    :param str description_regex: A regex string to filter results by cluster description.
+    :param Sequence[str] ids: A list of ADB cluster IDs.
+    :param str status: The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+           - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+           - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+    """
+    ...

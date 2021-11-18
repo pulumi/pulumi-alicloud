@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     functionName: "sample_function",
  *     nameRegex: "sample_fc_trigger",
  *     serviceName: "sample_service",
- * }, { async: true }));
+ * }));
  *
  * export const firstFcTriggerName = fcTriggersDs.triggers[0].name;
  * ```
@@ -47,20 +47,20 @@ export interface GetTriggersArgs {
     /**
      * FC function name.
      */
-    readonly functionName: string;
+    functionName: string;
     /**
      * - A list of FC triggers ids.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by FC trigger name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * FC service name.
      */
-    readonly serviceName: string;
+    serviceName: string;
 }
 
 /**
@@ -87,4 +87,31 @@ export interface GetTriggersResult {
      * A list of FC triggers. Each element contains the following attributes:
      */
     readonly triggers: outputs.fc.GetTriggersTrigger[];
+}
+
+export function getTriggersOutput(args: GetTriggersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggersResult> {
+    return pulumi.output(args).apply(a => getTriggers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTriggers.
+ */
+export interface GetTriggersOutputArgs {
+    /**
+     * FC function name.
+     */
+    functionName: pulumi.Input<string>;
+    /**
+     * - A list of FC triggers ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by FC trigger name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * FC service name.
+     */
+    serviceName: pulumi.Input<string>;
 }

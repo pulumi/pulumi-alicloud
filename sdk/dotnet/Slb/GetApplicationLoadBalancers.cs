@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.Slb
         ///                 { "tagKey2", "tagValue2" },
         ///             },
         ///         }));
-        ///         this.FirstSlbId = example.Apply(example =&gt; example.Balancers[0].Id);
+        ///         this.FirstSlbId = example.Apply(example =&gt; example.Balancers?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstSlbId")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Task<GetApplicationLoadBalancersResult> InvokeAsync(GetApplicationLoadBalancersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationLoadBalancersResult>("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", args ?? new GetApplicationLoadBalancersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the server load balancers of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.123.1+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Slb.GetApplicationLoadBalancers.InvokeAsync(new AliCloud.Slb.GetApplicationLoadBalancersArgs
+        ///         {
+        ///             NameRegex = "sample_slb",
+        ///             Tags = 
+        ///             {
+        ///                 { "tagKey1", "tagValue1" },
+        ///                 { "tagKey2", "tagValue2" },
+        ///             },
+        ///         }));
+        ///         this.FirstSlbId = example.Apply(example =&gt; example.Balancers?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbId")]
+        ///     public Output&lt;string&gt; FirstSlbId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetApplicationLoadBalancersResult> Invoke(GetApplicationLoadBalancersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApplicationLoadBalancersResult>("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", args ?? new GetApplicationLoadBalancersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -181,6 +221,139 @@ namespace Pulumi.AliCloud.Slb
         public string? VswitchId { get; set; }
 
         public GetApplicationLoadBalancersArgs()
+        {
+        }
+    }
+
+    public sealed class GetApplicationLoadBalancersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Service address of the SLBs.
+        /// </summary>
+        [Input("address")]
+        public Input<string>? Address { get; set; }
+
+        /// <summary>
+        /// The address ip version. Valid values `ipv4` and `ipv6`.
+        /// </summary>
+        [Input("addressIpVersion")]
+        public Input<string>? AddressIpVersion { get; set; }
+
+        /// <summary>
+        /// The address type of the SLB. Valid values `internet` and `intranet`.
+        /// </summary>
+        [Input("addressType")]
+        public Input<string>? AddressType { get; set; }
+
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of SLBs IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+        /// </summary>
+        [Input("internetChargeType")]
+        public Input<string>? InternetChargeType { get; set; }
+
+        /// <summary>
+        /// The name of the SLB.
+        /// </summary>
+        [Input("loadBalancerName")]
+        public Input<string>? LoadBalancerName { get; set; }
+
+        /// <summary>
+        /// The master zone id of the SLB.
+        /// </summary>
+        [Input("masterZoneId")]
+        public Input<string>? MasterZoneId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by SLB name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// Network type of the SLBs. Valid values: `vpc` and `classic`.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which SLB belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The server ID.
+        /// </summary>
+        [Input("serverId")]
+        public Input<string>? ServerId { get; set; }
+
+        /// <summary>
+        /// The server intranet address.
+        /// </summary>
+        [Input("serverIntranetAddress")]
+        public Input<string>? ServerIntranetAddress { get; set; }
+
+        /// <summary>
+        /// The slave zone id of the SLB.
+        /// </summary>
+        [Input("slaveZoneId")]
+        public Input<string>? SlaveZoneId { get; set; }
+
+        /// <summary>
+        /// SLB current status. Possible values: `inactive`, `active` and `locked`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// ID of the VPC linked to the SLBs.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// ID of the VSwitch linked to the SLBs.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        public GetApplicationLoadBalancersInvokeArgs()
         {
         }
     }

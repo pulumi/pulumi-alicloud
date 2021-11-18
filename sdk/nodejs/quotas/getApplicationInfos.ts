@@ -30,15 +30,15 @@ export function getApplicationInfos(args: GetApplicationInfosArgs, opts?: pulumi
  * A collection of arguments for invoking getApplicationInfos.
  */
 export interface GetApplicationInfosArgs {
-    readonly dimensions?: inputs.quotas.GetApplicationInfosDimension[];
-    readonly enableDetails?: boolean;
-    readonly ids?: string[];
-    readonly keyWord?: string;
-    readonly outputFile?: string;
-    readonly productCode: string;
-    readonly quotaActionCode?: string;
-    readonly quotaCategory?: string;
-    readonly status?: string;
+    dimensions?: inputs.quotas.GetApplicationInfosDimension[];
+    enableDetails?: boolean;
+    ids?: string[];
+    keyWord?: string;
+    outputFile?: string;
+    productCode: string;
+    quotaActionCode?: string;
+    quotaCategory?: string;
+    status?: string;
 }
 
 /**
@@ -59,4 +59,23 @@ export interface GetApplicationInfosResult {
     readonly quotaActionCode?: string;
     readonly quotaCategory?: string;
     readonly status?: string;
+}
+
+export function getApplicationInfosOutput(args: GetApplicationInfosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationInfosResult> {
+    return pulumi.output(args).apply(a => getApplicationInfos(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApplicationInfos.
+ */
+export interface GetApplicationInfosOutputArgs {
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetApplicationInfosDimensionArgs>[]>;
+    enableDetails?: pulumi.Input<boolean>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    keyWord?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    productCode: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

@@ -196,7 +196,7 @@ type DeployGroupArrayInput interface {
 type DeployGroupArray []DeployGroupInput
 
 func (DeployGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DeployGroup)(nil))
+	return reflect.TypeOf((*[]*DeployGroup)(nil)).Elem()
 }
 
 func (i DeployGroupArray) ToDeployGroupArrayOutput() DeployGroupArrayOutput {
@@ -221,7 +221,7 @@ type DeployGroupMapInput interface {
 type DeployGroupMap map[string]DeployGroupInput
 
 func (DeployGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DeployGroup)(nil))
+	return reflect.TypeOf((*map[string]*DeployGroup)(nil)).Elem()
 }
 
 func (i DeployGroupMap) ToDeployGroupMapOutput() DeployGroupMapOutput {
@@ -232,9 +232,7 @@ func (i DeployGroupMap) ToDeployGroupMapOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DeployGroupMapOutput)
 }
 
-type DeployGroupOutput struct {
-	*pulumi.OutputState
-}
+type DeployGroupOutput struct{ *pulumi.OutputState }
 
 func (DeployGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DeployGroup)(nil))
@@ -253,14 +251,12 @@ func (o DeployGroupOutput) ToDeployGroupPtrOutput() DeployGroupPtrOutput {
 }
 
 func (o DeployGroupOutput) ToDeployGroupPtrOutputWithContext(ctx context.Context) DeployGroupPtrOutput {
-	return o.ApplyT(func(v DeployGroup) *DeployGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployGroup) *DeployGroup {
 		return &v
 	}).(DeployGroupPtrOutput)
 }
 
-type DeployGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type DeployGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (DeployGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DeployGroup)(nil))
@@ -272,6 +268,16 @@ func (o DeployGroupPtrOutput) ToDeployGroupPtrOutput() DeployGroupPtrOutput {
 
 func (o DeployGroupPtrOutput) ToDeployGroupPtrOutputWithContext(ctx context.Context) DeployGroupPtrOutput {
 	return o
+}
+
+func (o DeployGroupPtrOutput) Elem() DeployGroupOutput {
+	return o.ApplyT(func(v *DeployGroup) DeployGroup {
+		if v != nil {
+			return *v
+		}
+		var ret DeployGroup
+		return ret
+	}).(DeployGroupOutput)
 }
 
 type DeployGroupArrayOutput struct{ *pulumi.OutputState }
@@ -315,6 +321,10 @@ func (o DeployGroupMapOutput) MapIndex(k pulumi.StringInput) DeployGroupOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployGroupInput)(nil)).Elem(), &DeployGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployGroupPtrInput)(nil)).Elem(), &DeployGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployGroupArrayInput)(nil)).Elem(), DeployGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployGroupMapInput)(nil)).Elem(), DeployGroupMap{})
 	pulumi.RegisterOutputType(DeployGroupOutput{})
 	pulumi.RegisterOutputType(DeployGroupPtrOutput{})
 	pulumi.RegisterOutputType(DeployGroupArrayOutput{})

@@ -838,7 +838,7 @@ type ManagedKubernetesArrayInput interface {
 type ManagedKubernetesArray []ManagedKubernetesInput
 
 func (ManagedKubernetesArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ManagedKubernetes)(nil))
+	return reflect.TypeOf((*[]*ManagedKubernetes)(nil)).Elem()
 }
 
 func (i ManagedKubernetesArray) ToManagedKubernetesArrayOutput() ManagedKubernetesArrayOutput {
@@ -863,7 +863,7 @@ type ManagedKubernetesMapInput interface {
 type ManagedKubernetesMap map[string]ManagedKubernetesInput
 
 func (ManagedKubernetesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ManagedKubernetes)(nil))
+	return reflect.TypeOf((*map[string]*ManagedKubernetes)(nil)).Elem()
 }
 
 func (i ManagedKubernetesMap) ToManagedKubernetesMapOutput() ManagedKubernetesMapOutput {
@@ -874,9 +874,7 @@ func (i ManagedKubernetesMap) ToManagedKubernetesMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesMapOutput)
 }
 
-type ManagedKubernetesOutput struct {
-	*pulumi.OutputState
-}
+type ManagedKubernetesOutput struct{ *pulumi.OutputState }
 
 func (ManagedKubernetesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedKubernetes)(nil))
@@ -895,14 +893,12 @@ func (o ManagedKubernetesOutput) ToManagedKubernetesPtrOutput() ManagedKubernete
 }
 
 func (o ManagedKubernetesOutput) ToManagedKubernetesPtrOutputWithContext(ctx context.Context) ManagedKubernetesPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetes) *ManagedKubernetes {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetes) *ManagedKubernetes {
 		return &v
 	}).(ManagedKubernetesPtrOutput)
 }
 
-type ManagedKubernetesPtrOutput struct {
-	*pulumi.OutputState
-}
+type ManagedKubernetesPtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedKubernetesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ManagedKubernetes)(nil))
@@ -914,6 +910,16 @@ func (o ManagedKubernetesPtrOutput) ToManagedKubernetesPtrOutput() ManagedKubern
 
 func (o ManagedKubernetesPtrOutput) ToManagedKubernetesPtrOutputWithContext(ctx context.Context) ManagedKubernetesPtrOutput {
 	return o
+}
+
+func (o ManagedKubernetesPtrOutput) Elem() ManagedKubernetesOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetes {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetes
+		return ret
+	}).(ManagedKubernetesOutput)
 }
 
 type ManagedKubernetesArrayOutput struct{ *pulumi.OutputState }
@@ -957,6 +963,10 @@ func (o ManagedKubernetesMapOutput) MapIndex(k pulumi.StringInput) ManagedKubern
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesInput)(nil)).Elem(), &ManagedKubernetes{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesPtrInput)(nil)).Elem(), &ManagedKubernetes{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesArrayInput)(nil)).Elem(), ManagedKubernetesArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMapInput)(nil)).Elem(), ManagedKubernetesMap{})
 	pulumi.RegisterOutputType(ManagedKubernetesOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesArrayOutput{})

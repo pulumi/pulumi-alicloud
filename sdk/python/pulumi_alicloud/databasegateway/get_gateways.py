@@ -13,6 +13,7 @@ __all__ = [
     'GetGatewaysResult',
     'AwaitableGetGatewaysResult',
     'get_gateways',
+    'get_gateways_output',
 ]
 
 @pulumi.output_type
@@ -171,3 +172,40 @@ def get_gateways(enable_details: Optional[bool] = None,
         output_file=__ret__.output_file,
         search_key=__ret__.search_key,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_gateways)
+def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        search_key: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewaysResult]:
+    """
+    This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.databasegateway.get_gateways(ids=["example_id"])
+    pulumi.export("databaseGatewayGatewayId1", ids.gateways[0].id)
+    name_regex = alicloud.databasegateway.get_gateways(name_regex="^my-Gateway")
+    pulumi.export("databaseGatewayGatewayId2", name_regex.gateways[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Gateway IDs.
+    :param str name_regex: A regex string to filter results by Gateway name.
+    :param str search_key: The search key.
+    :param str status: The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+    """
+    ...

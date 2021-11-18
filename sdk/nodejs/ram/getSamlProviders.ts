@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["samlProviderName"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstRamSamlProviderId = example.then(example => example.providers[0].id);
+ * export const firstRamSamlProviderId = example.then(example => example.providers?[0]?.id);
  * ```
  */
 export function getSamlProviders(args?: GetSamlProvidersArgs, opts?: pulumi.InvokeOptions): Promise<GetSamlProvidersResult> {
@@ -49,16 +49,16 @@ export interface GetSamlProvidersArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of SAML Provider IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by SAML Provider name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -75,4 +75,27 @@ export interface GetSamlProvidersResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly providers: outputs.ram.GetSamlProvidersProvider[];
+}
+
+export function getSamlProvidersOutput(args?: GetSamlProvidersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSamlProvidersResult> {
+    return pulumi.output(args).apply(a => getSamlProviders(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSamlProviders.
+ */
+export interface GetSamlProvidersOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of SAML Provider IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by SAML Provider name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

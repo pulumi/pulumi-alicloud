@@ -802,6 +802,9 @@ func (o EndpointsArrayOutput) Index(i pulumi.IntInput) EndpointsOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AssumeRoleInput)(nil)).Elem(), AssumeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsInput)(nil)).Elem(), EndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsArrayInput)(nil)).Elem(), EndpointsArray{})
 	pulumi.RegisterOutputType(AssumeRoleOutput{})
 	pulumi.RegisterOutputType(EndpointsOutput{})
 	pulumi.RegisterOutputType(EndpointsArrayOutput{})

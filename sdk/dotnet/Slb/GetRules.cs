@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -41,7 +42,7 @@ namespace Pulumi.AliCloud.Slb
         ///         {
         ///             VpcId = defaultNetwork.Id,
         ///             CidrBlock = "172.16.0.0/16",
-        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
         ///             VswitchName = name,
         ///         });
         ///         var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
@@ -75,7 +76,7 @@ namespace Pulumi.AliCloud.Slb
         ///             LoadBalancerId = id,
         ///             FrontendPort = 22,
         ///         }));
-        ///         this.FirstSlbRuleId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbRules[0].Id);
+        ///         this.FirstSlbRuleId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbRules?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstSlbRuleId")]
@@ -87,6 +88,83 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:slb/getRules:getRules", args ?? new GetRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the rules associated with a server load balancer listener.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "slbrulebasicconfig";
+        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableDiskCategory = "cloud_efficiency",
+        ///             AvailableResourceCreation = "VSwitch",
+        ///         }));
+        ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/16",
+        ///         });
+        ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             VpcId = defaultNetwork.Id,
+        ///             CidrBlock = "172.16.0.0/16",
+        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+        ///             VswitchName = name,
+        ///         });
+        ///         var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
+        ///         {
+        ///             LoadBalancerName = name,
+        ///             VswitchId = defaultSwitch.Id,
+        ///         });
+        ///         var defaultListener = new AliCloud.Slb.Listener("defaultListener", new AliCloud.Slb.ListenerArgs
+        ///         {
+        ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
+        ///             BackendPort = 22,
+        ///             FrontendPort = 22,
+        ///             Protocol = "http",
+        ///             Bandwidth = 5,
+        ///             HealthCheckConnectPort = 20,
+        ///         });
+        ///         var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new AliCloud.Slb.ServerGroupArgs
+        ///         {
+        ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
+        ///         });
+        ///         var defaultRule = new AliCloud.Slb.Rule("defaultRule", new AliCloud.Slb.RuleArgs
+        ///         {
+        ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
+        ///             FrontendPort = defaultListener.FrontendPort,
+        ///             Domain = "*.aliyun.com",
+        ///             Url = "/image",
+        ///             ServerGroupId = defaultServerGroup.Id,
+        ///         });
+        ///         var sampleDs = defaultApplicationLoadBalancer.Id.Apply(id =&gt; AliCloud.Slb.GetRules.InvokeAsync(new AliCloud.Slb.GetRulesArgs
+        ///         {
+        ///             LoadBalancerId = id,
+        ///             FrontendPort = 22,
+        ///         }));
+        ///         this.FirstSlbRuleId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbRules?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbRuleId")]
+        ///     public Output&lt;string&gt; FirstSlbRuleId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:slb/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -126,6 +204,46 @@ namespace Pulumi.AliCloud.Slb
         public string? OutputFile { get; set; }
 
         public GetRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// SLB listener port.
+        /// </summary>
+        [Input("frontendPort", required: true)]
+        public Input<int> FrontendPort { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of rules IDs to filter results.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// ID of the SLB with listener rules.
+        /// </summary>
+        [Input("loadBalancerId", required: true)]
+        public Input<string> LoadBalancerId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by rule name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetRulesInvokeArgs()
         {
         }
     }

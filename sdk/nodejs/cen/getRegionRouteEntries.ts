@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const entry = pulumi.output(alicloud.cen.getRegionRouteEntries({
  *     instanceId: "cen-id1",
  *     regionId: "cn-beijing",
- * }, { async: true }));
+ * }));
  *
  * export const firstRegionRouteEntriesRouteEntryCidrBlock = entry.entries[0].cidrBlock;
  * ```
@@ -44,12 +44,12 @@ export interface GetRegionRouteEntriesArgs {
     /**
      * ID of the CEN instance.
      */
-    readonly instanceId: string;
-    readonly outputFile?: string;
+    instanceId: string;
+    outputFile?: string;
     /**
      * ID of the region.
      */
-    readonly regionId: string;
+    regionId: string;
 }
 
 /**
@@ -67,4 +67,23 @@ export interface GetRegionRouteEntriesResult {
     readonly instanceId: string;
     readonly outputFile?: string;
     readonly regionId: string;
+}
+
+export function getRegionRouteEntriesOutput(args: GetRegionRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionRouteEntriesResult> {
+    return pulumi.output(args).apply(a => getRegionRouteEntries(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegionRouteEntries.
+ */
+export interface GetRegionRouteEntriesOutputArgs {
+    /**
+     * ID of the CEN instance.
+     */
+    instanceId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * ID of the region.
+     */
+    regionId: pulumi.Input<string>;
 }

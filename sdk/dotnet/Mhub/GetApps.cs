@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Mhub
 {
@@ -15,9 +16,99 @@ namespace Pulumi.AliCloud.Mhub
         /// This data source provides the Mhub Apps of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.138.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "example_value";
+        ///         var @default = new AliCloud.Mhub.App("default", new AliCloud.Mhub.AppArgs
+        ///         {
+        ///             AppName = name,
+        ///             ProductId = alicloud_mhub_product.Default.Id,
+        ///             PackageName = "com.test.android",
+        ///             Type = "2",
+        ///         });
+        ///         var ids = Output.Create(AliCloud.Mhub.GetApps.InvokeAsync());
+        ///         this.MhubAppId1 = ids.Apply(ids =&gt; ids.Apps?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Mhub.GetApps.InvokeAsync(new AliCloud.Mhub.GetAppsArgs
+        ///         {
+        ///             NameRegex = "^my-App",
+        ///         }));
+        ///         this.MhubAppId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Apps?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("mhubAppId1")]
+        ///     public Output&lt;string&gt; MhubAppId1 { get; set; }
+        ///     [Output("mhubAppId2")]
+        ///     public Output&lt;string&gt; MhubAppId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppsResult> InvokeAsync(GetAppsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Mhub Apps of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "example_value";
+        ///         var @default = new AliCloud.Mhub.App("default", new AliCloud.Mhub.AppArgs
+        ///         {
+        ///             AppName = name,
+        ///             ProductId = alicloud_mhub_product.Default.Id,
+        ///             PackageName = "com.test.android",
+        ///             Type = "2",
+        ///         });
+        ///         var ids = Output.Create(AliCloud.Mhub.GetApps.InvokeAsync());
+        ///         this.MhubAppId1 = ids.Apply(ids =&gt; ids.Apps?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Mhub.GetApps.InvokeAsync(new AliCloud.Mhub.GetAppsArgs
+        ///         {
+        ///             NameRegex = "^my-App",
+        ///         }));
+        ///         this.MhubAppId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Apps?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("mhubAppId1")]
+        ///     public Output&lt;string&gt; MhubAppId1 { get; set; }
+        ///     [Output("mhubAppId2")]
+        ///     public Output&lt;string&gt; MhubAppId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -63,6 +154,52 @@ namespace Pulumi.AliCloud.Mhub
         public string ProductId { get; set; } = null!;
 
         public GetAppsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAppsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of App IDs. The value formats as `&lt;product_id&gt;:&lt;app_key&gt;`
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by App name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// The os type. Valid values: `Android` and `iOS`.
+        /// </summary>
+        [Input("osType")]
+        public Input<string>? OsType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the Product.
+        /// </summary>
+        [Input("productId", required: true)]
+        public Input<string> ProductId { get; set; } = null!;
+
+        public GetAppsInvokeArgs()
         {
         }
     }

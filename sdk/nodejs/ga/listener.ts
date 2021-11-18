@@ -179,43 +179,43 @@ export interface ListenerState {
     /**
      * The accelerator id.
      */
-    readonly acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string>;
     /**
      * The certificates of the listener.
      */
-    readonly certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[]>;
     /**
      * The clientAffinity of the listener. Default value is `NONE`. Valid values:
      * `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
      * `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
      */
-    readonly clientAffinity?: pulumi.Input<string>;
+    clientAffinity?: pulumi.Input<string>;
     /**
      * The description of the listener.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The portRanges of the listener.
      */
-    readonly portRanges?: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[]>;
+    portRanges?: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[]>;
     /**
      * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The proxy protocol of the listener. Default value is `false`. Valid value:
      * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
      * `false`: keep client source IP function is not turned on.
      */
-    readonly proxyProtocol?: pulumi.Input<boolean>;
+    proxyProtocol?: pulumi.Input<boolean>;
     /**
      * The status of the listener.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -225,37 +225,37 @@ export interface ListenerArgs {
     /**
      * The accelerator id.
      */
-    readonly acceleratorId: pulumi.Input<string>;
+    acceleratorId: pulumi.Input<string>;
     /**
      * The certificates of the listener.
      */
-    readonly certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[]>;
     /**
      * The clientAffinity of the listener. Default value is `NONE`. Valid values:
      * `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
      * `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
      */
-    readonly clientAffinity?: pulumi.Input<string>;
+    clientAffinity?: pulumi.Input<string>;
     /**
      * The description of the listener.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The portRanges of the listener.
      */
-    readonly portRanges: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[]>;
+    portRanges: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[]>;
     /**
      * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The proxy protocol of the listener. Default value is `false`. Valid value:
      * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
      * `false`: keep client source IP function is not turned on.
      */
-    readonly proxyProtocol?: pulumi.Input<boolean>;
+    proxyProtocol?: pulumi.Input<boolean>;
 }

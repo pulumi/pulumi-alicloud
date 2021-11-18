@@ -39,8 +39,8 @@ import (
 // 			InstanceId:      pulumi.String("i-bp1g6zv0ce8oghu7k***"),
 // 			Platform:        pulumi.String("CentOS"),
 // 			ResourceGroupId: pulumi.String("rg-bp67acfmxazb4ph***"),
-// 			Tags: pulumi.StringMap{
-// 				"FinanceDept": pulumi.String("FinanceDeptJoshua"),
+// 			Tags: pulumi.AnyMap{
+// 				"FinanceDept": pulumi.Any("FinanceDeptJoshua"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -299,7 +299,7 @@ type ImageArrayInput interface {
 type ImageArray []ImageInput
 
 func (ImageArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Image)(nil))
+	return reflect.TypeOf((*[]*Image)(nil)).Elem()
 }
 
 func (i ImageArray) ToImageArrayOutput() ImageArrayOutput {
@@ -324,7 +324,7 @@ type ImageMapInput interface {
 type ImageMap map[string]ImageInput
 
 func (ImageMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Image)(nil))
+	return reflect.TypeOf((*map[string]*Image)(nil)).Elem()
 }
 
 func (i ImageMap) ToImageMapOutput() ImageMapOutput {
@@ -335,9 +335,7 @@ func (i ImageMap) ToImageMapOutputWithContext(ctx context.Context) ImageMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ImageMapOutput)
 }
 
-type ImageOutput struct {
-	*pulumi.OutputState
-}
+type ImageOutput struct{ *pulumi.OutputState }
 
 func (ImageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Image)(nil))
@@ -356,14 +354,12 @@ func (o ImageOutput) ToImagePtrOutput() ImagePtrOutput {
 }
 
 func (o ImageOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOutput {
-	return o.ApplyT(func(v Image) *Image {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Image) *Image {
 		return &v
 	}).(ImagePtrOutput)
 }
 
-type ImagePtrOutput struct {
-	*pulumi.OutputState
-}
+type ImagePtrOutput struct{ *pulumi.OutputState }
 
 func (ImagePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Image)(nil))
@@ -375,6 +371,16 @@ func (o ImagePtrOutput) ToImagePtrOutput() ImagePtrOutput {
 
 func (o ImagePtrOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOutput {
 	return o
+}
+
+func (o ImagePtrOutput) Elem() ImageOutput {
+	return o.ApplyT(func(v *Image) Image {
+		if v != nil {
+			return *v
+		}
+		var ret Image
+		return ret
+	}).(ImageOutput)
 }
 
 type ImageArrayOutput struct{ *pulumi.OutputState }
@@ -418,6 +424,10 @@ func (o ImageMapOutput) MapIndex(k pulumi.StringInput) ImageOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageInput)(nil)).Elem(), &Image{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImagePtrInput)(nil)).Elem(), &Image{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageArrayInput)(nil)).Elem(), ImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageMapInput)(nil)).Elem(), ImageMap{})
 	pulumi.RegisterOutputType(ImageOutput{})
 	pulumi.RegisterOutputType(ImagePtrOutput{})
 	pulumi.RegisterOutputType(ImageArrayOutput{})

@@ -141,35 +141,35 @@ export interface VpcEndpointServiceState {
     /**
      * Whether to automatically accept terminal node connections.
      */
-    readonly autoAcceptConnection?: pulumi.Input<boolean>;
+    autoAcceptConnection?: pulumi.Input<boolean>;
     /**
      * The connection bandwidth.
      */
-    readonly connectBandwidth?: pulumi.Input<number>;
+    connectBandwidth?: pulumi.Input<number>;
     /**
      * Whether to pre-check this request only. Default to: `false`
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
      */
-    readonly payer?: pulumi.Input<string>;
+    payer?: pulumi.Input<string>;
     /**
      * The business status of Vpc Endpoint Service.
      */
-    readonly serviceBusinessStatus?: pulumi.Input<string>;
+    serviceBusinessStatus?: pulumi.Input<string>;
     /**
      * The description of the terminal node service.
      */
-    readonly serviceDescription?: pulumi.Input<string>;
+    serviceDescription?: pulumi.Input<string>;
     /**
      * Service Domain.
      */
-    readonly serviceDomain?: pulumi.Input<string>;
+    serviceDomain?: pulumi.Input<string>;
     /**
      * The status of Vpc Endpoint Service.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -179,21 +179,21 @@ export interface VpcEndpointServiceArgs {
     /**
      * Whether to automatically accept terminal node connections.
      */
-    readonly autoAcceptConnection?: pulumi.Input<boolean>;
+    autoAcceptConnection?: pulumi.Input<boolean>;
     /**
      * The connection bandwidth.
      */
-    readonly connectBandwidth?: pulumi.Input<number>;
+    connectBandwidth?: pulumi.Input<number>;
     /**
      * Whether to pre-check this request only. Default to: `false`
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
      */
-    readonly payer?: pulumi.Input<string>;
+    payer?: pulumi.Input<string>;
     /**
      * The description of the terminal node service.
      */
-    readonly serviceDescription?: pulumi.Input<string>;
+    serviceDescription?: pulumi.Input<string>;
 }

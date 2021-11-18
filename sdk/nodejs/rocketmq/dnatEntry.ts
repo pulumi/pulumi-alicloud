@@ -159,31 +159,31 @@ export interface DnatEntryState {
     /**
      * The external public IP address.when "type" is "Internet",automatically identify the external ip.
      */
-    readonly externalIp?: pulumi.Input<string>;
+    externalIp?: pulumi.Input<string>;
     /**
      * The public port.Value range: 1 to 65535 or "any".
      */
-    readonly externalPort?: pulumi.Input<string>;
+    externalPort?: pulumi.Input<string>;
     /**
      * The destination private IP address.
      */
-    readonly internalIp?: pulumi.Input<string>;
+    internalIp?: pulumi.Input<string>;
     /**
      * The destination private port.Value range: 1 to 65535 or "any".
      */
-    readonly internalPort?: pulumi.Input<string>;
+    internalPort?: pulumi.Input<string>;
     /**
      * The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
      */
-    readonly ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string>;
     /**
      * The ID of the SAG instance.
      */
-    readonly sagId?: pulumi.Input<string>;
+    sagId?: pulumi.Input<string>;
     /**
      * The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -193,29 +193,29 @@ export interface DnatEntryArgs {
     /**
      * The external public IP address.when "type" is "Internet",automatically identify the external ip.
      */
-    readonly externalIp?: pulumi.Input<string>;
+    externalIp?: pulumi.Input<string>;
     /**
      * The public port.Value range: 1 to 65535 or "any".
      */
-    readonly externalPort: pulumi.Input<string>;
+    externalPort: pulumi.Input<string>;
     /**
      * The destination private IP address.
      */
-    readonly internalIp: pulumi.Input<string>;
+    internalIp: pulumi.Input<string>;
     /**
      * The destination private port.Value range: 1 to 65535 or "any".
      */
-    readonly internalPort: pulumi.Input<string>;
+    internalPort: pulumi.Input<string>;
     /**
      * The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
      */
-    readonly ipProtocol: pulumi.Input<string>;
+    ipProtocol: pulumi.Input<string>;
     /**
      * The ID of the SAG instance.
      */
-    readonly sagId: pulumi.Input<string>;
+    sagId: pulumi.Input<string>;
     /**
      * The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

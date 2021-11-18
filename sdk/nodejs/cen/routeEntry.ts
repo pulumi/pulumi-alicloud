@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones[0].id,
+ *     availabilityZone: defaultZones.zones?[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * }, {
  *     provider: alicloud.hz,
@@ -57,8 +57,8 @@ import * as utilities from "../utilities";
  * });
  * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
  *     vswitchId: defaultSwitch.id,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
  *     systemDiskCategory: "cloud_efficiency",
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 5,
@@ -188,15 +188,15 @@ export interface RouteEntryState {
     /**
      * The destination CIDR block of the route entry to publish.
      */
-    readonly cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string>;
     /**
      * The ID of the CEN.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The route table of the attached VBR or VPC.
      */
-    readonly routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string>;
 }
 
 /**
@@ -206,13 +206,13 @@ export interface RouteEntryArgs {
     /**
      * The destination CIDR block of the route entry to publish.
      */
-    readonly cidrBlock: pulumi.Input<string>;
+    cidrBlock: pulumi.Input<string>;
     /**
      * The ID of the CEN.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The route table of the attached VBR or VPC.
      */
-    readonly routeTableId: pulumi.Input<string>;
+    routeTableId: pulumi.Input<string>;
 }

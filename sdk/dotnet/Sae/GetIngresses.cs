@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sae
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public static Task<GetIngressesResult> InvokeAsync(GetIngressesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Sae Ingresses of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// </summary>
+        public static Output<GetIngressesResult> Invoke(GetIngressesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +60,40 @@ namespace Pulumi.AliCloud.Sae
         public string? OutputFile { get; set; }
 
         public GetIngressesArgs()
+        {
+        }
+    }
+
+    public sealed class GetIngressesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Ingress IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+        /// </summary>
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetIngressesInvokeArgs()
         {
         }
     }

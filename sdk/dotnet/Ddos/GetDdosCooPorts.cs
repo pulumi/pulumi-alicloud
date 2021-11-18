@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ddos
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ddos
         ///                 "ddoscoo-cn-6ja1rl4j****:7001:tcp",
         ///             },
         ///         }));
-        ///         this.FirstDdoscooPortId = example.Apply(example =&gt; example.Ports[0].Id);
+        ///         this.FirstDdoscooPortId = example.Apply(example =&gt; example.Ports?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstDdoscooPortId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         public static Task<GetDdosCooPortsResult> InvokeAsync(GetDdosCooPortsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.123.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ddos.GetDdosCooPorts.InvokeAsync(new AliCloud.Ddos.GetDdosCooPortsArgs
+        ///         {
+        ///             InstanceId = "ddoscoo-cn-6ja1rl4j****",
+        ///             Ids = 
+        ///             {
+        ///                 "ddoscoo-cn-6ja1rl4j****:7001:tcp",
+        ///             },
+        ///         }));
+        ///         this.FirstDdoscooPortId = example.Apply(example =&gt; example.Ports?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstDdoscooPortId")]
+        ///     public Output&lt;string&gt; FirstDdoscooPortId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDdosCooPortsResult> Invoke(GetDdosCooPortsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -89,6 +130,46 @@ namespace Pulumi.AliCloud.Ddos
         public string? OutputFile { get; set; }
 
         public GetDdosCooPortsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDdosCooPortsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The forwarding port.
+        /// </summary>
+        [Input("frontendPort")]
+        public Input<string>? FrontendPort { get; set; }
+
+        /// <summary>
+        /// The forwarding protocol.
+        /// </summary>
+        [Input("frontendProtocol")]
+        public Input<string>? FrontendProtocol { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Port IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The Ddoscoo instance ID.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetDdosCooPortsInvokeArgs()
         {
         }
     }

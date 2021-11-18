@@ -4,6 +4,9 @@
 package dns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,4 +47,98 @@ type GetDomainRecordsResult struct {
 	Type       *string                  `pulumi:"type"`
 	Urls       []string                 `pulumi:"urls"`
 	ValueRegex *string                  `pulumi:"valueRegex"`
+}
+
+func GetDomainRecordsOutput(ctx *pulumi.Context, args GetDomainRecordsOutputArgs, opts ...pulumi.InvokeOption) GetDomainRecordsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDomainRecordsResult, error) {
+			args := v.(GetDomainRecordsArgs)
+			r, err := GetDomainRecords(ctx, &args, opts...)
+			return *r, err
+		}).(GetDomainRecordsResultOutput)
+}
+
+// A collection of arguments for invoking getDomainRecords.
+type GetDomainRecordsOutputArgs struct {
+	DomainName      pulumi.StringInput      `pulumi:"domainName"`
+	HostRecordRegex pulumi.StringPtrInput   `pulumi:"hostRecordRegex"`
+	Ids             pulumi.StringArrayInput `pulumi:"ids"`
+	IsLocked        pulumi.BoolPtrInput     `pulumi:"isLocked"`
+	Line            pulumi.StringPtrInput   `pulumi:"line"`
+	OutputFile      pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Status          pulumi.StringPtrInput   `pulumi:"status"`
+	Type            pulumi.StringPtrInput   `pulumi:"type"`
+	ValueRegex      pulumi.StringPtrInput   `pulumi:"valueRegex"`
+}
+
+func (GetDomainRecordsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainRecordsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDomainRecords.
+type GetDomainRecordsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDomainRecordsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainRecordsResult)(nil)).Elem()
+}
+
+func (o GetDomainRecordsResultOutput) ToGetDomainRecordsResultOutput() GetDomainRecordsResultOutput {
+	return o
+}
+
+func (o GetDomainRecordsResultOutput) ToGetDomainRecordsResultOutputWithContext(ctx context.Context) GetDomainRecordsResultOutput {
+	return o
+}
+
+func (o GetDomainRecordsResultOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+func (o GetDomainRecordsResultOutput) HostRecordRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) *string { return v.HostRecordRegex }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDomainRecordsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDomainRecordsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDomainRecordsResultOutput) IsLocked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) *bool { return v.IsLocked }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetDomainRecordsResultOutput) Line() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) *string { return v.Line }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainRecordsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainRecordsResultOutput) Records() GetDomainRecordsRecordArrayOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) []GetDomainRecordsRecord { return v.Records }).(GetDomainRecordsRecordArrayOutput)
+}
+
+func (o GetDomainRecordsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainRecordsResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainRecordsResultOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) []string { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDomainRecordsResultOutput) ValueRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainRecordsResult) *string { return v.ValueRegex }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDomainRecordsResultOutput{})
 }

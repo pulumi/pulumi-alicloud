@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.kvstore.getAccounts({
  *     instanceId: "example_value",
  * });
- * export const firstKvstoreAccountId = example.then(example => example.accounts[0].id);
+ * export const firstKvstoreAccountId = example.then(example => example.accounts?[0]?.id);
  * ```
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
@@ -48,17 +48,17 @@ export interface GetAccountsArgs {
     /**
      * The name of the account.
      */
-    readonly accountName?: string;
+    accountName?: string;
     /**
      * The Id of instance in which account belongs.
      */
-    readonly instanceId: string;
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    instanceId: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of account.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -77,4 +77,28 @@ export interface GetAccountsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
+    return pulumi.output(args).apply(a => getAccounts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccounts.
+ */
+export interface GetAccountsOutputArgs {
+    /**
+     * The name of the account.
+     */
+    accountName?: pulumi.Input<string>;
+    /**
+     * The Id of instance in which account belongs.
+     */
+    instanceId: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of account.
+     */
+    status?: pulumi.Input<string>;
 }

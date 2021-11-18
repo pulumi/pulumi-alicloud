@@ -358,7 +358,7 @@ type DataCenterArrayInput interface {
 type DataCenterArray []DataCenterInput
 
 func (DataCenterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DataCenter)(nil))
+	return reflect.TypeOf((*[]*DataCenter)(nil)).Elem()
 }
 
 func (i DataCenterArray) ToDataCenterArrayOutput() DataCenterArrayOutput {
@@ -383,7 +383,7 @@ type DataCenterMapInput interface {
 type DataCenterMap map[string]DataCenterInput
 
 func (DataCenterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DataCenter)(nil))
+	return reflect.TypeOf((*map[string]*DataCenter)(nil)).Elem()
 }
 
 func (i DataCenterMap) ToDataCenterMapOutput() DataCenterMapOutput {
@@ -394,9 +394,7 @@ func (i DataCenterMap) ToDataCenterMapOutputWithContext(ctx context.Context) Dat
 	return pulumi.ToOutputWithContext(ctx, i).(DataCenterMapOutput)
 }
 
-type DataCenterOutput struct {
-	*pulumi.OutputState
-}
+type DataCenterOutput struct{ *pulumi.OutputState }
 
 func (DataCenterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DataCenter)(nil))
@@ -415,14 +413,12 @@ func (o DataCenterOutput) ToDataCenterPtrOutput() DataCenterPtrOutput {
 }
 
 func (o DataCenterOutput) ToDataCenterPtrOutputWithContext(ctx context.Context) DataCenterPtrOutput {
-	return o.ApplyT(func(v DataCenter) *DataCenter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataCenter) *DataCenter {
 		return &v
 	}).(DataCenterPtrOutput)
 }
 
-type DataCenterPtrOutput struct {
-	*pulumi.OutputState
-}
+type DataCenterPtrOutput struct{ *pulumi.OutputState }
 
 func (DataCenterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DataCenter)(nil))
@@ -434,6 +430,16 @@ func (o DataCenterPtrOutput) ToDataCenterPtrOutput() DataCenterPtrOutput {
 
 func (o DataCenterPtrOutput) ToDataCenterPtrOutputWithContext(ctx context.Context) DataCenterPtrOutput {
 	return o
+}
+
+func (o DataCenterPtrOutput) Elem() DataCenterOutput {
+	return o.ApplyT(func(v *DataCenter) DataCenter {
+		if v != nil {
+			return *v
+		}
+		var ret DataCenter
+		return ret
+	}).(DataCenterOutput)
 }
 
 type DataCenterArrayOutput struct{ *pulumi.OutputState }
@@ -477,6 +483,10 @@ func (o DataCenterMapOutput) MapIndex(k pulumi.StringInput) DataCenterOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCenterInput)(nil)).Elem(), &DataCenter{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCenterPtrInput)(nil)).Elem(), &DataCenter{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCenterArrayInput)(nil)).Elem(), DataCenterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCenterMapInput)(nil)).Elem(), DataCenterMap{})
 	pulumi.RegisterOutputType(DataCenterOutput{})
 	pulumi.RegisterOutputType(DataCenterPtrOutput{})
 	pulumi.RegisterOutputType(DataCenterArrayOutput{})

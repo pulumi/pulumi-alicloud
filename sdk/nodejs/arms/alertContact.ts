@@ -124,23 +124,23 @@ export interface AlertContactState {
     /**
      * The name of the alert contact.
      */
-    readonly alertContactName?: pulumi.Input<string>;
+    alertContactName?: pulumi.Input<string>;
     /**
      * The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      */
-    readonly dingRobotWebhookUrl?: pulumi.Input<string>;
+    dingRobotWebhookUrl?: pulumi.Input<string>;
     /**
      * The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      */
-    readonly phoneNum?: pulumi.Input<string>;
+    phoneNum?: pulumi.Input<string>;
     /**
      * Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
      */
-    readonly systemNoc?: pulumi.Input<boolean>;
+    systemNoc?: pulumi.Input<boolean>;
 }
 
 /**
@@ -150,21 +150,21 @@ export interface AlertContactArgs {
     /**
      * The name of the alert contact.
      */
-    readonly alertContactName?: pulumi.Input<string>;
+    alertContactName?: pulumi.Input<string>;
     /**
      * The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      */
-    readonly dingRobotWebhookUrl?: pulumi.Input<string>;
+    dingRobotWebhookUrl?: pulumi.Input<string>;
     /**
      * The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      */
-    readonly phoneNum?: pulumi.Input<string>;
+    phoneNum?: pulumi.Input<string>;
     /**
      * Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
      */
-    readonly systemNoc?: pulumi.Input<boolean>;
+    systemNoc?: pulumi.Input<boolean>;
 }

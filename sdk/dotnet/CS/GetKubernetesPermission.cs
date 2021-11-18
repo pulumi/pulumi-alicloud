@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CS
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.CS
         ///         }));
         ///         var @default = usersDs.Apply(usersDs =&gt; Output.Create(AliCloud.CS.GetKubernetesPermission.InvokeAsync(new AliCloud.CS.GetKubernetesPermissionArgs
         ///         {
-        ///             Uid = usersDs.Users[0].Id,
+        ///             Uid = usersDs.Users?[0]?.Id,
         ///         })));
         ///         this.Permissions = @default.Apply(@default =&gt; @default.Permissions);
         ///     }
@@ -48,6 +49,44 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Task<GetKubernetesPermissionResult> InvokeAsync(GetKubernetesPermissionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of Ram user permissions.
+        /// 
+        /// &gt; **NOTE:** Available in v1.122.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var usersDs = Output.Create(AliCloud.Ram.GetUsers.InvokeAsync(new AliCloud.Ram.GetUsersArgs
+        ///         {
+        ///             NameRegex = "your_user_name",
+        ///         }));
+        ///         var @default = usersDs.Apply(usersDs =&gt; Output.Create(AliCloud.CS.GetKubernetesPermission.InvokeAsync(new AliCloud.CS.GetKubernetesPermissionArgs
+        ///         {
+        ///             Uid = usersDs.Users?[0]?.Id,
+        ///         })));
+        ///         this.Permissions = @default.Apply(@default =&gt; @default.Permissions);
+        ///     }
+        /// 
+        ///     [Output("permissions")]
+        ///     public Output&lt;string&gt; Permissions { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKubernetesPermissionResult> Invoke(GetKubernetesPermissionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -72,6 +111,31 @@ namespace Pulumi.AliCloud.CS
         public string Uid { get; set; } = null!;
 
         public GetKubernetesPermissionArgs()
+        {
+        }
+    }
+
+    public sealed class GetKubernetesPermissionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("permissions")]
+        private InputList<Inputs.GetKubernetesPermissionPermissionInputArgs>? _permissions;
+
+        /// <summary>
+        /// A list of user permission.
+        /// </summary>
+        public InputList<Inputs.GetKubernetesPermissionPermissionInputArgs> Permissions
+        {
+            get => _permissions ?? (_permissions = new InputList<Inputs.GetKubernetesPermissionPermissionInputArgs>());
+            set => _permissions = value;
+        }
+
+        /// <summary>
+        /// The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
+        /// </summary>
+        [Input("uid", required: true)]
+        public Input<string> Uid { get; set; } = null!;
+
+        public GetKubernetesPermissionInvokeArgs()
         {
         }
     }

@@ -13,6 +13,7 @@ __all__ = [
     'GetMongoInstancesResult',
     'AwaitableGetMongoInstancesResult',
     'get_mongo_instances',
+    'get_mongo_instances_output',
 ]
 
 @pulumi.output_type
@@ -160,3 +161,18 @@ def get_mongo_instances(availability_zone: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_mongo_instances)
+def get_mongo_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
+                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               instance_class: Optional[pulumi.Input[Optional[str]]] = None,
+                               instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMongoInstancesResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

@@ -4,6 +4,9 @@
 package privatelink
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,82 @@ type GetVpcEndpointConnectionsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	ServiceId  string   `pulumi:"serviceId"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetVpcEndpointConnectionsOutput(ctx *pulumi.Context, args GetVpcEndpointConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointConnectionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetVpcEndpointConnectionsResult, error) {
+			args := v.(GetVpcEndpointConnectionsArgs)
+			r, err := GetVpcEndpointConnections(ctx, &args, opts...)
+			return *r, err
+		}).(GetVpcEndpointConnectionsResultOutput)
+}
+
+// A collection of arguments for invoking getVpcEndpointConnections.
+type GetVpcEndpointConnectionsOutputArgs struct {
+	// The ID of the Vpc Endpoint.
+	EndpointId pulumi.StringPtrInput `pulumi:"endpointId"`
+	// The endpoint owner id.
+	EndpointOwnerId pulumi.IntPtrInput    `pulumi:"endpointOwnerId"`
+	OutputFile      pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of the Vpc Endpoint Service.
+	ServiceId pulumi.StringInput `pulumi:"serviceId"`
+	// The status of Vpc Endpoint Connection.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetVpcEndpointConnectionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointConnectionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVpcEndpointConnections.
+type GetVpcEndpointConnectionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointConnectionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointConnectionsResult)(nil)).Elem()
+}
+
+func (o GetVpcEndpointConnectionsResultOutput) ToGetVpcEndpointConnectionsResultOutput() GetVpcEndpointConnectionsResultOutput {
+	return o
+}
+
+func (o GetVpcEndpointConnectionsResultOutput) ToGetVpcEndpointConnectionsResultOutputWithContext(ctx context.Context) GetVpcEndpointConnectionsResultOutput {
+	return o
+}
+
+func (o GetVpcEndpointConnectionsResultOutput) Connections() GetVpcEndpointConnectionsConnectionArrayOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) []GetVpcEndpointConnectionsConnection { return v.Connections }).(GetVpcEndpointConnectionsConnectionArrayOutput)
+}
+
+func (o GetVpcEndpointConnectionsResultOutput) EndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVpcEndpointConnectionsResultOutput) EndpointOwnerId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) *int { return v.EndpointOwnerId }).(pulumi.IntPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetVpcEndpointConnectionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVpcEndpointConnectionsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVpcEndpointConnectionsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVpcEndpointConnectionsResultOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+func (o GetVpcEndpointConnectionsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetVpcEndpointConnectionsResultOutput{})
 }

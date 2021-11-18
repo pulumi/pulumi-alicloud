@@ -13,6 +13,7 @@ __all__ = [
     'GetAppsResult',
     'AwaitableGetAppsResult',
     'get_apps',
+    'get_apps_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,30 @@ def get_apps(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_apps)
+def get_apps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                    tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppsResult]:
+    """
+    This data source provides the apps of the current Alibaba Cloud user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    data_apigatway = alicloud.apigateway.get_apps(output_file="outapps")
+    pulumi.export("firstAppId", data_apigatway.apps[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of app IDs.
+    :param str name_regex: A regex string to filter apps by name.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    ...

@@ -44,16 +44,16 @@ export function getEdgeKubernetesClusters(args?: GetEdgeKubernetesClustersArgs, 
  * A collection of arguments for invoking getEdgeKubernetesClusters.
  */
 export interface GetEdgeKubernetesClustersArgs {
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * Cluster IDs to filter.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by cluster name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -79,4 +79,24 @@ export interface GetEdgeKubernetesClustersResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getEdgeKubernetesClustersOutput(args?: GetEdgeKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEdgeKubernetesClustersResult> {
+    return pulumi.output(args).apply(a => getEdgeKubernetesClusters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEdgeKubernetesClusters.
+ */
+export interface GetEdgeKubernetesClustersOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * Cluster IDs to filter.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by cluster name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

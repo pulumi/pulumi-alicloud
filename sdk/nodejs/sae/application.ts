@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const vsw = new alicloud.vpc.Switch("vsw", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
@@ -478,235 +478,235 @@ export interface ApplicationState {
     /**
      * Application description information. No more than 1024 characters.
      */
-    readonly appDescription?: pulumi.Input<string>;
+    appDescription?: pulumi.Input<string>;
     /**
      * Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
      */
-    readonly appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string>;
     /**
      * The auto config. Valid values: `false`, `true`.
      */
-    readonly autoConfig?: pulumi.Input<boolean>;
+    autoConfig?: pulumi.Input<boolean>;
     /**
      * The auto enable application scaling rule. Valid values: `false`, `true`.
      */
-    readonly autoEnableApplicationScalingRule?: pulumi.Input<boolean>;
+    autoEnableApplicationScalingRule?: pulumi.Input<boolean>;
     /**
      * The batch wait time.
      */
-    readonly batchWaitTime?: pulumi.Input<number>;
+    batchWaitTime?: pulumi.Input<number>;
     /**
      * The change order desc.
      */
-    readonly changeOrderDesc?: pulumi.Input<string>;
+    changeOrderDesc?: pulumi.Input<string>;
     /**
      * Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
      */
-    readonly command?: pulumi.Input<string>;
+    command?: pulumi.Input<string>;
     /**
      * Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
      */
-    readonly commandArgs?: pulumi.Input<string>;
+    commandArgs?: pulumi.Input<string>;
     /**
      * ConfigMap mount description.
      */
-    readonly configMapMountDesc?: pulumi.Input<string>;
+    configMapMountDesc?: pulumi.Input<string>;
     /**
      * The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
      */
-    readonly cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number>;
     /**
      * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
      */
-    readonly customHostAlias?: pulumi.Input<string>;
+    customHostAlias?: pulumi.Input<string>;
     /**
      * The deploy. Valid values: `false`, `true`.
      */
-    readonly deploy?: pulumi.Input<boolean>;
+    deploy?: pulumi.Input<boolean>;
     /**
      * The operating environment used by the Pandora application.
      */
-    readonly edasContainerVersion?: pulumi.Input<string>;
+    edasContainerVersion?: pulumi.Input<string>;
     /**
      * The enable ahas.
      */
-    readonly enableAhas?: pulumi.Input<string>;
+    enableAhas?: pulumi.Input<string>;
     /**
      * The enable grey tag route.
      */
-    readonly enableGreyTagRoute?: pulumi.Input<boolean>;
+    enableGreyTagRoute?: pulumi.Input<boolean>;
     /**
      * The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
      */
-    readonly envs?: pulumi.Input<string>;
+    envs?: pulumi.Input<string>;
     /**
      * Mirror address. Only Image type applications can configure the mirror address.
      */
-    readonly imageUrl?: pulumi.Input<string>;
+    imageUrl?: pulumi.Input<string>;
     /**
      * Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
      */
-    readonly internetIp?: pulumi.Input<string>;
+    internetIp?: pulumi.Input<string>;
     /**
      * public network SLB ID.
      */
-    readonly internetSlbId?: pulumi.Input<string>;
+    internetSlbId?: pulumi.Input<string>;
     /**
      * Bound private network SLB. The details see Block internet.
      */
-    readonly internets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationInternet>[]>;
+    internets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationInternet>[]>;
     /**
      * Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
      */
-    readonly intranetIp?: pulumi.Input<string>;
+    intranetIp?: pulumi.Input<string>;
     /**
      * private network SLB ID.
      */
-    readonly intranetSlbId?: pulumi.Input<string>;
+    intranetSlbId?: pulumi.Input<string>;
     /**
      * Bound public network SLB. The details see Block intranet.
      */
-    readonly intranets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationIntranet>[]>;
+    intranets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationIntranet>[]>;
     /**
      * The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
-    readonly jarStartArgs?: pulumi.Input<string>;
+    jarStartArgs?: pulumi.Input<string>;
     /**
      * The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
-    readonly jarStartOptions?: pulumi.Input<string>;
+    jarStartOptions?: pulumi.Input<string>;
     /**
      * The JDK version that the deployment package depends on. Image type applications are not supported.
      */
-    readonly jdk?: pulumi.Input<string>;
+    jdk?: pulumi.Input<string>;
     /**
      * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
      */
-    readonly liveness?: pulumi.Input<string>;
+    liveness?: pulumi.Input<string>;
     /**
      * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
      */
-    readonly memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number>;
     /**
      * The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
      */
-    readonly minReadyInstances?: pulumi.Input<number>;
+    minReadyInstances?: pulumi.Input<number>;
     /**
      * Mount description.
      */
-    readonly mountDesc?: pulumi.Input<string>;
+    mountDesc?: pulumi.Input<string>;
     /**
      * Mount point of NAS in application VPC.
      */
-    readonly mountHost?: pulumi.Input<string>;
+    mountHost?: pulumi.Input<string>;
     /**
      * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
      */
-    readonly nasId?: pulumi.Input<string>;
+    nasId?: pulumi.Input<string>;
     /**
      * OSS AccessKey ID.
      */
-    readonly ossAkId?: pulumi.Input<string>;
+    ossAkId?: pulumi.Input<string>;
     /**
      * OSS  AccessKey Secret.
      */
-    readonly ossAkSecret?: pulumi.Input<string>;
+    ossAkSecret?: pulumi.Input<string>;
     /**
      * OSS mount description information.
      */
-    readonly ossMountDescs?: pulumi.Input<string>;
+    ossMountDescs?: pulumi.Input<string>;
     /**
      * Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
      */
-    readonly packageType?: pulumi.Input<string>;
+    packageType?: pulumi.Input<string>;
     /**
      * Deployment package address. Only FatJar or War type applications can configure the deployment package address.
      */
-    readonly packageUrl?: pulumi.Input<string>;
+    packageUrl?: pulumi.Input<string>;
     /**
      * The version number of the deployment package. Required when the Package Type is War and FatJar.
      */
-    readonly packageVersion?: pulumi.Input<string>;
+    packageVersion?: pulumi.Input<string>;
     /**
      * The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
      */
-    readonly phpArmsConfigLocation?: pulumi.Input<string>;
+    phpArmsConfigLocation?: pulumi.Input<string>;
     /**
      * PHP configuration file content.
      */
-    readonly phpConfig?: pulumi.Input<string>;
+    phpConfig?: pulumi.Input<string>;
     /**
      * PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
      */
-    readonly phpConfigLocation?: pulumi.Input<string>;
+    phpConfigLocation?: pulumi.Input<string>;
     /**
      * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
      */
-    readonly postStart?: pulumi.Input<string>;
+    postStart?: pulumi.Input<string>;
     /**
      * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
      */
-    readonly preStop?: pulumi.Input<string>;
+    preStop?: pulumi.Input<string>;
     /**
      * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
      */
-    readonly readiness?: pulumi.Input<string>;
+    readiness?: pulumi.Input<string>;
     /**
      * Initial number of instances.
      */
-    readonly replicas?: pulumi.Input<number>;
+    replicas?: pulumi.Input<number>;
     /**
      * Security group ID.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * SLS  configuration.
      */
-    readonly slsConfigs?: pulumi.Input<string>;
+    slsConfigs?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `RUNNING`, `STOPPED`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
      */
-    readonly terminationGracePeriodSeconds?: pulumi.Input<number>;
+    terminationGracePeriodSeconds?: pulumi.Input<number>;
     /**
      * Time zone, the default value is Asia/Shanghai.
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
     /**
      * Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
      */
-    readonly tomcatConfig?: pulumi.Input<string>;
+    tomcatConfig?: pulumi.Input<string>;
     /**
      * The update strategy.
      */
-    readonly updateStrategy?: pulumi.Input<string>;
+    updateStrategy?: pulumi.Input<string>;
     /**
      * Application version id.
      */
-    readonly versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string>;
     /**
      * The vpc id.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The vswitch id.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
      */
-    readonly warStartOptions?: pulumi.Input<string>;
+    warStartOptions?: pulumi.Input<string>;
     /**
      * The version of tomcat that the deployment package depends on. Image type applications are not supported.
      */
-    readonly webContainer?: pulumi.Input<string>;
+    webContainer?: pulumi.Input<string>;
 }
 
 /**
@@ -716,225 +716,225 @@ export interface ApplicationArgs {
     /**
      * Application description information. No more than 1024 characters.
      */
-    readonly appDescription?: pulumi.Input<string>;
+    appDescription?: pulumi.Input<string>;
     /**
      * Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
      */
-    readonly appName: pulumi.Input<string>;
+    appName: pulumi.Input<string>;
     /**
      * The auto config. Valid values: `false`, `true`.
      */
-    readonly autoConfig?: pulumi.Input<boolean>;
+    autoConfig?: pulumi.Input<boolean>;
     /**
      * The auto enable application scaling rule. Valid values: `false`, `true`.
      */
-    readonly autoEnableApplicationScalingRule?: pulumi.Input<boolean>;
+    autoEnableApplicationScalingRule?: pulumi.Input<boolean>;
     /**
      * The batch wait time.
      */
-    readonly batchWaitTime?: pulumi.Input<number>;
+    batchWaitTime?: pulumi.Input<number>;
     /**
      * The change order desc.
      */
-    readonly changeOrderDesc?: pulumi.Input<string>;
+    changeOrderDesc?: pulumi.Input<string>;
     /**
      * Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
      */
-    readonly command?: pulumi.Input<string>;
+    command?: pulumi.Input<string>;
     /**
      * Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
      */
-    readonly commandArgs?: pulumi.Input<string>;
+    commandArgs?: pulumi.Input<string>;
     /**
      * ConfigMap mount description.
      */
-    readonly configMapMountDesc?: pulumi.Input<string>;
+    configMapMountDesc?: pulumi.Input<string>;
     /**
      * The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
      */
-    readonly cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number>;
     /**
      * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
      */
-    readonly customHostAlias?: pulumi.Input<string>;
+    customHostAlias?: pulumi.Input<string>;
     /**
      * The deploy. Valid values: `false`, `true`.
      */
-    readonly deploy?: pulumi.Input<boolean>;
+    deploy?: pulumi.Input<boolean>;
     /**
      * The operating environment used by the Pandora application.
      */
-    readonly edasContainerVersion?: pulumi.Input<string>;
+    edasContainerVersion?: pulumi.Input<string>;
     /**
      * The enable ahas.
      */
-    readonly enableAhas?: pulumi.Input<string>;
+    enableAhas?: pulumi.Input<string>;
     /**
      * The enable grey tag route.
      */
-    readonly enableGreyTagRoute?: pulumi.Input<boolean>;
+    enableGreyTagRoute?: pulumi.Input<boolean>;
     /**
      * The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
      */
-    readonly envs?: pulumi.Input<string>;
+    envs?: pulumi.Input<string>;
     /**
      * Mirror address. Only Image type applications can configure the mirror address.
      */
-    readonly imageUrl?: pulumi.Input<string>;
+    imageUrl?: pulumi.Input<string>;
     /**
      * public network SLB ID.
      */
-    readonly internetSlbId?: pulumi.Input<string>;
+    internetSlbId?: pulumi.Input<string>;
     /**
      * Bound private network SLB. The details see Block internet.
      */
-    readonly internets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationInternet>[]>;
+    internets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationInternet>[]>;
     /**
      * private network SLB ID.
      */
-    readonly intranetSlbId?: pulumi.Input<string>;
+    intranetSlbId?: pulumi.Input<string>;
     /**
      * Bound public network SLB. The details see Block intranet.
      */
-    readonly intranets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationIntranet>[]>;
+    intranets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationIntranet>[]>;
     /**
      * The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
-    readonly jarStartArgs?: pulumi.Input<string>;
+    jarStartArgs?: pulumi.Input<string>;
     /**
      * The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
-    readonly jarStartOptions?: pulumi.Input<string>;
+    jarStartOptions?: pulumi.Input<string>;
     /**
      * The JDK version that the deployment package depends on. Image type applications are not supported.
      */
-    readonly jdk?: pulumi.Input<string>;
+    jdk?: pulumi.Input<string>;
     /**
      * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
      */
-    readonly liveness?: pulumi.Input<string>;
+    liveness?: pulumi.Input<string>;
     /**
      * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
      */
-    readonly memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number>;
     /**
      * The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
      */
-    readonly minReadyInstances?: pulumi.Input<number>;
+    minReadyInstances?: pulumi.Input<number>;
     /**
      * Mount description.
      */
-    readonly mountDesc?: pulumi.Input<string>;
+    mountDesc?: pulumi.Input<string>;
     /**
      * Mount point of NAS in application VPC.
      */
-    readonly mountHost?: pulumi.Input<string>;
+    mountHost?: pulumi.Input<string>;
     /**
      * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
      */
-    readonly nasId?: pulumi.Input<string>;
+    nasId?: pulumi.Input<string>;
     /**
      * OSS AccessKey ID.
      */
-    readonly ossAkId?: pulumi.Input<string>;
+    ossAkId?: pulumi.Input<string>;
     /**
      * OSS  AccessKey Secret.
      */
-    readonly ossAkSecret?: pulumi.Input<string>;
+    ossAkSecret?: pulumi.Input<string>;
     /**
      * OSS mount description information.
      */
-    readonly ossMountDescs?: pulumi.Input<string>;
+    ossMountDescs?: pulumi.Input<string>;
     /**
      * Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
      */
-    readonly packageType: pulumi.Input<string>;
+    packageType: pulumi.Input<string>;
     /**
      * Deployment package address. Only FatJar or War type applications can configure the deployment package address.
      */
-    readonly packageUrl?: pulumi.Input<string>;
+    packageUrl?: pulumi.Input<string>;
     /**
      * The version number of the deployment package. Required when the Package Type is War and FatJar.
      */
-    readonly packageVersion?: pulumi.Input<string>;
+    packageVersion?: pulumi.Input<string>;
     /**
      * The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
      */
-    readonly phpArmsConfigLocation?: pulumi.Input<string>;
+    phpArmsConfigLocation?: pulumi.Input<string>;
     /**
      * PHP configuration file content.
      */
-    readonly phpConfig?: pulumi.Input<string>;
+    phpConfig?: pulumi.Input<string>;
     /**
      * PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
      */
-    readonly phpConfigLocation?: pulumi.Input<string>;
+    phpConfigLocation?: pulumi.Input<string>;
     /**
      * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
      */
-    readonly postStart?: pulumi.Input<string>;
+    postStart?: pulumi.Input<string>;
     /**
      * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
      */
-    readonly preStop?: pulumi.Input<string>;
+    preStop?: pulumi.Input<string>;
     /**
      * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
      */
-    readonly readiness?: pulumi.Input<string>;
+    readiness?: pulumi.Input<string>;
     /**
      * Initial number of instances.
      */
-    readonly replicas: pulumi.Input<number>;
+    replicas: pulumi.Input<number>;
     /**
      * Security group ID.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * SLS  configuration.
      */
-    readonly slsConfigs?: pulumi.Input<string>;
+    slsConfigs?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `RUNNING`, `STOPPED`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
      */
-    readonly terminationGracePeriodSeconds?: pulumi.Input<number>;
+    terminationGracePeriodSeconds?: pulumi.Input<number>;
     /**
      * Time zone, the default value is Asia/Shanghai.
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
     /**
      * Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
      */
-    readonly tomcatConfig?: pulumi.Input<string>;
+    tomcatConfig?: pulumi.Input<string>;
     /**
      * The update strategy.
      */
-    readonly updateStrategy?: pulumi.Input<string>;
+    updateStrategy?: pulumi.Input<string>;
     /**
      * Application version id.
      */
-    readonly versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string>;
     /**
      * The vpc id.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The vswitch id.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
      */
-    readonly warStartOptions?: pulumi.Input<string>;
+    warStartOptions?: pulumi.Input<string>;
     /**
      * The version of tomcat that the deployment package depends on. Image type applications are not supported.
      */
-    readonly webContainer?: pulumi.Input<string>;
+    webContainer?: pulumi.Input<string>;
 }

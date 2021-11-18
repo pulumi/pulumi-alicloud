@@ -208,67 +208,67 @@ export interface QuotaApplicationState {
     /**
      * The approve value of the quota application.
      */
-    readonly approveValue?: pulumi.Input<string>;
+    approveValue?: pulumi.Input<string>;
     /**
      * The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
      */
-    readonly auditMode?: pulumi.Input<string>;
+    auditMode?: pulumi.Input<string>;
     /**
      * The audit reason.
      */
-    readonly auditReason?: pulumi.Input<string>;
+    auditReason?: pulumi.Input<string>;
     /**
      * The desire value of the quota application.
      */
-    readonly desireValue?: pulumi.Input<number>;
+    desireValue?: pulumi.Input<number>;
     /**
      * The quota dimensions.
      */
-    readonly dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaApplicationDimension>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaApplicationDimension>[]>;
     /**
      * The effective time of the quota application.
      */
-    readonly effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string>;
     /**
      * The expire time of the quota application.
      */
-    readonly expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string>;
     /**
      * The notice type. Valid values: `0`, `1`, `2`, `3`.
      */
-    readonly noticeType?: pulumi.Input<number>;
+    noticeType?: pulumi.Input<number>;
     /**
      * The product code.
      */
-    readonly productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string>;
     /**
      * The ID of quota action.
      */
-    readonly quotaActionCode?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string>;
     /**
      * The quota category. Valid values: `CommonQuota`, `FlowControl`.
      */
-    readonly quotaCategory?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string>;
     /**
      * The description of the quota application.
      */
-    readonly quotaDescription?: pulumi.Input<string>;
+    quotaDescription?: pulumi.Input<string>;
     /**
      * The name of the quota application.
      */
-    readonly quotaName?: pulumi.Input<string>;
+    quotaName?: pulumi.Input<string>;
     /**
      * The unit of the quota application.
      */
-    readonly quotaUnit?: pulumi.Input<string>;
+    quotaUnit?: pulumi.Input<string>;
     /**
      * The reason of the quota application.
      */
-    readonly reason?: pulumi.Input<string>;
+    reason?: pulumi.Input<string>;
     /**
      * The status of the quota application.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -278,33 +278,33 @@ export interface QuotaApplicationArgs {
     /**
      * The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
      */
-    readonly auditMode?: pulumi.Input<string>;
+    auditMode?: pulumi.Input<string>;
     /**
      * The desire value of the quota application.
      */
-    readonly desireValue: pulumi.Input<number>;
+    desireValue: pulumi.Input<number>;
     /**
      * The quota dimensions.
      */
-    readonly dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaApplicationDimension>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaApplicationDimension>[]>;
     /**
      * The notice type. Valid values: `0`, `1`, `2`, `3`.
      */
-    readonly noticeType?: pulumi.Input<number>;
+    noticeType?: pulumi.Input<number>;
     /**
      * The product code.
      */
-    readonly productCode: pulumi.Input<string>;
+    productCode: pulumi.Input<string>;
     /**
      * The ID of quota action.
      */
-    readonly quotaActionCode: pulumi.Input<string>;
+    quotaActionCode: pulumi.Input<string>;
     /**
      * The quota category. Valid values: `CommonQuota`, `FlowControl`.
      */
-    readonly quotaCategory?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string>;
     /**
      * The reason of the quota application.
      */
-    readonly reason: pulumi.Input<string>;
+    reason: pulumi.Input<string>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Vpc
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstVpcFlowLogId = example.Apply(example =&gt; example.Logs[0].Id);
+        ///         this.FirstVpcFlowLogId = example.Apply(example =&gt; example.Logs?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstVpcFlowLogId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetVpcFlowLogsResult> InvokeAsync(GetVpcFlowLogsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.122.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Vpc.GetVpcFlowLogs.InvokeAsync(new AliCloud.Vpc.GetVpcFlowLogsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstVpcFlowLogId = example.Apply(example =&gt; example.Logs?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstVpcFlowLogId")]
+        ///     public Output&lt;string&gt; FirstVpcFlowLogId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetVpcFlowLogsResult> Invoke(GetVpcFlowLogsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -125,6 +166,82 @@ namespace Pulumi.AliCloud.Vpc
         public string? TrafficType { get; set; }
 
         public GetVpcFlowLogsArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcFlowLogsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The Description of flow log.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The flow log name.
+        /// </summary>
+        [Input("flowLogName")]
+        public Input<string>? FlowLogName { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Flow Log IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The log store name.
+        /// </summary>
+        [Input("logStoreName")]
+        public Input<string>? LogStoreName { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Flow Log name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The project name.
+        /// </summary>
+        [Input("projectName")]
+        public Input<string>? ProjectName { get; set; }
+
+        /// <summary>
+        /// The resource id.
+        /// </summary>
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
+
+        /// <summary>
+        /// The resource type.
+        /// </summary>
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
+
+        /// <summary>
+        /// The status of flow log.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The traffic type.
+        /// </summary>
+        [Input("trafficType")]
+        public Input<string>? TrafficType { get; set; }
+
+        public GetVpcFlowLogsInvokeArgs()
         {
         }
     }

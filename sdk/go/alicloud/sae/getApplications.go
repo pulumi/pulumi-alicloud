@@ -4,6 +4,9 @@
 package sae
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,7 +37,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -133,4 +136,108 @@ type GetApplicationsResult struct {
 	OutputFile  *string  `pulumi:"outputFile"`
 	Reverse     *bool    `pulumi:"reverse"`
 	Status      *string  `pulumi:"status"`
+}
+
+func GetApplicationsOutput(ctx *pulumi.Context, args GetApplicationsOutputArgs, opts ...pulumi.InvokeOption) GetApplicationsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetApplicationsResult, error) {
+			args := v.(GetApplicationsArgs)
+			r, err := GetApplications(ctx, &args, opts...)
+			return *r, err
+		}).(GetApplicationsResultOutput)
+}
+
+// A collection of arguments for invoking getApplications.
+type GetApplicationsOutputArgs struct {
+	// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+	AppName pulumi.StringPtrInput `pulumi:"appName"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// The field type. Valid values:`appName`, `appIds`, `slbIps`, `instanceIps`
+	FieldType pulumi.StringPtrInput `pulumi:"fieldType"`
+	// The field value.
+	FieldValue pulumi.StringPtrInput `pulumi:"fieldValue"`
+	// A list of Application IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+	NamespaceId pulumi.StringPtrInput `pulumi:"namespaceId"`
+	// The order by.Valid values:`running`,`instances`.
+	OrderBy    pulumi.StringPtrInput `pulumi:"orderBy"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The reverse.
+	Reverse pulumi.BoolPtrInput `pulumi:"reverse"`
+	// The status of the resource.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetApplicationsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getApplications.
+type GetApplicationsResultOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsResult)(nil)).Elem()
+}
+
+func (o GetApplicationsResultOutput) ToGetApplicationsResultOutput() GetApplicationsResultOutput {
+	return o
+}
+
+func (o GetApplicationsResultOutput) ToGetApplicationsResultOutputWithContext(ctx context.Context) GetApplicationsResultOutput {
+	return o
+}
+
+func (o GetApplicationsResultOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationsResult) *string { return v.AppName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetApplicationsResultOutput) Applications() GetApplicationsApplicationArrayOutput {
+	return o.ApplyT(func(v GetApplicationsResult) []GetApplicationsApplication { return v.Applications }).(GetApplicationsApplicationArrayOutput)
+}
+
+func (o GetApplicationsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetApplicationsResultOutput) FieldType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationsResult) *string { return v.FieldType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetApplicationsResultOutput) FieldValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationsResult) *string { return v.FieldValue }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetApplicationsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetApplicationsResultOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationsResult) *string { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetApplicationsResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetApplicationsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetApplicationsResultOutput) Reverse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationsResult) *bool { return v.Reverse }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetApplicationsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetApplicationsResultOutput{})
 }

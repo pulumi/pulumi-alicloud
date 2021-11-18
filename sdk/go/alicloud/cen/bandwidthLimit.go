@@ -40,13 +40,13 @@ import (
 // 			name = param
 // 		}
 // 		_, err := providers.Newalicloud(ctx, "fra", &providers.alicloudArgs{
-// 			Region: pulumi.String("eu-central-1"),
+// 			Region: "eu-central-1",
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = providers.Newalicloud(ctx, "sh", &providers.alicloudArgs{
-// 			Region: pulumi.String("cn-shanghai"),
+// 			Region: "cn-shanghai",
 // 		})
 // 		if err != nil {
 // 			return err
@@ -287,7 +287,7 @@ type BandwidthLimitArrayInput interface {
 type BandwidthLimitArray []BandwidthLimitInput
 
 func (BandwidthLimitArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BandwidthLimit)(nil))
+	return reflect.TypeOf((*[]*BandwidthLimit)(nil)).Elem()
 }
 
 func (i BandwidthLimitArray) ToBandwidthLimitArrayOutput() BandwidthLimitArrayOutput {
@@ -312,7 +312,7 @@ type BandwidthLimitMapInput interface {
 type BandwidthLimitMap map[string]BandwidthLimitInput
 
 func (BandwidthLimitMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BandwidthLimit)(nil))
+	return reflect.TypeOf((*map[string]*BandwidthLimit)(nil)).Elem()
 }
 
 func (i BandwidthLimitMap) ToBandwidthLimitMapOutput() BandwidthLimitMapOutput {
@@ -323,9 +323,7 @@ func (i BandwidthLimitMap) ToBandwidthLimitMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitMapOutput)
 }
 
-type BandwidthLimitOutput struct {
-	*pulumi.OutputState
-}
+type BandwidthLimitOutput struct{ *pulumi.OutputState }
 
 func (BandwidthLimitOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BandwidthLimit)(nil))
@@ -344,14 +342,12 @@ func (o BandwidthLimitOutput) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutpu
 }
 
 func (o BandwidthLimitOutput) ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput {
-	return o.ApplyT(func(v BandwidthLimit) *BandwidthLimit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BandwidthLimit) *BandwidthLimit {
 		return &v
 	}).(BandwidthLimitPtrOutput)
 }
 
-type BandwidthLimitPtrOutput struct {
-	*pulumi.OutputState
-}
+type BandwidthLimitPtrOutput struct{ *pulumi.OutputState }
 
 func (BandwidthLimitPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BandwidthLimit)(nil))
@@ -363,6 +359,16 @@ func (o BandwidthLimitPtrOutput) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOu
 
 func (o BandwidthLimitPtrOutput) ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput {
 	return o
+}
+
+func (o BandwidthLimitPtrOutput) Elem() BandwidthLimitOutput {
+	return o.ApplyT(func(v *BandwidthLimit) BandwidthLimit {
+		if v != nil {
+			return *v
+		}
+		var ret BandwidthLimit
+		return ret
+	}).(BandwidthLimitOutput)
 }
 
 type BandwidthLimitArrayOutput struct{ *pulumi.OutputState }
@@ -406,6 +412,10 @@ func (o BandwidthLimitMapOutput) MapIndex(k pulumi.StringInput) BandwidthLimitOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthLimitInput)(nil)).Elem(), &BandwidthLimit{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthLimitPtrInput)(nil)).Elem(), &BandwidthLimit{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthLimitArrayInput)(nil)).Elem(), BandwidthLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthLimitMapInput)(nil)).Elem(), BandwidthLimitMap{})
 	pulumi.RegisterOutputType(BandwidthLimitOutput{})
 	pulumi.RegisterOutputType(BandwidthLimitPtrOutput{})
 	pulumi.RegisterOutputType(BandwidthLimitArrayOutput{})

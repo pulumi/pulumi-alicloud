@@ -13,6 +13,7 @@ __all__ = [
     'GetQueuesResult',
     'AwaitableGetQueuesResult',
     'get_queues',
+    'get_queues_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,45 @@ def get_queues(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         queues=__ret__.queues,
         virtual_host_name=__ret__.virtual_host_name)
+
+
+@_utilities.lift_output_func(get_queues)
+def get_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      instance_id: Optional[pulumi.Input[str]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      virtual_host_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQueuesResult]:
+    """
+    This data source provides the Amqp Queues of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.127.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.amqp.get_queues(instance_id="amqp-abc12345",
+        virtual_host_name="my-VirtualHost",
+        ids=[
+            "my-Queue-1",
+            "my-Queue-2",
+        ])
+    pulumi.export("amqpQueueId1", ids.queues[0].id)
+    name_regex = alicloud.amqp.get_queues(instance_id="amqp-abc12345",
+        virtual_host_name="my-VirtualHost",
+        name_regex="^my-Queue")
+    pulumi.export("amqpQueueId2", name_regex.queues[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Queue IDs. Its element value is same as Queue Name.
+    :param str instance_id: The ID of the instance.
+    :param str name_regex: A regex string to filter results by Queue name.
+    :param str virtual_host_name: The name of the virtual host.
+    """
+    ...

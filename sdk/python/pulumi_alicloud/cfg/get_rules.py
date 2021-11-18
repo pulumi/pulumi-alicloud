@@ -13,6 +13,7 @@ __all__ = [
     'GetRulesResult',
     'AwaitableGetRulesResult',
     'get_rules',
+    'get_rules_output',
 ]
 
 @pulumi.output_type
@@ -238,3 +239,47 @@ def get_rules(config_rule_state: Optional[str] = None,
         rule_name=__ret__.rule_name,
         rules=__ret__.rules,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_rules)
+def get_rules_output(config_rule_state: Optional[pulumi.Input[Optional[str]]] = None,
+                     enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     member_id: Optional[pulumi.Input[Optional[int]]] = None,
+                     multi_account: Optional[pulumi.Input[Optional[bool]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     risk_level: Optional[pulumi.Input[Optional[int]]] = None,
+                     rule_name: Optional[pulumi.Input[Optional[str]]] = None,
+                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesResult]:
+    """
+    This data source provides the Config Rules of the current Alibaba Cloud user.
+
+    > **NOTE:**  Available in 1.99.0+.
+
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_rules(ids=["cr-ed4bad756057********"],
+        name_regex="tftest")
+    pulumi.export("firstConfigRuleId", example.rules[0].id)
+    ```
+
+
+    :param str config_rule_state: Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Config Rule IDs.
+    :param int member_id: The ID of the member account to which the rule to be queried belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
+    :param bool multi_account: Whether the enterprise management account queries the rule details of member accounts.
+    :param str name_regex: A regex string to filter results by rule name.
+    :param int risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+    :param str rule_name: The name of config rule.
+    :param str status: The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
+    """
+    ...

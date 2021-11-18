@@ -13,6 +13,7 @@ __all__ = [
     'GetPolicyAttachmentsResult',
     'AwaitableGetPolicyAttachmentsResult',
     'get_policy_attachments',
+    'get_policy_attachments_output',
 ]
 
 @pulumi.output_type
@@ -189,3 +190,38 @@ def get_policy_attachments(language: Optional[str] = None,
         principal_name=__ret__.principal_name,
         principal_type=__ret__.principal_type,
         resource_group_id=__ret__.resource_group_id)
+
+
+@_utilities.lift_output_func(get_policy_attachments)
+def get_policy_attachments_output(language: Optional[pulumi.Input[Optional[str]]] = None,
+                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                  policy_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                  policy_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                  principal_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                  principal_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                  resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyAttachmentsResult]:
+    """
+    This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
+
+    > **NOTE:**  Available in 1.93.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_policy_attachments()
+    pulumi.export("firstAttachmentId", example.attachments[0].id)
+    ```
+
+
+    :param str language: The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
+    :param str policy_name: The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+    :param str policy_type: The type of the policy. Valid values: `Custom` and `System`.
+    :param str principal_name: The name of the object to which the policy is attached.
+    :param str principal_type: The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
+    :param str resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
+    """
+    ...

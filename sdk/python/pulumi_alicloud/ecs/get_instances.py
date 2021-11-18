@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -274,3 +275,55 @@ def get_instances(availability_zone: Optional[str] = None,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id,
         vswitch_id=__ret__.vswitch_id)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         image_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         ram_role_name: Optional[pulumi.Input[Optional[str]]] = None,
+                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    instances_ds = alicloud.ecs.get_instances(name_regex="web_server",
+        status="Running")
+    pulumi.export("firstInstanceId", instances_ds.instances[0].id)
+    pulumi.export("instanceIds", instances_ds.ids)
+    ```
+
+
+    :param str availability_zone: Availability zone where instances are located.
+    :param Sequence[str] ids: A list of ECS instance IDs.
+    :param str image_id: The image ID of some ECS instance used.
+    :param str name_regex: A regex string to filter results by instance name.
+    :param str ram_role_name: The RAM role name which the instance attaches.
+    :param str resource_group_id: The Id of resource group which the instance belongs.
+    :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
+    :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+           ```python
+           import pulumi
+           import pulumi_alicloud as alicloud
+           
+           tagged_instances = alicloud.ecs.get_instances(tags={
+               "tagKey1": "tagValue1",
+               "tagKey2": "tagValue2",
+           })
+           ```
+    :param str vpc_id: ID of the VPC linked to the instances.
+    :param str vswitch_id: ID of the VSwitch linked to the instances.
+    """
+    ...

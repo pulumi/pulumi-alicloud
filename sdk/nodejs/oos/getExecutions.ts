@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     ids: ["execution_id"],
  *     status: "Success",
  *     templateName: "name",
- * }, { async: true }));
+ * }));
  *
  * export const firstExecutionId = example.executions[0].id;
  * ```
@@ -62,68 +62,68 @@ export interface GetExecutionsArgs {
     /**
      * The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
      */
-    readonly category?: string;
+    category?: string;
     /**
      * The time when the execution was ended.
      */
-    readonly endDate?: string;
+    endDate?: string;
     /**
      * Execution whose end time is less than or equal to the specified time.
      */
-    readonly endDateAfter?: string;
+    endDateAfter?: string;
     /**
      * The user who execute the template.
      */
-    readonly executedBy?: string;
+    executedBy?: string;
     /**
      * A list of OOS Execution ids.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Whether to include sub-execution.
      */
-    readonly includeChildExecution?: boolean;
+    includeChildExecution?: boolean;
     /**
      * The mode of OOS Execution. Valid: `Automatic`, `Debug`.
      */
-    readonly mode?: string;
-    readonly outputFile?: string;
+    mode?: string;
+    outputFile?: string;
     /**
      * The id of parent OOS Execution.
      */
-    readonly parentExecutionId?: string;
+    parentExecutionId?: string;
     /**
      * The role that executes the current template.
      */
-    readonly ramRole?: string;
+    ramRole?: string;
     /**
      * The sort field.
      */
-    readonly sortField?: string;
+    sortField?: string;
     /**
      * The sort order.
      */
-    readonly sortOrder?: string;
+    sortOrder?: string;
     /**
      * The execution whose start time is greater than or equal to the specified time.
      */
-    readonly startDateAfter?: string;
+    startDateAfter?: string;
     /**
      * The execution with start time less than or equal to the specified time.
      */
-    readonly startDateBefore?: string;
+    startDateBefore?: string;
     /**
      * The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * The name of execution template.
      */
-    readonly templateName?: string;
+    templateName?: string;
 }
 
 /**
@@ -158,4 +158,79 @@ export interface GetExecutionsResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
     readonly templateName?: string;
+}
+
+export function getExecutionsOutput(args?: GetExecutionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionsResult> {
+    return pulumi.output(args).apply(a => getExecutions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getExecutions.
+ */
+export interface GetExecutionsOutputArgs {
+    /**
+     * The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
+     */
+    category?: pulumi.Input<string>;
+    /**
+     * The time when the execution was ended.
+     */
+    endDate?: pulumi.Input<string>;
+    /**
+     * Execution whose end time is less than or equal to the specified time.
+     */
+    endDateAfter?: pulumi.Input<string>;
+    /**
+     * The user who execute the template.
+     */
+    executedBy?: pulumi.Input<string>;
+    /**
+     * A list of OOS Execution ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to include sub-execution.
+     */
+    includeChildExecution?: pulumi.Input<boolean>;
+    /**
+     * The mode of OOS Execution. Valid: `Automatic`, `Debug`.
+     */
+    mode?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The id of parent OOS Execution.
+     */
+    parentExecutionId?: pulumi.Input<string>;
+    /**
+     * The role that executes the current template.
+     */
+    ramRole?: pulumi.Input<string>;
+    /**
+     * The sort field.
+     */
+    sortField?: pulumi.Input<string>;
+    /**
+     * The sort order.
+     */
+    sortOrder?: pulumi.Input<string>;
+    /**
+     * The execution whose start time is greater than or equal to the specified time.
+     */
+    startDateAfter?: pulumi.Input<string>;
+    /**
+     * The execution with start time less than or equal to the specified time.
+     */
+    startDateBefore?: pulumi.Input<string>;
+    /**
+     * The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of execution template.
+     */
+    templateName?: pulumi.Input<string>;
 }

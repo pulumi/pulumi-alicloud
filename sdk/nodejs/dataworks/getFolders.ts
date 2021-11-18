@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     projectId: projectId,
  *     parentFolderPath: "Business Flow/tfTestAcc/folderDi",
  * }));
- * export const dataWorksFolderId1 = ids.folders[0].id;
+ * export const dataWorksFolderId1 = ids.apply(ids => ids.folders?[0]?.id);
  * ```
  */
 export function getFolders(args: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
@@ -53,16 +53,16 @@ export interface GetFoldersArgs {
     /**
      * A list of Folder IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The parent folder path.
      */
-    readonly parentFolderPath: string;
+    parentFolderPath: string;
     /**
      * The ID of the project.
      */
-    readonly projectId: string;
+    projectId: string;
 }
 
 /**
@@ -78,4 +78,27 @@ export interface GetFoldersResult {
     readonly outputFile?: string;
     readonly parentFolderPath: string;
     readonly projectId: string;
+}
+
+export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
+    return pulumi.output(args).apply(a => getFolders(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFolders.
+ */
+export interface GetFoldersOutputArgs {
+    /**
+     * A list of Folder IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The parent folder path.
+     */
+    parentFolderPath: pulumi.Input<string>;
+    /**
+     * The ID of the project.
+     */
+    projectId: pulumi.Input<string>;
 }

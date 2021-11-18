@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     storageBundleId: id,
  *     nameRegex: "^my-Gateway",
  * }));
- * export const cloudStorageGatewayGatewayId = nameRegex.gateways[0].id;
+ * export const cloudStorageGatewayGatewayId = nameRegex.apply(nameRegex => nameRegex.gateways?[0]?.id);
  * ```
  */
 export function getGateways(args: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
@@ -50,20 +50,20 @@ export interface GetGatewaysArgs {
     /**
      * A list of Gateway IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Gateway name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * gateway status.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * storage bundle id.
      */
-    readonly storageBundleId: string;
+    storageBundleId: string;
 }
 
 /**
@@ -81,4 +81,31 @@ export interface GetGatewaysResult {
     readonly outputFile?: string;
     readonly status?: string;
     readonly storageBundleId: string;
+}
+
+export function getGatewaysOutput(args: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
+    return pulumi.output(args).apply(a => getGateways(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGateways.
+ */
+export interface GetGatewaysOutputArgs {
+    /**
+     * A list of Gateway IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Gateway name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * gateway status.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * storage bundle id.
+     */
+    storageBundleId: pulumi.Input<string>;
 }

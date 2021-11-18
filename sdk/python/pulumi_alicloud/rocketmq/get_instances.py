@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -189,3 +190,43 @@ def get_instances(enable_details: Optional[bool] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[int]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.52.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "onsInstanceDatasourceName"
+    default = alicloud.rocketmq.Instance("default", remark="default_ons_instance_remark")
+    instances_ds = pulumi.Output.all(default.id, default.name).apply(lambda id, name: alicloud.rocketmq.get_instances(ids=[id],
+        name_regex=name,
+        output_file="instances.txt"))
+    pulumi.export("firstInstanceId", instances_ds.instances[0].instance_id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
+    :param Sequence[str] ids: A list of instance IDs to filter results.
+    :param str name_regex: A regex string to filter results by the instance name.
+    :param int status: The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+    :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
+    """
+    ...

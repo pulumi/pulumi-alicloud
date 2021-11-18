@@ -4,6 +4,9 @@
 package arms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,82 @@ type GetDispatchRulesResult struct {
 	Names      []string               `pulumi:"names"`
 	OutputFile *string                `pulumi:"outputFile"`
 	Rules      []GetDispatchRulesRule `pulumi:"rules"`
+}
+
+func GetDispatchRulesOutput(ctx *pulumi.Context, args GetDispatchRulesOutputArgs, opts ...pulumi.InvokeOption) GetDispatchRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDispatchRulesResult, error) {
+			args := v.(GetDispatchRulesArgs)
+			r, err := GetDispatchRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetDispatchRulesResultOutput)
+}
+
+// A collection of arguments for invoking getDispatchRules.
+type GetDispatchRulesOutputArgs struct {
+	// The name of the dispatch rule.
+	DispatchRuleName pulumi.StringPtrInput `pulumi:"dispatchRuleName"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of dispatch rule id.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Dispatch Rule name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetDispatchRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDispatchRules.
+type GetDispatchRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesResult)(nil)).Elem()
+}
+
+func (o GetDispatchRulesResultOutput) ToGetDispatchRulesResultOutput() GetDispatchRulesResultOutput {
+	return o
+}
+
+func (o GetDispatchRulesResultOutput) ToGetDispatchRulesResultOutputWithContext(ctx context.Context) GetDispatchRulesResultOutput {
+	return o
+}
+
+func (o GetDispatchRulesResultOutput) DispatchRuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDispatchRulesResult) *string { return v.DispatchRuleName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDispatchRulesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDispatchRulesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDispatchRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDispatchRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDispatchRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDispatchRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDispatchRulesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDispatchRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDispatchRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDispatchRulesResultOutput) Rules() GetDispatchRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesResult) []GetDispatchRulesRule { return v.Rules }).(GetDispatchRulesRuleArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDispatchRulesResultOutput{})
 }

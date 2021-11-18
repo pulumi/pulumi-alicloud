@@ -422,86 +422,86 @@ export interface BucketState {
     /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
      */
-    readonly acl?: pulumi.Input<string>;
-    readonly bucket?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
      */
-    readonly corsRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketCorsRule>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketCorsRule>[]>;
     /**
      * The creation date of the bucket.
      */
-    readonly creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string>;
     /**
      * The extranet access endpoint of the bucket.
      */
-    readonly extranetEndpoint?: pulumi.Input<string>;
+    extranetEndpoint?: pulumi.Input<string>;
     /**
      * A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * The intranet access endpoint of the bucket.
      */
-    readonly intranetEndpoint?: pulumi.Input<string>;
+    intranetEndpoint?: pulumi.Input<string>;
     /**
      * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRule>[]>;
     /**
      * The location of the bucket.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
      */
-    readonly logging?: pulumi.Input<inputs.oss.BucketLogging>;
+    logging?: pulumi.Input<inputs.oss.BucketLogging>;
     /**
      * The flag of using logging enable container. Defaults true.
      *
      * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
      */
-    readonly loggingIsenable?: pulumi.Input<boolean>;
+    loggingIsenable?: pulumi.Input<boolean>;
     /**
      * The bucket owner.
      */
-    readonly owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string>;
     /**
      * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
      */
-    readonly policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
     /**
      * The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
      */
-    readonly redundancyType?: pulumi.Input<string>;
+    redundancyType?: pulumi.Input<string>;
     /**
      * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
      */
-    readonly refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
+    refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
     /**
      * A configuration of server-side encryption (documented below).
      */
-    readonly serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
+    serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
     /**
      * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
      */
-    readonly storageClass?: pulumi.Input<string>;
+    storageClass?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * A transfer acceleration status of a bucket (documented below).
      */
-    readonly transferAcceleration?: pulumi.Input<inputs.oss.BucketTransferAcceleration>;
+    transferAcceleration?: pulumi.Input<inputs.oss.BucketTransferAcceleration>;
     /**
      * A state of versioning (documented below).
      */
-    readonly versioning?: pulumi.Input<inputs.oss.BucketVersioning>;
+    versioning?: pulumi.Input<inputs.oss.BucketVersioning>;
     /**
      * A website object(documented below).
      */
-    readonly website?: pulumi.Input<inputs.oss.BucketWebsite>;
+    website?: pulumi.Input<inputs.oss.BucketWebsite>;
 }
 
 /**
@@ -511,64 +511,64 @@ export interface BucketArgs {
     /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
      */
-    readonly acl?: pulumi.Input<string>;
-    readonly bucket?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
      */
-    readonly corsRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketCorsRule>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketCorsRule>[]>;
     /**
      * A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRule>[]>;
     /**
      * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
      */
-    readonly logging?: pulumi.Input<inputs.oss.BucketLogging>;
+    logging?: pulumi.Input<inputs.oss.BucketLogging>;
     /**
      * The flag of using logging enable container. Defaults true.
      *
      * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
      */
-    readonly loggingIsenable?: pulumi.Input<boolean>;
+    loggingIsenable?: pulumi.Input<boolean>;
     /**
      * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
      */
-    readonly policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
     /**
      * The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
      */
-    readonly redundancyType?: pulumi.Input<string>;
+    redundancyType?: pulumi.Input<string>;
     /**
      * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
      */
-    readonly refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
+    refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
     /**
      * A configuration of server-side encryption (documented below).
      */
-    readonly serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
+    serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
     /**
      * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
      */
-    readonly storageClass?: pulumi.Input<string>;
+    storageClass?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * A transfer acceleration status of a bucket (documented below).
      */
-    readonly transferAcceleration?: pulumi.Input<inputs.oss.BucketTransferAcceleration>;
+    transferAcceleration?: pulumi.Input<inputs.oss.BucketTransferAcceleration>;
     /**
      * A state of versioning (documented below).
      */
-    readonly versioning?: pulumi.Input<inputs.oss.BucketVersioning>;
+    versioning?: pulumi.Input<inputs.oss.BucketVersioning>;
     /**
      * A website object(documented below).
      */
-    readonly website?: pulumi.Input<inputs.oss.BucketWebsite>;
+    website?: pulumi.Input<inputs.oss.BucketWebsite>;
 }

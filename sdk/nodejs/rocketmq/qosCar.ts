@@ -172,43 +172,43 @@ export interface QosCarState {
     /**
      * The description of the QoS speed limiting rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The speed limiting method. Valid values: Absolute, Percent.
      */
-    readonly limitType?: pulumi.Input<string>;
+    limitType?: pulumi.Input<string>;
     /**
      * The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
      */
-    readonly maxBandwidthAbs?: pulumi.Input<number>;
+    maxBandwidthAbs?: pulumi.Input<number>;
     /**
      * The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
      */
-    readonly maxBandwidthPercent?: pulumi.Input<number>;
+    maxBandwidthPercent?: pulumi.Input<number>;
     /**
      * The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
      */
-    readonly minBandwidthAbs?: pulumi.Input<number>;
+    minBandwidthAbs?: pulumi.Input<number>;
     /**
      * The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
      */
-    readonly minBandwidthPercent?: pulumi.Input<number>;
+    minBandwidthPercent?: pulumi.Input<number>;
     /**
      * The name of the QoS speed limiting rule..
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
      */
-    readonly percentSourceType?: pulumi.Input<string>;
+    percentSourceType?: pulumi.Input<string>;
     /**
      * The priority of the specified stream.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The instance ID of the QoS.
      */
-    readonly qosId?: pulumi.Input<string>;
+    qosId?: pulumi.Input<string>;
 }
 
 /**
@@ -218,41 +218,41 @@ export interface QosCarArgs {
     /**
      * The description of the QoS speed limiting rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The speed limiting method. Valid values: Absolute, Percent.
      */
-    readonly limitType: pulumi.Input<string>;
+    limitType: pulumi.Input<string>;
     /**
      * The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
      */
-    readonly maxBandwidthAbs?: pulumi.Input<number>;
+    maxBandwidthAbs?: pulumi.Input<number>;
     /**
      * The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
      */
-    readonly maxBandwidthPercent?: pulumi.Input<number>;
+    maxBandwidthPercent?: pulumi.Input<number>;
     /**
      * The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
      */
-    readonly minBandwidthAbs?: pulumi.Input<number>;
+    minBandwidthAbs?: pulumi.Input<number>;
     /**
      * The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
      */
-    readonly minBandwidthPercent?: pulumi.Input<number>;
+    minBandwidthPercent?: pulumi.Input<number>;
     /**
      * The name of the QoS speed limiting rule..
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
      */
-    readonly percentSourceType?: pulumi.Input<string>;
+    percentSourceType?: pulumi.Input<string>;
     /**
      * The priority of the specified stream.
      */
-    readonly priority: pulumi.Input<number>;
+    priority: pulumi.Input<number>;
     /**
      * The instance ID of the QoS.
      */
-    readonly qosId: pulumi.Input<string>;
+    qosId: pulumi.Input<string>;
 }

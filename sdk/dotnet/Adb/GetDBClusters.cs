@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Adb
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Adb
         ///         {
         ///             DescriptionRegex = "example",
         ///         }));
-        ///         this.FirstAdbDbClusterId = example.Apply(example =&gt; example.Clusters[0].Id);
+        ///         this.FirstAdbDbClusterId = example.Apply(example =&gt; example.Clusters?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstAdbDbClusterId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         public static Task<GetDBClustersResult> InvokeAsync(GetDBClustersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDBClustersResult>("alicloud:adb/getDBClusters:getDBClusters", args ?? new GetDBClustersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Adb DBClusters of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.121.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Adb.GetDBClusters.InvokeAsync(new AliCloud.Adb.GetDBClustersArgs
+        ///         {
+        ///             DescriptionRegex = "example",
+        ///         }));
+        ///         this.FirstAdbDbClusterId = example.Apply(example =&gt; example.Clusters?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstAdbDbClusterId")]
+        ///     public Output&lt;string&gt; FirstAdbDbClusterId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDBClustersResult> Invoke(GetDBClustersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDBClustersResult>("alicloud:adb/getDBClusters:getDBClusters", args ?? new GetDBClustersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -109,6 +146,70 @@ namespace Pulumi.AliCloud.Adb
         }
 
         public GetDBClustersArgs()
+        {
+        }
+    }
+
+    public sealed class GetDBClustersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The description of DBCluster.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by DBCluster description.
+        /// </summary>
+        [Input("descriptionRegex")]
+        public Input<string>? DescriptionRegex { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of DBCluster IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetDBClustersInvokeArgs()
         {
         }
     }

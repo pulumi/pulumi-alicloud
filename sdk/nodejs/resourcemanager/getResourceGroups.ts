@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(alicloud.resourcemanager.getResourceGroups({
  *     nameRegex: "tftest",
- * }, { async: true }));
+ * }));
  *
  * export const firstResourceGroupId = example.groups[0].id;
  * ```
@@ -48,20 +48,20 @@ export interface GetResourceGroupsArgs {
     /**
      * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of resource group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by resource group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -91,4 +91,31 @@ export interface GetResourceGroupsResult {
      * The status of the regional resource group.
      */
     readonly status?: string;
+}
+
+export function getResourceGroupsOutput(args?: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupsResult> {
+    return pulumi.output(args).apply(a => getResourceGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getResourceGroups.
+ */
+export interface GetResourceGroupsOutputArgs {
+    /**
+     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of resource group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by resource group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+     */
+    status?: pulumi.Input<string>;
 }

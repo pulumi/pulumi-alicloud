@@ -204,7 +204,7 @@ type ConfigurationRecorderArrayInput interface {
 type ConfigurationRecorderArray []ConfigurationRecorderInput
 
 func (ConfigurationRecorderArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ConfigurationRecorder)(nil))
+	return reflect.TypeOf((*[]*ConfigurationRecorder)(nil)).Elem()
 }
 
 func (i ConfigurationRecorderArray) ToConfigurationRecorderArrayOutput() ConfigurationRecorderArrayOutput {
@@ -229,7 +229,7 @@ type ConfigurationRecorderMapInput interface {
 type ConfigurationRecorderMap map[string]ConfigurationRecorderInput
 
 func (ConfigurationRecorderMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ConfigurationRecorder)(nil))
+	return reflect.TypeOf((*map[string]*ConfigurationRecorder)(nil)).Elem()
 }
 
 func (i ConfigurationRecorderMap) ToConfigurationRecorderMapOutput() ConfigurationRecorderMapOutput {
@@ -240,9 +240,7 @@ func (i ConfigurationRecorderMap) ToConfigurationRecorderMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationRecorderMapOutput)
 }
 
-type ConfigurationRecorderOutput struct {
-	*pulumi.OutputState
-}
+type ConfigurationRecorderOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationRecorderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConfigurationRecorder)(nil))
@@ -261,14 +259,12 @@ func (o ConfigurationRecorderOutput) ToConfigurationRecorderPtrOutput() Configur
 }
 
 func (o ConfigurationRecorderOutput) ToConfigurationRecorderPtrOutputWithContext(ctx context.Context) ConfigurationRecorderPtrOutput {
-	return o.ApplyT(func(v ConfigurationRecorder) *ConfigurationRecorder {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationRecorder) *ConfigurationRecorder {
 		return &v
 	}).(ConfigurationRecorderPtrOutput)
 }
 
-type ConfigurationRecorderPtrOutput struct {
-	*pulumi.OutputState
-}
+type ConfigurationRecorderPtrOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationRecorderPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ConfigurationRecorder)(nil))
@@ -280,6 +276,16 @@ func (o ConfigurationRecorderPtrOutput) ToConfigurationRecorderPtrOutput() Confi
 
 func (o ConfigurationRecorderPtrOutput) ToConfigurationRecorderPtrOutputWithContext(ctx context.Context) ConfigurationRecorderPtrOutput {
 	return o
+}
+
+func (o ConfigurationRecorderPtrOutput) Elem() ConfigurationRecorderOutput {
+	return o.ApplyT(func(v *ConfigurationRecorder) ConfigurationRecorder {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationRecorder
+		return ret
+	}).(ConfigurationRecorderOutput)
 }
 
 type ConfigurationRecorderArrayOutput struct{ *pulumi.OutputState }
@@ -323,6 +329,10 @@ func (o ConfigurationRecorderMapOutput) MapIndex(k pulumi.StringInput) Configura
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigurationRecorderInput)(nil)).Elem(), &ConfigurationRecorder{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigurationRecorderPtrInput)(nil)).Elem(), &ConfigurationRecorder{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigurationRecorderArrayInput)(nil)).Elem(), ConfigurationRecorderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigurationRecorderMapInput)(nil)).Elem(), ConfigurationRecorderMap{})
 	pulumi.RegisterOutputType(ConfigurationRecorderOutput{})
 	pulumi.RegisterOutputType(ConfigurationRecorderPtrOutput{})
 	pulumi.RegisterOutputType(ConfigurationRecorderArrayOutput{})

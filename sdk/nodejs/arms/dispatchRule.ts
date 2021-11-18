@@ -188,31 +188,31 @@ export interface DispatchRuleState {
     /**
      * The name of the dispatch policy.
      */
-    readonly dispatchRuleName?: pulumi.Input<string>;
+    dispatchRuleName?: pulumi.Input<string>;
     /**
      * The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
      */
-    readonly dispatchType?: pulumi.Input<string>;
+    dispatchType?: pulumi.Input<string>;
     /**
      * Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
-    readonly groupRules?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleGroupRule>[]>;
+    groupRules?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleGroupRule>[]>;
     /**
      * Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
      */
-    readonly isRecover?: pulumi.Input<boolean>;
+    isRecover?: pulumi.Input<boolean>;
     /**
      * Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
      */
-    readonly labelMatchExpressionGrids?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleLabelMatchExpressionGrid>[]>;
+    labelMatchExpressionGrids?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleLabelMatchExpressionGrid>[]>;
     /**
      * Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
-    readonly notifyRules?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleNotifyRule>[]>;
+    notifyRules?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleNotifyRule>[]>;
     /**
      * The resource status of Alert Dispatch Rule.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -222,25 +222,25 @@ export interface DispatchRuleArgs {
     /**
      * The name of the dispatch policy.
      */
-    readonly dispatchRuleName: pulumi.Input<string>;
+    dispatchRuleName: pulumi.Input<string>;
     /**
      * The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
      */
-    readonly dispatchType?: pulumi.Input<string>;
+    dispatchType?: pulumi.Input<string>;
     /**
      * Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
-    readonly groupRules: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleGroupRule>[]>;
+    groupRules: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleGroupRule>[]>;
     /**
      * Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
      */
-    readonly isRecover?: pulumi.Input<boolean>;
+    isRecover?: pulumi.Input<boolean>;
     /**
      * Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
      */
-    readonly labelMatchExpressionGrids: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleLabelMatchExpressionGrid>[]>;
+    labelMatchExpressionGrids: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleLabelMatchExpressionGrid>[]>;
     /**
      * Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
-    readonly notifyRules: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleNotifyRule>[]>;
+    notifyRules: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleNotifyRule>[]>;
 }

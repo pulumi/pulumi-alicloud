@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstGaBandwidthPackageId = example.then(example => example.packages[0].id);
+ * export const firstGaBandwidthPackageId = example.then(example => example.packages?[0]?.id);
  * ```
  */
 export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthPackagesResult> {
@@ -51,24 +51,24 @@ export interface GetBandwidthPackagesArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Bandwidth Package IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Bandwidth Package name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the bandwidth plan.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The type of the bandwidth packet. China station only supports return to basic.
      */
-    readonly type?: string;
+    type?: string;
 }
 
 /**
@@ -87,4 +87,35 @@ export interface GetBandwidthPackagesResult {
     readonly packages: outputs.ga.GetBandwidthPackagesPackage[];
     readonly status?: string;
     readonly type?: string;
+}
+
+export function getBandwidthPackagesOutput(args?: GetBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthPackagesResult> {
+    return pulumi.output(args).apply(a => getBandwidthPackages(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBandwidthPackages.
+ */
+export interface GetBandwidthPackagesOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Bandwidth Package IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Bandwidth Package name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the bandwidth plan.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The type of the bandwidth packet. China station only supports return to basic.
+     */
+    type?: pulumi.Input<string>;
 }

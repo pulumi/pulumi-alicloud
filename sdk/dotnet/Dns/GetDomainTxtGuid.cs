@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -48,6 +49,44 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public static Task<GetDomainTxtGuidResult> InvokeAsync(GetDomainTxtGuidArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainTxtGuidResult>("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args ?? new GetDomainTxtGuidArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides the generation of txt records to realize the retrieval and verification of domain names.
+        /// 
+        /// &gt; **NOTE:** Available in v1.80.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(AliCloud.Dns.GetDomainTxtGuid.InvokeAsync(new AliCloud.Dns.GetDomainTxtGuidArgs
+        ///         {
+        ///             DomainName = "test111.abc",
+        ///             Type = "ADD_SUB_DOMAIN",
+        ///         }));
+        ///         this.Rr = @this.Apply(@this =&gt; @this.Rr);
+        ///         this.Value = @this.Apply(@this =&gt; @this.Value);
+        ///     }
+        /// 
+        ///     [Output("rr")]
+        ///     public Output&lt;string&gt; Rr { get; set; }
+        ///     [Output("value")]
+        ///     public Output&lt;string&gt; Value { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDomainTxtGuidResult> Invoke(GetDomainTxtGuidInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainTxtGuidResult>("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args ?? new GetDomainTxtGuidInvokeArgs(), options.WithVersion());
     }
 
 
@@ -75,6 +114,34 @@ namespace Pulumi.AliCloud.Dns
         public string Type { get; set; } = null!;
 
         public GetDomainTxtGuidArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainTxtGuidInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Verified domain name.
+        /// </summary>
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
+
+        /// <summary>
+        /// User language.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
+        /// </summary>
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
+
+        public GetDomainTxtGuidInvokeArgs()
         {
         }
     }

@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * const ids = alicloud.simpleapplicationserver.getInstances({
  *     ids: ["example_id"],
  * });
- * export const simpleApplicationServerInstanceId1 = ids.then(ids => ids.instances[0].id);
+ * export const simpleApplicationServerInstanceId1 = ids.then(ids => ids.instances?[0]?.id);
  * const nameRegex = alicloud.simpleapplicationserver.getInstances({
  *     nameRegex: "^my-Instance",
  * });
- * export const simpleApplicationServerInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances[0].id);
+ * export const simpleApplicationServerInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -53,20 +53,20 @@ export interface GetInstancesArgs {
     /**
      * A list of Instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The billing method of the simple application server.
      */
-    readonly paymentType?: string;
+    paymentType?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -84,4 +84,31 @@ export interface GetInstancesResult {
     readonly outputFile?: string;
     readonly paymentType?: string;
     readonly status?: string;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * A list of Instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The billing method of the simple application server.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
 }

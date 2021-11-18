@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.ActiontrailHistoryDeliveryJobId1 = ids.Apply(ids =&gt; ids.Jobs[0].Id);
+        ///         this.ActiontrailHistoryDeliveryJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
         ///         var status = Output.Create(AliCloud.ActionTrail.GetHistoryDeliveryJobs.InvokeAsync(new AliCloud.ActionTrail.GetHistoryDeliveryJobsArgs
         ///         {
         ///             Ids = 
@@ -46,7 +47,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///             },
         ///             Status = 2,
         ///         }));
-        ///         this.ActiontrailHistoryDeliveryJobId2 = status.Apply(status =&gt; status.Jobs[0].Id);
+        ///         this.ActiontrailHistoryDeliveryJobId2 = status.Apply(status =&gt; status.Jobs?[0]?.Id);
         ///     }
         /// 
         ///     [Output("actiontrailHistoryDeliveryJobId1")]
@@ -60,6 +61,56 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public static Task<GetHistoryDeliveryJobsResult> InvokeAsync(GetHistoryDeliveryJobsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHistoryDeliveryJobsResult>("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args ?? new GetHistoryDeliveryJobsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.ActionTrail.GetHistoryDeliveryJobs.InvokeAsync(new AliCloud.ActionTrail.GetHistoryDeliveryJobsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.ActiontrailHistoryDeliveryJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
+        ///         var status = Output.Create(AliCloud.ActionTrail.GetHistoryDeliveryJobs.InvokeAsync(new AliCloud.ActionTrail.GetHistoryDeliveryJobsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///             Status = 2,
+        ///         }));
+        ///         this.ActiontrailHistoryDeliveryJobId2 = status.Apply(status =&gt; status.Jobs?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("actiontrailHistoryDeliveryJobId1")]
+        ///     public Output&lt;string&gt; ActiontrailHistoryDeliveryJobId1 { get; set; }
+        ///     [Output("actiontrailHistoryDeliveryJobId2")]
+        ///     public Output&lt;string&gt; ActiontrailHistoryDeliveryJobId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetHistoryDeliveryJobsResult> Invoke(GetHistoryDeliveryJobsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHistoryDeliveryJobsResult>("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args ?? new GetHistoryDeliveryJobsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -90,6 +141,37 @@ namespace Pulumi.AliCloud.ActionTrail
         public int? Status { get; set; }
 
         public GetHistoryDeliveryJobsArgs()
+        {
+        }
+    }
+
+    public sealed class GetHistoryDeliveryJobsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of History Delivery Job IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+        /// </summary>
+        [Input("status")]
+        public Input<int>? Status { get; set; }
+
+        public GetHistoryDeliveryJobsInvokeArgs()
         {
         }
     }

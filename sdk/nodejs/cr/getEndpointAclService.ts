@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -25,7 +24,7 @@ import * as utilities from "../utilities";
  *     endpointType: "internet",
  *     instanceId: "example_id",
  *     moduleName: "Registry",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getEndpointAclService(args: GetEndpointAclServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointAclServiceResult> {
@@ -51,19 +50,19 @@ export interface GetEndpointAclServiceArgs {
     /**
      * Whether to enable Acl Service.  Valid values: `true` and `false`.
      */
-    readonly enable: boolean;
+    enable: boolean;
     /**
      * The type of endpoint. Valid values: `internet`.
      */
-    readonly endpointType: string;
+    endpointType: string;
     /**
      * The ID of the CR Instance.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * The ModuleName. Valid values: `Registry`.
      */
-    readonly moduleName?: string;
+    moduleName?: string;
 }
 
 /**
@@ -79,4 +78,30 @@ export interface GetEndpointAclServiceResult {
     readonly instanceId: string;
     readonly moduleName?: string;
     readonly status: string;
+}
+
+export function getEndpointAclServiceOutput(args: GetEndpointAclServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAclServiceResult> {
+    return pulumi.output(args).apply(a => getEndpointAclService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEndpointAclService.
+ */
+export interface GetEndpointAclServiceOutputArgs {
+    /**
+     * Whether to enable Acl Service.  Valid values: `true` and `false`.
+     */
+    enable: pulumi.Input<boolean>;
+    /**
+     * The type of endpoint. Valid values: `internet`.
+     */
+    endpointType: pulumi.Input<string>;
+    /**
+     * The ID of the CR Instance.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * The ModuleName. Valid values: `Registry`.
+     */
+    moduleName?: pulumi.Input<string>;
 }

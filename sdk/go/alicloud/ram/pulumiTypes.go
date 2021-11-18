@@ -860,6 +860,18 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyStatementInput)(nil)).Elem(), PolicyStatementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyStatementArrayInput)(nil)).Elem(), PolicyStatementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoliciesPolicyInput)(nil)).Elem(), GetPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoliciesPolicyArrayInput)(nil)).Elem(), GetPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleInput)(nil)).Elem(), GetRolesRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleArrayInput)(nil)).Elem(), GetRolesRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSamlProvidersProviderInput)(nil)).Elem(), GetSamlProvidersProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSamlProvidersProviderArrayInput)(nil)).Elem(), GetSamlProvidersProviderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterOutputType(PolicyStatementOutput{})
 	pulumi.RegisterOutputType(PolicyStatementArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})

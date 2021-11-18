@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Scdn
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Scdn
         ///         {
         ///             NameRegex = "^my-Domain",
         ///         }));
-        ///         this.ScdnDomainId = nameRegex.Apply(nameRegex =&gt; nameRegex.Domains[0].Id);
+        ///         this.ScdnDomainId = nameRegex.Apply(nameRegex =&gt; nameRegex.Domains?[0]?.Id);
         ///     }
         /// 
         ///     [Output("scdnDomainId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Scdn
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:scdn/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Scdn Domains of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var nameRegex = Output.Create(AliCloud.Scdn.GetDomains.InvokeAsync(new AliCloud.Scdn.GetDomainsArgs
+        ///         {
+        ///             NameRegex = "^my-Domain",
+        ///         }));
+        ///         this.ScdnDomainId = nameRegex.Apply(nameRegex =&gt; nameRegex.Domains?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("scdnDomainId")]
+        ///     public Output&lt;string&gt; ScdnDomainId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:scdn/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -91,6 +128,52 @@ namespace Pulumi.AliCloud.Scdn
         public string? Status { get; set; }
 
         public GetDomainsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Domain IDs. Its element value is same as Domain Name.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Domain name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Resource Group ID.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetDomainsInvokeArgs()
         {
         }
     }

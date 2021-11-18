@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CS
 {
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Task<GetAckServiceResult> InvokeAsync(GetAckServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Using this data source can open Container Service (CS) service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about Container Service (CS) and how to use it, see [What is Container Service (CS)](https://www.alibabacloud.com/help/en/product/85222.htm).
+        /// 
+        /// &gt; **NOTE:** Available in v1.113.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var open = Output.Create(AliCloud.CS.GetAckService.InvokeAsync(new AliCloud.CS.GetAckServiceArgs
+        ///         {
+        ///             Enable = "On",
+        ///             Type = "propayasgo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAckServiceResult> Invoke(GetAckServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -62,6 +97,25 @@ namespace Pulumi.AliCloud.CS
         public string Type { get; set; } = null!;
 
         public GetAckServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetAckServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+        /// </summary>
+        [Input("enable")]
+        public Input<string>? Enable { get; set; }
+
+        /// <summary>
+        /// Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
+        /// </summary>
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
+
+        public GetAckServiceInvokeArgs()
         {
         }
     }

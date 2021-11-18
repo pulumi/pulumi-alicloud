@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     instanceName: "sample-instance",
  *     nameRegex: "testvpc",
  *     outputFile: "attachments.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstOtsAttachmentId = attachmentsDs.attachments[0].id;
  * ```
@@ -47,12 +47,12 @@ export interface GetInstanceAttachmentsArgs {
     /**
      * The name of OTS instance.
      */
-    readonly instanceName: string;
+    instanceName: string;
     /**
      * A regex string to filter results by vpc name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -81,4 +81,23 @@ export interface GetInstanceAttachmentsResult {
      * A list of vpc ids.
      */
     readonly vpcIds: string[];
+}
+
+export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
+    return pulumi.output(args).apply(a => getInstanceAttachments(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceAttachments.
+ */
+export interface GetInstanceAttachmentsOutputArgs {
+    /**
+     * The name of OTS instance.
+     */
+    instanceName: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by vpc name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

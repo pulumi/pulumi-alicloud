@@ -4,6 +4,9 @@
 package dms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,123 @@ type GetEnterpriseInstancesResult struct {
 	// The status of the database instance.
 	Status *string `pulumi:"status"`
 	Tid    *int    `pulumi:"tid"`
+}
+
+func GetEnterpriseInstancesOutput(ctx *pulumi.Context, args GetEnterpriseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEnterpriseInstancesResult, error) {
+			args := v.(GetEnterpriseInstancesArgs)
+			r, err := GetEnterpriseInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetEnterpriseInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getEnterpriseInstances.
+type GetEnterpriseInstancesOutputArgs struct {
+	// The type of the environment to which the database instance belongs.
+	EnvType pulumi.StringPtrInput `pulumi:"envType"`
+	// A regex string to filter the results by the DMS Enterprise Instance instance_alias.
+	InstanceAliasRegex pulumi.StringPtrInput `pulumi:"instanceAliasRegex"`
+	// The source of the database instance.
+	InstanceSource pulumi.StringPtrInput `pulumi:"instanceSource"`
+	// The ID of the database instance.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// A regex string to filter the results by the DMS Enterprise Instance instance_alias.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
+	NetType    pulumi.StringPtrInput `pulumi:"netType"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The keyword used to query database instances.
+	SearchKey pulumi.StringPtrInput `pulumi:"searchKey"`
+	// Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The ID of the tenant in Data Management (DMS) Enterprise.
+	Tid pulumi.IntPtrInput `pulumi:"tid"`
+}
+
+func (GetEnterpriseInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEnterpriseInstances.
+type GetEnterpriseInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseInstancesResult)(nil)).Elem()
+}
+
+func (o GetEnterpriseInstancesResultOutput) ToGetEnterpriseInstancesResultOutput() GetEnterpriseInstancesResultOutput {
+	return o
+}
+
+func (o GetEnterpriseInstancesResultOutput) ToGetEnterpriseInstancesResultOutputWithContext(ctx context.Context) GetEnterpriseInstancesResultOutput {
+	return o
+}
+
+// The type of the environment to which the database instance belongs..
+func (o GetEnterpriseInstancesResultOutput) EnvType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) *string { return v.EnvType }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEnterpriseInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of DMS Enterprise IDs (Each of them consists of host:port).
+func (o GetEnterpriseInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEnterpriseInstancesResultOutput) InstanceAliasRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) *string { return v.InstanceAliasRegex }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the database instance.
+func (o GetEnterpriseInstancesResultOutput) InstanceSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) *string { return v.InstanceSource }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the database instance.
+func (o GetEnterpriseInstancesResultOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// A list of KMS keys. Each element contains the following attributes:
+func (o GetEnterpriseInstancesResultOutput) Instances() GetEnterpriseInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) []GetEnterpriseInstancesInstance { return v.Instances }).(GetEnterpriseInstancesInstanceArrayOutput)
+}
+
+func (o GetEnterpriseInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of DMS Enterprise names.
+func (o GetEnterpriseInstancesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEnterpriseInstancesResultOutput) NetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) *string { return v.NetType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnterpriseInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnterpriseInstancesResultOutput) SearchKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) *string { return v.SearchKey }).(pulumi.StringPtrOutput)
+}
+
+// The status of the database instance.
+func (o GetEnterpriseInstancesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnterpriseInstancesResultOutput) Tid() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesResult) *int { return v.Tid }).(pulumi.IntPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEnterpriseInstancesResultOutput{})
 }

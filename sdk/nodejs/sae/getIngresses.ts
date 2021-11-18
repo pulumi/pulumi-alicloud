@@ -33,16 +33,16 @@ export interface GetIngressesArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Ingress IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
      */
-    readonly namespaceId: string;
-    readonly outputFile?: string;
+    namespaceId: string;
+    outputFile?: string;
 }
 
 /**
@@ -58,4 +58,27 @@ export interface GetIngressesResult {
     readonly ingresses: outputs.sae.GetIngressesIngress[];
     readonly namespaceId: string;
     readonly outputFile?: string;
+}
+
+export function getIngressesOutput(args: GetIngressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIngressesResult> {
+    return pulumi.output(args).apply(a => getIngresses(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIngresses.
+ */
+export interface GetIngressesOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Ingress IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+     */
+    namespaceId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

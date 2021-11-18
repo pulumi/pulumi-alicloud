@@ -4,6 +4,9 @@
 package resourcemanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,4 +79,88 @@ type GetControlPoliciesResult struct {
 	OutputFile *string                    `pulumi:"outputFile"`
 	Policies   []GetControlPoliciesPolicy `pulumi:"policies"`
 	PolicyType *string                    `pulumi:"policyType"`
+}
+
+func GetControlPoliciesOutput(ctx *pulumi.Context, args GetControlPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetControlPoliciesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetControlPoliciesResult, error) {
+			args := v.(GetControlPoliciesArgs)
+			r, err := GetControlPolicies(ctx, &args, opts...)
+			return *r, err
+		}).(GetControlPoliciesResultOutput)
+}
+
+// A collection of arguments for invoking getControlPolicies.
+type GetControlPoliciesOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Control Policy IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
+	Language pulumi.StringPtrInput `pulumi:"language"`
+	// A regex string to filter results by Control Policy name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The type of policy.
+	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`
+}
+
+func (GetControlPoliciesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlPoliciesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getControlPolicies.
+type GetControlPoliciesResultOutput struct{ *pulumi.OutputState }
+
+func (GetControlPoliciesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlPoliciesResult)(nil)).Elem()
+}
+
+func (o GetControlPoliciesResultOutput) ToGetControlPoliciesResultOutput() GetControlPoliciesResultOutput {
+	return o
+}
+
+func (o GetControlPoliciesResultOutput) ToGetControlPoliciesResultOutputWithContext(ctx context.Context) GetControlPoliciesResultOutput {
+	return o
+}
+
+func (o GetControlPoliciesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetControlPoliciesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetControlPoliciesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetControlPoliciesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlPoliciesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetControlPoliciesResultOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetControlPoliciesResult) *string { return v.Language }).(pulumi.StringPtrOutput)
+}
+
+func (o GetControlPoliciesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetControlPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetControlPoliciesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetControlPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetControlPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetControlPoliciesResultOutput) Policies() GetControlPoliciesPolicyArrayOutput {
+	return o.ApplyT(func(v GetControlPoliciesResult) []GetControlPoliciesPolicy { return v.Policies }).(GetControlPoliciesPolicyArrayOutput)
+}
+
+func (o GetControlPoliciesResultOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetControlPoliciesResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetControlPoliciesResultOutput{})
 }

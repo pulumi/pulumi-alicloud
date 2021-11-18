@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(alicloud.resourcemanager.getRoles({
  *     nameRegex: "tftest",
- * }, { async: true }));
+ * }));
  *
  * export const firstRoleId = example.roles[0].id;
  * ```
@@ -47,16 +47,16 @@ export interface GetRolesArgs {
     /**
      * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Resource Manager Role IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by role name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -82,4 +82,27 @@ export interface GetRolesResult {
      * A list of roles. Each element contains the following attributes:
      */
     readonly roles: outputs.resourcemanager.GetRolesRole[];
+}
+
+export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
+    return pulumi.output(args).apply(a => getRoles(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRoles.
+ */
+export interface GetRolesOutputArgs {
+    /**
+     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Resource Manager Role IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by role name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

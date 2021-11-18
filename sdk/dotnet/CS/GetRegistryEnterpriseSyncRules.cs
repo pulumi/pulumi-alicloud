@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CS
 {
@@ -37,7 +38,10 @@ namespace Pulumi.AliCloud.CS
         ///             TargetInstanceId = "cri-yyy",
         ///             NameRegex = "test-rule",
         ///         }));
-        ///         this.Output = mySyncRules.Apply(mySyncRules =&gt; mySyncRules.Rules.Select(__item =&gt; __item.Id).ToList());
+        ///         this.Output = 
+        ///         {
+        ///             mySyncRules.Apply(mySyncRules =&gt; mySyncRules.Rules),
+        ///         }.Select(__item =&gt; __item?.Id).ToList();
         ///     }
         /// 
         ///     [Output("output")]
@@ -49,6 +53,48 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Task<GetRegistryEnterpriseSyncRulesResult> InvokeAsync(GetRegistryEnterpriseSyncRulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseSyncRulesResult>("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args ?? new GetRegistryEnterpriseSyncRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.90.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mySyncRules = Output.Create(AliCloud.CS.GetRegistryEnterpriseSyncRules.InvokeAsync(new AliCloud.CS.GetRegistryEnterpriseSyncRulesArgs
+        ///         {
+        ///             InstanceId = "cri-xxx",
+        ///             NamespaceName = "test-namespace",
+        ///             RepoName = "test-repo",
+        ///             TargetInstanceId = "cri-yyy",
+        ///             NameRegex = "test-rule",
+        ///         }));
+        ///         this.Output = 
+        ///         {
+        ///             mySyncRules.Apply(mySyncRules =&gt; mySyncRules.Rules),
+        ///         }.Select(__item =&gt; __item?.Id).ToList();
+        ///     }
+        /// 
+        ///     [Output("output")]
+        ///     public Output&lt;string&gt; Output { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRegistryEnterpriseSyncRulesResult> Invoke(GetRegistryEnterpriseSyncRulesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseSyncRulesResult>("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args ?? new GetRegistryEnterpriseSyncRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -100,6 +146,58 @@ namespace Pulumi.AliCloud.CS
         public string? TargetInstanceId { get; set; }
 
         public GetRegistryEnterpriseSyncRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegistryEnterpriseSyncRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of ids to filter results by sync rule id.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// ID of Container Registry Enterprise Edition local instance.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by sync rule name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// Name of Container Registry Enterprise Edition local namespace.
+        /// </summary>
+        [Input("namespaceName")]
+        public Input<string>? NamespaceName { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Name of Container Registry Enterprise Edition local repo.
+        /// </summary>
+        [Input("repoName")]
+        public Input<string>? RepoName { get; set; }
+
+        /// <summary>
+        /// ID of Container Registry Enterprise Edition target instance.
+        /// </summary>
+        [Input("targetInstanceId")]
+        public Input<string>? TargetInstanceId { get; set; }
+
+        public GetRegistryEnterpriseSyncRulesInvokeArgs()
         {
         }
     }

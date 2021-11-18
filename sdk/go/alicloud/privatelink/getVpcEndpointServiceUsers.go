@@ -4,6 +4,9 @@
 package privatelink
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,70 @@ type GetVpcEndpointServiceUsersResult struct {
 	ServiceId  string                           `pulumi:"serviceId"`
 	UserId     *string                          `pulumi:"userId"`
 	Users      []GetVpcEndpointServiceUsersUser `pulumi:"users"`
+}
+
+func GetVpcEndpointServiceUsersOutput(ctx *pulumi.Context, args GetVpcEndpointServiceUsersOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointServiceUsersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetVpcEndpointServiceUsersResult, error) {
+			args := v.(GetVpcEndpointServiceUsersArgs)
+			r, err := GetVpcEndpointServiceUsers(ctx, &args, opts...)
+			return *r, err
+		}).(GetVpcEndpointServiceUsersResultOutput)
+}
+
+// A collection of arguments for invoking getVpcEndpointServiceUsers.
+type GetVpcEndpointServiceUsersOutputArgs struct {
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Id of Vpc Endpoint Service.
+	ServiceId pulumi.StringInput `pulumi:"serviceId"`
+	// The Id of Ram User.
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+}
+
+func (GetVpcEndpointServiceUsersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointServiceUsersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVpcEndpointServiceUsers.
+type GetVpcEndpointServiceUsersResultOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointServiceUsersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointServiceUsersResult)(nil)).Elem()
+}
+
+func (o GetVpcEndpointServiceUsersResultOutput) ToGetVpcEndpointServiceUsersResultOutput() GetVpcEndpointServiceUsersResultOutput {
+	return o
+}
+
+func (o GetVpcEndpointServiceUsersResultOutput) ToGetVpcEndpointServiceUsersResultOutputWithContext(ctx context.Context) GetVpcEndpointServiceUsersResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetVpcEndpointServiceUsersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointServiceUsersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVpcEndpointServiceUsersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcEndpointServiceUsersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVpcEndpointServiceUsersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcEndpointServiceUsersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVpcEndpointServiceUsersResultOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointServiceUsersResult) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+func (o GetVpcEndpointServiceUsersResultOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcEndpointServiceUsersResult) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVpcEndpointServiceUsersResultOutput) Users() GetVpcEndpointServiceUsersUserArrayOutput {
+	return o.ApplyT(func(v GetVpcEndpointServiceUsersResult) []GetVpcEndpointServiceUsersUser { return v.Users }).(GetVpcEndpointServiceUsersUserArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetVpcEndpointServiceUsersResultOutput{})
 }

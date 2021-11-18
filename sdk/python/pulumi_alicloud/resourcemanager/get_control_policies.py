@@ -13,6 +13,7 @@ __all__ = [
     'GetControlPoliciesResult',
     'AwaitableGetControlPoliciesResult',
     'get_control_policies',
+    'get_control_policies_output',
 ]
 
 @pulumi.output_type
@@ -170,3 +171,39 @@ def get_control_policies(enable_details: Optional[bool] = None,
         output_file=__ret__.output_file,
         policies=__ret__.policies,
         policy_type=__ret__.policy_type)
+
+
+@_utilities.lift_output_func(get_control_policies)
+def get_control_policies_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                language: Optional[pulumi.Input[Optional[str]]] = None,
+                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                policy_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetControlPoliciesResult]:
+    """
+    This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.120.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_control_policies(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstResourceManagerControlPolicyId", example.policies[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Control Policy IDs.
+    :param str language: The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
+    :param str name_regex: A regex string to filter results by Control Policy name.
+    :param str policy_type: The type of policy.
+    """
+    ...

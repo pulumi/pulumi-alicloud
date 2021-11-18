@@ -4,6 +4,9 @@
 package bastionhost
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,4 +85,82 @@ type GetUserGroupsResult struct {
 	Names         []string `pulumi:"names"`
 	OutputFile    *string  `pulumi:"outputFile"`
 	UserGroupName *string  `pulumi:"userGroupName"`
+}
+
+func GetUserGroupsOutput(ctx *pulumi.Context, args GetUserGroupsOutputArgs, opts ...pulumi.InvokeOption) GetUserGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetUserGroupsResult, error) {
+			args := v.(GetUserGroupsArgs)
+			r, err := GetUserGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetUserGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getUserGroups.
+type GetUserGroupsOutputArgs struct {
+	// A list of User Group self IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Specify the New Group of the Bastion Host of Instance Id.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by User Group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Specify the New Group Name. Supports up to 128 Characters.
+	UserGroupName pulumi.StringPtrInput `pulumi:"userGroupName"`
+}
+
+func (GetUserGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getUserGroups.
+type GetUserGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetUserGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserGroupsResult)(nil)).Elem()
+}
+
+func (o GetUserGroupsResultOutput) ToGetUserGroupsResultOutput() GetUserGroupsResultOutput {
+	return o
+}
+
+func (o GetUserGroupsResultOutput) ToGetUserGroupsResultOutputWithContext(ctx context.Context) GetUserGroupsResultOutput {
+	return o
+}
+
+func (o GetUserGroupsResultOutput) Groups() GetUserGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetUserGroupsResult) []GetUserGroupsGroup { return v.Groups }).(GetUserGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetUserGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetUserGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUserGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetUserGroupsResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserGroupsResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetUserGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUserGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUserGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUserGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetUserGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUserGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUserGroupsResultOutput) UserGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUserGroupsResult) *string { return v.UserGroupName }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetUserGroupsResultOutput{})
 }

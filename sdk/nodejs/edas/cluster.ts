@@ -132,23 +132,23 @@ export interface ClusterState {
     /**
      * The name of the cluster that you want to create.
      */
-    readonly clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string>;
     /**
      * The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
      */
-    readonly clusterType?: pulumi.Input<number>;
+    clusterType?: pulumi.Input<number>;
     /**
      * The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
      */
-    readonly logicalRegionId?: pulumi.Input<string>;
+    logicalRegionId?: pulumi.Input<string>;
     /**
      * The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
      */
-    readonly networkMode?: pulumi.Input<number>;
+    networkMode?: pulumi.Input<number>;
     /**
      * The ID of the Virtual Private Cloud (VPC) for the cluster.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -158,21 +158,21 @@ export interface ClusterArgs {
     /**
      * The name of the cluster that you want to create.
      */
-    readonly clusterName: pulumi.Input<string>;
+    clusterName: pulumi.Input<string>;
     /**
      * The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
      */
-    readonly clusterType: pulumi.Input<number>;
+    clusterType: pulumi.Input<number>;
     /**
      * The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
      */
-    readonly logicalRegionId?: pulumi.Input<string>;
+    logicalRegionId?: pulumi.Input<string>;
     /**
      * The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
      */
-    readonly networkMode: pulumi.Input<number>;
+    networkMode: pulumi.Input<number>;
     /**
      * The ID of the Virtual Private Cloud (VPC) for the cluster.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }

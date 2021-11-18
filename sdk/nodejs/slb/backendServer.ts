@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones[0].id,
+ *     availabilityZone: defaultZones.zones?[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
@@ -39,20 +39,20 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance: alicloud.ecs.Instance[];
  * for (const range = {value: 0}; range.value < "2"; range.value++) {
  *     defaultInstance.push(new alicloud.ecs.Instance(`defaultInstance-${range.value}`, {
- *         imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
- *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
+ *         imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
+ *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
  *         instanceName: name,
  *         securityGroups: [defaultSecurityGroup].map(__item => __item.id),
  *         internetChargeType: "PayByTraffic",
  *         internetMaxBandwidthOut: "10",
- *         availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *         availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *         instanceChargeType: "PostPaid",
  *         systemDiskCategory: "cloud_efficiency",
  *         vswitchId: defaultSwitch.id,
@@ -173,15 +173,15 @@ export interface BackendServerState {
     /**
      * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
      */
-    readonly backendServers?: pulumi.Input<pulumi.Input<inputs.slb.BackendServerBackendServer>[]>;
+    backendServers?: pulumi.Input<pulumi.Input<inputs.slb.BackendServerBackendServer>[]>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
      * ID of the load balancer.
      */
-    readonly loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string>;
 }
 
 /**
@@ -191,13 +191,13 @@ export interface BackendServerArgs {
     /**
      * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
      */
-    readonly backendServers?: pulumi.Input<pulumi.Input<inputs.slb.BackendServerBackendServer>[]>;
+    backendServers?: pulumi.Input<pulumi.Input<inputs.slb.BackendServerBackendServer>[]>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
      * ID of the load balancer.
      */
-    readonly loadBalancerId: pulumi.Input<string>;
+    loadBalancerId: pulumi.Input<string>;
 }

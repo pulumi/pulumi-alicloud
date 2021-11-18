@@ -236,79 +236,79 @@ export interface InstanceState {
     /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
-    readonly bandWidth?: pulumi.Input<number>;
+    bandWidth?: pulumi.Input<number>;
     /**
      * Whether to use log audit. Valid values: `true`, `false`.
      */
-    readonly cfwLog?: pulumi.Input<boolean>;
+    cfwLog?: pulumi.Input<boolean>;
     /**
      * The log storage capacity.
      */
-    readonly cfwLogStorage?: pulumi.Input<number>;
+    cfwLogStorage?: pulumi.Input<number>;
     /**
      * Whether to use expert service. Valid values: `true`, `false`.
      */
-    readonly cfwService?: pulumi.Input<boolean>;
+    cfwService?: pulumi.Input<boolean>;
     /**
      * The creation time.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * The end time.
      */
-    readonly endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string>;
     /**
      * The number of protected VPCs. Valid values between 2 and 500.
      */
-    readonly fwVpcNumber?: pulumi.Input<number>;
+    fwVpcNumber?: pulumi.Input<number>;
     /**
      * The number of assets.
      */
-    readonly instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number>;
     /**
      * The number of public IPs that can be protected. Valid values: 20 to 4000.
      */
-    readonly ipNumber?: pulumi.Input<number>;
+    ipNumber?: pulumi.Input<number>;
     /**
      * The logistics.
      */
-    readonly logistics?: pulumi.Input<string>;
+    logistics?: pulumi.Input<string>;
     /**
      * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
      */
-    readonly modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The prepaid period. Valid values: `6`, `12`, `24`, `36`.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The release time.
      */
-    readonly releaseTime?: pulumi.Input<string>;
+    releaseTime?: pulumi.Input<string>;
     /**
      * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
      */
-    readonly renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number>;
     /**
      * Automatic renewal period unit. Valid values: `Month`,`Year`.
      */
-    readonly renewalDurationUnit?: pulumi.Input<string>;
+    renewalDurationUnit?: pulumi.Input<string>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
     /**
      * Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      */
-    readonly spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string>;
     /**
      * The status of Instance.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -318,57 +318,57 @@ export interface InstanceArgs {
     /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
-    readonly bandWidth: pulumi.Input<number>;
+    bandWidth: pulumi.Input<number>;
     /**
      * Whether to use log audit. Valid values: `true`, `false`.
      */
-    readonly cfwLog: pulumi.Input<boolean>;
+    cfwLog: pulumi.Input<boolean>;
     /**
      * The log storage capacity.
      */
-    readonly cfwLogStorage: pulumi.Input<number>;
+    cfwLogStorage: pulumi.Input<number>;
     /**
      * Whether to use expert service. Valid values: `true`, `false`.
      */
-    readonly cfwService: pulumi.Input<boolean>;
+    cfwService: pulumi.Input<boolean>;
     /**
      * The number of protected VPCs. Valid values between 2 and 500.
      */
-    readonly fwVpcNumber?: pulumi.Input<number>;
+    fwVpcNumber?: pulumi.Input<number>;
     /**
      * The number of assets.
      */
-    readonly instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number>;
     /**
      * The number of public IPs that can be protected. Valid values: 20 to 4000.
      */
-    readonly ipNumber: pulumi.Input<number>;
+    ipNumber: pulumi.Input<number>;
     /**
      * The logistics.
      */
-    readonly logistics?: pulumi.Input<string>;
+    logistics?: pulumi.Input<string>;
     /**
      * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
      */
-    readonly modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */
-    readonly paymentType: pulumi.Input<string>;
+    paymentType: pulumi.Input<string>;
     /**
      * The prepaid period. Valid values: `6`, `12`, `24`, `36`.
      */
-    readonly period: pulumi.Input<number>;
+    period: pulumi.Input<number>;
     /**
      * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
      */
-    readonly renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
     /**
      * Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      */
-    readonly spec: pulumi.Input<string>;
+    spec: pulumi.Input<string>;
 }

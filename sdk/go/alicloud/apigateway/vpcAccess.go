@@ -183,7 +183,7 @@ type VpcAccessArrayInput interface {
 type VpcAccessArray []VpcAccessInput
 
 func (VpcAccessArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VpcAccess)(nil))
+	return reflect.TypeOf((*[]*VpcAccess)(nil)).Elem()
 }
 
 func (i VpcAccessArray) ToVpcAccessArrayOutput() VpcAccessArrayOutput {
@@ -208,7 +208,7 @@ type VpcAccessMapInput interface {
 type VpcAccessMap map[string]VpcAccessInput
 
 func (VpcAccessMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VpcAccess)(nil))
+	return reflect.TypeOf((*map[string]*VpcAccess)(nil)).Elem()
 }
 
 func (i VpcAccessMap) ToVpcAccessMapOutput() VpcAccessMapOutput {
@@ -219,9 +219,7 @@ func (i VpcAccessMap) ToVpcAccessMapOutputWithContext(ctx context.Context) VpcAc
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessMapOutput)
 }
 
-type VpcAccessOutput struct {
-	*pulumi.OutputState
-}
+type VpcAccessOutput struct{ *pulumi.OutputState }
 
 func (VpcAccessOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcAccess)(nil))
@@ -240,14 +238,12 @@ func (o VpcAccessOutput) ToVpcAccessPtrOutput() VpcAccessPtrOutput {
 }
 
 func (o VpcAccessOutput) ToVpcAccessPtrOutputWithContext(ctx context.Context) VpcAccessPtrOutput {
-	return o.ApplyT(func(v VpcAccess) *VpcAccess {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcAccess) *VpcAccess {
 		return &v
 	}).(VpcAccessPtrOutput)
 }
 
-type VpcAccessPtrOutput struct {
-	*pulumi.OutputState
-}
+type VpcAccessPtrOutput struct{ *pulumi.OutputState }
 
 func (VpcAccessPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VpcAccess)(nil))
@@ -259,6 +255,16 @@ func (o VpcAccessPtrOutput) ToVpcAccessPtrOutput() VpcAccessPtrOutput {
 
 func (o VpcAccessPtrOutput) ToVpcAccessPtrOutputWithContext(ctx context.Context) VpcAccessPtrOutput {
 	return o
+}
+
+func (o VpcAccessPtrOutput) Elem() VpcAccessOutput {
+	return o.ApplyT(func(v *VpcAccess) VpcAccess {
+		if v != nil {
+			return *v
+		}
+		var ret VpcAccess
+		return ret
+	}).(VpcAccessOutput)
 }
 
 type VpcAccessArrayOutput struct{ *pulumi.OutputState }
@@ -302,6 +308,10 @@ func (o VpcAccessMapOutput) MapIndex(k pulumi.StringInput) VpcAccessOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcAccessInput)(nil)).Elem(), &VpcAccess{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcAccessPtrInput)(nil)).Elem(), &VpcAccess{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcAccessArrayInput)(nil)).Elem(), VpcAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcAccessMapInput)(nil)).Elem(), VpcAccessMap{})
 	pulumi.RegisterOutputType(VpcAccessOutput{})
 	pulumi.RegisterOutputType(VpcAccessPtrOutput{})
 	pulumi.RegisterOutputType(VpcAccessArrayOutput{})

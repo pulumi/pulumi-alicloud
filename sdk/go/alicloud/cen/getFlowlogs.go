@@ -4,6 +4,9 @@
 package cen
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,4 +92,107 @@ type GetFlowlogsResult struct {
 	ProjectName *string `pulumi:"projectName"`
 	// The status of flowlog.
 	Status *string `pulumi:"status"`
+}
+
+func GetFlowlogsOutput(ctx *pulumi.Context, args GetFlowlogsOutputArgs, opts ...pulumi.InvokeOption) GetFlowlogsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetFlowlogsResult, error) {
+			args := v.(GetFlowlogsArgs)
+			r, err := GetFlowlogs(ctx, &args, opts...)
+			return *r, err
+		}).(GetFlowlogsResultOutput)
+}
+
+// A collection of arguments for invoking getFlowlogs.
+type GetFlowlogsOutputArgs struct {
+	// The ID of the CEN Instance.
+	CenId pulumi.StringPtrInput `pulumi:"cenId"`
+	// The description of flowlog.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A list of CEN flow log IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The name of the log store which is in the  `projectName` SLS project.
+	LogStoreName pulumi.StringPtrInput `pulumi:"logStoreName"`
+	// A regex string to filter CEN flow logs by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The name of the SLS project.
+	ProjectName pulumi.StringPtrInput `pulumi:"projectName"`
+	// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetFlowlogsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlowlogsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getFlowlogs.
+type GetFlowlogsResultOutput struct{ *pulumi.OutputState }
+
+func (GetFlowlogsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlowlogsResult)(nil)).Elem()
+}
+
+func (o GetFlowlogsResultOutput) ToGetFlowlogsResultOutput() GetFlowlogsResultOutput {
+	return o
+}
+
+func (o GetFlowlogsResultOutput) ToGetFlowlogsResultOutputWithContext(ctx context.Context) GetFlowlogsResultOutput {
+	return o
+}
+
+// The ID of the CEN Instance.
+func (o GetFlowlogsResultOutput) CenId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.CenId }).(pulumi.StringPtrOutput)
+}
+
+// The description of flowlog.
+func (o GetFlowlogsResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetFlowlogsResultOutput) Flowlogs() GetFlowlogsFlowlogArrayOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) []GetFlowlogsFlowlog { return v.Flowlogs }).(GetFlowlogsFlowlogArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetFlowlogsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of CEN flow log IDs.
+func (o GetFlowlogsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// The name of the log store which is in the  `projectName` SLS project.
+func (o GetFlowlogsResultOutput) LogStoreName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.LogStoreName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetFlowlogsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of CEN flow log names.
+func (o GetFlowlogsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFlowlogsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SLS project.
+func (o GetFlowlogsResultOutput) ProjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.ProjectName }).(pulumi.StringPtrOutput)
+}
+
+// The status of flowlog.
+func (o GetFlowlogsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetFlowlogsResultOutput{})
 }

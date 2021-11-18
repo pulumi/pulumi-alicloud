@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 export function getCiphertext(args: GetCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetCiphertextResult> {
@@ -28,15 +27,15 @@ export interface GetCiphertextArgs {
      * -
      * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
-    readonly encryptionContext?: {[key: string]: string};
+    encryptionContext?: {[key: string]: string};
     /**
      * The globally unique ID of the CMK.
      */
-    readonly keyId: string;
+    keyId: string;
     /**
      * The plaintext to be encrypted which must be encoded in Base64.
      */
-    readonly plaintext: string;
+    plaintext: string;
 }
 
 /**
@@ -54,4 +53,27 @@ export interface GetCiphertextResult {
     readonly id: string;
     readonly keyId: string;
     readonly plaintext: string;
+}
+
+export function getCiphertextOutput(args: GetCiphertextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCiphertextResult> {
+    return pulumi.output(args).apply(a => getCiphertext(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCiphertext.
+ */
+export interface GetCiphertextOutputArgs {
+    /**
+     * -
+     * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     */
+    encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The globally unique ID of the CMK.
+     */
+    keyId: pulumi.Input<string>;
+    /**
+     * The plaintext to be encrypted which must be encoded in Base64.
+     */
+    plaintext: pulumi.Input<string>;
 }

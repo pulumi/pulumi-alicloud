@@ -106,11 +106,11 @@ export interface StorageBundleState {
     /**
      * The description of storage bundle.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of storage bundle.
      */
-    readonly storageBundleName?: pulumi.Input<string>;
+    storageBundleName?: pulumi.Input<string>;
 }
 
 /**
@@ -120,9 +120,9 @@ export interface StorageBundleArgs {
     /**
      * The description of storage bundle.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of storage bundle.
      */
-    readonly storageBundleName: pulumi.Input<string>;
+    storageBundleName: pulumi.Input<string>;
 }

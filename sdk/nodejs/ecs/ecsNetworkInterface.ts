@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vswitchName: name,
  *     cidrBlock: "192.168.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *         Created: "TF",
  *         For: "Test",
  *     },
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids[0]),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?[0]),
  * });
  * ```
  *
@@ -236,81 +236,81 @@ export interface EcsNetworkInterfaceState {
     /**
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The MAC address of the ENI.
      */
-    readonly mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */
-    readonly networkInterfaceName?: pulumi.Input<string>;
+    networkInterfaceName?: pulumi.Input<string>;
     /**
      * The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
      */
-    readonly primaryIpAddress?: pulumi.Input<string>;
+    primaryIpAddress?: pulumi.Input<string>;
     /**
      * Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
-    readonly privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string>;
     /**
      * Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
      */
-    readonly privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field `privateIps` has been deprecated from provider version 1.123.1. New field `privateIpAddresses` instead
      *
      * @deprecated Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
      */
-    readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field `privateIpsCount` has been deprecated from provider version 1.123.1. New field `secondaryPrivateIpAddressCount` instead
      *
      * @deprecated Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
      */
-    readonly privateIpsCount?: pulumi.Input<number>;
+    privateIpsCount?: pulumi.Input<number>;
     /**
      * The queue number of the ENI.
      */
-    readonly queueNumber?: pulumi.Input<number>;
+    queueNumber?: pulumi.Input<number>;
     /**
      * The resource group id.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The number of private IP addresses that can be automatically created by ECS.
      */
-    readonly secondaryPrivateIpAddressCount?: pulumi.Input<number>;
+    secondaryPrivateIpAddressCount?: pulumi.Input<number>;
     /**
      * The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead
      *
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
-    readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The status of the ENI.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -320,71 +320,71 @@ export interface EcsNetworkInterfaceArgs {
     /**
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */
-    readonly networkInterfaceName?: pulumi.Input<string>;
+    networkInterfaceName?: pulumi.Input<string>;
     /**
      * The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
      */
-    readonly primaryIpAddress?: pulumi.Input<string>;
+    primaryIpAddress?: pulumi.Input<string>;
     /**
      * Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
-    readonly privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string>;
     /**
      * Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
      */
-    readonly privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field `privateIps` has been deprecated from provider version 1.123.1. New field `privateIpAddresses` instead
      *
      * @deprecated Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
      */
-    readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field `privateIpsCount` has been deprecated from provider version 1.123.1. New field `secondaryPrivateIpAddressCount` instead
      *
      * @deprecated Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
      */
-    readonly privateIpsCount?: pulumi.Input<number>;
+    privateIpsCount?: pulumi.Input<number>;
     /**
      * The queue number of the ENI.
      */
-    readonly queueNumber?: pulumi.Input<number>;
+    queueNumber?: pulumi.Input<number>;
     /**
      * The resource group id.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The number of private IP addresses that can be automatically created by ECS.
      */
-    readonly secondaryPrivateIpAddressCount?: pulumi.Input<number>;
+    secondaryPrivateIpAddressCount?: pulumi.Input<number>;
     /**
      * The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead
      *
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
-    readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
 }

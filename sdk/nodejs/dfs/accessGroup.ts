@@ -116,15 +116,15 @@ export interface AccessGroupState {
     /**
      * The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
      */
-    readonly accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string>;
     /**
      * The Description of Access Group. The length of `description` does not exceed 100 bytes.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The NetworkType of Access Group. Valid values: `VPC`.
      */
-    readonly networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string>;
 }
 
 /**
@@ -134,13 +134,13 @@ export interface AccessGroupArgs {
     /**
      * The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
      */
-    readonly accessGroupName: pulumi.Input<string>;
+    accessGroupName: pulumi.Input<string>;
     /**
      * The Description of Access Group. The length of `description` does not exceed 100 bytes.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The NetworkType of Access Group. Valid values: `VPC`.
      */
-    readonly networkType: pulumi.Input<string>;
+    networkType: pulumi.Input<string>;
 }

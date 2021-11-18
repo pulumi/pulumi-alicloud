@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,4 +54,99 @@ type GetKeyPairsResult struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+func GetKeyPairsOutput(ctx *pulumi.Context, args GetKeyPairsOutputArgs, opts ...pulumi.InvokeOption) GetKeyPairsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetKeyPairsResult, error) {
+			args := v.(GetKeyPairsArgs)
+			r, err := GetKeyPairs(ctx, &args, opts...)
+			return *r, err
+		}).(GetKeyPairsResultOutput)
+}
+
+// A collection of arguments for invoking getKeyPairs.
+type GetKeyPairsOutputArgs struct {
+	// A finger print used to retrieve specified key pair.
+	FingerPrint pulumi.StringPtrInput `pulumi:"fingerPrint"`
+	// A list of key pair IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to apply to the resulting key pairs.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Id of resource group which the key pair belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetKeyPairsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyPairsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKeyPairs.
+type GetKeyPairsResultOutput struct{ *pulumi.OutputState }
+
+func (GetKeyPairsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyPairsResult)(nil)).Elem()
+}
+
+func (o GetKeyPairsResultOutput) ToGetKeyPairsResultOutput() GetKeyPairsResultOutput {
+	return o
+}
+
+func (o GetKeyPairsResultOutput) ToGetKeyPairsResultOutputWithContext(ctx context.Context) GetKeyPairsResultOutput {
+	return o
+}
+
+// Finger print of the key pair.
+func (o GetKeyPairsResultOutput) FingerPrint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.FingerPrint }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetKeyPairsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKeyPairsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKeyPairsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// A list of key pairs. Each element contains the following attributes:
+//
+// Deprecated: Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.
+func (o GetKeyPairsResultOutput) KeyPairs() GetKeyPairsKeyPairArrayOutput {
+	return o.ApplyT(func(v GetKeyPairsResult) []GetKeyPairsKeyPair { return v.KeyPairs }).(GetKeyPairsKeyPairArrayOutput)
+}
+
+func (o GetKeyPairsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of key pair names.
+func (o GetKeyPairsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKeyPairsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetKeyPairsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKeyPairsResultOutput) Pairs() GetKeyPairsPairArrayOutput {
+	return o.ApplyT(func(v GetKeyPairsResult) []GetKeyPairsPair { return v.Pairs }).(GetKeyPairsPairArrayOutput)
+}
+
+// The Id of resource group.
+func (o GetKeyPairsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
+func (o GetKeyPairsResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetKeyPairsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetKeyPairsResultOutput{})
 }

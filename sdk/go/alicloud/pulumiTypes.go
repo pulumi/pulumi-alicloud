@@ -107,10 +107,11 @@ func (o ProviderAssumeRoleOutput) ToProviderAssumeRolePtrOutput() ProviderAssume
 }
 
 func (o ProviderAssumeRoleOutput) ToProviderAssumeRolePtrOutputWithContext(ctx context.Context) ProviderAssumeRolePtrOutput {
-	return o.ApplyT(func(v ProviderAssumeRole) *ProviderAssumeRole {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderAssumeRole) *ProviderAssumeRole {
 		return &v
 	}).(ProviderAssumeRolePtrOutput)
 }
+
 func (o ProviderAssumeRoleOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
@@ -142,7 +143,13 @@ func (o ProviderAssumeRolePtrOutput) ToProviderAssumeRolePtrOutputWithContext(ct
 }
 
 func (o ProviderAssumeRolePtrOutput) Elem() ProviderAssumeRoleOutput {
-	return o.ApplyT(func(v *ProviderAssumeRole) ProviderAssumeRole { return *v }).(ProviderAssumeRoleOutput)
+	return o.ApplyT(func(v *ProviderAssumeRole) ProviderAssumeRole {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderAssumeRole
+		return ret
+	}).(ProviderAssumeRoleOutput)
 }
 
 func (o ProviderAssumeRolePtrOutput) Policy() pulumi.StringPtrOutput {
@@ -1697,6 +1704,20 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRoleInput)(nil)).Elem(), ProviderAssumeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRolePtrInput)(nil)).Elem(), ProviderAssumeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointInput)(nil)).Elem(), ProviderEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointArrayInput)(nil)).Elem(), ProviderEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubContactsContactInput)(nil)).Elem(), GetMscSubContactsContactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubContactsContactArrayInput)(nil)).Elem(), GetMscSubContactsContactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubSubscriptionsSubscriptionInput)(nil)).Elem(), GetMscSubSubscriptionsSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubSubscriptionsSubscriptionArrayInput)(nil)).Elem(), GetMscSubSubscriptionsSubscriptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubWebhooksWebhookInput)(nil)).Elem(), GetMscSubWebhooksWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubWebhooksWebhookArrayInput)(nil)).Elem(), GetMscSubWebhooksWebhookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(ProviderAssumeRoleOutput{})
 	pulumi.RegisterOutputType(ProviderAssumeRolePtrOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointOutput{})

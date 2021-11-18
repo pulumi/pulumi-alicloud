@@ -141,19 +141,19 @@ export interface AcceleratorState {
     /**
      * The Name of the GA instance.
      */
-    readonly acceleratorName?: pulumi.Input<string>;
+    acceleratorName?: pulumi.Input<string>;
     /**
      * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
      */
-    readonly autoUseCoupon?: pulumi.Input<boolean>;
+    autoUseCoupon?: pulumi.Input<boolean>;
     /**
      * Descriptive information of the global acceleration instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The duration. The value range is 1-9.
      */
-    readonly duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number>;
     /**
      * The instance type of the GA instance. Specification of global acceleration instance, value:
      * `1`: Small 1.
@@ -163,11 +163,11 @@ export interface AcceleratorState {
      * `8`: Medium 2.
      * `10`: Medium 3.
      */
-    readonly spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string>;
     /**
      * The status of the GA instance.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -177,19 +177,19 @@ export interface AcceleratorArgs {
     /**
      * The Name of the GA instance.
      */
-    readonly acceleratorName?: pulumi.Input<string>;
+    acceleratorName?: pulumi.Input<string>;
     /**
      * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
      */
-    readonly autoUseCoupon?: pulumi.Input<boolean>;
+    autoUseCoupon?: pulumi.Input<boolean>;
     /**
      * Descriptive information of the global acceleration instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The duration. The value range is 1-9.
      */
-    readonly duration: pulumi.Input<number>;
+    duration: pulumi.Input<number>;
     /**
      * The instance type of the GA instance. Specification of global acceleration instance, value:
      * `1`: Small 1.
@@ -199,5 +199,5 @@ export interface AcceleratorArgs {
      * `8`: Medium 2.
      * `10`: Medium 3.
      */
-    readonly spec: pulumi.Input<string>;
+    spec: pulumi.Input<string>;
 }

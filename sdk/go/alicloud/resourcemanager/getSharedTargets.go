@@ -4,6 +4,9 @@
 package resourcemanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,72 @@ type GetSharedTargetsResult struct {
 	ResourceShareId *string                  `pulumi:"resourceShareId"`
 	Status          *string                  `pulumi:"status"`
 	Targets         []GetSharedTargetsTarget `pulumi:"targets"`
+}
+
+func GetSharedTargetsOutput(ctx *pulumi.Context, args GetSharedTargetsOutputArgs, opts ...pulumi.InvokeOption) GetSharedTargetsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSharedTargetsResult, error) {
+			args := v.(GetSharedTargetsArgs)
+			r, err := GetSharedTargets(ctx, &args, opts...)
+			return *r, err
+		}).(GetSharedTargetsResultOutput)
+}
+
+// A collection of arguments for invoking getSharedTargets.
+type GetSharedTargetsOutputArgs struct {
+	// A list of Shared Target IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The resource shared ID of resource manager.
+	ResourceShareId pulumi.StringPtrInput `pulumi:"resourceShareId"`
+	// The status of shared target.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetSharedTargetsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSharedTargetsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSharedTargets.
+type GetSharedTargetsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSharedTargetsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSharedTargetsResult)(nil)).Elem()
+}
+
+func (o GetSharedTargetsResultOutput) ToGetSharedTargetsResultOutput() GetSharedTargetsResultOutput {
+	return o
+}
+
+func (o GetSharedTargetsResultOutput) ToGetSharedTargetsResultOutputWithContext(ctx context.Context) GetSharedTargetsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSharedTargetsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedTargetsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSharedTargetsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSharedTargetsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSharedTargetsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSharedTargetsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSharedTargetsResultOutput) ResourceShareId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSharedTargetsResult) *string { return v.ResourceShareId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSharedTargetsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSharedTargetsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSharedTargetsResultOutput) Targets() GetSharedTargetsTargetArrayOutput {
+	return o.ApplyT(func(v GetSharedTargetsResult) []GetSharedTargetsTarget { return v.Targets }).(GetSharedTargetsTargetArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSharedTargetsResultOutput{})
 }

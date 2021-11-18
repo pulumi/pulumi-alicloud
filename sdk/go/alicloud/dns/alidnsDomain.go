@@ -32,9 +32,9 @@ import (
 // 		_, err := dns.NewAlidnsDomain(ctx, "dns", &dns.AlidnsDomainArgs{
 // 			DomainName: pulumi.String("starmove.com"),
 // 			GroupId:    pulumi.String("85ab8713-4a30-4de4-9d20-155ff830****"),
-// 			Tags: pulumi.StringMap{
-// 				"Created":     pulumi.String("Terraform"),
-// 				"Environment": pulumi.String("test"),
+// 			Tags: pulumi.AnyMap{
+// 				"Created":     pulumi.Any("Terraform"),
+// 				"Environment": pulumi.Any("test"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -265,7 +265,7 @@ type AlidnsDomainArrayInput interface {
 type AlidnsDomainArray []AlidnsDomainInput
 
 func (AlidnsDomainArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AlidnsDomain)(nil))
+	return reflect.TypeOf((*[]*AlidnsDomain)(nil)).Elem()
 }
 
 func (i AlidnsDomainArray) ToAlidnsDomainArrayOutput() AlidnsDomainArrayOutput {
@@ -290,7 +290,7 @@ type AlidnsDomainMapInput interface {
 type AlidnsDomainMap map[string]AlidnsDomainInput
 
 func (AlidnsDomainMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AlidnsDomain)(nil))
+	return reflect.TypeOf((*map[string]*AlidnsDomain)(nil)).Elem()
 }
 
 func (i AlidnsDomainMap) ToAlidnsDomainMapOutput() AlidnsDomainMapOutput {
@@ -301,9 +301,7 @@ func (i AlidnsDomainMap) ToAlidnsDomainMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainMapOutput)
 }
 
-type AlidnsDomainOutput struct {
-	*pulumi.OutputState
-}
+type AlidnsDomainOutput struct{ *pulumi.OutputState }
 
 func (AlidnsDomainOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlidnsDomain)(nil))
@@ -322,14 +320,12 @@ func (o AlidnsDomainOutput) ToAlidnsDomainPtrOutput() AlidnsDomainPtrOutput {
 }
 
 func (o AlidnsDomainOutput) ToAlidnsDomainPtrOutputWithContext(ctx context.Context) AlidnsDomainPtrOutput {
-	return o.ApplyT(func(v AlidnsDomain) *AlidnsDomain {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlidnsDomain) *AlidnsDomain {
 		return &v
 	}).(AlidnsDomainPtrOutput)
 }
 
-type AlidnsDomainPtrOutput struct {
-	*pulumi.OutputState
-}
+type AlidnsDomainPtrOutput struct{ *pulumi.OutputState }
 
 func (AlidnsDomainPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlidnsDomain)(nil))
@@ -341,6 +337,16 @@ func (o AlidnsDomainPtrOutput) ToAlidnsDomainPtrOutput() AlidnsDomainPtrOutput {
 
 func (o AlidnsDomainPtrOutput) ToAlidnsDomainPtrOutputWithContext(ctx context.Context) AlidnsDomainPtrOutput {
 	return o
+}
+
+func (o AlidnsDomainPtrOutput) Elem() AlidnsDomainOutput {
+	return o.ApplyT(func(v *AlidnsDomain) AlidnsDomain {
+		if v != nil {
+			return *v
+		}
+		var ret AlidnsDomain
+		return ret
+	}).(AlidnsDomainOutput)
 }
 
 type AlidnsDomainArrayOutput struct{ *pulumi.OutputState }
@@ -384,6 +390,10 @@ func (o AlidnsDomainMapOutput) MapIndex(k pulumi.StringInput) AlidnsDomainOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsDomainInput)(nil)).Elem(), &AlidnsDomain{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsDomainPtrInput)(nil)).Elem(), &AlidnsDomain{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsDomainArrayInput)(nil)).Elem(), AlidnsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsDomainMapInput)(nil)).Elem(), AlidnsDomainMap{})
 	pulumi.RegisterOutputType(AlidnsDomainOutput{})
 	pulumi.RegisterOutputType(AlidnsDomainPtrOutput{})
 	pulumi.RegisterOutputType(AlidnsDomainArrayOutput{})

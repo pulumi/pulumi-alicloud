@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     ids: [alicloud_hbr_ecs_backup_client["default"].id],
  *     instanceIds: [alicloud_hbr_ecs_backup_client["default"].instance_id],
  * });
- * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients[0].id);
+ * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients?[0]?.id);
  * ```
  */
 export function getEcsBackupClients(args?: GetEcsBackupClientsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsBackupClientsResult> {
@@ -53,16 +53,16 @@ export interface GetEcsBackupClientsArgs {
     /**
      * A list of Ecs Backup Client IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A list of ECS Instance IDs.
      */
-    readonly instanceIds?: string[];
-    readonly outputFile?: string;
+    instanceIds?: string[];
+    outputFile?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -78,4 +78,27 @@ export interface GetEcsBackupClientsResult {
     readonly instanceIds?: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getEcsBackupClientsOutput(args?: GetEcsBackupClientsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsBackupClientsResult> {
+    return pulumi.output(args).apply(a => getEcsBackupClients(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEcsBackupClients.
+ */
+export interface GetEcsBackupClientsOutputArgs {
+    /**
+     * A list of Ecs Backup Client IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of ECS Instance IDs.
+     */
+    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
 }

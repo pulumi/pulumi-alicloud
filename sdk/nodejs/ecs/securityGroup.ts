@@ -124,39 +124,39 @@ export interface SecurityGroupState {
     /**
      * The security group description. Defaults to null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      *
      * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
-    readonly innerAccess?: pulumi.Input<boolean>;
+    innerAccess?: pulumi.Input<boolean>;
     /**
      * Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
      */
-    readonly innerAccessPolicy?: pulumi.Input<string>;
+    innerAccessPolicy?: pulumi.Input<string>;
     /**
      * The name of the security group. Defaults to null.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Id of resource group which the securityGroup belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The type of the security group. Valid values:
      * `normal`: basic security group.
      * `enterprise`: advanced security group For more information.
      */
-    readonly securityGroupType?: pulumi.Input<string>;
+    securityGroupType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The VPC ID.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -166,37 +166,37 @@ export interface SecurityGroupArgs {
     /**
      * The security group description. Defaults to null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      *
      * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
-    readonly innerAccess?: pulumi.Input<boolean>;
+    innerAccess?: pulumi.Input<boolean>;
     /**
      * Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
      */
-    readonly innerAccessPolicy?: pulumi.Input<string>;
+    innerAccessPolicy?: pulumi.Input<string>;
     /**
      * The name of the security group. Defaults to null.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Id of resource group which the securityGroup belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The type of the security group. Valid values:
      * `normal`: basic security group.
      * `enterprise`: advanced security group For more information.
      */
-    readonly securityGroupType?: pulumi.Input<string>;
+    securityGroupType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The VPC ID.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }

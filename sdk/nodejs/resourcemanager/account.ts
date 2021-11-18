@@ -154,43 +154,43 @@ export interface AccountState {
     /**
      * The name prefix of account.
      */
-    readonly accountNamePrefix?: pulumi.Input<string>;
+    accountNamePrefix?: pulumi.Input<string>;
     /**
      * Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The ID of the parent folder.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Ways for members to join the resource directory. Valid values: `invited`, `created`.
      */
-    readonly joinMethod?: pulumi.Input<string>;
+    joinMethod?: pulumi.Input<string>;
     /**
      * The time when the member joined the resource directory.
      */
-    readonly joinTime?: pulumi.Input<string>;
+    joinTime?: pulumi.Input<string>;
     /**
      * The modification time of the invitation.
      */
-    readonly modifyTime?: pulumi.Input<string>;
+    modifyTime?: pulumi.Input<string>;
     /**
      * Settlement account ID. If the value is empty, the current account will be used for settlement.
      */
-    readonly payerAccountId?: pulumi.Input<string>;
+    payerAccountId?: pulumi.Input<string>;
     /**
      * Resource directory ID.
      */
-    readonly resourceDirectoryId?: pulumi.Input<string>;
+    resourceDirectoryId?: pulumi.Input<string>;
     /**
      * Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Member type. The value of `ResourceAccount` indicates the resource account.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -200,17 +200,17 @@ export interface AccountArgs {
     /**
      * The name prefix of account.
      */
-    readonly accountNamePrefix?: pulumi.Input<string>;
+    accountNamePrefix?: pulumi.Input<string>;
     /**
      * Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * The ID of the parent folder.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Settlement account ID. If the value is empty, the current account will be used for settlement.
      */
-    readonly payerAccountId?: pulumi.Input<string>;
+    payerAccountId?: pulumi.Input<string>;
 }

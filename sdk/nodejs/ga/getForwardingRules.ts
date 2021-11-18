@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     listenerId: "example_value",
  *     ids: ["example_value"],
  * });
- * export const firstGaForwardingRuleId = example.then(example => example.forwardingRules[0].id);
+ * export const firstGaForwardingRuleId = example.then(example => example.forwardingRules?[0]?.id);
  * ```
  */
 export function getForwardingRules(args: GetForwardingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRulesResult> {
@@ -50,20 +50,20 @@ export interface GetForwardingRulesArgs {
     /**
      * The ID of the Global Accelerator instance.
      */
-    readonly acceleratorId: string;
+    acceleratorId: string;
     /**
      * A list of Forwarding Rule IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The ID of the listener.
      */
-    readonly listenerId: string;
-    readonly outputFile?: string;
+    listenerId: string;
+    outputFile?: string;
     /**
      * The status of the acceleration region. Valid values: `active`, `configuring`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -80,4 +80,31 @@ export interface GetForwardingRulesResult {
     readonly listenerId: string;
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getForwardingRulesOutput(args: GetForwardingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRulesResult> {
+    return pulumi.output(args).apply(a => getForwardingRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getForwardingRules.
+ */
+export interface GetForwardingRulesOutputArgs {
+    /**
+     * The ID of the Global Accelerator instance.
+     */
+    acceleratorId: pulumi.Input<string>;
+    /**
+     * A list of Forwarding Rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the listener.
+     */
+    listenerId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the acceleration region. Valid values: `active`, `configuring`.
+     */
+    status?: pulumi.Input<string>;
 }

@@ -21,19 +21,19 @@ import * as utilities from "../utilities";
  * const ids = alicloud.cms.getMetricRuleTemplates({
  *     ids: ["example_value"],
  * });
- * export const cmsMetricRuleTemplateId1 = ids.then(ids => ids.templates[0].id);
+ * export const cmsMetricRuleTemplateId1 = ids.then(ids => ids.templates?[0]?.id);
  * const nameRegex = alicloud.cms.getMetricRuleTemplates({
  *     nameRegex: "^my-MetricRuleTemplate",
  * });
- * export const cmsMetricRuleTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates[0].id);
+ * export const cmsMetricRuleTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?[0]?.id);
  * const keyword = alicloud.cms.getMetricRuleTemplates({
  *     keyword: "^my-MetricRuleTemplate",
  * });
- * export const cmsMetricRuleTemplateId3 = nameRegex.then(nameRegex => nameRegex.templates[0].id);
+ * export const cmsMetricRuleTemplateId3 = nameRegex.then(nameRegex => nameRegex.templates?[0]?.id);
  * const templateId = alicloud.cms.getMetricRuleTemplates({
  *     templateId: "example_value",
  * });
- * export const cmsMetricRuleTemplateId4 = nameRegex.then(nameRegex => nameRegex.templates[0].id);
+ * export const cmsMetricRuleTemplateId4 = nameRegex.then(nameRegex => nameRegex.templates?[0]?.id);
  * ```
  */
 export function getMetricRuleTemplates(args?: GetMetricRuleTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricRuleTemplatesResult> {
@@ -63,28 +63,28 @@ export interface GetMetricRuleTemplatesArgs {
     /**
      * Valid values: `true` or `false`. Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Metric Rule Template IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The name of the alert template. You can perform fuzzy search based on the template name.
      */
-    readonly keyword?: string;
+    keyword?: string;
     /**
      * The name of the alert template.
      */
-    readonly metricRuleTemplateName?: string;
+    metricRuleTemplateName?: string;
     /**
      * A regex string to filter results by Metric Rule Template name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of the alert template.
      */
-    readonly templateId?: string;
+    templateId?: string;
 }
 
 /**
@@ -104,4 +104,39 @@ export interface GetMetricRuleTemplatesResult {
     readonly outputFile?: string;
     readonly templateId?: string;
     readonly templates: outputs.cms.GetMetricRuleTemplatesTemplate[];
+}
+
+export function getMetricRuleTemplatesOutput(args?: GetMetricRuleTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetricRuleTemplatesResult> {
+    return pulumi.output(args).apply(a => getMetricRuleTemplates(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMetricRuleTemplates.
+ */
+export interface GetMetricRuleTemplatesOutputArgs {
+    /**
+     * Valid values: `true` or `false`. Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Metric Rule Template IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the alert template. You can perform fuzzy search based on the template name.
+     */
+    keyword?: pulumi.Input<string>;
+    /**
+     * The name of the alert template.
+     */
+    metricRuleTemplateName?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Metric Rule Template name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the alert template.
+     */
+    templateId?: pulumi.Input<string>;
 }

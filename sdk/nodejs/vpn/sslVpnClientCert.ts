@@ -117,31 +117,31 @@ export interface SslVpnClientCertState {
     /**
      * The client ca cert.
      */
-    readonly caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string>;
     /**
      * The client cert.
      */
-    readonly clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string>;
     /**
      * The vpn client config.
      */
-    readonly clientConfig?: pulumi.Input<string>;
+    clientConfig?: pulumi.Input<string>;
     /**
      * The client key.
      */
-    readonly clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string>;
     /**
      * The name of the client certificate.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the SSL-VPN server.
      */
-    readonly sslVpnServerId?: pulumi.Input<string>;
+    sslVpnServerId?: pulumi.Input<string>;
     /**
      * The status of the client certificate.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -151,9 +151,9 @@ export interface SslVpnClientCertArgs {
     /**
      * The name of the client certificate.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the SSL-VPN server.
      */
-    readonly sslVpnServerId: pulumi.Input<string>;
+    sslVpnServerId: pulumi.Input<string>;
 }

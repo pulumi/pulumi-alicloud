@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudStorageGateway
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         ///             StorageBundleId = id,
         ///             NameRegex = "^my-Gateway",
         ///         }));
-        ///         this.CloudStorageGatewayGatewayId = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways[0].Id);
+        ///         this.CloudStorageGatewayGatewayId = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
         ///     }
         /// 
         ///     [Output("cloudStorageGatewayGatewayId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(GetGatewaysArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:cloudstoragegateway/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new AliCloud.CloudStorageGateway.StorageBundleArgs
+        ///         {
+        ///             StorageBundleName = "example_value",
+        ///         });
+        ///         var nameRegex = example.Id.Apply(id =&gt; AliCloud.CloudStorageGateway.GetGateways.InvokeAsync(new AliCloud.CloudStorageGateway.GetGatewaysArgs
+        ///         {
+        ///             StorageBundleId = id,
+        ///             NameRegex = "^my-Gateway",
+        ///         }));
+        ///         this.CloudStorageGatewayGatewayId = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("cloudStorageGatewayGatewayId")]
+        ///     public Output&lt;string&gt; CloudStorageGatewayGatewayId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:cloudstoragegateway/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithVersion());
     }
 
 
@@ -90,6 +132,46 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public string StorageBundleId { get; set; } = null!;
 
         public GetGatewaysArgs()
+        {
+        }
+    }
+
+    public sealed class GetGatewaysInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Gateway IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Gateway name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// gateway status.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// storage bundle id.
+        /// </summary>
+        [Input("storageBundleId", required: true)]
+        public Input<string> StorageBundleId { get; set; } = null!;
+
+        public GetGatewaysInvokeArgs()
         {
         }
     }

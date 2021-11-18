@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -139,4 +142,99 @@ type GetNatIpsResult struct {
 	NatIpNames   []string      `pulumi:"natIpNames"`
 	OutputFile   *string       `pulumi:"outputFile"`
 	Status       *string       `pulumi:"status"`
+}
+
+func GetNatIpsOutput(ctx *pulumi.Context, args GetNatIpsOutputArgs, opts ...pulumi.InvokeOption) GetNatIpsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNatIpsResult, error) {
+			args := v.(GetNatIpsArgs)
+			r, err := GetNatIps(ctx, &args, opts...)
+			return *r, err
+		}).(GetNatIpsResultOutput)
+}
+
+// A collection of arguments for invoking getNatIps.
+type GetNatIpsOutputArgs struct {
+	// A list of Nat Ip IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Nat Ip name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
+	// The CIDR block to which the NAT IP address belongs.
+	NatIpCidr pulumi.StringPtrInput   `pulumi:"natIpCidr"`
+	NatIpIds  pulumi.StringArrayInput `pulumi:"natIpIds"`
+	// The name of the NAT IP address.
+	NatIpNames pulumi.StringArrayInput `pulumi:"natIpNames"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetNatIpsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatIpsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNatIps.
+type GetNatIpsResultOutput struct{ *pulumi.OutputState }
+
+func (GetNatIpsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatIpsResult)(nil)).Elem()
+}
+
+func (o GetNatIpsResultOutput) ToGetNatIpsResultOutput() GetNatIpsResultOutput {
+	return o
+}
+
+func (o GetNatIpsResultOutput) ToGetNatIpsResultOutputWithContext(ctx context.Context) GetNatIpsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNatIpsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNatIpsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatIpsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNatIpsResultOutput) Ips() GetNatIpsIpArrayOutput {
+	return o.ApplyT(func(v GetNatIpsResult) []GetNatIpsIp { return v.Ips }).(GetNatIpsIpArrayOutput)
+}
+
+func (o GetNatIpsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatIpsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNatIpsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatIpsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNatIpsResultOutput) NatGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpsResult) string { return v.NatGatewayId }).(pulumi.StringOutput)
+}
+
+func (o GetNatIpsResultOutput) NatIpCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatIpsResult) *string { return v.NatIpCidr }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNatIpsResultOutput) NatIpIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatIpsResult) []string { return v.NatIpIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNatIpsResultOutput) NatIpNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatIpsResult) []string { return v.NatIpNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNatIpsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatIpsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNatIpsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatIpsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNatIpsResultOutput{})
 }

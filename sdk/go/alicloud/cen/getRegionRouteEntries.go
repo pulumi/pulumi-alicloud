@@ -4,6 +4,9 @@
 package cen
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,67 @@ type GetRegionRouteEntriesResult struct {
 	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`
 	RegionId   string  `pulumi:"regionId"`
+}
+
+func GetRegionRouteEntriesOutput(ctx *pulumi.Context, args GetRegionRouteEntriesOutputArgs, opts ...pulumi.InvokeOption) GetRegionRouteEntriesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRegionRouteEntriesResult, error) {
+			args := v.(GetRegionRouteEntriesArgs)
+			r, err := GetRegionRouteEntries(ctx, &args, opts...)
+			return *r, err
+		}).(GetRegionRouteEntriesResultOutput)
+}
+
+// A collection of arguments for invoking getRegionRouteEntries.
+type GetRegionRouteEntriesOutputArgs struct {
+	// ID of the CEN instance.
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// ID of the region.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+}
+
+func (GetRegionRouteEntriesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionRouteEntriesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRegionRouteEntries.
+type GetRegionRouteEntriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRegionRouteEntriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionRouteEntriesResult)(nil)).Elem()
+}
+
+func (o GetRegionRouteEntriesResultOutput) ToGetRegionRouteEntriesResultOutput() GetRegionRouteEntriesResultOutput {
+	return o
+}
+
+func (o GetRegionRouteEntriesResultOutput) ToGetRegionRouteEntriesResultOutputWithContext(ctx context.Context) GetRegionRouteEntriesResultOutput {
+	return o
+}
+
+// A list of CEN Route Entries. Each element contains the following attributes:
+func (o GetRegionRouteEntriesResultOutput) Entries() GetRegionRouteEntriesEntryArrayOutput {
+	return o.ApplyT(func(v GetRegionRouteEntriesResult) []GetRegionRouteEntriesEntry { return v.Entries }).(GetRegionRouteEntriesEntryArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRegionRouteEntriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionRouteEntriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRegionRouteEntriesResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionRouteEntriesResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetRegionRouteEntriesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegionRouteEntriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRegionRouteEntriesResultOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionRouteEntriesResult) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRegionRouteEntriesResultOutput{})
 }

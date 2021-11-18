@@ -4,6 +4,9 @@
 package slb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,4 +92,81 @@ type GetListenersResult struct {
 	Protocol *string `pulumi:"protocol"`
 	// A list of SLB listeners. Each element contains the following attributes:
 	SlbListeners []GetListenersSlbListener `pulumi:"slbListeners"`
+}
+
+func GetListenersOutput(ctx *pulumi.Context, args GetListenersOutputArgs, opts ...pulumi.InvokeOption) GetListenersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetListenersResult, error) {
+			args := v.(GetListenersArgs)
+			r, err := GetListeners(ctx, &args, opts...)
+			return *r, err
+		}).(GetListenersResultOutput)
+}
+
+// A collection of arguments for invoking getListeners.
+type GetListenersOutputArgs struct {
+	// A regex string to filter results by SLB listener description.
+	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
+	// Filter listeners by the specified frontend port.
+	FrontendPort pulumi.IntPtrInput `pulumi:"frontendPort"`
+	// ID of the SLB with listeners.
+	LoadBalancerId pulumi.StringInput    `pulumi:"loadBalancerId"`
+	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (GetListenersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getListeners.
+type GetListenersResultOutput struct{ *pulumi.OutputState }
+
+func (GetListenersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersResult)(nil)).Elem()
+}
+
+func (o GetListenersResultOutput) ToGetListenersResultOutput() GetListenersResultOutput {
+	return o
+}
+
+func (o GetListenersResultOutput) ToGetListenersResultOutputWithContext(ctx context.Context) GetListenersResultOutput {
+	return o
+}
+
+func (o GetListenersResultOutput) DescriptionRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListenersResult) *string { return v.DescriptionRegex }).(pulumi.StringPtrOutput)
+}
+
+// Frontend port used to receive incoming traffic and distribute it to the backend servers.
+func (o GetListenersResultOutput) FrontendPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetListenersResult) *int { return v.FrontendPort }).(pulumi.IntPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetListenersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetListenersResultOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersResult) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+func (o GetListenersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListenersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// Listener protocol. Possible values: `http`, `https`, `tcp` and `udp`.
+func (o GetListenersResultOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListenersResult) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// A list of SLB listeners. Each element contains the following attributes:
+func (o GetListenersResultOutput) SlbListeners() GetListenersSlbListenerArrayOutput {
+	return o.ApplyT(func(v GetListenersResult) []GetListenersSlbListener { return v.SlbListeners }).(GetListenersSlbListenerArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetListenersResultOutput{})
 }

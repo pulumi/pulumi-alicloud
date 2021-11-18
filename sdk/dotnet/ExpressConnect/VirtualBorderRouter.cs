@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///             LocalGatewayIp = "10.0.0.1",
     ///             PeerGatewayIp = "10.0.0.2",
     ///             PeeringSubnetMask = "255.255.255.252",
-    ///             PhysicalConnectionId = nameRegex.Apply(nameRegex =&gt; nameRegex.Connections[0].Id),
+    ///             PhysicalConnectionId = nameRegex.Apply(nameRegex =&gt; nameRegex.Connections?[0]?.Id),
     ///             VirtualBorderRouterName = "example_value",
     ///             VlanId = 1,
     ///             MinRxInterval = 1000,

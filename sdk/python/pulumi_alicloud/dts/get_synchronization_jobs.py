@@ -13,6 +13,7 @@ __all__ = [
     'GetSynchronizationJobsResult',
     'AwaitableGetSynchronizationJobsResult',
     'get_synchronization_jobs',
+    'get_synchronization_jobs_output',
 ]
 
 @pulumi.output_type
@@ -145,3 +146,35 @@ def get_synchronization_jobs(enable_details: Optional[bool] = None,
         name_regex=__ret__.name_regex,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_synchronization_jobs)
+def get_synchronization_jobs_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    status: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSynchronizationJobsResult]:
+    """
+    This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.138.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dts.get_synchronization_jobs()
+    pulumi.export("dtsSynchronizationJobId1", ids.jobs[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Synchronization Job IDs.
+    :param str name_regex: A regex string to filter results by synchronization job name.
+    :param str status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+    """
+    ...

@@ -140,22 +140,22 @@ export interface CaCertificateState {
     /**
      * the content of the CA certificate.
      */
-    readonly caCertificate?: pulumi.Input<string>;
-    readonly caCertificateName?: pulumi.Input<string>;
+    caCertificate?: pulumi.Input<string>;
+    caCertificateName?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Id of resource group which the slbCa certificate belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -165,20 +165,20 @@ export interface CaCertificateArgs {
     /**
      * the content of the CA certificate.
      */
-    readonly caCertificate: pulumi.Input<string>;
-    readonly caCertificateName?: pulumi.Input<string>;
+    caCertificate: pulumi.Input<string>;
+    caCertificateName?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Id of resource group which the slbCa certificate belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.KVStore
 {
@@ -45,6 +46,41 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public static Task<GetPermissionResult> InvokeAsync(GetPermissionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Assigns a RAM role to ApsaraDB for Redis.
+        /// 
+        /// The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm). 
+        /// To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. 
+        /// For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+        /// 
+        /// &gt; **NOTE:** Available in v1.128.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var open = Output.Create(AliCloud.KVStore.GetPermission.InvokeAsync(new AliCloud.KVStore.GetPermissionArgs
+        ///         {
+        ///             Enable = "On",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPermissionResult> Invoke(GetPermissionInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -57,6 +93,19 @@ namespace Pulumi.AliCloud.KVStore
         public string? Enable { get; set; }
 
         public GetPermissionArgs()
+        {
+        }
+    }
+
+    public sealed class GetPermissionInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+        /// </summary>
+        [Input("enable")]
+        public Input<string>? Enable { get; set; }
+
+        public GetPermissionInvokeArgs()
         {
         }
     }

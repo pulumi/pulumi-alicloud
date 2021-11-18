@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -21,7 +20,7 @@ import * as utilities from "../utilities";
  * const open = pulumi.output(alicloud.cr.getService({
  *     enable: "On",
  *     password: "1111aaaa",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
@@ -45,11 +44,11 @@ export interface GetServiceArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
      */
-    readonly enable?: string;
+    enable?: string;
     /**
      * The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
      */
-    readonly password: string;
+    password: string;
 }
 
 /**
@@ -66,4 +65,22 @@ export interface GetServiceResult {
      * The current service enable status.
      */
     readonly status: string;
+}
+
+export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceOutputArgs {
+    /**
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     */
+    enable?: pulumi.Input<string>;
+    /**
+     * The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
+     */
+    password: pulumi.Input<string>;
 }

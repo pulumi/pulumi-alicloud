@@ -226,7 +226,7 @@ func (o ListenerAccessLogTracingConfigOutput) ToListenerAccessLogTracingConfigPt
 }
 
 func (o ListenerAccessLogTracingConfigOutput) ToListenerAccessLogTracingConfigPtrOutputWithContext(ctx context.Context) ListenerAccessLogTracingConfigPtrOutput {
-	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *ListenerAccessLogTracingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerAccessLogTracingConfig) *ListenerAccessLogTracingConfig {
 		return &v
 	}).(ListenerAccessLogTracingConfigPtrOutput)
 }
@@ -261,7 +261,13 @@ func (o ListenerAccessLogTracingConfigPtrOutput) ToListenerAccessLogTracingConfi
 }
 
 func (o ListenerAccessLogTracingConfigPtrOutput) Elem() ListenerAccessLogTracingConfigOutput {
-	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) ListenerAccessLogTracingConfig { return *v }).(ListenerAccessLogTracingConfigOutput)
+	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) ListenerAccessLogTracingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListenerAccessLogTracingConfig
+		return ret
+	}).(ListenerAccessLogTracingConfigOutput)
 }
 
 // Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
@@ -391,7 +397,7 @@ func (o ListenerAclConfigOutput) ToListenerAclConfigPtrOutput() ListenerAclConfi
 }
 
 func (o ListenerAclConfigOutput) ToListenerAclConfigPtrOutputWithContext(ctx context.Context) ListenerAclConfigPtrOutput {
-	return o.ApplyT(func(v ListenerAclConfig) *ListenerAclConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerAclConfig) *ListenerAclConfig {
 		return &v
 	}).(ListenerAclConfigPtrOutput)
 }
@@ -421,7 +427,13 @@ func (o ListenerAclConfigPtrOutput) ToListenerAclConfigPtrOutputWithContext(ctx 
 }
 
 func (o ListenerAclConfigPtrOutput) Elem() ListenerAclConfigOutput {
-	return o.ApplyT(func(v *ListenerAclConfig) ListenerAclConfig { return *v }).(ListenerAclConfigOutput)
+	return o.ApplyT(func(v *ListenerAclConfig) ListenerAclConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListenerAclConfig
+		return ret
+	}).(ListenerAclConfigOutput)
 }
 
 // The ACLs that are associated with the listener.
@@ -1001,7 +1013,7 @@ func (o ListenerQuicConfigOutput) ToListenerQuicConfigPtrOutput() ListenerQuicCo
 }
 
 func (o ListenerQuicConfigOutput) ToListenerQuicConfigPtrOutputWithContext(ctx context.Context) ListenerQuicConfigPtrOutput {
-	return o.ApplyT(func(v ListenerQuicConfig) *ListenerQuicConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerQuicConfig) *ListenerQuicConfig {
 		return &v
 	}).(ListenerQuicConfigPtrOutput)
 }
@@ -1031,7 +1043,13 @@ func (o ListenerQuicConfigPtrOutput) ToListenerQuicConfigPtrOutputWithContext(ct
 }
 
 func (o ListenerQuicConfigPtrOutput) Elem() ListenerQuicConfigOutput {
-	return o.ApplyT(func(v *ListenerQuicConfig) ListenerQuicConfig { return *v }).(ListenerQuicConfigOutput)
+	return o.ApplyT(func(v *ListenerQuicConfig) ListenerQuicConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListenerQuicConfig
+		return ret
+	}).(ListenerQuicConfigOutput)
 }
 
 // There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
@@ -1195,7 +1213,7 @@ func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigPtrOutpu
 }
 
 func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXforwardedForConfigPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *ListenerXforwardedForConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerXforwardedForConfig) *ListenerXforwardedForConfig {
 		return &v
 	}).(ListenerXforwardedForConfigPtrOutput)
 }
@@ -1280,7 +1298,13 @@ func (o ListenerXforwardedForConfigPtrOutput) ToListenerXforwardedForConfigPtrOu
 }
 
 func (o ListenerXforwardedForConfigPtrOutput) Elem() ListenerXforwardedForConfigOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) ListenerXforwardedForConfig { return *v }).(ListenerXforwardedForConfigOutput)
+	return o.ApplyT(func(v *ListenerXforwardedForConfig) ListenerXforwardedForConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListenerXforwardedForConfig
+		return ret
+	}).(ListenerXforwardedForConfigOutput)
 }
 
 // The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
@@ -1510,7 +1534,7 @@ func (o LoadBalancerAccessLogConfigOutput) ToLoadBalancerAccessLogConfigPtrOutpu
 }
 
 func (o LoadBalancerAccessLogConfigOutput) ToLoadBalancerAccessLogConfigPtrOutputWithContext(ctx context.Context) LoadBalancerAccessLogConfigPtrOutput {
-	return o.ApplyT(func(v LoadBalancerAccessLogConfig) *LoadBalancerAccessLogConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerAccessLogConfig) *LoadBalancerAccessLogConfig {
 		return &v
 	}).(LoadBalancerAccessLogConfigPtrOutput)
 }
@@ -1540,7 +1564,13 @@ func (o LoadBalancerAccessLogConfigPtrOutput) ToLoadBalancerAccessLogConfigPtrOu
 }
 
 func (o LoadBalancerAccessLogConfigPtrOutput) Elem() LoadBalancerAccessLogConfigOutput {
-	return o.ApplyT(func(v *LoadBalancerAccessLogConfig) LoadBalancerAccessLogConfig { return *v }).(LoadBalancerAccessLogConfigOutput)
+	return o.ApplyT(func(v *LoadBalancerAccessLogConfig) LoadBalancerAccessLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerAccessLogConfig
+		return ret
+	}).(LoadBalancerAccessLogConfigOutput)
 }
 
 // The log service that access logs are shipped to.
@@ -1656,7 +1686,7 @@ func (o LoadBalancerLoadBalancerBillingConfigOutput) ToLoadBalancerLoadBalancerB
 }
 
 func (o LoadBalancerLoadBalancerBillingConfigOutput) ToLoadBalancerLoadBalancerBillingConfigPtrOutputWithContext(ctx context.Context) LoadBalancerLoadBalancerBillingConfigPtrOutput {
-	return o.ApplyT(func(v LoadBalancerLoadBalancerBillingConfig) *LoadBalancerLoadBalancerBillingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerLoadBalancerBillingConfig) *LoadBalancerLoadBalancerBillingConfig {
 		return &v
 	}).(LoadBalancerLoadBalancerBillingConfigPtrOutput)
 }
@@ -1681,7 +1711,13 @@ func (o LoadBalancerLoadBalancerBillingConfigPtrOutput) ToLoadBalancerLoadBalanc
 }
 
 func (o LoadBalancerLoadBalancerBillingConfigPtrOutput) Elem() LoadBalancerLoadBalancerBillingConfigOutput {
-	return o.ApplyT(func(v *LoadBalancerLoadBalancerBillingConfig) LoadBalancerLoadBalancerBillingConfig { return *v }).(LoadBalancerLoadBalancerBillingConfigOutput)
+	return o.ApplyT(func(v *LoadBalancerLoadBalancerBillingConfig) LoadBalancerLoadBalancerBillingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerLoadBalancerBillingConfig
+		return ret
+	}).(LoadBalancerLoadBalancerBillingConfigOutput)
 }
 
 // The billing method of the ALB instance. Valid value: `PayAsYouGo`.
@@ -1791,7 +1827,7 @@ func (o LoadBalancerModificationProtectionConfigOutput) ToLoadBalancerModificati
 }
 
 func (o LoadBalancerModificationProtectionConfigOutput) ToLoadBalancerModificationProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerModificationProtectionConfigPtrOutput {
-	return o.ApplyT(func(v LoadBalancerModificationProtectionConfig) *LoadBalancerModificationProtectionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerModificationProtectionConfig) *LoadBalancerModificationProtectionConfig {
 		return &v
 	}).(LoadBalancerModificationProtectionConfigPtrOutput)
 }
@@ -1821,7 +1857,13 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) ToLoadBalancerModific
 }
 
 func (o LoadBalancerModificationProtectionConfigPtrOutput) Elem() LoadBalancerModificationProtectionConfigOutput {
-	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) LoadBalancerModificationProtectionConfig { return *v }).(LoadBalancerModificationProtectionConfigOutput)
+	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) LoadBalancerModificationProtectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerModificationProtectionConfig
+		return ret
+	}).(LoadBalancerModificationProtectionConfigOutput)
 }
 
 // The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
@@ -2202,7 +2244,7 @@ func (o RuleRuleActionFixedResponseConfigOutput) ToRuleRuleActionFixedResponseCo
 }
 
 func (o RuleRuleActionFixedResponseConfigOutput) ToRuleRuleActionFixedResponseConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionFixedResponseConfigPtrOutput {
-	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) *RuleRuleActionFixedResponseConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleActionFixedResponseConfig) *RuleRuleActionFixedResponseConfig {
 		return &v
 	}).(RuleRuleActionFixedResponseConfigPtrOutput)
 }
@@ -2237,7 +2279,13 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) ToRuleRuleActionFixedRespons
 }
 
 func (o RuleRuleActionFixedResponseConfigPtrOutput) Elem() RuleRuleActionFixedResponseConfigOutput {
-	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) RuleRuleActionFixedResponseConfig { return *v }).(RuleRuleActionFixedResponseConfigOutput)
+	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) RuleRuleActionFixedResponseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleActionFixedResponseConfig
+		return ret
+	}).(RuleRuleActionFixedResponseConfigOutput)
 }
 
 // The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
@@ -2363,7 +2411,7 @@ func (o RuleRuleActionForwardGroupConfigOutput) ToRuleRuleActionForwardGroupConf
 }
 
 func (o RuleRuleActionForwardGroupConfigOutput) ToRuleRuleActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigPtrOutput {
-	return o.ApplyT(func(v RuleRuleActionForwardGroupConfig) *RuleRuleActionForwardGroupConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleActionForwardGroupConfig) *RuleRuleActionForwardGroupConfig {
 		return &v
 	}).(RuleRuleActionForwardGroupConfigPtrOutput)
 }
@@ -2390,7 +2438,13 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) ToRuleRuleActionForwardGroupC
 }
 
 func (o RuleRuleActionForwardGroupConfigPtrOutput) Elem() RuleRuleActionForwardGroupConfigOutput {
-	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) RuleRuleActionForwardGroupConfig { return *v }).(RuleRuleActionForwardGroupConfigOutput)
+	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) RuleRuleActionForwardGroupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleActionForwardGroupConfig
+		return ret
+	}).(RuleRuleActionForwardGroupConfigOutput)
 }
 
 // The destination server group to which requests are forwarded.
@@ -2601,7 +2655,7 @@ func (o RuleRuleActionInsertHeaderConfigOutput) ToRuleRuleActionInsertHeaderConf
 }
 
 func (o RuleRuleActionInsertHeaderConfigOutput) ToRuleRuleActionInsertHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionInsertHeaderConfigPtrOutput {
-	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *RuleRuleActionInsertHeaderConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleActionInsertHeaderConfig) *RuleRuleActionInsertHeaderConfig {
 		return &v
 	}).(RuleRuleActionInsertHeaderConfigPtrOutput)
 }
@@ -2636,7 +2690,13 @@ func (o RuleRuleActionInsertHeaderConfigPtrOutput) ToRuleRuleActionInsertHeaderC
 }
 
 func (o RuleRuleActionInsertHeaderConfigPtrOutput) Elem() RuleRuleActionInsertHeaderConfigOutput {
-	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) RuleRuleActionInsertHeaderConfig { return *v }).(RuleRuleActionInsertHeaderConfigOutput)
+	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) RuleRuleActionInsertHeaderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleActionInsertHeaderConfig
+		return ret
+	}).(RuleRuleActionInsertHeaderConfigOutput)
 }
 
 // The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
@@ -2782,7 +2842,7 @@ func (o RuleRuleActionRedirectConfigOutput) ToRuleRuleActionRedirectConfigPtrOut
 }
 
 func (o RuleRuleActionRedirectConfigOutput) ToRuleRuleActionRedirectConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRedirectConfigPtrOutput {
-	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *RuleRuleActionRedirectConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleActionRedirectConfig) *RuleRuleActionRedirectConfig {
 		return &v
 	}).(RuleRuleActionRedirectConfigPtrOutput)
 }
@@ -2832,7 +2892,13 @@ func (o RuleRuleActionRedirectConfigPtrOutput) ToRuleRuleActionRedirectConfigPtr
 }
 
 func (o RuleRuleActionRedirectConfigPtrOutput) Elem() RuleRuleActionRedirectConfigOutput {
-	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) RuleRuleActionRedirectConfig { return *v }).(RuleRuleActionRedirectConfigOutput)
+	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) RuleRuleActionRedirectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleActionRedirectConfig
+		return ret
+	}).(RuleRuleActionRedirectConfigOutput)
 }
 
 // The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
@@ -2996,7 +3062,7 @@ func (o RuleRuleActionRewriteConfigOutput) ToRuleRuleActionRewriteConfigPtrOutpu
 }
 
 func (o RuleRuleActionRewriteConfigOutput) ToRuleRuleActionRewriteConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRewriteConfigPtrOutput {
-	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *RuleRuleActionRewriteConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleActionRewriteConfig) *RuleRuleActionRewriteConfig {
 		return &v
 	}).(RuleRuleActionRewriteConfigPtrOutput)
 }
@@ -3031,7 +3097,13 @@ func (o RuleRuleActionRewriteConfigPtrOutput) ToRuleRuleActionRewriteConfigPtrOu
 }
 
 func (o RuleRuleActionRewriteConfigPtrOutput) Elem() RuleRuleActionRewriteConfigOutput {
-	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) RuleRuleActionRewriteConfig { return *v }).(RuleRuleActionRewriteConfigOutput)
+	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) RuleRuleActionRewriteConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleActionRewriteConfig
+		return ret
+	}).(RuleRuleActionRewriteConfigOutput)
 }
 
 // The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
@@ -3308,7 +3380,7 @@ func (o RuleRuleConditionCookieConfigOutput) ToRuleRuleConditionCookieConfigPtrO
 }
 
 func (o RuleRuleConditionCookieConfigOutput) ToRuleRuleConditionCookieConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionCookieConfigPtrOutput {
-	return o.ApplyT(func(v RuleRuleConditionCookieConfig) *RuleRuleConditionCookieConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleConditionCookieConfig) *RuleRuleConditionCookieConfig {
 		return &v
 	}).(RuleRuleConditionCookieConfigPtrOutput)
 }
@@ -3333,7 +3405,13 @@ func (o RuleRuleConditionCookieConfigPtrOutput) ToRuleRuleConditionCookieConfigP
 }
 
 func (o RuleRuleConditionCookieConfigPtrOutput) Elem() RuleRuleConditionCookieConfigOutput {
-	return o.ApplyT(func(v *RuleRuleConditionCookieConfig) RuleRuleConditionCookieConfig { return *v }).(RuleRuleConditionCookieConfigOutput)
+	return o.ApplyT(func(v *RuleRuleConditionCookieConfig) RuleRuleConditionCookieConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleConditionCookieConfig
+		return ret
+	}).(RuleRuleConditionCookieConfigOutput)
 }
 
 // The query string.
@@ -3549,7 +3627,7 @@ func (o RuleRuleConditionHeaderConfigOutput) ToRuleRuleConditionHeaderConfigPtrO
 }
 
 func (o RuleRuleConditionHeaderConfigOutput) ToRuleRuleConditionHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionHeaderConfigPtrOutput {
-	return o.ApplyT(func(v RuleRuleConditionHeaderConfig) *RuleRuleConditionHeaderConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleConditionHeaderConfig) *RuleRuleConditionHeaderConfig {
 		return &v
 	}).(RuleRuleConditionHeaderConfigPtrOutput)
 }
@@ -3579,7 +3657,13 @@ func (o RuleRuleConditionHeaderConfigPtrOutput) ToRuleRuleConditionHeaderConfigP
 }
 
 func (o RuleRuleConditionHeaderConfigPtrOutput) Elem() RuleRuleConditionHeaderConfigOutput {
-	return o.ApplyT(func(v *RuleRuleConditionHeaderConfig) RuleRuleConditionHeaderConfig { return *v }).(RuleRuleConditionHeaderConfigOutput)
+	return o.ApplyT(func(v *RuleRuleConditionHeaderConfig) RuleRuleConditionHeaderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleConditionHeaderConfig
+		return ret
+	}).(RuleRuleConditionHeaderConfigOutput)
 }
 
 // The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
@@ -3695,7 +3779,7 @@ func (o RuleRuleConditionHostConfigOutput) ToRuleRuleConditionHostConfigPtrOutpu
 }
 
 func (o RuleRuleConditionHostConfigOutput) ToRuleRuleConditionHostConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionHostConfigPtrOutput {
-	return o.ApplyT(func(v RuleRuleConditionHostConfig) *RuleRuleConditionHostConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleConditionHostConfig) *RuleRuleConditionHostConfig {
 		return &v
 	}).(RuleRuleConditionHostConfigPtrOutput)
 }
@@ -3720,7 +3804,13 @@ func (o RuleRuleConditionHostConfigPtrOutput) ToRuleRuleConditionHostConfigPtrOu
 }
 
 func (o RuleRuleConditionHostConfigPtrOutput) Elem() RuleRuleConditionHostConfigOutput {
-	return o.ApplyT(func(v *RuleRuleConditionHostConfig) RuleRuleConditionHostConfig { return *v }).(RuleRuleConditionHostConfigOutput)
+	return o.ApplyT(func(v *RuleRuleConditionHostConfig) RuleRuleConditionHostConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleConditionHostConfig
+		return ret
+	}).(RuleRuleConditionHostConfigOutput)
 }
 
 // The query string.
@@ -3826,7 +3916,7 @@ func (o RuleRuleConditionMethodConfigOutput) ToRuleRuleConditionMethodConfigPtrO
 }
 
 func (o RuleRuleConditionMethodConfigOutput) ToRuleRuleConditionMethodConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionMethodConfigPtrOutput {
-	return o.ApplyT(func(v RuleRuleConditionMethodConfig) *RuleRuleConditionMethodConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleConditionMethodConfig) *RuleRuleConditionMethodConfig {
 		return &v
 	}).(RuleRuleConditionMethodConfigPtrOutput)
 }
@@ -3851,7 +3941,13 @@ func (o RuleRuleConditionMethodConfigPtrOutput) ToRuleRuleConditionMethodConfigP
 }
 
 func (o RuleRuleConditionMethodConfigPtrOutput) Elem() RuleRuleConditionMethodConfigOutput {
-	return o.ApplyT(func(v *RuleRuleConditionMethodConfig) RuleRuleConditionMethodConfig { return *v }).(RuleRuleConditionMethodConfigOutput)
+	return o.ApplyT(func(v *RuleRuleConditionMethodConfig) RuleRuleConditionMethodConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleConditionMethodConfig
+		return ret
+	}).(RuleRuleConditionMethodConfigOutput)
 }
 
 // The query string.
@@ -3957,7 +4053,7 @@ func (o RuleRuleConditionPathConfigOutput) ToRuleRuleConditionPathConfigPtrOutpu
 }
 
 func (o RuleRuleConditionPathConfigOutput) ToRuleRuleConditionPathConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionPathConfigPtrOutput {
-	return o.ApplyT(func(v RuleRuleConditionPathConfig) *RuleRuleConditionPathConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleConditionPathConfig) *RuleRuleConditionPathConfig {
 		return &v
 	}).(RuleRuleConditionPathConfigPtrOutput)
 }
@@ -3982,7 +4078,13 @@ func (o RuleRuleConditionPathConfigPtrOutput) ToRuleRuleConditionPathConfigPtrOu
 }
 
 func (o RuleRuleConditionPathConfigPtrOutput) Elem() RuleRuleConditionPathConfigOutput {
-	return o.ApplyT(func(v *RuleRuleConditionPathConfig) RuleRuleConditionPathConfig { return *v }).(RuleRuleConditionPathConfigOutput)
+	return o.ApplyT(func(v *RuleRuleConditionPathConfig) RuleRuleConditionPathConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleConditionPathConfig
+		return ret
+	}).(RuleRuleConditionPathConfigOutput)
 }
 
 // The query string.
@@ -4088,7 +4190,7 @@ func (o RuleRuleConditionQueryStringConfigOutput) ToRuleRuleConditionQueryString
 }
 
 func (o RuleRuleConditionQueryStringConfigOutput) ToRuleRuleConditionQueryStringConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionQueryStringConfigPtrOutput {
-	return o.ApplyT(func(v RuleRuleConditionQueryStringConfig) *RuleRuleConditionQueryStringConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleConditionQueryStringConfig) *RuleRuleConditionQueryStringConfig {
 		return &v
 	}).(RuleRuleConditionQueryStringConfigPtrOutput)
 }
@@ -4113,7 +4215,13 @@ func (o RuleRuleConditionQueryStringConfigPtrOutput) ToRuleRuleConditionQueryStr
 }
 
 func (o RuleRuleConditionQueryStringConfigPtrOutput) Elem() RuleRuleConditionQueryStringConfigOutput {
-	return o.ApplyT(func(v *RuleRuleConditionQueryStringConfig) RuleRuleConditionQueryStringConfig { return *v }).(RuleRuleConditionQueryStringConfigOutput)
+	return o.ApplyT(func(v *RuleRuleConditionQueryStringConfig) RuleRuleConditionQueryStringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleConditionQueryStringConfig
+		return ret
+	}).(RuleRuleConditionQueryStringConfigOutput)
 }
 
 // The query string.
@@ -4401,7 +4509,7 @@ func (o ServerGroupHealthCheckConfigOutput) ToServerGroupHealthCheckConfigPtrOut
 }
 
 func (o ServerGroupHealthCheckConfigOutput) ToServerGroupHealthCheckConfigPtrOutputWithContext(ctx context.Context) ServerGroupHealthCheckConfigPtrOutput {
-	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *ServerGroupHealthCheckConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerGroupHealthCheckConfig) *ServerGroupHealthCheckConfig {
 		return &v
 	}).(ServerGroupHealthCheckConfigPtrOutput)
 }
@@ -4497,7 +4605,13 @@ func (o ServerGroupHealthCheckConfigPtrOutput) ToServerGroupHealthCheckConfigPtr
 }
 
 func (o ServerGroupHealthCheckConfigPtrOutput) Elem() ServerGroupHealthCheckConfigOutput {
-	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) ServerGroupHealthCheckConfig { return *v }).(ServerGroupHealthCheckConfigOutput)
+	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) ServerGroupHealthCheckConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupHealthCheckConfig
+		return ret
+	}).(ServerGroupHealthCheckConfigOutput)
 }
 
 // The status code for a successful health check. Multiple status codes can be specified as a
@@ -4901,7 +5015,7 @@ func (o ServerGroupStickySessionConfigOutput) ToServerGroupStickySessionConfigPt
 }
 
 func (o ServerGroupStickySessionConfigOutput) ToServerGroupStickySessionConfigPtrOutputWithContext(ctx context.Context) ServerGroupStickySessionConfigPtrOutput {
-	return o.ApplyT(func(v ServerGroupStickySessionConfig) *ServerGroupStickySessionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerGroupStickySessionConfig) *ServerGroupStickySessionConfig {
 		return &v
 	}).(ServerGroupStickySessionConfigPtrOutput)
 }
@@ -4944,7 +5058,13 @@ func (o ServerGroupStickySessionConfigPtrOutput) ToServerGroupStickySessionConfi
 }
 
 func (o ServerGroupStickySessionConfigPtrOutput) Elem() ServerGroupStickySessionConfigOutput {
-	return o.ApplyT(func(v *ServerGroupStickySessionConfig) ServerGroupStickySessionConfig { return *v }).(ServerGroupStickySessionConfigOutput)
+	return o.ApplyT(func(v *ServerGroupStickySessionConfig) ServerGroupStickySessionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupStickySessionConfig
+		return ret
+	}).(ServerGroupStickySessionConfigOutput)
 }
 
 // the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
@@ -10696,6 +10816,159 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryInput)(nil)).Elem(), AclAclEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryArrayInput)(nil)).Elem(), AclAclEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAccessLogTracingConfigInput)(nil)).Elem(), ListenerAccessLogTracingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAccessLogTracingConfigPtrInput)(nil)).Elem(), ListenerAccessLogTracingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAclConfigInput)(nil)).Elem(), ListenerAclConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAclConfigPtrInput)(nil)).Elem(), ListenerAclConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAclConfigAclRelationInput)(nil)).Elem(), ListenerAclConfigAclRelationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAclConfigAclRelationArrayInput)(nil)).Elem(), ListenerAclConfigAclRelationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificateInput)(nil)).Elem(), ListenerCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificateArrayInput)(nil)).Elem(), ListenerCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionInput)(nil)).Elem(), ListenerDefaultActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionArrayInput)(nil)).Elem(), ListenerDefaultActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionForwardGroupConfigInput)(nil)).Elem(), ListenerDefaultActionForwardGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionForwardGroupConfigServerGroupTupleInput)(nil)).Elem(), ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), ListenerDefaultActionForwardGroupConfigServerGroupTupleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerQuicConfigInput)(nil)).Elem(), ListenerQuicConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerQuicConfigPtrInput)(nil)).Elem(), ListenerQuicConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXforwardedForConfigInput)(nil)).Elem(), ListenerXforwardedForConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXforwardedForConfigPtrInput)(nil)).Elem(), ListenerXforwardedForConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerAccessLogConfigInput)(nil)).Elem(), LoadBalancerAccessLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerAccessLogConfigPtrInput)(nil)).Elem(), LoadBalancerAccessLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerLoadBalancerBillingConfigInput)(nil)).Elem(), LoadBalancerLoadBalancerBillingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerLoadBalancerBillingConfigPtrInput)(nil)).Elem(), LoadBalancerLoadBalancerBillingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerModificationProtectionConfigInput)(nil)).Elem(), LoadBalancerModificationProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerModificationProtectionConfigPtrInput)(nil)).Elem(), LoadBalancerModificationProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerZoneMappingInput)(nil)).Elem(), LoadBalancerZoneMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerZoneMappingArrayInput)(nil)).Elem(), LoadBalancerZoneMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionInput)(nil)).Elem(), RuleRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionArrayInput)(nil)).Elem(), RuleRuleActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionFixedResponseConfigInput)(nil)).Elem(), RuleRuleActionFixedResponseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionFixedResponseConfigPtrInput)(nil)).Elem(), RuleRuleActionFixedResponseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionForwardGroupConfigInput)(nil)).Elem(), RuleRuleActionForwardGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionForwardGroupConfigPtrInput)(nil)).Elem(), RuleRuleActionForwardGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionForwardGroupConfigServerGroupTupleInput)(nil)).Elem(), RuleRuleActionForwardGroupConfigServerGroupTupleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), RuleRuleActionForwardGroupConfigServerGroupTupleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionInsertHeaderConfigInput)(nil)).Elem(), RuleRuleActionInsertHeaderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionInsertHeaderConfigPtrInput)(nil)).Elem(), RuleRuleActionInsertHeaderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRedirectConfigInput)(nil)).Elem(), RuleRuleActionRedirectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRedirectConfigPtrInput)(nil)).Elem(), RuleRuleActionRedirectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRewriteConfigInput)(nil)).Elem(), RuleRuleActionRewriteConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRewriteConfigPtrInput)(nil)).Elem(), RuleRuleActionRewriteConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionInput)(nil)).Elem(), RuleRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionArrayInput)(nil)).Elem(), RuleRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionCookieConfigInput)(nil)).Elem(), RuleRuleConditionCookieConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionCookieConfigPtrInput)(nil)).Elem(), RuleRuleConditionCookieConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionCookieConfigValueInput)(nil)).Elem(), RuleRuleConditionCookieConfigValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionCookieConfigValueArrayInput)(nil)).Elem(), RuleRuleConditionCookieConfigValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionHeaderConfigInput)(nil)).Elem(), RuleRuleConditionHeaderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionHeaderConfigPtrInput)(nil)).Elem(), RuleRuleConditionHeaderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionHostConfigInput)(nil)).Elem(), RuleRuleConditionHostConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionHostConfigPtrInput)(nil)).Elem(), RuleRuleConditionHostConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionMethodConfigInput)(nil)).Elem(), RuleRuleConditionMethodConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionMethodConfigPtrInput)(nil)).Elem(), RuleRuleConditionMethodConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionPathConfigInput)(nil)).Elem(), RuleRuleConditionPathConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionPathConfigPtrInput)(nil)).Elem(), RuleRuleConditionPathConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionQueryStringConfigInput)(nil)).Elem(), RuleRuleConditionQueryStringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionQueryStringConfigPtrInput)(nil)).Elem(), RuleRuleConditionQueryStringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionQueryStringConfigValueInput)(nil)).Elem(), RuleRuleConditionQueryStringConfigValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionQueryStringConfigValueArrayInput)(nil)).Elem(), RuleRuleConditionQueryStringConfigValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupHealthCheckConfigInput)(nil)).Elem(), ServerGroupHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupHealthCheckConfigPtrInput)(nil)).Elem(), ServerGroupHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerInput)(nil)).Elem(), ServerGroupServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerArrayInput)(nil)).Elem(), ServerGroupServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupStickySessionConfigInput)(nil)).Elem(), ServerGroupStickySessionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupStickySessionConfigPtrInput)(nil)).Elem(), ServerGroupStickySessionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclInput)(nil)).Elem(), GetAclsAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclArrayInput)(nil)).Elem(), GetAclsAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclAclEntryInput)(nil)).Elem(), GetAclsAclAclEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclAclEntryArrayInput)(nil)).Elem(), GetAclsAclAclEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckTemplatesTemplateInput)(nil)).Elem(), GetHealthCheckTemplatesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckTemplatesTemplateArrayInput)(nil)).Elem(), GetHealthCheckTemplatesTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerInput)(nil)).Elem(), GetListenersListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerArrayInput)(nil)).Elem(), GetListenersListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerAccessLogTracingConfigInput)(nil)).Elem(), GetListenersListenerAccessLogTracingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerAccessLogTracingConfigArrayInput)(nil)).Elem(), GetListenersListenerAccessLogTracingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerAclConfigInput)(nil)).Elem(), GetListenersListenerAclConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerAclConfigArrayInput)(nil)).Elem(), GetListenersListenerAclConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerAclConfigAclRelationInput)(nil)).Elem(), GetListenersListenerAclConfigAclRelationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerAclConfigAclRelationArrayInput)(nil)).Elem(), GetListenersListenerAclConfigAclRelationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerCertificateInput)(nil)).Elem(), GetListenersListenerCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerCertificateArrayInput)(nil)).Elem(), GetListenersListenerCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerDefaultActionInput)(nil)).Elem(), GetListenersListenerDefaultActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerDefaultActionArrayInput)(nil)).Elem(), GetListenersListenerDefaultActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerDefaultActionForwardGroupConfigInput)(nil)).Elem(), GetListenersListenerDefaultActionForwardGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerDefaultActionForwardGroupConfigArrayInput)(nil)).Elem(), GetListenersListenerDefaultActionForwardGroupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleInput)(nil)).Elem(), GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerQuicConfigInput)(nil)).Elem(), GetListenersListenerQuicConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerQuicConfigArrayInput)(nil)).Elem(), GetListenersListenerQuicConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerXforwardedForConfigInput)(nil)).Elem(), GetListenersListenerXforwardedForConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerXforwardedForConfigArrayInput)(nil)).Elem(), GetListenersListenerXforwardedForConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerInput)(nil)).Elem(), GetLoadBalancersBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerArrayInput)(nil)).Elem(), GetLoadBalancersBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerAccessLogConfigInput)(nil)).Elem(), GetLoadBalancersBalancerAccessLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerAccessLogConfigArrayInput)(nil)).Elem(), GetLoadBalancersBalancerAccessLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerDeletionProtectionConfigInput)(nil)).Elem(), GetLoadBalancersBalancerDeletionProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerDeletionProtectionConfigArrayInput)(nil)).Elem(), GetLoadBalancersBalancerDeletionProtectionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerLoadBalancerBillingConfigInput)(nil)).Elem(), GetLoadBalancersBalancerLoadBalancerBillingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerLoadBalancerBillingConfigArrayInput)(nil)).Elem(), GetLoadBalancersBalancerLoadBalancerBillingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerLoadBalancerOperationLockInput)(nil)).Elem(), GetLoadBalancersBalancerLoadBalancerOperationLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerLoadBalancerOperationLockArrayInput)(nil)).Elem(), GetLoadBalancersBalancerLoadBalancerOperationLockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerModificationProtectionConfigInput)(nil)).Elem(), GetLoadBalancersBalancerModificationProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerModificationProtectionConfigArrayInput)(nil)).Elem(), GetLoadBalancersBalancerModificationProtectionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerZoneMappingInput)(nil)).Elem(), GetLoadBalancersBalancerZoneMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerZoneMappingArrayInput)(nil)).Elem(), GetLoadBalancersBalancerZoneMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerZoneMappingLoadBalancerAddressInput)(nil)).Elem(), GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArrayInput)(nil)).Elem(), GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleInput)(nil)).Elem(), GetRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleArrayInput)(nil)).Elem(), GetRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionInput)(nil)).Elem(), GetRulesRuleRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionArrayInput)(nil)).Elem(), GetRulesRuleRuleActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionFixedResponseConfigInput)(nil)).Elem(), GetRulesRuleRuleActionFixedResponseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionFixedResponseConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleActionFixedResponseConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionForwardGroupConfigInput)(nil)).Elem(), GetRulesRuleRuleActionForwardGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionForwardGroupConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleActionForwardGroupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleInput)(nil)).Elem(), GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionInsertHeaderConfigInput)(nil)).Elem(), GetRulesRuleRuleActionInsertHeaderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionInsertHeaderConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleActionInsertHeaderConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionRedirectConfigInput)(nil)).Elem(), GetRulesRuleRuleActionRedirectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionRedirectConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleActionRedirectConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionRewriteConfigInput)(nil)).Elem(), GetRulesRuleRuleActionRewriteConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionRewriteConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleActionRewriteConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionInput)(nil)).Elem(), GetRulesRuleRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionCookieConfigInput)(nil)).Elem(), GetRulesRuleRuleConditionCookieConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionCookieConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionCookieConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionCookieConfigValueInput)(nil)).Elem(), GetRulesRuleRuleConditionCookieConfigValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionCookieConfigValueArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionCookieConfigValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionHeaderConfigInput)(nil)).Elem(), GetRulesRuleRuleConditionHeaderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionHeaderConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionHeaderConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionHostConfigInput)(nil)).Elem(), GetRulesRuleRuleConditionHostConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionHostConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionHostConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionMethodConfigInput)(nil)).Elem(), GetRulesRuleRuleConditionMethodConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionMethodConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionMethodConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionPathConfigInput)(nil)).Elem(), GetRulesRuleRuleConditionPathConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionPathConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionPathConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionQueryStringConfigInput)(nil)).Elem(), GetRulesRuleRuleConditionQueryStringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionQueryStringConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionQueryStringConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionQueryStringConfigValueInput)(nil)).Elem(), GetRulesRuleRuleConditionQueryStringConfigValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionQueryStringConfigValueArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionQueryStringConfigValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPoliciesPolicyInput)(nil)).Elem(), GetSecurityPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPoliciesPolicyArrayInput)(nil)).Elem(), GetSecurityPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsGroupInput)(nil)).Elem(), GetServerGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsGroupArrayInput)(nil)).Elem(), GetServerGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsGroupHealthCheckConfigInput)(nil)).Elem(), GetServerGroupsGroupHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsGroupHealthCheckConfigArrayInput)(nil)).Elem(), GetServerGroupsGroupHealthCheckConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsGroupServerInput)(nil)).Elem(), GetServerGroupsGroupServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsGroupServerArrayInput)(nil)).Elem(), GetServerGroupsGroupServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsGroupStickySessionConfigInput)(nil)).Elem(), GetServerGroupsGroupStickySessionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsGroupStickySessionConfigArrayInput)(nil)).Elem(), GetServerGroupsGroupStickySessionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(AclAclEntryOutput{})
 	pulumi.RegisterOutputType(AclAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(ListenerAccessLogTracingConfigOutput{})

@@ -4,6 +4,9 @@
 package fc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,4 +61,56 @@ type LookupServiceResult struct {
 	Id string `pulumi:"id"`
 	// The current service enable status.
 	Status string `pulumi:"status"`
+}
+
+func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupServiceResult, error) {
+			args := v.(LookupServiceArgs)
+			r, err := LookupService(ctx, &args, opts...)
+			return *r, err
+		}).(LookupServiceResultOutput)
+}
+
+// A collection of arguments for invoking getService.
+type LookupServiceOutputArgs struct {
+	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	Enable pulumi.StringPtrInput `pulumi:"enable"`
+}
+
+func (LookupServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getService.
+type LookupServiceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceResult)(nil)).Elem()
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceResultOutput {
+	return o
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
+	return o
+}
+
+func (o LookupServiceResultOutput) Enable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *string { return v.Enable }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The current service enable status.
+func (o LookupServiceResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServiceResultOutput{})
 }

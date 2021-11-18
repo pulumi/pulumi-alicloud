@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const myInstances = pulumi.output(alicloud.cs.getRegistryEnterpriseInstances({
  *     nameRegex: "my-instances",
  *     outputFile: "my-instances-json",
- * }, { async: true }));
+ * }));
  *
  * export const output = myInstances.instances;
  * ```
@@ -49,16 +49,16 @@ export interface GetRegistryEnterpriseInstancesArgs {
     /**
      * Default to `true`. Set it to true can output instance authorization token.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of ids to filter results by instance id.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -84,4 +84,27 @@ export interface GetRegistryEnterpriseInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getRegistryEnterpriseInstancesOutput(args?: GetRegistryEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseInstancesResult> {
+    return pulumi.output(args).apply(a => getRegistryEnterpriseInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegistryEnterpriseInstances.
+ */
+export interface GetRegistryEnterpriseInstancesOutputArgs {
+    /**
+     * Default to `true`. Set it to true can output instance authorization token.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of ids to filter results by instance id.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

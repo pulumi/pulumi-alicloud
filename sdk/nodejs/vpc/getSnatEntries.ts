@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
  *     vpcId: fooNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     availabilityZone: _default.then(_default => _default.zones[0].id),
+ *     availabilityZone: _default.then(_default => _default.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const fooNatGateway = new alicloud.vpc.NatGateway("fooNatGateway", {
@@ -75,36 +75,36 @@ export interface GetSnatEntriesArgs {
     /**
      * A list of Snat Entries IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by the resource name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The name of snat entry.
      */
-    readonly snatEntryName?: string;
+    snatEntryName?: string;
     /**
      * The public IP of the Snat Entry.
      */
-    readonly snatIp?: string;
+    snatIp?: string;
     /**
      * The ID of the Snat table.
      */
-    readonly snatTableId: string;
+    snatTableId: string;
     /**
      * The source CIDR block of the Snat Entry.
      */
-    readonly sourceCidr?: string;
+    sourceCidr?: string;
     /**
      * The source vswitch ID.
      */
-    readonly sourceVswitchId?: string;
+    sourceVswitchId?: string;
     /**
      * The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -147,4 +147,47 @@ export interface GetSnatEntriesResult {
      * The status of the Snat Entry.
      */
     readonly status?: string;
+}
+
+export function getSnatEntriesOutput(args: GetSnatEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnatEntriesResult> {
+    return pulumi.output(args).apply(a => getSnatEntries(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSnatEntries.
+ */
+export interface GetSnatEntriesOutputArgs {
+    /**
+     * A list of Snat Entries IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by the resource name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The name of snat entry.
+     */
+    snatEntryName?: pulumi.Input<string>;
+    /**
+     * The public IP of the Snat Entry.
+     */
+    snatIp?: pulumi.Input<string>;
+    /**
+     * The ID of the Snat table.
+     */
+    snatTableId: pulumi.Input<string>;
+    /**
+     * The source CIDR block of the Snat Entry.
+     */
+    sourceCidr?: pulumi.Input<string>;
+    /**
+     * The source vswitch ID.
+     */
+    sourceVswitchId?: pulumi.Input<string>;
+    /**
+     * The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
+     */
+    status?: pulumi.Input<string>;
 }

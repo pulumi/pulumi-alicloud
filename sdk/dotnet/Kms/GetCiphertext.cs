@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Kms
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Kms
     {
         public static Task<GetCiphertextResult> InvokeAsync(GetCiphertextArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? new GetCiphertextArgs(), options.WithVersion());
+
+        public static Output<GetCiphertextResult> Invoke(GetCiphertextInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? new GetCiphertextInvokeArgs(), options.WithVersion());
     }
 
 
@@ -44,6 +48,38 @@ namespace Pulumi.AliCloud.Kms
         public string Plaintext { get; set; } = null!;
 
         public GetCiphertextArgs()
+        {
+        }
+    }
+
+    public sealed class GetCiphertextInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("encryptionContext")]
+        private InputMap<string>? _encryptionContext;
+
+        /// <summary>
+        /// -
+        /// (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        /// </summary>
+        public InputMap<string> EncryptionContext
+        {
+            get => _encryptionContext ?? (_encryptionContext = new InputMap<string>());
+            set => _encryptionContext = value;
+        }
+
+        /// <summary>
+        /// The globally unique ID of the CMK.
+        /// </summary>
+        [Input("keyId", required: true)]
+        public Input<string> KeyId { get; set; } = null!;
+
+        /// <summary>
+        /// The plaintext to be encrypted which must be encoded in Base64.
+        /// </summary>
+        [Input("plaintext", required: true)]
+        public Input<string> Plaintext { get; set; } = null!;
+
+        public GetCiphertextInvokeArgs()
         {
         }
     }

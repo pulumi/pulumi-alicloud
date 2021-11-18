@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.FC
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.FC
         ///             NameRegex = "sample_fc_function",
         ///             ServiceName = "sample_service",
         ///         }));
-        ///         this.FirstFcFunctionName = functionsDs.Apply(functionsDs =&gt; functionsDs.Functions[0].Name);
+        ///         this.FirstFcFunctionName = functionsDs.Apply(functionsDs =&gt; functionsDs.Functions?[0]?.Name);
         ///     }
         /// 
         ///     [Output("firstFcFunctionName")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         public static Task<GetFunctionsResult> InvokeAsync(GetFunctionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionsResult>("alicloud:fc/getFunctions:getFunctions", args ?? new GetFunctionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Function Compute functions of the current Alibaba Cloud user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var functionsDs = Output.Create(AliCloud.FC.GetFunctions.InvokeAsync(new AliCloud.FC.GetFunctionsArgs
+        ///         {
+        ///             NameRegex = "sample_fc_function",
+        ///             ServiceName = "sample_service",
+        ///         }));
+        ///         this.FirstFcFunctionName = functionsDs.Apply(functionsDs =&gt; functionsDs.Functions?[0]?.Name);
+        ///     }
+        /// 
+        ///     [Output("firstFcFunctionName")]
+        ///     public Output&lt;string&gt; FirstFcFunctionName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFunctionsResult> Invoke(GetFunctionsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFunctionsResult>("alicloud:fc/getFunctions:getFunctions", args ?? new GetFunctionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -76,6 +110,40 @@ namespace Pulumi.AliCloud.FC
         public string ServiceName { get; set; } = null!;
 
         public GetFunctionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetFunctionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// - A list of functions ids.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by function name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Name of the service that contains the functions to find.
+        /// </summary>
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        public GetFunctionsInvokeArgs()
         {
         }
     }

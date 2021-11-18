@@ -13,6 +13,7 @@ __all__ = [
     'GetUsersResult',
     'AwaitableGetUsersResult',
     'get_users',
+    'get_users_output',
 ]
 
 @pulumi.output_type
@@ -178,3 +179,38 @@ def get_users(group_name: Optional[str] = None,
         policy_name=__ret__.policy_name,
         policy_type=__ret__.policy_type,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_users)
+def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
+                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     policy_name: Optional[pulumi.Input[Optional[str]]] = None,
+                     policy_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+    """
+    This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    users_ds = alicloud.ram.get_users(group_name="group1",
+        name_regex="^user",
+        output_file="users.txt",
+        policy_name="AliyunACSDefaultAccess",
+        policy_type="Custom")
+    pulumi.export("firstUserId", users_ds.users[0].id)
+    ```
+
+
+    :param str group_name: Filter results by a specific group name. Returned users are in the specified group.
+    :param Sequence[str] ids: - A list of ram user IDs.
+    :param str name_regex: A regex string to filter resulting users by their names.
+    :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
+    :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+    """
+    ...

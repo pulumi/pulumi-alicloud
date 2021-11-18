@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ga
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ga
         ///                 "example_value",
         ///             },
         ///         }));
-        ///         this.FirstGaIpSetId = example.Apply(example =&gt; example.Sets[0].Id);
+        ///         this.FirstGaIpSetId = example.Apply(example =&gt; example.Sets?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstGaIpSetId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Task<GetIpSetsResult> InvokeAsync(GetIpSetsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIpSetsResult>("alicloud:ga/getIpSets:getIpSets", args ?? new GetIpSetsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ga.GetIpSets.InvokeAsync(new AliCloud.Ga.GetIpSetsArgs
+        ///         {
+        ///             AcceleratorId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///         }));
+        ///         this.FirstGaIpSetId = example.Apply(example =&gt; example.Sets?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstGaIpSetId")]
+        ///     public Output&lt;string&gt; FirstGaIpSetId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetIpSetsResult> Invoke(GetIpSetsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIpSetsResult>("alicloud:ga/getIpSets:getIpSets", args ?? new GetIpSetsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +124,40 @@ namespace Pulumi.AliCloud.Ga
         public string? Status { get; set; }
 
         public GetIpSetsArgs()
+        {
+        }
+    }
+
+    public sealed class GetIpSetsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Global Accelerator (GA) instance.
+        /// </summary>
+        [Input("acceleratorId", required: true)]
+        public Input<string> AcceleratorId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Ip Set IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the acceleration region.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetIpSetsInvokeArgs()
         {
         }
     }

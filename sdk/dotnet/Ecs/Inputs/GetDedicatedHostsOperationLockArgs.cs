@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class GetDedicatedHostsOperationLockArgs : Pulumi.InvokeArgs
+    public sealed class GetDedicatedHostsOperationLockInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The reason why the dedicated host resource is locked.
         /// </summary>
         [Input("lockReason")]
-        public string? LockReason { get; set; }
+        public Input<string>? LockReason { get; set; }
 
-        public GetDedicatedHostsOperationLockArgs()
+        public GetDedicatedHostsOperationLockInputArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbr
 {
@@ -46,7 +47,7 @@ namespace Pulumi.AliCloud.Hbr
         ///                 alicloud_hbr_ecs_backup_client.Default.Instance_id,
         ///             },
         ///         }));
-        ///         this.HbrEcsBackupClientId1 = ids.Apply(ids =&gt; ids.Clients[0].Id);
+        ///         this.HbrEcsBackupClientId1 = ids.Apply(ids =&gt; ids.Clients?[0]?.Id);
         ///     }
         /// 
         ///     [Output("hbrEcsBackupClientId1")]
@@ -58,6 +59,54 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Task<GetEcsBackupClientsResult> InvokeAsync(GetEcsBackupClientsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEcsBackupClientsResult>("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args ?? new GetEcsBackupClientsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "ecs_instance_name",
+        ///             Status = "Running",
+        ///         }));
+        ///         var ids = Output.Create(AliCloud.Hbr.GetEcsBackupClients.InvokeAsync(new AliCloud.Hbr.GetEcsBackupClientsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 alicloud_hbr_ecs_backup_client.Default.Id,
+        ///             },
+        ///             InstanceIds = 
+        ///             {
+        ///                 alicloud_hbr_ecs_backup_client.Default.Instance_id,
+        ///             },
+        ///         }));
+        ///         this.HbrEcsBackupClientId1 = ids.Apply(ids =&gt; ids.Clients?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("hbrEcsBackupClientId1")]
+        ///     public Output&lt;string&gt; HbrEcsBackupClientId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEcsBackupClientsResult> Invoke(GetEcsBackupClientsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEcsBackupClientsResult>("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args ?? new GetEcsBackupClientsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -97,6 +146,46 @@ namespace Pulumi.AliCloud.Hbr
         public string? Status { get; set; }
 
         public GetEcsBackupClientsArgs()
+        {
+        }
+    }
+
+    public sealed class GetEcsBackupClientsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Ecs Backup Client IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("instanceIds")]
+        private InputList<string>? _instanceIds;
+
+        /// <summary>
+        /// A list of ECS Instance IDs.
+        /// </summary>
+        public InputList<string> InstanceIds
+        {
+            get => _instanceIds ?? (_instanceIds = new InputList<string>());
+            set => _instanceIds = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetEcsBackupClientsInvokeArgs()
         {
         }
     }

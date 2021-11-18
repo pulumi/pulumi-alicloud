@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ga
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Ga
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstGaEndpointGroupId = example.Apply(example =&gt; example.Groups[0].Id);
+        ///         this.FirstGaEndpointGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstGaEndpointGroupId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Task<GetEndpointGroupsResult> InvokeAsync(GetEndpointGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointGroupsResult>("alicloud:ga/getEndpointGroups:getEndpointGroups", args ?? new GetEndpointGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ga.GetEndpointGroups.InvokeAsync(new AliCloud.Ga.GetEndpointGroupsArgs
+        ///         {
+        ///             AcceleratorId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstGaEndpointGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstGaEndpointGroupId")]
+        ///     public Output&lt;string&gt; FirstGaEndpointGroupId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEndpointGroupsResult> Invoke(GetEndpointGroupsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointGroupsResult>("alicloud:ga/getEndpointGroups:getEndpointGroups", args ?? new GetEndpointGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -102,6 +144,58 @@ namespace Pulumi.AliCloud.Ga
         public string? Status { get; set; }
 
         public GetEndpointGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetEndpointGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Global Accelerator instance to which the endpoint group will be added.
+        /// </summary>
+        [Input("acceleratorId", required: true)]
+        public Input<string> AcceleratorId { get; set; } = null!;
+
+        /// <summary>
+        /// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+        /// </summary>
+        [Input("endpointGroupType")]
+        public Input<string>? EndpointGroupType { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Endpoint Group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The ID of the listener that is associated with the endpoint group.
+        /// </summary>
+        [Input("listenerId")]
+        public Input<string>? ListenerId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Endpoint Group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the endpoint group.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetEndpointGroupsInvokeArgs()
         {
         }
     }

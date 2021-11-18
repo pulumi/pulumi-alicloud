@@ -130,37 +130,37 @@ export interface NetworkAclState {
     /**
      * The description of egress entries.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
      */
-    readonly egressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEgressAclEntry>[]>;
+    egressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEgressAclEntry>[]>;
     /**
      * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
      */
-    readonly ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
+    ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
     /**
      * Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the network acl.
      */
-    readonly networkAclName?: pulumi.Input<string>;
+    networkAclName?: pulumi.Input<string>;
     /**
      * The associated resources.
      */
-    readonly resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
     /**
      * (Available in 1.122.0+) The status of the network acl.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The vpcId of the network acl, the field can't be changed.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -170,31 +170,31 @@ export interface NetworkAclArgs {
     /**
      * The description of egress entries.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
      */
-    readonly egressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEgressAclEntry>[]>;
+    egressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEgressAclEntry>[]>;
     /**
      * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
      */
-    readonly ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
+    ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
     /**
      * Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the network acl.
      */
-    readonly networkAclName?: pulumi.Input<string>;
+    networkAclName?: pulumi.Input<string>;
     /**
      * The associated resources.
      */
-    readonly resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
     /**
      * The vpcId of the network acl, the field can't be changed.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CR
 {
@@ -40,7 +41,7 @@ namespace Pulumi.AliCloud.CR
         ///                 "example_value-2",
         ///             },
         ///         }));
-        ///         this.CrEndpointAclPolicyId1 = ids.Apply(ids =&gt; ids.Policies[0].Id);
+        ///         this.CrEndpointAclPolicyId1 = ids.Apply(ids =&gt; ids.Policies?[0]?.Id);
         ///     }
         /// 
         ///     [Output("crEndpointAclPolicyId1")]
@@ -52,6 +53,48 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         public static Task<GetEndpointAclPoliciesResult> InvokeAsync(GetEndpointAclPoliciesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAclPoliciesResult>("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args ?? new GetEndpointAclPoliciesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.CR.GetEndpointAclPolicies.InvokeAsync(new AliCloud.CR.GetEndpointAclPoliciesArgs
+        ///         {
+        ///             InstanceId = "example_value",
+        ///             EndpointType = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value-1",
+        ///                 "example_value-2",
+        ///             },
+        ///         }));
+        ///         this.CrEndpointAclPolicyId1 = ids.Apply(ids =&gt; ids.Policies?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("crEndpointAclPolicyId1")]
+        ///     public Output&lt;string&gt; CrEndpointAclPolicyId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEndpointAclPoliciesResult> Invoke(GetEndpointAclPoliciesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointAclPoliciesResult>("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args ?? new GetEndpointAclPoliciesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -85,6 +128,40 @@ namespace Pulumi.AliCloud.CR
         public string? OutputFile { get; set; }
 
         public GetEndpointAclPoliciesArgs()
+        {
+        }
+    }
+
+    public sealed class GetEndpointAclPoliciesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The type of endpoint.
+        /// </summary>
+        [Input("endpointType", required: true)]
+        public Input<string> EndpointType { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Endpoint Acl Policy IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The ID of the CR Instance.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetEndpointAclPoliciesInvokeArgs()
         {
         }
     }

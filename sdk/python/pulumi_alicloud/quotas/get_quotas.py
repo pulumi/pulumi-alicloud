@@ -14,6 +14,7 @@ __all__ = [
     'GetQuotasResult',
     'AwaitableGetQuotasResult',
     'get_quotas',
+    'get_quotas_output',
 ]
 
 @pulumi.output_type
@@ -233,3 +234,47 @@ def get_quotas(dimensions: Optional[Sequence[pulumi.InputType['GetQuotasDimensio
         quotas=__ret__.quotas,
         sort_field=__ret__.sort_field,
         sort_order=__ret__.sort_order)
+
+
+@_utilities.lift_output_func(get_quotas)
+def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetQuotasDimensionArgs']]]]] = None,
+                      group_code: Optional[pulumi.Input[Optional[str]]] = None,
+                      key_word: Optional[pulumi.Input[Optional[str]]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      product_code: Optional[pulumi.Input[str]] = None,
+                      quota_action_code: Optional[pulumi.Input[Optional[str]]] = None,
+                      quota_category: Optional[pulumi.Input[Optional[str]]] = None,
+                      sort_field: Optional[pulumi.Input[Optional[str]]] = None,
+                      sort_order: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotasResult]:
+    """
+    This data source provides the Quotas Quotas of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.115.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.quotas.get_quotas(product_code="ecs",
+        name_regex="专有宿主机总数量上限")
+    pulumi.export("firstQuotasQuotaId", example.quotas[0].id)
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetQuotasDimensionArgs']] dimensions: The dimensions.
+    :param str group_code: The group code.
+    :param str key_word: The key word.
+    :param str name_regex: A regex string to filter results by Quota name.
+    :param str product_code: The product code.
+    :param str quota_action_code: The quota action code.
+    :param str quota_category: The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+    :param str sort_field: Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
+    :param str sort_order: Ranking of cloud service ECS specification quota support. Valid Values: `Ascending` and `Descending`.
+    """
+    ...

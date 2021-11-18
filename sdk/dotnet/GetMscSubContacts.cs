@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud
 {
@@ -31,12 +32,12 @@ namespace Pulumi.AliCloud
         ///     public MyStack()
         ///     {
         ///         var ids = Output.Create(AliCloud.GetMscSubContacts.InvokeAsync());
-        ///         this.MscSubContactId1 = ids.Apply(ids =&gt; ids.Contacts[0].Id);
+        ///         this.MscSubContactId1 = ids.Apply(ids =&gt; ids.Contacts?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.GetMscSubContacts.InvokeAsync(new AliCloud.GetMscSubContactsArgs
         ///         {
         ///             NameRegex = "^my-Contact",
         ///         }));
-        ///         this.MscSubContactId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Contacts[0].Id);
+        ///         this.MscSubContactId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Contacts?[0]?.Id);
         ///     }
         /// 
         ///     [Output("mscSubContactId1")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud
         /// </summary>
         public static Task<GetMscSubContactsResult> InvokeAsync(GetMscSubContactsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMscSubContactsResult>("alicloud:index/getMscSubContacts:getMscSubContacts", args ?? new GetMscSubContactsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Message Center Contacts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.GetMscSubContacts.InvokeAsync());
+        ///         this.MscSubContactId1 = ids.Apply(ids =&gt; ids.Contacts?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.GetMscSubContacts.InvokeAsync(new AliCloud.GetMscSubContactsArgs
+        ///         {
+        ///             NameRegex = "^my-Contact",
+        ///         }));
+        ///         this.MscSubContactId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Contacts?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("mscSubContactId1")]
+        ///     public Output&lt;string&gt; MscSubContactId1 { get; set; }
+        ///     [Output("mscSubContactId2")]
+        ///     public Output&lt;string&gt; MscSubContactId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMscSubContactsResult> Invoke(GetMscSubContactsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMscSubContactsResult>("alicloud:index/getMscSubContacts:getMscSubContacts", args ?? new GetMscSubContactsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -77,6 +118,34 @@ namespace Pulumi.AliCloud
         public string? OutputFile { get; set; }
 
         public GetMscSubContactsArgs()
+        {
+        }
+    }
+
+    public sealed class GetMscSubContactsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Contact IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Contact name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetMscSubContactsInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetTransitRouterPeerAttachmentsResult> InvokeAsync(GetTransitRouterPeerAttachmentsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterPeerAttachmentsResult>("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", args ?? new GetTransitRouterPeerAttachmentsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN Transit Router peer attachments available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.128.0+
+        /// </summary>
+        public static Output<GetTransitRouterPeerAttachmentsResult> Invoke(GetTransitRouterPeerAttachmentsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTransitRouterPeerAttachmentsResult>("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", args ?? new GetTransitRouterPeerAttachmentsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -69,6 +78,58 @@ namespace Pulumi.AliCloud.Cen
         public string? TransitRouterId { get; set; }
 
         public GetTransitRouterPeerAttachmentsArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransitRouterPeerAttachmentsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// ID of the CEN instance.
+        /// </summary>
+        [Input("cenId", required: true)]
+        public Input<string> CenId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of CEN Transit Router peer attachments IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter CEN Transit Router peer attachments by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ID of CEN Transit Router peer attachments.
+        /// </summary>
+        [Input("transitRouterAttachmentId")]
+        public Input<string>? TransitRouterAttachmentId { get; set; }
+
+        /// <summary>
+        /// The ID of transit router.
+        /// </summary>
+        [Input("transitRouterId")]
+        public Input<string>? TransitRouterId { get; set; }
+
+        public GetTransitRouterPeerAttachmentsInvokeArgs()
         {
         }
     }

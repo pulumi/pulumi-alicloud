@@ -4,6 +4,9 @@
 package fc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,73 @@ type GetCustomDomainsResult struct {
 	// A list of custom domain names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetCustomDomainsOutput(ctx *pulumi.Context, args GetCustomDomainsOutputArgs, opts ...pulumi.InvokeOption) GetCustomDomainsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetCustomDomainsResult, error) {
+			args := v.(GetCustomDomainsArgs)
+			r, err := GetCustomDomains(ctx, &args, opts...)
+			return *r, err
+		}).(GetCustomDomainsResultOutput)
+}
+
+// A collection of arguments for invoking getCustomDomains.
+type GetCustomDomainsOutputArgs struct {
+	// A list of functions ids.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Function Compute custom domain name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetCustomDomainsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCustomDomains.
+type GetCustomDomainsResultOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsResult)(nil)).Elem()
+}
+
+func (o GetCustomDomainsResultOutput) ToGetCustomDomainsResultOutput() GetCustomDomainsResultOutput {
+	return o
+}
+
+func (o GetCustomDomainsResultOutput) ToGetCustomDomainsResultOutputWithContext(ctx context.Context) GetCustomDomainsResultOutput {
+	return o
+}
+
+// A list of custom domains, including the following attributes:
+func (o GetCustomDomainsResultOutput) Domains() GetCustomDomainsDomainArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainsResult) []GetCustomDomainsDomain { return v.Domains }).(GetCustomDomainsDomainArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCustomDomainsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of custom domain ids.
+func (o GetCustomDomainsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCustomDomainsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCustomDomainsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of custom domain names.
+func (o GetCustomDomainsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCustomDomainsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCustomDomainsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCustomDomainsResultOutput{})
 }

@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.lindorm.getInstances({});
- * export const lindormInstanceId1 = ids.then(ids => ids.instances[0].id);
+ * export const lindormInstanceId1 = ids.then(ids => ids.instances?[0]?.id);
  * const nameRegex = alicloud.lindorm.getInstances({
  *     nameRegex: "^my-Instance",
  * });
- * export const lindormInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances[0].id);
+ * export const lindormInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -53,28 +53,28 @@ export interface GetInstancesArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The query str, which can use `instanceName` keyword for fuzzy search.
      */
-    readonly queryStr?: string;
+    queryStr?: string;
     /**
      * The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The support engine. Valid values: `1` to `7`.
      */
-    readonly supportEngine?: number;
+    supportEngine?: number;
 }
 
 /**
@@ -94,4 +94,39 @@ export interface GetInstancesResult {
     readonly queryStr?: string;
     readonly status?: string;
     readonly supportEngine?: number;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The query str, which can use `instanceName` keyword for fuzzy search.
+     */
+    queryStr?: pulumi.Input<string>;
+    /**
+     * The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The support engine. Valid values: `1` to `7`.
+     */
+    supportEngine?: pulumi.Input<number>;
 }

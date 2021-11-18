@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.ResourceManager
         ///         {
         ///             NameRegex = "tftest",
         ///         }));
-        ///         this.FirstResourceGroupId = example.Apply(example =&gt; example.Groups[0].Id);
+        ///         this.FirstResourceGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstResourceGroupId")]
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Task<GetResourceGroupsResult> InvokeAsync(GetResourceGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupsResult>("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides resource groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.84.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
+        ///         {
+        ///             NameRegex = "tftest",
+        ///         }));
+        ///         this.FirstResourceGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstResourceGroupId")]
+        ///     public Output&lt;string&gt; FirstResourceGroupId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetResourceGroupsResult> Invoke(GetResourceGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetResourceGroupsResult>("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +118,46 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? Status { get; set; }
 
         public GetResourceGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetResourceGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of resource group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by resource group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetResourceGroupsInvokeArgs()
         {
         }
     }

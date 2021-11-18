@@ -212,63 +212,63 @@ export interface InstanceState {
     /**
      * The instance name.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The Instance Type. Valid values: `professional`, `vip`.
      */
-    readonly instanceType?: pulumi.Input<string>;
-    readonly logistics?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
+    logistics?: pulumi.Input<string>;
     /**
      * The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
      */
-    readonly maxEipTps?: pulumi.Input<string>;
+    maxEipTps?: pulumi.Input<string>;
     /**
      * The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
      */
-    readonly maxTps?: pulumi.Input<string>;
+    maxTps?: pulumi.Input<string>;
     /**
      * The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
      */
-    readonly modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string>;
     /**
      * The payment type. Valid values: `Subscription`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The queue capacity. The smallest value is 50 and the step size 5.
      */
-    readonly queueCapacity?: pulumi.Input<string>;
+    queueCapacity?: pulumi.Input<string>;
     /**
      * RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
      */
-    readonly renewalDuration?: pulumi.Input<number>;
+    renewalDuration?: pulumi.Input<number>;
     /**
      * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
      */
-    readonly renewalDurationUnit?: pulumi.Input<string>;
+    renewalDurationUnit?: pulumi.Input<string>;
     /**
      * Whether to renew an instance automatically or not. Default to "ManualRenewal".
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
     /**
      * The status of the resource.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The storage size. It is valid when `instanceType` is vip.
      */
-    readonly storageSize?: pulumi.Input<string>;
+    storageSize?: pulumi.Input<string>;
     /**
      * Whether to support EIP.
      */
-    readonly supportEip?: pulumi.Input<boolean>;
+    supportEip?: pulumi.Input<boolean>;
 }
 
 /**
@@ -278,57 +278,57 @@ export interface InstanceArgs {
     /**
      * The instance name.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The Instance Type. Valid values: `professional`, `vip`.
      */
-    readonly instanceType: pulumi.Input<string>;
-    readonly logistics?: pulumi.Input<string>;
+    instanceType: pulumi.Input<string>;
+    logistics?: pulumi.Input<string>;
     /**
      * The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
      */
-    readonly maxEipTps?: pulumi.Input<string>;
+    maxEipTps?: pulumi.Input<string>;
     /**
      * The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
      */
-    readonly maxTps: pulumi.Input<string>;
+    maxTps: pulumi.Input<string>;
     /**
      * The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
      */
-    readonly modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string>;
     /**
      * The payment type. Valid values: `Subscription`.
      */
-    readonly paymentType: pulumi.Input<string>;
+    paymentType: pulumi.Input<string>;
     /**
      * The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The queue capacity. The smallest value is 50 and the step size 5.
      */
-    readonly queueCapacity: pulumi.Input<string>;
+    queueCapacity: pulumi.Input<string>;
     /**
      * RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
      */
-    readonly renewalDuration?: pulumi.Input<number>;
+    renewalDuration?: pulumi.Input<number>;
     /**
      * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
      */
-    readonly renewalDurationUnit?: pulumi.Input<string>;
+    renewalDurationUnit?: pulumi.Input<string>;
     /**
      * Whether to renew an instance automatically or not. Default to "ManualRenewal".
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
     /**
      * The storage size. It is valid when `instanceType` is vip.
      */
-    readonly storageSize?: pulumi.Input<string>;
+    storageSize?: pulumi.Input<string>;
     /**
      * Whether to support EIP.
      */
-    readonly supportEip: pulumi.Input<boolean>;
+    supportEip: pulumi.Input<boolean>;
 }

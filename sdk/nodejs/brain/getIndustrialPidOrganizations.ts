@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["3e74e684-cbb5-xxxx"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstBrainIndustrialPidOrganizationId = example.then(example => example.organizations[0].id);
+ * export const firstBrainIndustrialPidOrganizationId = example.then(example => example.organizations?[0]?.id);
  * ```
  */
 export function getIndustrialPidOrganizations(args?: GetIndustrialPidOrganizationsArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialPidOrganizationsResult> {
@@ -49,16 +49,16 @@ export interface GetIndustrialPidOrganizationsArgs {
     /**
      * A list of Pid Organization IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Pid Organization name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The parent organization id.
      */
-    readonly parentOrganizationId?: string;
+    parentOrganizationId?: string;
 }
 
 /**
@@ -75,4 +75,27 @@ export interface GetIndustrialPidOrganizationsResult {
     readonly organizations: outputs.brain.GetIndustrialPidOrganizationsOrganization[];
     readonly outputFile?: string;
     readonly parentOrganizationId?: string;
+}
+
+export function getIndustrialPidOrganizationsOutput(args?: GetIndustrialPidOrganizationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialPidOrganizationsResult> {
+    return pulumi.output(args).apply(a => getIndustrialPidOrganizations(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIndustrialPidOrganizations.
+ */
+export interface GetIndustrialPidOrganizationsOutputArgs {
+    /**
+     * A list of Pid Organization IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Pid Organization name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The parent organization id.
+     */
+    parentOrganizationId?: pulumi.Input<string>;
 }

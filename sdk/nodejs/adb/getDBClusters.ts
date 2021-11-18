@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.adb.getDBClusters({
  *     descriptionRegex: "example",
  * });
- * export const firstAdbDbClusterId = example.then(example => example.clusters[0].id);
+ * export const firstAdbDbClusterId = example.then(example => example.clusters?[0]?.id);
  * ```
  */
 export function getDBClusters(args?: GetDBClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDBClustersResult> {
@@ -52,32 +52,32 @@ export interface GetDBClustersArgs {
     /**
      * The description of DBCluster.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * A regex string to filter results by DBCluster description.
      */
-    readonly descriptionRegex?: string;
+    descriptionRegex?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of DBCluster IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The tag of the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -98,4 +98,43 @@ export interface GetDBClustersResult {
     readonly resourceGroupId?: string;
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getDBClustersOutput(args?: GetDBClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBClustersResult> {
+    return pulumi.output(args).apply(a => getDBClusters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDBClusters.
+ */
+export interface GetDBClustersOutputArgs {
+    /**
+     * The description of DBCluster.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by DBCluster description.
+     */
+    descriptionRegex?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of DBCluster IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

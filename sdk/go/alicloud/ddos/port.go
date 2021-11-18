@@ -243,7 +243,7 @@ type PortArrayInput interface {
 type PortArray []PortInput
 
 func (PortArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Port)(nil))
+	return reflect.TypeOf((*[]*Port)(nil)).Elem()
 }
 
 func (i PortArray) ToPortArrayOutput() PortArrayOutput {
@@ -268,7 +268,7 @@ type PortMapInput interface {
 type PortMap map[string]PortInput
 
 func (PortMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Port)(nil))
+	return reflect.TypeOf((*map[string]*Port)(nil)).Elem()
 }
 
 func (i PortMap) ToPortMapOutput() PortMapOutput {
@@ -279,9 +279,7 @@ func (i PortMap) ToPortMapOutputWithContext(ctx context.Context) PortMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PortMapOutput)
 }
 
-type PortOutput struct {
-	*pulumi.OutputState
-}
+type PortOutput struct{ *pulumi.OutputState }
 
 func (PortOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Port)(nil))
@@ -300,14 +298,12 @@ func (o PortOutput) ToPortPtrOutput() PortPtrOutput {
 }
 
 func (o PortOutput) ToPortPtrOutputWithContext(ctx context.Context) PortPtrOutput {
-	return o.ApplyT(func(v Port) *Port {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Port) *Port {
 		return &v
 	}).(PortPtrOutput)
 }
 
-type PortPtrOutput struct {
-	*pulumi.OutputState
-}
+type PortPtrOutput struct{ *pulumi.OutputState }
 
 func (PortPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Port)(nil))
@@ -319,6 +315,16 @@ func (o PortPtrOutput) ToPortPtrOutput() PortPtrOutput {
 
 func (o PortPtrOutput) ToPortPtrOutputWithContext(ctx context.Context) PortPtrOutput {
 	return o
+}
+
+func (o PortPtrOutput) Elem() PortOutput {
+	return o.ApplyT(func(v *Port) Port {
+		if v != nil {
+			return *v
+		}
+		var ret Port
+		return ret
+	}).(PortOutput)
 }
 
 type PortArrayOutput struct{ *pulumi.OutputState }
@@ -362,6 +368,10 @@ func (o PortMapOutput) MapIndex(k pulumi.StringInput) PortOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PortInput)(nil)).Elem(), &Port{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortPtrInput)(nil)).Elem(), &Port{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortArrayInput)(nil)).Elem(), PortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortMapInput)(nil)).Elem(), PortMap{})
 	pulumi.RegisterOutputType(PortOutput{})
 	pulumi.RegisterOutputType(PortPtrOutput{})
 	pulumi.RegisterOutputType(PortArrayOutput{})

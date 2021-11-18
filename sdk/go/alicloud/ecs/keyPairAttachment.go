@@ -175,7 +175,7 @@ type KeyPairAttachmentArrayInput interface {
 type KeyPairAttachmentArray []KeyPairAttachmentInput
 
 func (KeyPairAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KeyPairAttachment)(nil))
+	return reflect.TypeOf((*[]*KeyPairAttachment)(nil)).Elem()
 }
 
 func (i KeyPairAttachmentArray) ToKeyPairAttachmentArrayOutput() KeyPairAttachmentArrayOutput {
@@ -200,7 +200,7 @@ type KeyPairAttachmentMapInput interface {
 type KeyPairAttachmentMap map[string]KeyPairAttachmentInput
 
 func (KeyPairAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KeyPairAttachment)(nil))
+	return reflect.TypeOf((*map[string]*KeyPairAttachment)(nil)).Elem()
 }
 
 func (i KeyPairAttachmentMap) ToKeyPairAttachmentMapOutput() KeyPairAttachmentMapOutput {
@@ -211,9 +211,7 @@ func (i KeyPairAttachmentMap) ToKeyPairAttachmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPairAttachmentMapOutput)
 }
 
-type KeyPairAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type KeyPairAttachmentOutput struct{ *pulumi.OutputState }
 
 func (KeyPairAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyPairAttachment)(nil))
@@ -232,14 +230,12 @@ func (o KeyPairAttachmentOutput) ToKeyPairAttachmentPtrOutput() KeyPairAttachmen
 }
 
 func (o KeyPairAttachmentOutput) ToKeyPairAttachmentPtrOutputWithContext(ctx context.Context) KeyPairAttachmentPtrOutput {
-	return o.ApplyT(func(v KeyPairAttachment) *KeyPairAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyPairAttachment) *KeyPairAttachment {
 		return &v
 	}).(KeyPairAttachmentPtrOutput)
 }
 
-type KeyPairAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type KeyPairAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (KeyPairAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KeyPairAttachment)(nil))
@@ -251,6 +247,16 @@ func (o KeyPairAttachmentPtrOutput) ToKeyPairAttachmentPtrOutput() KeyPairAttach
 
 func (o KeyPairAttachmentPtrOutput) ToKeyPairAttachmentPtrOutputWithContext(ctx context.Context) KeyPairAttachmentPtrOutput {
 	return o
+}
+
+func (o KeyPairAttachmentPtrOutput) Elem() KeyPairAttachmentOutput {
+	return o.ApplyT(func(v *KeyPairAttachment) KeyPairAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret KeyPairAttachment
+		return ret
+	}).(KeyPairAttachmentOutput)
 }
 
 type KeyPairAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -294,6 +300,10 @@ func (o KeyPairAttachmentMapOutput) MapIndex(k pulumi.StringInput) KeyPairAttach
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyPairAttachmentInput)(nil)).Elem(), &KeyPairAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyPairAttachmentPtrInput)(nil)).Elem(), &KeyPairAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyPairAttachmentArrayInput)(nil)).Elem(), KeyPairAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyPairAttachmentMapInput)(nil)).Elem(), KeyPairAttachmentMap{})
 	pulumi.RegisterOutputType(KeyPairAttachmentOutput{})
 	pulumi.RegisterOutputType(KeyPairAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(KeyPairAttachmentArrayOutput{})

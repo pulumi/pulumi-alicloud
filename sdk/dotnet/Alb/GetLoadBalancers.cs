@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Alb
 {
@@ -31,12 +32,12 @@ namespace Pulumi.AliCloud.Alb
         ///     public MyStack()
         ///     {
         ///         var ids = Output.Create(AliCloud.Alb.GetLoadBalancers.InvokeAsync());
-        ///         this.AlbLoadBalancerId1 = ids.Apply(ids =&gt; ids.Balancers[0].Id);
+        ///         this.AlbLoadBalancerId1 = ids.Apply(ids =&gt; ids.Balancers?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Alb.GetLoadBalancers.InvokeAsync(new AliCloud.Alb.GetLoadBalancersArgs
         ///         {
         ///             NameRegex = "^my-LoadBalancer",
         ///         }));
-        ///         this.AlbLoadBalancerId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Balancers[0].Id);
+        ///         this.AlbLoadBalancerId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Balancers?[0]?.Id);
         ///     }
         /// 
         ///     [Output("albLoadBalancerId1")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:alb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Alb.GetLoadBalancers.InvokeAsync());
+        ///         this.AlbLoadBalancerId1 = ids.Apply(ids =&gt; ids.Balancers?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Alb.GetLoadBalancers.InvokeAsync(new AliCloud.Alb.GetLoadBalancersArgs
+        ///         {
+        ///             NameRegex = "^my-LoadBalancer",
+        ///         }));
+        ///         this.AlbLoadBalancerId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Balancers?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("albLoadBalancerId1")]
+        ///     public Output&lt;string&gt; AlbLoadBalancerId1 { get; set; }
+        ///     [Output("albLoadBalancerId2")]
+        ///     public Output&lt;string&gt; AlbLoadBalancerId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("alicloud:alb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -161,6 +202,118 @@ namespace Pulumi.AliCloud.Alb
         public string? ZoneId { get; set; }
 
         public GetLoadBalancersArgs()
+        {
+        }
+    }
+
+    public sealed class GetLoadBalancersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The type of IP address that the ALB instance uses to provide services.
+        /// </summary>
+        [Input("addressType")]
+        public Input<string>? AddressType { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Load Balancer IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+        /// </summary>
+        [Input("loadBalancerBussinessStatus")]
+        public Input<string>? LoadBalancerBussinessStatus { get; set; }
+
+        [Input("loadBalancerIds")]
+        private InputList<string>? _loadBalancerIds;
+
+        /// <summary>
+        /// The load balancer ids.
+        /// </summary>
+        public InputList<string> LoadBalancerIds
+        {
+            get => _loadBalancerIds ?? (_loadBalancerIds = new InputList<string>());
+            set => _loadBalancerIds = value;
+        }
+
+        /// <summary>
+        /// The name of the resource.
+        /// </summary>
+        [Input("loadBalancerName")]
+        public Input<string>? LoadBalancerName { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Load Balancer name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        [Input("vpcIds")]
+        private InputList<string>? _vpcIds;
+
+        /// <summary>
+        /// The vpc ids.
+        /// </summary>
+        public InputList<string> VpcIds
+        {
+            get => _vpcIds ?? (_vpcIds = new InputList<string>());
+            set => _vpcIds = value;
+        }
+
+        /// <summary>
+        /// The ID of the zone to which the ALB instance belongs.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetLoadBalancersInvokeArgs()
         {
         }
     }

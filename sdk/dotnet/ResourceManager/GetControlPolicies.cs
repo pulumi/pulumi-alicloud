@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.ResourceManager
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstResourceManagerControlPolicyId = example.Apply(example =&gt; example.Policies[0].Id);
+        ///         this.FirstResourceManagerControlPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstResourceManagerControlPolicyId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Task<GetControlPoliciesResult> InvokeAsync(GetControlPoliciesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetControlPoliciesResult>("alicloud:resourcemanager/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.ResourceManager.GetControlPolicies.InvokeAsync(new AliCloud.ResourceManager.GetControlPoliciesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstResourceManagerControlPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstResourceManagerControlPolicyId")]
+        ///     public Output&lt;string&gt; FirstResourceManagerControlPolicyId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetControlPoliciesResult> Invoke(GetControlPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetControlPoliciesResult>("alicloud:resourcemanager/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -95,6 +136,52 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? PolicyType { get; set; }
 
         public GetControlPoliciesArgs()
+        {
+        }
+    }
+
+    public sealed class GetControlPoliciesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Control Policy IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
+        /// </summary>
+        [Input("language")]
+        public Input<string>? Language { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Control Policy name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The type of policy.
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
+
+        public GetControlPoliciesInvokeArgs()
         {
         }
     }

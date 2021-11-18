@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -20,7 +19,7 @@ import * as utilities from "../utilities";
  *     outputFile: "protocols.txt",
  *     type: "Performance",
  *     zoneId: "cn-beijing-e",
- * }, { async: true }));
+ * }));
  *
  * export const nasProtocolsProtocol = defaultProtocols.protocols[0];
  * ```
@@ -44,15 +43,15 @@ export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getProtocols.
  */
 export interface GetProtocolsArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
     /**
      * The file system type. Valid Values: `Performance` and `Capacity`.
      */
-    readonly type: string;
+    type: string;
     /**
      * String to filter results by zone id.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -70,4 +69,23 @@ export interface GetProtocolsResult {
     readonly protocols: string[];
     readonly type: string;
     readonly zoneId?: string;
+}
+
+export function getProtocolsOutput(args: GetProtocolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProtocolsResult> {
+    return pulumi.output(args).apply(a => getProtocols(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProtocols.
+ */
+export interface GetProtocolsOutputArgs {
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The file system type. Valid Values: `Performance` and `Capacity`.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * String to filter results by zone id.
+     */
+    zoneId?: pulumi.Input<string>;
 }

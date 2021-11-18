@@ -4,6 +4,9 @@
 package cen
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,4 +51,87 @@ type GetVbrHealthChecksResult struct {
 	VbrInstanceOwnerId *int    `pulumi:"vbrInstanceOwnerId"`
 	// The ID of the region where the VBR instance is deployed.
 	VbrInstanceRegionId string `pulumi:"vbrInstanceRegionId"`
+}
+
+func GetVbrHealthChecksOutput(ctx *pulumi.Context, args GetVbrHealthChecksOutputArgs, opts ...pulumi.InvokeOption) GetVbrHealthChecksResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetVbrHealthChecksResult, error) {
+			args := v.(GetVbrHealthChecksArgs)
+			r, err := GetVbrHealthChecks(ctx, &args, opts...)
+			return *r, err
+		}).(GetVbrHealthChecksResultOutput)
+}
+
+// A collection of arguments for invoking getVbrHealthChecks.
+type GetVbrHealthChecksOutputArgs struct {
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId      pulumi.StringPtrInput `pulumi:"cenId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of the VBR instance.
+	VbrInstanceId pulumi.StringPtrInput `pulumi:"vbrInstanceId"`
+	// The User ID (UID) of the account to which the VBR instance belongs.
+	VbrInstanceOwnerId pulumi.IntPtrInput `pulumi:"vbrInstanceOwnerId"`
+	// The ID of the region where the VBR instance is deployed.
+	VbrInstanceRegionId pulumi.StringInput `pulumi:"vbrInstanceRegionId"`
+}
+
+func (GetVbrHealthChecksOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVbrHealthChecksArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVbrHealthChecks.
+type GetVbrHealthChecksResultOutput struct{ *pulumi.OutputState }
+
+func (GetVbrHealthChecksResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVbrHealthChecksResult)(nil)).Elem()
+}
+
+func (o GetVbrHealthChecksResultOutput) ToGetVbrHealthChecksResultOutput() GetVbrHealthChecksResultOutput {
+	return o
+}
+
+func (o GetVbrHealthChecksResultOutput) ToGetVbrHealthChecksResultOutputWithContext(ctx context.Context) GetVbrHealthChecksResultOutput {
+	return o
+}
+
+// The ID of the Cloud Enterprise Network (CEN) instance.
+func (o GetVbrHealthChecksResultOutput) CenId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksResult) *string { return v.CenId }).(pulumi.StringPtrOutput)
+}
+
+// A list of CEN VBR Heath Checks. Each element contains the following attributes:
+func (o GetVbrHealthChecksResultOutput) Checks() GetVbrHealthChecksCheckArrayOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksResult) []GetVbrHealthChecksCheck { return v.Checks }).(GetVbrHealthChecksCheckArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetVbrHealthChecksResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of the CEN VBR Heath Check IDs.
+func (o GetVbrHealthChecksResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVbrHealthChecksResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VBR instance.
+func (o GetVbrHealthChecksResultOutput) VbrInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksResult) *string { return v.VbrInstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVbrHealthChecksResultOutput) VbrInstanceOwnerId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksResult) *int { return v.VbrInstanceOwnerId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the region where the VBR instance is deployed.
+func (o GetVbrHealthChecksResultOutput) VbrInstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksResult) string { return v.VbrInstanceRegionId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetVbrHealthChecksResultOutput{})
 }

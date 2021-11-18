@@ -13,6 +13,7 @@ __all__ = [
     'GetDomainsResult',
     'AwaitableGetDomainsResult',
     'get_domains',
+    'get_domains_output',
 ]
 
 @pulumi.output_type
@@ -180,3 +181,37 @@ def get_domains(enable_details: Optional[bool] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         resource_group_id=__ret__.resource_group_id)
+
+
+@_utilities.lift_output_func(get_domains)
+def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       instance_id: Optional[pulumi.Input[str]] = None,
+                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                       resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
+    """
+    Provides a WAF datasource to retrieve domains.
+
+    For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+
+    > **NOTE:** Available in 1.86.0+ .
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.waf.get_domains(instance_id="waf-cf-xxxxx")
+    ```
+
+
+    :param bool enable_details: Default to false and only output `id`, `domain_name`. Set it to true can output more details.
+    :param Sequence[str] ids: A list of WAF domain names. Each item is domain name.
+    :param str instance_id: The Id of waf instance to which waf domain belongs.
+    :param str name_regex: A regex string to filter results by domain name.
+    :param str resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management.
+    """
+    ...

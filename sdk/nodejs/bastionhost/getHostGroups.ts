@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const bastionhostHostGroupId1 = ids.then(ids => ids.groups[0].id);
+ * export const bastionhostHostGroupId1 = ids.then(ids => ids.groups?[0]?.id);
  * const nameRegex = alicloud.bastionhost.getHostGroups({
  *     instanceId: "bastionhost-cn-tl3xxxxxxx",
  *     nameRegex: "^my-HostGroup",
  * });
- * export const bastionhostHostGroupId2 = nameRegex.then(nameRegex => nameRegex.groups[0].id);
+ * export const bastionhostHostGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
  * ```
  */
 export function getHostGroups(args: GetHostGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostGroupsResult> {
@@ -57,20 +57,20 @@ export interface GetHostGroupsArgs {
     /**
      * Specify the New Host Group Name, Supports up to 128 Characters.
      */
-    readonly hostGroupName?: string;
+    hostGroupName?: string;
     /**
      * A list of Host Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Specify the New Host Group Where the Bastion Host ID of.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by Host Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -88,4 +88,31 @@ export interface GetHostGroupsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getHostGroupsOutput(args: GetHostGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostGroupsResult> {
+    return pulumi.output(args).apply(a => getHostGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHostGroups.
+ */
+export interface GetHostGroupsOutputArgs {
+    /**
+     * Specify the New Host Group Name, Supports up to 128 Characters.
+     */
+    hostGroupName?: pulumi.Input<string>;
+    /**
+     * A list of Host Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specify the New Host Group Where the Bastion Host ID of.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Host Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

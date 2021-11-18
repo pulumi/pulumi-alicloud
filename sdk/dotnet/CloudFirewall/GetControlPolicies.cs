@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudFirewall
 {
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         public static Task<GetControlPoliciesResult> InvokeAsync(GetControlPoliciesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetControlPoliciesResult>("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.CloudFirewall.GetControlPolicies.InvokeAsync(new AliCloud.CloudFirewall.GetControlPoliciesArgs
+        ///         {
+        ///             Direction = "in",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetControlPoliciesResult> Invoke(GetControlPoliciesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetControlPoliciesResult>("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -112,6 +146,76 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? SourceIp { get; set; }
 
         public GetControlPoliciesArgs()
+        {
+        }
+    }
+
+    public sealed class GetControlPoliciesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// </summary>
+        [Input("aclAction")]
+        public Input<string>? AclAction { get; set; }
+
+        /// <summary>
+        /// The unique ID of the access control policy.
+        /// </summary>
+        [Input("aclUuid")]
+        public Input<string>? AclUuid { get; set; }
+
+        /// <summary>
+        /// The description of the access control policy.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The destination address defined in the access control policy.
+        /// </summary>
+        [Input("destination")]
+        public Input<string>? Destination { get; set; }
+
+        /// <summary>
+        /// The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// </summary>
+        [Input("direction", required: true)]
+        public Input<string> Direction { get; set; } = null!;
+
+        /// <summary>
+        /// The ip version.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
+        /// DestPortGroupPorts. Valid values: `en`, `zh`.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+        /// </summary>
+        [Input("proto")]
+        public Input<string>? Proto { get; set; }
+
+        /// <summary>
+        /// The source address defined in the access control policy.
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
+        /// <summary>
+        /// The source IP address of the request.
+        /// </summary>
+        [Input("sourceIp")]
+        public Input<string>? SourceIp { get; set; }
+
+        public GetControlPoliciesInvokeArgs()
         {
         }
     }

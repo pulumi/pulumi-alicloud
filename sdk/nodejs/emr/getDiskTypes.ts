@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     instanceChargeType: "PostPaid",
  *     instanceType: "ecs.g5.xlarge",
  *     zoneId: "cn-huhehaote-a",
- * }, { async: true }));
+ * }));
  *
  * export const dataDiskType = defaultDiskTypes.types[0].value;
  * ```
@@ -53,24 +53,24 @@ export interface GetDiskTypesArgs {
     /**
      * The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
      */
-    readonly clusterType: string;
+    clusterType: string;
     /**
      * The destination resource of emr cluster instance
      */
-    readonly destinationResource: string;
+    destinationResource: string;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
-    readonly instanceChargeType: string;
+    instanceChargeType: string;
     /**
      * The ecs instance type of create emr cluster instance.
      */
-    readonly instanceType: string;
-    readonly outputFile?: string;
+    instanceType: string;
+    outputFile?: string;
     /**
      * The Zone to create emr cluster instance.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -95,4 +95,35 @@ export interface GetDiskTypesResult {
      */
     readonly types: outputs.emr.GetDiskTypesType[];
     readonly zoneId?: string;
+}
+
+export function getDiskTypesOutput(args: GetDiskTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskTypesResult> {
+    return pulumi.output(args).apply(a => getDiskTypes(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDiskTypes.
+ */
+export interface GetDiskTypesOutputArgs {
+    /**
+     * The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
+     */
+    clusterType: pulumi.Input<string>;
+    /**
+     * The destination resource of emr cluster instance
+     */
+    destinationResource: pulumi.Input<string>;
+    /**
+     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     */
+    instanceChargeType: pulumi.Input<string>;
+    /**
+     * The ecs instance type of create emr cluster instance.
+     */
+    instanceType: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Zone to create emr cluster instance.
+     */
+    zoneId?: pulumi.Input<string>;
 }

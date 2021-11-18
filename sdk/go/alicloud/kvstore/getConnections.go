@@ -4,6 +4,9 @@
 package kvstore
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,62 @@ type GetConnectionsResult struct {
 	// A list of KVStore DBInstance ids.
 	Ids        string  `pulumi:"ids"`
 	OutputFile *string `pulumi:"outputFile"`
+}
+
+func GetConnectionsOutput(ctx *pulumi.Context, args GetConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetConnectionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetConnectionsResult, error) {
+			args := v.(GetConnectionsArgs)
+			r, err := GetConnections(ctx, &args, opts...)
+			return *r, err
+		}).(GetConnectionsResultOutput)
+}
+
+// A collection of arguments for invoking getConnections.
+type GetConnectionsOutputArgs struct {
+	// A list of KVStore DBInstance ids, only support one item.
+	Ids        pulumi.StringInput    `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetConnectionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getConnections.
+type GetConnectionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsResult)(nil)).Elem()
+}
+
+func (o GetConnectionsResultOutput) ToGetConnectionsResultOutput() GetConnectionsResultOutput {
+	return o
+}
+
+func (o GetConnectionsResultOutput) ToGetConnectionsResultOutputWithContext(ctx context.Context) GetConnectionsResultOutput {
+	return o
+}
+
+// Public network details of the specified resource. contains the following attributes:
+func (o GetConnectionsResultOutput) Connections() GetConnectionsConnectionArrayOutput {
+	return o.ApplyT(func(v GetConnectionsResult) []GetConnectionsConnection { return v.Connections }).(GetConnectionsConnectionArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetConnectionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of KVStore DBInstance ids.
+func (o GetConnectionsResultOutput) Ids() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsResult) string { return v.Ids }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetConnectionsResultOutput{})
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetDomainRecordsResult',
     'AwaitableGetDomainRecordsResult',
     'get_domain_records',
+    'get_domain_records_output',
 ]
 
 @pulumi.output_type
@@ -184,3 +185,20 @@ def get_domain_records(domain_name: Optional[str] = None,
         type=__ret__.type,
         urls=__ret__.urls,
         value_regex=__ret__.value_regex)
+
+
+@_utilities.lift_output_func(get_domain_records)
+def get_domain_records_output(domain_name: Optional[pulumi.Input[str]] = None,
+                              host_record_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              is_locked: Optional[pulumi.Input[Optional[bool]]] = None,
+                              line: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              status: Optional[pulumi.Input[Optional[str]]] = None,
+                              type: Optional[pulumi.Input[Optional[str]]] = None,
+                              value_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainRecordsResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

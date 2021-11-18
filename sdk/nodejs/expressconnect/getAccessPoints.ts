@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * const ids = alicloud.expressconnect.getAccessPoints({
  *     ids: ["ap-cn-hangzhou-yh-C"],
  * });
- * export const expressConnectAccessPointId1 = ids.then(ids => ids.points[0].id);
+ * export const expressConnectAccessPointId1 = ids.then(ids => ids.points?[0]?.id);
  * const nameRegex = alicloud.expressconnect.getAccessPoints({
  *     nameRegex: "^杭州-",
  * });
- * export const expressConnectAccessPointId2 = nameRegex.then(nameRegex => nameRegex.points[0].id);
+ * export const expressConnectAccessPointId2 = nameRegex.then(nameRegex => nameRegex.points?[0]?.id);
  * ```
  */
 export function getAccessPoints(args?: GetAccessPointsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPointsResult> {
@@ -52,16 +52,16 @@ export interface GetAccessPointsArgs {
     /**
      * A list of Access Point IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Access Point name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Physical Connection to Which the Access Point State.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -78,4 +78,27 @@ export interface GetAccessPointsResult {
     readonly outputFile?: string;
     readonly points: outputs.expressconnect.GetAccessPointsPoint[];
     readonly status?: string;
+}
+
+export function getAccessPointsOutput(args?: GetAccessPointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPointsResult> {
+    return pulumi.output(args).apply(a => getAccessPoints(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccessPoints.
+ */
+export interface GetAccessPointsOutputArgs {
+    /**
+     * A list of Access Point IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Access Point name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Physical Connection to Which the Access Point State.
+     */
+    status?: pulumi.Input<string>;
 }

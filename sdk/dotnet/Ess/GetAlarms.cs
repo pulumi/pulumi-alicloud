@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ess
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         public static Task<GetAlarmsResult> InvokeAsync(GetAlarmsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? new GetAlarmsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides available alarm resources. 
+        /// 
+        /// &gt; **NOTE** Available in 1.72.0+
+        /// </summary>
+        public static Output<GetAlarmsResult> Invoke(GetAlarmsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? new GetAlarmsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -57,6 +66,46 @@ namespace Pulumi.AliCloud.Ess
         public string? ScalingGroupId { get; set; }
 
         public GetAlarmsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlarmsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of alarm IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
+        /// </summary>
+        [Input("metricType")]
+        public Input<string>? MetricType { get; set; }
+
+        /// <summary>
+        /// A regex string to filter resulting alarms by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Scaling group id the alarms belong to.
+        /// </summary>
+        [Input("scalingGroupId")]
+        public Input<string>? ScalingGroupId { get; set; }
+
+        public GetAlarmsInvokeArgs()
         {
         }
     }

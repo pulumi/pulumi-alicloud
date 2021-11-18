@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sampleDs = pulumi.output(alicloud.slb.getAcls({ async: true }));
+ * const sampleDs = pulumi.output(alicloud.slb.getAcls());
  *
  * export const firstSlbAclId = sampleDs.acls[0].id;
  * ```
@@ -59,20 +59,20 @@ export interface GetAclsArgs {
     /**
      * A list of acls IDs to filter results.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by acl name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Id of resource group which acl belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -105,4 +105,31 @@ export interface GetAclsResult {
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
+}
+
+export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclsResult> {
+    return pulumi.output(args).apply(a => getAcls(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAcls.
+ */
+export interface GetAclsOutputArgs {
+    /**
+     * A list of acls IDs to filter results.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by acl name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which acl belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

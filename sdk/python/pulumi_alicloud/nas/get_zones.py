@@ -13,6 +13,7 @@ __all__ = [
     'GetZonesResult',
     'AwaitableGetZonesResult',
     'get_zones',
+    'get_zones_output',
 ]
 
 @pulumi.output_type
@@ -93,3 +94,24 @@ def get_zones(output_file: Optional[str] = None,
         id=__ret__.id,
         output_file=__ret__.output_file,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_zones)
+def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+    """
+    Provide  a data source to retrieve the type of zone used to create NAS file system.
+
+    > **NOTE:** Available in v1.140.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.nas.get_zones()
+    pulumi.export("alicloudNasZonesId", default.zones[0].zone_id)
+    ```
+    """
+    ...

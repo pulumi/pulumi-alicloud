@@ -13,6 +13,7 @@ __all__ = [
     'GetConfigMapsResult',
     'AwaitableGetConfigMapsResult',
     'get_config_maps',
+    'get_config_maps_output',
 ]
 
 @pulumi.output_type
@@ -159,3 +160,50 @@ def get_config_maps(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         namespace_id=__ret__.namespace_id,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_config_maps)
+def get_config_maps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                           namespace_id: Optional[pulumi.Input[str]] = None,
+                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigMapsResult]:
+    """
+    This data source provides the Sae Config Maps of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.130.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import json
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    config_map_name = config.get("configMapName")
+    if config_map_name is None:
+        config_map_name = "examplename"
+    example_namespace = alicloud.sae.Namespace("exampleNamespace",
+        namespace_id="cn-hangzhou:yourname",
+        namespace_name="example_value",
+        namespace_description="your_description")
+    example_config_map = alicloud.sae.ConfigMap("exampleConfigMap",
+        data=json.dumps({
+            "env.home": "/root",
+            "env.shell": "/bin/sh",
+        }),
+        namespace_id=example_namespace.namespace_id)
+    name_regex = example_namespace.namespace_id.apply(lambda namespace_id: alicloud.sae.get_config_maps(namespace_id=namespace_id,
+        name_regex="^example"))
+    pulumi.export("saeConfigMapId", name_regex.maps[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Config Map IDs.
+    :param str name_regex: A regex string to filter results by Config Map name.
+    :param str namespace_id: The NamespaceId of Config Maps.
+    """
+    ...

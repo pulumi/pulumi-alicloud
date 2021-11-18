@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Nas
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Nas
         ///             Type = "Performance",
         ///             ZoneId = "cn-beijing-e",
         ///         }));
-        ///         this.NasProtocolsProtocol = @default.Apply(@default =&gt; @default.Protocols[0]);
+        ///         this.NasProtocolsProtocol = @default.Apply(@default =&gt; @default.Protocols?[0]);
         ///     }
         /// 
         ///     [Output("nasProtocolsProtocol")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public static Task<GetProtocolsResult> InvokeAsync(GetProtocolsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? new GetProtocolsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provide  a data source to retrieve the type of protocol used to create NAS file system.
+        /// 
+        /// &gt; **NOTE:** Available in 1.42.0
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Nas.GetProtocols.InvokeAsync(new AliCloud.Nas.GetProtocolsArgs
+        ///         {
+        ///             OutputFile = "protocols.txt",
+        ///             Type = "Performance",
+        ///             ZoneId = "cn-beijing-e",
+        ///         }));
+        ///         this.NasProtocolsProtocol = @default.Apply(@default =&gt; @default.Protocols?[0]);
+        ///     }
+        /// 
+        ///     [Output("nasProtocolsProtocol")]
+        ///     public Output&lt;string&gt; NasProtocolsProtocol { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProtocolsResult> Invoke(GetProtocolsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? new GetProtocolsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -67,6 +104,28 @@ namespace Pulumi.AliCloud.Nas
         public string? ZoneId { get; set; }
 
         public GetProtocolsArgs()
+        {
+        }
+    }
+
+    public sealed class GetProtocolsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The file system type. Valid Values: `Performance` and `Capacity`.
+        /// </summary>
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
+
+        /// <summary>
+        /// String to filter results by zone id.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetProtocolsInvokeArgs()
         {
         }
     }

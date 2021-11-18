@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Ecs
     {
         public static Task<GetNetworkInterfacesResult> InvokeAsync(GetNetworkInterfacesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkInterfacesResult>("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", args ?? new GetNetworkInterfacesArgs(), options.WithVersion());
+
+        public static Output<GetNetworkInterfacesResult> Invoke(GetNetworkInterfacesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkInterfacesResult>("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", args ?? new GetNetworkInterfacesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -102,6 +106,96 @@ namespace Pulumi.AliCloud.Ecs
         public string? VswitchId { get; set; }
 
         public GetNetworkInterfacesArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworkInterfacesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// ID of the instance that the ENI is attached to.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// Name of the ENI.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("networkInterfaceName")]
+        public Input<string>? NetworkInterfaceName { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("primaryIpAddress")]
+        public Input<string>? PrimaryIpAddress { get; set; }
+
+        /// <summary>
+        /// Primary private IP of the ENI.
+        /// </summary>
+        [Input("privateIp")]
+        public Input<string>? PrivateIp { get; set; }
+
+        /// <summary>
+        /// The Id of resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
+        [Input("serviceManaged")]
+        public Input<bool>? ServiceManaged { get; set; }
+
+        /// <summary>
+        /// Current status of the ENI.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the ENI.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// ID of the VPC that the ENI belongs to.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// ID of the VSwitch that the ENI is linked to.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        public GetNetworkInterfacesInvokeArgs()
         {
         }
     }

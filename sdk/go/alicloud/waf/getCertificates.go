@@ -4,6 +4,9 @@
 package waf
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,82 @@ type GetCertificatesResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetCertificatesOutput(ctx *pulumi.Context, args GetCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetCertificatesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetCertificatesResult, error) {
+			args := v.(GetCertificatesArgs)
+			r, err := GetCertificates(ctx, &args, opts...)
+			return *r, err
+		}).(GetCertificatesResultOutput)
+}
+
+// A collection of arguments for invoking getCertificates.
+type GetCertificatesOutputArgs struct {
+	// The domain that you want to add to WAF.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// A list of Certificate IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// WAF instance ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by Certificate name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetCertificatesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCertificates.
+type GetCertificatesResultOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesResult)(nil)).Elem()
+}
+
+func (o GetCertificatesResultOutput) ToGetCertificatesResultOutput() GetCertificatesResultOutput {
+	return o
+}
+
+func (o GetCertificatesResultOutput) ToGetCertificatesResultOutputWithContext(ctx context.Context) GetCertificatesResultOutput {
+	return o
+}
+
+func (o GetCertificatesResultOutput) Certificates() GetCertificatesCertificateArrayOutput {
+	return o.ApplyT(func(v GetCertificatesResult) []GetCertificatesCertificate { return v.Certificates }).(GetCertificatesCertificateArrayOutput)
+}
+
+func (o GetCertificatesResultOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCertificatesResult) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCertificatesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCertificatesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCertificatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCertificatesResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetCertificatesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCertificatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCertificatesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCertificatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCertificatesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCertificatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCertificatesResultOutput{})
 }

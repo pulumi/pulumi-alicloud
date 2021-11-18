@@ -38,8 +38,8 @@ import (
 // 			ImageName:      pulumi.String("test-image"),
 // 			SourceImageId:  pulumi.String("m-bp1gxyhdswlsn18tu***"),
 // 			SourceRegionId: pulumi.String("cn-hangzhou"),
-// 			Tags: pulumi.StringMap{
-// 				"FinanceDept": pulumi.String("FinanceDeptJoshua"),
+// 			Tags: pulumi.AnyMap{
+// 				"FinanceDept": pulumi.Any("FinanceDeptJoshua"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -289,7 +289,7 @@ type ImageCopyArrayInput interface {
 type ImageCopyArray []ImageCopyInput
 
 func (ImageCopyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ImageCopy)(nil))
+	return reflect.TypeOf((*[]*ImageCopy)(nil)).Elem()
 }
 
 func (i ImageCopyArray) ToImageCopyArrayOutput() ImageCopyArrayOutput {
@@ -314,7 +314,7 @@ type ImageCopyMapInput interface {
 type ImageCopyMap map[string]ImageCopyInput
 
 func (ImageCopyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ImageCopy)(nil))
+	return reflect.TypeOf((*map[string]*ImageCopy)(nil)).Elem()
 }
 
 func (i ImageCopyMap) ToImageCopyMapOutput() ImageCopyMapOutput {
@@ -325,9 +325,7 @@ func (i ImageCopyMap) ToImageCopyMapOutputWithContext(ctx context.Context) Image
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCopyMapOutput)
 }
 
-type ImageCopyOutput struct {
-	*pulumi.OutputState
-}
+type ImageCopyOutput struct{ *pulumi.OutputState }
 
 func (ImageCopyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ImageCopy)(nil))
@@ -346,14 +344,12 @@ func (o ImageCopyOutput) ToImageCopyPtrOutput() ImageCopyPtrOutput {
 }
 
 func (o ImageCopyOutput) ToImageCopyPtrOutputWithContext(ctx context.Context) ImageCopyPtrOutput {
-	return o.ApplyT(func(v ImageCopy) *ImageCopy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageCopy) *ImageCopy {
 		return &v
 	}).(ImageCopyPtrOutput)
 }
 
-type ImageCopyPtrOutput struct {
-	*pulumi.OutputState
-}
+type ImageCopyPtrOutput struct{ *pulumi.OutputState }
 
 func (ImageCopyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ImageCopy)(nil))
@@ -365,6 +361,16 @@ func (o ImageCopyPtrOutput) ToImageCopyPtrOutput() ImageCopyPtrOutput {
 
 func (o ImageCopyPtrOutput) ToImageCopyPtrOutputWithContext(ctx context.Context) ImageCopyPtrOutput {
 	return o
+}
+
+func (o ImageCopyPtrOutput) Elem() ImageCopyOutput {
+	return o.ApplyT(func(v *ImageCopy) ImageCopy {
+		if v != nil {
+			return *v
+		}
+		var ret ImageCopy
+		return ret
+	}).(ImageCopyOutput)
 }
 
 type ImageCopyArrayOutput struct{ *pulumi.OutputState }
@@ -408,6 +414,10 @@ func (o ImageCopyMapOutput) MapIndex(k pulumi.StringInput) ImageCopyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageCopyInput)(nil)).Elem(), &ImageCopy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageCopyPtrInput)(nil)).Elem(), &ImageCopy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageCopyArrayInput)(nil)).Elem(), ImageCopyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageCopyMapInput)(nil)).Elem(), ImageCopyMap{})
 	pulumi.RegisterOutputType(ImageCopyOutput{})
 	pulumi.RegisterOutputType(ImageCopyPtrOutput{})
 	pulumi.RegisterOutputType(ImageCopyArrayOutput{})

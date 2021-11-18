@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_id"],
  *     status: "REGISTERED",
  * });
- * export const desktopAccessType = _default.then(_default => _default.sites[0].desktopAccessType);
+ * export const desktopAccessType = _default.then(_default => _default.sites?[0]?.desktopAccessType);
  * ```
  */
 export function getSimpleOfficeSites(args?: GetSimpleOfficeSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetSimpleOfficeSitesResult> {
@@ -49,16 +49,16 @@ export interface GetSimpleOfficeSitesArgs {
     /**
      * A list of Simple Office Site IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Simple Office Site name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -75,4 +75,27 @@ export interface GetSimpleOfficeSitesResult {
     readonly outputFile?: string;
     readonly sites: outputs.eds.GetSimpleOfficeSitesSite[];
     readonly status?: string;
+}
+
+export function getSimpleOfficeSitesOutput(args?: GetSimpleOfficeSitesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSimpleOfficeSitesResult> {
+    return pulumi.output(args).apply(a => getSimpleOfficeSites(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSimpleOfficeSites.
+ */
+export interface GetSimpleOfficeSitesOutputArgs {
+    /**
+     * A list of Simple Office Site IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Simple Office Site name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+     */
+    status?: pulumi.Input<string>;
 }

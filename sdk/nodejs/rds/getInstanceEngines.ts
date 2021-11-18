@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     engineVersion: "5.6",
  *     instanceChargeType: "PostPaid",
  *     outputFile: "./engines.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstDbCategory = resources.instanceEngines[0].category;
  * ```
@@ -54,32 +54,32 @@ export interface GetInstanceEnginesArgs {
     /**
      * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
-    readonly category?: string;
+    category?: string;
     /**
      * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
      */
-    readonly dbInstanceStorageType?: string;
+    dbInstanceStorageType?: string;
     /**
      * Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
      */
-    readonly engine?: string;
+    engine?: string;
     /**
      * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
-    readonly engineVersion?: string;
+    engineVersion?: string;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
-    readonly instanceChargeType?: string;
+    instanceChargeType?: string;
     /**
      * Whether to show multi available zone. Default false to not show multi availability zone.
      */
-    readonly multiZone?: boolean;
-    readonly outputFile?: string;
+    multiZone?: boolean;
+    outputFile?: string;
     /**
      * The Zone to launch the DB instance.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -115,4 +115,43 @@ export interface GetInstanceEnginesResult {
     readonly multiZone?: boolean;
     readonly outputFile?: string;
     readonly zoneId?: string;
+}
+
+export function getInstanceEnginesOutput(args?: GetInstanceEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceEnginesResult> {
+    return pulumi.output(args).apply(a => getInstanceEngines(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceEngines.
+ */
+export interface GetInstanceEnginesOutputArgs {
+    /**
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     */
+    category?: pulumi.Input<string>;
+    /**
+     * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
+     */
+    dbInstanceStorageType?: pulumi.Input<string>;
+    /**
+     * Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+     */
+    engineVersion?: pulumi.Input<string>;
+    /**
+     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     */
+    instanceChargeType?: pulumi.Input<string>;
+    /**
+     * Whether to show multi available zone. Default false to not show multi availability zone.
+     */
+    multiZone?: pulumi.Input<boolean>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Zone to launch the DB instance.
+     */
+    zoneId?: pulumi.Input<string>;
 }

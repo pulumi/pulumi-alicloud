@@ -148,52 +148,52 @@ export interface CommonBandwithPackageState {
     /**
      * The bandwidth of the common bandwidth package. Unit: Mbps.
      */
-    readonly bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string>;
     /**
      * The name of the common bandwidth package.
      */
-    readonly bandwidthPackageName?: pulumi.Input<string>;
+    bandwidthPackageName?: pulumi.Input<string>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The description of the common bandwidth package instance.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly force?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    force?: pulumi.Input<string>;
     /**
      * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
      */
-    readonly internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string>;
     /**
      * The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
      */
-    readonly isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.120.0. New field `bandwidthPackageName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to `100`. Valid values: [10-100].
      */
-    readonly ratio?: pulumi.Input<number>;
+    ratio?: pulumi.Input<number>;
     /**
      * The Id of resource group which the common bandwidth package belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * (Available in 1.120.0+) The status of bandwidth package.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The zone of bandwidth package.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -203,46 +203,46 @@ export interface CommonBandwithPackageArgs {
     /**
      * The bandwidth of the common bandwidth package. Unit: Mbps.
      */
-    readonly bandwidth: pulumi.Input<string>;
+    bandwidth: pulumi.Input<string>;
     /**
      * The name of the common bandwidth package.
      */
-    readonly bandwidthPackageName?: pulumi.Input<string>;
+    bandwidthPackageName?: pulumi.Input<string>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The description of the common bandwidth package instance.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly force?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    force?: pulumi.Input<string>;
     /**
      * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
      */
-    readonly internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string>;
     /**
      * The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
      */
-    readonly isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.120.0. New field `bandwidthPackageName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to `100`. Valid values: [10-100].
      */
-    readonly ratio?: pulumi.Input<number>;
+    ratio?: pulumi.Input<number>;
     /**
      * The Id of resource group which the common bandwidth package belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The zone of bandwidth package.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

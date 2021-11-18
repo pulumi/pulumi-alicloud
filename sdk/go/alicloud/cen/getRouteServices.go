@@ -4,6 +4,9 @@
 package cen
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,4 +86,102 @@ type GetRouteServicesResult struct {
 	Services []GetRouteServicesService `pulumi:"services"`
 	// The status of the cloud service.
 	Status *string `pulumi:"status"`
+}
+
+func GetRouteServicesOutput(ctx *pulumi.Context, args GetRouteServicesOutputArgs, opts ...pulumi.InvokeOption) GetRouteServicesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRouteServicesResult, error) {
+			args := v.(GetRouteServicesArgs)
+			r, err := GetRouteServices(ctx, &args, opts...)
+			return *r, err
+		}).(GetRouteServicesResultOutput)
+}
+
+// A collection of arguments for invoking getRouteServices.
+type GetRouteServicesOutputArgs struct {
+	// The region of the network instances that access the cloud services.
+	AccessRegionId pulumi.StringPtrInput `pulumi:"accessRegionId"`
+	// -(Required, ForceNew) The ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// -(Optional, ForceNew) The domain name or IP address of the cloud service.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The region of the cloud service.
+	HostRegionId pulumi.StringPtrInput `pulumi:"hostRegionId"`
+	// The VPC associated with the cloud service.
+	HostVpcId  pulumi.StringPtrInput `pulumi:"hostVpcId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetRouteServicesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteServicesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRouteServices.
+type GetRouteServicesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRouteServicesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteServicesResult)(nil)).Elem()
+}
+
+func (o GetRouteServicesResultOutput) ToGetRouteServicesResultOutput() GetRouteServicesResultOutput {
+	return o
+}
+
+func (o GetRouteServicesResultOutput) ToGetRouteServicesResultOutputWithContext(ctx context.Context) GetRouteServicesResultOutput {
+	return o
+}
+
+// The region of the network instances that access the cloud services.
+func (o GetRouteServicesResultOutput) AccessRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteServicesResult) *string { return v.AccessRegionId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the CEN instance.
+func (o GetRouteServicesResultOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteServicesResult) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The domain name or IP address of the cloud service.
+func (o GetRouteServicesResultOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteServicesResult) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// The region of the cloud service.
+func (o GetRouteServicesResultOutput) HostRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteServicesResult) *string { return v.HostRegionId }).(pulumi.StringPtrOutput)
+}
+
+// The VPC associated with the cloud service.
+func (o GetRouteServicesResultOutput) HostVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteServicesResult) *string { return v.HostVpcId }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRouteServicesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteServicesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of CEN Route Service IDs.
+func (o GetRouteServicesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteServicesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRouteServicesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteServicesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of CEN Route Services. Each element contains the following attributes:
+func (o GetRouteServicesResultOutput) Services() GetRouteServicesServiceArrayOutput {
+	return o.ApplyT(func(v GetRouteServicesResult) []GetRouteServicesService { return v.Services }).(GetRouteServicesServiceArrayOutput)
+}
+
+// The status of the cloud service.
+func (o GetRouteServicesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteServicesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRouteServicesResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.SimpleApplicationServer
 {
@@ -37,12 +38,12 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.SimpleApplicationServerInstanceId1 = ids.Apply(ids =&gt; ids.Instances[0].Id);
+        ///         this.SimpleApplicationServerInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.SimpleApplicationServer.GetInstances.InvokeAsync(new AliCloud.SimpleApplicationServer.GetInstancesArgs
         ///         {
         ///             NameRegex = "^my-Instance",
         ///         }));
-        ///         this.SimpleApplicationServerInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances[0].Id);
+        ///         this.SimpleApplicationServerInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
         ///     }
         /// 
         ///     [Output("simpleApplicationServerInstanceId1")]
@@ -56,6 +57,52 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:simpleapplicationserver/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Simple Application Server Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.SimpleApplicationServer.GetInstances.InvokeAsync(new AliCloud.SimpleApplicationServer.GetInstancesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.SimpleApplicationServerInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.SimpleApplicationServer.GetInstances.InvokeAsync(new AliCloud.SimpleApplicationServer.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "^my-Instance",
+        ///         }));
+        ///         this.SimpleApplicationServerInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("simpleApplicationServerInstanceId1")]
+        ///     public Output&lt;string&gt; SimpleApplicationServerInstanceId1 { get; set; }
+        ///     [Output("simpleApplicationServerInstanceId2")]
+        ///     public Output&lt;string&gt; SimpleApplicationServerInstanceId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:simpleapplicationserver/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -95,6 +142,46 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public string? Status { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Instance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Instance name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The billing method of the simple application server.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

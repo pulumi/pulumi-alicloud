@@ -128,15 +128,15 @@ export interface ControlPolicyOrderState {
     /**
      * The unique ID of the access control policy.
      */
-    readonly aclUuid?: pulumi.Input<string>;
+    aclUuid?: pulumi.Input<string>;
     /**
      * Direction. Valid values: `in`, `out`.
      */
-    readonly direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string>;
     /**
      * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
      */
-    readonly order?: pulumi.Input<number>;
+    order?: pulumi.Input<number>;
 }
 
 /**
@@ -146,13 +146,13 @@ export interface ControlPolicyOrderArgs {
     /**
      * The unique ID of the access control policy.
      */
-    readonly aclUuid: pulumi.Input<string>;
+    aclUuid: pulumi.Input<string>;
     /**
      * Direction. Valid values: `in`, `out`.
      */
-    readonly direction: pulumi.Input<string>;
+    direction: pulumi.Input<string>;
     /**
      * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
      */
-    readonly order?: pulumi.Input<number>;
+    order?: pulumi.Input<number>;
 }

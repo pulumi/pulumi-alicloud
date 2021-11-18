@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const defaultInstances = alicloud.waf.getInstances({});
  * const defaultDomain = new alicloud.waf.Domain("defaultDomain", {
  *     domainName: "you domain",
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids[0]),
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?[0]),
  *     isAccessProduct: "On",
  *     sourceIps: ["1.1.1.1"],
  *     clusterType: "PhysicalCluster",
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const defaultProtectionModule = new alicloud.waf.ProtectionModule("defaultProtectionModule", {
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids[0]),
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?[0]),
  *     domain: defaultDomain.domainName,
  *     defenseType: "ac_cc",
  *     mode: 0,
@@ -172,15 +172,15 @@ export interface ProtectionModuleState {
      * * `antifraud`: Data Risk Control.
      * * `normalized`: Positive Security Model.
      */
-    readonly defenseType?: pulumi.Input<string>;
+    defenseType?: pulumi.Input<string>;
     /**
      * The domain name that is added to WAF.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The ID of the WAF instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defenseType` parameter.
      * * The `defenseType` is `waf`. `0`: block mode. `1`: warn mode.
@@ -189,13 +189,13 @@ export interface ProtectionModuleState {
      * * The `defenseType` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
      * * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
      */
-    readonly mode?: pulumi.Input<number>;
+    mode?: pulumi.Input<number>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
      * * `0`: disables the protection module.
      * * `1`: enables the protection module.
      */
-    readonly status?: pulumi.Input<number>;
+    status?: pulumi.Input<number>;
 }
 
 /**
@@ -210,15 +210,15 @@ export interface ProtectionModuleArgs {
      * * `antifraud`: Data Risk Control.
      * * `normalized`: Positive Security Model.
      */
-    readonly defenseType: pulumi.Input<string>;
+    defenseType: pulumi.Input<string>;
     /**
      * The domain name that is added to WAF.
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
     /**
      * The ID of the WAF instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defenseType` parameter.
      * * The `defenseType` is `waf`. `0`: block mode. `1`: warn mode.
@@ -227,11 +227,11 @@ export interface ProtectionModuleArgs {
      * * The `defenseType` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
      * * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
      */
-    readonly mode: pulumi.Input<number>;
+    mode: pulumi.Input<number>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
      * * `0`: disables the protection module.
      * * `1`: enables the protection module.
      */
-    readonly status?: pulumi.Input<number>;
+    status?: pulumi.Input<number>;
 }

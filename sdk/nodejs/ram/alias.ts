@@ -66,12 +66,12 @@ export class Alias extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Alias resources.
  */
 export interface AliasState {
-    readonly accountAlias?: pulumi.Input<string>;
+    accountAlias?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Alias resource.
  */
 export interface AliasArgs {
-    readonly accountAlias: pulumi.Input<string>;
+    accountAlias: pulumi.Input<string>;
 }

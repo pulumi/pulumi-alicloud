@@ -99,19 +99,19 @@ export interface GroupState {
     /**
      * The description of the api gateway group. Defaults to null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the api gateway group. Defaults to null.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
      */
-    readonly subDomain?: pulumi.Input<string>;
+    subDomain?: pulumi.Input<string>;
     /**
      * (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
      */
-    readonly vpcDomain?: pulumi.Input<string>;
+    vpcDomain?: pulumi.Input<string>;
 }
 
 /**
@@ -121,9 +121,9 @@ export interface GroupArgs {
     /**
      * The description of the api gateway group. Defaults to null.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The name of the api gateway group. Defaults to null.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

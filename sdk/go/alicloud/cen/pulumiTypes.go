@@ -1741,7 +1741,7 @@ func (i GetRouteMapsMapArgs) ToGetRouteMapsMapOutputWithContext(ctx context.Cont
 // GetRouteMapsMapArrayInput is an input type that accepts GetRouteMapsMapArray and GetRouteMapsMapArrayOutput values.
 // You can construct a concrete instance of `GetRouteMapsMapArrayInput` via:
 //
-//          GetRouteMapsMapArray{ GetRouteMapsMap{ "key": GetRouteMapsArgs{...} } }
+//          GetRouteMapsMapArray{ GetRouteMapsMapArgs{...} }
 type GetRouteMapsMapArrayInput interface {
 	pulumi.Input
 
@@ -3659,6 +3659,50 @@ func (o GetVbrHealthChecksCheckArrayOutput) Index(i pulumi.IntInput) GetVbrHealt
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentZoneMappingInput)(nil)).Elem(), TransitRouterVpcAttachmentZoneMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentZoneMappingArrayInput)(nil)).Elem(), TransitRouterVpcAttachmentZoneMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBandwidthLimitsLimitInput)(nil)).Elem(), GetBandwidthLimitsLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBandwidthLimitsLimitArrayInput)(nil)).Elem(), GetBandwidthLimitsLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBandwidthPackagesPackageInput)(nil)).Elem(), GetBandwidthPackagesPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBandwidthPackagesPackageArrayInput)(nil)).Elem(), GetBandwidthPackagesPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlowlogsFlowlogInput)(nil)).Elem(), GetFlowlogsFlowlogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlowlogsFlowlogArrayInput)(nil)).Elem(), GetFlowlogsFlowlogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachmentsAttachmentInput)(nil)).Elem(), GetInstanceAttachmentsAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachmentsAttachmentArrayInput)(nil)).Elem(), GetInstanceAttachmentsAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateZonesZoneInput)(nil)).Elem(), GetPrivateZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateZonesZoneArrayInput)(nil)).Elem(), GetPrivateZonesZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionRouteEntriesEntryInput)(nil)).Elem(), GetRegionRouteEntriesEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionRouteEntriesEntryArrayInput)(nil)).Elem(), GetRegionRouteEntriesEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteEntriesEntryInput)(nil)).Elem(), GetRouteEntriesEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteEntriesEntryArrayInput)(nil)).Elem(), GetRouteEntriesEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteEntriesEntryConflictInput)(nil)).Elem(), GetRouteEntriesEntryConflictArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteEntriesEntryConflictArrayInput)(nil)).Elem(), GetRouteEntriesEntryConflictArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteMapsMapInput)(nil)).Elem(), GetRouteMapsMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteMapsMapArrayInput)(nil)).Elem(), GetRouteMapsMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteServicesServiceInput)(nil)).Elem(), GetRouteServicesServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteServicesServiceArrayInput)(nil)).Elem(), GetRouteServicesServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterPeerAttachmentsAttachmentInput)(nil)).Elem(), GetTransitRouterPeerAttachmentsAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterPeerAttachmentsAttachmentArrayInput)(nil)).Elem(), GetTransitRouterPeerAttachmentsAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterRouteEntriesEntryInput)(nil)).Elem(), GetTransitRouterRouteEntriesEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterRouteEntriesEntryArrayInput)(nil)).Elem(), GetTransitRouterRouteEntriesEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterRouteTableAssociationsAssociationInput)(nil)).Elem(), GetTransitRouterRouteTableAssociationsAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterRouteTableAssociationsAssociationArrayInput)(nil)).Elem(), GetTransitRouterRouteTableAssociationsAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterRouteTablePropagationsPropagationInput)(nil)).Elem(), GetTransitRouterRouteTablePropagationsPropagationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterRouteTablePropagationsPropagationArrayInput)(nil)).Elem(), GetTransitRouterRouteTablePropagationsPropagationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterRouteTablesTableInput)(nil)).Elem(), GetTransitRouterRouteTablesTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterRouteTablesTableArrayInput)(nil)).Elem(), GetTransitRouterRouteTablesTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVbrAttachmentsAttachmentInput)(nil)).Elem(), GetTransitRouterVbrAttachmentsAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVbrAttachmentsAttachmentArrayInput)(nil)).Elem(), GetTransitRouterVbrAttachmentsAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentInput)(nil)).Elem(), GetTransitRouterVpcAttachmentsAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentArrayInput)(nil)).Elem(), GetTransitRouterVpcAttachmentsAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentZoneMappingInput)(nil)).Elem(), GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput)(nil)).Elem(), GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRoutersTransitRouterInput)(nil)).Elem(), GetTransitRoutersTransitRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRoutersTransitRouterArrayInput)(nil)).Elem(), GetTransitRoutersTransitRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVbrHealthChecksCheckInput)(nil)).Elem(), GetVbrHealthChecksCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVbrHealthChecksCheckArrayInput)(nil)).Elem(), GetVbrHealthChecksCheckArray{})
 	pulumi.RegisterOutputType(TransitRouterVpcAttachmentZoneMappingOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpcAttachmentZoneMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetBandwidthLimitsLimitOutput{})

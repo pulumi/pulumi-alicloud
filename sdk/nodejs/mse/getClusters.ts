@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(alicloud.mse.getClusters({
  *     ids: ["mse-cn-0d9xxxx"],
  *     status: "INIT_SUCCESS",
- * }, { async: true }));
+ * }));
  *
  * export const clusterId = example.clusters[0].id;
  * ```
@@ -51,22 +51,22 @@ export interface GetClustersArgs {
     /**
      * The alias name of MSE Cluster.
      */
-    readonly clusterAliasName?: string;
-    readonly enableDetails?: boolean;
+    clusterAliasName?: string;
+    enableDetails?: boolean;
     /**
      * A list of MSE Cluster ids.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter the results by the cluster alias name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
-    readonly requestPars?: string;
+    nameRegex?: string;
+    outputFile?: string;
+    requestPars?: string;
     /**
      * The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -98,4 +98,33 @@ export interface GetClustersResult {
      * The status of MSE Cluster.
      */
     readonly status?: string;
+}
+
+export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
+    return pulumi.output(args).apply(a => getClusters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusters.
+ */
+export interface GetClustersOutputArgs {
+    /**
+     * The alias name of MSE Cluster.
+     */
+    clusterAliasName?: pulumi.Input<string>;
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of MSE Cluster ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter the results by the cluster alias name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    requestPars?: pulumi.Input<string>;
+    /**
+     * The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
+     */
+    status?: pulumi.Input<string>;
 }

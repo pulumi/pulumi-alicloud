@@ -128,19 +128,19 @@ export interface MscSubContractState {
     /**
      * The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
      */
-    readonly contactName?: pulumi.Input<string>;
+    contactName?: pulumi.Input<string>;
     /**
      * The User's Contact Email Address.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * The User's Telephone.
      */
-    readonly mobile?: pulumi.Input<string>;
+    mobile?: pulumi.Input<string>;
     /**
      * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
      */
-    readonly position?: pulumi.Input<string>;
+    position?: pulumi.Input<string>;
 }
 
 /**
@@ -150,17 +150,17 @@ export interface MscSubContractArgs {
     /**
      * The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
      */
-    readonly contactName: pulumi.Input<string>;
+    contactName: pulumi.Input<string>;
     /**
      * The User's Contact Email Address.
      */
-    readonly email: pulumi.Input<string>;
+    email: pulumi.Input<string>;
     /**
      * The User's Telephone.
      */
-    readonly mobile: pulumi.Input<string>;
+    mobile: pulumi.Input<string>;
     /**
      * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
      */
-    readonly position: pulumi.Input<string>;
+    position: pulumi.Input<string>;
 }

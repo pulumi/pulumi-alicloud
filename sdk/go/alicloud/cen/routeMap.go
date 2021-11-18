@@ -40,13 +40,13 @@ import (
 // 			return err
 // 		}
 // 		_, err = providers.Newalicloud(ctx, "vpc00Region", &providers.alicloudArgs{
-// 			Region: pulumi.String("cn-hangzhou"),
+// 			Region: "cn-hangzhou",
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = providers.Newalicloud(ctx, "vpc01Region", &providers.alicloudArgs{
-// 			Region: pulumi.String("cn-shanghai"),
+// 			Region: "cn-shanghai",
 // 		})
 // 		if err != nil {
 // 			return err
@@ -564,7 +564,7 @@ type RouteMapArrayInput interface {
 type RouteMapArray []RouteMapInput
 
 func (RouteMapArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RouteMap)(nil))
+	return reflect.TypeOf((*[]*RouteMap)(nil)).Elem()
 }
 
 func (i RouteMapArray) ToRouteMapArrayOutput() RouteMapArrayOutput {
@@ -589,7 +589,7 @@ type RouteMapMapInput interface {
 type RouteMapMap map[string]RouteMapInput
 
 func (RouteMapMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RouteMap)(nil))
+	return reflect.TypeOf((*map[string]*RouteMap)(nil)).Elem()
 }
 
 func (i RouteMapMap) ToRouteMapMapOutput() RouteMapMapOutput {
@@ -600,9 +600,7 @@ func (i RouteMapMap) ToRouteMapMapOutputWithContext(ctx context.Context) RouteMa
 	return pulumi.ToOutputWithContext(ctx, i).(RouteMapMapOutput)
 }
 
-type RouteMapOutput struct {
-	*pulumi.OutputState
-}
+type RouteMapOutput struct{ *pulumi.OutputState }
 
 func (RouteMapOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RouteMap)(nil))
@@ -621,14 +619,12 @@ func (o RouteMapOutput) ToRouteMapPtrOutput() RouteMapPtrOutput {
 }
 
 func (o RouteMapOutput) ToRouteMapPtrOutputWithContext(ctx context.Context) RouteMapPtrOutput {
-	return o.ApplyT(func(v RouteMap) *RouteMap {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteMap) *RouteMap {
 		return &v
 	}).(RouteMapPtrOutput)
 }
 
-type RouteMapPtrOutput struct {
-	*pulumi.OutputState
-}
+type RouteMapPtrOutput struct{ *pulumi.OutputState }
 
 func (RouteMapPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RouteMap)(nil))
@@ -640,6 +636,16 @@ func (o RouteMapPtrOutput) ToRouteMapPtrOutput() RouteMapPtrOutput {
 
 func (o RouteMapPtrOutput) ToRouteMapPtrOutputWithContext(ctx context.Context) RouteMapPtrOutput {
 	return o
+}
+
+func (o RouteMapPtrOutput) Elem() RouteMapOutput {
+	return o.ApplyT(func(v *RouteMap) RouteMap {
+		if v != nil {
+			return *v
+		}
+		var ret RouteMap
+		return ret
+	}).(RouteMapOutput)
 }
 
 type RouteMapArrayOutput struct{ *pulumi.OutputState }
@@ -683,6 +689,10 @@ func (o RouteMapMapOutput) MapIndex(k pulumi.StringInput) RouteMapOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMapInput)(nil)).Elem(), &RouteMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMapPtrInput)(nil)).Elem(), &RouteMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMapArrayInput)(nil)).Elem(), RouteMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMapMapInput)(nil)).Elem(), RouteMapMap{})
 	pulumi.RegisterOutputType(RouteMapOutput{})
 	pulumi.RegisterOutputType(RouteMapPtrOutput{})
 	pulumi.RegisterOutputType(RouteMapArrayOutput{})

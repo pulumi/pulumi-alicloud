@@ -13,6 +13,7 @@ __all__ = [
     'GetAppsResult',
     'AwaitableGetAppsResult',
     'get_apps',
+    'get_apps_output',
 ]
 
 @pulumi.output_type
@@ -127,6 +128,29 @@ def get_apps(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.138.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "example_value"
+    default = alicloud.mhub.App("default",
+        app_name=name,
+        product_id=alicloud_mhub_product["default"]["id"],
+        package_name="com.test.android",
+        type="2")
+    ids = alicloud.mhub.get_apps()
+    pulumi.export("mhubAppId1", ids.apps[0].id)
+    name_regex = alicloud.mhub.get_apps(name_regex="^my-App")
+    pulumi.export("mhubAppId2", name_regex.apps[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of App IDs. The value formats as `<product_id>:<app_key>`
@@ -157,3 +181,49 @@ def get_apps(enable_details: Optional[bool] = None,
         os_type=__ret__.os_type,
         output_file=__ret__.output_file,
         product_id=__ret__.product_id)
+
+
+@_utilities.lift_output_func(get_apps)
+def get_apps_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                    os_type: Optional[pulumi.Input[Optional[str]]] = None,
+                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                    product_id: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppsResult]:
+    """
+    This data source provides the Mhub Apps of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.138.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "example_value"
+    default = alicloud.mhub.App("default",
+        app_name=name,
+        product_id=alicloud_mhub_product["default"]["id"],
+        package_name="com.test.android",
+        type="2")
+    ids = alicloud.mhub.get_apps()
+    pulumi.export("mhubAppId1", ids.apps[0].id)
+    name_regex = alicloud.mhub.get_apps(name_regex="^my-App")
+    pulumi.export("mhubAppId2", name_regex.apps[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of App IDs. The value formats as `<product_id>:<app_key>`
+    :param str name_regex: A regex string to filter results by App name.
+    :param str os_type: The os type. Valid values: `Android` and `iOS`.
+    :param str product_id: The ID of the Product.
+    """
+    ...

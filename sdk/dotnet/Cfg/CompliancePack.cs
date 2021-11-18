@@ -49,12 +49,12 @@ namespace Pulumi.AliCloud.Cfg
     ///             ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
     ///             TagKeyScope = "tfTest",
     ///             TagValueScope = "tfTest 123",
-    ///             ResourceGroupIdsScope = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids[0]),
-    ///             ExcludeResourceIdsScope = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances[0].Id),
+    ///             ResourceGroupIdsScope = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids?[0]),
+    ///             ExcludeResourceIdsScope = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances?[0]?.Id),
     ///             RegionIdsScope = "cn-hangzhou",
     ///             InputParameters = 
     ///             {
-    ///                 { "vpcIds", defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances[0].VpcId) },
+    ///                 { "vpcIds", defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances?[0]?.VpcId) },
     ///             },
     ///         });
     ///         var defaultCompliancePack = new AliCloud.Cfg.CompliancePack("defaultCompliancePack", new AliCloud.Cfg.CompliancePackArgs

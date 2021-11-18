@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstRosChangeSetId = example.then(example => example.sets[0].id);
+ * export const firstRosChangeSetId = example.then(example => example.sets?[0]?.id);
  * ```
  */
 export function getChangeSets(args: GetChangeSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetChangeSetsResult> {
@@ -52,28 +52,28 @@ export interface GetChangeSetsArgs {
     /**
      * The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      */
-    readonly changeSetName?: string;
+    changeSetName?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Change Set IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Change Set name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
      */
-    readonly stackId: string;
+    stackId: string;
     /**
      * The status of the change set.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -93,4 +93,39 @@ export interface GetChangeSetsResult {
     readonly sets: outputs.ros.GetChangeSetsSet[];
     readonly stackId: string;
     readonly status?: string;
+}
+
+export function getChangeSetsOutput(args: GetChangeSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChangeSetsResult> {
+    return pulumi.output(args).apply(a => getChangeSets(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getChangeSets.
+ */
+export interface GetChangeSetsOutputArgs {
+    /**
+     * The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+     */
+    changeSetName?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Change Set IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Change Set name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+     */
+    stackId: pulumi.Input<string>;
+    /**
+     * The status of the change set.
+     */
+    status?: pulumi.Input<string>;
 }

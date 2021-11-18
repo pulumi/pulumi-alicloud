@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Emr
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.Emr
         ///             InstanceType = "ecs.g5.xlarge",
         ///             ZoneId = "cn-huhehaote-a",
         ///         }));
-        ///         this.DataDiskType = @default.Apply(@default =&gt; @default.Types[0].Value);
+        ///         this.DataDiskType = @default.Apply(@default =&gt; @default.Types?[0]?.Value);
         ///     }
         /// 
         ///     [Output("dataDiskType")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public static Task<GetDiskTypesResult> InvokeAsync(GetDiskTypesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and 
+        /// system disk types available in Alibaba Cloud account when create a emr cluster.
+        /// 
+        /// &gt; **NOTE:** Available in 1.60.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Emr.GetDiskTypes.InvokeAsync(new AliCloud.Emr.GetDiskTypesArgs
+        ///         {
+        ///             ClusterType = "HADOOP",
+        ///             DestinationResource = "DataDisk",
+        ///             InstanceChargeType = "PostPaid",
+        ///             InstanceType = "ecs.g5.xlarge",
+        ///             ZoneId = "cn-huhehaote-a",
+        ///         }));
+        ///         this.DataDiskType = @default.Apply(@default =&gt; @default.Types?[0]?.Value);
+        ///     }
+        /// 
+        ///     [Output("dataDiskType")]
+        ///     public Output&lt;string&gt; DataDiskType { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDiskTypesResult> Invoke(GetDiskTypesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -88,6 +128,46 @@ namespace Pulumi.AliCloud.Emr
         public string? ZoneId { get; set; }
 
         public GetDiskTypesArgs()
+        {
+        }
+    }
+
+    public sealed class GetDiskTypesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
+        /// </summary>
+        [Input("clusterType", required: true)]
+        public Input<string> ClusterType { get; set; } = null!;
+
+        /// <summary>
+        /// The destination resource of emr cluster instance
+        /// </summary>
+        [Input("destinationResource", required: true)]
+        public Input<string> DestinationResource { get; set; } = null!;
+
+        /// <summary>
+        /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+        /// </summary>
+        [Input("instanceChargeType", required: true)]
+        public Input<string> InstanceChargeType { get; set; } = null!;
+
+        /// <summary>
+        /// The ecs instance type of create emr cluster instance.
+        /// </summary>
+        [Input("instanceType", required: true)]
+        public Input<string> InstanceType { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Zone to create emr cluster instance.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetDiskTypesInvokeArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package mns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,72 @@ type GetTopicSubscriptionsResult struct {
 	// A list of subscriptions. Each element contains the following attributes:
 	Subscriptions []GetTopicSubscriptionsSubscription `pulumi:"subscriptions"`
 	TopicName     string                              `pulumi:"topicName"`
+}
+
+func GetTopicSubscriptionsOutput(ctx *pulumi.Context, args GetTopicSubscriptionsOutputArgs, opts ...pulumi.InvokeOption) GetTopicSubscriptionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTopicSubscriptionsResult, error) {
+			args := v.(GetTopicSubscriptionsArgs)
+			r, err := GetTopicSubscriptions(ctx, &args, opts...)
+			return *r, err
+		}).(GetTopicSubscriptionsResultOutput)
+}
+
+// A collection of arguments for invoking getTopicSubscriptions.
+type GetTopicSubscriptionsOutputArgs struct {
+	// A string to filter resulting subscriptions of the topic by their name prefixs.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
+}
+
+func (GetTopicSubscriptionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicSubscriptionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTopicSubscriptions.
+type GetTopicSubscriptionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetTopicSubscriptionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicSubscriptionsResult)(nil)).Elem()
+}
+
+func (o GetTopicSubscriptionsResultOutput) ToGetTopicSubscriptionsResultOutput() GetTopicSubscriptionsResultOutput {
+	return o
+}
+
+func (o GetTopicSubscriptionsResultOutput) ToGetTopicSubscriptionsResultOutputWithContext(ctx context.Context) GetTopicSubscriptionsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTopicSubscriptionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicSubscriptionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTopicSubscriptionsResultOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTopicSubscriptionsResult) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// A list of subscription names.
+func (o GetTopicSubscriptionsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTopicSubscriptionsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTopicSubscriptionsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTopicSubscriptionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of subscriptions. Each element contains the following attributes:
+func (o GetTopicSubscriptionsResultOutput) Subscriptions() GetTopicSubscriptionsSubscriptionArrayOutput {
+	return o.ApplyT(func(v GetTopicSubscriptionsResult) []GetTopicSubscriptionsSubscription { return v.Subscriptions }).(GetTopicSubscriptionsSubscriptionArrayOutput)
+}
+
+func (o GetTopicSubscriptionsResultOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicSubscriptionsResult) string { return v.TopicName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTopicSubscriptionsResultOutput{})
 }

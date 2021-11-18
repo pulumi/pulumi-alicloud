@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const nameRegex = alicloud.arms.getAlertContactGroups({
  *     nameRegex: "^my-AlertContactGroup",
  * });
- * export const armsAlertContactGroupId = nameRegex.then(nameRegex => nameRegex.groups[0].id);
+ * export const armsAlertContactGroupId = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
  * ```
  */
 export function getAlertContactGroups(args?: GetAlertContactGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertContactGroupsResult> {
@@ -50,24 +50,24 @@ export interface GetAlertContactGroupsArgs {
     /**
      * The name of the resource.
      */
-    readonly alertContactGroupName?: string;
+    alertContactGroupName?: string;
     /**
      * The contact id.
      */
-    readonly contactId?: string;
+    contactId?: string;
     /**
      * The contact name.
      */
-    readonly contactName?: string;
+    contactName?: string;
     /**
      * A list of Alert Contact Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Alert Contact Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -86,4 +86,35 @@ export interface GetAlertContactGroupsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getAlertContactGroupsOutput(args?: GetAlertContactGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertContactGroupsResult> {
+    return pulumi.output(args).apply(a => getAlertContactGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlertContactGroups.
+ */
+export interface GetAlertContactGroupsOutputArgs {
+    /**
+     * The name of the resource.
+     */
+    alertContactGroupName?: pulumi.Input<string>;
+    /**
+     * The contact id.
+     */
+    contactId?: pulumi.Input<string>;
+    /**
+     * The contact name.
+     */
+    contactName?: pulumi.Input<string>;
+    /**
+     * A list of Alert Contact Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Alert Contact Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

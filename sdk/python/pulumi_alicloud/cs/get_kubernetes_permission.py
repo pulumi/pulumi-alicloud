@@ -14,6 +14,7 @@ __all__ = [
     'GetKubernetesPermissionResult',
     'AwaitableGetKubernetesPermissionResult',
     'get_kubernetes_permission',
+    'get_kubernetes_permission_output',
 ]
 
 @pulumi.output_type
@@ -104,3 +105,30 @@ def get_kubernetes_permission(permissions: Optional[Sequence[pulumi.InputType['G
         id=__ret__.id,
         permissions=__ret__.permissions,
         uid=__ret__.uid)
+
+
+@_utilities.lift_output_func(get_kubernetes_permission)
+def get_kubernetes_permission_output(permissions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKubernetesPermissionPermissionArgs']]]]] = None,
+                                     uid: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesPermissionResult]:
+    """
+    This data source provides a list of Ram user permissions.
+
+    > **NOTE:** Available in v1.122.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    users_ds = alicloud.ram.get_users(name_regex="your_user_name")
+    default = alicloud.cs.get_kubernetes_permission(uid=users_ds.users[0].id)
+    pulumi.export("permissions", default.permissions)
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetKubernetesPermissionPermissionArgs']] permissions: A list of user permission.
+    :param str uid: The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
+    """
+    ...

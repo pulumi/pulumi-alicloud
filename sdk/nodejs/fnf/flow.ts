@@ -165,31 +165,31 @@ export interface FlowState {
     /**
      * The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
      */
-    readonly definition?: pulumi.Input<string>;
+    definition?: pulumi.Input<string>;
     /**
      * The description of the flow.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The unique ID of the flow.
      */
-    readonly flowId?: pulumi.Input<string>;
+    flowId?: pulumi.Input<string>;
     /**
      * The time when the flow was last modified.
      */
-    readonly lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string>;
     /**
      * The name of the flow. The name must be unique in an Alibaba Cloud account.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
      */
-    readonly roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
     /**
      * The type of the flow. Valid values are `FDL` or `DEFAULT`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -199,21 +199,21 @@ export interface FlowArgs {
     /**
      * The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
      */
-    readonly definition: pulumi.Input<string>;
+    definition: pulumi.Input<string>;
     /**
      * The description of the flow.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The name of the flow. The name must be unique in an Alibaba Cloud account.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
      */
-    readonly roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
     /**
      * The type of the flow. Valid values are `FDL` or `DEFAULT`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

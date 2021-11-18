@@ -147,47 +147,47 @@ export interface TriggerState {
     /**
      * The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      */
-    readonly config?: pulumi.Input<string>;
+    config?: pulumi.Input<string>;
     /**
      * The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
      */
-    readonly configMns?: pulumi.Input<string>;
+    configMns?: pulumi.Input<string>;
     /**
      * The Function Compute function name.
      */
-    readonly function?: pulumi.Input<string>;
+    function?: pulumi.Input<string>;
     /**
      * The date this resource was last modified.
      */
-    readonly lastModified?: pulumi.Input<string>;
+    lastModified?: pulumi.Input<string>;
     /**
      * The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Setting a prefix to get a only trigger name. It is conflict with "name".
      */
-    readonly namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string>;
     /**
      * RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * The Function Compute service name.
      */
-    readonly service?: pulumi.Input<string>;
+    service?: pulumi.Input<string>;
     /**
      * Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    readonly sourceArn?: pulumi.Input<string>;
+    sourceArn?: pulumi.Input<string>;
     /**
      * The Function Compute trigger ID.
      */
-    readonly triggerId?: pulumi.Input<string>;
+    triggerId?: pulumi.Input<string>;
     /**
      * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -197,37 +197,37 @@ export interface TriggerArgs {
     /**
      * The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      */
-    readonly config?: pulumi.Input<string>;
+    config?: pulumi.Input<string>;
     /**
      * The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
      */
-    readonly configMns?: pulumi.Input<string>;
+    configMns?: pulumi.Input<string>;
     /**
      * The Function Compute function name.
      */
-    readonly function: pulumi.Input<string>;
+    function: pulumi.Input<string>;
     /**
      * The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Setting a prefix to get a only trigger name. It is conflict with "name".
      */
-    readonly namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string>;
     /**
      * RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * The Function Compute service name.
      */
-    readonly service: pulumi.Input<string>;
+    service: pulumi.Input<string>;
     /**
      * Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    readonly sourceArn?: pulumi.Input<string>;
+    sourceArn?: pulumi.Input<string>;
     /**
      * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

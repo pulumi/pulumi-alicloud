@@ -4,6 +4,9 @@
 package cloudsso
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,72 @@ type GetScimServerCredentialsResult struct {
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetScimServerCredentialsOutput(ctx *pulumi.Context, args GetScimServerCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetScimServerCredentialsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetScimServerCredentialsResult, error) {
+			args := v.(GetScimServerCredentialsArgs)
+			r, err := GetScimServerCredentials(ctx, &args, opts...)
+			return *r, err
+		}).(GetScimServerCredentialsResultOutput)
+}
+
+// A collection of arguments for invoking getScimServerCredentials.
+type GetScimServerCredentialsOutputArgs struct {
+	// The ID of the Directory.
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+	// A list of SCIM Server Credential IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetScimServerCredentialsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScimServerCredentialsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getScimServerCredentials.
+type GetScimServerCredentialsResultOutput struct{ *pulumi.OutputState }
+
+func (GetScimServerCredentialsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScimServerCredentialsResult)(nil)).Elem()
+}
+
+func (o GetScimServerCredentialsResultOutput) ToGetScimServerCredentialsResultOutput() GetScimServerCredentialsResultOutput {
+	return o
+}
+
+func (o GetScimServerCredentialsResultOutput) ToGetScimServerCredentialsResultOutputWithContext(ctx context.Context) GetScimServerCredentialsResultOutput {
+	return o
+}
+
+func (o GetScimServerCredentialsResultOutput) Credentials() GetScimServerCredentialsCredentialArrayOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsResult) []GetScimServerCredentialsCredential { return v.Credentials }).(GetScimServerCredentialsCredentialArrayOutput)
+}
+
+func (o GetScimServerCredentialsResultOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsResult) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetScimServerCredentialsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetScimServerCredentialsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetScimServerCredentialsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetScimServerCredentialsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScimServerCredentialsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetScimServerCredentialsResultOutput{})
 }

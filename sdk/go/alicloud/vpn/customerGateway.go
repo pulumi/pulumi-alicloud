@@ -167,7 +167,7 @@ type CustomerGatewayArrayInput interface {
 type CustomerGatewayArray []CustomerGatewayInput
 
 func (CustomerGatewayArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CustomerGateway)(nil))
+	return reflect.TypeOf((*[]*CustomerGateway)(nil)).Elem()
 }
 
 func (i CustomerGatewayArray) ToCustomerGatewayArrayOutput() CustomerGatewayArrayOutput {
@@ -192,7 +192,7 @@ type CustomerGatewayMapInput interface {
 type CustomerGatewayMap map[string]CustomerGatewayInput
 
 func (CustomerGatewayMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CustomerGateway)(nil))
+	return reflect.TypeOf((*map[string]*CustomerGateway)(nil)).Elem()
 }
 
 func (i CustomerGatewayMap) ToCustomerGatewayMapOutput() CustomerGatewayMapOutput {
@@ -203,9 +203,7 @@ func (i CustomerGatewayMap) ToCustomerGatewayMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerGatewayMapOutput)
 }
 
-type CustomerGatewayOutput struct {
-	*pulumi.OutputState
-}
+type CustomerGatewayOutput struct{ *pulumi.OutputState }
 
 func (CustomerGatewayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CustomerGateway)(nil))
@@ -224,14 +222,12 @@ func (o CustomerGatewayOutput) ToCustomerGatewayPtrOutput() CustomerGatewayPtrOu
 }
 
 func (o CustomerGatewayOutput) ToCustomerGatewayPtrOutputWithContext(ctx context.Context) CustomerGatewayPtrOutput {
-	return o.ApplyT(func(v CustomerGateway) *CustomerGateway {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomerGateway) *CustomerGateway {
 		return &v
 	}).(CustomerGatewayPtrOutput)
 }
 
-type CustomerGatewayPtrOutput struct {
-	*pulumi.OutputState
-}
+type CustomerGatewayPtrOutput struct{ *pulumi.OutputState }
 
 func (CustomerGatewayPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CustomerGateway)(nil))
@@ -243,6 +239,16 @@ func (o CustomerGatewayPtrOutput) ToCustomerGatewayPtrOutput() CustomerGatewayPt
 
 func (o CustomerGatewayPtrOutput) ToCustomerGatewayPtrOutputWithContext(ctx context.Context) CustomerGatewayPtrOutput {
 	return o
+}
+
+func (o CustomerGatewayPtrOutput) Elem() CustomerGatewayOutput {
+	return o.ApplyT(func(v *CustomerGateway) CustomerGateway {
+		if v != nil {
+			return *v
+		}
+		var ret CustomerGateway
+		return ret
+	}).(CustomerGatewayOutput)
 }
 
 type CustomerGatewayArrayOutput struct{ *pulumi.OutputState }
@@ -286,6 +292,10 @@ func (o CustomerGatewayMapOutput) MapIndex(k pulumi.StringInput) CustomerGateway
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomerGatewayInput)(nil)).Elem(), &CustomerGateway{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomerGatewayPtrInput)(nil)).Elem(), &CustomerGateway{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomerGatewayArrayInput)(nil)).Elem(), CustomerGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomerGatewayMapInput)(nil)).Elem(), CustomerGatewayMap{})
 	pulumi.RegisterOutputType(CustomerGatewayOutput{})
 	pulumi.RegisterOutputType(CustomerGatewayPtrOutput{})
 	pulumi.RegisterOutputType(CustomerGatewayArrayOutput{})

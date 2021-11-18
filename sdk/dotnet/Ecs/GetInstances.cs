@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             NameRegex = "web_server",
         ///             Status = "Running",
         ///         }));
-        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances[0].Id);
+        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.Id);
         ///         this.InstanceIds = instancesDs.Apply(instancesDs =&gt; instancesDs.Ids);
         ///     }
         /// 
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:ecs/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var instancesDs = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "web_server",
+        ///             Status = "Running",
+        ///         }));
+        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.Id);
+        ///         this.InstanceIds = instancesDs.Apply(instancesDs =&gt; instancesDs.Ids);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceId")]
+        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
+        ///     [Output("instanceIds")]
+        ///     public Output&lt;string&gt; InstanceIds { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:ecs/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -147,6 +184,108 @@ namespace Pulumi.AliCloud.Ecs
         public string? VswitchId { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Availability zone where instances are located.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of ECS instance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The image ID of some ECS instance used.
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by instance name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The RAM role name which the instance attaches.
+        /// </summary>
+        [Input("ramRoleName")]
+        public Input<string>? RamRoleName { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which the instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the ECS instances. It must be in the format:
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var taggedInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+        ///         {
+        ///             Tags = 
+        ///             {
+        ///                 { "tagKey1", "tagValue1" },
+        ///                 { "tagKey2", "tagValue2" },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// ID of the VPC linked to the instances.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// ID of the VSwitch linked to the instances.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

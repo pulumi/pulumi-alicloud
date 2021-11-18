@@ -13,6 +13,7 @@ __all__ = [
     'GetEcsBackupPlansResult',
     'AwaitableGetEcsBackupPlansResult',
     'get_ecs_backup_plans',
+    'get_ecs_backup_plans_output',
 ]
 
 @pulumi.output_type
@@ -156,3 +157,36 @@ def get_ecs_backup_plans(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         plans=__ret__.plans,
         vault_id=__ret__.vault_id)
+
+
+@_utilities.lift_output_func(get_ecs_backup_plans)
+def get_ecs_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                vault_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsBackupPlansResult]:
+    """
+    This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
+    pulumi.export("hbrEcsBackupPlanId", ids.plans[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of EcsBackupPlan IDs.
+    :param str instance_id: The ID of ECS instance.
+    :param str name_regex: A regex string to filter results by EcsBackupPlan name.
+    :param str vault_id: The ID of Backup vault.
+    """
+    ...

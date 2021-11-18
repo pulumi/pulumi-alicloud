@@ -13,6 +13,7 @@ __all__ = [
     'GetSubscriptionJobsResult',
     'AwaitableGetSubscriptionJobsResult',
     'get_subscription_jobs',
+    'get_subscription_jobs_output',
 ]
 
 @pulumi.output_type
@@ -168,3 +169,37 @@ def get_subscription_jobs(enable_details: Optional[bool] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_subscription_jobs)
+def get_subscription_jobs_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                 ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                 status: Optional[pulumi.Input[Optional[str]]] = None,
+                                 tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionJobsResult]:
+    """
+    This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.138.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dts.get_subscription_jobs()
+    pulumi.export("dtsSubscriptionJobId1", ids.jobs[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Subscription Job IDs.
+    :param str name_regex: A regex string to filter results by subscription job name.
+    :param str status: The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+    :param Mapping[str, Any] tags: The tag of the resource.
+    """
+    ...

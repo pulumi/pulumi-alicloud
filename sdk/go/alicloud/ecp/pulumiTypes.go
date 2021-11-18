@@ -126,6 +126,8 @@ func (o GetKeyPairsPairArrayOutput) Index(i pulumi.IntInput) GetKeyPairsPairOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairInput)(nil)).Elem(), GetKeyPairsPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairArrayInput)(nil)).Elem(), GetKeyPairsPairArray{})
 	pulumi.RegisterOutputType(GetKeyPairsPairOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsPairArrayOutput{})
 }

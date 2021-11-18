@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.resourcemanager.getHandshakes({ async: true }));
+ * const example = pulumi.output(alicloud.resourcemanager.getHandshakes());
  *
  * export const firstHandshakeId = example.handshakes[0].id;
  * ```
@@ -45,16 +45,16 @@ export interface GetHandshakesArgs {
     /**
      * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Resource Manager Handshake IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -79,4 +79,27 @@ export interface GetHandshakesResult {
      * The status of the invitation.
      */
     readonly status?: string;
+}
+
+export function getHandshakesOutput(args?: GetHandshakesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHandshakesResult> {
+    return pulumi.output(args).apply(a => getHandshakes(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHandshakes.
+ */
+export interface GetHandshakesOutputArgs {
+    /**
+     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Resource Manager Handshake IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
+     */
+    status?: pulumi.Input<string>;
 }

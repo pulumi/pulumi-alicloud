@@ -13,6 +13,7 @@ __all__ = [
     'GetNetworkAclsResult',
     'AwaitableGetNetworkAclsResult',
     'get_network_acls',
+    'get_network_acls_output',
 ]
 
 @pulumi.output_type
@@ -196,3 +197,43 @@ def get_network_acls(ids: Optional[Sequence[str]] = None,
         resource_type=__ret__.resource_type,
         status=__ret__.status,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_network_acls)
+def get_network_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            network_acl_name: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            resource_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            resource_type: Optional[pulumi.Input[Optional[str]]] = None,
+                            status: Optional[pulumi.Input[Optional[str]]] = None,
+                            vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkAclsResult]:
+    """
+    This data source provides the Network Acls of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.122.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.vpc.get_network_acls(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstNetworkAclId", example.acls[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Network Acl ID.
+    :param str name_regex: A regex string to filter results by Network Acl name.
+    :param str network_acl_name: The name of the network ACL.
+    :param str resource_id: The ID of the associated resource.
+    :param str resource_type: The type of the associated resource.
+    :param str status: The state of the network ACL.
+    :param str vpc_id: The ID of the associated VPC.
+    """
+    ...

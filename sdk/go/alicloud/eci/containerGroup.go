@@ -38,8 +38,8 @@ import (
 // 			RestartPolicy:      pulumi.String("OnFailure"),
 // 			SecurityGroupId:    pulumi.Any(alicloud_security_group.Group.Id),
 // 			VswitchId:          pulumi.Any(data.Alicloud_vpcs.Default.Vpcs[0].Vswitch_ids[0]),
-// 			Tags: pulumi.StringMap{
-// 				"TF": pulumi.String("create"),
+// 			Tags: pulumi.AnyMap{
+// 				"TF": pulumi.Any("create"),
 // 			},
 // 			Containers: eci.ContainerGroupContainerArray{
 // 				&eci.ContainerGroupContainerArgs{
@@ -425,7 +425,7 @@ type ContainerGroupArrayInput interface {
 type ContainerGroupArray []ContainerGroupInput
 
 func (ContainerGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ContainerGroup)(nil))
+	return reflect.TypeOf((*[]*ContainerGroup)(nil)).Elem()
 }
 
 func (i ContainerGroupArray) ToContainerGroupArrayOutput() ContainerGroupArrayOutput {
@@ -450,7 +450,7 @@ type ContainerGroupMapInput interface {
 type ContainerGroupMap map[string]ContainerGroupInput
 
 func (ContainerGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ContainerGroup)(nil))
+	return reflect.TypeOf((*map[string]*ContainerGroup)(nil)).Elem()
 }
 
 func (i ContainerGroupMap) ToContainerGroupMapOutput() ContainerGroupMapOutput {
@@ -461,9 +461,7 @@ func (i ContainerGroupMap) ToContainerGroupMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupMapOutput)
 }
 
-type ContainerGroupOutput struct {
-	*pulumi.OutputState
-}
+type ContainerGroupOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerGroup)(nil))
@@ -482,14 +480,12 @@ func (o ContainerGroupOutput) ToContainerGroupPtrOutput() ContainerGroupPtrOutpu
 }
 
 func (o ContainerGroupOutput) ToContainerGroupPtrOutputWithContext(ctx context.Context) ContainerGroupPtrOutput {
-	return o.ApplyT(func(v ContainerGroup) *ContainerGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerGroup) *ContainerGroup {
 		return &v
 	}).(ContainerGroupPtrOutput)
 }
 
-type ContainerGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type ContainerGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ContainerGroup)(nil))
@@ -501,6 +497,16 @@ func (o ContainerGroupPtrOutput) ToContainerGroupPtrOutput() ContainerGroupPtrOu
 
 func (o ContainerGroupPtrOutput) ToContainerGroupPtrOutputWithContext(ctx context.Context) ContainerGroupPtrOutput {
 	return o
+}
+
+func (o ContainerGroupPtrOutput) Elem() ContainerGroupOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerGroup
+		return ret
+	}).(ContainerGroupOutput)
 }
 
 type ContainerGroupArrayOutput struct{ *pulumi.OutputState }
@@ -544,6 +550,10 @@ func (o ContainerGroupMapOutput) MapIndex(k pulumi.StringInput) ContainerGroupOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInput)(nil)).Elem(), &ContainerGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupPtrInput)(nil)).Elem(), &ContainerGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupArrayInput)(nil)).Elem(), ContainerGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupMapInput)(nil)).Elem(), ContainerGroupMap{})
 	pulumi.RegisterOutputType(ContainerGroupOutput{})
 	pulumi.RegisterOutputType(ContainerGroupPtrOutput{})
 	pulumi.RegisterOutputType(ContainerGroupArrayOutput{})

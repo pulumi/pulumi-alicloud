@@ -4,6 +4,9 @@
 package cen
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,4 +92,96 @@ type GetRouteMapsResult struct {
 	Status *string `pulumi:"status"`
 	// The direction in which the route map is applied.
 	TransmitDirection *string `pulumi:"transmitDirection"`
+}
+
+func GetRouteMapsOutput(ctx *pulumi.Context, args GetRouteMapsOutputArgs, opts ...pulumi.InvokeOption) GetRouteMapsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRouteMapsResult, error) {
+			args := v.(GetRouteMapsArgs)
+			r, err := GetRouteMaps(ctx, &args, opts...)
+			return *r, err
+		}).(GetRouteMapsResultOutput)
+}
+
+// A collection of arguments for invoking getRouteMaps.
+type GetRouteMapsOutputArgs struct {
+	// The ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// The ID of the region to which the CEN instance belongs.
+	CenRegionId pulumi.StringPtrInput `pulumi:"cenRegionId"`
+	// A regex string to filter CEN route map by description.
+	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
+	// A list of CEN route map IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The status of the route map, including `Creating`, `Active` and `Deleting`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
+	TransmitDirection pulumi.StringPtrInput `pulumi:"transmitDirection"`
+}
+
+func (GetRouteMapsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteMapsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRouteMaps.
+type GetRouteMapsResultOutput struct{ *pulumi.OutputState }
+
+func (GetRouteMapsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteMapsResult)(nil)).Elem()
+}
+
+func (o GetRouteMapsResultOutput) ToGetRouteMapsResultOutput() GetRouteMapsResultOutput {
+	return o
+}
+
+func (o GetRouteMapsResultOutput) ToGetRouteMapsResultOutputWithContext(ctx context.Context) GetRouteMapsResultOutput {
+	return o
+}
+
+// The ID of the CEN instance.
+func (o GetRouteMapsResultOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsResult) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The ID of the region to which the CEN instance belongs.
+func (o GetRouteMapsResultOutput) CenRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteMapsResult) *string { return v.CenRegionId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRouteMapsResultOutput) DescriptionRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteMapsResult) *string { return v.DescriptionRegex }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRouteMapsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of CEN route map IDs.
+func (o GetRouteMapsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// A list of CEN instances. Each element contains the following attributes:
+func (o GetRouteMapsResultOutput) Maps() GetRouteMapsMapArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsResult) []GetRouteMapsMap { return v.Maps }).(GetRouteMapsMapArrayOutput)
+}
+
+func (o GetRouteMapsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteMapsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The status of the route map.
+func (o GetRouteMapsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteMapsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The direction in which the route map is applied.
+func (o GetRouteMapsResultOutput) TransmitDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteMapsResult) *string { return v.TransmitDirection }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRouteMapsResultOutput{})
 }

@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.arms.getAlertContacts({});
- * export const armsAlertContactId1 = ids.then(ids => ids.contacts[0].id);
+ * export const armsAlertContactId1 = ids.then(ids => ids.contacts?[0]?.id);
  * const nameRegex = alicloud.arms.getAlertContacts({
  *     nameRegex: "^my-AlertContact",
  * });
- * export const armsAlertContactId2 = nameRegex.then(nameRegex => nameRegex.contacts[0].id);
+ * export const armsAlertContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?[0]?.id);
  * ```
  */
 export function getAlertContacts(args?: GetAlertContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertContactsResult> {
@@ -52,24 +52,24 @@ export interface GetAlertContactsArgs {
     /**
      * The name of the alert contact.
      */
-    readonly alertContactName?: string;
+    alertContactName?: string;
     /**
      * The email address of the alert contact.
      */
-    readonly email?: string;
+    email?: string;
     /**
      * A list of Alert Contact IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Alert Contact name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The mobile number of the alert contact.
      */
-    readonly phoneNum?: string;
+    phoneNum?: string;
 }
 
 /**
@@ -88,4 +88,35 @@ export interface GetAlertContactsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly phoneNum?: string;
+}
+
+export function getAlertContactsOutput(args?: GetAlertContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertContactsResult> {
+    return pulumi.output(args).apply(a => getAlertContacts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlertContacts.
+ */
+export interface GetAlertContactsOutputArgs {
+    /**
+     * The name of the alert contact.
+     */
+    alertContactName?: pulumi.Input<string>;
+    /**
+     * The email address of the alert contact.
+     */
+    email?: pulumi.Input<string>;
+    /**
+     * A list of Alert Contact IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Alert Contact name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The mobile number of the alert contact.
+     */
+    phoneNum?: pulumi.Input<string>;
 }

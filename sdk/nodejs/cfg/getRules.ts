@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["cr-ed4bad756057********"],
  *     nameRegex: "tftest",
  * });
- * export const firstConfigRuleId = example.then(example => example.rules[0].id);
+ * export const firstConfigRuleId = example.then(example => example.rules?[0]?.id);
  * ```
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
@@ -57,40 +57,40 @@ export interface GetRulesArgs {
      *
      * @deprecated Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
      */
-    readonly configRuleState?: string;
+    configRuleState?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Config Rule IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The ID of the member account to which the rule to be queried belongs. The default is empty. When `multiAccount` is set to true, this parameter is valid.
      */
-    readonly memberId?: number;
+    memberId?: number;
     /**
      * Whether the enterprise management account queries the rule details of member accounts.
      */
-    readonly multiAccount?: boolean;
+    multiAccount?: boolean;
     /**
      * A regex string to filter results by rule name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
      */
-    readonly riskLevel?: number;
+    riskLevel?: number;
     /**
      * The name of config rule.
      */
-    readonly ruleName?: string;
+    ruleName?: string;
     /**
      * The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -128,4 +128,53 @@ export interface GetRulesResult {
      * (Available in 1.124.1+) The status of config rule.
      */
     readonly status?: string;
+}
+
+export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
+    return pulumi.output(args).apply(a => getRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRules.
+ */
+export interface GetRulesOutputArgs {
+    /**
+     * Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
+     *
+     * @deprecated Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
+     */
+    configRuleState?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Config Rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the member account to which the rule to be queried belongs. The default is empty. When `multiAccount` is set to true, this parameter is valid.
+     */
+    memberId?: pulumi.Input<number>;
+    /**
+     * Whether the enterprise management account queries the rule details of member accounts.
+     */
+    multiAccount?: pulumi.Input<boolean>;
+    /**
+     * A regex string to filter results by rule name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+     */
+    riskLevel?: pulumi.Input<number>;
+    /**
+     * The name of config rule.
+     */
+    ruleName?: pulumi.Input<string>;
+    /**
+     * The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
+     */
+    status?: pulumi.Input<string>;
 }

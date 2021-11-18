@@ -114,29 +114,29 @@ export interface KubernetesAutoscalerState {
     /**
      * The id of kubernetes cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The coolDownDuration option of cluster-autoscaler.
      */
-    readonly coolDownDuration?: pulumi.Input<string>;
+    coolDownDuration?: pulumi.Input<string>;
     /**
      * The deferScaleInDuration option of cluster-autoscaler.
      */
-    readonly deferScaleInDuration?: pulumi.Input<string>;
+    deferScaleInDuration?: pulumi.Input<string>;
     /**
      * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
      * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
      * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
      */
-    readonly nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[]>;
+    nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[]>;
     /**
      * Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
      */
-    readonly useEcsRamRoleToken?: pulumi.Input<boolean>;
+    useEcsRamRoleToken?: pulumi.Input<boolean>;
     /**
      * The utilization option of cluster-autoscaler.
      */
-    readonly utilization?: pulumi.Input<string>;
+    utilization?: pulumi.Input<string>;
 }
 
 /**
@@ -146,27 +146,27 @@ export interface KubernetesAutoscalerArgs {
     /**
      * The id of kubernetes cluster.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The coolDownDuration option of cluster-autoscaler.
      */
-    readonly coolDownDuration: pulumi.Input<string>;
+    coolDownDuration: pulumi.Input<string>;
     /**
      * The deferScaleInDuration option of cluster-autoscaler.
      */
-    readonly deferScaleInDuration: pulumi.Input<string>;
+    deferScaleInDuration: pulumi.Input<string>;
     /**
      * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
      * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
      * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
      */
-    readonly nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[]>;
+    nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[]>;
     /**
      * Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
      */
-    readonly useEcsRamRoleToken?: pulumi.Input<boolean>;
+    useEcsRamRoleToken?: pulumi.Input<boolean>;
     /**
      * The utilization option of cluster-autoscaler.
      */
-    readonly utilization: pulumi.Input<string>;
+    utilization: pulumi.Input<string>;
 }

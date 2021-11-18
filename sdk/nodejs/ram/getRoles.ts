@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     outputFile: "roles.txt",
  *     policyName: "AliyunACSDefaultAccess",
  *     policyType: "Custom",
- * }, { async: true }));
+ * }));
  *
  * export const firstRoleId = rolesDs.roles[0].id;
  * ```
@@ -49,20 +49,20 @@ export interface GetRolesArgs {
     /**
      * - A list of ram role IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by the role name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
      */
-    readonly policyName?: string;
+    policyName?: string;
     /**
      * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
      */
-    readonly policyType?: string;
+    policyType?: string;
 }
 
 /**
@@ -89,4 +89,31 @@ export interface GetRolesResult {
      * A list of roles. Each element contains the following attributes:
      */
     readonly roles: outputs.ram.GetRolesRole[];
+}
+
+export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
+    return pulumi.output(args).apply(a => getRoles(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRoles.
+ */
+export interface GetRolesOutputArgs {
+    /**
+     * - A list of ram role IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by the role name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+     */
+    policyName?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
+     */
+    policyType?: pulumi.Input<string>;
 }

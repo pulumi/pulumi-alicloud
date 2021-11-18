@@ -142,23 +142,23 @@ export interface MountTargetState {
     /**
      * The name of the permission group that applies to the mount target.
      */
-    readonly accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string>;
     /**
      * The ID of the file system.
      */
-    readonly fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string>;
     /**
      * The ID of security group.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The ID of the VSwitch in the VPC where the mount target resides.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -168,21 +168,21 @@ export interface MountTargetArgs {
     /**
      * The name of the permission group that applies to the mount target.
      */
-    readonly accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string>;
     /**
      * The ID of the file system.
      */
-    readonly fileSystemId: pulumi.Input<string>;
+    fileSystemId: pulumi.Input<string>;
     /**
      * The ID of security group.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The ID of the VSwitch in the VPC where the mount target resides.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }

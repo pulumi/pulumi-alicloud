@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const cloudSsoScimServerCredentialId1 = ids.then(ids => ids.credentials[0].id);
+ * export const cloudSsoScimServerCredentialId1 = ids.then(ids => ids.credentials?[0]?.id);
  * ```
  */
 export function getScimServerCredentials(args: GetScimServerCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetScimServerCredentialsResult> {
@@ -53,16 +53,16 @@ export interface GetScimServerCredentialsArgs {
     /**
      * The ID of the Directory.
      */
-    readonly directoryId: string;
+    directoryId: string;
     /**
      * A list of SCIM Server Credential IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The Status of the resource. Valid values: `Disabled`, `Enabled`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -78,4 +78,27 @@ export interface GetScimServerCredentialsResult {
     readonly ids: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getScimServerCredentialsOutput(args: GetScimServerCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScimServerCredentialsResult> {
+    return pulumi.output(args).apply(a => getScimServerCredentials(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getScimServerCredentials.
+ */
+export interface GetScimServerCredentialsOutputArgs {
+    /**
+     * The ID of the Directory.
+     */
+    directoryId: pulumi.Input<string>;
+    /**
+     * A list of SCIM Server Credential IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     */
+    status?: pulumi.Input<string>;
 }

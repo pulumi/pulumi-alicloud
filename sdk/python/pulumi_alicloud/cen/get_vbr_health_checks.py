@@ -13,6 +13,7 @@ __all__ = [
     'GetVbrHealthChecksResult',
     'AwaitableGetVbrHealthChecksResult',
     'get_vbr_health_checks',
+    'get_vbr_health_checks_output',
 ]
 
 @pulumi.output_type
@@ -159,3 +160,24 @@ def get_vbr_health_checks(cen_id: Optional[str] = None,
         vbr_instance_id=__ret__.vbr_instance_id,
         vbr_instance_owner_id=__ret__.vbr_instance_owner_id,
         vbr_instance_region_id=__ret__.vbr_instance_region_id)
+
+
+@_utilities.lift_output_func(get_vbr_health_checks)
+def get_vbr_health_checks_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                 vbr_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 vbr_instance_owner_id: Optional[pulumi.Input[Optional[int]]] = None,
+                                 vbr_instance_region_id: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVbrHealthChecksResult]:
+    """
+    This data source provides CEN VBR Health Checks available to the user.
+
+    > **NOTE:** Available in 1.98.0+
+
+
+    :param str cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+    :param str vbr_instance_id: The ID of the VBR instance.
+    :param int vbr_instance_owner_id: The User ID (UID) of the account to which the VBR instance belongs.
+    :param str vbr_instance_region_id: The ID of the region where the VBR instance is deployed.
+    """
+    ...

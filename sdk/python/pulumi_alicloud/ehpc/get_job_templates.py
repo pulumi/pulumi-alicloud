@@ -13,6 +13,7 @@ __all__ = [
     'GetJobTemplatesResult',
     'AwaitableGetJobTemplatesResult',
     'get_job_templates',
+    'get_job_templates_output',
 ]
 
 @pulumi.output_type
@@ -110,3 +111,33 @@ def get_job_templates(ids: Optional[Sequence[str]] = None,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
         templates=__ret__.templates)
+
+
+@_utilities.lift_output_func(get_job_templates)
+def get_job_templates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobTemplatesResult]:
+    """
+    This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.133.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ehpc.JobTemplate("default",
+        job_template_name="example_value",
+        command_line="./LammpsTest/lammps.pbs")
+    ids = default.id.apply(lambda id: alicloud.ehpc.get_job_templates(ids=[id]))
+    pulumi.export("ehpcJobTemplateId1", ids.id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Job Template IDs.
+    """
+    ...

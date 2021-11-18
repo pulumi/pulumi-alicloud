@@ -190,7 +190,7 @@ type ResourceShareArrayInput interface {
 type ResourceShareArray []ResourceShareInput
 
 func (ResourceShareArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ResourceShare)(nil))
+	return reflect.TypeOf((*[]*ResourceShare)(nil)).Elem()
 }
 
 func (i ResourceShareArray) ToResourceShareArrayOutput() ResourceShareArrayOutput {
@@ -215,7 +215,7 @@ type ResourceShareMapInput interface {
 type ResourceShareMap map[string]ResourceShareInput
 
 func (ResourceShareMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ResourceShare)(nil))
+	return reflect.TypeOf((*map[string]*ResourceShare)(nil)).Elem()
 }
 
 func (i ResourceShareMap) ToResourceShareMapOutput() ResourceShareMapOutput {
@@ -226,9 +226,7 @@ func (i ResourceShareMap) ToResourceShareMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareMapOutput)
 }
 
-type ResourceShareOutput struct {
-	*pulumi.OutputState
-}
+type ResourceShareOutput struct{ *pulumi.OutputState }
 
 func (ResourceShareOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourceShare)(nil))
@@ -247,14 +245,12 @@ func (o ResourceShareOutput) ToResourceSharePtrOutput() ResourceSharePtrOutput {
 }
 
 func (o ResourceShareOutput) ToResourceSharePtrOutputWithContext(ctx context.Context) ResourceSharePtrOutput {
-	return o.ApplyT(func(v ResourceShare) *ResourceShare {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceShare) *ResourceShare {
 		return &v
 	}).(ResourceSharePtrOutput)
 }
 
-type ResourceSharePtrOutput struct {
-	*pulumi.OutputState
-}
+type ResourceSharePtrOutput struct{ *pulumi.OutputState }
 
 func (ResourceSharePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ResourceShare)(nil))
@@ -266,6 +262,16 @@ func (o ResourceSharePtrOutput) ToResourceSharePtrOutput() ResourceSharePtrOutpu
 
 func (o ResourceSharePtrOutput) ToResourceSharePtrOutputWithContext(ctx context.Context) ResourceSharePtrOutput {
 	return o
+}
+
+func (o ResourceSharePtrOutput) Elem() ResourceShareOutput {
+	return o.ApplyT(func(v *ResourceShare) ResourceShare {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceShare
+		return ret
+	}).(ResourceShareOutput)
 }
 
 type ResourceShareArrayOutput struct{ *pulumi.OutputState }
@@ -309,6 +315,10 @@ func (o ResourceShareMapOutput) MapIndex(k pulumi.StringInput) ResourceShareOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceShareInput)(nil)).Elem(), &ResourceShare{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSharePtrInput)(nil)).Elem(), &ResourceShare{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceShareArrayInput)(nil)).Elem(), ResourceShareArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceShareMapInput)(nil)).Elem(), ResourceShareMap{})
 	pulumi.RegisterOutputType(ResourceShareOutput{})
 	pulumi.RegisterOutputType(ResourceSharePtrOutput{})
 	pulumi.RegisterOutputType(ResourceShareArrayOutput{})

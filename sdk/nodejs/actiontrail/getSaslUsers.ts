@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     instanceId: "xxx",
  *     nameRegex: "username",
  *     outputFile: "saslUsers.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstSaslUsername = saslUsersDs.users[0].username;
  * ```
@@ -47,12 +47,12 @@ export interface GetSaslUsersArgs {
     /**
      * ID of the ALIKAFKA Instance that owns the sasl users.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by the username.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -74,4 +74,23 @@ export interface GetSaslUsersResult {
      * A list of sasl users. Each element contains the following attributes:
      */
     readonly users: outputs.actiontrail.GetSaslUsersUser[];
+}
+
+export function getSaslUsersOutput(args: GetSaslUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSaslUsersResult> {
+    return pulumi.output(args).apply(a => getSaslUsers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSaslUsers.
+ */
+export interface GetSaslUsersOutputArgs {
+    /**
+     * ID of the ALIKAFKA Instance that owns the sasl users.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by the username.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package cloudsso
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,82 @@ type GetGroupsResult struct {
 	Names         []string `pulumi:"names"`
 	OutputFile    *string  `pulumi:"outputFile"`
 	ProvisionType *string  `pulumi:"provisionType"`
+}
+
+func GetGroupsOutput(ctx *pulumi.Context, args GetGroupsOutputArgs, opts ...pulumi.InvokeOption) GetGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetGroupsResult, error) {
+			args := v.(GetGroupsArgs)
+			r, err := GetGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getGroups.
+type GetGroupsOutputArgs struct {
+	// The ID of the Directory.
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+	// A list of Group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+	ProvisionType pulumi.StringPtrInput `pulumi:"provisionType"`
+}
+
+func (GetGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGroups.
+type GetGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsResult)(nil)).Elem()
+}
+
+func (o GetGroupsResultOutput) ToGetGroupsResultOutput() GetGroupsResultOutput {
+	return o
+}
+
+func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Context) GetGroupsResultOutput {
+	return o
+}
+
+func (o GetGroupsResultOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsResult) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsResultOutput) Groups() GetGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetGroupsResult) []GetGroupsGroup { return v.Groups }).(GetGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGroupsResultOutput) ProvisionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupsResult) *string { return v.ProvisionType }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetGroupsResultOutput{})
 }

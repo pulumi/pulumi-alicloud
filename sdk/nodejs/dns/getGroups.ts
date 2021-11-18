@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const groupsDs = pulumi.output(alicloud.dns.getGroups({
  *     nameRegex: "^y[A-Za-z]+",
  *     outputFile: "groups.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstGroupName = groupsDs.groups[0].groupName;
  * ```
@@ -45,12 +45,12 @@ export interface GetGroupsArgs {
     /**
      * A list of group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -75,4 +75,23 @@ export interface GetGroupsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+    return pulumi.output(args).apply(a => getGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroups.
+ */
+export interface GetGroupsOutputArgs {
+    /**
+     * A list of group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

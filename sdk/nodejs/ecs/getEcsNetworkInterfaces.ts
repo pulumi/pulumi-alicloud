@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["eni-abcd1234"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces[0].id);
+ * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces?[0]?.id);
  * ```
  */
 export function getEcsNetworkInterfaces(args?: GetEcsNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsNetworkInterfacesResult> {
@@ -61,68 +61,68 @@ export interface GetEcsNetworkInterfacesArgs {
     /**
      * A list of Network Interface IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The instance id.
      */
-    readonly instanceId?: string;
+    instanceId?: string;
     /**
      * The network interface name.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
-    readonly name?: string;
+    name?: string;
     /**
      * A regex string to filter results by Network Interface name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The network interface name.
      */
-    readonly networkInterfaceName?: string;
-    readonly outputFile?: string;
+    networkInterfaceName?: string;
+    outputFile?: string;
     /**
      * The primary private IP address of the ENI.
      */
-    readonly primaryIpAddress?: string;
+    primaryIpAddress?: string;
     /**
      * The primary private IP address of the ENI.
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
-    readonly privateIp?: string;
+    privateIp?: string;
     /**
      * The resource group id.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The security group id.
      */
-    readonly securityGroupId?: string;
+    securityGroupId?: string;
     /**
      * Whether the user of the elastic network card is a cloud product or a virtual vendor.
      */
-    readonly serviceManaged?: boolean;
+    serviceManaged?: boolean;
     /**
      * The status of the ENI.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The tags.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * The type of the ENI.
      */
-    readonly type?: string;
+    type?: string;
     /**
      * The Vpc Id.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
     /**
      * The vswitch id.
      */
-    readonly vswitchId?: string;
+    vswitchId?: string;
 }
 
 /**
@@ -157,4 +157,79 @@ export interface GetEcsNetworkInterfacesResult {
     readonly type?: string;
     readonly vpcId?: string;
     readonly vswitchId?: string;
+}
+
+export function getEcsNetworkInterfacesOutput(args?: GetEcsNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsNetworkInterfacesResult> {
+    return pulumi.output(args).apply(a => getEcsNetworkInterfaces(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEcsNetworkInterfaces.
+ */
+export interface GetEcsNetworkInterfacesOutputArgs {
+    /**
+     * A list of Network Interface IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The instance id.
+     */
+    instanceId?: pulumi.Input<string>;
+    /**
+     * The network interface name.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Network Interface name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The network interface name.
+     */
+    networkInterfaceName?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The primary private IP address of the ENI.
+     */
+    primaryIpAddress?: pulumi.Input<string>;
+    /**
+     * The primary private IP address of the ENI.
+     *
+     * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
+     */
+    privateIp?: pulumi.Input<string>;
+    /**
+     * The resource group id.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The security group id.
+     */
+    securityGroupId?: pulumi.Input<string>;
+    /**
+     * Whether the user of the elastic network card is a cloud product or a virtual vendor.
+     */
+    serviceManaged?: pulumi.Input<boolean>;
+    /**
+     * The status of the ENI.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tags.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The type of the ENI.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The Vpc Id.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The vswitch id.
+     */
+    vswitchId?: pulumi.Input<string>;
 }

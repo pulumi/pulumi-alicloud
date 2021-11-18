@@ -122,19 +122,19 @@ export interface HostGroupState {
     /**
      * Specify the New Host Group of Notes, Supports up to 500 Characters.
      */
-    readonly comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
      * Host Group ID.
      */
-    readonly hostGroupId?: pulumi.Input<string>;
+    hostGroupId?: pulumi.Input<string>;
     /**
      * Specify the New Host Group Name, Supports up to 128 Characters.
      */
-    readonly hostGroupName?: pulumi.Input<string>;
+    hostGroupName?: pulumi.Input<string>;
     /**
      * Specify the New Host Group Where the Bastion Host ID of.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
 }
 
 /**
@@ -144,13 +144,13 @@ export interface HostGroupArgs {
     /**
      * Specify the New Host Group of Notes, Supports up to 500 Characters.
      */
-    readonly comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
      * Specify the New Host Group Name, Supports up to 128 Characters.
      */
-    readonly hostGroupName: pulumi.Input<string>;
+    hostGroupName: pulumi.Input<string>;
     /**
      * Specify the New Host Group Where the Bastion Host ID of.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
 }

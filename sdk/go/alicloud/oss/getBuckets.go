@@ -4,6 +4,9 @@
 package oss
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,66 @@ type GetBucketsResult struct {
 	// A list of bucket names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetBucketsOutput(ctx *pulumi.Context, args GetBucketsOutputArgs, opts ...pulumi.InvokeOption) GetBucketsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetBucketsResult, error) {
+			args := v.(GetBucketsArgs)
+			r, err := GetBuckets(ctx, &args, opts...)
+			return *r, err
+		}).(GetBucketsResultOutput)
+}
+
+// A collection of arguments for invoking getBuckets.
+type GetBucketsOutputArgs struct {
+	// A regex string to filter results by bucket name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetBucketsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getBuckets.
+type GetBucketsResultOutput struct{ *pulumi.OutputState }
+
+func (GetBucketsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketsResult)(nil)).Elem()
+}
+
+func (o GetBucketsResultOutput) ToGetBucketsResultOutput() GetBucketsResultOutput {
+	return o
+}
+
+func (o GetBucketsResultOutput) ToGetBucketsResultOutputWithContext(ctx context.Context) GetBucketsResultOutput {
+	return o
+}
+
+// A list of buckets. Each element contains the following attributes:
+func (o GetBucketsResultOutput) Buckets() GetBucketsBucketArrayOutput {
+	return o.ApplyT(func(v GetBucketsResult) []GetBucketsBucket { return v.Buckets }).(GetBucketsBucketArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBucketsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetBucketsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of bucket names.
+func (o GetBucketsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBucketsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBucketsResultOutput{})
 }

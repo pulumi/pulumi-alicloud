@@ -145,44 +145,44 @@ export interface TrailDeprecatedState {
     /**
      * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      */
-    readonly eventRw?: pulumi.Input<string>;
-    readonly isOrganizationTrail?: pulumi.Input<boolean>;
+    eventRw?: pulumi.Input<string>;
+    isOrganizationTrail?: pulumi.Input<boolean>;
     /**
      * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
      */
-    readonly mnsTopicArn?: pulumi.Input<string>;
+    mnsTopicArn?: pulumi.Input<string>;
     /**
      * The name of the trail to be created, which must be unique for an account.
      *
      * @deprecated Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
      */
-    readonly ossBucketName?: pulumi.Input<string>;
+    ossBucketName?: pulumi.Input<string>;
     /**
      * The prefix of the specified OSS bucket name. This parameter can be left empty.
      */
-    readonly ossKeyPrefix?: pulumi.Input<string>;
-    readonly ossWriteRoleArn?: pulumi.Input<string>;
+    ossKeyPrefix?: pulumi.Input<string>;
+    ossWriteRoleArn?: pulumi.Input<string>;
     /**
      * The RAM role in ActionTrail permitted by the user.
      *
      * @deprecated Field 'role_name' has been deprecated from version 1.118.0
      */
-    readonly roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string>;
     /**
      * The unique ARN of the Log Service project.
      */
-    readonly slsProjectArn?: pulumi.Input<string>;
+    slsProjectArn?: pulumi.Input<string>;
     /**
      * The unique ARN of the Log Service role.
      */
-    readonly slsWriteRoleArn?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
-    readonly trailName?: pulumi.Input<string>;
-    readonly trailRegion?: pulumi.Input<string>;
+    slsWriteRoleArn?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    trailName?: pulumi.Input<string>;
+    trailRegion?: pulumi.Input<string>;
 }
 
 /**
@@ -192,42 +192,42 @@ export interface TrailDeprecatedArgs {
     /**
      * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      */
-    readonly eventRw?: pulumi.Input<string>;
-    readonly isOrganizationTrail?: pulumi.Input<boolean>;
+    eventRw?: pulumi.Input<string>;
+    isOrganizationTrail?: pulumi.Input<boolean>;
     /**
      * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
      */
-    readonly mnsTopicArn?: pulumi.Input<string>;
+    mnsTopicArn?: pulumi.Input<string>;
     /**
      * The name of the trail to be created, which must be unique for an account.
      *
      * @deprecated Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
      */
-    readonly ossBucketName?: pulumi.Input<string>;
+    ossBucketName?: pulumi.Input<string>;
     /**
      * The prefix of the specified OSS bucket name. This parameter can be left empty.
      */
-    readonly ossKeyPrefix?: pulumi.Input<string>;
-    readonly ossWriteRoleArn?: pulumi.Input<string>;
+    ossKeyPrefix?: pulumi.Input<string>;
+    ossWriteRoleArn?: pulumi.Input<string>;
     /**
      * The RAM role in ActionTrail permitted by the user.
      *
      * @deprecated Field 'role_name' has been deprecated from version 1.118.0
      */
-    readonly roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string>;
     /**
      * The unique ARN of the Log Service project.
      */
-    readonly slsProjectArn?: pulumi.Input<string>;
+    slsProjectArn?: pulumi.Input<string>;
     /**
      * The unique ARN of the Log Service role.
      */
-    readonly slsWriteRoleArn?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
-    readonly trailName?: pulumi.Input<string>;
-    readonly trailRegion?: pulumi.Input<string>;
+    slsWriteRoleArn?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    trailName?: pulumi.Input<string>;
+    trailRegion?: pulumi.Input<string>;
 }

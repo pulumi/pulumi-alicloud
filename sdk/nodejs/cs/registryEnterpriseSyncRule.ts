@@ -190,51 +190,51 @@ export interface RegistryEnterpriseSyncRuleState {
     /**
      * ID of Container Registry Enterprise Edition source instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition sync rule.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
      */
-    readonly namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string>;
     /**
      * Name of the source repository which should be set together with `targetRepoName`, if empty means that the synchronization scope is the entire namespace level.
      */
-    readonly repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string>;
     /**
      * The uuid of Container Registry Enterprise Edition sync rule.
      */
-    readonly ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string>;
     /**
      * `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
      */
-    readonly syncDirection?: pulumi.Input<string>;
+    syncDirection?: pulumi.Input<string>;
     /**
      * `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
      */
-    readonly syncScope?: pulumi.Input<string>;
+    syncScope?: pulumi.Input<string>;
     /**
      * The regular expression used to filter image tags for synchronization in the source repository.
      */
-    readonly tagFilter?: pulumi.Input<string>;
+    tagFilter?: pulumi.Input<string>;
     /**
      * ID of Container Registry Enterprise Edition target instance to be synchronized.
      */
-    readonly targetInstanceId?: pulumi.Input<string>;
+    targetInstanceId?: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
      */
-    readonly targetNamespaceName?: pulumi.Input<string>;
+    targetNamespaceName?: pulumi.Input<string>;
     /**
      * The target region to be synchronized.
      */
-    readonly targetRegionId?: pulumi.Input<string>;
+    targetRegionId?: pulumi.Input<string>;
     /**
      * Name of the target repository.
      */
-    readonly targetRepoName?: pulumi.Input<string>;
+    targetRepoName?: pulumi.Input<string>;
 }
 
 /**
@@ -244,37 +244,37 @@ export interface RegistryEnterpriseSyncRuleArgs {
     /**
      * ID of Container Registry Enterprise Edition source instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition sync rule.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
      */
-    readonly namespaceName: pulumi.Input<string>;
+    namespaceName: pulumi.Input<string>;
     /**
      * Name of the source repository which should be set together with `targetRepoName`, if empty means that the synchronization scope is the entire namespace level.
      */
-    readonly repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string>;
     /**
      * The regular expression used to filter image tags for synchronization in the source repository.
      */
-    readonly tagFilter: pulumi.Input<string>;
+    tagFilter: pulumi.Input<string>;
     /**
      * ID of Container Registry Enterprise Edition target instance to be synchronized.
      */
-    readonly targetInstanceId: pulumi.Input<string>;
+    targetInstanceId: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
      */
-    readonly targetNamespaceName: pulumi.Input<string>;
+    targetNamespaceName: pulumi.Input<string>;
     /**
      * The target region to be synchronized.
      */
-    readonly targetRegionId: pulumi.Input<string>;
+    targetRegionId: pulumi.Input<string>;
     /**
      * Name of the target repository.
      */
-    readonly targetRepoName?: pulumi.Input<string>;
+    targetRepoName?: pulumi.Input<string>;
 }

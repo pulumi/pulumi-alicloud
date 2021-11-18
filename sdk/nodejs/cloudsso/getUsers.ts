@@ -27,24 +27,24 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const cloudSsoUserId1 = ids.then(ids => ids.users[0].id);
+ * export const cloudSsoUserId1 = ids.then(ids => ids.users?[0]?.id);
  * const nameRegex = alicloud.cloudsso.getUsers({
  *     directoryId: "example_value",
  *     nameRegex: "^my-User",
  * });
- * export const cloudSsoUserId2 = nameRegex.then(nameRegex => nameRegex.users[0].id);
+ * export const cloudSsoUserId2 = nameRegex.then(nameRegex => nameRegex.users?[0]?.id);
  * const provisionType = alicloud.cloudsso.getUsers({
  *     directoryId: "example_value",
  *     ids: ["example_value-1"],
  *     provisionType: "Manual",
  * });
- * export const cloudSsoUserId3 = provisionType.then(provisionType => provisionType.users[0].id);
+ * export const cloudSsoUserId3 = provisionType.then(provisionType => provisionType.users?[0]?.id);
  * const status = alicloud.cloudsso.getUsers({
  *     directoryId: "example_value",
  *     ids: ["example_value-1"],
  *     status: "Enabled",
  * });
- * export const cloudSsoUserId4 = status.then(status => status.users[0].id);
+ * export const cloudSsoUserId4 = status.then(status => status.users?[0]?.id);
  * ```
  */
 export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
@@ -73,28 +73,28 @@ export interface GetUsersArgs {
     /**
      * The ID of the Directory.
      */
-    readonly directoryId: string;
+    directoryId: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of User IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by User name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * ProvisionType.
      */
-    readonly provisionType?: string;
+    provisionType?: string;
     /**
      * User status. Valid values: `Enabled` and `Disabled`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -114,4 +114,39 @@ export interface GetUsersResult {
     readonly provisionType?: string;
     readonly status?: string;
     readonly users: outputs.cloudsso.GetUsersUser[];
+}
+
+export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+    return pulumi.output(args).apply(a => getUsers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUsers.
+ */
+export interface GetUsersOutputArgs {
+    /**
+     * The ID of the Directory.
+     */
+    directoryId: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of User IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by User name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * ProvisionType.
+     */
+    provisionType?: pulumi.Input<string>;
+    /**
+     * User status. Valid values: `Enabled` and `Disabled`.
+     */
+    status?: pulumi.Input<string>;
 }

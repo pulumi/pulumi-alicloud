@@ -150,19 +150,19 @@ export interface HostAccountUserGroupAttachmentState {
     /**
      * A list IDs of the host account.
      */
-    readonly hostAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the host.
      */
-    readonly hostId?: pulumi.Input<string>;
+    hostId?: pulumi.Input<string>;
     /**
      * The ID of the Bastionhost instance where you want to authorize the user group to manage the specified hosts and host accounts.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
      */
-    readonly userGroupId?: pulumi.Input<string>;
+    userGroupId?: pulumi.Input<string>;
 }
 
 /**
@@ -172,17 +172,17 @@ export interface HostAccountUserGroupAttachmentArgs {
     /**
      * A list IDs of the host account.
      */
-    readonly hostAccountIds: pulumi.Input<pulumi.Input<string>[]>;
+    hostAccountIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the host.
      */
-    readonly hostId: pulumi.Input<string>;
+    hostId: pulumi.Input<string>;
     /**
      * The ID of the Bastionhost instance where you want to authorize the user group to manage the specified hosts and host accounts.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
      */
-    readonly userGroupId: pulumi.Input<string>;
+    userGroupId: pulumi.Input<string>;
 }

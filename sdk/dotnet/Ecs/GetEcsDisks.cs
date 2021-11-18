@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             },
         ///             NameRegex = "tf-test",
         ///         }));
-        ///         this.FirstEcsDiskId = example.Apply(example =&gt; example.Disks[0].Id);
+        ///         this.FirstEcsDiskId = example.Apply(example =&gt; example.Disks?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstEcsDiskId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetEcsDisksResult> InvokeAsync(GetEcsDisksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEcsDisksResult>("alicloud:ecs/getEcsDisks:getEcsDisks", args ?? new GetEcsDisksArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ecs Disks of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.122.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ecs.GetEcsDisks.InvokeAsync(new AliCloud.Ecs.GetEcsDisksArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "d-artgdsvdvxxxx",
+        ///             },
+        ///             NameRegex = "tf-test",
+        ///         }));
+        ///         this.FirstEcsDiskId = example.Apply(example =&gt; example.Disks?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEcsDiskId")]
+        ///     public Output&lt;string&gt; FirstEcsDiskId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEcsDisksResult> Invoke(GetEcsDisksInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEcsDisksResult>("alicloud:ecs/getEcsDisks:getEcsDisks", args ?? new GetEcsDisksInvokeArgs(), options.WithVersion());
     }
 
 
@@ -237,6 +278,194 @@ namespace Pulumi.AliCloud.Ecs
         public string? ZoneId { get; set; }
 
         public GetEcsDisksArgs()
+        {
+        }
+    }
+
+    public sealed class GetEcsDisksInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("additionalAttributes")]
+        private InputList<string>? _additionalAttributes;
+
+        /// <summary>
+        /// Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
+        /// </summary>
+        public InputList<string> AdditionalAttributes
+        {
+            get => _additionalAttributes ?? (_additionalAttributes = new InputList<string>());
+            set => _additionalAttributes = value;
+        }
+
+        /// <summary>
+        /// Query cloud disks based on the automatic snapshot policy ID.
+        /// </summary>
+        [Input("autoSnapshotPolicyId")]
+        public Input<string>? AutoSnapshotPolicyId { get; set; }
+
+        /// <summary>
+        /// Availability zone of the disk.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Disk category.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
+        /// <summary>
+        /// Indicates whether the automatic snapshot is deleted when the disk is released.
+        /// </summary>
+        [Input("deleteAutoSnapshot")]
+        public Input<bool>? DeleteAutoSnapshot { get; set; }
+
+        /// <summary>
+        /// Indicates whether the disk is released together with the instance.
+        /// </summary>
+        [Input("deleteWithInstance")]
+        public Input<bool>? DeleteWithInstance { get; set; }
+
+        /// <summary>
+        /// The disk name.
+        /// </summary>
+        [Input("diskName")]
+        public Input<string>? DiskName { get; set; }
+
+        /// <summary>
+        /// The disk type.
+        /// </summary>
+        [Input("diskType")]
+        public Input<string>? DiskType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
+        /// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
+        /// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Whether the disk implements an automatic snapshot policy.
+        /// </summary>
+        [Input("enableAutoSnapshot")]
+        public Input<bool>? EnableAutoSnapshot { get; set; }
+
+        /// <summary>
+        /// Whether the disk implements an automatic snapshot policy.
+        /// </summary>
+        [Input("enableAutomatedSnapshotPolicy")]
+        public Input<bool>? EnableAutomatedSnapshotPolicy { get; set; }
+
+        /// <summary>
+        /// Whether it is shared block storage.
+        /// </summary>
+        [Input("enableShared")]
+        public Input<bool>? EnableShared { get; set; }
+
+        /// <summary>
+        /// Indicate whether the disk is encrypted or not.
+        /// </summary>
+        [Input("encrypted")]
+        public Input<string>? Encrypted { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Disk IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The instance ID of the disk mount.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// The kms key id.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Disk name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("operationLocks")]
+        private InputList<Inputs.GetEcsDisksOperationLockInputArgs>? _operationLocks;
+        public InputList<Inputs.GetEcsDisksOperationLockInputArgs> OperationLocks
+        {
+            get => _operationLocks ?? (_operationLocks = new InputList<Inputs.GetEcsDisksOperationLockInputArgs>());
+            set => _operationLocks = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Payment method for disk.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// Whether the disk is unmountable.
+        /// </summary>
+        [Input("portable")]
+        public Input<bool>? Portable { get; set; }
+
+        /// <summary>
+        /// The Id of resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        /// </summary>
+        [Input("snapshotId")]
+        public Input<string>? SnapshotId { get; set; }
+
+        /// <summary>
+        /// Current status.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the disk.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Disk type.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// The zone id.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetEcsDisksInvokeArgs()
         {
         }
     }

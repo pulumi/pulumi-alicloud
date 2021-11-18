@@ -129,31 +129,31 @@ export interface LogTailConfigState {
     /**
      * The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
      */
-    readonly inputDetail?: pulumi.Input<string>;
+    inputDetail?: pulumi.Input<string>;
     /**
      * The input type. Currently only two types of files and plugin are supported.
      */
-    readonly inputType?: pulumi.Input<string>;
+    inputType?: pulumi.Input<string>;
     /**
      * （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
      */
-    readonly logSample?: pulumi.Input<string>;
+    logSample?: pulumi.Input<string>;
     /**
      * The log store name to the query index belongs.
      */
-    readonly logstore?: pulumi.Input<string>;
+    logstore?: pulumi.Input<string>;
     /**
      * The Logtail configuration name, which is unique in the same project.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The output type. Currently, only LogService is supported.
      */
-    readonly outputType?: pulumi.Input<string>;
+    outputType?: pulumi.Input<string>;
     /**
      * The project name to the log store belongs.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -163,29 +163,29 @@ export interface LogTailConfigArgs {
     /**
      * The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
      */
-    readonly inputDetail: pulumi.Input<string>;
+    inputDetail: pulumi.Input<string>;
     /**
      * The input type. Currently only two types of files and plugin are supported.
      */
-    readonly inputType: pulumi.Input<string>;
+    inputType: pulumi.Input<string>;
     /**
      * （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
      */
-    readonly logSample?: pulumi.Input<string>;
+    logSample?: pulumi.Input<string>;
     /**
      * The log store name to the query index belongs.
      */
-    readonly logstore: pulumi.Input<string>;
+    logstore: pulumi.Input<string>;
     /**
      * The Logtail configuration name, which is unique in the same project.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The output type. Currently, only LogService is supported.
      */
-    readonly outputType: pulumi.Input<string>;
+    outputType: pulumi.Input<string>;
     /**
      * The project name to the log store belongs.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

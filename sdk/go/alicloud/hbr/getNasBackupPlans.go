@@ -4,6 +4,9 @@
 package hbr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,82 @@ type GetNasBackupPlansResult struct {
 	OutputFile *string                 `pulumi:"outputFile"`
 	Plans      []GetNasBackupPlansPlan `pulumi:"plans"`
 	VaultId    *string                 `pulumi:"vaultId"`
+}
+
+func GetNasBackupPlansOutput(ctx *pulumi.Context, args GetNasBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetNasBackupPlansResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNasBackupPlansResult, error) {
+			args := v.(GetNasBackupPlansArgs)
+			r, err := GetNasBackupPlans(ctx, &args, opts...)
+			return *r, err
+		}).(GetNasBackupPlansResultOutput)
+}
+
+// A collection of arguments for invoking getNasBackupPlans.
+type GetNasBackupPlansOutputArgs struct {
+	// The File System ID of Nas.
+	FileSystemId pulumi.StringPtrInput `pulumi:"fileSystemId"`
+	// A list of NasBackupPlan IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by NasBackupPlan name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of backup vault.
+	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
+}
+
+func (GetNasBackupPlansOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNasBackupPlansArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNasBackupPlans.
+type GetNasBackupPlansResultOutput struct{ *pulumi.OutputState }
+
+func (GetNasBackupPlansResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNasBackupPlansResult)(nil)).Elem()
+}
+
+func (o GetNasBackupPlansResultOutput) ToGetNasBackupPlansResultOutput() GetNasBackupPlansResultOutput {
+	return o
+}
+
+func (o GetNasBackupPlansResultOutput) ToGetNasBackupPlansResultOutputWithContext(ctx context.Context) GetNasBackupPlansResultOutput {
+	return o
+}
+
+func (o GetNasBackupPlansResultOutput) FileSystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNasBackupPlansResult) *string { return v.FileSystemId }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNasBackupPlansResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasBackupPlansResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNasBackupPlansResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNasBackupPlansResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNasBackupPlansResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNasBackupPlansResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNasBackupPlansResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNasBackupPlansResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNasBackupPlansResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNasBackupPlansResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNasBackupPlansResultOutput) Plans() GetNasBackupPlansPlanArrayOutput {
+	return o.ApplyT(func(v GetNasBackupPlansResult) []GetNasBackupPlansPlan { return v.Plans }).(GetNasBackupPlansPlanArrayOutput)
+}
+
+func (o GetNasBackupPlansResultOutput) VaultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNasBackupPlansResult) *string { return v.VaultId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNasBackupPlansResultOutput{})
 }

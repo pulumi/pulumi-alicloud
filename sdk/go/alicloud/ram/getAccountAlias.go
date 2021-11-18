@@ -4,6 +4,9 @@
 package ram
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,4 +30,54 @@ type LookupAccountAliasResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
+}
+
+func LookupAccountAliasOutput(ctx *pulumi.Context, args LookupAccountAliasOutputArgs, opts ...pulumi.InvokeOption) LookupAccountAliasResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAccountAliasResult, error) {
+			args := v.(LookupAccountAliasArgs)
+			r, err := LookupAccountAlias(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAccountAliasResultOutput)
+}
+
+// A collection of arguments for invoking getAccountAlias.
+type LookupAccountAliasOutputArgs struct {
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (LookupAccountAliasOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountAliasArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccountAlias.
+type LookupAccountAliasResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAccountAliasResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountAliasResult)(nil)).Elem()
+}
+
+func (o LookupAccountAliasResultOutput) ToLookupAccountAliasResultOutput() LookupAccountAliasResultOutput {
+	return o
+}
+
+func (o LookupAccountAliasResultOutput) ToLookupAccountAliasResultOutputWithContext(ctx context.Context) LookupAccountAliasResultOutput {
+	return o
+}
+
+func (o LookupAccountAliasResultOutput) AccountAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAliasResult) string { return v.AccountAlias }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAccountAliasResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAliasResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountAliasResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountAliasResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAccountAliasResultOutput{})
 }

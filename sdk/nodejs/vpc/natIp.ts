@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
  *     vpcId: alicloud_vpc["default"].id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones[0].id),
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?[0]?.id),
  *     vswitchName: "example_value",
  * });
  * const exampleNatGateway = new alicloud.vpc.NatGateway("exampleNatGateway", {
@@ -177,36 +177,36 @@ export interface NatIpState {
     /**
      * Specifies whether to check the validity of the request without actually making the request.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
      */
-    readonly natGatewayId?: pulumi.Input<string>;
+    natGatewayId?: pulumi.Input<string>;
     /**
      * The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
      */
-    readonly natIp?: pulumi.Input<string>;
+    natIp?: pulumi.Input<string>;
     /**
      * NAT IP ADDRESS of the address segment.
      */
-    readonly natIpCidr?: pulumi.Input<string>;
+    natIpCidr?: pulumi.Input<string>;
     /**
      * The ID of the CIDR block to which the NAT IP address belongs.
      */
-    readonly natIpCidrId?: pulumi.Input<string>;
+    natIpCidrId?: pulumi.Input<string>;
     /**
      * NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
      */
-    readonly natIpDescription?: pulumi.Input<string>;
-    readonly natIpId?: pulumi.Input<string>;
+    natIpDescription?: pulumi.Input<string>;
+    natIpId?: pulumi.Input<string>;
     /**
      * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      */
-    readonly natIpName?: pulumi.Input<string>;
+    natIpName?: pulumi.Input<string>;
     /**
      * The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -216,29 +216,29 @@ export interface NatIpArgs {
     /**
      * Specifies whether to check the validity of the request without actually making the request.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
      */
-    readonly natGatewayId: pulumi.Input<string>;
+    natGatewayId: pulumi.Input<string>;
     /**
      * The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
      */
-    readonly natIp?: pulumi.Input<string>;
+    natIp?: pulumi.Input<string>;
     /**
      * NAT IP ADDRESS of the address segment.
      */
-    readonly natIpCidr?: pulumi.Input<string>;
+    natIpCidr?: pulumi.Input<string>;
     /**
      * The ID of the CIDR block to which the NAT IP address belongs.
      */
-    readonly natIpCidrId?: pulumi.Input<string>;
+    natIpCidrId?: pulumi.Input<string>;
     /**
      * NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
      */
-    readonly natIpDescription?: pulumi.Input<string>;
+    natIpDescription?: pulumi.Input<string>;
     /**
      * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      */
-    readonly natIpName?: pulumi.Input<string>;
+    natIpName?: pulumi.Input<string>;
 }

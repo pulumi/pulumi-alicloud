@@ -195,7 +195,7 @@ type OpenApiImageCacheArrayInput interface {
 type OpenApiImageCacheArray []OpenApiImageCacheInput
 
 func (OpenApiImageCacheArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OpenApiImageCache)(nil))
+	return reflect.TypeOf((*[]*OpenApiImageCache)(nil)).Elem()
 }
 
 func (i OpenApiImageCacheArray) ToOpenApiImageCacheArrayOutput() OpenApiImageCacheArrayOutput {
@@ -220,7 +220,7 @@ type OpenApiImageCacheMapInput interface {
 type OpenApiImageCacheMap map[string]OpenApiImageCacheInput
 
 func (OpenApiImageCacheMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OpenApiImageCache)(nil))
+	return reflect.TypeOf((*map[string]*OpenApiImageCache)(nil)).Elem()
 }
 
 func (i OpenApiImageCacheMap) ToOpenApiImageCacheMapOutput() OpenApiImageCacheMapOutput {
@@ -231,9 +231,7 @@ func (i OpenApiImageCacheMap) ToOpenApiImageCacheMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(OpenApiImageCacheMapOutput)
 }
 
-type OpenApiImageCacheOutput struct {
-	*pulumi.OutputState
-}
+type OpenApiImageCacheOutput struct{ *pulumi.OutputState }
 
 func (OpenApiImageCacheOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OpenApiImageCache)(nil))
@@ -252,14 +250,12 @@ func (o OpenApiImageCacheOutput) ToOpenApiImageCachePtrOutput() OpenApiImageCach
 }
 
 func (o OpenApiImageCacheOutput) ToOpenApiImageCachePtrOutputWithContext(ctx context.Context) OpenApiImageCachePtrOutput {
-	return o.ApplyT(func(v OpenApiImageCache) *OpenApiImageCache {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenApiImageCache) *OpenApiImageCache {
 		return &v
 	}).(OpenApiImageCachePtrOutput)
 }
 
-type OpenApiImageCachePtrOutput struct {
-	*pulumi.OutputState
-}
+type OpenApiImageCachePtrOutput struct{ *pulumi.OutputState }
 
 func (OpenApiImageCachePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OpenApiImageCache)(nil))
@@ -271,6 +267,16 @@ func (o OpenApiImageCachePtrOutput) ToOpenApiImageCachePtrOutput() OpenApiImageC
 
 func (o OpenApiImageCachePtrOutput) ToOpenApiImageCachePtrOutputWithContext(ctx context.Context) OpenApiImageCachePtrOutput {
 	return o
+}
+
+func (o OpenApiImageCachePtrOutput) Elem() OpenApiImageCacheOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) OpenApiImageCache {
+		if v != nil {
+			return *v
+		}
+		var ret OpenApiImageCache
+		return ret
+	}).(OpenApiImageCacheOutput)
 }
 
 type OpenApiImageCacheArrayOutput struct{ *pulumi.OutputState }
@@ -314,6 +320,10 @@ func (o OpenApiImageCacheMapOutput) MapIndex(k pulumi.StringInput) OpenApiImageC
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiImageCacheInput)(nil)).Elem(), &OpenApiImageCache{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiImageCachePtrInput)(nil)).Elem(), &OpenApiImageCache{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiImageCacheArrayInput)(nil)).Elem(), OpenApiImageCacheArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiImageCacheMapInput)(nil)).Elem(), OpenApiImageCacheMap{})
 	pulumi.RegisterOutputType(OpenApiImageCacheOutput{})
 	pulumi.RegisterOutputType(OpenApiImageCachePtrOutput{})
 	pulumi.RegisterOutputType(OpenApiImageCacheArrayOutput{})

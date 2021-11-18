@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public static Task<GetAlidnsRecordsResult> InvokeAsync(GetAlidnsRecordsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsRecordsResult>("alicloud:dns/getAlidnsRecords:getAlidnsRecords", args ?? new GetAlidnsRecordsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// </summary>
+        public static Output<GetAlidnsRecordsResult> Invoke(GetAlidnsRecordsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlidnsRecordsResult>("alicloud:dns/getAlidnsRecords:getAlidnsRecords", args ?? new GetAlidnsRecordsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -129,6 +138,118 @@ namespace Pulumi.AliCloud.Dns
         public string? ValueRegex { get; set; }
 
         public GetAlidnsRecordsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlidnsRecordsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
+        /// <summary>
+        /// The domain name associated to the records.
+        /// </summary>
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
+
+        /// <summary>
+        /// Domain name group ID.
+        /// </summary>
+        [Input("groupId")]
+        public Input<int>? GroupId { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of record IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Keywords.
+        /// </summary>
+        [Input("keyWord")]
+        public Input<string>? KeyWord { get; set; }
+
+        /// <summary>
+        /// User language.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
+
+        /// <summary>
+        /// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+        /// </summary>
+        [Input("line")]
+        public Input<string>? Line { get; set; }
+
+        /// <summary>
+        /// Sort by. Sort from newest to oldest according to the time added by resolution.
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+        /// </summary>
+        [Input("rrKeyWord")]
+        public Input<string>? RrKeyWord { get; set; }
+
+        /// <summary>
+        /// Host record regex.
+        /// </summary>
+        [Input("rrRegex")]
+        public Input<string>? RrRegex { get; set; }
+
+        /// <summary>
+        /// Search mode, Valid values: `LIKE`, `EXACT`, `ADVANCED`, `LIKE` (fuzzy), `EXACT` (accurate) search supports KeyWord field, `ADVANCED` (advanced) mode supports other fields.
+        /// </summary>
+        [Input("searchMode")]
+        public Input<string>? SearchMode { get; set; }
+
+        /// <summary>
+        /// Record status. Valid values: `ENABLE` and `DISABLE`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Analyze type keywords, search by full match, not case sensitive.
+        /// </summary>
+        [Input("typeKeyWord")]
+        public Input<string>? TypeKeyWord { get; set; }
+
+        /// <summary>
+        /// The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+        /// </summary>
+        [Input("valueKeyWord")]
+        public Input<string>? ValueKeyWord { get; set; }
+
+        /// <summary>
+        /// Host record value regex.
+        /// </summary>
+        [Input("valueRegex")]
+        public Input<string>? ValueRegex { get; set; }
+
+        public GetAlidnsRecordsInvokeArgs()
         {
         }
     }

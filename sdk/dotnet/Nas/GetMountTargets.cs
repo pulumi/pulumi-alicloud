@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Nas
 {
@@ -33,7 +34,7 @@ namespace Pulumi.AliCloud.Nas
         ///             FileSystemId = "1a2sc4d",
         ///             AccessGroupName = "tf-testAccNasConfig",
         ///         }));
-        ///         this.TheFirstMountTargetDomain = example.Apply(example =&gt; example.Targets[0].Id);
+        ///         this.TheFirstMountTargetDomain = example.Apply(example =&gt; example.Targets?[0]?.Id);
         ///     }
         /// 
         ///     [Output("theFirstMountTargetDomain")]
@@ -45,6 +46,41 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public static Task<GetMountTargetsResult> InvokeAsync(GetMountTargetsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? new GetMountTargetsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides MountTargets available to the user.
+        /// 
+        /// &gt; **NOTE**: Available in 1.35.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Nas.GetMountTargets.InvokeAsync(new AliCloud.Nas.GetMountTargetsArgs
+        ///         {
+        ///             FileSystemId = "1a2sc4d",
+        ///             AccessGroupName = "tf-testAccNasConfig",
+        ///         }));
+        ///         this.TheFirstMountTargetDomain = example.Apply(example =&gt; example.Targets?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("theFirstMountTargetDomain")]
+        ///     public Output&lt;string&gt; TheFirstMountTargetDomain { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMountTargetsResult> Invoke(GetMountTargetsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? new GetMountTargetsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -114,6 +150,76 @@ namespace Pulumi.AliCloud.Nas
         public string? VswitchId { get; set; }
 
         public GetMountTargetsArgs()
+        {
+        }
+    }
+
+    public sealed class GetMountTargetsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Filter results by a specific AccessGroupName.
+        /// </summary>
+        [Input("accessGroupName")]
+        public Input<string>? AccessGroupName { get; set; }
+
+        /// <summary>
+        /// The ID of the FileSystem that owns the MountTarget.
+        /// </summary>
+        [Input("fileSystemId", required: true)]
+        public Input<string> FileSystemId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of MountTargetDomain.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+        /// </summary>
+        [Input("mountTargetDomain")]
+        public Input<string>? MountTargetDomain { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific NetworkType.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific VpcId.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific VSwitchId.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        public GetMountTargetsInvokeArgs()
         {
         }
     }

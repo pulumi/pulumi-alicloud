@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     vswitchName: "vpc-123456",
@@ -176,84 +176,84 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Database engine: gpdb. System Default value: gpdb.
      */
-    readonly engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
      */
-    readonly engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
      */
-    readonly instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string>;
     /**
      * The number of groups. Valid values: [2,4,8,16,32]
      */
-    readonly instanceGroupCount?: pulumi.Input<string>;
+    instanceGroupCount?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Database engine: gpdb. System Default value: gpdb.
      */
-    readonly engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
      */
-    readonly engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
      */
-    readonly instanceClass: pulumi.Input<string>;
+    instanceClass: pulumi.Input<string>;
     /**
      * The number of groups. Valid values: [2,4,8,16,32]
      */
-    readonly instanceGroupCount: pulumi.Input<string>;
+    instanceGroupCount: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }

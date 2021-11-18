@@ -44,12 +44,12 @@ import * as utilities from "../utilities";
  *     resourceTypesScopes: ["ACS::ECS::Instance"],
  *     riskLevel: 1,
  *     description: name,
- *     excludeResourceIdsScope: defaultInstances.then(defaultInstances => defaultInstances.ids[0]),
+ *     excludeResourceIdsScope: defaultInstances.then(defaultInstances => defaultInstances.ids?[0]),
  *     inputParameters: {
  *         cpuCount: "4",
  *     },
  *     regionIdsScope: "cn-hangzhou",
- *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids[0]),
+ *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?[0]),
  *     tagKeyScope: "tFTest",
  *     tagValueScope: "forTF 123",
  * });
@@ -193,37 +193,37 @@ export interface AggregateCompliancePackState {
     /**
      * The name of compliance package name.
      */
-    readonly aggregateCompliancePackName?: pulumi.Input<string>;
+    aggregateCompliancePackName?: pulumi.Input<string>;
     /**
      * The ID of aggregator.
      */
-    readonly aggregatorId?: pulumi.Input<string>;
+    aggregatorId?: pulumi.Input<string>;
     /**
      * The Template ID of compliance package.
      */
-    readonly compliancePackTemplateId?: pulumi.Input<string>;
+    compliancePackTemplateId?: pulumi.Input<string>;
     /**
      * A list of Config Rule IDs.
      */
-    readonly configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleId>[]>;
+    configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleId>[]>;
     /**
      * A list of Config Rules.
      *
      * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
      */
-    readonly configRules?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRule>[]>;
+    configRules?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRule>[]>;
     /**
      * Teh description of compliance package.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Risk Level. Valid values: `1`, `2`, `3`.
      */
-    readonly riskLevel?: pulumi.Input<number>;
+    riskLevel?: pulumi.Input<number>;
     /**
      * The status of the resource.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -233,31 +233,31 @@ export interface AggregateCompliancePackArgs {
     /**
      * The name of compliance package name.
      */
-    readonly aggregateCompliancePackName: pulumi.Input<string>;
+    aggregateCompliancePackName: pulumi.Input<string>;
     /**
      * The ID of aggregator.
      */
-    readonly aggregatorId: pulumi.Input<string>;
+    aggregatorId: pulumi.Input<string>;
     /**
      * The Template ID of compliance package.
      */
-    readonly compliancePackTemplateId?: pulumi.Input<string>;
+    compliancePackTemplateId?: pulumi.Input<string>;
     /**
      * A list of Config Rule IDs.
      */
-    readonly configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleId>[]>;
+    configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleId>[]>;
     /**
      * A list of Config Rules.
      *
      * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
      */
-    readonly configRules?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRule>[]>;
+    configRules?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRule>[]>;
     /**
      * Teh description of compliance package.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The Risk Level. Valid values: `1`, `2`, `3`.
      */
-    readonly riskLevel: pulumi.Input<number>;
+    riskLevel: pulumi.Input<number>;
 }

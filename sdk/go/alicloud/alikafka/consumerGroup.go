@@ -41,7 +41,7 @@ import (
 // 			consumerId = param
 // 		}
 // 		opt0 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -243,7 +243,7 @@ type ConsumerGroupArrayInput interface {
 type ConsumerGroupArray []ConsumerGroupInput
 
 func (ConsumerGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ConsumerGroup)(nil))
+	return reflect.TypeOf((*[]*ConsumerGroup)(nil)).Elem()
 }
 
 func (i ConsumerGroupArray) ToConsumerGroupArrayOutput() ConsumerGroupArrayOutput {
@@ -268,7 +268,7 @@ type ConsumerGroupMapInput interface {
 type ConsumerGroupMap map[string]ConsumerGroupInput
 
 func (ConsumerGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ConsumerGroup)(nil))
+	return reflect.TypeOf((*map[string]*ConsumerGroup)(nil)).Elem()
 }
 
 func (i ConsumerGroupMap) ToConsumerGroupMapOutput() ConsumerGroupMapOutput {
@@ -279,9 +279,7 @@ func (i ConsumerGroupMap) ToConsumerGroupMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupMapOutput)
 }
 
-type ConsumerGroupOutput struct {
-	*pulumi.OutputState
-}
+type ConsumerGroupOutput struct{ *pulumi.OutputState }
 
 func (ConsumerGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConsumerGroup)(nil))
@@ -300,14 +298,12 @@ func (o ConsumerGroupOutput) ToConsumerGroupPtrOutput() ConsumerGroupPtrOutput {
 }
 
 func (o ConsumerGroupOutput) ToConsumerGroupPtrOutputWithContext(ctx context.Context) ConsumerGroupPtrOutput {
-	return o.ApplyT(func(v ConsumerGroup) *ConsumerGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsumerGroup) *ConsumerGroup {
 		return &v
 	}).(ConsumerGroupPtrOutput)
 }
 
-type ConsumerGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type ConsumerGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (ConsumerGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ConsumerGroup)(nil))
@@ -319,6 +315,16 @@ func (o ConsumerGroupPtrOutput) ToConsumerGroupPtrOutput() ConsumerGroupPtrOutpu
 
 func (o ConsumerGroupPtrOutput) ToConsumerGroupPtrOutputWithContext(ctx context.Context) ConsumerGroupPtrOutput {
 	return o
+}
+
+func (o ConsumerGroupPtrOutput) Elem() ConsumerGroupOutput {
+	return o.ApplyT(func(v *ConsumerGroup) ConsumerGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ConsumerGroup
+		return ret
+	}).(ConsumerGroupOutput)
 }
 
 type ConsumerGroupArrayOutput struct{ *pulumi.OutputState }
@@ -362,6 +368,10 @@ func (o ConsumerGroupMapOutput) MapIndex(k pulumi.StringInput) ConsumerGroupOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerGroupInput)(nil)).Elem(), &ConsumerGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerGroupPtrInput)(nil)).Elem(), &ConsumerGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerGroupArrayInput)(nil)).Elem(), ConsumerGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerGroupMapInput)(nil)).Elem(), ConsumerGroupMap{})
 	pulumi.RegisterOutputType(ConsumerGroupOutput{})
 	pulumi.RegisterOutputType(ConsumerGroupPtrOutput{})
 	pulumi.RegisterOutputType(ConsumerGroupArrayOutput{})

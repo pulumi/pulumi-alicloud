@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetTransitRouterRouteEntriesResult> InvokeAsync(GetTransitRouterRouteEntriesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteEntriesResult>("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", args ?? new GetTransitRouterRouteEntriesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+        /// 
+        /// &gt; **NOTE:** Available in 1.126.0+
+        /// </summary>
+        public static Output<GetTransitRouterRouteEntriesResult> Invoke(GetTransitRouterRouteEntriesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteEntriesResult>("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", args ?? new GetTransitRouterRouteEntriesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +90,70 @@ namespace Pulumi.AliCloud.Cen
         public string TransitRouterRouteTableId { get; set; } = null!;
 
         public GetTransitRouterRouteEntriesArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransitRouterRouteEntriesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of CEN Transit Router Route Entry IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("transitRouterRouteEntryIds")]
+        private InputList<string>? _transitRouterRouteEntryIds;
+
+        /// <summary>
+        /// A list of ID of the cen transit router route entry.
+        /// </summary>
+        public InputList<string> TransitRouterRouteEntryIds
+        {
+            get => _transitRouterRouteEntryIds ?? (_transitRouterRouteEntryIds = new InputList<string>());
+            set => _transitRouterRouteEntryIds = value;
+        }
+
+        [Input("transitRouterRouteEntryNames")]
+        private InputList<string>? _transitRouterRouteEntryNames;
+
+        /// <summary>
+        /// A list of name of the cen transit router route entry.
+        /// </summary>
+        public InputList<string> TransitRouterRouteEntryNames
+        {
+            get => _transitRouterRouteEntryNames ?? (_transitRouterRouteEntryNames = new InputList<string>());
+            set => _transitRouterRouteEntryNames = value;
+        }
+
+        /// <summary>
+        /// The status of the resource.Valid values `Creating`, `Active` and `Deleting`.
+        /// </summary>
+        [Input("transitRouterRouteEntryStatus")]
+        public Input<string>? TransitRouterRouteEntryStatus { get; set; }
+
+        /// <summary>
+        /// ID of the CEN Transit Router Route Table.
+        /// </summary>
+        [Input("transitRouterRouteTableId", required: true)]
+        public Input<string> TransitRouterRouteTableId { get; set; } = null!;
+
+        public GetTransitRouterRouteEntriesInvokeArgs()
         {
         }
     }

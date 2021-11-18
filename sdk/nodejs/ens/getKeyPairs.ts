@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     version: "example_value",
  *     nameRegex: "^my-KeyPair",
  * });
- * export const ensKeyPairId1 = nameRegex.then(nameRegex => nameRegex.pairs[0].id);
+ * export const ensKeyPairId1 = nameRegex.then(nameRegex => nameRegex.pairs?[0]?.id);
  * ```
  */
 export function getKeyPairs(args: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
@@ -48,16 +48,16 @@ export interface GetKeyPairsArgs {
     /**
      * The name of the key pair.
      */
-    readonly keyPairName?: string;
+    keyPairName?: string;
     /**
      * A regex string to filter results by Key Pair name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The version number.
      */
-    readonly version: string;
+    version: string;
 }
 
 /**
@@ -75,4 +75,27 @@ export interface GetKeyPairsResult {
     readonly outputFile?: string;
     readonly pairs: outputs.ens.GetKeyPairsPair[];
     readonly version: string;
+}
+
+export function getKeyPairsOutput(args: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
+    return pulumi.output(args).apply(a => getKeyPairs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKeyPairs.
+ */
+export interface GetKeyPairsOutputArgs {
+    /**
+     * The name of the key pair.
+     */
+    keyPairName?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Key Pair name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The version number.
+     */
+    version: pulumi.Input<string>;
 }

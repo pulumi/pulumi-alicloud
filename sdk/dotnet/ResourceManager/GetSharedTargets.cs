@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.ResourceManager
         ///                 "15681091********",
         ///             },
         ///         }));
-        ///         this.FirstResourceManagerSharedTargetId = example.Apply(example =&gt; example.Targets[0].Id);
+        ///         this.FirstResourceManagerSharedTargetId = example.Apply(example =&gt; example.Targets?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstResourceManagerSharedTargetId")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Task<GetSharedTargetsResult> InvokeAsync(GetSharedTargetsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSharedTargetsResult>("alicloud:resourcemanager/getSharedTargets:getSharedTargets", args ?? new GetSharedTargetsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.ResourceManager.GetSharedTargets.InvokeAsync(new AliCloud.ResourceManager.GetSharedTargetsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "15681091********",
+        ///             },
+        ///         }));
+        ///         this.FirstResourceManagerSharedTargetId = example.Apply(example =&gt; example.Targets?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstResourceManagerSharedTargetId")]
+        ///     public Output&lt;string&gt; FirstResourceManagerSharedTargetId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSharedTargetsResult> Invoke(GetSharedTargetsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSharedTargetsResult>("alicloud:resourcemanager/getSharedTargets:getSharedTargets", args ?? new GetSharedTargetsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -82,6 +122,40 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? Status { get; set; }
 
         public GetSharedTargetsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSharedTargetsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Shared Target IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The resource shared ID of resource manager.
+        /// </summary>
+        [Input("resourceShareId")]
+        public Input<string>? ResourceShareId { get; set; }
+
+        /// <summary>
+        /// The status of shared target.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetSharedTargetsInvokeArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package alb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,82 @@ type GetHealthCheckTemplatesResult struct {
 	Names      []string                          `pulumi:"names"`
 	OutputFile *string                           `pulumi:"outputFile"`
 	Templates  []GetHealthCheckTemplatesTemplate `pulumi:"templates"`
+}
+
+func GetHealthCheckTemplatesOutput(ctx *pulumi.Context, args GetHealthCheckTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetHealthCheckTemplatesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetHealthCheckTemplatesResult, error) {
+			args := v.(GetHealthCheckTemplatesArgs)
+			r, err := GetHealthCheckTemplates(ctx, &args, opts...)
+			return *r, err
+		}).(GetHealthCheckTemplatesResultOutput)
+}
+
+// A collection of arguments for invoking getHealthCheckTemplates.
+type GetHealthCheckTemplatesOutputArgs struct {
+	// The health check template ids.
+	HealthCheckTemplateIds pulumi.StringArrayInput `pulumi:"healthCheckTemplateIds"`
+	// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	HealthCheckTemplateName pulumi.StringPtrInput `pulumi:"healthCheckTemplateName"`
+	// A list of Health Check Template IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Health Check Template name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetHealthCheckTemplatesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckTemplatesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getHealthCheckTemplates.
+type GetHealthCheckTemplatesResultOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckTemplatesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckTemplatesResult)(nil)).Elem()
+}
+
+func (o GetHealthCheckTemplatesResultOutput) ToGetHealthCheckTemplatesResultOutput() GetHealthCheckTemplatesResultOutput {
+	return o
+}
+
+func (o GetHealthCheckTemplatesResultOutput) ToGetHealthCheckTemplatesResultOutputWithContext(ctx context.Context) GetHealthCheckTemplatesResultOutput {
+	return o
+}
+
+func (o GetHealthCheckTemplatesResultOutput) HealthCheckTemplateIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesResult) []string { return v.HealthCheckTemplateIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetHealthCheckTemplatesResultOutput) HealthCheckTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesResult) *string { return v.HealthCheckTemplateName }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHealthCheckTemplatesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckTemplatesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetHealthCheckTemplatesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHealthCheckTemplatesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetHealthCheckTemplatesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHealthCheckTemplatesResultOutput) Templates() GetHealthCheckTemplatesTemplateArrayOutput {
+	return o.ApplyT(func(v GetHealthCheckTemplatesResult) []GetHealthCheckTemplatesTemplate { return v.Templates }).(GetHealthCheckTemplatesTemplateArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHealthCheckTemplatesResultOutput{})
 }

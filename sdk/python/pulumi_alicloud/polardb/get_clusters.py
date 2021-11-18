@@ -13,6 +13,7 @@ __all__ = [
     'GetClustersResult',
     'AwaitableGetClustersResult',
     'get_clusters',
+    'get_clusters_output',
 ]
 
 @pulumi.output_type
@@ -138,7 +139,7 @@ def get_clusters(db_type: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
-    The `polardb.getClusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
+    The `polardb.get_clusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
     Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 
     > **NOTE:** Available in v1.66.0+.
@@ -186,3 +187,40 @@ def get_clusters(db_type: Optional[str] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_clusters)
+def get_clusters_output(db_type: Optional[pulumi.Input[Optional[str]]] = None,
+                        description_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
+    """
+    The `polardb.get_clusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
+    Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+
+    > **NOTE:** Available in v1.66.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    polardb_clusters_ds = alicloud.polardb.get_clusters(description_regex="pc-\\w+",
+        status="Running")
+    pulumi.export("firstPolardbClusterId", polardb_clusters_ds.clusters[0].id)
+    ```
+
+
+    :param str db_type: Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+    :param str description_regex: A regex string to filter results by cluster description.
+    :param Sequence[str] ids: A list of PolarDB cluster IDs.
+    :param str status: status of the cluster.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+           - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+           - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+    """
+    ...

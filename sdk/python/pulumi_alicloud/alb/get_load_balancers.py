@@ -13,6 +13,7 @@ __all__ = [
     'GetLoadBalancersResult',
     'AwaitableGetLoadBalancersResult',
     'get_load_balancers',
+    'get_load_balancers_output',
 ]
 
 @pulumi.output_type
@@ -275,3 +276,56 @@ def get_load_balancers(address_type: Optional[str] = None,
         vpc_id=__ret__.vpc_id,
         vpc_ids=__ret__.vpc_ids,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_load_balancers)
+def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              load_balancer_bussiness_status: Optional[pulumi.Input[Optional[str]]] = None,
+                              load_balancer_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              load_balancer_name: Optional[pulumi.Input[Optional[str]]] = None,
+                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              status: Optional[pulumi.Input[Optional[str]]] = None,
+                              tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                              vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              vpc_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancersResult]:
+    """
+    This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_load_balancers()
+    pulumi.export("albLoadBalancerId1", ids.balancers[0].id)
+    name_regex = alicloud.alb.get_load_balancers(name_regex="^my-LoadBalancer")
+    pulumi.export("albLoadBalancerId2", name_regex.balancers[0].id)
+    ```
+
+
+    :param str address_type: The type of IP address that the ALB instance uses to provide services.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Load Balancer IDs.
+    :param str load_balancer_bussiness_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+    :param Sequence[str] load_balancer_ids: The load balancer ids.
+    :param str load_balancer_name: The name of the resource.
+    :param str name_regex: A regex string to filter results by Load Balancer name.
+    :param str resource_group_id: The ID of the resource group.
+    :param str status: The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+    :param Sequence[str] vpc_ids: The vpc ids.
+    :param str zone_id: The ID of the zone to which the ALB instance belongs.
+    """
+    ...

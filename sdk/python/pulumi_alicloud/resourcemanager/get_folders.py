@@ -13,6 +13,7 @@ __all__ = [
     'GetFoldersResult',
     'AwaitableGetFoldersResult',
     'get_folders',
+    'get_folders_output',
 ]
 
 @pulumi.output_type
@@ -178,3 +179,38 @@ def get_folders(enable_details: Optional[bool] = None,
         output_file=__ret__.output_file,
         parent_folder_id=__ret__.parent_folder_id,
         query_keyword=__ret__.query_keyword)
+
+
+@_utilities.lift_output_func(get_folders)
+def get_folders_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                       parent_folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       query_keyword: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFoldersResult]:
+    """
+    This data source provides the resource manager folders of the current Alibaba Cloud user.
+
+    > **NOTE:**  Available in 1.84.0+.
+
+    > **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_folders(name_regex="tftest")
+    pulumi.export("firstFolderId", example.folders[0].id)
+    ```
+
+
+    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+    :param Sequence[str] ids: A list of resource manager folders IDs.
+    :param str name_regex: A regex string to filter results by folder name.
+    :param str parent_folder_id: The ID of the parent folder.
+    :param str query_keyword: The query keyword.
+    """
+    ...

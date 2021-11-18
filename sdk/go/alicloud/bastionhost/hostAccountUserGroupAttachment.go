@@ -15,79 +15,6 @@ import (
 //
 // > **NOTE:** Available in v1.135.0+.
 //
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultHost, err := bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
-// 			InstanceId:         pulumi.String("bastionhost-cn-tl32bh0no30"),
-// 			HostName:           pulumi.Any(_var.Name),
-// 			ActiveAddressType:  pulumi.String("Private"),
-// 			HostPrivateAddress: pulumi.String("172.16.0.10"),
-// 			OsType:             pulumi.String("Linux"),
-// 			Source:             pulumi.String("Local"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var defaultHostAccount []*bastionhost.HostAccount
-// 		for key0, val0 := range 3 {
-// 			__res, err := bastionhost.NewHostAccount(ctx, fmt.Sprintf("defaultHostAccount-%v", key0), &bastionhost.HostAccountArgs{
-// 				InstanceId:      defaultHost.InstanceId,
-// 				HostAccountName: pulumi.String(fmt.Sprintf("%v%v", "example_value-", val0)),
-// 				HostId:          defaultHost.HostId,
-// 				ProtocolName:    pulumi.String("SSH"),
-// 				Password:        pulumi.String("YourPassword12345"),
-// 			})
-// 			if err != nil {
-// 				return err
-// 			}
-// 			defaultHostAccount = append(defaultHostAccount, __res)
-// 		}
-// 		defaultUserGroup, err := bastionhost.NewUserGroup(ctx, "defaultUserGroup", &bastionhost.UserGroupArgs{
-// 			InstanceId:    pulumi.String("bastionhost-cn-tl32bh0no30"),
-// 			UserGroupName: pulumi.Any(_var.Name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var splat0 pulumi.StringArray
-// 		for _, val0 := range defaultHostAccount {
-// 			splat0 = append(splat0, val0.HostAccountId)
-// 		}
-// 		_, err = bastionhost.NewHostAccountUserGroupAttachment(ctx, "defaultHostAccountUserGroupAttachment", &bastionhost.HostAccountUserGroupAttachmentArgs{
-// 			InstanceId:     defaultHost.InstanceId,
-// 			UserGroupId:    defaultUserGroup.UserGroupId,
-// 			HostId:         defaultHost.HostId,
-// 			HostAccountIds: toPulumiStringArray(splat0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// func toPulumiStringArray(arr []string) pulumi.StringArray {
-// 	var pulumiArr pulumi.StringArray
-// 	for _, v := range arr {
-// 		pulumiArr = append(pulumiArr, pulumi.String(v))
-// 	}
-// 	return pulumiArr
-// }
-// ```
-//
 // ## Import
 //
 // Bastion Host Host Account can be imported using the id, e.g.
@@ -263,7 +190,7 @@ type HostAccountUserGroupAttachmentArrayInput interface {
 type HostAccountUserGroupAttachmentArray []HostAccountUserGroupAttachmentInput
 
 func (HostAccountUserGroupAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HostAccountUserGroupAttachment)(nil))
+	return reflect.TypeOf((*[]*HostAccountUserGroupAttachment)(nil)).Elem()
 }
 
 func (i HostAccountUserGroupAttachmentArray) ToHostAccountUserGroupAttachmentArrayOutput() HostAccountUserGroupAttachmentArrayOutput {
@@ -288,7 +215,7 @@ type HostAccountUserGroupAttachmentMapInput interface {
 type HostAccountUserGroupAttachmentMap map[string]HostAccountUserGroupAttachmentInput
 
 func (HostAccountUserGroupAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HostAccountUserGroupAttachment)(nil))
+	return reflect.TypeOf((*map[string]*HostAccountUserGroupAttachment)(nil)).Elem()
 }
 
 func (i HostAccountUserGroupAttachmentMap) ToHostAccountUserGroupAttachmentMapOutput() HostAccountUserGroupAttachmentMapOutput {
@@ -299,9 +226,7 @@ func (i HostAccountUserGroupAttachmentMap) ToHostAccountUserGroupAttachmentMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountUserGroupAttachmentMapOutput)
 }
 
-type HostAccountUserGroupAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type HostAccountUserGroupAttachmentOutput struct{ *pulumi.OutputState }
 
 func (HostAccountUserGroupAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HostAccountUserGroupAttachment)(nil))
@@ -320,14 +245,12 @@ func (o HostAccountUserGroupAttachmentOutput) ToHostAccountUserGroupAttachmentPt
 }
 
 func (o HostAccountUserGroupAttachmentOutput) ToHostAccountUserGroupAttachmentPtrOutputWithContext(ctx context.Context) HostAccountUserGroupAttachmentPtrOutput {
-	return o.ApplyT(func(v HostAccountUserGroupAttachment) *HostAccountUserGroupAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostAccountUserGroupAttachment) *HostAccountUserGroupAttachment {
 		return &v
 	}).(HostAccountUserGroupAttachmentPtrOutput)
 }
 
-type HostAccountUserGroupAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type HostAccountUserGroupAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (HostAccountUserGroupAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HostAccountUserGroupAttachment)(nil))
@@ -339,6 +262,16 @@ func (o HostAccountUserGroupAttachmentPtrOutput) ToHostAccountUserGroupAttachmen
 
 func (o HostAccountUserGroupAttachmentPtrOutput) ToHostAccountUserGroupAttachmentPtrOutputWithContext(ctx context.Context) HostAccountUserGroupAttachmentPtrOutput {
 	return o
+}
+
+func (o HostAccountUserGroupAttachmentPtrOutput) Elem() HostAccountUserGroupAttachmentOutput {
+	return o.ApplyT(func(v *HostAccountUserGroupAttachment) HostAccountUserGroupAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret HostAccountUserGroupAttachment
+		return ret
+	}).(HostAccountUserGroupAttachmentOutput)
 }
 
 type HostAccountUserGroupAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -382,6 +315,10 @@ func (o HostAccountUserGroupAttachmentMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountUserGroupAttachmentInput)(nil)).Elem(), &HostAccountUserGroupAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountUserGroupAttachmentPtrInput)(nil)).Elem(), &HostAccountUserGroupAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountUserGroupAttachmentArrayInput)(nil)).Elem(), HostAccountUserGroupAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountUserGroupAttachmentMapInput)(nil)).Elem(), HostAccountUserGroupAttachmentMap{})
 	pulumi.RegisterOutputType(HostAccountUserGroupAttachmentOutput{})
 	pulumi.RegisterOutputType(HostAccountUserGroupAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(HostAccountUserGroupAttachmentArrayOutput{})

@@ -4,6 +4,9 @@
 package graphdatabase
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -92,4 +95,78 @@ type GetDbInstancesResult struct {
 	Instances  []GetDbInstancesInstance `pulumi:"instances"`
 	OutputFile *string                  `pulumi:"outputFile"`
 	Status     *string                  `pulumi:"status"`
+}
+
+func GetDbInstancesOutput(ctx *pulumi.Context, args GetDbInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDbInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDbInstancesResult, error) {
+			args := v.(GetDbInstancesArgs)
+			r, err := GetDbInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetDbInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getDbInstances.
+type GetDbInstancesOutputArgs struct {
+	// According to the practical example or notes.
+	DbInstanceDescription pulumi.StringPtrInput `pulumi:"dbInstanceDescription"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Db Instance IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetDbInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDbInstances.
+type GetDbInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancesResult)(nil)).Elem()
+}
+
+func (o GetDbInstancesResultOutput) ToGetDbInstancesResultOutput() GetDbInstancesResultOutput {
+	return o
+}
+
+func (o GetDbInstancesResultOutput) ToGetDbInstancesResultOutputWithContext(ctx context.Context) GetDbInstancesResultOutput {
+	return o
+}
+
+func (o GetDbInstancesResultOutput) DbInstanceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDbInstancesResult) *string { return v.DbInstanceDescription }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDbInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDbInstancesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDbInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDbInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDbInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDbInstancesResultOutput) Instances() GetDbInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetDbInstancesResult) []GetDbInstancesInstance { return v.Instances }).(GetDbInstancesInstanceArrayOutput)
+}
+
+func (o GetDbInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDbInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDbInstancesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDbInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDbInstancesResultOutput{})
 }

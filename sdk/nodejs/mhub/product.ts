@@ -100,7 +100,7 @@ export interface ProductState {
     /**
      * ProductName.
      */
-    readonly productName?: pulumi.Input<string>;
+    productName?: pulumi.Input<string>;
 }
 
 /**
@@ -110,5 +110,5 @@ export interface ProductArgs {
     /**
      * ProductName.
      */
-    readonly productName: pulumi.Input<string>;
+    productName: pulumi.Input<string>;
 }

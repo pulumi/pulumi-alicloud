@@ -836,6 +836,18 @@ func (o GetDomainsDomainSourceArrayOutput) Index(i pulumi.IntInput) GetDomainsDo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainCertInfoInput)(nil)).Elem(), DomainCertInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainCertInfoArrayInput)(nil)).Elem(), DomainCertInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigFunctionArgInput)(nil)).Elem(), DomainConfigFunctionArgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigFunctionArgArrayInput)(nil)).Elem(), DomainConfigFunctionArgArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainSourceInput)(nil)).Elem(), DomainSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainSourceArrayInput)(nil)).Elem(), DomainSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainCertInfoInput)(nil)).Elem(), GetDomainsDomainCertInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainCertInfoArrayInput)(nil)).Elem(), GetDomainsDomainCertInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainSourceInput)(nil)).Elem(), GetDomainsDomainSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainSourceArrayInput)(nil)).Elem(), GetDomainsDomainSourceArray{})
 	pulumi.RegisterOutputType(DomainCertInfoOutput{})
 	pulumi.RegisterOutputType(DomainCertInfoArrayOutput{})
 	pulumi.RegisterOutputType(DomainConfigFunctionArgOutput{})

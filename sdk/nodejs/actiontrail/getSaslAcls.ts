@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     instanceId: "xxx",
  *     outputFile: "saslAcls.txt",
  *     username: "username",
- * }, { async: true }));
+ * }));
  *
  * export const firstSaslAclUsername = saslAclsDs.acls[0].username;
  * ```
@@ -51,20 +51,20 @@ export interface GetSaslAclsArgs {
     /**
      * Get results for the specified resource name.
      */
-    readonly aclResourceName: string;
+    aclResourceName: string;
     /**
      * Get results for the specified resource type.
      */
-    readonly aclResourceType: string;
+    aclResourceType: string;
     /**
      * ID of the ALIKAFKA Instance that owns the sasl acls.
      */
-    readonly instanceId: string;
-    readonly outputFile?: string;
+    instanceId: string;
+    outputFile?: string;
     /**
      * Get results for the specified username.
      */
-    readonly username: string;
+    username: string;
 }
 
 /**
@@ -93,4 +93,31 @@ export interface GetSaslAclsResult {
      * The username of the sasl acl.
      */
     readonly username: string;
+}
+
+export function getSaslAclsOutput(args: GetSaslAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSaslAclsResult> {
+    return pulumi.output(args).apply(a => getSaslAcls(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSaslAcls.
+ */
+export interface GetSaslAclsOutputArgs {
+    /**
+     * Get results for the specified resource name.
+     */
+    aclResourceName: pulumi.Input<string>;
+    /**
+     * Get results for the specified resource type.
+     */
+    aclResourceType: pulumi.Input<string>;
+    /**
+     * ID of the ALIKAFKA Instance that owns the sasl acls.
+     */
+    instanceId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Get results for the specified username.
+     */
+    username: pulumi.Input<string>;
 }

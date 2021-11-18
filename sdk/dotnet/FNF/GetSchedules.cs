@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.FNF
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.FNF
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstFnfScheduleId = example.Apply(example =&gt; example.Schedules[0].Id);
+        ///         this.FirstFnfScheduleId = example.Apply(example =&gt; example.Schedules?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstFnfScheduleId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.FNF
         /// </summary>
         public static Task<GetSchedulesResult> InvokeAsync(GetSchedulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSchedulesResult>("alicloud:fnf/getSchedules:getSchedules", args ?? new GetSchedulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Fnf Schedules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.105.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.FNF.GetSchedules.InvokeAsync(new AliCloud.FNF.GetSchedulesArgs
+        ///         {
+        ///             FlowName = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstFnfScheduleId = example.Apply(example =&gt; example.Schedules?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstFnfScheduleId")]
+        ///     public Output&lt;string&gt; FirstFnfScheduleId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSchedulesResult> Invoke(GetSchedulesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSchedulesResult>("alicloud:fnf/getSchedules:getSchedules", args ?? new GetSchedulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -90,6 +132,46 @@ namespace Pulumi.AliCloud.FNF
         public string? OutputFile { get; set; }
 
         public GetSchedulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetSchedulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the flow bound to the time-based schedule you want to create.
+        /// </summary>
+        [Input("flowName", required: true)]
+        public Input<string> FlowName { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Schedule IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The number of resource queries.
+        /// </summary>
+        [Input("limit")]
+        public Input<int>? Limit { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Schedule name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetSchedulesInvokeArgs()
         {
         }
     }

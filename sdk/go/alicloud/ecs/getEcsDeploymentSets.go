@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,82 @@ type GetEcsDeploymentSetsResult struct {
 	OutputFile *string                   `pulumi:"outputFile"`
 	Sets       []GetEcsDeploymentSetsSet `pulumi:"sets"`
 	Strategy   *string                   `pulumi:"strategy"`
+}
+
+func GetEcsDeploymentSetsOutput(ctx *pulumi.Context, args GetEcsDeploymentSetsOutputArgs, opts ...pulumi.InvokeOption) GetEcsDeploymentSetsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEcsDeploymentSetsResult, error) {
+			args := v.(GetEcsDeploymentSetsArgs)
+			r, err := GetEcsDeploymentSets(ctx, &args, opts...)
+			return *r, err
+		}).(GetEcsDeploymentSetsResultOutput)
+}
+
+// A collection of arguments for invoking getEcsDeploymentSets.
+type GetEcsDeploymentSetsOutputArgs struct {
+	// The name of the deployment set.
+	DeploymentSetName pulumi.StringPtrInput `pulumi:"deploymentSetName"`
+	// A list of Deployment Set IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Deployment Set name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The deployment strategy.
+	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
+}
+
+func (GetEcsDeploymentSetsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDeploymentSetsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEcsDeploymentSets.
+type GetEcsDeploymentSetsResultOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDeploymentSetsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDeploymentSetsResult)(nil)).Elem()
+}
+
+func (o GetEcsDeploymentSetsResultOutput) ToGetEcsDeploymentSetsResultOutput() GetEcsDeploymentSetsResultOutput {
+	return o
+}
+
+func (o GetEcsDeploymentSetsResultOutput) ToGetEcsDeploymentSetsResultOutputWithContext(ctx context.Context) GetEcsDeploymentSetsResultOutput {
+	return o
+}
+
+func (o GetEcsDeploymentSetsResultOutput) DeploymentSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsResult) *string { return v.DeploymentSetName }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEcsDeploymentSetsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEcsDeploymentSetsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEcsDeploymentSetsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDeploymentSetsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEcsDeploymentSetsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDeploymentSetsResultOutput) Sets() GetEcsDeploymentSetsSetArrayOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsResult) []GetEcsDeploymentSetsSet { return v.Sets }).(GetEcsDeploymentSetsSetArrayOutput)
+}
+
+func (o GetEcsDeploymentSetsResultOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDeploymentSetsResult) *string { return v.Strategy }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEcsDeploymentSetsResultOutput{})
 }

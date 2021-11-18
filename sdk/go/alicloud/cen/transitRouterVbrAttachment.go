@@ -253,7 +253,7 @@ type TransitRouterVbrAttachmentArrayInput interface {
 type TransitRouterVbrAttachmentArray []TransitRouterVbrAttachmentInput
 
 func (TransitRouterVbrAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TransitRouterVbrAttachment)(nil))
+	return reflect.TypeOf((*[]*TransitRouterVbrAttachment)(nil)).Elem()
 }
 
 func (i TransitRouterVbrAttachmentArray) ToTransitRouterVbrAttachmentArrayOutput() TransitRouterVbrAttachmentArrayOutput {
@@ -278,7 +278,7 @@ type TransitRouterVbrAttachmentMapInput interface {
 type TransitRouterVbrAttachmentMap map[string]TransitRouterVbrAttachmentInput
 
 func (TransitRouterVbrAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TransitRouterVbrAttachment)(nil))
+	return reflect.TypeOf((*map[string]*TransitRouterVbrAttachment)(nil)).Elem()
 }
 
 func (i TransitRouterVbrAttachmentMap) ToTransitRouterVbrAttachmentMapOutput() TransitRouterVbrAttachmentMapOutput {
@@ -289,9 +289,7 @@ func (i TransitRouterVbrAttachmentMap) ToTransitRouterVbrAttachmentMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVbrAttachmentMapOutput)
 }
 
-type TransitRouterVbrAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type TransitRouterVbrAttachmentOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterVbrAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransitRouterVbrAttachment)(nil))
@@ -310,14 +308,12 @@ func (o TransitRouterVbrAttachmentOutput) ToTransitRouterVbrAttachmentPtrOutput(
 }
 
 func (o TransitRouterVbrAttachmentOutput) ToTransitRouterVbrAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterVbrAttachmentPtrOutput {
-	return o.ApplyT(func(v TransitRouterVbrAttachment) *TransitRouterVbrAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransitRouterVbrAttachment) *TransitRouterVbrAttachment {
 		return &v
 	}).(TransitRouterVbrAttachmentPtrOutput)
 }
 
-type TransitRouterVbrAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type TransitRouterVbrAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterVbrAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransitRouterVbrAttachment)(nil))
@@ -329,6 +325,16 @@ func (o TransitRouterVbrAttachmentPtrOutput) ToTransitRouterVbrAttachmentPtrOutp
 
 func (o TransitRouterVbrAttachmentPtrOutput) ToTransitRouterVbrAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterVbrAttachmentPtrOutput {
 	return o
+}
+
+func (o TransitRouterVbrAttachmentPtrOutput) Elem() TransitRouterVbrAttachmentOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) TransitRouterVbrAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret TransitRouterVbrAttachment
+		return ret
+	}).(TransitRouterVbrAttachmentOutput)
 }
 
 type TransitRouterVbrAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -372,6 +378,10 @@ func (o TransitRouterVbrAttachmentMapOutput) MapIndex(k pulumi.StringInput) Tran
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVbrAttachmentInput)(nil)).Elem(), &TransitRouterVbrAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVbrAttachmentPtrInput)(nil)).Elem(), &TransitRouterVbrAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVbrAttachmentArrayInput)(nil)).Elem(), TransitRouterVbrAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVbrAttachmentMapInput)(nil)).Elem(), TransitRouterVbrAttachmentMap{})
 	pulumi.RegisterOutputType(TransitRouterVbrAttachmentOutput{})
 	pulumi.RegisterOutputType(TransitRouterVbrAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(TransitRouterVbrAttachmentArrayOutput{})

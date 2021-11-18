@@ -270,6 +270,8 @@ func (o GetJobTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetJobTempl
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplatesTemplateInput)(nil)).Elem(), GetJobTemplatesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplatesTemplateArrayInput)(nil)).Elem(), GetJobTemplatesTemplateArray{})
 	pulumi.RegisterOutputType(GetJobTemplatesTemplateOutput{})
 	pulumi.RegisterOutputType(GetJobTemplatesTemplateArrayOutput{})
 }

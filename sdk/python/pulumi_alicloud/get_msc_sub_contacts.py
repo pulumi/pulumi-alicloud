@@ -13,6 +13,7 @@ __all__ = [
     'GetMscSubContactsResult',
     'AwaitableGetMscSubContactsResult',
     'get_msc_sub_contacts',
+    'get_msc_sub_contacts_output',
 ]
 
 @pulumi.output_type
@@ -132,3 +133,34 @@ def get_msc_sub_contacts(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_msc_sub_contacts)
+def get_msc_sub_contacts_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMscSubContactsResult]:
+    """
+    This data source provides the Message Center Contacts of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.get_msc_sub_contacts()
+    pulumi.export("mscSubContactId1", ids.contacts[0].id)
+    name_regex = alicloud.get_msc_sub_contacts(name_regex="^my-Contact")
+    pulumi.export("mscSubContactId2", name_regex.contacts[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Contact IDs.
+    :param str name_regex: A regex string to filter results by Contact name.
+    """
+    ...

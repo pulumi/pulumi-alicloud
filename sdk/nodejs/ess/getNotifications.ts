@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const ds = pulumi.output(alicloud.ess.getNotifications({
  *     scalingGroupId: "scaling_group_id",
- * }, { async: true }));
+ * }));
  *
  * export const firstNotification = ds.notifications[0].id;
  * ```
@@ -45,12 +45,12 @@ export interface GetNotificationsArgs {
     /**
      * A list of notification ids.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * Scaling group id the notifications belong to.
      */
-    readonly scalingGroupId: string;
+    scalingGroupId: string;
 }
 
 /**
@@ -74,4 +74,23 @@ export interface GetNotificationsResult {
      * ID of the scaling group.
      */
     readonly scalingGroupId: string;
+}
+
+export function getNotificationsOutput(args: GetNotificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationsResult> {
+    return pulumi.output(args).apply(a => getNotifications(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNotifications.
+ */
+export interface GetNotificationsOutputArgs {
+    /**
+     * A list of notification ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Scaling group id the notifications belong to.
+     */
+    scalingGroupId: pulumi.Input<string>;
 }

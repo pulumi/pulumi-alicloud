@@ -168,27 +168,27 @@ export interface TableState {
     /**
      * The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
      */
-    readonly deviationCellVersionInSec?: pulumi.Input<string>;
+    deviationCellVersionInSec?: pulumi.Input<string>;
     /**
      * The name of the OTS instance in which table will located.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The maximum number of versions stored in this table. The valid value is 1-2147483647.
      */
-    readonly maxVersion?: pulumi.Input<number>;
+    maxVersion?: pulumi.Input<number>;
     /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
      */
-    readonly primaryKeys?: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
+    primaryKeys?: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
     /**
      * The table name of the OTS instance. If changed, a new table would be created.
      */
-    readonly tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string>;
     /**
      * The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
      */
-    readonly timeToLive?: pulumi.Input<number>;
+    timeToLive?: pulumi.Input<number>;
 }
 
 /**
@@ -198,25 +198,25 @@ export interface TableArgs {
     /**
      * The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
      */
-    readonly deviationCellVersionInSec?: pulumi.Input<string>;
+    deviationCellVersionInSec?: pulumi.Input<string>;
     /**
      * The name of the OTS instance in which table will located.
      */
-    readonly instanceName: pulumi.Input<string>;
+    instanceName: pulumi.Input<string>;
     /**
      * The maximum number of versions stored in this table. The valid value is 1-2147483647.
      */
-    readonly maxVersion: pulumi.Input<number>;
+    maxVersion: pulumi.Input<number>;
     /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
      */
-    readonly primaryKeys: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
+    primaryKeys: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
     /**
      * The table name of the OTS instance. If changed, a new table would be created.
      */
-    readonly tableName: pulumi.Input<string>;
+    tableName: pulumi.Input<string>;
     /**
      * The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
      */
-    readonly timeToLive: pulumi.Input<number>;
+    timeToLive: pulumi.Input<number>;
 }

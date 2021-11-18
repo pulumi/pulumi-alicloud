@@ -12,6 +12,7 @@ __all__ = [
     'GetAccountAliasResult',
     'AwaitableGetAccountAliasResult',
     'get_account_alias',
+    'get_account_alias_output',
 ]
 
 @pulumi.output_type
@@ -77,3 +78,12 @@ def get_account_alias(output_file: Optional[str] = None,
         account_alias=__ret__.account_alias,
         id=__ret__.id,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_account_alias)
+def get_account_alias_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAliasResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

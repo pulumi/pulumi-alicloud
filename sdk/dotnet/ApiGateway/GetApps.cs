@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ApiGateway
 {
@@ -30,7 +31,7 @@ namespace Pulumi.AliCloud.ApiGateway
         ///         {
         ///             OutputFile = "outapps",
         ///         }));
-        ///         this.FirstAppId = dataApigatway.Apply(dataApigatway =&gt; dataApigatway.Apps[0].Id);
+        ///         this.FirstAppId = dataApigatway.Apply(dataApigatway =&gt; dataApigatway.Apps?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstAppId")]
@@ -42,6 +43,38 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         public static Task<GetAppsResult> InvokeAsync(GetAppsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppsResult>("alicloud:apigateway/getApps:getApps", args ?? new GetAppsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the apps of the current Alibaba Cloud user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dataApigatway = Output.Create(AliCloud.ApiGateway.GetApps.InvokeAsync(new AliCloud.ApiGateway.GetAppsArgs
+        ///         {
+        ///             OutputFile = "outapps",
+        ///         }));
+        ///         this.FirstAppId = dataApigatway.Apply(dataApigatway =&gt; dataApigatway.Apps?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstAppId")]
+        ///     public Output&lt;string&gt; FirstAppId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAppsResult>("alicloud:apigateway/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +114,46 @@ namespace Pulumi.AliCloud.ApiGateway
         }
 
         public GetAppsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAppsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of app IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter apps by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetAppsInvokeArgs()
         {
         }
     }

@@ -13,6 +13,7 @@ __all__ = [
     'GetServerGroupsResult',
     'AwaitableGetServerGroupsResult',
     'get_server_groups',
+    'get_server_groups_output',
 ]
 
 @pulumi.output_type
@@ -221,3 +222,46 @@ def get_server_groups(enable_details: Optional[bool] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_server_groups)
+def get_server_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             server_group_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             server_group_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             status: Optional[pulumi.Input[Optional[str]]] = None,
+                             tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                             vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerGroupsResult]:
+    """
+    This data source provides the Alb Server Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.131.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_server_groups()
+    pulumi.export("albServerGroupId1", ids.groups[0].id)
+    name_regex = alicloud.alb.get_server_groups(name_regex="^my-ServerGroup")
+    pulumi.export("albServerGroupId2", name_regex.groups[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Server Group IDs.
+    :param str name_regex: A regex string to filter results by Server Group name.
+    :param str resource_group_id: The ID of the resource group.
+    :param Sequence[str] server_group_ids: The server group ids.
+    :param str server_group_name: The name of the resource.
+    :param str status: The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+    :param str vpc_id: The ID of the VPC that you want to access.
+    """
+    ...

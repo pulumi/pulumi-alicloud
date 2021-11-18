@@ -40,7 +40,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -66,8 +66,8 @@ import (
 // 			AddressType:      pulumi.String("intranet"),
 // 			LoadBalancerSpec: pulumi.String("slb.s2.small"),
 // 			VswitchId:        defaultSwitch.ID(),
-// 			Tags: pulumi.StringMap{
-// 				"info": pulumi.String("create for internet"),
+// 			Tags: pulumi.AnyMap{
+// 				"info": pulumi.Any("create for internet"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -421,7 +421,7 @@ type ApplicationLoadBalancerArrayInput interface {
 type ApplicationLoadBalancerArray []ApplicationLoadBalancerInput
 
 func (ApplicationLoadBalancerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ApplicationLoadBalancer)(nil))
+	return reflect.TypeOf((*[]*ApplicationLoadBalancer)(nil)).Elem()
 }
 
 func (i ApplicationLoadBalancerArray) ToApplicationLoadBalancerArrayOutput() ApplicationLoadBalancerArrayOutput {
@@ -446,7 +446,7 @@ type ApplicationLoadBalancerMapInput interface {
 type ApplicationLoadBalancerMap map[string]ApplicationLoadBalancerInput
 
 func (ApplicationLoadBalancerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ApplicationLoadBalancer)(nil))
+	return reflect.TypeOf((*map[string]*ApplicationLoadBalancer)(nil)).Elem()
 }
 
 func (i ApplicationLoadBalancerMap) ToApplicationLoadBalancerMapOutput() ApplicationLoadBalancerMapOutput {
@@ -457,9 +457,7 @@ func (i ApplicationLoadBalancerMap) ToApplicationLoadBalancerMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerMapOutput)
 }
 
-type ApplicationLoadBalancerOutput struct {
-	*pulumi.OutputState
-}
+type ApplicationLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (ApplicationLoadBalancerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationLoadBalancer)(nil))
@@ -478,14 +476,12 @@ func (o ApplicationLoadBalancerOutput) ToApplicationLoadBalancerPtrOutput() Appl
 }
 
 func (o ApplicationLoadBalancerOutput) ToApplicationLoadBalancerPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerPtrOutput {
-	return o.ApplyT(func(v ApplicationLoadBalancer) *ApplicationLoadBalancer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancer) *ApplicationLoadBalancer {
 		return &v
 	}).(ApplicationLoadBalancerPtrOutput)
 }
 
-type ApplicationLoadBalancerPtrOutput struct {
-	*pulumi.OutputState
-}
+type ApplicationLoadBalancerPtrOutput struct{ *pulumi.OutputState }
 
 func (ApplicationLoadBalancerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApplicationLoadBalancer)(nil))
@@ -497,6 +493,16 @@ func (o ApplicationLoadBalancerPtrOutput) ToApplicationLoadBalancerPtrOutput() A
 
 func (o ApplicationLoadBalancerPtrOutput) ToApplicationLoadBalancerPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerPtrOutput {
 	return o
+}
+
+func (o ApplicationLoadBalancerPtrOutput) Elem() ApplicationLoadBalancerOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancer) ApplicationLoadBalancer {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancer
+		return ret
+	}).(ApplicationLoadBalancerOutput)
 }
 
 type ApplicationLoadBalancerArrayOutput struct{ *pulumi.OutputState }
@@ -540,6 +546,10 @@ func (o ApplicationLoadBalancerMapOutput) MapIndex(k pulumi.StringInput) Applica
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerInput)(nil)).Elem(), &ApplicationLoadBalancer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerPtrInput)(nil)).Elem(), &ApplicationLoadBalancer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerArrayInput)(nil)).Elem(), ApplicationLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerMapInput)(nil)).Elem(), ApplicationLoadBalancerMap{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerOutput{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerArrayOutput{})

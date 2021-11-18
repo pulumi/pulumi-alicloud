@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * const ids = alicloud.alb.getHealthCheckTemplates({
  *     ids: ["example_id"],
  * });
- * export const albHealthCheckTemplateId1 = ids.then(ids => ids.templates[0].id);
+ * export const albHealthCheckTemplateId1 = ids.then(ids => ids.templates?[0]?.id);
  * const nameRegex = alicloud.alb.getHealthCheckTemplates({
  *     nameRegex: "^my-HealthCheckTemplate",
  * });
- * export const albHealthCheckTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates[0].id);
+ * export const albHealthCheckTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?[0]?.id);
  * ```
  */
 export function getHealthCheckTemplates(args?: GetHealthCheckTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetHealthCheckTemplatesResult> {
@@ -53,20 +53,20 @@ export interface GetHealthCheckTemplatesArgs {
     /**
      * The health check template ids.
      */
-    readonly healthCheckTemplateIds?: string[];
+    healthCheckTemplateIds?: string[];
     /**
      * The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      */
-    readonly healthCheckTemplateName?: string;
+    healthCheckTemplateName?: string;
     /**
      * A list of Health Check Template IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Health Check Template name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -84,4 +84,31 @@ export interface GetHealthCheckTemplatesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly templates: outputs.alb.GetHealthCheckTemplatesTemplate[];
+}
+
+export function getHealthCheckTemplatesOutput(args?: GetHealthCheckTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHealthCheckTemplatesResult> {
+    return pulumi.output(args).apply(a => getHealthCheckTemplates(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHealthCheckTemplates.
+ */
+export interface GetHealthCheckTemplatesOutputArgs {
+    /**
+     * The health check template ids.
+     */
+    healthCheckTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     */
+    healthCheckTemplateName?: pulumi.Input<string>;
+    /**
+     * A list of Health Check Template IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Health Check Template name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

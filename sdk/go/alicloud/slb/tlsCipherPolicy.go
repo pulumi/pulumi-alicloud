@@ -217,7 +217,7 @@ type TlsCipherPolicyArrayInput interface {
 type TlsCipherPolicyArray []TlsCipherPolicyInput
 
 func (TlsCipherPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TlsCipherPolicy)(nil))
+	return reflect.TypeOf((*[]*TlsCipherPolicy)(nil)).Elem()
 }
 
 func (i TlsCipherPolicyArray) ToTlsCipherPolicyArrayOutput() TlsCipherPolicyArrayOutput {
@@ -242,7 +242,7 @@ type TlsCipherPolicyMapInput interface {
 type TlsCipherPolicyMap map[string]TlsCipherPolicyInput
 
 func (TlsCipherPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TlsCipherPolicy)(nil))
+	return reflect.TypeOf((*map[string]*TlsCipherPolicy)(nil)).Elem()
 }
 
 func (i TlsCipherPolicyMap) ToTlsCipherPolicyMapOutput() TlsCipherPolicyMapOutput {
@@ -253,9 +253,7 @@ func (i TlsCipherPolicyMap) ToTlsCipherPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TlsCipherPolicyMapOutput)
 }
 
-type TlsCipherPolicyOutput struct {
-	*pulumi.OutputState
-}
+type TlsCipherPolicyOutput struct{ *pulumi.OutputState }
 
 func (TlsCipherPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TlsCipherPolicy)(nil))
@@ -274,14 +272,12 @@ func (o TlsCipherPolicyOutput) ToTlsCipherPolicyPtrOutput() TlsCipherPolicyPtrOu
 }
 
 func (o TlsCipherPolicyOutput) ToTlsCipherPolicyPtrOutputWithContext(ctx context.Context) TlsCipherPolicyPtrOutput {
-	return o.ApplyT(func(v TlsCipherPolicy) *TlsCipherPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TlsCipherPolicy) *TlsCipherPolicy {
 		return &v
 	}).(TlsCipherPolicyPtrOutput)
 }
 
-type TlsCipherPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type TlsCipherPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (TlsCipherPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TlsCipherPolicy)(nil))
@@ -293,6 +289,16 @@ func (o TlsCipherPolicyPtrOutput) ToTlsCipherPolicyPtrOutput() TlsCipherPolicyPt
 
 func (o TlsCipherPolicyPtrOutput) ToTlsCipherPolicyPtrOutputWithContext(ctx context.Context) TlsCipherPolicyPtrOutput {
 	return o
+}
+
+func (o TlsCipherPolicyPtrOutput) Elem() TlsCipherPolicyOutput {
+	return o.ApplyT(func(v *TlsCipherPolicy) TlsCipherPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TlsCipherPolicy
+		return ret
+	}).(TlsCipherPolicyOutput)
 }
 
 type TlsCipherPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -336,6 +342,10 @@ func (o TlsCipherPolicyMapOutput) MapIndex(k pulumi.StringInput) TlsCipherPolicy
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsCipherPolicyInput)(nil)).Elem(), &TlsCipherPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsCipherPolicyPtrInput)(nil)).Elem(), &TlsCipherPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsCipherPolicyArrayInput)(nil)).Elem(), TlsCipherPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsCipherPolicyMapInput)(nil)).Elem(), TlsCipherPolicyMap{})
 	pulumi.RegisterOutputType(TlsCipherPolicyOutput{})
 	pulumi.RegisterOutputType(TlsCipherPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TlsCipherPolicyArrayOutput{})

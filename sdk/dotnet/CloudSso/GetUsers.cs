@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudSso
 {
@@ -41,13 +42,13 @@ namespace Pulumi.AliCloud.CloudSso
         ///                 "example_value-2",
         ///             },
         ///         }));
-        ///         this.CloudSsoUserId1 = ids.Apply(ids =&gt; ids.Users[0].Id);
+        ///         this.CloudSsoUserId1 = ids.Apply(ids =&gt; ids.Users?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.CloudSso.GetUsers.InvokeAsync(new AliCloud.CloudSso.GetUsersArgs
         ///         {
         ///             DirectoryId = "example_value",
         ///             NameRegex = "^my-User",
         ///         }));
-        ///         this.CloudSsoUserId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Users[0].Id);
+        ///         this.CloudSsoUserId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Users?[0]?.Id);
         ///         var provisionType = Output.Create(AliCloud.CloudSso.GetUsers.InvokeAsync(new AliCloud.CloudSso.GetUsersArgs
         ///         {
         ///             DirectoryId = "example_value",
@@ -57,7 +58,7 @@ namespace Pulumi.AliCloud.CloudSso
         ///             },
         ///             ProvisionType = "Manual",
         ///         }));
-        ///         this.CloudSsoUserId3 = provisionType.Apply(provisionType =&gt; provisionType.Users[0].Id);
+        ///         this.CloudSsoUserId3 = provisionType.Apply(provisionType =&gt; provisionType.Users?[0]?.Id);
         ///         var status = Output.Create(AliCloud.CloudSso.GetUsers.InvokeAsync(new AliCloud.CloudSso.GetUsersArgs
         ///         {
         ///             DirectoryId = "example_value",
@@ -67,7 +68,7 @@ namespace Pulumi.AliCloud.CloudSso
         ///             },
         ///             Status = "Enabled",
         ///         }));
-        ///         this.CloudSsoUserId4 = status.Apply(status =&gt; status.Users[0].Id);
+        ///         this.CloudSsoUserId4 = status.Apply(status =&gt; status.Users?[0]?.Id);
         ///     }
         /// 
         ///     [Output("cloudSsoUserId1")]
@@ -85,6 +86,81 @@ namespace Pulumi.AliCloud.CloudSso
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:cloudsso/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// 
+        /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.CloudSso.GetUsers.InvokeAsync(new AliCloud.CloudSso.GetUsersArgs
+        ///         {
+        ///             DirectoryId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value-1",
+        ///                 "example_value-2",
+        ///             },
+        ///         }));
+        ///         this.CloudSsoUserId1 = ids.Apply(ids =&gt; ids.Users?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.CloudSso.GetUsers.InvokeAsync(new AliCloud.CloudSso.GetUsersArgs
+        ///         {
+        ///             DirectoryId = "example_value",
+        ///             NameRegex = "^my-User",
+        ///         }));
+        ///         this.CloudSsoUserId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Users?[0]?.Id);
+        ///         var provisionType = Output.Create(AliCloud.CloudSso.GetUsers.InvokeAsync(new AliCloud.CloudSso.GetUsersArgs
+        ///         {
+        ///             DirectoryId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value-1",
+        ///             },
+        ///             ProvisionType = "Manual",
+        ///         }));
+        ///         this.CloudSsoUserId3 = provisionType.Apply(provisionType =&gt; provisionType.Users?[0]?.Id);
+        ///         var status = Output.Create(AliCloud.CloudSso.GetUsers.InvokeAsync(new AliCloud.CloudSso.GetUsersArgs
+        ///         {
+        ///             DirectoryId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value-1",
+        ///             },
+        ///             Status = "Enabled",
+        ///         }));
+        ///         this.CloudSsoUserId4 = status.Apply(status =&gt; status.Users?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("cloudSsoUserId1")]
+        ///     public Output&lt;string&gt; CloudSsoUserId1 { get; set; }
+        ///     [Output("cloudSsoUserId2")]
+        ///     public Output&lt;string&gt; CloudSsoUserId2 { get; set; }
+        ///     [Output("cloudSsoUserId3")]
+        ///     public Output&lt;string&gt; CloudSsoUserId3 { get; set; }
+        ///     [Output("cloudSsoUserId4")]
+        ///     public Output&lt;string&gt; CloudSsoUserId4 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:cloudsso/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -136,6 +212,58 @@ namespace Pulumi.AliCloud.CloudSso
         public string? Status { get; set; }
 
         public GetUsersArgs()
+        {
+        }
+    }
+
+    public sealed class GetUsersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Directory.
+        /// </summary>
+        [Input("directoryId", required: true)]
+        public Input<string> DirectoryId { get; set; } = null!;
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of User IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by User name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// ProvisionType.
+        /// </summary>
+        [Input("provisionType")]
+        public Input<string>? ProvisionType { get; set; }
+
+        /// <summary>
+        /// User status. Valid values: `Enabled` and `Disabled`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetUsersInvokeArgs()
         {
         }
     }

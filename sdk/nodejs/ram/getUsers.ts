@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     outputFile: "users.txt",
  *     policyName: "AliyunACSDefaultAccess",
  *     policyType: "Custom",
- * }, { async: true }));
+ * }));
  *
  * export const firstUserId = usersDs.users[0].id;
  * ```
@@ -51,24 +51,24 @@ export interface GetUsersArgs {
     /**
      * Filter results by a specific group name. Returned users are in the specified group.
      */
-    readonly groupName?: string;
+    groupName?: string;
     /**
      * - A list of ram user IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter resulting users by their names.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
      */
-    readonly policyName?: string;
+    policyName?: string;
     /**
      * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
      */
-    readonly policyType?: string;
+    policyType?: string;
 }
 
 /**
@@ -96,4 +96,35 @@ export interface GetUsersResult {
      * A list of users. Each element contains the following attributes:
      */
     readonly users: outputs.ram.GetUsersUser[];
+}
+
+export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+    return pulumi.output(args).apply(a => getUsers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUsers.
+ */
+export interface GetUsersOutputArgs {
+    /**
+     * Filter results by a specific group name. Returned users are in the specified group.
+     */
+    groupName?: pulumi.Input<string>;
+    /**
+     * - A list of ram user IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter resulting users by their names.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
+     */
+    policyName?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
+     */
+    policyType?: pulumi.Input<string>;
 }

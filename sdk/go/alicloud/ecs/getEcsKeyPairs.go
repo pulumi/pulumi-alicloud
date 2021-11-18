@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,4 +81,93 @@ type GetEcsKeyPairsResult struct {
 	Pairs           []GetEcsKeyPairsPair    `pulumi:"pairs"`
 	ResourceGroupId *string                 `pulumi:"resourceGroupId"`
 	Tags            map[string]interface{}  `pulumi:"tags"`
+}
+
+func GetEcsKeyPairsOutput(ctx *pulumi.Context, args GetEcsKeyPairsOutputArgs, opts ...pulumi.InvokeOption) GetEcsKeyPairsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEcsKeyPairsResult, error) {
+			args := v.(GetEcsKeyPairsArgs)
+			r, err := GetEcsKeyPairs(ctx, &args, opts...)
+			return *r, err
+		}).(GetEcsKeyPairsResultOutput)
+}
+
+// A collection of arguments for invoking getEcsKeyPairs.
+type GetEcsKeyPairsOutputArgs struct {
+	// The finger print of the key pair.
+	FingerPrint pulumi.StringPtrInput `pulumi:"fingerPrint"`
+	// A list of Key Pair IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Key Pair name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Resource Group Id.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The tags.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetEcsKeyPairsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsKeyPairsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEcsKeyPairs.
+type GetEcsKeyPairsResultOutput struct{ *pulumi.OutputState }
+
+func (GetEcsKeyPairsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsKeyPairsResult)(nil)).Elem()
+}
+
+func (o GetEcsKeyPairsResultOutput) ToGetEcsKeyPairsResultOutput() GetEcsKeyPairsResultOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsResultOutput) ToGetEcsKeyPairsResultOutputWithContext(ctx context.Context) GetEcsKeyPairsResultOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsResultOutput) FingerPrint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsResult) *string { return v.FingerPrint }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEcsKeyPairsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.
+func (o GetEcsKeyPairsResultOutput) KeyPairs() GetEcsKeyPairsKeyPairArrayOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsResult) []GetEcsKeyPairsKeyPair { return v.KeyPairs }).(GetEcsKeyPairsKeyPairArrayOutput)
+}
+
+func (o GetEcsKeyPairsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsKeyPairsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEcsKeyPairsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsKeyPairsResultOutput) Pairs() GetEcsKeyPairsPairArrayOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsResult) []GetEcsKeyPairsPair { return v.Pairs }).(GetEcsKeyPairsPairArrayOutput)
+}
+
+func (o GetEcsKeyPairsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsKeyPairsResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEcsKeyPairsResultOutput{})
 }

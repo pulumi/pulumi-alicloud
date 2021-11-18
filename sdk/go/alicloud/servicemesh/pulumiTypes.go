@@ -111,10 +111,11 @@ func (o ServiceMeshLoadBalancerOutput) ToServiceMeshLoadBalancerPtrOutput() Serv
 }
 
 func (o ServiceMeshLoadBalancerOutput) ToServiceMeshLoadBalancerPtrOutputWithContext(ctx context.Context) ServiceMeshLoadBalancerPtrOutput {
-	return o.ApplyT(func(v ServiceMeshLoadBalancer) *ServiceMeshLoadBalancer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshLoadBalancer) *ServiceMeshLoadBalancer {
 		return &v
 	}).(ServiceMeshLoadBalancerPtrOutput)
 }
+
 func (o ServiceMeshLoadBalancerOutput) ApiServerLoadbalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshLoadBalancer) *string { return v.ApiServerLoadbalancerId }).(pulumi.StringPtrOutput)
 }
@@ -148,7 +149,13 @@ func (o ServiceMeshLoadBalancerPtrOutput) ToServiceMeshLoadBalancerPtrOutputWith
 }
 
 func (o ServiceMeshLoadBalancerPtrOutput) Elem() ServiceMeshLoadBalancerOutput {
-	return o.ApplyT(func(v *ServiceMeshLoadBalancer) ServiceMeshLoadBalancer { return *v }).(ServiceMeshLoadBalancerOutput)
+	return o.ApplyT(func(v *ServiceMeshLoadBalancer) ServiceMeshLoadBalancer {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshLoadBalancer
+		return ret
+	}).(ServiceMeshLoadBalancerOutput)
 }
 
 func (o ServiceMeshLoadBalancerPtrOutput) ApiServerLoadbalancerId() pulumi.StringPtrOutput {
@@ -326,7 +333,7 @@ func (o ServiceMeshMeshConfigOutput) ToServiceMeshMeshConfigPtrOutput() ServiceM
 }
 
 func (o ServiceMeshMeshConfigOutput) ToServiceMeshMeshConfigPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigPtrOutput {
-	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfig) *ServiceMeshMeshConfig {
 		return &v
 	}).(ServiceMeshMeshConfigPtrOutput)
 }
@@ -406,7 +413,13 @@ func (o ServiceMeshMeshConfigPtrOutput) ToServiceMeshMeshConfigPtrOutputWithCont
 }
 
 func (o ServiceMeshMeshConfigPtrOutput) Elem() ServiceMeshMeshConfigOutput {
-	return o.ApplyT(func(v *ServiceMeshMeshConfig) ServiceMeshMeshConfig { return *v }).(ServiceMeshMeshConfigOutput)
+	return o.ApplyT(func(v *ServiceMeshMeshConfig) ServiceMeshMeshConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMeshConfig
+		return ret
+	}).(ServiceMeshMeshConfigOutput)
 }
 
 // The configuration of the access logging.
@@ -622,7 +635,7 @@ func (o ServiceMeshMeshConfigAccessLogOutput) ToServiceMeshMeshConfigAccessLogPt
 }
 
 func (o ServiceMeshMeshConfigAccessLogOutput) ToServiceMeshMeshConfigAccessLogPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigAccessLogPtrOutput {
-	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *ServiceMeshMeshConfigAccessLog {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigAccessLog) *ServiceMeshMeshConfigAccessLog {
 		return &v
 	}).(ServiceMeshMeshConfigAccessLogPtrOutput)
 }
@@ -647,7 +660,13 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) ToServiceMeshMeshConfigAccessLo
 }
 
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) Elem() ServiceMeshMeshConfigAccessLogOutput {
-	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) ServiceMeshMeshConfigAccessLog { return *v }).(ServiceMeshMeshConfigAccessLogOutput)
+	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) ServiceMeshMeshConfigAccessLog {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMeshConfigAccessLog
+		return ret
+	}).(ServiceMeshMeshConfigAccessLogOutput)
 }
 
 // Whether to enable Service grid audit.
@@ -757,7 +776,7 @@ func (o ServiceMeshMeshConfigAuditOutput) ToServiceMeshMeshConfigAuditPtrOutput(
 }
 
 func (o ServiceMeshMeshConfigAuditOutput) ToServiceMeshMeshConfigAuditPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigAuditPtrOutput {
-	return o.ApplyT(func(v ServiceMeshMeshConfigAudit) *ServiceMeshMeshConfigAudit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigAudit) *ServiceMeshMeshConfigAudit {
 		return &v
 	}).(ServiceMeshMeshConfigAuditPtrOutput)
 }
@@ -787,7 +806,13 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) ToServiceMeshMeshConfigAuditPtrOutp
 }
 
 func (o ServiceMeshMeshConfigAuditPtrOutput) Elem() ServiceMeshMeshConfigAuditOutput {
-	return o.ApplyT(func(v *ServiceMeshMeshConfigAudit) ServiceMeshMeshConfigAudit { return *v }).(ServiceMeshMeshConfigAuditOutput)
+	return o.ApplyT(func(v *ServiceMeshMeshConfigAudit) ServiceMeshMeshConfigAudit {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMeshConfigAudit
+		return ret
+	}).(ServiceMeshMeshConfigAuditOutput)
 }
 
 // Whether to enable Service grid audit.
@@ -903,7 +928,7 @@ func (o ServiceMeshMeshConfigKialiOutput) ToServiceMeshMeshConfigKialiPtrOutput(
 }
 
 func (o ServiceMeshMeshConfigKialiOutput) ToServiceMeshMeshConfigKialiPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigKialiPtrOutput {
-	return o.ApplyT(func(v ServiceMeshMeshConfigKiali) *ServiceMeshMeshConfigKiali {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigKiali) *ServiceMeshMeshConfigKiali {
 		return &v
 	}).(ServiceMeshMeshConfigKialiPtrOutput)
 }
@@ -928,7 +953,13 @@ func (o ServiceMeshMeshConfigKialiPtrOutput) ToServiceMeshMeshConfigKialiPtrOutp
 }
 
 func (o ServiceMeshMeshConfigKialiPtrOutput) Elem() ServiceMeshMeshConfigKialiOutput {
-	return o.ApplyT(func(v *ServiceMeshMeshConfigKiali) ServiceMeshMeshConfigKiali { return *v }).(ServiceMeshMeshConfigKialiOutput)
+	return o.ApplyT(func(v *ServiceMeshMeshConfigKiali) ServiceMeshMeshConfigKiali {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMeshConfigKiali
+		return ret
+	}).(ServiceMeshMeshConfigKialiOutput)
 }
 
 // Whether to enable Service grid audit.
@@ -1054,7 +1085,7 @@ func (o ServiceMeshMeshConfigOpaOutput) ToServiceMeshMeshConfigOpaPtrOutput() Se
 }
 
 func (o ServiceMeshMeshConfigOpaOutput) ToServiceMeshMeshConfigOpaPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigOpaPtrOutput {
-	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *ServiceMeshMeshConfigOpa {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigOpa) *ServiceMeshMeshConfigOpa {
 		return &v
 	}).(ServiceMeshMeshConfigOpaPtrOutput)
 }
@@ -1104,7 +1135,13 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) ToServiceMeshMeshConfigOpaPtrOutputWi
 }
 
 func (o ServiceMeshMeshConfigOpaPtrOutput) Elem() ServiceMeshMeshConfigOpaOutput {
-	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) ServiceMeshMeshConfigOpa { return *v }).(ServiceMeshMeshConfigOpaOutput)
+	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) ServiceMeshMeshConfigOpa {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMeshConfigOpa
+		return ret
+	}).(ServiceMeshMeshConfigOpaOutput)
 }
 
 // Whether to enable Service grid audit.
@@ -1264,7 +1301,7 @@ func (o ServiceMeshMeshConfigPilotOutput) ToServiceMeshMeshConfigPilotPtrOutput(
 }
 
 func (o ServiceMeshMeshConfigPilotOutput) ToServiceMeshMeshConfigPilotPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigPilotPtrOutput {
-	return o.ApplyT(func(v ServiceMeshMeshConfigPilot) *ServiceMeshMeshConfigPilot {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigPilot) *ServiceMeshMeshConfigPilot {
 		return &v
 	}).(ServiceMeshMeshConfigPilotPtrOutput)
 }
@@ -1294,7 +1331,13 @@ func (o ServiceMeshMeshConfigPilotPtrOutput) ToServiceMeshMeshConfigPilotPtrOutp
 }
 
 func (o ServiceMeshMeshConfigPilotPtrOutput) Elem() ServiceMeshMeshConfigPilotOutput {
-	return o.ApplyT(func(v *ServiceMeshMeshConfigPilot) ServiceMeshMeshConfigPilot { return *v }).(ServiceMeshMeshConfigPilotOutput)
+	return o.ApplyT(func(v *ServiceMeshMeshConfigPilot) ServiceMeshMeshConfigPilot {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMeshConfigPilot
+		return ret
+	}).(ServiceMeshMeshConfigPilotOutput)
 }
 
 // Whether to support the HTTP1.0.
@@ -1422,7 +1465,7 @@ func (o ServiceMeshMeshConfigProxyOutput) ToServiceMeshMeshConfigProxyPtrOutput(
 }
 
 func (o ServiceMeshMeshConfigProxyOutput) ToServiceMeshMeshConfigProxyPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigProxyPtrOutput {
-	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *ServiceMeshMeshConfigProxy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigProxy) *ServiceMeshMeshConfigProxy {
 		return &v
 	}).(ServiceMeshMeshConfigProxyPtrOutput)
 }
@@ -1462,7 +1505,13 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) ToServiceMeshMeshConfigProxyPtrOutp
 }
 
 func (o ServiceMeshMeshConfigProxyPtrOutput) Elem() ServiceMeshMeshConfigProxyOutput {
-	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) ServiceMeshMeshConfigProxy { return *v }).(ServiceMeshMeshConfigProxyOutput)
+	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) ServiceMeshMeshConfigProxy {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMeshConfigProxy
+		return ret
+	}).(ServiceMeshMeshConfigProxyOutput)
 }
 
 // The CPU resource  of the limitsOPA proxy container.
@@ -1618,7 +1667,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorOutput) ToServiceMeshMeshConfigSidec
 }
 
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) ToServiceMeshMeshConfigSidecarInjectorPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigSidecarInjectorPtrOutput {
-	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *ServiceMeshMeshConfigSidecarInjector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigSidecarInjector) *ServiceMeshMeshConfigSidecarInjector {
 		return &v
 	}).(ServiceMeshMeshConfigSidecarInjectorPtrOutput)
 }
@@ -1668,7 +1717,13 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) ToServiceMeshMeshConfigSi
 }
 
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) Elem() ServiceMeshMeshConfigSidecarInjectorOutput {
-	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) ServiceMeshMeshConfigSidecarInjector { return *v }).(ServiceMeshMeshConfigSidecarInjectorOutput)
+	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) ServiceMeshMeshConfigSidecarInjector {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMeshConfigSidecarInjector
+		return ret
+	}).(ServiceMeshMeshConfigSidecarInjectorOutput)
 }
 
 // Whether to enable by Pod Annotations automatic injection Sidecar.
@@ -1828,7 +1883,7 @@ func (o ServiceMeshNetworkOutput) ToServiceMeshNetworkPtrOutput() ServiceMeshNet
 }
 
 func (o ServiceMeshNetworkOutput) ToServiceMeshNetworkPtrOutputWithContext(ctx context.Context) ServiceMeshNetworkPtrOutput {
-	return o.ApplyT(func(v ServiceMeshNetwork) *ServiceMeshNetwork {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshNetwork) *ServiceMeshNetwork {
 		return &v
 	}).(ServiceMeshNetworkPtrOutput)
 }
@@ -1858,7 +1913,13 @@ func (o ServiceMeshNetworkPtrOutput) ToServiceMeshNetworkPtrOutputWithContext(ct
 }
 
 func (o ServiceMeshNetworkPtrOutput) Elem() ServiceMeshNetworkOutput {
-	return o.ApplyT(func(v *ServiceMeshNetwork) ServiceMeshNetwork { return *v }).(ServiceMeshNetworkOutput)
+	return o.ApplyT(func(v *ServiceMeshNetwork) ServiceMeshNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshNetwork
+		return ret
+	}).(ServiceMeshNetworkOutput)
 }
 
 // The ID of the VPC.
@@ -3734,6 +3795,54 @@ func (o GetServiceMeshesMeshNetworkArrayOutput) Index(i pulumi.IntInput) GetServ
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshLoadBalancerInput)(nil)).Elem(), ServiceMeshLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshLoadBalancerPtrInput)(nil)).Elem(), ServiceMeshLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigInput)(nil)).Elem(), ServiceMeshMeshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigPtrInput)(nil)).Elem(), ServiceMeshMeshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigAccessLogInput)(nil)).Elem(), ServiceMeshMeshConfigAccessLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigAccessLogPtrInput)(nil)).Elem(), ServiceMeshMeshConfigAccessLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigAuditInput)(nil)).Elem(), ServiceMeshMeshConfigAuditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigAuditPtrInput)(nil)).Elem(), ServiceMeshMeshConfigAuditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigKialiInput)(nil)).Elem(), ServiceMeshMeshConfigKialiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigKialiPtrInput)(nil)).Elem(), ServiceMeshMeshConfigKialiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigOpaInput)(nil)).Elem(), ServiceMeshMeshConfigOpaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigOpaPtrInput)(nil)).Elem(), ServiceMeshMeshConfigOpaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigPilotInput)(nil)).Elem(), ServiceMeshMeshConfigPilotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigPilotPtrInput)(nil)).Elem(), ServiceMeshMeshConfigPilotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigProxyInput)(nil)).Elem(), ServiceMeshMeshConfigProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigProxyPtrInput)(nil)).Elem(), ServiceMeshMeshConfigProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigSidecarInjectorInput)(nil)).Elem(), ServiceMeshMeshConfigSidecarInjectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigSidecarInjectorPtrInput)(nil)).Elem(), ServiceMeshMeshConfigSidecarInjectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshNetworkInput)(nil)).Elem(), ServiceMeshNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshNetworkPtrInput)(nil)).Elem(), ServiceMeshNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshInput)(nil)).Elem(), GetServiceMeshesMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshArrayInput)(nil)).Elem(), GetServiceMeshesMeshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshEndpointInput)(nil)).Elem(), GetServiceMeshesMeshEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshEndpointArrayInput)(nil)).Elem(), GetServiceMeshesMeshEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshLoadBalancerInput)(nil)).Elem(), GetServiceMeshesMeshLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshLoadBalancerArrayInput)(nil)).Elem(), GetServiceMeshesMeshLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigAccessLogInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigAccessLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigAccessLogArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigAccessLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigAuditInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigAuditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigAuditArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigAuditArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigKialiInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigKialiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigKialiArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigKialiArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigOpaInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigOpaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigOpaArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigOpaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigPilotInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigPilotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigPilotArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigPilotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigPrometheusInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigPrometheusArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigPrometheusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigProxyInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigProxyArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigSidecarInjectorInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigSidecarInjectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigSidecarInjectorArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigSidecarInjectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshNetworkInput)(nil)).Elem(), GetServiceMeshesMeshNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshNetworkArrayInput)(nil)).Elem(), GetServiceMeshesMeshNetworkArray{})
 	pulumi.RegisterOutputType(ServiceMeshLoadBalancerOutput{})
 	pulumi.RegisterOutputType(ServiceMeshLoadBalancerPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigOutput{})

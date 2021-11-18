@@ -152,100 +152,100 @@ export class Gateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Gateway resources.
  */
 export interface GatewayState {
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * The business status of the VPN gateway.
      */
-    readonly businessStatus?: pulumi.Input<string>;
+    businessStatus?: pulumi.Input<string>;
     /**
      * The description of the VPN instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
      */
-    readonly enableIpsec?: pulumi.Input<boolean>;
+    enableIpsec?: pulumi.Input<boolean>;
     /**
      * Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
      */
-    readonly enableSsl?: pulumi.Input<boolean>;
+    enableSsl?: pulumi.Input<boolean>;
     /**
      * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
      * Default to PostPaid.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The internet ip of the VPN.
      */
-    readonly internetIp?: pulumi.Input<string>;
+    internetIp?: pulumi.Input<string>;
     /**
      * The name of the VPN. Defaults to null.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
      * This field is ignored when enableSsl is false.
      */
-    readonly sslConnections?: pulumi.Input<number>;
+    sslConnections?: pulumi.Input<number>;
     /**
      * The status of the VPN gateway.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The VPN belongs the vpc_id, the field can't be changed.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The VPN belongs the vswitch_id, the field can't be changed.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Gateway resource.
  */
 export interface GatewayArgs {
-    readonly bandwidth: pulumi.Input<number>;
+    bandwidth: pulumi.Input<number>;
     /**
      * The description of the VPN instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
      */
-    readonly enableIpsec?: pulumi.Input<boolean>;
+    enableIpsec?: pulumi.Input<boolean>;
     /**
      * Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
      */
-    readonly enableSsl?: pulumi.Input<boolean>;
+    enableSsl?: pulumi.Input<boolean>;
     /**
      * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
      * Default to PostPaid.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The name of the VPN. Defaults to null.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
      * This field is ignored when enableSsl is false.
      */
-    readonly sslConnections?: pulumi.Input<number>;
+    sslConnections?: pulumi.Input<number>;
     /**
      * The VPN belongs the vpc_id, the field can't be changed.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
     /**
      * The VPN belongs the vswitch_id, the field can't be changed.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }

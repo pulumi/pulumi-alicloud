@@ -103,11 +103,11 @@ export interface KeyVersionState {
     /**
      * The id of the master key (CMK).
      */
-    readonly keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string>;
     /**
      * The id of the Alikms key version.
      */
-    readonly keyVersionId?: pulumi.Input<string>;
+    keyVersionId?: pulumi.Input<string>;
 }
 
 /**
@@ -117,5 +117,5 @@ export interface KeyVersionArgs {
     /**
      * The id of the master key (CMK).
      */
-    readonly keyId: pulumi.Input<string>;
+    keyId: pulumi.Input<string>;
 }

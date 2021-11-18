@@ -13,6 +13,7 @@ __all__ = [
     'GetManagedKubernetesClustersResult',
     'AwaitableGetManagedKubernetesClustersResult',
     'get_managed_kubernetes_clusters',
+    'get_managed_kubernetes_clusters_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,32 @@ def get_managed_kubernetes_clusters(enable_details: Optional[bool] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_managed_kubernetes_clusters)
+def get_managed_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                           ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagedKubernetesClustersResult]:
+    """
+    This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
+
+    > **NOTE:** Available in v1.35.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    k8s_clusters = alicloud.cs.get_managed_kubernetes_clusters(name_regex="my-first-k8s",
+        output_file="my-first-k8s-json")
+    pulumi.export("output", k8s_clusters.clusters)
+    ```
+
+
+    :param Sequence[str] ids: Cluster IDs to filter.
+    :param str name_regex: A regex string to filter results by cluster name.
+    """
+    ...

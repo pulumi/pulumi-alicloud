@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     vswitchName: "vpc-123456",
@@ -227,69 +227,69 @@ export interface ElasticInstanceState {
     /**
      * ADB PG instance connection string.
      */
-    readonly connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string>;
     /**
      * The description of ADB PG instance. It is a string of 2 to 256 characters.
      */
-    readonly dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string>;
     /**
      * Database engine: `gpdb`.
      */
-    readonly engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string>;
     /**
      * Database version. Valid value is `6.0`.
      */
-    readonly engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string>;
     /**
      * The network type of ADB PG instance. Only `VPC` supported now.
      */
-    readonly instanceNetworkType?: pulumi.Input<string>;
+    instanceNetworkType?: pulumi.Input<string>;
     /**
      * The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
      */
-    readonly instanceSpec?: pulumi.Input<string>;
+    instanceSpec?: pulumi.Input<string>;
     /**
      * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.  
      * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
-    readonly paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number>;
     /**
      * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.  
      * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
-    readonly paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string>;
     /**
      * Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
      */
-    readonly segNodeNum?: pulumi.Input<number>;
+    segNodeNum?: pulumi.Input<number>;
     /**
      * The disk type of segment nodes. Valid values: `cloudEssd`, `cloudEfficiency`.
      */
-    readonly segStorageType?: pulumi.Input<string>;
+    segStorageType?: pulumi.Input<string>;
     /**
      * Instance status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
      */
-    readonly storageSize?: pulumi.Input<number>;
+    storageSize?: pulumi.Input<number>;
     /**
      * The virtual switch ID to launch ADB PG instances in one VPC.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -299,59 +299,59 @@ export interface ElasticInstanceArgs {
     /**
      * The description of ADB PG instance. It is a string of 2 to 256 characters.
      */
-    readonly dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string>;
     /**
      * Database engine: `gpdb`.
      */
-    readonly engine: pulumi.Input<string>;
+    engine: pulumi.Input<string>;
     /**
      * Database version. Valid value is `6.0`.
      */
-    readonly engineVersion: pulumi.Input<string>;
+    engineVersion: pulumi.Input<string>;
     /**
      * The network type of ADB PG instance. Only `VPC` supported now.
      */
-    readonly instanceNetworkType?: pulumi.Input<string>;
+    instanceNetworkType?: pulumi.Input<string>;
     /**
      * The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
      */
-    readonly instanceSpec: pulumi.Input<string>;
+    instanceSpec: pulumi.Input<string>;
     /**
      * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.  
      * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
-    readonly paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number>;
     /**
      * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.  
      * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
-    readonly paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string>;
     /**
      * Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
      */
-    readonly segNodeNum: pulumi.Input<number>;
+    segNodeNum: pulumi.Input<number>;
     /**
      * The disk type of segment nodes. Valid values: `cloudEssd`, `cloudEfficiency`.
      */
-    readonly segStorageType: pulumi.Input<string>;
+    segStorageType: pulumi.Input<string>;
     /**
      * The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
      */
-    readonly storageSize: pulumi.Input<number>;
+    storageSize: pulumi.Input<number>;
     /**
      * The virtual switch ID to launch ADB PG instances in one VPC.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
     /**
      * The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

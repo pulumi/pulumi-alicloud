@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const instance = new alicloud.rds.Instance("instance", {
@@ -236,89 +236,89 @@ export interface BackupPolicyState {
     /**
      * Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
      */
-    readonly archiveBackupKeepCount?: pulumi.Input<number>;
+    archiveBackupKeepCount?: pulumi.Input<number>;
     /**
      * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
      */
-    readonly archiveBackupKeepPolicy?: pulumi.Input<string>;
+    archiveBackupKeepPolicy?: pulumi.Input<string>;
     /**
      * Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
      */
-    readonly archiveBackupRetentionPeriod?: pulumi.Input<number>;
+    archiveBackupRetentionPeriod?: pulumi.Input<number>;
     /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
      *
      * @deprecated Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
      */
-    readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
      */
-    readonly backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number>;
     /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
      *
      * @deprecated Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
      */
-    readonly backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string>;
     /**
      * The compress type of instance policy. Valid values are `1`, `4`, `8`.
      */
-    readonly compressType?: pulumi.Input<string>;
+    compressType?: pulumi.Input<string>;
     /**
      * Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
      */
-    readonly enableBackupLog?: pulumi.Input<boolean>;
+    enableBackupLog?: pulumi.Input<boolean>;
     /**
      * Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
      */
-    readonly highSpaceUsageProtection?: pulumi.Input<string>;
+    highSpaceUsageProtection?: pulumi.Input<string>;
     /**
      * The Id of instance that can run database.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
      */
-    readonly localLogRetentionHours?: pulumi.Input<number>;
+    localLogRetentionHours?: pulumi.Input<number>;
     /**
      * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
      */
-    readonly localLogRetentionSpace?: pulumi.Input<number>;
+    localLogRetentionSpace?: pulumi.Input<number>;
     /**
      * It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
      *
      * @deprecated Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead
      */
-    readonly logBackup?: pulumi.Input<boolean>;
+    logBackup?: pulumi.Input<boolean>;
     /**
      * Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
      */
-    readonly logBackupFrequency?: pulumi.Input<string>;
+    logBackupFrequency?: pulumi.Input<string>;
     /**
      * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
      */
-    readonly logBackupRetentionPeriod?: pulumi.Input<number>;
+    logBackupRetentionPeriod?: pulumi.Input<number>;
     /**
      * It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
      *
      * @deprecated Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
      */
-    readonly logRetentionPeriod?: pulumi.Input<number>;
+    logRetentionPeriod?: pulumi.Input<number>;
     /**
      * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      */
-    readonly preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
      */
-    readonly preferredBackupTime?: pulumi.Input<string>;
+    preferredBackupTime?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
      *
      * @deprecated Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
      */
-    readonly retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number>;
 }
 
 /**
@@ -328,87 +328,87 @@ export interface BackupPolicyArgs {
     /**
      * Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
      */
-    readonly archiveBackupKeepCount?: pulumi.Input<number>;
+    archiveBackupKeepCount?: pulumi.Input<number>;
     /**
      * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
      */
-    readonly archiveBackupKeepPolicy?: pulumi.Input<string>;
+    archiveBackupKeepPolicy?: pulumi.Input<string>;
     /**
      * Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
      */
-    readonly archiveBackupRetentionPeriod?: pulumi.Input<number>;
+    archiveBackupRetentionPeriod?: pulumi.Input<number>;
     /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
      *
      * @deprecated Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
      */
-    readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
      */
-    readonly backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number>;
     /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
      *
      * @deprecated Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
      */
-    readonly backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string>;
     /**
      * The compress type of instance policy. Valid values are `1`, `4`, `8`.
      */
-    readonly compressType?: pulumi.Input<string>;
+    compressType?: pulumi.Input<string>;
     /**
      * Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
      */
-    readonly enableBackupLog?: pulumi.Input<boolean>;
+    enableBackupLog?: pulumi.Input<boolean>;
     /**
      * Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
      */
-    readonly highSpaceUsageProtection?: pulumi.Input<string>;
+    highSpaceUsageProtection?: pulumi.Input<string>;
     /**
      * The Id of instance that can run database.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
      */
-    readonly localLogRetentionHours?: pulumi.Input<number>;
+    localLogRetentionHours?: pulumi.Input<number>;
     /**
      * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
      */
-    readonly localLogRetentionSpace?: pulumi.Input<number>;
+    localLogRetentionSpace?: pulumi.Input<number>;
     /**
      * It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
      *
      * @deprecated Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead
      */
-    readonly logBackup?: pulumi.Input<boolean>;
+    logBackup?: pulumi.Input<boolean>;
     /**
      * Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
      */
-    readonly logBackupFrequency?: pulumi.Input<string>;
+    logBackupFrequency?: pulumi.Input<string>;
     /**
      * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
      */
-    readonly logBackupRetentionPeriod?: pulumi.Input<number>;
+    logBackupRetentionPeriod?: pulumi.Input<number>;
     /**
      * It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
      *
      * @deprecated Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
      */
-    readonly logRetentionPeriod?: pulumi.Input<number>;
+    logRetentionPeriod?: pulumi.Input<number>;
     /**
      * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      */
-    readonly preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
      */
-    readonly preferredBackupTime?: pulumi.Input<string>;
+    preferredBackupTime?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
      *
      * @deprecated Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
      */
-    readonly retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number>;
 }

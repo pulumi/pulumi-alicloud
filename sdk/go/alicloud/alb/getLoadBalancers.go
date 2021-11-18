@@ -4,6 +4,9 @@
 package alb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -102,4 +105,136 @@ type GetLoadBalancersResult struct {
 	VpcId                       *string                `pulumi:"vpcId"`
 	VpcIds                      []string               `pulumi:"vpcIds"`
 	ZoneId                      *string                `pulumi:"zoneId"`
+}
+
+func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetLoadBalancersResult, error) {
+			args := v.(GetLoadBalancersArgs)
+			r, err := GetLoadBalancers(ctx, &args, opts...)
+			return *r, err
+		}).(GetLoadBalancersResultOutput)
+}
+
+// A collection of arguments for invoking getLoadBalancers.
+type GetLoadBalancersOutputArgs struct {
+	// The type of IP address that the ALB instance uses to provide services.
+	AddressType pulumi.StringPtrInput `pulumi:"addressType"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Load Balancer IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+	LoadBalancerBussinessStatus pulumi.StringPtrInput `pulumi:"loadBalancerBussinessStatus"`
+	// The load balancer ids.
+	LoadBalancerIds pulumi.StringArrayInput `pulumi:"loadBalancerIds"`
+	// The name of the resource.
+	LoadBalancerName pulumi.StringPtrInput `pulumi:"loadBalancerName"`
+	// A regex string to filter results by Load Balancer name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// The vpc ids.
+	VpcIds pulumi.StringArrayInput `pulumi:"vpcIds"`
+	// The ID of the zone to which the ALB instance belongs.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (GetLoadBalancersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getLoadBalancers.
+type GetLoadBalancersResultOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersResult)(nil)).Elem()
+}
+
+func (o GetLoadBalancersResultOutput) ToGetLoadBalancersResultOutput() GetLoadBalancersResultOutput {
+	return o
+}
+
+func (o GetLoadBalancersResultOutput) ToGetLoadBalancersResultOutputWithContext(ctx context.Context) GetLoadBalancersResultOutput {
+	return o
+}
+
+func (o GetLoadBalancersResultOutput) AddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.AddressType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetLoadBalancersResultOutput) Balancers() GetLoadBalancersBalancerArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) []GetLoadBalancersBalancer { return v.Balancers }).(GetLoadBalancersBalancerArrayOutput)
+}
+
+func (o GetLoadBalancersResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetLoadBalancersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetLoadBalancersResultOutput) LoadBalancerBussinessStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.LoadBalancerBussinessStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o GetLoadBalancersResultOutput) LoadBalancerIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.LoadBalancerIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetLoadBalancersResultOutput) LoadBalancerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.LoadBalancerName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetLoadBalancersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetLoadBalancersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetLoadBalancersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetLoadBalancersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetLoadBalancersResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetLoadBalancersResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetLoadBalancersResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetLoadBalancersResultOutput) VpcIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.VpcIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetLoadBalancersResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetLoadBalancersResultOutput{})
 }

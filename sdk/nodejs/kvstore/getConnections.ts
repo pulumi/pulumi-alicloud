@@ -31,8 +31,8 @@ export interface GetConnectionsArgs {
     /**
      * A list of KVStore DBInstance ids, only support one item.
      */
-    readonly ids: string;
-    readonly outputFile?: string;
+    ids: string;
+    outputFile?: string;
 }
 
 /**
@@ -52,4 +52,19 @@ export interface GetConnectionsResult {
      */
     readonly ids: string;
     readonly outputFile?: string;
+}
+
+export function getConnectionsOutput(args: GetConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionsResult> {
+    return pulumi.output(args).apply(a => getConnections(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConnections.
+ */
+export interface GetConnectionsOutputArgs {
+    /**
+     * A list of KVStore DBInstance ids, only support one item.
+     */
+    ids: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

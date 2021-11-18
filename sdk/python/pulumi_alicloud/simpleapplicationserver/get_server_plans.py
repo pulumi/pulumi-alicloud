@@ -13,6 +13,7 @@ __all__ = [
     'GetServerPlansResult',
     'AwaitableGetServerPlansResult',
     'get_server_plans',
+    'get_server_plans_output',
 ]
 
 @pulumi.output_type
@@ -176,3 +177,44 @@ def get_server_plans(bandwidth: Optional[int] = None,
         memory=__ret__.memory,
         output_file=__ret__.output_file,
         plans=__ret__.plans)
+
+
+@_utilities.lift_output_func(get_server_plans)
+def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = None,
+                            core: Optional[pulumi.Input[Optional[int]]] = None,
+                            disk_size: Optional[pulumi.Input[Optional[int]]] = None,
+                            flow: Optional[pulumi.Input[Optional[int]]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            memory: Optional[pulumi.Input[Optional[int]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerPlansResult]:
+    """
+    This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.simpleapplicationserver.get_server_plans(memory=1,
+        bandwidth=3,
+        disk_size=40,
+        flow=6,
+        core=2)
+    pulumi.export("simpleApplicationServerPlanId1", data["alicloud_simple_application_server_plans"]["ids"]["plans"][0]["id"])
+    ```
+
+
+    :param int bandwidth: The peak bandwidth. Unit: Mbit/s.
+    :param int core: The number of CPU cores.
+    :param int disk_size: The size of the enhanced SSD (ESSD). Unit: GB.
+    :param int flow: The monthly data transfer quota. Unit: GB.
+    :param Sequence[str] ids: A list of Instance Plan IDs.
+    :param int memory: The memory size. Unit: GB.
+    """
+    ...

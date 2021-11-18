@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Cen
         ///         {
         ///             TransitRouterRouteTableId = "rtb-id1",
         ///         }));
-        ///         this.FirstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = @default.Apply(@default =&gt; @default.Associations[0].ResourceType);
+        ///         this.FirstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = @default.Apply(@default =&gt; @default.Associations?[0]?.ResourceType);
         ///     }
         /// 
         ///     [Output("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType")]
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetTransitRouterRouteTableAssociationsResult> InvokeAsync(GetTransitRouterRouteTableAssociationsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+        /// 
+        /// &gt; **NOTE:** Available in 1.126.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Cen.GetTransitRouterRouteTableAssociations.InvokeAsync(new AliCloud.Cen.GetTransitRouterRouteTableAssociationsArgs
+        ///         {
+        ///             TransitRouterRouteTableId = "rtb-id1",
+        ///         }));
+        ///         this.FirstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = @default.Apply(@default =&gt; @default.Associations?[0]?.ResourceType);
+        ///     }
+        /// 
+        ///     [Output("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType")]
+        ///     public Output&lt;string&gt; FirstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTransitRouterRouteTableAssociationsResult> Invoke(GetTransitRouterRouteTableAssociationsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -77,6 +112,40 @@ namespace Pulumi.AliCloud.Cen
         public string TransitRouterRouteTableId { get; set; } = null!;
 
         public GetTransitRouterRouteTableAssociationsArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransitRouterRouteTableAssociationsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of CEN Transit Router Route Table Association IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the route table, including `Active`, `Associating`, `Dissociating`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// ID of the route table of the VPC or VBR.
+        /// </summary>
+        [Input("transitRouterRouteTableId", required: true)]
+        public Input<string> TransitRouterRouteTableId { get; set; } = null!;
+
+        public GetTransitRouterRouteTableAssociationsInvokeArgs()
         {
         }
     }

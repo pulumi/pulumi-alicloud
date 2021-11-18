@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -125,7 +126,7 @@ def get_instances(availability_zone: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `hbase.getInstances` data source provides a collection of HBase instances available in Alicloud account.
+    The `hbase.get_instances` data source provides a collection of HBase instances available in Alicloud account.
     Filters support regular expression for the instance name, ids or availability_zone.
 
     > **NOTE:**  Available in 1.67.0+
@@ -167,3 +168,35 @@ def get_instances(availability_zone: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    The `hbase.get_instances` data source provides a collection of HBase instances available in Alicloud account.
+    Filters support regular expression for the instance name, ids or availability_zone.
+
+    > **NOTE:**  Available in 1.67.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    hbase = alicloud.hbase.get_instances(availability_zone="cn-shenzhen-b",
+        name_regex="tf_testAccHBase")
+    ```
+
+
+    :param str availability_zone: Instance availability zone.
+    :param Sequence[str] ids: The ids list of HBase instances
+    :param str name_regex: A regex string to apply to the instance name.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    ...

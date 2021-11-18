@@ -13,6 +13,7 @@ __all__ = [
     'GetBandwidthLimitsResult',
     'AwaitableGetBandwidthLimitsResult',
     'get_bandwidth_limits',
+    'get_bandwidth_limits_output',
 ]
 
 @pulumi.output_type
@@ -106,3 +107,26 @@ def get_bandwidth_limits(instance_ids: Optional[Sequence[str]] = None,
         instance_ids=__ret__.instance_ids,
         limits=__ret__.limits,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_bandwidth_limits)
+def get_bandwidth_limits_output(instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBandwidthLimitsResult]:
+    """
+    This data source provides CEN Bandwidth Limits available to the user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    bwl = alicloud.cen.get_bandwidth_limits(instance_ids=["cen-id1"])
+    pulumi.export("firstCenBandwidthLimitsLocalRegionId", bwl.limits[0].local_region_id)
+    ```
+
+
+    :param Sequence[str] instance_ids: A list of CEN instances IDs.
+    """
+    ...

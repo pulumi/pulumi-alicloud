@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -60,6 +61,56 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetRouteTablesResult> InvokeAsync(GetRouteTablesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of Route Tables owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.36.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "route-tables-datasource-example-name";
+        ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/12",
+        ///             VpcName = name,
+        ///         });
+        ///         var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new AliCloud.Vpc.RouteTableArgs
+        ///         {
+        ///             Description = name,
+        ///             RouteTableName = name,
+        ///             VpcId = fooNetwork.Id,
+        ///         });
+        ///         var fooRouteTables = fooRouteTable.Id.Apply(id =&gt; AliCloud.Vpc.GetRouteTables.InvokeAsync(new AliCloud.Vpc.GetRouteTablesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 id,
+        ///             },
+        ///         }));
+        ///         this.RouteTableIds = fooRouteTables.Apply(fooRouteTables =&gt; fooRouteTables.Ids);
+        ///     }
+        /// 
+        ///     [Output("routeTableIds")]
+        ///     public Output&lt;string&gt; RouteTableIds { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRouteTablesResult> Invoke(GetRouteTablesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -135,6 +186,82 @@ namespace Pulumi.AliCloud.Vpc
         public string? VpcId { get; set; }
 
         public GetRouteTablesArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouteTablesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Route Tables IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter route tables by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which route tables belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The route table name.
+        /// </summary>
+        [Input("routeTableName")]
+        public Input<string>? RouteTableName { get; set; }
+
+        /// <summary>
+        /// The router ID.
+        /// </summary>
+        [Input("routerId")]
+        public Input<string>? RouterId { get; set; }
+
+        /// <summary>
+        /// The route type of route table. Valid values: `VRouter` and `VBR`.
+        /// </summary>
+        [Input("routerType")]
+        public Input<string>? RouterType { get; set; }
+
+        /// <summary>
+        /// The status of resource. Valid values: `Available` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Vpc id of the route table.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetRouteTablesInvokeArgs()
         {
         }
     }

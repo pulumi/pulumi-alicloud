@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const sampleDs = alicloud_slb_load_balancer_sample_slb.id.apply(id => alicloud.slb.getAttachments({
  *     loadBalancerId: id,
- * }, { async: true }));
+ * }));
  *
  * export const firstSlbAttachmentInstanceId = sampleDs.slbAttachments[0].instanceId;
  * ```
@@ -43,12 +43,12 @@ export interface GetAttachmentsArgs {
     /**
      * List of attached ECS instance IDs.
      */
-    readonly instanceIds?: string[];
+    instanceIds?: string[];
     /**
      * ID of the SLB with attachments.
      */
-    readonly loadBalancerId: string;
-    readonly outputFile?: string;
+    loadBalancerId: string;
+    outputFile?: string;
 }
 
 /**
@@ -66,4 +66,23 @@ export interface GetAttachmentsResult {
      * A list of SLB attachments. Each element contains the following attributes:
      */
     readonly slbAttachments: outputs.slb.GetAttachmentsSlbAttachment[];
+}
+
+export function getAttachmentsOutput(args: GetAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachmentsResult> {
+    return pulumi.output(args).apply(a => getAttachments(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAttachments.
+ */
+export interface GetAttachmentsOutputArgs {
+    /**
+     * List of attached ECS instance IDs.
+     */
+    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the SLB with attachments.
+     */
+    loadBalancerId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -195,23 +195,23 @@ export interface ScalingGroupState {
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
      */
-    readonly dbInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    dbInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
      */
-    readonly defaultCooldown?: pulumi.Input<number>;
+    defaultCooldown?: pulumi.Input<number>;
     /**
      * Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
      */
-    readonly groupDeletionProtection?: pulumi.Input<boolean>;
+    groupDeletionProtection?: pulumi.Input<boolean>;
     /**
      * Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
      */
-    readonly launchTemplateId?: pulumi.Input<string>;
+    launchTemplateId?: pulumi.Input<string>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
@@ -220,27 +220,27 @@ export interface ScalingGroupState {
      * - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
      * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
      */
-    readonly loadbalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    loadbalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
      */
-    readonly multiAzPolicy?: pulumi.Input<string>;
+    multiAzPolicy?: pulumi.Input<string>;
     /**
      * The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
      */
-    readonly onDemandBaseCapacity?: pulumi.Input<number>;
+    onDemandBaseCapacity?: pulumi.Input<number>;
     /**
      * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
      */
-    readonly onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
+    onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
     /**
      * RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
      * - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -248,29 +248,29 @@ export interface ScalingGroupState {
      * - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
      * - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
      */
-    readonly removalPolicies?: pulumi.Input<pulumi.Input<string>[]>;
+    removalPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */
-    readonly scalingGroupName?: pulumi.Input<string>;
+    scalingGroupName?: pulumi.Input<string>;
     /**
      * The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
      */
-    readonly spotInstancePools?: pulumi.Input<number>;
+    spotInstancePools?: pulumi.Input<number>;
     /**
      * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
      */
-    readonly spotInstanceRemedy?: pulumi.Input<boolean>;
+    spotInstanceRemedy?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * List of virtual switch IDs in which the ecs instances to be launched.
      */
-    readonly vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -282,23 +282,23 @@ export interface ScalingGroupArgs {
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
      */
-    readonly dbInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    dbInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
      */
-    readonly defaultCooldown?: pulumi.Input<number>;
+    defaultCooldown?: pulumi.Input<number>;
     /**
      * Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
      */
-    readonly groupDeletionProtection?: pulumi.Input<boolean>;
+    groupDeletionProtection?: pulumi.Input<boolean>;
     /**
      * Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
      */
-    readonly launchTemplateId?: pulumi.Input<string>;
+    launchTemplateId?: pulumi.Input<string>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
@@ -307,27 +307,27 @@ export interface ScalingGroupArgs {
      * - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
      * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
      */
-    readonly loadbalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    loadbalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
      */
-    readonly maxSize: pulumi.Input<number>;
+    maxSize: pulumi.Input<number>;
     /**
      * Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
      */
-    readonly minSize: pulumi.Input<number>;
+    minSize: pulumi.Input<number>;
     /**
      * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
      */
-    readonly multiAzPolicy?: pulumi.Input<string>;
+    multiAzPolicy?: pulumi.Input<string>;
     /**
      * The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
      */
-    readonly onDemandBaseCapacity?: pulumi.Input<number>;
+    onDemandBaseCapacity?: pulumi.Input<number>;
     /**
      * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
      */
-    readonly onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
+    onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
     /**
      * RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
      * - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -335,27 +335,27 @@ export interface ScalingGroupArgs {
      * - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
      * - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
      */
-    readonly removalPolicies?: pulumi.Input<pulumi.Input<string>[]>;
+    removalPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */
-    readonly scalingGroupName?: pulumi.Input<string>;
+    scalingGroupName?: pulumi.Input<string>;
     /**
      * The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
      */
-    readonly spotInstancePools?: pulumi.Input<number>;
+    spotInstancePools?: pulumi.Input<number>;
     /**
      * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
      */
-    readonly spotInstanceRemedy?: pulumi.Input<boolean>;
+    spotInstanceRemedy?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * List of virtual switch IDs in which the ecs instances to be launched.
      */
-    readonly vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

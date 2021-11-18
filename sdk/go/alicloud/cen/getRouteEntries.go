@@ -4,6 +4,9 @@
 package cen
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,76 @@ type GetRouteEntriesResult struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// ID of the route table.
 	RouteTableId string `pulumi:"routeTableId"`
+}
+
+func GetRouteEntriesOutput(ctx *pulumi.Context, args GetRouteEntriesOutputArgs, opts ...pulumi.InvokeOption) GetRouteEntriesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRouteEntriesResult, error) {
+			args := v.(GetRouteEntriesArgs)
+			r, err := GetRouteEntries(ctx, &args, opts...)
+			return *r, err
+		}).(GetRouteEntriesResultOutput)
+}
+
+// A collection of arguments for invoking getRouteEntries.
+type GetRouteEntriesOutputArgs struct {
+	// The destination CIDR block of the route entry to query.
+	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
+	// ID of the CEN instance.
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// ID of the route table of the VPC or VBR.
+	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
+}
+
+func (GetRouteEntriesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteEntriesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRouteEntries.
+type GetRouteEntriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRouteEntriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteEntriesResult)(nil)).Elem()
+}
+
+func (o GetRouteEntriesResultOutput) ToGetRouteEntriesResultOutput() GetRouteEntriesResultOutput {
+	return o
+}
+
+func (o GetRouteEntriesResultOutput) ToGetRouteEntriesResultOutputWithContext(ctx context.Context) GetRouteEntriesResultOutput {
+	return o
+}
+
+// The destination CIDR block of the conflicted route entry.
+func (o GetRouteEntriesResultOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// A list of CEN Route Entries. Each element contains the following attributes:
+func (o GetRouteEntriesResultOutput) Entries() GetRouteEntriesEntryArrayOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) []GetRouteEntriesEntry { return v.Entries }).(GetRouteEntriesEntryArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRouteEntriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of the CEN child instance.
+func (o GetRouteEntriesResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetRouteEntriesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// ID of the route table.
+func (o GetRouteEntriesResultOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) string { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRouteEntriesResultOutput{})
 }

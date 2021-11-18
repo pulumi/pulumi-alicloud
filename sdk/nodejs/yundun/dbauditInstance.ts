@@ -138,24 +138,24 @@ export interface DBAuditInstanceState {
     /**
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
+    description?: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
     /**
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
      */
-    readonly planCode?: pulumi.Input<string>;
+    planCode?: pulumi.Input<string>;
     /**
      * The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * vSwtich ID configured to audit
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -165,22 +165,22 @@ export interface DBAuditInstanceArgs {
     /**
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
-    readonly description: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
+    description: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
     /**
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
      */
-    readonly planCode: pulumi.Input<string>;
+    planCode: pulumi.Input<string>;
     /**
      * The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * vSwtich ID configured to audit
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
 }

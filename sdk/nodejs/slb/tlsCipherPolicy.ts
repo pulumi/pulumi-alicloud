@@ -129,19 +129,19 @@ export interface TlsCipherPolicyState {
     /**
      * The encryption algorithms supported. It depends on the value of `tlsVersions`.
      */
-    readonly ciphers?: pulumi.Input<pulumi.Input<string>[]>;
+    ciphers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * TLS policy instance state.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
      */
-    readonly tlsCipherPolicyName?: pulumi.Input<string>;
+    tlsCipherPolicyName?: pulumi.Input<string>;
     /**
      * The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
      */
-    readonly tlsVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsVersions?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -151,13 +151,13 @@ export interface TlsCipherPolicyArgs {
     /**
      * The encryption algorithms supported. It depends on the value of `tlsVersions`.
      */
-    readonly ciphers: pulumi.Input<pulumi.Input<string>[]>;
+    ciphers: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
      */
-    readonly tlsCipherPolicyName: pulumi.Input<string>;
+    tlsCipherPolicyName: pulumi.Input<string>;
     /**
      * The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
      */
-    readonly tlsVersions: pulumi.Input<pulumi.Input<string>[]>;
+    tlsVersions: pulumi.Input<pulumi.Input<string>[]>;
 }

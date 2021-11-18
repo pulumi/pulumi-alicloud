@@ -183,7 +183,7 @@ type HAVipArrayInput interface {
 type HAVipArray []HAVipInput
 
 func (HAVipArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HAVip)(nil))
+	return reflect.TypeOf((*[]*HAVip)(nil)).Elem()
 }
 
 func (i HAVipArray) ToHAVipArrayOutput() HAVipArrayOutput {
@@ -208,7 +208,7 @@ type HAVipMapInput interface {
 type HAVipMap map[string]HAVipInput
 
 func (HAVipMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HAVip)(nil))
+	return reflect.TypeOf((*map[string]*HAVip)(nil)).Elem()
 }
 
 func (i HAVipMap) ToHAVipMapOutput() HAVipMapOutput {
@@ -219,9 +219,7 @@ func (i HAVipMap) ToHAVipMapOutputWithContext(ctx context.Context) HAVipMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipMapOutput)
 }
 
-type HAVipOutput struct {
-	*pulumi.OutputState
-}
+type HAVipOutput struct{ *pulumi.OutputState }
 
 func (HAVipOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HAVip)(nil))
@@ -240,14 +238,12 @@ func (o HAVipOutput) ToHAVipPtrOutput() HAVipPtrOutput {
 }
 
 func (o HAVipOutput) ToHAVipPtrOutputWithContext(ctx context.Context) HAVipPtrOutput {
-	return o.ApplyT(func(v HAVip) *HAVip {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HAVip) *HAVip {
 		return &v
 	}).(HAVipPtrOutput)
 }
 
-type HAVipPtrOutput struct {
-	*pulumi.OutputState
-}
+type HAVipPtrOutput struct{ *pulumi.OutputState }
 
 func (HAVipPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HAVip)(nil))
@@ -259,6 +255,16 @@ func (o HAVipPtrOutput) ToHAVipPtrOutput() HAVipPtrOutput {
 
 func (o HAVipPtrOutput) ToHAVipPtrOutputWithContext(ctx context.Context) HAVipPtrOutput {
 	return o
+}
+
+func (o HAVipPtrOutput) Elem() HAVipOutput {
+	return o.ApplyT(func(v *HAVip) HAVip {
+		if v != nil {
+			return *v
+		}
+		var ret HAVip
+		return ret
+	}).(HAVipOutput)
 }
 
 type HAVipArrayOutput struct{ *pulumi.OutputState }
@@ -302,6 +308,10 @@ func (o HAVipMapOutput) MapIndex(k pulumi.StringInput) HAVipOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HAVipInput)(nil)).Elem(), &HAVip{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HAVipPtrInput)(nil)).Elem(), &HAVip{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HAVipArrayInput)(nil)).Elem(), HAVipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HAVipMapInput)(nil)).Elem(), HAVipMap{})
 	pulumi.RegisterOutputType(HAVipOutput{})
 	pulumi.RegisterOutputType(HAVipPtrOutput{})
 	pulumi.RegisterOutputType(HAVipArrayOutput{})

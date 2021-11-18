@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -33,7 +34,7 @@ namespace Pulumi.AliCloud.ResourceManager
         ///             PolicyName = "tftest",
         ///             PolicyType = "Custom",
         ///         }));
-        ///         this.FirstPolicyVersionId = @default.Apply(@default =&gt; @default.Versions[0].Id);
+        ///         this.FirstPolicyVersionId = @default.Apply(@default =&gt; @default.Versions?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstPolicyVersionId")]
@@ -45,6 +46,41 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Task<GetPolicyVersionsResult> InvokeAsync(GetPolicyVersionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyVersionsResult>("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", args ?? new GetPolicyVersionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.85.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.ResourceManager.GetPolicyVersions.InvokeAsync(new AliCloud.ResourceManager.GetPolicyVersionsArgs
+        ///         {
+        ///             PolicyName = "tftest",
+        ///             PolicyType = "Custom",
+        ///         }));
+        ///         this.FirstPolicyVersionId = @default.Apply(@default =&gt; @default.Versions?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstPolicyVersionId")]
+        ///     public Output&lt;string&gt; FirstPolicyVersionId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPolicyVersionsResult> Invoke(GetPolicyVersionsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPolicyVersionsResult>("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", args ?? new GetPolicyVersionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -84,6 +120,46 @@ namespace Pulumi.AliCloud.ResourceManager
         public string PolicyType { get; set; } = null!;
 
         public GetPolicyVersionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetPolicyVersionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of policy version IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The name of the policy.
+        /// </summary>
+        [Input("policyName", required: true)]
+        public Input<string> PolicyName { get; set; } = null!;
+
+        /// <summary>
+        /// The type of the policy. Valid values:`Custom` and `System`.
+        /// </summary>
+        [Input("policyType", required: true)]
+        public Input<string> PolicyType { get; set; } = null!;
+
+        public GetPolicyVersionsInvokeArgs()
         {
         }
     }

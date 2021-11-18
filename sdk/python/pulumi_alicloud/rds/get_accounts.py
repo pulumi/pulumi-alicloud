@@ -13,6 +13,7 @@ __all__ = [
     'GetAccountsResult',
     'AwaitableGetAccountsResult',
     'get_accounts',
+    'get_accounts_output',
 ]
 
 @pulumi.output_type
@@ -157,3 +158,37 @@ def get_accounts(db_instance_id: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_accounts)
+def get_accounts_output(db_instance_id: Optional[pulumi.Input[str]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
+    """
+    This data source provides the Rds Accounts of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.120.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.rds.get_accounts(db_instance_id="example_value",
+        name_regex="the_resource_name")
+    pulumi.export("firstRdsAccountId", example.accounts[0].id)
+    ```
+
+
+    :param str db_instance_id: The db instance id.
+    :param Sequence[str] ids: A list of Account IDs.
+    :param str name_regex: A regex string to filter results by Account name.
+    :param str status: The status of the resource.
+    """
+    ...

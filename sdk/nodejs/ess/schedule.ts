@@ -99,36 +99,36 @@ export class Schedule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Schedule resources.
  */
 export interface ScheduleState {
-    readonly description?: pulumi.Input<string>;
-    readonly desiredCapacity?: pulumi.Input<number>;
-    readonly launchExpirationTime?: pulumi.Input<number>;
-    readonly launchTime?: pulumi.Input<string>;
-    readonly maxValue?: pulumi.Input<number>;
-    readonly minValue?: pulumi.Input<number>;
-    readonly recurrenceEndTime?: pulumi.Input<string>;
-    readonly recurrenceType?: pulumi.Input<string>;
-    readonly recurrenceValue?: pulumi.Input<string>;
-    readonly scalingGroupId?: pulumi.Input<string>;
-    readonly scheduledAction?: pulumi.Input<string>;
-    readonly scheduledTaskName?: pulumi.Input<string>;
-    readonly taskEnabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    desiredCapacity?: pulumi.Input<number>;
+    launchExpirationTime?: pulumi.Input<number>;
+    launchTime?: pulumi.Input<string>;
+    maxValue?: pulumi.Input<number>;
+    minValue?: pulumi.Input<number>;
+    recurrenceEndTime?: pulumi.Input<string>;
+    recurrenceType?: pulumi.Input<string>;
+    recurrenceValue?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string>;
+    scheduledAction?: pulumi.Input<string>;
+    scheduledTaskName?: pulumi.Input<string>;
+    taskEnabled?: pulumi.Input<boolean>;
 }
 
 /**
  * The set of arguments for constructing a Schedule resource.
  */
 export interface ScheduleArgs {
-    readonly description?: pulumi.Input<string>;
-    readonly desiredCapacity?: pulumi.Input<number>;
-    readonly launchExpirationTime?: pulumi.Input<number>;
-    readonly launchTime?: pulumi.Input<string>;
-    readonly maxValue?: pulumi.Input<number>;
-    readonly minValue?: pulumi.Input<number>;
-    readonly recurrenceEndTime?: pulumi.Input<string>;
-    readonly recurrenceType?: pulumi.Input<string>;
-    readonly recurrenceValue?: pulumi.Input<string>;
-    readonly scalingGroupId?: pulumi.Input<string>;
-    readonly scheduledAction?: pulumi.Input<string>;
-    readonly scheduledTaskName?: pulumi.Input<string>;
-    readonly taskEnabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    desiredCapacity?: pulumi.Input<number>;
+    launchExpirationTime?: pulumi.Input<number>;
+    launchTime?: pulumi.Input<string>;
+    maxValue?: pulumi.Input<number>;
+    minValue?: pulumi.Input<number>;
+    recurrenceEndTime?: pulumi.Input<string>;
+    recurrenceType?: pulumi.Input<string>;
+    recurrenceValue?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string>;
+    scheduledAction?: pulumi.Input<string>;
+    scheduledTaskName?: pulumi.Input<string>;
+    taskEnabled?: pulumi.Input<boolean>;
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetAlarmsResult',
     'AwaitableGetAlarmsResult',
     'get_alarms',
+    'get_alarms_output',
 ]
 
 @pulumi.output_type
@@ -159,3 +160,24 @@ def get_alarms(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         scaling_group_id=__ret__.scaling_group_id)
+
+
+@_utilities.lift_output_func(get_alarms)
+def get_alarms_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      metric_type: Optional[pulumi.Input[Optional[str]]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      scaling_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlarmsResult]:
+    """
+    This data source provides available alarm resources.
+
+    > **NOTE** Available in 1.72.0+
+
+
+    :param Sequence[str] ids: A list of alarm IDs.
+    :param str metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
+    :param str name_regex: A regex string to filter resulting alarms by name.
+    :param str scaling_group_id: Scaling group id the alarms belong to.
+    """
+    ...

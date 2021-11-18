@@ -139,39 +139,39 @@ export interface ConnectionState {
     /**
      * The ID of the customer gateway.
      */
-    readonly customerGatewayId?: pulumi.Input<string>;
+    customerGatewayId?: pulumi.Input<string>;
     /**
      * Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
      */
-    readonly effectImmediately?: pulumi.Input<boolean>;
+    effectImmediately?: pulumi.Input<boolean>;
     /**
      * The configurations of phase-one negotiation.
      */
-    readonly ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIkeConfig>[]>;
+    ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIkeConfig>[]>;
     /**
      * The configurations of phase-two negotiation.
      */
-    readonly ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIpsecConfig>[]>;
+    ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIpsecConfig>[]>;
     /**
      * The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
      */
-    readonly localSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+    localSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the IPsec connection.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The CIDR block of the local data center. This parameter is used for phase-two negotiation.
      */
-    readonly remoteSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+    remoteSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The status of VPN connection.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The ID of the VPN gateway.
      */
-    readonly vpnGatewayId?: pulumi.Input<string>;
+    vpnGatewayId?: pulumi.Input<string>;
 }
 
 /**
@@ -181,33 +181,33 @@ export interface ConnectionArgs {
     /**
      * The ID of the customer gateway.
      */
-    readonly customerGatewayId: pulumi.Input<string>;
+    customerGatewayId: pulumi.Input<string>;
     /**
      * Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
      */
-    readonly effectImmediately?: pulumi.Input<boolean>;
+    effectImmediately?: pulumi.Input<boolean>;
     /**
      * The configurations of phase-one negotiation.
      */
-    readonly ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIkeConfig>[]>;
+    ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIkeConfig>[]>;
     /**
      * The configurations of phase-two negotiation.
      */
-    readonly ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIpsecConfig>[]>;
+    ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIpsecConfig>[]>;
     /**
      * The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
      */
-    readonly localSubnets: pulumi.Input<pulumi.Input<string>[]>;
+    localSubnets: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the IPsec connection.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The CIDR block of the local data center. This parameter is used for phase-two negotiation.
      */
-    readonly remoteSubnets: pulumi.Input<pulumi.Input<string>[]>;
+    remoteSubnets: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the VPN gateway.
      */
-    readonly vpnGatewayId: pulumi.Input<string>;
+    vpnGatewayId: pulumi.Input<string>;
 }

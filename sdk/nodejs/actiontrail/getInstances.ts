@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
+ * }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/12",
  * });
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * const instancesDs = pulumi.output(alicloud.actiontrail.getInstances({
  *     nameRegex: "alikafkaInstanceName",
  *     outputFile: "instances.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstInstanceName = instancesDs.instances[0].name;
  * ```
@@ -69,12 +69,12 @@ export interface GetInstancesArgs {
     /**
      * A list of instance IDs to filter results.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by the instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -99,4 +99,23 @@ export interface GetInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * A list of instance IDs to filter results.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by the instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

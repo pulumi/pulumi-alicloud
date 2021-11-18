@@ -110,11 +110,11 @@ export interface EcsAutoSnapshotPolicyAttachmentState {
     /**
      * The auto snapshot policy id.
      */
-    readonly autoSnapshotPolicyId?: pulumi.Input<string>;
+    autoSnapshotPolicyId?: pulumi.Input<string>;
     /**
      * The disk id.
      */
-    readonly diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string>;
 }
 
 /**
@@ -124,9 +124,9 @@ export interface EcsAutoSnapshotPolicyAttachmentArgs {
     /**
      * The auto snapshot policy id.
      */
-    readonly autoSnapshotPolicyId: pulumi.Input<string>;
+    autoSnapshotPolicyId: pulumi.Input<string>;
     /**
      * The disk id.
      */
-    readonly diskId: pulumi.Input<string>;
+    diskId: pulumi.Input<string>;
 }

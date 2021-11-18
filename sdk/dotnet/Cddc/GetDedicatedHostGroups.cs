@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cddc
 {
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Cddc
         /// </summary>
         public static Task<GetDedicatedHostGroupsResult> InvokeAsync(GetDedicatedHostGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostGroupsResult>("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", args ?? new GetDedicatedHostGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Cddc.GetDedicatedHostGroups.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostGroupsArgs
+        ///         {
+        ///             Engine = "MongoDB",
+        ///         }));
+        ///         this.CddcDedicatedHostGroupId = @default.Apply(@default =&gt; @default.Id);
+        ///     }
+        /// 
+        ///     [Output("cddcDedicatedHostGroupId")]
+        ///     public Output&lt;string&gt; CddcDedicatedHostGroupId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDedicatedHostGroupsResult> Invoke(GetDedicatedHostGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDedicatedHostGroupsResult>("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", args ?? new GetDedicatedHostGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -73,6 +110,34 @@ namespace Pulumi.AliCloud.Cddc
         public string? OutputFile { get; set; }
 
         public GetDedicatedHostGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDedicatedHostGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        /// </summary>
+        [Input("engine")]
+        public Input<string>? Engine { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Dedicated Host Group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetDedicatedHostGroupsInvokeArgs()
         {
         }
     }

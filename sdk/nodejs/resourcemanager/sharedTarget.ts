@@ -102,15 +102,15 @@ export interface SharedTargetState {
     /**
      * The resource share ID of resource manager.
      */
-    readonly resourceShareId?: pulumi.Input<string>;
+    resourceShareId?: pulumi.Input<string>;
     /**
      * The status of shared target.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The member account ID in resource directory.
      */
-    readonly targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string>;
 }
 
 /**
@@ -120,9 +120,9 @@ export interface SharedTargetArgs {
     /**
      * The resource share ID of resource manager.
      */
-    readonly resourceShareId: pulumi.Input<string>;
+    resourceShareId: pulumi.Input<string>;
     /**
      * The member account ID in resource directory.
      */
-    readonly targetId: pulumi.Input<string>;
+    targetId: pulumi.Input<string>;
 }

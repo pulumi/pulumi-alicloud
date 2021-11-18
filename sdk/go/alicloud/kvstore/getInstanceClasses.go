@@ -4,6 +4,9 @@
 package kvstore
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "KVStore"
-// 		resourcesZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		resourcesZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -125,4 +128,154 @@ type GetInstanceClassesResult struct {
 	// Deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.
 	StorageType *string `pulumi:"storageType"`
 	ZoneId      string  `pulumi:"zoneId"`
+}
+
+func GetInstanceClassesOutput(ctx *pulumi.Context, args GetInstanceClassesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceClassesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstanceClassesResult, error) {
+			args := v.(GetInstanceClassesArgs)
+			r, err := GetInstanceClasses(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstanceClassesResultOutput)
+}
+
+// A collection of arguments for invoking getInstanceClasses.
+type GetInstanceClassesOutputArgs struct {
+	// The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	// The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+	EditionType pulumi.StringPtrInput `pulumi:"editionType"`
+	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`
+	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
+	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
+	// The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+	NodeType   pulumi.StringPtrInput `pulumi:"nodeType"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// It has been deprecated from 1.68.0.
+	//
+	// Deprecated: The parameter 'package_type' has been deprecated from 1.68.0.
+	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
+	// It has been deprecated from 1.68.0.
+	//
+	// Deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.
+	PerformanceType pulumi.StringPtrInput `pulumi:"performanceType"`
+	ProductType     pulumi.StringPtrInput `pulumi:"productType"`
+	// The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
+	SeriesType pulumi.StringPtrInput `pulumi:"seriesType"`
+	// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
+	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+	// * Local: an ApsaraDB for Redis instance with a local disk.
+	// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+	ShardNumber pulumi.IntPtrInput    `pulumi:"shardNumber"`
+	SortedBy    pulumi.StringPtrInput `pulumi:"sortedBy"`
+	// It has been deprecated from 1.68.0.
+	//
+	// Deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.
+	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
+	// The Zone to launch the KVStore instance.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetInstanceClassesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceClassesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstanceClasses.
+type GetInstanceClassesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceClassesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceClassesResult)(nil)).Elem()
+}
+
+func (o GetInstanceClassesResultOutput) ToGetInstanceClassesResultOutput() GetInstanceClassesResultOutput {
+	return o
+}
+
+func (o GetInstanceClassesResultOutput) ToGetInstanceClassesResultOutputWithContext(ctx context.Context) GetInstanceClassesResultOutput {
+	return o
+}
+
+func (o GetInstanceClassesResultOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// A list of KVStore available instance classes when the `sortedBy` is "Price". include:
+func (o GetInstanceClassesResultOutput) Classes() GetInstanceClassesClassArrayOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) []GetInstanceClassesClass { return v.Classes }).(GetInstanceClassesClassArrayOutput)
+}
+
+func (o GetInstanceClassesResultOutput) EditionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.EditionType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceClassesResultOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceClassesResultOutput) EngineVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.EngineVersion }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstanceClassesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceClassesResultOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// A list of KVStore available instance classes.
+func (o GetInstanceClassesResultOutput) InstanceClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) []string { return v.InstanceClasses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstanceClassesResultOutput) NodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.NodeType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceClassesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: The parameter 'package_type' has been deprecated from 1.68.0.
+func (o GetInstanceClassesResultOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.PackageType }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.
+func (o GetInstanceClassesResultOutput) PerformanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.PerformanceType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceClassesResultOutput) ProductType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.ProductType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceClassesResultOutput) SeriesType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.SeriesType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceClassesResultOutput) ShardNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *int { return v.ShardNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstanceClassesResultOutput) SortedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.SortedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.
+func (o GetInstanceClassesResultOutput) StorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) *string { return v.StorageType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceClassesResultOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceClassesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstanceClassesResultOutput{})
 }

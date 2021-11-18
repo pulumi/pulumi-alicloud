@@ -13,6 +13,7 @@ __all__ = [
     'GetTransitRouterRouteTableAssociationsResult',
     'AwaitableGetTransitRouterRouteTableAssociationsResult',
     'get_transit_router_route_table_associations',
+    'get_transit_router_route_table_associations_output',
 ]
 
 @pulumi.output_type
@@ -143,3 +144,32 @@ def get_transit_router_route_table_associations(ids: Optional[Sequence[str]] = N
         output_file=__ret__.output_file,
         status=__ret__.status,
         transit_router_route_table_id=__ret__.transit_router_route_table_id)
+
+
+@_utilities.lift_output_func(get_transit_router_route_table_associations)
+def get_transit_router_route_table_associations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                                       status: Optional[pulumi.Input[Optional[str]]] = None,
+                                                       transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
+                                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterRouteTableAssociationsResult]:
+    """
+    This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+
+    > **NOTE:** Available in 1.126.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_route_table_associations(transit_router_route_table_id="rtb-id1")
+    pulumi.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default.associations[0].resource_type)
+    ```
+
+
+    :param Sequence[str] ids: A list of CEN Transit Router Route Table Association IDs.
+    :param str status: The status of the route table, including `Active`, `Associating`, `Dissociating`.
+    :param str transit_router_route_table_id: ID of the route table of the VPC or VBR.
+    """
+    ...

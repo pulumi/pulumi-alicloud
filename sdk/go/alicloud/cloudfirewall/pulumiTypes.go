@@ -454,6 +454,10 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlPoliciesPolicyInput)(nil)).Elem(), GetControlPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlPoliciesPolicyArrayInput)(nil)).Elem(), GetControlPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterOutputType(GetControlPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetControlPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})

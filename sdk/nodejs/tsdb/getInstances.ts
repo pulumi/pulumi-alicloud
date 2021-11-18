@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.tsdb.getInstances({
  *     ids: ["example_value"],
  * });
- * export const firstTsdbInstanceId = example.then(example => example.instances[0].id);
+ * export const firstTsdbInstanceId = example.then(example => example.instances?[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -52,32 +52,32 @@ export interface GetInstancesArgs {
     /**
      * The app key.
      */
-    readonly appKey?: string;
+    appKey?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * The engine type of instance. Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      */
-    readonly engineType?: string;
+    engineType?: string;
     /**
      * A list of Instance IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The query str.
      */
-    readonly queryStr?: string;
+    queryStr?: string;
     /**
      * Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The status list.
      */
-    readonly statusList?: string;
+    statusList?: string;
 }
 
 /**
@@ -97,4 +97,43 @@ export interface GetInstancesResult {
     readonly queryStr?: string;
     readonly status?: string;
     readonly statusList?: string;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * The app key.
+     */
+    appKey?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * The engine type of instance. Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
+     */
+    engineType?: pulumi.Input<string>;
+    /**
+     * A list of Instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The query str.
+     */
+    queryStr?: pulumi.Input<string>;
+    /**
+     * Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The status list.
+     */
+    statusList?: pulumi.Input<string>;
 }

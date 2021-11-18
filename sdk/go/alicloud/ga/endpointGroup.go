@@ -390,7 +390,7 @@ type EndpointGroupArrayInput interface {
 type EndpointGroupArray []EndpointGroupInput
 
 func (EndpointGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EndpointGroup)(nil))
+	return reflect.TypeOf((*[]*EndpointGroup)(nil)).Elem()
 }
 
 func (i EndpointGroupArray) ToEndpointGroupArrayOutput() EndpointGroupArrayOutput {
@@ -415,7 +415,7 @@ type EndpointGroupMapInput interface {
 type EndpointGroupMap map[string]EndpointGroupInput
 
 func (EndpointGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EndpointGroup)(nil))
+	return reflect.TypeOf((*map[string]*EndpointGroup)(nil)).Elem()
 }
 
 func (i EndpointGroupMap) ToEndpointGroupMapOutput() EndpointGroupMapOutput {
@@ -426,9 +426,7 @@ func (i EndpointGroupMap) ToEndpointGroupMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupMapOutput)
 }
 
-type EndpointGroupOutput struct {
-	*pulumi.OutputState
-}
+type EndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (EndpointGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EndpointGroup)(nil))
@@ -447,14 +445,12 @@ func (o EndpointGroupOutput) ToEndpointGroupPtrOutput() EndpointGroupPtrOutput {
 }
 
 func (o EndpointGroupOutput) ToEndpointGroupPtrOutputWithContext(ctx context.Context) EndpointGroupPtrOutput {
-	return o.ApplyT(func(v EndpointGroup) *EndpointGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointGroup) *EndpointGroup {
 		return &v
 	}).(EndpointGroupPtrOutput)
 }
 
-type EndpointGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type EndpointGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (EndpointGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EndpointGroup)(nil))
@@ -466,6 +462,16 @@ func (o EndpointGroupPtrOutput) ToEndpointGroupPtrOutput() EndpointGroupPtrOutpu
 
 func (o EndpointGroupPtrOutput) ToEndpointGroupPtrOutputWithContext(ctx context.Context) EndpointGroupPtrOutput {
 	return o
+}
+
+func (o EndpointGroupPtrOutput) Elem() EndpointGroupOutput {
+	return o.ApplyT(func(v *EndpointGroup) EndpointGroup {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointGroup
+		return ret
+	}).(EndpointGroupOutput)
 }
 
 type EndpointGroupArrayOutput struct{ *pulumi.OutputState }
@@ -509,6 +515,10 @@ func (o EndpointGroupMapOutput) MapIndex(k pulumi.StringInput) EndpointGroupOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupInput)(nil)).Elem(), &EndpointGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupPtrInput)(nil)).Elem(), &EndpointGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupArrayInput)(nil)).Elem(), EndpointGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupMapInput)(nil)).Elem(), EndpointGroupMap{})
 	pulumi.RegisterOutputType(EndpointGroupOutput{})
 	pulumi.RegisterOutputType(EndpointGroupPtrOutput{})
 	pulumi.RegisterOutputType(EndpointGroupArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Imp
 {
@@ -31,12 +32,12 @@ namespace Pulumi.AliCloud.Imp
         ///     public MyStack()
         ///     {
         ///         var ids = Output.Create(AliCloud.Imp.GetAppTemplates.InvokeAsync());
-        ///         this.ImpAppTemplateId1 = ids.Apply(ids =&gt; ids.Templates[0].Id);
+        ///         this.ImpAppTemplateId1 = ids.Apply(ids =&gt; ids.Templates?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Imp.GetAppTemplates.InvokeAsync(new AliCloud.Imp.GetAppTemplatesArgs
         ///         {
         ///             NameRegex = "^my_AppTemplate",
         ///         }));
-        ///         this.ImpAppTemplateId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates[0].Id);
+        ///         this.ImpAppTemplateId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
         ///     }
         /// 
         ///     [Output("impAppTemplateId1")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Imp
         /// </summary>
         public static Task<GetAppTemplatesResult> InvokeAsync(GetAppTemplatesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppTemplatesResult>("alicloud:imp/getAppTemplates:getAppTemplates", args ?? new GetAppTemplatesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Imp App Templates of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Imp.GetAppTemplates.InvokeAsync());
+        ///         this.ImpAppTemplateId1 = ids.Apply(ids =&gt; ids.Templates?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Imp.GetAppTemplates.InvokeAsync(new AliCloud.Imp.GetAppTemplatesArgs
+        ///         {
+        ///             NameRegex = "^my_AppTemplate",
+        ///         }));
+        ///         this.ImpAppTemplateId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("impAppTemplateId1")]
+        ///     public Output&lt;string&gt; ImpAppTemplateId1 { get; set; }
+        ///     [Output("impAppTemplateId2")]
+        ///     public Output&lt;string&gt; ImpAppTemplateId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAppTemplatesResult> Invoke(GetAppTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAppTemplatesResult>("alicloud:imp/getAppTemplates:getAppTemplates", args ?? new GetAppTemplatesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +124,40 @@ namespace Pulumi.AliCloud.Imp
         public string? Status { get; set; }
 
         public GetAppTemplatesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAppTemplatesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of App Template IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by App Template name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Application template usage status.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetAppTemplatesInvokeArgs()
         {
         }
     }

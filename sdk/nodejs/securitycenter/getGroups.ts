@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const nameRegex = alicloud.securitycenter.getGroups({
  *     nameRegex: "^my-Group",
  * });
- * export const securityCenterGroups = nameRegex.then(nameRegex => nameRegex.groups[0].id);
+ * export const securityCenterGroups = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
  * ```
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
@@ -47,12 +47,12 @@ export interface GetGroupsArgs {
     /**
      * A list of Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -68,4 +68,23 @@ export interface GetGroupsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+    return pulumi.output(args).apply(a => getGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroups.
+ */
+export interface GetGroupsOutputArgs {
+    /**
+     * A list of Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

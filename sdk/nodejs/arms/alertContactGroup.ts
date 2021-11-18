@@ -113,11 +113,11 @@ export interface AlertContactGroupState {
     /**
      * The name of the resource.
      */
-    readonly alertContactGroupName?: pulumi.Input<string>;
+    alertContactGroupName?: pulumi.Input<string>;
     /**
      * The list id of alert contact.
      */
-    readonly contactIds?: pulumi.Input<pulumi.Input<string>[]>;
+    contactIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -127,9 +127,9 @@ export interface AlertContactGroupArgs {
     /**
      * The name of the resource.
      */
-    readonly alertContactGroupName: pulumi.Input<string>;
+    alertContactGroupName: pulumi.Input<string>;
     /**
      * The list id of alert contact.
      */
-    readonly contactIds?: pulumi.Input<pulumi.Input<string>[]>;
+    contactIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

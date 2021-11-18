@@ -93,15 +93,15 @@ export interface CustomerGatewayState {
     /**
      * The description of the VPN customer gateway instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The IP address of the customer gateway.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The name of the VPN customer gateway. Defaults to null.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -111,13 +111,13 @@ export interface CustomerGatewayArgs {
     /**
      * The description of the VPN customer gateway instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The IP address of the customer gateway.
      */
-    readonly ipAddress: pulumi.Input<string>;
+    ipAddress: pulumi.Input<string>;
     /**
      * The name of the VPN customer gateway. Defaults to null.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package expressconnect
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,82 @@ type GetPhysicalConnectionsResult struct {
 	Names                  []string `pulumi:"names"`
 	OutputFile             *string  `pulumi:"outputFile"`
 	Status                 *string  `pulumi:"status"`
+}
+
+func GetPhysicalConnectionsOutput(ctx *pulumi.Context, args GetPhysicalConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetPhysicalConnectionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetPhysicalConnectionsResult, error) {
+			args := v.(GetPhysicalConnectionsArgs)
+			r, err := GetPhysicalConnections(ctx, &args, opts...)
+			return *r, err
+		}).(GetPhysicalConnectionsResultOutput)
+}
+
+// A collection of arguments for invoking getPhysicalConnections.
+type GetPhysicalConnectionsOutputArgs struct {
+	// A list of Physical Connection IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The include reservation data.
+	IncludeReservationData pulumi.BoolPtrInput `pulumi:"includeReservationData"`
+	// A regex string to filter results by Physical Connection name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Resources on Behalf of a State of the Resource Attribute Field.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetPhysicalConnectionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPhysicalConnectionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPhysicalConnections.
+type GetPhysicalConnectionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetPhysicalConnectionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPhysicalConnectionsResult)(nil)).Elem()
+}
+
+func (o GetPhysicalConnectionsResultOutput) ToGetPhysicalConnectionsResultOutput() GetPhysicalConnectionsResultOutput {
+	return o
+}
+
+func (o GetPhysicalConnectionsResultOutput) ToGetPhysicalConnectionsResultOutputWithContext(ctx context.Context) GetPhysicalConnectionsResultOutput {
+	return o
+}
+
+func (o GetPhysicalConnectionsResultOutput) Connections() GetPhysicalConnectionsConnectionArrayOutput {
+	return o.ApplyT(func(v GetPhysicalConnectionsResult) []GetPhysicalConnectionsConnection { return v.Connections }).(GetPhysicalConnectionsConnectionArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPhysicalConnectionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPhysicalConnectionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPhysicalConnectionsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPhysicalConnectionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPhysicalConnectionsResultOutput) IncludeReservationData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPhysicalConnectionsResult) *bool { return v.IncludeReservationData }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetPhysicalConnectionsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPhysicalConnectionsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPhysicalConnectionsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPhysicalConnectionsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPhysicalConnectionsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPhysicalConnectionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPhysicalConnectionsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPhysicalConnectionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPhysicalConnectionsResultOutput{})
 }

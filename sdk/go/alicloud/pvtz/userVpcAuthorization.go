@@ -198,7 +198,7 @@ type UserVpcAuthorizationArrayInput interface {
 type UserVpcAuthorizationArray []UserVpcAuthorizationInput
 
 func (UserVpcAuthorizationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*UserVpcAuthorization)(nil))
+	return reflect.TypeOf((*[]*UserVpcAuthorization)(nil)).Elem()
 }
 
 func (i UserVpcAuthorizationArray) ToUserVpcAuthorizationArrayOutput() UserVpcAuthorizationArrayOutput {
@@ -223,7 +223,7 @@ type UserVpcAuthorizationMapInput interface {
 type UserVpcAuthorizationMap map[string]UserVpcAuthorizationInput
 
 func (UserVpcAuthorizationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*UserVpcAuthorization)(nil))
+	return reflect.TypeOf((*map[string]*UserVpcAuthorization)(nil)).Elem()
 }
 
 func (i UserVpcAuthorizationMap) ToUserVpcAuthorizationMapOutput() UserVpcAuthorizationMapOutput {
@@ -234,9 +234,7 @@ func (i UserVpcAuthorizationMap) ToUserVpcAuthorizationMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(UserVpcAuthorizationMapOutput)
 }
 
-type UserVpcAuthorizationOutput struct {
-	*pulumi.OutputState
-}
+type UserVpcAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (UserVpcAuthorizationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UserVpcAuthorization)(nil))
@@ -255,14 +253,12 @@ func (o UserVpcAuthorizationOutput) ToUserVpcAuthorizationPtrOutput() UserVpcAut
 }
 
 func (o UserVpcAuthorizationOutput) ToUserVpcAuthorizationPtrOutputWithContext(ctx context.Context) UserVpcAuthorizationPtrOutput {
-	return o.ApplyT(func(v UserVpcAuthorization) *UserVpcAuthorization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserVpcAuthorization) *UserVpcAuthorization {
 		return &v
 	}).(UserVpcAuthorizationPtrOutput)
 }
 
-type UserVpcAuthorizationPtrOutput struct {
-	*pulumi.OutputState
-}
+type UserVpcAuthorizationPtrOutput struct{ *pulumi.OutputState }
 
 func (UserVpcAuthorizationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**UserVpcAuthorization)(nil))
@@ -274,6 +270,16 @@ func (o UserVpcAuthorizationPtrOutput) ToUserVpcAuthorizationPtrOutput() UserVpc
 
 func (o UserVpcAuthorizationPtrOutput) ToUserVpcAuthorizationPtrOutputWithContext(ctx context.Context) UserVpcAuthorizationPtrOutput {
 	return o
+}
+
+func (o UserVpcAuthorizationPtrOutput) Elem() UserVpcAuthorizationOutput {
+	return o.ApplyT(func(v *UserVpcAuthorization) UserVpcAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret UserVpcAuthorization
+		return ret
+	}).(UserVpcAuthorizationOutput)
 }
 
 type UserVpcAuthorizationArrayOutput struct{ *pulumi.OutputState }
@@ -317,6 +323,10 @@ func (o UserVpcAuthorizationMapOutput) MapIndex(k pulumi.StringInput) UserVpcAut
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*UserVpcAuthorizationInput)(nil)).Elem(), &UserVpcAuthorization{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserVpcAuthorizationPtrInput)(nil)).Elem(), &UserVpcAuthorization{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserVpcAuthorizationArrayInput)(nil)).Elem(), UserVpcAuthorizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserVpcAuthorizationMapInput)(nil)).Elem(), UserVpcAuthorizationMap{})
 	pulumi.RegisterOutputType(UserVpcAuthorizationOutput{})
 	pulumi.RegisterOutputType(UserVpcAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(UserVpcAuthorizationArrayOutput{})

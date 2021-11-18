@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Amqp
 {
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         public static Task<GetBindingsResult> InvokeAsync(GetBindingsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Amqp Bindings of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var examples = Output.Create(AliCloud.Amqp.GetBindings.InvokeAsync(new AliCloud.Amqp.GetBindingsArgs
+        ///         {
+        ///             InstanceId = "amqp-cn-xxxxx",
+        ///             VirtualHostName = "my-vh",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetBindingsResult> Invoke(GetBindingsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -65,6 +100,28 @@ namespace Pulumi.AliCloud.Amqp
         public string VirtualHostName { get; set; } = null!;
 
         public GetBindingsArgs()
+        {
+        }
+    }
+
+    public sealed class GetBindingsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Instance Id.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Virtualhost Name.
+        /// </summary>
+        [Input("virtualHostName", required: true)]
+        public Input<string> VirtualHostName { get; set; } = null!;
+
+        public GetBindingsInvokeArgs()
         {
         }
     }

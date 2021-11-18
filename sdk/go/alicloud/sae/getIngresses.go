@@ -4,6 +4,9 @@
 package sae
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,4 +42,72 @@ type GetIngressesResult struct {
 	Ingresses   []GetIngressesIngress `pulumi:"ingresses"`
 	NamespaceId string                `pulumi:"namespaceId"`
 	OutputFile  *string               `pulumi:"outputFile"`
+}
+
+func GetIngressesOutput(ctx *pulumi.Context, args GetIngressesOutputArgs, opts ...pulumi.InvokeOption) GetIngressesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetIngressesResult, error) {
+			args := v.(GetIngressesArgs)
+			r, err := GetIngresses(ctx, &args, opts...)
+			return *r, err
+		}).(GetIngressesResultOutput)
+}
+
+// A collection of arguments for invoking getIngresses.
+type GetIngressesOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Ingress IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+	NamespaceId pulumi.StringInput    `pulumi:"namespaceId"`
+	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetIngressesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIngressesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getIngresses.
+type GetIngressesResultOutput struct{ *pulumi.OutputState }
+
+func (GetIngressesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIngressesResult)(nil)).Elem()
+}
+
+func (o GetIngressesResultOutput) ToGetIngressesResultOutput() GetIngressesResultOutput {
+	return o
+}
+
+func (o GetIngressesResultOutput) ToGetIngressesResultOutputWithContext(ctx context.Context) GetIngressesResultOutput {
+	return o
+}
+
+func (o GetIngressesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetIngressesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIngressesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIngressesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetIngressesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIngressesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIngressesResultOutput) Ingresses() GetIngressesIngressArrayOutput {
+	return o.ApplyT(func(v GetIngressesResult) []GetIngressesIngress { return v.Ingresses }).(GetIngressesIngressArrayOutput)
+}
+
+func (o GetIngressesResultOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIngressesResult) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+func (o GetIngressesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIngressesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIngressesResultOutput{})
 }

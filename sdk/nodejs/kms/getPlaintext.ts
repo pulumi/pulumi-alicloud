@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 export function getPlaintext(args: GetPlaintextArgs, opts?: pulumi.InvokeOptions): Promise<GetPlaintextResult> {
@@ -26,12 +25,12 @@ export interface GetPlaintextArgs {
     /**
      * The ciphertext to be decrypted.
      */
-    readonly ciphertextBlob: string;
+    ciphertextBlob: string;
     /**
      * -
      * (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
-    readonly encryptionContext?: {[key: string]: string};
+    encryptionContext?: {[key: string]: string};
 }
 
 /**
@@ -52,4 +51,23 @@ export interface GetPlaintextResult {
      * The decrypted plaintext.
      */
     readonly plaintext: string;
+}
+
+export function getPlaintextOutput(args: GetPlaintextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlaintextResult> {
+    return pulumi.output(args).apply(a => getPlaintext(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPlaintext.
+ */
+export interface GetPlaintextOutputArgs {
+    /**
+     * The ciphertext to be decrypted.
+     */
+    ciphertextBlob: pulumi.Input<string>;
+    /**
+     * -
+     * (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     */
+    encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -208,7 +208,7 @@ type ReceiversArrayInput interface {
 type ReceiversArray []ReceiversInput
 
 func (ReceiversArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Receivers)(nil))
+	return reflect.TypeOf((*[]*Receivers)(nil)).Elem()
 }
 
 func (i ReceiversArray) ToReceiversArrayOutput() ReceiversArrayOutput {
@@ -233,7 +233,7 @@ type ReceiversMapInput interface {
 type ReceiversMap map[string]ReceiversInput
 
 func (ReceiversMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Receivers)(nil))
+	return reflect.TypeOf((*map[string]*Receivers)(nil)).Elem()
 }
 
 func (i ReceiversMap) ToReceiversMapOutput() ReceiversMapOutput {
@@ -244,9 +244,7 @@ func (i ReceiversMap) ToReceiversMapOutputWithContext(ctx context.Context) Recei
 	return pulumi.ToOutputWithContext(ctx, i).(ReceiversMapOutput)
 }
 
-type ReceiversOutput struct {
-	*pulumi.OutputState
-}
+type ReceiversOutput struct{ *pulumi.OutputState }
 
 func (ReceiversOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Receivers)(nil))
@@ -265,14 +263,12 @@ func (o ReceiversOutput) ToReceiversPtrOutput() ReceiversPtrOutput {
 }
 
 func (o ReceiversOutput) ToReceiversPtrOutputWithContext(ctx context.Context) ReceiversPtrOutput {
-	return o.ApplyT(func(v Receivers) *Receivers {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Receivers) *Receivers {
 		return &v
 	}).(ReceiversPtrOutput)
 }
 
-type ReceiversPtrOutput struct {
-	*pulumi.OutputState
-}
+type ReceiversPtrOutput struct{ *pulumi.OutputState }
 
 func (ReceiversPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Receivers)(nil))
@@ -284,6 +280,16 @@ func (o ReceiversPtrOutput) ToReceiversPtrOutput() ReceiversPtrOutput {
 
 func (o ReceiversPtrOutput) ToReceiversPtrOutputWithContext(ctx context.Context) ReceiversPtrOutput {
 	return o
+}
+
+func (o ReceiversPtrOutput) Elem() ReceiversOutput {
+	return o.ApplyT(func(v *Receivers) Receivers {
+		if v != nil {
+			return *v
+		}
+		var ret Receivers
+		return ret
+	}).(ReceiversOutput)
 }
 
 type ReceiversArrayOutput struct{ *pulumi.OutputState }
@@ -327,6 +333,10 @@ func (o ReceiversMapOutput) MapIndex(k pulumi.StringInput) ReceiversOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReceiversInput)(nil)).Elem(), &Receivers{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReceiversPtrInput)(nil)).Elem(), &Receivers{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReceiversArrayInput)(nil)).Elem(), ReceiversArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReceiversMapInput)(nil)).Elem(), ReceiversMap{})
 	pulumi.RegisterOutputType(ReceiversOutput{})
 	pulumi.RegisterOutputType(ReceiversPtrOutput{})
 	pulumi.RegisterOutputType(ReceiversArrayOutput{})

@@ -99,27 +99,27 @@ export interface AutoscalingConfigState {
     /**
      * The id of kubernetes cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
      */
-    readonly coolDownDuration?: pulumi.Input<string>;
+    coolDownDuration?: pulumi.Input<string>;
     /**
      * The scale-in threshold for GPU instance. Default is `0.5`.
      */
-    readonly gpuUtilizationThreshold?: pulumi.Input<string>;
+    gpuUtilizationThreshold?: pulumi.Input<string>;
     /**
      * The scan interval. Default is `30s`
      */
-    readonly scanInterval?: pulumi.Input<string>;
+    scanInterval?: pulumi.Input<string>;
     /**
      * The unneeded duration. Default is `10m`.
      */
-    readonly unneededDuration?: pulumi.Input<string>;
+    unneededDuration?: pulumi.Input<string>;
     /**
      * The scale-in threshold. Default is `0.5`.
      */
-    readonly utilizationThreshold?: pulumi.Input<string>;
+    utilizationThreshold?: pulumi.Input<string>;
 }
 
 /**
@@ -129,25 +129,25 @@ export interface AutoscalingConfigArgs {
     /**
      * The id of kubernetes cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
      */
-    readonly coolDownDuration?: pulumi.Input<string>;
+    coolDownDuration?: pulumi.Input<string>;
     /**
      * The scale-in threshold for GPU instance. Default is `0.5`.
      */
-    readonly gpuUtilizationThreshold?: pulumi.Input<string>;
+    gpuUtilizationThreshold?: pulumi.Input<string>;
     /**
      * The scan interval. Default is `30s`
      */
-    readonly scanInterval?: pulumi.Input<string>;
+    scanInterval?: pulumi.Input<string>;
     /**
      * The unneeded duration. Default is `10m`.
      */
-    readonly unneededDuration?: pulumi.Input<string>;
+    unneededDuration?: pulumi.Input<string>;
     /**
      * The scale-in threshold. Default is `0.5`.
      */
-    readonly utilizationThreshold?: pulumi.Input<string>;
+    utilizationThreshold?: pulumi.Input<string>;
 }

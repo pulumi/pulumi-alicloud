@@ -4,6 +4,9 @@
 package kvstore
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,86 @@ type GetZonesResult struct {
 	ProductType        *string  `pulumi:"productType"`
 	// A list of availability zones. Each element contains the following attributes:
 	Zones []GetZonesZone `pulumi:"zones"`
+}
+
+func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetZonesResult, error) {
+			args := v.(GetZonesArgs)
+			r, err := GetZones(ctx, &args, opts...)
+			return *r, err
+		}).(GetZonesResultOutput)
+}
+
+// A collection of arguments for invoking getZones.
+type GetZonesOutputArgs struct {
+	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+	// * Local: an ApsaraDB for Redis instance with a local disk.
+	// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
+	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+	Multi       pulumi.BoolPtrInput   `pulumi:"multi"`
+	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	ProductType pulumi.StringPtrInput `pulumi:"productType"`
+}
+
+func (GetZonesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getZones.
+type GetZonesResultOutput struct{ *pulumi.OutputState }
+
+func (GetZonesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesResult)(nil)).Elem()
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
+	return o
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
+	return o
+}
+
+func (o GetZonesResultOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetZonesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of zone IDs.
+func (o GetZonesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetZonesResultOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZonesResultOutput) Multi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *bool { return v.Multi }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetZonesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZonesResultOutput) ProductType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.ProductType }).(pulumi.StringPtrOutput)
+}
+
+// A list of availability zones. Each element contains the following attributes:
+func (o GetZonesResultOutput) Zones() GetZonesZoneArrayOutput {
+	return o.ApplyT(func(v GetZonesResult) []GetZonesZone { return v.Zones }).(GetZonesZoneArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetZonesResultOutput{})
 }

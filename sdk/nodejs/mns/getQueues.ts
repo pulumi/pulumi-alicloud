@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const queues = pulumi.output(alicloud.mns.getQueues({
  *     namePrefix: "tf-",
- * }, { async: true }));
+ * }));
  *
  * export const firstQueueId = queues.queues[0].id;
  * ```
@@ -43,8 +43,8 @@ export interface GetQueuesArgs {
     /**
      * A string to filter resulting queues by their name prefixs.
      */
-    readonly namePrefix?: string;
-    readonly outputFile?: string;
+    namePrefix?: string;
+    outputFile?: string;
 }
 
 /**
@@ -65,4 +65,19 @@ export interface GetQueuesResult {
      * A list of queues. Each element contains the following attributes:
      */
     readonly queues: outputs.mns.GetQueuesQueue[];
+}
+
+export function getQueuesOutput(args?: GetQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueuesResult> {
+    return pulumi.output(args).apply(a => getQueues(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getQueues.
+ */
+export interface GetQueuesOutputArgs {
+    /**
+     * A string to filter resulting queues by their name prefixs.
+     */
+    namePrefix?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

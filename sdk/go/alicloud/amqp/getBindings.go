@@ -4,6 +4,9 @@
 package amqp
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,70 @@ type GetBindingsResult struct {
 	InstanceId      string   `pulumi:"instanceId"`
 	OutputFile      *string  `pulumi:"outputFile"`
 	VirtualHostName string   `pulumi:"virtualHostName"`
+}
+
+func GetBindingsOutput(ctx *pulumi.Context, args GetBindingsOutputArgs, opts ...pulumi.InvokeOption) GetBindingsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetBindingsResult, error) {
+			args := v.(GetBindingsArgs)
+			r, err := GetBindings(ctx, &args, opts...)
+			return *r, err
+		}).(GetBindingsResultOutput)
+}
+
+// A collection of arguments for invoking getBindings.
+type GetBindingsOutputArgs struct {
+	// Instance Id.
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Virtualhost Name.
+	VirtualHostName pulumi.StringInput `pulumi:"virtualHostName"`
+}
+
+func (GetBindingsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBindingsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getBindings.
+type GetBindingsResultOutput struct{ *pulumi.OutputState }
+
+func (GetBindingsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBindingsResult)(nil)).Elem()
+}
+
+func (o GetBindingsResultOutput) ToGetBindingsResultOutput() GetBindingsResultOutput {
+	return o
+}
+
+func (o GetBindingsResultOutput) ToGetBindingsResultOutputWithContext(ctx context.Context) GetBindingsResultOutput {
+	return o
+}
+
+func (o GetBindingsResultOutput) Bindings() GetBindingsBindingArrayOutput {
+	return o.ApplyT(func(v GetBindingsResult) []GetBindingsBinding { return v.Bindings }).(GetBindingsBindingArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBindingsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBindingsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetBindingsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBindingsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBindingsResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBindingsResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetBindingsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBindingsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBindingsResultOutput) VirtualHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBindingsResult) string { return v.VirtualHostName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBindingsResultOutput{})
 }

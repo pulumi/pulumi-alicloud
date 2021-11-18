@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Hbr
     ///         var example = new AliCloud.Hbr.EcsBackupPlan("example", new AliCloud.Hbr.EcsBackupPlanArgs
     ///         {
     ///             EcsBackupPlanName = "example_value",
-    ///             InstanceId = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances[0].Id),
+    ///             InstanceId = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances?[0]?.Id),
     ///             VaultId = defaultVault.Id,
     ///             Retention = "1",
     ///             Schedule = "I|1602673264|PT2H",

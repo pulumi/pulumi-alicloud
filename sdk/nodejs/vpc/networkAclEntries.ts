@@ -85,15 +85,15 @@ export interface NetworkAclEntriesState {
     /**
      * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
      */
-    readonly egresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesEgress>[]>;
+    egresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesEgress>[]>;
     /**
      * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
      */
-    readonly ingresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesIngress>[]>;
+    ingresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesIngress>[]>;
     /**
      * The id of the network acl, the field can't be changed.
      */
-    readonly networkAclId?: pulumi.Input<string>;
+    networkAclId?: pulumi.Input<string>;
 }
 
 /**
@@ -103,13 +103,13 @@ export interface NetworkAclEntriesArgs {
     /**
      * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
      */
-    readonly egresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesEgress>[]>;
+    egresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesEgress>[]>;
     /**
      * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
      */
-    readonly ingresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesIngress>[]>;
+    ingresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesIngress>[]>;
     /**
      * The id of the network acl, the field can't be changed.
      */
-    readonly networkAclId: pulumi.Input<string>;
+    networkAclId: pulumi.Input<string>;
 }

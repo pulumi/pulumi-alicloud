@@ -212,7 +212,7 @@ type SamlProviderArrayInput interface {
 type SamlProviderArray []SamlProviderInput
 
 func (SamlProviderArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SamlProvider)(nil))
+	return reflect.TypeOf((*[]*SamlProvider)(nil)).Elem()
 }
 
 func (i SamlProviderArray) ToSamlProviderArrayOutput() SamlProviderArrayOutput {
@@ -237,7 +237,7 @@ type SamlProviderMapInput interface {
 type SamlProviderMap map[string]SamlProviderInput
 
 func (SamlProviderMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SamlProvider)(nil))
+	return reflect.TypeOf((*map[string]*SamlProvider)(nil)).Elem()
 }
 
 func (i SamlProviderMap) ToSamlProviderMapOutput() SamlProviderMapOutput {
@@ -248,9 +248,7 @@ func (i SamlProviderMap) ToSamlProviderMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SamlProviderMapOutput)
 }
 
-type SamlProviderOutput struct {
-	*pulumi.OutputState
-}
+type SamlProviderOutput struct{ *pulumi.OutputState }
 
 func (SamlProviderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SamlProvider)(nil))
@@ -269,14 +267,12 @@ func (o SamlProviderOutput) ToSamlProviderPtrOutput() SamlProviderPtrOutput {
 }
 
 func (o SamlProviderOutput) ToSamlProviderPtrOutputWithContext(ctx context.Context) SamlProviderPtrOutput {
-	return o.ApplyT(func(v SamlProvider) *SamlProvider {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SamlProvider) *SamlProvider {
 		return &v
 	}).(SamlProviderPtrOutput)
 }
 
-type SamlProviderPtrOutput struct {
-	*pulumi.OutputState
-}
+type SamlProviderPtrOutput struct{ *pulumi.OutputState }
 
 func (SamlProviderPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SamlProvider)(nil))
@@ -288,6 +284,16 @@ func (o SamlProviderPtrOutput) ToSamlProviderPtrOutput() SamlProviderPtrOutput {
 
 func (o SamlProviderPtrOutput) ToSamlProviderPtrOutputWithContext(ctx context.Context) SamlProviderPtrOutput {
 	return o
+}
+
+func (o SamlProviderPtrOutput) Elem() SamlProviderOutput {
+	return o.ApplyT(func(v *SamlProvider) SamlProvider {
+		if v != nil {
+			return *v
+		}
+		var ret SamlProvider
+		return ret
+	}).(SamlProviderOutput)
 }
 
 type SamlProviderArrayOutput struct{ *pulumi.OutputState }
@@ -331,6 +337,10 @@ func (o SamlProviderMapOutput) MapIndex(k pulumi.StringInput) SamlProviderOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlProviderInput)(nil)).Elem(), &SamlProvider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlProviderPtrInput)(nil)).Elem(), &SamlProvider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlProviderArrayInput)(nil)).Elem(), SamlProviderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlProviderMapInput)(nil)).Elem(), SamlProviderMap{})
 	pulumi.RegisterOutputType(SamlProviderOutput{})
 	pulumi.RegisterOutputType(SamlProviderPtrOutput{})
 	pulumi.RegisterOutputType(SamlProviderArrayOutput{})

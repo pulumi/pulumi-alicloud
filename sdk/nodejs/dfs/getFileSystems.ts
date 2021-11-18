@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * const ids = alicloud.dfs.getFileSystems({
  *     ids: ["example_id"],
  * });
- * export const dfsFileSystemId1 = ids.then(ids => ids.systems[0].id);
+ * export const dfsFileSystemId1 = ids.then(ids => ids.systems?[0]?.id);
  * const nameRegex = alicloud.dfs.getFileSystems({
  *     nameRegex: "^my-FileSystem",
  * });
- * export const dfsFileSystemId2 = nameRegex.then(nameRegex => nameRegex.systems[0].id);
+ * export const dfsFileSystemId2 = nameRegex.then(nameRegex => nameRegex.systems?[0]?.id);
  * ```
  */
 export function getFileSystems(args?: GetFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetFileSystemsResult> {
@@ -51,12 +51,12 @@ export interface GetFileSystemsArgs {
     /**
      * A list of File System IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by File System name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -72,4 +72,23 @@ export interface GetFileSystemsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly systems: outputs.dfs.GetFileSystemsSystem[];
+}
+
+export function getFileSystemsOutput(args?: GetFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileSystemsResult> {
+    return pulumi.output(args).apply(a => getFileSystems(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFileSystems.
+ */
+export interface GetFileSystemsOutputArgs {
+    /**
+     * A list of File System IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by File System name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

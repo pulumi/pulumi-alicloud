@@ -13,6 +13,7 @@ __all__ = [
     'GetLifecycleHooksResult',
     'AwaitableGetLifecycleHooksResult',
     'get_lifecycle_hooks',
+    'get_lifecycle_hooks_output',
 ]
 
 @pulumi.output_type
@@ -154,3 +155,33 @@ def get_lifecycle_hooks(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         scaling_group_id=__ret__.scaling_group_id)
+
+
+@_utilities.lift_output_func(get_lifecycle_hooks)
+def get_lifecycle_hooks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               scaling_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLifecycleHooksResult]:
+    """
+    This data source provides available lifecycle hook resources.
+
+    > **NOTE:** Available in 1.72.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_lifecycle_hooks(name_regex="lifecyclehook_name",
+        scaling_group_id="scaling_group_id")
+    pulumi.export("firstLifecycleHook", ds.hooks[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of lifecycle hook IDs.
+    :param str name_regex: A regex string to filter resulting lifecycle hook by name.
+    :param str scaling_group_id: Scaling group id the lifecycle hooks belong to.
+    """
+    ...

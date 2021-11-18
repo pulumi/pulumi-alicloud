@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -145,3 +146,23 @@ def get_instances(description_regex: Optional[str] = None,
         instances=__ret__.instances,
         name_regex=__ret__.name_regex,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    The `drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
+    Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+
+    > **NOTE:** Available in 1.35.0+.
+
+
+    :param str description_regex: A regex string to filter results by instance description.
+    :param Sequence[str] ids: A list of DRDS instance IDs.
+    :param str name_regex: A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.
+    """
+    ...

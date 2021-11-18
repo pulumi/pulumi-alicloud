@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const nameRegex = alicloud.scdn.getDomains({
  *     nameRegex: "^my-Domain",
  * });
- * export const scdnDomainId = nameRegex.then(nameRegex => nameRegex.domains[0].id);
+ * export const scdnDomainId = nameRegex.then(nameRegex => nameRegex.domains?[0]?.id);
  * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
@@ -50,24 +50,24 @@ export interface GetDomainsArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Domain IDs. Its element value is same as Domain Name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Domain name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Resource Group ID.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -86,4 +86,35 @@ export interface GetDomainsResult {
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
     readonly status?: string;
+}
+
+export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
+    return pulumi.output(args).apply(a => getDomains(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomains.
+ */
+export interface GetDomainsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Domain IDs. Its element value is same as Domain Name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Domain name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Resource Group ID.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
 }

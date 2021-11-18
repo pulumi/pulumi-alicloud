@@ -120,27 +120,27 @@ export interface TopicSubscriptionState {
      * - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
      * - Email Format: mail:directmail:{MailAddress}
      */
-    readonly endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
     /**
      * The length should be shorter than 16.
      */
-    readonly filterTag?: pulumi.Input<string>;
+    filterTag?: pulumi.Input<string>;
     /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
      */
-    readonly notifyContentFormat?: pulumi.Input<string>;
+    notifyContentFormat?: pulumi.Input<string>;
     /**
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
      */
-    readonly notifyStrategy?: pulumi.Input<string>;
+    notifyStrategy?: pulumi.Input<string>;
     /**
      * The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    readonly topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string>;
 }
 
 /**
@@ -153,25 +153,25 @@ export interface TopicSubscriptionArgs {
      * - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
      * - Email Format: mail:directmail:{MailAddress}
      */
-    readonly endpoint: pulumi.Input<string>;
+    endpoint: pulumi.Input<string>;
     /**
      * The length should be shorter than 16.
      */
-    readonly filterTag?: pulumi.Input<string>;
+    filterTag?: pulumi.Input<string>;
     /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
      */
-    readonly notifyContentFormat?: pulumi.Input<string>;
+    notifyContentFormat?: pulumi.Input<string>;
     /**
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
      */
-    readonly notifyStrategy?: pulumi.Input<string>;
+    notifyStrategy?: pulumi.Input<string>;
     /**
      * The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    readonly topicName: pulumi.Input<string>;
+    topicName: pulumi.Input<string>;
 }

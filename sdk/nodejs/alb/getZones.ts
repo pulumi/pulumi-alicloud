@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.alb.getZones({});
- * export const firstAlbZonesId = example.then(example => example.zones[0].zoneId);
+ * export const firstAlbZonesId = example.then(example => example.zones?[0]?.zoneId);
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -40,7 +40,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -54,4 +54,15 @@ export interface GetZonesResult {
     readonly ids: string[];
     readonly outputFile?: string;
     readonly zones: outputs.alb.GetZonesZone[];
+}
+
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply(a => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    outputFile?: pulumi.Input<string>;
 }

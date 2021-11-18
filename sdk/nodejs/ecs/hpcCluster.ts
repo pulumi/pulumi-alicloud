@@ -103,11 +103,11 @@ export interface HpcClusterState {
     /**
      * The description of ECS Hpc Cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of ECS Hpc Cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -117,9 +117,9 @@ export interface HpcClusterArgs {
     /**
      * The description of ECS Hpc Cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of ECS Hpc Cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

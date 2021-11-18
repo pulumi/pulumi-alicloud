@@ -40,7 +40,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "Gpdb"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -305,7 +305,7 @@ type InstanceArrayInput interface {
 type InstanceArray []InstanceInput
 
 func (InstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Instance)(nil))
+	return reflect.TypeOf((*[]*Instance)(nil)).Elem()
 }
 
 func (i InstanceArray) ToInstanceArrayOutput() InstanceArrayOutput {
@@ -330,7 +330,7 @@ type InstanceMapInput interface {
 type InstanceMap map[string]InstanceInput
 
 func (InstanceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Instance)(nil))
+	return reflect.TypeOf((*map[string]*Instance)(nil)).Elem()
 }
 
 func (i InstanceMap) ToInstanceMapOutput() InstanceMapOutput {
@@ -341,9 +341,7 @@ func (i InstanceMap) ToInstanceMapOutputWithContext(ctx context.Context) Instanc
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMapOutput)
 }
 
-type InstanceOutput struct {
-	*pulumi.OutputState
-}
+type InstanceOutput struct{ *pulumi.OutputState }
 
 func (InstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Instance)(nil))
@@ -362,14 +360,12 @@ func (o InstanceOutput) ToInstancePtrOutput() InstancePtrOutput {
 }
 
 func (o InstanceOutput) ToInstancePtrOutputWithContext(ctx context.Context) InstancePtrOutput {
-	return o.ApplyT(func(v Instance) *Instance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Instance) *Instance {
 		return &v
 	}).(InstancePtrOutput)
 }
 
-type InstancePtrOutput struct {
-	*pulumi.OutputState
-}
+type InstancePtrOutput struct{ *pulumi.OutputState }
 
 func (InstancePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Instance)(nil))
@@ -381,6 +377,16 @@ func (o InstancePtrOutput) ToInstancePtrOutput() InstancePtrOutput {
 
 func (o InstancePtrOutput) ToInstancePtrOutputWithContext(ctx context.Context) InstancePtrOutput {
 	return o
+}
+
+func (o InstancePtrOutput) Elem() InstanceOutput {
+	return o.ApplyT(func(v *Instance) Instance {
+		if v != nil {
+			return *v
+		}
+		var ret Instance
+		return ret
+	}).(InstanceOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }
@@ -424,6 +430,10 @@ func (o InstanceMapOutput) MapIndex(k pulumi.StringInput) InstanceOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInput)(nil)).Elem(), &Instance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePtrInput)(nil)).Elem(), &Instance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceArrayInput)(nil)).Elem(), InstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMapInput)(nil)).Elem(), InstanceMap{})
 	pulumi.RegisterOutputType(InstanceOutput{})
 	pulumi.RegisterOutputType(InstancePtrOutput{})
 	pulumi.RegisterOutputType(InstanceArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ApiGateway
 {
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("alicloud:apigateway/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Using this data source can enable API gateway service automatically. If the service has been enabled, it will return `Opened`.
+        /// 
+        /// For information about API Gateway and how to use it, see [What is API Gateway](https://www.alibabacloud.com/help/product/29462.htm).
+        /// 
+        /// &gt; **NOTE:** Available in v1.96.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var open = Output.Create(AliCloud.ApiGateway.GetService.InvokeAsync(new AliCloud.ApiGateway.GetServiceArgs
+        ///         {
+        ///             Enable = "On",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:apigateway/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -55,6 +89,19 @@ namespace Pulumi.AliCloud.ApiGateway
         public string? Enable { get; set; }
 
         public GetServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+        /// </summary>
+        [Input("enable")]
+        public Input<string>? Enable { get; set; }
+
+        public GetServiceInvokeArgs()
         {
         }
     }

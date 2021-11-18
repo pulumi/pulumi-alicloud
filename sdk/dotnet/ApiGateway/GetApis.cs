@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ApiGateway
 {
@@ -42,6 +43,38 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         public static Task<GetApisResult> InvokeAsync(GetApisArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApisResult>("alicloud:apigateway/getApis:getApis", args ?? new GetApisArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the apis of the current Alibaba Cloud user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dataApigatwayApis = Output.Create(AliCloud.ApiGateway.GetApis.InvokeAsync(new AliCloud.ApiGateway.GetApisArgs
+        ///         {
+        ///             OutputFile = "output_ApiGatawayApis",
+        ///         }));
+        ///         this.FirstApiId = data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id;
+        ///     }
+        /// 
+        ///     [Output("firstApiId")]
+        ///     public Output&lt;string&gt; FirstApiId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetApisResult> Invoke(GetApisInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApisResult>("alicloud:apigateway/getApis:getApis", args ?? new GetApisInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +114,46 @@ namespace Pulumi.AliCloud.ApiGateway
         public string? OutputFile { get; set; }
 
         public GetApisArgs()
+        {
+        }
+    }
+
+    public sealed class GetApisInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+        /// </summary>
+        [Input("apiId")]
+        public Input<string>? ApiId { get; set; }
+
+        /// <summary>
+        /// ID of the specified group.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of api IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter api gateway apis by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetApisInvokeArgs()
         {
         }
     }

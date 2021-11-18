@@ -183,47 +183,47 @@ export interface TrafficMirrorFilterIngressRuleState {
     /**
      * The destination CIDR block of the inbound traffic.
      */
-    readonly destinationCidrBlock?: pulumi.Input<string>;
+    destinationCidrBlock?: pulumi.Input<string>;
     /**
      * The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
      */
-    readonly destinationPortRange?: pulumi.Input<string>;
+    destinationPortRange?: pulumi.Input<string>;
     /**
      * Whether to pre-check this request only. Default to: `false`
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
      */
-    readonly ruleAction?: pulumi.Input<string>;
+    ruleAction?: pulumi.Input<string>;
     /**
      * The source CIDR block of the inbound traffic.
      */
-    readonly sourceCidrBlock?: pulumi.Input<string>;
+    sourceCidrBlock?: pulumi.Input<string>;
     /**
      * The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
      */
-    readonly sourcePortRange?: pulumi.Input<string>;
+    sourcePortRange?: pulumi.Input<string>;
     /**
      * The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The ID of the filter.
      */
-    readonly trafficMirrorFilterId?: pulumi.Input<string>;
+    trafficMirrorFilterId?: pulumi.Input<string>;
     /**
      * The ID of the inbound rule.
      */
-    readonly trafficMirrorFilterIngressRuleId?: pulumi.Input<string>;
+    trafficMirrorFilterIngressRuleId?: pulumi.Input<string>;
 }
 
 /**
@@ -233,37 +233,37 @@ export interface TrafficMirrorFilterIngressRuleArgs {
     /**
      * The destination CIDR block of the inbound traffic.
      */
-    readonly destinationCidrBlock: pulumi.Input<string>;
+    destinationCidrBlock: pulumi.Input<string>;
     /**
      * The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
      */
-    readonly destinationPortRange?: pulumi.Input<string>;
+    destinationPortRange?: pulumi.Input<string>;
     /**
      * Whether to pre-check this request only. Default to: `false`
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
      */
-    readonly priority: pulumi.Input<number>;
+    priority: pulumi.Input<number>;
     /**
      * The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
      */
-    readonly protocol: pulumi.Input<string>;
+    protocol: pulumi.Input<string>;
     /**
      * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
      */
-    readonly ruleAction: pulumi.Input<string>;
+    ruleAction: pulumi.Input<string>;
     /**
      * The source CIDR block of the inbound traffic.
      */
-    readonly sourceCidrBlock: pulumi.Input<string>;
+    sourceCidrBlock: pulumi.Input<string>;
     /**
      * The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
      */
-    readonly sourcePortRange?: pulumi.Input<string>;
+    sourcePortRange?: pulumi.Input<string>;
     /**
      * The ID of the filter.
      */
-    readonly trafficMirrorFilterId: pulumi.Input<string>;
+    trafficMirrorFilterId: pulumi.Input<string>;
 }

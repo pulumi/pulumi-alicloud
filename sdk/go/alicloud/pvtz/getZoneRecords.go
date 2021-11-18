@@ -4,6 +4,9 @@
 package pvtz
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,4 +88,109 @@ type GetZoneRecordsResult struct {
 	Tag          *string `pulumi:"tag"`
 	UserClientIp *string `pulumi:"userClientIp"`
 	ZoneId       string  `pulumi:"zoneId"`
+}
+
+func GetZoneRecordsOutput(ctx *pulumi.Context, args GetZoneRecordsOutputArgs, opts ...pulumi.InvokeOption) GetZoneRecordsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetZoneRecordsResult, error) {
+			args := v.(GetZoneRecordsArgs)
+			r, err := GetZoneRecords(ctx, &args, opts...)
+			return *r, err
+		}).(GetZoneRecordsResultOutput)
+}
+
+// A collection of arguments for invoking getZoneRecords.
+type GetZoneRecordsOutputArgs struct {
+	// A list of Private Zone Record IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Keyword for record rr and value.
+	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
+	// User language.
+	Lang       pulumi.StringPtrInput `pulumi:"lang"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Search mode. Value:
+	// - LIKE: fuzzy search.
+	// - EXACT: precise search. It is not filled in by default.
+	SearchMode pulumi.StringPtrInput `pulumi:"searchMode"`
+	// Resolve record status. Value:
+	// - ENABLE: enable resolution.
+	// - DISABLE: pause parsing.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// User ip.
+	UserClientIp pulumi.StringPtrInput `pulumi:"userClientIp"`
+	// ID of the Private Zone.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetZoneRecordsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZoneRecordsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getZoneRecords.
+type GetZoneRecordsResultOutput struct{ *pulumi.OutputState }
+
+func (GetZoneRecordsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZoneRecordsResult)(nil)).Elem()
+}
+
+func (o GetZoneRecordsResultOutput) ToGetZoneRecordsResultOutput() GetZoneRecordsResultOutput {
+	return o
+}
+
+func (o GetZoneRecordsResultOutput) ToGetZoneRecordsResultOutputWithContext(ctx context.Context) GetZoneRecordsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetZoneRecordsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZoneRecordsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of Private Zone Record IDs.
+func (o GetZoneRecordsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZoneRecordsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetZoneRecordsResultOutput) Keyword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZoneRecordsResult) *string { return v.Keyword }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZoneRecordsResultOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZoneRecordsResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZoneRecordsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZoneRecordsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of zone records. Each element contains the following attributes:
+func (o GetZoneRecordsResultOutput) Records() GetZoneRecordsRecordArrayOutput {
+	return o.ApplyT(func(v GetZoneRecordsResult) []GetZoneRecordsRecord { return v.Records }).(GetZoneRecordsRecordArrayOutput)
+}
+
+func (o GetZoneRecordsResultOutput) SearchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZoneRecordsResult) *string { return v.SearchMode }).(pulumi.StringPtrOutput)
+}
+
+// Status of the Private Zone Record.
+func (o GetZoneRecordsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZoneRecordsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZoneRecordsResultOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZoneRecordsResult) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZoneRecordsResultOutput) UserClientIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZoneRecordsResult) *string { return v.UserClientIp }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZoneRecordsResultOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZoneRecordsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetZoneRecordsResultOutput{})
 }

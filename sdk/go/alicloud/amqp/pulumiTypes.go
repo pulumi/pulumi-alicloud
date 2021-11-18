@@ -829,6 +829,16 @@ func (o GetVirtualHostsHostArrayOutput) Index(i pulumi.IntInput) GetVirtualHosts
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBindingsBindingInput)(nil)).Elem(), GetBindingsBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBindingsBindingArrayInput)(nil)).Elem(), GetBindingsBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExchangesExchangeInput)(nil)).Elem(), GetExchangesExchangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExchangesExchangeArrayInput)(nil)).Elem(), GetExchangesExchangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesQueueInput)(nil)).Elem(), GetQueuesQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesQueueArrayInput)(nil)).Elem(), GetQueuesQueueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualHostsHostInput)(nil)).Elem(), GetVirtualHostsHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualHostsHostArrayInput)(nil)).Elem(), GetVirtualHostsHostArray{})
 	pulumi.RegisterOutputType(GetBindingsBindingOutput{})
 	pulumi.RegisterOutputType(GetBindingsBindingArrayOutput{})
 	pulumi.RegisterOutputType(GetExchangesExchangeOutput{})

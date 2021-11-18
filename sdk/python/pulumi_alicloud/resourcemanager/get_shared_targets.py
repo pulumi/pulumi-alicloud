@@ -13,6 +13,7 @@ __all__ = [
     'GetSharedTargetsResult',
     'AwaitableGetSharedTargetsResult',
     'get_shared_targets',
+    'get_shared_targets_output',
 ]
 
 @pulumi.output_type
@@ -133,3 +134,34 @@ def get_shared_targets(ids: Optional[Sequence[str]] = None,
         resource_share_id=__ret__.resource_share_id,
         status=__ret__.status,
         targets=__ret__.targets)
+
+
+@_utilities.lift_output_func(get_shared_targets)
+def get_shared_targets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              resource_share_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              status: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSharedTargetsResult]:
+    """
+    This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.111.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_shared_targets(ids=["15681091********"])
+    pulumi.export("firstResourceManagerSharedTargetId", example.targets[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Shared Target IDs.
+    :param str resource_share_id: The resource shared ID of resource manager.
+    :param str status: The status of shared target.
+    """
+    ...

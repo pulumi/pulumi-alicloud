@@ -46,13 +46,13 @@ namespace Pulumi.AliCloud.ActionTrail
     ///         var exampleTrail = new AliCloud.ActionTrail.Trail("exampleTrail", new AliCloud.ActionTrail.TrailArgs
     ///         {
     ///             TrailName = "example_value",
-    ///             SlsWriteRoleArn = exampleRoles.Apply(exampleRoles =&gt; exampleRoles.Roles[0].Arn),
+    ///             SlsWriteRoleArn = exampleRoles.Apply(exampleRoles =&gt; exampleRoles.Roles?[0]?.Arn),
     ///             SlsProjectArn = Output.Tuple(exampleRegions, exampleAccount, exampleProject.Name).Apply(values =&gt;
     ///             {
     ///                 var exampleRegions = values.Item1;
     ///                 var exampleAccount = values.Item2;
     ///                 var name = values.Item3;
-    ///                 return $"acs:log:{exampleRegions.Regions[0].Id}:{exampleAccount.Id}:project/{name}";
+    ///                 return $"acs:log:{exampleRegions.Regions?[0]?.Id}:{exampleAccount.Id}:project/{name}";
     ///             }),
     ///         });
     ///         var exampleHistoryDeliveryJob = new AliCloud.ActionTrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", new AliCloud.ActionTrail.HistoryDeliveryJobArgs

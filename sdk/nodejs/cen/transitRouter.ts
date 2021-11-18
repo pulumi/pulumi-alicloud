@@ -135,28 +135,28 @@ export interface TransitRouterState {
     /**
      * The ID of the CEN.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The associating status of the Transit Router.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The description of the transit router.
      */
-    readonly transitRouterDescription?: pulumi.Input<string>;
-    readonly transitRouterId?: pulumi.Input<string>;
+    transitRouterDescription?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string>;
     /**
      * The name of the transit router.
      */
-    readonly transitRouterName?: pulumi.Input<string>;
+    transitRouterName?: pulumi.Input<string>;
     /**
      * The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -166,17 +166,17 @@ export interface TransitRouterArgs {
     /**
      * The ID of the CEN.
      */
-    readonly cenId: pulumi.Input<string>;
+    cenId: pulumi.Input<string>;
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The description of the transit router.
      */
-    readonly transitRouterDescription?: pulumi.Input<string>;
+    transitRouterDescription?: pulumi.Input<string>;
     /**
      * The name of the transit router.
      */
-    readonly transitRouterName?: pulumi.Input<string>;
+    transitRouterName?: pulumi.Input<string>;
 }

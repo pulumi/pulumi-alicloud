@@ -13,6 +13,7 @@ __all__ = [
     'GetTopicsResult',
     'AwaitableGetTopicsResult',
     'get_topics',
+    'get_topics_output',
 ]
 
 @pulumi.output_type
@@ -192,3 +193,52 @@ def get_topics(enable_details: Optional[bool] = None,
         output_file=__ret__.output_file,
         tags=__ret__.tags,
         topics=__ret__.topics)
+
+
+@_utilities.lift_output_func(get_topics)
+def get_topics_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      instance_id: Optional[pulumi.Input[str]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicsResult]:
+    """
+    This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.53.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "onsInstanceName"
+    topic = config.get("topic")
+    if topic is None:
+        topic = "onsTopicDatasourceName"
+    default_instance = alicloud.rocketmq.Instance("defaultInstance",
+        instance_name=name,
+        remark="default_ons_instance_remark")
+    default_topic = alicloud.rocketmq.Topic("defaultTopic",
+        topic_name=topic,
+        instance_id=default_instance.id,
+        message_type=0,
+        remark="dafault_ons_topic_remark")
+    topics_ds = default_topic.instance_id.apply(lambda instance_id: alicloud.rocketmq.get_topics(instance_id=instance_id,
+        name_regex=topic,
+        output_file="topics.txt"))
+    pulumi.export("firstTopicName", topics_ds.topics[0].topic_name)
+    ```
+
+
+    :param Sequence[str] ids: A list of topic IDs to filter results.
+    :param str instance_id: ID of the ONS Instance that owns the topics.
+    :param str name_regex: A regex string to filter results by the topic name.
+    :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
+    """
+    ...

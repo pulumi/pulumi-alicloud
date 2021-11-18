@@ -4,6 +4,9 @@
 package hbase
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,115 @@ type GetInstanceTypesResult struct {
 	// The version of the engine.
 	Version *string `pulumi:"version"`
 	ZoneId  *string `pulumi:"zoneId"`
+}
+
+func GetInstanceTypesOutput(ctx *pulumi.Context, args GetInstanceTypesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstanceTypesResult, error) {
+			args := v.(GetInstanceTypesArgs)
+			r, err := GetInstanceTypes(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstanceTypesResultOutput)
+}
+
+// A collection of arguments for invoking getInstanceTypes.
+type GetInstanceTypesOutputArgs struct {
+	// The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
+	ChargeType pulumi.StringPtrInput `pulumi:"chargeType"`
+	// The disk type, `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	// The hbase instance type of create hbase cluster instance.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The dest region id, default client region.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+	// The zone id, belong to regionId.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (GetInstanceTypesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstanceTypes.
+type GetInstanceTypesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesResult)(nil)).Elem()
+}
+
+func (o GetInstanceTypesResultOutput) ToGetInstanceTypesResultOutput() GetInstanceTypesResultOutput {
+	return o
+}
+
+func (o GetInstanceTypesResultOutput) ToGetInstanceTypesResultOutputWithContext(ctx context.Context) GetInstanceTypesResultOutput {
+	return o
+}
+
+func (o GetInstanceTypesResultOutput) ChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.ChargeType }).(pulumi.StringPtrOutput)
+}
+
+// (Available in 1.115.0+) A list of core instance types. Each element contains the following attributes:
+func (o GetInstanceTypesResultOutput) CoreInstanceTypes() GetInstanceTypesCoreInstanceTypeArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) []GetInstanceTypesCoreInstanceType { return v.CoreInstanceTypes }).(GetInstanceTypesCoreInstanceTypeArrayOutput)
+}
+
+func (o GetInstanceTypesResultOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the engine.
+func (o GetInstanceTypesResultOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstanceTypesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of instance types type IDs.
+func (o GetInstanceTypesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// Name of the instance type.
+func (o GetInstanceTypesResultOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// (Available in 1.115.0+) A list of master instance types. Each element contains the following attributes:
+func (o GetInstanceTypesResultOutput) MasterInstanceTypes() GetInstanceTypesMasterInstanceTypeArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) []GetInstanceTypesMasterInstanceType { return v.MasterInstanceTypes }).(GetInstanceTypesMasterInstanceTypeArrayOutput)
+}
+
+func (o GetInstanceTypesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceTypesResultOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// (Deprecated) A list of instance types. Each element contains the following attributes:
+func (o GetInstanceTypesResultOutput) Types() GetInstanceTypesTypeArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) []GetInstanceTypesType { return v.Types }).(GetInstanceTypesTypeArrayOutput)
+}
+
+// The version of the engine.
+func (o GetInstanceTypesResultOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceTypesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstanceTypesResultOutput{})
 }

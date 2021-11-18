@@ -511,6 +511,10 @@ func (o GetTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetTemplatesTe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExecutionsExecutionInput)(nil)).Elem(), GetExecutionsExecutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExecutionsExecutionArrayInput)(nil)).Elem(), GetExecutionsExecutionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplatesTemplateInput)(nil)).Elem(), GetTemplatesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplatesTemplateArrayInput)(nil)).Elem(), GetTemplatesTemplateArray{})
 	pulumi.RegisterOutputType(GetExecutionsExecutionOutput{})
 	pulumi.RegisterOutputType(GetExecutionsExecutionArrayOutput{})
 	pulumi.RegisterOutputType(GetTemplatesTemplateOutput{})

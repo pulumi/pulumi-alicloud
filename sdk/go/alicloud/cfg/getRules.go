@@ -4,6 +4,9 @@
 package cfg
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -95,4 +98,119 @@ type GetRulesResult struct {
 	Rules []GetRulesRule `pulumi:"rules"`
 	// (Available in 1.124.1+) The status of config rule.
 	Status *string `pulumi:"status"`
+}
+
+func GetRulesOutput(ctx *pulumi.Context, args GetRulesOutputArgs, opts ...pulumi.InvokeOption) GetRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRulesResult, error) {
+			args := v.(GetRulesArgs)
+			r, err := GetRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetRulesResultOutput)
+}
+
+// A collection of arguments for invoking getRules.
+type GetRulesOutputArgs struct {
+	// Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
+	//
+	// Deprecated: Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
+	ConfigRuleState pulumi.StringPtrInput `pulumi:"configRuleState"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Config Rule IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The ID of the member account to which the rule to be queried belongs. The default is empty. When `multiAccount` is set to true, this parameter is valid.
+	MemberId pulumi.IntPtrInput `pulumi:"memberId"`
+	// Whether the enterprise management account queries the rule details of member accounts.
+	MultiAccount pulumi.BoolPtrInput `pulumi:"multiAccount"`
+	// A regex string to filter results by rule name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+	RiskLevel pulumi.IntPtrInput `pulumi:"riskLevel"`
+	// The name of config rule.
+	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
+	// The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRules.
+type GetRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesResult)(nil)).Elem()
+}
+
+func (o GetRulesResultOutput) ToGetRulesResultOutput() GetRulesResultOutput {
+	return o
+}
+
+func (o GetRulesResultOutput) ToGetRulesResultOutputWithContext(ctx context.Context) GetRulesResultOutput {
+	return o
+}
+
+// Deprecated: Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
+func (o GetRulesResultOutput) ConfigRuleState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.ConfigRuleState }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of Config Rule IDs.
+func (o GetRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRulesResultOutput) MemberId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *int { return v.MemberId }).(pulumi.IntPtrOutput)
+}
+
+func (o GetRulesResultOutput) MultiAccount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *bool { return v.MultiAccount }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of Config Rule names.
+func (o GetRulesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) RiskLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *int { return v.RiskLevel }).(pulumi.IntPtrOutput)
+}
+
+func (o GetRulesResultOutput) RuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// A list of Config Rules. Each element contains the following attributes:
+func (o GetRulesResultOutput) Rules() GetRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []GetRulesRule { return v.Rules }).(GetRulesRuleArrayOutput)
+}
+
+// (Available in 1.124.1+) The status of config rule.
+func (o GetRulesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRulesResultOutput{})
 }

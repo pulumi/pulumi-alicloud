@@ -26,13 +26,13 @@ import * as utilities from "../utilities";
  *         "my-Exchange-2",
  *     ],
  * });
- * export const amqpExchangeId1 = ids.then(ids => ids.exchanges[0].id);
+ * export const amqpExchangeId1 = ids.then(ids => ids.exchanges?[0]?.id);
  * const nameRegex = alicloud.amqp.getExchanges({
  *     instanceId: "amqp-abc12345",
  *     virtualHostName: "my-VirtualHost",
  *     nameRegex: "^my-Exchange",
  * });
- * export const amqpExchangeId2 = nameRegex.then(nameRegex => nameRegex.exchanges[0].id);
+ * export const amqpExchangeId2 = nameRegex.then(nameRegex => nameRegex.exchanges?[0]?.id);
  * ```
  */
 export function getExchanges(args: GetExchangesArgs, opts?: pulumi.InvokeOptions): Promise<GetExchangesResult> {
@@ -59,20 +59,20 @@ export interface GetExchangesArgs {
     /**
      * A list of Exchange IDs. Its element value is same as Exchange Name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The ID of the instance.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by Exchange name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The name of virtual host where an exchange resides.
      */
-    readonly virtualHostName: string;
+    virtualHostName: string;
 }
 
 /**
@@ -90,4 +90,31 @@ export interface GetExchangesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly virtualHostName: string;
+}
+
+export function getExchangesOutput(args: GetExchangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExchangesResult> {
+    return pulumi.output(args).apply(a => getExchanges(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getExchanges.
+ */
+export interface GetExchangesOutputArgs {
+    /**
+     * A list of Exchange IDs. Its element value is same as Exchange Name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the instance.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Exchange name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The name of virtual host where an exchange resides.
+     */
+    virtualHostName: pulumi.Input<string>;
 }

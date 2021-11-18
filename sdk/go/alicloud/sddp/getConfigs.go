@@ -4,6 +4,9 @@
 package sddp
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,65 @@ type GetConfigsResult struct {
 	Ids        []string `pulumi:"ids"`
 	Lang       *string  `pulumi:"lang"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetConfigsOutput(ctx *pulumi.Context, args GetConfigsOutputArgs, opts ...pulumi.InvokeOption) GetConfigsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetConfigsResult, error) {
+			args := v.(GetConfigsArgs)
+			r, err := GetConfigs(ctx, &args, opts...)
+			return *r, err
+		}).(GetConfigsResultOutput)
+}
+
+// A collection of arguments for invoking getConfigs.
+type GetConfigsOutputArgs struct {
+	// A list of Config IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	Lang       pulumi.StringPtrInput   `pulumi:"lang"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+}
+
+func (GetConfigsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getConfigs.
+type GetConfigsResultOutput struct{ *pulumi.OutputState }
+
+func (GetConfigsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigsResult)(nil)).Elem()
+}
+
+func (o GetConfigsResultOutput) ToGetConfigsResultOutput() GetConfigsResultOutput {
+	return o
+}
+
+func (o GetConfigsResultOutput) ToGetConfigsResultOutputWithContext(ctx context.Context) GetConfigsResultOutput {
+	return o
+}
+
+func (o GetConfigsResultOutput) Configs() GetConfigsConfigArrayOutput {
+	return o.ApplyT(func(v GetConfigsResult) []GetConfigsConfig { return v.Configs }).(GetConfigsConfigArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetConfigsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetConfigsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConfigsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConfigsResultOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConfigsResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+func (o GetConfigsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConfigsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetConfigsResultOutput{})
 }

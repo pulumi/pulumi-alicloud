@@ -13,6 +13,7 @@ __all__ = [
     'GetDomainsResult',
     'AwaitableGetDomainsResult',
     'get_domains',
+    'get_domains_output',
 ]
 
 @pulumi.output_type
@@ -191,3 +192,60 @@ def get_domains(domain_search_type: Optional[str] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_domains)
+def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]] = None,
+                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                       status: Optional[pulumi.Input[Optional[str]]] = None,
+                       tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
+    """
+    This data source provides the Vod Domains of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.136.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_domain = alicloud.vod.Domain("defaultDomain",
+        domain_name="your_domain_name",
+        scope="domestic",
+        sources=[alicloud.vod.DomainSourceArgs(
+            source_type="domain",
+            source_content="your_source_content",
+            source_port="80",
+        )],
+        tags={
+            "key1": "value1",
+            "key2": "value2",
+        })
+    default_domains = default_domain.id.apply(lambda id: alicloud.vod.get_domains(ids=[id],
+        tags={
+            "key1": "value1",
+            "key2": "value2",
+        }))
+    pulumi.export("vodDomain", default_domains.domains[0])
+    ```
+
+
+    :param str domain_search_type: The search method. Valid values:
+           * `fuzzy_match`: fuzzy match. This is the default value.
+           * `pre_match`: prefix match.
+           * `suf_match`: suffix match.
+           * `full_match`: exact match
+    :param Sequence[str] ids: A list of Domain IDs. Its element value is same as Domain Name.
+    :param str name_regex: A regex string to filter results by Domain name.
+    :param str status: The status of the resource.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+           * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+           * `Value`: It can be up to 128 characters in length. It can be a null string.
+    """
+    ...

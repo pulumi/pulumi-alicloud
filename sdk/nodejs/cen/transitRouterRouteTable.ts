@@ -135,25 +135,25 @@ export interface TransitRouterRouteTableState {
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The associating status of the Transit Router.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The ID of the transit router.
      */
-    readonly transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string>;
     /**
      * The description of the transit router route table.
      */
-    readonly transitRouterRouteTableDescription?: pulumi.Input<string>;
-    readonly transitRouterRouteTableId?: pulumi.Input<string>;
+    transitRouterRouteTableDescription?: pulumi.Input<string>;
+    transitRouterRouteTableId?: pulumi.Input<string>;
     /**
      * The name of the transit router route table.
      */
-    readonly transitRouterRouteTableName?: pulumi.Input<string>;
-    readonly transitRouterRouteTableType?: pulumi.Input<string>;
+    transitRouterRouteTableName?: pulumi.Input<string>;
+    transitRouterRouteTableType?: pulumi.Input<string>;
 }
 
 /**
@@ -163,17 +163,17 @@ export interface TransitRouterRouteTableArgs {
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the transit router.
      */
-    readonly transitRouterId: pulumi.Input<string>;
+    transitRouterId: pulumi.Input<string>;
     /**
      * The description of the transit router route table.
      */
-    readonly transitRouterRouteTableDescription?: pulumi.Input<string>;
+    transitRouterRouteTableDescription?: pulumi.Input<string>;
     /**
      * The name of the transit router route table.
      */
-    readonly transitRouterRouteTableName?: pulumi.Input<string>;
+    transitRouterRouteTableName?: pulumi.Input<string>;
 }

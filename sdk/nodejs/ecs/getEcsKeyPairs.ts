@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["key_pair_name"],
  *     nameRegex: "key_pair_name",
  * });
- * export const firstEcsKeyPairId = example.then(example => example.pairs[0].id);
+ * export const firstEcsKeyPairId = example.then(example => example.pairs?[0]?.id);
  * ```
  */
 export function getEcsKeyPairs(args?: GetEcsKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsKeyPairsResult> {
@@ -51,24 +51,24 @@ export interface GetEcsKeyPairsArgs {
     /**
      * The finger print of the key pair.
      */
-    readonly fingerPrint?: string;
+    fingerPrint?: string;
     /**
      * A list of Key Pair IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Key Pair name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Resource Group Id.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The tags.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -91,4 +91,35 @@ export interface GetEcsKeyPairsResult {
     readonly pairs: outputs.ecs.GetEcsKeyPairsPair[];
     readonly resourceGroupId?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getEcsKeyPairsOutput(args?: GetEcsKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsKeyPairsResult> {
+    return pulumi.output(args).apply(a => getEcsKeyPairs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEcsKeyPairs.
+ */
+export interface GetEcsKeyPairsOutputArgs {
+    /**
+     * The finger print of the key pair.
+     */
+    fingerPrint?: pulumi.Input<string>;
+    /**
+     * A list of Key Pair IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Key Pair name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Resource Group Id.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The tags.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

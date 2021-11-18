@@ -254,216 +254,216 @@ export class EcsDisk extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EcsDisk resources.
  */
 export interface EcsDiskState {
-    readonly advancedFeatures?: pulumi.Input<string>;
+    advancedFeatures?: pulumi.Input<string>;
     /**
      * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
      */
-    readonly category?: pulumi.Input<string>;
-    readonly dedicatedBlockStorageClusterId?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
+    dedicatedBlockStorageClusterId?: pulumi.Input<string>;
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
      */
-    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
+    deleteAutoSnapshot?: pulumi.Input<boolean>;
     /**
      * Indicates whether the disk is released together with the instance. Default value: `false`.
      */
-    readonly deleteWithInstance?: pulumi.Input<boolean>;
+    deleteWithInstance?: pulumi.Input<boolean>;
     /**
      * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
      */
-    readonly diskName?: pulumi.Input<string>;
+    diskName?: pulumi.Input<string>;
     /**
      * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
      * * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
      * * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * Indicates whether to enable creating snapshot automatically. Default value: `false`.
      */
-    readonly enableAutoSnapshot?: pulumi.Input<boolean>;
-    readonly encryptAlgorithm?: pulumi.Input<string>;
+    enableAutoSnapshot?: pulumi.Input<boolean>;
+    encryptAlgorithm?: pulumi.Input<string>;
     /**
      * If true, the disk will be encrypted, conflict with `snapshotId`.
      */
-    readonly encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean>;
     /**
      * The ID of the instance to which the created subscription disk is automatically attached.
      * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
      * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
      */
-    readonly kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
      * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
      * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
      * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
-    readonly performanceLevel?: pulumi.Input<string>;
+    performanceLevel?: pulumi.Input<string>;
     /**
      * The Id of resource group which the disk belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * The disk status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The ID of the storage set.
      */
-    readonly storageSetId?: pulumi.Input<string>;
+    storageSetId?: pulumi.Input<string>;
     /**
      * The number of partitions in the storage set.
      */
-    readonly storageSetPartitionNumber?: pulumi.Input<number>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    storageSetPartitionNumber?: pulumi.Input<number>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
      * * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
      * * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a EcsDisk resource.
  */
 export interface EcsDiskArgs {
-    readonly advancedFeatures?: pulumi.Input<string>;
+    advancedFeatures?: pulumi.Input<string>;
     /**
      * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
      */
-    readonly category?: pulumi.Input<string>;
-    readonly dedicatedBlockStorageClusterId?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
+    dedicatedBlockStorageClusterId?: pulumi.Input<string>;
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
      */
-    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
+    deleteAutoSnapshot?: pulumi.Input<boolean>;
     /**
      * Indicates whether the disk is released together with the instance. Default value: `false`.
      */
-    readonly deleteWithInstance?: pulumi.Input<boolean>;
+    deleteWithInstance?: pulumi.Input<boolean>;
     /**
      * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
      */
-    readonly diskName?: pulumi.Input<string>;
+    diskName?: pulumi.Input<string>;
     /**
      * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
      * * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
      * * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * Indicates whether to enable creating snapshot automatically. Default value: `false`.
      */
-    readonly enableAutoSnapshot?: pulumi.Input<boolean>;
-    readonly encryptAlgorithm?: pulumi.Input<string>;
+    enableAutoSnapshot?: pulumi.Input<boolean>;
+    encryptAlgorithm?: pulumi.Input<string>;
     /**
      * If true, the disk will be encrypted, conflict with `snapshotId`.
      */
-    readonly encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean>;
     /**
      * The ID of the instance to which the created subscription disk is automatically attached.
      * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
      * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
      */
-    readonly kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
      * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
      * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
      * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
-    readonly performanceLevel?: pulumi.Input<string>;
+    performanceLevel?: pulumi.Input<string>;
     /**
      * The Id of resource group which the disk belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * The ID of the storage set.
      */
-    readonly storageSetId?: pulumi.Input<string>;
+    storageSetId?: pulumi.Input<string>;
     /**
      * The number of partitions in the storage set.
      */
-    readonly storageSetPartitionNumber?: pulumi.Input<number>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    storageSetPartitionNumber?: pulumi.Input<number>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
      * * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
      * * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

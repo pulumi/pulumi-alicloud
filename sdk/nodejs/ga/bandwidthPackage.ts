@@ -190,59 +190,59 @@ export interface BandwidthPackageState {
      * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
      * `true`: Enable automatic payment, automatic payment order.
      */
-    readonly autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean>;
     /**
      * Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
      */
-    readonly autoUseCoupon?: pulumi.Input<boolean>;
+    autoUseCoupon?: pulumi.Input<boolean>;
     /**
      * The bandwidth value of bandwidth packet.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * The name of the bandwidth packet.
      */
-    readonly bandwidthPackageName?: pulumi.Input<string>;
+    bandwidthPackageName?: pulumi.Input<string>;
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
      */
-    readonly bandwidthType?: pulumi.Input<string>;
+    bandwidthType?: pulumi.Input<string>;
     /**
      * The billing type. Valid values: `PayBy95`, `PayByTraffic`.
      */
-    readonly billingType?: pulumi.Input<string>;
+    billingType?: pulumi.Input<string>;
     /**
      * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
      */
-    readonly cbnGeographicRegionIda?: pulumi.Input<string>;
+    cbnGeographicRegionIda?: pulumi.Input<string>;
     /**
      * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
      */
-    readonly cbnGeographicRegionIdb?: pulumi.Input<string>;
+    cbnGeographicRegionIdb?: pulumi.Input<string>;
     /**
      * The description of bandwidth package.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The duration.
      */
-    readonly duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string>;
     /**
      * The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The ratio.
      */
-    readonly ratio?: pulumi.Input<number>;
+    ratio?: pulumi.Input<number>;
     /**
      * The status of the bandwidth plan.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -254,53 +254,53 @@ export interface BandwidthPackageArgs {
      * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
      * `true`: Enable automatic payment, automatic payment order.
      */
-    readonly autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean>;
     /**
      * Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
      */
-    readonly autoUseCoupon?: pulumi.Input<boolean>;
+    autoUseCoupon?: pulumi.Input<boolean>;
     /**
      * The bandwidth value of bandwidth packet.
      */
-    readonly bandwidth: pulumi.Input<number>;
+    bandwidth: pulumi.Input<number>;
     /**
      * The name of the bandwidth packet.
      */
-    readonly bandwidthPackageName?: pulumi.Input<string>;
+    bandwidthPackageName?: pulumi.Input<string>;
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
      */
-    readonly bandwidthType?: pulumi.Input<string>;
+    bandwidthType?: pulumi.Input<string>;
     /**
      * The billing type. Valid values: `PayBy95`, `PayByTraffic`.
      */
-    readonly billingType?: pulumi.Input<string>;
+    billingType?: pulumi.Input<string>;
     /**
      * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
      */
-    readonly cbnGeographicRegionIda?: pulumi.Input<string>;
+    cbnGeographicRegionIda?: pulumi.Input<string>;
     /**
      * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
      */
-    readonly cbnGeographicRegionIdb?: pulumi.Input<string>;
+    cbnGeographicRegionIdb?: pulumi.Input<string>;
     /**
      * The description of bandwidth package.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The duration.
      */
-    readonly duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string>;
     /**
      * The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The ratio.
      */
-    readonly ratio?: pulumi.Input<number>;
+    ratio?: pulumi.Input<number>;
     /**
      * The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

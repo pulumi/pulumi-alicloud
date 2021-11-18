@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
  *     topicQuota: "50",
@@ -163,31 +163,31 @@ export interface TopicState {
     /**
      * Whether the topic is compactTopic or not. Compact topic must be a localTopic.
      */
-    readonly compactTopic?: pulumi.Input<boolean>;
+    compactTopic?: pulumi.Input<boolean>;
     /**
      * InstanceId of your Kafka resource, the topic will create in this instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Whether the topic is localTopic or not.
      */
-    readonly localTopic?: pulumi.Input<boolean>;
+    localTopic?: pulumi.Input<boolean>;
     /**
      * The number of partitions of the topic. The number should between 1 and 48.
      */
-    readonly partitionNum?: pulumi.Input<number>;
+    partitionNum?: pulumi.Input<number>;
     /**
      * This attribute is a concise description of topic. The length cannot exceed 64.
      */
-    readonly remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
      */
-    readonly topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string>;
 }
 
 /**
@@ -197,29 +197,29 @@ export interface TopicArgs {
     /**
      * Whether the topic is compactTopic or not. Compact topic must be a localTopic.
      */
-    readonly compactTopic?: pulumi.Input<boolean>;
+    compactTopic?: pulumi.Input<boolean>;
     /**
      * InstanceId of your Kafka resource, the topic will create in this instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Whether the topic is localTopic or not.
      */
-    readonly localTopic?: pulumi.Input<boolean>;
+    localTopic?: pulumi.Input<boolean>;
     /**
      * The number of partitions of the topic. The number should between 1 and 48.
      */
-    readonly partitionNum?: pulumi.Input<number>;
+    partitionNum?: pulumi.Input<number>;
     /**
      * This attribute is a concise description of topic. The length cannot exceed 64.
      */
-    readonly remark: pulumi.Input<string>;
+    remark: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
      */
-    readonly topic: pulumi.Input<string>;
+    topic: pulumi.Input<string>;
 }

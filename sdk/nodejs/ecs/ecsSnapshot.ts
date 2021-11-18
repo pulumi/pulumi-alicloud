@@ -174,51 +174,51 @@ export interface EcsSnapshotState {
     /**
      * The category of the snapshot. Valid Values: `standard` and `flash`.
      */
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * The description of the snapshot.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the disk.
      */
-    readonly diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string>;
     /**
      * Specifies whether to forcibly delete the snapshot that has been used to create disks.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * Specifies whether to enable the instant access feature.
      */
-    readonly instantAccess?: pulumi.Input<boolean>;
+    instantAccess?: pulumi.Input<boolean>;
     /**
      * Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
      */
-    readonly instantAccessRetentionDays?: pulumi.Input<number>;
+    instantAccessRetentionDays?: pulumi.Input<number>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The resource group id.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The retention period of the snapshot.
      */
-    readonly retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number>;
     /**
      * The name of the snapshot.
      */
-    readonly snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string>;
     /**
      * The status of snapshot.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the snapshot.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -228,45 +228,45 @@ export interface EcsSnapshotArgs {
     /**
      * The category of the snapshot. Valid Values: `standard` and `flash`.
      */
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * The description of the snapshot.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the disk.
      */
-    readonly diskId: pulumi.Input<string>;
+    diskId: pulumi.Input<string>;
     /**
      * Specifies whether to forcibly delete the snapshot that has been used to create disks.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * Specifies whether to enable the instant access feature.
      */
-    readonly instantAccess?: pulumi.Input<boolean>;
+    instantAccess?: pulumi.Input<boolean>;
     /**
      * Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
      */
-    readonly instantAccessRetentionDays?: pulumi.Input<number>;
+    instantAccessRetentionDays?: pulumi.Input<number>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The resource group id.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The retention period of the snapshot.
      */
-    readonly retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number>;
     /**
      * The name of the snapshot.
      */
-    readonly snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the snapshot.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -4,6 +4,9 @@
 package kvstore
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,56 @@ type GetPermissionResult struct {
 	Id string `pulumi:"id"`
 	// The current service enable status.
 	Status string `pulumi:"status"`
+}
+
+func GetPermissionOutput(ctx *pulumi.Context, args GetPermissionOutputArgs, opts ...pulumi.InvokeOption) GetPermissionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetPermissionResult, error) {
+			args := v.(GetPermissionArgs)
+			r, err := GetPermission(ctx, &args, opts...)
+			return *r, err
+		}).(GetPermissionResultOutput)
+}
+
+// A collection of arguments for invoking getPermission.
+type GetPermissionOutputArgs struct {
+	// Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+	Enable pulumi.StringPtrInput `pulumi:"enable"`
+}
+
+func (GetPermissionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPermissionArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPermission.
+type GetPermissionResultOutput struct{ *pulumi.OutputState }
+
+func (GetPermissionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPermissionResult)(nil)).Elem()
+}
+
+func (o GetPermissionResultOutput) ToGetPermissionResultOutput() GetPermissionResultOutput {
+	return o
+}
+
+func (o GetPermissionResultOutput) ToGetPermissionResultOutputWithContext(ctx context.Context) GetPermissionResultOutput {
+	return o
+}
+
+func (o GetPermissionResultOutput) Enable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPermissionResult) *string { return v.Enable }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPermissionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPermissionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The current service enable status.
+func (o GetPermissionResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPermissionResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPermissionResultOutput{})
 }

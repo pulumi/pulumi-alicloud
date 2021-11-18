@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dfs
 {
@@ -40,6 +41,36 @@ namespace Pulumi.AliCloud.Dfs
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:dfs/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Dfs.GetZones.InvokeAsync());
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:dfs/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -49,6 +80,16 @@ namespace Pulumi.AliCloud.Dfs
         public string? OutputFile { get; set; }
 
         public GetZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetZonesInvokeArgs()
         {
         }
     }

@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.ecp.getKeyPairs({});
- * export const ecpKeyPairId1 = ids.then(ids => ids.pairs[0].id);
+ * export const ecpKeyPairId1 = ids.then(ids => ids.pairs?[0]?.id);
  * const nameRegex = alicloud.ecp.getKeyPairs({
  *     nameRegex: "^my-KeyPair",
  * });
- * export const ecpKeyPairId2 = nameRegex.then(nameRegex => nameRegex.pairs[0].id);
+ * export const ecpKeyPairId2 = nameRegex.then(nameRegex => nameRegex.pairs?[0]?.id);
  * ```
  */
 export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
@@ -50,16 +50,16 @@ export interface GetKeyPairsArgs {
     /**
      * A list of Key Pair IDs. Its element value is same as Key Pair Name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The Private Key of the Fingerprint.
      */
-    readonly keyPairFingerPrint?: string;
+    keyPairFingerPrint?: string;
     /**
      * A regex string to filter results by Key Pair name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -76,4 +76,27 @@ export interface GetKeyPairsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly pairs: outputs.ecp.GetKeyPairsPair[];
+}
+
+export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
+    return pulumi.output(args).apply(a => getKeyPairs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKeyPairs.
+ */
+export interface GetKeyPairsOutputArgs {
+    /**
+     * A list of Key Pair IDs. Its element value is same as Key Pair Name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Private Key of the Fingerprint.
+     */
+    keyPairFingerPrint?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Key Pair name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

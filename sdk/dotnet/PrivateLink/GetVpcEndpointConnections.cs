@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.PrivateLink
 {
@@ -35,7 +36,7 @@ namespace Pulumi.AliCloud.PrivateLink
         ///             ServiceId = "example_value",
         ///             Status = "Connected",
         ///         }));
-        ///         this.FirstPrivatelinkVpcEndpointConnectionId = example.Apply(example =&gt; example.Connections[0].Id);
+        ///         this.FirstPrivatelinkVpcEndpointConnectionId = example.Apply(example =&gt; example.Connections?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstPrivatelinkVpcEndpointConnectionId")]
@@ -47,6 +48,43 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         public static Task<GetVpcEndpointConnectionsResult> InvokeAsync(GetVpcEndpointConnectionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointConnectionsResult>("alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections", args ?? new GetVpcEndpointConnectionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.110.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.PrivateLink.GetVpcEndpointConnections.InvokeAsync(new AliCloud.PrivateLink.GetVpcEndpointConnectionsArgs
+        ///         {
+        ///             ServiceId = "example_value",
+        ///             Status = "Connected",
+        ///         }));
+        ///         this.FirstPrivatelinkVpcEndpointConnectionId = example.Apply(example =&gt; example.Connections?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstPrivatelinkVpcEndpointConnectionId")]
+        ///     public Output&lt;string&gt; FirstPrivatelinkVpcEndpointConnectionId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetVpcEndpointConnectionsResult> Invoke(GetVpcEndpointConnectionsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVpcEndpointConnectionsResult>("alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections", args ?? new GetVpcEndpointConnectionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -80,6 +118,40 @@ namespace Pulumi.AliCloud.PrivateLink
         public string? Status { get; set; }
 
         public GetVpcEndpointConnectionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcEndpointConnectionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Vpc Endpoint.
+        /// </summary>
+        [Input("endpointId")]
+        public Input<string>? EndpointId { get; set; }
+
+        /// <summary>
+        /// The endpoint owner id.
+        /// </summary>
+        [Input("endpointOwnerId")]
+        public Input<int>? EndpointOwnerId { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the Vpc Endpoint Service.
+        /// </summary>
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        /// <summary>
+        /// The status of Vpc Endpoint Connection.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetVpcEndpointConnectionsInvokeArgs()
         {
         }
     }

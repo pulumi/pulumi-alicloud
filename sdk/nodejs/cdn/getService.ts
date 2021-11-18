@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -21,7 +20,7 @@ import * as utilities from "../utilities";
  * const open = pulumi.output(alicloud.cdn.getService({
  *     enable: "On",
  *     internetChargeType: "PayByTraffic",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
@@ -46,13 +45,13 @@ export interface GetServiceArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
      */
-    readonly enable?: string;
+    enable?: string;
     /**
      * The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
      * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
      * As a note, the updated internet charge type will be effective in the next day zero time.
      */
-    readonly internetChargeType?: string;
+    internetChargeType?: string;
 }
 
 /**
@@ -81,4 +80,24 @@ export interface GetServiceResult {
      * The current service enable status.
      */
     readonly status: string;
+}
+
+export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceOutputArgs {
+    /**
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+     */
+    enable?: pulumi.Input<string>;
+    /**
+     * The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
+     * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
+     * As a note, the updated internet charge type will be effective in the next day zero time.
+     */
+    internetChargeType?: pulumi.Input<string>;
 }

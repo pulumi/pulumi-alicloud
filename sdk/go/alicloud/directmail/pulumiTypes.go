@@ -635,6 +635,12 @@ func (o GetReceiversReceiverseArrayOutput) Index(i pulumi.IntInput) GetReceivers
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMailAddressesAddressInput)(nil)).Elem(), GetMailAddressesAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMailAddressesAddressArrayInput)(nil)).Elem(), GetMailAddressesAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReceiversReceiverseInput)(nil)).Elem(), GetReceiversReceiverseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReceiversReceiverseArrayInput)(nil)).Elem(), GetReceiversReceiverseArray{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetMailAddressesAddressOutput{})

@@ -212,7 +212,7 @@ type OrganizationArrayInput interface {
 type OrganizationArray []OrganizationInput
 
 func (OrganizationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Organization)(nil))
+	return reflect.TypeOf((*[]*Organization)(nil)).Elem()
 }
 
 func (i OrganizationArray) ToOrganizationArrayOutput() OrganizationArrayOutput {
@@ -237,7 +237,7 @@ type OrganizationMapInput interface {
 type OrganizationMap map[string]OrganizationInput
 
 func (OrganizationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Organization)(nil))
+	return reflect.TypeOf((*map[string]*Organization)(nil)).Elem()
 }
 
 func (i OrganizationMap) ToOrganizationMapOutput() OrganizationMapOutput {
@@ -248,9 +248,7 @@ func (i OrganizationMap) ToOrganizationMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationMapOutput)
 }
 
-type OrganizationOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationOutput struct{ *pulumi.OutputState }
 
 func (OrganizationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Organization)(nil))
@@ -269,14 +267,12 @@ func (o OrganizationOutput) ToOrganizationPtrOutput() OrganizationPtrOutput {
 }
 
 func (o OrganizationOutput) ToOrganizationPtrOutputWithContext(ctx context.Context) OrganizationPtrOutput {
-	return o.ApplyT(func(v Organization) *Organization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Organization) *Organization {
 		return &v
 	}).(OrganizationPtrOutput)
 }
 
-type OrganizationPtrOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Organization)(nil))
@@ -288,6 +284,16 @@ func (o OrganizationPtrOutput) ToOrganizationPtrOutput() OrganizationPtrOutput {
 
 func (o OrganizationPtrOutput) ToOrganizationPtrOutputWithContext(ctx context.Context) OrganizationPtrOutput {
 	return o
+}
+
+func (o OrganizationPtrOutput) Elem() OrganizationOutput {
+	return o.ApplyT(func(v *Organization) Organization {
+		if v != nil {
+			return *v
+		}
+		var ret Organization
+		return ret
+	}).(OrganizationOutput)
 }
 
 type OrganizationArrayOutput struct{ *pulumi.OutputState }
@@ -331,6 +337,10 @@ func (o OrganizationMapOutput) MapIndex(k pulumi.StringInput) OrganizationOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationInput)(nil)).Elem(), &Organization{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPtrInput)(nil)).Elem(), &Organization{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationArrayInput)(nil)).Elem(), OrganizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationMapInput)(nil)).Elem(), OrganizationMap{})
 	pulumi.RegisterOutputType(OrganizationOutput{})
 	pulumi.RegisterOutputType(OrganizationPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationArrayOutput{})

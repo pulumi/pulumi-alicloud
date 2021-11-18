@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Tsdb
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Tsdb
         ///     public MyStack()
         ///     {
         ///         var example = Output.Create(AliCloud.Tsdb.GetZones.InvokeAsync());
-        ///         this.FirstTsdbZonesId = example.Apply(example =&gt; example.Zones[0].ZoneId);
+        ///         this.FirstTsdbZonesId = example.Apply(example =&gt; example.Zones?[0]?.ZoneId);
         ///     }
         /// 
         ///     [Output("firstTsdbZonesId")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Tsdb
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:tsdb/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.112.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Tsdb.GetZones.InvokeAsync());
+        ///         this.FirstTsdbZonesId = example.Apply(example =&gt; example.Zones?[0]?.ZoneId);
+        ///     }
+        /// 
+        ///     [Output("firstTsdbZonesId")]
+        ///     public Output&lt;string&gt; FirstTsdbZonesId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:tsdb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -52,6 +86,16 @@ namespace Pulumi.AliCloud.Tsdb
         public string? OutputFile { get; set; }
 
         public GetZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetZonesInvokeArgs()
         {
         }
     }

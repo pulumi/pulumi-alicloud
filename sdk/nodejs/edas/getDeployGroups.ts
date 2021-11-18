@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     ids: ["xxx"],
  *     outputFile: "groups.txt",
  * });
- * export const firstGroupName = groups.then(groups => groups.groups[0].groupName);
+ * export const firstGroupName = groups.then(groups => groups.groups?[0]?.groupName);
  * ```
  */
 export function getDeployGroups(args: GetDeployGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeployGroupsResult> {
@@ -46,12 +46,12 @@ export interface GetDeployGroupsArgs {
     /**
      * ID of the EDAS application.
      */
-    readonly appId: string;
+    appId: string;
     /**
      * A regex string to filter results by the deploy group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -76,4 +76,23 @@ export interface GetDeployGroupsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getDeployGroupsOutput(args: GetDeployGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeployGroupsResult> {
+    return pulumi.output(args).apply(a => getDeployGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDeployGroups.
+ */
+export interface GetDeployGroupsOutputArgs {
+    /**
+     * ID of the EDAS application.
+     */
+    appId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by the deploy group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

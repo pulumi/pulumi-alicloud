@@ -305,7 +305,7 @@ type DispatchRuleArrayInput interface {
 type DispatchRuleArray []DispatchRuleInput
 
 func (DispatchRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DispatchRule)(nil))
+	return reflect.TypeOf((*[]*DispatchRule)(nil)).Elem()
 }
 
 func (i DispatchRuleArray) ToDispatchRuleArrayOutput() DispatchRuleArrayOutput {
@@ -330,7 +330,7 @@ type DispatchRuleMapInput interface {
 type DispatchRuleMap map[string]DispatchRuleInput
 
 func (DispatchRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DispatchRule)(nil))
+	return reflect.TypeOf((*map[string]*DispatchRule)(nil)).Elem()
 }
 
 func (i DispatchRuleMap) ToDispatchRuleMapOutput() DispatchRuleMapOutput {
@@ -341,9 +341,7 @@ func (i DispatchRuleMap) ToDispatchRuleMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleMapOutput)
 }
 
-type DispatchRuleOutput struct {
-	*pulumi.OutputState
-}
+type DispatchRuleOutput struct{ *pulumi.OutputState }
 
 func (DispatchRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DispatchRule)(nil))
@@ -362,14 +360,12 @@ func (o DispatchRuleOutput) ToDispatchRulePtrOutput() DispatchRulePtrOutput {
 }
 
 func (o DispatchRuleOutput) ToDispatchRulePtrOutputWithContext(ctx context.Context) DispatchRulePtrOutput {
-	return o.ApplyT(func(v DispatchRule) *DispatchRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DispatchRule) *DispatchRule {
 		return &v
 	}).(DispatchRulePtrOutput)
 }
 
-type DispatchRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type DispatchRulePtrOutput struct{ *pulumi.OutputState }
 
 func (DispatchRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DispatchRule)(nil))
@@ -381,6 +377,16 @@ func (o DispatchRulePtrOutput) ToDispatchRulePtrOutput() DispatchRulePtrOutput {
 
 func (o DispatchRulePtrOutput) ToDispatchRulePtrOutputWithContext(ctx context.Context) DispatchRulePtrOutput {
 	return o
+}
+
+func (o DispatchRulePtrOutput) Elem() DispatchRuleOutput {
+	return o.ApplyT(func(v *DispatchRule) DispatchRule {
+		if v != nil {
+			return *v
+		}
+		var ret DispatchRule
+		return ret
+	}).(DispatchRuleOutput)
 }
 
 type DispatchRuleArrayOutput struct{ *pulumi.OutputState }
@@ -424,6 +430,10 @@ func (o DispatchRuleMapOutput) MapIndex(k pulumi.StringInput) DispatchRuleOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleInput)(nil)).Elem(), &DispatchRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRulePtrInput)(nil)).Elem(), &DispatchRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleArrayInput)(nil)).Elem(), DispatchRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleMapInput)(nil)).Elem(), DispatchRuleMap{})
 	pulumi.RegisterOutputType(DispatchRuleOutput{})
 	pulumi.RegisterOutputType(DispatchRulePtrOutput{})
 	pulumi.RegisterOutputType(DispatchRuleArrayOutput{})

@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,4 +61,56 @@ type GetTrafficMirrorServiceResult struct {
 	Id string `pulumi:"id"`
 	// The current service enable status.
 	Status string `pulumi:"status"`
+}
+
+func GetTrafficMirrorServiceOutput(ctx *pulumi.Context, args GetTrafficMirrorServiceOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMirrorServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTrafficMirrorServiceResult, error) {
+			args := v.(GetTrafficMirrorServiceArgs)
+			r, err := GetTrafficMirrorService(ctx, &args, opts...)
+			return *r, err
+		}).(GetTrafficMirrorServiceResultOutput)
+}
+
+// A collection of arguments for invoking getTrafficMirrorService.
+type GetTrafficMirrorServiceOutputArgs struct {
+	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	Enable pulumi.StringPtrInput `pulumi:"enable"`
+}
+
+func (GetTrafficMirrorServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficMirrorServiceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTrafficMirrorService.
+type GetTrafficMirrorServiceResultOutput struct{ *pulumi.OutputState }
+
+func (GetTrafficMirrorServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficMirrorServiceResult)(nil)).Elem()
+}
+
+func (o GetTrafficMirrorServiceResultOutput) ToGetTrafficMirrorServiceResultOutput() GetTrafficMirrorServiceResultOutput {
+	return o
+}
+
+func (o GetTrafficMirrorServiceResultOutput) ToGetTrafficMirrorServiceResultOutputWithContext(ctx context.Context) GetTrafficMirrorServiceResultOutput {
+	return o
+}
+
+func (o GetTrafficMirrorServiceResultOutput) Enable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTrafficMirrorServiceResult) *string { return v.Enable }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTrafficMirrorServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The current service enable status.
+func (o GetTrafficMirrorServiceResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorServiceResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTrafficMirrorServiceResultOutput{})
 }

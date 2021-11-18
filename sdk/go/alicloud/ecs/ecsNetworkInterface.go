@@ -50,7 +50,7 @@ import (
 // 			return err
 // 		}
 // 		opt0 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -86,9 +86,9 @@ import (
 // 			},
 // 			Description:      pulumi.String("Basic test"),
 // 			PrimaryIpAddress: pulumi.String("192.168.0.2"),
-// 			Tags: pulumi.StringMap{
-// 				"Created": pulumi.String("TF"),
-// 				"For":     pulumi.String("Test"),
+// 			Tags: pulumi.AnyMap{
+// 				"Created": pulumi.Any("TF"),
+// 				"For":     pulumi.Any("Test"),
 // 			},
 // 			ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
 // 		})
@@ -438,7 +438,7 @@ type EcsNetworkInterfaceArrayInput interface {
 type EcsNetworkInterfaceArray []EcsNetworkInterfaceInput
 
 func (EcsNetworkInterfaceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EcsNetworkInterface)(nil))
+	return reflect.TypeOf((*[]*EcsNetworkInterface)(nil)).Elem()
 }
 
 func (i EcsNetworkInterfaceArray) ToEcsNetworkInterfaceArrayOutput() EcsNetworkInterfaceArrayOutput {
@@ -463,7 +463,7 @@ type EcsNetworkInterfaceMapInput interface {
 type EcsNetworkInterfaceMap map[string]EcsNetworkInterfaceInput
 
 func (EcsNetworkInterfaceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EcsNetworkInterface)(nil))
+	return reflect.TypeOf((*map[string]*EcsNetworkInterface)(nil)).Elem()
 }
 
 func (i EcsNetworkInterfaceMap) ToEcsNetworkInterfaceMapOutput() EcsNetworkInterfaceMapOutput {
@@ -474,9 +474,7 @@ func (i EcsNetworkInterfaceMap) ToEcsNetworkInterfaceMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfaceMapOutput)
 }
 
-type EcsNetworkInterfaceOutput struct {
-	*pulumi.OutputState
-}
+type EcsNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfaceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EcsNetworkInterface)(nil))
@@ -495,14 +493,12 @@ func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfacePtrOutput() EcsNetworkIn
 }
 
 func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfacePtrOutputWithContext(ctx context.Context) EcsNetworkInterfacePtrOutput {
-	return o.ApplyT(func(v EcsNetworkInterface) *EcsNetworkInterface {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsNetworkInterface) *EcsNetworkInterface {
 		return &v
 	}).(EcsNetworkInterfacePtrOutput)
 }
 
-type EcsNetworkInterfacePtrOutput struct {
-	*pulumi.OutputState
-}
+type EcsNetworkInterfacePtrOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfacePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EcsNetworkInterface)(nil))
@@ -514,6 +510,16 @@ func (o EcsNetworkInterfacePtrOutput) ToEcsNetworkInterfacePtrOutput() EcsNetwor
 
 func (o EcsNetworkInterfacePtrOutput) ToEcsNetworkInterfacePtrOutputWithContext(ctx context.Context) EcsNetworkInterfacePtrOutput {
 	return o
+}
+
+func (o EcsNetworkInterfacePtrOutput) Elem() EcsNetworkInterfaceOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) EcsNetworkInterface {
+		if v != nil {
+			return *v
+		}
+		var ret EcsNetworkInterface
+		return ret
+	}).(EcsNetworkInterfaceOutput)
 }
 
 type EcsNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
@@ -557,6 +563,10 @@ func (o EcsNetworkInterfaceMapOutput) MapIndex(k pulumi.StringInput) EcsNetworkI
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfaceInput)(nil)).Elem(), &EcsNetworkInterface{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfacePtrInput)(nil)).Elem(), &EcsNetworkInterface{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfaceArrayInput)(nil)).Elem(), EcsNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfaceMapInput)(nil)).Elem(), EcsNetworkInterfaceMap{})
 	pulumi.RegisterOutputType(EcsNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(EcsNetworkInterfacePtrOutput{})
 	pulumi.RegisterOutputType(EcsNetworkInterfaceArrayOutput{})

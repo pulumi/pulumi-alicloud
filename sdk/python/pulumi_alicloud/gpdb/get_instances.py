@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -135,7 +136,7 @@ def get_instances(availability_zone: Optional[str] = None,
                   vswitch_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `gpdb.getInstances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
+    The `gpdb.get_instances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
     Filters support regular expression for the instance name or availability_zone.
 
     > **NOTE:**  Available in 1.47.0+
@@ -182,3 +183,39 @@ def get_instances(availability_zone: Optional[str] = None,
         output_file=__ret__.output_file,
         tags=__ret__.tags,
         vswitch_id=__ret__.vswitch_id)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    The `gpdb.get_instances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
+    Filters support regular expression for the instance name or availability_zone.
+
+    > **NOTE:**  Available in 1.47.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    gpdb = alicloud.gpdb.get_instances(availability_zone="cn-beijing-c",
+        name_regex="gp-.+\\d+",
+        output_file="instances.txt")
+    pulumi.export("instanceId", gpdb.instances[0].id)
+    ```
+
+
+    :param str availability_zone: Instance availability zone.
+    :param Sequence[str] ids: A list of instance IDs.
+    :param str name_regex: A regex string to apply to the instance name.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
+    """
+    ...

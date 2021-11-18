@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cassandra
 {
@@ -42,6 +43,38 @@ namespace Pulumi.AliCloud.Cassandra
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:cassandra/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
+        /// Filters support regular expression for the cluster name, ids or tags.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.88.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var cassandra = Output.Create(AliCloud.Cassandra.GetClusters.InvokeAsync(new AliCloud.Cassandra.GetClustersArgs
+        ///         {
+        ///             NameRegex = "tf_testAccCassandra",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:cassandra/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +114,46 @@ namespace Pulumi.AliCloud.Cassandra
         }
 
         public GetClustersArgs()
+        {
+        }
+    }
+
+    public sealed class GetClustersInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// The list of Cassandra cluster ids.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to apply to the cluster name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetClustersInvokeArgs()
         {
         }
     }

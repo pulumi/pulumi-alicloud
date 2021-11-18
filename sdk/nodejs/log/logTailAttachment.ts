@@ -159,15 +159,15 @@ export interface LogTailAttachmentState {
     /**
      * The Logtail configuration name, which is unique in the same project.
      */
-    readonly logtailConfigName?: pulumi.Input<string>;
+    logtailConfigName?: pulumi.Input<string>;
     /**
      * The machine group name, which is unique in the same project.
      */
-    readonly machineGroupName?: pulumi.Input<string>;
+    machineGroupName?: pulumi.Input<string>;
     /**
      * The project name to the log store belongs.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -177,13 +177,13 @@ export interface LogTailAttachmentArgs {
     /**
      * The Logtail configuration name, which is unique in the same project.
      */
-    readonly logtailConfigName: pulumi.Input<string>;
+    logtailConfigName: pulumi.Input<string>;
     /**
      * The machine group name, which is unique in the same project.
      */
-    readonly machineGroupName: pulumi.Input<string>;
+    machineGroupName: pulumi.Input<string>;
     /**
      * The project name to the log store belongs.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

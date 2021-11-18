@@ -13,6 +13,7 @@ __all__ = [
     'GetExecutionsResult',
     'AwaitableGetExecutionsResult',
     'get_executions',
+    'get_executions_output',
 ]
 
 @pulumi.output_type
@@ -308,3 +309,60 @@ def get_executions(category: Optional[str] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         template_name=__ret__.template_name)
+
+
+@_utilities.lift_output_func(get_executions)
+def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None,
+                          end_date: Optional[pulumi.Input[Optional[str]]] = None,
+                          end_date_after: Optional[pulumi.Input[Optional[str]]] = None,
+                          executed_by: Optional[pulumi.Input[Optional[str]]] = None,
+                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                          include_child_execution: Optional[pulumi.Input[Optional[bool]]] = None,
+                          mode: Optional[pulumi.Input[Optional[str]]] = None,
+                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                          parent_execution_id: Optional[pulumi.Input[Optional[str]]] = None,
+                          ram_role: Optional[pulumi.Input[Optional[str]]] = None,
+                          sort_field: Optional[pulumi.Input[Optional[str]]] = None,
+                          sort_order: Optional[pulumi.Input[Optional[str]]] = None,
+                          start_date_after: Optional[pulumi.Input[Optional[str]]] = None,
+                          start_date_before: Optional[pulumi.Input[Optional[str]]] = None,
+                          status: Optional[pulumi.Input[Optional[str]]] = None,
+                          tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                          template_name: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExecutionsResult]:
+    """
+    This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in v1.93.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.oos.get_executions(ids=["execution_id"],
+        status="Success",
+        template_name="name")
+    pulumi.export("firstExecutionId", example.executions[0].id)
+    ```
+
+
+    :param str category: The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
+    :param str end_date: The time when the execution was ended.
+    :param str end_date_after: Execution whose end time is less than or equal to the specified time.
+    :param str executed_by: The user who execute the template.
+    :param Sequence[str] ids: A list of OOS Execution ids.
+    :param bool include_child_execution: Whether to include sub-execution.
+    :param str mode: The mode of OOS Execution. Valid: `Automatic`, `Debug`.
+    :param str parent_execution_id: The id of parent OOS Execution.
+    :param str ram_role: The role that executes the current template.
+    :param str sort_field: The sort field.
+    :param str sort_order: The sort order.
+    :param str start_date_after: The execution whose start time is greater than or equal to the specified time.
+    :param str start_date_before: The execution with start time less than or equal to the specified time.
+    :param str status: The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str template_name: The name of execution template.
+    """
+    ...

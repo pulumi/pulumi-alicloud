@@ -13,6 +13,7 @@ __all__ = [
     'GetRegistryEnterpriseNamespacesResult',
     'AwaitableGetRegistryEnterpriseNamespacesResult',
     'get_registry_enterprise_namespaces',
+    'get_registry_enterprise_namespaces_output',
 ]
 
 @pulumi.output_type
@@ -155,3 +156,34 @@ def get_registry_enterprise_namespaces(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         namespaces=__ret__.namespaces,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_registry_enterprise_namespaces)
+def get_registry_enterprise_namespaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                              instance_id: Optional[pulumi.Input[str]] = None,
+                                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryEnterpriseNamespacesResult]:
+    """
+    This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.
+
+    > **NOTE:** Available in v1.86.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_namespaces = alicloud.cs.get_registry_enterprise_namespaces(instance_id="cri-xxx",
+        name_regex="my-namespace",
+        output_file="my-namespace-json")
+    pulumi.export("output", my_namespaces.namespaces)
+    ```
+
+
+    :param Sequence[str] ids: A list of ids to filter results by namespace id.
+    :param str instance_id: ID of Container Registry Enterprise Edition instance.
+    :param str name_regex: A regex string to filter results by namespace name.
+    """
+    ...

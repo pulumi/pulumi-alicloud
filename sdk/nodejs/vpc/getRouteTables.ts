@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * });
  * const fooRouteTables = fooRouteTable.id.apply(id => alicloud.vpc.getRouteTables({
  *     ids: [id],
- * }, { async: true }));
+ * }));
  *
  * export const routeTableIds = fooRouteTables.ids!;
  * ```
@@ -65,40 +65,40 @@ export interface GetRouteTablesArgs {
     /**
      * A list of Route Tables IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter route tables by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Id of resource group which route tables belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The route table name.
      */
-    readonly routeTableName?: string;
+    routeTableName?: string;
     /**
      * The router ID.
      */
-    readonly routerId?: string;
+    routerId?: string;
     /**
      * The route type of route table. Valid values: `VRouter` and `VBR`.
      */
-    readonly routerType?: string;
+    routerType?: string;
     /**
      * The status of resource. Valid values: `Available` and `Pending`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * Vpc id of the route table.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
 }
 
 /**
@@ -148,4 +148,51 @@ export interface GetRouteTablesResult {
      * The VPC ID.
      */
     readonly vpcId?: string;
+}
+
+export function getRouteTablesOutput(args?: GetRouteTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteTablesResult> {
+    return pulumi.output(args).apply(a => getRouteTables(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRouteTables.
+ */
+export interface GetRouteTablesOutputArgs {
+    /**
+     * A list of Route Tables IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter route tables by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which route tables belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The route table name.
+     */
+    routeTableName?: pulumi.Input<string>;
+    /**
+     * The router ID.
+     */
+    routerId?: pulumi.Input<string>;
+    /**
+     * The route type of route table. Valid values: `VRouter` and `VBR`.
+     */
+    routerType?: pulumi.Input<string>;
+    /**
+     * The status of resource. Valid values: `Available` and `Pending`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Vpc id of the route table.
+     */
+    vpcId?: pulumi.Input<string>;
 }

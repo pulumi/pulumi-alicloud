@@ -316,286 +316,286 @@ export class EdgeKubernetes extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeKubernetes resources.
  */
 export interface EdgeKubernetesState {
-    readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
     /**
      * The ID of availability zone.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
      */
-    readonly certificateAuthority?: pulumi.Input<inputs.cs.EdgeKubernetesCertificateAuthority>;
+    certificateAuthority?: pulumi.Input<inputs.cs.EdgeKubernetesCertificateAuthority>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
-    readonly clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string>;
     /**
      * The path of client key, like `~/.kube/client-key.pem`.
      */
-    readonly clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string>;
     /**
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
-    readonly clusterCaCert?: pulumi.Input<string>;
-    readonly connections?: pulumi.Input<inputs.cs.EdgeKubernetesConnections>;
+    clusterCaCert?: pulumi.Input<string>;
+    connections?: pulumi.Input<inputs.cs.EdgeKubernetesConnections>;
     /**
      * Whether to enable cluster deletion protection.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
      */
-    readonly forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean>;
     /**
      * Install cloud monitor agent on ECS. default: `true`.
      */
-    readonly installCloudMonitor?: pulumi.Input<boolean>;
+    installCloudMonitor?: pulumi.Input<boolean>;
     /**
      * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
-    readonly isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
+    isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    readonly keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
     /**
      * The path of kube config, like `~/.kube/config`.
      */
-    readonly kubeConfig?: pulumi.Input<string>;
-    readonly logConfig?: pulumi.Input<inputs.cs.EdgeKubernetesLogConfig>;
+    kubeConfig?: pulumi.Input<string>;
+    logConfig?: pulumi.Input<inputs.cs.EdgeKubernetesLogConfig>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly namePrefix?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string>;
     /**
      * The ID of nat gateway used to launch kubernetes cluster.
      */
-    readonly natGatewayId?: pulumi.Input<string>;
+    natGatewayId?: pulumi.Input<string>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
      */
-    readonly newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean>;
     /**
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
-    readonly nodeCidrMask?: pulumi.Input<number>;
+    nodeCidrMask?: pulumi.Input<number>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
-    readonly podCidr?: pulumi.Input<string>;
+    podCidr?: pulumi.Input<string>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
-    readonly proxyMode?: pulumi.Input<string>;
-    readonly rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    proxyMode?: pulumi.Input<string>;
+    rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGroupId?: pulumi.Input<string>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
-    readonly serviceCidr?: pulumi.Input<string>;
-    readonly slbInternet?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string>;
+    slbInternet?: pulumi.Input<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      */
-    readonly slbInternetEnabled?: pulumi.Input<boolean>;
+    slbInternetEnabled?: pulumi.Input<boolean>;
     /**
      * The ID of private load balancer where the current cluster master node is located.
      */
-    readonly slbIntranet?: pulumi.Input<string>;
+    slbIntranet?: pulumi.Input<string>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work node.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
-    readonly userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * The ID of VPC where the current cluster is located.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      */
-    readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
+    workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
     /**
      * The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
      */
-    readonly workerDiskCategory?: pulumi.Input<string>;
+    workerDiskCategory?: pulumi.Input<string>;
     /**
      * Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      */
-    readonly workerDiskPerformanceLevel?: pulumi.Input<string>;
+    workerDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */
-    readonly workerDiskSize?: pulumi.Input<number>;
+    workerDiskSize?: pulumi.Input<number>;
     /**
      * Worker node system disk auto snapshot policy.
      */
-    readonly workerDiskSnapshotPolicyId?: pulumi.Input<string>;
-    readonly workerInstanceChargeType?: pulumi.Input<string>;
+    workerDiskSnapshotPolicyId?: pulumi.Input<string>;
+    workerInstanceChargeType?: pulumi.Input<string>;
     /**
      * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
      */
-    readonly workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of cluster worker nodes.
      */
-    readonly workerNodes?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerNode>[]>;
+    workerNodes?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerNode>[]>;
     /**
      * The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
      */
-    readonly workerNumber?: pulumi.Input<number>;
-    readonly workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    workerNumber?: pulumi.Input<number>;
+    workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a EdgeKubernetes resource.
  */
 export interface EdgeKubernetesArgs {
-    readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
     /**
      * The ID of availability zone.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
-    readonly clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string>;
     /**
      * The path of client key, like `~/.kube/client-key.pem`.
      */
-    readonly clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string>;
     /**
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
-    readonly clusterCaCert?: pulumi.Input<string>;
+    clusterCaCert?: pulumi.Input<string>;
     /**
      * Whether to enable cluster deletion protection.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
      */
-    readonly forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean>;
     /**
      * Install cloud monitor agent on ECS. default: `true`.
      */
-    readonly installCloudMonitor?: pulumi.Input<boolean>;
+    installCloudMonitor?: pulumi.Input<boolean>;
     /**
      * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
-    readonly isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
+    isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    readonly keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
     /**
      * The path of kube config, like `~/.kube/config`.
      */
-    readonly kubeConfig?: pulumi.Input<string>;
-    readonly logConfig?: pulumi.Input<inputs.cs.EdgeKubernetesLogConfig>;
+    kubeConfig?: pulumi.Input<string>;
+    logConfig?: pulumi.Input<inputs.cs.EdgeKubernetesLogConfig>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly namePrefix?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
      */
-    readonly newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean>;
     /**
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
-    readonly nodeCidrMask?: pulumi.Input<number>;
+    nodeCidrMask?: pulumi.Input<number>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
-    readonly podCidr?: pulumi.Input<string>;
+    podCidr?: pulumi.Input<string>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
-    readonly proxyMode?: pulumi.Input<string>;
-    readonly rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    proxyMode?: pulumi.Input<string>;
+    rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGroupId?: pulumi.Input<string>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
-    readonly serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      */
-    readonly slbInternetEnabled?: pulumi.Input<boolean>;
+    slbInternetEnabled?: pulumi.Input<boolean>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work node.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
-    readonly userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      */
-    readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
+    workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
     /**
      * The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
      */
-    readonly workerDiskCategory?: pulumi.Input<string>;
+    workerDiskCategory?: pulumi.Input<string>;
     /**
      * Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      */
-    readonly workerDiskPerformanceLevel?: pulumi.Input<string>;
+    workerDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */
-    readonly workerDiskSize?: pulumi.Input<number>;
+    workerDiskSize?: pulumi.Input<number>;
     /**
      * Worker node system disk auto snapshot policy.
      */
-    readonly workerDiskSnapshotPolicyId?: pulumi.Input<string>;
-    readonly workerInstanceChargeType?: pulumi.Input<string>;
+    workerDiskSnapshotPolicyId?: pulumi.Input<string>;
+    workerInstanceChargeType?: pulumi.Input<string>;
     /**
      * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
      */
-    readonly workerInstanceTypes: pulumi.Input<pulumi.Input<string>[]>;
+    workerInstanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
      */
-    readonly workerNumber: pulumi.Input<number>;
-    readonly workerVswitchIds: pulumi.Input<pulumi.Input<string>[]>;
+    workerNumber: pulumi.Input<number>;
+    workerVswitchIds: pulumi.Input<pulumi.Input<string>[]>;
 }

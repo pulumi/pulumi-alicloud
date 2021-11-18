@@ -129,23 +129,23 @@ export interface VpcEndpointServiceConnectionState {
     /**
      * The Bandwidth.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the Vpc Endpoint.
      */
-    readonly endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string>;
     /**
      * The ID of the Vpc Endpoint Service.
      */
-    readonly serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * The status of Vpc Endpoint Connection.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -155,17 +155,17 @@ export interface VpcEndpointServiceConnectionArgs {
     /**
      * The Bandwidth.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the Vpc Endpoint.
      */
-    readonly endpointId: pulumi.Input<string>;
+    endpointId: pulumi.Input<string>;
     /**
      * The ID of the Vpc Endpoint Service.
      */
-    readonly serviceId: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
 }

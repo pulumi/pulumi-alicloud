@@ -122,15 +122,15 @@ export interface SnatEntryState {
     /**
      * The destination CIDR block.
      */
-    readonly cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string>;
     /**
      * The ID of the SAG instance.
      */
-    readonly sagId?: pulumi.Input<string>;
+    sagId?: pulumi.Input<string>;
     /**
      * The public IP address.
      */
-    readonly snatIp?: pulumi.Input<string>;
+    snatIp?: pulumi.Input<string>;
 }
 
 /**
@@ -140,13 +140,13 @@ export interface SnatEntryArgs {
     /**
      * The destination CIDR block.
      */
-    readonly cidrBlock: pulumi.Input<string>;
+    cidrBlock: pulumi.Input<string>;
     /**
      * The ID of the SAG instance.
      */
-    readonly sagId: pulumi.Input<string>;
+    sagId: pulumi.Input<string>;
     /**
      * The public IP address.
      */
-    readonly snatIp: pulumi.Input<string>;
+    snatIp: pulumi.Input<string>;
 }

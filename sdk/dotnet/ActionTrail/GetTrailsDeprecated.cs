@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
@@ -14,6 +15,9 @@ namespace Pulumi.AliCloud.ActionTrail
     {
         public static Task<GetTrailsDeprecatedResult> InvokeAsync(GetTrailsDeprecatedArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTrailsDeprecatedResult>("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args ?? new GetTrailsDeprecatedArgs(), options.WithVersion());
+
+        public static Output<GetTrailsDeprecatedResult> Invoke(GetTrailsDeprecatedInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTrailsDeprecatedResult>("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args ?? new GetTrailsDeprecatedInvokeArgs(), options.WithVersion());
     }
 
 
@@ -46,6 +50,39 @@ namespace Pulumi.AliCloud.ActionTrail
         public string? Status { get; set; }
 
         public GetTrailsDeprecatedArgs()
+        {
+        }
+    }
+
+    public sealed class GetTrailsDeprecatedInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("includeOrganizationTrail")]
+        public Input<bool>? IncludeOrganizationTrail { get; set; }
+
+        [Input("includeShadowTrails")]
+        public Input<bool>? IncludeShadowTrails { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results action trail name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetTrailsDeprecatedInvokeArgs()
         {
         }
     }

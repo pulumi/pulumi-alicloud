@@ -4,6 +4,9 @@
 package marketplace
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,113 @@ type GetProductsResult struct {
 	// The supplier id of the product.
 	SupplierId          *string `pulumi:"supplierId"`
 	SupplierNameKeyword *string `pulumi:"supplierNameKeyword"`
+}
+
+func GetProductsOutput(ctx *pulumi.Context, args GetProductsOutputArgs, opts ...pulumi.InvokeOption) GetProductsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetProductsResult, error) {
+			args := v.(GetProductsArgs)
+			r, err := GetProducts(ctx, &args, opts...)
+			return *r, err
+		}).(GetProductsResultOutput)
+}
+
+// A collection of arguments for invoking getProducts.
+type GetProductsOutputArgs struct {
+	// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+	CategoryId pulumi.StringPtrInput `pulumi:"categoryId"`
+	// A list of product code.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to apply to the product name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
+	ProductType pulumi.StringPtrInput `pulumi:"productType"`
+	// Search term in this query.
+	SearchTerm pulumi.StringPtrInput `pulumi:"searchTerm"`
+	// This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
+	Sort pulumi.StringPtrInput `pulumi:"sort"`
+	// The suggested price of the product.
+	SuggestedPrice pulumi.Float64PtrInput `pulumi:"suggestedPrice"`
+	// The supplier id of the product.
+	SupplierId pulumi.StringPtrInput `pulumi:"supplierId"`
+	// The supplier name keyword of the product.
+	SupplierNameKeyword pulumi.StringPtrInput `pulumi:"supplierNameKeyword"`
+}
+
+func (GetProductsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProducts.
+type GetProductsResultOutput struct{ *pulumi.OutputState }
+
+func (GetProductsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductsResult)(nil)).Elem()
+}
+
+func (o GetProductsResultOutput) ToGetProductsResultOutput() GetProductsResultOutput {
+	return o
+}
+
+func (o GetProductsResultOutput) ToGetProductsResultOutputWithContext(ctx context.Context) GetProductsResultOutput {
+	return o
+}
+
+// The category id of the product.
+func (o GetProductsResultOutput) CategoryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProductsResult) *string { return v.CategoryId }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetProductsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of product codes.
+func (o GetProductsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProductsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetProductsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProductsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProductsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProductsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProductsResultOutput) ProductType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProductsResult) *string { return v.ProductType }).(pulumi.StringPtrOutput)
+}
+
+// A list of products. Each element contains the following attributes:
+func (o GetProductsResultOutput) Products() GetProductsProductArrayOutput {
+	return o.ApplyT(func(v GetProductsResult) []GetProductsProduct { return v.Products }).(GetProductsProductArrayOutput)
+}
+
+func (o GetProductsResultOutput) SearchTerm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProductsResult) *string { return v.SearchTerm }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProductsResultOutput) Sort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProductsResult) *string { return v.Sort }).(pulumi.StringPtrOutput)
+}
+
+// The suggested price of the product.
+func (o GetProductsResultOutput) SuggestedPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetProductsResult) *float64 { return v.SuggestedPrice }).(pulumi.Float64PtrOutput)
+}
+
+// The supplier id of the product.
+func (o GetProductsResultOutput) SupplierId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProductsResult) *string { return v.SupplierId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProductsResultOutput) SupplierNameKeyword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProductsResult) *string { return v.SupplierNameKeyword }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetProductsResultOutput{})
 }

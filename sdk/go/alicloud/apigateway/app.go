@@ -163,7 +163,7 @@ type AppArrayInput interface {
 type AppArray []AppInput
 
 func (AppArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*App)(nil))
+	return reflect.TypeOf((*[]*App)(nil)).Elem()
 }
 
 func (i AppArray) ToAppArrayOutput() AppArrayOutput {
@@ -188,7 +188,7 @@ type AppMapInput interface {
 type AppMap map[string]AppInput
 
 func (AppMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*App)(nil))
+	return reflect.TypeOf((*map[string]*App)(nil)).Elem()
 }
 
 func (i AppMap) ToAppMapOutput() AppMapOutput {
@@ -199,9 +199,7 @@ func (i AppMap) ToAppMapOutputWithContext(ctx context.Context) AppMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppMapOutput)
 }
 
-type AppOutput struct {
-	*pulumi.OutputState
-}
+type AppOutput struct{ *pulumi.OutputState }
 
 func (AppOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*App)(nil))
@@ -220,14 +218,12 @@ func (o AppOutput) ToAppPtrOutput() AppPtrOutput {
 }
 
 func (o AppOutput) ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput {
-	return o.ApplyT(func(v App) *App {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v App) *App {
 		return &v
 	}).(AppPtrOutput)
 }
 
-type AppPtrOutput struct {
-	*pulumi.OutputState
-}
+type AppPtrOutput struct{ *pulumi.OutputState }
 
 func (AppPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**App)(nil))
@@ -239,6 +235,16 @@ func (o AppPtrOutput) ToAppPtrOutput() AppPtrOutput {
 
 func (o AppPtrOutput) ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput {
 	return o
+}
+
+func (o AppPtrOutput) Elem() AppOutput {
+	return o.ApplyT(func(v *App) App {
+		if v != nil {
+			return *v
+		}
+		var ret App
+		return ret
+	}).(AppOutput)
 }
 
 type AppArrayOutput struct{ *pulumi.OutputState }
@@ -282,6 +288,10 @@ func (o AppMapOutput) MapIndex(k pulumi.StringInput) AppOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppInput)(nil)).Elem(), &App{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppPtrInput)(nil)).Elem(), &App{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppArrayInput)(nil)).Elem(), AppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppMapInput)(nil)).Elem(), AppMap{})
 	pulumi.RegisterOutputType(AppOutput{})
 	pulumi.RegisterOutputType(AppPtrOutput{})
 	pulumi.RegisterOutputType(AppArrayOutput{})

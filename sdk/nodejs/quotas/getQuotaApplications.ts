@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     productCode: "ess",
  *     ids: ["4621F886-81E9-xxxx-xxxx"],
  * });
- * export const firstQuotasQuotaApplicationId = example.then(example => example.applications[0].id);
+ * export const firstQuotasQuotaApplicationId = example.then(example => example.applications?[0]?.id);
  * ```
  */
 export function getQuotaApplications(args: GetQuotaApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaApplicationsResult> {
@@ -53,33 +53,33 @@ export interface GetQuotaApplicationsArgs {
     /**
      * The quota dimensions.
      */
-    readonly dimensions?: inputs.quotas.GetQuotaApplicationsDimension[];
+    dimensions?: inputs.quotas.GetQuotaApplicationsDimension[];
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Application Info IDs.
      */
-    readonly ids?: string[];
-    readonly keyWord?: string;
-    readonly outputFile?: string;
+    ids?: string[];
+    keyWord?: string;
+    outputFile?: string;
     /**
      * The product code.
      */
-    readonly productCode: string;
+    productCode: string;
     /**
      * The ID of quota action..
      */
-    readonly quotaActionCode?: string;
+    quotaActionCode?: string;
     /**
      * The quota category. Valid values: `CommonQuota`, `FlowControl`.
      */
-    readonly quotaCategory?: string;
+    quotaCategory?: string;
     /**
      * The status of the quota application.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -100,4 +100,44 @@ export interface GetQuotaApplicationsResult {
     readonly quotaActionCode?: string;
     readonly quotaCategory?: string;
     readonly status?: string;
+}
+
+export function getQuotaApplicationsOutput(args: GetQuotaApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaApplicationsResult> {
+    return pulumi.output(args).apply(a => getQuotaApplications(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getQuotaApplications.
+ */
+export interface GetQuotaApplicationsOutputArgs {
+    /**
+     * The quota dimensions.
+     */
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotaApplicationsDimensionArgs>[]>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Application Info IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    keyWord?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The product code.
+     */
+    productCode: pulumi.Input<string>;
+    /**
+     * The ID of quota action..
+     */
+    quotaActionCode?: pulumi.Input<string>;
+    /**
+     * The quota category. Valid values: `CommonQuota`, `FlowControl`.
+     */
+    quotaCategory?: pulumi.Input<string>;
+    /**
+     * The status of the quota application.
+     */
+    status?: pulumi.Input<string>;
 }

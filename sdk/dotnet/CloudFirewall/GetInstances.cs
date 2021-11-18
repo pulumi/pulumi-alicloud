@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudFirewall
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     public MyStack()
         ///     {
         ///         var ids = Output.Create(AliCloud.CloudFirewall.GetInstances.InvokeAsync());
-        ///         this.CloudFirewallInstanceId1 = ids.Apply(ids =&gt; ids.Instances[0].Id);
+        ///         this.CloudFirewallInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
         ///     }
         /// 
         ///     [Output("cloudFirewallInstanceId1")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:cloudfirewall/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.CloudFirewall.GetInstances.InvokeAsync());
+        ///         this.CloudFirewallInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("cloudFirewallInstanceId1")]
+        ///     public Output&lt;string&gt; CloudFirewallInstanceId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:cloudfirewall/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -52,6 +86,16 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? OutputFile { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

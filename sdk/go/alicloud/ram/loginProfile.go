@@ -216,7 +216,7 @@ type LoginProfileArrayInput interface {
 type LoginProfileArray []LoginProfileInput
 
 func (LoginProfileArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LoginProfile)(nil))
+	return reflect.TypeOf((*[]*LoginProfile)(nil)).Elem()
 }
 
 func (i LoginProfileArray) ToLoginProfileArrayOutput() LoginProfileArrayOutput {
@@ -241,7 +241,7 @@ type LoginProfileMapInput interface {
 type LoginProfileMap map[string]LoginProfileInput
 
 func (LoginProfileMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LoginProfile)(nil))
+	return reflect.TypeOf((*map[string]*LoginProfile)(nil)).Elem()
 }
 
 func (i LoginProfileMap) ToLoginProfileMapOutput() LoginProfileMapOutput {
@@ -252,9 +252,7 @@ func (i LoginProfileMap) ToLoginProfileMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(LoginProfileMapOutput)
 }
 
-type LoginProfileOutput struct {
-	*pulumi.OutputState
-}
+type LoginProfileOutput struct{ *pulumi.OutputState }
 
 func (LoginProfileOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoginProfile)(nil))
@@ -273,14 +271,12 @@ func (o LoginProfileOutput) ToLoginProfilePtrOutput() LoginProfilePtrOutput {
 }
 
 func (o LoginProfileOutput) ToLoginProfilePtrOutputWithContext(ctx context.Context) LoginProfilePtrOutput {
-	return o.ApplyT(func(v LoginProfile) *LoginProfile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoginProfile) *LoginProfile {
 		return &v
 	}).(LoginProfilePtrOutput)
 }
 
-type LoginProfilePtrOutput struct {
-	*pulumi.OutputState
-}
+type LoginProfilePtrOutput struct{ *pulumi.OutputState }
 
 func (LoginProfilePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LoginProfile)(nil))
@@ -292,6 +288,16 @@ func (o LoginProfilePtrOutput) ToLoginProfilePtrOutput() LoginProfilePtrOutput {
 
 func (o LoginProfilePtrOutput) ToLoginProfilePtrOutputWithContext(ctx context.Context) LoginProfilePtrOutput {
 	return o
+}
+
+func (o LoginProfilePtrOutput) Elem() LoginProfileOutput {
+	return o.ApplyT(func(v *LoginProfile) LoginProfile {
+		if v != nil {
+			return *v
+		}
+		var ret LoginProfile
+		return ret
+	}).(LoginProfileOutput)
 }
 
 type LoginProfileArrayOutput struct{ *pulumi.OutputState }
@@ -335,6 +341,10 @@ func (o LoginProfileMapOutput) MapIndex(k pulumi.StringInput) LoginProfileOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LoginProfileInput)(nil)).Elem(), &LoginProfile{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoginProfilePtrInput)(nil)).Elem(), &LoginProfile{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoginProfileArrayInput)(nil)).Elem(), LoginProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoginProfileMapInput)(nil)).Elem(), LoginProfileMap{})
 	pulumi.RegisterOutputType(LoginProfileOutput{})
 	pulumi.RegisterOutputType(LoginProfilePtrOutput{})
 	pulumi.RegisterOutputType(LoginProfileArrayOutput{})

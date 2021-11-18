@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ExpressConnect
 {
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         public static Task<GetPhysicalConnectionServiceResult> InvokeAsync(GetPhysicalConnectionServiceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Using this data source can enable outbound traffic for an Express Connect circuit automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var open = Output.Create(AliCloud.ExpressConnect.GetPhysicalConnectionService.InvokeAsync(new AliCloud.ExpressConnect.GetPhysicalConnectionServiceArgs
+        ///         {
+        ///             Enable = "On",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPhysicalConnectionServiceResult> Invoke(GetPhysicalConnectionServiceInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -55,6 +89,19 @@ namespace Pulumi.AliCloud.ExpressConnect
         public string? Enable { get; set; }
 
         public GetPhysicalConnectionServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetPhysicalConnectionServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+        /// </summary>
+        [Input("enable")]
+        public Input<string>? Enable { get; set; }
+
+        public GetPhysicalConnectionServiceInvokeArgs()
         {
         }
     }

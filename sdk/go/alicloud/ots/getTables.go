@@ -4,6 +4,9 @@
 package ots
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,80 @@ type GetTablesResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of tables. Each element contains the following attributes:
 	Tables []GetTablesTable `pulumi:"tables"`
+}
+
+func GetTablesOutput(ctx *pulumi.Context, args GetTablesOutputArgs, opts ...pulumi.InvokeOption) GetTablesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTablesResult, error) {
+			args := v.(GetTablesArgs)
+			r, err := GetTables(ctx, &args, opts...)
+			return *r, err
+		}).(GetTablesResultOutput)
+}
+
+// A collection of arguments for invoking getTables.
+type GetTablesOutputArgs struct {
+	// A list of table IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The name of OTS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// A regex string to filter results by table name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetTablesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTables.
+type GetTablesResultOutput struct{ *pulumi.OutputState }
+
+func (GetTablesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesResult)(nil)).Elem()
+}
+
+func (o GetTablesResultOutput) ToGetTablesResultOutput() GetTablesResultOutput {
+	return o
+}
+
+func (o GetTablesResultOutput) ToGetTablesResultOutputWithContext(ctx context.Context) GetTablesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTablesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of table IDs.
+func (o GetTablesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTablesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// The OTS instance name.
+func (o GetTablesResultOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesResult) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+func (o GetTablesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTablesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of table names.
+func (o GetTablesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTablesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTablesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTablesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of tables. Each element contains the following attributes:
+func (o GetTablesResultOutput) Tables() GetTablesTableArrayOutput {
+	return o.ApplyT(func(v GetTablesResult) []GetTablesTable { return v.Tables }).(GetTablesTableArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTablesResultOutput{})
 }

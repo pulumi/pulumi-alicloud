@@ -215,7 +215,7 @@ type TopicSubscriptionArrayInput interface {
 type TopicSubscriptionArray []TopicSubscriptionInput
 
 func (TopicSubscriptionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TopicSubscription)(nil))
+	return reflect.TypeOf((*[]*TopicSubscription)(nil)).Elem()
 }
 
 func (i TopicSubscriptionArray) ToTopicSubscriptionArrayOutput() TopicSubscriptionArrayOutput {
@@ -240,7 +240,7 @@ type TopicSubscriptionMapInput interface {
 type TopicSubscriptionMap map[string]TopicSubscriptionInput
 
 func (TopicSubscriptionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TopicSubscription)(nil))
+	return reflect.TypeOf((*map[string]*TopicSubscription)(nil)).Elem()
 }
 
 func (i TopicSubscriptionMap) ToTopicSubscriptionMapOutput() TopicSubscriptionMapOutput {
@@ -251,9 +251,7 @@ func (i TopicSubscriptionMap) ToTopicSubscriptionMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TopicSubscriptionMapOutput)
 }
 
-type TopicSubscriptionOutput struct {
-	*pulumi.OutputState
-}
+type TopicSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (TopicSubscriptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TopicSubscription)(nil))
@@ -272,14 +270,12 @@ func (o TopicSubscriptionOutput) ToTopicSubscriptionPtrOutput() TopicSubscriptio
 }
 
 func (o TopicSubscriptionOutput) ToTopicSubscriptionPtrOutputWithContext(ctx context.Context) TopicSubscriptionPtrOutput {
-	return o.ApplyT(func(v TopicSubscription) *TopicSubscription {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicSubscription) *TopicSubscription {
 		return &v
 	}).(TopicSubscriptionPtrOutput)
 }
 
-type TopicSubscriptionPtrOutput struct {
-	*pulumi.OutputState
-}
+type TopicSubscriptionPtrOutput struct{ *pulumi.OutputState }
 
 func (TopicSubscriptionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TopicSubscription)(nil))
@@ -291,6 +287,16 @@ func (o TopicSubscriptionPtrOutput) ToTopicSubscriptionPtrOutput() TopicSubscrip
 
 func (o TopicSubscriptionPtrOutput) ToTopicSubscriptionPtrOutputWithContext(ctx context.Context) TopicSubscriptionPtrOutput {
 	return o
+}
+
+func (o TopicSubscriptionPtrOutput) Elem() TopicSubscriptionOutput {
+	return o.ApplyT(func(v *TopicSubscription) TopicSubscription {
+		if v != nil {
+			return *v
+		}
+		var ret TopicSubscription
+		return ret
+	}).(TopicSubscriptionOutput)
 }
 
 type TopicSubscriptionArrayOutput struct{ *pulumi.OutputState }
@@ -334,6 +340,10 @@ func (o TopicSubscriptionMapOutput) MapIndex(k pulumi.StringInput) TopicSubscrip
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicSubscriptionInput)(nil)).Elem(), &TopicSubscription{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicSubscriptionPtrInput)(nil)).Elem(), &TopicSubscription{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicSubscriptionArrayInput)(nil)).Elem(), TopicSubscriptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicSubscriptionMapInput)(nil)).Elem(), TopicSubscriptionMap{})
 	pulumi.RegisterOutputType(TopicSubscriptionOutput{})
 	pulumi.RegisterOutputType(TopicSubscriptionPtrOutput{})
 	pulumi.RegisterOutputType(TopicSubscriptionArrayOutput{})

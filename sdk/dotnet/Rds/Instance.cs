@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Rds
     ///         {
     ///             VpcId = exampleNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = exampleZones.Apply(exampleZones =&gt; exampleZones.Zones[0].Id),
+    ///             ZoneId = exampleZones.Apply(exampleZones =&gt; exampleZones.Zones?[0]?.Id),
     ///         });
     ///         var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new AliCloud.Rds.InstanceArgs
     ///         {

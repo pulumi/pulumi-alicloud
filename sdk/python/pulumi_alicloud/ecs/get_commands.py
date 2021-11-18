@@ -13,6 +13,7 @@ __all__ = [
     'GetCommandsResult',
     'AwaitableGetCommandsResult',
     'get_commands',
+    'get_commands_output',
 ]
 
 @pulumi.output_type
@@ -196,3 +197,43 @@ def get_commands(command_provider: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_commands)
+def get_commands_output(command_provider: Optional[pulumi.Input[Optional[str]]] = None,
+                        content_encoding: Optional[pulumi.Input[Optional[str]]] = None,
+                        description: Optional[pulumi.Input[Optional[str]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name: Optional[pulumi.Input[Optional[str]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        type: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCommandsResult]:
+    """
+    This data source provides the Ecs Commands of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.116.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ecs.get_commands(ids=["E2RY53-xxxx"],
+        name_regex="tf-testAcc")
+    pulumi.export("firstEcsCommandId", example.commands[0].id)
+    ```
+
+
+    :param str command_provider: Public order provider.
+    :param str content_encoding: The Base64-encoded content of the command.
+    :param str description: The description of command.
+    :param Sequence[str] ids: A list of Command IDs.
+    :param str name: The name of the command
+    :param str name_regex: A regex string to filter results by Command name.
+    :param str type: The command type.
+    """
+    ...

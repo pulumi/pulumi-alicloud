@@ -198,79 +198,79 @@ export interface RouterInterfaceState {
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
-    readonly accessPointId?: pulumi.Input<string>;
+    accessPointId?: pulumi.Input<string>;
     /**
      * Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      */
-    readonly healthCheckSourceIp?: pulumi.Input<string>;
+    healthCheckSourceIp?: pulumi.Input<string>;
     /**
      * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      */
-    readonly healthCheckTargetIp?: pulumi.Input<string>;
+    healthCheckTargetIp?: pulumi.Input<string>;
     /**
      * The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      * If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0.
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
-    readonly oppositeAccessPointId?: pulumi.Input<string>;
+    oppositeAccessPointId?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      *
      * @deprecated Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      */
-    readonly oppositeInterfaceId?: pulumi.Input<string>;
+    oppositeInterfaceId?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      *
      * @deprecated Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
      */
-    readonly oppositeInterfaceOwnerId?: pulumi.Input<string>;
+    oppositeInterfaceOwnerId?: pulumi.Input<string>;
     /**
      * The Region of peer side.
      */
-    readonly oppositeRegion?: pulumi.Input<string>;
+    oppositeRegion?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      *
      * @deprecated Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      */
-    readonly oppositeRouterId?: pulumi.Input<string>;
+    oppositeRouterId?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      *
      * @deprecated Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      */
-    readonly oppositeRouterType?: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
+    oppositeRouterType?: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * The Router ID.
      */
-    readonly routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string>;
     /**
      * Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
      */
-    readonly routerType?: pulumi.Input<string>;
+    routerType?: pulumi.Input<string>;
     /**
      * Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
      */
-    readonly specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string>;
 }
 
 /**
@@ -280,49 +280,49 @@ export interface RouterInterfaceArgs {
     /**
      * Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      */
-    readonly healthCheckSourceIp?: pulumi.Input<string>;
+    healthCheckSourceIp?: pulumi.Input<string>;
     /**
      * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      */
-    readonly healthCheckTargetIp?: pulumi.Input<string>;
+    healthCheckTargetIp?: pulumi.Input<string>;
     /**
      * The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      * If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0.
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
-    readonly oppositeAccessPointId?: pulumi.Input<string>;
+    oppositeAccessPointId?: pulumi.Input<string>;
     /**
      * The Region of peer side.
      */
-    readonly oppositeRegion: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
+    oppositeRegion: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
     /**
      * The Router ID.
      */
-    readonly routerId: pulumi.Input<string>;
+    routerId: pulumi.Input<string>;
     /**
      * Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
      */
-    readonly routerType: pulumi.Input<string>;
+    routerType: pulumi.Input<string>;
     /**
      * Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
      */
-    readonly specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string>;
 }

@@ -41,41 +41,41 @@ export interface GetDomainsArgs {
     /**
      * The end time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
      */
-    readonly changeEndTime?: string;
+    changeEndTime?: string;
     /**
      * The start time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
      */
-    readonly changeStartTime?: string;
+    changeStartTime?: string;
     /**
      * Specifies whether to display the domains in the checking, check_failed, or configureFailed status. Valid values: `true` or `false`.
      */
-    readonly checkDomainShow?: boolean;
+    checkDomainShow?: boolean;
     /**
      * The search method. Default value: `fuzzyMatch`. Valid values: `fuzzyMatch`, `preMatch`, `sufMatch`, `fullMatch`.
      */
-    readonly domainSearchType?: string;
+    domainSearchType?: string;
     /**
      * Default to `false`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list ids of DCDN Domain.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by the DCDN Domain.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: string;
-    readonly securityToken?: string;
+    resourceGroupId?: string;
+    securityToken?: string;
     /**
      * The status of DCDN Domain.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -114,4 +114,52 @@ export interface GetDomainsResult {
      * The status of DCDN Domain. Valid values: `online`, `offline`, `checkFailed`, `checking`, `configureFailed`, `configuring`.
      */
     readonly status?: string;
+}
+
+export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
+    return pulumi.output(args).apply(a => getDomains(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomains.
+ */
+export interface GetDomainsOutputArgs {
+    /**
+     * The end time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+     */
+    changeEndTime?: pulumi.Input<string>;
+    /**
+     * The start time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+     */
+    changeStartTime?: pulumi.Input<string>;
+    /**
+     * Specifies whether to display the domains in the checking, check_failed, or configureFailed status. Valid values: `true` or `false`.
+     */
+    checkDomainShow?: pulumi.Input<boolean>;
+    /**
+     * The search method. Default value: `fuzzyMatch`. Valid values: `fuzzyMatch`, `preMatch`, `sufMatch`, `fullMatch`.
+     */
+    domainSearchType?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list ids of DCDN Domain.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by the DCDN Domain.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    securityToken?: pulumi.Input<string>;
+    /**
+     * The status of DCDN Domain.
+     */
+    status?: pulumi.Input<string>;
 }

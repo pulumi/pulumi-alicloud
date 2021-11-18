@@ -13,6 +13,7 @@ __all__ = [
     'GetImagesResult',
     'AwaitableGetImagesResult',
     'get_images',
+    'get_images_output',
 ]
 
 @pulumi.output_type
@@ -337,3 +338,70 @@ def get_images(action_type: Optional[str] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         usage=__ret__.usage)
+
+
+@_utilities.lift_output_func(get_images)
+def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
+                      architecture: Optional[pulumi.Input[Optional[str]]] = None,
+                      dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
+                      image_family: Optional[pulumi.Input[Optional[str]]] = None,
+                      instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                      is_support_cloud_init: Optional[pulumi.Input[Optional[bool]]] = None,
+                      is_support_io_optimized: Optional[pulumi.Input[Optional[bool]]] = None,
+                      most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      os_type: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      owners: Optional[pulumi.Input[Optional[str]]] = None,
+                      resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      status: Optional[pulumi.Input[Optional[str]]] = None,
+                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                      usage: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
+    """
+    This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
+    other public images and the ones available on the image market.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    images_ds = alicloud.ecs.get_images(name_regex="^centos_6",
+        owners="system")
+    pulumi.export("firstImageId", images_ds.images[0].id)
+    ```
+
+
+    :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+           * `CreateEcs`: instance creation.
+           * `ChangeOS`: replacement of the system disk or operating system.
+    :param str architecture: The image architecture. Valid values: `i386` and `x86_64`.
+    :param bool dry_run: Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
+           * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
+           * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+    :param str image_family: The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
+    :param str instance_type: The instance type for which the image can be used.
+    :param bool is_support_cloud_init: Specifies whether the image supports cloud-init.
+    :param bool is_support_io_optimized: Specifies whether the image can be used on I/O optimized instances.
+    :param bool most_recent: If more than one result are returned, select the most recent one.
+    :param str name_regex: A regex string to filter resulting images by name.
+    :param str os_type: The operating system type of the image. Valid values: `windows` and `linux`.
+    :param str owners: Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
+    :param str resource_group_id: The ID of the resource group to which the custom image belongs.
+    :param str snapshot_id: The ID of the snapshot used to create the custom image.
+    :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+           * `Creating`: The image is being created.
+           * `Waiting`: The image is waiting to be processed.
+           * `Available`: The image is available.
+           * `UnAvailable`: The image is unavailable.
+           * `CreateFailed`: The image failed to be created.
+           * `Deprecated`: The image is discontinued.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
+           * `instance`: The image is already in use and running on an ECS instance.
+           * `none`: The image is not in use.
+    """
+    ...

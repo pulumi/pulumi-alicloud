@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             NameRegex = "^centos_6",
         ///             Owners = "system",
         ///         }));
-        ///         this.FirstImageId = imagesDs.Apply(imagesDs =&gt; imagesDs.Images[0].Id);
+        ///         this.FirstImageId = imagesDs.Apply(imagesDs =&gt; imagesDs.Images?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstImageId")]
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? new GetImagesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
+        /// other public images and the ones available on the image market. 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var imagesDs = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+        ///         {
+        ///             NameRegex = "^centos_6",
+        ///             Owners = "system",
+        ///         }));
+        ///         this.FirstImageId = imagesDs.Apply(imagesDs =&gt; imagesDs.Images?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstImageId")]
+        ///     public Output&lt;string&gt; FirstImageId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -167,6 +202,130 @@ namespace Pulumi.AliCloud.Ecs
         public string? Usage { get; set; }
 
         public GetImagesArgs()
+        {
+        }
+    }
+
+    public sealed class GetImagesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+        /// * `CreateEcs`: instance creation.
+        /// * `ChangeOS`: replacement of the system disk or operating system.
+        /// </summary>
+        [Input("actionType")]
+        public Input<string>? ActionType { get; set; }
+
+        /// <summary>
+        /// The image architecture. Valid values: `i386` and `x86_64`.
+        /// </summary>
+        [Input("architecture")]
+        public Input<string>? Architecture { get; set; }
+
+        /// <summary>
+        /// Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
+        /// * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
+        /// * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
+        /// </summary>
+        [Input("imageFamily")]
+        public Input<string>? ImageFamily { get; set; }
+
+        /// <summary>
+        /// The instance type for which the image can be used.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Specifies whether the image supports cloud-init.
+        /// </summary>
+        [Input("isSupportCloudInit")]
+        public Input<bool>? IsSupportCloudInit { get; set; }
+
+        /// <summary>
+        /// Specifies whether the image can be used on I/O optimized instances.
+        /// </summary>
+        [Input("isSupportIoOptimized")]
+        public Input<bool>? IsSupportIoOptimized { get; set; }
+
+        /// <summary>
+        /// If more than one result are returned, select the most recent one.
+        /// </summary>
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
+
+        /// <summary>
+        /// A regex string to filter resulting images by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// The operating system type of the image. Valid values: `windows` and `linux`.
+        /// </summary>
+        [Input("osType")]
+        public Input<string>? OsType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
+        /// </summary>
+        [Input("owners")]
+        public Input<string>? Owners { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group to which the custom image belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The ID of the snapshot used to create the custom image.
+        /// </summary>
+        [Input("snapshotId")]
+        public Input<string>? SnapshotId { get; set; }
+
+        /// <summary>
+        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        /// * `Creating`: The image is being created.
+        /// * `Waiting`: The image is waiting to be processed.
+        /// * `Available`: The image is available.
+        /// * `UnAvailable`: The image is unavailable.
+        /// * `CreateFailed`: The image failed to be created.
+        /// * `Deprecated`: The image is discontinued.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
+        /// * `instance`: The image is already in use and running on an ECS instance.
+        /// * `none`: The image is not in use.
+        /// </summary>
+        [Input("usage")]
+        public Input<string>? Usage { get; set; }
+
+        public GetImagesInvokeArgs()
         {
         }
     }

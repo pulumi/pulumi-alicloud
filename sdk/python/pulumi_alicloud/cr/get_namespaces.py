@@ -13,6 +13,7 @@ __all__ = [
     'GetNamespacesResult',
     'AwaitableGetNamespacesResult',
     'get_namespaces',
+    'get_namespaces_output',
 ]
 
 @pulumi.output_type
@@ -135,3 +136,29 @@ def get_namespaces(name_regex: Optional[str] = None,
         names=__ret__.names,
         namespaces=__ret__.namespaces,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_namespaces)
+def get_namespaces_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNamespacesResult]:
+    """
+    This data source provides a list Container Registry namespaces on Alibaba Cloud.
+
+    > **NOTE:** Available in v1.35.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_namespaces = alicloud.cr.get_namespaces(name_regex="my-namespace",
+        output_file="my-namespace-json")
+    pulumi.export("output", my_namespaces.namespaces)
+    ```
+
+
+    :param str name_regex: A regex string to filter results by namespace name.
+    """
+    ...

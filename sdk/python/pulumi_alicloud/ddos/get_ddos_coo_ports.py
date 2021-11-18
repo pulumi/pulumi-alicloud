@@ -13,6 +13,7 @@ __all__ = [
     'GetDdosCooPortsResult',
     'AwaitableGetDdosCooPortsResult',
     'get_ddos_coo_ports',
+    'get_ddos_coo_ports_output',
 ]
 
 @pulumi.output_type
@@ -147,3 +148,37 @@ def get_ddos_coo_ports(frontend_port: Optional[str] = None,
         instance_id=__ret__.instance_id,
         output_file=__ret__.output_file,
         ports=__ret__.ports)
+
+
+@_utilities.lift_output_func(get_ddos_coo_ports)
+def get_ddos_coo_ports_output(frontend_port: Optional[pulumi.Input[Optional[str]]] = None,
+                              frontend_protocol: Optional[pulumi.Input[Optional[str]]] = None,
+                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              instance_id: Optional[pulumi.Input[str]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDdosCooPortsResult]:
+    """
+    This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.123.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ddos.get_ddos_coo_ports(instance_id="ddoscoo-cn-6ja1rl4j****",
+        ids=["ddoscoo-cn-6ja1rl4j****:7001:tcp"])
+    pulumi.export("firstDdoscooPortId", example.ports[0].id)
+    ```
+
+
+    :param str frontend_port: The forwarding port.
+    :param str frontend_protocol: The forwarding protocol.
+    :param Sequence[str] ids: A list of Port IDs.
+    :param str instance_id: The Ddoscoo instance ID.
+    """
+    ...

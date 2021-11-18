@@ -143,27 +143,27 @@ export interface AccessGroupState {
     /**
      * A Name of one Access Group.
      */
-    readonly accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string>;
     /**
      * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
      */
-    readonly accessGroupType?: pulumi.Input<string>;
+    accessGroupType?: pulumi.Input<string>;
     /**
      * The Access Group description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
      */
-    readonly fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string>;
     /**
      * Replaced by `accessGroupName` after version 1.92.0.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Replaced by `accessGroupType` after version 1.92.0.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -173,25 +173,25 @@ export interface AccessGroupArgs {
     /**
      * A Name of one Access Group.
      */
-    readonly accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string>;
     /**
      * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
      */
-    readonly accessGroupType?: pulumi.Input<string>;
+    accessGroupType?: pulumi.Input<string>;
     /**
      * The Access Group description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
      */
-    readonly fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string>;
     /**
      * Replaced by `accessGroupName` after version 1.92.0.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Replaced by `accessGroupType` after version 1.92.0.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

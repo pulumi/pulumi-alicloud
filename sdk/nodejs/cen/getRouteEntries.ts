@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const entry = pulumi.output(alicloud.cen.getRouteEntries({
  *     instanceId: "cen-id1",
  *     routeTableId: "vtb-id1",
- * }, { async: true }));
+ * }));
  *
  * export const firstRouteEntriesRouteEntryCidrBlock = entry.entries[0].cidrBlock;
  * ```
@@ -45,16 +45,16 @@ export interface GetRouteEntriesArgs {
     /**
      * The destination CIDR block of the route entry to query.
      */
-    readonly cidrBlock?: string;
+    cidrBlock?: string;
     /**
      * ID of the CEN instance.
      */
-    readonly instanceId: string;
-    readonly outputFile?: string;
+    instanceId: string;
+    outputFile?: string;
     /**
      * ID of the route table of the VPC or VBR.
      */
-    readonly routeTableId: string;
+    routeTableId: string;
 }
 
 /**
@@ -82,4 +82,27 @@ export interface GetRouteEntriesResult {
      * ID of the route table.
      */
     readonly routeTableId: string;
+}
+
+export function getRouteEntriesOutput(args: GetRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteEntriesResult> {
+    return pulumi.output(args).apply(a => getRouteEntries(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRouteEntries.
+ */
+export interface GetRouteEntriesOutputArgs {
+    /**
+     * The destination CIDR block of the route entry to query.
+     */
+    cidrBlock?: pulumi.Input<string>;
+    /**
+     * ID of the CEN instance.
+     */
+    instanceId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * ID of the route table of the VPC or VBR.
+     */
+    routeTableId: pulumi.Input<string>;
 }

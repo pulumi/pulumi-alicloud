@@ -166,88 +166,88 @@ export class ImageCopy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ImageCopy resources.
  */
 export interface ImageCopyState {
-    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
+    deleteAutoSnapshot?: pulumi.Input<boolean>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Indicates whether to encrypt the image.
      */
-    readonly encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean>;
     /**
      * Indicates whether to force delete the custom image, Default is `false`. 
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
      */
-    readonly imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string>;
     /**
      * Key ID used to encrypt the image.
      */
-    readonly kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The source image ID.
      */
-    readonly sourceImageId?: pulumi.Input<string>;
+    sourceImageId?: pulumi.Input<string>;
     /**
      * The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
      */
-    readonly sourceRegionId?: pulumi.Input<string>;
+    sourceRegionId?: pulumi.Input<string>;
     /**
      * The tag value of an image. The value of N ranges from 1 to 20.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
  * The set of arguments for constructing a ImageCopy resource.
  */
 export interface ImageCopyArgs {
-    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
+    deleteAutoSnapshot?: pulumi.Input<boolean>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Indicates whether to encrypt the image.
      */
-    readonly encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean>;
     /**
      * Indicates whether to force delete the custom image, Default is `false`. 
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
      */
-    readonly imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string>;
     /**
      * Key ID used to encrypt the image.
      */
-    readonly kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The source image ID.
      */
-    readonly sourceImageId: pulumi.Input<string>;
+    sourceImageId: pulumi.Input<string>;
     /**
      * The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
      */
-    readonly sourceRegionId: pulumi.Input<string>;
+    sourceRegionId: pulumi.Input<string>;
     /**
      * The tag value of an image. The value of N ranges from 1 to 20.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ots
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Ots
         ///             NameRegex = "sample-table",
         ///             OutputFile = "tables.txt",
         ///         }));
-        ///         this.FirstTableId = tablesDs.Apply(tablesDs =&gt; tablesDs.Tables[0].Id);
+        ///         this.FirstTableId = tablesDs.Apply(tablesDs =&gt; tablesDs.Tables?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstTableId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Ots
         /// </summary>
         public static Task<GetTablesResult> InvokeAsync(GetTablesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("alicloud:ots/getTables:getTables", args ?? new GetTablesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the ots tables of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.40.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var tablesDs = Output.Create(AliCloud.Ots.GetTables.InvokeAsync(new AliCloud.Ots.GetTablesArgs
+        ///         {
+        ///             InstanceName = "sample-instance",
+        ///             NameRegex = "sample-table",
+        ///             OutputFile = "tables.txt",
+        ///         }));
+        ///         this.FirstTableId = tablesDs.Apply(tablesDs =&gt; tablesDs.Tables?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstTableId")]
+        ///     public Output&lt;string&gt; FirstTableId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTablesResult> Invoke(GetTablesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTablesResult>("alicloud:ots/getTables:getTables", args ?? new GetTablesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -79,6 +116,40 @@ namespace Pulumi.AliCloud.Ots
         public string? OutputFile { get; set; }
 
         public GetTablesArgs()
+        {
+        }
+    }
+
+    public sealed class GetTablesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of table IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The name of OTS instance.
+        /// </summary>
+        [Input("instanceName", required: true)]
+        public Input<string> InstanceName { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by table name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetTablesInvokeArgs()
         {
         }
     }

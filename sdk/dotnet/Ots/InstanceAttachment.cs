@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ots
     ///             VpcId = fooNetwork.Id,
     ///             VswitchName = "for-ots-instance",
     ///             CidrBlock = "172.16.1.0/24",
-    ///             ZoneId = fooZones.Apply(fooZones =&gt; fooZones.Zones[0].Id),
+    ///             ZoneId = fooZones.Apply(fooZones =&gt; fooZones.Zones?[0]?.Id),
     ///         });
     ///         var fooInstanceAttachment = new AliCloud.Ots.InstanceAttachment("fooInstanceAttachment", new AliCloud.Ots.InstanceAttachmentArgs
     ///         {

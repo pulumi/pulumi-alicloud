@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ram
 {
@@ -42,6 +43,38 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public static Task<GetAccountAliasesResult> InvokeAsync(GetAccountAliasesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasesResult>("alicloud:ram/getAccountAliases:getAccountAliases", args ?? new GetAccountAliasesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides an alias for the Alibaba Cloud account.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var aliasDs = Output.Create(AliCloud.Ram.GetAccountAliases.InvokeAsync(new AliCloud.Ram.GetAccountAliasesArgs
+        ///         {
+        ///             OutputFile = "alias.txt",
+        ///         }));
+        ///         this.AccountAlias = aliasDs.Apply(aliasDs =&gt; aliasDs.AccountAlias);
+        ///     }
+        /// 
+        ///     [Output("accountAlias")]
+        ///     public Output&lt;string&gt; AccountAlias { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAccountAliasesResult> Invoke(GetAccountAliasesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccountAliasesResult>("alicloud:ram/getAccountAliases:getAccountAliases", args ?? new GetAccountAliasesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +84,16 @@ namespace Pulumi.AliCloud.Ram
         public string? OutputFile { get; set; }
 
         public GetAccountAliasesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccountAliasesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetAccountAliasesInvokeArgs()
         {
         }
     }

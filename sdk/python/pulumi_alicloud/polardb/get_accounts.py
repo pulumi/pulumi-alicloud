@@ -13,6 +13,7 @@ __all__ = [
     'GetAccountsResult',
     'AwaitableGetAccountsResult',
     'get_accounts',
+    'get_accounts_output',
 ]
 
 @pulumi.output_type
@@ -89,7 +90,7 @@ def get_accounts(db_cluster_id: Optional[str] = None,
                  name_regex: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
     """
-    The `polardb.getAccounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
+    The `polardb.get_accounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
     Filters support regular expression for the account name, searches by clusterId.
 
     > **NOTE:** Available in v1.70.0+.
@@ -125,3 +126,32 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         id=__ret__.id,
         name_regex=__ret__.name_regex,
         names=__ret__.names)
+
+
+@_utilities.lift_output_func(get_accounts)
+def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
+    """
+    The `polardb.get_accounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
+    Filters support regular expression for the account name, searches by clusterId.
+
+    > **NOTE:** Available in v1.70.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    polardb_clusters_ds = alicloud.polardb.get_clusters(description_regex="pc-\\w+",
+        status="Running")
+    default = alicloud.polardb.get_accounts(db_cluster_id=polardb_clusters_ds.clusters[0].id)
+    pulumi.export("account", default.accounts[0].account_name)
+    ```
+
+
+    :param str db_cluster_id: The polarDB cluster ID.
+    :param str name_regex: A regex string to filter results by account name.
+    """
+    ...

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.PolarDB
 {
@@ -36,9 +37,9 @@ namespace Pulumi.AliCloud.PolarDB
         ///         }));
         ///         var @default = polardbClustersDs.Apply(polardbClustersDs =&gt; Output.Create(AliCloud.PolarDB.GetEndpoints.InvokeAsync(new AliCloud.PolarDB.GetEndpointsArgs
         ///         {
-        ///             DbClusterId = polardbClustersDs.Clusters[0].Id,
+        ///             DbClusterId = polardbClustersDs.Clusters?[0]?.Id,
         ///         })));
-        ///         this.Endpoint = @default.Apply(@default =&gt; @default.Endpoints[0].DbEndpointId);
+        ///         this.Endpoint = @default.Apply(@default =&gt; @default.Endpoints?[0]?.DbEndpointId);
         ///     }
         /// 
         ///     [Output("endpoint")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public static Task<GetEndpointsResult> InvokeAsync(GetEndpointsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? new GetEndpointsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `alicloud.polardb.getEndpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
+        /// Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
+        /// 
+        /// &gt; **NOTE:** Available in v1.68.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var polardbClustersDs = Output.Create(AliCloud.PolarDB.GetClusters.InvokeAsync(new AliCloud.PolarDB.GetClustersArgs
+        ///         {
+        ///             DescriptionRegex = "pc-\\w+",
+        ///             Status = "Running",
+        ///         }));
+        ///         var @default = polardbClustersDs.Apply(polardbClustersDs =&gt; Output.Create(AliCloud.PolarDB.GetEndpoints.InvokeAsync(new AliCloud.PolarDB.GetEndpointsArgs
+        ///         {
+        ///             DbClusterId = polardbClustersDs.Clusters?[0]?.Id,
+        ///         })));
+        ///         this.Endpoint = @default.Apply(@default =&gt; @default.Endpoints?[0]?.DbEndpointId);
+        ///     }
+        /// 
+        ///     [Output("endpoint")]
+        ///     public Output&lt;string&gt; Endpoint { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEndpointsResult> Invoke(GetEndpointsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? new GetEndpointsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -68,6 +109,25 @@ namespace Pulumi.AliCloud.PolarDB
         public string? DbEndpointId { get; set; }
 
         public GetEndpointsArgs()
+        {
+        }
+    }
+
+    public sealed class GetEndpointsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// PolarDB cluster ID.
+        /// </summary>
+        [Input("dbClusterId", required: true)]
+        public Input<string> DbClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// endpoint of the cluster.
+        /// </summary>
+        [Input("dbEndpointId")]
+        public Input<string>? DbEndpointId { get; set; }
+
+        public GetEndpointsInvokeArgs()
         {
         }
     }

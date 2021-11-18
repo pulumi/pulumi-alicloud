@@ -13,6 +13,7 @@ __all__ = [
     'GetTransitRoutersResult',
     'AwaitableGetTransitRoutersResult',
     'get_transit_routers',
+    'get_transit_routers_output',
 ]
 
 @pulumi.output_type
@@ -148,6 +149,16 @@ def get_transit_routers(cen_id: Optional[str] = None,
 
     > **NOTE:** Available in 1.126.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_routers(cen_id="cen-id1")
+    pulumi.export("firstTransitRoutersType", default.transit_routers[0].type)
+    ```
+
 
     :param str cen_id: ID of the CEN instance.
     :param str status: The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
@@ -178,3 +189,35 @@ def get_transit_routers(cen_id: Optional[str] = None,
         transit_router_id=__ret__.transit_router_id,
         transit_router_ids=__ret__.transit_router_ids,
         transit_routers=__ret__.transit_routers)
+
+
+@_utilities.lift_output_func(get_transit_routers)
+def get_transit_routers_output(cen_id: Optional[pulumi.Input[str]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               status: Optional[pulumi.Input[Optional[str]]] = None,
+                               transit_router_id: Optional[pulumi.Input[str]] = None,
+                               transit_router_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRoutersResult]:
+    """
+    This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+
+    > **NOTE:** Available in 1.126.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_routers(cen_id="cen-id1")
+    pulumi.export("firstTransitRoutersType", default.transit_routers[0].type)
+    ```
+
+
+    :param str cen_id: ID of the CEN instance.
+    :param str status: The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
+    :param str transit_router_id: ID of the transit router.
+    :param Sequence[str] transit_router_ids: A list of ID of the transit router.
+    """
+    ...

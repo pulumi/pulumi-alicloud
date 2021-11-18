@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const instanceInstances = pulumi.output(alicloud.bastionhost.getInstances({
  *     descriptionRegex: "^bastionhost",
- * }, { async: true }));
+ * }));
  *
  * export const instance = alicloud_bastionhost_instances_instance.map(v => v.id);
  * ```
@@ -49,15 +49,15 @@ export interface GetInstancesArgs {
     /**
      * A regex string to filter results by the instance description.
      */
-    readonly descriptionRegex?: string;
+    descriptionRegex?: string;
     /**
      * Matched instance IDs to filter data source result.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * File name to persist data source output.
      */
-    readonly outputFile?: string;
+    outputFile?: string;
     /**
      * A map of tags assigned to the bastionhost instance. It must be in the format:
      * ```typescript
@@ -68,10 +68,10 @@ export interface GetInstancesArgs {
      *     tags: {
      *         tagKey1: "tagValue1",
      *     },
-     * }, { async: true }));
+     * }));
      * ```
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -94,4 +94,40 @@ export interface GetInstancesResult {
      * A map of tags assigned to the bastionhost instance.
      */
     readonly tags?: {[key: string]: any};
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * A regex string to filter results by the instance description.
+     */
+    descriptionRegex?: pulumi.Input<string>;
+    /**
+     * Matched instance IDs to filter data source result.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name to persist data source output.
+     */
+    outputFile?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the bastionhost instance. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const instance = pulumi.output(alicloud.bastionhost.getInstances({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *     },
+     * }));
+     * ```
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

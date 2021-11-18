@@ -13,6 +13,7 @@ __all__ = [
     'GetIndustrialPidOrganizationsResult',
     'AwaitableGetIndustrialPidOrganizationsResult',
     'get_industrial_pid_organizations',
+    'get_industrial_pid_organizations_output',
 ]
 
 @pulumi.output_type
@@ -144,3 +145,35 @@ def get_industrial_pid_organizations(ids: Optional[Sequence[str]] = None,
         organizations=__ret__.organizations,
         output_file=__ret__.output_file,
         parent_organization_id=__ret__.parent_organization_id)
+
+
+@_utilities.lift_output_func(get_industrial_pid_organizations)
+def get_industrial_pid_organizations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                            parent_organization_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIndustrialPidOrganizationsResult]:
+    """
+    This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.113.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.brain.get_industrial_pid_organizations(ids=["3e74e684-cbb5-xxxx"],
+        name_regex="tf-testAcc")
+    pulumi.export("firstBrainIndustrialPidOrganizationId", example.organizations[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Pid Organization IDs.
+    :param str name_regex: A regex string to filter results by Pid Organization name.
+    :param str parent_organization_id: The parent organization id.
+    """
+    ...

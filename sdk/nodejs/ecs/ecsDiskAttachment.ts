@@ -157,28 +157,28 @@ export interface EcsDiskAttachmentState {
     /**
      * Whether to mount as a system disk. Default to: `false`.
      */
-    readonly bootable?: pulumi.Input<boolean>;
+    bootable?: pulumi.Input<boolean>;
     /**
      * Indicates whether the disk is released together with the instance. Default to: `false`.
      */
-    readonly deleteWithInstance?: pulumi.Input<boolean>;
-    readonly device?: pulumi.Input<string>;
+    deleteWithInstance?: pulumi.Input<boolean>;
+    device?: pulumi.Input<string>;
     /**
      * ID of the Disk to be attached.
      */
-    readonly diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string>;
     /**
      * ID of the Instance to attach to.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The name of key pair
      */
-    readonly keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string>;
     /**
      * When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
 }
 
 /**
@@ -188,25 +188,25 @@ export interface EcsDiskAttachmentArgs {
     /**
      * Whether to mount as a system disk. Default to: `false`.
      */
-    readonly bootable?: pulumi.Input<boolean>;
+    bootable?: pulumi.Input<boolean>;
     /**
      * Indicates whether the disk is released together with the instance. Default to: `false`.
      */
-    readonly deleteWithInstance?: pulumi.Input<boolean>;
+    deleteWithInstance?: pulumi.Input<boolean>;
     /**
      * ID of the Disk to be attached.
      */
-    readonly diskId: pulumi.Input<string>;
+    diskId: pulumi.Input<string>;
     /**
      * ID of the Instance to attach to.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The name of key pair
      */
-    readonly keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string>;
     /**
      * When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
 }

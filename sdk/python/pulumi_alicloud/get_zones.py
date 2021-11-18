@@ -13,6 +13,7 @@ __all__ = [
     'GetZonesResult',
     'AwaitableGetZonesResult',
     'get_zones',
+    'get_zones_output',
 ]
 
 @pulumi.output_type
@@ -244,3 +245,49 @@ def get_zones(available_disk_category: Optional[str] = None,
         output_file=__ret__.output_file,
         spot_strategy=__ret__.spot_strategy,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_zones)
+def get_zones_output(available_disk_category: Optional[pulumi.Input[Optional[str]]] = None,
+                     available_instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     available_resource_creation: Optional[pulumi.Input[Optional[str]]] = None,
+                     available_slb_address_ip_version: Optional[pulumi.Input[Optional[str]]] = None,
+                     available_slb_address_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                     instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     multi: Optional[pulumi.Input[Optional[bool]]] = None,
+                     network_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     spot_strategy: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+    """
+    This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+
+    > **NOTE:** If one zone is sold out, it will not be exported.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ds = alicloud.get_zones(available_disk_category="cloud_ssd",
+        available_instance_type="ecs.n4.large")
+    # Create an ECS instance with the first matched zone
+    instance = alicloud.ecs.Instance("instance", availability_zone=zones_ds.zones[0].id)
+    ```
+
+
+    :param str available_disk_category: Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
+    :param str available_instance_type: Filter the results by a specific instance type.
+    :param str available_resource_creation: Filter the results by a specific resource type.
+           Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+    :param str available_slb_address_ip_version: Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+    :param str available_slb_address_type: Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+    :param bool enable_details: Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+    :param str instance_charge_type: Filter the results by a specific ECS instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+    :param str network_type: Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
+    :param str spot_strategy: - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+    """
+    ...

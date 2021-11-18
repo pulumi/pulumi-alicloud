@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const resolutionLinesDs = pulumi.output(alicloud.dns.getResolutionLines({
  *     lineCodes: ["cn_unicom_shanxi"],
  *     outputFile: "support_lines.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstLineCode = resolutionLinesDs.lines[0].lineCode;
  * ```
@@ -51,25 +51,25 @@ export interface GetResolutionLinesArgs {
     /**
      * Domain Name.
      */
-    readonly domainName?: string;
+    domainName?: string;
     /**
      * language.
      */
-    readonly lang?: string;
+    lang?: string;
     /**
      * A list of lines codes.
      */
-    readonly lineCodes?: string[];
+    lineCodes?: string[];
     /**
      * A list of line display names.
      */
-    readonly lineDisplayNames?: string[];
-    readonly lineNames?: string[];
-    readonly outputFile?: string;
+    lineDisplayNames?: string[];
+    lineNames?: string[];
+    outputFile?: string;
     /**
      * The ip of user client.
      */
-    readonly userClientIp?: string;
+    userClientIp?: string;
 }
 
 /**
@@ -97,4 +97,36 @@ export interface GetResolutionLinesResult {
     readonly lines: outputs.dns.GetResolutionLinesLine[];
     readonly outputFile?: string;
     readonly userClientIp?: string;
+}
+
+export function getResolutionLinesOutput(args?: GetResolutionLinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResolutionLinesResult> {
+    return pulumi.output(args).apply(a => getResolutionLines(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getResolutionLines.
+ */
+export interface GetResolutionLinesOutputArgs {
+    /**
+     * Domain Name.
+     */
+    domainName?: pulumi.Input<string>;
+    /**
+     * language.
+     */
+    lang?: pulumi.Input<string>;
+    /**
+     * A list of lines codes.
+     */
+    lineCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of line display names.
+     */
+    lineDisplayNames?: pulumi.Input<pulumi.Input<string>[]>;
+    lineNames?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ip of user client.
+     */
+    userClientIp?: pulumi.Input<string>;
 }

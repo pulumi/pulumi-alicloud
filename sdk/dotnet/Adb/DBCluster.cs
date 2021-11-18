@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Adb
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
     ///             VswitchName = name,
     ///         });
     ///         var @this = new AliCloud.Adb.DBCluster("this", new AliCloud.Adb.DBClusterArgs

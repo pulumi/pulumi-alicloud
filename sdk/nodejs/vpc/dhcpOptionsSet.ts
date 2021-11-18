@@ -143,35 +143,35 @@ export interface DhcpOptionsSetState {
     /**
      * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10.
      */
-    readonly associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[]>;
+    associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[]>;
     /**
      * The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    readonly dhcpOptionsSetDescription?: pulumi.Input<string>;
+    dhcpOptionsSetDescription?: pulumi.Input<string>;
     /**
      * The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      */
-    readonly dhcpOptionsSetName?: pulumi.Input<string>;
+    dhcpOptionsSetName?: pulumi.Input<string>;
     /**
      * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
      */
-    readonly domainNameServers?: pulumi.Input<string>;
+    domainNameServers?: pulumi.Input<string>;
     /**
      * Specifies whether to precheck this request only. Valid values: `true` or `false`.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the account to which the DHCP options set belongs.
      */
-    readonly ownerId?: pulumi.Input<string>;
+    ownerId?: pulumi.Input<string>;
     /**
      * The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -181,25 +181,25 @@ export interface DhcpOptionsSetArgs {
     /**
      * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10.
      */
-    readonly associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[]>;
+    associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[]>;
     /**
      * The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    readonly dhcpOptionsSetDescription?: pulumi.Input<string>;
+    dhcpOptionsSetDescription?: pulumi.Input<string>;
     /**
      * The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      */
-    readonly dhcpOptionsSetName?: pulumi.Input<string>;
+    dhcpOptionsSetName?: pulumi.Input<string>;
     /**
      * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
      */
-    readonly domainNameServers?: pulumi.Input<string>;
+    domainNameServers?: pulumi.Input<string>;
     /**
      * Specifies whether to precheck this request only. Valid values: `true` or `false`.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
 }

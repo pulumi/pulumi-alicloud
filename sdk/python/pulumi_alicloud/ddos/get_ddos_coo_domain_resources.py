@@ -13,6 +13,7 @@ __all__ = [
     'GetDdosCooDomainResourcesResult',
     'AwaitableGetDdosCooDomainResourcesResult',
     'get_ddos_coo_domain_resources',
+    'get_ddos_coo_domain_resources_output',
 ]
 
 @pulumi.output_type
@@ -133,3 +134,34 @@ def get_ddos_coo_domain_resources(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         query_domain_pattern=__ret__.query_domain_pattern,
         resources=__ret__.resources)
+
+
+@_utilities.lift_output_func(get_ddos_coo_domain_resources)
+def get_ddos_coo_domain_resources_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                         instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                         query_domain_pattern: Optional[pulumi.Input[Optional[str]]] = None,
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDdosCooDomainResourcesResult]:
+    """
+    This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.123.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ddos.get_ddos_coo_domain_resources(ids=["tftestacc1234.abc"])
+    pulumi.export("firstDdoscooDomainResourceId", example.resources[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Domain Resource IDs.
+    :param Sequence[str] instance_ids: A list ID of instance that you want to associate.
+    :param str query_domain_pattern: Match the pattern.
+    """
+    ...

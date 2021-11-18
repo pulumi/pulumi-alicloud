@@ -4,6 +4,9 @@
 package imm
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,60 @@ type GetProjectsResult struct {
 	Ids        []string             `pulumi:"ids"`
 	OutputFile *string              `pulumi:"outputFile"`
 	Projects   []GetProjectsProject `pulumi:"projects"`
+}
+
+func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...pulumi.InvokeOption) GetProjectsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetProjectsResult, error) {
+			args := v.(GetProjectsArgs)
+			r, err := GetProjects(ctx, &args, opts...)
+			return *r, err
+		}).(GetProjectsResultOutput)
+}
+
+// A collection of arguments for invoking getProjects.
+type GetProjectsOutputArgs struct {
+	// A list of Project IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+}
+
+func (GetProjectsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProjects.
+type GetProjectsResultOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsResult)(nil)).Elem()
+}
+
+func (o GetProjectsResultOutput) ToGetProjectsResultOutput() GetProjectsResultOutput {
+	return o
+}
+
+func (o GetProjectsResultOutput) ToGetProjectsResultOutputWithContext(ctx context.Context) GetProjectsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetProjectsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProjectsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetProjectsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectsResultOutput) Projects() GetProjectsProjectArrayOutput {
+	return o.ApplyT(func(v GetProjectsResult) []GetProjectsProject { return v.Projects }).(GetProjectsProjectArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetProjectsResultOutput{})
 }

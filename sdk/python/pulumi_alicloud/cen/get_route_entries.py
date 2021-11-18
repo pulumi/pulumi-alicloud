@@ -13,6 +13,7 @@ __all__ = [
     'GetRouteEntriesResult',
     'AwaitableGetRouteEntriesResult',
     'get_route_entries',
+    'get_route_entries_output',
 ]
 
 @pulumi.output_type
@@ -142,3 +143,31 @@ def get_route_entries(cidr_block: Optional[str] = None,
         instance_id=__ret__.instance_id,
         output_file=__ret__.output_file,
         route_table_id=__ret__.route_table_id)
+
+
+@_utilities.lift_output_func(get_route_entries)
+def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None,
+                             instance_id: Optional[pulumi.Input[str]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             route_table_id: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteEntriesResult]:
+    """
+    This data source provides CEN Route Entries available to the user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    entry = alicloud.cen.get_route_entries(instance_id="cen-id1",
+        route_table_id="vtb-id1")
+    pulumi.export("firstRouteEntriesRouteEntryCidrBlock", entry.entries[0].cidr_block)
+    ```
+
+
+    :param str cidr_block: The destination CIDR block of the route entry to query.
+    :param str instance_id: ID of the CEN instance.
+    :param str route_table_id: ID of the route table of the VPC or VBR.
+    """
+    ...

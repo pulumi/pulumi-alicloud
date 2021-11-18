@@ -4,6 +4,9 @@
 package elasticsearch
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,78 @@ type GetInstancesResult struct {
 	OutputFile *string                `pulumi:"outputFile"`
 	Tags       map[string]interface{} `pulumi:"tags"`
 	Version    *string                `pulumi:"version"`
+}
+
+func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstancesResult, error) {
+			args := v.(GetInstancesArgs)
+			r, err := GetInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getInstances.
+type GetInstancesOutputArgs struct {
+	DescriptionRegex pulumi.StringPtrInput   `pulumi:"descriptionRegex"`
+	Ids              pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile       pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Tags             pulumi.MapInput         `pulumi:"tags"`
+	Version          pulumi.StringPtrInput   `pulumi:"version"`
+}
+
+func (GetInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstances.
+type GetInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesResult)(nil)).Elem()
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutput() GetInstancesResultOutput {
+	return o
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx context.Context) GetInstancesResultOutput {
+	return o
+}
+
+func (o GetInstancesResultOutput) DescriptionRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.DescriptionRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) Descriptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.Descriptions }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
+}
+
+func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetInstancesResultOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstancesResultOutput{})
 }

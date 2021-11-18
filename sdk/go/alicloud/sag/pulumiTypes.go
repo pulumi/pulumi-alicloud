@@ -117,6 +117,8 @@ func (o GetAclsAclArrayOutput) Index(i pulumi.IntInput) GetAclsAclOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclInput)(nil)).Elem(), GetAclsAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclArrayInput)(nil)).Elem(), GetAclsAclArray{})
 	pulumi.RegisterOutputType(GetAclsAclOutput{})
 	pulumi.RegisterOutputType(GetAclsAclArrayOutput{})
 }

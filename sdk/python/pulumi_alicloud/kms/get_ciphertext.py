@@ -12,6 +12,7 @@ __all__ = [
     'GetCiphertextResult',
     'AwaitableGetCiphertextResult',
     'get_ciphertext',
+    'get_ciphertext_output',
 ]
 
 @pulumi.output_type
@@ -109,3 +110,19 @@ def get_ciphertext(encryption_context: Optional[Mapping[str, str]] = None,
         id=__ret__.id,
         key_id=__ret__.key_id,
         plaintext=__ret__.plaintext)
+
+
+@_utilities.lift_output_func(get_ciphertext)
+def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                          key_id: Optional[pulumi.Input[str]] = None,
+                          plaintext: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCiphertextResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param Mapping[str, str] encryption_context: -
+           (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+    :param str key_id: The globally unique ID of the CMK.
+    :param str plaintext: The plaintext to be encrypted which must be encoded in Base64.
+    """
+    ...

@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Tsdb
     ///         });
     ///         var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = exampleZones.Apply(exampleZones =&gt; exampleZones.Ids[0]),
+    ///             AvailabilityZone = exampleZones.Apply(exampleZones =&gt; exampleZones.Ids?[0]),
     ///             CidrBlock = "192.168.1.0/24",
     ///             VpcId = exampleNetwork.Id,
     ///         });

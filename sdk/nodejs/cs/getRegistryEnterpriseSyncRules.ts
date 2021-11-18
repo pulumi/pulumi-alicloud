@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     targetInstanceId: "cri-yyy",
  *     nameRegex: "test-rule",
  * });
- * export const output = mySyncRules.then(mySyncRules => mySyncRules.rules.map(__item => __item.id));
+ * export const output = [mySyncRules.then(mySyncRules => mySyncRules.rules)].map(__item => __item?.id);
  * ```
  */
 export function getRegistryEnterpriseSyncRules(args: GetRegistryEnterpriseSyncRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseSyncRulesResult> {
@@ -52,28 +52,28 @@ export interface GetRegistryEnterpriseSyncRulesArgs {
     /**
      * A list of ids to filter results by sync rule id.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * ID of Container Registry Enterprise Edition local instance.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by sync rule name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * Name of Container Registry Enterprise Edition local namespace.
      */
-    readonly namespaceName?: string;
-    readonly outputFile?: string;
+    namespaceName?: string;
+    outputFile?: string;
     /**
      * Name of Container Registry Enterprise Edition local repo.
      */
-    readonly repoName?: string;
+    repoName?: string;
     /**
      * ID of Container Registry Enterprise Edition target instance.
      */
-    readonly targetInstanceId?: string;
+    targetInstanceId?: string;
 }
 
 /**
@@ -114,4 +114,39 @@ export interface GetRegistryEnterpriseSyncRulesResult {
      * ID of Container Registry Enterprise Edition target instance.
      */
     readonly targetInstanceId?: string;
+}
+
+export function getRegistryEnterpriseSyncRulesOutput(args: GetRegistryEnterpriseSyncRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseSyncRulesResult> {
+    return pulumi.output(args).apply(a => getRegistryEnterpriseSyncRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegistryEnterpriseSyncRules.
+ */
+export interface GetRegistryEnterpriseSyncRulesOutputArgs {
+    /**
+     * A list of ids to filter results by sync rule id.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of Container Registry Enterprise Edition local instance.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by sync rule name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * Name of Container Registry Enterprise Edition local namespace.
+     */
+    namespaceName?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Name of Container Registry Enterprise Edition local repo.
+     */
+    repoName?: pulumi.Input<string>;
+    /**
+     * ID of Container Registry Enterprise Edition target instance.
+     */
+    targetInstanceId?: pulumi.Input<string>;
 }

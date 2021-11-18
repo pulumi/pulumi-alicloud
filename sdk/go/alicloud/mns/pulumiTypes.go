@@ -440,6 +440,12 @@ func (o GetTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetTopicsTopicOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesQueueInput)(nil)).Elem(), GetQueuesQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesQueueArrayInput)(nil)).Elem(), GetQueuesQueueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicSubscriptionsSubscriptionInput)(nil)).Elem(), GetTopicSubscriptionsSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicSubscriptionsSubscriptionArrayInput)(nil)).Elem(), GetTopicSubscriptionsSubscriptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicsTopicInput)(nil)).Elem(), GetTopicsTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicsTopicArrayInput)(nil)).Elem(), GetTopicsTopicArray{})
 	pulumi.RegisterOutputType(GetQueuesQueueOutput{})
 	pulumi.RegisterOutputType(GetQueuesQueueArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicSubscriptionsSubscriptionOutput{})

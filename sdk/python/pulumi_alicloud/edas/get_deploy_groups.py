@@ -13,6 +13,7 @@ __all__ = [
     'GetDeployGroupsResult',
     'AwaitableGetDeployGroupsResult',
     'get_deploy_groups',
+    'get_deploy_groups_output',
 ]
 
 @pulumi.output_type
@@ -139,3 +140,32 @@ def get_deploy_groups(app_id: Optional[str] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_deploy_groups)
+def get_deploy_groups_output(app_id: Optional[pulumi.Input[str]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeployGroupsResult]:
+    """
+    This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.82.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    groups = alicloud.edas.get_deploy_groups(app_id="xxx",
+        ids=["xxx"],
+        output_file="groups.txt")
+    pulumi.export("firstGroupName", groups.groups[0].group_name)
+    ```
+
+
+    :param str app_id: ID of the EDAS application.
+    :param str name_regex: A regex string to filter results by the deploy group name.
+    """
+    ...

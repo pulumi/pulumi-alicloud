@@ -503,7 +503,7 @@ func (o EcsLaunchTemplateNetworkInterfacesOutput) ToEcsLaunchTemplateNetworkInte
 }
 
 func (o EcsLaunchTemplateNetworkInterfacesOutput) ToEcsLaunchTemplateNetworkInterfacesPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateNetworkInterfacesPtrOutput {
-	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *EcsLaunchTemplateNetworkInterfaces {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsLaunchTemplateNetworkInterfaces) *EcsLaunchTemplateNetworkInterfaces {
 		return &v
 	}).(EcsLaunchTemplateNetworkInterfacesPtrOutput)
 }
@@ -548,7 +548,13 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) ToEcsLaunchTemplateNetworkI
 }
 
 func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Elem() EcsLaunchTemplateNetworkInterfacesOutput {
-	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) EcsLaunchTemplateNetworkInterfaces { return *v }).(EcsLaunchTemplateNetworkInterfacesOutput)
+	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) EcsLaunchTemplateNetworkInterfaces {
+		if v != nil {
+			return *v
+		}
+		var ret EcsLaunchTemplateNetworkInterfaces
+		return ret
+	}).(EcsLaunchTemplateNetworkInterfacesOutput)
 }
 
 // The description of the data disk.
@@ -718,7 +724,7 @@ func (o EcsLaunchTemplateSystemDiskOutput) ToEcsLaunchTemplateSystemDiskPtrOutpu
 }
 
 func (o EcsLaunchTemplateSystemDiskOutput) ToEcsLaunchTemplateSystemDiskPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateSystemDiskPtrOutput {
-	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *EcsLaunchTemplateSystemDisk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsLaunchTemplateSystemDisk) *EcsLaunchTemplateSystemDisk {
 		return &v
 	}).(EcsLaunchTemplateSystemDiskPtrOutput)
 }
@@ -773,7 +779,13 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) ToEcsLaunchTemplateSystemDiskPtrOu
 }
 
 func (o EcsLaunchTemplateSystemDiskPtrOutput) Elem() EcsLaunchTemplateSystemDiskOutput {
-	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) EcsLaunchTemplateSystemDisk { return *v }).(EcsLaunchTemplateSystemDiskOutput)
+	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) EcsLaunchTemplateSystemDisk {
+		if v != nil {
+			return *v
+		}
+		var ret EcsLaunchTemplateSystemDisk
+		return ret
+	}).(EcsLaunchTemplateSystemDiskOutput)
 }
 
 // The category of the disk.
@@ -1625,7 +1637,7 @@ func (o LaunchTemplateNetworkInterfacesOutput) ToLaunchTemplateNetworkInterfaces
 }
 
 func (o LaunchTemplateNetworkInterfacesOutput) ToLaunchTemplateNetworkInterfacesPtrOutputWithContext(ctx context.Context) LaunchTemplateNetworkInterfacesPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *LaunchTemplateNetworkInterfaces {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LaunchTemplateNetworkInterfaces) *LaunchTemplateNetworkInterfaces {
 		return &v
 	}).(LaunchTemplateNetworkInterfacesPtrOutput)
 }
@@ -1670,7 +1682,13 @@ func (o LaunchTemplateNetworkInterfacesPtrOutput) ToLaunchTemplateNetworkInterfa
 }
 
 func (o LaunchTemplateNetworkInterfacesPtrOutput) Elem() LaunchTemplateNetworkInterfacesOutput {
-	return o.ApplyT(func(v *LaunchTemplateNetworkInterfaces) LaunchTemplateNetworkInterfaces { return *v }).(LaunchTemplateNetworkInterfacesOutput)
+	return o.ApplyT(func(v *LaunchTemplateNetworkInterfaces) LaunchTemplateNetworkInterfaces {
+		if v != nil {
+			return *v
+		}
+		var ret LaunchTemplateNetworkInterfaces
+		return ret
+	}).(LaunchTemplateNetworkInterfacesOutput)
 }
 
 // The description of the data disk.
@@ -1856,7 +1874,7 @@ func (o LaunchTemplateSystemDiskOutput) ToLaunchTemplateSystemDiskPtrOutput() La
 }
 
 func (o LaunchTemplateSystemDiskOutput) ToLaunchTemplateSystemDiskPtrOutputWithContext(ctx context.Context) LaunchTemplateSystemDiskPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateSystemDisk) *LaunchTemplateSystemDisk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LaunchTemplateSystemDisk) *LaunchTemplateSystemDisk {
 		return &v
 	}).(LaunchTemplateSystemDiskPtrOutput)
 }
@@ -1919,7 +1937,13 @@ func (o LaunchTemplateSystemDiskPtrOutput) ToLaunchTemplateSystemDiskPtrOutputWi
 }
 
 func (o LaunchTemplateSystemDiskPtrOutput) Elem() LaunchTemplateSystemDiskOutput {
-	return o.ApplyT(func(v *LaunchTemplateSystemDisk) LaunchTemplateSystemDisk { return *v }).(LaunchTemplateSystemDiskOutput)
+	return o.ApplyT(func(v *LaunchTemplateSystemDisk) LaunchTemplateSystemDisk {
+		if v != nil {
+			return *v
+		}
+		var ret LaunchTemplateSystemDisk
+		return ret
+	}).(LaunchTemplateSystemDiskOutput)
 }
 
 // The category of the disk:
@@ -11242,6 +11266,121 @@ func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProvisioningGroupLaunchTemplateConfigInput)(nil)).Elem(), AutoProvisioningGroupLaunchTemplateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProvisioningGroupLaunchTemplateConfigArrayInput)(nil)).Elem(), AutoProvisioningGroupLaunchTemplateConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostNetworkAttributeInput)(nil)).Elem(), DedicatedHostNetworkAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostNetworkAttributeArrayInput)(nil)).Elem(), DedicatedHostNetworkAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateDataDiskInput)(nil)).Elem(), EcsLaunchTemplateDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateDataDiskArrayInput)(nil)).Elem(), EcsLaunchTemplateDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateNetworkInterfacesInput)(nil)).Elem(), EcsLaunchTemplateNetworkInterfacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateNetworkInterfacesPtrInput)(nil)).Elem(), EcsLaunchTemplateNetworkInterfacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateSystemDiskInput)(nil)).Elem(), EcsLaunchTemplateSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateSystemDiskPtrInput)(nil)).Elem(), EcsLaunchTemplateSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageDiskDeviceMappingInput)(nil)).Elem(), ImageDiskDeviceMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageDiskDeviceMappingArrayInput)(nil)).Elem(), ImageDiskDeviceMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportDiskDeviceMappingInput)(nil)).Elem(), ImageImportDiskDeviceMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportDiskDeviceMappingArrayInput)(nil)).Elem(), ImageImportDiskDeviceMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskInput)(nil)).Elem(), InstanceDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskArrayInput)(nil)).Elem(), InstanceDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateDataDiskInput)(nil)).Elem(), LaunchTemplateDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateDataDiskArrayInput)(nil)).Elem(), LaunchTemplateDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateNetworkInterfacesInput)(nil)).Elem(), LaunchTemplateNetworkInterfacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateNetworkInterfacesPtrInput)(nil)).Elem(), LaunchTemplateNetworkInterfacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateSystemDiskInput)(nil)).Elem(), LaunchTemplateSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateSystemDiskPtrInput)(nil)).Elem(), LaunchTemplateSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyArrayInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandInput)(nil)).Elem(), GetCommandsCommandArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandArrayInput)(nil)).Elem(), GetCommandsCommandArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostInput)(nil)).Elem(), GetDedicatedHostsHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostArrayInput)(nil)).Elem(), GetDedicatedHostsHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostCapacityInput)(nil)).Elem(), GetDedicatedHostsHostCapacityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostCapacityArrayInput)(nil)).Elem(), GetDedicatedHostsHostCapacityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostNetworkAttributeInput)(nil)).Elem(), GetDedicatedHostsHostNetworkAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostNetworkAttributeArrayInput)(nil)).Elem(), GetDedicatedHostsHostNetworkAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostOperationLockInput)(nil)).Elem(), GetDedicatedHostsHostOperationLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostOperationLockArrayInput)(nil)).Elem(), GetDedicatedHostsHostOperationLockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsOperationLockInput)(nil)).Elem(), GetDedicatedHostsOperationLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsOperationLockArrayInput)(nil)).Elem(), GetDedicatedHostsOperationLockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDisksDiskInput)(nil)).Elem(), GetDisksDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDisksDiskArrayInput)(nil)).Elem(), GetDisksDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDisksDiskMountInstanceInput)(nil)).Elem(), GetDisksDiskMountInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDisksDiskMountInstanceArrayInput)(nil)).Elem(), GetDisksDiskMountInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDisksDiskOperationLockInput)(nil)).Elem(), GetDisksDiskOperationLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDisksDiskOperationLockArrayInput)(nil)).Elem(), GetDisksDiskOperationLockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDisksOperationLockInput)(nil)).Elem(), GetDisksOperationLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDisksOperationLockArrayInput)(nil)).Elem(), GetDisksOperationLockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDeploymentSetsSetInput)(nil)).Elem(), GetEcsDeploymentSetsSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDeploymentSetsSetArrayInput)(nil)).Elem(), GetEcsDeploymentSetsSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksDiskInput)(nil)).Elem(), GetEcsDisksDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksDiskArrayInput)(nil)).Elem(), GetEcsDisksDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksDiskMountInstanceInput)(nil)).Elem(), GetEcsDisksDiskMountInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksDiskMountInstanceArrayInput)(nil)).Elem(), GetEcsDisksDiskMountInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksDiskOperationLockInput)(nil)).Elem(), GetEcsDisksDiskOperationLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksDiskOperationLockArrayInput)(nil)).Elem(), GetEcsDisksDiskOperationLockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksOperationLockInput)(nil)).Elem(), GetEcsDisksOperationLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksOperationLockArrayInput)(nil)).Elem(), GetEcsDisksOperationLockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsKeyPairInput)(nil)).Elem(), GetEcsKeyPairsKeyPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsKeyPairArrayInput)(nil)).Elem(), GetEcsKeyPairsKeyPairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsKeyPairInstanceInput)(nil)).Elem(), GetEcsKeyPairsKeyPairInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsKeyPairInstanceArrayInput)(nil)).Elem(), GetEcsKeyPairsKeyPairInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsPairInput)(nil)).Elem(), GetEcsKeyPairsPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsPairArrayInput)(nil)).Elem(), GetEcsKeyPairsPairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsPairInstanceInput)(nil)).Elem(), GetEcsKeyPairsPairInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsPairInstanceArrayInput)(nil)).Elem(), GetEcsKeyPairsPairInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateArrayInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateDataDiskInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateDataDiskArrayInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateNetworkInterfaceInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateSystemDiskInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateSystemDiskArrayInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateSystemDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsNetworkInterfacesInterfaceInput)(nil)).Elem(), GetEcsNetworkInterfacesInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsNetworkInterfacesInterfaceArrayInput)(nil)).Elem(), GetEcsNetworkInterfacesInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsSnapshotsSnapshotInput)(nil)).Elem(), GetEcsSnapshotsSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsSnapshotsSnapshotArrayInput)(nil)).Elem(), GetEcsSnapshotsSnapshotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEipAddressesAddressInput)(nil)).Elem(), GetEipAddressesAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEipAddressesAddressArrayInput)(nil)).Elem(), GetEipAddressesAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEipAddressesEipInput)(nil)).Elem(), GetEipAddressesEipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEipAddressesEipArrayInput)(nil)).Elem(), GetEipAddressesEipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEipsAddressInput)(nil)).Elem(), GetEipsAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEipsAddressArrayInput)(nil)).Elem(), GetEipsAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEipsEipInput)(nil)).Elem(), GetEipsEipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEipsEipArrayInput)(nil)).Elem(), GetEipsEipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHpcClustersClusterInput)(nil)).Elem(), GetHpcClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHpcClustersClusterArrayInput)(nil)).Elem(), GetHpcClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageDiskDeviceMappingInput)(nil)).Elem(), GetImagesImageDiskDeviceMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageDiskDeviceMappingArrayInput)(nil)).Elem(), GetImagesImageDiskDeviceMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeFamiliesFamilyInput)(nil)).Elem(), GetInstanceTypeFamiliesFamilyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeFamiliesFamilyArrayInput)(nil)).Elem(), GetInstanceTypeFamiliesFamilyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeInput)(nil)).Elem(), GetInstanceTypesInstanceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeArrayInput)(nil)).Elem(), GetInstanceTypesInstanceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeBurstableInstanceInput)(nil)).Elem(), GetInstanceTypesInstanceTypeBurstableInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeGpuInput)(nil)).Elem(), GetInstanceTypesInstanceTypeGpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeLocalStorageInput)(nil)).Elem(), GetInstanceTypesInstanceTypeLocalStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceDiskDeviceMappingInput)(nil)).Elem(), GetInstancesInstanceDiskDeviceMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceDiskDeviceMappingArrayInput)(nil)).Elem(), GetInstancesInstanceDiskDeviceMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsKeyPairInput)(nil)).Elem(), GetKeyPairsKeyPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsKeyPairArrayInput)(nil)).Elem(), GetKeyPairsKeyPairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsKeyPairInstanceInput)(nil)).Elem(), GetKeyPairsKeyPairInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsKeyPairInstanceArrayInput)(nil)).Elem(), GetKeyPairsKeyPairInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairInput)(nil)).Elem(), GetKeyPairsPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairArrayInput)(nil)).Elem(), GetKeyPairsPairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairInstanceInput)(nil)).Elem(), GetKeyPairsPairInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairInstanceArrayInput)(nil)).Elem(), GetKeyPairsPairInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkInterfacesInterfaceInput)(nil)).Elem(), GetNetworkInterfacesInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkInterfacesInterfaceArrayInput)(nil)).Elem(), GetNetworkInterfacesInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRulesRuleInput)(nil)).Elem(), GetSecurityGroupRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRulesRuleArrayInput)(nil)).Elem(), GetSecurityGroupRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupsGroupInput)(nil)).Elem(), GetSecurityGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupsGroupArrayInput)(nil)).Elem(), GetSecurityGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotInput)(nil)).Elem(), GetSnapshotsSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotArrayInput)(nil)).Elem(), GetSnapshotsSnapshotArray{})
 	pulumi.RegisterOutputType(AutoProvisioningGroupLaunchTemplateConfigOutput{})
 	pulumi.RegisterOutputType(AutoProvisioningGroupLaunchTemplateConfigArrayOutput{})
 	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeOutput{})

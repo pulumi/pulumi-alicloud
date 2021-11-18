@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Rds
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Rds
     {
         public static Task<GetRdsParameterGroupsResult> InvokeAsync(GetRdsParameterGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsArgs(), options.WithVersion());
+
+        public static Output<GetRdsParameterGroupsResult> Invoke(GetRdsParameterGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -36,6 +40,30 @@ namespace Pulumi.AliCloud.Rds
         public string? OutputFile { get; set; }
 
         public GetRdsParameterGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetRdsParameterGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetRdsParameterGroupsInvokeArgs()
         {
         }
     }

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: nameRegex.then(nameRegex => nameRegex.connections[0].id),
+ *     physicalConnectionId: nameRegex.then(nameRegex => nameRegex.connections?[0]?.id),
  *     virtualBorderRouterName: "example_value",
  *     vlanId: 1,
  *     minRxInterval: 1000,
@@ -231,79 +231,79 @@ export interface VirtualBorderRouterState {
     /**
      * The associated physical connections.
      */
-    readonly associatedPhysicalConnections?: pulumi.Input<string>;
+    associatedPhysicalConnections?: pulumi.Input<string>;
     /**
      * The bandwidth.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * Operators for physical connection circuit provided coding.
      */
-    readonly circuitCode?: pulumi.Input<string>;
+    circuitCode?: pulumi.Input<string>;
     /**
      * The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
      */
-    readonly detectMultiplier?: pulumi.Input<number>;
+    detectMultiplier?: pulumi.Input<number>;
     /**
      * Whether to Enable IPv6. Valid values: `false`, `true`.
      */
-    readonly enableIpv6?: pulumi.Input<boolean>;
+    enableIpv6?: pulumi.Input<boolean>;
     /**
      * Alibaba Cloud-Connected IPv4 address.
      */
-    readonly localGatewayIp?: pulumi.Input<string>;
+    localGatewayIp?: pulumi.Input<string>;
     /**
      * Alibaba Cloud-Connected IPv6 Address.
      */
-    readonly localIpv6GatewayIp?: pulumi.Input<string>;
+    localIpv6GatewayIp?: pulumi.Input<string>;
     /**
      * Configure BFD packet reception interval of values include: 200~1000, unit: ms.
      */
-    readonly minRxInterval?: pulumi.Input<number>;
+    minRxInterval?: pulumi.Input<number>;
     /**
      * Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
      */
-    readonly minTxInterval?: pulumi.Input<number>;
+    minTxInterval?: pulumi.Input<number>;
     /**
      * The Client-Side Interconnection IPv4 Address.
      */
-    readonly peerGatewayIp?: pulumi.Input<string>;
+    peerGatewayIp?: pulumi.Input<string>;
     /**
      * The Client-Side Interconnection IPv6 Address.
      */
-    readonly peerIpv6GatewayIp?: pulumi.Input<string>;
+    peerIpv6GatewayIp?: pulumi.Input<string>;
     /**
      * Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
      */
-    readonly peeringIpv6SubnetMask?: pulumi.Input<string>;
+    peeringIpv6SubnetMask?: pulumi.Input<string>;
     /**
      * Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
      */
-    readonly peeringSubnetMask?: pulumi.Input<string>;
+    peeringSubnetMask?: pulumi.Input<string>;
     /**
      * The ID of the Physical Connection to Which the ID.
      */
-    readonly physicalConnectionId?: pulumi.Input<string>;
+    physicalConnectionId?: pulumi.Input<string>;
     /**
      * The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The vbr owner id.
      */
-    readonly vbrOwnerId?: pulumi.Input<string>;
+    vbrOwnerId?: pulumi.Input<string>;
     /**
      * The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
      */
-    readonly virtualBorderRouterName?: pulumi.Input<string>;
+    virtualBorderRouterName?: pulumi.Input<string>;
     /**
      * The VLAN ID of the VBR. Value range: 0~2999.
      */
-    readonly vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number>;
 }
 
 /**
@@ -313,77 +313,77 @@ export interface VirtualBorderRouterArgs {
     /**
      * The associated physical connections.
      */
-    readonly associatedPhysicalConnections?: pulumi.Input<string>;
+    associatedPhysicalConnections?: pulumi.Input<string>;
     /**
      * The bandwidth.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * Operators for physical connection circuit provided coding.
      */
-    readonly circuitCode?: pulumi.Input<string>;
+    circuitCode?: pulumi.Input<string>;
     /**
      * The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
      */
-    readonly detectMultiplier?: pulumi.Input<number>;
+    detectMultiplier?: pulumi.Input<number>;
     /**
      * Whether to Enable IPv6. Valid values: `false`, `true`.
      */
-    readonly enableIpv6?: pulumi.Input<boolean>;
+    enableIpv6?: pulumi.Input<boolean>;
     /**
      * Alibaba Cloud-Connected IPv4 address.
      */
-    readonly localGatewayIp: pulumi.Input<string>;
+    localGatewayIp: pulumi.Input<string>;
     /**
      * Alibaba Cloud-Connected IPv6 Address.
      */
-    readonly localIpv6GatewayIp?: pulumi.Input<string>;
+    localIpv6GatewayIp?: pulumi.Input<string>;
     /**
      * Configure BFD packet reception interval of values include: 200~1000, unit: ms.
      */
-    readonly minRxInterval?: pulumi.Input<number>;
+    minRxInterval?: pulumi.Input<number>;
     /**
      * Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
      */
-    readonly minTxInterval?: pulumi.Input<number>;
+    minTxInterval?: pulumi.Input<number>;
     /**
      * The Client-Side Interconnection IPv4 Address.
      */
-    readonly peerGatewayIp: pulumi.Input<string>;
+    peerGatewayIp: pulumi.Input<string>;
     /**
      * The Client-Side Interconnection IPv6 Address.
      */
-    readonly peerIpv6GatewayIp?: pulumi.Input<string>;
+    peerIpv6GatewayIp?: pulumi.Input<string>;
     /**
      * Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
      */
-    readonly peeringIpv6SubnetMask?: pulumi.Input<string>;
+    peeringIpv6SubnetMask?: pulumi.Input<string>;
     /**
      * Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
      */
-    readonly peeringSubnetMask: pulumi.Input<string>;
+    peeringSubnetMask: pulumi.Input<string>;
     /**
      * The ID of the Physical Connection to Which the ID.
      */
-    readonly physicalConnectionId: pulumi.Input<string>;
+    physicalConnectionId: pulumi.Input<string>;
     /**
      * The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The vbr owner id.
      */
-    readonly vbrOwnerId?: pulumi.Input<string>;
+    vbrOwnerId?: pulumi.Input<string>;
     /**
      * The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
      */
-    readonly virtualBorderRouterName?: pulumi.Input<string>;
+    virtualBorderRouterName?: pulumi.Input<string>;
     /**
      * The VLAN ID of the VBR. Value range: 0~2999.
      */
-    readonly vlanId: pulumi.Input<number>;
+    vlanId: pulumi.Input<number>;
 }

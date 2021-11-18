@@ -4,6 +4,9 @@
 package fnf
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,82 @@ type GetSchedulesResult struct {
 	Names      []string               `pulumi:"names"`
 	OutputFile *string                `pulumi:"outputFile"`
 	Schedules  []GetSchedulesSchedule `pulumi:"schedules"`
+}
+
+func GetSchedulesOutput(ctx *pulumi.Context, args GetSchedulesOutputArgs, opts ...pulumi.InvokeOption) GetSchedulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSchedulesResult, error) {
+			args := v.(GetSchedulesArgs)
+			r, err := GetSchedules(ctx, &args, opts...)
+			return *r, err
+		}).(GetSchedulesResultOutput)
+}
+
+// A collection of arguments for invoking getSchedules.
+type GetSchedulesOutputArgs struct {
+	// The name of the flow bound to the time-based schedule you want to create.
+	FlowName pulumi.StringInput `pulumi:"flowName"`
+	// A list of Schedule IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The number of resource queries.
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+	// A regex string to filter results by Schedule name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetSchedulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSchedulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSchedules.
+type GetSchedulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetSchedulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSchedulesResult)(nil)).Elem()
+}
+
+func (o GetSchedulesResultOutput) ToGetSchedulesResultOutput() GetSchedulesResultOutput {
+	return o
+}
+
+func (o GetSchedulesResultOutput) ToGetSchedulesResultOutputWithContext(ctx context.Context) GetSchedulesResultOutput {
+	return o
+}
+
+func (o GetSchedulesResultOutput) FlowName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSchedulesResult) string { return v.FlowName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSchedulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSchedulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSchedulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSchedulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSchedulesResultOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSchedulesResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+func (o GetSchedulesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchedulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSchedulesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSchedulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSchedulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchedulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSchedulesResultOutput) Schedules() GetSchedulesScheduleArrayOutput {
+	return o.ApplyT(func(v GetSchedulesResult) []GetSchedulesSchedule { return v.Schedules }).(GetSchedulesScheduleArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSchedulesResultOutput{})
 }

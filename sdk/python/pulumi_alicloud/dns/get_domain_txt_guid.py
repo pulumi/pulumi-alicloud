@@ -12,6 +12,7 @@ __all__ = [
     'GetDomainTxtGuidResult',
     'AwaitableGetDomainTxtGuidResult',
     'get_domain_txt_guid',
+    'get_domain_txt_guid_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,34 @@ def get_domain_txt_guid(domain_name: Optional[str] = None,
         rr=__ret__.rr,
         type=__ret__.type,
         value=__ret__.value)
+
+
+@_utilities.lift_output_func(get_domain_txt_guid)
+def get_domain_txt_guid_output(domain_name: Optional[pulumi.Input[str]] = None,
+                               lang: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               type: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainTxtGuidResult]:
+    """
+    Provides the generation of txt records to realize the retrieval and verification of domain names.
+
+    > **NOTE:** Available in v1.80.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    this = alicloud.dns.get_domain_txt_guid(domain_name="test111.abc",
+        type="ADD_SUB_DOMAIN")
+    pulumi.export("rr", this.rr)
+    pulumi.export("value", this.value)
+    ```
+
+
+    :param str domain_name: Verified domain name.
+    :param str lang: User language.
+    :param str type: Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
+    """
+    ...

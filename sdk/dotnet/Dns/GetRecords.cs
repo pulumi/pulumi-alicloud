@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Dns
         ///             OutputFile = "records.txt",
         ///             Type = "A",
         ///         }));
-        ///         this.FirstRecordId = recordsDs.Apply(recordsDs =&gt; recordsDs.Records[0].RecordId);
+        ///         this.FirstRecordId = recordsDs.Apply(recordsDs =&gt; recordsDs.Records?[0]?.RecordId);
         ///     }
         /// 
         ///     [Output("firstRecordId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public static Task<GetRecordsResult> InvokeAsync(GetRecordsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRecordsResult>("alicloud:dns/getRecords:getRecords", args ?? new GetRecordsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var recordsDs = Output.Create(AliCloud.Dns.GetRecords.InvokeAsync(new AliCloud.Dns.GetRecordsArgs
+        ///         {
+        ///             DomainName = "xiaozhu.top",
+        ///             HostRecordRegex = "^@",
+        ///             IsLocked = false,
+        ///             OutputFile = "records.txt",
+        ///             Type = "A",
+        ///         }));
+        ///         this.FirstRecordId = recordsDs.Apply(recordsDs =&gt; recordsDs.Records?[0]?.RecordId);
+        ///     }
+        /// 
+        ///     [Output("firstRecordId")]
+        ///     public Output&lt;string&gt; FirstRecordId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRecordsResult> Invoke(GetRecordsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRecordsResult>("alicloud:dns/getRecords:getRecords", args ?? new GetRecordsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -109,6 +146,70 @@ namespace Pulumi.AliCloud.Dns
         public string? ValueRegex { get; set; }
 
         public GetRecordsArgs()
+        {
+        }
+    }
+
+    public sealed class GetRecordsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The domain name associated to the records.
+        /// </summary>
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
+
+        /// <summary>
+        /// Host record regex.
+        /// </summary>
+        [Input("hostRecordRegex")]
+        public Input<string>? HostRecordRegex { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of record IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Whether the record is locked or not.
+        /// </summary>
+        [Input("isLocked")]
+        public Input<bool>? IsLocked { get; set; }
+
+        /// <summary>
+        /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+        /// </summary>
+        [Input("line")]
+        public Input<string>? Line { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Record status. Valid items are `ENABLE` and `DISABLE`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Host record value regex.
+        /// </summary>
+        [Input("valueRegex")]
+        public Input<string>? ValueRegex { get; set; }
+
+        public GetRecordsInvokeArgs()
         {
         }
     }

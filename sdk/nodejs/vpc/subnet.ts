@@ -102,18 +102,18 @@ export interface SubnetState {
     /**
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
-    readonly cidrBlock?: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
-    readonly vpcId?: pulumi.Input<string>;
-    readonly vswitchName?: pulumi.Input<string>;
-    readonly zoneId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
+    vpcId?: pulumi.Input<string>;
+    vswitchName?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -123,15 +123,15 @@ export interface SubnetArgs {
     /**
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
-    readonly cidrBlock: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
+    cidrBlock: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
-    readonly vpcId: pulumi.Input<string>;
-    readonly vswitchName?: pulumi.Input<string>;
-    readonly zoneId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
+    vpcId: pulumi.Input<string>;
+    vswitchName?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

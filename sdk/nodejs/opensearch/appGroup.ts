@@ -173,43 +173,43 @@ export interface AppGroupState {
     /**
      * Application Group Name.
      */
-    readonly appGroupName?: pulumi.Input<string>;
+    appGroupName?: pulumi.Input<string>;
     /**
      * Billing model. Valid values:`computeResource` and `qps`.
      */
-    readonly chargeWay?: pulumi.Input<string>;
+    chargeWay?: pulumi.Input<string>;
     /**
      * The version of Application Group Name.
      */
-    readonly currentVersion?: pulumi.Input<string>;
+    currentVersion?: pulumi.Input<string>;
     /**
      * The description of the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
      */
-    readonly orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string>;
     /**
      * Order cycle information. The details see Block order.
      */
-    readonly orders?: pulumi.Input<pulumi.Input<inputs.opensearch.AppGroupOrder>[]>;
+    orders?: pulumi.Input<pulumi.Input<inputs.opensearch.AppGroupOrder>[]>;
     /**
      * The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * Quota information.  The details see Block quota.
      */
-    readonly quota?: pulumi.Input<inputs.opensearch.AppGroupQuota>;
+    quota?: pulumi.Input<inputs.opensearch.AppGroupQuota>;
     /**
      * The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Application type. Valid Values: `standard`, `enhanced`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -219,37 +219,37 @@ export interface AppGroupArgs {
     /**
      * Application Group Name.
      */
-    readonly appGroupName: pulumi.Input<string>;
+    appGroupName: pulumi.Input<string>;
     /**
      * Billing model. Valid values:`computeResource` and `qps`.
      */
-    readonly chargeWay?: pulumi.Input<string>;
+    chargeWay?: pulumi.Input<string>;
     /**
      * The version of Application Group Name.
      */
-    readonly currentVersion?: pulumi.Input<string>;
+    currentVersion?: pulumi.Input<string>;
     /**
      * The description of the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
      */
-    readonly orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string>;
     /**
      * Order cycle information. The details see Block order.
      */
-    readonly orders?: pulumi.Input<pulumi.Input<inputs.opensearch.AppGroupOrder>[]>;
+    orders?: pulumi.Input<pulumi.Input<inputs.opensearch.AppGroupOrder>[]>;
     /**
      * The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
      */
-    readonly paymentType: pulumi.Input<string>;
+    paymentType: pulumi.Input<string>;
     /**
      * Quota information.  The details see Block quota.
      */
-    readonly quota: pulumi.Input<inputs.opensearch.AppGroupQuota>;
+    quota: pulumi.Input<inputs.opensearch.AppGroupQuota>;
     /**
      * Application type. Valid Values: `standard`, `enhanced`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

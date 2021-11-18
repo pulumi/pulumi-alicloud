@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -27,7 +28,7 @@ namespace Pulumi.AliCloud.Slb
         ///     public MyStack()
         ///     {
         ///         var sampleDs = Output.Create(AliCloud.Slb.GetServerCertificates.InvokeAsync());
-        ///         this.FirstSlbServerCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates[0].Id);
+        ///         this.FirstSlbServerCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstSlbServerCertificateId")]
@@ -39,6 +40,35 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Task<GetServerCertificatesResult> InvokeAsync(GetServerCertificatesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? new GetServerCertificatesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the server certificate list.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetServerCertificates.InvokeAsync());
+        ///         this.FirstSlbServerCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbServerCertificateId")]
+        ///     public Output&lt;string&gt; FirstSlbServerCertificateId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServerCertificatesResult> Invoke(GetServerCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? new GetServerCertificatesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -84,6 +114,52 @@ namespace Pulumi.AliCloud.Slb
         }
 
         public GetServerCertificatesArgs()
+        {
+        }
+    }
+
+    public sealed class GetServerCertificatesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of server certificates IDs to filter results.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by server certificate name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which the slb server certificates belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetServerCertificatesInvokeArgs()
         {
         }
     }

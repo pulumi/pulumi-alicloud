@@ -13,6 +13,7 @@ __all__ = [
     'GetRouteTablesResult',
     'AwaitableGetRouteTablesResult',
     'get_route_tables',
+    'get_route_tables_output',
 ]
 
 @pulumi.output_type
@@ -257,3 +258,55 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
         tables=__ret__.tables,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_route_tables)
+def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            route_table_name: Optional[pulumi.Input[Optional[str]]] = None,
+                            router_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            router_type: Optional[pulumi.Input[Optional[str]]] = None,
+                            status: Optional[pulumi.Input[Optional[str]]] = None,
+                            tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                            vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteTablesResult]:
+    """
+    This data source provides a list of Route Tables owned by an Alibaba Cloud account.
+
+    > **NOTE:** Available in 1.36.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "route-tables-datasource-example-name"
+    foo_network = alicloud.vpc.Network("fooNetwork",
+        cidr_block="172.16.0.0/12",
+        vpc_name=name)
+    foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
+        description=name,
+        route_table_name=name,
+        vpc_id=foo_network.id)
+    foo_route_tables = foo_route_table.id.apply(lambda id: alicloud.vpc.get_route_tables(ids=[id]))
+    pulumi.export("routeTableIds", foo_route_tables.ids)
+    ```
+
+
+    :param Sequence[str] ids: A list of Route Tables IDs.
+    :param str name_regex: A regex string to filter route tables by name.
+    :param str resource_group_id: The Id of resource group which route tables belongs.
+    :param str route_table_name: The route table name.
+    :param str router_id: The router ID.
+    :param str router_type: The route type of route table. Valid values: `VRouter` and `VBR`.
+    :param str status: The status of resource. Valid values: `Available` and `Pending`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str vpc_id: Vpc id of the route table.
+    """
+    ...

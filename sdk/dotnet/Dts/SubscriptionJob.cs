@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Dts
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
     ///             VswitchName = name,
     ///         });
     ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
@@ -103,8 +103,8 @@ namespace Pulumi.AliCloud.Dts
     ///             DbList = @"        {""dtstestdata"": {""name"": ""tfaccountpri_0"", ""all"": true}}
     /// ",
     ///             SubscriptionInstanceNetworkType = "vpc",
-    ///             SubscriptionInstanceVpcId = default1Networks.Apply(default1Networks =&gt; default1Networks.Ids[0]),
-    ///             SubscriptionInstanceVswitchId = default1Switches.Apply(default1Switches =&gt; default1Switches.Ids[0]),
+    ///             SubscriptionInstanceVpcId = default1Networks.Apply(default1Networks =&gt; default1Networks.Ids?[0]),
+    ///             SubscriptionInstanceVswitchId = default1Switches.Apply(default1Switches =&gt; default1Switches.Ids?[0]),
     ///             Status = "Normal",
     ///         });
     ///     }

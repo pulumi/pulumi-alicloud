@@ -13,6 +13,7 @@ __all__ = [
     'GetAggregateConfigRulesResult',
     'AwaitableGetAggregateConfigRulesResult',
     'get_aggregate_config_rules',
+    'get_aggregate_config_rules_output',
 ]
 
 @pulumi.output_type
@@ -197,3 +198,44 @@ def get_aggregate_config_rules(aggregate_config_rule_name: Optional[str] = None,
         risk_level=__ret__.risk_level,
         rules=__ret__.rules,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_aggregate_config_rules)
+def get_aggregate_config_rules_output(aggregate_config_rule_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                      aggregator_id: Optional[pulumi.Input[str]] = None,
+                                      enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                      risk_level: Optional[pulumi.Input[Optional[int]]] = None,
+                                      status: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAggregateConfigRulesResult]:
+    """
+    This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.124.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_aggregate_config_rules(aggregator_id="ca-3a9b626622af001d****",
+        ids=["cr-5154626622af0034****"],
+        name_regex="the_resource_name")
+    pulumi.export("firstConfigAggregateConfigRuleId", example.rules[0].id)
+    ```
+
+
+    :param str aggregate_config_rule_name: The name of the rule.
+    :param str aggregator_id: The ID of Aggregator.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Aggregate Config Rule IDs.
+    :param str name_regex: A regex string to filter results by Aggregate Config Rule name.
+    :param int risk_level: The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+    :param str status: The status of the rule.
+    """
+    ...

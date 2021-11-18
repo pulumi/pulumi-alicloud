@@ -258,123 +258,123 @@ export interface InstanceState {
     /**
      * Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
      */
-    readonly accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string>;
     /**
      * Auto renew for prepaid, true of false. Default is false.
      * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      */
-    readonly autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean>;
     /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
-    readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
-    readonly backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string>;
     /**
      * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      */
-    readonly dbInstanceClass?: pulumi.Input<string>;
+    dbInstanceClass?: pulumi.Input<string>;
     /**
      * User-defined DB instance storage space.Unit: GB. Value range:
      * - Custom storage space; value range: [10,2000]
      * - 10-GB increments.
      */
-    readonly dbInstanceStorage?: pulumi.Input<number>;
+    dbInstanceStorage?: pulumi.Input<number>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
      */
-    readonly engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      */
-    readonly maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string>;
     /**
      * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      */
-    readonly maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
      * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
      */
-    readonly orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The name of the mongo replica set
      */
-    readonly replicaSetName?: pulumi.Input<string>;
+    replicaSetName?: pulumi.Input<string>;
     /**
      * Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
      */
-    readonly replicaSets?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceReplicaSet>[]>;
+    replicaSets?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceReplicaSet>[]>;
     /**
      * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */
-    readonly replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number>;
     /**
      * Instance log backup retention days. Available in 1.42.0+.
      */
-    readonly retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number>;
     /**
      * The Security Group ID of ECS.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
      */
-    readonly sslAction?: pulumi.Input<string>;
+    sslAction?: pulumi.Input<string>;
     /**
      * Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
      */
-    readonly sslStatus?: pulumi.Input<string>;
+    sslStatus?: pulumi.Input<string>;
     /**
      * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
-    readonly storageEngine?: pulumi.Input<string>;
+    storageEngine?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The TDE(Transparent Data Encryption) status.
      */
-    readonly tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance. it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -384,105 +384,105 @@ export interface InstanceArgs {
     /**
      * Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
      */
-    readonly accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string>;
     /**
      * Auto renew for prepaid, true of false. Default is false.
      * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      */
-    readonly autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean>;
     /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
-    readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
-    readonly backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string>;
     /**
      * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      */
-    readonly dbInstanceClass: pulumi.Input<string>;
+    dbInstanceClass: pulumi.Input<string>;
     /**
      * User-defined DB instance storage space.Unit: GB. Value range:
      * - Custom storage space; value range: [10,2000]
      * - 10-GB increments.
      */
-    readonly dbInstanceStorage: pulumi.Input<number>;
+    dbInstanceStorage: pulumi.Input<number>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
      */
-    readonly engineVersion: pulumi.Input<string>;
+    engineVersion: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      */
-    readonly maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string>;
     /**
      * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      */
-    readonly maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
      * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
      */
-    readonly orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */
-    readonly replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number>;
     /**
      * The Security Group ID of ECS.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
      */
-    readonly sslAction?: pulumi.Input<string>;
+    sslAction?: pulumi.Input<string>;
     /**
      * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
-    readonly storageEngine?: pulumi.Input<string>;
+    storageEngine?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The TDE(Transparent Data Encryption) status.
      */
-    readonly tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance. it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

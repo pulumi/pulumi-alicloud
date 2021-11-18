@@ -208,87 +208,87 @@ export interface FunctionState {
     /**
      * The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
      */
-    readonly caPort?: pulumi.Input<number>;
+    caPort?: pulumi.Input<number>;
     /**
      * The checksum (crc64) of the function code.
      */
-    readonly codeChecksum?: pulumi.Input<string>;
+    codeChecksum?: pulumi.Input<string>;
     /**
      * The configuration for custom container runtime.
      */
-    readonly customContainerConfig?: pulumi.Input<inputs.fc.FunctionCustomContainerConfig>;
+    customContainerConfig?: pulumi.Input<inputs.fc.FunctionCustomContainerConfig>;
     /**
      * The Function Compute function description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A map that defines environment variables for the function.
      */
-    readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
      * The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
      */
-    readonly filename?: pulumi.Input<string>;
+    filename?: pulumi.Input<string>;
     /**
      * The Function Compute service ID.
      */
-    readonly functionId?: pulumi.Input<string>;
+    functionId?: pulumi.Input<string>;
     /**
      * The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
      */
-    readonly handler?: pulumi.Input<string>;
+    handler?: pulumi.Input<string>;
     /**
      * The maximum length of time, in seconds, that the function's initialization should be run for.
      */
-    readonly initializationTimeout?: pulumi.Input<number>;
+    initializationTimeout?: pulumi.Input<number>;
     /**
      * The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
      */
-    readonly initializer?: pulumi.Input<string>;
+    initializer?: pulumi.Input<string>;
     /**
      * The maximum number of requests can be executed concurrently within the single function instance.
      */
-    readonly instanceConcurrency?: pulumi.Input<number>;
+    instanceConcurrency?: pulumi.Input<number>;
     /**
      * The instance type of the function.
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * The date this resource was last modified.
      */
-    readonly lastModified?: pulumi.Input<string>;
+    lastModified?: pulumi.Input<string>;
     /**
      * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
      */
-    readonly memorySize?: pulumi.Input<number>;
+    memorySize?: pulumi.Input<number>;
     /**
      * The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Setting a prefix to get a only function name. It is conflict with "name".
      */
-    readonly namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string>;
     /**
      * The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
      */
-    readonly ossBucket?: pulumi.Input<string>;
+    ossBucket?: pulumi.Input<string>;
     /**
      * The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
      */
-    readonly ossKey?: pulumi.Input<string>;
+    ossKey?: pulumi.Input<string>;
     /**
      * See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
      */
-    readonly runtime?: pulumi.Input<string>;
+    runtime?: pulumi.Input<string>;
     /**
      * The Function Compute service name.
      */
-    readonly service?: pulumi.Input<string>;
+    service?: pulumi.Input<string>;
     /**
      * The amount of time your function has to run in seconds.
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
 }
 
 /**
@@ -298,77 +298,77 @@ export interface FunctionArgs {
     /**
      * The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
      */
-    readonly caPort?: pulumi.Input<number>;
+    caPort?: pulumi.Input<number>;
     /**
      * The checksum (crc64) of the function code.
      */
-    readonly codeChecksum?: pulumi.Input<string>;
+    codeChecksum?: pulumi.Input<string>;
     /**
      * The configuration for custom container runtime.
      */
-    readonly customContainerConfig?: pulumi.Input<inputs.fc.FunctionCustomContainerConfig>;
+    customContainerConfig?: pulumi.Input<inputs.fc.FunctionCustomContainerConfig>;
     /**
      * The Function Compute function description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A map that defines environment variables for the function.
      */
-    readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
      * The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
      */
-    readonly filename?: pulumi.Input<string>;
+    filename?: pulumi.Input<string>;
     /**
      * The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
      */
-    readonly handler: pulumi.Input<string>;
+    handler: pulumi.Input<string>;
     /**
      * The maximum length of time, in seconds, that the function's initialization should be run for.
      */
-    readonly initializationTimeout?: pulumi.Input<number>;
+    initializationTimeout?: pulumi.Input<number>;
     /**
      * The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
      */
-    readonly initializer?: pulumi.Input<string>;
+    initializer?: pulumi.Input<string>;
     /**
      * The maximum number of requests can be executed concurrently within the single function instance.
      */
-    readonly instanceConcurrency?: pulumi.Input<number>;
+    instanceConcurrency?: pulumi.Input<number>;
     /**
      * The instance type of the function.
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
      */
-    readonly memorySize?: pulumi.Input<number>;
+    memorySize?: pulumi.Input<number>;
     /**
      * The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Setting a prefix to get a only function name. It is conflict with "name".
      */
-    readonly namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string>;
     /**
      * The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
      */
-    readonly ossBucket?: pulumi.Input<string>;
+    ossBucket?: pulumi.Input<string>;
     /**
      * The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
      */
-    readonly ossKey?: pulumi.Input<string>;
+    ossKey?: pulumi.Input<string>;
     /**
      * See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
      */
-    readonly runtime: pulumi.Input<string>;
+    runtime: pulumi.Input<string>;
     /**
      * The Function Compute service name.
      */
-    readonly service: pulumi.Input<string>;
+    service: pulumi.Input<string>;
     /**
      * The amount of time your function has to run in seconds.
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
 }

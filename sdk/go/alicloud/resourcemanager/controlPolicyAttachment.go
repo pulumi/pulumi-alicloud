@@ -217,7 +217,7 @@ type ControlPolicyAttachmentArrayInput interface {
 type ControlPolicyAttachmentArray []ControlPolicyAttachmentInput
 
 func (ControlPolicyAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ControlPolicyAttachment)(nil))
+	return reflect.TypeOf((*[]*ControlPolicyAttachment)(nil)).Elem()
 }
 
 func (i ControlPolicyAttachmentArray) ToControlPolicyAttachmentArrayOutput() ControlPolicyAttachmentArrayOutput {
@@ -242,7 +242,7 @@ type ControlPolicyAttachmentMapInput interface {
 type ControlPolicyAttachmentMap map[string]ControlPolicyAttachmentInput
 
 func (ControlPolicyAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ControlPolicyAttachment)(nil))
+	return reflect.TypeOf((*map[string]*ControlPolicyAttachment)(nil)).Elem()
 }
 
 func (i ControlPolicyAttachmentMap) ToControlPolicyAttachmentMapOutput() ControlPolicyAttachmentMapOutput {
@@ -253,9 +253,7 @@ func (i ControlPolicyAttachmentMap) ToControlPolicyAttachmentMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ControlPolicyAttachmentMapOutput)
 }
 
-type ControlPolicyAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type ControlPolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ControlPolicyAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ControlPolicyAttachment)(nil))
@@ -274,14 +272,12 @@ func (o ControlPolicyAttachmentOutput) ToControlPolicyAttachmentPtrOutput() Cont
 }
 
 func (o ControlPolicyAttachmentOutput) ToControlPolicyAttachmentPtrOutputWithContext(ctx context.Context) ControlPolicyAttachmentPtrOutput {
-	return o.ApplyT(func(v ControlPolicyAttachment) *ControlPolicyAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlPolicyAttachment) *ControlPolicyAttachment {
 		return &v
 	}).(ControlPolicyAttachmentPtrOutput)
 }
 
-type ControlPolicyAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type ControlPolicyAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (ControlPolicyAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ControlPolicyAttachment)(nil))
@@ -293,6 +289,16 @@ func (o ControlPolicyAttachmentPtrOutput) ToControlPolicyAttachmentPtrOutput() C
 
 func (o ControlPolicyAttachmentPtrOutput) ToControlPolicyAttachmentPtrOutputWithContext(ctx context.Context) ControlPolicyAttachmentPtrOutput {
 	return o
+}
+
+func (o ControlPolicyAttachmentPtrOutput) Elem() ControlPolicyAttachmentOutput {
+	return o.ApplyT(func(v *ControlPolicyAttachment) ControlPolicyAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret ControlPolicyAttachment
+		return ret
+	}).(ControlPolicyAttachmentOutput)
 }
 
 type ControlPolicyAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -336,6 +342,10 @@ func (o ControlPolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) Control
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPolicyAttachmentInput)(nil)).Elem(), &ControlPolicyAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPolicyAttachmentPtrInput)(nil)).Elem(), &ControlPolicyAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPolicyAttachmentArrayInput)(nil)).Elem(), ControlPolicyAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPolicyAttachmentMapInput)(nil)).Elem(), ControlPolicyAttachmentMap{})
 	pulumi.RegisterOutputType(ControlPolicyAttachmentOutput{})
 	pulumi.RegisterOutputType(ControlPolicyAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(ControlPolicyAttachmentArrayOutput{})

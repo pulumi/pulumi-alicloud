@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
  *     topicQuota: "50",
@@ -150,23 +150,23 @@ export interface SaslUserState {
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -176,21 +176,21 @@ export interface SaslUserArgs {
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
      */
-    readonly username: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }

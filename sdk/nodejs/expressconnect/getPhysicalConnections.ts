@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * const ids = alicloud.expressconnect.getPhysicalConnections({
  *     ids: ["pc-2345678"],
  * });
- * export const expressConnectPhysicalConnectionId1 = ids.then(ids => ids.connections[0].id);
+ * export const expressConnectPhysicalConnectionId1 = ids.then(ids => ids.connections?[0]?.id);
  * const nameRegex = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^my-PhysicalConnection",
  * });
- * export const expressConnectPhysicalConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections[0].id);
+ * export const expressConnectPhysicalConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?[0]?.id);
  * ```
  */
 export function getPhysicalConnections(args?: GetPhysicalConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPhysicalConnectionsResult> {
@@ -53,20 +53,20 @@ export interface GetPhysicalConnectionsArgs {
     /**
      * A list of Physical Connection IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The include reservation data.
      */
-    readonly includeReservationData?: boolean;
+    includeReservationData?: boolean;
     /**
      * A regex string to filter results by Physical Connection name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Resources on Behalf of a State of the Resource Attribute Field.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -84,4 +84,31 @@ export interface GetPhysicalConnectionsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getPhysicalConnectionsOutput(args?: GetPhysicalConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhysicalConnectionsResult> {
+    return pulumi.output(args).apply(a => getPhysicalConnections(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPhysicalConnections.
+ */
+export interface GetPhysicalConnectionsOutputArgs {
+    /**
+     * A list of Physical Connection IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The include reservation data.
+     */
+    includeReservationData?: pulumi.Input<boolean>;
+    /**
+     * A regex string to filter results by Physical Connection name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Resources on Behalf of a State of the Resource Attribute Field.
+     */
+    status?: pulumi.Input<string>;
 }

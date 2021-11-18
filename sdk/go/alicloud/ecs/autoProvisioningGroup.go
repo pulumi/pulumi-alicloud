@@ -37,7 +37,7 @@ import (
 // 		}
 // 		opt0 := "cloud_efficiency"
 // 		opt1 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableDiskCategory:     &opt0,
 // 			AvailableResourceCreation: &opt1,
 // 		}, nil)
@@ -447,7 +447,7 @@ type AutoProvisioningGroupArrayInput interface {
 type AutoProvisioningGroupArray []AutoProvisioningGroupInput
 
 func (AutoProvisioningGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AutoProvisioningGroup)(nil))
+	return reflect.TypeOf((*[]*AutoProvisioningGroup)(nil)).Elem()
 }
 
 func (i AutoProvisioningGroupArray) ToAutoProvisioningGroupArrayOutput() AutoProvisioningGroupArrayOutput {
@@ -472,7 +472,7 @@ type AutoProvisioningGroupMapInput interface {
 type AutoProvisioningGroupMap map[string]AutoProvisioningGroupInput
 
 func (AutoProvisioningGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AutoProvisioningGroup)(nil))
+	return reflect.TypeOf((*map[string]*AutoProvisioningGroup)(nil)).Elem()
 }
 
 func (i AutoProvisioningGroupMap) ToAutoProvisioningGroupMapOutput() AutoProvisioningGroupMapOutput {
@@ -483,9 +483,7 @@ func (i AutoProvisioningGroupMap) ToAutoProvisioningGroupMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupMapOutput)
 }
 
-type AutoProvisioningGroupOutput struct {
-	*pulumi.OutputState
-}
+type AutoProvisioningGroupOutput struct{ *pulumi.OutputState }
 
 func (AutoProvisioningGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AutoProvisioningGroup)(nil))
@@ -504,14 +502,12 @@ func (o AutoProvisioningGroupOutput) ToAutoProvisioningGroupPtrOutput() AutoProv
 }
 
 func (o AutoProvisioningGroupOutput) ToAutoProvisioningGroupPtrOutputWithContext(ctx context.Context) AutoProvisioningGroupPtrOutput {
-	return o.ApplyT(func(v AutoProvisioningGroup) *AutoProvisioningGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoProvisioningGroup) *AutoProvisioningGroup {
 		return &v
 	}).(AutoProvisioningGroupPtrOutput)
 }
 
-type AutoProvisioningGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type AutoProvisioningGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (AutoProvisioningGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AutoProvisioningGroup)(nil))
@@ -523,6 +519,16 @@ func (o AutoProvisioningGroupPtrOutput) ToAutoProvisioningGroupPtrOutput() AutoP
 
 func (o AutoProvisioningGroupPtrOutput) ToAutoProvisioningGroupPtrOutputWithContext(ctx context.Context) AutoProvisioningGroupPtrOutput {
 	return o
+}
+
+func (o AutoProvisioningGroupPtrOutput) Elem() AutoProvisioningGroupOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) AutoProvisioningGroup {
+		if v != nil {
+			return *v
+		}
+		var ret AutoProvisioningGroup
+		return ret
+	}).(AutoProvisioningGroupOutput)
 }
 
 type AutoProvisioningGroupArrayOutput struct{ *pulumi.OutputState }
@@ -566,6 +572,10 @@ func (o AutoProvisioningGroupMapOutput) MapIndex(k pulumi.StringInput) AutoProvi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProvisioningGroupInput)(nil)).Elem(), &AutoProvisioningGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProvisioningGroupPtrInput)(nil)).Elem(), &AutoProvisioningGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProvisioningGroupArrayInput)(nil)).Elem(), AutoProvisioningGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProvisioningGroupMapInput)(nil)).Elem(), AutoProvisioningGroupMap{})
 	pulumi.RegisterOutputType(AutoProvisioningGroupOutput{})
 	pulumi.RegisterOutputType(AutoProvisioningGroupPtrOutput{})
 	pulumi.RegisterOutputType(AutoProvisioningGroupArrayOutput{})

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const fcServicesDs = pulumi.output(alicloud.fc.getServices({
  *     nameRegex: "sample_fc_service",
- * }, { async: true }));
+ * }));
  *
  * export const firstFcServiceName = fcServicesDs.services[0].name;
  * ```
@@ -44,12 +44,12 @@ export interface GetServicesArgs {
     /**
      * - A list of FC services ids.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by FC service name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -74,4 +74,23 @@ export interface GetServicesResult {
      * A list of FC services. Each element contains the following attributes:
      */
     readonly services: outputs.fc.GetServicesService[];
+}
+
+export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicesResult> {
+    return pulumi.output(args).apply(a => getServices(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServices.
+ */
+export interface GetServicesOutputArgs {
+    /**
+     * - A list of FC services ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by FC service name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -46,68 +46,68 @@ export interface GetAlidnsRecordsArgs {
     /**
      * Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
      */
-    readonly direction?: string;
+    direction?: string;
     /**
      * The domain name associated to the records.
      */
-    readonly domainName: string;
+    domainName: string;
     /**
      * Domain name group ID.
      */
-    readonly groupId?: number;
+    groupId?: number;
     /**
      * A list of record IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Keywords.
      */
-    readonly keyWord?: string;
+    keyWord?: string;
     /**
      * User language.
      */
-    readonly lang?: string;
+    lang?: string;
     /**
      * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
      */
-    readonly line?: string;
+    line?: string;
     /**
      * Sort by. Sort from newest to oldest according to the time added by resolution.
      */
-    readonly orderBy?: string;
-    readonly outputFile?: string;
+    orderBy?: string;
+    outputFile?: string;
     /**
      * The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
      */
-    readonly rrKeyWord?: string;
+    rrKeyWord?: string;
     /**
      * Host record regex.
      */
-    readonly rrRegex?: string;
+    rrRegex?: string;
     /**
      * Search mode, Valid values: `LIKE`, `EXACT`, `ADVANCED`, `LIKE` (fuzzy), `EXACT` (accurate) search supports KeyWord field, `ADVANCED` (advanced) mode supports other fields.
      */
-    readonly searchMode?: string;
+    searchMode?: string;
     /**
      * Record status. Valid values: `ENABLE` and `DISABLE`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
      */
-    readonly type?: string;
+    type?: string;
     /**
      * Analyze type keywords, search by full match, not case sensitive.
      */
-    readonly typeKeyWord?: string;
+    typeKeyWord?: string;
     /**
      * The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
      */
-    readonly valueKeyWord?: string;
+    valueKeyWord?: string;
     /**
      * Host record value regex.
      */
-    readonly valueRegex?: string;
+    valueRegex?: string;
 }
 
 /**
@@ -154,4 +154,79 @@ export interface GetAlidnsRecordsResult {
     readonly typeKeyWord?: string;
     readonly valueKeyWord?: string;
     readonly valueRegex?: string;
+}
+
+export function getAlidnsRecordsOutput(args: GetAlidnsRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsRecordsResult> {
+    return pulumi.output(args).apply(a => getAlidnsRecords(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlidnsRecords.
+ */
+export interface GetAlidnsRecordsOutputArgs {
+    /**
+     * Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * The domain name associated to the records.
+     */
+    domainName: pulumi.Input<string>;
+    /**
+     * Domain name group ID.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * A list of record IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Keywords.
+     */
+    keyWord?: pulumi.Input<string>;
+    /**
+     * User language.
+     */
+    lang?: pulumi.Input<string>;
+    /**
+     * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+     */
+    line?: pulumi.Input<string>;
+    /**
+     * Sort by. Sort from newest to oldest according to the time added by resolution.
+     */
+    orderBy?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+     */
+    rrKeyWord?: pulumi.Input<string>;
+    /**
+     * Host record regex.
+     */
+    rrRegex?: pulumi.Input<string>;
+    /**
+     * Search mode, Valid values: `LIKE`, `EXACT`, `ADVANCED`, `LIKE` (fuzzy), `EXACT` (accurate) search supports KeyWord field, `ADVANCED` (advanced) mode supports other fields.
+     */
+    searchMode?: pulumi.Input<string>;
+    /**
+     * Record status. Valid values: `ENABLE` and `DISABLE`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Analyze type keywords, search by full match, not case sensitive.
+     */
+    typeKeyWord?: pulumi.Input<string>;
+    /**
+     * The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+     */
+    valueKeyWord?: pulumi.Input<string>;
+    /**
+     * Host record value regex.
+     */
+    valueRegex?: pulumi.Input<string>;
 }

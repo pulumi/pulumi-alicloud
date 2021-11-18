@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudStorageGateway
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     {
         public static Task<GetStorageBundlesResult> InvokeAsync(GetStorageBundlesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStorageBundlesResult>("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args ?? new GetStorageBundlesArgs(), options.WithVersion());
+
+        public static Output<GetStorageBundlesResult> Invoke(GetStorageBundlesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetStorageBundlesResult>("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args ?? new GetStorageBundlesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -36,6 +40,30 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public string? OutputFile { get; set; }
 
         public GetStorageBundlesArgs()
+        {
+        }
+    }
+
+    public sealed class GetStorageBundlesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("backendBucketRegionId", required: true)]
+        public Input<string> BackendBucketRegionId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetStorageBundlesInvokeArgs()
         {
         }
     }

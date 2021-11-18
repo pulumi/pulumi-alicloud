@@ -140,15 +140,15 @@ export interface GroupPolicyAttachmentState {
     /**
      * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    readonly groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string>;
     /**
      * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    readonly policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string>;
     /**
      * Type of the RAM policy. It must be `Custom` or `System`.
      */
-    readonly policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string>;
 }
 
 /**
@@ -158,13 +158,13 @@ export interface GroupPolicyAttachmentArgs {
     /**
      * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    readonly groupName: pulumi.Input<string>;
+    groupName: pulumi.Input<string>;
     /**
      * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    readonly policyName: pulumi.Input<string>;
+    policyName: pulumi.Input<string>;
     /**
      * Type of the RAM policy. It must be `Custom` or `System`.
      */
-    readonly policyType: pulumi.Input<string>;
+    policyType: pulumi.Input<string>;
 }

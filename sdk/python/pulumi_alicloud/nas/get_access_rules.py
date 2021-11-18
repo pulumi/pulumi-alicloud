@@ -13,6 +13,7 @@ __all__ = [
     'GetAccessRulesResult',
     'AwaitableGetAccessRulesResult',
     'get_access_rules',
+    'get_access_rules_output',
 ]
 
 @pulumi.output_type
@@ -162,3 +163,26 @@ def get_access_rules(access_group_name: Optional[str] = None,
         rw_access=__ret__.rw_access,
         source_cidr_ip=__ret__.source_cidr_ip,
         user_access=__ret__.user_access)
+
+
+@_utilities.lift_output_func(get_access_rules)
+def get_access_rules_output(access_group_name: Optional[pulumi.Input[str]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            rw_access: Optional[pulumi.Input[Optional[str]]] = None,
+                            source_cidr_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                            user_access: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessRulesResult]:
+    """
+    This data source provides AccessRule available to the user.
+
+    > **NOTE**: Available in 1.35.0+
+
+
+    :param str access_group_name: Filter results by a specific AccessGroupName.
+    :param Sequence[str] ids: A list of rule IDs.
+    :param str rw_access: Filter results by a specific RWAccess.
+    :param str source_cidr_ip: Filter results by a specific SourceCidrIp.
+    :param str user_access: Filter results by a specific UserAccess.
+    """
+    ...

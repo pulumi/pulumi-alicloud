@@ -4,6 +4,9 @@
 package dfs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,4 +84,90 @@ type GetAccessGroupsResult struct {
 	OrderType   *string  `pulumi:"orderType"`
 	OutputFile  *string  `pulumi:"outputFile"`
 	StartOffset *int     `pulumi:"startOffset"`
+}
+
+func GetAccessGroupsOutput(ctx *pulumi.Context, args GetAccessGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAccessGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAccessGroupsResult, error) {
+			args := v.(GetAccessGroupsArgs)
+			r, err := GetAccessGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetAccessGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getAccessGroups.
+type GetAccessGroupsOutputArgs struct {
+	// A list of Access Group IDs.
+	Ids   pulumi.StringArrayInput `pulumi:"ids"`
+	Limit pulumi.IntPtrInput      `pulumi:"limit"`
+	// A regex string to filter results by Access Group name.
+	NameRegex   pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OrderBy     pulumi.StringPtrInput `pulumi:"orderBy"`
+	OrderType   pulumi.StringPtrInput `pulumi:"orderType"`
+	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	StartOffset pulumi.IntPtrInput    `pulumi:"startOffset"`
+}
+
+func (GetAccessGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccessGroups.
+type GetAccessGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccessGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessGroupsResult)(nil)).Elem()
+}
+
+func (o GetAccessGroupsResultOutput) ToGetAccessGroupsResultOutput() GetAccessGroupsResultOutput {
+	return o
+}
+
+func (o GetAccessGroupsResultOutput) ToGetAccessGroupsResultOutputWithContext(ctx context.Context) GetAccessGroupsResultOutput {
+	return o
+}
+
+func (o GetAccessGroupsResultOutput) Groups() GetAccessGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetAccessGroupsResult) []GetAccessGroupsGroup { return v.Groups }).(GetAccessGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccessGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAccessGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAccessGroupsResultOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAccessGroupsResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+func (o GetAccessGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccessGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAccessGroupsResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessGroupsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccessGroupsResultOutput) OrderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessGroupsResult) *string { return v.OrderType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccessGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccessGroupsResultOutput) StartOffset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAccessGroupsResult) *int { return v.StartOffset }).(pulumi.IntPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccessGroupsResultOutput{})
 }

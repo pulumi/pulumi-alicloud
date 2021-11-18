@@ -49,59 +49,59 @@ export function getDisks(args?: GetDisksArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getDisks.
  */
 export interface GetDisksArgs {
-    readonly additionalAttributes?: string[];
-    readonly autoSnapshotPolicyId?: string;
+    additionalAttributes?: string[];
+    autoSnapshotPolicyId?: string;
     /**
      * Availability zone of the disk.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
-    readonly availabilityZone?: string;
+    availabilityZone?: string;
     /**
      * Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
      */
-    readonly category?: string;
-    readonly deleteAutoSnapshot?: boolean;
-    readonly deleteWithInstance?: boolean;
-    readonly diskName?: string;
-    readonly diskType?: string;
-    readonly dryRun?: boolean;
-    readonly enableAutoSnapshot?: boolean;
-    readonly enableAutomatedSnapshotPolicy?: boolean;
-    readonly enableShared?: boolean;
+    category?: string;
+    deleteAutoSnapshot?: boolean;
+    deleteWithInstance?: boolean;
+    diskName?: string;
+    diskType?: string;
+    dryRun?: boolean;
+    enableAutoSnapshot?: boolean;
+    enableAutomatedSnapshotPolicy?: boolean;
+    enableShared?: boolean;
     /**
      * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
      */
-    readonly encrypted?: string;
+    encrypted?: string;
     /**
      * A list of disks IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Filter the results by the specified ECS instance ID.
      */
-    readonly instanceId?: string;
-    readonly kmsKeyId?: string;
+    instanceId?: string;
+    kmsKeyId?: string;
     /**
      * A regex string to filter results by disk name.
      */
-    readonly nameRegex?: string;
-    readonly operationLocks?: inputs.ecs.GetDisksOperationLock[];
-    readonly outputFile?: string;
-    readonly paymentType?: string;
-    readonly portable?: boolean;
+    nameRegex?: string;
+    operationLocks?: inputs.ecs.GetDisksOperationLock[];
+    outputFile?: string;
+    paymentType?: string;
+    portable?: boolean;
     /**
      * The Id of resource group which the disk belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
      */
-    readonly snapshotId?: string;
+    snapshotId?: string;
     /**
      * Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A map of tags assigned to the disks. It must be in the format:
      * ```typescript
@@ -113,17 +113,17 @@ export interface GetDisksArgs {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }, { async: true }));
+     * }));
      * ```
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * Disk type. Possible values: `system` and `data`.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
      */
-    readonly type?: string;
-    readonly zoneId?: string;
+    type?: string;
+    zoneId?: string;
 }
 
 /**
@@ -197,4 +197,89 @@ export interface GetDisksResult {
      */
     readonly type?: string;
     readonly zoneId?: string;
+}
+
+export function getDisksOutput(args?: GetDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDisksResult> {
+    return pulumi.output(args).apply(a => getDisks(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDisks.
+ */
+export interface GetDisksOutputArgs {
+    additionalAttributes?: pulumi.Input<pulumi.Input<string>[]>;
+    autoSnapshotPolicyId?: pulumi.Input<string>;
+    /**
+     * Availability zone of the disk.
+     *
+     * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
+     */
+    category?: pulumi.Input<string>;
+    deleteAutoSnapshot?: pulumi.Input<boolean>;
+    deleteWithInstance?: pulumi.Input<boolean>;
+    diskName?: pulumi.Input<string>;
+    diskType?: pulumi.Input<string>;
+    dryRun?: pulumi.Input<boolean>;
+    enableAutoSnapshot?: pulumi.Input<boolean>;
+    enableAutomatedSnapshotPolicy?: pulumi.Input<boolean>;
+    enableShared?: pulumi.Input<boolean>;
+    /**
+     * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+     */
+    encrypted?: pulumi.Input<string>;
+    /**
+     * A list of disks IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Filter the results by the specified ECS instance ID.
+     */
+    instanceId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by disk name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetDisksOperationLockArgs>[]>;
+    outputFile?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
+    portable?: pulumi.Input<boolean>;
+    /**
+     * The Id of resource group which the disk belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     */
+    snapshotId?: pulumi.Input<string>;
+    /**
+     * Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the disks. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const disksDs = pulumi.output(alicloud.ecs.getDisks({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * }));
+     * ```
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Disk type. Possible values: `system` and `data`.
+     *
+     * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
+     */
+    type?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

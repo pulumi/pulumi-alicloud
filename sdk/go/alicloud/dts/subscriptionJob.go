@@ -17,144 +17,6 @@ import (
 //
 // > **NOTE:** Available in v1.138.0+.
 //
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "dtsSubscriptionJob"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		creation := "Rds"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		opt0 := creation
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
-// 			Engine:          pulumi.String("MySQL"),
-// 			EngineVersion:   pulumi.String("5.6"),
-// 			InstanceType:    pulumi.String("rds.mysql.s1.small"),
-// 			InstanceStorage: pulumi.Int(10),
-// 			VswitchId:       defaultSwitch.ID(),
-// 			InstanceName:    pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var db []*rds.Database
-// 		for key0, _ := range 2 {
-// 			__res, err := rds.NewDatabase(ctx, fmt.Sprintf("db-%v", key0), &rds.DatabaseArgs{
-// 				InstanceId:  instance.ID(),
-// 				Description: pulumi.String("from terraform"),
-// 			})
-// 			if err != nil {
-// 				return err
-// 			}
-// 			db = append(db, __res)
-// 		}
-// 		account, err := rds.NewAccount(ctx, "account", &rds.AccountArgs{
-// 			InstanceId:  instance.ID(),
-// 			Password:    pulumi.String("Test12345"),
-// 			Description: pulumi.String("from terraform"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var splat0 pulumi.StringArray
-// 		for _, val0 := range db {
-// 			splat0 = append(splat0, val0.Name)
-// 		}
-// 		_, err = rds.NewAccountPrivilege(ctx, "privilege", &rds.AccountPrivilegeArgs{
-// 			InstanceId:  instance.ID(),
-// 			AccountName: account.Name,
-// 			Privilege:   pulumi.String("ReadWrite"),
-// 			DbNames:     toPulumiStringArray(splat0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt1 := "default-NODELETING"
-// 		default1Networks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt2 := data.Alicloud_vpcs.Default.Ids[0]
-// 		default1Switches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId: &opt2,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dts.NewSubscriptionJob(ctx, "defaultSubscriptionJob", &dts.SubscriptionJobArgs{
-// 			DtsJobName:                      pulumi.String(name),
-// 			PaymentType:                     pulumi.String("PostPaid"),
-// 			SourceEndpointEngineName:        pulumi.String("MySQL"),
-// 			SourceEndpointRegion:            pulumi.String("cn-hangzhou"),
-// 			SourceEndpointInstanceType:      pulumi.String("RDS"),
-// 			SourceEndpointInstanceId:        instance.ID(),
-// 			SourceEndpointDatabaseName:      pulumi.String("tfaccountpri_0"),
-// 			SourceEndpointUserName:          pulumi.String("tftestprivilege"),
-// 			SourceEndpointPassword:          pulumi.String("Test12345"),
-// 			DbList:                          pulumi.String("        {\"dtstestdata\": {\"name\": \"tfaccountpri_0\", \"all\": true}}\n"),
-// 			SubscriptionInstanceNetworkType: pulumi.String("vpc"),
-// 			SubscriptionInstanceVpcId:       pulumi.String(default1Networks.Ids[0]),
-// 			SubscriptionInstanceVswitchId:   pulumi.String(default1Switches.Ids[0]),
-// 			Status:                          pulumi.String("Normal"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// func toPulumiStringArray(arr []string) pulumi.StringArray {
-// 	var pulumiArr pulumi.StringArray
-// 	for _, v := range arr {
-// 		pulumiArr = append(pulumiArr, pulumi.String(v))
-// 	}
-// 	return pulumiArr
-// }
-// ```
-//
 // ## Import
 //
 // DTS Subscription Job can be imported using the id, e.g.
@@ -666,7 +528,7 @@ type SubscriptionJobArrayInput interface {
 type SubscriptionJobArray []SubscriptionJobInput
 
 func (SubscriptionJobArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SubscriptionJob)(nil))
+	return reflect.TypeOf((*[]*SubscriptionJob)(nil)).Elem()
 }
 
 func (i SubscriptionJobArray) ToSubscriptionJobArrayOutput() SubscriptionJobArrayOutput {
@@ -691,7 +553,7 @@ type SubscriptionJobMapInput interface {
 type SubscriptionJobMap map[string]SubscriptionJobInput
 
 func (SubscriptionJobMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SubscriptionJob)(nil))
+	return reflect.TypeOf((*map[string]*SubscriptionJob)(nil)).Elem()
 }
 
 func (i SubscriptionJobMap) ToSubscriptionJobMapOutput() SubscriptionJobMapOutput {
@@ -702,9 +564,7 @@ func (i SubscriptionJobMap) ToSubscriptionJobMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionJobMapOutput)
 }
 
-type SubscriptionJobOutput struct {
-	*pulumi.OutputState
-}
+type SubscriptionJobOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionJobOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubscriptionJob)(nil))
@@ -723,14 +583,12 @@ func (o SubscriptionJobOutput) ToSubscriptionJobPtrOutput() SubscriptionJobPtrOu
 }
 
 func (o SubscriptionJobOutput) ToSubscriptionJobPtrOutputWithContext(ctx context.Context) SubscriptionJobPtrOutput {
-	return o.ApplyT(func(v SubscriptionJob) *SubscriptionJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionJob) *SubscriptionJob {
 		return &v
 	}).(SubscriptionJobPtrOutput)
 }
 
-type SubscriptionJobPtrOutput struct {
-	*pulumi.OutputState
-}
+type SubscriptionJobPtrOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionJobPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubscriptionJob)(nil))
@@ -742,6 +600,16 @@ func (o SubscriptionJobPtrOutput) ToSubscriptionJobPtrOutput() SubscriptionJobPt
 
 func (o SubscriptionJobPtrOutput) ToSubscriptionJobPtrOutputWithContext(ctx context.Context) SubscriptionJobPtrOutput {
 	return o
+}
+
+func (o SubscriptionJobPtrOutput) Elem() SubscriptionJobOutput {
+	return o.ApplyT(func(v *SubscriptionJob) SubscriptionJob {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionJob
+		return ret
+	}).(SubscriptionJobOutput)
 }
 
 type SubscriptionJobArrayOutput struct{ *pulumi.OutputState }
@@ -785,6 +653,10 @@ func (o SubscriptionJobMapOutput) MapIndex(k pulumi.StringInput) SubscriptionJob
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionJobInput)(nil)).Elem(), &SubscriptionJob{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionJobPtrInput)(nil)).Elem(), &SubscriptionJob{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionJobArrayInput)(nil)).Elem(), SubscriptionJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionJobMapInput)(nil)).Elem(), SubscriptionJobMap{})
 	pulumi.RegisterOutputType(SubscriptionJobOutput{})
 	pulumi.RegisterOutputType(SubscriptionJobPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionJobArrayOutput{})

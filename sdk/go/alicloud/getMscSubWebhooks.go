@@ -4,6 +4,9 @@
 package alicloud
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := alicloud.GetMscSubWebhooks(ctx, &alicloud.GetMscSubWebhooksArgs{
+// 		ids, err := alicloud.GetMscSubWebhooks(ctx, &GetMscSubWebhooksArgs{
 // 			Ids: []string{
 // 				"example_id",
 // 			},
@@ -35,7 +38,7 @@ import (
 // 		}
 // 		ctx.Export("mscSubWebhookId1", ids.Webhooks[0].Id)
 // 		opt0 := "^my-Webhook"
-// 		nameRegex, err := alicloud.GetMscSubWebhooks(ctx, &alicloud.GetMscSubWebhooksArgs{
+// 		nameRegex, err := alicloud.GetMscSubWebhooks(ctx, &GetMscSubWebhooksArgs{
 // 			NameRegex: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -73,4 +76,70 @@ type GetMscSubWebhooksResult struct {
 	Names      []string                   `pulumi:"names"`
 	OutputFile *string                    `pulumi:"outputFile"`
 	Webhooks   []GetMscSubWebhooksWebhook `pulumi:"webhooks"`
+}
+
+func GetMscSubWebhooksOutput(ctx *pulumi.Context, args GetMscSubWebhooksOutputArgs, opts ...pulumi.InvokeOption) GetMscSubWebhooksResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetMscSubWebhooksResult, error) {
+			args := v.(GetMscSubWebhooksArgs)
+			r, err := GetMscSubWebhooks(ctx, &args, opts...)
+			return *r, err
+		}).(GetMscSubWebhooksResultOutput)
+}
+
+// A collection of arguments for invoking getMscSubWebhooks.
+type GetMscSubWebhooksOutputArgs struct {
+	// A list of Webhook IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Webhook name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetMscSubWebhooksOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMscSubWebhooksArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMscSubWebhooks.
+type GetMscSubWebhooksResultOutput struct{ *pulumi.OutputState }
+
+func (GetMscSubWebhooksResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMscSubWebhooksResult)(nil)).Elem()
+}
+
+func (o GetMscSubWebhooksResultOutput) ToGetMscSubWebhooksResultOutput() GetMscSubWebhooksResultOutput {
+	return o
+}
+
+func (o GetMscSubWebhooksResultOutput) ToGetMscSubWebhooksResultOutputWithContext(ctx context.Context) GetMscSubWebhooksResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetMscSubWebhooksResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubWebhooksResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetMscSubWebhooksResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMscSubWebhooksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetMscSubWebhooksResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMscSubWebhooksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMscSubWebhooksResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMscSubWebhooksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetMscSubWebhooksResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMscSubWebhooksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMscSubWebhooksResultOutput) Webhooks() GetMscSubWebhooksWebhookArrayOutput {
+	return o.ApplyT(func(v GetMscSubWebhooksResult) []GetMscSubWebhooksWebhook { return v.Webhooks }).(GetMscSubWebhooksWebhookArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMscSubWebhooksResultOutput{})
 }

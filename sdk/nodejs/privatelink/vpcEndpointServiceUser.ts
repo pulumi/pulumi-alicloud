@@ -116,15 +116,15 @@ export interface VpcEndpointServiceUserState {
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The Id of Vpc Endpoint Service.
      */
-    readonly serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * The Id of Ram User.
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }
 
 /**
@@ -134,13 +134,13 @@ export interface VpcEndpointServiceUserArgs {
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The Id of Vpc Endpoint Service.
      */
-    readonly serviceId: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
     /**
      * The Id of Ram User.
      */
-    readonly userId: pulumi.Input<string>;
+    userId: pulumi.Input<string>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Task<GetDomainExtensionsResult> InvokeAsync(GetDomainExtensionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? new GetDomainExtensionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the domain extensions associated with a server load balancer listener.
+        /// 
+        /// &gt; **NOTE:** Available in 1.60.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(AliCloud.Slb.GetDomainExtensions.InvokeAsync(new AliCloud.Slb.GetDomainExtensionsArgs
+        ///         {
+        ///             FrontendPort = "fake-port",
+        ///             Ids = 
+        ///             {
+        ///                 "fake-de-id",
+        ///             },
+        ///             LoadBalancerId = "fake-lb-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDomainExtensionsResult> Invoke(GetDomainExtensionsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? new GetDomainExtensionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -79,6 +116,40 @@ namespace Pulumi.AliCloud.Slb
         public string? OutputFile { get; set; }
 
         public GetDomainExtensionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainExtensionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+        /// </summary>
+        [Input("frontendPort", required: true)]
+        public Input<int> FrontendPort { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// IDs of the SLB domain extensions.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The ID of the SLB instance.
+        /// </summary>
+        [Input("loadBalancerId", required: true)]
+        public Input<string> LoadBalancerId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetDomainExtensionsInvokeArgs()
         {
         }
     }

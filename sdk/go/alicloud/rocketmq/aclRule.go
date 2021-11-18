@@ -266,7 +266,7 @@ type AclRuleArrayInput interface {
 type AclRuleArray []AclRuleInput
 
 func (AclRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AclRule)(nil))
+	return reflect.TypeOf((*[]*AclRule)(nil)).Elem()
 }
 
 func (i AclRuleArray) ToAclRuleArrayOutput() AclRuleArrayOutput {
@@ -291,7 +291,7 @@ type AclRuleMapInput interface {
 type AclRuleMap map[string]AclRuleInput
 
 func (AclRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AclRule)(nil))
+	return reflect.TypeOf((*map[string]*AclRule)(nil)).Elem()
 }
 
 func (i AclRuleMap) ToAclRuleMapOutput() AclRuleMapOutput {
@@ -302,9 +302,7 @@ func (i AclRuleMap) ToAclRuleMapOutputWithContext(ctx context.Context) AclRuleMa
 	return pulumi.ToOutputWithContext(ctx, i).(AclRuleMapOutput)
 }
 
-type AclRuleOutput struct {
-	*pulumi.OutputState
-}
+type AclRuleOutput struct{ *pulumi.OutputState }
 
 func (AclRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AclRule)(nil))
@@ -323,14 +321,12 @@ func (o AclRuleOutput) ToAclRulePtrOutput() AclRulePtrOutput {
 }
 
 func (o AclRuleOutput) ToAclRulePtrOutputWithContext(ctx context.Context) AclRulePtrOutput {
-	return o.ApplyT(func(v AclRule) *AclRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AclRule) *AclRule {
 		return &v
 	}).(AclRulePtrOutput)
 }
 
-type AclRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type AclRulePtrOutput struct{ *pulumi.OutputState }
 
 func (AclRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AclRule)(nil))
@@ -342,6 +338,16 @@ func (o AclRulePtrOutput) ToAclRulePtrOutput() AclRulePtrOutput {
 
 func (o AclRulePtrOutput) ToAclRulePtrOutputWithContext(ctx context.Context) AclRulePtrOutput {
 	return o
+}
+
+func (o AclRulePtrOutput) Elem() AclRuleOutput {
+	return o.ApplyT(func(v *AclRule) AclRule {
+		if v != nil {
+			return *v
+		}
+		var ret AclRule
+		return ret
+	}).(AclRuleOutput)
 }
 
 type AclRuleArrayOutput struct{ *pulumi.OutputState }
@@ -385,6 +391,10 @@ func (o AclRuleMapOutput) MapIndex(k pulumi.StringInput) AclRuleOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRuleInput)(nil)).Elem(), &AclRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRulePtrInput)(nil)).Elem(), &AclRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRuleArrayInput)(nil)).Elem(), AclRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRuleMapInput)(nil)).Elem(), AclRuleMap{})
 	pulumi.RegisterOutputType(AclRuleOutput{})
 	pulumi.RegisterOutputType(AclRulePtrOutput{})
 	pulumi.RegisterOutputType(AclRuleArrayOutput{})

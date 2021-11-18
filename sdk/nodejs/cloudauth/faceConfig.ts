@@ -116,15 +116,15 @@ export interface FaceConfigState {
     /**
      * Scene name.
      */
-    readonly bizName?: pulumi.Input<string>;
+    bizName?: pulumi.Input<string>;
     /**
      * Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      */
-    readonly bizType?: pulumi.Input<string>;
+    bizType?: pulumi.Input<string>;
     /**
      * Last Modified Date.
      */
-    readonly gmtModified?: pulumi.Input<string>;
+    gmtModified?: pulumi.Input<string>;
 }
 
 /**
@@ -134,9 +134,9 @@ export interface FaceConfigArgs {
     /**
      * Scene name.
      */
-    readonly bizName: pulumi.Input<string>;
+    bizName: pulumi.Input<string>;
     /**
      * Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      */
-    readonly bizType: pulumi.Input<string>;
+    bizType: pulumi.Input<string>;
 }

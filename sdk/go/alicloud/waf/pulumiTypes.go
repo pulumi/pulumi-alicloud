@@ -787,6 +787,16 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainLogHeaderInput)(nil)).Elem(), DomainLogHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainLogHeaderArrayInput)(nil)).Elem(), DomainLogHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateInput)(nil)).Elem(), GetCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateArrayInput)(nil)).Elem(), GetCertificatesCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainLogHeaderInput)(nil)).Elem(), GetDomainsDomainLogHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainLogHeaderArrayInput)(nil)).Elem(), GetDomainsDomainLogHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterOutputType(DomainLogHeaderOutput{})
 	pulumi.RegisterOutputType(DomainLogHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetCertificatesCertificateOutput{})

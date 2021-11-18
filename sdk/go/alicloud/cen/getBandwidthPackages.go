@@ -4,6 +4,9 @@
 package cen
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,4 +79,93 @@ type GetBandwidthPackagesResult struct {
 	Packages []GetBandwidthPackagesPackage `pulumi:"packages"`
 	// Status of the CEN Bandwidth Package in CEN instance, including `Idle` and `InUse`.
 	Status *string `pulumi:"status"`
+}
+
+func GetBandwidthPackagesOutput(ctx *pulumi.Context, args GetBandwidthPackagesOutputArgs, opts ...pulumi.InvokeOption) GetBandwidthPackagesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetBandwidthPackagesResult, error) {
+			args := v.(GetBandwidthPackagesArgs)
+			r, err := GetBandwidthPackages(ctx, &args, opts...)
+			return *r, err
+		}).(GetBandwidthPackagesResultOutput)
+}
+
+// A collection of arguments for invoking getBandwidthPackages.
+type GetBandwidthPackagesOutputArgs struct {
+	// Limit search to a list of specific CEN Bandwidth Package IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+	IncludeReservationData pulumi.BoolPtrInput `pulumi:"includeReservationData"`
+	// ID of a CEN instance.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// A regex string to filter CEN Bandwidth Package by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetBandwidthPackagesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBandwidthPackagesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getBandwidthPackages.
+type GetBandwidthPackagesResultOutput struct{ *pulumi.OutputState }
+
+func (GetBandwidthPackagesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBandwidthPackagesResult)(nil)).Elem()
+}
+
+func (o GetBandwidthPackagesResultOutput) ToGetBandwidthPackagesResultOutput() GetBandwidthPackagesResultOutput {
+	return o
+}
+
+func (o GetBandwidthPackagesResultOutput) ToGetBandwidthPackagesResultOutputWithContext(ctx context.Context) GetBandwidthPackagesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBandwidthPackagesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of specific CEN Bandwidth Package IDs.
+// * `names` (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
+func (o GetBandwidthPackagesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBandwidthPackagesResultOutput) IncludeReservationData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) *bool { return v.IncludeReservationData }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the CEN instance that are associated with the bandwidth package.
+func (o GetBandwidthPackagesResultOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBandwidthPackagesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBandwidthPackagesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBandwidthPackagesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of CEN bandwidth package. Each element contains the following attributes:
+func (o GetBandwidthPackagesResultOutput) Packages() GetBandwidthPackagesPackageArrayOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) []GetBandwidthPackagesPackage { return v.Packages }).(GetBandwidthPackagesPackageArrayOutput)
+}
+
+// Status of the CEN Bandwidth Package in CEN instance, including `Idle` and `InUse`.
+func (o GetBandwidthPackagesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBandwidthPackagesResultOutput{})
 }

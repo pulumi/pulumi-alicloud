@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Tsdb
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.Tsdb
         ///                 "example_value",
         ///             },
         ///         }));
-        ///         this.FirstTsdbInstanceId = example.Apply(example =&gt; example.Instances[0].Id);
+        ///         this.FirstTsdbInstanceId = example.Apply(example =&gt; example.Instances?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstTsdbInstanceId")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.Tsdb
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:tsdb/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.112.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Tsdb.GetInstances.InvokeAsync(new AliCloud.Tsdb.GetInstancesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///         }));
+        ///         this.FirstTsdbInstanceId = example.Apply(example =&gt; example.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstTsdbInstanceId")]
+        ///     public Output&lt;string&gt; FirstTsdbInstanceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:tsdb/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -106,6 +146,64 @@ namespace Pulumi.AliCloud.Tsdb
         public string? StatusList { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The app key.
+        /// </summary>
+        [Input("appKey")]
+        public Input<string>? AppKey { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+        /// </summary>
+        [Input("engineType")]
+        public Input<string>? EngineType { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Instance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The query str.
+        /// </summary>
+        [Input("queryStr")]
+        public Input<string>? QueryStr { get; set; }
+
+        /// <summary>
+        /// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The status list.
+        /// </summary>
+        [Input("statusList")]
+        public Input<string>? StatusList { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

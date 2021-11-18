@@ -4,6 +4,9 @@
 package dcdn
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,122 @@ type GetDomainsResult struct {
 	SecurityToken   *string `pulumi:"securityToken"`
 	// The status of DCDN Domain. Valid values: `online`, `offline`, `checkFailed`, `checking`, `configureFailed`, `configuring`.
 	Status *string `pulumi:"status"`
+}
+
+func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDomainsResult, error) {
+			args := v.(GetDomainsArgs)
+			r, err := GetDomains(ctx, &args, opts...)
+			return *r, err
+		}).(GetDomainsResultOutput)
+}
+
+// A collection of arguments for invoking getDomains.
+type GetDomainsOutputArgs struct {
+	// The end time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	ChangeEndTime pulumi.StringPtrInput `pulumi:"changeEndTime"`
+	// The start time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	ChangeStartTime pulumi.StringPtrInput `pulumi:"changeStartTime"`
+	// Specifies whether to display the domains in the checking, check_failed, or configureFailed status. Valid values: `true` or `false`.
+	CheckDomainShow pulumi.BoolPtrInput `pulumi:"checkDomainShow"`
+	// The search method. Default value: `fuzzyMatch`. Valid values: `fuzzyMatch`, `preMatch`, `sufMatch`, `fullMatch`.
+	DomainSearchType pulumi.StringPtrInput `pulumi:"domainSearchType"`
+	// Default to `false`. Set it to true can output more details.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list ids of DCDN Domain.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by the DCDN Domain.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	SecurityToken   pulumi.StringPtrInput `pulumi:"securityToken"`
+	// The status of DCDN Domain.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetDomainsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDomains.
+type GetDomainsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsResult)(nil)).Elem()
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutput() GetDomainsResultOutput {
+	return o
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.Context) GetDomainsResultOutput {
+	return o
+}
+
+func (o GetDomainsResultOutput) ChangeEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.ChangeEndTime }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainsResultOutput) ChangeStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.ChangeStartTime }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainsResultOutput) CheckDomainShow() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.CheckDomainShow }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetDomainsResultOutput) DomainSearchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.DomainSearchType }).(pulumi.StringPtrOutput)
+}
+
+// A list of domains. Each element contains the following attributes:
+func (o GetDomainsResultOutput) Domains() GetDomainsDomainArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []GetDomainsDomain { return v.Domains }).(GetDomainsDomainArrayOutput)
+}
+
+func (o GetDomainsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDomainsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list ids of DCDN Domain.
+func (o GetDomainsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDomainsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of DCDN Domain names.
+func (o GetDomainsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDomainsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group.
+func (o GetDomainsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainsResultOutput) SecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.SecurityToken }).(pulumi.StringPtrOutput)
+}
+
+// The status of DCDN Domain. Valid values: `online`, `offline`, `checkFailed`, `checking`, `configureFailed`, `configuring`.
+func (o GetDomainsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDomainsResultOutput{})
 }

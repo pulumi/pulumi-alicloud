@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,4 +83,74 @@ type GetTrafficMirrorFilterIngressRulesResult struct {
 	Rules                 []GetTrafficMirrorFilterIngressRulesRule `pulumi:"rules"`
 	Status                *string                                  `pulumi:"status"`
 	TrafficMirrorFilterId string                                   `pulumi:"trafficMirrorFilterId"`
+}
+
+func GetTrafficMirrorFilterIngressRulesOutput(ctx *pulumi.Context, args GetTrafficMirrorFilterIngressRulesOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMirrorFilterIngressRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTrafficMirrorFilterIngressRulesResult, error) {
+			args := v.(GetTrafficMirrorFilterIngressRulesArgs)
+			r, err := GetTrafficMirrorFilterIngressRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetTrafficMirrorFilterIngressRulesResultOutput)
+}
+
+// A collection of arguments for invoking getTrafficMirrorFilterIngressRules.
+type GetTrafficMirrorFilterIngressRulesOutputArgs struct {
+	// A list of Traffic Mirror Filter Ingress Rule IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The ID of the filter associated with the inbound rule.
+	TrafficMirrorFilterId pulumi.StringInput `pulumi:"trafficMirrorFilterId"`
+}
+
+func (GetTrafficMirrorFilterIngressRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficMirrorFilterIngressRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTrafficMirrorFilterIngressRules.
+type GetTrafficMirrorFilterIngressRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetTrafficMirrorFilterIngressRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficMirrorFilterIngressRulesResult)(nil)).Elem()
+}
+
+func (o GetTrafficMirrorFilterIngressRulesResultOutput) ToGetTrafficMirrorFilterIngressRulesResultOutput() GetTrafficMirrorFilterIngressRulesResultOutput {
+	return o
+}
+
+func (o GetTrafficMirrorFilterIngressRulesResultOutput) ToGetTrafficMirrorFilterIngressRulesResultOutputWithContext(ctx context.Context) GetTrafficMirrorFilterIngressRulesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTrafficMirrorFilterIngressRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTrafficMirrorFilterIngressRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTrafficMirrorFilterIngressRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTrafficMirrorFilterIngressRulesResultOutput) Rules() GetTrafficMirrorFilterIngressRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesResult) []GetTrafficMirrorFilterIngressRulesRule {
+		return v.Rules
+	}).(GetTrafficMirrorFilterIngressRulesRuleArrayOutput)
+}
+
+func (o GetTrafficMirrorFilterIngressRulesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTrafficMirrorFilterIngressRulesResultOutput) TrafficMirrorFilterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesResult) string { return v.TrafficMirrorFilterId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTrafficMirrorFilterIngressRulesResultOutput{})
 }

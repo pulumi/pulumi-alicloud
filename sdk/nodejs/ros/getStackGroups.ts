@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstRosStackGroupId = example.then(example => example.groups[0].id);
+ * export const firstRosStackGroupId = example.then(example => example.groups?[0]?.id);
  * ```
  */
 export function getStackGroups(args?: GetStackGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetStackGroupsResult> {
@@ -50,20 +50,20 @@ export interface GetStackGroupsArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Stack Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Stack Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of Stack Group.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -81,4 +81,31 @@ export interface GetStackGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getStackGroupsOutput(args?: GetStackGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackGroupsResult> {
+    return pulumi.output(args).apply(a => getStackGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStackGroups.
+ */
+export interface GetStackGroupsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Stack Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Stack Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of Stack Group.
+     */
+    status?: pulumi.Input<string>;
 }

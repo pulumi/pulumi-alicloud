@@ -514,7 +514,7 @@ type EdgeKubernetesArrayInput interface {
 type EdgeKubernetesArray []EdgeKubernetesInput
 
 func (EdgeKubernetesArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EdgeKubernetes)(nil))
+	return reflect.TypeOf((*[]*EdgeKubernetes)(nil)).Elem()
 }
 
 func (i EdgeKubernetesArray) ToEdgeKubernetesArrayOutput() EdgeKubernetesArrayOutput {
@@ -539,7 +539,7 @@ type EdgeKubernetesMapInput interface {
 type EdgeKubernetesMap map[string]EdgeKubernetesInput
 
 func (EdgeKubernetesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EdgeKubernetes)(nil))
+	return reflect.TypeOf((*map[string]*EdgeKubernetes)(nil)).Elem()
 }
 
 func (i EdgeKubernetesMap) ToEdgeKubernetesMapOutput() EdgeKubernetesMapOutput {
@@ -550,9 +550,7 @@ func (i EdgeKubernetesMap) ToEdgeKubernetesMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesMapOutput)
 }
 
-type EdgeKubernetesOutput struct {
-	*pulumi.OutputState
-}
+type EdgeKubernetesOutput struct{ *pulumi.OutputState }
 
 func (EdgeKubernetesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EdgeKubernetes)(nil))
@@ -571,14 +569,12 @@ func (o EdgeKubernetesOutput) ToEdgeKubernetesPtrOutput() EdgeKubernetesPtrOutpu
 }
 
 func (o EdgeKubernetesOutput) ToEdgeKubernetesPtrOutputWithContext(ctx context.Context) EdgeKubernetesPtrOutput {
-	return o.ApplyT(func(v EdgeKubernetes) *EdgeKubernetes {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeKubernetes) *EdgeKubernetes {
 		return &v
 	}).(EdgeKubernetesPtrOutput)
 }
 
-type EdgeKubernetesPtrOutput struct {
-	*pulumi.OutputState
-}
+type EdgeKubernetesPtrOutput struct{ *pulumi.OutputState }
 
 func (EdgeKubernetesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EdgeKubernetes)(nil))
@@ -590,6 +586,16 @@ func (o EdgeKubernetesPtrOutput) ToEdgeKubernetesPtrOutput() EdgeKubernetesPtrOu
 
 func (o EdgeKubernetesPtrOutput) ToEdgeKubernetesPtrOutputWithContext(ctx context.Context) EdgeKubernetesPtrOutput {
 	return o
+}
+
+func (o EdgeKubernetesPtrOutput) Elem() EdgeKubernetesOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetes {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeKubernetes
+		return ret
+	}).(EdgeKubernetesOutput)
 }
 
 type EdgeKubernetesArrayOutput struct{ *pulumi.OutputState }
@@ -633,6 +639,10 @@ func (o EdgeKubernetesMapOutput) MapIndex(k pulumi.StringInput) EdgeKubernetesOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesInput)(nil)).Elem(), &EdgeKubernetes{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesPtrInput)(nil)).Elem(), &EdgeKubernetes{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesArrayInput)(nil)).Elem(), EdgeKubernetesArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesMapInput)(nil)).Elem(), EdgeKubernetesMap{})
 	pulumi.RegisterOutputType(EdgeKubernetesOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesPtrOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesArrayOutput{})

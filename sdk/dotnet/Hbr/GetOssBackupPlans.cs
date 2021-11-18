@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbr
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Hbr
         ///         {
         ///             NameRegex = "^my-OssBackupPlan",
         ///         }));
-        ///         this.HbrOssBackupPlanId = ids.Apply(ids =&gt; ids.Plans[0].Id);
+        ///         this.HbrOssBackupPlanId = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
         ///     }
         /// 
         ///     [Output("hbrOssBackupPlanId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Task<GetOssBackupPlansResult> InvokeAsync(GetOssBackupPlansArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOssBackupPlansResult>("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", args ?? new GetOssBackupPlansArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Hbr OssBackupPlans of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Hbr.GetOssBackupPlans.InvokeAsync(new AliCloud.Hbr.GetOssBackupPlansArgs
+        ///         {
+        ///             NameRegex = "^my-OssBackupPlan",
+        ///         }));
+        ///         this.HbrOssBackupPlanId = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("hbrOssBackupPlanId")]
+        ///     public Output&lt;string&gt; HbrOssBackupPlanId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetOssBackupPlansResult> Invoke(GetOssBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOssBackupPlansResult>("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", args ?? new GetOssBackupPlansInvokeArgs(), options.WithVersion());
     }
 
 
@@ -85,6 +122,46 @@ namespace Pulumi.AliCloud.Hbr
         public string? VaultId { get; set; }
 
         public GetOssBackupPlansArgs()
+        {
+        }
+    }
+
+    public sealed class GetOssBackupPlansInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of OSS bucket.
+        /// </summary>
+        [Input("bucket")]
+        public Input<string>? Bucket { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of OssBackupPlan IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by OssBackupPlan name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of backup vault.
+        /// </summary>
+        [Input("vaultId")]
+        public Input<string>? VaultId { get; set; }
+
+        public GetOssBackupPlansInvokeArgs()
         {
         }
     }

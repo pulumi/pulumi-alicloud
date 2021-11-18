@@ -151,35 +151,35 @@ export interface AlidnsInstanceState {
     /**
      * Alidns security level. Valid values: `no`, `basic`, `advanced`.
      */
-    readonly dnsSecurity?: pulumi.Input<string>;
+    dnsSecurity?: pulumi.Input<string>;
     /**
      * Number of domain names bound.
      */
-    readonly domainNumbers?: pulumi.Input<string>;
+    domainNumbers?: pulumi.Input<string>;
     /**
      * The billing method of the Alidns instance. Valid values: `Subscription`. Default to `Subscription`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
      */
-    readonly renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
     /**
      * Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
      */
-    readonly versionCode?: pulumi.Input<string>;
+    versionCode?: pulumi.Input<string>;
     /**
      * Paid package version name.
      */
-    readonly versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string>;
 }
 
 /**
@@ -189,29 +189,29 @@ export interface AlidnsInstanceArgs {
     /**
      * Alidns security level. Valid values: `no`, `basic`, `advanced`.
      */
-    readonly dnsSecurity: pulumi.Input<string>;
+    dnsSecurity: pulumi.Input<string>;
     /**
      * Number of domain names bound.
      */
-    readonly domainNumbers: pulumi.Input<string>;
+    domainNumbers: pulumi.Input<string>;
     /**
      * The billing method of the Alidns instance. Valid values: `Subscription`. Default to `Subscription`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
      */
-    readonly renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
     /**
      * Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
      */
-    readonly versionCode: pulumi.Input<string>;
+    versionCode: pulumi.Input<string>;
 }

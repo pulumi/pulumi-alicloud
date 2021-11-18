@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -109,7 +110,7 @@ def get_instances(description_regex: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    > **NOTE:** From the version 1.132.0, the data source has been renamed to `bastionhost.getInstances`.
+    > **NOTE:** From the version 1.132.0, the data source has been renamed to `bastionhost.get_instances`.
 
     This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
 
@@ -158,3 +159,43 @@ def get_instances(description_regex: Optional[str] = None,
         instances=__ret__.instances,
         output_file=__ret__.output_file,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    > **NOTE:** From the version 1.132.0, the data source has been renamed to `bastionhost.get_instances`.
+
+    This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.63.0+ .
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    instance_instances = alicloud.bastionhost.get_instances(description_regex="^bastionhost")
+    pulumi.export("instance", [__item["id"] for __item in alicloud_bastionhost_instances["instance"]])
+    ```
+
+
+    :param str description_regex: A regex string to filter results by the instance description.
+    :param Sequence[str] ids: Matched instance IDs to filter data source result.
+    :param str output_file: File name to persist data source output.
+    :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
+           ```python
+           import pulumi
+           import pulumi_alicloud as alicloud
+           
+           instance = alicloud.bastionhost.get_instances(tags={
+               "tagKey1": "tagValue1",
+           })
+           ```
+    """
+    ...

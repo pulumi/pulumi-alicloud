@@ -47,12 +47,12 @@ export interface GetDedicatedHostGroupsArgs {
     /**
      * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
      */
-    readonly engine?: string;
+    engine?: string;
     /**
      * A list of Dedicated Host Group IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
 }
 
 /**
@@ -67,4 +67,23 @@ export interface GetDedicatedHostGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+}
+
+export function getDedicatedHostGroupsOutput(args?: GetDedicatedHostGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostGroupsResult> {
+    return pulumi.output(args).apply(a => getDedicatedHostGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDedicatedHostGroups.
+ */
+export interface GetDedicatedHostGroupsOutputArgs {
+    /**
+     * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * A list of Dedicated Host Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
 }

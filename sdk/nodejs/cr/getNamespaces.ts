@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const myNamespaces = pulumi.output(alicloud.cr.getNamespaces({
  *     nameRegex: "my-namespace",
  *     outputFile: "my-namespace-json",
- * }, { async: true }));
+ * }));
  *
  * export const output = myNamespaces.namespaces;
  * ```
@@ -47,8 +47,8 @@ export interface GetNamespacesArgs {
     /**
      * A regex string to filter results by namespace name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -73,4 +73,19 @@ export interface GetNamespacesResult {
      */
     readonly namespaces: outputs.cr.GetNamespacesNamespace[];
     readonly outputFile?: string;
+}
+
+export function getNamespacesOutput(args?: GetNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespacesResult> {
+    return pulumi.output(args).apply(a => getNamespaces(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNamespaces.
+ */
+export interface GetNamespacesOutputArgs {
+    /**
+     * A regex string to filter results by namespace name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

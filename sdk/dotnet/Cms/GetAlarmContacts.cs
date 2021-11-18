@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cms
 {
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         public static Task<GetAlarmContactsResult> InvokeAsync(GetAlarmContactsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmContactsResult>("alicloud:cms/getAlarmContacts:getAlarmContacts", args ?? new GetAlarmContactsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides a list of alarm contact owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in v1.99.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cms.GetAlarmContacts.InvokeAsync(new AliCloud.Cms.GetAlarmContactsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "tf-testAccCmsAlarmContact",
+        ///             },
+        ///         }));
+        ///         this.First_contact = data.Alicloud_cms_alarm_contacts.This.Contacts;
+        ///     }
+        /// 
+        ///     [Output("first-contact")]
+        ///     public Output&lt;string&gt; First_contact { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAlarmContactsResult> Invoke(GetAlarmContactsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlarmContactsResult>("alicloud:cms/getAlarmContacts:getAlarmContacts", args ?? new GetAlarmContactsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -88,6 +128,46 @@ namespace Pulumi.AliCloud.Cms
         public string? OutputFile { get; set; }
 
         public GetAlarmContactsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlarmContactsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.
+        /// </summary>
+        [Input("chanelType")]
+        public Input<string>? ChanelType { get; set; }
+
+        /// <summary>
+        /// The alarm notification target.
+        /// </summary>
+        [Input("chanelValue")]
+        public Input<string>? ChanelValue { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of alarm contact IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by alarm contact name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetAlarmContactsInvokeArgs()
         {
         }
     }

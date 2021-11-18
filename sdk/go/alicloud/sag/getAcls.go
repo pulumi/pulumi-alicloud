@@ -4,6 +4,9 @@
 package sag
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,4 +45,73 @@ type GetAclsResult struct {
 	// A list of Sag Acls names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetAclsOutput(ctx *pulumi.Context, args GetAclsOutputArgs, opts ...pulumi.InvokeOption) GetAclsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAclsResult, error) {
+			args := v.(GetAclsArgs)
+			r, err := GetAcls(ctx, &args, opts...)
+			return *r, err
+		}).(GetAclsResultOutput)
+}
+
+// A collection of arguments for invoking getAcls.
+type GetAclsOutputArgs struct {
+	// A list of Sag Acl IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter Sag Acl instances by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetAclsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAcls.
+type GetAclsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAclsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsResult)(nil)).Elem()
+}
+
+func (o GetAclsResultOutput) ToGetAclsResultOutput() GetAclsResultOutput {
+	return o
+}
+
+func (o GetAclsResultOutput) ToGetAclsResultOutputWithContext(ctx context.Context) GetAclsResultOutput {
+	return o
+}
+
+// A list of Sag Acls. Each element contains the following attributes:
+func (o GetAclsResultOutput) Acls() GetAclsAclArrayOutput {
+	return o.ApplyT(func(v GetAclsResult) []GetAclsAcl { return v.Acls }).(GetAclsAclArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAclsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of Sag Acl IDs.
+func (o GetAclsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAclsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAclsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAclsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of Sag Acls names.
+func (o GetAclsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAclsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAclsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAclsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAclsResultOutput{})
 }

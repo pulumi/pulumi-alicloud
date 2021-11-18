@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const kmsSecretVersionsDs = pulumi.output(alicloud.kms.getSecretVersions({
  *     enableDetails: true,
  *     secretName: "secret_name",
- * }, { async: true }));
+ * }));
  *
  * export const firstSecretData = kmsSecretVersionsDs.versions[0].secretData;
  * ```
@@ -50,24 +50,24 @@ export interface GetSecretVersionsArgs {
     /**
      * Default to false and only output `secretName`, `versionId`, `versionStages`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of KMS Secret Version ids.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Specifies whether to return deprecated secret versions. Default to `false`.
      */
-    readonly includeDeprecated?: string;
-    readonly outputFile?: string;
+    includeDeprecated?: string;
+    outputFile?: string;
     /**
      * The name of the secret.
      */
-    readonly secretName: string;
+    secretName: string;
     /**
      * The stage of the secret version.
      */
-    readonly versionStage?: string;
+    versionStage?: string;
 }
 
 /**
@@ -94,4 +94,35 @@ export interface GetSecretVersionsResult {
      * A list of KMS Secret Versions. Each element contains the following attributes:
      */
     readonly versions: outputs.kms.GetSecretVersionsVersion[];
+}
+
+export function getSecretVersionsOutput(args: GetSecretVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionsResult> {
+    return pulumi.output(args).apply(a => getSecretVersions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecretVersions.
+ */
+export interface GetSecretVersionsOutputArgs {
+    /**
+     * Default to false and only output `secretName`, `versionId`, `versionStages`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of KMS Secret Version ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies whether to return deprecated secret versions. Default to `false`.
+     */
+    includeDeprecated?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The name of the secret.
+     */
+    secretName: pulumi.Input<string>;
+    /**
+     * The stage of the secret version.
+     */
+    versionStage?: pulumi.Input<string>;
 }

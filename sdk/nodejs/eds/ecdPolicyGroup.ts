@@ -193,59 +193,59 @@ export interface EcdPolicyGroupState {
     /**
      * The rule of authorize access rule.
      */
-    readonly authorizeAccessPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule>[]>;
+    authorizeAccessPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule>[]>;
     /**
      * The policy rule.
      */
-    readonly authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[]>;
+    authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[]>;
     /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      */
-    readonly clipboard?: pulumi.Input<string>;
+    clipboard?: pulumi.Input<string>;
     /**
      * The list of domain.
      */
-    readonly domainList?: pulumi.Input<string>;
+    domainList?: pulumi.Input<string>;
     /**
      * The access of html5. Valid values: `off`, `on`.
      */
-    readonly htmlAccess?: pulumi.Input<string>;
+    htmlAccess?: pulumi.Input<string>;
     /**
      * The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
      */
-    readonly htmlFileTransfer?: pulumi.Input<string>;
+    htmlFileTransfer?: pulumi.Input<string>;
     /**
      * Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
      */
-    readonly localDrive?: pulumi.Input<string>;
+    localDrive?: pulumi.Input<string>;
     /**
      * The name of policy group.
      */
-    readonly policyGroupName?: pulumi.Input<string>;
+    policyGroupName?: pulumi.Input<string>;
     /**
      * The status of policy.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The usb redirect policy. Valid values: `off`, `on`.
      */
-    readonly usbRedirect?: pulumi.Input<string>;
+    usbRedirect?: pulumi.Input<string>;
     /**
      * The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
      */
-    readonly visualQuality?: pulumi.Input<string>;
+    visualQuality?: pulumi.Input<string>;
     /**
      * The watermark policy. Valid values: `off`, `on`.
      */
-    readonly watermark?: pulumi.Input<string>;
+    watermark?: pulumi.Input<string>;
     /**
      * The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
      */
-    readonly watermarkTransparency?: pulumi.Input<string>;
+    watermarkTransparency?: pulumi.Input<string>;
     /**
      * The type of watemark. Valid values: `EndUserId`, `HostName`.
      */
-    readonly watermarkType?: pulumi.Input<string>;
+    watermarkType?: pulumi.Input<string>;
 }
 
 /**
@@ -255,53 +255,53 @@ export interface EcdPolicyGroupArgs {
     /**
      * The rule of authorize access rule.
      */
-    readonly authorizeAccessPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule>[]>;
+    authorizeAccessPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule>[]>;
     /**
      * The policy rule.
      */
-    readonly authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[]>;
+    authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[]>;
     /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      */
-    readonly clipboard?: pulumi.Input<string>;
+    clipboard?: pulumi.Input<string>;
     /**
      * The list of domain.
      */
-    readonly domainList?: pulumi.Input<string>;
+    domainList?: pulumi.Input<string>;
     /**
      * The access of html5. Valid values: `off`, `on`.
      */
-    readonly htmlAccess?: pulumi.Input<string>;
+    htmlAccess?: pulumi.Input<string>;
     /**
      * The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
      */
-    readonly htmlFileTransfer?: pulumi.Input<string>;
+    htmlFileTransfer?: pulumi.Input<string>;
     /**
      * Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
      */
-    readonly localDrive?: pulumi.Input<string>;
+    localDrive?: pulumi.Input<string>;
     /**
      * The name of policy group.
      */
-    readonly policyGroupName?: pulumi.Input<string>;
+    policyGroupName?: pulumi.Input<string>;
     /**
      * The usb redirect policy. Valid values: `off`, `on`.
      */
-    readonly usbRedirect?: pulumi.Input<string>;
+    usbRedirect?: pulumi.Input<string>;
     /**
      * The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
      */
-    readonly visualQuality?: pulumi.Input<string>;
+    visualQuality?: pulumi.Input<string>;
     /**
      * The watermark policy. Valid values: `off`, `on`.
      */
-    readonly watermark?: pulumi.Input<string>;
+    watermark?: pulumi.Input<string>;
     /**
      * The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
      */
-    readonly watermarkTransparency?: pulumi.Input<string>;
+    watermarkTransparency?: pulumi.Input<string>;
     /**
      * The type of watemark. Valid values: `EndUserId`, `HostName`.
      */
-    readonly watermarkType?: pulumi.Input<string>;
+    watermarkType?: pulumi.Input<string>;
 }

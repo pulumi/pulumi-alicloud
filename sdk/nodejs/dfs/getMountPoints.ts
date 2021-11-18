@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const dfsMountPointId1 = ids.then(ids => ids.points[0].id);
+ * export const dfsMountPointId1 = ids.then(ids => ids.points?[0]?.id);
  * ```
  */
 export function getMountPoints(args: GetMountPointsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountPointsResult> {
@@ -51,16 +51,16 @@ export interface GetMountPointsArgs {
     /**
      * The ID of the File System.
      */
-    readonly fileSystemId: string;
+    fileSystemId: string;
     /**
      * A list of Mount Point IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of the Mount Point. Valid values: `Active`, `Inactive`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -76,4 +76,27 @@ export interface GetMountPointsResult {
     readonly outputFile?: string;
     readonly points: outputs.dfs.GetMountPointsPoint[];
     readonly status?: string;
+}
+
+export function getMountPointsOutput(args: GetMountPointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountPointsResult> {
+    return pulumi.output(args).apply(a => getMountPoints(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMountPoints.
+ */
+export interface GetMountPointsOutputArgs {
+    /**
+     * The ID of the File System.
+     */
+    fileSystemId: pulumi.Input<string>;
+    /**
+     * A list of Mount Point IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the Mount Point. Valid values: `Active`, `Inactive`.
+     */
+    status?: pulumi.Input<string>;
 }

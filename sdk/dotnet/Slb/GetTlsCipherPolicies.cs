@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -38,12 +39,12 @@ namespace Pulumi.AliCloud.Slb
         ///                 "example_value-2",
         ///             },
         ///         }));
-        ///         this.SlbTlsCipherPolicyId1 = ids.Apply(ids =&gt; ids.Policies[0].Id);
+        ///         this.SlbTlsCipherPolicyId1 = ids.Apply(ids =&gt; ids.Policies?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Slb.GetTlsCipherPolicies.InvokeAsync(new AliCloud.Slb.GetTlsCipherPoliciesArgs
         ///         {
         ///             NameRegex = "^My-TlsCipherPolicy",
         ///         }));
-        ///         this.SlbTlsCipherPolicyId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Policies[0].Id);
+        ///         this.SlbTlsCipherPolicyId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Policies?[0]?.Id);
         ///     }
         /// 
         ///     [Output("slbTlsCipherPolicyId1")]
@@ -57,6 +58,53 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Task<GetTlsCipherPoliciesResult> InvokeAsync(GetTlsCipherPoliciesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTlsCipherPoliciesResult>("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", args ?? new GetTlsCipherPoliciesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Slb.GetTlsCipherPolicies.InvokeAsync(new AliCloud.Slb.GetTlsCipherPoliciesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value-1",
+        ///                 "example_value-2",
+        ///             },
+        ///         }));
+        ///         this.SlbTlsCipherPolicyId1 = ids.Apply(ids =&gt; ids.Policies?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Slb.GetTlsCipherPolicies.InvokeAsync(new AliCloud.Slb.GetTlsCipherPoliciesArgs
+        ///         {
+        ///             NameRegex = "^My-TlsCipherPolicy",
+        ///         }));
+        ///         this.SlbTlsCipherPolicyId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Policies?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("slbTlsCipherPolicyId1")]
+        ///     public Output&lt;string&gt; SlbTlsCipherPolicyId1 { get; set; }
+        ///     [Output("slbTlsCipherPolicyId2")]
+        ///     public Output&lt;string&gt; SlbTlsCipherPolicyId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTlsCipherPoliciesResult> Invoke(GetTlsCipherPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTlsCipherPoliciesResult>("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", args ?? new GetTlsCipherPoliciesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -102,6 +150,52 @@ namespace Pulumi.AliCloud.Slb
         public string? TlsCipherPolicyName { get; set; }
 
         public GetTlsCipherPoliciesArgs()
+        {
+        }
+    }
+
+    public sealed class GetTlsCipherPoliciesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Tls Cipher Policy IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The include listener.
+        /// </summary>
+        [Input("includeListener")]
+        public Input<bool>? IncludeListener { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Tls Cipher Policy name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// TLS policy instance state.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+        /// </summary>
+        [Input("tlsCipherPolicyName")]
+        public Input<string>? TlsCipherPolicyName { get; set; }
+
+        public GetTlsCipherPoliciesInvokeArgs()
         {
         }
     }

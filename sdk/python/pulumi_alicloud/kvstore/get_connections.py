@@ -13,6 +13,7 @@ __all__ = [
     'GetConnectionsResult',
     'AwaitableGetConnectionsResult',
     'get_connections',
+    'get_connections_output',
 ]
 
 @pulumi.output_type
@@ -101,3 +102,18 @@ def get_connections(ids: Optional[str] = None,
         id=__ret__.id,
         ids=__ret__.ids,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_connections)
+def get_connections_output(ids: Optional[pulumi.Input[str]] = None,
+                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionsResult]:
+    """
+    This data source can query the public IP of the specified KVStore DBInstance.
+
+    > **NOTE:** Available in v1.101.0+.
+
+
+    :param str ids: A list of KVStore DBInstance ids, only support one item.
+    """
+    ...

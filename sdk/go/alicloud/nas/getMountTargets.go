@@ -4,6 +4,9 @@
 package nas
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,4 +102,124 @@ type GetMountTargetsResult struct {
 	VpcId *string `pulumi:"vpcId"`
 	// VSwitchId of The MountTarget.
 	VswitchId *string `pulumi:"vswitchId"`
+}
+
+func GetMountTargetsOutput(ctx *pulumi.Context, args GetMountTargetsOutputArgs, opts ...pulumi.InvokeOption) GetMountTargetsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetMountTargetsResult, error) {
+			args := v.(GetMountTargetsArgs)
+			r, err := GetMountTargets(ctx, &args, opts...)
+			return *r, err
+		}).(GetMountTargetsResultOutput)
+}
+
+// A collection of arguments for invoking getMountTargets.
+type GetMountTargetsOutputArgs struct {
+	// Filter results by a specific AccessGroupName.
+	AccessGroupName pulumi.StringPtrInput `pulumi:"accessGroupName"`
+	// The ID of the FileSystem that owns the MountTarget.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// A list of MountTargetDomain.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+	//
+	// Deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
+	MountTargetDomain pulumi.StringPtrInput `pulumi:"mountTargetDomain"`
+	// Filter results by a specific NetworkType.
+	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Filter results by a specific VpcId.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// Filter results by a specific VSwitchId.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (GetMountTargetsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMountTargetsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMountTargets.
+type GetMountTargetsResultOutput struct{ *pulumi.OutputState }
+
+func (GetMountTargetsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMountTargetsResult)(nil)).Elem()
+}
+
+func (o GetMountTargetsResultOutput) ToGetMountTargetsResultOutput() GetMountTargetsResultOutput {
+	return o
+}
+
+func (o GetMountTargetsResultOutput) ToGetMountTargetsResultOutputWithContext(ctx context.Context) GetMountTargetsResultOutput {
+	return o
+}
+
+// AccessGroup of The MountTarget.
+func (o GetMountTargetsResultOutput) AccessGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.AccessGroupName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMountTargetsResultOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetMountTargetsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of MountTargetDomain.
+func (o GetMountTargetsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// MountTargetDomain of the MountTarget.
+// * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
+// * `networkType`- (Available 1.95.0+) NetworkType of The MountTarget.
+// * `status`- (Available 1.95.0+) The status of the mount target.
+//
+// Deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
+func (o GetMountTargetsResultOutput) MountTargetDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.MountTargetDomain }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMountTargetsResultOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMountTargetsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMountTargetsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A list of MountTargetDomains. Each element contains the following attributes:
+func (o GetMountTargetsResultOutput) Targets() GetMountTargetsTargetArrayOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) []GetMountTargetsTarget { return v.Targets }).(GetMountTargetsTargetArrayOutput)
+}
+
+// Deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
+func (o GetMountTargetsResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// VpcId of The MountTarget.
+func (o GetMountTargetsResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// VSwitchId of The MountTarget.
+func (o GetMountTargetsResultOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMountTargetsResultOutput{})
 }

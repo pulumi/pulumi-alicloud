@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     instanceId: "cen-id1",
  *     nameRegex: "^foo",
  * });
- * export const firstCenBandwidthPackageId = example.then(example => example.packages[0].id);
+ * export const firstCenBandwidthPackageId = example.then(example => example.packages?[0]?.id);
  * ```
  */
 export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthPackagesResult> {
@@ -47,24 +47,24 @@ export interface GetBandwidthPackagesArgs {
     /**
      * Limit search to a list of specific CEN Bandwidth Package IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
      */
-    readonly includeReservationData?: boolean;
+    includeReservationData?: boolean;
     /**
      * ID of a CEN instance.
      */
-    readonly instanceId?: string;
+    instanceId?: string;
     /**
      * A regex string to filter CEN Bandwidth Package by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -96,4 +96,35 @@ export interface GetBandwidthPackagesResult {
      * Status of the CEN Bandwidth Package in CEN instance, including `Idle` and `InUse`.
      */
     readonly status?: string;
+}
+
+export function getBandwidthPackagesOutput(args?: GetBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthPackagesResult> {
+    return pulumi.output(args).apply(a => getBandwidthPackages(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBandwidthPackages.
+ */
+export interface GetBandwidthPackagesOutputArgs {
+    /**
+     * Limit search to a list of specific CEN Bandwidth Package IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+     */
+    includeReservationData?: pulumi.Input<boolean>;
+    /**
+     * ID of a CEN instance.
+     */
+    instanceId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter CEN Bandwidth Package by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
+     */
+    status?: pulumi.Input<string>;
 }

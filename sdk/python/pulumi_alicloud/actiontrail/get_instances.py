@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -155,3 +156,48 @@ def get_instances(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.59.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    instance_name = config.get("instanceName")
+    if instance_name is None:
+        instance_name = "alikafkaInstanceName"
+    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+    default_switch = alicloud.vpc.Switch("defaultSwitch",
+        availability_zone=default_zones.zones[0].id,
+        cidr_block="172.16.0.0/24",
+        vpc_id=default_network.id)
+    default_instance = alicloud.alikafka.Instance("defaultInstance",
+        deploy_type=4,
+        disk_size=500,
+        disk_type=1,
+        io_max=20,
+        topic_quota=50,
+        vswitch_id=default_switch.id)
+    instances_ds = alicloud.actiontrail.get_instances(name_regex="alikafkaInstanceName",
+        output_file="instances.txt")
+    pulumi.export("firstInstanceName", instances_ds.instances[0].name)
+    ```
+
+
+    :param Sequence[str] ids: A list of instance IDs to filter results.
+    :param str name_regex: A regex string to filter results by the instance name.
+    """
+    ...

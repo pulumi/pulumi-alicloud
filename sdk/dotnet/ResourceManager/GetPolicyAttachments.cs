@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -29,7 +30,7 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     public MyStack()
         ///     {
         ///         var example = Output.Create(AliCloud.ResourceManager.GetPolicyAttachments.InvokeAsync());
-        ///         this.FirstAttachmentId = example.Apply(example =&gt; example.Attachments[0].Id);
+        ///         this.FirstAttachmentId = example.Apply(example =&gt; example.Attachments?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstAttachmentId")]
@@ -41,6 +42,37 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Task<GetPolicyAttachmentsResult> InvokeAsync(GetPolicyAttachmentsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyAttachmentsResult>("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args ?? new GetPolicyAttachmentsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.93.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.ResourceManager.GetPolicyAttachments.InvokeAsync());
+        ///         this.FirstAttachmentId = example.Apply(example =&gt; example.Attachments?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstAttachmentId")]
+        ///     public Output&lt;string&gt; FirstAttachmentId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPolicyAttachmentsResult> Invoke(GetPolicyAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPolicyAttachmentsResult>("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args ?? new GetPolicyAttachmentsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -86,6 +118,52 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? ResourceGroupId { get; set; }
 
         public GetPolicyAttachmentsArgs()
+        {
+        }
+    }
+
+    public sealed class GetPolicyAttachmentsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
+        /// </summary>
+        [Input("language")]
+        public Input<string>? Language { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        /// </summary>
+        [Input("policyName")]
+        public Input<string>? PolicyName { get; set; }
+
+        /// <summary>
+        /// The type of the policy. Valid values: `Custom` and `System`.
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
+
+        /// <summary>
+        /// The name of the object to which the policy is attached.
+        /// </summary>
+        [Input("principalName")]
+        public Input<string>? PrincipalName { get; set; }
+
+        /// <summary>
+        /// The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
+        /// </summary>
+        [Input("principalType")]
+        public Input<string>? PrincipalType { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        public GetPolicyAttachmentsInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.DatabaseFilesystem
 {
@@ -37,12 +38,12 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.DbfsInstanceId1 = ids.Apply(ids =&gt; ids.Instances[0].Id);
+        ///         this.DbfsInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.DatabaseFilesystem.GetInstances.InvokeAsync(new AliCloud.DatabaseFilesystem.GetInstancesArgs
         ///         {
         ///             NameRegex = "^my-Instance",
         ///         }));
-        ///         this.DbfsInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances[0].Id);
+        ///         this.DbfsInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
         ///     }
         /// 
         ///     [Output("dbfsInstanceId1")]
@@ -56,6 +57,52 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:databasefilesystem/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the DBFS Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.DatabaseFilesystem.GetInstances.InvokeAsync(new AliCloud.DatabaseFilesystem.GetInstancesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.DbfsInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.DatabaseFilesystem.GetInstances.InvokeAsync(new AliCloud.DatabaseFilesystem.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "^my-Instance",
+        ///         }));
+        ///         this.DbfsInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("dbfsInstanceId1")]
+        ///     public Output&lt;string&gt; DbfsInstanceId1 { get; set; }
+        ///     [Output("dbfsInstanceId2")]
+        ///     public Output&lt;string&gt; DbfsInstanceId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:databasefilesystem/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -89,6 +136,40 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public string? Status { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Instance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Instance name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the Database file system.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

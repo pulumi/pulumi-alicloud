@@ -12,6 +12,7 @@ __all__ = [
     'GetPhysicalConnectionServiceResult',
     'AwaitableGetPhysicalConnectionServiceResult',
     'get_physical_connection_service',
+    'get_physical_connection_service_output',
 ]
 
 @pulumi.output_type
@@ -96,3 +97,28 @@ def get_physical_connection_service(enable: Optional[str] = None,
         enable=__ret__.enable,
         id=__ret__.id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_physical_connection_service)
+def get_physical_connection_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPhysicalConnectionServiceResult]:
+    """
+    Using this data source can enable outbound traffic for an Express Connect circuit automatically. If the service has been opened, it will return opened.
+
+    For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
+
+    > **NOTE:** Available in v1.132.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.expressconnect.get_physical_connection_service(enable="On")
+    ```
+
+
+    :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+    """
+    ...

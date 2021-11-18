@@ -359,7 +359,7 @@ func (o IngressDefaultRuleOutput) ToIngressDefaultRulePtrOutput() IngressDefault
 }
 
 func (o IngressDefaultRuleOutput) ToIngressDefaultRulePtrOutputWithContext(ctx context.Context) IngressDefaultRulePtrOutput {
-	return o.ApplyT(func(v IngressDefaultRule) *IngressDefaultRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IngressDefaultRule) *IngressDefaultRule {
 		return &v
 	}).(IngressDefaultRulePtrOutput)
 }
@@ -394,7 +394,13 @@ func (o IngressDefaultRulePtrOutput) ToIngressDefaultRulePtrOutputWithContext(ct
 }
 
 func (o IngressDefaultRulePtrOutput) Elem() IngressDefaultRuleOutput {
-	return o.ApplyT(func(v *IngressDefaultRule) IngressDefaultRule { return *v }).(IngressDefaultRuleOutput)
+	return o.ApplyT(func(v *IngressDefaultRule) IngressDefaultRule {
+		if v != nil {
+			return *v
+		}
+		var ret IngressDefaultRule
+		return ret
+	}).(IngressDefaultRuleOutput)
 }
 
 // Target application ID.
@@ -1155,7 +1161,7 @@ func (i GetConfigMapsMapArgs) ToGetConfigMapsMapOutputWithContext(ctx context.Co
 // GetConfigMapsMapArrayInput is an input type that accepts GetConfigMapsMapArray and GetConfigMapsMapArrayOutput values.
 // You can construct a concrete instance of `GetConfigMapsMapArrayInput` via:
 //
-//          GetConfigMapsMapArray{ GetConfigMapsMap{ "key": GetConfigMapsArgs{...} } }
+//          GetConfigMapsMapArray{ GetConfigMapsMapArgs{...} }
 type GetConfigMapsMapArrayInput interface {
 	pulumi.Input
 
@@ -1682,6 +1688,24 @@ func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespace
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInternetInput)(nil)).Elem(), ApplicationInternetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInternetArrayInput)(nil)).Elem(), ApplicationInternetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIntranetInput)(nil)).Elem(), ApplicationIntranetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIntranetArrayInput)(nil)).Elem(), ApplicationIntranetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressDefaultRuleInput)(nil)).Elem(), IngressDefaultRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressDefaultRulePtrInput)(nil)).Elem(), IngressDefaultRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressRuleInput)(nil)).Elem(), IngressRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressRuleArrayInput)(nil)).Elem(), IngressRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationInput)(nil)).Elem(), GetApplicationsApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationArrayInput)(nil)).Elem(), GetApplicationsApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigMapsMapInput)(nil)).Elem(), GetConfigMapsMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigMapsMapArrayInput)(nil)).Elem(), GetConfigMapsMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIngressesIngressInput)(nil)).Elem(), GetIngressesIngressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIngressesIngressArrayInput)(nil)).Elem(), GetIngressesIngressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSpecificationsSpecificationInput)(nil)).Elem(), GetInstanceSpecificationsSpecificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSpecificationsSpecificationArrayInput)(nil)).Elem(), GetInstanceSpecificationsSpecificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceInput)(nil)).Elem(), GetNamespacesNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceArrayInput)(nil)).Elem(), GetNamespacesNamespaceArray{})
 	pulumi.RegisterOutputType(ApplicationInternetOutput{})
 	pulumi.RegisterOutputType(ApplicationInternetArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationIntranetOutput{})

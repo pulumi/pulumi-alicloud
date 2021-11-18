@@ -34,8 +34,8 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
 // 			Description: pulumi.String("created by terraform"),
-// 			Tags: pulumi.StringMap{
-// 				"test": pulumi.String("test"),
+// 			Tags: pulumi.AnyMap{
+// 				"test": pulumi.Any("test"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -440,7 +440,7 @@ type OssShipperArrayInput interface {
 type OssShipperArray []OssShipperInput
 
 func (OssShipperArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OssShipper)(nil))
+	return reflect.TypeOf((*[]*OssShipper)(nil)).Elem()
 }
 
 func (i OssShipperArray) ToOssShipperArrayOutput() OssShipperArrayOutput {
@@ -465,7 +465,7 @@ type OssShipperMapInput interface {
 type OssShipperMap map[string]OssShipperInput
 
 func (OssShipperMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OssShipper)(nil))
+	return reflect.TypeOf((*map[string]*OssShipper)(nil)).Elem()
 }
 
 func (i OssShipperMap) ToOssShipperMapOutput() OssShipperMapOutput {
@@ -476,9 +476,7 @@ func (i OssShipperMap) ToOssShipperMapOutputWithContext(ctx context.Context) Oss
 	return pulumi.ToOutputWithContext(ctx, i).(OssShipperMapOutput)
 }
 
-type OssShipperOutput struct {
-	*pulumi.OutputState
-}
+type OssShipperOutput struct{ *pulumi.OutputState }
 
 func (OssShipperOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OssShipper)(nil))
@@ -497,14 +495,12 @@ func (o OssShipperOutput) ToOssShipperPtrOutput() OssShipperPtrOutput {
 }
 
 func (o OssShipperOutput) ToOssShipperPtrOutputWithContext(ctx context.Context) OssShipperPtrOutput {
-	return o.ApplyT(func(v OssShipper) *OssShipper {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OssShipper) *OssShipper {
 		return &v
 	}).(OssShipperPtrOutput)
 }
 
-type OssShipperPtrOutput struct {
-	*pulumi.OutputState
-}
+type OssShipperPtrOutput struct{ *pulumi.OutputState }
 
 func (OssShipperPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OssShipper)(nil))
@@ -516,6 +512,16 @@ func (o OssShipperPtrOutput) ToOssShipperPtrOutput() OssShipperPtrOutput {
 
 func (o OssShipperPtrOutput) ToOssShipperPtrOutputWithContext(ctx context.Context) OssShipperPtrOutput {
 	return o
+}
+
+func (o OssShipperPtrOutput) Elem() OssShipperOutput {
+	return o.ApplyT(func(v *OssShipper) OssShipper {
+		if v != nil {
+			return *v
+		}
+		var ret OssShipper
+		return ret
+	}).(OssShipperOutput)
 }
 
 type OssShipperArrayOutput struct{ *pulumi.OutputState }
@@ -559,6 +565,10 @@ func (o OssShipperMapOutput) MapIndex(k pulumi.StringInput) OssShipperOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OssShipperInput)(nil)).Elem(), &OssShipper{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OssShipperPtrInput)(nil)).Elem(), &OssShipper{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OssShipperArrayInput)(nil)).Elem(), OssShipperArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OssShipperMapInput)(nil)).Elem(), OssShipperMap{})
 	pulumi.RegisterOutputType(OssShipperOutput{})
 	pulumi.RegisterOutputType(OssShipperPtrOutput{})
 	pulumi.RegisterOutputType(OssShipperArrayOutput{})

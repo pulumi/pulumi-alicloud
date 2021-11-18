@@ -36,28 +36,28 @@ export interface GetNatIpCidrsArgs {
     /**
      * A list of Nat Ip Cidr IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Nat Ip Cidr name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The ID of the VPC NAT gateway.
      */
-    readonly natGatewayId: string;
+    natGatewayId: string;
     /**
      * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      */
-    readonly natIpCidrNames?: string[];
+    natIpCidrNames?: string[];
     /**
      * The NAT CIDR block to be created. Support up to `20`. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
      */
-    readonly natIpCidrs?: string[];
-    readonly outputFile?: string;
+    natIpCidrs?: string[];
+    outputFile?: string;
     /**
      * The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -77,4 +77,39 @@ export interface GetNatIpCidrsResult {
     readonly natIpCidrs?: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getNatIpCidrsOutput(args: GetNatIpCidrsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatIpCidrsResult> {
+    return pulumi.output(args).apply(a => getNatIpCidrs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNatIpCidrs.
+ */
+export interface GetNatIpCidrsOutputArgs {
+    /**
+     * A list of Nat Ip Cidr IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Nat Ip Cidr name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC NAT gateway.
+     */
+    natGatewayId: pulumi.Input<string>;
+    /**
+     * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     */
+    natIpCidrNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The NAT CIDR block to be created. Support up to `20`. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+     */
+    natIpCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+     */
+    status?: pulumi.Input<string>;
 }

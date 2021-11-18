@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudSso
 {
@@ -42,7 +43,7 @@ namespace Pulumi.AliCloud.CloudSso
         ///                 "example_value-2",
         ///             },
         ///         }));
-        ///         this.CloudSsoScimServerCredentialId1 = ids.Apply(ids =&gt; ids.Credentials[0].Id);
+        ///         this.CloudSsoScimServerCredentialId1 = ids.Apply(ids =&gt; ids.Credentials?[0]?.Id);
         ///     }
         /// 
         ///     [Output("cloudSsoScimServerCredentialId1")]
@@ -54,6 +55,50 @@ namespace Pulumi.AliCloud.CloudSso
         /// </summary>
         public static Task<GetScimServerCredentialsResult> InvokeAsync(GetScimServerCredentialsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetScimServerCredentialsResult>("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", args ?? new GetScimServerCredentialsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// 
+        /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.CloudSso.GetScimServerCredentials.InvokeAsync(new AliCloud.CloudSso.GetScimServerCredentialsArgs
+        ///         {
+        ///             DirectoryId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value-1",
+        ///                 "example_value-2",
+        ///             },
+        ///         }));
+        ///         this.CloudSsoScimServerCredentialId1 = ids.Apply(ids =&gt; ids.Credentials?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("cloudSsoScimServerCredentialId1")]
+        ///     public Output&lt;string&gt; CloudSsoScimServerCredentialId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetScimServerCredentialsResult> Invoke(GetScimServerCredentialsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetScimServerCredentialsResult>("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", args ?? new GetScimServerCredentialsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -87,6 +132,40 @@ namespace Pulumi.AliCloud.CloudSso
         public string? Status { get; set; }
 
         public GetScimServerCredentialsArgs()
+        {
+        }
+    }
+
+    public sealed class GetScimServerCredentialsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Directory.
+        /// </summary>
+        [Input("directoryId", required: true)]
+        public Input<string> DirectoryId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of SCIM Server Credential IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetScimServerCredentialsInvokeArgs()
         {
         }
     }

@@ -222,7 +222,7 @@ type JobMonitorRuleArrayInput interface {
 type JobMonitorRuleArray []JobMonitorRuleInput
 
 func (JobMonitorRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*JobMonitorRule)(nil))
+	return reflect.TypeOf((*[]*JobMonitorRule)(nil)).Elem()
 }
 
 func (i JobMonitorRuleArray) ToJobMonitorRuleArrayOutput() JobMonitorRuleArrayOutput {
@@ -247,7 +247,7 @@ type JobMonitorRuleMapInput interface {
 type JobMonitorRuleMap map[string]JobMonitorRuleInput
 
 func (JobMonitorRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*JobMonitorRule)(nil))
+	return reflect.TypeOf((*map[string]*JobMonitorRule)(nil)).Elem()
 }
 
 func (i JobMonitorRuleMap) ToJobMonitorRuleMapOutput() JobMonitorRuleMapOutput {
@@ -258,9 +258,7 @@ func (i JobMonitorRuleMap) ToJobMonitorRuleMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(JobMonitorRuleMapOutput)
 }
 
-type JobMonitorRuleOutput struct {
-	*pulumi.OutputState
-}
+type JobMonitorRuleOutput struct{ *pulumi.OutputState }
 
 func (JobMonitorRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobMonitorRule)(nil))
@@ -279,14 +277,12 @@ func (o JobMonitorRuleOutput) ToJobMonitorRulePtrOutput() JobMonitorRulePtrOutpu
 }
 
 func (o JobMonitorRuleOutput) ToJobMonitorRulePtrOutputWithContext(ctx context.Context) JobMonitorRulePtrOutput {
-	return o.ApplyT(func(v JobMonitorRule) *JobMonitorRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobMonitorRule) *JobMonitorRule {
 		return &v
 	}).(JobMonitorRulePtrOutput)
 }
 
-type JobMonitorRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type JobMonitorRulePtrOutput struct{ *pulumi.OutputState }
 
 func (JobMonitorRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**JobMonitorRule)(nil))
@@ -298,6 +294,16 @@ func (o JobMonitorRulePtrOutput) ToJobMonitorRulePtrOutput() JobMonitorRulePtrOu
 
 func (o JobMonitorRulePtrOutput) ToJobMonitorRulePtrOutputWithContext(ctx context.Context) JobMonitorRulePtrOutput {
 	return o
+}
+
+func (o JobMonitorRulePtrOutput) Elem() JobMonitorRuleOutput {
+	return o.ApplyT(func(v *JobMonitorRule) JobMonitorRule {
+		if v != nil {
+			return *v
+		}
+		var ret JobMonitorRule
+		return ret
+	}).(JobMonitorRuleOutput)
 }
 
 type JobMonitorRuleArrayOutput struct{ *pulumi.OutputState }
@@ -341,6 +347,10 @@ func (o JobMonitorRuleMapOutput) MapIndex(k pulumi.StringInput) JobMonitorRuleOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*JobMonitorRuleInput)(nil)).Elem(), &JobMonitorRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobMonitorRulePtrInput)(nil)).Elem(), &JobMonitorRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobMonitorRuleArrayInput)(nil)).Elem(), JobMonitorRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobMonitorRuleMapInput)(nil)).Elem(), JobMonitorRuleMap{})
 	pulumi.RegisterOutputType(JobMonitorRuleOutput{})
 	pulumi.RegisterOutputType(JobMonitorRulePtrOutput{})
 	pulumi.RegisterOutputType(JobMonitorRuleArrayOutput{})

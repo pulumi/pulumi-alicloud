@@ -24,11 +24,11 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const slbTlsCipherPolicyId1 = ids.then(ids => ids.policies[0].id);
+ * export const slbTlsCipherPolicyId1 = ids.then(ids => ids.policies?[0]?.id);
  * const nameRegex = alicloud.slb.getTlsCipherPolicies({
  *     nameRegex: "^My-TlsCipherPolicy",
  * });
- * export const slbTlsCipherPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies[0].id);
+ * export const slbTlsCipherPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?[0]?.id);
  * ```
  */
 export function getTlsCipherPolicies(args?: GetTlsCipherPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetTlsCipherPoliciesResult> {
@@ -57,24 +57,24 @@ export interface GetTlsCipherPoliciesArgs {
     /**
      * A list of Tls Cipher Policy IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The include listener.
      */
-    readonly includeListener?: boolean;
+    includeListener?: boolean;
     /**
      * A regex string to filter results by Tls Cipher Policy name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * TLS policy instance state.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
      */
-    readonly tlsCipherPolicyName?: string;
+    tlsCipherPolicyName?: string;
 }
 
 /**
@@ -93,4 +93,35 @@ export interface GetTlsCipherPoliciesResult {
     readonly policies: outputs.slb.GetTlsCipherPoliciesPolicy[];
     readonly status?: string;
     readonly tlsCipherPolicyName?: string;
+}
+
+export function getTlsCipherPoliciesOutput(args?: GetTlsCipherPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTlsCipherPoliciesResult> {
+    return pulumi.output(args).apply(a => getTlsCipherPolicies(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTlsCipherPolicies.
+ */
+export interface GetTlsCipherPoliciesOutputArgs {
+    /**
+     * A list of Tls Cipher Policy IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The include listener.
+     */
+    includeListener?: pulumi.Input<boolean>;
+    /**
+     * A regex string to filter results by Tls Cipher Policy name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * TLS policy instance state.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+     */
+    tlsCipherPolicyName?: pulumi.Input<string>;
 }

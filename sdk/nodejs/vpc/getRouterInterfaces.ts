@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * const routerInterfacesDs = pulumi.output(alicloud.vpc.getRouterInterfaces({
  *     nameRegex: "^testenv",
  *     status: "Active",
- * }, { async: true }));
+ * }));
  *
  * export const firstRouterInterfaceId = routerInterfacesDs.interfaces[0].id;
  * ```
@@ -53,41 +53,41 @@ export interface GetRouterInterfacesArgs {
     /**
      * A list of router interface IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string used to filter by router interface name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * ID of the peer router interface.
      */
-    readonly oppositeInterfaceId?: string;
+    oppositeInterfaceId?: string;
     /**
      * Account ID of the owner of the peer router interface.
      */
-    readonly oppositeInterfaceOwnerId?: string;
-    readonly outputFile?: string;
+    oppositeInterfaceOwnerId?: string;
+    outputFile?: string;
     /**
      * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
      * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
      */
-    readonly role?: string;
+    role?: string;
     /**
      * ID of the VRouter located in the local region.
      */
-    readonly routerId?: string;
+    routerId?: string;
     /**
      * Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
      */
-    readonly routerType?: string;
+    routerType?: string;
     /**
      * Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
      */
-    readonly specification?: string;
+    specification?: string;
     /**
      * Expected status. Valid values are `Active`, `Inactive` and `Idle`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -140,4 +140,52 @@ export interface GetRouterInterfacesResult {
      * Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
      */
     readonly status?: string;
+}
+
+export function getRouterInterfacesOutput(args?: GetRouterInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterInterfacesResult> {
+    return pulumi.output(args).apply(a => getRouterInterfaces(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRouterInterfaces.
+ */
+export interface GetRouterInterfacesOutputArgs {
+    /**
+     * A list of router interface IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string used to filter by router interface name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * ID of the peer router interface.
+     */
+    oppositeInterfaceId?: pulumi.Input<string>;
+    /**
+     * Account ID of the owner of the peer router interface.
+     */
+    oppositeInterfaceOwnerId?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
+     */
+    role?: pulumi.Input<string>;
+    /**
+     * ID of the VRouter located in the local region.
+     */
+    routerId?: pulumi.Input<string>;
+    /**
+     * Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
+     */
+    routerType?: pulumi.Input<string>;
+    /**
+     * Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
+     */
+    specification?: pulumi.Input<string>;
+    /**
+     * Expected status. Valid values are `Active`, `Inactive` and `Idle`.
+     */
+    status?: pulumi.Input<string>;
 }

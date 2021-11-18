@@ -4,6 +4,9 @@
 package cr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,71 @@ type GetNamespacesResult struct {
 	// A list of matched Container Registry namespaces. Each element contains the following attributes:
 	Namespaces []GetNamespacesNamespace `pulumi:"namespaces"`
 	OutputFile *string                  `pulumi:"outputFile"`
+}
+
+func GetNamespacesOutput(ctx *pulumi.Context, args GetNamespacesOutputArgs, opts ...pulumi.InvokeOption) GetNamespacesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNamespacesResult, error) {
+			args := v.(GetNamespacesArgs)
+			r, err := GetNamespaces(ctx, &args, opts...)
+			return *r, err
+		}).(GetNamespacesResultOutput)
+}
+
+// A collection of arguments for invoking getNamespaces.
+type GetNamespacesOutputArgs struct {
+	// A regex string to filter results by namespace name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetNamespacesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespacesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNamespaces.
+type GetNamespacesResultOutput struct{ *pulumi.OutputState }
+
+func (GetNamespacesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespacesResult)(nil)).Elem()
+}
+
+func (o GetNamespacesResultOutput) ToGetNamespacesResultOutput() GetNamespacesResultOutput {
+	return o
+}
+
+func (o GetNamespacesResultOutput) ToGetNamespacesResultOutputWithContext(ctx context.Context) GetNamespacesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNamespacesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespacesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of matched Container Registry namespaces. Its element is a namespace name.
+func (o GetNamespacesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNamespacesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNamespacesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNamespacesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of namespace names.
+func (o GetNamespacesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNamespacesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// A list of matched Container Registry namespaces. Each element contains the following attributes:
+func (o GetNamespacesResultOutput) Namespaces() GetNamespacesNamespaceArrayOutput {
+	return o.ApplyT(func(v GetNamespacesResult) []GetNamespacesNamespace { return v.Namespaces }).(GetNamespacesNamespaceArrayOutput)
+}
+
+func (o GetNamespacesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNamespacesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNamespacesResultOutput{})
 }

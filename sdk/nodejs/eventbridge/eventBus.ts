@@ -106,11 +106,11 @@ export interface EventBusState {
     /**
      * The description of event bus.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
      */
-    readonly eventBusName?: pulumi.Input<string>;
+    eventBusName?: pulumi.Input<string>;
 }
 
 /**
@@ -120,9 +120,9 @@ export interface EventBusArgs {
     /**
      * The description of event bus.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
      */
-    readonly eventBusName: pulumi.Input<string>;
+    eventBusName: pulumi.Input<string>;
 }

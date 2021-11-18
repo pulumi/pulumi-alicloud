@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ids: ["742a3d4e-d8b0-47c8-xxxx-xxxx"],
  *     nameRegex: "tf-testACC",
  * });
- * export const firstBrainIndustrialPidLoopId = example.then(example => example.loops[0].id);
+ * export const firstBrainIndustrialPidLoopId = example.then(example => example.loops?[0]?.id);
  * ```
  */
 export function getIndustrialPidLoops(args: GetIndustrialPidLoopsArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialPidLoopsResult> {
@@ -49,28 +49,28 @@ export function getIndustrialPidLoops(args: GetIndustrialPidLoopsArgs, opts?: pu
  * A collection of arguments for invoking getIndustrialPidLoops.
  */
 export interface GetIndustrialPidLoopsArgs {
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Pid Loop IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Pid Loop name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The name of Pid Loop.
      */
-    readonly pidLoopName?: string;
+    pidLoopName?: string;
     /**
      * The pid project id.
      */
-    readonly pidProjectId: string;
+    pidProjectId: string;
     /**
      * The status of Pid Loop.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -90,4 +90,36 @@ export interface GetIndustrialPidLoopsResult {
     readonly pidLoopName?: string;
     readonly pidProjectId: string;
     readonly status?: string;
+}
+
+export function getIndustrialPidLoopsOutput(args: GetIndustrialPidLoopsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialPidLoopsResult> {
+    return pulumi.output(args).apply(a => getIndustrialPidLoops(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIndustrialPidLoops.
+ */
+export interface GetIndustrialPidLoopsOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Pid Loop IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Pid Loop name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The name of Pid Loop.
+     */
+    pidLoopName?: pulumi.Input<string>;
+    /**
+     * The pid project id.
+     */
+    pidProjectId: pulumi.Input<string>;
+    /**
+     * The status of Pid Loop.
+     */
+    status?: pulumi.Input<string>;
 }

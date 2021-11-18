@@ -244,7 +244,7 @@ type SlbAttachmentArrayInput interface {
 type SlbAttachmentArray []SlbAttachmentInput
 
 func (SlbAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SlbAttachment)(nil))
+	return reflect.TypeOf((*[]*SlbAttachment)(nil)).Elem()
 }
 
 func (i SlbAttachmentArray) ToSlbAttachmentArrayOutput() SlbAttachmentArrayOutput {
@@ -269,7 +269,7 @@ type SlbAttachmentMapInput interface {
 type SlbAttachmentMap map[string]SlbAttachmentInput
 
 func (SlbAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SlbAttachment)(nil))
+	return reflect.TypeOf((*map[string]*SlbAttachment)(nil)).Elem()
 }
 
 func (i SlbAttachmentMap) ToSlbAttachmentMapOutput() SlbAttachmentMapOutput {
@@ -280,9 +280,7 @@ func (i SlbAttachmentMap) ToSlbAttachmentMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SlbAttachmentMapOutput)
 }
 
-type SlbAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type SlbAttachmentOutput struct{ *pulumi.OutputState }
 
 func (SlbAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SlbAttachment)(nil))
@@ -301,14 +299,12 @@ func (o SlbAttachmentOutput) ToSlbAttachmentPtrOutput() SlbAttachmentPtrOutput {
 }
 
 func (o SlbAttachmentOutput) ToSlbAttachmentPtrOutputWithContext(ctx context.Context) SlbAttachmentPtrOutput {
-	return o.ApplyT(func(v SlbAttachment) *SlbAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlbAttachment) *SlbAttachment {
 		return &v
 	}).(SlbAttachmentPtrOutput)
 }
 
-type SlbAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type SlbAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (SlbAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SlbAttachment)(nil))
@@ -320,6 +316,16 @@ func (o SlbAttachmentPtrOutput) ToSlbAttachmentPtrOutput() SlbAttachmentPtrOutpu
 
 func (o SlbAttachmentPtrOutput) ToSlbAttachmentPtrOutputWithContext(ctx context.Context) SlbAttachmentPtrOutput {
 	return o
+}
+
+func (o SlbAttachmentPtrOutput) Elem() SlbAttachmentOutput {
+	return o.ApplyT(func(v *SlbAttachment) SlbAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret SlbAttachment
+		return ret
+	}).(SlbAttachmentOutput)
 }
 
 type SlbAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -363,6 +369,10 @@ func (o SlbAttachmentMapOutput) MapIndex(k pulumi.StringInput) SlbAttachmentOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SlbAttachmentInput)(nil)).Elem(), &SlbAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlbAttachmentPtrInput)(nil)).Elem(), &SlbAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlbAttachmentArrayInput)(nil)).Elem(), SlbAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlbAttachmentMapInput)(nil)).Elem(), SlbAttachmentMap{})
 	pulumi.RegisterOutputType(SlbAttachmentOutput{})
 	pulumi.RegisterOutputType(SlbAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(SlbAttachmentArrayOutput{})

@@ -177,47 +177,47 @@ export interface PrometheusAlertRuleState {
     /**
      * The annotations of the alert rule.. See the following `Block annotations`.
      */
-    readonly annotations?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleAnnotation>[]>;
+    annotations?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleAnnotation>[]>;
     /**
      * The ID of the cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
      */
-    readonly dispatchRuleId?: pulumi.Input<string>;
+    dispatchRuleId?: pulumi.Input<string>;
     /**
      * The duration of the alert.
      */
-    readonly duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string>;
     /**
      * The alert rule expression that follows the PromQL syntax.
      */
-    readonly expression?: pulumi.Input<string>;
+    expression?: pulumi.Input<string>;
     /**
      * The labels of the resource. See the following `Block labels`.
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleLabel>[]>;
     /**
      * The message of the alert notification.
      */
-    readonly message?: pulumi.Input<string>;
+    message?: pulumi.Input<string>;
     /**
      * The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
      */
-    readonly notifyType?: pulumi.Input<string>;
+    notifyType?: pulumi.Input<string>;
     /**
      * The name of the resource.
      */
-    readonly prometheusAlertRuleName?: pulumi.Input<string>;
+    prometheusAlertRuleName?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
      */
-    readonly status?: pulumi.Input<number>;
+    status?: pulumi.Input<number>;
     /**
      * The type of the alert rule.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -227,41 +227,41 @@ export interface PrometheusAlertRuleArgs {
     /**
      * The annotations of the alert rule.. See the following `Block annotations`.
      */
-    readonly annotations?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleAnnotation>[]>;
+    annotations?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleAnnotation>[]>;
     /**
      * The ID of the cluster.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
      */
-    readonly dispatchRuleId?: pulumi.Input<string>;
+    dispatchRuleId?: pulumi.Input<string>;
     /**
      * The duration of the alert.
      */
-    readonly duration: pulumi.Input<string>;
+    duration: pulumi.Input<string>;
     /**
      * The alert rule expression that follows the PromQL syntax.
      */
-    readonly expression: pulumi.Input<string>;
+    expression: pulumi.Input<string>;
     /**
      * The labels of the resource. See the following `Block labels`.
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleLabel>[]>;
     /**
      * The message of the alert notification.
      */
-    readonly message: pulumi.Input<string>;
+    message: pulumi.Input<string>;
     /**
      * The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
      */
-    readonly notifyType?: pulumi.Input<string>;
+    notifyType?: pulumi.Input<string>;
     /**
      * The name of the resource.
      */
-    readonly prometheusAlertRuleName: pulumi.Input<string>;
+    prometheusAlertRuleName: pulumi.Input<string>;
     /**
      * The type of the alert rule.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

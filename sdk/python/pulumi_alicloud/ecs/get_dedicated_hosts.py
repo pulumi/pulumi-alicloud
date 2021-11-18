@@ -14,6 +14,7 @@ __all__ = [
     'GetDedicatedHostsResult',
     'AwaitableGetDedicatedHostsResult',
     'get_dedicated_hosts',
+    'get_dedicated_hosts_output',
 ]
 
 @pulumi.output_type
@@ -263,3 +264,49 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_dedicated_hosts)
+def get_dedicated_hosts_output(dedicated_host_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               dedicated_host_name: Optional[pulumi.Input[Optional[str]]] = None,
+                               dedicated_host_type: Optional[pulumi.Input[Optional[str]]] = None,
+                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               operation_locks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDedicatedHostsOperationLockArgs']]]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               status: Optional[pulumi.Input[Optional[str]]] = None,
+                               tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                               zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDedicatedHostsResult]:
+    """
+    This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in v1.91.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    dedicated_hosts_ds = alicloud.ecs.get_dedicated_hosts(dedicated_host_type="ddh.g5",
+        name_regex="tf-testAcc",
+        status="Available")
+    pulumi.export("firstDedicatedHostsId", dedicated_hosts_ds.hosts[0].id)
+    ```
+
+
+    :param str dedicated_host_id: The ID of ECS Dedicated Host.
+    :param str dedicated_host_name: The name of ECS Dedicated Host.
+    :param str dedicated_host_type: The type of the dedicated host.
+    :param Sequence[str] ids: A list of ECS Dedicated Host ids.
+    :param str name_regex: A regex string to filter results by the ECS Dedicated Host name.
+    :param Sequence[pulumi.InputType['GetDedicatedHostsOperationLockArgs']] operation_locks: The reason why the dedicated host resource is locked.
+    :param str output_file: Save the result to the file.
+    :param str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
+    :param str status: The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str zone_id: The zone ID of the ECS Dedicated Host.
+    """
+    ...

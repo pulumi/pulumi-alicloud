@@ -4,6 +4,9 @@
 package resourcemanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,97 @@ type GetPolicyAttachmentsResult struct {
 	PrincipalType *string  `pulumi:"principalType"`
 	// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+}
+
+func GetPolicyAttachmentsOutput(ctx *pulumi.Context, args GetPolicyAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetPolicyAttachmentsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetPolicyAttachmentsResult, error) {
+			args := v.(GetPolicyAttachmentsArgs)
+			r, err := GetPolicyAttachments(ctx, &args, opts...)
+			return *r, err
+		}).(GetPolicyAttachmentsResultOutput)
+}
+
+// A collection of arguments for invoking getPolicyAttachments.
+type GetPolicyAttachmentsOutputArgs struct {
+	// The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
+	Language   pulumi.StringPtrInput `pulumi:"language"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
+	// The type of the policy. Valid values: `Custom` and `System`.
+	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`
+	// The name of the object to which the policy is attached.
+	PrincipalName pulumi.StringPtrInput `pulumi:"principalName"`
+	// The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
+	PrincipalType pulumi.StringPtrInput `pulumi:"principalType"`
+	// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+}
+
+func (GetPolicyAttachmentsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyAttachmentsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPolicyAttachments.
+type GetPolicyAttachmentsResultOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyAttachmentsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyAttachmentsResult)(nil)).Elem()
+}
+
+func (o GetPolicyAttachmentsResultOutput) ToGetPolicyAttachmentsResultOutput() GetPolicyAttachmentsResultOutput {
+	return o
+}
+
+func (o GetPolicyAttachmentsResultOutput) ToGetPolicyAttachmentsResultOutputWithContext(ctx context.Context) GetPolicyAttachmentsResultOutput {
+	return o
+}
+
+// A list of Resource Manager Policy Attachment. Each element contains the following attributes:
+func (o GetPolicyAttachmentsResultOutput) Attachments() GetPolicyAttachmentsAttachmentArrayOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsResult) []GetPolicyAttachmentsAttachment { return v.Attachments }).(GetPolicyAttachmentsAttachmentArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPolicyAttachmentsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of Resource Manager Policy Attachment IDs.
+func (o GetPolicyAttachmentsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPolicyAttachmentsResultOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.Language }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPolicyAttachmentsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPolicyAttachmentsResultOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPolicyAttachmentsResultOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPolicyAttachmentsResultOutput) PrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.PrincipalName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPolicyAttachmentsResultOutput) PrincipalType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.PrincipalType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
+func (o GetPolicyAttachmentsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPolicyAttachmentsResultOutput{})
 }

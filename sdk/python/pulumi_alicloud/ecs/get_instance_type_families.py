@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceTypeFamiliesResult',
     'AwaitableGetInstanceTypeFamiliesResult',
     'get_instance_type_families',
+    'get_instance_type_families_output',
 ]
 
 @pulumi.output_type
@@ -161,3 +162,35 @@ def get_instance_type_families(generation: Optional[str] = None,
         output_file=__ret__.output_file,
         spot_strategy=__ret__.spot_strategy,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_instance_type_families)
+def get_instance_type_families_output(generation: Optional[pulumi.Input[Optional[str]]] = None,
+                                      instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                      spot_strategy: Optional[pulumi.Input[Optional[str]]] = None,
+                                      zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypeFamiliesResult]:
+    """
+    This data source provides the ECS instance type families of Alibaba Cloud.
+
+    > **NOTE:** Available in 1.54.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ecs.get_instance_type_families(instance_charge_type="PrePaid")
+    pulumi.export("firstInstanceTypeFamilyId", default.families[0].id)
+    pulumi.export("instanceIds", default.ids)
+    ```
+
+
+    :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+    :param str instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+    :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+    :param str zone_id: The Zone to launch the instance.
+    """
+    ...

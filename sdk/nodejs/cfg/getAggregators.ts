@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["ca-3ce2626622af0005****"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstConfigAggregatorId = example.then(example => example.aggregators[0].id);
+ * export const firstConfigAggregatorId = example.then(example => example.aggregators?[0]?.id);
  * ```
  */
 export function getAggregators(args?: GetAggregatorsArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregatorsResult> {
@@ -50,20 +50,20 @@ export interface GetAggregatorsArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of aggregator ids.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by aggregator name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -81,4 +81,31 @@ export interface GetAggregatorsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getAggregatorsOutput(args?: GetAggregatorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregatorsResult> {
+    return pulumi.output(args).apply(a => getAggregators(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAggregators.
+ */
+export interface GetAggregatorsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of aggregator ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by aggregator name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
 }

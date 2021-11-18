@@ -160,27 +160,27 @@ export interface RuleState {
     /**
      * The description of rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of event bus.
      */
-    readonly eventBusName?: pulumi.Input<string>;
+    eventBusName?: pulumi.Input<string>;
     /**
      * The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
      */
-    readonly filterPattern?: pulumi.Input<string>;
+    filterPattern?: pulumi.Input<string>;
     /**
      * The name of rule.
      */
-    readonly ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string>;
     /**
      * Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The target of rule.
      */
-    readonly targets?: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTarget>[]>;
 }
 
 /**
@@ -190,25 +190,25 @@ export interface RuleArgs {
     /**
      * The description of rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of event bus.
      */
-    readonly eventBusName: pulumi.Input<string>;
+    eventBusName: pulumi.Input<string>;
     /**
      * The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
      */
-    readonly filterPattern: pulumi.Input<string>;
+    filterPattern: pulumi.Input<string>;
     /**
      * The name of rule.
      */
-    readonly ruleName: pulumi.Input<string>;
+    ruleName: pulumi.Input<string>;
     /**
      * Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The target of rule.
      */
-    readonly targets: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTarget>[]>;
+    targets: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTarget>[]>;
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetStorageBundlesResult',
     'AwaitableGetStorageBundlesResult',
     'get_storage_bundles',
+    'get_storage_bundles_output',
 ]
 
 @pulumi.output_type
@@ -124,3 +125,15 @@ def get_storage_bundles(backend_bucket_region_id: Optional[str] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_storage_bundles)
+def get_storage_bundles_output(backend_bucket_region_id: Optional[pulumi.Input[str]] = None,
+                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageBundlesResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

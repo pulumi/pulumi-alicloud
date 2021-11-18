@@ -163,23 +163,23 @@ export interface SchedulerRuleState {
     /**
      * The cname is the traffic scheduler corresponding to rules.
      */
-    readonly cname?: pulumi.Input<string>;
-    readonly param?: pulumi.Input<string>;
+    cname?: pulumi.Input<string>;
+    param?: pulumi.Input<string>;
     /**
      * The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The name of the rule.
      */
-    readonly ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string>;
     /**
      * The rule type. Valid values:
      * `2`: tiered protection.
      * `3`: globalization acceleration.
      * `6`: Cloud product interaction.
      */
-    readonly ruleType?: pulumi.Input<number>;
+    ruleType?: pulumi.Input<number>;
     /**
      * The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
      * `Type`: String type, required, the address format of the linkage resource. Valid values:
@@ -194,29 +194,29 @@ export interface SchedulerRuleState {
      * `6`: (Cloud product linkage) cloud resource IP.
      * `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.ddos.SchedulerRuleRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.ddos.SchedulerRuleRule>[]>;
 }
 
 /**
  * The set of arguments for constructing a SchedulerRule resource.
  */
 export interface SchedulerRuleArgs {
-    readonly param?: pulumi.Input<string>;
+    param?: pulumi.Input<string>;
     /**
      * The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The name of the rule.
      */
-    readonly ruleName: pulumi.Input<string>;
+    ruleName: pulumi.Input<string>;
     /**
      * The rule type. Valid values:
      * `2`: tiered protection.
      * `3`: globalization acceleration.
      * `6`: Cloud product interaction.
      */
-    readonly ruleType: pulumi.Input<number>;
+    ruleType: pulumi.Input<number>;
     /**
      * The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
      * `Type`: String type, required, the address format of the linkage resource. Valid values:
@@ -231,5 +231,5 @@ export interface SchedulerRuleArgs {
      * `6`: (Cloud product linkage) cloud resource IP.
      * `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
      */
-    readonly rules: pulumi.Input<pulumi.Input<inputs.ddos.SchedulerRuleRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.ddos.SchedulerRuleRule>[]>;
 }

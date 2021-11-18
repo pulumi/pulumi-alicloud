@@ -331,6 +331,10 @@ func (o GetSchedulesScheduleArrayOutput) Index(i pulumi.IntInput) GetSchedulesSc
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlowsFlowInput)(nil)).Elem(), GetFlowsFlowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlowsFlowArrayInput)(nil)).Elem(), GetFlowsFlowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSchedulesScheduleInput)(nil)).Elem(), GetSchedulesScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSchedulesScheduleArrayInput)(nil)).Elem(), GetSchedulesScheduleArray{})
 	pulumi.RegisterOutputType(GetFlowsFlowOutput{})
 	pulumi.RegisterOutputType(GetFlowsFlowArrayOutput{})
 	pulumi.RegisterOutputType(GetSchedulesScheduleOutput{})

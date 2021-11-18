@@ -13,6 +13,7 @@ __all__ = [
     'GetEndpointsResult',
     'AwaitableGetEndpointsResult',
     'get_endpoints',
+    'get_endpoints_output',
 ]
 
 @pulumi.output_type
@@ -80,7 +81,7 @@ def get_endpoints(db_cluster_id: Optional[str] = None,
                   db_endpoint_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEndpointsResult:
     """
-    The `polardb.getEndpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
+    The `polardb.get_endpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
     Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
 
     > **NOTE:** Available in v1.68.0+.
@@ -115,3 +116,32 @@ def get_endpoints(db_cluster_id: Optional[str] = None,
         db_endpoint_id=__ret__.db_endpoint_id,
         endpoints=__ret__.endpoints,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_endpoints)
+def get_endpoints_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
+                         db_endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointsResult]:
+    """
+    The `polardb.get_endpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
+    Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
+
+    > **NOTE:** Available in v1.68.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    polardb_clusters_ds = alicloud.polardb.get_clusters(description_regex="pc-\\w+",
+        status="Running")
+    default = alicloud.polardb.get_endpoints(db_cluster_id=polardb_clusters_ds.clusters[0].id)
+    pulumi.export("endpoint", default.endpoints[0].db_endpoint_id)
+    ```
+
+
+    :param str db_cluster_id: PolarDB cluster ID.
+    :param str db_endpoint_id: endpoint of the cluster.
+    """
+    ...

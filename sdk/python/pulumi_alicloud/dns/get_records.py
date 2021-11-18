@@ -13,6 +13,7 @@ __all__ = [
     'GetRecordsResult',
     'AwaitableGetRecordsResult',
     'get_records',
+    'get_records_output',
 ]
 
 @pulumi.output_type
@@ -229,3 +230,44 @@ def get_records(domain_name: Optional[str] = None,
         type=__ret__.type,
         urls=__ret__.urls,
         value_regex=__ret__.value_regex)
+
+
+@_utilities.lift_output_func(get_records)
+def get_records_output(domain_name: Optional[pulumi.Input[str]] = None,
+                       host_record_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       is_locked: Optional[pulumi.Input[Optional[bool]]] = None,
+                       line: Optional[pulumi.Input[Optional[str]]] = None,
+                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                       status: Optional[pulumi.Input[Optional[str]]] = None,
+                       type: Optional[pulumi.Input[Optional[str]]] = None,
+                       value_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecordsResult]:
+    """
+    This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    records_ds = alicloud.dns.get_records(domain_name="xiaozhu.top",
+        host_record_regex="^@",
+        is_locked=False,
+        output_file="records.txt",
+        type="A")
+    pulumi.export("firstRecordId", records_ds.records[0].record_id)
+    ```
+
+
+    :param str domain_name: The domain name associated to the records.
+    :param str host_record_regex: Host record regex.
+    :param Sequence[str] ids: A list of record IDs.
+    :param bool is_locked: Whether the record is locked or not.
+    :param str line: ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+    :param str status: Record status. Valid items are `ENABLE` and `DISABLE`.
+    :param str type: Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+    :param str value_regex: Host record value regex.
+    """
+    ...

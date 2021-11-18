@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Yundun
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Yundun
     {
         public static Task<GetDBAuditInstanceResult> InvokeAsync(GetDBAuditInstanceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? new GetDBAuditInstanceArgs(), options.WithVersion());
+
+        public static Output<GetDBAuditInstanceResult> Invoke(GetDBAuditInstanceInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? new GetDBAuditInstanceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -41,6 +45,35 @@ namespace Pulumi.AliCloud.Yundun
         }
 
         public GetDBAuditInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetDBAuditInstanceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("descriptionRegex")]
+        public Input<string>? DescriptionRegex { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetDBAuditInstanceInvokeArgs()
         {
         }
     }

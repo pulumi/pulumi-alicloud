@@ -203,80 +203,80 @@ export interface ClusterState {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
-    readonly autoRenewPeriod?: pulumi.Input<number>;
-    readonly computeResource?: pulumi.Input<string>;
+    autoRenewPeriod?: pulumi.Input<number>;
+    computeResource?: pulumi.Input<string>;
     /**
      * (Available in 1.93.0+) The connection string of the ADB cluster.
      */
-    readonly connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string>;
     /**
      * Cluster category. Value options: `Basic`, `Cluster`.
      */
-    readonly dbClusterCategory?: pulumi.Input<string>;
+    dbClusterCategory?: pulumi.Input<string>;
     /**
      * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      */
-    readonly dbClusterClass?: pulumi.Input<string>;
+    dbClusterClass?: pulumi.Input<string>;
     /**
      * Cluster version. Value options: `3.0`, Default to `3.0`.
      */
-    readonly dbClusterVersion?: pulumi.Input<string>;
+    dbClusterVersion?: pulumi.Input<string>;
     /**
      * The dbNodeClass of cluster node.
      */
-    readonly dbNodeClass?: pulumi.Input<string>;
+    dbNodeClass?: pulumi.Input<string>;
     /**
      * The dbNodeCount of cluster node.
      */
-    readonly dbNodeCount?: pulumi.Input<number>;
+    dbNodeCount?: pulumi.Input<number>;
     /**
      * The dbNodeStorage of cluster node.
      */
-    readonly dbNodeStorage?: pulumi.Input<number>;
+    dbNodeStorage?: pulumi.Input<number>;
     /**
      * The description of cluster.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly elasticIoResource?: pulumi.Input<number>;
+    description?: pulumi.Input<string>;
+    elasticIoResource?: pulumi.Input<number>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
-    readonly maintainTime?: pulumi.Input<string>;
-    readonly mode?: pulumi.Input<string>;
-    readonly modifyType?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
      */
-    readonly payType?: pulumi.Input<string>;
-    readonly paymentType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
-    readonly resourceGroupId?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly status?: pulumi.Input<string>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB cluster.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -286,73 +286,73 @@ export interface ClusterArgs {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
-    readonly autoRenewPeriod?: pulumi.Input<number>;
-    readonly computeResource?: pulumi.Input<string>;
+    autoRenewPeriod?: pulumi.Input<number>;
+    computeResource?: pulumi.Input<string>;
     /**
      * Cluster category. Value options: `Basic`, `Cluster`.
      */
-    readonly dbClusterCategory: pulumi.Input<string>;
+    dbClusterCategory: pulumi.Input<string>;
     /**
      * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      */
-    readonly dbClusterClass?: pulumi.Input<string>;
+    dbClusterClass?: pulumi.Input<string>;
     /**
      * Cluster version. Value options: `3.0`, Default to `3.0`.
      */
-    readonly dbClusterVersion?: pulumi.Input<string>;
+    dbClusterVersion?: pulumi.Input<string>;
     /**
      * The dbNodeClass of cluster node.
      */
-    readonly dbNodeClass?: pulumi.Input<string>;
+    dbNodeClass?: pulumi.Input<string>;
     /**
      * The dbNodeCount of cluster node.
      */
-    readonly dbNodeCount?: pulumi.Input<number>;
+    dbNodeCount?: pulumi.Input<number>;
     /**
      * The dbNodeStorage of cluster node.
      */
-    readonly dbNodeStorage?: pulumi.Input<number>;
+    dbNodeStorage?: pulumi.Input<number>;
     /**
      * The description of cluster.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly elasticIoResource?: pulumi.Input<number>;
+    description?: pulumi.Input<string>;
+    elasticIoResource?: pulumi.Input<number>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
-    readonly maintainTime?: pulumi.Input<string>;
-    readonly mode: pulumi.Input<string>;
-    readonly modifyType?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string>;
+    mode: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
      */
-    readonly payType?: pulumi.Input<string>;
-    readonly paymentType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
-    readonly resourceGroupId?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB cluster.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

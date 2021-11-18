@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,82 @@ type GetAutoSnapshotPoliciesResult struct {
 	Policies   []GetAutoSnapshotPoliciesPolicy `pulumi:"policies"`
 	Status     *string                         `pulumi:"status"`
 	Tags       map[string]interface{}          `pulumi:"tags"`
+}
+
+func GetAutoSnapshotPoliciesOutput(ctx *pulumi.Context, args GetAutoSnapshotPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetAutoSnapshotPoliciesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAutoSnapshotPoliciesResult, error) {
+			args := v.(GetAutoSnapshotPoliciesArgs)
+			r, err := GetAutoSnapshotPolicies(ctx, &args, opts...)
+			return *r, err
+		}).(GetAutoSnapshotPoliciesResultOutput)
+}
+
+// A collection of arguments for invoking getAutoSnapshotPolicies.
+type GetAutoSnapshotPoliciesOutputArgs struct {
+	// A list of Auto Snapshot Policy IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Auto Snapshot Policy name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of Auto Snapshot Policy.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetAutoSnapshotPoliciesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoSnapshotPoliciesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAutoSnapshotPolicies.
+type GetAutoSnapshotPoliciesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAutoSnapshotPoliciesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoSnapshotPoliciesResult)(nil)).Elem()
+}
+
+func (o GetAutoSnapshotPoliciesResultOutput) ToGetAutoSnapshotPoliciesResultOutput() GetAutoSnapshotPoliciesResultOutput {
+	return o
+}
+
+func (o GetAutoSnapshotPoliciesResultOutput) ToGetAutoSnapshotPoliciesResultOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAutoSnapshotPoliciesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAutoSnapshotPoliciesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAutoSnapshotPoliciesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAutoSnapshotPoliciesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAutoSnapshotPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAutoSnapshotPoliciesResultOutput) Policies() GetAutoSnapshotPoliciesPolicyArrayOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) []GetAutoSnapshotPoliciesPolicy { return v.Policies }).(GetAutoSnapshotPoliciesPolicyArrayOutput)
+}
+
+func (o GetAutoSnapshotPoliciesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAutoSnapshotPoliciesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesResultOutput{})
 }

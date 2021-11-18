@@ -306,7 +306,7 @@ type EcsBackupClientArrayInput interface {
 type EcsBackupClientArray []EcsBackupClientInput
 
 func (EcsBackupClientArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EcsBackupClient)(nil))
+	return reflect.TypeOf((*[]*EcsBackupClient)(nil)).Elem()
 }
 
 func (i EcsBackupClientArray) ToEcsBackupClientArrayOutput() EcsBackupClientArrayOutput {
@@ -331,7 +331,7 @@ type EcsBackupClientMapInput interface {
 type EcsBackupClientMap map[string]EcsBackupClientInput
 
 func (EcsBackupClientMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EcsBackupClient)(nil))
+	return reflect.TypeOf((*map[string]*EcsBackupClient)(nil)).Elem()
 }
 
 func (i EcsBackupClientMap) ToEcsBackupClientMapOutput() EcsBackupClientMapOutput {
@@ -342,9 +342,7 @@ func (i EcsBackupClientMap) ToEcsBackupClientMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EcsBackupClientMapOutput)
 }
 
-type EcsBackupClientOutput struct {
-	*pulumi.OutputState
-}
+type EcsBackupClientOutput struct{ *pulumi.OutputState }
 
 func (EcsBackupClientOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EcsBackupClient)(nil))
@@ -363,14 +361,12 @@ func (o EcsBackupClientOutput) ToEcsBackupClientPtrOutput() EcsBackupClientPtrOu
 }
 
 func (o EcsBackupClientOutput) ToEcsBackupClientPtrOutputWithContext(ctx context.Context) EcsBackupClientPtrOutput {
-	return o.ApplyT(func(v EcsBackupClient) *EcsBackupClient {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsBackupClient) *EcsBackupClient {
 		return &v
 	}).(EcsBackupClientPtrOutput)
 }
 
-type EcsBackupClientPtrOutput struct {
-	*pulumi.OutputState
-}
+type EcsBackupClientPtrOutput struct{ *pulumi.OutputState }
 
 func (EcsBackupClientPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EcsBackupClient)(nil))
@@ -382,6 +378,16 @@ func (o EcsBackupClientPtrOutput) ToEcsBackupClientPtrOutput() EcsBackupClientPt
 
 func (o EcsBackupClientPtrOutput) ToEcsBackupClientPtrOutputWithContext(ctx context.Context) EcsBackupClientPtrOutput {
 	return o
+}
+
+func (o EcsBackupClientPtrOutput) Elem() EcsBackupClientOutput {
+	return o.ApplyT(func(v *EcsBackupClient) EcsBackupClient {
+		if v != nil {
+			return *v
+		}
+		var ret EcsBackupClient
+		return ret
+	}).(EcsBackupClientOutput)
 }
 
 type EcsBackupClientArrayOutput struct{ *pulumi.OutputState }
@@ -425,6 +431,10 @@ func (o EcsBackupClientMapOutput) MapIndex(k pulumi.StringInput) EcsBackupClient
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsBackupClientInput)(nil)).Elem(), &EcsBackupClient{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsBackupClientPtrInput)(nil)).Elem(), &EcsBackupClient{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsBackupClientArrayInput)(nil)).Elem(), EcsBackupClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsBackupClientMapInput)(nil)).Elem(), EcsBackupClientMap{})
 	pulumi.RegisterOutputType(EcsBackupClientOutput{})
 	pulumi.RegisterOutputType(EcsBackupClientPtrOutput{})
 	pulumi.RegisterOutputType(EcsBackupClientArrayOutput{})

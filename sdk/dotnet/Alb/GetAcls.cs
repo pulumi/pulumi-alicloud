@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Alb
 {
@@ -31,12 +32,12 @@ namespace Pulumi.AliCloud.Alb
         ///     public MyStack()
         ///     {
         ///         var ids = Output.Create(AliCloud.Alb.GetAcls.InvokeAsync());
-        ///         this.AlbAclId1 = ids.Apply(ids =&gt; ids.Acls[0].Id);
+        ///         this.AlbAclId1 = ids.Apply(ids =&gt; ids.Acls?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Alb.GetAcls.InvokeAsync(new AliCloud.Alb.GetAclsArgs
         ///         {
         ///             NameRegex = "^my-Acl",
         ///         }));
-        ///         this.AlbAclId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Acls[0].Id);
+        ///         this.AlbAclId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Acls?[0]?.Id);
         ///     }
         /// 
         ///     [Output("albAclId1")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:alb/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Alb.GetAcls.InvokeAsync());
+        ///         this.AlbAclId1 = ids.Apply(ids =&gt; ids.Acls?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Alb.GetAcls.InvokeAsync(new AliCloud.Alb.GetAclsArgs
+        ///         {
+        ///             NameRegex = "^my-Acl",
+        ///         }));
+        ///         this.AlbAclId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Acls?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("albAclId1")]
+        ///     public Output&lt;string&gt; AlbAclId1 { get; set; }
+        ///     [Output("albAclId2")]
+        ///     public Output&lt;string&gt; AlbAclId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:alb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -113,6 +154,70 @@ namespace Pulumi.AliCloud.Alb
         public string? Status { get; set; }
 
         public GetAclsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAclsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("aclIds")]
+        private InputList<string>? _aclIds;
+
+        /// <summary>
+        /// The acl ids.
+        /// </summary>
+        public InputList<string> AclIds
+        {
+            get => _aclIds ?? (_aclIds = new InputList<string>());
+            set => _aclIds = value;
+        }
+
+        /// <summary>
+        /// The ACL Name.
+        /// </summary>
+        [Input("aclName")]
+        public Input<string>? AclName { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Acl IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Acl name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Resource Group to Which the Number.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetAclsInvokeArgs()
         {
         }
     }

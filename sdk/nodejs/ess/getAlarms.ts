@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ],
  *     nameRegex: "alarm_name",
  *     scalingGroupId: "scaling_group_id",
- * }, { async: true }));
+ * }));
  *
  * export const firstScalingRule = alicloud_alarms_alarm_ds.configurations.0.id;
  * ```
@@ -53,20 +53,20 @@ export interface GetAlarmsArgs {
     /**
      * A list of alarm IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
      */
-    readonly metricType?: string;
+    metricType?: string;
     /**
      * A regex string to filter resulting alarms by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Scaling group id the alarms belong to.
      */
-    readonly scalingGroupId?: string;
+    scalingGroupId?: string;
 }
 
 /**
@@ -99,4 +99,31 @@ export interface GetAlarmsResult {
      * The scaling group associated with this alarm.
      */
     readonly scalingGroupId?: string;
+}
+
+export function getAlarmsOutput(args?: GetAlarmsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmsResult> {
+    return pulumi.output(args).apply(a => getAlarms(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlarms.
+ */
+export interface GetAlarmsOutputArgs {
+    /**
+     * A list of alarm IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
+     */
+    metricType?: pulumi.Input<string>;
+    /**
+     * A regex string to filter resulting alarms by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Scaling group id the alarms belong to.
+     */
+    scalingGroupId?: pulumi.Input<string>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Dns
     {
         public static Task<GetDomainGroupsResult> InvokeAsync(GetDomainGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? new GetDomainGroupsArgs(), options.WithVersion());
+
+        public static Output<GetDomainGroupsResult> Invoke(GetDomainGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? new GetDomainGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -33,6 +37,27 @@ namespace Pulumi.AliCloud.Dns
         public string? OutputFile { get; set; }
 
         public GetDomainGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetDomainGroupsInvokeArgs()
         {
         }
     }

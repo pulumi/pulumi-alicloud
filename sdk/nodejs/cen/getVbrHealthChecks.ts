@@ -34,20 +34,20 @@ export interface GetVbrHealthChecksArgs {
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
-    readonly cenId?: string;
-    readonly outputFile?: string;
+    cenId?: string;
+    outputFile?: string;
     /**
      * The ID of the VBR instance.
      */
-    readonly vbrInstanceId?: string;
+    vbrInstanceId?: string;
     /**
      * The User ID (UID) of the account to which the VBR instance belongs.
      */
-    readonly vbrInstanceOwnerId?: number;
+    vbrInstanceOwnerId?: number;
     /**
      * The ID of the region where the VBR instance is deployed.
      */
-    readonly vbrInstanceRegionId: string;
+    vbrInstanceRegionId: string;
 }
 
 /**
@@ -80,4 +80,31 @@ export interface GetVbrHealthChecksResult {
      * The ID of the region where the VBR instance is deployed.
      */
     readonly vbrInstanceRegionId: string;
+}
+
+export function getVbrHealthChecksOutput(args: GetVbrHealthChecksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVbrHealthChecksResult> {
+    return pulumi.output(args).apply(a => getVbrHealthChecks(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVbrHealthChecks.
+ */
+export interface GetVbrHealthChecksOutputArgs {
+    /**
+     * The ID of the Cloud Enterprise Network (CEN) instance.
+     */
+    cenId?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the VBR instance.
+     */
+    vbrInstanceId?: pulumi.Input<string>;
+    /**
+     * The User ID (UID) of the account to which the VBR instance belongs.
+     */
+    vbrInstanceOwnerId?: pulumi.Input<number>;
+    /**
+     * The ID of the region where the VBR instance is deployed.
+     */
+    vbrInstanceRegionId: pulumi.Input<string>;
 }

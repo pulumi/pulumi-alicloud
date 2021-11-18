@@ -664,7 +664,7 @@ func (o StoreEncryptConfOutput) ToStoreEncryptConfPtrOutput() StoreEncryptConfPt
 }
 
 func (o StoreEncryptConfOutput) ToStoreEncryptConfPtrOutputWithContext(ctx context.Context) StoreEncryptConfPtrOutput {
-	return o.ApplyT(func(v StoreEncryptConf) *StoreEncryptConf {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoreEncryptConf) *StoreEncryptConf {
 		return &v
 	}).(StoreEncryptConfPtrOutput)
 }
@@ -699,7 +699,13 @@ func (o StoreEncryptConfPtrOutput) ToStoreEncryptConfPtrOutputWithContext(ctx co
 }
 
 func (o StoreEncryptConfPtrOutput) Elem() StoreEncryptConfOutput {
-	return o.ApplyT(func(v *StoreEncryptConf) StoreEncryptConf { return *v }).(StoreEncryptConfOutput)
+	return o.ApplyT(func(v *StoreEncryptConf) StoreEncryptConf {
+		if v != nil {
+			return *v
+		}
+		var ret StoreEncryptConf
+		return ret
+	}).(StoreEncryptConfOutput)
 }
 
 // enable encryption. Default `false`
@@ -833,7 +839,7 @@ func (o StoreEncryptConfUserCmkInfoOutput) ToStoreEncryptConfUserCmkInfoPtrOutpu
 }
 
 func (o StoreEncryptConfUserCmkInfoOutput) ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx context.Context) StoreEncryptConfUserCmkInfoPtrOutput {
-	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) *StoreEncryptConfUserCmkInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoreEncryptConfUserCmkInfo) *StoreEncryptConfUserCmkInfo {
 		return &v
 	}).(StoreEncryptConfUserCmkInfoPtrOutput)
 }
@@ -868,7 +874,13 @@ func (o StoreEncryptConfUserCmkInfoPtrOutput) ToStoreEncryptConfUserCmkInfoPtrOu
 }
 
 func (o StoreEncryptConfUserCmkInfoPtrOutput) Elem() StoreEncryptConfUserCmkInfoOutput {
-	return o.ApplyT(func(v *StoreEncryptConfUserCmkInfo) StoreEncryptConfUserCmkInfo { return *v }).(StoreEncryptConfUserCmkInfoOutput)
+	return o.ApplyT(func(v *StoreEncryptConfUserCmkInfo) StoreEncryptConfUserCmkInfo {
+		if v != nil {
+			return *v
+		}
+		var ret StoreEncryptConfUserCmkInfo
+		return ret
+	}).(StoreEncryptConfUserCmkInfoOutput)
 }
 
 // role arn
@@ -1286,7 +1298,7 @@ func (o StoreIndexFullTextOutput) ToStoreIndexFullTextPtrOutput() StoreIndexFull
 }
 
 func (o StoreIndexFullTextOutput) ToStoreIndexFullTextPtrOutputWithContext(ctx context.Context) StoreIndexFullTextPtrOutput {
-	return o.ApplyT(func(v StoreIndexFullText) *StoreIndexFullText {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoreIndexFullText) *StoreIndexFullText {
 		return &v
 	}).(StoreIndexFullTextPtrOutput)
 }
@@ -1321,7 +1333,13 @@ func (o StoreIndexFullTextPtrOutput) ToStoreIndexFullTextPtrOutputWithContext(ct
 }
 
 func (o StoreIndexFullTextPtrOutput) Elem() StoreIndexFullTextOutput {
-	return o.ApplyT(func(v *StoreIndexFullText) StoreIndexFullText { return *v }).(StoreIndexFullTextOutput)
+	return o.ApplyT(func(v *StoreIndexFullText) StoreIndexFullText {
+		if v != nil {
+			return *v
+		}
+		var ret StoreIndexFullText
+		return ret
+	}).(StoreIndexFullTextOutput)
 }
 
 // Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
@@ -1727,6 +1745,30 @@ func (o GetStoresStoreArrayOutput) Index(i pulumi.IntInput) GetStoresStoreOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertNotificationListInput)(nil)).Elem(), AlertNotificationListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertNotificationListArrayInput)(nil)).Elem(), AlertNotificationListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertQueryListInput)(nil)).Elem(), AlertQueryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertQueryListArrayInput)(nil)).Elem(), AlertQueryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtlEtlSinkInput)(nil)).Elem(), EtlEtlSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtlEtlSinkArrayInput)(nil)).Elem(), EtlEtlSinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OssShipperParquetConfigInput)(nil)).Elem(), OssShipperParquetConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OssShipperParquetConfigArrayInput)(nil)).Elem(), OssShipperParquetConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreEncryptConfInput)(nil)).Elem(), StoreEncryptConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreEncryptConfPtrInput)(nil)).Elem(), StoreEncryptConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreEncryptConfUserCmkInfoInput)(nil)).Elem(), StoreEncryptConfUserCmkInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreEncryptConfUserCmkInfoPtrInput)(nil)).Elem(), StoreEncryptConfUserCmkInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreIndexFieldSearchInput)(nil)).Elem(), StoreIndexFieldSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreIndexFieldSearchArrayInput)(nil)).Elem(), StoreIndexFieldSearchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreIndexFieldSearchJsonKeyInput)(nil)).Elem(), StoreIndexFieldSearchJsonKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreIndexFieldSearchJsonKeyArrayInput)(nil)).Elem(), StoreIndexFieldSearchJsonKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreIndexFullTextInput)(nil)).Elem(), StoreIndexFullTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreIndexFullTextPtrInput)(nil)).Elem(), StoreIndexFullTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreShardInput)(nil)).Elem(), StoreShardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreShardArrayInput)(nil)).Elem(), StoreShardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoresStoreInput)(nil)).Elem(), GetStoresStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoresStoreArrayInput)(nil)).Elem(), GetStoresStoreArray{})
 	pulumi.RegisterOutputType(AlertNotificationListOutput{})
 	pulumi.RegisterOutputType(AlertNotificationListArrayOutput{})
 	pulumi.RegisterOutputType(AlertQueryListOutput{})

@@ -126,39 +126,39 @@ export interface AccountPasswordPolicyState {
     /**
      * Specifies if a password can expire in a hard way. Default to false.
      */
-    readonly hardExpiry?: pulumi.Input<boolean>;
+    hardExpiry?: pulumi.Input<boolean>;
     /**
      * Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
      */
-    readonly maxLoginAttempts?: pulumi.Input<number>;
+    maxLoginAttempts?: pulumi.Input<number>;
     /**
      * The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
      */
-    readonly maxPasswordAge?: pulumi.Input<number>;
+    maxPasswordAge?: pulumi.Input<number>;
     /**
      * Minimal required length of password for a user. Valid value range: [8-32]. Default to 12.
      */
-    readonly minimumPasswordLength?: pulumi.Input<number>;
+    minimumPasswordLength?: pulumi.Input<number>;
     /**
      * User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
      */
-    readonly passwordReusePrevention?: pulumi.Input<number>;
+    passwordReusePrevention?: pulumi.Input<number>;
     /**
      * Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
      */
-    readonly requireLowercaseCharacters?: pulumi.Input<boolean>;
+    requireLowercaseCharacters?: pulumi.Input<boolean>;
     /**
      * Specifies if the occurrence of a number in the password is mandatory. Default to true.
      */
-    readonly requireNumbers?: pulumi.Input<boolean>;
+    requireNumbers?: pulumi.Input<boolean>;
     /**
      * (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
      */
-    readonly requireSymbols?: pulumi.Input<boolean>;
+    requireSymbols?: pulumi.Input<boolean>;
     /**
      * Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
      */
-    readonly requireUppercaseCharacters?: pulumi.Input<boolean>;
+    requireUppercaseCharacters?: pulumi.Input<boolean>;
 }
 
 /**
@@ -168,37 +168,37 @@ export interface AccountPasswordPolicyArgs {
     /**
      * Specifies if a password can expire in a hard way. Default to false.
      */
-    readonly hardExpiry?: pulumi.Input<boolean>;
+    hardExpiry?: pulumi.Input<boolean>;
     /**
      * Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
      */
-    readonly maxLoginAttempts?: pulumi.Input<number>;
+    maxLoginAttempts?: pulumi.Input<number>;
     /**
      * The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
      */
-    readonly maxPasswordAge?: pulumi.Input<number>;
+    maxPasswordAge?: pulumi.Input<number>;
     /**
      * Minimal required length of password for a user. Valid value range: [8-32]. Default to 12.
      */
-    readonly minimumPasswordLength?: pulumi.Input<number>;
+    minimumPasswordLength?: pulumi.Input<number>;
     /**
      * User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
      */
-    readonly passwordReusePrevention?: pulumi.Input<number>;
+    passwordReusePrevention?: pulumi.Input<number>;
     /**
      * Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
      */
-    readonly requireLowercaseCharacters?: pulumi.Input<boolean>;
+    requireLowercaseCharacters?: pulumi.Input<boolean>;
     /**
      * Specifies if the occurrence of a number in the password is mandatory. Default to true.
      */
-    readonly requireNumbers?: pulumi.Input<boolean>;
+    requireNumbers?: pulumi.Input<boolean>;
     /**
      * (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
      */
-    readonly requireSymbols?: pulumi.Input<boolean>;
+    requireSymbols?: pulumi.Input<boolean>;
     /**
      * Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
      */
-    readonly requireUppercaseCharacters?: pulumi.Input<boolean>;
+    requireUppercaseCharacters?: pulumi.Input<boolean>;
 }

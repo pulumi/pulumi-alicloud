@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *         size: "tiny",
  *         type: "database",
  *     },
- * }, { async: true }));
+ * }));
  *
  * export const firstDbInstanceId = dbInstancesDs.instances[0].id;
  * ```
@@ -58,45 +58,45 @@ export interface GetInstancesArgs {
     /**
      * `Standard` for standard access mode and `Safe` for high security access mode.
      */
-    readonly connectionMode?: string;
+    connectionMode?: string;
     /**
      * `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
      */
-    readonly dbType?: string;
+    dbType?: string;
     /**
      * Default to `false`. Set it to `true` can output parameter template about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
      */
-    readonly engine?: string;
+    engine?: string;
     /**
      * A list of RDS instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Status of the instance.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A map of tags assigned to the DB instances. 
      * Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * Used to retrieve instances belong to specified VPC.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
     /**
      * Used to retrieve instances belong to specified `vswitch` resources.
      */
-    readonly vswitchId?: string;
+    vswitchId?: string;
 }
 
 /**
@@ -147,4 +147,56 @@ export interface GetInstancesResult {
      * ID of the VSwitch the instance belongs to.
      */
     readonly vswitchId?: string;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * `Standard` for standard access mode and `Safe` for high security access mode.
+     */
+    connectionMode?: pulumi.Input<string>;
+    /**
+     * `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+     */
+    dbType?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output parameter template about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * A list of RDS instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Status of the instance.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the DB instances. 
+     * Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Used to retrieve instances belong to specified VPC.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * Used to retrieve instances belong to specified `vswitch` resources.
+     */
+    vswitchId?: pulumi.Input<string>;
 }

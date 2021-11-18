@@ -257,7 +257,7 @@ type RegistryEnterpriseRepoArrayInput interface {
 type RegistryEnterpriseRepoArray []RegistryEnterpriseRepoInput
 
 func (RegistryEnterpriseRepoArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RegistryEnterpriseRepo)(nil))
+	return reflect.TypeOf((*[]*RegistryEnterpriseRepo)(nil)).Elem()
 }
 
 func (i RegistryEnterpriseRepoArray) ToRegistryEnterpriseRepoArrayOutput() RegistryEnterpriseRepoArrayOutput {
@@ -282,7 +282,7 @@ type RegistryEnterpriseRepoMapInput interface {
 type RegistryEnterpriseRepoMap map[string]RegistryEnterpriseRepoInput
 
 func (RegistryEnterpriseRepoMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RegistryEnterpriseRepo)(nil))
+	return reflect.TypeOf((*map[string]*RegistryEnterpriseRepo)(nil)).Elem()
 }
 
 func (i RegistryEnterpriseRepoMap) ToRegistryEnterpriseRepoMapOutput() RegistryEnterpriseRepoMapOutput {
@@ -293,9 +293,7 @@ func (i RegistryEnterpriseRepoMap) ToRegistryEnterpriseRepoMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseRepoMapOutput)
 }
 
-type RegistryEnterpriseRepoOutput struct {
-	*pulumi.OutputState
-}
+type RegistryEnterpriseRepoOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnterpriseRepoOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegistryEnterpriseRepo)(nil))
@@ -314,14 +312,12 @@ func (o RegistryEnterpriseRepoOutput) ToRegistryEnterpriseRepoPtrOutput() Regist
 }
 
 func (o RegistryEnterpriseRepoOutput) ToRegistryEnterpriseRepoPtrOutputWithContext(ctx context.Context) RegistryEnterpriseRepoPtrOutput {
-	return o.ApplyT(func(v RegistryEnterpriseRepo) *RegistryEnterpriseRepo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEnterpriseRepo) *RegistryEnterpriseRepo {
 		return &v
 	}).(RegistryEnterpriseRepoPtrOutput)
 }
 
-type RegistryEnterpriseRepoPtrOutput struct {
-	*pulumi.OutputState
-}
+type RegistryEnterpriseRepoPtrOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnterpriseRepoPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegistryEnterpriseRepo)(nil))
@@ -333,6 +329,16 @@ func (o RegistryEnterpriseRepoPtrOutput) ToRegistryEnterpriseRepoPtrOutput() Reg
 
 func (o RegistryEnterpriseRepoPtrOutput) ToRegistryEnterpriseRepoPtrOutputWithContext(ctx context.Context) RegistryEnterpriseRepoPtrOutput {
 	return o
+}
+
+func (o RegistryEnterpriseRepoPtrOutput) Elem() RegistryEnterpriseRepoOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseRepo) RegistryEnterpriseRepo {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEnterpriseRepo
+		return ret
+	}).(RegistryEnterpriseRepoOutput)
 }
 
 type RegistryEnterpriseRepoArrayOutput struct{ *pulumi.OutputState }
@@ -376,6 +382,10 @@ func (o RegistryEnterpriseRepoMapOutput) MapIndex(k pulumi.StringInput) Registry
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseRepoInput)(nil)).Elem(), &RegistryEnterpriseRepo{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseRepoPtrInput)(nil)).Elem(), &RegistryEnterpriseRepo{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseRepoArrayInput)(nil)).Elem(), RegistryEnterpriseRepoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseRepoMapInput)(nil)).Elem(), RegistryEnterpriseRepoMap{})
 	pulumi.RegisterOutputType(RegistryEnterpriseRepoOutput{})
 	pulumi.RegisterOutputType(RegistryEnterpriseRepoPtrOutput{})
 	pulumi.RegisterOutputType(RegistryEnterpriseRepoArrayOutput{})

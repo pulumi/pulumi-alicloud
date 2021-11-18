@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["sp-bp14e66xxxxxxxx"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstEcsAutoSnapshotPolicyId = example.then(example => example.policies[0].id);
+ * export const firstEcsAutoSnapshotPolicyId = example.then(example => example.policies?[0]?.id);
  * ```
  */
 export function getAutoSnapshotPolicies(args?: GetAutoSnapshotPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoSnapshotPoliciesResult> {
@@ -50,20 +50,20 @@ export interface GetAutoSnapshotPoliciesArgs {
     /**
      * A list of Auto Snapshot Policy IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Auto Snapshot Policy name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of Auto Snapshot Policy.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -81,4 +81,31 @@ export interface GetAutoSnapshotPoliciesResult {
     readonly policies: outputs.ecs.GetAutoSnapshotPoliciesPolicy[];
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getAutoSnapshotPoliciesOutput(args?: GetAutoSnapshotPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoSnapshotPoliciesResult> {
+    return pulumi.output(args).apply(a => getAutoSnapshotPolicies(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAutoSnapshotPolicies.
+ */
+export interface GetAutoSnapshotPoliciesOutputArgs {
+    /**
+     * A list of Auto Snapshot Policy IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Auto Snapshot Policy name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of Auto Snapshot Policy.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

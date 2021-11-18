@@ -323,109 +323,109 @@ export interface LaunchTemplateState {
     /**
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      */
-    readonly autoReleaseTime?: pulumi.Input<string>;
+    autoReleaseTime?: pulumi.Input<string>;
     /**
      * The list of data disks created with instance.
      */
-    readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
-    readonly deploymentSetId?: pulumi.Input<string>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
+    deploymentSetId?: pulumi.Input<string>;
     /**
      * The description of the data disk.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly enableVmOsConfig?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    enableVmOsConfig?: pulumi.Input<boolean>;
     /**
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
-    readonly hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string>;
     /**
      * Image ID.
      */
-    readonly imageId?: pulumi.Input<string>;
-    readonly imageOwnerAlias?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
+    imageOwnerAlias?: pulumi.Input<string>;
     /**
      * Billing methods. Optional values:
      * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
      * - PostPaid: Pay-As-You-Go.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
      */
-    readonly internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string>;
     /**
      * The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
      */
-    readonly internetMaxBandwidthIn?: pulumi.Input<number>;
+    internetMaxBandwidthIn?: pulumi.Input<number>;
     /**
      * Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
      */
-    readonly internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
      * Whether it is an I/O-optimized instance or not. Optional values:
      * - none
      * - optimized
      */
-    readonly ioOptimized?: pulumi.Input<string>;
+    ioOptimized?: pulumi.Input<string>;
     /**
      * The name of the key pair.
      * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
-    readonly keyPairName?: pulumi.Input<string>;
-    readonly launchTemplateName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string>;
+    launchTemplateName?: pulumi.Input<string>;
     /**
      * The name of the data disk.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The list of network interfaces created with instance.
      */
-    readonly networkInterfaces?: pulumi.Input<inputs.ecs.LaunchTemplateNetworkInterfaces>;
+    networkInterfaces?: pulumi.Input<inputs.ecs.LaunchTemplateNetworkInterfaces>;
     /**
      * Network type of the instance. Value options: `classic` | `vpc`.
      */
-    readonly networkType?: pulumi.Input<string>;
-    readonly passwordInherit?: pulumi.Input<boolean>;
-    readonly period?: pulumi.Input<number>;
-    readonly privateIpAddress?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string>;
+    passwordInherit?: pulumi.Input<boolean>;
+    period?: pulumi.Input<number>;
+    privateIpAddress?: pulumi.Input<string>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      */
-    readonly ramRoleName?: pulumi.Input<string>;
-    readonly resourceGroupId?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
      */
-    readonly securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string>;
     /**
      * The security group ID must be one in the same VPC.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly spotDuration?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    spotDuration?: pulumi.Input<string>;
     /**
      * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
      */
-    readonly spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
      * - NoSpot: Normal Pay-As-You-Go instance.
      * - SpotWithPriceLimit: Sets the maximum price for a spot instance.
      * - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
      */
-    readonly spotStrategy?: pulumi.Input<string>;
-    readonly systemDisk?: pulumi.Input<inputs.ecs.LaunchTemplateSystemDisk>;
+    spotStrategy?: pulumi.Input<string>;
+    systemDisk?: pulumi.Input<inputs.ecs.LaunchTemplateSystemDisk>;
     /**
      * The category of the system disk. System disk type. Optional values:
      * - cloud: Basic cloud disk.
@@ -436,50 +436,50 @@ export interface LaunchTemplateState {
      *
      * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    readonly systemDiskCategory?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string>;
     /**
      * System disk description. It cannot begin with http:// or https://.
      *
      * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    readonly systemDiskDescription?: pulumi.Input<string>;
+    systemDiskDescription?: pulumi.Input<string>;
     /**
      * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      *
      * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    readonly systemDiskName?: pulumi.Input<string>;
+    systemDiskName?: pulumi.Input<string>;
     /**
      * Size of the system disk, measured in GB. Value range: [20, 500].
      *
      * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    readonly systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
-    readonly templateResourceGroupId?: pulumi.Input<string>;
-    readonly templateTags?: pulumi.Input<{[key: string]: any}>;
-    readonly userData?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
+    templateResourceGroupId?: pulumi.Input<string>;
+    templateTags?: pulumi.Input<{[key: string]: any}>;
+    userData?: pulumi.Input<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
      *
      * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
-    readonly userdata?: pulumi.Input<string>;
-    readonly versionDescription?: pulumi.Input<string>;
-    readonly vpcId?: pulumi.Input<string>;
+    userdata?: pulumi.Input<string>;
+    versionDescription?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The zone ID of the instance.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -489,109 +489,109 @@ export interface LaunchTemplateArgs {
     /**
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      */
-    readonly autoReleaseTime?: pulumi.Input<string>;
+    autoReleaseTime?: pulumi.Input<string>;
     /**
      * The list of data disks created with instance.
      */
-    readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
-    readonly deploymentSetId?: pulumi.Input<string>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
+    deploymentSetId?: pulumi.Input<string>;
     /**
      * The description of the data disk.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly enableVmOsConfig?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    enableVmOsConfig?: pulumi.Input<boolean>;
     /**
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
-    readonly hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string>;
     /**
      * Image ID.
      */
-    readonly imageId?: pulumi.Input<string>;
-    readonly imageOwnerAlias?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
+    imageOwnerAlias?: pulumi.Input<string>;
     /**
      * Billing methods. Optional values:
      * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
      * - PostPaid: Pay-As-You-Go.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
      */
-    readonly internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string>;
     /**
      * The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
      */
-    readonly internetMaxBandwidthIn?: pulumi.Input<number>;
+    internetMaxBandwidthIn?: pulumi.Input<number>;
     /**
      * Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
      */
-    readonly internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
      * Whether it is an I/O-optimized instance or not. Optional values:
      * - none
      * - optimized
      */
-    readonly ioOptimized?: pulumi.Input<string>;
+    ioOptimized?: pulumi.Input<string>;
     /**
      * The name of the key pair.
      * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
-    readonly keyPairName?: pulumi.Input<string>;
-    readonly launchTemplateName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string>;
+    launchTemplateName?: pulumi.Input<string>;
     /**
      * The name of the data disk.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The list of network interfaces created with instance.
      */
-    readonly networkInterfaces?: pulumi.Input<inputs.ecs.LaunchTemplateNetworkInterfaces>;
+    networkInterfaces?: pulumi.Input<inputs.ecs.LaunchTemplateNetworkInterfaces>;
     /**
      * Network type of the instance. Value options: `classic` | `vpc`.
      */
-    readonly networkType?: pulumi.Input<string>;
-    readonly passwordInherit?: pulumi.Input<boolean>;
-    readonly period?: pulumi.Input<number>;
-    readonly privateIpAddress?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string>;
+    passwordInherit?: pulumi.Input<boolean>;
+    period?: pulumi.Input<number>;
+    privateIpAddress?: pulumi.Input<string>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      */
-    readonly ramRoleName?: pulumi.Input<string>;
-    readonly resourceGroupId?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
      */
-    readonly securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string>;
     /**
      * The security group ID must be one in the same VPC.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly spotDuration?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    spotDuration?: pulumi.Input<string>;
     /**
      * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
      */
-    readonly spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
      * - NoSpot: Normal Pay-As-You-Go instance.
      * - SpotWithPriceLimit: Sets the maximum price for a spot instance.
      * - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
      */
-    readonly spotStrategy?: pulumi.Input<string>;
-    readonly systemDisk?: pulumi.Input<inputs.ecs.LaunchTemplateSystemDisk>;
+    spotStrategy?: pulumi.Input<string>;
+    systemDisk?: pulumi.Input<inputs.ecs.LaunchTemplateSystemDisk>;
     /**
      * The category of the system disk. System disk type. Optional values:
      * - cloud: Basic cloud disk.
@@ -602,48 +602,48 @@ export interface LaunchTemplateArgs {
      *
      * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    readonly systemDiskCategory?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string>;
     /**
      * System disk description. It cannot begin with http:// or https://.
      *
      * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    readonly systemDiskDescription?: pulumi.Input<string>;
+    systemDiskDescription?: pulumi.Input<string>;
     /**
      * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      *
      * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    readonly systemDiskName?: pulumi.Input<string>;
+    systemDiskName?: pulumi.Input<string>;
     /**
      * Size of the system disk, measured in GB. Value range: [20, 500].
      *
      * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    readonly systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
-    readonly templateResourceGroupId?: pulumi.Input<string>;
-    readonly templateTags?: pulumi.Input<{[key: string]: any}>;
-    readonly userData?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
+    templateResourceGroupId?: pulumi.Input<string>;
+    templateTags?: pulumi.Input<{[key: string]: any}>;
+    userData?: pulumi.Input<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
      *
      * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
-    readonly userdata?: pulumi.Input<string>;
-    readonly versionDescription?: pulumi.Input<string>;
-    readonly vpcId?: pulumi.Input<string>;
+    userdata?: pulumi.Input<string>;
+    versionDescription?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The zone ID of the instance.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

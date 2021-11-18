@@ -90,15 +90,15 @@ export interface GroupState {
     /**
      * Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
      */
-    readonly comments?: pulumi.Input<string>;
+    comments?: pulumi.Input<string>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -108,13 +108,13 @@ export interface GroupArgs {
     /**
      * Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
      */
-    readonly comments?: pulumi.Input<string>;
+    comments?: pulumi.Input<string>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

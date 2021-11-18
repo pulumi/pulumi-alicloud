@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Quotas.Inputs
 {
 
-    public sealed class GetApplicationInfosDimensionArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationInfosDimensionInputArgs : Pulumi.ResourceArgs
     {
         [Input("key")]
-        public string? Key { get; set; }
+        public Input<string>? Key { get; set; }
 
         [Input("value")]
-        public string? Value { get; set; }
+        public Input<string>? Value { get; set; }
 
-        public GetApplicationInfosDimensionArgs()
+        public GetApplicationInfosDimensionInputArgs()
         {
         }
     }

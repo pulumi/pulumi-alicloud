@@ -187,43 +187,43 @@ export interface AclRuleState {
     /**
      * The ID of the ACL.
      */
-    readonly aclId?: pulumi.Input<string>;
+    aclId?: pulumi.Input<string>;
     /**
      * The description of the ACL rule. It must be 1 to 512 characters in length.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
      */
-    readonly destCidr?: pulumi.Input<string>;
+    destCidr?: pulumi.Input<string>;
     /**
      * The range of the destination port. Valid value: 80/80.
      */
-    readonly destPortRange?: pulumi.Input<string>;
+    destPortRange?: pulumi.Input<string>;
     /**
      * The direction of the ACL rule. Valid values: in|out.
      */
-    readonly direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string>;
     /**
      * The protocol used by the ACL rule. The value is not case sensitive.
      */
-    readonly ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string>;
     /**
      * The policy used by the ACL rule. Valid values: accept|drop.
      */
-    readonly policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
     /**
      * The priority of the ACL rule. Value range: 1 to 100.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
      */
-    readonly sourceCidr?: pulumi.Input<string>;
+    sourceCidr?: pulumi.Input<string>;
     /**
      * The range of the source port. Valid value: 80/80.
      */
-    readonly sourcePortRange?: pulumi.Input<string>;
+    sourcePortRange?: pulumi.Input<string>;
 }
 
 /**
@@ -233,41 +233,41 @@ export interface AclRuleArgs {
     /**
      * The ID of the ACL.
      */
-    readonly aclId: pulumi.Input<string>;
+    aclId: pulumi.Input<string>;
     /**
      * The description of the ACL rule. It must be 1 to 512 characters in length.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
      */
-    readonly destCidr: pulumi.Input<string>;
+    destCidr: pulumi.Input<string>;
     /**
      * The range of the destination port. Valid value: 80/80.
      */
-    readonly destPortRange: pulumi.Input<string>;
+    destPortRange: pulumi.Input<string>;
     /**
      * The direction of the ACL rule. Valid values: in|out.
      */
-    readonly direction: pulumi.Input<string>;
+    direction: pulumi.Input<string>;
     /**
      * The protocol used by the ACL rule. The value is not case sensitive.
      */
-    readonly ipProtocol: pulumi.Input<string>;
+    ipProtocol: pulumi.Input<string>;
     /**
      * The policy used by the ACL rule. Valid values: accept|drop.
      */
-    readonly policy: pulumi.Input<string>;
+    policy: pulumi.Input<string>;
     /**
      * The priority of the ACL rule. Value range: 1 to 100.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
      */
-    readonly sourceCidr: pulumi.Input<string>;
+    sourceCidr: pulumi.Input<string>;
     /**
      * The range of the source port. Valid value: 80/80.
      */
-    readonly sourcePortRange: pulumi.Input<string>;
+    sourcePortRange: pulumi.Input<string>;
 }

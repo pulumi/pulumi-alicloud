@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Vpc
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstNetworkAclId = example.Apply(example =&gt; example.Acls[0].Id);
+        ///         this.FirstNetworkAclId = example.Apply(example =&gt; example.Acls?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstNetworkAclId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetNetworkAclsResult> InvokeAsync(GetNetworkAclsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAclsResult>("alicloud:vpc/getNetworkAcls:getNetworkAcls", args ?? new GetNetworkAclsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Network Acls of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.122.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Vpc.GetNetworkAcls.InvokeAsync(new AliCloud.Vpc.GetNetworkAclsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstNetworkAclId = example.Apply(example =&gt; example.Acls?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstNetworkAclId")]
+        ///     public Output&lt;string&gt; FirstNetworkAclId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNetworkAclsResult> Invoke(GetNetworkAclsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkAclsResult>("alicloud:vpc/getNetworkAcls:getNetworkAcls", args ?? new GetNetworkAclsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -107,6 +148,64 @@ namespace Pulumi.AliCloud.Vpc
         public string? VpcId { get; set; }
 
         public GetNetworkAclsArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworkAclsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Network Acl ID.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Network Acl name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// The name of the network ACL.
+        /// </summary>
+        [Input("networkAclName")]
+        public Input<string>? NetworkAclName { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the associated resource.
+        /// </summary>
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
+
+        /// <summary>
+        /// The type of the associated resource.
+        /// </summary>
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
+
+        /// <summary>
+        /// The state of the network ACL.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ID of the associated VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetNetworkAclsInvokeArgs()
         {
         }
     }

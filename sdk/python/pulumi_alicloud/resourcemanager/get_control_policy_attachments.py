@@ -13,6 +13,7 @@ __all__ = [
     'GetControlPolicyAttachmentsResult',
     'AwaitableGetControlPolicyAttachmentsResult',
     'get_control_policy_attachments',
+    'get_control_policy_attachments_output',
 ]
 
 @pulumi.output_type
@@ -143,3 +144,34 @@ def get_control_policy_attachments(language: Optional[str] = None,
         output_file=__ret__.output_file,
         policy_type=__ret__.policy_type,
         target_id=__ret__.target_id)
+
+
+@_utilities.lift_output_func(get_control_policy_attachments)
+def get_control_policy_attachments_output(language: Optional[pulumi.Input[Optional[str]]] = None,
+                                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                          policy_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                          target_id: Optional[pulumi.Input[str]] = None,
+                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetControlPolicyAttachmentsResult]:
+    """
+    This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.120.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_control_policy_attachments(target_id="example_value")
+    pulumi.export("firstResourceManagerControlPolicyAttachmentId", example.attachments[0].id)
+    ```
+
+
+    :param str language: The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
+    :param str policy_type: The type of policy.
+    :param str target_id: The Id of target.
+    """
+    ...

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbr
 {
@@ -49,8 +50,8 @@ namespace Pulumi.AliCloud.Hbr
         ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
         ///             {
         ///                 SourceType = "ECS_FILE",
-        ///                 VaultId = defaultEcsBackupPlans.Plans[0].VaultId,
-        ///                 InstanceId = defaultEcsBackupPlans1.Plans[0].InstanceId,
+        ///                 VaultId = defaultEcsBackupPlans.Plans?[0]?.VaultId,
+        ///                 InstanceId = defaultEcsBackupPlans1.Plans?[0]?.InstanceId,
         ///             }));
         ///         });
         ///         var ossSnapshots = Output.Tuple(defaultOssBackupPlans, defaultOssBackupPlans).Apply(values =&gt;
@@ -60,8 +61,8 @@ namespace Pulumi.AliCloud.Hbr
         ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
         ///             {
         ///                 SourceType = "OSS",
-        ///                 VaultId = defaultOssBackupPlans.Plans[0].VaultId,
-        ///                 Bucket = defaultOssBackupPlans1.Plans[0].Bucket,
+        ///                 VaultId = defaultOssBackupPlans.Plans?[0]?.VaultId,
+        ///                 Bucket = defaultOssBackupPlans1.Plans?[0]?.Bucket,
         ///                 CompleteTime = "2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
         ///                 CompleteTimeChecker = "BETWEEN",
         ///             }));
@@ -74,14 +75,14 @@ namespace Pulumi.AliCloud.Hbr
         ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
         ///             {
         ///                 SourceType = "NAS",
-        ///                 VaultId = defaultNasBackupPlans.Plans[0].VaultId,
-        ///                 FileSystemId = defaultNasBackupPlans1.Plans[0].FileSystemId,
-        ///                 CreateTime = defaultNasBackupPlans2.Plans[0].CreateTime,
+        ///                 VaultId = defaultNasBackupPlans.Plans?[0]?.VaultId,
+        ///                 FileSystemId = defaultNasBackupPlans1.Plans?[0]?.FileSystemId,
+        ///                 CreateTime = defaultNasBackupPlans2.Plans?[0]?.CreateTime,
         ///                 CompleteTime = "2021-08-23T14:17:15CST",
         ///                 CompleteTimeChecker = "GREATER_THAN_OR_EQUAL",
         ///             }));
         ///         });
-        ///         this.HbrSnapshotId1 = nasSnapshots.Apply(nasSnapshots =&gt; nasSnapshots.Snapshots[0].Id);
+        ///         this.HbrSnapshotId1 = nasSnapshots.Apply(nasSnapshots =&gt; nasSnapshots.Snapshots?[0]?.Id);
         ///     }
         /// 
         ///     [Output("hbrSnapshotId1")]
@@ -93,6 +94,89 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Task<GetSnapshotsResult> InvokeAsync(GetSnapshotsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:hbr/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var defaultEcsBackupPlans = Output.Create(AliCloud.Hbr.GetEcsBackupPlans.InvokeAsync(new AliCloud.Hbr.GetEcsBackupPlansArgs
+        ///         {
+        ///             NameRegex = "plan-tf-used-dont-delete",
+        ///         }));
+        ///         var defaultOssBackupPlans = Output.Create(AliCloud.Hbr.GetOssBackupPlans.InvokeAsync(new AliCloud.Hbr.GetOssBackupPlansArgs
+        ///         {
+        ///             NameRegex = "plan-tf-used-dont-delete",
+        ///         }));
+        ///         var defaultNasBackupPlans = Output.Create(AliCloud.Hbr.GetNasBackupPlans.InvokeAsync(new AliCloud.Hbr.GetNasBackupPlansArgs
+        ///         {
+        ///             NameRegex = "plan-tf-used-dont-delete",
+        ///         }));
+        ///         var ecsSnapshots = Output.Tuple(defaultEcsBackupPlans, defaultEcsBackupPlans).Apply(values =&gt;
+        ///         {
+        ///             var defaultEcsBackupPlans = values.Item1;
+        ///             var defaultEcsBackupPlans1 = values.Item2;
+        ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
+        ///             {
+        ///                 SourceType = "ECS_FILE",
+        ///                 VaultId = defaultEcsBackupPlans.Plans?[0]?.VaultId,
+        ///                 InstanceId = defaultEcsBackupPlans1.Plans?[0]?.InstanceId,
+        ///             }));
+        ///         });
+        ///         var ossSnapshots = Output.Tuple(defaultOssBackupPlans, defaultOssBackupPlans).Apply(values =&gt;
+        ///         {
+        ///             var defaultOssBackupPlans = values.Item1;
+        ///             var defaultOssBackupPlans1 = values.Item2;
+        ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
+        ///             {
+        ///                 SourceType = "OSS",
+        ///                 VaultId = defaultOssBackupPlans.Plans?[0]?.VaultId,
+        ///                 Bucket = defaultOssBackupPlans1.Plans?[0]?.Bucket,
+        ///                 CompleteTime = "2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
+        ///                 CompleteTimeChecker = "BETWEEN",
+        ///             }));
+        ///         });
+        ///         var nasSnapshots = Output.Tuple(defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans).Apply(values =&gt;
+        ///         {
+        ///             var defaultNasBackupPlans = values.Item1;
+        ///             var defaultNasBackupPlans1 = values.Item2;
+        ///             var defaultNasBackupPlans2 = values.Item3;
+        ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
+        ///             {
+        ///                 SourceType = "NAS",
+        ///                 VaultId = defaultNasBackupPlans.Plans?[0]?.VaultId,
+        ///                 FileSystemId = defaultNasBackupPlans1.Plans?[0]?.FileSystemId,
+        ///                 CreateTime = defaultNasBackupPlans2.Plans?[0]?.CreateTime,
+        ///                 CompleteTime = "2021-08-23T14:17:15CST",
+        ///                 CompleteTimeChecker = "GREATER_THAN_OR_EQUAL",
+        ///             }));
+        ///         });
+        ///         this.HbrSnapshotId1 = nasSnapshots.Apply(nasSnapshots =&gt; nasSnapshots.Snapshots?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("hbrSnapshotId1")]
+        ///     public Output&lt;string&gt; HbrSnapshotId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSnapshotsResult> Invoke(GetSnapshotsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:hbr/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -180,6 +264,94 @@ namespace Pulumi.AliCloud.Hbr
         public string VaultId { get; set; } = null!;
 
         public GetSnapshotsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSnapshotsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of OSS bucket.
+        /// </summary>
+        [Input("bucket")]
+        public Input<string>? Bucket { get; set; }
+
+        /// <summary>
+        /// The time when the snapshot completed. UNIX time in seconds.
+        /// </summary>
+        [Input("completeTime")]
+        public Input<string>? CompleteTime { get; set; }
+
+        /// <summary>
+        /// Complete time filter operator. Optional values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+        /// </summary>
+        [Input("completeTimeChecker")]
+        public Input<string>? CompleteTimeChecker { get; set; }
+
+        /// <summary>
+        /// File System Creation Time of Nas. Unix Time Seconds.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// The ID of NAS File system.
+        /// </summary>
+        [Input("fileSystemId")]
+        public Input<string>? FileSystemId { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Snapshot IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The ID of ECS instance.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        [Input("limit")]
+        public Input<int>? Limit { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("query")]
+        public Input<string>? Query { get; set; }
+
+        /// <summary>
+        /// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+        /// </summary>
+        [Input("sourceType", required: true)]
+        public Input<string> SourceType { get; set; } = null!;
+
+        /// <summary>
+        /// The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ID of Vault.
+        /// </summary>
+        [Input("vaultId", required: true)]
+        public Input<string> VaultId { get; set; } = null!;
+
+        public GetSnapshotsInvokeArgs()
         {
         }
     }

@@ -129,35 +129,35 @@ export interface OrderState {
     /**
      * Service providers customize additional components.
      */
-    readonly components?: pulumi.Input<{[key: string]: any}>;
+    components?: pulumi.Input<{[key: string]: any}>;
     /**
      * The coupon id of the market product.
      */
-    readonly couponId?: pulumi.Input<string>;
+    couponId?: pulumi.Input<string>;
     /**
      * The number of purchase cycles.
      */
-    readonly duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number>;
     /**
      * The package version of the market product.
      */
-    readonly packageVersion?: pulumi.Input<string>;
+    packageVersion?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
      */
-    readonly payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string>;
     /**
      * The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
      */
-    readonly pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string>;
     /**
      * The productCode of market place product.
      */
-    readonly productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string>;
     /**
      * The quantity of the market product will be purchased.
      */
-    readonly quantity?: pulumi.Input<number>;
+    quantity?: pulumi.Input<number>;
 }
 
 /**
@@ -167,33 +167,33 @@ export interface OrderArgs {
     /**
      * Service providers customize additional components.
      */
-    readonly components?: pulumi.Input<{[key: string]: any}>;
+    components?: pulumi.Input<{[key: string]: any}>;
     /**
      * The coupon id of the market product.
      */
-    readonly couponId?: pulumi.Input<string>;
+    couponId?: pulumi.Input<string>;
     /**
      * The number of purchase cycles.
      */
-    readonly duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number>;
     /**
      * The package version of the market product.
      */
-    readonly packageVersion: pulumi.Input<string>;
+    packageVersion: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
      */
-    readonly payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string>;
     /**
      * The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
      */
-    readonly pricingCycle: pulumi.Input<string>;
+    pricingCycle: pulumi.Input<string>;
     /**
      * The productCode of market place product.
      */
-    readonly productCode: pulumi.Input<string>;
+    productCode: pulumi.Input<string>;
     /**
      * The quantity of the market product will be purchased.
      */
-    readonly quantity?: pulumi.Input<number>;
+    quantity?: pulumi.Input<number>;
 }

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstNetworkAclId = example.then(example => example.acls[0].id);
+ * export const firstNetworkAclId = example.then(example => example.acls?[0]?.id);
  * ```
  */
 export function getNetworkAcls(args?: GetNetworkAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAclsResult> {
@@ -53,32 +53,32 @@ export interface GetNetworkAclsArgs {
     /**
      * A list of Network Acl ID.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Network Acl name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The name of the network ACL.
      */
-    readonly networkAclName?: string;
-    readonly outputFile?: string;
+    networkAclName?: string;
+    outputFile?: string;
     /**
      * The ID of the associated resource.
      */
-    readonly resourceId?: string;
+    resourceId?: string;
     /**
      * The type of the associated resource.
      */
-    readonly resourceType?: string;
+    resourceType?: string;
     /**
      * The state of the network ACL.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The ID of the associated VPC.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
 }
 
 /**
@@ -99,4 +99,43 @@ export interface GetNetworkAclsResult {
     readonly resourceType?: string;
     readonly status?: string;
     readonly vpcId?: string;
+}
+
+export function getNetworkAclsOutput(args?: GetNetworkAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAclsResult> {
+    return pulumi.output(args).apply(a => getNetworkAcls(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetworkAcls.
+ */
+export interface GetNetworkAclsOutputArgs {
+    /**
+     * A list of Network Acl ID.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Network Acl name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The name of the network ACL.
+     */
+    networkAclName?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the associated resource.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
+     * The type of the associated resource.
+     */
+    resourceType?: pulumi.Input<string>;
+    /**
+     * The state of the network ACL.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The ID of the associated VPC.
+     */
+    vpcId?: pulumi.Input<string>;
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetSharedResourcesResult',
     'AwaitableGetSharedResourcesResult',
     'get_shared_resources',
+    'get_shared_resources_output',
 ]
 
 @pulumi.output_type
@@ -134,3 +135,35 @@ def get_shared_resources(ids: Optional[Sequence[str]] = None,
         resource_share_id=__ret__.resource_share_id,
         resources=__ret__.resources,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_shared_resources)
+def get_shared_resources_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                resource_share_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                status: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSharedResourcesResult]:
+    """
+    This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.111.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    this = alicloud.resourcemanager.get_shared_resources(resource_share_id="rs-V2NV******",
+        ids=["vsw-bp1mzouzpmvie********:VSwitch"])
+    pulumi.export("firstResourceManagerSharedResourceId", data["alicloud_resource_manager_shared_resources"]["example"]["resources"][0]["id"])
+    ```
+
+
+    :param Sequence[str] ids: A list of shared resource ID.
+    :param str resource_share_id: The resource share ID of resource manager.
+    :param str status: The status of shared resource.
+    """
+    ...

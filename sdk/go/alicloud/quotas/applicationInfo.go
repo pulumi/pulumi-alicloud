@@ -203,7 +203,7 @@ type ApplicationInfoArrayInput interface {
 type ApplicationInfoArray []ApplicationInfoInput
 
 func (ApplicationInfoArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ApplicationInfo)(nil))
+	return reflect.TypeOf((*[]*ApplicationInfo)(nil)).Elem()
 }
 
 func (i ApplicationInfoArray) ToApplicationInfoArrayOutput() ApplicationInfoArrayOutput {
@@ -228,7 +228,7 @@ type ApplicationInfoMapInput interface {
 type ApplicationInfoMap map[string]ApplicationInfoInput
 
 func (ApplicationInfoMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ApplicationInfo)(nil))
+	return reflect.TypeOf((*map[string]*ApplicationInfo)(nil)).Elem()
 }
 
 func (i ApplicationInfoMap) ToApplicationInfoMapOutput() ApplicationInfoMapOutput {
@@ -239,9 +239,7 @@ func (i ApplicationInfoMap) ToApplicationInfoMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInfoMapOutput)
 }
 
-type ApplicationInfoOutput struct {
-	*pulumi.OutputState
-}
+type ApplicationInfoOutput struct{ *pulumi.OutputState }
 
 func (ApplicationInfoOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationInfo)(nil))
@@ -260,14 +258,12 @@ func (o ApplicationInfoOutput) ToApplicationInfoPtrOutput() ApplicationInfoPtrOu
 }
 
 func (o ApplicationInfoOutput) ToApplicationInfoPtrOutputWithContext(ctx context.Context) ApplicationInfoPtrOutput {
-	return o.ApplyT(func(v ApplicationInfo) *ApplicationInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationInfo) *ApplicationInfo {
 		return &v
 	}).(ApplicationInfoPtrOutput)
 }
 
-type ApplicationInfoPtrOutput struct {
-	*pulumi.OutputState
-}
+type ApplicationInfoPtrOutput struct{ *pulumi.OutputState }
 
 func (ApplicationInfoPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApplicationInfo)(nil))
@@ -279,6 +275,16 @@ func (o ApplicationInfoPtrOutput) ToApplicationInfoPtrOutput() ApplicationInfoPt
 
 func (o ApplicationInfoPtrOutput) ToApplicationInfoPtrOutputWithContext(ctx context.Context) ApplicationInfoPtrOutput {
 	return o
+}
+
+func (o ApplicationInfoPtrOutput) Elem() ApplicationInfoOutput {
+	return o.ApplyT(func(v *ApplicationInfo) ApplicationInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationInfo
+		return ret
+	}).(ApplicationInfoOutput)
 }
 
 type ApplicationInfoArrayOutput struct{ *pulumi.OutputState }
@@ -322,6 +328,10 @@ func (o ApplicationInfoMapOutput) MapIndex(k pulumi.StringInput) ApplicationInfo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInfoInput)(nil)).Elem(), &ApplicationInfo{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInfoPtrInput)(nil)).Elem(), &ApplicationInfo{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInfoArrayInput)(nil)).Elem(), ApplicationInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInfoMapInput)(nil)).Elem(), ApplicationInfoMap{})
 	pulumi.RegisterOutputType(ApplicationInfoOutput{})
 	pulumi.RegisterOutputType(ApplicationInfoPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationInfoArrayOutput{})

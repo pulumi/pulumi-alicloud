@@ -26,16 +26,16 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getImages.
  */
 export interface GetImagesArgs {
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The type of the image. Valid values: `app`, `custom`, `system`.
      * * `system`: operating system (OS) image.
      * * `app`: application image.
      * * `custom`: custom image.
      */
-    readonly imageType?: string;
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    imageType?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -52,4 +52,24 @@ export interface GetImagesResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
+    return pulumi.output(args).apply(a => getImages(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getImages.
+ */
+export interface GetImagesOutputArgs {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The type of the image. Valid values: `app`, `custom`, `system`.
+     * * `system`: operating system (OS) image.
+     * * `app`: application image.
+     * * `custom`: custom image.
+     */
+    imageType?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

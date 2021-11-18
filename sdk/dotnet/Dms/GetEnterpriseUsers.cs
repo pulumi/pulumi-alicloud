@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dms
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.Dms
         ///             Role = "USER",
         ///             Status = "NORMAL",
         ///         }));
-        ///         this.FirstUserId = dmsEnterpriseUsersDs.Apply(dmsEnterpriseUsersDs =&gt; dmsEnterpriseUsersDs.Users[0].Id);
+        ///         this.FirstUserId = dmsEnterpriseUsersDs.Apply(dmsEnterpriseUsersDs =&gt; dmsEnterpriseUsersDs.Users?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstUserId")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.Dms
         /// </summary>
         public static Task<GetEnterpriseUsersResult> InvokeAsync(GetEnterpriseUsersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseUsersResult>("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args ?? new GetEnterpriseUsersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.90.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dmsEnterpriseUsersDs = Output.Create(AliCloud.Dms.GetEnterpriseUsers.InvokeAsync(new AliCloud.Dms.GetEnterpriseUsersArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "uid",
+        ///             },
+        ///             Role = "USER",
+        ///             Status = "NORMAL",
+        ///         }));
+        ///         this.FirstUserId = dmsEnterpriseUsersDs.Apply(dmsEnterpriseUsersDs =&gt; dmsEnterpriseUsersDs.Users?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstUserId")]
+        ///     public Output&lt;string&gt; FirstUserId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEnterpriseUsersResult> Invoke(GetEnterpriseUsersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEnterpriseUsersResult>("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args ?? new GetEnterpriseUsersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -100,6 +140,58 @@ namespace Pulumi.AliCloud.Dms
         public int? Tid { get; set; }
 
         public GetEnterpriseUsersArgs()
+        {
+        }
+    }
+
+    public sealed class GetEnterpriseUsersInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of DMS Enterprise User IDs (UID).
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter the results by the DMS Enterprise User nick_name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The role of the user to query.
+        /// </summary>
+        [Input("role")]
+        public Input<string>? Role { get; set; }
+
+        /// <summary>
+        /// The keyword used to query users.
+        /// </summary>
+        [Input("searchKey")]
+        public Input<string>? SearchKey { get; set; }
+
+        /// <summary>
+        /// The status of the user.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ID of the tenant in DMS Enterprise.
+        /// </summary>
+        [Input("tid")]
+        public Input<int>? Tid { get; set; }
+
+        public GetEnterpriseUsersInvokeArgs()
         {
         }
     }

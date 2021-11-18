@@ -19,11 +19,11 @@ import * as utilities from "./utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.getMscSubContacts({});
- * export const mscSubContactId1 = ids.then(ids => ids.contacts[0].id);
+ * export const mscSubContactId1 = ids.then(ids => ids.contacts?[0]?.id);
  * const nameRegex = alicloud.getMscSubContacts({
  *     nameRegex: "^my-Contact",
  * });
- * export const mscSubContactId2 = nameRegex.then(nameRegex => nameRegex.contacts[0].id);
+ * export const mscSubContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?[0]?.id);
  * ```
  */
 export function getMscSubContacts(args?: GetMscSubContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubContactsResult> {
@@ -49,12 +49,12 @@ export interface GetMscSubContactsArgs {
     /**
      * A list of Contact IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Contact name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -70,4 +70,23 @@ export interface GetMscSubContactsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getMscSubContactsOutput(args?: GetMscSubContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubContactsResult> {
+    return pulumi.output(args).apply(a => getMscSubContacts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMscSubContacts.
+ */
+export interface GetMscSubContactsOutputArgs {
+    /**
+     * A list of Contact IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Contact name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

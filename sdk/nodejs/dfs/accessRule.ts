@@ -150,27 +150,27 @@ export interface AccessRuleState {
     /**
      * The resource ID of Access Group.
      */
-    readonly accessGroupId?: pulumi.Input<string>;
+    accessGroupId?: pulumi.Input<string>;
     /**
      * The ID of the Access Rule.
      */
-    readonly accessRuleId?: pulumi.Input<string>;
+    accessRuleId?: pulumi.Input<string>;
     /**
      * The Description of the Access Rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The NetworkSegment of the Access Rule.
      */
-    readonly networkSegment?: pulumi.Input<string>;
+    networkSegment?: pulumi.Input<string>;
     /**
      * The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
      */
-    readonly rwAccessType?: pulumi.Input<string>;
+    rwAccessType?: pulumi.Input<string>;
 }
 
 /**
@@ -180,21 +180,21 @@ export interface AccessRuleArgs {
     /**
      * The resource ID of Access Group.
      */
-    readonly accessGroupId: pulumi.Input<string>;
+    accessGroupId: pulumi.Input<string>;
     /**
      * The Description of the Access Rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The NetworkSegment of the Access Rule.
      */
-    readonly networkSegment: pulumi.Input<string>;
+    networkSegment: pulumi.Input<string>;
     /**
      * The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
      */
-    readonly priority: pulumi.Input<number>;
+    priority: pulumi.Input<number>;
     /**
      * The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
      */
-    readonly rwAccessType: pulumi.Input<string>;
+    rwAccessType: pulumi.Input<string>;
 }

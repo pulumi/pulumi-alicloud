@@ -13,6 +13,7 @@ __all__ = [
     'GetZonesResult',
     'AwaitableGetZonesResult',
     'get_zones',
+    'get_zones_output',
 ]
 
 @pulumi.output_type
@@ -230,3 +231,43 @@ def get_zones(enable_details: Optional[bool] = None,
         resource_group_id=__ret__.resource_group_id,
         search_mode=__ret__.search_mode,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_zones)
+def get_zones_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     keyword: Optional[pulumi.Input[Optional[str]]] = None,
+                     lang: Optional[pulumi.Input[Optional[str]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     query_region_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     query_vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     search_mode: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+    """
+    This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    pvtz_zones_ds = alicloud.pvtz.get_zones(keyword=alicloud_pvtz_zone["basic"]["zone_name"])
+    pulumi.export("firstZoneId", pvtz_zones_ds.zones[0].id)
+    ```
+
+
+    :param bool enable_details: -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+    :param Sequence[str] ids: A list of zone IDs.
+    :param str keyword: keyword for zone name.
+    :param str lang: User language.
+    :param str query_region_id: query_region_id for zone regionId.
+    :param str query_vpc_id: query_vpc_id for zone vpcId.
+    :param str resource_group_id: resource_group_id for zone resourceGroupId.
+    :param str search_mode: Search mode. Value: 
+           - LIKE: fuzzy search.
+           - EXACT: precise search. It is not filled in by default.
+    """
+    ...

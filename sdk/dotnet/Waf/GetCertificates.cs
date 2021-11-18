@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Waf
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Waf
         ///             InstanceId = "your_instance_id",
         ///             Domain = "your_domain_name",
         ///         }));
-        ///         this.WafCertificate = @default.Apply(@default =&gt; @default.Certificates[0]);
+        ///         this.WafCertificate = @default.Apply(@default =&gt; @default.Certificates?[0]);
         ///     }
         /// 
         ///     [Output("wafCertificate")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.Waf
         /// </summary>
         public static Task<GetCertificatesResult> InvokeAsync(GetCertificatesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:waf/getCertificates:getCertificates", args ?? new GetCertificatesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Waf Certificates of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Waf.GetCertificates.InvokeAsync(new AliCloud.Waf.GetCertificatesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "your_certificate_id",
+        ///             },
+        ///             InstanceId = "your_instance_id",
+        ///             Domain = "your_domain_name",
+        ///         }));
+        ///         this.WafCertificate = @default.Apply(@default =&gt; @default.Certificates?[0]);
+        ///     }
+        /// 
+        ///     [Output("wafCertificate")]
+        ///     public Output&lt;string&gt; WafCertificate { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetCertificatesResult> Invoke(GetCertificatesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCertificatesResult>("alicloud:waf/getCertificates:getCertificates", args ?? new GetCertificatesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -90,6 +132,46 @@ namespace Pulumi.AliCloud.Waf
         public string? OutputFile { get; set; }
 
         public GetCertificatesArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificatesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The domain that you want to add to WAF.
+        /// </summary>
+        [Input("domain")]
+        public Input<string>? Domain { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Certificate IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// WAF instance ID.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by Certificate name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetCertificatesInvokeArgs()
         {
         }
     }

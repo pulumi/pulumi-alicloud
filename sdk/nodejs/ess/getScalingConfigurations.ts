@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     ],
  *     nameRegex: "scaling_configuration_name",
  *     scalingGroupId: "scaling_group_id",
- * }, { async: true }));
+ * }));
  *
  * export const firstScalingRule = scalingconfigurationsDs.configurations[0].id;
  * ```
@@ -50,16 +50,16 @@ export interface GetScalingConfigurationsArgs {
     /**
      * A list of scaling configuration IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter resulting scaling configurations by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Scaling group id the scaling configurations belong to.
      */
-    readonly scalingGroupId?: string;
+    scalingGroupId?: string;
 }
 
 /**
@@ -88,4 +88,27 @@ export interface GetScalingConfigurationsResult {
      * ID of the scaling group.
      */
     readonly scalingGroupId?: string;
+}
+
+export function getScalingConfigurationsOutput(args?: GetScalingConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingConfigurationsResult> {
+    return pulumi.output(args).apply(a => getScalingConfigurations(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getScalingConfigurations.
+ */
+export interface GetScalingConfigurationsOutputArgs {
+    /**
+     * A list of scaling configuration IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter resulting scaling configurations by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Scaling group id the scaling configurations belong to.
+     */
+    scalingGroupId?: pulumi.Input<string>;
 }

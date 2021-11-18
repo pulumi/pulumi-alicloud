@@ -38,40 +38,40 @@ export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getSnapshots.
  */
 export interface GetSnapshotsArgs {
-    readonly category?: string;
-    readonly dryRun?: boolean;
+    category?: string;
+    dryRun?: boolean;
     /**
      * Whether the snapshot is encrypted or not.
      */
-    readonly encrypted?: boolean;
+    encrypted?: boolean;
     /**
      * A list of snapshot IDs.
      */
-    readonly ids?: string[];
-    readonly kmsKeyId?: string;
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
-    readonly resourceGroupId?: string;
-    readonly snapshotLinkId?: string;
-    readonly snapshotName?: string;
-    readonly snapshotType?: string;
+    ids?: string[];
+    kmsKeyId?: string;
+    nameRegex?: string;
+    outputFile?: string;
+    resourceGroupId?: string;
+    snapshotLinkId?: string;
+    snapshotName?: string;
+    snapshotType?: string;
     /**
      * Source disk attribute. Value range: `System`,`Data`.
      */
-    readonly sourceDiskType?: string;
+    sourceDiskType?: string;
     /**
      * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A map of tags assigned to the snapshot.
      */
-    readonly tags?: {[key: string]: any};
-    readonly type?: string;
+    tags?: {[key: string]: any};
+    type?: string;
     /**
      * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
      */
-    readonly usage?: string;
+    usage?: string;
 }
 
 /**
@@ -124,4 +124,48 @@ export interface GetSnapshotsResult {
      * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
      */
     readonly usage?: string;
+}
+
+export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
+    return pulumi.output(args).apply(a => getSnapshots(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSnapshots.
+ */
+export interface GetSnapshotsOutputArgs {
+    category?: pulumi.Input<string>;
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * Whether the snapshot is encrypted or not.
+     */
+    encrypted?: pulumi.Input<boolean>;
+    /**
+     * A list of snapshot IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    kmsKeyId?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
+    snapshotLinkId?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string>;
+    snapshotType?: pulumi.Input<string>;
+    /**
+     * Source disk attribute. Value range: `System`,`Data`.
+     */
+    sourceDiskType?: pulumi.Input<string>;
+    /**
+     * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the snapshot.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    type?: pulumi.Input<string>;
+    /**
+     * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+     */
+    usage?: pulumi.Input<string>;
 }

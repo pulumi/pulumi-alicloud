@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     outputFile: "/tmp/vpns",
  *     status: "active",
  *     vpcId: "fake-vpc-id",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
@@ -53,27 +53,27 @@ export interface GetGatewaysArgs {
     /**
      * Limit search to specific business status - valid value is "Normal", "FinancialLocked".
      */
-    readonly businessStatus?: string;
+    businessStatus?: string;
     /**
      * IDs of the VPN.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string of VPN name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * Save the result to the file.
      */
-    readonly outputFile?: string;
+    outputFile?: string;
     /**
      * Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
      */
-    readonly status?: string;
+    status?: string;
     /**
      * Use the VPC ID as the search key.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
 }
 
 /**
@@ -110,4 +110,38 @@ export interface GetGatewaysResult {
      * ID of the VPC that the VPN belongs.
      */
     readonly vpcId?: string;
+}
+
+export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
+    return pulumi.output(args).apply(a => getGateways(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGateways.
+ */
+export interface GetGatewaysOutputArgs {
+    /**
+     * Limit search to specific business status - valid value is "Normal", "FinancialLocked".
+     */
+    businessStatus?: pulumi.Input<string>;
+    /**
+     * IDs of the VPN.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string of VPN name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * Save the result to the file.
+     */
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Use the VPC ID as the search key.
+     */
+    vpcId?: pulumi.Input<string>;
 }

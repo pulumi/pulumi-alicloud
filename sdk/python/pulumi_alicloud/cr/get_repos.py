@@ -13,6 +13,7 @@ __all__ = [
     'GetReposResult',
     'AwaitableGetReposResult',
     'get_repos',
+    'get_repos_output',
 ]
 
 @pulumi.output_type
@@ -164,3 +165,33 @@ def get_repos(enable_details: Optional[bool] = None,
         namespace=__ret__.namespace,
         output_file=__ret__.output_file,
         repos=__ret__.repos)
+
+
+@_utilities.lift_output_func(get_repos)
+def get_repos_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReposResult]:
+    """
+    This data source provides a list Container Registry repositories on Alibaba Cloud.
+
+    > **NOTE:** Available in v1.35.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_repos = alicloud.cr.get_repos(name_regex="my-repos",
+        output_file="my-repo-json")
+    pulumi.export("output", my_repos.repos)
+    ```
+
+
+    :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
+    :param str name_regex: A regex string to filter results by repository name.
+    :param str namespace: Name of container registry namespace where the repositories are located in.
+    """
+    ...

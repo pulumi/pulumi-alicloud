@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Alb
 {
@@ -37,12 +38,12 @@ namespace Pulumi.AliCloud.Alb
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.AlbRuleId1 = ids.Apply(ids =&gt; ids.Rules[0].Id);
+        ///         this.AlbRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Alb.GetRules.InvokeAsync(new AliCloud.Alb.GetRulesArgs
         ///         {
         ///             NameRegex = "^my-Rule",
         ///         }));
-        ///         this.AlbRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules[0].Id);
+        ///         this.AlbRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
         ///     }
         /// 
         ///     [Output("albRuleId1")]
@@ -56,6 +57,52 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:alb/getRules:getRules", args ?? new GetRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Alb Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Alb.GetRules.InvokeAsync(new AliCloud.Alb.GetRulesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.AlbRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Alb.GetRules.InvokeAsync(new AliCloud.Alb.GetRulesArgs
+        ///         {
+        ///             NameRegex = "^my-Rule",
+        ///         }));
+        ///         this.AlbRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("albRuleId1")]
+        ///     public Output&lt;string&gt; AlbRuleId1 { get; set; }
+        ///     [Output("albRuleId2")]
+        ///     public Output&lt;string&gt; AlbRuleId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:alb/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -125,6 +172,76 @@ namespace Pulumi.AliCloud.Alb
         public string? Status { get; set; }
 
         public GetRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Rule IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("listenerIds")]
+        private InputList<string>? _listenerIds;
+
+        /// <summary>
+        /// The listener ids.
+        /// </summary>
+        public InputList<string> ListenerIds
+        {
+            get => _listenerIds ?? (_listenerIds = new InputList<string>());
+            set => _listenerIds = value;
+        }
+
+        [Input("loadBalancerIds")]
+        private InputList<string>? _loadBalancerIds;
+
+        /// <summary>
+        /// The load balancer ids.
+        /// </summary>
+        public InputList<string> LoadBalancerIds
+        {
+            get => _loadBalancerIds ?? (_loadBalancerIds = new InputList<string>());
+            set => _loadBalancerIds = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Rule name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("ruleIds")]
+        private InputList<string>? _ruleIds;
+
+        /// <summary>
+        /// The rule ids.
+        /// </summary>
+        public InputList<string> RuleIds
+        {
+            get => _ruleIds ?? (_ruleIds = new InputList<string>());
+            set => _ruleIds = value;
+        }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetRulesInvokeArgs()
         {
         }
     }

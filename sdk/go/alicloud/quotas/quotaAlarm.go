@@ -253,7 +253,7 @@ type QuotaAlarmArrayInput interface {
 type QuotaAlarmArray []QuotaAlarmInput
 
 func (QuotaAlarmArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*QuotaAlarm)(nil))
+	return reflect.TypeOf((*[]*QuotaAlarm)(nil)).Elem()
 }
 
 func (i QuotaAlarmArray) ToQuotaAlarmArrayOutput() QuotaAlarmArrayOutput {
@@ -278,7 +278,7 @@ type QuotaAlarmMapInput interface {
 type QuotaAlarmMap map[string]QuotaAlarmInput
 
 func (QuotaAlarmMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*QuotaAlarm)(nil))
+	return reflect.TypeOf((*map[string]*QuotaAlarm)(nil)).Elem()
 }
 
 func (i QuotaAlarmMap) ToQuotaAlarmMapOutput() QuotaAlarmMapOutput {
@@ -289,9 +289,7 @@ func (i QuotaAlarmMap) ToQuotaAlarmMapOutputWithContext(ctx context.Context) Quo
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaAlarmMapOutput)
 }
 
-type QuotaAlarmOutput struct {
-	*pulumi.OutputState
-}
+type QuotaAlarmOutput struct{ *pulumi.OutputState }
 
 func (QuotaAlarmOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*QuotaAlarm)(nil))
@@ -310,14 +308,12 @@ func (o QuotaAlarmOutput) ToQuotaAlarmPtrOutput() QuotaAlarmPtrOutput {
 }
 
 func (o QuotaAlarmOutput) ToQuotaAlarmPtrOutputWithContext(ctx context.Context) QuotaAlarmPtrOutput {
-	return o.ApplyT(func(v QuotaAlarm) *QuotaAlarm {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuotaAlarm) *QuotaAlarm {
 		return &v
 	}).(QuotaAlarmPtrOutput)
 }
 
-type QuotaAlarmPtrOutput struct {
-	*pulumi.OutputState
-}
+type QuotaAlarmPtrOutput struct{ *pulumi.OutputState }
 
 func (QuotaAlarmPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**QuotaAlarm)(nil))
@@ -329,6 +325,16 @@ func (o QuotaAlarmPtrOutput) ToQuotaAlarmPtrOutput() QuotaAlarmPtrOutput {
 
 func (o QuotaAlarmPtrOutput) ToQuotaAlarmPtrOutputWithContext(ctx context.Context) QuotaAlarmPtrOutput {
 	return o
+}
+
+func (o QuotaAlarmPtrOutput) Elem() QuotaAlarmOutput {
+	return o.ApplyT(func(v *QuotaAlarm) QuotaAlarm {
+		if v != nil {
+			return *v
+		}
+		var ret QuotaAlarm
+		return ret
+	}).(QuotaAlarmOutput)
 }
 
 type QuotaAlarmArrayOutput struct{ *pulumi.OutputState }
@@ -372,6 +378,10 @@ func (o QuotaAlarmMapOutput) MapIndex(k pulumi.StringInput) QuotaAlarmOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaAlarmInput)(nil)).Elem(), &QuotaAlarm{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaAlarmPtrInput)(nil)).Elem(), &QuotaAlarm{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaAlarmArrayInput)(nil)).Elem(), QuotaAlarmArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaAlarmMapInput)(nil)).Elem(), QuotaAlarmMap{})
 	pulumi.RegisterOutputType(QuotaAlarmOutput{})
 	pulumi.RegisterOutputType(QuotaAlarmPtrOutput{})
 	pulumi.RegisterOutputType(QuotaAlarmArrayOutput{})

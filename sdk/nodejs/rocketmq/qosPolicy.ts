@@ -191,47 +191,47 @@ export interface QosPolicyState {
     /**
      * The description of the QoS policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The destination CIDR block.
      */
-    readonly destCidr?: pulumi.Input<string>;
+    destCidr?: pulumi.Input<string>;
     /**
      * The destination port range.
      */
-    readonly destPortRange?: pulumi.Input<string>;
+    destPortRange?: pulumi.Input<string>;
     /**
      * The expiration time of the quintuple rule.
      */
-    readonly endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string>;
     /**
      * The transport layer protocol.
      */
-    readonly ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string>;
     /**
      * The name of the QoS policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The instance ID of the QoS policy to which the quintuple rule is created.
      */
-    readonly qosId?: pulumi.Input<string>;
+    qosId?: pulumi.Input<string>;
     /**
      * The source CIDR block.
      */
-    readonly sourceCidr?: pulumi.Input<string>;
+    sourceCidr?: pulumi.Input<string>;
     /**
      * The source port range of the transport layer.
      */
-    readonly sourcePortRange?: pulumi.Input<string>;
+    sourcePortRange?: pulumi.Input<string>;
     /**
      * The time when the quintuple rule takes effect.
      */
-    readonly startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string>;
 }
 
 /**
@@ -241,45 +241,45 @@ export interface QosPolicyArgs {
     /**
      * The description of the QoS policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The destination CIDR block.
      */
-    readonly destCidr: pulumi.Input<string>;
+    destCidr: pulumi.Input<string>;
     /**
      * The destination port range.
      */
-    readonly destPortRange: pulumi.Input<string>;
+    destPortRange: pulumi.Input<string>;
     /**
      * The expiration time of the quintuple rule.
      */
-    readonly endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string>;
     /**
      * The transport layer protocol.
      */
-    readonly ipProtocol: pulumi.Input<string>;
+    ipProtocol: pulumi.Input<string>;
     /**
      * The name of the QoS policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
      */
-    readonly priority: pulumi.Input<number>;
+    priority: pulumi.Input<number>;
     /**
      * The instance ID of the QoS policy to which the quintuple rule is created.
      */
-    readonly qosId: pulumi.Input<string>;
+    qosId: pulumi.Input<string>;
     /**
      * The source CIDR block.
      */
-    readonly sourceCidr: pulumi.Input<string>;
+    sourceCidr: pulumi.Input<string>;
     /**
      * The source port range of the transport layer.
      */
-    readonly sourcePortRange: pulumi.Input<string>;
+    sourcePortRange: pulumi.Input<string>;
     /**
      * The time when the quintuple rule takes effect.
      */
-    readonly startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string>;
 }

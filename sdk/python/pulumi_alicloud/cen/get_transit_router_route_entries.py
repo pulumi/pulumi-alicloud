@@ -13,6 +13,7 @@ __all__ = [
     'GetTransitRouterRouteEntriesResult',
     'AwaitableGetTransitRouterRouteEntriesResult',
     'get_transit_router_route_entries',
+    'get_transit_router_route_entries_output',
 ]
 
 @pulumi.output_type
@@ -193,3 +194,28 @@ def get_transit_router_route_entries(ids: Optional[Sequence[str]] = None,
         transit_router_route_entry_names=__ret__.transit_router_route_entry_names,
         transit_router_route_entry_status=__ret__.transit_router_route_entry_status,
         transit_router_route_table_id=__ret__.transit_router_route_table_id)
+
+
+@_utilities.lift_output_func(get_transit_router_route_entries)
+def get_transit_router_route_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                            status: Optional[pulumi.Input[Optional[str]]] = None,
+                                            transit_router_route_entry_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                            transit_router_route_entry_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                            transit_router_route_entry_status: Optional[pulumi.Input[Optional[str]]] = None,
+                                            transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
+                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterRouteEntriesResult]:
+    """
+    This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+
+    > **NOTE:** Available in 1.126.0+
+
+
+    :param Sequence[str] ids: A list of CEN Transit Router Route Entry IDs.
+    :param Sequence[str] transit_router_route_entry_ids: A list of ID of the cen transit router route entry.
+    :param Sequence[str] transit_router_route_entry_names: A list of name of the cen transit router route entry.
+    :param str transit_router_route_entry_status: The status of the resource.Valid values `Creating`, `Active` and `Deleting`.
+    :param str transit_router_route_table_id: ID of the CEN Transit Router Route Table.
+    """
+    ...

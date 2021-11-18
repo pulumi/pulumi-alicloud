@@ -13,6 +13,7 @@ __all__ = [
     'GetProductResult',
     'AwaitableGetProductResult',
     'get_product',
+    'get_product_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,31 @@ def get_product(available_region: Optional[str] = None,
         id=__ret__.id,
         product_code=__ret__.product_code,
         products=__ret__.products)
+
+
+@_utilities.lift_output_func(get_product)
+def get_product_output(available_region: Optional[pulumi.Input[Optional[str]]] = None,
+                       product_code: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductResult]:
+    """
+    This data source provides the Market product item details of Alibaba Cloud.
+
+    > **NOTE:** Available in 1.69.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.marketplace.get_product(product_code="cmapi022206")
+    pulumi.export("productName", default.products[0].name)
+    pulumi.export("firstProductSkuCode", default.products[0].skuses[0].sku_code)
+    pulumi.export("firstProductPackageVersion", default.products[0].skuses[0].package_versions[0].package_version)
+    ```
+
+
+    :param str available_region: A available region id used to filter market place Ecs images.
+    :param str product_code: The product code of the market product.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetResourceSharesResult',
     'AwaitableGetResourceSharesResult',
     'get_resource_shares',
+    'get_resource_shares_output',
 ]
 
 @pulumi.output_type
@@ -171,3 +172,40 @@ def get_resource_shares(ids: Optional[Sequence[str]] = None,
         resource_share_owner=__ret__.resource_share_owner,
         shares=__ret__.shares,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_resource_shares)
+def get_resource_shares_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               resource_share_name: Optional[pulumi.Input[Optional[str]]] = None,
+                               resource_share_owner: Optional[pulumi.Input[str]] = None,
+                               status: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceSharesResult]:
+    """
+    This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.111.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_resource_shares(resource_share_owner="Self",
+        ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstResourceManagerResourceShareId", example.shares[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Resource Share IDs.
+    :param str name_regex: A regex string to filter results by Resource Share name.
+    :param str resource_share_name: The name of resource share.
+    :param str resource_share_owner: The owner of resource share.
+    :param str status: The status of resource share.
+    """
+    ...

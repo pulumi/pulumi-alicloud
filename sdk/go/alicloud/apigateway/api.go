@@ -305,7 +305,7 @@ type ApiArrayInput interface {
 type ApiArray []ApiInput
 
 func (ApiArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Api)(nil))
+	return reflect.TypeOf((*[]*Api)(nil)).Elem()
 }
 
 func (i ApiArray) ToApiArrayOutput() ApiArrayOutput {
@@ -330,7 +330,7 @@ type ApiMapInput interface {
 type ApiMap map[string]ApiInput
 
 func (ApiMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Api)(nil))
+	return reflect.TypeOf((*map[string]*Api)(nil)).Elem()
 }
 
 func (i ApiMap) ToApiMapOutput() ApiMapOutput {
@@ -341,9 +341,7 @@ func (i ApiMap) ToApiMapOutputWithContext(ctx context.Context) ApiMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiMapOutput)
 }
 
-type ApiOutput struct {
-	*pulumi.OutputState
-}
+type ApiOutput struct{ *pulumi.OutputState }
 
 func (ApiOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Api)(nil))
@@ -362,14 +360,12 @@ func (o ApiOutput) ToApiPtrOutput() ApiPtrOutput {
 }
 
 func (o ApiOutput) ToApiPtrOutputWithContext(ctx context.Context) ApiPtrOutput {
-	return o.ApplyT(func(v Api) *Api {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Api) *Api {
 		return &v
 	}).(ApiPtrOutput)
 }
 
-type ApiPtrOutput struct {
-	*pulumi.OutputState
-}
+type ApiPtrOutput struct{ *pulumi.OutputState }
 
 func (ApiPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Api)(nil))
@@ -381,6 +377,16 @@ func (o ApiPtrOutput) ToApiPtrOutput() ApiPtrOutput {
 
 func (o ApiPtrOutput) ToApiPtrOutputWithContext(ctx context.Context) ApiPtrOutput {
 	return o
+}
+
+func (o ApiPtrOutput) Elem() ApiOutput {
+	return o.ApplyT(func(v *Api) Api {
+		if v != nil {
+			return *v
+		}
+		var ret Api
+		return ret
+	}).(ApiOutput)
 }
 
 type ApiArrayOutput struct{ *pulumi.OutputState }
@@ -424,6 +430,10 @@ func (o ApiMapOutput) MapIndex(k pulumi.StringInput) ApiOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiInput)(nil)).Elem(), &Api{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiPtrInput)(nil)).Elem(), &Api{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiArrayInput)(nil)).Elem(), ApiArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiMapInput)(nil)).Elem(), ApiMap{})
 	pulumi.RegisterOutputType(ApiOutput{})
 	pulumi.RegisterOutputType(ApiPtrOutput{})
 	pulumi.RegisterOutputType(ApiArrayOutput{})

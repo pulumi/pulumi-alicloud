@@ -212,42 +212,42 @@ export interface RuleState {
      * * `0`: Keyword.
      * * `2`: Regular expression.
      */
-    readonly category?: pulumi.Input<number>;
+    category?: pulumi.Input<number>;
     /**
      * Sensitive Data Identification Rules the Content.
      */
-    readonly content?: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
     /**
      * The Content Classification.
      */
-    readonly contentCategory?: pulumi.Input<string>;
+    contentCategory?: pulumi.Input<string>;
     /**
      * Sensitive Data Identification Rules of Type. Valid values: 
      * * `0`: the Built-in.
      * * `1`: The User-Defined.
      */
-    readonly customType?: pulumi.Input<number>;
+    customType?: pulumi.Input<number>;
     /**
      * Sensitive Data Identification a Description of the Rule Information.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Request and Receive the Language of the Message Type. Valid values:
      * * `zh`: Chinese.
      * * `en`: English.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
      */
-    readonly productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string>;
     /**
      * Product ID. Valid values: 
      * * `1`:MaxCompute
      * * `2`:OSS
      * * `5`:RDS.
      */
-    readonly productId?: pulumi.Input<string>;
+    productId?: pulumi.Input<string>;
     /**
      * Sensitive Data Identification Rules of Risk Level ID. Valid values: 
      * * `2`:S1, Weak Risk Level.
@@ -255,34 +255,34 @@ export interface RuleState {
      * * `4`:S3 High Risk Level.
      * * `5`:S4, the Highest Risk Level.
      */
-    readonly riskLevelId?: pulumi.Input<string>;
+    riskLevelId?: pulumi.Input<string>;
     /**
      * Sensitive Data Identification Name of the Rule.
      */
-    readonly ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string>;
     /**
      * Rule Type.
      */
-    readonly ruleType?: pulumi.Input<number>;
+    ruleType?: pulumi.Input<number>;
     /**
      * Triggered the Alarm Conditions.
      */
-    readonly statExpress?: pulumi.Input<string>;
+    statExpress?: pulumi.Input<string>;
     /**
      * Sensitive Data Identification Rules Detection State of.
      */
-    readonly status?: pulumi.Input<number>;
+    status?: pulumi.Input<number>;
     /**
      * The Target of rule.
      */
-    readonly target?: pulumi.Input<string>;
+    target?: pulumi.Input<string>;
     /**
      * The Level of Risk. Valid values: 
      * * `1`: Weak warn Level.
      * * `2`: Medium Risk Level.
      * * `3`: High Risk Level.
      */
-    readonly warnLevel?: pulumi.Input<number>;
+    warnLevel?: pulumi.Input<number>;
 }
 
 /**
@@ -294,42 +294,42 @@ export interface RuleArgs {
      * * `0`: Keyword.
      * * `2`: Regular expression.
      */
-    readonly category: pulumi.Input<number>;
+    category: pulumi.Input<number>;
     /**
      * Sensitive Data Identification Rules the Content.
      */
-    readonly content: pulumi.Input<string>;
+    content: pulumi.Input<string>;
     /**
      * The Content Classification.
      */
-    readonly contentCategory?: pulumi.Input<string>;
+    contentCategory?: pulumi.Input<string>;
     /**
      * Sensitive Data Identification Rules of Type. Valid values: 
      * * `0`: the Built-in.
      * * `1`: The User-Defined.
      */
-    readonly customType?: pulumi.Input<number>;
+    customType?: pulumi.Input<number>;
     /**
      * Sensitive Data Identification a Description of the Rule Information.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Request and Receive the Language of the Message Type. Valid values:
      * * `zh`: Chinese.
      * * `en`: English.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
      */
-    readonly productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string>;
     /**
      * Product ID. Valid values: 
      * * `1`:MaxCompute
      * * `2`:OSS
      * * `5`:RDS.
      */
-    readonly productId?: pulumi.Input<string>;
+    productId?: pulumi.Input<string>;
     /**
      * Sensitive Data Identification Rules of Risk Level ID. Valid values: 
      * * `2`:S1, Weak Risk Level.
@@ -337,32 +337,32 @@ export interface RuleArgs {
      * * `4`:S3 High Risk Level.
      * * `5`:S4, the Highest Risk Level.
      */
-    readonly riskLevelId?: pulumi.Input<string>;
+    riskLevelId?: pulumi.Input<string>;
     /**
      * Sensitive Data Identification Name of the Rule.
      */
-    readonly ruleName: pulumi.Input<string>;
+    ruleName: pulumi.Input<string>;
     /**
      * Rule Type.
      */
-    readonly ruleType?: pulumi.Input<number>;
+    ruleType?: pulumi.Input<number>;
     /**
      * Triggered the Alarm Conditions.
      */
-    readonly statExpress?: pulumi.Input<string>;
+    statExpress?: pulumi.Input<string>;
     /**
      * Sensitive Data Identification Rules Detection State of.
      */
-    readonly status?: pulumi.Input<number>;
+    status?: pulumi.Input<number>;
     /**
      * The Target of rule.
      */
-    readonly target?: pulumi.Input<string>;
+    target?: pulumi.Input<string>;
     /**
      * The Level of Risk. Valid values: 
      * * `1`: Weak warn Level.
      * * `2`: Medium Risk Level.
      * * `3`: High Risk Level.
      */
-    readonly warnLevel?: pulumi.Input<number>;
+    warnLevel?: pulumi.Input<number>;
 }

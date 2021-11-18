@@ -550,3 +550,133 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+        console.
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
+        Alibaba Cloud console.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="configurationSource")
+    def configuration_source(self) -> pulumi.Output[Optional[str]]:
+        """
+        Use this to mark a terraform configuration file source.
+        """
+        return pulumi.get(self, "configuration_source")
+
+    @property
+    @pulumi.getter(name="credentialsUri")
+    def credentials_uri(self) -> pulumi.Output[Optional[str]]:
+        """
+        The URI of sidecar credentials service.
+        """
+        return pulumi.get(self, "credentials_uri")
+
+    @property
+    @pulumi.getter(name="ecsRoleName")
+    def ecs_role_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
+        of the Alibaba Cloud console.
+        """
+        return pulumi.get(self, "ecs_role_name")
+
+    @property
+    @pulumi.getter
+    def fc(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "fc")
+
+    @property
+    @pulumi.getter(name="logEndpoint")
+    def log_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "log_endpoint")
+
+    @property
+    @pulumi.getter(name="mnsEndpoint")
+    def mns_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "mns_endpoint")
+
+    @property
+    @pulumi.getter(name="otsInstanceName")
+    def ots_instance_name(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "ots_instance_name")
+
+    @property
+    @pulumi.getter
+    def profile(self) -> pulumi.Output[Optional[str]]:
+        """
+        The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
+        """
+        return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[str]]:
+        """
+        The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+        console.
+        """
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="secureTransport")
+    def secure_transport(self) -> pulumi.Output[Optional[str]]:
+        """
+        The security transport for the assume role invoking.
+        """
+        return pulumi.get(self, "secure_transport")
+
+    @property
+    @pulumi.getter(name="securityToken")
+    def security_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        security token. A security token is only required if you are using Security Token Service.
+        """
+        return pulumi.get(self, "security_token")
+
+    @property
+    @pulumi.getter(name="securityTransport")
+    def security_transport(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "security_transport")
+
+    @property
+    @pulumi.getter(name="sharedCredentialsFile")
+    def shared_credentials_file(self) -> pulumi.Output[Optional[str]]:
+        """
+        The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
+        """
+        return pulumi.get(self, "shared_credentials_file")
+
+    @property
+    @pulumi.getter(name="sourceIp")
+    def source_ip(self) -> pulumi.Output[Optional[str]]:
+        """
+        The source ip for the assume role invoking.
+        """
+        return pulumi.get(self, "source_ip")
+

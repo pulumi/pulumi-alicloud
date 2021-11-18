@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceTypesResult',
     'AwaitableGetInstanceTypesResult',
     'get_instance_types',
+    'get_instance_types_output',
 ]
 
 @pulumi.output_type
@@ -224,3 +225,30 @@ def get_instance_types(charge_type: Optional[str] = None,
         types=__ret__.types,
         version=__ret__.version,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_instance_types)
+def get_instance_types_output(charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              disk_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              engine: Optional[pulumi.Input[Optional[str]]] = None,
+                              instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              region_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              version: Optional[pulumi.Input[Optional[str]]] = None,
+                              zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypesResult]:
+    """
+    This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+
+    > **NOTE:** Available in v1.106.0+.
+
+
+    :param str charge_type: The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
+    :param str disk_type: The disk type, `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`.
+    :param str engine: The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+    :param str instance_type: The hbase instance type of create hbase cluster instance.
+    :param str region_id: The dest region id, default client region.
+    :param str version: The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+    :param str zone_id: The zone id, belong to regionId.
+    """
+    ...

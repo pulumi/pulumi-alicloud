@@ -971,6 +971,12 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClustersClusterInput)(nil)).Elem(), GetDBClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClustersClusterArrayInput)(nil)).Elem(), GetDBClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetDBClustersClusterOutput{})

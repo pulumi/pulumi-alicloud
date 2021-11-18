@@ -1542,7 +1542,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             data_disks=[
                 alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
                     category="cloud",
-                    delete_with_instance="true",
+                    delete_with_instance=True,
                     description="test1",
                     encrypted=False,
                     name="disk1",
@@ -1551,7 +1551,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                 ),
                 alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
                     category="cloud",
-                    delete_with_instance="true",
+                    delete_with_instance=True,
                     description="test2",
                     encrypted=False,
                     name="disk2",
@@ -1586,7 +1586,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             spot_strategy="SpotWithPriceLimit",
             system_disk=alicloud.ecs.EcsLaunchTemplateSystemDiskArgs(
                 category="cloud_ssd",
-                delete_with_instance="false",
+                delete_with_instance=False,
                 description="Test For Terraform",
                 name="tf_test_name",
                 size=40,
@@ -1681,7 +1681,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             data_disks=[
                 alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
                     category="cloud",
-                    delete_with_instance="true",
+                    delete_with_instance=True,
                     description="test1",
                     encrypted=False,
                     name="disk1",
@@ -1690,7 +1690,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                 ),
                 alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
                     category="cloud",
-                    delete_with_instance="true",
+                    delete_with_instance=True,
                     description="test2",
                     encrypted=False,
                     name="disk2",
@@ -1725,7 +1725,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             spot_strategy="SpotWithPriceLimit",
             system_disk=alicloud.ecs.EcsLaunchTemplateSystemDiskArgs(
                 category="cloud_ssd",
-                delete_with_instance="false",
+                delete_with_instance=False,
                 description="Test For Terraform",
                 name="tf_test_name",
                 size=40,

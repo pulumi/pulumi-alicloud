@@ -217,7 +217,7 @@ type AlertContactArrayInput interface {
 type AlertContactArray []AlertContactInput
 
 func (AlertContactArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AlertContact)(nil))
+	return reflect.TypeOf((*[]*AlertContact)(nil)).Elem()
 }
 
 func (i AlertContactArray) ToAlertContactArrayOutput() AlertContactArrayOutput {
@@ -242,7 +242,7 @@ type AlertContactMapInput interface {
 type AlertContactMap map[string]AlertContactInput
 
 func (AlertContactMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AlertContact)(nil))
+	return reflect.TypeOf((*map[string]*AlertContact)(nil)).Elem()
 }
 
 func (i AlertContactMap) ToAlertContactMapOutput() AlertContactMapOutput {
@@ -253,9 +253,7 @@ func (i AlertContactMap) ToAlertContactMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AlertContactMapOutput)
 }
 
-type AlertContactOutput struct {
-	*pulumi.OutputState
-}
+type AlertContactOutput struct{ *pulumi.OutputState }
 
 func (AlertContactOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertContact)(nil))
@@ -274,14 +272,12 @@ func (o AlertContactOutput) ToAlertContactPtrOutput() AlertContactPtrOutput {
 }
 
 func (o AlertContactOutput) ToAlertContactPtrOutputWithContext(ctx context.Context) AlertContactPtrOutput {
-	return o.ApplyT(func(v AlertContact) *AlertContact {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertContact) *AlertContact {
 		return &v
 	}).(AlertContactPtrOutput)
 }
 
-type AlertContactPtrOutput struct {
-	*pulumi.OutputState
-}
+type AlertContactPtrOutput struct{ *pulumi.OutputState }
 
 func (AlertContactPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlertContact)(nil))
@@ -293,6 +289,16 @@ func (o AlertContactPtrOutput) ToAlertContactPtrOutput() AlertContactPtrOutput {
 
 func (o AlertContactPtrOutput) ToAlertContactPtrOutputWithContext(ctx context.Context) AlertContactPtrOutput {
 	return o
+}
+
+func (o AlertContactPtrOutput) Elem() AlertContactOutput {
+	return o.ApplyT(func(v *AlertContact) AlertContact {
+		if v != nil {
+			return *v
+		}
+		var ret AlertContact
+		return ret
+	}).(AlertContactOutput)
 }
 
 type AlertContactArrayOutput struct{ *pulumi.OutputState }
@@ -336,6 +342,10 @@ func (o AlertContactMapOutput) MapIndex(k pulumi.StringInput) AlertContactOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertContactInput)(nil)).Elem(), &AlertContact{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertContactPtrInput)(nil)).Elem(), &AlertContact{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertContactArrayInput)(nil)).Elem(), AlertContactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertContactMapInput)(nil)).Elem(), AlertContactMap{})
 	pulumi.RegisterOutputType(AlertContactOutput{})
 	pulumi.RegisterOutputType(AlertContactPtrOutput{})
 	pulumi.RegisterOutputType(AlertContactArrayOutput{})

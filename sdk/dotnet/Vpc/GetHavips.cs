@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Vpc
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstHavipId = example.Apply(example =&gt; example.Havips[0].Id);
+        ///         this.FirstHavipId = example.Apply(example =&gt; example.Havips?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstHavipId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetHavipsResult> InvokeAsync(GetHavipsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHavipsResult>("alicloud:vpc/getHavips:getHavips", args ?? new GetHavipsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Havips of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Vpc.GetHavips.InvokeAsync(new AliCloud.Vpc.GetHavipsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstHavipId = example.Apply(example =&gt; example.Havips?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstHavipId")]
+        ///     public Output&lt;string&gt; FirstHavipId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetHavipsResult> Invoke(GetHavipsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHavipsResult>("alicloud:vpc/getHavips:getHavips", args ?? new GetHavipsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +124,40 @@ namespace Pulumi.AliCloud.Vpc
         public string? Status { get; set; }
 
         public GetHavipsArgs()
+        {
+        }
+    }
+
+    public sealed class GetHavipsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Ha Vip IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Ha Vip name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetHavipsInvokeArgs()
         {
         }
     }

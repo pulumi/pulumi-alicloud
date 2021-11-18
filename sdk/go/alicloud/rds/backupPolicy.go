@@ -40,7 +40,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := creation
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -450,7 +450,7 @@ type BackupPolicyArrayInput interface {
 type BackupPolicyArray []BackupPolicyInput
 
 func (BackupPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BackupPolicy)(nil))
+	return reflect.TypeOf((*[]*BackupPolicy)(nil)).Elem()
 }
 
 func (i BackupPolicyArray) ToBackupPolicyArrayOutput() BackupPolicyArrayOutput {
@@ -475,7 +475,7 @@ type BackupPolicyMapInput interface {
 type BackupPolicyMap map[string]BackupPolicyInput
 
 func (BackupPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BackupPolicy)(nil))
+	return reflect.TypeOf((*map[string]*BackupPolicy)(nil)).Elem()
 }
 
 func (i BackupPolicyMap) ToBackupPolicyMapOutput() BackupPolicyMapOutput {
@@ -486,9 +486,7 @@ func (i BackupPolicyMap) ToBackupPolicyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyMapOutput)
 }
 
-type BackupPolicyOutput struct {
-	*pulumi.OutputState
-}
+type BackupPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackupPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BackupPolicy)(nil))
@@ -507,14 +505,12 @@ func (o BackupPolicyOutput) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
 }
 
 func (o BackupPolicyOutput) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
-	return o.ApplyT(func(v BackupPolicy) *BackupPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPolicy) *BackupPolicy {
 		return &v
 	}).(BackupPolicyPtrOutput)
 }
 
-type BackupPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type BackupPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (BackupPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BackupPolicy)(nil))
@@ -526,6 +522,16 @@ func (o BackupPolicyPtrOutput) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
 
 func (o BackupPolicyPtrOutput) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
 	return o
+}
+
+func (o BackupPolicyPtrOutput) Elem() BackupPolicyOutput {
+	return o.ApplyT(func(v *BackupPolicy) BackupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPolicy
+		return ret
+	}).(BackupPolicyOutput)
 }
 
 type BackupPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -569,6 +575,10 @@ func (o BackupPolicyMapOutput) MapIndex(k pulumi.StringInput) BackupPolicyOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPolicyInput)(nil)).Elem(), &BackupPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPolicyPtrInput)(nil)).Elem(), &BackupPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPolicyArrayInput)(nil)).Elem(), BackupPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPolicyMapInput)(nil)).Elem(), BackupPolicyMap{})
 	pulumi.RegisterOutputType(BackupPolicyOutput{})
 	pulumi.RegisterOutputType(BackupPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BackupPolicyArrayOutput{})

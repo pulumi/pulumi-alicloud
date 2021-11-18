@@ -13,6 +13,7 @@ __all__ = [
     'GetCustomerGatewaysResult',
     'AwaitableGetCustomerGatewaysResult',
     'get_customer_gateways',
+    'get_customer_gateways_output',
 ]
 
 @pulumi.output_type
@@ -134,3 +135,33 @@ def get_customer_gateways(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_customer_gateways)
+def get_customer_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomerGatewaysResult]:
+    """
+    The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.vpn.get_customer_gateways(ids=[
+            "fake-id1",
+            "fake-id2",
+        ],
+        name_regex="testAcc*",
+        output_file="/tmp/cgws")
+    ```
+
+
+    :param Sequence[str] ids: ID of the VPN customer gateways.
+    :param str name_regex: A regex string of VPN customer gateways name.
+    :param str output_file: Save the result to the file.
+    """
+    ...

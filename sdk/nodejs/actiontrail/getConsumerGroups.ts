@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -20,7 +19,7 @@ import * as utilities from "../utilities";
  *     consumerIdRegex: "CID-alikafkaGroupDatasourceName",
  *     instanceId: "xxx",
  *     outputFile: "consumerGroups.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstGroupName = consumerGroupsDs.consumerIds[0];
  * ```
@@ -47,12 +46,12 @@ export interface GetConsumerGroupsArgs {
     /**
      * A regex string to filter results by the consumer group id.
      */
-    readonly consumerIdRegex?: string;
+    consumerIdRegex?: string;
     /**
      * ID of the ALIKAFKA Instance that owns the consumer groups.
      */
-    readonly instanceId: string;
-    readonly outputFile?: string;
+    instanceId: string;
+    outputFile?: string;
 }
 
 /**
@@ -70,4 +69,23 @@ export interface GetConsumerGroupsResult {
     readonly id: string;
     readonly instanceId: string;
     readonly outputFile?: string;
+}
+
+export function getConsumerGroupsOutput(args: GetConsumerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsumerGroupsResult> {
+    return pulumi.output(args).apply(a => getConsumerGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConsumerGroups.
+ */
+export interface GetConsumerGroupsOutputArgs {
+    /**
+     * A regex string to filter results by the consumer group id.
+     */
+    consumerIdRegex?: pulumi.Input<string>;
+    /**
+     * ID of the ALIKAFKA Instance that owns the consumer groups.
+     */
+    instanceId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

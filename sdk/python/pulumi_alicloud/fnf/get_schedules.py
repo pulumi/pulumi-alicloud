@@ -13,6 +13,7 @@ __all__ = [
     'GetSchedulesResult',
     'AwaitableGetSchedulesResult',
     'get_schedules',
+    'get_schedules_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,38 @@ def get_schedules(flow_name: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         schedules=__ret__.schedules)
+
+
+@_utilities.lift_output_func(get_schedules)
+def get_schedules_output(flow_name: Optional[pulumi.Input[str]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         limit: Optional[pulumi.Input[Optional[int]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchedulesResult]:
+    """
+    This data source provides the Fnf Schedules of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.105.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.fnf.get_schedules(flow_name="example_value",
+        ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstFnfScheduleId", example.schedules[0].id)
+    ```
+
+
+    :param str flow_name: The name of the flow bound to the time-based schedule you want to create.
+    :param Sequence[str] ids: A list of Schedule IDs.
+    :param int limit: The number of resource queries.
+    :param str name_regex: A regex string to filter results by Schedule name.
+    """
+    ...

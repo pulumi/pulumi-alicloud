@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const zonesIds = alicloud.hbase.getZones({});
- * const hbase = new alicloud.hbase.Instance("hbase", {zoneId: zonesIds.then(zonesIds => zonesIds.zones[0].id)});
+ * const hbase = new alicloud.hbase.Instance("hbase", {zoneId: zonesIds.then(zonesIds => zonesIds.zones?[0]?.id)});
  * // Other properties...
  * ```
  */
@@ -39,7 +39,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -59,4 +59,15 @@ export interface GetZonesResult {
      * A list of availability zones. Each element contains the following attributes:
      */
     readonly zones: outputs.hbase.GetZonesZone[];
+}
+
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply(a => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    outputFile?: pulumi.Input<string>;
 }

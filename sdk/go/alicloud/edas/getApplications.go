@@ -4,6 +4,9 @@
 package edas
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,73 @@ type GetApplicationsResult struct {
 	// A list of applications names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetApplicationsOutput(ctx *pulumi.Context, args GetApplicationsOutputArgs, opts ...pulumi.InvokeOption) GetApplicationsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetApplicationsResult, error) {
+			args := v.(GetApplicationsArgs)
+			r, err := GetApplications(ctx, &args, opts...)
+			return *r, err
+		}).(GetApplicationsResultOutput)
+}
+
+// A collection of arguments for invoking getApplications.
+type GetApplicationsOutputArgs struct {
+	// An ids string to filter results by the application id.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by the application name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetApplicationsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getApplications.
+type GetApplicationsResultOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsResult)(nil)).Elem()
+}
+
+func (o GetApplicationsResultOutput) ToGetApplicationsResultOutput() GetApplicationsResultOutput {
+	return o
+}
+
+func (o GetApplicationsResultOutput) ToGetApplicationsResultOutputWithContext(ctx context.Context) GetApplicationsResultOutput {
+	return o
+}
+
+// A list of applications.
+func (o GetApplicationsResultOutput) Applications() GetApplicationsApplicationArrayOutput {
+	return o.ApplyT(func(v GetApplicationsResult) []GetApplicationsApplication { return v.Applications }).(GetApplicationsApplicationArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetApplicationsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of application IDs.
+func (o GetApplicationsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetApplicationsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of applications names.
+func (o GetApplicationsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetApplicationsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetApplicationsResultOutput{})
 }

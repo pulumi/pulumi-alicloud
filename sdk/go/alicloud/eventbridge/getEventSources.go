@@ -4,6 +4,9 @@
 package eventbridge
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,70 @@ type GetEventSourcesResult struct {
 	Names      []string                `pulumi:"names"`
 	OutputFile *string                 `pulumi:"outputFile"`
 	Sources    []GetEventSourcesSource `pulumi:"sources"`
+}
+
+func GetEventSourcesOutput(ctx *pulumi.Context, args GetEventSourcesOutputArgs, opts ...pulumi.InvokeOption) GetEventSourcesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEventSourcesResult, error) {
+			args := v.(GetEventSourcesArgs)
+			r, err := GetEventSources(ctx, &args, opts...)
+			return *r, err
+		}).(GetEventSourcesResultOutput)
+}
+
+// A collection of arguments for invoking getEventSources.
+type GetEventSourcesOutputArgs struct {
+	// A list of Event Source IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Event Source name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetEventSourcesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventSourcesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEventSources.
+type GetEventSourcesResultOutput struct{ *pulumi.OutputState }
+
+func (GetEventSourcesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventSourcesResult)(nil)).Elem()
+}
+
+func (o GetEventSourcesResultOutput) ToGetEventSourcesResultOutput() GetEventSourcesResultOutput {
+	return o
+}
+
+func (o GetEventSourcesResultOutput) ToGetEventSourcesResultOutputWithContext(ctx context.Context) GetEventSourcesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEventSourcesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventSourcesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEventSourcesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventSourcesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEventSourcesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEventSourcesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEventSourcesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventSourcesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEventSourcesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEventSourcesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEventSourcesResultOutput) Sources() GetEventSourcesSourceArrayOutput {
+	return o.ApplyT(func(v GetEventSourcesResult) []GetEventSourcesSource { return v.Sources }).(GetEventSourcesSourceArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEventSourcesResultOutput{})
 }

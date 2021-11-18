@@ -4,6 +4,9 @@
 package alb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,4 +86,99 @@ type GetSecurityPoliciesResult struct {
 	SecurityPolicyName *string                     `pulumi:"securityPolicyName"`
 	Status             *string                     `pulumi:"status"`
 	Tags               map[string]interface{}      `pulumi:"tags"`
+}
+
+func GetSecurityPoliciesOutput(ctx *pulumi.Context, args GetSecurityPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetSecurityPoliciesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSecurityPoliciesResult, error) {
+			args := v.(GetSecurityPoliciesArgs)
+			r, err := GetSecurityPolicies(ctx, &args, opts...)
+			return *r, err
+		}).(GetSecurityPoliciesResultOutput)
+}
+
+// A collection of arguments for invoking getSecurityPolicies.
+type GetSecurityPoliciesOutputArgs struct {
+	// A list of Security Policy IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Security Policy name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The security policy ids.
+	SecurityPolicyIds pulumi.StringArrayInput `pulumi:"securityPolicyIds"`
+	// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	SecurityPolicyName pulumi.StringPtrInput `pulumi:"securityPolicyName"`
+	// The status of the resource.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	Tags   pulumi.MapInput       `pulumi:"tags"`
+}
+
+func (GetSecurityPoliciesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPoliciesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSecurityPolicies.
+type GetSecurityPoliciesResultOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPoliciesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPoliciesResult)(nil)).Elem()
+}
+
+func (o GetSecurityPoliciesResultOutput) ToGetSecurityPoliciesResultOutput() GetSecurityPoliciesResultOutput {
+	return o
+}
+
+func (o GetSecurityPoliciesResultOutput) ToGetSecurityPoliciesResultOutputWithContext(ctx context.Context) GetSecurityPoliciesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSecurityPoliciesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSecurityPoliciesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSecurityPoliciesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSecurityPoliciesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSecurityPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSecurityPoliciesResultOutput) Policies() GetSecurityPoliciesPolicyArrayOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) []GetSecurityPoliciesPolicy { return v.Policies }).(GetSecurityPoliciesPolicyArrayOutput)
+}
+
+func (o GetSecurityPoliciesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSecurityPoliciesResultOutput) SecurityPolicyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) []string { return v.SecurityPolicyIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSecurityPoliciesResultOutput) SecurityPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.SecurityPolicyName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSecurityPoliciesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSecurityPoliciesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSecurityPoliciesResultOutput{})
 }

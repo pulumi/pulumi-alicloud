@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ram
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Ram
     {
         public static Task<GetAccountAliasResult> InvokeAsync(GetAccountAliasArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? new GetAccountAliasArgs(), options.WithVersion());
+
+        public static Output<GetAccountAliasResult> Invoke(GetAccountAliasInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? new GetAccountAliasInvokeArgs(), options.WithVersion());
     }
 
 
@@ -22,6 +26,16 @@ namespace Pulumi.AliCloud.Ram
         public string? OutputFile { get; set; }
 
         public GetAccountAliasArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccountAliasInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetAccountAliasInvokeArgs()
         {
         }
     }

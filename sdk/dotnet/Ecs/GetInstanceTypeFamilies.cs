@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Ecs
         ///         {
         ///             InstanceChargeType = "PrePaid",
         ///         }));
-        ///         this.FirstInstanceTypeFamilyId = @default.Apply(@default =&gt; @default.Families[0].Id);
+        ///         this.FirstInstanceTypeFamilyId = @default.Apply(@default =&gt; @default.Families?[0]?.Id);
         ///         this.InstanceIds = @default.Apply(@default =&gt; @default.Ids);
         ///     }
         /// 
@@ -47,6 +48,43 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetInstanceTypeFamiliesResult> InvokeAsync(GetInstanceTypeFamiliesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? new GetInstanceTypeFamiliesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the ECS instance type families of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in 1.54.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Ecs.GetInstanceTypeFamilies.InvokeAsync(new AliCloud.Ecs.GetInstanceTypeFamiliesArgs
+        ///         {
+        ///             InstanceChargeType = "PrePaid",
+        ///         }));
+        ///         this.FirstInstanceTypeFamilyId = @default.Apply(@default =&gt; @default.Families?[0]?.Id);
+        ///         this.InstanceIds = @default.Apply(@default =&gt; @default.Ids);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceTypeFamilyId")]
+        ///     public Output&lt;string&gt; FirstInstanceTypeFamilyId { get; set; }
+        ///     [Output("instanceIds")]
+        ///     public Output&lt;string&gt; InstanceIds { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceTypeFamiliesResult> Invoke(GetInstanceTypeFamiliesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? new GetInstanceTypeFamiliesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -80,6 +118,40 @@ namespace Pulumi.AliCloud.Ecs
         public string? ZoneId { get; set; }
 
         public GetInstanceTypeFamiliesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceTypeFamiliesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+        /// </summary>
+        [Input("generation")]
+        public Input<string>? Generation { get; set; }
+
+        /// <summary>
+        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
+
+        /// <summary>
+        /// The Zone to launch the instance.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetInstanceTypeFamiliesInvokeArgs()
         {
         }
     }

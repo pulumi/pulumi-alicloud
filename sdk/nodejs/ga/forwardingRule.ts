@@ -209,35 +209,35 @@ export interface ForwardingRuleState {
     /**
      * The ID of the Global Accelerator instance.
      */
-    readonly acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string>;
     /**
      * Forwarding Policy ID.
      */
-    readonly forwardingRuleId?: pulumi.Input<string>;
+    forwardingRuleId?: pulumi.Input<string>;
     /**
      * Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
      */
-    readonly forwardingRuleName?: pulumi.Input<string>;
+    forwardingRuleName?: pulumi.Input<string>;
     /**
      * Forwarding Policy Status.
      */
-    readonly forwardingRuleStatus?: pulumi.Input<string>;
+    forwardingRuleStatus?: pulumi.Input<string>;
     /**
      * The ID of the listener.
      */
-    readonly listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string>;
     /**
      * Forwarding policy priority.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * Forward action.
      */
-    readonly ruleActions?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleAction>[]>;
+    ruleActions?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleAction>[]>;
     /**
      * Forwarding condition list.
      */
-    readonly ruleConditions?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleCondition>[]>;
+    ruleConditions?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleCondition>[]>;
 }
 
 /**
@@ -247,25 +247,25 @@ export interface ForwardingRuleArgs {
     /**
      * The ID of the Global Accelerator instance.
      */
-    readonly acceleratorId: pulumi.Input<string>;
+    acceleratorId: pulumi.Input<string>;
     /**
      * Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
      */
-    readonly forwardingRuleName?: pulumi.Input<string>;
+    forwardingRuleName?: pulumi.Input<string>;
     /**
      * The ID of the listener.
      */
-    readonly listenerId: pulumi.Input<string>;
+    listenerId: pulumi.Input<string>;
     /**
      * Forwarding policy priority.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * Forward action.
      */
-    readonly ruleActions: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleAction>[]>;
+    ruleActions: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleAction>[]>;
     /**
      * Forwarding condition list.
      */
-    readonly ruleConditions: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleCondition>[]>;
+    ruleConditions: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleCondition>[]>;
 }

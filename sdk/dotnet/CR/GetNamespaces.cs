@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CR
 {
@@ -45,6 +46,41 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         public static Task<GetNamespacesResult> InvokeAsync(GetNamespacesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list Container Registry namespaces on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.35.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myNamespaces = Output.Create(AliCloud.CR.GetNamespaces.InvokeAsync(new AliCloud.CR.GetNamespacesArgs
+        ///         {
+        ///             NameRegex = "my-namespace",
+        ///             OutputFile = "my-namespace-json",
+        ///         }));
+        ///         this.Output = myNamespaces.Apply(myNamespaces =&gt; myNamespaces.Namespaces);
+        ///     }
+        /// 
+        ///     [Output("output")]
+        ///     public Output&lt;string&gt; Output { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNamespacesResult> Invoke(GetNamespacesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +96,22 @@ namespace Pulumi.AliCloud.CR
         public string? OutputFile { get; set; }
 
         public GetNamespacesArgs()
+        {
+        }
+    }
+
+    public sealed class GetNamespacesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A regex string to filter results by namespace name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetNamespacesInvokeArgs()
         {
         }
     }

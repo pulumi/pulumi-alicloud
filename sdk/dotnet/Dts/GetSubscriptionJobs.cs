@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dts
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Dts
         ///     public MyStack()
         ///     {
         ///         var ids = Output.Create(AliCloud.Dts.GetSubscriptionJobs.InvokeAsync());
-        ///         this.DtsSubscriptionJobId1 = ids.Apply(ids =&gt; ids.Jobs[0].Id);
+        ///         this.DtsSubscriptionJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
         ///     }
         /// 
         ///     [Output("dtsSubscriptionJobId1")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         public static Task<GetSubscriptionJobsResult> InvokeAsync(GetSubscriptionJobsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Dts.GetSubscriptionJobs.InvokeAsync());
+        ///         this.DtsSubscriptionJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("dtsSubscriptionJobId1")]
+        ///     public Output&lt;string&gt; DtsSubscriptionJobId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSubscriptionJobsResult> Invoke(GetSubscriptionJobsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -91,6 +125,55 @@ namespace Pulumi.AliCloud.Dts
         }
 
         public GetSubscriptionJobsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubscriptionJobsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Subscription Job IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by subscription job name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetSubscriptionJobsInvokeArgs()
         {
         }
     }

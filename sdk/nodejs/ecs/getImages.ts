@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * const imagesDs = pulumi.output(alicloud.ecs.getImages({
  *     nameRegex: "^centos_6",
  *     owners: "system",
- * }, { async: true }));
+ * }));
  *
  * export const firstImageId = imagesDs.images[0].id;
  * ```
@@ -62,58 +62,58 @@ export interface GetImagesArgs {
      * * `CreateEcs`: instance creation.
      * * `ChangeOS`: replacement of the system disk or operating system.
      */
-    readonly actionType?: string;
+    actionType?: string;
     /**
      * The image architecture. Valid values: `i386` and `x8664`.
      */
-    readonly architecture?: string;
+    architecture?: string;
     /**
      * Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
      * * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
      * * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
      */
-    readonly dryRun?: boolean;
+    dryRun?: boolean;
     /**
      * The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
      */
-    readonly imageFamily?: string;
+    imageFamily?: string;
     /**
      * The instance type for which the image can be used.
      */
-    readonly instanceType?: string;
+    instanceType?: string;
     /**
      * Specifies whether the image supports cloud-init.
      */
-    readonly isSupportCloudInit?: boolean;
+    isSupportCloudInit?: boolean;
     /**
      * Specifies whether the image can be used on I/O optimized instances.
      */
-    readonly isSupportIoOptimized?: boolean;
+    isSupportIoOptimized?: boolean;
     /**
      * If more than one result are returned, select the most recent one.
      */
-    readonly mostRecent?: boolean;
+    mostRecent?: boolean;
     /**
      * A regex string to filter resulting images by name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The operating system type of the image. Valid values: `windows` and `linux`.
      */
-    readonly osType?: string;
-    readonly outputFile?: string;
+    osType?: string;
+    outputFile?: string;
     /**
      * Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
      */
-    readonly owners?: string;
+    owners?: string;
     /**
      * The ID of the resource group to which the custom image belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The ID of the snapshot used to create the custom image.
      */
-    readonly snapshotId?: string;
+    snapshotId?: string;
     /**
      * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
      * * `Creating`: The image is being created.
@@ -123,17 +123,17 @@ export interface GetImagesArgs {
      * * `CreateFailed`: The image failed to be created.
      * * `Deprecated`: The image is discontinued.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
      * * `instance`: The image is already in use and running on an ECS instance.
      * * `none`: The image is not in use.
      */
-    readonly usage?: string;
+    usage?: string;
 }
 
 /**
@@ -178,4 +178,91 @@ export interface GetImagesResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
     readonly usage?: string;
+}
+
+export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
+    return pulumi.output(args).apply(a => getImages(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getImages.
+ */
+export interface GetImagesOutputArgs {
+    /**
+     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+     * * `CreateEcs`: instance creation.
+     * * `ChangeOS`: replacement of the system disk or operating system.
+     */
+    actionType?: pulumi.Input<string>;
+    /**
+     * The image architecture. Valid values: `i386` and `x8664`.
+     */
+    architecture?: pulumi.Input<string>;
+    /**
+     * Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
+     * * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
+     * * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
+     */
+    imageFamily?: pulumi.Input<string>;
+    /**
+     * The instance type for which the image can be used.
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
+     * Specifies whether the image supports cloud-init.
+     */
+    isSupportCloudInit?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether the image can be used on I/O optimized instances.
+     */
+    isSupportIoOptimized?: pulumi.Input<boolean>;
+    /**
+     * If more than one result are returned, select the most recent one.
+     */
+    mostRecent?: pulumi.Input<boolean>;
+    /**
+     * A regex string to filter resulting images by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The operating system type of the image. Valid values: `windows` and `linux`.
+     */
+    osType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
+     */
+    owners?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group to which the custom image belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The ID of the snapshot used to create the custom image.
+     */
+    snapshotId?: pulumi.Input<string>;
+    /**
+     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+     * * `Creating`: The image is being created.
+     * * `Waiting`: The image is waiting to be processed.
+     * * `Available`: The image is available.
+     * * `UnAvailable`: The image is unavailable.
+     * * `CreateFailed`: The image failed to be created.
+     * * `Deprecated`: The image is discontinued.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
+     * * `instance`: The image is already in use and running on an ECS instance.
+     * * `none`: The image is not in use.
+     */
+    usage?: pulumi.Input<string>;
 }

@@ -112,15 +112,15 @@ export interface GatewayState {
     /**
      * The description of Gateway.
      */
-    readonly gatewayDesc?: pulumi.Input<string>;
+    gatewayDesc?: pulumi.Input<string>;
     /**
      * The name of the Gateway.
      */
-    readonly gatewayName?: pulumi.Input<string>;
+    gatewayName?: pulumi.Input<string>;
     /**
      * The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -130,9 +130,9 @@ export interface GatewayArgs {
     /**
      * The description of Gateway.
      */
-    readonly gatewayDesc?: pulumi.Input<string>;
+    gatewayDesc?: pulumi.Input<string>;
     /**
      * The name of the Gateway.
      */
-    readonly gatewayName: pulumi.Input<string>;
+    gatewayName: pulumi.Input<string>;
 }

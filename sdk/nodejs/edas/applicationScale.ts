@@ -123,23 +123,23 @@ export interface ApplicationScaleState {
     /**
      * The ID of the application that you want to deploy.
      */
-    readonly appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string>;
     /**
      * The ID of the instance group to which you want to add ECS instances to scale out the application.
      */
-    readonly deployGroup?: pulumi.Input<string>;
+    deployGroup?: pulumi.Input<string>;
     /**
      * The ecc information of the resource supplied above. The value is formulated as `<ecc1,ecc2>`.
      */
-    readonly eccInfo?: pulumi.Input<string>;
+    eccInfo?: pulumi.Input<string>;
     /**
      * The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
      */
-    readonly ecuInfos?: pulumi.Input<pulumi.Input<string>[]>;
+    ecuInfos?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
      */
-    readonly forceStatus?: pulumi.Input<boolean>;
+    forceStatus?: pulumi.Input<boolean>;
 }
 
 /**
@@ -149,17 +149,17 @@ export interface ApplicationScaleArgs {
     /**
      * The ID of the application that you want to deploy.
      */
-    readonly appId: pulumi.Input<string>;
+    appId: pulumi.Input<string>;
     /**
      * The ID of the instance group to which you want to add ECS instances to scale out the application.
      */
-    readonly deployGroup: pulumi.Input<string>;
+    deployGroup: pulumi.Input<string>;
     /**
      * The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
      */
-    readonly ecuInfos: pulumi.Input<pulumi.Input<string>[]>;
+    ecuInfos: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
      */
-    readonly forceStatus?: pulumi.Input<boolean>;
+    forceStatus?: pulumi.Input<boolean>;
 }

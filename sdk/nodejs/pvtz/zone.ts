@@ -131,44 +131,44 @@ export interface ZoneState {
     /**
      * Whether the Private Zone is ptr.
      */
-    readonly isPtr?: pulumi.Input<boolean>;
+    isPtr?: pulumi.Input<boolean>;
     /**
      * The language. Valid values: "zh", "en", "jp".
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * The name of the Private Zone.
      *
      * @deprecated Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
      * Default to "ZONE".
      */
-    readonly proxyPattern?: pulumi.Input<string>;
+    proxyPattern?: pulumi.Input<string>;
     /**
      * The count of the Private Zone Record.
      */
-    readonly recordCount?: pulumi.Input<number>;
+    recordCount?: pulumi.Input<number>;
     /**
      * The remark of the Private Zone.
      */
-    readonly remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string>;
     /**
      * The Id of resource group which the Private Zone belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The IP address of the client.
      */
-    readonly userClientIp?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string>;
     /**
      * The zoneName of the Private Zone.
      */
-    readonly zoneName?: pulumi.Input<string>;
+    zoneName?: pulumi.Input<string>;
 }
 
 /**
@@ -178,34 +178,34 @@ export interface ZoneArgs {
     /**
      * The language. Valid values: "zh", "en", "jp".
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * The name of the Private Zone.
      *
      * @deprecated Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
      * Default to "ZONE".
      */
-    readonly proxyPattern?: pulumi.Input<string>;
+    proxyPattern?: pulumi.Input<string>;
     /**
      * The remark of the Private Zone.
      */
-    readonly remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string>;
     /**
      * The Id of resource group which the Private Zone belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The IP address of the client.
      */
-    readonly userClientIp?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string>;
     /**
      * The zoneName of the Private Zone.
      */
-    readonly zoneName?: pulumi.Input<string>;
+    zoneName?: pulumi.Input<string>;
 }

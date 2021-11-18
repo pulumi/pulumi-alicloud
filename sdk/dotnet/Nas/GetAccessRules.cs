@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Nas
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public static Task<GetAccessRulesResult> InvokeAsync(GetAccessRulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides AccessRule available to the user.
+        /// 
+        /// &gt; **NOTE**: Available in 1.35.0+
+        /// </summary>
+        public static Output<GetAccessRulesResult> Invoke(GetAccessRulesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -63,6 +72,52 @@ namespace Pulumi.AliCloud.Nas
         public string? UserAccess { get; set; }
 
         public GetAccessRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccessRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Filter results by a specific AccessGroupName.
+        /// </summary>
+        [Input("accessGroupName", required: true)]
+        public Input<string> AccessGroupName { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of rule IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific RWAccess.
+        /// </summary>
+        [Input("rwAccess")]
+        public Input<string>? RwAccess { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific SourceCidrIp.
+        /// </summary>
+        [Input("sourceCidrIp")]
+        public Input<string>? SourceCidrIp { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific UserAccess.
+        /// </summary>
+        [Input("userAccess")]
+        public Input<string>? UserAccess { get; set; }
+
+        public GetAccessRulesInvokeArgs()
         {
         }
     }

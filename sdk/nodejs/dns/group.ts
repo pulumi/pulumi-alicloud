@@ -69,7 +69,7 @@ export interface GroupState {
     /**
      * Name of the domain group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -79,5 +79,5 @@ export interface GroupArgs {
     /**
      * Name of the domain group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

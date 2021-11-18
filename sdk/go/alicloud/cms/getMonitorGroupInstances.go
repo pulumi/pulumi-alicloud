@@ -4,6 +4,9 @@
 package cms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,4 +34,64 @@ type LookupMonitorGroupInstancesResult struct {
 	Instances  []GetMonitorGroupInstancesInstance `pulumi:"instances"`
 	Keyword    *string                            `pulumi:"keyword"`
 	OutputFile *string                            `pulumi:"outputFile"`
+}
+
+func LookupMonitorGroupInstancesOutput(ctx *pulumi.Context, args LookupMonitorGroupInstancesOutputArgs, opts ...pulumi.InvokeOption) LookupMonitorGroupInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupMonitorGroupInstancesResult, error) {
+			args := v.(LookupMonitorGroupInstancesArgs)
+			r, err := LookupMonitorGroupInstances(ctx, &args, opts...)
+			return *r, err
+		}).(LookupMonitorGroupInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getMonitorGroupInstances.
+type LookupMonitorGroupInstancesOutputArgs struct {
+	Ids        pulumi.StringInput    `pulumi:"ids"`
+	Keyword    pulumi.StringPtrInput `pulumi:"keyword"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (LookupMonitorGroupInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMonitorGroupInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMonitorGroupInstances.
+type LookupMonitorGroupInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (LookupMonitorGroupInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMonitorGroupInstancesResult)(nil)).Elem()
+}
+
+func (o LookupMonitorGroupInstancesResultOutput) ToLookupMonitorGroupInstancesResultOutput() LookupMonitorGroupInstancesResultOutput {
+	return o
+}
+
+func (o LookupMonitorGroupInstancesResultOutput) ToLookupMonitorGroupInstancesResultOutputWithContext(ctx context.Context) LookupMonitorGroupInstancesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupMonitorGroupInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMonitorGroupInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupMonitorGroupInstancesResultOutput) Ids() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMonitorGroupInstancesResult) string { return v.Ids }).(pulumi.StringOutput)
+}
+
+func (o LookupMonitorGroupInstancesResultOutput) Instances() GetMonitorGroupInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v LookupMonitorGroupInstancesResult) []GetMonitorGroupInstancesInstance { return v.Instances }).(GetMonitorGroupInstancesInstanceArrayOutput)
+}
+
+func (o LookupMonitorGroupInstancesResultOutput) Keyword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMonitorGroupInstancesResult) *string { return v.Keyword }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupMonitorGroupInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMonitorGroupInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupMonitorGroupInstancesResultOutput{})
 }

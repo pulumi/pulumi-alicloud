@@ -13,6 +13,7 @@ __all__ = [
     'GetRolesResult',
     'AwaitableGetRolesResult',
     'get_roles',
+    'get_roles_output',
 ]
 
 @pulumi.output_type
@@ -164,3 +165,35 @@ def get_roles(ids: Optional[Sequence[str]] = None,
         policy_name=__ret__.policy_name,
         policy_type=__ret__.policy_type,
         roles=__ret__.roles)
+
+
+@_utilities.lift_output_func(get_roles)
+def get_roles_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     policy_name: Optional[pulumi.Input[Optional[str]]] = None,
+                     policy_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:
+    """
+    This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    roles_ds = alicloud.ram.get_roles(name_regex=".*test.*",
+        output_file="roles.txt",
+        policy_name="AliyunACSDefaultAccess",
+        policy_type="Custom")
+    pulumi.export("firstRoleId", roles_ds.roles[0].id)
+    ```
+
+
+    :param Sequence[str] ids: - A list of ram role IDs.
+    :param str name_regex: A regex string to filter results by the role name.
+    :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+    :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+    """
+    ...

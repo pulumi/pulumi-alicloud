@@ -13,6 +13,7 @@ __all__ = [
     'GetDispatchRulesResult',
     'AwaitableGetDispatchRulesResult',
     'get_dispatch_rules',
+    'get_dispatch_rules_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,38 @@ def get_dispatch_rules(dispatch_rule_name: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         rules=__ret__.rules)
+
+
+@_utilities.lift_output_func(get_dispatch_rules)
+def get_dispatch_rules_output(dispatch_rule_name: Optional[pulumi.Input[Optional[str]]] = None,
+                              enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDispatchRulesResult]:
+    """
+    This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.136.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.arms.get_dispatch_rules()
+    pulumi.export("armsDispatchRuleId1", ids.rules[0].id)
+    name_regex = alicloud.arms.get_dispatch_rules(name_regex="^my-DispatchRule")
+    pulumi.export("armsDispatchRuleId2", name_regex.rules[0].id)
+    ```
+
+
+    :param str dispatch_rule_name: The name of the dispatch rule.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of dispatch rule id.
+    :param str name_regex: A regex string to filter results by Dispatch Rule name.
+    """
+    ...

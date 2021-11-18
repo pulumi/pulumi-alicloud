@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ess
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
     ///             VswitchName = name,
     ///         });
     ///         var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new AliCloud.Ess.ScalingGroupArgs
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Ess
     ///                 var defaultRegions = values.Item1;
     ///                 var defaultAccount = values.Item2;
     ///                 var name = values.Item3;
-    ///                 return $"acs:ess:{defaultRegions.Regions[0].Id}:{defaultAccount.Id}:queue/{name}";
+    ///                 return $"acs:ess:{defaultRegions.Regions?[0]?.Id}:{defaultAccount.Id}:queue/{name}";
     ///             }),
     ///         });
     ///     }

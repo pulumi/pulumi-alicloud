@@ -13,6 +13,7 @@ __all__ = [
     'GetSecretVersionsResult',
     'AwaitableGetSecretVersionsResult',
     'get_secret_versions',
+    'get_secret_versions_output',
 ]
 
 @pulumi.output_type
@@ -167,3 +168,37 @@ def get_secret_versions(enable_details: Optional[bool] = None,
         secret_name=__ret__.secret_name,
         version_stage=__ret__.version_stage,
         versions=__ret__.versions)
+
+
+@_utilities.lift_output_func(get_secret_versions)
+def get_secret_versions_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               include_deprecated: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               secret_name: Optional[pulumi.Input[str]] = None,
+                               version_stage: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionsResult]:
+    """
+    This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in v1.88.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    kms_secret_versions_ds = alicloud.kms.get_secret_versions(enable_details=True,
+        secret_name="secret_name")
+    pulumi.export("firstSecretData", kms_secret_versions_ds.versions[0].secret_data)
+    ```
+
+
+    :param bool enable_details: Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
+    :param Sequence[str] ids: A list of KMS Secret Version ids.
+    :param str include_deprecated: Specifies whether to return deprecated secret versions. Default to `false`.
+    :param str secret_name: The name of the secret.
+    :param str version_stage: The stage of the secret version.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetHandshakesResult',
     'AwaitableGetHandshakesResult',
     'get_handshakes',
+    'get_handshakes_output',
 ]
 
 @pulumi.output_type
@@ -140,3 +141,32 @@ def get_handshakes(enable_details: Optional[bool] = None,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_handshakes)
+def get_handshakes_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                          status: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHandshakesResult]:
+    """
+    This data source provides the Resource Manager Handshakes of the current Alibaba Cloud user.
+
+    > **NOTE:**  Available in 1.86.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_handshakes()
+    pulumi.export("firstHandshakeId", example.handshakes[0].id)
+    ```
+
+
+    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+    :param Sequence[str] ids: A list of Resource Manager Handshake IDs.
+    :param str status: The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
+    """
+    ...

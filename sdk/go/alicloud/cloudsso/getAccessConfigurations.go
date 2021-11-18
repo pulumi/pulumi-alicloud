@@ -4,6 +4,9 @@
 package cloudsso
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,82 @@ type GetAccessConfigurationsResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetAccessConfigurationsOutput(ctx *pulumi.Context, args GetAccessConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetAccessConfigurationsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAccessConfigurationsResult, error) {
+			args := v.(GetAccessConfigurationsArgs)
+			r, err := GetAccessConfigurations(ctx, &args, opts...)
+			return *r, err
+		}).(GetAccessConfigurationsResultOutput)
+}
+
+// A collection of arguments for invoking getAccessConfigurations.
+type GetAccessConfigurationsOutputArgs struct {
+	// The ID of the Directory.
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Access Configuration IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Access Configuration name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetAccessConfigurationsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessConfigurationsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccessConfigurations.
+type GetAccessConfigurationsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccessConfigurationsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessConfigurationsResult)(nil)).Elem()
+}
+
+func (o GetAccessConfigurationsResultOutput) ToGetAccessConfigurationsResultOutput() GetAccessConfigurationsResultOutput {
+	return o
+}
+
+func (o GetAccessConfigurationsResultOutput) ToGetAccessConfigurationsResultOutputWithContext(ctx context.Context) GetAccessConfigurationsResultOutput {
+	return o
+}
+
+func (o GetAccessConfigurationsResultOutput) Configurations() GetAccessConfigurationsConfigurationArrayOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsResult) []GetAccessConfigurationsConfiguration { return v.Configurations }).(GetAccessConfigurationsConfigurationArrayOutput)
+}
+
+func (o GetAccessConfigurationsResultOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsResult) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+func (o GetAccessConfigurationsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccessConfigurationsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAccessConfigurationsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAccessConfigurationsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccessConfigurationsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAccessConfigurationsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessConfigurationsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccessConfigurationsResultOutput{})
 }

@@ -4,6 +4,9 @@
 package cassandra
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,80 @@ type GetClustersResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...pulumi.InvokeOption) GetClustersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetClustersResult, error) {
+			args := v.(GetClustersArgs)
+			r, err := GetClusters(ctx, &args, opts...)
+			return *r, err
+		}).(GetClustersResultOutput)
+}
+
+// A collection of arguments for invoking getClusters.
+type GetClustersOutputArgs struct {
+	// The list of Cassandra cluster ids.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to apply to the cluster name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetClustersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getClusters.
+type GetClustersResultOutput struct{ *pulumi.OutputState }
+
+func (GetClustersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersResult)(nil)).Elem()
+}
+
+func (o GetClustersResultOutput) ToGetClustersResultOutput() GetClustersResultOutput {
+	return o
+}
+
+func (o GetClustersResultOutput) ToGetClustersResultOutputWithContext(ctx context.Context) GetClustersResultOutput {
+	return o
+}
+
+// A list of Cassandra clusters. Its every element contains the following attributes:
+func (o GetClustersResultOutput) Clusters() GetClustersClusterArrayOutput {
+	return o.ApplyT(func(v GetClustersResult) []GetClustersCluster { return v.Clusters }).(GetClustersClusterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetClustersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of Cassandra cluster ids.
+func (o GetClustersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClustersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClustersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// The name list of Cassandra clusters.
+func (o GetClustersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClustersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClustersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetClustersResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClustersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetClustersResultOutput{})
 }

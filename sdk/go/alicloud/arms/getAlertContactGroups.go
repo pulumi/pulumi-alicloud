@@ -4,6 +4,9 @@
 package arms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,88 @@ type GetAlertContactGroupsResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetAlertContactGroupsOutput(ctx *pulumi.Context, args GetAlertContactGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAlertContactGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAlertContactGroupsResult, error) {
+			args := v.(GetAlertContactGroupsArgs)
+			r, err := GetAlertContactGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetAlertContactGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getAlertContactGroups.
+type GetAlertContactGroupsOutputArgs struct {
+	// The name of the resource.
+	AlertContactGroupName pulumi.StringPtrInput `pulumi:"alertContactGroupName"`
+	// The contact id.
+	ContactId pulumi.StringPtrInput `pulumi:"contactId"`
+	// The contact name.
+	ContactName pulumi.StringPtrInput `pulumi:"contactName"`
+	// A list of Alert Contact Group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Alert Contact Group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetAlertContactGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertContactGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAlertContactGroups.
+type GetAlertContactGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAlertContactGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertContactGroupsResult)(nil)).Elem()
+}
+
+func (o GetAlertContactGroupsResultOutput) ToGetAlertContactGroupsResultOutput() GetAlertContactGroupsResultOutput {
+	return o
+}
+
+func (o GetAlertContactGroupsResultOutput) ToGetAlertContactGroupsResultOutputWithContext(ctx context.Context) GetAlertContactGroupsResultOutput {
+	return o
+}
+
+func (o GetAlertContactGroupsResultOutput) AlertContactGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsResult) *string { return v.AlertContactGroupName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlertContactGroupsResultOutput) ContactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsResult) *string { return v.ContactId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlertContactGroupsResultOutput) ContactName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsResult) *string { return v.ContactName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlertContactGroupsResultOutput) Groups() GetAlertContactGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsResult) []GetAlertContactGroupsGroup { return v.Groups }).(GetAlertContactGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAlertContactGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAlertContactGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlertContactGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlertContactGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlertContactGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlertContactGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAlertContactGroupsResultOutput{})
 }

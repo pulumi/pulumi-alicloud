@@ -144,28 +144,28 @@ export class AccessKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessKey resources.
  */
 export interface AccessKeyState {
-    readonly encryptedSecret?: pulumi.Input<string>;
+    encryptedSecret?: pulumi.Input<string>;
     /**
      * The fingerprint of the PGP key used to encrypt the secret
      */
-    readonly keyFingerprint?: pulumi.Input<string>;
+    keyFingerprint?: pulumi.Input<string>;
     /**
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
      */
-    readonly pgpKey?: pulumi.Input<string>;
-    readonly secret?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
      */
-    readonly secretFile?: pulumi.Input<string>;
+    secretFile?: pulumi.Input<string>;
     /**
      * Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 /**
@@ -175,17 +175,17 @@ export interface AccessKeyArgs {
     /**
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
      */
-    readonly pgpKey?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string>;
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
      */
-    readonly secretFile?: pulumi.Input<string>;
+    secretFile?: pulumi.Input<string>;
     /**
      * Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-name",
  * });
- * export const hbrEcsBackupPlanId = ids.then(ids => ids.plans[0].id);
+ * export const hbrEcsBackupPlanId = ids.then(ids => ids.plans?[0]?.id);
  * ```
  */
 export function getEcsBackupPlans(args?: GetEcsBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsBackupPlansResult> {
@@ -49,20 +49,20 @@ export interface GetEcsBackupPlansArgs {
     /**
      * A list of EcsBackupPlan IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The ID of ECS instance.
      */
-    readonly instanceId?: string;
+    instanceId?: string;
     /**
      * A regex string to filter results by EcsBackupPlan name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of Backup vault.
      */
-    readonly vaultId?: string;
+    vaultId?: string;
 }
 
 /**
@@ -80,4 +80,31 @@ export interface GetEcsBackupPlansResult {
     readonly outputFile?: string;
     readonly plans: outputs.hbr.GetEcsBackupPlansPlan[];
     readonly vaultId?: string;
+}
+
+export function getEcsBackupPlansOutput(args?: GetEcsBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsBackupPlansResult> {
+    return pulumi.output(args).apply(a => getEcsBackupPlans(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEcsBackupPlans.
+ */
+export interface GetEcsBackupPlansOutputArgs {
+    /**
+     * A list of EcsBackupPlan IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of ECS instance.
+     */
+    instanceId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by EcsBackupPlan name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of Backup vault.
+     */
+    vaultId?: pulumi.Input<string>;
 }

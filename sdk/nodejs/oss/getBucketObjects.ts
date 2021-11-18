@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const bucketObjectsDs = pulumi.output(alicloud.oss.getBucketObjects({
  *     bucketName: "sample_bucket",
  *     keyRegex: "sample/sample_object.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstObjectKey = bucketObjectsDs.objects[0].key;
  * ```
@@ -45,16 +45,16 @@ export interface GetBucketObjectsArgs {
     /**
      * Name of the bucket that contains the objects to find.
      */
-    readonly bucketName: string;
+    bucketName: string;
     /**
      * Filter results by the given key prefix (such as "path/to/folder/logs-").
      */
-    readonly keyPrefix?: string;
+    keyPrefix?: string;
     /**
      * A regex string to filter results by key.
      */
-    readonly keyRegex?: string;
-    readonly outputFile?: string;
+    keyRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -73,4 +73,27 @@ export interface GetBucketObjectsResult {
      */
     readonly objects: outputs.oss.GetBucketObjectsObject[];
     readonly outputFile?: string;
+}
+
+export function getBucketObjectsOutput(args: GetBucketObjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectsResult> {
+    return pulumi.output(args).apply(a => getBucketObjects(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBucketObjects.
+ */
+export interface GetBucketObjectsOutputArgs {
+    /**
+     * Name of the bucket that contains the objects to find.
+     */
+    bucketName: pulumi.Input<string>;
+    /**
+     * Filter results by the given key prefix (such as "path/to/folder/logs-").
+     */
+    keyPrefix?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by key.
+     */
+    keyRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package oos
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,4 +109,139 @@ type GetTemplatesResult struct {
 	TemplateType   *string                `pulumi:"templateType"`
 	// A list of OOS Templates. Each element contains the following attributes:
 	Templates []GetTemplatesTemplate `pulumi:"templates"`
+}
+
+func GetTemplatesOutput(ctx *pulumi.Context, args GetTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetTemplatesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTemplatesResult, error) {
+			args := v.(GetTemplatesArgs)
+			r, err := GetTemplates(ctx, &args, opts...)
+			return *r, err
+		}).(GetTemplatesResultOutput)
+}
+
+// A collection of arguments for invoking getTemplates.
+type GetTemplatesOutputArgs struct {
+	// The category of template.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// The creator of the template.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
+	CreatedDate pulumi.StringPtrInput `pulumi:"createdDate"`
+	// Create a template whose time is greater than or equal to the specified time. The format is: YYYY-MM-DDThh:mm:ssZ.
+	CreatedDateAfter pulumi.StringPtrInput `pulumi:"createdDateAfter"`
+	// Is it triggered successfully.
+	HasTrigger pulumi.BoolPtrInput `pulumi:"hasTrigger"`
+	// A list of OOS Template ids. Each element in the list is same as template_name.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter the results by the template_name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The sharing type of the template. Valid values: `Private`, `Public`.
+	ShareType pulumi.StringPtrInput `pulumi:"shareType"`
+	// Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.
+	SortField pulumi.StringPtrInput `pulumi:"sortField"`
+	// Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`
+	SortOrder pulumi.StringPtrInput `pulumi:"sortOrder"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The format of the template. Valid values: `JSON`, `YAML`.
+	TemplateFormat pulumi.StringPtrInput `pulumi:"templateFormat"`
+	// The type of OOS Template.
+	TemplateType pulumi.StringPtrInput `pulumi:"templateType"`
+}
+
+func (GetTemplatesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplatesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTemplates.
+type GetTemplatesResultOutput struct{ *pulumi.OutputState }
+
+func (GetTemplatesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplatesResult)(nil)).Elem()
+}
+
+func (o GetTemplatesResultOutput) ToGetTemplatesResultOutput() GetTemplatesResultOutput {
+	return o
+}
+
+func (o GetTemplatesResultOutput) ToGetTemplatesResultOutputWithContext(ctx context.Context) GetTemplatesResultOutput {
+	return o
+}
+
+func (o GetTemplatesResultOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTemplatesResultOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTemplatesResultOutput) CreatedDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *string { return v.CreatedDate }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTemplatesResultOutput) CreatedDateAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *string { return v.CreatedDateAfter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTemplatesResultOutput) HasTrigger() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *bool { return v.HasTrigger }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTemplatesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplatesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of OOS Template ids. Each element in the list is same as template_name.
+func (o GetTemplatesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTemplatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTemplatesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// (Available in v1.114.0+) A list of OOS Template names.
+func (o GetTemplatesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTemplatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTemplatesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTemplatesResultOutput) ShareType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *string { return v.ShareType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTemplatesResultOutput) SortField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *string { return v.SortField }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTemplatesResultOutput) SortOrder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *string { return v.SortOrder }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTemplatesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetTemplatesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetTemplatesResultOutput) TemplateFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *string { return v.TemplateFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTemplatesResultOutput) TemplateType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTemplatesResult) *string { return v.TemplateType }).(pulumi.StringPtrOutput)
+}
+
+// A list of OOS Templates. Each element contains the following attributes:
+func (o GetTemplatesResultOutput) Templates() GetTemplatesTemplateArrayOutput {
+	return o.ApplyT(func(v GetTemplatesResult) []GetTemplatesTemplate { return v.Templates }).(GetTemplatesTemplateArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTemplatesResultOutput{})
 }

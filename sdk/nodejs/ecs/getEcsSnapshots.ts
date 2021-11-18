@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["s-bp1fvuxxxxxxxx"],
  *     nameRegex: "tf-test",
  * });
- * export const firstEcsSnapshotId = example.then(example => example.snapshots[0].id);
+ * export const firstEcsSnapshotId = example.then(example => example.snapshots?[0]?.id);
  * ```
  */
 export function getEcsSnapshots(args?: GetEcsSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsSnapshotsResult> {
@@ -61,61 +61,61 @@ export interface GetEcsSnapshotsArgs {
     /**
      * The category of the snapshot.
      */
-    readonly category?: string;
+    category?: string;
     /**
      * Specifies whether to check the validity of the request without actually making the request.
      */
-    readonly dryRun?: boolean;
+    dryRun?: boolean;
     /**
      * Whether the snapshot is encrypted.
      */
-    readonly encrypted?: boolean;
+    encrypted?: boolean;
     /**
      * A list of Snapshot IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The kms key id.
      */
-    readonly kmsKeyId?: string;
+    kmsKeyId?: string;
     /**
      * A regex string to filter results by Snapshot name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The resource group id.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The snapshot link id.
      */
-    readonly snapshotLinkId?: string;
+    snapshotLinkId?: string;
     /**
      * Snapshot Display Name.
      */
-    readonly snapshotName?: string;
+    snapshotName?: string;
     /**
      * Snapshot creation type.
      */
-    readonly snapshotType?: string;
+    snapshotType?: string;
     /**
      * Source disk attributes.
      */
-    readonly sourceDiskType?: string;
+    sourceDiskType?: string;
     /**
      * The status of the snapshot.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The tags.
      */
-    readonly tags?: {[key: string]: any};
-    readonly type?: string;
+    tags?: {[key: string]: any};
+    type?: string;
     /**
      * A resource type that has a reference relationship.
      */
-    readonly usage?: string;
+    usage?: string;
 }
 
 /**
@@ -144,4 +144,72 @@ export interface GetEcsSnapshotsResult {
     readonly tags?: {[key: string]: any};
     readonly type?: string;
     readonly usage?: string;
+}
+
+export function getEcsSnapshotsOutput(args?: GetEcsSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsSnapshotsResult> {
+    return pulumi.output(args).apply(a => getEcsSnapshots(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEcsSnapshots.
+ */
+export interface GetEcsSnapshotsOutputArgs {
+    /**
+     * The category of the snapshot.
+     */
+    category?: pulumi.Input<string>;
+    /**
+     * Specifies whether to check the validity of the request without actually making the request.
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * Whether the snapshot is encrypted.
+     */
+    encrypted?: pulumi.Input<boolean>;
+    /**
+     * A list of Snapshot IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The kms key id.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Snapshot name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The resource group id.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The snapshot link id.
+     */
+    snapshotLinkId?: pulumi.Input<string>;
+    /**
+     * Snapshot Display Name.
+     */
+    snapshotName?: pulumi.Input<string>;
+    /**
+     * Snapshot creation type.
+     */
+    snapshotType?: pulumi.Input<string>;
+    /**
+     * Source disk attributes.
+     */
+    sourceDiskType?: pulumi.Input<string>;
+    /**
+     * The status of the snapshot.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tags.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    type?: pulumi.Input<string>;
+    /**
+     * A resource type that has a reference relationship.
+     */
+    usage?: pulumi.Input<string>;
 }

@@ -37,28 +37,28 @@ export interface GetImageCachesArgs {
     /**
      * A list ids of ECI Image Cache.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Find the mirror cache containing it according to the image name.
      */
-    readonly image?: string;
+    image?: string;
     /**
      * The name of ECI Image Cache.
      */
-    readonly imageCacheName?: string;
+    imageCacheName?: string;
     /**
      * A regex string to filter results by the image cache name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The id of snapshot.
      */
-    readonly snapshotId?: string;
+    snapshotId?: string;
     /**
      * The status of ECI Image Cache.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -96,4 +96,39 @@ export interface GetImageCachesResult {
      * The status of ECI Image Cache.
      */
     readonly status?: string;
+}
+
+export function getImageCachesOutput(args?: GetImageCachesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageCachesResult> {
+    return pulumi.output(args).apply(a => getImageCaches(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getImageCaches.
+ */
+export interface GetImageCachesOutputArgs {
+    /**
+     * A list ids of ECI Image Cache.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Find the mirror cache containing it according to the image name.
+     */
+    image?: pulumi.Input<string>;
+    /**
+     * The name of ECI Image Cache.
+     */
+    imageCacheName?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by the image cache name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The id of snapshot.
+     */
+    snapshotId?: pulumi.Input<string>;
+    /**
+     * The status of ECI Image Cache.
+     */
+    status?: pulumi.Input<string>;
 }

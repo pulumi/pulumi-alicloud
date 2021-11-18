@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Rdc
 {
@@ -63,6 +64,59 @@ namespace Pulumi.AliCloud.Rdc
         /// </summary>
         public static Task<GetOrganizationsResult> InvokeAsync(GetOrganizationsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationsResult>("alicloud:rdc/getOrganizations:getOrganizations", args ?? new GetOrganizationsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Rdc Organizations of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "tf-testAccOrganizations-Organizations";
+        ///         var @default = new AliCloud.Rdc.Organization("default", new AliCloud.Rdc.OrganizationArgs
+        ///         {
+        ///             OrganizationName = name,
+        ///             Source = name,
+        ///         });
+        ///         var ids = @default.Id.Apply(id =&gt; AliCloud.Rdc.GetOrganizations.InvokeAsync(new AliCloud.Rdc.GetOrganizationsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 id,
+        ///             },
+        ///         }));
+        ///         this.RdcOrganizationId1 = ids.Apply(ids =&gt; ids.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Rdc.GetOrganizations.InvokeAsync(new AliCloud.Rdc.GetOrganizationsArgs
+        ///         {
+        ///             NameRegex = "^my-Organization",
+        ///         }));
+        ///         this.RdcOrganizationId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Id);
+        ///     }
+        /// 
+        ///     [Output("rdcOrganizationId1")]
+        ///     public Output&lt;string&gt; RdcOrganizationId1 { get; set; }
+        ///     [Output("rdcOrganizationId2")]
+        ///     public Output&lt;string&gt; RdcOrganizationId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetOrganizationsResult> Invoke(GetOrganizationsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationsResult>("alicloud:rdc/getOrganizations:getOrganizations", args ?? new GetOrganizationsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -96,6 +150,40 @@ namespace Pulumi.AliCloud.Rdc
         public string? RealPk { get; set; }
 
         public GetOrganizationsArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Organization IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Organization name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
+        /// </summary>
+        [Input("realPk")]
+        public Input<string>? RealPk { get; set; }
+
+        public GetOrganizationsInvokeArgs()
         {
         }
     }

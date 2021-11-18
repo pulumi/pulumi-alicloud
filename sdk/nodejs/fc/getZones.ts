@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Declare the data source
- * const zonesIds = pulumi.output(alicloud.fc.getZones({ async: true }));
+ * const zonesIds = pulumi.output(alicloud.fc.getZones());
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -38,7 +38,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -58,4 +58,15 @@ export interface GetZonesResult {
      * A list of availability zones. Each element contains the following attributes:
      */
     readonly zones: outputs.fc.GetZonesZone[];
+}
+
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply(a => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    outputFile?: pulumi.Input<string>;
 }

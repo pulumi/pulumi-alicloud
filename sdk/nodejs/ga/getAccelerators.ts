@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstGaAcceleratorId = example.then(example => example.accelerators[0].id);
+ * export const firstGaAcceleratorId = example.then(example => example.accelerators?[0]?.id);
  * ```
  */
 export function getAccelerators(args?: GetAcceleratorsArgs, opts?: pulumi.InvokeOptions): Promise<GetAcceleratorsResult> {
@@ -49,16 +49,16 @@ export interface GetAcceleratorsArgs {
     /**
      * A list of Accelerator IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Accelerator name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the GA instance.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -75,4 +75,27 @@ export interface GetAcceleratorsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getAcceleratorsOutput(args?: GetAcceleratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAcceleratorsResult> {
+    return pulumi.output(args).apply(a => getAccelerators(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccelerators.
+ */
+export interface GetAcceleratorsOutputArgs {
+    /**
+     * A list of Accelerator IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Accelerator name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the GA instance.
+     */
+    status?: pulumi.Input<string>;
 }

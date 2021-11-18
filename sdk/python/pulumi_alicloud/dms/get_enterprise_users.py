@@ -13,6 +13,7 @@ __all__ = [
     'GetEnterpriseUsersResult',
     'AwaitableGetEnterpriseUsersResult',
     'get_enterprise_users',
+    'get_enterprise_users_output',
 ]
 
 @pulumi.output_type
@@ -194,3 +195,40 @@ def get_enterprise_users(ids: Optional[Sequence[str]] = None,
         status=__ret__.status,
         tid=__ret__.tid,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_enterprise_users)
+def get_enterprise_users_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                role: Optional[pulumi.Input[Optional[str]]] = None,
+                                search_key: Optional[pulumi.Input[Optional[str]]] = None,
+                                status: Optional[pulumi.Input[Optional[str]]] = None,
+                                tid: Optional[pulumi.Input[Optional[int]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnterpriseUsersResult]:
+    """
+    This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.90.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    dms_enterprise_users_ds = alicloud.dms.get_enterprise_users(ids=["uid"],
+        role="USER",
+        status="NORMAL")
+    pulumi.export("firstUserId", dms_enterprise_users_ds.users[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of DMS Enterprise User IDs (UID).
+    :param str name_regex: A regex string to filter the results by the DMS Enterprise User nick_name.
+    :param str role: The role of the user to query.
+    :param str search_key: The keyword used to query users.
+    :param str status: The status of the user.
+    :param int tid: The ID of the tenant in DMS Enterprise.
+    """
+    ...

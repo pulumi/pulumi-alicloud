@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
+ * }));
  * const fooNetwork = new alicloud.vpc.Network("foo", {
  *     cidrBlock: "172.16.0.0/12",
  *     vpcName: name,
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     ids: [fooNatGatewayId],
  *     nameRegex: name,
  *     vpcId: fooNetworkId,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getNatGateways(args?: GetNatGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetNatGatewaysResult> {
@@ -71,52 +71,52 @@ export interface GetNatGatewaysArgs {
     /**
      * Specifies whether to only precheck the request.
      */
-    readonly dryRun?: boolean;
+    dryRun?: boolean;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of NAT gateways IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter nat gateways by name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The name of NAT gateway.
      */
-    readonly natGatewayName?: string;
+    natGatewayName?: string;
     /**
      * The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
      */
-    readonly natType?: string;
-    readonly outputFile?: string;
+    natType?: string;
+    outputFile?: string;
     /**
      * The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
      */
-    readonly paymentType?: string;
+    paymentType?: string;
     /**
      * The resource group id of NAT gateway.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
      */
-    readonly specification?: string;
+    specification?: string;
     /**
      * The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The tags of NAT gateway.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * The ID of the VPC.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
 }
 
 /**
@@ -175,4 +175,63 @@ export interface GetNatGatewaysResult {
      * The ID of the VPC.
      */
     readonly vpcId?: string;
+}
+
+export function getNatGatewaysOutput(args?: GetNatGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatGatewaysResult> {
+    return pulumi.output(args).apply(a => getNatGateways(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNatGateways.
+ */
+export interface GetNatGatewaysOutputArgs {
+    /**
+     * Specifies whether to only precheck the request.
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of NAT gateways IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter nat gateways by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The name of NAT gateway.
+     */
+    natGatewayName?: pulumi.Input<string>;
+    /**
+     * The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
+     */
+    natType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * The resource group id of NAT gateway.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+     */
+    specification?: pulumi.Input<string>;
+    /**
+     * The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tags of NAT gateway.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The ID of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
 }

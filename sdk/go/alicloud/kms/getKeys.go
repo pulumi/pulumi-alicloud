@@ -4,6 +4,9 @@
 package kms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,85 @@ type GetKeysResult struct {
 	OutputFile *string      `pulumi:"outputFile"`
 	// Status of the key. Possible values: `Enabled`, `Disabled` and `PendingDeletion`.
 	Status *string `pulumi:"status"`
+}
+
+func GetKeysOutput(ctx *pulumi.Context, args GetKeysOutputArgs, opts ...pulumi.InvokeOption) GetKeysResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetKeysResult, error) {
+			args := v.(GetKeysArgs)
+			r, err := GetKeys(ctx, &args, opts...)
+			return *r, err
+		}).(GetKeysResultOutput)
+}
+
+// A collection of arguments for invoking getKeys.
+type GetKeysOutputArgs struct {
+	// A regex string to filter the results by the KMS key description.
+	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
+	EnableDetails    pulumi.BoolPtrInput   `pulumi:"enableDetails"`
+	Filters          pulumi.StringPtrInput `pulumi:"filters"`
+	// A list of KMS key IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetKeysOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKeys.
+type GetKeysResultOutput struct{ *pulumi.OutputState }
+
+func (GetKeysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysResult)(nil)).Elem()
+}
+
+func (o GetKeysResultOutput) ToGetKeysResultOutput() GetKeysResultOutput {
+	return o
+}
+
+func (o GetKeysResultOutput) ToGetKeysResultOutputWithContext(ctx context.Context) GetKeysResultOutput {
+	return o
+}
+
+func (o GetKeysResultOutput) DescriptionRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysResult) *string { return v.DescriptionRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKeysResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKeysResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetKeysResultOutput) Filters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysResult) *string { return v.Filters }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetKeysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of KMS key IDs.
+func (o GetKeysResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKeysResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// A list of KMS keys. Each element contains the following attributes:
+func (o GetKeysResultOutput) Keys() GetKeysKeyArrayOutput {
+	return o.ApplyT(func(v GetKeysResult) []GetKeysKey { return v.Keys }).(GetKeysKeyArrayOutput)
+}
+
+func (o GetKeysResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// Status of the key. Possible values: `Enabled`, `Disabled` and `PendingDeletion`.
+func (o GetKeysResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetKeysResultOutput{})
 }

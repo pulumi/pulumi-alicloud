@@ -25,10 +25,10 @@ export function getStorageBundles(args: GetStorageBundlesArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getStorageBundles.
  */
 export interface GetStorageBundlesArgs {
-    readonly backendBucketRegionId: string;
-    readonly ids?: string[];
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    backendBucketRegionId: string;
+    ids?: string[];
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -45,4 +45,18 @@ export interface GetStorageBundlesResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getStorageBundlesOutput(args: GetStorageBundlesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageBundlesResult> {
+    return pulumi.output(args).apply(a => getStorageBundles(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStorageBundles.
+ */
+export interface GetStorageBundlesOutputArgs {
+    backendBucketRegionId: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

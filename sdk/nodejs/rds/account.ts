@@ -141,44 +141,44 @@ export class Account extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Account resources.
  */
 export interface AccountState {
-    readonly accountDescription?: pulumi.Input<string>;
-    readonly accountName?: pulumi.Input<string>;
-    readonly accountPassword?: pulumi.Input<string>;
-    readonly accountType?: pulumi.Input<string>;
-    readonly dbInstanceId?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      *
      * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Id of instance in which account belongs.
      *
      * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
-    readonly password?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
@@ -186,50 +186,50 @@ export interface AccountState {
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Account resource.
  */
 export interface AccountArgs {
-    readonly accountDescription?: pulumi.Input<string>;
-    readonly accountName?: pulumi.Input<string>;
-    readonly accountPassword?: pulumi.Input<string>;
-    readonly accountType?: pulumi.Input<string>;
-    readonly dbInstanceId?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      *
      * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Id of instance in which account belongs.
      *
      * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
@@ -237,5 +237,5 @@ export interface AccountArgs {
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

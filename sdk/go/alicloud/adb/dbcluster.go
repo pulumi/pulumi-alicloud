@@ -44,7 +44,7 @@ import (
 // 			creation = param
 // 		}
 // 		opt0 := creation
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -77,9 +77,9 @@ import (
 // 			VswitchId:         defaultSwitch.ID(),
 // 			Description:       pulumi.String("Test new adb again."),
 // 			MaintainTime:      pulumi.String("23:00Z-00:00Z"),
-// 			Tags: pulumi.StringMap{
-// 				"Created": pulumi.String("TF-update"),
-// 				"For":     pulumi.String("acceptance-test-update"),
+// 			Tags: pulumi.AnyMap{
+// 				"Created": pulumi.Any("TF-update"),
+// 				"For":     pulumi.Any("acceptance-test-update"),
 // 			},
 // 			ResourceGroupId: pulumi.String("rg-aek2s7ylxx6****"),
 // 			SecurityIps: pulumi.StringArray{
@@ -471,7 +471,7 @@ type DBClusterArrayInput interface {
 type DBClusterArray []DBClusterInput
 
 func (DBClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DBCluster)(nil))
+	return reflect.TypeOf((*[]*DBCluster)(nil)).Elem()
 }
 
 func (i DBClusterArray) ToDBClusterArrayOutput() DBClusterArrayOutput {
@@ -496,7 +496,7 @@ type DBClusterMapInput interface {
 type DBClusterMap map[string]DBClusterInput
 
 func (DBClusterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DBCluster)(nil))
+	return reflect.TypeOf((*map[string]*DBCluster)(nil)).Elem()
 }
 
 func (i DBClusterMap) ToDBClusterMapOutput() DBClusterMapOutput {
@@ -507,9 +507,7 @@ func (i DBClusterMap) ToDBClusterMapOutputWithContext(ctx context.Context) DBClu
 	return pulumi.ToOutputWithContext(ctx, i).(DBClusterMapOutput)
 }
 
-type DBClusterOutput struct {
-	*pulumi.OutputState
-}
+type DBClusterOutput struct{ *pulumi.OutputState }
 
 func (DBClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DBCluster)(nil))
@@ -528,14 +526,12 @@ func (o DBClusterOutput) ToDBClusterPtrOutput() DBClusterPtrOutput {
 }
 
 func (o DBClusterOutput) ToDBClusterPtrOutputWithContext(ctx context.Context) DBClusterPtrOutput {
-	return o.ApplyT(func(v DBCluster) *DBCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DBCluster) *DBCluster {
 		return &v
 	}).(DBClusterPtrOutput)
 }
 
-type DBClusterPtrOutput struct {
-	*pulumi.OutputState
-}
+type DBClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (DBClusterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DBCluster)(nil))
@@ -547,6 +543,16 @@ func (o DBClusterPtrOutput) ToDBClusterPtrOutput() DBClusterPtrOutput {
 
 func (o DBClusterPtrOutput) ToDBClusterPtrOutputWithContext(ctx context.Context) DBClusterPtrOutput {
 	return o
+}
+
+func (o DBClusterPtrOutput) Elem() DBClusterOutput {
+	return o.ApplyT(func(v *DBCluster) DBCluster {
+		if v != nil {
+			return *v
+		}
+		var ret DBCluster
+		return ret
+	}).(DBClusterOutput)
 }
 
 type DBClusterArrayOutput struct{ *pulumi.OutputState }
@@ -590,6 +596,10 @@ func (o DBClusterMapOutput) MapIndex(k pulumi.StringInput) DBClusterOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DBClusterInput)(nil)).Elem(), &DBCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DBClusterPtrInput)(nil)).Elem(), &DBCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DBClusterArrayInput)(nil)).Elem(), DBClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DBClusterMapInput)(nil)).Elem(), DBClusterMap{})
 	pulumi.RegisterOutputType(DBClusterOutput{})
 	pulumi.RegisterOutputType(DBClusterPtrOutput{})
 	pulumi.RegisterOutputType(DBClusterArrayOutput{})

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const defaultProduct = pulumi.output(alicloud.marketplace.getProduct({
  *     productCode: "cmapi022206",
- * }, { async: true }));
+ * }));
  *
  * export const productName = defaultProduct.products[0].name;
  * export const firstProductSkuCode = defaultProduct.products[0].skuses[0].skuCode;
@@ -46,11 +46,11 @@ export interface GetProductArgs {
     /**
      * A available region id used to filter market place Ecs images.
      */
-    readonly availableRegion?: string;
+    availableRegion?: string;
     /**
      * The product code of the market product.
      */
-    readonly productCode: string;
+    productCode: string;
 }
 
 /**
@@ -67,4 +67,22 @@ export interface GetProductResult {
      * A product. It contains the following attributes:
      */
     readonly products: outputs.marketplace.GetProductProduct[];
+}
+
+export function getProductOutput(args: GetProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductResult> {
+    return pulumi.output(args).apply(a => getProduct(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProduct.
+ */
+export interface GetProductOutputArgs {
+    /**
+     * A available region id used to filter market place Ecs images.
+     */
+    availableRegion?: pulumi.Input<string>;
+    /**
+     * The product code of the market product.
+     */
+    productCode: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package emr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,4 +81,90 @@ type GetDiskTypesResult struct {
 	// A list of emr instance types. Each element contains the following attributes:
 	Types  []GetDiskTypesType `pulumi:"types"`
 	ZoneId *string            `pulumi:"zoneId"`
+}
+
+func GetDiskTypesOutput(ctx *pulumi.Context, args GetDiskTypesOutputArgs, opts ...pulumi.InvokeOption) GetDiskTypesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDiskTypesResult, error) {
+			args := v.(GetDiskTypesArgs)
+			r, err := GetDiskTypes(ctx, &args, opts...)
+			return *r, err
+		}).(GetDiskTypesResultOutput)
+}
+
+// A collection of arguments for invoking getDiskTypes.
+type GetDiskTypesOutputArgs struct {
+	// The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
+	ClusterType pulumi.StringInput `pulumi:"clusterType"`
+	// The destination resource of emr cluster instance
+	DestinationResource pulumi.StringInput `pulumi:"destinationResource"`
+	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
+	// The ecs instance type of create emr cluster instance.
+	InstanceType pulumi.StringInput    `pulumi:"instanceType"`
+	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Zone to create emr cluster instance.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (GetDiskTypesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskTypesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDiskTypes.
+type GetDiskTypesResultOutput struct{ *pulumi.OutputState }
+
+func (GetDiskTypesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskTypesResult)(nil)).Elem()
+}
+
+func (o GetDiskTypesResultOutput) ToGetDiskTypesResultOutput() GetDiskTypesResultOutput {
+	return o
+}
+
+func (o GetDiskTypesResultOutput) ToGetDiskTypesResultOutputWithContext(ctx context.Context) GetDiskTypesResultOutput {
+	return o
+}
+
+func (o GetDiskTypesResultOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskTypesResult) string { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+func (o GetDiskTypesResultOutput) DestinationResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskTypesResult) string { return v.DestinationResource }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDiskTypesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskTypesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of data disk and system disk type IDs.
+func (o GetDiskTypesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDiskTypesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDiskTypesResultOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskTypesResult) string { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+func (o GetDiskTypesResultOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskTypesResult) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+func (o GetDiskTypesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDiskTypesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of emr instance types. Each element contains the following attributes:
+func (o GetDiskTypesResultOutput) Types() GetDiskTypesTypeArrayOutput {
+	return o.ApplyT(func(v GetDiskTypesResult) []GetDiskTypesType { return v.Types }).(GetDiskTypesTypeArrayOutput)
+}
+
+func (o GetDiskTypesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDiskTypesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDiskTypesResultOutput{})
 }

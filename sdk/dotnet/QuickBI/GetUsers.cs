@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.QuickBI
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.QuickBI
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.QuickBiUserId1 = ids.Apply(ids =&gt; ids.Users[0].Id);
+        ///         this.QuickBiUserId1 = ids.Apply(ids =&gt; ids.Users?[0]?.Id);
         ///     }
         /// 
         ///     [Output("quickBiUserId1")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.QuickBI
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:quickbi/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Quick BI Users of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.QuickBI.GetUsers.InvokeAsync(new AliCloud.QuickBI.GetUsersArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.QuickBiUserId1 = ids.Apply(ids =&gt; ids.Users?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("quickBiUserId1")]
+        ///     public Output&lt;string&gt; QuickBiUserId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:quickbi/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -82,6 +122,40 @@ namespace Pulumi.AliCloud.QuickBI
         public string? OutputFile { get; set; }
 
         public GetUsersArgs()
+        {
+        }
+    }
+
+    public sealed class GetUsersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of User IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The keywords of the nicknames or usernames of the members of the organization.
+        /// </summary>
+        [Input("keyword")]
+        public Input<string>? Keyword { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetUsersInvokeArgs()
         {
         }
     }

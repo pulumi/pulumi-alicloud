@@ -449,6 +449,12 @@ func (o GetIndustrialPidProjectsProjectArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIndustrialPidLoopsLoopInput)(nil)).Elem(), GetIndustrialPidLoopsLoopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIndustrialPidLoopsLoopArrayInput)(nil)).Elem(), GetIndustrialPidLoopsLoopArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIndustrialPidOrganizationsOrganizationInput)(nil)).Elem(), GetIndustrialPidOrganizationsOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIndustrialPidOrganizationsOrganizationArrayInput)(nil)).Elem(), GetIndustrialPidOrganizationsOrganizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIndustrialPidProjectsProjectInput)(nil)).Elem(), GetIndustrialPidProjectsProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIndustrialPidProjectsProjectArrayInput)(nil)).Elem(), GetIndustrialPidProjectsProjectArray{})
 	pulumi.RegisterOutputType(GetIndustrialPidLoopsLoopOutput{})
 	pulumi.RegisterOutputType(GetIndustrialPidLoopsLoopArrayOutput{})
 	pulumi.RegisterOutputType(GetIndustrialPidOrganizationsOrganizationOutput{})

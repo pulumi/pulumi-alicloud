@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.KVStore
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public static Task<GetConnectionsResult> InvokeAsync(GetConnectionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:kvstore/getConnections:getConnections", args ?? new GetConnectionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source can query the public IP of the specified KVStore DBInstance.
+        ///  
+        /// &gt; **NOTE:** Available in v1.101.0+.
+        /// </summary>
+        public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("alicloud:kvstore/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -33,6 +42,22 @@ namespace Pulumi.AliCloud.KVStore
         public string? OutputFile { get; set; }
 
         public GetConnectionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetConnectionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A list of KVStore DBInstance ids, only support one item.
+        /// </summary>
+        [Input("ids", required: true)]
+        public Input<string> Ids { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetConnectionsInvokeArgs()
         {
         }
     }

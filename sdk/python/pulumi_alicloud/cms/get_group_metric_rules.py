@@ -13,6 +13,7 @@ __all__ = [
     'GetGroupMetricRulesResult',
     'AwaitableGetGroupMetricRulesResult',
     'get_group_metric_rules',
+    'get_group_metric_rules_output',
 ]
 
 @pulumi.output_type
@@ -222,3 +223,47 @@ def get_group_metric_rules(dimensions: Optional[str] = None,
         output_file=__ret__.output_file,
         rules=__ret__.rules,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_group_metric_rules)
+def get_group_metric_rules_output(dimensions: Optional[pulumi.Input[Optional[str]]] = None,
+                                  enable_state: Optional[pulumi.Input[Optional[bool]]] = None,
+                                  group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  group_metric_rule_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                  metric_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                  namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                  status: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupMetricRulesResult]:
+    """
+    This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.104.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cms.get_group_metric_rules(ids=["4a9a8978-a9cc-55ca-aa7c-530ccd91ae57"],
+        name_regex="the_resource_name")
+    pulumi.export("firstCmsGroupMetricRuleId", example.rules[0].id)
+    ```
+
+
+    :param str dimensions: The dimensions that specify the resources to be associated with the alert rule.
+    :param bool enable_state: Indicates whether the alert rule is enabled.
+    :param str group_id: The ID of the application group.
+    :param str group_metric_rule_name: The name of the alert rule.
+    :param Sequence[str] ids: A list of Group Metric Rule IDs.
+    :param str metric_name: The name of the metric.
+    :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str namespace: The namespace of the service.
+    :param str status: The status of Group Metric Rule..
+    """
+    ...

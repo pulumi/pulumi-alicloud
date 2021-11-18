@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Gpdb
 {
@@ -35,7 +36,7 @@ namespace Pulumi.AliCloud.Gpdb
         ///             NameRegex = "gp-.+\\d+",
         ///             OutputFile = "instances.txt",
         ///         }));
-        ///         this.InstanceId = gpdb.Apply(gpdb =&gt; gpdb.Instances[0].Id);
+        ///         this.InstanceId = gpdb.Apply(gpdb =&gt; gpdb.Instances?[0]?.Id);
         ///     }
         /// 
         ///     [Output("instanceId")]
@@ -47,6 +48,43 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:gpdb/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `alicloud.gpdb.getInstances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
+        /// Filters support regular expression for the instance name or availability_zone.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.47.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var gpdb = Output.Create(AliCloud.Gpdb.GetInstances.InvokeAsync(new AliCloud.Gpdb.GetInstancesArgs
+        ///         {
+        ///             AvailabilityZone = "cn-beijing-c",
+        ///             NameRegex = "gp-.+\\d+",
+        ///             OutputFile = "instances.txt",
+        ///         }));
+        ///         this.InstanceId = gpdb.Apply(gpdb =&gt; gpdb.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("instanceId")]
+        ///     public Output&lt;string&gt; InstanceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:gpdb/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -98,6 +136,58 @@ namespace Pulumi.AliCloud.Gpdb
         public string? VswitchId { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Instance availability zone.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of instance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to apply to the instance name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

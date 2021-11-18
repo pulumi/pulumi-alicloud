@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ga
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Ga
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstGaListenerId = example.Apply(example =&gt; example.Listeners[0].Id);
+        ///         this.FirstGaListenerId = example.Apply(example =&gt; example.Listeners?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstGaListenerId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Task<GetListenersResult> InvokeAsync(GetListenersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:ga/getListeners:getListeners", args ?? new GetListenersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ga.GetListeners.InvokeAsync(new AliCloud.Ga.GetListenersArgs
+        ///         {
+        ///             AcceleratorId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstGaListenerId = example.Apply(example =&gt; example.Listeners?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstGaListenerId")]
+        ///     public Output&lt;string&gt; FirstGaListenerId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetListenersResult> Invoke(GetListenersInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetListenersResult>("alicloud:ga/getListeners:getListeners", args ?? new GetListenersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -90,6 +132,46 @@ namespace Pulumi.AliCloud.Ga
         public string? Status { get; set; }
 
         public GetListenersArgs()
+        {
+        }
+    }
+
+    public sealed class GetListenersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The accelerator id.
+        /// </summary>
+        [Input("acceleratorId", required: true)]
+        public Input<string> AcceleratorId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Listener IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Listener name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the listener.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetListenersInvokeArgs()
         {
         }
     }

@@ -173,47 +173,47 @@ export interface AlidnsRecordState {
     /**
      * Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * User language.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value.
      */
-    readonly line?: pulumi.Input<string>;
+    line?: pulumi.Input<string>;
     /**
      * The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The remark of the domain record.
      */
-    readonly remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string>;
     /**
      * Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
      */
-    readonly rr?: pulumi.Input<string>;
+    rr?: pulumi.Input<string>;
     /**
      * The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The IP address of the client.
      */
-    readonly userClientIp?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string>;
     /**
      * The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -223,45 +223,45 @@ export interface AlidnsRecordArgs {
     /**
      * Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * User language.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value.
      */
-    readonly line?: pulumi.Input<string>;
+    line?: pulumi.Input<string>;
     /**
      * The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The remark of the domain record.
      */
-    readonly remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string>;
     /**
      * Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
      */
-    readonly rr: pulumi.Input<string>;
+    rr: pulumi.Input<string>;
     /**
      * The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * The IP address of the client.
      */
-    readonly userClientIp?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string>;
     /**
      * The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }

@@ -35,18 +35,18 @@ export interface GetInstancesArgs {
     /**
      * A regex string to filter results by instance description.
      */
-    readonly descriptionRegex?: string;
+    descriptionRegex?: string;
     /**
      * A list of DRDS instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.
      *
      * @deprecated Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -75,4 +75,29 @@ export interface GetInstancesResult {
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * A regex string to filter results by instance description.
+     */
+    descriptionRegex?: pulumi.Input<string>;
+    /**
+     * A list of DRDS instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.
+     *
+     * @deprecated Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

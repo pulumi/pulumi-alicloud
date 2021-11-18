@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.PrivateLink
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.PrivateLink
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstPrivatelinkVpcEndpointId = example.Apply(example =&gt; example.Endpoints[0].Id);
+        ///         this.FirstPrivatelinkVpcEndpointId = example.Apply(example =&gt; example.Endpoints?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstPrivatelinkVpcEndpointId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         public static Task<GetVpcEndpointsResult> InvokeAsync(GetVpcEndpointsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointsResult>("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", args ?? new GetVpcEndpointsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.109.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.PrivateLink.GetVpcEndpoints.InvokeAsync(new AliCloud.PrivateLink.GetVpcEndpointsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstPrivatelinkVpcEndpointId = example.Apply(example =&gt; example.Endpoints?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstPrivatelinkVpcEndpointId")]
+        ///     public Output&lt;string&gt; FirstPrivatelinkVpcEndpointId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetVpcEndpointsResult> Invoke(GetVpcEndpointsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVpcEndpointsResult>("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", args ?? new GetVpcEndpointsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -113,6 +154,70 @@ namespace Pulumi.AliCloud.PrivateLink
         public string? VpcId { get; set; }
 
         public GetVpcEndpointsArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcEndpointsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The status of Connection.
+        /// </summary>
+        [Input("connectionStatus")]
+        public Input<string>? ConnectionStatus { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Vpc Endpoint IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Vpc Endpoint name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The name of the terminal node service associated with the terminal node.
+        /// </summary>
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
+
+        /// <summary>
+        /// The status of Vpc Endpoint.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The name of Vpc Endpoint.
+        /// </summary>
+        [Input("vpcEndpointName")]
+        public Input<string>? VpcEndpointName { get; set; }
+
+        /// <summary>
+        /// The private network to which the terminal node belongs.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetVpcEndpointsInvokeArgs()
         {
         }
     }

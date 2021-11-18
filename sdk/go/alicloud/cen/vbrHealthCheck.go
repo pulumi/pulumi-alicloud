@@ -281,7 +281,7 @@ type VbrHealthCheckArrayInput interface {
 type VbrHealthCheckArray []VbrHealthCheckInput
 
 func (VbrHealthCheckArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VbrHealthCheck)(nil))
+	return reflect.TypeOf((*[]*VbrHealthCheck)(nil)).Elem()
 }
 
 func (i VbrHealthCheckArray) ToVbrHealthCheckArrayOutput() VbrHealthCheckArrayOutput {
@@ -306,7 +306,7 @@ type VbrHealthCheckMapInput interface {
 type VbrHealthCheckMap map[string]VbrHealthCheckInput
 
 func (VbrHealthCheckMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VbrHealthCheck)(nil))
+	return reflect.TypeOf((*map[string]*VbrHealthCheck)(nil)).Elem()
 }
 
 func (i VbrHealthCheckMap) ToVbrHealthCheckMapOutput() VbrHealthCheckMapOutput {
@@ -317,9 +317,7 @@ func (i VbrHealthCheckMap) ToVbrHealthCheckMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(VbrHealthCheckMapOutput)
 }
 
-type VbrHealthCheckOutput struct {
-	*pulumi.OutputState
-}
+type VbrHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (VbrHealthCheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VbrHealthCheck)(nil))
@@ -338,14 +336,12 @@ func (o VbrHealthCheckOutput) ToVbrHealthCheckPtrOutput() VbrHealthCheckPtrOutpu
 }
 
 func (o VbrHealthCheckOutput) ToVbrHealthCheckPtrOutputWithContext(ctx context.Context) VbrHealthCheckPtrOutput {
-	return o.ApplyT(func(v VbrHealthCheck) *VbrHealthCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VbrHealthCheck) *VbrHealthCheck {
 		return &v
 	}).(VbrHealthCheckPtrOutput)
 }
 
-type VbrHealthCheckPtrOutput struct {
-	*pulumi.OutputState
-}
+type VbrHealthCheckPtrOutput struct{ *pulumi.OutputState }
 
 func (VbrHealthCheckPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VbrHealthCheck)(nil))
@@ -357,6 +353,16 @@ func (o VbrHealthCheckPtrOutput) ToVbrHealthCheckPtrOutput() VbrHealthCheckPtrOu
 
 func (o VbrHealthCheckPtrOutput) ToVbrHealthCheckPtrOutputWithContext(ctx context.Context) VbrHealthCheckPtrOutput {
 	return o
+}
+
+func (o VbrHealthCheckPtrOutput) Elem() VbrHealthCheckOutput {
+	return o.ApplyT(func(v *VbrHealthCheck) VbrHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret VbrHealthCheck
+		return ret
+	}).(VbrHealthCheckOutput)
 }
 
 type VbrHealthCheckArrayOutput struct{ *pulumi.OutputState }
@@ -400,6 +406,10 @@ func (o VbrHealthCheckMapOutput) MapIndex(k pulumi.StringInput) VbrHealthCheckOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VbrHealthCheckInput)(nil)).Elem(), &VbrHealthCheck{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VbrHealthCheckPtrInput)(nil)).Elem(), &VbrHealthCheck{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VbrHealthCheckArrayInput)(nil)).Elem(), VbrHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VbrHealthCheckMapInput)(nil)).Elem(), VbrHealthCheckMap{})
 	pulumi.RegisterOutputType(VbrHealthCheckOutput{})
 	pulumi.RegisterOutputType(VbrHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(VbrHealthCheckArrayOutput{})

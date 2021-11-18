@@ -17,6 +17,47 @@ import (
 //
 // > **NOTE:** Available in v1.123.0+.
 //
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ddos.NewDomainResource(ctx, "example", &ddos.DomainResourceArgs{
+// 			Domain:   pulumi.String("tftestacc1234.abc"),
+// 			HttpsExt: pulumi.String("{\"Http2\":1,\"Http2https\":0，\"Https2http\":0}"),
+// 			InstanceIds: pulumi.StringArray{
+// 				pulumi.String("ddoscoo-cn-6ja1rl4j****"),
+// 			},
+// 			ProxyTypes: ddos.DomainResourceProxyTypeArray{
+// 				&ddos.DomainResourceProxyTypeArgs{
+// 					ProxyPorts: pulumi.IntArray{
+// 						pulumi.Int(443),
+// 					},
+// 					ProxyType: pulumi.String("https"),
+// 				},
+// 			},
+// 			RealServers: pulumi.StringArray{
+// 				pulumi.String("177.167.32.11"),
+// 			},
+// 			RsType: pulumi.Int(0),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Anti-DDoS Pro Domain Resource can be imported using the id, e.g.
@@ -230,7 +271,7 @@ type DomainResourceArrayInput interface {
 type DomainResourceArray []DomainResourceInput
 
 func (DomainResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DomainResource)(nil))
+	return reflect.TypeOf((*[]*DomainResource)(nil)).Elem()
 }
 
 func (i DomainResourceArray) ToDomainResourceArrayOutput() DomainResourceArrayOutput {
@@ -255,7 +296,7 @@ type DomainResourceMapInput interface {
 type DomainResourceMap map[string]DomainResourceInput
 
 func (DomainResourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DomainResource)(nil))
+	return reflect.TypeOf((*map[string]*DomainResource)(nil)).Elem()
 }
 
 func (i DomainResourceMap) ToDomainResourceMapOutput() DomainResourceMapOutput {
@@ -266,9 +307,7 @@ func (i DomainResourceMap) ToDomainResourceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DomainResourceMapOutput)
 }
 
-type DomainResourceOutput struct {
-	*pulumi.OutputState
-}
+type DomainResourceOutput struct{ *pulumi.OutputState }
 
 func (DomainResourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainResource)(nil))
@@ -287,14 +326,12 @@ func (o DomainResourceOutput) ToDomainResourcePtrOutput() DomainResourcePtrOutpu
 }
 
 func (o DomainResourceOutput) ToDomainResourcePtrOutputWithContext(ctx context.Context) DomainResourcePtrOutput {
-	return o.ApplyT(func(v DomainResource) *DomainResource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainResource) *DomainResource {
 		return &v
 	}).(DomainResourcePtrOutput)
 }
 
-type DomainResourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type DomainResourcePtrOutput struct{ *pulumi.OutputState }
 
 func (DomainResourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainResource)(nil))
@@ -306,6 +343,16 @@ func (o DomainResourcePtrOutput) ToDomainResourcePtrOutput() DomainResourcePtrOu
 
 func (o DomainResourcePtrOutput) ToDomainResourcePtrOutputWithContext(ctx context.Context) DomainResourcePtrOutput {
 	return o
+}
+
+func (o DomainResourcePtrOutput) Elem() DomainResourceOutput {
+	return o.ApplyT(func(v *DomainResource) DomainResource {
+		if v != nil {
+			return *v
+		}
+		var ret DomainResource
+		return ret
+	}).(DomainResourceOutput)
 }
 
 type DomainResourceArrayOutput struct{ *pulumi.OutputState }
@@ -349,6 +396,10 @@ func (o DomainResourceMapOutput) MapIndex(k pulumi.StringInput) DomainResourceOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceInput)(nil)).Elem(), &DomainResource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourcePtrInput)(nil)).Elem(), &DomainResource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceArrayInput)(nil)).Elem(), DomainResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceMapInput)(nil)).Elem(), DomainResourceMap{})
 	pulumi.RegisterOutputType(DomainResourceOutput{})
 	pulumi.RegisterOutputType(DomainResourcePtrOutput{})
 	pulumi.RegisterOutputType(DomainResourceArrayOutput{})

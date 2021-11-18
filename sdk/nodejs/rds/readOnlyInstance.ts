@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
@@ -332,73 +332,73 @@ export interface ReadOnlyInstanceState {
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
      */
-    readonly caType?: pulumi.Input<string>;
+    caType?: pulumi.Input<string>;
     /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      */
-    readonly clientCaCert?: pulumi.Input<string>;
+    clientCaCert?: pulumi.Input<string>;
     /**
      * Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `sslEnabled  = 1`. Valid values:
      * - 1: enables the public key
      * - 0: disables the public key
      */
-    readonly clientCaEnabled?: pulumi.Input<number>;
+    clientCaEnabled?: pulumi.Input<number>;
     /**
      * The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      */
-    readonly clientCertRevocationList?: pulumi.Input<string>;
+    clientCertRevocationList?: pulumi.Input<string>;
     /**
      * Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
      * - 1: enables the CRL
      * - 0: disables the CRL
      */
-    readonly clientCrlEnabled?: pulumi.Input<number>;
+    clientCrlEnabled?: pulumi.Input<number>;
     /**
      * RDS database connection string.
      */
-    readonly connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string>;
     /**
      * Database type.
      */
-    readonly engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
-    readonly engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
-    readonly forceRestart?: pulumi.Input<boolean>;
+    forceRestart?: pulumi.Input<boolean>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      */
-    readonly instanceStorage?: pulumi.Input<number>;
+    instanceStorage?: pulumi.Input<number>;
     /**
      * DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * ID of the master instance.
      */
-    readonly masterDbInstanceId?: pulumi.Input<string>;
+    masterDbInstanceId?: pulumi.Input<string>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.ReadOnlyInstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.rds.ReadOnlyInstanceParameter>[]>;
     /**
      * RDS database connection port.
      */
-    readonly port?: pulumi.Input<string>;
+    port?: pulumi.Input<string>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
      * - cert
@@ -407,35 +407,35 @@ export interface ReadOnlyInstanceState {
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      * > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
-    readonly replicationAcl?: pulumi.Input<string>;
+    replicationAcl?: pulumi.Input<string>;
     /**
      * The ID of resource group which the DB read-only instance belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      */
-    readonly serverCert?: pulumi.Input<string>;
+    serverCert?: pulumi.Input<string>;
     /**
      * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      */
-    readonly serverKey?: pulumi.Input<string>;
+    serverKey?: pulumi.Input<string>;
     /**
      * Specifies whether to enable or disable SSL encryption. Valid values:
      * - 1: enables SSL encryption
      * - 0: disables SSL encryption
      */
-    readonly sslEnabled?: pulumi.Input<number>;
+    sslEnabled?: pulumi.Input<number>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      */
-    readonly switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -445,28 +445,28 @@ export interface ReadOnlyInstanceState {
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      */
-    readonly targetMinorVersion?: pulumi.Input<string>;
+    targetMinorVersion?: pulumi.Input<string>;
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
      */
-    readonly upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
+    upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
     /**
      * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
      */
-    readonly upgradeTime?: pulumi.Input<string>;
+    upgradeTime?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -480,61 +480,61 @@ export interface ReadOnlyInstanceArgs {
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
      */
-    readonly caType?: pulumi.Input<string>;
+    caType?: pulumi.Input<string>;
     /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      */
-    readonly clientCaCert?: pulumi.Input<string>;
+    clientCaCert?: pulumi.Input<string>;
     /**
      * Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `sslEnabled  = 1`. Valid values:
      * - 1: enables the public key
      * - 0: disables the public key
      */
-    readonly clientCaEnabled?: pulumi.Input<number>;
+    clientCaEnabled?: pulumi.Input<number>;
     /**
      * The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      */
-    readonly clientCertRevocationList?: pulumi.Input<string>;
+    clientCertRevocationList?: pulumi.Input<string>;
     /**
      * Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
      * - 1: enables the CRL
      * - 0: disables the CRL
      */
-    readonly clientCrlEnabled?: pulumi.Input<number>;
+    clientCrlEnabled?: pulumi.Input<number>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
-    readonly engineVersion: pulumi.Input<string>;
+    engineVersion: pulumi.Input<string>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
-    readonly forceRestart?: pulumi.Input<boolean>;
+    forceRestart?: pulumi.Input<boolean>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      */
-    readonly instanceStorage: pulumi.Input<number>;
+    instanceStorage: pulumi.Input<number>;
     /**
      * DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      */
-    readonly instanceType: pulumi.Input<string>;
+    instanceType: pulumi.Input<string>;
     /**
      * ID of the master instance.
      */
-    readonly masterDbInstanceId: pulumi.Input<string>;
+    masterDbInstanceId: pulumi.Input<string>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.ReadOnlyInstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.rds.ReadOnlyInstanceParameter>[]>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
      * - cert
@@ -543,35 +543,35 @@ export interface ReadOnlyInstanceArgs {
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      * > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
-    readonly replicationAcl?: pulumi.Input<string>;
+    replicationAcl?: pulumi.Input<string>;
     /**
      * The ID of resource group which the DB read-only instance belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      */
-    readonly serverCert?: pulumi.Input<string>;
+    serverCert?: pulumi.Input<string>;
     /**
      * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      */
-    readonly serverKey?: pulumi.Input<string>;
+    serverKey?: pulumi.Input<string>;
     /**
      * Specifies whether to enable or disable SSL encryption. Valid values:
      * - 1: enables SSL encryption
      * - 0: disables SSL encryption
      */
-    readonly sslEnabled?: pulumi.Input<number>;
+    sslEnabled?: pulumi.Input<number>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      */
-    readonly switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -581,26 +581,26 @@ export interface ReadOnlyInstanceArgs {
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      */
-    readonly targetMinorVersion?: pulumi.Input<string>;
+    targetMinorVersion?: pulumi.Input<string>;
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
      */
-    readonly upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
+    upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
     /**
      * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
      */
-    readonly upgradeTime?: pulumi.Input<string>;
+    upgradeTime?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

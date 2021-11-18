@@ -41,7 +41,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -323,7 +323,7 @@ type IngressArrayInput interface {
 type IngressArray []IngressInput
 
 func (IngressArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Ingress)(nil))
+	return reflect.TypeOf((*[]*Ingress)(nil)).Elem()
 }
 
 func (i IngressArray) ToIngressArrayOutput() IngressArrayOutput {
@@ -348,7 +348,7 @@ type IngressMapInput interface {
 type IngressMap map[string]IngressInput
 
 func (IngressMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Ingress)(nil))
+	return reflect.TypeOf((*map[string]*Ingress)(nil)).Elem()
 }
 
 func (i IngressMap) ToIngressMapOutput() IngressMapOutput {
@@ -359,9 +359,7 @@ func (i IngressMap) ToIngressMapOutputWithContext(ctx context.Context) IngressMa
 	return pulumi.ToOutputWithContext(ctx, i).(IngressMapOutput)
 }
 
-type IngressOutput struct {
-	*pulumi.OutputState
-}
+type IngressOutput struct{ *pulumi.OutputState }
 
 func (IngressOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Ingress)(nil))
@@ -380,14 +378,12 @@ func (o IngressOutput) ToIngressPtrOutput() IngressPtrOutput {
 }
 
 func (o IngressOutput) ToIngressPtrOutputWithContext(ctx context.Context) IngressPtrOutput {
-	return o.ApplyT(func(v Ingress) *Ingress {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Ingress) *Ingress {
 		return &v
 	}).(IngressPtrOutput)
 }
 
-type IngressPtrOutput struct {
-	*pulumi.OutputState
-}
+type IngressPtrOutput struct{ *pulumi.OutputState }
 
 func (IngressPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Ingress)(nil))
@@ -399,6 +395,16 @@ func (o IngressPtrOutput) ToIngressPtrOutput() IngressPtrOutput {
 
 func (o IngressPtrOutput) ToIngressPtrOutputWithContext(ctx context.Context) IngressPtrOutput {
 	return o
+}
+
+func (o IngressPtrOutput) Elem() IngressOutput {
+	return o.ApplyT(func(v *Ingress) Ingress {
+		if v != nil {
+			return *v
+		}
+		var ret Ingress
+		return ret
+	}).(IngressOutput)
 }
 
 type IngressArrayOutput struct{ *pulumi.OutputState }
@@ -442,6 +448,10 @@ func (o IngressMapOutput) MapIndex(k pulumi.StringInput) IngressOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressInput)(nil)).Elem(), &Ingress{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressPtrInput)(nil)).Elem(), &Ingress{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressArrayInput)(nil)).Elem(), IngressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressMapInput)(nil)).Elem(), IngressMap{})
 	pulumi.RegisterOutputType(IngressOutput{})
 	pulumi.RegisterOutputType(IngressPtrOutput{})
 	pulumi.RegisterOutputType(IngressArrayOutput{})

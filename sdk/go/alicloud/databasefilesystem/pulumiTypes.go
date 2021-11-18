@@ -446,6 +446,12 @@ func (o GetInstancesInstanceEcsListArrayOutput) Index(i pulumi.IntInput) GetInst
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEcsListInput)(nil)).Elem(), InstanceEcsListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEcsListArrayInput)(nil)).Elem(), InstanceEcsListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceEcsListInput)(nil)).Elem(), GetInstancesInstanceEcsListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceEcsListArrayInput)(nil)).Elem(), GetInstancesInstanceEcsListArray{})
 	pulumi.RegisterOutputType(InstanceEcsListOutput{})
 	pulumi.RegisterOutputType(InstanceEcsListArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})

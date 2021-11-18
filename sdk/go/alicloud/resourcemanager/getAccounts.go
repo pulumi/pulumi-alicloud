@@ -4,6 +4,9 @@
 package resourcemanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,75 @@ type GetAccountsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// The status of the member account.
 	Status *string `pulumi:"status"`
+}
+
+func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAccountsResult, error) {
+			args := v.(GetAccountsArgs)
+			r, err := GetAccounts(ctx, &args, opts...)
+			return *r, err
+		}).(GetAccountsResultOutput)
+}
+
+// A collection of arguments for invoking getAccounts.
+type GetAccountsOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of account IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetAccountsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccounts.
+type GetAccountsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsResult)(nil)).Elem()
+}
+
+func (o GetAccountsResultOutput) ToGetAccountsResultOutput() GetAccountsResultOutput {
+	return o
+}
+
+func (o GetAccountsResultOutput) ToGetAccountsResultOutputWithContext(ctx context.Context) GetAccountsResultOutput {
+	return o
+}
+
+// A list of accounts. Each element contains the following attributes:
+func (o GetAccountsResultOutput) Accounts() GetAccountsAccountArrayOutput {
+	return o.ApplyT(func(v GetAccountsResult) []GetAccountsAccount { return v.Accounts }).(GetAccountsAccountArrayOutput)
+}
+
+func (o GetAccountsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAccountsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccountsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of account IDs.
+func (o GetAccountsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccountsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAccountsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The status of the member account.
+func (o GetAccountsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccountsResultOutput{})
 }

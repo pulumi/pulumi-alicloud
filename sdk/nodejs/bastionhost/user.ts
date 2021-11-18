@@ -207,23 +207,23 @@ export interface UserState {
     /**
      * Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
      */
-    readonly comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
      * Specify the New Created the User's Display Name. Supports up to 128 Characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Specify the New User's Mailbox.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * You Want to Query the User the Bastion Host ID of.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Specify the New of the User That Created a Different Mobile Phone Number from Your.
      */
-    readonly mobile?: pulumi.Input<string>;
+    mobile?: pulumi.Input<string>;
     /**
      * Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN. Valid Values:
      * * CN: Mainland China (+86)
@@ -246,33 +246,33 @@ export interface UserState {
      * * CH: Switzerland (+41)
      * * SE: Sweden (+46)
      */
-    readonly mobileCountryCode?: pulumi.Input<string>;
+    mobileCountryCode?: pulumi.Input<string>;
     /**
      * Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Specify the New of the User That Created the Source. Valid Values: 
      * * Local: Local User
      * * RAM: Ram User
      */
-    readonly source?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
     /**
      * Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
      */
-    readonly sourceUserId?: pulumi.Input<string>;
+    sourceUserId?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Frozen`, `Normal`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The User ID.
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
     /**
      * Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 /**
@@ -282,23 +282,23 @@ export interface UserArgs {
     /**
      * Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
      */
-    readonly comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
      * Specify the New Created the User's Display Name. Supports up to 128 Characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Specify the New User's Mailbox.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * You Want to Query the User the Bastion Host ID of.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Specify the New of the User That Created a Different Mobile Phone Number from Your.
      */
-    readonly mobile?: pulumi.Input<string>;
+    mobile?: pulumi.Input<string>;
     /**
      * Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN. Valid Values:
      * * CN: Mainland China (+86)
@@ -321,27 +321,27 @@ export interface UserArgs {
      * * CH: Switzerland (+41)
      * * SE: Sweden (+46)
      */
-    readonly mobileCountryCode?: pulumi.Input<string>;
+    mobileCountryCode?: pulumi.Input<string>;
     /**
      * Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Specify the New of the User That Created the Source. Valid Values: 
      * * Local: Local User
      * * RAM: Ram User
      */
-    readonly source: pulumi.Input<string>;
+    source: pulumi.Input<string>;
     /**
      * Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
      */
-    readonly sourceUserId?: pulumi.Input<string>;
+    sourceUserId?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Frozen`, `Normal`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
      */
-    readonly userName: pulumi.Input<string>;
+    userName: pulumi.Input<string>;
 }

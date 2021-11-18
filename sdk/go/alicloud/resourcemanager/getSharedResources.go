@@ -4,6 +4,9 @@
 package resourcemanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,72 @@ type GetSharedResourcesResult struct {
 	ResourceShareId *string                      `pulumi:"resourceShareId"`
 	Resources       []GetSharedResourcesResource `pulumi:"resources"`
 	Status          *string                      `pulumi:"status"`
+}
+
+func GetSharedResourcesOutput(ctx *pulumi.Context, args GetSharedResourcesOutputArgs, opts ...pulumi.InvokeOption) GetSharedResourcesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSharedResourcesResult, error) {
+			args := v.(GetSharedResourcesArgs)
+			r, err := GetSharedResources(ctx, &args, opts...)
+			return *r, err
+		}).(GetSharedResourcesResultOutput)
+}
+
+// A collection of arguments for invoking getSharedResources.
+type GetSharedResourcesOutputArgs struct {
+	// A list of shared resource ID.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The resource share ID of resource manager.
+	ResourceShareId pulumi.StringPtrInput `pulumi:"resourceShareId"`
+	// The status of shared resource.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetSharedResourcesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSharedResourcesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSharedResources.
+type GetSharedResourcesResultOutput struct{ *pulumi.OutputState }
+
+func (GetSharedResourcesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSharedResourcesResult)(nil)).Elem()
+}
+
+func (o GetSharedResourcesResultOutput) ToGetSharedResourcesResultOutput() GetSharedResourcesResultOutput {
+	return o
+}
+
+func (o GetSharedResourcesResultOutput) ToGetSharedResourcesResultOutputWithContext(ctx context.Context) GetSharedResourcesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSharedResourcesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedResourcesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSharedResourcesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSharedResourcesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSharedResourcesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSharedResourcesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSharedResourcesResultOutput) ResourceShareId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSharedResourcesResult) *string { return v.ResourceShareId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSharedResourcesResultOutput) Resources() GetSharedResourcesResourceArrayOutput {
+	return o.ApplyT(func(v GetSharedResourcesResult) []GetSharedResourcesResource { return v.Resources }).(GetSharedResourcesResourceArrayOutput)
+}
+
+func (o GetSharedResourcesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSharedResourcesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSharedResourcesResultOutput{})
 }

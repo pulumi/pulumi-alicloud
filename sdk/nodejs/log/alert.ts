@@ -230,52 +230,52 @@ export interface AlertState {
     /**
      * Alert description.
      */
-    readonly alertDescription?: pulumi.Input<string>;
+    alertDescription?: pulumi.Input<string>;
     /**
      * Alert displayname.
      */
-    readonly alertDisplayname?: pulumi.Input<string>;
+    alertDisplayname?: pulumi.Input<string>;
     /**
      * Name of logstore for configuring alarm service.
      */
-    readonly alertName?: pulumi.Input<string>;
+    alertName?: pulumi.Input<string>;
     /**
      * Conditional expression, such as: count> 100.
      */
-    readonly condition?: pulumi.Input<string>;
-    readonly dashboard?: pulumi.Input<string>;
+    condition?: pulumi.Input<string>;
+    dashboard?: pulumi.Input<string>;
     /**
      * Timestamp, notifications before closing again.
      */
-    readonly muteUntil?: pulumi.Input<number>;
+    muteUntil?: pulumi.Input<number>;
     /**
      * Alarm information notification list.
      */
-    readonly notificationLists?: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[]>;
+    notificationLists?: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[]>;
     /**
      * Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
      */
-    readonly notifyThreshold?: pulumi.Input<number>;
+    notifyThreshold?: pulumi.Input<number>;
     /**
      * The project name.
      */
-    readonly projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string>;
     /**
      * Multiple conditions for configured alarm query.
      */
-    readonly queryLists?: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[]>;
+    queryLists?: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[]>;
     /**
      * Execution interval. 60 seconds minimum, such as 60s, 1h.
      */
-    readonly scheduleInterval?: pulumi.Input<string>;
+    scheduleInterval?: pulumi.Input<string>;
     /**
      * Default FixedRate. No need to configure this parameter.
      */
-    readonly scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string>;
     /**
      * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
      */
-    readonly throttling?: pulumi.Input<string>;
+    throttling?: pulumi.Input<string>;
 }
 
 /**
@@ -285,50 +285,50 @@ export interface AlertArgs {
     /**
      * Alert description.
      */
-    readonly alertDescription?: pulumi.Input<string>;
+    alertDescription?: pulumi.Input<string>;
     /**
      * Alert displayname.
      */
-    readonly alertDisplayname: pulumi.Input<string>;
+    alertDisplayname: pulumi.Input<string>;
     /**
      * Name of logstore for configuring alarm service.
      */
-    readonly alertName: pulumi.Input<string>;
+    alertName: pulumi.Input<string>;
     /**
      * Conditional expression, such as: count> 100.
      */
-    readonly condition: pulumi.Input<string>;
-    readonly dashboard: pulumi.Input<string>;
+    condition: pulumi.Input<string>;
+    dashboard: pulumi.Input<string>;
     /**
      * Timestamp, notifications before closing again.
      */
-    readonly muteUntil?: pulumi.Input<number>;
+    muteUntil?: pulumi.Input<number>;
     /**
      * Alarm information notification list.
      */
-    readonly notificationLists: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[]>;
+    notificationLists: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[]>;
     /**
      * Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
      */
-    readonly notifyThreshold?: pulumi.Input<number>;
+    notifyThreshold?: pulumi.Input<number>;
     /**
      * The project name.
      */
-    readonly projectName: pulumi.Input<string>;
+    projectName: pulumi.Input<string>;
     /**
      * Multiple conditions for configured alarm query.
      */
-    readonly queryLists: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[]>;
+    queryLists: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[]>;
     /**
      * Execution interval. 60 seconds minimum, such as 60s, 1h.
      */
-    readonly scheduleInterval?: pulumi.Input<string>;
+    scheduleInterval?: pulumi.Input<string>;
     /**
      * Default FixedRate. No need to configure this parameter.
      */
-    readonly scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string>;
     /**
      * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
      */
-    readonly throttling?: pulumi.Input<string>;
+    throttling?: pulumi.Input<string>;
 }

@@ -22,11 +22,11 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "example_value";
  * const _default = new alicloud.mhub.Product("default", {productName: name});
  * const ids = alicloud.mhub.getProducts({});
- * export const mhubProductId1 = ids.then(ids => ids.products[0].id);
+ * export const mhubProductId1 = ids.then(ids => ids.products?[0]?.id);
  * const nameRegex = alicloud.mhub.getProducts({
  *     nameRegex: "^my-Product",
  * });
- * export const mhubProductId2 = nameRegex.then(nameRegex => nameRegex.products[0].id);
+ * export const mhubProductId2 = nameRegex.then(nameRegex => nameRegex.products?[0]?.id);
  * ```
  */
 export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProductsResult> {
@@ -52,12 +52,12 @@ export interface GetProductsArgs {
     /**
      * A list of Product IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Product name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -73,4 +73,23 @@ export interface GetProductsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly products: outputs.mhub.GetProductsProduct[];
+}
+
+export function getProductsOutput(args?: GetProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductsResult> {
+    return pulumi.output(args).apply(a => getProducts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProducts.
+ */
+export interface GetProductsOutputArgs {
+    /**
+     * A list of Product IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Product name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

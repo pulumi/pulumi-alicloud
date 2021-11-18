@@ -4,6 +4,9 @@
 package slb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,66 @@ type GetBackendServersResult struct {
 	Ids            []string `pulumi:"ids"`
 	LoadBalancerId string   `pulumi:"loadBalancerId"`
 	OutputFile     *string  `pulumi:"outputFile"`
+}
+
+func GetBackendServersOutput(ctx *pulumi.Context, args GetBackendServersOutputArgs, opts ...pulumi.InvokeOption) GetBackendServersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetBackendServersResult, error) {
+			args := v.(GetBackendServersArgs)
+			r, err := GetBackendServers(ctx, &args, opts...)
+			return *r, err
+		}).(GetBackendServersResultOutput)
+}
+
+// A collection of arguments for invoking getBackendServers.
+type GetBackendServersOutputArgs struct {
+	// List of attached ECS instance IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// ID of the SLB with attachments.
+	LoadBalancerId pulumi.StringInput    `pulumi:"loadBalancerId"`
+	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetBackendServersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getBackendServers.
+type GetBackendServersResultOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServersResult)(nil)).Elem()
+}
+
+func (o GetBackendServersResultOutput) ToGetBackendServersResultOutput() GetBackendServersResultOutput {
+	return o
+}
+
+func (o GetBackendServersResultOutput) ToGetBackendServersResultOutputWithContext(ctx context.Context) GetBackendServersResultOutput {
+	return o
+}
+
+func (o GetBackendServersResultOutput) BackendServers() GetBackendServersBackendServerArrayOutput {
+	return o.ApplyT(func(v GetBackendServersResult) []GetBackendServersBackendServer { return v.BackendServers }).(GetBackendServersBackendServerArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBackendServersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetBackendServersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBackendServersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBackendServersResultOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServersResult) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+func (o GetBackendServersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBackendServersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBackendServersResultOutput{})
 }

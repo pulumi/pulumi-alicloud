@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Dns
     {
         public static Task<GetDomainRecordsResult> InvokeAsync(GetDomainRecordsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsArgs(), options.WithVersion());
+
+        public static Output<GetDomainRecordsResult> Invoke(GetDomainRecordsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +55,45 @@ namespace Pulumi.AliCloud.Dns
         public string? ValueRegex { get; set; }
 
         public GetDomainRecordsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainRecordsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
+
+        [Input("hostRecordRegex")]
+        public Input<string>? HostRecordRegex { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("isLocked")]
+        public Input<bool>? IsLocked { get; set; }
+
+        [Input("line")]
+        public Input<string>? Line { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("valueRegex")]
+        public Input<string>? ValueRegex { get; set; }
+
+        public GetDomainRecordsInvokeArgs()
         {
         }
     }

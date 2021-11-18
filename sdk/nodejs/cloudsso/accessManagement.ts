@@ -142,31 +142,31 @@ export interface AccessManagementState {
     /**
      * The Access configuration ID.
      */
-    readonly accessConfigurationId?: pulumi.Input<string>;
+    accessConfigurationId?: pulumi.Input<string>;
     /**
      * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
      */
-    readonly deprovisionStrategy?: pulumi.Input<string>;
+    deprovisionStrategy?: pulumi.Input<string>;
     /**
      * The ID of the Directory.
      */
-    readonly directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string>;
     /**
      * The ID of the access assignment.
      */
-    readonly principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string>;
     /**
      * The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
      */
-    readonly principalType?: pulumi.Input<string>;
+    principalType?: pulumi.Input<string>;
     /**
      * The ID of the target to create the resource range.
      */
-    readonly targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string>;
     /**
      * The type of the resource range target to be accessed. Valid values: `RD-Account`.
      */
-    readonly targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string>;
 }
 
 /**
@@ -176,29 +176,29 @@ export interface AccessManagementArgs {
     /**
      * The Access configuration ID.
      */
-    readonly accessConfigurationId: pulumi.Input<string>;
+    accessConfigurationId: pulumi.Input<string>;
     /**
      * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
      */
-    readonly deprovisionStrategy?: pulumi.Input<string>;
+    deprovisionStrategy?: pulumi.Input<string>;
     /**
      * The ID of the Directory.
      */
-    readonly directoryId: pulumi.Input<string>;
+    directoryId: pulumi.Input<string>;
     /**
      * The ID of the access assignment.
      */
-    readonly principalId: pulumi.Input<string>;
+    principalId: pulumi.Input<string>;
     /**
      * The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
      */
-    readonly principalType: pulumi.Input<string>;
+    principalType: pulumi.Input<string>;
     /**
      * The ID of the target to create the resource range.
      */
-    readonly targetId: pulumi.Input<string>;
+    targetId: pulumi.Input<string>;
     /**
      * The type of the resource range target to be accessed. Valid values: `RD-Account`.
      */
-    readonly targetType: pulumi.Input<string>;
+    targetType: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package ehpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,60 @@ type GetJobTemplatesResult struct {
 	Ids        []string                  `pulumi:"ids"`
 	OutputFile *string                   `pulumi:"outputFile"`
 	Templates  []GetJobTemplatesTemplate `pulumi:"templates"`
+}
+
+func GetJobTemplatesOutput(ctx *pulumi.Context, args GetJobTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetJobTemplatesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetJobTemplatesResult, error) {
+			args := v.(GetJobTemplatesArgs)
+			r, err := GetJobTemplates(ctx, &args, opts...)
+			return *r, err
+		}).(GetJobTemplatesResultOutput)
+}
+
+// A collection of arguments for invoking getJobTemplates.
+type GetJobTemplatesOutputArgs struct {
+	// A list of Job Template IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+}
+
+func (GetJobTemplatesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplatesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getJobTemplates.
+type GetJobTemplatesResultOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplatesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplatesResult)(nil)).Elem()
+}
+
+func (o GetJobTemplatesResultOutput) ToGetJobTemplatesResultOutput() GetJobTemplatesResultOutput {
+	return o
+}
+
+func (o GetJobTemplatesResultOutput) ToGetJobTemplatesResultOutputWithContext(ctx context.Context) GetJobTemplatesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetJobTemplatesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplatesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplatesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobTemplatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobTemplatesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobTemplatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobTemplatesResultOutput) Templates() GetJobTemplatesTemplateArrayOutput {
+	return o.ApplyT(func(v GetJobTemplatesResult) []GetJobTemplatesTemplate { return v.Templates }).(GetJobTemplatesTemplateArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetJobTemplatesResultOutput{})
 }

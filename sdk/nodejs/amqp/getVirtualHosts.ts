@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  *         "my-VirtualHost-2",
  *     ],
  * });
- * export const amqpVirtualHostId1 = ids.then(ids => ids.hosts[0].id);
+ * export const amqpVirtualHostId1 = ids.then(ids => ids.hosts?[0]?.id);
  * const nameRegex = alicloud.amqp.getVirtualHosts({
  *     instanceId: "amqp-abc12345",
  *     nameRegex: "^my-VirtualHost",
  * });
- * export const amqpVirtualHostId2 = nameRegex.then(nameRegex => nameRegex.hosts[0].id);
+ * export const amqpVirtualHostId2 = nameRegex.then(nameRegex => nameRegex.hosts?[0]?.id);
  * ```
  */
 export function getVirtualHosts(args: GetVirtualHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualHostsResult> {
@@ -56,16 +56,16 @@ export interface GetVirtualHostsArgs {
     /**
      * A list of Virtual Host IDs. Its element value is same as Virtual Host Name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * InstanceId.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by Virtual Host name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -82,4 +82,27 @@ export interface GetVirtualHostsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getVirtualHostsOutput(args: GetVirtualHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualHostsResult> {
+    return pulumi.output(args).apply(a => getVirtualHosts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVirtualHosts.
+ */
+export interface GetVirtualHostsOutputArgs {
+    /**
+     * A list of Virtual Host IDs. Its element value is same as Virtual Host Name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * InstanceId.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Virtual Host name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

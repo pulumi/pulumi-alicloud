@@ -39,7 +39,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := true
-// 		defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+// 		defaultRegions, err := alicloud.GetRegions(ctx, &GetRegionsArgs{
 // 			Current: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -51,7 +51,7 @@ import (
 // 		}
 // 		opt1 := "cloud_efficiency"
 // 		opt2 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableDiskCategory:     &opt1,
 // 			AvailableResourceCreation: &opt2,
 // 		}, nil)
@@ -288,7 +288,7 @@ type NotificationArrayInput interface {
 type NotificationArray []NotificationInput
 
 func (NotificationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Notification)(nil))
+	return reflect.TypeOf((*[]*Notification)(nil)).Elem()
 }
 
 func (i NotificationArray) ToNotificationArrayOutput() NotificationArrayOutput {
@@ -313,7 +313,7 @@ type NotificationMapInput interface {
 type NotificationMap map[string]NotificationInput
 
 func (NotificationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Notification)(nil))
+	return reflect.TypeOf((*map[string]*Notification)(nil)).Elem()
 }
 
 func (i NotificationMap) ToNotificationMapOutput() NotificationMapOutput {
@@ -324,9 +324,7 @@ func (i NotificationMap) ToNotificationMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationMapOutput)
 }
 
-type NotificationOutput struct {
-	*pulumi.OutputState
-}
+type NotificationOutput struct{ *pulumi.OutputState }
 
 func (NotificationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Notification)(nil))
@@ -345,14 +343,12 @@ func (o NotificationOutput) ToNotificationPtrOutput() NotificationPtrOutput {
 }
 
 func (o NotificationOutput) ToNotificationPtrOutputWithContext(ctx context.Context) NotificationPtrOutput {
-	return o.ApplyT(func(v Notification) *Notification {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Notification) *Notification {
 		return &v
 	}).(NotificationPtrOutput)
 }
 
-type NotificationPtrOutput struct {
-	*pulumi.OutputState
-}
+type NotificationPtrOutput struct{ *pulumi.OutputState }
 
 func (NotificationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Notification)(nil))
@@ -364,6 +360,16 @@ func (o NotificationPtrOutput) ToNotificationPtrOutput() NotificationPtrOutput {
 
 func (o NotificationPtrOutput) ToNotificationPtrOutputWithContext(ctx context.Context) NotificationPtrOutput {
 	return o
+}
+
+func (o NotificationPtrOutput) Elem() NotificationOutput {
+	return o.ApplyT(func(v *Notification) Notification {
+		if v != nil {
+			return *v
+		}
+		var ret Notification
+		return ret
+	}).(NotificationOutput)
 }
 
 type NotificationArrayOutput struct{ *pulumi.OutputState }
@@ -407,6 +413,10 @@ func (o NotificationMapOutput) MapIndex(k pulumi.StringInput) NotificationOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationInput)(nil)).Elem(), &Notification{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPtrInput)(nil)).Elem(), &Notification{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationArrayInput)(nil)).Elem(), NotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationMapInput)(nil)).Elem(), NotificationMap{})
 	pulumi.RegisterOutputType(NotificationOutput{})
 	pulumi.RegisterOutputType(NotificationPtrOutput{})
 	pulumi.RegisterOutputType(NotificationArrayOutput{})

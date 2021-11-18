@@ -21,25 +21,25 @@ import * as utilities from "../utilities";
  * const ids = alicloud.vpc.getDhcpOptionsSets({
  *     ids: ["example_value"],
  * });
- * export const vpcDhcpOptionsSetId1 = ids.then(ids => ids.sets[0].id);
+ * export const vpcDhcpOptionsSetId1 = ids.then(ids => ids.sets?[0]?.id);
  * const nameRegex = alicloud.vpc.getDhcpOptionsSets({
  *     nameRegex: "^my-DhcpOptionsSet",
  * });
- * export const vpcDhcpOptionsSetId2 = nameRegex.then(nameRegex => nameRegex.sets[0].id);
+ * export const vpcDhcpOptionsSetId2 = nameRegex.then(nameRegex => nameRegex.sets?[0]?.id);
  * const dhcpOptionsSetName = alicloud.vpc.getDhcpOptionsSets({
  *     dhcpOptionsSetName: "my-DhcpOptionsSet",
  * });
- * export const vpcDhcpOptionsSetId3 = dhcpOptionsSetName.then(dhcpOptionsSetName => dhcpOptionsSetName.sets[0].id);
+ * export const vpcDhcpOptionsSetId3 = dhcpOptionsSetName.then(dhcpOptionsSetName => dhcpOptionsSetName.sets?[0]?.id);
  * const domainName = alicloud.vpc.getDhcpOptionsSets({
  *     ids: ["example_value"],
  *     domainName: "example.com",
  * });
- * export const vpcDhcpOptionsSetId4 = domainName.then(domainName => domainName.sets[0].id);
+ * export const vpcDhcpOptionsSetId4 = domainName.then(domainName => domainName.sets?[0]?.id);
  * const status = alicloud.vpc.getDhcpOptionsSets({
  *     ids: ["example_value"],
  *     status: "Available",
  * });
- * export const vpcDhcpOptionsSetId5 = status.then(status => status.sets[0].id);
+ * export const vpcDhcpOptionsSetId5 = status.then(status => status.sets?[0]?.id);
  * ```
  */
 export function getDhcpOptionsSets(args?: GetDhcpOptionsSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetDhcpOptionsSetsResult> {
@@ -70,26 +70,26 @@ export interface GetDhcpOptionsSetsArgs {
      * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
      * ECS instances in the VPC network.
      */
-    readonly dhcpOptionsSetName?: string;
+    dhcpOptionsSetName?: string;
     /**
      * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
      * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
      * instances in the VPC network.
      */
-    readonly domainName?: string;
+    domainName?: string;
     /**
      * A list of Dhcp Options Set IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Dhcp Options Set name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -108,4 +108,39 @@ export interface GetDhcpOptionsSetsResult {
     readonly outputFile?: string;
     readonly sets: outputs.vpc.GetDhcpOptionsSetsSet[];
     readonly status?: string;
+}
+
+export function getDhcpOptionsSetsOutput(args?: GetDhcpOptionsSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDhcpOptionsSetsResult> {
+    return pulumi.output(args).apply(a => getDhcpOptionsSets(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDhcpOptionsSets.
+ */
+export interface GetDhcpOptionsSetsOutputArgs {
+    /**
+     * The root domain, for example, example.com. After a DHCP options set is associated with a
+     * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
+     * ECS instances in the VPC network.
+     */
+    dhcpOptionsSetName?: pulumi.Input<string>;
+    /**
+     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
+     * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
+     * instances in the VPC network.
+     */
+    domainName?: pulumi.Input<string>;
+    /**
+     * A list of Dhcp Options Set IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Dhcp Options Set name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+     */
+    status?: pulumi.Input<string>;
 }

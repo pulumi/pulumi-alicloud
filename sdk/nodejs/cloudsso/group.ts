@@ -110,19 +110,19 @@ export interface GroupState {
     /**
      * The Description of the group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the Directory.
      */
-    readonly directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string>;
     /**
      * The GroupId of the group.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The Name of the group.
      */
-    readonly groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string>;
 }
 
 /**
@@ -132,13 +132,13 @@ export interface GroupArgs {
     /**
      * The Description of the group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the Directory.
      */
-    readonly directoryId: pulumi.Input<string>;
+    directoryId: pulumi.Input<string>;
     /**
      * The Name of the group.
      */
-    readonly groupName: pulumi.Input<string>;
+    groupName: pulumi.Input<string>;
 }

@@ -359,7 +359,7 @@ type PhysicalConnectionArrayInput interface {
 type PhysicalConnectionArray []PhysicalConnectionInput
 
 func (PhysicalConnectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PhysicalConnection)(nil))
+	return reflect.TypeOf((*[]*PhysicalConnection)(nil)).Elem()
 }
 
 func (i PhysicalConnectionArray) ToPhysicalConnectionArrayOutput() PhysicalConnectionArrayOutput {
@@ -384,7 +384,7 @@ type PhysicalConnectionMapInput interface {
 type PhysicalConnectionMap map[string]PhysicalConnectionInput
 
 func (PhysicalConnectionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PhysicalConnection)(nil))
+	return reflect.TypeOf((*map[string]*PhysicalConnection)(nil)).Elem()
 }
 
 func (i PhysicalConnectionMap) ToPhysicalConnectionMapOutput() PhysicalConnectionMapOutput {
@@ -395,9 +395,7 @@ func (i PhysicalConnectionMap) ToPhysicalConnectionMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PhysicalConnectionMapOutput)
 }
 
-type PhysicalConnectionOutput struct {
-	*pulumi.OutputState
-}
+type PhysicalConnectionOutput struct{ *pulumi.OutputState }
 
 func (PhysicalConnectionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PhysicalConnection)(nil))
@@ -416,14 +414,12 @@ func (o PhysicalConnectionOutput) ToPhysicalConnectionPtrOutput() PhysicalConnec
 }
 
 func (o PhysicalConnectionOutput) ToPhysicalConnectionPtrOutputWithContext(ctx context.Context) PhysicalConnectionPtrOutput {
-	return o.ApplyT(func(v PhysicalConnection) *PhysicalConnection {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PhysicalConnection) *PhysicalConnection {
 		return &v
 	}).(PhysicalConnectionPtrOutput)
 }
 
-type PhysicalConnectionPtrOutput struct {
-	*pulumi.OutputState
-}
+type PhysicalConnectionPtrOutput struct{ *pulumi.OutputState }
 
 func (PhysicalConnectionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PhysicalConnection)(nil))
@@ -435,6 +431,16 @@ func (o PhysicalConnectionPtrOutput) ToPhysicalConnectionPtrOutput() PhysicalCon
 
 func (o PhysicalConnectionPtrOutput) ToPhysicalConnectionPtrOutputWithContext(ctx context.Context) PhysicalConnectionPtrOutput {
 	return o
+}
+
+func (o PhysicalConnectionPtrOutput) Elem() PhysicalConnectionOutput {
+	return o.ApplyT(func(v *PhysicalConnection) PhysicalConnection {
+		if v != nil {
+			return *v
+		}
+		var ret PhysicalConnection
+		return ret
+	}).(PhysicalConnectionOutput)
 }
 
 type PhysicalConnectionArrayOutput struct{ *pulumi.OutputState }
@@ -478,6 +484,10 @@ func (o PhysicalConnectionMapOutput) MapIndex(k pulumi.StringInput) PhysicalConn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PhysicalConnectionInput)(nil)).Elem(), &PhysicalConnection{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhysicalConnectionPtrInput)(nil)).Elem(), &PhysicalConnection{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhysicalConnectionArrayInput)(nil)).Elem(), PhysicalConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhysicalConnectionMapInput)(nil)).Elem(), PhysicalConnectionMap{})
 	pulumi.RegisterOutputType(PhysicalConnectionOutput{})
 	pulumi.RegisterOutputType(PhysicalConnectionPtrOutput{})
 	pulumi.RegisterOutputType(PhysicalConnectionArrayOutput{})

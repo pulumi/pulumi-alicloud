@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vod
 {
@@ -61,7 +62,7 @@ namespace Pulumi.AliCloud.Vod
         ///                 { "key2", "value2" },
         ///             },
         ///         }));
-        ///         this.VodDomain = defaultDomains.Apply(defaultDomains =&gt; defaultDomains.Domains[0]);
+        ///         this.VodDomain = defaultDomains.Apply(defaultDomains =&gt; defaultDomains.Domains?[0]);
         ///     }
         /// 
         ///     [Output("vodDomain")]
@@ -73,6 +74,69 @@ namespace Pulumi.AliCloud.Vod
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Vod Domains of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var defaultDomain = new AliCloud.Vod.Domain("defaultDomain", new AliCloud.Vod.DomainArgs
+        ///         {
+        ///             DomainName = "your_domain_name",
+        ///             Scope = "domestic",
+        ///             Sources = 
+        ///             {
+        ///                 new AliCloud.Vod.Inputs.DomainSourceArgs
+        ///                 {
+        ///                     SourceType = "domain",
+        ///                     SourceContent = "your_source_content",
+        ///                     SourcePort = "80",
+        ///                 },
+        ///             },
+        ///             Tags = 
+        ///             {
+        ///                 { "key1", "value1" },
+        ///                 { "key2", "value2" },
+        ///             },
+        ///         });
+        ///         var defaultDomains = defaultDomain.Id.Apply(id =&gt; AliCloud.Vod.GetDomains.InvokeAsync(new AliCloud.Vod.GetDomainsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 id,
+        ///             },
+        ///             Tags = 
+        ///             {
+        ///                 { "key1", "value1" },
+        ///                 { "key2", "value2" },
+        ///             },
+        ///         }));
+        ///         this.VodDomain = defaultDomains.Apply(defaultDomains =&gt; defaultDomains.Domains?[0]);
+        ///     }
+        /// 
+        ///     [Output("vodDomain")]
+        ///     public Output&lt;string&gt; VodDomain { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -130,6 +194,64 @@ namespace Pulumi.AliCloud.Vod
         }
 
         public GetDomainsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The search method. Valid values:
+        /// * `fuzzy_match`: fuzzy match. This is the default value.
+        /// * `pre_match`: prefix match.
+        /// * `suf_match`: suffix match.
+        /// * `full_match`: exact match
+        /// </summary>
+        [Input("domainSearchType")]
+        public Input<string>? DomainSearchType { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Domain IDs. Its element value is same as Domain Name.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Domain name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetDomainsInvokeArgs()
         {
         }
     }

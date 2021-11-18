@@ -364,6 +364,10 @@ func (o GetGatewaysGatewayGatewayInstanceArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayInput)(nil)).Elem(), GetGatewaysGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewaysGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayGatewayInstanceInput)(nil)).Elem(), GetGatewaysGatewayGatewayInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayGatewayInstanceArrayInput)(nil)).Elem(), GetGatewaysGatewayGatewayInstanceArray{})
 	pulumi.RegisterOutputType(GetGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewayGatewayInstanceOutput{})

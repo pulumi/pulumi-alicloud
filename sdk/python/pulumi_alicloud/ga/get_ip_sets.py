@@ -13,6 +13,7 @@ __all__ = [
     'GetIpSetsResult',
     'AwaitableGetIpSetsResult',
     'get_ip_sets',
+    'get_ip_sets_output',
 ]
 
 @pulumi.output_type
@@ -134,3 +135,35 @@ def get_ip_sets(accelerator_id: Optional[str] = None,
         output_file=__ret__.output_file,
         sets=__ret__.sets,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_ip_sets)
+def get_ip_sets_output(accelerator_id: Optional[pulumi.Input[str]] = None,
+                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                       status: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpSetsResult]:
+    """
+    This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.113.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ga.get_ip_sets(accelerator_id="example_value",
+        ids=["example_value"])
+    pulumi.export("firstGaIpSetId", example.sets[0].id)
+    ```
+
+
+    :param str accelerator_id: The ID of the Global Accelerator (GA) instance.
+    :param Sequence[str] ids: A list of Ip Set IDs.
+    :param str status: The status of the acceleration region.
+    """
+    ...

@@ -90,11 +90,11 @@ export interface RouteTableAttachmentState {
     /**
      * The routeTableId of the route table attachment, the field can't be changed.
      */
-    readonly routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string>;
     /**
      * The vswitchId of the route table attachment, the field can't be changed.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -104,9 +104,9 @@ export interface RouteTableAttachmentArgs {
     /**
      * The routeTableId of the route table attachment, the field can't be changed.
      */
-    readonly routeTableId: pulumi.Input<string>;
+    routeTableId: pulumi.Input<string>;
     /**
      * The vswitchId of the route table attachment, the field can't be changed.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
 }

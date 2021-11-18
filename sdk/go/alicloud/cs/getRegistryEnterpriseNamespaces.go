@@ -4,6 +4,9 @@
 package cs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,82 @@ type GetRegistryEnterpriseNamespacesResult struct {
 	// A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
 	Namespaces []GetRegistryEnterpriseNamespacesNamespace `pulumi:"namespaces"`
 	OutputFile *string                                    `pulumi:"outputFile"`
+}
+
+func GetRegistryEnterpriseNamespacesOutput(ctx *pulumi.Context, args GetRegistryEnterpriseNamespacesOutputArgs, opts ...pulumi.InvokeOption) GetRegistryEnterpriseNamespacesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRegistryEnterpriseNamespacesResult, error) {
+			args := v.(GetRegistryEnterpriseNamespacesArgs)
+			r, err := GetRegistryEnterpriseNamespaces(ctx, &args, opts...)
+			return *r, err
+		}).(GetRegistryEnterpriseNamespacesResultOutput)
+}
+
+// A collection of arguments for invoking getRegistryEnterpriseNamespaces.
+type GetRegistryEnterpriseNamespacesOutputArgs struct {
+	// A list of ids to filter results by namespace id.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// ID of Container Registry Enterprise Edition instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by namespace name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetRegistryEnterpriseNamespacesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseNamespacesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRegistryEnterpriseNamespaces.
+type GetRegistryEnterpriseNamespacesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseNamespacesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseNamespacesResult)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseNamespacesResultOutput) ToGetRegistryEnterpriseNamespacesResultOutput() GetRegistryEnterpriseNamespacesResultOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseNamespacesResultOutput) ToGetRegistryEnterpriseNamespacesResultOutputWithContext(ctx context.Context) GetRegistryEnterpriseNamespacesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRegistryEnterpriseNamespacesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of matched Container Registry Enterprise Edition namespaces. Its element is a namespace uuid.
+func (o GetRegistryEnterpriseNamespacesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// ID of Container Registry Enterprise Edition instance.
+func (o GetRegistryEnterpriseNamespacesResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetRegistryEnterpriseNamespacesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of namespace names.
+func (o GetRegistryEnterpriseNamespacesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
+func (o GetRegistryEnterpriseNamespacesResultOutput) Namespaces() GetRegistryEnterpriseNamespacesNamespaceArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesResult) []GetRegistryEnterpriseNamespacesNamespace {
+		return v.Namespaces
+	}).(GetRegistryEnterpriseNamespacesNamespaceArrayOutput)
+}
+
+func (o GetRegistryEnterpriseNamespacesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRegistryEnterpriseNamespacesResultOutput{})
 }

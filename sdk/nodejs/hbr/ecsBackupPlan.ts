@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * });
  * const example = new alicloud.hbr.EcsBackupPlan("example", {
  *     ecsBackupPlanName: "example_value",
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.instances[0].id),
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.instances?[0]?.id),
  *     vaultId: defaultVault.id,
  *     retention: "1",
  *     schedule: "I|1602673264|PT2H",
@@ -226,56 +226,56 @@ export interface EcsBackupPlanState {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    readonly backupType?: pulumi.Input<string>;
-    readonly detail?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string>;
+    detail?: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    readonly ecsBackupPlanName?: pulumi.Input<string>;
+    ecsBackupPlanName?: pulumi.Input<string>;
     /**
      * Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
      */
-    readonly exclude?: pulumi.Input<string>;
+    exclude?: pulumi.Input<string>;
     /**
      * Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
      */
-    readonly include?: pulumi.Input<string>;
+    include?: pulumi.Input<string>;
     /**
      * The ID of ECS instance. The ecs backup client must have been installed on the host.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
      */
-    readonly options?: pulumi.Input<string>;
+    options?: pulumi.Input<string>;
     /**
      * List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
      */
-    readonly paths?: pulumi.Input<pulumi.Input<string>[]>;
+    paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    readonly retention?: pulumi.Input<string>;
+    retention?: pulumi.Input<string>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
-    readonly schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string>;
     /**
      * Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      */
-    readonly speedLimit?: pulumi.Input<string>;
+    speedLimit?: pulumi.Input<string>;
     /**
      * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
-    readonly updatePaths?: pulumi.Input<boolean>;
+    updatePaths?: pulumi.Input<boolean>;
     /**
      * The ID of Backup vault.
      */
-    readonly vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string>;
 }
 
 /**
@@ -285,54 +285,54 @@ export interface EcsBackupPlanArgs {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    readonly backupType: pulumi.Input<string>;
-    readonly detail?: pulumi.Input<string>;
+    backupType: pulumi.Input<string>;
+    detail?: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    readonly ecsBackupPlanName: pulumi.Input<string>;
+    ecsBackupPlanName: pulumi.Input<string>;
     /**
      * Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
      */
-    readonly exclude?: pulumi.Input<string>;
+    exclude?: pulumi.Input<string>;
     /**
      * Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
      */
-    readonly include?: pulumi.Input<string>;
+    include?: pulumi.Input<string>;
     /**
      * The ID of ECS instance. The ecs backup client must have been installed on the host.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
      */
-    readonly options?: pulumi.Input<string>;
+    options?: pulumi.Input<string>;
     /**
      * List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
      */
-    readonly paths?: pulumi.Input<pulumi.Input<string>[]>;
+    paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    readonly retention: pulumi.Input<string>;
+    retention: pulumi.Input<string>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
-    readonly schedule: pulumi.Input<string>;
+    schedule: pulumi.Input<string>;
     /**
      * Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      */
-    readonly speedLimit?: pulumi.Input<string>;
+    speedLimit?: pulumi.Input<string>;
     /**
      * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
-    readonly updatePaths?: pulumi.Input<boolean>;
+    updatePaths?: pulumi.Input<boolean>;
     /**
      * The ID of Backup vault.
      */
-    readonly vaultId: pulumi.Input<string>;
+    vaultId: pulumi.Input<string>;
 }

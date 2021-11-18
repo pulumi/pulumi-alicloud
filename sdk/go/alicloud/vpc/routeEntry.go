@@ -207,7 +207,7 @@ type RouteEntryArrayInput interface {
 type RouteEntryArray []RouteEntryInput
 
 func (RouteEntryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RouteEntry)(nil))
+	return reflect.TypeOf((*[]*RouteEntry)(nil)).Elem()
 }
 
 func (i RouteEntryArray) ToRouteEntryArrayOutput() RouteEntryArrayOutput {
@@ -232,7 +232,7 @@ type RouteEntryMapInput interface {
 type RouteEntryMap map[string]RouteEntryInput
 
 func (RouteEntryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RouteEntry)(nil))
+	return reflect.TypeOf((*map[string]*RouteEntry)(nil)).Elem()
 }
 
 func (i RouteEntryMap) ToRouteEntryMapOutput() RouteEntryMapOutput {
@@ -243,9 +243,7 @@ func (i RouteEntryMap) ToRouteEntryMapOutputWithContext(ctx context.Context) Rou
 	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryMapOutput)
 }
 
-type RouteEntryOutput struct {
-	*pulumi.OutputState
-}
+type RouteEntryOutput struct{ *pulumi.OutputState }
 
 func (RouteEntryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RouteEntry)(nil))
@@ -264,14 +262,12 @@ func (o RouteEntryOutput) ToRouteEntryPtrOutput() RouteEntryPtrOutput {
 }
 
 func (o RouteEntryOutput) ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput {
-	return o.ApplyT(func(v RouteEntry) *RouteEntry {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteEntry) *RouteEntry {
 		return &v
 	}).(RouteEntryPtrOutput)
 }
 
-type RouteEntryPtrOutput struct {
-	*pulumi.OutputState
-}
+type RouteEntryPtrOutput struct{ *pulumi.OutputState }
 
 func (RouteEntryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RouteEntry)(nil))
@@ -283,6 +279,16 @@ func (o RouteEntryPtrOutput) ToRouteEntryPtrOutput() RouteEntryPtrOutput {
 
 func (o RouteEntryPtrOutput) ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput {
 	return o
+}
+
+func (o RouteEntryPtrOutput) Elem() RouteEntryOutput {
+	return o.ApplyT(func(v *RouteEntry) RouteEntry {
+		if v != nil {
+			return *v
+		}
+		var ret RouteEntry
+		return ret
+	}).(RouteEntryOutput)
 }
 
 type RouteEntryArrayOutput struct{ *pulumi.OutputState }
@@ -326,6 +332,10 @@ func (o RouteEntryMapOutput) MapIndex(k pulumi.StringInput) RouteEntryOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteEntryInput)(nil)).Elem(), &RouteEntry{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteEntryPtrInput)(nil)).Elem(), &RouteEntry{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteEntryArrayInput)(nil)).Elem(), RouteEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteEntryMapInput)(nil)).Elem(), RouteEntryMap{})
 	pulumi.RegisterOutputType(RouteEntryOutput{})
 	pulumi.RegisterOutputType(RouteEntryPtrOutput{})
 	pulumi.RegisterOutputType(RouteEntryArrayOutput{})

@@ -142,27 +142,27 @@ export interface CertificateState {
     /**
      * Certificate file content.
      */
-    readonly certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
     /**
      * The certificate id is automatically generated when you upload your certificate content.**NOTE:** you can also use Certificate ID saved in SSL.
      */
-    readonly certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string>;
     /**
      * Certificate file name.
      */
-    readonly certificateName?: pulumi.Input<string>;
+    certificateName?: pulumi.Input<string>;
     /**
      * The domain that you want to add to WAF.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The ID of the WAF instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The private key.
      */
-    readonly privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
 }
 
 /**
@@ -172,25 +172,25 @@ export interface CertificateArgs {
     /**
      * Certificate file content.
      */
-    readonly certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
     /**
      * The certificate id is automatically generated when you upload your certificate content.**NOTE:** you can also use Certificate ID saved in SSL.
      */
-    readonly certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string>;
     /**
      * Certificate file name.
      */
-    readonly certificateName?: pulumi.Input<string>;
+    certificateName?: pulumi.Input<string>;
     /**
      * The domain that you want to add to WAF.
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
     /**
      * The ID of the WAF instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The private key.
      */
-    readonly privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
 }

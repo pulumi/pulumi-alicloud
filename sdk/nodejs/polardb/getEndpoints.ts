@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  *     status: "Running",
  * });
  * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getEndpoints({
- *     dbClusterId: polardbClustersDs.clusters[0].id,
+ *     dbClusterId: polardbClustersDs.clusters?[0]?.id,
  * }));
- * export const endpoint = _default.then(_default => _default.endpoints[0].dbEndpointId);
+ * export const endpoint = _default.then(_default => _default.endpoints?[0]?.dbEndpointId);
  * ```
  */
 export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointsResult> {
@@ -48,11 +48,11 @@ export interface GetEndpointsArgs {
     /**
      * PolarDB cluster ID.
      */
-    readonly dbClusterId: string;
+    dbClusterId: string;
     /**
      * endpoint of the cluster.
      */
-    readonly dbEndpointId?: string;
+    dbEndpointId?: string;
 }
 
 /**
@@ -72,4 +72,22 @@ export interface GetEndpointsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+}
+
+export function getEndpointsOutput(args: GetEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointsResult> {
+    return pulumi.output(args).apply(a => getEndpoints(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEndpoints.
+ */
+export interface GetEndpointsOutputArgs {
+    /**
+     * PolarDB cluster ID.
+     */
+    dbClusterId: pulumi.Input<string>;
+    /**
+     * endpoint of the cluster.
+     */
+    dbEndpointId?: pulumi.Input<string>;
 }

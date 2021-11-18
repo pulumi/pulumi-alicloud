@@ -37,26 +37,26 @@ export interface GetTransitRouterRouteEntriesArgs {
     /**
      * A list of CEN Transit Router Route Entry IDs.
      */
-    readonly ids?: string[];
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
-    readonly status?: string;
+    ids?: string[];
+    nameRegex?: string;
+    outputFile?: string;
+    status?: string;
     /**
      * A list of ID of the cen transit router route entry.
      */
-    readonly transitRouterRouteEntryIds?: string[];
+    transitRouterRouteEntryIds?: string[];
     /**
      * A list of name of the cen transit router route entry.
      */
-    readonly transitRouterRouteEntryNames?: string[];
+    transitRouterRouteEntryNames?: string[];
     /**
      * The status of the resource.Valid values `Creating`, `Active` and `Deleting`.
      */
-    readonly transitRouterRouteEntryStatus?: string;
+    transitRouterRouteEntryStatus?: string;
     /**
      * ID of the CEN Transit Router Route Table.
      */
-    readonly transitRouterRouteTableId: string;
+    transitRouterRouteTableId: string;
 }
 
 /**
@@ -89,4 +89,37 @@ export interface GetTransitRouterRouteEntriesResult {
      */
     readonly transitRouterRouteEntryStatus?: string;
     readonly transitRouterRouteTableId: string;
+}
+
+export function getTransitRouterRouteEntriesOutput(args: GetTransitRouterRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteEntriesResult> {
+    return pulumi.output(args).apply(a => getTransitRouterRouteEntries(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransitRouterRouteEntries.
+ */
+export interface GetTransitRouterRouteEntriesOutputArgs {
+    /**
+     * A list of CEN Transit Router Route Entry IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    /**
+     * A list of ID of the cen transit router route entry.
+     */
+    transitRouterRouteEntryIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of name of the cen transit router route entry.
+     */
+    transitRouterRouteEntryNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The status of the resource.Valid values `Creating`, `Active` and `Deleting`.
+     */
+    transitRouterRouteEntryStatus?: pulumi.Input<string>;
+    /**
+     * ID of the CEN Transit Router Route Table.
+     */
+    transitRouterRouteTableId: pulumi.Input<string>;
 }

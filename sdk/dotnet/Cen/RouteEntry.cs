@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Cen
     ///         }));
     ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Zones[0].Id,
+    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
     ///             CpuCoreCount = 1,
     ///             MemorySize = 2,
     ///         })));
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Cen
     ///         {
     ///             VpcId = vpc.Id,
     ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
     ///             VswitchName = name,
     ///         }, new CustomResourceOptions
     ///         {
@@ -79,8 +79,8 @@ namespace Pulumi.AliCloud.Cen
     ///         var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new AliCloud.Ecs.InstanceArgs
     ///         {
     ///             VswitchId = defaultSwitch.Id,
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
-    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
+    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
     ///             SystemDiskCategory = "cloud_efficiency",
     ///             InternetChargeType = "PayByTraffic",
     ///             InternetMaxBandwidthOut = 5,

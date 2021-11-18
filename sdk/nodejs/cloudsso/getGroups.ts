@@ -27,12 +27,12 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const cloudSsoGroupId1 = ids.then(ids => ids.groups[0].id);
+ * export const cloudSsoGroupId1 = ids.then(ids => ids.groups?[0]?.id);
  * const nameRegex = alicloud.cloudsso.getGroups({
  *     directoryId: "example_value",
  *     nameRegex: "^my-Group",
  * });
- * export const cloudSsoGroupId2 = nameRegex.then(nameRegex => nameRegex.groups[0].id);
+ * export const cloudSsoGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
  * ```
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
@@ -59,20 +59,20 @@ export interface GetGroupsArgs {
     /**
      * The ID of the Directory.
      */
-    readonly directoryId: string;
+    directoryId: string;
     /**
      * A list of Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
      */
-    readonly provisionType?: string;
+    provisionType?: string;
 }
 
 /**
@@ -90,4 +90,31 @@ export interface GetGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly provisionType?: string;
+}
+
+export function getGroupsOutput(args: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+    return pulumi.output(args).apply(a => getGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroups.
+ */
+export interface GetGroupsOutputArgs {
+    /**
+     * The ID of the Directory.
+     */
+    directoryId: pulumi.Input<string>;
+    /**
+     * A list of Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+     */
+    provisionType?: pulumi.Input<string>;
 }

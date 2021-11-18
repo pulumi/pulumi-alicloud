@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(alicloud.cloudfirewall.getControlPolicies({
  *     direction: "in",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getControlPolicies(args: GetControlPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetControlPoliciesResult> {
@@ -53,44 +53,44 @@ export interface GetControlPoliciesArgs {
     /**
      * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      */
-    readonly aclAction?: string;
+    aclAction?: string;
     /**
      * The unique ID of the access control policy.
      */
-    readonly aclUuid?: string;
+    aclUuid?: string;
     /**
      * The description of the access control policy.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The destination address defined in the access control policy.
      */
-    readonly destination?: string;
+    destination?: string;
     /**
      * The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
      */
-    readonly direction: string;
+    direction: string;
     /**
      * The ip version.
      */
-    readonly ipVersion?: string;
+    ipVersion?: string;
     /**
      * DestPortGroupPorts. Valid values: `en`, `zh`.
      */
-    readonly lang?: string;
-    readonly outputFile?: string;
+    lang?: string;
+    outputFile?: string;
     /**
      * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      */
-    readonly proto?: string;
+    proto?: string;
     /**
      * The source address defined in the access control policy.
      */
-    readonly source?: string;
+    source?: string;
     /**
      * The source IP address of the request.
      */
-    readonly sourceIp?: string;
+    sourceIp?: string;
 }
 
 /**
@@ -114,4 +114,55 @@ export interface GetControlPoliciesResult {
     readonly proto?: string;
     readonly source?: string;
     readonly sourceIp?: string;
+}
+
+export function getControlPoliciesOutput(args: GetControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPoliciesResult> {
+    return pulumi.output(args).apply(a => getControlPolicies(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getControlPolicies.
+ */
+export interface GetControlPoliciesOutputArgs {
+    /**
+     * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+     */
+    aclAction?: pulumi.Input<string>;
+    /**
+     * The unique ID of the access control policy.
+     */
+    aclUuid?: pulumi.Input<string>;
+    /**
+     * The description of the access control policy.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The destination address defined in the access control policy.
+     */
+    destination?: pulumi.Input<string>;
+    /**
+     * The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+     */
+    direction: pulumi.Input<string>;
+    /**
+     * The ip version.
+     */
+    ipVersion?: pulumi.Input<string>;
+    /**
+     * DestPortGroupPorts. Valid values: `en`, `zh`.
+     */
+    lang?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+     */
+    proto?: pulumi.Input<string>;
+    /**
+     * The source address defined in the access control policy.
+     */
+    source?: pulumi.Input<string>;
+    /**
+     * The source IP address of the request.
+     */
+    sourceIp?: pulumi.Input<string>;
 }

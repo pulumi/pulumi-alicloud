@@ -4,6 +4,9 @@
 package cdn
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,66 @@ type GetRealTimeLogDeliveriesResult struct {
 	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
 	Status     *string `pulumi:"status"`
+}
+
+func GetRealTimeLogDeliveriesOutput(ctx *pulumi.Context, args GetRealTimeLogDeliveriesOutputArgs, opts ...pulumi.InvokeOption) GetRealTimeLogDeliveriesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRealTimeLogDeliveriesResult, error) {
+			args := v.(GetRealTimeLogDeliveriesArgs)
+			r, err := GetRealTimeLogDeliveries(ctx, &args, opts...)
+			return *r, err
+		}).(GetRealTimeLogDeliveriesResultOutput)
+}
+
+// A collection of arguments for invoking getRealTimeLogDeliveries.
+type GetRealTimeLogDeliveriesOutputArgs struct {
+	// Real-Time Log Service Domain.
+	Domain     pulumi.StringInput    `pulumi:"domain"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetRealTimeLogDeliveriesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRealTimeLogDeliveriesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRealTimeLogDeliveries.
+type GetRealTimeLogDeliveriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRealTimeLogDeliveriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRealTimeLogDeliveriesResult)(nil)).Elem()
+}
+
+func (o GetRealTimeLogDeliveriesResultOutput) ToGetRealTimeLogDeliveriesResultOutput() GetRealTimeLogDeliveriesResultOutput {
+	return o
+}
+
+func (o GetRealTimeLogDeliveriesResultOutput) ToGetRealTimeLogDeliveriesResultOutputWithContext(ctx context.Context) GetRealTimeLogDeliveriesResultOutput {
+	return o
+}
+
+func (o GetRealTimeLogDeliveriesResultOutput) Deliveries() GetRealTimeLogDeliveriesDeliveryArrayOutput {
+	return o.ApplyT(func(v GetRealTimeLogDeliveriesResult) []GetRealTimeLogDeliveriesDelivery { return v.Deliveries }).(GetRealTimeLogDeliveriesDeliveryArrayOutput)
+}
+
+func (o GetRealTimeLogDeliveriesResultOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRealTimeLogDeliveriesResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRealTimeLogDeliveriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRealTimeLogDeliveriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRealTimeLogDeliveriesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRealTimeLogDeliveriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRealTimeLogDeliveriesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRealTimeLogDeliveriesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRealTimeLogDeliveriesResultOutput{})
 }

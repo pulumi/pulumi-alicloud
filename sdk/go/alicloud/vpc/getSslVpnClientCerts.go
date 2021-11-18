@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,80 @@ type GetSslVpnClientCertsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// ID of the SSL-VPN Server.
 	SslVpnServerId *string `pulumi:"sslVpnServerId"`
+}
+
+func GetSslVpnClientCertsOutput(ctx *pulumi.Context, args GetSslVpnClientCertsOutputArgs, opts ...pulumi.InvokeOption) GetSslVpnClientCertsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSslVpnClientCertsResult, error) {
+			args := v.(GetSslVpnClientCertsArgs)
+			r, err := GetSslVpnClientCerts(ctx, &args, opts...)
+			return *r, err
+		}).(GetSslVpnClientCertsResultOutput)
+}
+
+// A collection of arguments for invoking getSslVpnClientCerts.
+type GetSslVpnClientCertsOutputArgs struct {
+	// IDs of the SSL-VPN client certificates.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string of SSL-VPN client certificate name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// Save the result to the file.
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Use the SSL-VPN server ID as the search key.
+	SslVpnServerId pulumi.StringPtrInput `pulumi:"sslVpnServerId"`
+}
+
+func (GetSslVpnClientCertsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSslVpnClientCertsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSslVpnClientCerts.
+type GetSslVpnClientCertsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSslVpnClientCertsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSslVpnClientCertsResult)(nil)).Elem()
+}
+
+func (o GetSslVpnClientCertsResultOutput) ToGetSslVpnClientCertsResultOutput() GetSslVpnClientCertsResultOutput {
+	return o
+}
+
+func (o GetSslVpnClientCertsResultOutput) ToGetSslVpnClientCertsResultOutputWithContext(ctx context.Context) GetSslVpnClientCertsResultOutput {
+	return o
+}
+
+func (o GetSslVpnClientCertsResultOutput) Certs() GetSslVpnClientCertsCertArrayOutput {
+	return o.ApplyT(func(v GetSslVpnClientCertsResult) []GetSslVpnClientCertsCert { return v.Certs }).(GetSslVpnClientCertsCertArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSslVpnClientCertsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSslVpnClientCertsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of SSL-VPN client cert IDs.
+func (o GetSslVpnClientCertsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSslVpnClientCertsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSslVpnClientCertsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSslVpnClientCertsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of SSL-VPN client cert names.
+func (o GetSslVpnClientCertsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSslVpnClientCertsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSslVpnClientCertsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSslVpnClientCertsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// ID of the SSL-VPN Server.
+func (o GetSslVpnClientCertsResultOutput) SslVpnServerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSslVpnClientCertsResult) *string { return v.SslVpnServerId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSslVpnClientCertsResultOutput{})
 }

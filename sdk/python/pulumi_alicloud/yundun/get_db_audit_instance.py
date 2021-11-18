@@ -13,6 +13,7 @@ __all__ = [
     'GetDBAuditInstanceResult',
     'AwaitableGetDBAuditInstanceResult',
     'get_db_audit_instance',
+    'get_db_audit_instance_output',
 ]
 
 @pulumi.output_type
@@ -124,3 +125,15 @@ def get_db_audit_instance(description_regex: Optional[str] = None,
         instances=__ret__.instances,
         output_file=__ret__.output_file,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_db_audit_instance)
+def get_db_audit_instance_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                 ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                 tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDBAuditInstanceResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

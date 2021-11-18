@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones[0].id,
+ *     availabilityZone: defaultZones.zones?[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
@@ -44,18 +44,18 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
  *     instanceName: name,
  *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: "10",
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     instanceChargeType: "PostPaid",
  *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: defaultSwitch.id,
@@ -215,44 +215,44 @@ export interface ServerGroupState {
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The configuration of health checks.
      */
-    readonly healthCheckConfig?: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
+    healthCheckConfig?: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
     /**
      * The server protocol. Valid values: ` HTTPS`, `HTTP`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
      */
-    readonly scheduler?: pulumi.Input<string>;
+    scheduler?: pulumi.Input<string>;
     /**
      * The name of the resource.
      */
-    readonly serverGroupName?: pulumi.Input<string>;
+    serverGroupName?: pulumi.Input<string>;
     /**
      * The backend server.
      */
-    readonly servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
+    servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
     /**
      * The status of the resource.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The configuration of the sticky session.
      */
-    readonly stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the VPC that you want to access.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -262,38 +262,38 @@ export interface ServerGroupArgs {
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The configuration of health checks.
      */
-    readonly healthCheckConfig?: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
+    healthCheckConfig?: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
     /**
      * The server protocol. Valid values: ` HTTPS`, `HTTP`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
      */
-    readonly scheduler?: pulumi.Input<string>;
+    scheduler?: pulumi.Input<string>;
     /**
      * The name of the resource.
      */
-    readonly serverGroupName?: pulumi.Input<string>;
+    serverGroupName?: pulumi.Input<string>;
     /**
      * The backend server.
      */
-    readonly servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
+    servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
     /**
      * The configuration of the sticky session.
      */
-    readonly stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the VPC that you want to access.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }

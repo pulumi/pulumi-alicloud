@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
  *     vpcId: alicloud_vpc["default"].id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones[0].id),
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?[0]?.id),
  *     vswitchName: _var.name,
  * });
  * const exampleNatGateway = new alicloud.vpc.NatGateway("exampleNatGateway", {
@@ -154,27 +154,27 @@ export interface NatIpCidrState {
     /**
      * Specifies whether to precheck this request only. Valid values: `true` and `false`.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
      */
-    readonly natGatewayId?: pulumi.Input<string>;
+    natGatewayId?: pulumi.Input<string>;
     /**
      * The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
      */
-    readonly natIpCidr?: pulumi.Input<string>;
+    natIpCidr?: pulumi.Input<string>;
     /**
      * The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    readonly natIpCidrDescription?: pulumi.Input<string>;
+    natIpCidrDescription?: pulumi.Input<string>;
     /**
      * The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    readonly natIpCidrName?: pulumi.Input<string>;
+    natIpCidrName?: pulumi.Input<string>;
     /**
      * The status of the CIDR block of the NAT gateway. Valid values: `Available`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -184,21 +184,21 @@ export interface NatIpCidrArgs {
     /**
      * Specifies whether to precheck this request only. Valid values: `true` and `false`.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
      */
-    readonly natGatewayId: pulumi.Input<string>;
+    natGatewayId: pulumi.Input<string>;
     /**
      * The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
      */
-    readonly natIpCidr?: pulumi.Input<string>;
+    natIpCidr?: pulumi.Input<string>;
     /**
      * The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    readonly natIpCidrDescription?: pulumi.Input<string>;
+    natIpCidrDescription?: pulumi.Input<string>;
     /**
      * The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    readonly natIpCidrName?: pulumi.Input<string>;
+    natIpCidrName?: pulumi.Input<string>;
 }

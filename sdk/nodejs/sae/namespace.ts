@@ -117,15 +117,15 @@ export interface NamespaceState {
     /**
      * The Description of Namespace.
      */
-    readonly namespaceDescription?: pulumi.Input<string>;
+    namespaceDescription?: pulumi.Input<string>;
     /**
      * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * The Name of Namespace.
      */
-    readonly namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string>;
 }
 
 /**
@@ -135,13 +135,13 @@ export interface NamespaceArgs {
     /**
      * The Description of Namespace.
      */
-    readonly namespaceDescription?: pulumi.Input<string>;
+    namespaceDescription?: pulumi.Input<string>;
     /**
      * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
-    readonly namespaceId: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
     /**
      * The Name of Namespace.
      */
-    readonly namespaceName: pulumi.Input<string>;
+    namespaceName: pulumi.Input<string>;
 }

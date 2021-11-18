@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Amqp
 {
@@ -39,13 +40,13 @@ namespace Pulumi.AliCloud.Amqp
         ///                 "my-VirtualHost-2",
         ///             },
         ///         }));
-        ///         this.AmqpVirtualHostId1 = ids.Apply(ids =&gt; ids.Hosts[0].Id);
+        ///         this.AmqpVirtualHostId1 = ids.Apply(ids =&gt; ids.Hosts?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Amqp.GetVirtualHosts.InvokeAsync(new AliCloud.Amqp.GetVirtualHostsArgs
         ///         {
         ///             InstanceId = "amqp-abc12345",
         ///             NameRegex = "^my-VirtualHost",
         ///         }));
-        ///         this.AmqpVirtualHostId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Hosts[0].Id);
+        ///         this.AmqpVirtualHostId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Hosts?[0]?.Id);
         ///     }
         /// 
         ///     [Output("amqpVirtualHostId1")]
@@ -59,6 +60,55 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         public static Task<GetVirtualHostsResult> InvokeAsync(GetVirtualHostsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualHostsResult>("alicloud:amqp/getVirtualHosts:getVirtualHosts", args ?? new GetVirtualHostsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Amqp.GetVirtualHosts.InvokeAsync(new AliCloud.Amqp.GetVirtualHostsArgs
+        ///         {
+        ///             InstanceId = "amqp-abc12345",
+        ///             Ids = 
+        ///             {
+        ///                 "my-VirtualHost-1",
+        ///                 "my-VirtualHost-2",
+        ///             },
+        ///         }));
+        ///         this.AmqpVirtualHostId1 = ids.Apply(ids =&gt; ids.Hosts?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Amqp.GetVirtualHosts.InvokeAsync(new AliCloud.Amqp.GetVirtualHostsArgs
+        ///         {
+        ///             InstanceId = "amqp-abc12345",
+        ///             NameRegex = "^my-VirtualHost",
+        ///         }));
+        ///         this.AmqpVirtualHostId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Hosts?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("amqpVirtualHostId1")]
+        ///     public Output&lt;string&gt; AmqpVirtualHostId1 { get; set; }
+        ///     [Output("amqpVirtualHostId2")]
+        ///     public Output&lt;string&gt; AmqpVirtualHostId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetVirtualHostsResult> Invoke(GetVirtualHostsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVirtualHostsResult>("alicloud:amqp/getVirtualHosts:getVirtualHosts", args ?? new GetVirtualHostsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -92,6 +142,40 @@ namespace Pulumi.AliCloud.Amqp
         public string? OutputFile { get; set; }
 
         public GetVirtualHostsArgs()
+        {
+        }
+    }
+
+    public sealed class GetVirtualHostsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Virtual Host IDs. Its element value is same as Virtual Host Name.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// InstanceId.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by Virtual Host name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetVirtualHostsInvokeArgs()
         {
         }
     }

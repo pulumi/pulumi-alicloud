@@ -40,8 +40,8 @@ import (
 // 		ecsDisk, err := ecs.NewEcsDisk(ctx, "ecsDisk", &ecs.EcsDiskArgs{
 // 			AvailabilityZone: pulumi.String("cn-beijing-a"),
 // 			Size:             pulumi.Int(50),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("TerraformTest-disk"),
+// 			Tags: pulumi.AnyMap{
+// 				"Name": pulumi.Any("TerraformTest-disk"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -267,7 +267,7 @@ type EcsDiskAttachmentArrayInput interface {
 type EcsDiskAttachmentArray []EcsDiskAttachmentInput
 
 func (EcsDiskAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EcsDiskAttachment)(nil))
+	return reflect.TypeOf((*[]*EcsDiskAttachment)(nil)).Elem()
 }
 
 func (i EcsDiskAttachmentArray) ToEcsDiskAttachmentArrayOutput() EcsDiskAttachmentArrayOutput {
@@ -292,7 +292,7 @@ type EcsDiskAttachmentMapInput interface {
 type EcsDiskAttachmentMap map[string]EcsDiskAttachmentInput
 
 func (EcsDiskAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EcsDiskAttachment)(nil))
+	return reflect.TypeOf((*map[string]*EcsDiskAttachment)(nil)).Elem()
 }
 
 func (i EcsDiskAttachmentMap) ToEcsDiskAttachmentMapOutput() EcsDiskAttachmentMapOutput {
@@ -303,9 +303,7 @@ func (i EcsDiskAttachmentMap) ToEcsDiskAttachmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDiskAttachmentMapOutput)
 }
 
-type EcsDiskAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type EcsDiskAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EcsDiskAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EcsDiskAttachment)(nil))
@@ -324,14 +322,12 @@ func (o EcsDiskAttachmentOutput) ToEcsDiskAttachmentPtrOutput() EcsDiskAttachmen
 }
 
 func (o EcsDiskAttachmentOutput) ToEcsDiskAttachmentPtrOutputWithContext(ctx context.Context) EcsDiskAttachmentPtrOutput {
-	return o.ApplyT(func(v EcsDiskAttachment) *EcsDiskAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsDiskAttachment) *EcsDiskAttachment {
 		return &v
 	}).(EcsDiskAttachmentPtrOutput)
 }
 
-type EcsDiskAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type EcsDiskAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (EcsDiskAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EcsDiskAttachment)(nil))
@@ -343,6 +339,16 @@ func (o EcsDiskAttachmentPtrOutput) ToEcsDiskAttachmentPtrOutput() EcsDiskAttach
 
 func (o EcsDiskAttachmentPtrOutput) ToEcsDiskAttachmentPtrOutputWithContext(ctx context.Context) EcsDiskAttachmentPtrOutput {
 	return o
+}
+
+func (o EcsDiskAttachmentPtrOutput) Elem() EcsDiskAttachmentOutput {
+	return o.ApplyT(func(v *EcsDiskAttachment) EcsDiskAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret EcsDiskAttachment
+		return ret
+	}).(EcsDiskAttachmentOutput)
 }
 
 type EcsDiskAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -386,6 +392,10 @@ func (o EcsDiskAttachmentMapOutput) MapIndex(k pulumi.StringInput) EcsDiskAttach
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsDiskAttachmentInput)(nil)).Elem(), &EcsDiskAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsDiskAttachmentPtrInput)(nil)).Elem(), &EcsDiskAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsDiskAttachmentArrayInput)(nil)).Elem(), EcsDiskAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsDiskAttachmentMapInput)(nil)).Elem(), EcsDiskAttachmentMap{})
 	pulumi.RegisterOutputType(EcsDiskAttachmentOutput{})
 	pulumi.RegisterOutputType(EcsDiskAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(EcsDiskAttachmentArrayOutput{})

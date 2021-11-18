@@ -4,6 +4,9 @@
 package rds
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -101,4 +104,128 @@ type GetInstancesResult struct {
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the VSwitch the instance belongs to.
 	VswitchId *string `pulumi:"vswitchId"`
+}
+
+func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstancesResult, error) {
+			args := v.(GetInstancesArgs)
+			r, err := GetInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getInstances.
+type GetInstancesOutputArgs struct {
+	// `Standard` for standard access mode and `Safe` for high security access mode.
+	ConnectionMode pulumi.StringPtrInput `pulumi:"connectionMode"`
+	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+	DbType pulumi.StringPtrInput `pulumi:"dbType"`
+	// Default to `false`. Set it to `true` can output parameter template about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	// A list of RDS instance IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by instance name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Status of the instance.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A map of tags assigned to the DB instances.
+	// Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Used to retrieve instances belong to specified VPC.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// Used to retrieve instances belong to specified `vswitch` resources.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (GetInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstances.
+type GetInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesResult)(nil)).Elem()
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutput() GetInstancesResultOutput {
+	return o
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx context.Context) GetInstancesResultOutput {
+	return o
+}
+
+// `Standard` for standard access mode and `Safe` for high security access mode.
+func (o GetInstancesResultOutput) ConnectionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.ConnectionMode }).(pulumi.StringPtrOutput)
+}
+
+// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+func (o GetInstancesResultOutput) DbType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.DbType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+func (o GetInstancesResultOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of RDS instance IDs.
+func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// A list of RDS instances. Each element contains the following attributes:
+func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
+}
+
+func (o GetInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of RDS instance names.
+func (o GetInstancesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// Status of the instance.
+func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// ID of the VPC the instance belongs to.
+func (o GetInstancesResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the VSwitch the instance belongs to.
+func (o GetInstancesResultOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstancesResultOutput{})
 }

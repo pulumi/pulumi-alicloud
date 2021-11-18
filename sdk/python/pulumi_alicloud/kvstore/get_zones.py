@@ -13,6 +13,7 @@ __all__ = [
     'GetZonesResult',
     'AwaitableGetZonesResult',
     'get_zones',
+    'get_zones_output',
 ]
 
 @pulumi.output_type
@@ -164,3 +165,38 @@ def get_zones(engine: Optional[str] = None,
         output_file=__ret__.output_file,
         product_type=__ret__.product_type,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_zones)
+def get_zones_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
+                     instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     multi: Optional[pulumi.Input[Optional[bool]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     product_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+    """
+    This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+
+    > **NOTE:** Available in v1.73.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.kvstore.get_zones()
+    # Create an KVStore instance with the first matched zone
+    kvstore = alicloud.kvstore.Instance("kvstore", availability_zone=zones_ids.zones[0].id)
+    # Other properties...
+    ```
+
+
+    :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+           * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+           * Local: an ApsaraDB for Redis instance with a local disk.
+           * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+    :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+    """
+    ...

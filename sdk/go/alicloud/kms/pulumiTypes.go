@@ -838,6 +838,16 @@ func (o GetSecretsSecretArrayOutput) Index(i pulumi.IntInput) GetSecretsSecretOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAliasesAliasInput)(nil)).Elem(), GetAliasesAliasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAliasesAliasArrayInput)(nil)).Elem(), GetAliasesAliasArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyVersionsVersionInput)(nil)).Elem(), GetKeyVersionsVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyVersionsVersionArrayInput)(nil)).Elem(), GetKeyVersionsVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysKeyInput)(nil)).Elem(), GetKeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysKeyArrayInput)(nil)).Elem(), GetKeysKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretVersionsVersionInput)(nil)).Elem(), GetSecretVersionsVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretVersionsVersionArrayInput)(nil)).Elem(), GetSecretVersionsVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsSecretInput)(nil)).Elem(), GetSecretsSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsSecretArrayInput)(nil)).Elem(), GetSecretsSecretArray{})
 	pulumi.RegisterOutputType(GetAliasesAliasOutput{})
 	pulumi.RegisterOutputType(GetAliasesAliasArrayOutput{})
 	pulumi.RegisterOutputType(GetKeyVersionsVersionOutput{})

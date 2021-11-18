@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ram
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Ram
         ///             OutputFile = "groups.txt",
         ///             UserName = "user1",
         ///         }));
-        ///         this.FirstGroupName = groupsDs.Apply(groupsDs =&gt; groupsDs.Groups[0].Name);
+        ///         this.FirstGroupName = groupsDs.Apply(groupsDs =&gt; groupsDs.Groups?[0]?.Name);
         ///     }
         /// 
         ///     [Output("firstGroupName")]
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:ram/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var groupsDs = Output.Create(AliCloud.Ram.GetGroups.InvokeAsync(new AliCloud.Ram.GetGroupsArgs
+        ///         {
+        ///             NameRegex = "^group[0-9]*",
+        ///             OutputFile = "groups.txt",
+        ///             UserName = "user1",
+        ///         }));
+        ///         this.FirstGroupName = groupsDs.Apply(groupsDs =&gt; groupsDs.Groups?[0]?.Name);
+        ///     }
+        /// 
+        ///     [Output("firstGroupName")]
+        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:ram/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -77,6 +112,40 @@ namespace Pulumi.AliCloud.Ram
         public string? UserName { get; set; }
 
         public GetGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A regex string to filter the returned groups by their names.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
+        /// </summary>
+        [Input("policyName")]
+        public Input<string>? PolicyName { get; set; }
+
+        /// <summary>
+        /// Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
+
+        /// <summary>
+        /// Filter the results by a specific the user name.
+        /// </summary>
+        [Input("userName")]
+        public Input<string>? UserName { get; set; }
+
+        public GetGroupsInvokeArgs()
         {
         }
     }

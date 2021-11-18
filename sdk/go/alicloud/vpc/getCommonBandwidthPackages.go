@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,4 +92,106 @@ type GetCommonBandwidthPackagesResult struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Status of the Common Bandwidth Package.
 	Status *string `pulumi:"status"`
+}
+
+func GetCommonBandwidthPackagesOutput(ctx *pulumi.Context, args GetCommonBandwidthPackagesOutputArgs, opts ...pulumi.InvokeOption) GetCommonBandwidthPackagesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetCommonBandwidthPackagesResult, error) {
+			args := v.(GetCommonBandwidthPackagesArgs)
+			r, err := GetCommonBandwidthPackages(ctx, &args, opts...)
+			return *r, err
+		}).(GetCommonBandwidthPackagesResultOutput)
+}
+
+// A collection of arguments for invoking getCommonBandwidthPackages.
+type GetCommonBandwidthPackagesOutputArgs struct {
+	// The name of bandwidth package.
+	BandwidthPackageName pulumi.StringPtrInput `pulumi:"bandwidthPackageName"`
+	// Specifies whether to precheck only the request.
+	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
+	// A list of Common Bandwidth Packages IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Specifies whether to return data of orders that have not taken effect.
+	IncludeReservationData pulumi.BoolPtrInput `pulumi:"includeReservationData"`
+	// A regex string to filter results by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Id of resource group which the common bandwidth package belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The status of bandwidth package. Valid values: `Available` and `Pending`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetCommonBandwidthPackagesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCommonBandwidthPackagesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCommonBandwidthPackages.
+type GetCommonBandwidthPackagesResultOutput struct{ *pulumi.OutputState }
+
+func (GetCommonBandwidthPackagesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCommonBandwidthPackagesResult)(nil)).Elem()
+}
+
+func (o GetCommonBandwidthPackagesResultOutput) ToGetCommonBandwidthPackagesResultOutput() GetCommonBandwidthPackagesResultOutput {
+	return o
+}
+
+func (o GetCommonBandwidthPackagesResultOutput) ToGetCommonBandwidthPackagesResultOutputWithContext(ctx context.Context) GetCommonBandwidthPackagesResultOutput {
+	return o
+}
+
+// The name of bandwidth package.
+func (o GetCommonBandwidthPackagesResultOutput) BandwidthPackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesResult) *string { return v.BandwidthPackageName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCommonBandwidthPackagesResultOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCommonBandwidthPackagesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Optional) A list of Common Bandwidth Packages IDs.
+func (o GetCommonBandwidthPackagesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCommonBandwidthPackagesResultOutput) IncludeReservationData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesResult) *bool { return v.IncludeReservationData }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetCommonBandwidthPackagesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of Common Bandwidth Packages names.
+func (o GetCommonBandwidthPackagesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCommonBandwidthPackagesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of Common Bandwidth Packages. Each element contains the following attributes:
+func (o GetCommonBandwidthPackagesResultOutput) Packages() GetCommonBandwidthPackagesPackageArrayOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesResult) []GetCommonBandwidthPackagesPackage { return v.Packages }).(GetCommonBandwidthPackagesPackageArrayOutput)
+}
+
+// The Id of resource group which the common bandwidth package belongs.
+func (o GetCommonBandwidthPackagesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Status of the Common Bandwidth Package.
+func (o GetCommonBandwidthPackagesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCommonBandwidthPackagesResultOutput{})
 }

@@ -185,7 +185,7 @@ type SharedResourceArrayInput interface {
 type SharedResourceArray []SharedResourceInput
 
 func (SharedResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SharedResource)(nil))
+	return reflect.TypeOf((*[]*SharedResource)(nil)).Elem()
 }
 
 func (i SharedResourceArray) ToSharedResourceArrayOutput() SharedResourceArrayOutput {
@@ -210,7 +210,7 @@ type SharedResourceMapInput interface {
 type SharedResourceMap map[string]SharedResourceInput
 
 func (SharedResourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SharedResource)(nil))
+	return reflect.TypeOf((*map[string]*SharedResource)(nil)).Elem()
 }
 
 func (i SharedResourceMap) ToSharedResourceMapOutput() SharedResourceMapOutput {
@@ -221,9 +221,7 @@ func (i SharedResourceMap) ToSharedResourceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SharedResourceMapOutput)
 }
 
-type SharedResourceOutput struct {
-	*pulumi.OutputState
-}
+type SharedResourceOutput struct{ *pulumi.OutputState }
 
 func (SharedResourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SharedResource)(nil))
@@ -242,14 +240,12 @@ func (o SharedResourceOutput) ToSharedResourcePtrOutput() SharedResourcePtrOutpu
 }
 
 func (o SharedResourceOutput) ToSharedResourcePtrOutputWithContext(ctx context.Context) SharedResourcePtrOutput {
-	return o.ApplyT(func(v SharedResource) *SharedResource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SharedResource) *SharedResource {
 		return &v
 	}).(SharedResourcePtrOutput)
 }
 
-type SharedResourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type SharedResourcePtrOutput struct{ *pulumi.OutputState }
 
 func (SharedResourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SharedResource)(nil))
@@ -261,6 +257,16 @@ func (o SharedResourcePtrOutput) ToSharedResourcePtrOutput() SharedResourcePtrOu
 
 func (o SharedResourcePtrOutput) ToSharedResourcePtrOutputWithContext(ctx context.Context) SharedResourcePtrOutput {
 	return o
+}
+
+func (o SharedResourcePtrOutput) Elem() SharedResourceOutput {
+	return o.ApplyT(func(v *SharedResource) SharedResource {
+		if v != nil {
+			return *v
+		}
+		var ret SharedResource
+		return ret
+	}).(SharedResourceOutput)
 }
 
 type SharedResourceArrayOutput struct{ *pulumi.OutputState }
@@ -304,6 +310,10 @@ func (o SharedResourceMapOutput) MapIndex(k pulumi.StringInput) SharedResourceOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SharedResourceInput)(nil)).Elem(), &SharedResource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SharedResourcePtrInput)(nil)).Elem(), &SharedResource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SharedResourceArrayInput)(nil)).Elem(), SharedResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SharedResourceMapInput)(nil)).Elem(), SharedResourceMap{})
 	pulumi.RegisterOutputType(SharedResourceOutput{})
 	pulumi.RegisterOutputType(SharedResourcePtrOutput{})
 	pulumi.RegisterOutputType(SharedResourceArrayOutput{})

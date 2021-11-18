@@ -4,6 +4,9 @@
 package fc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,79 @@ type GetFunctionsResult struct {
 	Names       []string `pulumi:"names"`
 	OutputFile  *string  `pulumi:"outputFile"`
 	ServiceName string   `pulumi:"serviceName"`
+}
+
+func GetFunctionsOutput(ctx *pulumi.Context, args GetFunctionsOutputArgs, opts ...pulumi.InvokeOption) GetFunctionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetFunctionsResult, error) {
+			args := v.(GetFunctionsArgs)
+			r, err := GetFunctions(ctx, &args, opts...)
+			return *r, err
+		}).(GetFunctionsResultOutput)
+}
+
+// A collection of arguments for invoking getFunctions.
+type GetFunctionsOutputArgs struct {
+	// - A list of functions ids.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by function name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Name of the service that contains the functions to find.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (GetFunctionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getFunctions.
+type GetFunctionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsResult)(nil)).Elem()
+}
+
+func (o GetFunctionsResultOutput) ToGetFunctionsResultOutput() GetFunctionsResultOutput {
+	return o
+}
+
+func (o GetFunctionsResultOutput) ToGetFunctionsResultOutputWithContext(ctx context.Context) GetFunctionsResultOutput {
+	return o
+}
+
+// A list of functions. Each element contains the following attributes:
+func (o GetFunctionsResultOutput) Functions() GetFunctionsFunctionArrayOutput {
+	return o.ApplyT(func(v GetFunctionsResult) []GetFunctionsFunction { return v.Functions }).(GetFunctionsFunctionArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetFunctionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of functions ids.
+func (o GetFunctionsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFunctionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFunctionsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of functions names.
+func (o GetFunctionsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFunctionsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFunctionsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetFunctionsResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetFunctionsResultOutput{})
 }

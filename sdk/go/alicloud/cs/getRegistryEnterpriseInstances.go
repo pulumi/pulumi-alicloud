@@ -4,6 +4,9 @@
 package cs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,81 @@ type GetRegistryEnterpriseInstancesResult struct {
 	// A list of instance names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetRegistryEnterpriseInstancesOutput(ctx *pulumi.Context, args GetRegistryEnterpriseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetRegistryEnterpriseInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRegistryEnterpriseInstancesResult, error) {
+			args := v.(GetRegistryEnterpriseInstancesArgs)
+			r, err := GetRegistryEnterpriseInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetRegistryEnterpriseInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getRegistryEnterpriseInstances.
+type GetRegistryEnterpriseInstancesOutputArgs struct {
+	// Default to `true`. Set it to true can output instance authorization token.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of ids to filter results by instance id.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by instance name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetRegistryEnterpriseInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRegistryEnterpriseInstances.
+type GetRegistryEnterpriseInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseInstancesResult)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseInstancesResultOutput) ToGetRegistryEnterpriseInstancesResultOutput() GetRegistryEnterpriseInstancesResultOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseInstancesResultOutput) ToGetRegistryEnterpriseInstancesResultOutputWithContext(ctx context.Context) GetRegistryEnterpriseInstancesResultOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRegistryEnterpriseInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of matched Container Registry Enterprise Edition instances. Its element is an instance uuid.
+func (o GetRegistryEnterpriseInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// A list of matched Container Registry Enterprise Editioninstances. Each element contains the following attributes:
+func (o GetRegistryEnterpriseInstancesResultOutput) Instances() GetRegistryEnterpriseInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesResult) []GetRegistryEnterpriseInstancesInstance {
+		return v.Instances
+	}).(GetRegistryEnterpriseInstancesInstanceArrayOutput)
+}
+
+func (o GetRegistryEnterpriseInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of instance names.
+func (o GetRegistryEnterpriseInstancesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRegistryEnterpriseInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRegistryEnterpriseInstancesResultOutput{})
 }

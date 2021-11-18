@@ -13,6 +13,7 @@ __all__ = [
     'GetGroupsResult',
     'AwaitableGetGroupsResult',
     'get_groups',
+    'get_groups_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,45 @@ def get_groups(directory_id: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         provision_type=__ret__.provision_type)
+
+
+@_utilities.lift_output_func(get_groups)
+def get_groups_output(directory_id: Optional[pulumi.Input[str]] = None,
+                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      provision_type: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+    """
+    This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.138.0+.
+
+    > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_groups(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoGroupId1", ids.groups[0].id)
+    name_regex = alicloud.cloudsso.get_groups(directory_id="example_value",
+        name_regex="^my-Group")
+    pulumi.export("cloudSsoGroupId2", name_regex.groups[0].id)
+    ```
+
+
+    :param str directory_id: The ID of the Directory.
+    :param Sequence[str] ids: A list of Group IDs.
+    :param str name_regex: A regex string to filter results by Group name.
+    :param str provision_type: The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+    """
+    ...

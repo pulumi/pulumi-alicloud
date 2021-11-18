@@ -325,7 +325,7 @@ type ProtectionModuleArrayInput interface {
 type ProtectionModuleArray []ProtectionModuleInput
 
 func (ProtectionModuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProtectionModule)(nil))
+	return reflect.TypeOf((*[]*ProtectionModule)(nil)).Elem()
 }
 
 func (i ProtectionModuleArray) ToProtectionModuleArrayOutput() ProtectionModuleArrayOutput {
@@ -350,7 +350,7 @@ type ProtectionModuleMapInput interface {
 type ProtectionModuleMap map[string]ProtectionModuleInput
 
 func (ProtectionModuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProtectionModule)(nil))
+	return reflect.TypeOf((*map[string]*ProtectionModule)(nil)).Elem()
 }
 
 func (i ProtectionModuleMap) ToProtectionModuleMapOutput() ProtectionModuleMapOutput {
@@ -361,9 +361,7 @@ func (i ProtectionModuleMap) ToProtectionModuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectionModuleMapOutput)
 }
 
-type ProtectionModuleOutput struct {
-	*pulumi.OutputState
-}
+type ProtectionModuleOutput struct{ *pulumi.OutputState }
 
 func (ProtectionModuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProtectionModule)(nil))
@@ -382,14 +380,12 @@ func (o ProtectionModuleOutput) ToProtectionModulePtrOutput() ProtectionModulePt
 }
 
 func (o ProtectionModuleOutput) ToProtectionModulePtrOutputWithContext(ctx context.Context) ProtectionModulePtrOutput {
-	return o.ApplyT(func(v ProtectionModule) *ProtectionModule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProtectionModule) *ProtectionModule {
 		return &v
 	}).(ProtectionModulePtrOutput)
 }
 
-type ProtectionModulePtrOutput struct {
-	*pulumi.OutputState
-}
+type ProtectionModulePtrOutput struct{ *pulumi.OutputState }
 
 func (ProtectionModulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProtectionModule)(nil))
@@ -401,6 +397,16 @@ func (o ProtectionModulePtrOutput) ToProtectionModulePtrOutput() ProtectionModul
 
 func (o ProtectionModulePtrOutput) ToProtectionModulePtrOutputWithContext(ctx context.Context) ProtectionModulePtrOutput {
 	return o
+}
+
+func (o ProtectionModulePtrOutput) Elem() ProtectionModuleOutput {
+	return o.ApplyT(func(v *ProtectionModule) ProtectionModule {
+		if v != nil {
+			return *v
+		}
+		var ret ProtectionModule
+		return ret
+	}).(ProtectionModuleOutput)
 }
 
 type ProtectionModuleArrayOutput struct{ *pulumi.OutputState }
@@ -444,6 +450,10 @@ func (o ProtectionModuleMapOutput) MapIndex(k pulumi.StringInput) ProtectionModu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProtectionModuleInput)(nil)).Elem(), &ProtectionModule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProtectionModulePtrInput)(nil)).Elem(), &ProtectionModule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProtectionModuleArrayInput)(nil)).Elem(), ProtectionModuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProtectionModuleMapInput)(nil)).Elem(), ProtectionModuleMap{})
 	pulumi.RegisterOutputType(ProtectionModuleOutput{})
 	pulumi.RegisterOutputType(ProtectionModulePtrOutput{})
 	pulumi.RegisterOutputType(ProtectionModuleArrayOutput{})

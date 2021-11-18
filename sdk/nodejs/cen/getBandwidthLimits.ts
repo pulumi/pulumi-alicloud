@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const bwl = pulumi.output(alicloud.cen.getBandwidthLimits({
  *     instanceIds: ["cen-id1"],
- * }, { async: true }));
+ * }));
  *
  * export const firstCenBandwidthLimitsLocalRegionId = bwl.limits[0].localRegionId;
  * ```
@@ -43,8 +43,8 @@ export interface GetBandwidthLimitsArgs {
     /**
      * A list of CEN instances IDs.
      */
-    readonly instanceIds?: string[];
-    readonly outputFile?: string;
+    instanceIds?: string[];
+    outputFile?: string;
 }
 
 /**
@@ -61,4 +61,19 @@ export interface GetBandwidthLimitsResult {
      */
     readonly limits: outputs.cen.GetBandwidthLimitsLimit[];
     readonly outputFile?: string;
+}
+
+export function getBandwidthLimitsOutput(args?: GetBandwidthLimitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthLimitsResult> {
+    return pulumi.output(args).apply(a => getBandwidthLimits(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBandwidthLimits.
+ */
+export interface GetBandwidthLimitsOutputArgs {
+    /**
+     * A list of CEN instances IDs.
+     */
+    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
 }

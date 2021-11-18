@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cfg
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Cfg
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstConfigAggregateConfigRuleId = example.Apply(example =&gt; example.Rules[0].Id);
+        ///         this.FirstConfigAggregateConfigRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstConfigAggregateConfigRuleId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         public static Task<GetAggregateConfigRulesResult> InvokeAsync(GetAggregateConfigRulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.124.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cfg.GetAggregateConfigRules.InvokeAsync(new AliCloud.Cfg.GetAggregateConfigRulesArgs
+        ///         {
+        ///             AggregatorId = "ca-3a9b626622af001d****",
+        ///             Ids = 
+        ///             {
+        ///                 "cr-5154626622af0034****",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstConfigAggregateConfigRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstConfigAggregateConfigRuleId")]
+        ///     public Output&lt;string&gt; FirstConfigAggregateConfigRuleId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAggregateConfigRulesResult> Invoke(GetAggregateConfigRulesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -108,6 +150,64 @@ namespace Pulumi.AliCloud.Cfg
         public string? Status { get; set; }
 
         public GetAggregateConfigRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAggregateConfigRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the rule.
+        /// </summary>
+        [Input("aggregateConfigRuleName")]
+        public Input<string>? AggregateConfigRuleName { get; set; }
+
+        /// <summary>
+        /// The ID of Aggregator.
+        /// </summary>
+        [Input("aggregatorId", required: true)]
+        public Input<string> AggregatorId { get; set; } = null!;
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Aggregate Config Rule IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Aggregate Config Rule name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+        /// </summary>
+        [Input("riskLevel")]
+        public Input<int>? RiskLevel { get; set; }
+
+        /// <summary>
+        /// The status of the rule.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetAggregateConfigRulesInvokeArgs()
         {
         }
     }

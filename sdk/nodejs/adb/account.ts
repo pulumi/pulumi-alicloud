@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const cluster = new alicloud.adb.Cluster("cluster", {
  *     dbClusterVersion: "3.0",
@@ -154,27 +154,27 @@ export interface AccountState {
     /**
      * Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    readonly accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string>;
     /**
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
      */
-    readonly accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
-    readonly accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string>;
     /**
      * The Id of cluster in which account belongs.
      */
-    readonly dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -184,25 +184,25 @@ export interface AccountArgs {
     /**
      * Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    readonly accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string>;
     /**
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
      */
-    readonly accountName: pulumi.Input<string>;
+    accountName: pulumi.Input<string>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
-    readonly accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string>;
     /**
      * The Id of cluster in which account belongs.
      */
-    readonly dbClusterId: pulumi.Input<string>;
+    dbClusterId: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
 }

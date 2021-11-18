@@ -13,6 +13,7 @@ __all__ = [
     'GetRouteServicesResult',
     'AwaitableGetRouteServicesResult',
     'get_route_services',
+    'get_route_services_output',
 ]
 
 @pulumi.output_type
@@ -206,3 +207,40 @@ def get_route_services(access_region_id: Optional[str] = None,
         output_file=__ret__.output_file,
         services=__ret__.services,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_route_services)
+def get_route_services_output(access_region_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              cen_id: Optional[pulumi.Input[str]] = None,
+                              host: Optional[pulumi.Input[Optional[str]]] = None,
+                              host_region_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              host_vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              status: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteServicesResult]:
+    """
+    This data source provides CEN Route Service available to the user.
+
+    > **NOTE:** Available in v1.102.0+
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cen.get_route_services(cen_id="cen-7qthudw0ll6jmc****")
+    pulumi.export("firstCenRouteServiceId", example.services[0].id)
+    ```
+
+
+    :param str access_region_id: The region of the network instances that access the cloud services.
+    :param str cen_id: -(Required, ForceNew) The ID of the CEN instance.
+    :param str host: -(Optional, ForceNew) The domain name or IP address of the cloud service.
+    :param str host_region_id: The region of the cloud service.
+    :param str host_vpc_id: The VPC associated with the cloud service.
+    :param str status: The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
+    """
+    ...

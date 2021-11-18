@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ApiGateway
 {
@@ -30,7 +31,7 @@ namespace Pulumi.AliCloud.ApiGateway
         ///         {
         ///             OutputFile = "outgroups",
         ///         }));
-        ///         this.FirstGroupId = dataApigatway.Apply(dataApigatway =&gt; dataApigatway.Groups[0].Id);
+        ///         this.FirstGroupId = dataApigatway.Apply(dataApigatway =&gt; dataApigatway.Groups?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstGroupId")]
@@ -42,6 +43,38 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:apigateway/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the api groups of the current Alibaba Cloud user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dataApigatway = Output.Create(AliCloud.ApiGateway.GetGroups.InvokeAsync(new AliCloud.ApiGateway.GetGroupsArgs
+        ///         {
+        ///             OutputFile = "outgroups",
+        ///         }));
+        ///         this.FirstGroupId = dataApigatway.Apply(dataApigatway =&gt; dataApigatway.Groups?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstGroupId")]
+        ///     public Output&lt;string&gt; FirstGroupId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:apigateway/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -69,6 +102,34 @@ namespace Pulumi.AliCloud.ApiGateway
         public string? OutputFile { get; set; }
 
         public GetGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of api group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter api gateway groups by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetGroupsInvokeArgs()
         {
         }
     }

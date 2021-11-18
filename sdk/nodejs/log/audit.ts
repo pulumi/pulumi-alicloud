@@ -279,23 +279,23 @@ export interface AuditState {
     /**
      * Aliuid value of your account.
      */
-    readonly aliuid?: pulumi.Input<string>;
+    aliuid?: pulumi.Input<string>;
     /**
      * Name of SLS log audit.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Multi-account configuration, please fill in multiple aliuid.
      */
-    readonly multiAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    multiAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
      */
-    readonly resourceDirectoryType?: pulumi.Input<string>;
+    resourceDirectoryType?: pulumi.Input<string>;
     /**
      * Log audit detailed configuration.
      */
-    readonly variableMap?: pulumi.Input<{[key: string]: any}>;
+    variableMap?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -305,21 +305,21 @@ export interface AuditArgs {
     /**
      * Aliuid value of your account.
      */
-    readonly aliuid: pulumi.Input<string>;
+    aliuid: pulumi.Input<string>;
     /**
      * Name of SLS log audit.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Multi-account configuration, please fill in multiple aliuid.
      */
-    readonly multiAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    multiAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
      */
-    readonly resourceDirectoryType?: pulumi.Input<string>;
+    resourceDirectoryType?: pulumi.Input<string>;
     /**
      * Log audit detailed configuration.
      */
-    readonly variableMap?: pulumi.Input<{[key: string]: any}>;
+    variableMap?: pulumi.Input<{[key: string]: any}>;
 }

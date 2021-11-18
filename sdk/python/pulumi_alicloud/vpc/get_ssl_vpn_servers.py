@@ -13,6 +13,7 @@ __all__ = [
     'GetSslVpnServersResult',
     'AwaitableGetSslVpnServersResult',
     'get_ssl_vpn_servers',
+    'get_ssl_vpn_servers_output',
 ]
 
 @pulumi.output_type
@@ -154,3 +155,33 @@ def get_ssl_vpn_servers(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         servers=__ret__.servers,
         vpn_gateway_id=__ret__.vpn_gateway_id)
+
+
+@_utilities.lift_output_func(get_ssl_vpn_servers)
+def get_ssl_vpn_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               vpn_gateway_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSslVpnServersResult]:
+    """
+    The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.vpc.get_ssl_vpn_servers(ids=["fake-server-id"],
+        name_regex="^foo",
+        output_file="/tmp/sslserver",
+        vpn_gateway_id="fake-vpn-id")
+    ```
+
+
+    :param Sequence[str] ids: IDs of the SSL-VPN servers.
+    :param str name_regex: A regex string of SSL-VPN server name.
+    :param str output_file: Save the result to the file.
+    :param str vpn_gateway_id: Use the VPN gateway ID as the search key.
+    """
+    ...

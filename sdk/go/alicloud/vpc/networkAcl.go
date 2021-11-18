@@ -227,7 +227,7 @@ type NetworkAclArrayInput interface {
 type NetworkAclArray []NetworkAclInput
 
 func (NetworkAclArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NetworkAcl)(nil))
+	return reflect.TypeOf((*[]*NetworkAcl)(nil)).Elem()
 }
 
 func (i NetworkAclArray) ToNetworkAclArrayOutput() NetworkAclArrayOutput {
@@ -252,7 +252,7 @@ type NetworkAclMapInput interface {
 type NetworkAclMap map[string]NetworkAclInput
 
 func (NetworkAclMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NetworkAcl)(nil))
+	return reflect.TypeOf((*map[string]*NetworkAcl)(nil)).Elem()
 }
 
 func (i NetworkAclMap) ToNetworkAclMapOutput() NetworkAclMapOutput {
@@ -263,9 +263,7 @@ func (i NetworkAclMap) ToNetworkAclMapOutputWithContext(ctx context.Context) Net
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclMapOutput)
 }
 
-type NetworkAclOutput struct {
-	*pulumi.OutputState
-}
+type NetworkAclOutput struct{ *pulumi.OutputState }
 
 func (NetworkAclOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkAcl)(nil))
@@ -284,14 +282,12 @@ func (o NetworkAclOutput) ToNetworkAclPtrOutput() NetworkAclPtrOutput {
 }
 
 func (o NetworkAclOutput) ToNetworkAclPtrOutputWithContext(ctx context.Context) NetworkAclPtrOutput {
-	return o.ApplyT(func(v NetworkAcl) *NetworkAcl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAcl) *NetworkAcl {
 		return &v
 	}).(NetworkAclPtrOutput)
 }
 
-type NetworkAclPtrOutput struct {
-	*pulumi.OutputState
-}
+type NetworkAclPtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkAclPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NetworkAcl)(nil))
@@ -303,6 +299,16 @@ func (o NetworkAclPtrOutput) ToNetworkAclPtrOutput() NetworkAclPtrOutput {
 
 func (o NetworkAclPtrOutput) ToNetworkAclPtrOutputWithContext(ctx context.Context) NetworkAclPtrOutput {
 	return o
+}
+
+func (o NetworkAclPtrOutput) Elem() NetworkAclOutput {
+	return o.ApplyT(func(v *NetworkAcl) NetworkAcl {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkAcl
+		return ret
+	}).(NetworkAclOutput)
 }
 
 type NetworkAclArrayOutput struct{ *pulumi.OutputState }
@@ -346,6 +352,10 @@ func (o NetworkAclMapOutput) MapIndex(k pulumi.StringInput) NetworkAclOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclInput)(nil)).Elem(), &NetworkAcl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclPtrInput)(nil)).Elem(), &NetworkAcl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclArrayInput)(nil)).Elem(), NetworkAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclMapInput)(nil)).Elem(), NetworkAclMap{})
 	pulumi.RegisterOutputType(NetworkAclOutput{})
 	pulumi.RegisterOutputType(NetworkAclPtrOutput{})
 	pulumi.RegisterOutputType(NetworkAclArrayOutput{})

@@ -12,6 +12,7 @@ __all__ = [
     'GetConsumerGroupsResult',
     'AwaitableGetConsumerGroupsResult',
     'get_consumer_groups',
+    'get_consumer_groups_output',
 ]
 
 @pulumi.output_type
@@ -122,3 +123,32 @@ def get_consumer_groups(consumer_id_regex: Optional[str] = None,
         id=__ret__.id,
         instance_id=__ret__.instance_id,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_consumer_groups)
+def get_consumer_groups_output(consumer_id_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               instance_id: Optional[pulumi.Input[str]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConsumerGroupsResult]:
+    """
+    This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.56.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    consumer_groups_ds = alicloud.actiontrail.get_consumer_groups(consumer_id_regex="CID-alikafkaGroupDatasourceName",
+        instance_id="xxx",
+        output_file="consumerGroups.txt")
+    pulumi.export("firstGroupName", consumer_groups_ds.consumer_ids[0])
+    ```
+
+
+    :param str consumer_id_regex: A regex string to filter results by the consumer group id.
+    :param str instance_id: ID of the ALIKAFKA Instance that owns the consumer groups.
+    """
+    ...

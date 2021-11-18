@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "Instance",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones[0].id,
+ *     availabilityZone: defaultZones.zones?[0]?.id,
  *     eniAmount: 3,
  * }));
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vswitchName: name,
  *     cidrBlock: "192.168.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
@@ -48,11 +48,11 @@ import * as utilities from "../utilities";
  *     owners: "system",
  * });
  * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     instanceName: name,
  *     hostName: "tf-testAcc",
- *     imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
  *     securityGroups: [defaultSecurityGroup.id],
  *     vswitchId: defaultSwitch.id,
  * });
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  *         Created: "TF",
  *         For: "Test",
  *     },
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids[0]),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?[0]),
  * });
  * const defaultEcsNetworkInterfaceAttachment = new alicloud.ecs.EcsNetworkInterfaceAttachment("defaultEcsNetworkInterfaceAttachment", {
  *     networkInterfaceId: defaultEcsNetworkInterface.id,
@@ -174,19 +174,19 @@ export interface EcsNetworkInterfaceAttachmentState {
     /**
      * The instance id.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The network interface id.
      */
-    readonly networkInterfaceId?: pulumi.Input<string>;
+    networkInterfaceId?: pulumi.Input<string>;
     /**
      * The trunk network instance id.
      */
-    readonly trunkNetworkInstanceId?: pulumi.Input<string>;
+    trunkNetworkInstanceId?: pulumi.Input<string>;
     /**
      * The wait for network configuration ready.
      */
-    readonly waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
+    waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
 }
 
 /**
@@ -196,17 +196,17 @@ export interface EcsNetworkInterfaceAttachmentArgs {
     /**
      * The instance id.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The network interface id.
      */
-    readonly networkInterfaceId: pulumi.Input<string>;
+    networkInterfaceId: pulumi.Input<string>;
     /**
      * The trunk network instance id.
      */
-    readonly trunkNetworkInstanceId?: pulumi.Input<string>;
+    trunkNetworkInstanceId?: pulumi.Input<string>;
     /**
      * The wait for network configuration ready.
      */
-    readonly waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
+    waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
 }

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const dataApigatway = pulumi.output(alicloud.apigateway.getApps({
  *     outputFile: "outapps",
- * }, { async: true }));
+ * }));
  *
  * export const firstAppId = dataApigatway.apps[0].id;
  * ```
@@ -45,16 +45,16 @@ export interface GetAppsArgs {
     /**
      * A list of app IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter apps by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -80,4 +80,27 @@ export interface GetAppsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getAppsOutput(args?: GetAppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppsResult> {
+    return pulumi.output(args).apply(a => getApps(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApps.
+ */
+export interface GetAppsOutputArgs {
+    /**
+     * A list of app IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter apps by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

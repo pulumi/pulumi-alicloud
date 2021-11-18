@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,4 +52,94 @@ type GetNatIpCidrsResult struct {
 	NatIpCidrs     []string `pulumi:"natIpCidrs"`
 	OutputFile     *string  `pulumi:"outputFile"`
 	Status         *string  `pulumi:"status"`
+}
+
+func GetNatIpCidrsOutput(ctx *pulumi.Context, args GetNatIpCidrsOutputArgs, opts ...pulumi.InvokeOption) GetNatIpCidrsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNatIpCidrsResult, error) {
+			args := v.(GetNatIpCidrsArgs)
+			r, err := GetNatIpCidrs(ctx, &args, opts...)
+			return *r, err
+		}).(GetNatIpCidrsResultOutput)
+}
+
+// A collection of arguments for invoking getNatIpCidrs.
+type GetNatIpCidrsOutputArgs struct {
+	// A list of Nat Ip Cidr IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Nat Ip Cidr name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The ID of the VPC NAT gateway.
+	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
+	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	NatIpCidrNames pulumi.StringArrayInput `pulumi:"natIpCidrNames"`
+	// The NAT CIDR block to be created. Support up to `20`. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+	NatIpCidrs pulumi.StringArrayInput `pulumi:"natIpCidrs"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetNatIpCidrsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatIpCidrsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNatIpCidrs.
+type GetNatIpCidrsResultOutput struct{ *pulumi.OutputState }
+
+func (GetNatIpCidrsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatIpCidrsResult)(nil)).Elem()
+}
+
+func (o GetNatIpCidrsResultOutput) ToGetNatIpCidrsResultOutput() GetNatIpCidrsResultOutput {
+	return o
+}
+
+func (o GetNatIpCidrsResultOutput) ToGetNatIpCidrsResultOutputWithContext(ctx context.Context) GetNatIpCidrsResultOutput {
+	return o
+}
+
+func (o GetNatIpCidrsResultOutput) Cidrs() GetNatIpCidrsCidrArrayOutput {
+	return o.ApplyT(func(v GetNatIpCidrsResult) []GetNatIpCidrsCidr { return v.Cidrs }).(GetNatIpCidrsCidrArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNatIpCidrsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpCidrsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNatIpCidrsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatIpCidrsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNatIpCidrsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatIpCidrsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNatIpCidrsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatIpCidrsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNatIpCidrsResultOutput) NatGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatIpCidrsResult) string { return v.NatGatewayId }).(pulumi.StringOutput)
+}
+
+func (o GetNatIpCidrsResultOutput) NatIpCidrNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatIpCidrsResult) []string { return v.NatIpCidrNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNatIpCidrsResultOutput) NatIpCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatIpCidrsResult) []string { return v.NatIpCidrs }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNatIpCidrsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatIpCidrsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNatIpCidrsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatIpCidrsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNatIpCidrsResultOutput{})
 }

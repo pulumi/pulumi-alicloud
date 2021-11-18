@@ -509,6 +509,12 @@ func (o GetServerPlansPlanArrayOutput) Index(i pulumi.IntInput) GetServerPlansPl
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerPlansPlanInput)(nil)).Elem(), GetServerPlansPlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerPlansPlanArrayInput)(nil)).Elem(), GetServerPlansPlanArray{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})
 	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})

@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: "tf-testAccCsgName",
  * });
  * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
@@ -204,55 +204,55 @@ export interface GatewayState {
     /**
      * the description of gateway.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
      */
-    readonly gatewayClass?: pulumi.Input<string>;
+    gatewayClass?: pulumi.Input<string>;
     /**
      * the name of gateway.
      */
-    readonly gatewayName?: pulumi.Input<string>;
+    gatewayName?: pulumi.Input<string>;
     /**
      * gateway location. the valid values: `Cloud`, `On_Premise`.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The Payment type of gateway. The valid value: `PayAsYouGo`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
      */
-    readonly publicNetworkBandwidth?: pulumi.Input<number>;
+    publicNetworkBandwidth?: pulumi.Input<number>;
     /**
      * The reason detail of gateway.
      */
-    readonly reasonDetail?: pulumi.Input<string>;
+    reasonDetail?: pulumi.Input<string>;
     /**
      * The reason type when user deletes the gateway.
      */
-    readonly reasonType?: pulumi.Input<string>;
+    reasonType?: pulumi.Input<string>;
     /**
      * Whether to release the gateway due to expiration.
      */
-    readonly releaseAfterExpiration?: pulumi.Input<boolean>;
+    releaseAfterExpiration?: pulumi.Input<boolean>;
     /**
      * gateway status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * storage bundle id.
      */
-    readonly storageBundleId?: pulumi.Input<string>;
+    storageBundleId?: pulumi.Input<string>;
     /**
      * gateway type. the valid values: `Type`, `Iscsi`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The vswitch id of gateway.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -262,49 +262,49 @@ export interface GatewayArgs {
     /**
      * the description of gateway.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
      */
-    readonly gatewayClass?: pulumi.Input<string>;
+    gatewayClass?: pulumi.Input<string>;
     /**
      * the name of gateway.
      */
-    readonly gatewayName: pulumi.Input<string>;
+    gatewayName: pulumi.Input<string>;
     /**
      * gateway location. the valid values: `Cloud`, `On_Premise`.
      */
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The Payment type of gateway. The valid value: `PayAsYouGo`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
      */
-    readonly publicNetworkBandwidth?: pulumi.Input<number>;
+    publicNetworkBandwidth?: pulumi.Input<number>;
     /**
      * The reason detail of gateway.
      */
-    readonly reasonDetail?: pulumi.Input<string>;
+    reasonDetail?: pulumi.Input<string>;
     /**
      * The reason type when user deletes the gateway.
      */
-    readonly reasonType?: pulumi.Input<string>;
+    reasonType?: pulumi.Input<string>;
     /**
      * Whether to release the gateway due to expiration.
      */
-    readonly releaseAfterExpiration?: pulumi.Input<boolean>;
+    releaseAfterExpiration?: pulumi.Input<boolean>;
     /**
      * storage bundle id.
      */
-    readonly storageBundleId: pulumi.Input<string>;
+    storageBundleId: pulumi.Input<string>;
     /**
      * gateway type. the valid values: `Type`, `Iscsi`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * The vswitch id of gateway.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }

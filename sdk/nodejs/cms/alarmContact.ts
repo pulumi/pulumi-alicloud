@@ -152,31 +152,31 @@ export interface AlarmContactState {
     /**
      * The name of the alarm contact. The length should between 2 and 40 characters.
      */
-    readonly alarmContactName?: pulumi.Input<string>;
+    alarmContactName?: pulumi.Input<string>;
     /**
      * The TradeManager ID of the alarm contact.
      */
-    readonly channelsAliim?: pulumi.Input<string>;
+    channelsAliim?: pulumi.Input<string>;
     /**
      * The webhook URL of the DingTalk chatbot.
      */
-    readonly channelsDingWebHook?: pulumi.Input<string>;
+    channelsDingWebHook?: pulumi.Input<string>;
     /**
      * The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
      */
-    readonly channelsMail?: pulumi.Input<string>;
+    channelsMail?: pulumi.Input<string>;
     /**
      * The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
      */
-    readonly channelsSms?: pulumi.Input<string>;
+    channelsSms?: pulumi.Input<string>;
     /**
      * The description of the alarm contact.
      */
-    readonly describe?: pulumi.Input<string>;
+    describe?: pulumi.Input<string>;
     /**
      * The language type of the alarm. Valid values: `en`, `zh-cn`.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
 }
 
 /**
@@ -186,29 +186,29 @@ export interface AlarmContactArgs {
     /**
      * The name of the alarm contact. The length should between 2 and 40 characters.
      */
-    readonly alarmContactName: pulumi.Input<string>;
+    alarmContactName: pulumi.Input<string>;
     /**
      * The TradeManager ID of the alarm contact.
      */
-    readonly channelsAliim?: pulumi.Input<string>;
+    channelsAliim?: pulumi.Input<string>;
     /**
      * The webhook URL of the DingTalk chatbot.
      */
-    readonly channelsDingWebHook?: pulumi.Input<string>;
+    channelsDingWebHook?: pulumi.Input<string>;
     /**
      * The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
      */
-    readonly channelsMail?: pulumi.Input<string>;
+    channelsMail?: pulumi.Input<string>;
     /**
      * The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
      */
-    readonly channelsSms?: pulumi.Input<string>;
+    channelsSms?: pulumi.Input<string>;
     /**
      * The description of the alarm contact.
      */
-    readonly describe: pulumi.Input<string>;
+    describe: pulumi.Input<string>;
     /**
      * The language type of the alarm. Valid values: `en`, `zh-cn`.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
 }

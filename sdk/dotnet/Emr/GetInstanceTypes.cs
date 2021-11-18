@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Emr
 {
@@ -42,7 +43,7 @@ namespace Pulumi.AliCloud.Emr
         ///                 "CORE",
         ///             },
         ///         }));
-        ///         this.FirstInstanceType = @default.Apply(@default =&gt; @default.Types[0].Id);
+        ///         this.FirstInstanceType = @default.Apply(@default =&gt; @default.Types?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstInstanceType")]
@@ -54,6 +55,50 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `alicloud.emr.getInstanceTypes` data source provides a collection of ecs
+        /// instance types available in Alibaba Cloud account when create a emr cluster.
+        /// 
+        /// &gt; **NOTE:** Available in 1.59.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Emr.GetInstanceTypes.InvokeAsync(new AliCloud.Emr.GetInstanceTypesArgs
+        ///         {
+        ///             ClusterType = "HADOOP",
+        ///             DestinationResource = "InstanceType",
+        ///             InstanceChargeType = "PostPaid",
+        ///             InstanceType = "ecs.g5.2xlarge",
+        ///             SupportLocalStorage = false,
+        ///             SupportNodeTypes = 
+        ///             {
+        ///                 "MASTER",
+        ///                 "CORE",
+        ///             },
+        ///         }));
+        ///         this.FirstInstanceType = @default.Apply(@default =&gt; @default.Types?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceType")]
+        ///     public Output&lt;string&gt; FirstInstanceType { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -112,6 +157,65 @@ namespace Pulumi.AliCloud.Emr
         public string? ZoneId { get; set; }
 
         public GetInstanceTypesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceTypesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
+        /// </summary>
+        [Input("clusterType", required: true)]
+        public Input<string> ClusterType { get; set; } = null!;
+
+        /// <summary>
+        /// The destination resource of emr cluster instance
+        /// </summary>
+        [Input("destinationResource", required: true)]
+        public Input<string> DestinationResource { get; set; } = null!;
+
+        /// <summary>
+        /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+        /// </summary>
+        [Input("instanceChargeType", required: true)]
+        public Input<string> InstanceChargeType { get; set; } = null!;
+
+        /// <summary>
+        /// Filter the specific ecs instance type to create emr cluster.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Whether the current storage disk is local or not.
+        /// </summary>
+        [Input("supportLocalStorage")]
+        public Input<bool>? SupportLocalStorage { get; set; }
+
+        [Input("supportNodeTypes")]
+        private InputList<string>? _supportNodeTypes;
+
+        /// <summary>
+        /// The specific supported node type list.
+        /// Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
+        /// </summary>
+        public InputList<string> SupportNodeTypes
+        {
+            get => _supportNodeTypes ?? (_supportNodeTypes = new InputList<string>());
+            set => _supportNodeTypes = value;
+        }
+
+        /// <summary>
+        /// The supported resources of specific zoneId.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetInstanceTypesInvokeArgs()
         {
         }
     }

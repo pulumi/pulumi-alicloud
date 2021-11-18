@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const topics = pulumi.output(alicloud.mns.getTopics({
  *     namePrefix: "tf-",
- * }, { async: true }));
+ * }));
  *
  * export const firstTopicId = topics.topics[0].id;
  * ```
@@ -43,8 +43,8 @@ export interface GetTopicsArgs {
     /**
      * A string to filter resulting topics by their name prefixs.
      */
-    readonly namePrefix?: string;
-    readonly outputFile?: string;
+    namePrefix?: string;
+    outputFile?: string;
 }
 
 /**
@@ -65,4 +65,19 @@ export interface GetTopicsResult {
      * A list of topics. Each element contains the following attributes:
      */
     readonly topics: outputs.mns.GetTopicsTopic[];
+}
+
+export function getTopicsOutput(args?: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
+    return pulumi.output(args).apply(a => getTopics(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTopics.
+ */
+export interface GetTopicsOutputArgs {
+    /**
+     * A string to filter resulting topics by their name prefixs.
+     */
+    namePrefix?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

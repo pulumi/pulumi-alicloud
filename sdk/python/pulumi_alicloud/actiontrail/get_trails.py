@@ -13,6 +13,7 @@ __all__ = [
     'GetTrailsResult',
     'AwaitableGetTrailsResult',
     'get_trails',
+    'get_trails_output',
 ]
 
 @pulumi.output_type
@@ -196,3 +197,36 @@ def get_trails(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         trails=__ret__.trails)
+
+
+@_utilities.lift_output_func(get_trails)
+def get_trails_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      include_organization_trail: Optional[pulumi.Input[Optional[bool]]] = None,
+                      include_shadow_trails: Optional[pulumi.Input[Optional[bool]]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      status: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrailsResult]:
+    """
+    This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.95.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.actiontrail.get_trails(name_regex="tf-testacc-actiontrail")
+    pulumi.export("trailName", default.trails[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of ActionTrail Trail IDs. It is the same as trail name.
+    :param bool include_organization_trail: Whether to show organization tracking. Default to `false`.
+    :param bool include_shadow_trails: Whether to show shadow tracking. Default to `false`.
+    :param str name_regex: A regex string to filter results by trail name.
+    :param str status: Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+    """
+    ...

@@ -261,7 +261,7 @@ type DomainNewArrayInput interface {
 type DomainNewArray []DomainNewInput
 
 func (DomainNewArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DomainNew)(nil))
+	return reflect.TypeOf((*[]*DomainNew)(nil)).Elem()
 }
 
 func (i DomainNewArray) ToDomainNewArrayOutput() DomainNewArrayOutput {
@@ -286,7 +286,7 @@ type DomainNewMapInput interface {
 type DomainNewMap map[string]DomainNewInput
 
 func (DomainNewMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DomainNew)(nil))
+	return reflect.TypeOf((*map[string]*DomainNew)(nil)).Elem()
 }
 
 func (i DomainNewMap) ToDomainNewMapOutput() DomainNewMapOutput {
@@ -297,9 +297,7 @@ func (i DomainNewMap) ToDomainNewMapOutputWithContext(ctx context.Context) Domai
 	return pulumi.ToOutputWithContext(ctx, i).(DomainNewMapOutput)
 }
 
-type DomainNewOutput struct {
-	*pulumi.OutputState
-}
+type DomainNewOutput struct{ *pulumi.OutputState }
 
 func (DomainNewOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainNew)(nil))
@@ -318,14 +316,12 @@ func (o DomainNewOutput) ToDomainNewPtrOutput() DomainNewPtrOutput {
 }
 
 func (o DomainNewOutput) ToDomainNewPtrOutputWithContext(ctx context.Context) DomainNewPtrOutput {
-	return o.ApplyT(func(v DomainNew) *DomainNew {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainNew) *DomainNew {
 		return &v
 	}).(DomainNewPtrOutput)
 }
 
-type DomainNewPtrOutput struct {
-	*pulumi.OutputState
-}
+type DomainNewPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainNewPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainNew)(nil))
@@ -337,6 +333,16 @@ func (o DomainNewPtrOutput) ToDomainNewPtrOutput() DomainNewPtrOutput {
 
 func (o DomainNewPtrOutput) ToDomainNewPtrOutputWithContext(ctx context.Context) DomainNewPtrOutput {
 	return o
+}
+
+func (o DomainNewPtrOutput) Elem() DomainNewOutput {
+	return o.ApplyT(func(v *DomainNew) DomainNew {
+		if v != nil {
+			return *v
+		}
+		var ret DomainNew
+		return ret
+	}).(DomainNewOutput)
 }
 
 type DomainNewArrayOutput struct{ *pulumi.OutputState }
@@ -380,6 +386,10 @@ func (o DomainNewMapOutput) MapIndex(k pulumi.StringInput) DomainNewOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainNewInput)(nil)).Elem(), &DomainNew{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainNewPtrInput)(nil)).Elem(), &DomainNew{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainNewArrayInput)(nil)).Elem(), DomainNewArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainNewMapInput)(nil)).Elem(), DomainNewMap{})
 	pulumi.RegisterOutputType(DomainNewOutput{})
 	pulumi.RegisterOutputType(DomainNewPtrOutput{})
 	pulumi.RegisterOutputType(DomainNewArrayOutput{})

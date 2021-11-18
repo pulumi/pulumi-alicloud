@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Ess
     ///         }));
     ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Zones[0].Id,
+    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
     ///             CpuCoreCount = 2,
     ///             MemorySize = 4,
     ///         })));
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Ess
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
     ///         });
     ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
     ///         {
@@ -90,8 +90,8 @@ namespace Pulumi.AliCloud.Ess
     ///         var defaultScalingConfiguration = new AliCloud.Ess.ScalingConfiguration("defaultScalingConfiguration", new AliCloud.Ess.ScalingConfigurationArgs
     ///         {
     ///             ScalingGroupId = defaultScalingGroup.Id,
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
-    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
+    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
     ///             SecurityGroupId = defaultSecurityGroup.Id,
     ///             ForceDelete = true,
     ///             Active = true,
@@ -103,8 +103,8 @@ namespace Pulumi.AliCloud.Ess
     ///             var range = new { Value = rangeIndex };
     ///             defaultInstance.Add(new AliCloud.Ecs.Instance($"defaultInstance-{range.Value}", new AliCloud.Ecs.InstanceArgs
     ///             {
-    ///                 ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
-    ///                 InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+    ///                 ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
+    ///                 InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
     ///                 SecurityGroups = 
     ///                 {
     ///                     defaultSecurityGroup.Id,

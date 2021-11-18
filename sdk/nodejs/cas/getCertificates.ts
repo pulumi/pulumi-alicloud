@@ -29,17 +29,17 @@ export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getCertificates.
  */
 export interface GetCertificatesArgs {
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of cert IDs.
      */
-    readonly ids?: string[];
-    readonly lang?: string;
+    ids?: string[];
+    lang?: string;
     /**
      * A regex string to filter results by the certificate name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -66,4 +66,25 @@ export interface GetCertificatesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
+    return pulumi.output(args).apply(a => getCertificates(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCertificates.
+ */
+export interface GetCertificatesOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of cert IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    lang?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by the certificate name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
@@ -177,31 +177,31 @@ export interface ReadWriteSplittingConnectionState {
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
      */
-    readonly connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string>;
     /**
      * Connection instance string.
      */
-    readonly connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string>;
     /**
      * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
      */
-    readonly distributionType?: pulumi.Input<string>;
+    distributionType?: pulumi.Input<string>;
     /**
      * The Id of instance that can run database.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
      */
-    readonly maxDelayTime?: pulumi.Input<number>;
+    maxDelayTime?: pulumi.Input<number>;
     /**
      * Intranet connection port. Valid value: [3001-3999]. Default to 3306.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
      */
-    readonly weight?: pulumi.Input<{[key: string]: any}>;
+    weight?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -211,25 +211,25 @@ export interface ReadWriteSplittingConnectionArgs {
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
      */
-    readonly connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string>;
     /**
      * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
      */
-    readonly distributionType: pulumi.Input<string>;
+    distributionType: pulumi.Input<string>;
     /**
      * The Id of instance that can run database.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
      */
-    readonly maxDelayTime?: pulumi.Input<number>;
+    maxDelayTime?: pulumi.Input<number>;
     /**
      * Intranet connection port. Valid value: [3001-3999]. Default to 3306.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
      */
-    readonly weight?: pulumi.Input<{[key: string]: any}>;
+    weight?: pulumi.Input<{[key: string]: any}>;
 }

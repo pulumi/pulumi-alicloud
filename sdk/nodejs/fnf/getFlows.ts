@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstFnfFlowId = example.then(example => example.flows[0].id);
+ * export const firstFnfFlowId = example.then(example => example.flows?[0]?.id);
  * ```
  */
 export function getFlows(args?: GetFlowsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowsResult> {
@@ -49,16 +49,16 @@ export interface GetFlowsArgs {
     /**
      * A list of Flow IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The number of resource queries.
      */
-    readonly limit?: number;
+    limit?: number;
     /**
      * A regex string to filter results by Flow name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -75,4 +75,27 @@ export interface GetFlowsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getFlowsOutput(args?: GetFlowsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowsResult> {
+    return pulumi.output(args).apply(a => getFlows(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFlows.
+ */
+export interface GetFlowsOutputArgs {
+    /**
+     * A list of Flow IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of resource queries.
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * A regex string to filter results by Flow name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

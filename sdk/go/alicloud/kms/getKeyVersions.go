@@ -4,6 +4,9 @@
 package kms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,69 @@ type GetKeyVersionsResult struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// A list of KMS KeyVersions. Each element contains the following attributes:
 	Versions []GetKeyVersionsVersion `pulumi:"versions"`
+}
+
+func GetKeyVersionsOutput(ctx *pulumi.Context, args GetKeyVersionsOutputArgs, opts ...pulumi.InvokeOption) GetKeyVersionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetKeyVersionsResult, error) {
+			args := v.(GetKeyVersionsArgs)
+			r, err := GetKeyVersions(ctx, &args, opts...)
+			return *r, err
+		}).(GetKeyVersionsResultOutput)
+}
+
+// A collection of arguments for invoking getKeyVersions.
+type GetKeyVersionsOutputArgs struct {
+	// A list of KMS KeyVersion IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The id of kms key.
+	KeyId      pulumi.StringInput    `pulumi:"keyId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetKeyVersionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyVersionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKeyVersions.
+type GetKeyVersionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetKeyVersionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyVersionsResult)(nil)).Elem()
+}
+
+func (o GetKeyVersionsResultOutput) ToGetKeyVersionsResultOutput() GetKeyVersionsResultOutput {
+	return o
+}
+
+func (o GetKeyVersionsResultOutput) ToGetKeyVersionsResultOutputWithContext(ctx context.Context) GetKeyVersionsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetKeyVersionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyVersionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of KMS KeyVersion IDs.
+func (o GetKeyVersionsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKeyVersionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// ID of the key.
+func (o GetKeyVersionsResultOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyVersionsResult) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+func (o GetKeyVersionsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeyVersionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of KMS KeyVersions. Each element contains the following attributes:
+func (o GetKeyVersionsResultOutput) Versions() GetKeyVersionsVersionArrayOutput {
+	return o.ApplyT(func(v GetKeyVersionsResult) []GetKeyVersionsVersion { return v.Versions }).(GetKeyVersionsVersionArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetKeyVersionsResultOutput{})
 }

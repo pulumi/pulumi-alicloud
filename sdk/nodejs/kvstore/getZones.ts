@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const zonesIds = alicloud.kvstore.getZones({});
  * // Create an KVStore instance with the first matched zone
- * const kvstore = new alicloud.kvstore.Instance("kvstore", {availabilityZone: zonesIds.then(zonesIds => zonesIds.zones[0].id)});
+ * const kvstore = new alicloud.kvstore.Instance("kvstore", {availabilityZone: zonesIds.then(zonesIds => zonesIds.zones?[0]?.id)});
  * // Other properties...
  * ```
  */
@@ -50,17 +50,17 @@ export interface GetZonesArgs {
      * * Local: an ApsaraDB for Redis instance with a local disk.
      * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
      */
-    readonly engine?: string;
+    engine?: string;
     /**
      * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
-    readonly instanceChargeType?: string;
+    instanceChargeType?: string;
     /**
      * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
      */
-    readonly multi?: boolean;
-    readonly outputFile?: string;
-    readonly productType?: string;
+    multi?: boolean;
+    outputFile?: string;
+    productType?: string;
 }
 
 /**
@@ -84,4 +84,31 @@ export interface GetZonesResult {
      * A list of availability zones. Each element contains the following attributes:
      */
     readonly zones: outputs.kvstore.GetZonesZone[];
+}
+
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply(a => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    /**
+     * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+     * * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+     * * Local: an ApsaraDB for Redis instance with a local disk.
+     * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     */
+    instanceChargeType?: pulumi.Input<string>;
+    /**
+     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+     */
+    multi?: pulumi.Input<boolean>;
+    outputFile?: pulumi.Input<string>;
+    productType?: pulumi.Input<string>;
 }

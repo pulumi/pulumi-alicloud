@@ -13,6 +13,7 @@ __all__ = [
     'GetVpcEndpointServicesResult',
     'AwaitableGetVpcEndpointServicesResult',
     'get_vpc_endpoint_services',
+    'get_vpc_endpoint_services_output',
 ]
 
 @pulumi.output_type
@@ -183,3 +184,41 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
         services=__ret__.services,
         status=__ret__.status,
         vpc_endpoint_service_name=__ret__.vpc_endpoint_service_name)
+
+
+@_utilities.lift_output_func(get_vpc_endpoint_services)
+def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Input[Optional[bool]]] = None,
+                                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                     service_business_status: Optional[pulumi.Input[Optional[str]]] = None,
+                                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                                     vpc_endpoint_service_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcEndpointServicesResult]:
+    """
+    This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.109.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.privatelink.get_vpc_endpoint_services(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstPrivatelinkVpcEndpointServiceId", example.services[0].id)
+    ```
+
+
+    :param bool auto_accept_connection: Whether to automatically accept terminal node connections..
+    :param Sequence[str] ids: A list of Vpc Endpoint Service IDs.
+    :param str name_regex: A regex string to filter results by Vpc Endpoint Service name.
+    :param str service_business_status: The business status of the terminal node service..
+    :param str status: The Status of Vpc Endpoint Service.
+    :param str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
+    """
+    ...

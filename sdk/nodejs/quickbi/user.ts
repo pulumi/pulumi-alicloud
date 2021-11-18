@@ -146,27 +146,27 @@ export interface UserState {
     /**
      * Alibaba Cloud account ID.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * An Alibaba Cloud account, Alibaba Cloud name.
      */
-    readonly accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string>;
     /**
      * Whether it is the administrator. Valid values: `true` and `false`.
      */
-    readonly adminUser?: pulumi.Input<boolean>;
+    adminUser?: pulumi.Input<boolean>;
     /**
      * Whether this is a permissions administrator. Valid values: `false`, `true`.
      */
-    readonly authAdminUser?: pulumi.Input<boolean>;
+    authAdminUser?: pulumi.Input<boolean>;
     /**
      * The nickname of the user.
      */
-    readonly nickName?: pulumi.Input<string>;
+    nickName?: pulumi.Input<string>;
     /**
      * The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
      */
-    readonly userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string>;
 }
 
 /**
@@ -176,25 +176,25 @@ export interface UserArgs {
     /**
      * Alibaba Cloud account ID.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * An Alibaba Cloud account, Alibaba Cloud name.
      */
-    readonly accountName: pulumi.Input<string>;
+    accountName: pulumi.Input<string>;
     /**
      * Whether it is the administrator. Valid values: `true` and `false`.
      */
-    readonly adminUser: pulumi.Input<boolean>;
+    adminUser: pulumi.Input<boolean>;
     /**
      * Whether this is a permissions administrator. Valid values: `false`, `true`.
      */
-    readonly authAdminUser: pulumi.Input<boolean>;
+    authAdminUser: pulumi.Input<boolean>;
     /**
      * The nickname of the user.
      */
-    readonly nickName: pulumi.Input<string>;
+    nickName: pulumi.Input<string>;
     /**
      * The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
      */
-    readonly userType: pulumi.Input<string>;
+    userType: pulumi.Input<string>;
 }

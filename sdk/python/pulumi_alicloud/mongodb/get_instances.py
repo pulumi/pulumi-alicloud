@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -151,7 +152,7 @@ def get_instances(availability_zone: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
+    The `mongodb.get_instances` data source provides a collection of MongoDB instances available in Alicloud account.
     Filters support regular expression for the instance name, engine or instance type.
 
     ## Example Usage
@@ -199,3 +200,39 @@ def get_instances(availability_zone: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         instance_class: Optional[pulumi.Input[Optional[str]]] = None,
+                         instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    The `mongodb.get_instances` data source provides a collection of MongoDB instances available in Alicloud account.
+    Filters support regular expression for the instance name, engine or instance type.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    mongo = alicloud.mongodb.get_instances(availability_zone="eu-central-1a",
+        instance_class="dds.mongo.mid",
+        instance_type="replicate",
+        name_regex="dds-.+\\d+")
+    ```
+
+
+    :param str availability_zone: Instance availability zone.
+    :param Sequence[str] ids: The ids list of MongoDB instances
+    :param str instance_class: Sizing of the instance to be queried.
+    :param str instance_type: Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+    :param str name_regex: A regex string to apply to the instance name.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    ...

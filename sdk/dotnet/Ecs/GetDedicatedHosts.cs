@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             NameRegex = "tf-testAcc",
         ///             Status = "Available",
         ///         }));
-        ///         this.FirstDedicatedHostsId = dedicatedHostsDs.Apply(dedicatedHostsDs =&gt; dedicatedHostsDs.Hosts[0].Id);
+        ///         this.FirstDedicatedHostsId = dedicatedHostsDs.Apply(dedicatedHostsDs =&gt; dedicatedHostsDs.Hosts?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstDedicatedHostsId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetDedicatedHostsResult> InvokeAsync(GetDedicatedHostsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostsResult>("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+        ///  
+        /// &gt; **NOTE:** Available in v1.91.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dedicatedHostsDs = Output.Create(AliCloud.Ecs.GetDedicatedHosts.InvokeAsync(new AliCloud.Ecs.GetDedicatedHostsArgs
+        ///         {
+        ///             DedicatedHostType = "ddh.g5",
+        ///             NameRegex = "tf-testAcc",
+        ///             Status = "Available",
+        ///         }));
+        ///         this.FirstDedicatedHostsId = dedicatedHostsDs.Apply(dedicatedHostsDs =&gt; dedicatedHostsDs.Hosts?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstDedicatedHostsId")]
+        ///     public Output&lt;string&gt; FirstDedicatedHostsId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDedicatedHostsResult> Invoke(GetDedicatedHostsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -136,6 +173,97 @@ namespace Pulumi.AliCloud.Ecs
         public string? ZoneId { get; set; }
 
         public GetDedicatedHostsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDedicatedHostsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of ECS Dedicated Host.
+        /// </summary>
+        [Input("dedicatedHostId")]
+        public Input<string>? DedicatedHostId { get; set; }
+
+        /// <summary>
+        /// The name of ECS Dedicated Host.
+        /// </summary>
+        [Input("dedicatedHostName")]
+        public Input<string>? DedicatedHostName { get; set; }
+
+        /// <summary>
+        /// The type of the dedicated host.
+        /// </summary>
+        [Input("dedicatedHostType")]
+        public Input<string>? DedicatedHostType { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of ECS Dedicated Host ids.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by the ECS Dedicated Host name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("operationLocks")]
+        private InputList<Inputs.GetDedicatedHostsOperationLockInputArgs>? _operationLocks;
+
+        /// <summary>
+        /// The reason why the dedicated host resource is locked.
+        /// </summary>
+        public InputList<Inputs.GetDedicatedHostsOperationLockInputArgs> OperationLocks
+        {
+            get => _operationLocks ?? (_operationLocks = new InputList<Inputs.GetDedicatedHostsOperationLockInputArgs>());
+            set => _operationLocks = value;
+        }
+
+        /// <summary>
+        /// Save the result to the file.
+        /// </summary>
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group to which the ECS Dedicated Host belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The zone ID of the ECS Dedicated Host.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetDedicatedHostsInvokeArgs()
         {
         }
     }

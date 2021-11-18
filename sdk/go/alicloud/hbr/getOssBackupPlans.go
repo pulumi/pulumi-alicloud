@@ -4,6 +4,9 @@
 package hbr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,82 @@ type GetOssBackupPlansResult struct {
 	OutputFile *string                 `pulumi:"outputFile"`
 	Plans      []GetOssBackupPlansPlan `pulumi:"plans"`
 	VaultId    *string                 `pulumi:"vaultId"`
+}
+
+func GetOssBackupPlansOutput(ctx *pulumi.Context, args GetOssBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetOssBackupPlansResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetOssBackupPlansResult, error) {
+			args := v.(GetOssBackupPlansArgs)
+			r, err := GetOssBackupPlans(ctx, &args, opts...)
+			return *r, err
+		}).(GetOssBackupPlansResultOutput)
+}
+
+// A collection of arguments for invoking getOssBackupPlans.
+type GetOssBackupPlansOutputArgs struct {
+	// The name of OSS bucket.
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+	// A list of OssBackupPlan IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by OssBackupPlan name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of backup vault.
+	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
+}
+
+func (GetOssBackupPlansOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOssBackupPlansArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getOssBackupPlans.
+type GetOssBackupPlansResultOutput struct{ *pulumi.OutputState }
+
+func (GetOssBackupPlansResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOssBackupPlansResult)(nil)).Elem()
+}
+
+func (o GetOssBackupPlansResultOutput) ToGetOssBackupPlansResultOutput() GetOssBackupPlansResultOutput {
+	return o
+}
+
+func (o GetOssBackupPlansResultOutput) ToGetOssBackupPlansResultOutputWithContext(ctx context.Context) GetOssBackupPlansResultOutput {
+	return o
+}
+
+func (o GetOssBackupPlansResultOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOssBackupPlansResult) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetOssBackupPlansResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOssBackupPlansResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetOssBackupPlansResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOssBackupPlansResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetOssBackupPlansResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOssBackupPlansResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOssBackupPlansResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOssBackupPlansResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetOssBackupPlansResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOssBackupPlansResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOssBackupPlansResultOutput) Plans() GetOssBackupPlansPlanArrayOutput {
+	return o.ApplyT(func(v GetOssBackupPlansResult) []GetOssBackupPlansPlan { return v.Plans }).(GetOssBackupPlansPlanArrayOutput)
+}
+
+func (o GetOssBackupPlansResultOutput) VaultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOssBackupPlansResult) *string { return v.VaultId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetOssBackupPlansResultOutput{})
 }

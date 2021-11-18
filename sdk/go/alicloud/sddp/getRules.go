@@ -4,6 +4,9 @@
 package sddp
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -98,4 +101,129 @@ type GetRulesResult struct {
 	Rules       []GetRulesRule `pulumi:"rules"`
 	Status      *string        `pulumi:"status"`
 	WarnLevel   *int           `pulumi:"warnLevel"`
+}
+
+func GetRulesOutput(ctx *pulumi.Context, args GetRulesOutputArgs, opts ...pulumi.InvokeOption) GetRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRulesResult, error) {
+			args := v.(GetRulesArgs)
+			r, err := GetRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetRulesResultOutput)
+}
+
+// A collection of arguments for invoking getRules.
+type GetRulesOutputArgs struct {
+	// Sensitive Data Identification Rules for the Type of.
+	Category pulumi.IntPtrInput `pulumi:"category"`
+	// The Content Classification.
+	ContentCategory pulumi.StringPtrInput `pulumi:"contentCategory"`
+	// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+	CustomType    pulumi.IntPtrInput  `pulumi:"customType"`
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Rule IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The name of rule.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A regex string to filter results by Rule name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Product ID.
+	ProductId pulumi.StringPtrInput `pulumi:"productId"`
+	// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+	RiskLevelId pulumi.StringPtrInput `pulumi:"riskLevelId"`
+	// Rule Type.
+	RuleType pulumi.IntPtrInput `pulumi:"ruleType"`
+	// Sensitive Data Identification Rules Detection State of.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The Level of Risk.
+	WarnLevel pulumi.IntPtrInput `pulumi:"warnLevel"`
+}
+
+func (GetRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRules.
+type GetRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesResult)(nil)).Elem()
+}
+
+func (o GetRulesResultOutput) ToGetRulesResultOutput() GetRulesResultOutput {
+	return o
+}
+
+func (o GetRulesResultOutput) ToGetRulesResultOutputWithContext(ctx context.Context) GetRulesResultOutput {
+	return o
+}
+
+func (o GetRulesResultOutput) Category() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *int { return v.Category }).(pulumi.IntPtrOutput)
+}
+
+func (o GetRulesResultOutput) ContentCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.ContentCategory }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) CustomType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *int { return v.CustomType }).(pulumi.IntPtrOutput)
+}
+
+func (o GetRulesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRulesResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) RiskLevelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.RiskLevelId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) RuleType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *int { return v.RuleType }).(pulumi.IntPtrOutput)
+}
+
+func (o GetRulesResultOutput) Rules() GetRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []GetRulesRule { return v.Rules }).(GetRulesRuleArrayOutput)
+}
+
+func (o GetRulesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) WarnLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *int { return v.WarnLevel }).(pulumi.IntPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRulesResultOutput{})
 }

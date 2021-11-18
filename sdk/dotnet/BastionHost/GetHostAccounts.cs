@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.BastionHost
 {
@@ -40,14 +41,14 @@ namespace Pulumi.AliCloud.BastionHost
         ///                 "2",
         ///             },
         ///         }));
-        ///         this.BastionhostHostAccountId1 = ids.Apply(ids =&gt; ids.Accounts[0].Id);
+        ///         this.BastionhostHostAccountId1 = ids.Apply(ids =&gt; ids.Accounts?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHostAccounts.InvokeAsync(new AliCloud.BastionHost.GetHostAccountsArgs
         ///         {
         ///             HostId = "15",
         ///             InstanceId = "example_value",
         ///             NameRegex = "^my-HostAccount",
         ///         }));
-        ///         this.BastionhostHostAccountId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Accounts[0].Id);
+        ///         this.BastionhostHostAccountId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Accounts?[0]?.Id);
         ///     }
         /// 
         ///     [Output("bastionhostHostAccountId1")]
@@ -61,6 +62,57 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         public static Task<GetHostAccountsResult> InvokeAsync(GetHostAccountsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostAccountsResult>("alicloud:bastionhost/getHostAccounts:getHostAccounts", args ?? new GetHostAccountsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.BastionHost.GetHostAccounts.InvokeAsync(new AliCloud.BastionHost.GetHostAccountsArgs
+        ///         {
+        ///             HostId = "15",
+        ///             InstanceId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "1",
+        ///                 "2",
+        ///             },
+        ///         }));
+        ///         this.BastionhostHostAccountId1 = ids.Apply(ids =&gt; ids.Accounts?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHostAccounts.InvokeAsync(new AliCloud.BastionHost.GetHostAccountsArgs
+        ///         {
+        ///             HostId = "15",
+        ///             InstanceId = "example_value",
+        ///             NameRegex = "^my-HostAccount",
+        ///         }));
+        ///         this.BastionhostHostAccountId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Accounts?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("bastionhostHostAccountId1")]
+        ///     public Output&lt;string&gt; BastionhostHostAccountId1 { get; set; }
+        ///     [Output("bastionhostHostAccountId2")]
+        ///     public Output&lt;string&gt; BastionhostHostAccountId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetHostAccountsResult> Invoke(GetHostAccountsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHostAccountsResult>("alicloud:bastionhost/getHostAccounts:getHostAccounts", args ?? new GetHostAccountsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -112,6 +164,58 @@ namespace Pulumi.AliCloud.BastionHost
         public string? ProtocolName { get; set; }
 
         public GetHostAccountsArgs()
+        {
+        }
+    }
+
+    public sealed class GetHostAccountsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Specify the new hosting account's name, support the longest 128 characters.
+        /// </summary>
+        [Input("hostAccountName")]
+        public Input<string>? HostAccountName { get; set; }
+
+        /// <summary>
+        /// Specifies the database where you want to create your hosting account's host ID.
+        /// </summary>
+        [Input("hostId", required: true)]
+        public Input<string> HostId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Host Account IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Specifies the database where you want to create your hosting account's host bastion host ID of.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by Host Account name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+        /// </summary>
+        [Input("protocolName")]
+        public Input<string>? ProtocolName { get; set; }
+
+        public GetHostAccountsInvokeArgs()
         {
         }
     }

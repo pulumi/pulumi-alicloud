@@ -118,19 +118,19 @@ export interface DirectoryState {
     /**
      * The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
      */
-    readonly directoryName?: pulumi.Input<string>;
+    directoryName?: pulumi.Input<string>;
     /**
      * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
      */
-    readonly mfaAuthenticationStatus?: pulumi.Input<string>;
+    mfaAuthenticationStatus?: pulumi.Input<string>;
     /**
      * The saml identity provider configuration.
      */
-    readonly samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
+    samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
     /**
      * The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
      */
-    readonly scimSynchronizationStatus?: pulumi.Input<string>;
+    scimSynchronizationStatus?: pulumi.Input<string>;
 }
 
 /**
@@ -140,17 +140,17 @@ export interface DirectoryArgs {
     /**
      * The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
      */
-    readonly directoryName?: pulumi.Input<string>;
+    directoryName?: pulumi.Input<string>;
     /**
      * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
      */
-    readonly mfaAuthenticationStatus?: pulumi.Input<string>;
+    mfaAuthenticationStatus?: pulumi.Input<string>;
     /**
      * The saml identity provider configuration.
      */
-    readonly samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
+    samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
     /**
      * The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
      */
-    readonly scimSynchronizationStatus?: pulumi.Input<string>;
+    scimSynchronizationStatus?: pulumi.Input<string>;
 }

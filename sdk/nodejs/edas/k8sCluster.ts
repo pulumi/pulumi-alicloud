@@ -142,31 +142,31 @@ export interface K8sClusterState {
      * `3`: importing.
      * `4`: deleted.
      */
-    readonly clusterImportStatus?: pulumi.Input<number>;
+    clusterImportStatus?: pulumi.Input<number>;
     /**
      * The name of the cluster that you want to create.
      */
-    readonly clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string>;
     /**
      * The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
      */
-    readonly clusterType?: pulumi.Input<number>;
+    clusterType?: pulumi.Input<number>;
     /**
      * The ID of the alicloud container service kubernetes cluster that you want to import.
      */
-    readonly csClusterId?: pulumi.Input<string>;
+    csClusterId?: pulumi.Input<string>;
     /**
      * The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
      */
-    readonly networkMode?: pulumi.Input<number>;
+    networkMode?: pulumi.Input<number>;
     /**
      * The ID of the Virtual Private Cloud (VPC) for the cluster.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -176,9 +176,9 @@ export interface K8sClusterArgs {
     /**
      * The ID of the alicloud container service kubernetes cluster that you want to import.
      */
-    readonly csClusterId: pulumi.Input<string>;
+    csClusterId: pulumi.Input<string>;
     /**
      * The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
 }

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const cluster = new alicloud.polardb.Cluster("cluster", {
  *     dbType: "MySQL",
@@ -153,19 +153,19 @@ export interface AccountPrivilegeState {
     /**
      * A specified account name.
      */
-    readonly accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string>;
     /**
      * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
      */
-    readonly accountPrivilege?: pulumi.Input<string>;
+    accountPrivilege?: pulumi.Input<string>;
     /**
      * The Id of cluster in which account belongs.
      */
-    readonly dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string>;
     /**
      * List of specified database name.
      */
-    readonly dbNames?: pulumi.Input<pulumi.Input<string>[]>;
+    dbNames?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -175,17 +175,17 @@ export interface AccountPrivilegeArgs {
     /**
      * A specified account name.
      */
-    readonly accountName: pulumi.Input<string>;
+    accountName: pulumi.Input<string>;
     /**
      * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
      */
-    readonly accountPrivilege?: pulumi.Input<string>;
+    accountPrivilege?: pulumi.Input<string>;
     /**
      * The Id of cluster in which account belongs.
      */
-    readonly dbClusterId: pulumi.Input<string>;
+    dbClusterId: pulumi.Input<string>;
     /**
      * List of specified database name.
      */
-    readonly dbNames: pulumi.Input<pulumi.Input<string>[]>;
+    dbNames: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -4,6 +4,9 @@
 package cassandra
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,80 @@ type GetDataCentersResult struct {
 	// The name list of Cassandra data centers.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetDataCentersOutput(ctx *pulumi.Context, args GetDataCentersOutputArgs, opts ...pulumi.InvokeOption) GetDataCentersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDataCentersResult, error) {
+			args := v.(GetDataCentersArgs)
+			r, err := GetDataCenters(ctx, &args, opts...)
+			return *r, err
+		}).(GetDataCentersResultOutput)
+}
+
+// A collection of arguments for invoking getDataCenters.
+type GetDataCentersOutputArgs struct {
+	// The cluster id of dataCenters belongs to.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The list of Cassandra data center ids.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to apply to the cluster name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetDataCentersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataCentersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDataCenters.
+type GetDataCentersResultOutput struct{ *pulumi.OutputState }
+
+func (GetDataCentersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataCentersResult)(nil)).Elem()
+}
+
+func (o GetDataCentersResultOutput) ToGetDataCentersResultOutput() GetDataCentersResultOutput {
+	return o
+}
+
+func (o GetDataCentersResultOutput) ToGetDataCentersResultOutputWithContext(ctx context.Context) GetDataCentersResultOutput {
+	return o
+}
+
+// A list of Cassandra data centers. Its every element contains the following attributes:
+func (o GetDataCentersResultOutput) Centers() GetDataCentersCenterArrayOutput {
+	return o.ApplyT(func(v GetDataCentersResult) []GetDataCentersCenter { return v.Centers }).(GetDataCentersCenterArrayOutput)
+}
+
+// The ID of the Cassandra cluster.
+func (o GetDataCentersResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataCentersResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDataCentersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataCentersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of Cassandra data center ids.
+func (o GetDataCentersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDataCentersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDataCentersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDataCentersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// The name list of Cassandra data centers.
+func (o GetDataCentersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDataCentersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDataCentersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDataCentersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDataCentersResultOutput{})
 }

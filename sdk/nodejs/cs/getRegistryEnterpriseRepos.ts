@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     instanceId: "cri-xx",
  *     nameRegex: "my-repos",
  *     outputFile: "my-repo-json",
- * }, { async: true }));
+ * }));
  *
  * export const output = myRepos.repos;
  * ```
@@ -51,24 +51,24 @@ export interface GetRegistryEnterpriseReposArgs {
     /**
      * Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of ids to filter results by repository id.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * ID of Container Registry Enterprise Edition instance.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by repository name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * Name of Container Registry Enterprise Edition namespace where the repositories are located in.
      */
-    readonly namespace?: string;
-    readonly outputFile?: string;
+    namespace?: string;
+    outputFile?: string;
 }
 
 /**
@@ -102,4 +102,35 @@ export interface GetRegistryEnterpriseReposResult {
      * A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
      */
     readonly repos: outputs.cs.GetRegistryEnterpriseReposRepo[];
+}
+
+export function getRegistryEnterpriseReposOutput(args: GetRegistryEnterpriseReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseReposResult> {
+    return pulumi.output(args).apply(a => getRegistryEnterpriseRepos(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegistryEnterpriseRepos.
+ */
+export interface GetRegistryEnterpriseReposOutputArgs {
+    /**
+     * Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of ids to filter results by repository id.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of Container Registry Enterprise Edition instance.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by repository name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+     */
+    namespace?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

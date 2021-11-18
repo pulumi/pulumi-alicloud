@@ -180,7 +180,7 @@ type BackendServerArrayInput interface {
 type BackendServerArray []BackendServerInput
 
 func (BackendServerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BackendServer)(nil))
+	return reflect.TypeOf((*[]*BackendServer)(nil)).Elem()
 }
 
 func (i BackendServerArray) ToBackendServerArrayOutput() BackendServerArrayOutput {
@@ -205,7 +205,7 @@ type BackendServerMapInput interface {
 type BackendServerMap map[string]BackendServerInput
 
 func (BackendServerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BackendServer)(nil))
+	return reflect.TypeOf((*map[string]*BackendServer)(nil)).Elem()
 }
 
 func (i BackendServerMap) ToBackendServerMapOutput() BackendServerMapOutput {
@@ -216,9 +216,7 @@ func (i BackendServerMap) ToBackendServerMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServerMapOutput)
 }
 
-type BackendServerOutput struct {
-	*pulumi.OutputState
-}
+type BackendServerOutput struct{ *pulumi.OutputState }
 
 func (BackendServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BackendServer)(nil))
@@ -237,14 +235,12 @@ func (o BackendServerOutput) ToBackendServerPtrOutput() BackendServerPtrOutput {
 }
 
 func (o BackendServerOutput) ToBackendServerPtrOutputWithContext(ctx context.Context) BackendServerPtrOutput {
-	return o.ApplyT(func(v BackendServer) *BackendServer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServer) *BackendServer {
 		return &v
 	}).(BackendServerPtrOutput)
 }
 
-type BackendServerPtrOutput struct {
-	*pulumi.OutputState
-}
+type BackendServerPtrOutput struct{ *pulumi.OutputState }
 
 func (BackendServerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BackendServer)(nil))
@@ -256,6 +252,16 @@ func (o BackendServerPtrOutput) ToBackendServerPtrOutput() BackendServerPtrOutpu
 
 func (o BackendServerPtrOutput) ToBackendServerPtrOutputWithContext(ctx context.Context) BackendServerPtrOutput {
 	return o
+}
+
+func (o BackendServerPtrOutput) Elem() BackendServerOutput {
+	return o.ApplyT(func(v *BackendServer) BackendServer {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServer
+		return ret
+	}).(BackendServerOutput)
 }
 
 type BackendServerArrayOutput struct{ *pulumi.OutputState }
@@ -299,6 +305,10 @@ func (o BackendServerMapOutput) MapIndex(k pulumi.StringInput) BackendServerOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServerInput)(nil)).Elem(), &BackendServer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServerPtrInput)(nil)).Elem(), &BackendServer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServerArrayInput)(nil)).Elem(), BackendServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServerMapInput)(nil)).Elem(), BackendServerMap{})
 	pulumi.RegisterOutputType(BackendServerOutput{})
 	pulumi.RegisterOutputType(BackendServerPtrOutput{})
 	pulumi.RegisterOutputType(BackendServerArrayOutput{})

@@ -159,19 +159,19 @@ export interface DashboardState {
     /**
      * Configuration of charts in the dashboard.
      */
-    readonly charList?: pulumi.Input<string>;
+    charList?: pulumi.Input<string>;
     /**
      * The name of the Log Dashboard.
      */
-    readonly dashboardName?: pulumi.Input<string>;
+    dashboardName?: pulumi.Input<string>;
     /**
      * Dashboard alias.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */
-    readonly projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string>;
 }
 
 /**
@@ -181,17 +181,17 @@ export interface DashboardArgs {
     /**
      * Configuration of charts in the dashboard.
      */
-    readonly charList: pulumi.Input<string>;
+    charList: pulumi.Input<string>;
     /**
      * The name of the Log Dashboard.
      */
-    readonly dashboardName: pulumi.Input<string>;
+    dashboardName: pulumi.Input<string>;
     /**
      * Dashboard alias.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */
-    readonly projectName: pulumi.Input<string>;
+    projectName: pulumi.Input<string>;
 }

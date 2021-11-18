@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Imm
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.Imm
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.ImmProjectId1 = ids.Apply(ids =&gt; ids.Projects[0].Id);
+        ///         this.ImmProjectId1 = ids.Apply(ids =&gt; ids.Projects?[0]?.Id);
         ///     }
         /// 
         ///     [Output("immProjectId1")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.Imm
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("alicloud:imm/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Imm.GetProjects.InvokeAsync(new AliCloud.Imm.GetProjectsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.ImmProjectId1 = ids.Apply(ids =&gt; ids.Projects?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("immProjectId1")]
+        ///     public Output&lt;string&gt; ImmProjectId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("alicloud:imm/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -70,6 +110,28 @@ namespace Pulumi.AliCloud.Imm
         public string? OutputFile { get; set; }
 
         public GetProjectsArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Project IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetProjectsInvokeArgs()
         {
         }
     }

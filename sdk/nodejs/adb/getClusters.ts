@@ -33,28 +33,28 @@ export interface GetClustersArgs {
     /**
      * The description of the ADB cluster.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * A regex string to filter results by cluster description.
      */
-    readonly descriptionRegex?: string;
-    readonly enableDetails?: boolean;
+    descriptionRegex?: string;
+    enableDetails?: boolean;
     /**
      * A list of ADB cluster IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
-    readonly resourceGroupId?: string;
+    ids?: string[];
+    outputFile?: string;
+    resourceGroupId?: string;
     /**
      * The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -90,4 +90,39 @@ export interface GetClustersResult {
      */
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
+    return pulumi.output(args).apply(a => getClusters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusters.
+ */
+export interface GetClustersOutputArgs {
+    /**
+     * The description of the ADB cluster.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by cluster description.
+     */
+    descriptionRegex?: pulumi.Input<string>;
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of ADB cluster IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

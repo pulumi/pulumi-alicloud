@@ -13,6 +13,7 @@ __all__ = [
     'GetProductsResult',
     'AwaitableGetProductsResult',
     'get_products',
+    'get_products_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,39 @@ def get_products(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         products=__ret__.products)
+
+
+@_utilities.lift_output_func(get_products)
+def get_products_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductsResult]:
+    """
+    This data source provides the Mhub Products of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.138.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "example_value"
+    default = alicloud.mhub.Product("default", product_name=name)
+    ids = alicloud.mhub.get_products()
+    pulumi.export("mhubProductId1", ids.products[0].id)
+    name_regex = alicloud.mhub.get_products(name_regex="^my-Product")
+    pulumi.export("mhubProductId2", name_regex.products[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Product IDs.
+    :param str name_regex: A regex string to filter results by Product name.
+    """
+    ...

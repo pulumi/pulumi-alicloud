@@ -36,11 +36,11 @@ import * as utilities from "../utilities";
  *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
  *     tagKeyScope: "tfTest",
  *     tagValueScope: "tfTest 123",
- *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids[0]),
- *     excludeResourceIdsScope: defaultInstances.then(defaultInstances => defaultInstances.instances[0].id),
+ *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?[0]),
+ *     excludeResourceIdsScope: defaultInstances.then(defaultInstances => defaultInstances.instances?[0]?.id),
  *     regionIdsScope: "cn-hangzhou",
  *     inputParameters: {
- *         vpcIds: defaultInstances.then(defaultInstances => defaultInstances.instances[0].vpcId),
+ *         vpcIds: defaultInstances.then(defaultInstances => defaultInstances.instances?[0]?.vpcId),
  *     },
  * });
  * const defaultCompliancePack = new alicloud.cfg.CompliancePack("defaultCompliancePack", {
@@ -173,33 +173,33 @@ export interface CompliancePackState {
     /**
      * The Compliance Package Name.
      */
-    readonly compliancePackName?: pulumi.Input<string>;
+    compliancePackName?: pulumi.Input<string>;
     /**
      * Compliance Package Template Id.
      */
-    readonly compliancePackTemplateId?: pulumi.Input<string>;
+    compliancePackTemplateId?: pulumi.Input<string>;
     /**
      * A list of Config Rule IDs.
      */
-    readonly configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[]>;
+    configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[]>;
     /**
      * A list of Config Rules.
      *
      * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
      */
-    readonly configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[]>;
+    configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[]>;
     /**
      * The Description of compliance pack.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
      */
-    readonly riskLevel?: pulumi.Input<number>;
+    riskLevel?: pulumi.Input<number>;
     /**
      * The status of the resource.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -209,27 +209,27 @@ export interface CompliancePackArgs {
     /**
      * The Compliance Package Name.
      */
-    readonly compliancePackName: pulumi.Input<string>;
+    compliancePackName: pulumi.Input<string>;
     /**
      * Compliance Package Template Id.
      */
-    readonly compliancePackTemplateId?: pulumi.Input<string>;
+    compliancePackTemplateId?: pulumi.Input<string>;
     /**
      * A list of Config Rule IDs.
      */
-    readonly configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[]>;
+    configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[]>;
     /**
      * A list of Config Rules.
      *
      * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
      */
-    readonly configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[]>;
+    configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[]>;
     /**
      * The Description of compliance pack.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
      */
-    readonly riskLevel: pulumi.Input<number>;
+    riskLevel: pulumi.Input<number>;
 }

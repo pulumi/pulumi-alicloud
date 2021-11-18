@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -29,7 +30,7 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     public MyStack()
         ///     {
         ///         var @default = Output.Create(AliCloud.ResourceManager.GetAccounts.InvokeAsync());
-        ///         this.FirstAccountId = @default.Apply(@default =&gt; @default.Accounts[0].Id);
+        ///         this.FirstAccountId = @default.Apply(@default =&gt; @default.Accounts?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstAccountId")]
@@ -41,6 +42,37 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:resourcemanager/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.ResourceManager.GetAccounts.InvokeAsync());
+        ///         this.FirstAccountId = @default.Apply(@default =&gt; @default.Accounts?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstAccountId")]
+        ///     public Output&lt;string&gt; FirstAccountId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:resourcemanager/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -74,6 +106,40 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? Status { get; set; }
 
         public GetAccountsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccountsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of account IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetAccountsInvokeArgs()
         {
         }
     }

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const ds = pulumi.output(alicloud.ess.getLifecycleHooks({
  *     nameRegex: "lifecyclehook_name",
  *     scalingGroupId: "scaling_group_id",
- * }, { async: true }));
+ * }));
  *
  * export const firstLifecycleHook = ds.hooks[0].id;
  * ```
@@ -48,16 +48,16 @@ export interface GetLifecycleHooksArgs {
     /**
      * A list of lifecycle hook IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter resulting lifecycle hook by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Scaling group id the lifecycle hooks belong to.
      */
-    readonly scalingGroupId?: string;
+    scalingGroupId?: string;
 }
 
 /**
@@ -86,4 +86,27 @@ export interface GetLifecycleHooksResult {
      * ID of the scaling group.
      */
     readonly scalingGroupId?: string;
+}
+
+export function getLifecycleHooksOutput(args?: GetLifecycleHooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLifecycleHooksResult> {
+    return pulumi.output(args).apply(a => getLifecycleHooks(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLifecycleHooks.
+ */
+export interface GetLifecycleHooksOutputArgs {
+    /**
+     * A list of lifecycle hook IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter resulting lifecycle hook by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Scaling group id the lifecycle hooks belong to.
+     */
+    scalingGroupId?: pulumi.Input<string>;
 }

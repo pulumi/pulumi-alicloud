@@ -204,7 +204,7 @@ type MasterSlaveServerGroupArrayInput interface {
 type MasterSlaveServerGroupArray []MasterSlaveServerGroupInput
 
 func (MasterSlaveServerGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MasterSlaveServerGroup)(nil))
+	return reflect.TypeOf((*[]*MasterSlaveServerGroup)(nil)).Elem()
 }
 
 func (i MasterSlaveServerGroupArray) ToMasterSlaveServerGroupArrayOutput() MasterSlaveServerGroupArrayOutput {
@@ -229,7 +229,7 @@ type MasterSlaveServerGroupMapInput interface {
 type MasterSlaveServerGroupMap map[string]MasterSlaveServerGroupInput
 
 func (MasterSlaveServerGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MasterSlaveServerGroup)(nil))
+	return reflect.TypeOf((*map[string]*MasterSlaveServerGroup)(nil)).Elem()
 }
 
 func (i MasterSlaveServerGroupMap) ToMasterSlaveServerGroupMapOutput() MasterSlaveServerGroupMapOutput {
@@ -240,9 +240,7 @@ func (i MasterSlaveServerGroupMap) ToMasterSlaveServerGroupMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupMapOutput)
 }
 
-type MasterSlaveServerGroupOutput struct {
-	*pulumi.OutputState
-}
+type MasterSlaveServerGroupOutput struct{ *pulumi.OutputState }
 
 func (MasterSlaveServerGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MasterSlaveServerGroup)(nil))
@@ -261,14 +259,12 @@ func (o MasterSlaveServerGroupOutput) ToMasterSlaveServerGroupPtrOutput() Master
 }
 
 func (o MasterSlaveServerGroupOutput) ToMasterSlaveServerGroupPtrOutputWithContext(ctx context.Context) MasterSlaveServerGroupPtrOutput {
-	return o.ApplyT(func(v MasterSlaveServerGroup) *MasterSlaveServerGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MasterSlaveServerGroup) *MasterSlaveServerGroup {
 		return &v
 	}).(MasterSlaveServerGroupPtrOutput)
 }
 
-type MasterSlaveServerGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type MasterSlaveServerGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (MasterSlaveServerGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MasterSlaveServerGroup)(nil))
@@ -280,6 +276,16 @@ func (o MasterSlaveServerGroupPtrOutput) ToMasterSlaveServerGroupPtrOutput() Mas
 
 func (o MasterSlaveServerGroupPtrOutput) ToMasterSlaveServerGroupPtrOutputWithContext(ctx context.Context) MasterSlaveServerGroupPtrOutput {
 	return o
+}
+
+func (o MasterSlaveServerGroupPtrOutput) Elem() MasterSlaveServerGroupOutput {
+	return o.ApplyT(func(v *MasterSlaveServerGroup) MasterSlaveServerGroup {
+		if v != nil {
+			return *v
+		}
+		var ret MasterSlaveServerGroup
+		return ret
+	}).(MasterSlaveServerGroupOutput)
 }
 
 type MasterSlaveServerGroupArrayOutput struct{ *pulumi.OutputState }
@@ -323,6 +329,10 @@ func (o MasterSlaveServerGroupMapOutput) MapIndex(k pulumi.StringInput) MasterSl
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterSlaveServerGroupInput)(nil)).Elem(), &MasterSlaveServerGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterSlaveServerGroupPtrInput)(nil)).Elem(), &MasterSlaveServerGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterSlaveServerGroupArrayInput)(nil)).Elem(), MasterSlaveServerGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterSlaveServerGroupMapInput)(nil)).Elem(), MasterSlaveServerGroupMap{})
 	pulumi.RegisterOutputType(MasterSlaveServerGroupOutput{})
 	pulumi.RegisterOutputType(MasterSlaveServerGroupPtrOutput{})
 	pulumi.RegisterOutputType(MasterSlaveServerGroupArrayOutput{})

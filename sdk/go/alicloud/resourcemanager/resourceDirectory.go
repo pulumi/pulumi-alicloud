@@ -198,7 +198,7 @@ type ResourceDirectoryArrayInput interface {
 type ResourceDirectoryArray []ResourceDirectoryInput
 
 func (ResourceDirectoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ResourceDirectory)(nil))
+	return reflect.TypeOf((*[]*ResourceDirectory)(nil)).Elem()
 }
 
 func (i ResourceDirectoryArray) ToResourceDirectoryArrayOutput() ResourceDirectoryArrayOutput {
@@ -223,7 +223,7 @@ type ResourceDirectoryMapInput interface {
 type ResourceDirectoryMap map[string]ResourceDirectoryInput
 
 func (ResourceDirectoryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ResourceDirectory)(nil))
+	return reflect.TypeOf((*map[string]*ResourceDirectory)(nil)).Elem()
 }
 
 func (i ResourceDirectoryMap) ToResourceDirectoryMapOutput() ResourceDirectoryMapOutput {
@@ -234,9 +234,7 @@ func (i ResourceDirectoryMap) ToResourceDirectoryMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDirectoryMapOutput)
 }
 
-type ResourceDirectoryOutput struct {
-	*pulumi.OutputState
-}
+type ResourceDirectoryOutput struct{ *pulumi.OutputState }
 
 func (ResourceDirectoryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourceDirectory)(nil))
@@ -255,14 +253,12 @@ func (o ResourceDirectoryOutput) ToResourceDirectoryPtrOutput() ResourceDirector
 }
 
 func (o ResourceDirectoryOutput) ToResourceDirectoryPtrOutputWithContext(ctx context.Context) ResourceDirectoryPtrOutput {
-	return o.ApplyT(func(v ResourceDirectory) *ResourceDirectory {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceDirectory) *ResourceDirectory {
 		return &v
 	}).(ResourceDirectoryPtrOutput)
 }
 
-type ResourceDirectoryPtrOutput struct {
-	*pulumi.OutputState
-}
+type ResourceDirectoryPtrOutput struct{ *pulumi.OutputState }
 
 func (ResourceDirectoryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ResourceDirectory)(nil))
@@ -274,6 +270,16 @@ func (o ResourceDirectoryPtrOutput) ToResourceDirectoryPtrOutput() ResourceDirec
 
 func (o ResourceDirectoryPtrOutput) ToResourceDirectoryPtrOutputWithContext(ctx context.Context) ResourceDirectoryPtrOutput {
 	return o
+}
+
+func (o ResourceDirectoryPtrOutput) Elem() ResourceDirectoryOutput {
+	return o.ApplyT(func(v *ResourceDirectory) ResourceDirectory {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceDirectory
+		return ret
+	}).(ResourceDirectoryOutput)
 }
 
 type ResourceDirectoryArrayOutput struct{ *pulumi.OutputState }
@@ -317,6 +323,10 @@ func (o ResourceDirectoryMapOutput) MapIndex(k pulumi.StringInput) ResourceDirec
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDirectoryInput)(nil)).Elem(), &ResourceDirectory{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDirectoryPtrInput)(nil)).Elem(), &ResourceDirectory{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDirectoryArrayInput)(nil)).Elem(), ResourceDirectoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDirectoryMapInput)(nil)).Elem(), ResourceDirectoryMap{})
 	pulumi.RegisterOutputType(ResourceDirectoryOutput{})
 	pulumi.RegisterOutputType(ResourceDirectoryPtrOutput{})
 	pulumi.RegisterOutputType(ResourceDirectoryArrayOutput{})

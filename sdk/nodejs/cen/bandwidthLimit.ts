@@ -166,15 +166,15 @@ export interface BandwidthLimitState {
     /**
      * The bandwidth configured for the interconnected regions communication.
      */
-    readonly bandwidthLimit?: pulumi.Input<number>;
+    bandwidthLimit?: pulumi.Input<number>;
     /**
      * The ID of the CEN.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * List of the two regions to interconnect. Must be two different regions.
      */
-    readonly regionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    regionIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -184,13 +184,13 @@ export interface BandwidthLimitArgs {
     /**
      * The bandwidth configured for the interconnected regions communication.
      */
-    readonly bandwidthLimit: pulumi.Input<number>;
+    bandwidthLimit: pulumi.Input<number>;
     /**
      * The ID of the CEN.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * List of the two regions to interconnect. Must be two different regions.
      */
-    readonly regionIds: pulumi.Input<pulumi.Input<string>[]>;
+    regionIds: pulumi.Input<pulumi.Input<string>[]>;
 }

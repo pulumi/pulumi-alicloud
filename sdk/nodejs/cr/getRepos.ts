@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const myRepos = pulumi.output(alicloud.cr.getRepos({
  *     nameRegex: "my-repos",
  *     outputFile: "my-repo-json",
- * }, { async: true }));
+ * }));
  *
  * export const output = myRepos.repos;
  * ```
@@ -49,16 +49,16 @@ export interface GetReposArgs {
     /**
      * Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A regex string to filter results by repository name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * Name of container registry namespace where the repositories are located in.
      */
-    readonly namespace?: string;
-    readonly outputFile?: string;
+    namespace?: string;
+    outputFile?: string;
 }
 
 /**
@@ -88,4 +88,27 @@ export interface GetReposResult {
      * A list of matched Container Registry Namespaces. Each element contains the following attributes:
      */
     readonly repos: outputs.cr.GetReposRepo[];
+}
+
+export function getReposOutput(args?: GetReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReposResult> {
+    return pulumi.output(args).apply(a => getRepos(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRepos.
+ */
+export interface GetReposOutputArgs {
+    /**
+     * Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A regex string to filter results by repository name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * Name of container registry namespace where the repositories are located in.
+     */
+    namespace?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

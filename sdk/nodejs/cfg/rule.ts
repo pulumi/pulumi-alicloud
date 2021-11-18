@@ -225,78 +225,78 @@ export interface RuleState {
     /**
      * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      */
-    readonly configRuleTriggerTypes?: pulumi.Input<string>;
+    configRuleTriggerTypes?: pulumi.Input<string>;
     /**
      * The description of the Config Rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
      */
-    readonly excludeResourceIdsScope?: pulumi.Input<string>;
+    excludeResourceIdsScope?: pulumi.Input<string>;
     /**
      * Threshold value for managed rule triggering.
      */
-    readonly inputParameters?: pulumi.Input<{[key: string]: any}>;
+    inputParameters?: pulumi.Input<{[key: string]: any}>;
     /**
      * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      */
-    readonly maximumExecutionFrequency?: pulumi.Input<string>;
+    maximumExecutionFrequency?: pulumi.Input<string>;
     /**
      * The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    readonly regionIdsScope?: pulumi.Input<string>;
+    regionIdsScope?: pulumi.Input<string>;
     /**
      * The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    readonly resourceGroupIdsScope?: pulumi.Input<string>;
+    resourceGroupIdsScope?: pulumi.Input<string>;
     /**
      * Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
      */
-    readonly resourceTypesScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypesScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
      */
-    readonly riskLevel?: pulumi.Input<number>;
+    riskLevel?: pulumi.Input<number>;
     /**
      * The name of the Config Rule.
      */
-    readonly ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string>;
     /**
      * Field `scopeComplianceResourceTypes` has been deprecated from provider version 1.124.1. New field `resourceTypesScope` instead.
      *
      * @deprecated Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
      */
-    readonly scopeComplianceResourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopeComplianceResourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field `sourceDetailMessageType` has been deprecated from provider version 1.124.1. New field `configRuleTriggerTypes` instead.
      *
      * @deprecated Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
      */
-    readonly sourceDetailMessageType?: pulumi.Input<string>;
+    sourceDetailMessageType?: pulumi.Input<string>;
     /**
      * The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
      */
-    readonly sourceIdentifier?: pulumi.Input<string>;
+    sourceIdentifier?: pulumi.Input<string>;
     /**
      * Field `sourceMaximumExecutionFrequency` has been deprecated from provider version 1.124.1. New field `maximumExecutionFrequency` instead.
      *
      * @deprecated Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
      */
-    readonly sourceMaximumExecutionFrequency?: pulumi.Input<string>;
+    sourceMaximumExecutionFrequency?: pulumi.Input<string>;
     /**
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
      */
-    readonly sourceOwner?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
+    sourceOwner?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      */
-    readonly tagKeyScope?: pulumi.Input<string>;
+    tagKeyScope?: pulumi.Input<string>;
     /**
      * The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
      */
-    readonly tagValueScope?: pulumi.Input<string>;
+    tagValueScope?: pulumi.Input<string>;
 }
 
 /**
@@ -306,75 +306,75 @@ export interface RuleArgs {
     /**
      * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      */
-    readonly configRuleTriggerTypes?: pulumi.Input<string>;
+    configRuleTriggerTypes?: pulumi.Input<string>;
     /**
      * The description of the Config Rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
      */
-    readonly excludeResourceIdsScope?: pulumi.Input<string>;
+    excludeResourceIdsScope?: pulumi.Input<string>;
     /**
      * Threshold value for managed rule triggering.
      */
-    readonly inputParameters?: pulumi.Input<{[key: string]: any}>;
+    inputParameters?: pulumi.Input<{[key: string]: any}>;
     /**
      * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      */
-    readonly maximumExecutionFrequency?: pulumi.Input<string>;
+    maximumExecutionFrequency?: pulumi.Input<string>;
     /**
      * The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    readonly regionIdsScope?: pulumi.Input<string>;
+    regionIdsScope?: pulumi.Input<string>;
     /**
      * The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    readonly resourceGroupIdsScope?: pulumi.Input<string>;
+    resourceGroupIdsScope?: pulumi.Input<string>;
     /**
      * Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
      */
-    readonly resourceTypesScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypesScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
      */
-    readonly riskLevel: pulumi.Input<number>;
+    riskLevel: pulumi.Input<number>;
     /**
      * The name of the Config Rule.
      */
-    readonly ruleName: pulumi.Input<string>;
+    ruleName: pulumi.Input<string>;
     /**
      * Field `scopeComplianceResourceTypes` has been deprecated from provider version 1.124.1. New field `resourceTypesScope` instead.
      *
      * @deprecated Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
      */
-    readonly scopeComplianceResourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopeComplianceResourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field `sourceDetailMessageType` has been deprecated from provider version 1.124.1. New field `configRuleTriggerTypes` instead.
      *
      * @deprecated Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
      */
-    readonly sourceDetailMessageType?: pulumi.Input<string>;
+    sourceDetailMessageType?: pulumi.Input<string>;
     /**
      * The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
      */
-    readonly sourceIdentifier: pulumi.Input<string>;
+    sourceIdentifier: pulumi.Input<string>;
     /**
      * Field `sourceMaximumExecutionFrequency` has been deprecated from provider version 1.124.1. New field `maximumExecutionFrequency` instead.
      *
      * @deprecated Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
      */
-    readonly sourceMaximumExecutionFrequency?: pulumi.Input<string>;
+    sourceMaximumExecutionFrequency?: pulumi.Input<string>;
     /**
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
      */
-    readonly sourceOwner: pulumi.Input<string>;
+    sourceOwner: pulumi.Input<string>;
     /**
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      */
-    readonly tagKeyScope?: pulumi.Input<string>;
+    tagKeyScope?: pulumi.Input<string>;
     /**
      * The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
      */
-    readonly tagValueScope?: pulumi.Input<string>;
+    tagValueScope?: pulumi.Input<string>;
 }

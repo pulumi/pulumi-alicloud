@@ -226,7 +226,7 @@ type AggregatorArrayInput interface {
 type AggregatorArray []AggregatorInput
 
 func (AggregatorArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Aggregator)(nil))
+	return reflect.TypeOf((*[]*Aggregator)(nil)).Elem()
 }
 
 func (i AggregatorArray) ToAggregatorArrayOutput() AggregatorArrayOutput {
@@ -251,7 +251,7 @@ type AggregatorMapInput interface {
 type AggregatorMap map[string]AggregatorInput
 
 func (AggregatorMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Aggregator)(nil))
+	return reflect.TypeOf((*map[string]*Aggregator)(nil)).Elem()
 }
 
 func (i AggregatorMap) ToAggregatorMapOutput() AggregatorMapOutput {
@@ -262,9 +262,7 @@ func (i AggregatorMap) ToAggregatorMapOutputWithContext(ctx context.Context) Agg
 	return pulumi.ToOutputWithContext(ctx, i).(AggregatorMapOutput)
 }
 
-type AggregatorOutput struct {
-	*pulumi.OutputState
-}
+type AggregatorOutput struct{ *pulumi.OutputState }
 
 func (AggregatorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Aggregator)(nil))
@@ -283,14 +281,12 @@ func (o AggregatorOutput) ToAggregatorPtrOutput() AggregatorPtrOutput {
 }
 
 func (o AggregatorOutput) ToAggregatorPtrOutputWithContext(ctx context.Context) AggregatorPtrOutput {
-	return o.ApplyT(func(v Aggregator) *Aggregator {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Aggregator) *Aggregator {
 		return &v
 	}).(AggregatorPtrOutput)
 }
 
-type AggregatorPtrOutput struct {
-	*pulumi.OutputState
-}
+type AggregatorPtrOutput struct{ *pulumi.OutputState }
 
 func (AggregatorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Aggregator)(nil))
@@ -302,6 +298,16 @@ func (o AggregatorPtrOutput) ToAggregatorPtrOutput() AggregatorPtrOutput {
 
 func (o AggregatorPtrOutput) ToAggregatorPtrOutputWithContext(ctx context.Context) AggregatorPtrOutput {
 	return o
+}
+
+func (o AggregatorPtrOutput) Elem() AggregatorOutput {
+	return o.ApplyT(func(v *Aggregator) Aggregator {
+		if v != nil {
+			return *v
+		}
+		var ret Aggregator
+		return ret
+	}).(AggregatorOutput)
 }
 
 type AggregatorArrayOutput struct{ *pulumi.OutputState }
@@ -345,6 +351,10 @@ func (o AggregatorMapOutput) MapIndex(k pulumi.StringInput) AggregatorOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregatorInput)(nil)).Elem(), &Aggregator{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregatorPtrInput)(nil)).Elem(), &Aggregator{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregatorArrayInput)(nil)).Elem(), AggregatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregatorMapInput)(nil)).Elem(), AggregatorMap{})
 	pulumi.RegisterOutputType(AggregatorOutput{})
 	pulumi.RegisterOutputType(AggregatorPtrOutput{})
 	pulumi.RegisterOutputType(AggregatorArrayOutput{})

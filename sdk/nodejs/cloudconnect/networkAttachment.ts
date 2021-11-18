@@ -115,11 +115,11 @@ export interface NetworkAttachmentState {
     /**
      * The ID of the CCN instance.
      */
-    readonly ccnId?: pulumi.Input<string>;
+    ccnId?: pulumi.Input<string>;
     /**
      * The ID of the Smart Access Gateway instance.
      */
-    readonly sagId?: pulumi.Input<string>;
+    sagId?: pulumi.Input<string>;
 }
 
 /**
@@ -129,9 +129,9 @@ export interface NetworkAttachmentArgs {
     /**
      * The ID of the CCN instance.
      */
-    readonly ccnId: pulumi.Input<string>;
+    ccnId: pulumi.Input<string>;
     /**
      * The ID of the Smart Access Gateway instance.
      */
-    readonly sagId: pulumi.Input<string>;
+    sagId: pulumi.Input<string>;
 }

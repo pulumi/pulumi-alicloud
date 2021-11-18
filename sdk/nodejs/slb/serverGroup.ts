@@ -122,19 +122,19 @@ export interface ServerGroupState {
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
      * The Load Balancer ID which is used to launch a new virtual server group.
      */
-    readonly loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string>;
     /**
      * Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
      */
-    readonly servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[]>;
+    servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[]>;
 }
 
 /**
@@ -144,17 +144,17 @@ export interface ServerGroupArgs {
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
      * The Load Balancer ID which is used to launch a new virtual server group.
      */
-    readonly loadBalancerId: pulumi.Input<string>;
+    loadBalancerId: pulumi.Input<string>;
     /**
      * Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
      */
-    readonly servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[]>;
+    servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[]>;
 }

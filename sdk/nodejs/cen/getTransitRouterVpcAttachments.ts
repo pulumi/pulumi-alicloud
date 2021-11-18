@@ -34,20 +34,20 @@ export interface GetTransitRouterVpcAttachmentsArgs {
     /**
      * ID of the CEN instance.
      */
-    readonly cenId: string;
+    cenId: string;
     /**
      * A list of resource id. The element value is same as `transitRouterId`.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The transit router ID.
      */
-    readonly transitRouterId?: string;
+    transitRouterId?: string;
 }
 
 /**
@@ -73,4 +73,31 @@ export interface GetTransitRouterVpcAttachmentsResult {
      * ID of the transit router.
      */
     readonly transitRouterId?: string;
+}
+
+export function getTransitRouterVpcAttachmentsOutput(args: GetTransitRouterVpcAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterVpcAttachmentsResult> {
+    return pulumi.output(args).apply(a => getTransitRouterVpcAttachments(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransitRouterVpcAttachments.
+ */
+export interface GetTransitRouterVpcAttachmentsOutputArgs {
+    /**
+     * ID of the CEN instance.
+     */
+    cenId: pulumi.Input<string>;
+    /**
+     * A list of resource id. The element value is same as `transitRouterId`.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The transit router ID.
+     */
+    transitRouterId?: pulumi.Input<string>;
 }

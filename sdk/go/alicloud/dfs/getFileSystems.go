@@ -4,6 +4,9 @@
 package dfs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,70 @@ type GetFileSystemsResult struct {
 	Names      []string               `pulumi:"names"`
 	OutputFile *string                `pulumi:"outputFile"`
 	Systems    []GetFileSystemsSystem `pulumi:"systems"`
+}
+
+func GetFileSystemsOutput(ctx *pulumi.Context, args GetFileSystemsOutputArgs, opts ...pulumi.InvokeOption) GetFileSystemsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetFileSystemsResult, error) {
+			args := v.(GetFileSystemsArgs)
+			r, err := GetFileSystems(ctx, &args, opts...)
+			return *r, err
+		}).(GetFileSystemsResultOutput)
+}
+
+// A collection of arguments for invoking getFileSystems.
+type GetFileSystemsOutputArgs struct {
+	// A list of File System IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by File System name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetFileSystemsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFileSystemsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getFileSystems.
+type GetFileSystemsResultOutput struct{ *pulumi.OutputState }
+
+func (GetFileSystemsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFileSystemsResult)(nil)).Elem()
+}
+
+func (o GetFileSystemsResultOutput) ToGetFileSystemsResultOutput() GetFileSystemsResultOutput {
+	return o
+}
+
+func (o GetFileSystemsResultOutput) ToGetFileSystemsResultOutputWithContext(ctx context.Context) GetFileSystemsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetFileSystemsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetFileSystemsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFileSystemsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetFileSystemsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFileSystemsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetFileSystemsResultOutput) Systems() GetFileSystemsSystemArrayOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) []GetFileSystemsSystem { return v.Systems }).(GetFileSystemsSystemArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetFileSystemsResultOutput{})
 }

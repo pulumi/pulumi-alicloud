@@ -4,6 +4,9 @@
 package alicloud
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
-// 		currentRegionDs, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+// 		currentRegionDs, err := alicloud.GetRegions(ctx, &GetRegionsArgs{
 // 			Current: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -62,4 +65,72 @@ type GetRegionsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of regions. Each element contains the following attributes:
 	Regions []GetRegionsRegion `pulumi:"regions"`
+}
+
+func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pulumi.InvokeOption) GetRegionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRegionsResult, error) {
+			args := v.(GetRegionsArgs)
+			r, err := GetRegions(ctx, &args, opts...)
+			return *r, err
+		}).(GetRegionsResultOutput)
+}
+
+// A collection of arguments for invoking getRegions.
+type GetRegionsOutputArgs struct {
+	// Set to true to match only the region configured in the provider.
+	Current pulumi.BoolPtrInput `pulumi:"current"`
+	// The name of the region to select, such as `eu-central-1`.
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetRegionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRegions.
+type GetRegionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsResult)(nil)).Elem()
+}
+
+func (o GetRegionsResultOutput) ToGetRegionsResultOutput() GetRegionsResultOutput {
+	return o
+}
+
+func (o GetRegionsResultOutput) ToGetRegionsResultOutputWithContext(ctx context.Context) GetRegionsResultOutput {
+	return o
+}
+
+func (o GetRegionsResultOutput) Current() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionsResult) bool { return v.Current }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRegionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of region IDs.
+func (o GetRegionsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRegionsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetRegionsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of regions. Each element contains the following attributes:
+func (o GetRegionsResultOutput) Regions() GetRegionsRegionArrayOutput {
+	return o.ApplyT(func(v GetRegionsResult) []GetRegionsRegion { return v.Regions }).(GetRegionsRegionArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRegionsResultOutput{})
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetSaslAclsResult',
     'AwaitableGetSaslAclsResult',
     'get_sasl_acls',
+    'get_sasl_acls_output',
 ]
 
 @pulumi.output_type
@@ -160,3 +161,38 @@ def get_sasl_acls(acl_resource_name: Optional[str] = None,
         instance_id=__ret__.instance_id,
         output_file=__ret__.output_file,
         username=__ret__.username)
+
+
+@_utilities.lift_output_func(get_sasl_acls)
+def get_sasl_acls_output(acl_resource_name: Optional[pulumi.Input[str]] = None,
+                         acl_resource_type: Optional[pulumi.Input[str]] = None,
+                         instance_id: Optional[pulumi.Input[str]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         username: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSaslAclsResult]:
+    """
+    This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.66.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sasl_acls_ds = alicloud.actiontrail.get_sasl_acls(acl_resource_name="testTopic",
+        acl_resource_type="Topic",
+        instance_id="xxx",
+        output_file="saslAcls.txt",
+        username="username")
+    pulumi.export("firstSaslAclUsername", sasl_acls_ds.acls[0].username)
+    ```
+
+
+    :param str acl_resource_name: Get results for the specified resource name.
+    :param str acl_resource_type: Get results for the specified resource type.
+    :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl acls.
+    :param str username: Get results for the specified username.
+    """
+    ...

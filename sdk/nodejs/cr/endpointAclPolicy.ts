@@ -117,23 +117,23 @@ export interface EndpointAclPolicyState {
     /**
      * The description of the entry.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The type of endpoint. Valid values: `internet`.
      */
-    readonly endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string>;
     /**
      * The IP segment that allowed to access.
      */
-    readonly entry?: pulumi.Input<string>;
+    entry?: pulumi.Input<string>;
     /**
      * The ID of the CR Instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The module that needs to set the access policy. Valid values: `Registry`.
      */
-    readonly moduleName?: pulumi.Input<string>;
+    moduleName?: pulumi.Input<string>;
 }
 
 /**
@@ -143,21 +143,21 @@ export interface EndpointAclPolicyArgs {
     /**
      * The description of the entry.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The type of endpoint. Valid values: `internet`.
      */
-    readonly endpointType: pulumi.Input<string>;
+    endpointType: pulumi.Input<string>;
     /**
      * The IP segment that allowed to access.
      */
-    readonly entry: pulumi.Input<string>;
+    entry: pulumi.Input<string>;
     /**
      * The ID of the CR Instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The module that needs to set the access policy. Valid values: `Registry`.
      */
-    readonly moduleName?: pulumi.Input<string>;
+    moduleName?: pulumi.Input<string>;
 }

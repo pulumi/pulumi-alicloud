@@ -4,6 +4,9 @@
 package resourcemanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,75 @@ type GetHandshakesResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// The status of the invitation.
 	Status *string `pulumi:"status"`
+}
+
+func GetHandshakesOutput(ctx *pulumi.Context, args GetHandshakesOutputArgs, opts ...pulumi.InvokeOption) GetHandshakesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetHandshakesResult, error) {
+			args := v.(GetHandshakesArgs)
+			r, err := GetHandshakes(ctx, &args, opts...)
+			return *r, err
+		}).(GetHandshakesResultOutput)
+}
+
+// A collection of arguments for invoking getHandshakes.
+type GetHandshakesOutputArgs struct {
+	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Resource Manager Handshake IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetHandshakesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHandshakesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getHandshakes.
+type GetHandshakesResultOutput struct{ *pulumi.OutputState }
+
+func (GetHandshakesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHandshakesResult)(nil)).Elem()
+}
+
+func (o GetHandshakesResultOutput) ToGetHandshakesResultOutput() GetHandshakesResultOutput {
+	return o
+}
+
+func (o GetHandshakesResultOutput) ToGetHandshakesResultOutputWithContext(ctx context.Context) GetHandshakesResultOutput {
+	return o
+}
+
+func (o GetHandshakesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetHandshakesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// A list of Resource Manager Handshakes. Each element contains the following attributes:
+func (o GetHandshakesResultOutput) Handshakes() GetHandshakesHandshakeArrayOutput {
+	return o.ApplyT(func(v GetHandshakesResult) []GetHandshakesHandshake { return v.Handshakes }).(GetHandshakesHandshakeArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHandshakesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of Resource Manager Handshake IDs.
+func (o GetHandshakesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHandshakesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetHandshakesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHandshakesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The status of the invitation.
+func (o GetHandshakesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHandshakesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHandshakesResultOutput{})
 }

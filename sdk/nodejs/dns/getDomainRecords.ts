@@ -30,15 +30,15 @@ export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getDomainRecords.
  */
 export interface GetDomainRecordsArgs {
-    readonly domainName: string;
-    readonly hostRecordRegex?: string;
-    readonly ids?: string[];
-    readonly isLocked?: boolean;
-    readonly line?: string;
-    readonly outputFile?: string;
-    readonly status?: string;
-    readonly type?: string;
-    readonly valueRegex?: string;
+    domainName: string;
+    hostRecordRegex?: string;
+    ids?: string[];
+    isLocked?: boolean;
+    line?: string;
+    outputFile?: string;
+    status?: string;
+    type?: string;
+    valueRegex?: string;
 }
 
 /**
@@ -60,4 +60,23 @@ export interface GetDomainRecordsResult {
     readonly type?: string;
     readonly urls: string[];
     readonly valueRegex?: string;
+}
+
+export function getDomainRecordsOutput(args: GetDomainRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainRecordsResult> {
+    return pulumi.output(args).apply(a => getDomainRecords(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomainRecords.
+ */
+export interface GetDomainRecordsOutputArgs {
+    domainName: pulumi.Input<string>;
+    hostRecordRegex?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    isLocked?: pulumi.Input<boolean>;
+    line?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+    valueRegex?: pulumi.Input<string>;
 }

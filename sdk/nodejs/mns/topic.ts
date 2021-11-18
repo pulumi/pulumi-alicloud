@@ -90,15 +90,15 @@ export interface TopicState {
     /**
      * Is logging enabled? true or false. Default value to false.
      */
-    readonly loggingEnabled?: pulumi.Input<boolean>;
+    loggingEnabled?: pulumi.Input<boolean>;
     /**
      * This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
      */
-    readonly maximumMessageSize?: pulumi.Input<number>;
+    maximumMessageSize?: pulumi.Input<number>;
     /**
      * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -108,13 +108,13 @@ export interface TopicArgs {
     /**
      * Is logging enabled? true or false. Default value to false.
      */
-    readonly loggingEnabled?: pulumi.Input<boolean>;
+    loggingEnabled?: pulumi.Input<boolean>;
     /**
      * This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
      */
-    readonly maximumMessageSize?: pulumi.Input<number>;
+    maximumMessageSize?: pulumi.Input<number>;
     /**
      * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

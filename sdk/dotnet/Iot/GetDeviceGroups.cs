@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Iot
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Iot
         ///     public MyStack()
         ///     {
         ///         var ids = Output.Create(AliCloud.Iot.GetDeviceGroups.InvokeAsync());
-        ///         this.IotDeviceGroupId1 = ids.Apply(ids =&gt; ids.Groups[0].Id);
+        ///         this.IotDeviceGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
         ///     }
         /// 
         ///     [Output("iotDeviceGroupId1")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Iot
         /// </summary>
         public static Task<GetDeviceGroupsResult> InvokeAsync(GetDeviceGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDeviceGroupsResult>("alicloud:iot/getDeviceGroups:getDeviceGroups", args ?? new GetDeviceGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Iot Device Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Iot.GetDeviceGroups.InvokeAsync());
+        ///         this.IotDeviceGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("iotDeviceGroupId1")]
+        ///     public Output&lt;string&gt; IotDeviceGroupId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDeviceGroupsResult> Invoke(GetDeviceGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDeviceGroupsResult>("alicloud:iot/getDeviceGroups:getDeviceGroups", args ?? new GetDeviceGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -94,6 +128,58 @@ namespace Pulumi.AliCloud.Iot
         public string? SuperGroupId { get; set; }
 
         public GetDeviceGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDeviceGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// The GroupName of the device group.
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of device group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The id of the Iot Instance.
+        /// </summary>
+        [Input("iotInstanceId")]
+        public Input<string>? IotInstanceId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter CEN instances by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The id of the SuperGroup.
+        /// </summary>
+        [Input("superGroupId")]
+        public Input<string>? SuperGroupId { get; set; }
+
+        public GetDeviceGroupsInvokeArgs()
         {
         }
     }

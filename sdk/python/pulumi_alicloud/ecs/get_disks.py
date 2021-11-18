@@ -14,6 +14,7 @@ __all__ = [
     'GetDisksResult',
     'AwaitableGetDisksResult',
     'get_disks',
+    'get_disks_output',
 ]
 
 @pulumi.output_type
@@ -460,3 +461,59 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
         tags=__ret__.tags,
         type=__ret__.type,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_disks)
+def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     auto_snapshot_policy_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
+                     category: Optional[pulumi.Input[Optional[str]]] = None,
+                     delete_auto_snapshot: Optional[pulumi.Input[Optional[bool]]] = None,
+                     delete_with_instance: Optional[pulumi.Input[Optional[bool]]] = None,
+                     disk_name: Optional[pulumi.Input[Optional[str]]] = None,
+                     disk_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
+                     enable_auto_snapshot: Optional[pulumi.Input[Optional[bool]]] = None,
+                     enable_automated_snapshot_policy: Optional[pulumi.Input[Optional[bool]]] = None,
+                     enable_shared: Optional[pulumi.Input[Optional[bool]]] = None,
+                     encrypted: Optional[pulumi.Input[Optional[str]]] = None,
+                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     kms_key_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     operation_locks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDisksOperationLockArgs']]]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     payment_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     portable: Optional[pulumi.Input[Optional[bool]]] = None,
+                     resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                     tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                     type: Optional[pulumi.Input[Optional[str]]] = None,
+                     zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDisksResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str availability_zone: Availability zone of the disk.
+    :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
+    :param str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+    :param Sequence[str] ids: A list of disks IDs.
+    :param str instance_id: Filter the results by the specified ECS instance ID.
+    :param str name_regex: A regex string to filter results by disk name.
+    :param str resource_group_id: The Id of resource group which the disk belongs.
+    :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+    :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+    :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
+           ```python
+           import pulumi
+           import pulumi_alicloud as alicloud
+           
+           disks_ds = alicloud.ecs.get_disks(tags={
+               "tagKey1": "tagValue1",
+               "tagKey2": "tagValue2",
+           })
+           ```
+    :param str type: Disk type. Possible values: `system` and `data`.
+    """
+    ...

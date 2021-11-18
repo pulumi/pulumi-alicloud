@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.imp.getAppTemplates({});
- * export const impAppTemplateId1 = ids.then(ids => ids.templates[0].id);
+ * export const impAppTemplateId1 = ids.then(ids => ids.templates?[0]?.id);
  * const nameRegex = alicloud.imp.getAppTemplates({
  *     nameRegex: "^my_AppTemplate",
  * });
- * export const impAppTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates[0].id);
+ * export const impAppTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?[0]?.id);
  * ```
  */
 export function getAppTemplates(args?: GetAppTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetAppTemplatesResult> {
@@ -50,16 +50,16 @@ export interface GetAppTemplatesArgs {
     /**
      * A list of App Template IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by App Template name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Application template usage status.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -76,4 +76,27 @@ export interface GetAppTemplatesResult {
     readonly outputFile?: string;
     readonly status?: string;
     readonly templates: outputs.imp.GetAppTemplatesTemplate[];
+}
+
+export function getAppTemplatesOutput(args?: GetAppTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppTemplatesResult> {
+    return pulumi.output(args).apply(a => getAppTemplates(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAppTemplates.
+ */
+export interface GetAppTemplatesOutputArgs {
+    /**
+     * A list of App Template IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by App Template name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Application template usage status.
+     */
+    status?: pulumi.Input<string>;
 }

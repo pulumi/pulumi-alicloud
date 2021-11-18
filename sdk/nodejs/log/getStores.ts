@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     project: "the_project_name",
  *     ids: ["the_store_name"],
  * });
- * export const firstLogStoreId = example.then(example => example.stores[0].id);
+ * export const firstLogStoreId = example.then(example => example.stores?[0]?.id);
  * ```
  */
 export function getStores(args: GetStoresArgs, opts?: pulumi.InvokeOptions): Promise<GetStoresResult> {
@@ -48,13 +48,13 @@ export interface GetStoresArgs {
     /**
      * A list of store IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by store name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
-    readonly project: string;
+    nameRegex?: string;
+    outputFile?: string;
+    project: string;
 }
 
 /**
@@ -71,4 +71,24 @@ export interface GetStoresResult {
     readonly outputFile?: string;
     readonly project: string;
     readonly stores: outputs.log.GetStoresStore[];
+}
+
+export function getStoresOutput(args: GetStoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStoresResult> {
+    return pulumi.output(args).apply(a => getStores(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStores.
+ */
+export interface GetStoresOutputArgs {
+    /**
+     * A list of store IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by store name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

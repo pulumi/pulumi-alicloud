@@ -152,27 +152,27 @@ export interface FlowLogState {
     /**
      * The ID of the CEN Instance.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * The description of flowlog.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of flowlog.
      */
-    readonly flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string>;
     /**
      * The name of the log store which is in the  `projectName` SLS project.
      */
-    readonly logStoreName?: pulumi.Input<string>;
+    logStoreName?: pulumi.Input<string>;
     /**
      * The name of the SLS project.
      */
-    readonly projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string>;
     /**
      * The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -182,25 +182,25 @@ export interface FlowLogArgs {
     /**
      * The ID of the CEN Instance.
      */
-    readonly cenId: pulumi.Input<string>;
+    cenId: pulumi.Input<string>;
     /**
      * The description of flowlog.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of flowlog.
      */
-    readonly flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string>;
     /**
      * The name of the log store which is in the  `projectName` SLS project.
      */
-    readonly logStoreName: pulumi.Input<string>;
+    logStoreName: pulumi.Input<string>;
     /**
      * The name of the SLS project.
      */
-    readonly projectName: pulumi.Input<string>;
+    projectName: pulumi.Input<string>;
     /**
      * The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

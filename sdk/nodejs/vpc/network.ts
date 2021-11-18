@@ -161,62 +161,62 @@ export interface NetworkState {
     /**
      * The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
      */
-    readonly cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string>;
     /**
      * The VPC description. Defaults to null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Specifies whether to precheck this request only. Valid values: `true` and `false`.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
      */
-    readonly enableIpv6?: pulumi.Input<boolean>;
+    enableIpv6?: pulumi.Input<boolean>;
     /**
      * (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
      */
-    readonly ipv6CidrBlock?: pulumi.Input<string>;
+    ipv6CidrBlock?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Id of resource group which the VPC belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The route table ID of the router created by default on VPC creation.
      */
-    readonly routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string>;
     /**
      * The ID of the router created by default on VPC creation.
      */
-    readonly routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string>;
     /**
      * @deprecated Attribute router_table_id has been deprecated and replaced with route_table_id.
      */
-    readonly routerTableId?: pulumi.Input<string>;
+    routerTableId?: pulumi.Input<string>;
     /**
      * The secondary CIDR blocks for the VPC.
      */
-    readonly secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly status?: pulumi.Input<string>;
+    secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The user cidrs of the VPC.
      */
-    readonly userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the VPC. Defaults to null.
      */
-    readonly vpcName?: pulumi.Input<string>;
+    vpcName?: pulumi.Input<string>;
 }
 
 /**
@@ -226,43 +226,43 @@ export interface NetworkArgs {
     /**
      * The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
      */
-    readonly cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string>;
     /**
      * The VPC description. Defaults to null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Specifies whether to precheck this request only. Valid values: `true` and `false`.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
      */
-    readonly enableIpv6?: pulumi.Input<boolean>;
+    enableIpv6?: pulumi.Input<boolean>;
     /**
      * Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Id of resource group which the VPC belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The secondary CIDR blocks for the VPC.
      */
-    readonly secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The user cidrs of the VPC.
      */
-    readonly userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the VPC. Defaults to null.
      */
-    readonly vpcName?: pulumi.Input<string>;
+    vpcName?: pulumi.Input<string>;
 }

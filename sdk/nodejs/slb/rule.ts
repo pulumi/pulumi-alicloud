@@ -230,95 +230,95 @@ export interface RuleState {
     /**
      * The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      */
-    readonly cookie?: pulumi.Input<string>;
+    cookie?: pulumi.Input<string>;
     /**
      * Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
      */
-    readonly cookieTimeout?: pulumi.Input<number>;
+    cookieTimeout?: pulumi.Input<number>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
      * Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
      * and wildcard characters. The following two domain name formats are supported:
      * - Standard domain name: www.test.com
      * - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
      */
-    readonly frontendPort?: pulumi.Input<number>;
+    frontendPort?: pulumi.Input<number>;
     /**
      * Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
      */
-    readonly healthCheck?: pulumi.Input<string>;
+    healthCheck?: pulumi.Input<string>;
     /**
      * Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
      */
-    readonly healthCheckConnectPort?: pulumi.Input<number>;
+    healthCheckConnectPort?: pulumi.Input<number>;
     /**
      * Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
      */
-    readonly healthCheckDomain?: pulumi.Input<string>;
+    healthCheckDomain?: pulumi.Input<string>;
     /**
      * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
      */
-    readonly healthCheckHttpCode?: pulumi.Input<string>;
+    healthCheckHttpCode?: pulumi.Input<string>;
     /**
      * Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
      */
-    readonly healthCheckInterval?: pulumi.Input<number>;
+    healthCheckInterval?: pulumi.Input<number>;
     /**
      * Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
      */
-    readonly healthCheckTimeout?: pulumi.Input<number>;
+    healthCheckTimeout?: pulumi.Input<number>;
     /**
      * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
      */
-    readonly healthCheckUri?: pulumi.Input<string>;
+    healthCheckUri?: pulumi.Input<string>;
     /**
      * Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
      */
-    readonly healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number>;
     /**
      * Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
      */
-    readonly listenerSync?: pulumi.Input<string>;
+    listenerSync?: pulumi.Input<string>;
     /**
      * The Load Balancer ID which is used to launch the new forwarding rule.
      */
-    readonly loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string>;
     /**
      * Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
      */
-    readonly scheduler?: pulumi.Input<string>;
+    scheduler?: pulumi.Input<string>;
     /**
      * ID of a virtual server group that will be forwarded.
      */
-    readonly serverGroupId?: pulumi.Input<string>;
+    serverGroupId?: pulumi.Input<string>;
     /**
      * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
      */
-    readonly stickySession?: pulumi.Input<string>;
+    stickySession?: pulumi.Input<string>;
     /**
      * Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
      */
-    readonly stickySessionType?: pulumi.Input<string>;
+    stickySessionType?: pulumi.Input<string>;
     /**
      * Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
      */
-    readonly unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number>;
     /**
      * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
      * and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -328,93 +328,93 @@ export interface RuleArgs {
     /**
      * The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      */
-    readonly cookie?: pulumi.Input<string>;
+    cookie?: pulumi.Input<string>;
     /**
      * Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
      */
-    readonly cookieTimeout?: pulumi.Input<number>;
+    cookieTimeout?: pulumi.Input<number>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
      * Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
      * and wildcard characters. The following two domain name formats are supported:
      * - Standard domain name: www.test.com
      * - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
      */
-    readonly frontendPort: pulumi.Input<number>;
+    frontendPort: pulumi.Input<number>;
     /**
      * Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
      */
-    readonly healthCheck?: pulumi.Input<string>;
+    healthCheck?: pulumi.Input<string>;
     /**
      * Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
      */
-    readonly healthCheckConnectPort?: pulumi.Input<number>;
+    healthCheckConnectPort?: pulumi.Input<number>;
     /**
      * Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
      */
-    readonly healthCheckDomain?: pulumi.Input<string>;
+    healthCheckDomain?: pulumi.Input<string>;
     /**
      * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
      */
-    readonly healthCheckHttpCode?: pulumi.Input<string>;
+    healthCheckHttpCode?: pulumi.Input<string>;
     /**
      * Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
      */
-    readonly healthCheckInterval?: pulumi.Input<number>;
+    healthCheckInterval?: pulumi.Input<number>;
     /**
      * Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
      */
-    readonly healthCheckTimeout?: pulumi.Input<number>;
+    healthCheckTimeout?: pulumi.Input<number>;
     /**
      * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
      */
-    readonly healthCheckUri?: pulumi.Input<string>;
+    healthCheckUri?: pulumi.Input<string>;
     /**
      * Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
      */
-    readonly healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number>;
     /**
      * Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
      */
-    readonly listenerSync?: pulumi.Input<string>;
+    listenerSync?: pulumi.Input<string>;
     /**
      * The Load Balancer ID which is used to launch the new forwarding rule.
      */
-    readonly loadBalancerId: pulumi.Input<string>;
+    loadBalancerId: pulumi.Input<string>;
     /**
      * Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
      */
-    readonly scheduler?: pulumi.Input<string>;
+    scheduler?: pulumi.Input<string>;
     /**
      * ID of a virtual server group that will be forwarded.
      */
-    readonly serverGroupId: pulumi.Input<string>;
+    serverGroupId: pulumi.Input<string>;
     /**
      * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
      */
-    readonly stickySession?: pulumi.Input<string>;
+    stickySession?: pulumi.Input<string>;
     /**
      * Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
      */
-    readonly stickySessionType?: pulumi.Input<string>;
+    stickySessionType?: pulumi.Input<string>;
     /**
      * Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
      */
-    readonly unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number>;
     /**
      * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
      * and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }

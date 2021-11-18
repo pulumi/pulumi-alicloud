@@ -126,6 +126,8 @@ func (o GetOrganizationsOrganizationArrayOutput) Index(i pulumi.IntInput) GetOrg
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationsOrganizationInput)(nil)).Elem(), GetOrganizationsOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationsOrganizationArrayInput)(nil)).Elem(), GetOrganizationsOrganizationArray{})
 	pulumi.RegisterOutputType(GetOrganizationsOrganizationOutput{})
 	pulumi.RegisterOutputType(GetOrganizationsOrganizationArrayOutput{})
 }

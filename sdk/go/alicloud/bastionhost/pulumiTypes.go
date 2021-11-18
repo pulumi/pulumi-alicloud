@@ -1185,6 +1185,20 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAccountsAccountInput)(nil)).Elem(), GetHostAccountsAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAccountsAccountArrayInput)(nil)).Elem(), GetHostAccountsAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostGroupsGroupInput)(nil)).Elem(), GetHostGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostGroupsGroupArrayInput)(nil)).Elem(), GetHostGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsHostInput)(nil)).Elem(), GetHostsHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsHostArrayInput)(nil)).Elem(), GetHostsHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsHostProtocolInput)(nil)).Elem(), GetHostsHostProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsHostProtocolArrayInput)(nil)).Elem(), GetHostsHostProtocolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserGroupsGroupInput)(nil)).Elem(), GetUserGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserGroupsGroupArrayInput)(nil)).Elem(), GetUserGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterOutputType(GetHostAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetHostAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetHostGroupsGroupOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetPrivateZonesResult> InvokeAsync(GetPrivateZonesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN Private Zones available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.88.0+.
+        /// </summary>
+        public static Output<GetPrivateZonesResult> Invoke(GetPrivateZonesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -58,6 +67,47 @@ namespace Pulumi.AliCloud.Cen
         public string? Status { get; set; }
 
         public GetPrivateZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetPrivateZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the CEN instance.
+        /// </summary>
+        [Input("cenId", required: true)]
+        public Input<string> CenId { get; set; } = null!;
+
+        /// <summary>
+        /// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+        /// </summary>
+        [Input("hostRegionId")]
+        public Input<string>? HostRegionId { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of CEN private zone IDs.
+        /// * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetPrivateZonesInvokeArgs()
         {
         }
     }

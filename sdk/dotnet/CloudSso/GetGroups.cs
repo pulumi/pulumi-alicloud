@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudSso
 {
@@ -41,13 +42,13 @@ namespace Pulumi.AliCloud.CloudSso
         ///                 "example_value-2",
         ///             },
         ///         }));
-        ///         this.CloudSsoGroupId1 = ids.Apply(ids =&gt; ids.Groups[0].Id);
+        ///         this.CloudSsoGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.CloudSso.GetGroups.InvokeAsync(new AliCloud.CloudSso.GetGroupsArgs
         ///         {
         ///             DirectoryId = "example_value",
         ///             NameRegex = "^my-Group",
         ///         }));
-        ///         this.CloudSsoGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups[0].Id);
+        ///         this.CloudSsoGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
         ///     }
         /// 
         ///     [Output("cloudSsoGroupId1")]
@@ -61,6 +62,57 @@ namespace Pulumi.AliCloud.CloudSso
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:cloudsso/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// 
+        /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.CloudSso.GetGroups.InvokeAsync(new AliCloud.CloudSso.GetGroupsArgs
+        ///         {
+        ///             DirectoryId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value-1",
+        ///                 "example_value-2",
+        ///             },
+        ///         }));
+        ///         this.CloudSsoGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.CloudSso.GetGroups.InvokeAsync(new AliCloud.CloudSso.GetGroupsArgs
+        ///         {
+        ///             DirectoryId = "example_value",
+        ///             NameRegex = "^my-Group",
+        ///         }));
+        ///         this.CloudSsoGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("cloudSsoGroupId1")]
+        ///     public Output&lt;string&gt; CloudSsoGroupId1 { get; set; }
+        ///     [Output("cloudSsoGroupId2")]
+        ///     public Output&lt;string&gt; CloudSsoGroupId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:cloudsso/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -100,6 +152,46 @@ namespace Pulumi.AliCloud.CloudSso
         public string? ProvisionType { get; set; }
 
         public GetGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Directory.
+        /// </summary>
+        [Input("directoryId", required: true)]
+        public Input<string> DirectoryId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+        /// </summary>
+        [Input("provisionType")]
+        public Input<string>? ProvisionType { get; set; }
+
+        public GetGroupsInvokeArgs()
         {
         }
     }

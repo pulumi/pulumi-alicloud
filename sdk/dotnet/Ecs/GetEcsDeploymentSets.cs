@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -37,12 +38,12 @@ namespace Pulumi.AliCloud.Ecs
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.EcsDeploymentSetId1 = ids.Apply(ids =&gt; ids.Sets[0].Id);
+        ///         this.EcsDeploymentSetId1 = ids.Apply(ids =&gt; ids.Sets?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsDeploymentSets.InvokeAsync(new AliCloud.Ecs.GetEcsDeploymentSetsArgs
         ///         {
         ///             NameRegex = "^my-DeploymentSet",
         ///         }));
-        ///         this.EcsDeploymentSetId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Sets[0].Id);
+        ///         this.EcsDeploymentSetId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Sets?[0]?.Id);
         ///     }
         /// 
         ///     [Output("ecsDeploymentSetId1")]
@@ -56,6 +57,52 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetEcsDeploymentSetsResult> InvokeAsync(GetEcsDeploymentSetsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEcsDeploymentSetsResult>("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args ?? new GetEcsDeploymentSetsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsDeploymentSets.InvokeAsync(new AliCloud.Ecs.GetEcsDeploymentSetsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.EcsDeploymentSetId1 = ids.Apply(ids =&gt; ids.Sets?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsDeploymentSets.InvokeAsync(new AliCloud.Ecs.GetEcsDeploymentSetsArgs
+        ///         {
+        ///             NameRegex = "^my-DeploymentSet",
+        ///         }));
+        ///         this.EcsDeploymentSetId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Sets?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("ecsDeploymentSetId1")]
+        ///     public Output&lt;string&gt; EcsDeploymentSetId1 { get; set; }
+        ///     [Output("ecsDeploymentSetId2")]
+        ///     public Output&lt;string&gt; EcsDeploymentSetId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEcsDeploymentSetsResult> Invoke(GetEcsDeploymentSetsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEcsDeploymentSetsResult>("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args ?? new GetEcsDeploymentSetsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -95,6 +142,46 @@ namespace Pulumi.AliCloud.Ecs
         public string? Strategy { get; set; }
 
         public GetEcsDeploymentSetsArgs()
+        {
+        }
+    }
+
+    public sealed class GetEcsDeploymentSetsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the deployment set.
+        /// </summary>
+        [Input("deploymentSetName")]
+        public Input<string>? DeploymentSetName { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Deployment Set IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Deployment Set name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The deployment strategy.
+        /// </summary>
+        [Input("strategy")]
+        public Input<string>? Strategy { get; set; }
+
+        public GetEcsDeploymentSetsInvokeArgs()
         {
         }
     }

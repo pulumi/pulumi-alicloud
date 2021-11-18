@@ -13,6 +13,7 @@ __all__ = [
     'GetOssBackupPlansResult',
     'AwaitableGetOssBackupPlansResult',
     'get_oss_backup_plans',
+    'get_oss_backup_plans_output',
 ]
 
 @pulumi.output_type
@@ -156,3 +157,36 @@ def get_oss_backup_plans(bucket: Optional[str] = None,
         output_file=__ret__.output_file,
         plans=__ret__.plans,
         vault_id=__ret__.vault_id)
+
+
+@_utilities.lift_output_func(get_oss_backup_plans)
+def get_oss_backup_plans_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
+                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                vault_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOssBackupPlansResult]:
+    """
+    This data source provides the Hbr OssBackupPlans of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.131.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_oss_backup_plans(name_regex="^my-OssBackupPlan")
+    pulumi.export("hbrOssBackupPlanId", ids.plans[0].id)
+    ```
+
+
+    :param str bucket: The name of OSS bucket.
+    :param Sequence[str] ids: A list of OssBackupPlan IDs.
+    :param str name_regex: A regex string to filter results by OssBackupPlan name.
+    :param str vault_id: The ID of backup vault.
+    """
+    ...

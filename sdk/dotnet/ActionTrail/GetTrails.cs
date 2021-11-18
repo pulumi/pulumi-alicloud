@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///         {
         ///             NameRegex = "tf-testacc-actiontrail",
         ///         }));
-        ///         this.TrailName = @default.Apply(@default =&gt; @default.Trails[0].Id);
+        ///         this.TrailName = @default.Apply(@default =&gt; @default.Trails?[0]?.Id);
         ///     }
         /// 
         ///     [Output("trailName")]
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public static Task<GetTrailsResult> InvokeAsync(GetTrailsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTrailsResult>("alicloud:actiontrail/getTrails:getTrails", args ?? new GetTrailsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.95.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.ActionTrail.GetTrails.InvokeAsync(new AliCloud.ActionTrail.GetTrailsArgs
+        ///         {
+        ///             NameRegex = "tf-testacc-actiontrail",
+        ///         }));
+        ///         this.TrailName = @default.Apply(@default =&gt; @default.Trails?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("trailName")]
+        ///     public Output&lt;string&gt; TrailName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTrailsResult> Invoke(GetTrailsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTrailsResult>("alicloud:actiontrail/getTrails:getTrails", args ?? new GetTrailsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -89,6 +124,52 @@ namespace Pulumi.AliCloud.ActionTrail
         public string? Status { get; set; }
 
         public GetTrailsArgs()
+        {
+        }
+    }
+
+    public sealed class GetTrailsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of ActionTrail Trail IDs. It is the same as trail name.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Whether to show organization tracking. Default to `false`.
+        /// </summary>
+        [Input("includeOrganizationTrail")]
+        public Input<bool>? IncludeOrganizationTrail { get; set; }
+
+        /// <summary>
+        /// Whether to show shadow tracking. Default to `false`.
+        /// </summary>
+        [Input("includeShadowTrails")]
+        public Input<bool>? IncludeShadowTrails { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by trail name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetTrailsInvokeArgs()
         {
         }
     }

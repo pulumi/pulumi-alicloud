@@ -13,6 +13,7 @@ __all__ = [
     'GetPoliciesResult',
     'AwaitableGetPoliciesResult',
     'get_policies',
+    'get_policies_output',
 ]
 
 @pulumi.output_type
@@ -152,3 +153,34 @@ def get_policies(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         policies=__ret__.policies,
         policy_type=__ret__.policy_type)
+
+
+@_utilities.lift_output_func(get_policies)
+def get_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        policy_type: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoliciesResult]:
+    """
+    This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
+
+    > **NOTE:**  Available in 1.86.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_policies(description_regex="tftest_policy",
+        name_regex="tftest",
+        policy_type="Custom")
+    pulumi.export("firstPolicyId", example.policies[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Resource Manager Policy IDs.
+    :param str name_regex: A regex string to filter results by policy name.
+    :param str policy_type: The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
+    """
+    ...

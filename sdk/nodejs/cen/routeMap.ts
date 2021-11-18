@@ -332,116 +332,116 @@ export interface RouteMapState {
     /**
      * A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
      */
-    readonly asPathMatchMode?: pulumi.Input<string>;
+    asPathMatchMode?: pulumi.Input<string>;
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * The ID of the region to which the CEN instance belongs.
      */
-    readonly cenRegionId?: pulumi.Input<string>;
+    cenRegionId?: pulumi.Input<string>;
     /**
      * A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: ["Include", "Complete"].
      */
-    readonly cidrMatchMode?: pulumi.Input<string>;
+    cidrMatchMode?: pulumi.Input<string>;
     /**
      * A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
      */
-    readonly communityMatchMode?: pulumi.Input<string>;
+    communityMatchMode?: pulumi.Input<string>;
     /**
      * An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
      */
-    readonly communityOperateMode?: pulumi.Input<string>;
+    communityOperateMode?: pulumi.Input<string>;
     /**
      * The description of the route map.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
      */
-    readonly destinationChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
      */
-    readonly destinationCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the list of IDs of the destination instances.
      */
-    readonly destinationInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
      */
-    readonly destinationInstanceIdsReverseMatch?: pulumi.Input<boolean>;
+    destinationInstanceIdsReverseMatch?: pulumi.Input<boolean>;
     /**
      * A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
      */
-    readonly destinationRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The action that is performed to a route if the route matches all the match conditions. Valid values: ["Permit", "Deny"].
      */
-    readonly mapResult?: pulumi.Input<string>;
+    mapResult?: pulumi.Input<string>;
     /**
      * A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
      */
-    readonly matchAsns?: pulumi.Input<pulumi.Input<string>[]>;
+    matchAsns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
-    readonly matchCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
+    matchCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
      */
-    readonly nextPriority?: pulumi.Input<number>;
+    nextPriority?: pulumi.Input<number>;
     /**
      * An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
-    readonly operateCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
+    operateCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
      */
-    readonly preference?: pulumi.Input<number>;
+    preference?: pulumi.Input<number>;
     /**
      * An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
      */
-    readonly prependAsPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    prependAsPaths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
      */
-    readonly priority?: pulumi.Input<number>;
-    readonly routeMapId?: pulumi.Input<string>;
+    priority?: pulumi.Input<number>;
+    routeMapId?: pulumi.Input<string>;
     /**
      * A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
      */
-    readonly routeTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    routeTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
      */
-    readonly sourceChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the list of IDs of the source instances.
      */
-    readonly sourceInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
      */
-    readonly sourceInstanceIdsReverseMatch?: pulumi.Input<boolean>;
+    sourceInstanceIdsReverseMatch?: pulumi.Input<boolean>;
     /**
      * A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
      */
-    readonly sourceRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
      */
-    readonly sourceRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
      */
-    readonly transmitDirection?: pulumi.Input<string>;
+    transmitDirection?: pulumi.Input<string>;
 }
 
 /**
@@ -451,109 +451,109 @@ export interface RouteMapArgs {
     /**
      * A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
      */
-    readonly asPathMatchMode?: pulumi.Input<string>;
+    asPathMatchMode?: pulumi.Input<string>;
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId: pulumi.Input<string>;
+    cenId: pulumi.Input<string>;
     /**
      * The ID of the region to which the CEN instance belongs.
      */
-    readonly cenRegionId: pulumi.Input<string>;
+    cenRegionId: pulumi.Input<string>;
     /**
      * A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: ["Include", "Complete"].
      */
-    readonly cidrMatchMode?: pulumi.Input<string>;
+    cidrMatchMode?: pulumi.Input<string>;
     /**
      * A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
      */
-    readonly communityMatchMode?: pulumi.Input<string>;
+    communityMatchMode?: pulumi.Input<string>;
     /**
      * An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
      */
-    readonly communityOperateMode?: pulumi.Input<string>;
+    communityOperateMode?: pulumi.Input<string>;
     /**
      * The description of the route map.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
      */
-    readonly destinationChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
      */
-    readonly destinationCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the list of IDs of the destination instances.
      */
-    readonly destinationInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
      */
-    readonly destinationInstanceIdsReverseMatch?: pulumi.Input<boolean>;
+    destinationInstanceIdsReverseMatch?: pulumi.Input<boolean>;
     /**
      * A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
      */
-    readonly destinationRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The action that is performed to a route if the route matches all the match conditions. Valid values: ["Permit", "Deny"].
      */
-    readonly mapResult: pulumi.Input<string>;
+    mapResult: pulumi.Input<string>;
     /**
      * A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
      */
-    readonly matchAsns?: pulumi.Input<pulumi.Input<string>[]>;
+    matchAsns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
-    readonly matchCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
+    matchCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
      */
-    readonly nextPriority?: pulumi.Input<number>;
+    nextPriority?: pulumi.Input<number>;
     /**
      * An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
-    readonly operateCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
+    operateCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
      */
-    readonly preference?: pulumi.Input<number>;
+    preference?: pulumi.Input<number>;
     /**
      * An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
      */
-    readonly prependAsPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    prependAsPaths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
      */
-    readonly priority: pulumi.Input<number>;
+    priority: pulumi.Input<number>;
     /**
      * A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
      */
-    readonly routeTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    routeTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
      */
-    readonly sourceChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the list of IDs of the source instances.
      */
-    readonly sourceInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
      */
-    readonly sourceInstanceIdsReverseMatch?: pulumi.Input<boolean>;
+    sourceInstanceIdsReverseMatch?: pulumi.Input<boolean>;
     /**
      * A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
      */
-    readonly sourceRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
      */
-    readonly sourceRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
      */
-    readonly transmitDirection: pulumi.Input<string>;
+    transmitDirection: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,4 +108,144 @@ type GetNetworksResult struct {
 	// A list of VPCs. Each element contains the following attributes:
 	Vpcs      []GetNetworksVpc `pulumi:"vpcs"`
 	VswitchId *string          `pulumi:"vswitchId"`
+}
+
+func GetNetworksOutput(ctx *pulumi.Context, args GetNetworksOutputArgs, opts ...pulumi.InvokeOption) GetNetworksResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNetworksResult, error) {
+			args := v.(GetNetworksArgs)
+			r, err := GetNetworks(ctx, &args, opts...)
+			return *r, err
+		}).(GetNetworksResultOutput)
+}
+
+// A collection of arguments for invoking getNetworks.
+type GetNetworksOutputArgs struct {
+	// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
+	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
+	// The ID of dhcp options set.
+	DhcpOptionsSetId pulumi.StringPtrInput `pulumi:"dhcpOptionsSetId"`
+	// Indicates whether to check this request only. Valid values: `true` and `false`.
+	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
+	// -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `routeTableId`.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of VPC IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Indicate whether the VPC is the default one in the specified region.
+	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
+	// A regex string to filter VPCs by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Id of resource group which VPC belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// Filter results by a specific status. Valid value are `Pending` and `Available`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The name of the VPC.
+	VpcName pulumi.StringPtrInput `pulumi:"vpcName"`
+	// The owner ID of VPC.
+	VpcOwnerId pulumi.IntPtrInput `pulumi:"vpcOwnerId"`
+	// Filter results by the specified VSwitch.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (GetNetworksOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNetworks.
+type GetNetworksResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksResult)(nil)).Elem()
+}
+
+func (o GetNetworksResultOutput) ToGetNetworksResultOutput() GetNetworksResultOutput {
+	return o
+}
+
+func (o GetNetworksResultOutput) ToGetNetworksResultOutputWithContext(ctx context.Context) GetNetworksResultOutput {
+	return o
+}
+
+// CIDR block of the VPC.
+func (o GetNetworksResultOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworksResultOutput) DhcpOptionsSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *string { return v.DhcpOptionsSetId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworksResultOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetNetworksResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNetworksResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of VPC IDs.
+func (o GetNetworksResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// Whether the VPC is the default VPC in the region.
+func (o GetNetworksResultOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetNetworksResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of VPC names.
+func (o GetNetworksResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNetworksResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworksResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Status of the VPC.
+func (o GetNetworksResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A map of tags assigned to the VPC.
+func (o GetNetworksResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetNetworksResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Name of the VPC.
+func (o GetNetworksResultOutput) VpcName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *string { return v.VpcName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworksResultOutput) VpcOwnerId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *int { return v.VpcOwnerId }).(pulumi.IntPtrOutput)
+}
+
+// A list of VPCs. Each element contains the following attributes:
+func (o GetNetworksResultOutput) Vpcs() GetNetworksVpcArrayOutput {
+	return o.ApplyT(func(v GetNetworksResult) []GetNetworksVpc { return v.Vpcs }).(GetNetworksVpcArrayOutput)
+}
+
+func (o GetNetworksResultOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNetworksResultOutput{})
 }

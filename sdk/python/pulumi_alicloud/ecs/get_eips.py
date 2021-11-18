@@ -13,6 +13,7 @@ __all__ = [
     'GetEipsResult',
     'AwaitableGetEipsResult',
     'get_eips',
+    'get_eips_output',
 ]
 
 warnings.warn("""This function has been deprecated in favour of the getEipAddresses function""", DeprecationWarning)
@@ -338,3 +339,37 @@ def get_eips(address_name: Optional[str] = None,
         segment_instance_id=__ret__.segment_instance_id,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_eips)
+def get_eips_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
+                    associated_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    associated_instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                    dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
+                    enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    include_reservation_data: Optional[pulumi.Input[Optional[bool]]] = None,
+                    ip_address: Optional[pulumi.Input[Optional[str]]] = None,
+                    ip_addresses: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    isp: Optional[pulumi.Input[Optional[str]]] = None,
+                    lock_reason: Optional[pulumi.Input[Optional[str]]] = None,
+                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                    payment_type: Optional[pulumi.Input[Optional[str]]] = None,
+                    resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    segment_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    status: Optional[pulumi.Input[Optional[str]]] = None,
+                    tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEipsResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param Sequence[str] ids: A list of EIP IDs.
+    :param str ip_address: Public IP Address of the the EIP.
+    :param Sequence[str] ip_addresses: A list of EIP public IP addresses.
+    :param str resource_group_id: The Id of resource group which the eips belongs.
+    :param str status: EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    pulumi.log.warn("""get_eips is deprecated: This function has been deprecated in favour of the getEipAddresses function""")
+    ...

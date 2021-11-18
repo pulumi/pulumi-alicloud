@@ -13,6 +13,7 @@ __all__ = [
     'GetMonitorGroupInstancesResult',
     'AwaitableGetMonitorGroupInstancesResult',
     'get_monitor_group_instances',
+    'get_monitor_group_instances_output',
 ]
 
 @pulumi.output_type
@@ -102,3 +103,14 @@ def get_monitor_group_instances(ids: Optional[str] = None,
         instances=__ret__.instances,
         keyword=__ret__.keyword,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_monitor_group_instances)
+def get_monitor_group_instances_output(ids: Optional[pulumi.Input[str]] = None,
+                                       keyword: Optional[pulumi.Input[Optional[str]]] = None,
+                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMonitorGroupInstancesResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

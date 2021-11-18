@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const instancesDs = pulumi.output(alicloud.ots.getInstances({
  *     nameRegex: "sample-instance",
  *     outputFile: "instances.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstInstanceId = instancesDs.instances[0].id;
  * ```
@@ -46,12 +46,12 @@ export interface GetInstancesArgs {
     /**
      * A list of instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * A map of tags assigned to the instance. It must be in the format:
      * ```typescript
@@ -63,10 +63,10 @@ export interface GetInstancesArgs {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }, { async: true }));
+     * }));
      * ```
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -95,4 +95,38 @@ export interface GetInstancesResult {
      * The tags of the instance.
      */
     readonly tags?: {[key: string]: any};
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * A list of instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the instance. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const instancesDs = pulumi.output(alicloud.ots.getInstances({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * }));
+     * ```
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

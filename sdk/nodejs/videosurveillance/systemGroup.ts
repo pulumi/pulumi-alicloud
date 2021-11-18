@@ -200,63 +200,63 @@ export interface SystemGroupState {
     /**
      * The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
      */
-    readonly callback?: pulumi.Input<string>;
+    callback?: pulumi.Input<string>;
     /**
      * The capture image.
      */
-    readonly captureImage?: pulumi.Input<number>;
+    captureImage?: pulumi.Input<number>;
     /**
      * The capture interval.
      */
-    readonly captureInterval?: pulumi.Input<number>;
+    captureInterval?: pulumi.Input<number>;
     /**
      * The capture oss bucket.
      */
-    readonly captureOssBucket?: pulumi.Input<string>;
+    captureOssBucket?: pulumi.Input<string>;
     /**
      * The capture oss path.
      */
-    readonly captureOssPath?: pulumi.Input<string>;
+    captureOssPath?: pulumi.Input<string>;
     /**
      * The capture video.
      */
-    readonly captureVideo?: pulumi.Input<number>;
+    captureVideo?: pulumi.Input<number>;
     /**
      * The description of Group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether to open Group.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The Group Name.
      */
-    readonly groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string>;
     /**
      * The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
      */
-    readonly inProtocol?: pulumi.Input<string>;
+    inProtocol?: pulumi.Input<string>;
     /**
      * Whether to enable on-demand streaming. Default value:`false`.
      */
-    readonly lazyPull?: pulumi.Input<boolean>;
+    lazyPull?: pulumi.Input<boolean>;
     /**
      * The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
      */
-    readonly outProtocol?: pulumi.Input<string>;
+    outProtocol?: pulumi.Input<string>;
     /**
      * The domain name of plan streaming used by the group.
      */
-    readonly playDomain?: pulumi.Input<string>;
+    playDomain?: pulumi.Input<string>;
     /**
      * The domain name of push streaming used by the group.
      */
-    readonly pushDomain?: pulumi.Input<string>;
+    pushDomain?: pulumi.Input<string>;
     /**
      * Whether to open Group. Valid values: `on`,`off`.
      */
-    readonly status?: pulumi.Input<boolean>;
+    status?: pulumi.Input<boolean>;
 }
 
 /**
@@ -266,33 +266,33 @@ export interface SystemGroupArgs {
     /**
      * The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
      */
-    readonly callback?: pulumi.Input<string>;
+    callback?: pulumi.Input<string>;
     /**
      * The description of Group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether to open Group.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The Group Name.
      */
-    readonly groupName: pulumi.Input<string>;
+    groupName: pulumi.Input<string>;
     /**
      * The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
      */
-    readonly inProtocol: pulumi.Input<string>;
+    inProtocol: pulumi.Input<string>;
     /**
      * The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
      */
-    readonly outProtocol: pulumi.Input<string>;
+    outProtocol: pulumi.Input<string>;
     /**
      * The domain name of plan streaming used by the group.
      */
-    readonly playDomain: pulumi.Input<string>;
+    playDomain: pulumi.Input<string>;
     /**
      * The domain name of push streaming used by the group.
      */
-    readonly pushDomain: pulumi.Input<string>;
+    pushDomain: pulumi.Input<string>;
 }

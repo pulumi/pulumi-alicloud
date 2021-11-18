@@ -131,27 +131,27 @@ export interface SubscriptionState {
     /**
      * Comment of the datahub subscription. It cannot be longer than 255 characters.
      */
-    readonly comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
      * Create time of the datahub subscription. It is a human-readable string rather than 64-bits UTC.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Last modify time of the datahub subscription. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
      */
-    readonly lastModifyTime?: pulumi.Input<string>;
+    lastModifyTime?: pulumi.Input<string>;
     /**
      * The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    readonly projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string>;
     /**
      * The identidy of the subscritpion, generate from server side.
      */
-    readonly subId?: pulumi.Input<string>;
+    subId?: pulumi.Input<string>;
     /**
      * The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    readonly topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string>;
 }
 
 /**
@@ -161,13 +161,13 @@ export interface SubscriptionArgs {
     /**
      * Comment of the datahub subscription. It cannot be longer than 255 characters.
      */
-    readonly comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
      * The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    readonly projectName: pulumi.Input<string>;
+    projectName: pulumi.Input<string>;
     /**
      * The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    readonly topicName: pulumi.Input<string>;
+    topicName: pulumi.Input<string>;
 }

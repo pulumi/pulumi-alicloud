@@ -280,7 +280,7 @@ type ScalingRuleArrayInput interface {
 type ScalingRuleArray []ScalingRuleInput
 
 func (ScalingRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ScalingRule)(nil))
+	return reflect.TypeOf((*[]*ScalingRule)(nil)).Elem()
 }
 
 func (i ScalingRuleArray) ToScalingRuleArrayOutput() ScalingRuleArrayOutput {
@@ -305,7 +305,7 @@ type ScalingRuleMapInput interface {
 type ScalingRuleMap map[string]ScalingRuleInput
 
 func (ScalingRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ScalingRule)(nil))
+	return reflect.TypeOf((*map[string]*ScalingRule)(nil)).Elem()
 }
 
 func (i ScalingRuleMap) ToScalingRuleMapOutput() ScalingRuleMapOutput {
@@ -316,9 +316,7 @@ func (i ScalingRuleMap) ToScalingRuleMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleMapOutput)
 }
 
-type ScalingRuleOutput struct {
-	*pulumi.OutputState
-}
+type ScalingRuleOutput struct{ *pulumi.OutputState }
 
 func (ScalingRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScalingRule)(nil))
@@ -337,14 +335,12 @@ func (o ScalingRuleOutput) ToScalingRulePtrOutput() ScalingRulePtrOutput {
 }
 
 func (o ScalingRuleOutput) ToScalingRulePtrOutputWithContext(ctx context.Context) ScalingRulePtrOutput {
-	return o.ApplyT(func(v ScalingRule) *ScalingRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScalingRule) *ScalingRule {
 		return &v
 	}).(ScalingRulePtrOutput)
 }
 
-type ScalingRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type ScalingRulePtrOutput struct{ *pulumi.OutputState }
 
 func (ScalingRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ScalingRule)(nil))
@@ -356,6 +352,16 @@ func (o ScalingRulePtrOutput) ToScalingRulePtrOutput() ScalingRulePtrOutput {
 
 func (o ScalingRulePtrOutput) ToScalingRulePtrOutputWithContext(ctx context.Context) ScalingRulePtrOutput {
 	return o
+}
+
+func (o ScalingRulePtrOutput) Elem() ScalingRuleOutput {
+	return o.ApplyT(func(v *ScalingRule) ScalingRule {
+		if v != nil {
+			return *v
+		}
+		var ret ScalingRule
+		return ret
+	}).(ScalingRuleOutput)
 }
 
 type ScalingRuleArrayOutput struct{ *pulumi.OutputState }
@@ -399,6 +405,10 @@ func (o ScalingRuleMapOutput) MapIndex(k pulumi.StringInput) ScalingRuleOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleInput)(nil)).Elem(), &ScalingRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRulePtrInput)(nil)).Elem(), &ScalingRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleArrayInput)(nil)).Elem(), ScalingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleMapInput)(nil)).Elem(), ScalingRuleMap{})
 	pulumi.RegisterOutputType(ScalingRuleOutput{})
 	pulumi.RegisterOutputType(ScalingRulePtrOutput{})
 	pulumi.RegisterOutputType(ScalingRuleArrayOutput{})

@@ -42,44 +42,44 @@ export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getEips.
  */
 export interface GetEipsArgs {
-    readonly addressName?: string;
-    readonly associatedInstanceId?: string;
-    readonly associatedInstanceType?: string;
-    readonly dryRun?: boolean;
-    readonly enableDetails?: boolean;
+    addressName?: string;
+    associatedInstanceId?: string;
+    associatedInstanceType?: string;
+    dryRun?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of EIP IDs.
      */
-    readonly ids?: string[];
-    readonly includeReservationData?: boolean;
+    ids?: string[];
+    includeReservationData?: boolean;
     /**
      * Public IP Address of the the EIP.
      */
-    readonly ipAddress?: string;
+    ipAddress?: string;
     /**
      * A list of EIP public IP addresses.
      *
      * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
      */
-    readonly ipAddresses?: string[];
-    readonly isp?: string;
-    readonly lockReason?: string;
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
-    readonly paymentType?: string;
+    ipAddresses?: string[];
+    isp?: string;
+    lockReason?: string;
+    nameRegex?: string;
+    outputFile?: string;
+    paymentType?: string;
     /**
      * The Id of resource group which the eips belongs.
      */
-    readonly resourceGroupId?: string;
-    readonly segmentInstanceId?: string;
+    resourceGroupId?: string;
+    segmentInstanceId?: string;
     /**
      * EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -134,4 +134,52 @@ export interface GetEipsResult {
      */
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getEipsOutput(args?: GetEipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEipsResult> {
+    return pulumi.output(args).apply(a => getEips(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEips.
+ */
+export interface GetEipsOutputArgs {
+    addressName?: pulumi.Input<string>;
+    associatedInstanceId?: pulumi.Input<string>;
+    associatedInstanceType?: pulumi.Input<string>;
+    dryRun?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of EIP IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    includeReservationData?: pulumi.Input<boolean>;
+    /**
+     * Public IP Address of the the EIP.
+     */
+    ipAddress?: pulumi.Input<string>;
+    /**
+     * A list of EIP public IP addresses.
+     *
+     * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+     */
+    ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    isp?: pulumi.Input<string>;
+    lockReason?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the eips belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    segmentInstanceId?: pulumi.Input<string>;
+    /**
+     * EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

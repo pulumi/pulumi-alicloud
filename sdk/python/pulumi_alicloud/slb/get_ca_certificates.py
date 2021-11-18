@@ -13,6 +13,7 @@ __all__ = [
     'GetCaCertificatesResult',
     'AwaitableGetCaCertificatesResult',
     'get_ca_certificates',
+    'get_ca_certificates_output',
 ]
 
 @pulumi.output_type
@@ -167,3 +168,32 @@ def get_ca_certificates(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         resource_group_id=__ret__.resource_group_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_ca_certificates)
+def get_ca_certificates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCaCertificatesResult]:
+    """
+    This data source provides the CA certificate list.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_ca_certificates()
+    pulumi.export("firstSlbCaCertificateId", sample_ds.certificates[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of ca certificates IDs to filter results.
+    :param str name_regex: A regex string to filter results by ca certificate name.
+    :param str resource_group_id: The Id of resource group which ca certificates belongs.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    ...

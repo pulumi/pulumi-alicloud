@@ -13,6 +13,7 @@ __all__ = [
     'GetEcsLaunchTemplatesResult',
     'AwaitableGetEcsLaunchTemplatesResult',
     'get_ecs_launch_templates',
+    'get_ecs_launch_templates_output',
 ]
 
 @pulumi.output_type
@@ -183,3 +184,41 @@ def get_ecs_launch_templates(enable_details: Optional[bool] = None,
         template_resource_group_id=__ret__.template_resource_group_id,
         template_tags=__ret__.template_tags,
         templates=__ret__.templates)
+
+
+@_utilities.lift_output_func(get_ecs_launch_templates)
+def get_ecs_launch_templates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    launch_template_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    template_resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                    template_tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsLaunchTemplatesResult]:
+    """
+    This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.120.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ecs.get_ecs_launch_templates(ids=["lt-bp1a469uxxxxxx"],
+        name_regex="your_launch_name")
+    pulumi.export("firstEcsLaunchTemplateId", example.templates[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Launch Template IDs.
+    :param str launch_template_name: The Launch Template Name.
+    :param str name_regex: A regex string to filter results by Launch Template name.
+    :param str template_resource_group_id: The template resource group id.
+    :param Mapping[str, Any] template_tags: The template tags.
+    """
+    ...

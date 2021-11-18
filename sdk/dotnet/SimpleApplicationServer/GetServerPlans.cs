@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.SimpleApplicationServer
 {
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// </summary>
         public static Task<GetServerPlansResult> InvokeAsync(GetServerPlansArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerPlansResult>("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", args ?? new GetServerPlansArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.SimpleApplicationServer.GetServerPlans.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerPlansArgs
+        ///         {
+        ///             Memory = 1,
+        ///             Bandwidth = 3,
+        ///             DiskSize = 40,
+        ///             Flow = 6,
+        ///             Core = 2,
+        ///         }));
+        ///         this.SimpleApplicationServerPlanId1 = data.Alicloud_simple_application_server_plans.Ids.Plans[0].Id;
+        ///     }
+        /// 
+        ///     [Output("simpleApplicationServerPlanId1")]
+        ///     public Output&lt;string&gt; SimpleApplicationServerPlanId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServerPlansResult> Invoke(GetServerPlansInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServerPlansResult>("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", args ?? new GetServerPlansInvokeArgs(), options.WithVersion());
     }
 
 
@@ -101,6 +142,58 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public string? OutputFile { get; set; }
 
         public GetServerPlansArgs()
+        {
+        }
+    }
+
+    public sealed class GetServerPlansInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The peak bandwidth. Unit: Mbit/s.
+        /// </summary>
+        [Input("bandwidth")]
+        public Input<int>? Bandwidth { get; set; }
+
+        /// <summary>
+        /// The number of CPU cores.
+        /// </summary>
+        [Input("core")]
+        public Input<int>? Core { get; set; }
+
+        /// <summary>
+        /// The size of the enhanced SSD (ESSD). Unit: GB.
+        /// </summary>
+        [Input("diskSize")]
+        public Input<int>? DiskSize { get; set; }
+
+        /// <summary>
+        /// The monthly data transfer quota. Unit: GB.
+        /// </summary>
+        [Input("flow")]
+        public Input<int>? Flow { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Instance Plan IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The memory size. Unit: GB.
+        /// </summary>
+        [Input("memory")]
+        public Input<int>? Memory { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetServerPlansInvokeArgs()
         {
         }
     }

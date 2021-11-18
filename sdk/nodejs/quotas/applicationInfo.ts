@@ -121,34 +121,34 @@ export class ApplicationInfo extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApplicationInfo resources.
  */
 export interface ApplicationInfoState {
-    readonly approveValue?: pulumi.Input<string>;
-    readonly auditMode?: pulumi.Input<string>;
-    readonly auditReason?: pulumi.Input<string>;
-    readonly desireValue?: pulumi.Input<number>;
-    readonly dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.ApplicationInfoDimension>[]>;
-    readonly effectiveTime?: pulumi.Input<string>;
-    readonly expireTime?: pulumi.Input<string>;
-    readonly noticeType?: pulumi.Input<number>;
-    readonly productCode?: pulumi.Input<string>;
-    readonly quotaActionCode?: pulumi.Input<string>;
-    readonly quotaCategory?: pulumi.Input<string>;
-    readonly quotaDescription?: pulumi.Input<string>;
-    readonly quotaName?: pulumi.Input<string>;
-    readonly quotaUnit?: pulumi.Input<string>;
-    readonly reason?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
+    approveValue?: pulumi.Input<string>;
+    auditMode?: pulumi.Input<string>;
+    auditReason?: pulumi.Input<string>;
+    desireValue?: pulumi.Input<number>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.ApplicationInfoDimension>[]>;
+    effectiveTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string>;
+    noticeType?: pulumi.Input<number>;
+    productCode?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string>;
+    quotaDescription?: pulumi.Input<string>;
+    quotaName?: pulumi.Input<string>;
+    quotaUnit?: pulumi.Input<string>;
+    reason?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a ApplicationInfo resource.
  */
 export interface ApplicationInfoArgs {
-    readonly auditMode?: pulumi.Input<string>;
-    readonly desireValue: pulumi.Input<number>;
-    readonly dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.ApplicationInfoDimension>[]>;
-    readonly noticeType?: pulumi.Input<number>;
-    readonly productCode: pulumi.Input<string>;
-    readonly quotaActionCode: pulumi.Input<string>;
-    readonly quotaCategory?: pulumi.Input<string>;
-    readonly reason: pulumi.Input<string>;
+    auditMode?: pulumi.Input<string>;
+    desireValue: pulumi.Input<number>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.ApplicationInfoDimension>[]>;
+    noticeType?: pulumi.Input<number>;
+    productCode: pulumi.Input<string>;
+    quotaActionCode: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string>;
+    reason: pulumi.Input<string>;
 }

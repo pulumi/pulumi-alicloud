@@ -196,75 +196,75 @@ export interface ListenerState {
     /**
      * Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
      */
-    readonly accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
+    accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
     /**
      * Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
      */
-    readonly accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig>;
+    accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig>;
     /**
      * The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
      */
-    readonly aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
+    aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
     /**
      * The Certificate List. See the following `Block certificates`.
      */
-    readonly certificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCertificate>[]>;
     /**
      * The Default Rule Action List. See the following `Block defaultActions`.
      */
-    readonly defaultActions?: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultAction>[]>;
+    defaultActions?: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultAction>[]>;
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
      */
-    readonly gzipEnabled?: pulumi.Input<boolean>;
+    gzipEnabled?: pulumi.Input<boolean>;
     /**
      * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
      */
-    readonly http2Enabled?: pulumi.Input<boolean>;
+    http2Enabled?: pulumi.Input<boolean>;
     /**
      * Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
      */
-    readonly idleTimeout?: pulumi.Input<number>;
+    idleTimeout?: pulumi.Input<number>;
     /**
      * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
      */
-    readonly listenerDescription?: pulumi.Input<string>;
+    listenerDescription?: pulumi.Input<string>;
     /**
      * The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
      */
-    readonly listenerPort?: pulumi.Input<number>;
+    listenerPort?: pulumi.Input<number>;
     /**
      * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
      */
-    readonly listenerProtocol?: pulumi.Input<string>;
+    listenerProtocol?: pulumi.Input<string>;
     /**
      * The ALB Instance Id.
      */
-    readonly loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string>;
     /**
      * Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
      */
-    readonly quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
+    quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
     /**
      * The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
-    readonly requestTimeout?: pulumi.Input<number>;
+    requestTimeout?: pulumi.Input<number>;
     /**
      * Security Policy.
      */
-    readonly securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string>;
     /**
      * The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * xforwardfor Related Attribute Configuration. See the following `Block xforwardedForConfig`.
      */
-    readonly xforwardedForConfig?: pulumi.Input<inputs.alb.ListenerXforwardedForConfig>;
+    xforwardedForConfig?: pulumi.Input<inputs.alb.ListenerXforwardedForConfig>;
 }
 
 /**
@@ -274,73 +274,73 @@ export interface ListenerArgs {
     /**
      * Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
      */
-    readonly accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
+    accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
     /**
      * Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
      */
-    readonly accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig>;
+    accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig>;
     /**
      * The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
      */
-    readonly aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
+    aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
     /**
      * The Certificate List. See the following `Block certificates`.
      */
-    readonly certificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCertificate>[]>;
     /**
      * The Default Rule Action List. See the following `Block defaultActions`.
      */
-    readonly defaultActions?: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultAction>[]>;
+    defaultActions?: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultAction>[]>;
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
      */
-    readonly gzipEnabled?: pulumi.Input<boolean>;
+    gzipEnabled?: pulumi.Input<boolean>;
     /**
      * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
      */
-    readonly http2Enabled?: pulumi.Input<boolean>;
+    http2Enabled?: pulumi.Input<boolean>;
     /**
      * Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
      */
-    readonly idleTimeout?: pulumi.Input<number>;
+    idleTimeout?: pulumi.Input<number>;
     /**
      * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
      */
-    readonly listenerDescription?: pulumi.Input<string>;
+    listenerDescription?: pulumi.Input<string>;
     /**
      * The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
      */
-    readonly listenerPort: pulumi.Input<number>;
+    listenerPort: pulumi.Input<number>;
     /**
      * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
      */
-    readonly listenerProtocol: pulumi.Input<string>;
+    listenerProtocol: pulumi.Input<string>;
     /**
      * The ALB Instance Id.
      */
-    readonly loadBalancerId: pulumi.Input<string>;
+    loadBalancerId: pulumi.Input<string>;
     /**
      * Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
      */
-    readonly quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
+    quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
     /**
      * The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
-    readonly requestTimeout?: pulumi.Input<number>;
+    requestTimeout?: pulumi.Input<number>;
     /**
      * Security Policy.
      */
-    readonly securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string>;
     /**
      * The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * xforwardfor Related Attribute Configuration. See the following `Block xforwardedForConfig`.
      */
-    readonly xforwardedForConfig?: pulumi.Input<inputs.alb.ListenerXforwardedForConfig>;
+    xforwardedForConfig?: pulumi.Input<inputs.alb.ListenerXforwardedForConfig>;
 }

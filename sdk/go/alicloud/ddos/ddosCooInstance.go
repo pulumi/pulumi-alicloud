@@ -289,7 +289,7 @@ type DdosCooInstanceArrayInput interface {
 type DdosCooInstanceArray []DdosCooInstanceInput
 
 func (DdosCooInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DdosCooInstance)(nil))
+	return reflect.TypeOf((*[]*DdosCooInstance)(nil)).Elem()
 }
 
 func (i DdosCooInstanceArray) ToDdosCooInstanceArrayOutput() DdosCooInstanceArrayOutput {
@@ -314,7 +314,7 @@ type DdosCooInstanceMapInput interface {
 type DdosCooInstanceMap map[string]DdosCooInstanceInput
 
 func (DdosCooInstanceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DdosCooInstance)(nil))
+	return reflect.TypeOf((*map[string]*DdosCooInstance)(nil)).Elem()
 }
 
 func (i DdosCooInstanceMap) ToDdosCooInstanceMapOutput() DdosCooInstanceMapOutput {
@@ -325,9 +325,7 @@ func (i DdosCooInstanceMap) ToDdosCooInstanceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DdosCooInstanceMapOutput)
 }
 
-type DdosCooInstanceOutput struct {
-	*pulumi.OutputState
-}
+type DdosCooInstanceOutput struct{ *pulumi.OutputState }
 
 func (DdosCooInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DdosCooInstance)(nil))
@@ -346,14 +344,12 @@ func (o DdosCooInstanceOutput) ToDdosCooInstancePtrOutput() DdosCooInstancePtrOu
 }
 
 func (o DdosCooInstanceOutput) ToDdosCooInstancePtrOutputWithContext(ctx context.Context) DdosCooInstancePtrOutput {
-	return o.ApplyT(func(v DdosCooInstance) *DdosCooInstance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DdosCooInstance) *DdosCooInstance {
 		return &v
 	}).(DdosCooInstancePtrOutput)
 }
 
-type DdosCooInstancePtrOutput struct {
-	*pulumi.OutputState
-}
+type DdosCooInstancePtrOutput struct{ *pulumi.OutputState }
 
 func (DdosCooInstancePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DdosCooInstance)(nil))
@@ -365,6 +361,16 @@ func (o DdosCooInstancePtrOutput) ToDdosCooInstancePtrOutput() DdosCooInstancePt
 
 func (o DdosCooInstancePtrOutput) ToDdosCooInstancePtrOutputWithContext(ctx context.Context) DdosCooInstancePtrOutput {
 	return o
+}
+
+func (o DdosCooInstancePtrOutput) Elem() DdosCooInstanceOutput {
+	return o.ApplyT(func(v *DdosCooInstance) DdosCooInstance {
+		if v != nil {
+			return *v
+		}
+		var ret DdosCooInstance
+		return ret
+	}).(DdosCooInstanceOutput)
 }
 
 type DdosCooInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -408,6 +414,10 @@ func (o DdosCooInstanceMapOutput) MapIndex(k pulumi.StringInput) DdosCooInstance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DdosCooInstanceInput)(nil)).Elem(), &DdosCooInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DdosCooInstancePtrInput)(nil)).Elem(), &DdosCooInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DdosCooInstanceArrayInput)(nil)).Elem(), DdosCooInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DdosCooInstanceMapInput)(nil)).Elem(), DdosCooInstanceMap{})
 	pulumi.RegisterOutputType(DdosCooInstanceOutput{})
 	pulumi.RegisterOutputType(DdosCooInstancePtrOutput{})
 	pulumi.RegisterOutputType(DdosCooInstanceArrayOutput{})

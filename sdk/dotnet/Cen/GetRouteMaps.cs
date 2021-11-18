@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -40,7 +41,7 @@ namespace Pulumi.AliCloud.Cen
         ///             Status = "Active",
         ///             TransmitDirection = "RegionIn",
         ///         }));
-        ///         this.FirstCenRouteMapId = @this.Apply(@this =&gt; @this.Maps[0].Id);
+        ///         this.FirstCenRouteMapId = @this.Apply(@this =&gt; @this.Maps?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstCenRouteMapId")]
@@ -52,6 +53,48 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetRouteMapsResult> InvokeAsync(GetRouteMapsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN Route Maps available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.87.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(AliCloud.Cen.GetRouteMaps.InvokeAsync(new AliCloud.Cen.GetRouteMapsArgs
+        ///         {
+        ///             CenId = "cen-ihdlgo87ai********",
+        ///             CenRegionId = "cn-hangzhou",
+        ///             DescriptionRegex = "datasource_test",
+        ///             Ids = 
+        ///             {
+        ///                 "cenrmap-bnh97kb3mn********",
+        ///             },
+        ///             Status = "Active",
+        ///             TransmitDirection = "RegionIn",
+        ///         }));
+        ///         this.FirstCenRouteMapId = @this.Apply(@this =&gt; @this.Maps?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstCenRouteMapId")]
+        ///     public Output&lt;string&gt; FirstCenRouteMapId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRouteMapsResult> Invoke(GetRouteMapsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -103,6 +146,58 @@ namespace Pulumi.AliCloud.Cen
         public string? TransmitDirection { get; set; }
 
         public GetRouteMapsArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouteMapsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the CEN instance.
+        /// </summary>
+        [Input("cenId", required: true)]
+        public Input<string> CenId { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the region to which the CEN instance belongs.
+        /// </summary>
+        [Input("cenRegionId")]
+        public Input<string>? CenRegionId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter CEN route map by description.
+        /// </summary>
+        [Input("descriptionRegex")]
+        public Input<string>? DescriptionRegex { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of CEN route map IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the route map, including `Creating`, `Active` and `Deleting`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
+        /// </summary>
+        [Input("transmitDirection")]
+        public Input<string>? TransmitDirection { get; set; }
+
+        public GetRouteMapsInvokeArgs()
         {
         }
     }

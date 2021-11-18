@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     ids: ["fake-conn-id"],
  *     outputFile: "/tmp/vpnconn",
  *     vpnGatewayId: "fake-vpn-id",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> {
@@ -47,23 +47,23 @@ export interface GetConnectionsArgs {
     /**
      * Use the VPN customer gateway ID as the search key.
      */
-    readonly customerGatewayId?: string;
+    customerGatewayId?: string;
     /**
      * IDs of the VPN connections.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string of VPN connection name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * Save the result to the file.
      */
-    readonly outputFile?: string;
+    outputFile?: string;
     /**
      * Use the VPN gateway ID as the search key.
      */
-    readonly vpnGatewayId?: string;
+    vpnGatewayId?: string;
 }
 
 /**
@@ -96,4 +96,34 @@ export interface GetConnectionsResult {
      * ID of the VPN gateway.
      */
     readonly vpnGatewayId?: string;
+}
+
+export function getConnectionsOutput(args?: GetConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionsResult> {
+    return pulumi.output(args).apply(a => getConnections(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConnections.
+ */
+export interface GetConnectionsOutputArgs {
+    /**
+     * Use the VPN customer gateway ID as the search key.
+     */
+    customerGatewayId?: pulumi.Input<string>;
+    /**
+     * IDs of the VPN connections.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string of VPN connection name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * Save the result to the file.
+     */
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Use the VPN gateway ID as the search key.
+     */
+    vpnGatewayId?: pulumi.Input<string>;
 }

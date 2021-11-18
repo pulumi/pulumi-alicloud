@@ -13,6 +13,7 @@ __all__ = [
     'GetEcsSnapshotsResult',
     'AwaitableGetEcsSnapshotsResult',
     'get_ecs_snapshots',
+    'get_ecs_snapshots_output',
 ]
 
 @pulumi.output_type
@@ -299,3 +300,58 @@ def get_ecs_snapshots(category: Optional[str] = None,
         tags=__ret__.tags,
         type=__ret__.type,
         usage=__ret__.usage)
+
+
+@_utilities.lift_output_func(get_ecs_snapshots)
+def get_ecs_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
+                             dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
+                             encrypted: Optional[pulumi.Input[Optional[bool]]] = None,
+                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             kms_key_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             snapshot_link_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             snapshot_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             snapshot_type: Optional[pulumi.Input[Optional[str]]] = None,
+                             source_disk_type: Optional[pulumi.Input[Optional[str]]] = None,
+                             status: Optional[pulumi.Input[Optional[str]]] = None,
+                             tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                             type: Optional[pulumi.Input[Optional[str]]] = None,
+                             usage: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsSnapshotsResult]:
+    """
+    This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.120.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ecs.get_ecs_snapshots(ids=["s-bp1fvuxxxxxxxx"],
+        name_regex="tf-test")
+    pulumi.export("firstEcsSnapshotId", example.snapshots[0].id)
+    ```
+
+
+    :param str category: The category of the snapshot.
+    :param bool dry_run: Specifies whether to check the validity of the request without actually making the request.
+    :param bool encrypted: Whether the snapshot is encrypted.
+    :param Sequence[str] ids: A list of Snapshot IDs.
+    :param str kms_key_id: The kms key id.
+    :param str name_regex: A regex string to filter results by Snapshot name.
+    :param str resource_group_id: The resource group id.
+    :param str snapshot_link_id: The snapshot link id.
+    :param str snapshot_name: Snapshot Display Name.
+    :param str snapshot_type: Snapshot creation type.
+    :param str source_disk_type: Source disk attributes.
+    :param str status: The status of the snapshot.
+    :param Mapping[str, Any] tags: The tags.
+    :param str usage: A resource type that has a reference relationship.
+    """
+    ...

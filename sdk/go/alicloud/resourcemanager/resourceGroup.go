@@ -218,7 +218,7 @@ type ResourceGroupArrayInput interface {
 type ResourceGroupArray []ResourceGroupInput
 
 func (ResourceGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ResourceGroup)(nil))
+	return reflect.TypeOf((*[]*ResourceGroup)(nil)).Elem()
 }
 
 func (i ResourceGroupArray) ToResourceGroupArrayOutput() ResourceGroupArrayOutput {
@@ -243,7 +243,7 @@ type ResourceGroupMapInput interface {
 type ResourceGroupMap map[string]ResourceGroupInput
 
 func (ResourceGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ResourceGroup)(nil))
+	return reflect.TypeOf((*map[string]*ResourceGroup)(nil)).Elem()
 }
 
 func (i ResourceGroupMap) ToResourceGroupMapOutput() ResourceGroupMapOutput {
@@ -254,9 +254,7 @@ func (i ResourceGroupMap) ToResourceGroupMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupMapOutput)
 }
 
-type ResourceGroupOutput struct {
-	*pulumi.OutputState
-}
+type ResourceGroupOutput struct{ *pulumi.OutputState }
 
 func (ResourceGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourceGroup)(nil))
@@ -275,14 +273,12 @@ func (o ResourceGroupOutput) ToResourceGroupPtrOutput() ResourceGroupPtrOutput {
 }
 
 func (o ResourceGroupOutput) ToResourceGroupPtrOutputWithContext(ctx context.Context) ResourceGroupPtrOutput {
-	return o.ApplyT(func(v ResourceGroup) *ResourceGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGroup) *ResourceGroup {
 		return &v
 	}).(ResourceGroupPtrOutput)
 }
 
-type ResourceGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type ResourceGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (ResourceGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ResourceGroup)(nil))
@@ -294,6 +290,16 @@ func (o ResourceGroupPtrOutput) ToResourceGroupPtrOutput() ResourceGroupPtrOutpu
 
 func (o ResourceGroupPtrOutput) ToResourceGroupPtrOutputWithContext(ctx context.Context) ResourceGroupPtrOutput {
 	return o
+}
+
+func (o ResourceGroupPtrOutput) Elem() ResourceGroupOutput {
+	return o.ApplyT(func(v *ResourceGroup) ResourceGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceGroup
+		return ret
+	}).(ResourceGroupOutput)
 }
 
 type ResourceGroupArrayOutput struct{ *pulumi.OutputState }
@@ -337,6 +343,10 @@ func (o ResourceGroupMapOutput) MapIndex(k pulumi.StringInput) ResourceGroupOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupInput)(nil)).Elem(), &ResourceGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupPtrInput)(nil)).Elem(), &ResourceGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupArrayInput)(nil)).Elem(), ResourceGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupMapInput)(nil)).Elem(), ResourceGroupMap{})
 	pulumi.RegisterOutputType(ResourceGroupOutput{})
 	pulumi.RegisterOutputType(ResourceGroupPtrOutput{})
 	pulumi.RegisterOutputType(ResourceGroupArrayOutput{})

@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,38 @@ def get_instances(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    This data source provides the Eais Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.137.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eais.get_instances(id=["example_id"])
+    pulumi.export("eaisInstanceId1", ids.instances[0].id)
+    name_regex = alicloud.eais.get_instances(name_regex="^my-Instance")
+    pulumi.export("eaisInstanceId2", name_regex.instances[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Instance IDs.
+    :param str instance_type: The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+    :param str name_regex: A regex string to filter results by Instance name.
+    :param str status: The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+    """
+    ...

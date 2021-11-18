@@ -147,31 +147,31 @@ export interface AppState {
     /**
      * AppName.
      */
-    readonly appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string>;
     /**
      * The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
      */
-    readonly bundleId?: pulumi.Input<string>;
+    bundleId?: pulumi.Input<string>;
     /**
      * Base64 string of picture.
      */
-    readonly encodedIcon?: pulumi.Input<string>;
+    encodedIcon?: pulumi.Input<string>;
     /**
      * The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
      */
-    readonly industryId?: pulumi.Input<string>;
+    industryId?: pulumi.Input<string>;
     /**
      * Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
      */
-    readonly packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string>;
     /**
      * The ID of the Product.
      */
-    readonly productId?: pulumi.Input<string>;
+    productId?: pulumi.Input<string>;
     /**
      * The type of the Product. Valid values: `Android` and `iOS`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -181,29 +181,29 @@ export interface AppArgs {
     /**
      * AppName.
      */
-    readonly appName: pulumi.Input<string>;
+    appName: pulumi.Input<string>;
     /**
      * The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
      */
-    readonly bundleId?: pulumi.Input<string>;
+    bundleId?: pulumi.Input<string>;
     /**
      * Base64 string of picture.
      */
-    readonly encodedIcon?: pulumi.Input<string>;
+    encodedIcon?: pulumi.Input<string>;
     /**
      * The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
      */
-    readonly industryId?: pulumi.Input<string>;
+    industryId?: pulumi.Input<string>;
     /**
      * Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
      */
-    readonly packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string>;
     /**
      * The ID of the Product.
      */
-    readonly productId: pulumi.Input<string>;
+    productId: pulumi.Input<string>;
     /**
      * The type of the Product. Valid values: `Android` and `iOS`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

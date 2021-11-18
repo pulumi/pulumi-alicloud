@@ -13,6 +13,7 @@ __all__ = [
     'GetDBClustersResult',
     'AwaitableGetDBClustersResult',
     'get_db_clusters',
+    'get_db_clusters_output',
 ]
 
 @pulumi.output_type
@@ -195,3 +196,42 @@ def get_db_clusters(description: Optional[str] = None,
         resource_group_id=__ret__.resource_group_id,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_db_clusters)
+def get_db_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                           description_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                           enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                           ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                           resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           status: Optional[pulumi.Input[Optional[str]]] = None,
+                           tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDBClustersResult]:
+    """
+    This data source provides the Adb DBClusters of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.121.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.adb.get_db_clusters(description_regex="example")
+    pulumi.export("firstAdbDbClusterId", example.clusters[0].id)
+    ```
+
+
+    :param str description: The description of DBCluster.
+    :param str description_regex: A regex string to filter results by DBCluster description.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of DBCluster IDs.
+    :param str resource_group_id: The ID of the resource group.
+    :param str status: The status of the resource.
+    :param Mapping[str, Any] tags: The tag of the resource.
+    """
+    ...

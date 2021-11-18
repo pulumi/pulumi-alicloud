@@ -23,7 +23,7 @@ export function getEnhancedNatAvailableZones(args?: GetEnhancedNatAvailableZones
  * A collection of arguments for invoking getEnhancedNatAvailableZones.
  */
 export interface GetEnhancedNatAvailableZonesArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -37,4 +37,15 @@ export interface GetEnhancedNatAvailableZonesResult {
     readonly ids: string[];
     readonly outputFile?: string;
     readonly zones: outputs.vpc.GetEnhancedNatAvailableZonesZone[];
+}
+
+export function getEnhancedNatAvailableZonesOutput(args?: GetEnhancedNatAvailableZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnhancedNatAvailableZonesResult> {
+    return pulumi.output(args).apply(a => getEnhancedNatAvailableZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEnhancedNatAvailableZones.
+ */
+export interface GetEnhancedNatAvailableZonesOutputArgs {
+    outputFile?: pulumi.Input<string>;
 }

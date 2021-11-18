@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones[0].id,
+ *     availabilityZone: defaultZones.zones?[0]?.id,
  *     eniAmount: 2,
  * }));
  * const image = alicloud.ecs.getImages({
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * const mainNetwork = new alicloud.vpc.Network("mainNetwork", {cidrBlock: "172.16.0.0/16"});
  * const mainSwitch = new alicloud.vpc.Switch("mainSwitch", {
  *     vpcId: mainNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
@@ -43,13 +43,13 @@ import * as utilities from "../utilities";
  * const instanceInstance: alicloud.ecs.Instance[];
  * for (const range = {value: 0}; range.value < "2"; range.value++) {
  *     instanceInstance.push(new alicloud.ecs.Instance(`instanceInstance-${range.value}`, {
- *         imageId: image.then(image => image.images[0].id),
- *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
+ *         imageId: image.then(image => image.images?[0]?.id),
+ *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
  *         instanceName: name,
  *         securityGroups: [groupSecurityGroup.id],
  *         internetChargeType: "PayByTraffic",
  *         internetMaxBandwidthOut: "10",
- *         availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *         availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *         instanceChargeType: "PostPaid",
  *         systemDiskCategory: "cloud_efficiency",
  *         vswitchId: mainSwitch.id,
@@ -80,7 +80,7 @@ import * as utilities from "../utilities";
  * const sampleDs = instanceApplicationLoadBalancer.id.apply(id => alicloud.slb.getMasterSlaveServerGroups({
  *     loadBalancerId: id,
  * }));
- * export const firstSlbServerGroupId = sampleDs.groups[0].id;
+ * export const firstSlbServerGroupId = sampleDs.apply(sampleDs => sampleDs.groups?[0]?.id);
  * ```
  */
 export function getMasterSlaveServerGroups(args: GetMasterSlaveServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetMasterSlaveServerGroupsResult> {
@@ -106,16 +106,16 @@ export interface GetMasterSlaveServerGroupsArgs {
     /**
      * A list of master slave server group IDs to filter results.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * ID of the SLB.
      */
-    readonly loadBalancerId: string;
+    loadBalancerId: string;
     /**
      * A regex string to filter results by master slave server group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -141,4 +141,27 @@ export interface GetMasterSlaveServerGroupsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getMasterSlaveServerGroupsOutput(args: GetMasterSlaveServerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMasterSlaveServerGroupsResult> {
+    return pulumi.output(args).apply(a => getMasterSlaveServerGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMasterSlaveServerGroups.
+ */
+export interface GetMasterSlaveServerGroupsOutputArgs {
+    /**
+     * A list of master slave server group IDs to filter results.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the SLB.
+     */
+    loadBalancerId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by master slave server group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

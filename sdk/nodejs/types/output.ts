@@ -173,121 +173,6 @@ export interface GetZonesZone {
     slbSlaveZoneIds: string[];
 }
 
-export interface ProviderAssumeRole {
-    policy?: string;
-    roleArn?: string;
-    sessionExpiration?: number;
-    sessionName?: string;
-}
-
-export interface ProviderEndpoint {
-    acr?: string;
-    actiontrail?: string;
-    adb?: string;
-    alb?: string;
-    alidfs?: string;
-    alidns?: string;
-    alikafka?: string;
-    apigateway?: string;
-    arms?: string;
-    bastionhost?: string;
-    brainIndustrial?: string;
-    bssopenapi?: string;
-    cas?: string;
-    cassandra?: string;
-    cbn?: string;
-    cddc?: string;
-    cdn?: string;
-    cds?: string;
-    clickhouse?: string;
-    cloudauth?: string;
-    cloudphone?: string;
-    cloudsso?: string;
-    cms?: string;
-    config?: string;
-    cr?: string;
-    cs?: string;
-    datahub?: string;
-    dataworkspublic?: string;
-    dbfs?: string;
-    dcdn?: string;
-    ddosbgp?: string;
-    ddoscoo?: string;
-    dds?: string;
-    devopsrdc?: string;
-    dg?: string;
-    dm?: string;
-    dmsEnterprise?: string;
-    dns?: string;
-    drds?: string;
-    dts?: string;
-    eais?: string;
-    eci?: string;
-    ecs?: string;
-    ehpc?: string;
-    eipanycast?: string;
-    elasticsearch?: string;
-    emr?: string;
-    ens?: string;
-    ess?: string;
-    eventbridge?: string;
-    fc?: string;
-    fnf?: string;
-    ga?: string;
-    gds?: string;
-    gpdb?: string;
-    gwsecd?: string;
-    hbr?: string;
-    hcsSgw?: string;
-    hitsdb?: string;
-    imm?: string;
-    imp?: string;
-    ims?: string;
-    iot?: string;
-    kms?: string;
-    kvstore?: string;
-    location?: string;
-    log?: string;
-    market?: string;
-    maxcompute?: string;
-    mhub?: string;
-    mns?: string;
-    mscopensubscription?: string;
-    mse?: string;
-    nas?: string;
-    ons?: string;
-    onsproxy?: string;
-    oos?: string;
-    opensearch?: string;
-    oss?: string;
-    ots?: string;
-    polardb?: string;
-    privatelink?: string;
-    pvtz?: string;
-    quickbi?: string;
-    quotas?: string;
-    rKvstore?: string;
-    ram?: string;
-    rds?: string;
-    redisa?: string;
-    resourcemanager?: string;
-    resourcesharing?: string;
-    ros?: string;
-    sas?: string;
-    scdn?: string;
-    sddp?: string;
-    serverless?: string;
-    servicemesh?: string;
-    sgw?: string;
-    slb?: string;
-    sts?: string;
-    swas?: string;
-    vod?: string;
-    vpc?: string;
-    vs?: string;
-    waf?: string;
-    wafOpenapi?: string;
-}
 export namespace actiontrail {
     export interface GetHistoryDeliveryJobsJob {
         /**
@@ -627,6 +512,7 @@ export namespace actiontrail {
          */
         trailRegion: string;
     }
+
 }
 
 export namespace adb {
@@ -900,6 +786,7 @@ export namespace adb {
          */
         multiZoneIds: string[];
     }
+
 }
 
 export namespace alb {
@@ -2536,6 +2423,7 @@ export namespace amqp {
          */
         virtualHostName: string;
     }
+
 }
 
 export namespace apigateway {
@@ -2802,6 +2690,7 @@ export namespace apigateway {
          */
         trafficLimit: number;
     }
+
 }
 
 export namespace arms {
@@ -3159,6 +3048,7 @@ export namespace arms {
          */
         value?: string;
     }
+
 }
 
 export namespace bastionhost {
@@ -3326,7 +3216,7 @@ export namespace bastionhost {
          *     tags: {
          *         tagKey1: "tagValue1",
          *     },
-         * }, { async: true }));
+         * }));
          * ```
          */
         tags?: {[key: string]: any};
@@ -3409,6 +3299,7 @@ export namespace bastionhost {
          */
         userName: string;
     }
+
 }
 
 export namespace brain {
@@ -3494,6 +3385,7 @@ export namespace brain {
          */
         pidProjectName: string;
     }
+
 }
 
 export namespace cas {
@@ -3633,6 +3525,7 @@ export namespace cas {
          */
         startDate: string;
     }
+
 }
 
 export namespace cassandra {
@@ -3793,6 +3686,7 @@ export namespace cassandra {
          */
         multiZoneIds: string[];
     }
+
 }
 
 export namespace cddc {
@@ -3921,6 +3815,7 @@ export namespace cddc {
          */
         zoneIdLists: string[];
     }
+
 }
 
 export namespace cdn {
@@ -4115,6 +4010,7 @@ export namespace cdn {
          */
         status: string;
     }
+
 }
 
 export namespace cen {
@@ -4923,6 +4819,7 @@ export namespace cen {
          */
         zoneId?: string;
     }
+
 }
 
 export namespace cfg {
@@ -5459,6 +5356,7 @@ export namespace cfg {
          */
         count: number;
     }
+
 }
 
 export namespace clickhouse {
@@ -5665,6 +5563,7 @@ export namespace clickhouse {
          */
         zoneId: string;
     }
+
 }
 
 export namespace cloudauth {
@@ -5682,6 +5581,7 @@ export namespace cloudauth {
          */
         gmtUpdated: string;
     }
+
 }
 
 export namespace cloudconnect {
@@ -5704,6 +5604,7 @@ export namespace cloudconnect {
          */
         name: string;
     }
+
 }
 
 export namespace cloudfirewall {
@@ -5814,6 +5715,7 @@ export namespace cloudfirewall {
          */
         status: string;
     }
+
 }
 
 export namespace cloudsso {
@@ -6169,6 +6071,7 @@ export namespace cloudsso {
          */
         effectiveTime: string;
     }
+
 }
 
 export namespace cloudstoragegateway {
@@ -6280,6 +6183,7 @@ export namespace cloudstoragegateway {
         storageBundleId: string;
         storageBundleName: string;
     }
+
 }
 
 export namespace cms {
@@ -7074,6 +6978,7 @@ export namespace config {
         waf?: string;
         wafOpenapi?: string;
     }
+
 }
 
 export namespace cr {
@@ -7202,6 +7107,7 @@ export namespace cr {
          */
         vpc: string;
     }
+
 }
 
 export namespace cs {
@@ -8327,6 +8233,7 @@ export namespace cs {
         privateIp: string;
         status: string;
     }
+
 }
 
 export namespace databasefilesystem {
@@ -8414,6 +8321,7 @@ export namespace databasefilesystem {
          */
         ecsId?: string;
     }
+
 }
 
 export namespace databasegateway {
@@ -8499,6 +8407,7 @@ export namespace databasegateway {
          */
         outputIp: string;
     }
+
 }
 
 export namespace dataworks {
@@ -8517,6 +8426,7 @@ export namespace dataworks {
          */
         projectId: string;
     }
+
 }
 
 export namespace dcdn {
@@ -8634,6 +8544,7 @@ export namespace dcdn {
          */
         weight: string;
     }
+
 }
 
 export namespace ddos {
@@ -8872,6 +8783,7 @@ export namespace dds {
         nodeId: string;
         storage: number;
     }
+
 }
 
 export namespace dfs {
@@ -9080,6 +8992,7 @@ export namespace dfs {
          */
         storageType: string;
     }
+
 }
 
 export namespace directmail {
@@ -9251,6 +9164,7 @@ export namespace directmail {
          */
         status: number;
     }
+
 }
 
 export namespace dms {
@@ -9386,6 +9300,7 @@ export namespace dms {
          */
         userName: string;
     }
+
 }
 
 export namespace dns {
@@ -9800,6 +9715,7 @@ export namespace dns {
          */
         lineName: string;
     }
+
 }
 
 export namespace drds {
@@ -9837,6 +9753,7 @@ export namespace drds {
          */
         zoneId: string;
     }
+
 }
 
 export namespace dts {
@@ -10092,6 +10009,7 @@ export namespace dts {
          */
         synchronizationDirection: string;
     }
+
 }
 
 export namespace eais {
@@ -10133,6 +10051,7 @@ export namespace eais {
          */
         zoneId: string;
     }
+
 }
 
 export namespace eci {
@@ -10984,6 +10903,7 @@ export namespace eci {
         server?: string;
         userName?: string;
     }
+
 }
 
 export namespace ecp {
@@ -11001,6 +10921,7 @@ export namespace ecp {
          */
         keyPairName: string;
     }
+
 }
 
 export namespace ecs {
@@ -11482,7 +11403,7 @@ export namespace ecs {
          *         tagKey1: "tagValue1",
          *         tagKey2: "tagValue2",
          *     },
-         * }, { async: true }));
+         * }));
          * ```
          */
         tags: {[key: string]: any};
@@ -12887,7 +12808,7 @@ export namespace ecs {
          *         tagKey1: "tagValue1",
          *         tagKey2: "tagValue2",
          *     },
-         * }, { async: true }));
+         * }));
          * ```
          */
         tags?: {[key: string]: any};
@@ -13215,7 +13136,7 @@ export namespace ecs {
          *         tagKey1: "tagValue1",
          *         tagKey2: "tagValue2",
          *     },
-         * }, { async: true }));
+         * }));
          * ```
          */
         tags?: {[key: string]: any};
@@ -13626,6 +13547,7 @@ export namespace edas {
          */
         updateTime: number;
     }
+
 }
 
 export namespace eds {
@@ -13977,6 +13899,7 @@ export namespace eds {
          */
         vswitchIds: string[];
     }
+
 }
 
 export namespace ehpc {
@@ -14058,6 +13981,7 @@ export namespace ehpc {
          */
         variables: string;
     }
+
 }
 
 export namespace eipanycast {
@@ -14138,6 +14062,7 @@ export namespace eipanycast {
          */
         bindTime: string;
     }
+
 }
 
 export namespace elasticsearch {
@@ -14167,6 +14092,7 @@ export namespace elasticsearch {
          */
         multiZoneIds: string[];
     }
+
 }
 
 export namespace emr {
@@ -14285,6 +14211,7 @@ export namespace emr {
          */
         imageId: string;
     }
+
 }
 
 export namespace ens {
@@ -14310,6 +14237,7 @@ export namespace ens {
          */
         version: string;
     }
+
 }
 
 export namespace ess {
@@ -14852,6 +14780,7 @@ export namespace eventbridge {
          */
         value?: string;
     }
+
 }
 
 export namespace expressconnect {
@@ -15158,6 +15087,7 @@ export namespace expressconnect {
          */
         vlanInterfaceId: string;
     }
+
 }
 
 export namespace fc {
@@ -15591,6 +15521,7 @@ export namespace fc {
          */
         vswitchIds: string[];
     }
+
 }
 
 export namespace fnf {
@@ -15663,6 +15594,7 @@ export namespace fnf {
          */
         scheduleName: string;
     }
+
 }
 
 export namespace ga {
@@ -16231,6 +16163,7 @@ export namespace gpdb {
          */
         multiZoneIds: string[];
     }
+
 }
 
 export namespace graphdatabase {
@@ -16398,6 +16331,7 @@ export namespace graphdatabase {
          */
         securityIps?: string;
     }
+
 }
 
 export namespace hbase {
@@ -17332,6 +17266,7 @@ export namespace hbr {
          */
         vaultType: string;
     }
+
 }
 
 export namespace imm {
@@ -17373,6 +17308,7 @@ export namespace imm {
          */
         type: string;
     }
+
 }
 
 export namespace imp {
@@ -17448,6 +17384,7 @@ export namespace imp {
          */
         value: string;
     }
+
 }
 
 export namespace iot {
@@ -17493,6 +17430,7 @@ export namespace iot {
          */
         success: boolean;
     }
+
 }
 
 export namespace kms {
@@ -17660,6 +17598,7 @@ export namespace kms {
          */
         versionStages: string[];
     }
+
 }
 
 export namespace kvstore {
@@ -18096,6 +18035,7 @@ export namespace lindorm {
          */
         zoneId: string;
     }
+
 }
 
 export namespace log {
@@ -18347,6 +18287,7 @@ export namespace log {
         id: number;
         status: string;
     }
+
 }
 
 export namespace marketplace {
@@ -18476,6 +18417,7 @@ export namespace marketplace {
          */
         warrantyDate: string;
     }
+
 }
 
 export namespace mhub {
@@ -18536,6 +18478,7 @@ export namespace mhub {
          */
         productName: string;
     }
+
 }
 
 export namespace mns {
@@ -18618,6 +18561,7 @@ export namespace mns {
          */
         name: string;
     }
+
 }
 
 export namespace mongodb {
@@ -18957,6 +18901,7 @@ export namespace mse {
         singleTunnelVip: string;
         vip: string;
     }
+
 }
 
 export namespace nas {
@@ -19132,6 +19077,7 @@ export namespace nas {
          */
         storageType: string;
     }
+
 }
 
 export namespace oos {
@@ -19284,6 +19230,7 @@ export namespace oos {
          */
         updatedDate: string;
     }
+
 }
 
 export namespace opensearch {
@@ -19457,6 +19404,7 @@ export namespace opensearch {
          */
         spec: string;
     }
+
 }
 
 export namespace oss {
@@ -19950,7 +19898,7 @@ export namespace oss {
          *         tagKey1: "tagValue1",
          *         tagKey2: "tagValue2",
          *     },
-         * }, { async: true }));
+         * }));
          * ```
          */
         tags: {[key: string]: any};
@@ -19995,6 +19943,7 @@ export namespace oss {
         name: string;
         type: string;
     }
+
 }
 
 export namespace ots {
@@ -20077,7 +20026,7 @@ export namespace ots {
          *         tagKey1: "tagValue1",
          *         tagKey2: "tagValue2",
          *     },
-         * }, { async: true }));
+         * }));
          * ```
          */
         tags: {[key: string]: any};
@@ -20133,6 +20082,7 @@ export namespace ots {
          */
         type: string;
     }
+
 }
 
 export namespace polardb {
@@ -20456,6 +20406,7 @@ export namespace polardb {
          */
         multiZoneIds: string[];
     }
+
 }
 
 export namespace privatelink {
@@ -20628,6 +20579,7 @@ export namespace privatelink {
          */
         vpcId: string;
     }
+
 }
 
 export namespace pvtz {
@@ -20759,6 +20711,7 @@ export namespace pvtz {
          */
         vpcId: string;
     }
+
 }
 
 export namespace quickbi {
@@ -20804,6 +20757,7 @@ export namespace quickbi {
          */
         userType: string;
     }
+
 }
 
 export namespace quotas {
@@ -21078,6 +21032,7 @@ export namespace quotas {
          */
         value?: string;
     }
+
 }
 
 export namespace ram {
@@ -21239,6 +21194,7 @@ export namespace ram {
          */
         resources: string[];
     }
+
 }
 
 export namespace rdc {
@@ -21256,6 +21212,7 @@ export namespace rdc {
          */
         organizationName: string;
     }
+
 }
 
 export namespace rds {
@@ -22258,6 +22215,7 @@ export namespace rocketmq {
          */
         topicName: string;
     }
+
 }
 
 export namespace ros {
@@ -22931,6 +22889,7 @@ export namespace sae {
          */
         path: string;
     }
+
 }
 
 export namespace sag {
@@ -22944,6 +22903,7 @@ export namespace sag {
          */
         name: string;
     }
+
 }
 
 export namespace scdn {
@@ -23094,6 +23054,7 @@ export namespace scdn {
          */
         type: string;
     }
+
 }
 
 export namespace sddp {
@@ -23261,6 +23222,7 @@ export namespace sddp {
          */
         warnLevel: number;
     }
+
 }
 
 export namespace securitycenter {
@@ -23282,6 +23244,7 @@ export namespace securitycenter {
          */
         id: string;
     }
+
 }
 
 export namespace servicemesh {
@@ -23782,6 +23745,7 @@ export namespace servicemesh {
          */
         vswitcheList: string;
     }
+
 }
 
 export namespace simpleapplicationserver {
@@ -23896,6 +23860,7 @@ export namespace simpleapplicationserver {
          */
         planId: string;
     }
+
 }
 
 export namespace slb {
@@ -24472,7 +24437,7 @@ export namespace slb {
          *         tagKey1: "tagValue1",
          *         tagKey2: "tagValue2",
          *     },
-         * }, { async: true }));
+         * }));
          * ```
          */
         tags: {[key: string]: any};
@@ -24558,7 +24523,7 @@ export namespace slb {
          *         tagKey1: "tagValue1",
          *         tagKey2: "tagValue2",
          *     },
-         * }, { async: true }));
+         * }));
          * ```
          */
         tags: {[key: string]: any};
@@ -24898,6 +24863,7 @@ export namespace tsdb {
          */
         zoneId: string;
     }
+
 }
 
 export namespace videosurveillance {
@@ -24982,6 +24948,7 @@ export namespace videosurveillance {
          */
         platformNum: string;
     }
+
 }
 
 export namespace vod {
@@ -25053,6 +25020,7 @@ export namespace vod {
         sourcePriority: string;
         sourceType: string;
     }
+
 }
 
 export namespace vpc {
@@ -26537,6 +26505,7 @@ export namespace vpn {
          */
         vpcId: string;
     }
+
 }
 
 export namespace waf {
@@ -26691,6 +26660,7 @@ export namespace waf {
          */
         trial: number;
     }
+
 }
 
 export namespace yundun {
@@ -26718,4 +26688,5 @@ export namespace yundun {
         tags?: {[key: string]: any};
         userVswitchId: string;
     }
+
 }

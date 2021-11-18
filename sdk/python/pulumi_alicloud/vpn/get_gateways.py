@@ -13,6 +13,7 @@ __all__ = [
     'GetGatewaysResult',
     'AwaitableGetGatewaysResult',
     'get_gateways',
+    'get_gateways_output',
 ]
 
 @pulumi.output_type
@@ -191,3 +192,42 @@ def get_gateways(business_status: Optional[str] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_gateways)
+def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewaysResult]:
+    """
+    The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    vpn_gateways = alicloud.vpn.get_gateways(business_status="Normal",
+        ids=[
+            "fake-vpn-id1",
+            "fake-vpn-id2",
+        ],
+        name_regex="testAcc*",
+        output_file="/tmp/vpns",
+        status="active",
+        vpc_id="fake-vpc-id")
+    ```
+
+
+    :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
+    :param Sequence[str] ids: IDs of the VPN.
+    :param str name_regex: A regex string of VPN name.
+    :param str output_file: Save the result to the file.
+    :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
+    :param str vpc_id: Use the VPC ID as the search key.
+    """
+    ...

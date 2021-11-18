@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *         "AUTOSCALING:SCALE_OUT_SUCCESS",
  *         "AUTOSCALING:SCALE_OUT_ERROR",
  *     ],
- *     notificationArn: pulumi.all([defaultRegions, defaultAccount, defaultQueue.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:ess:${defaultRegions.regions[0].id}:${defaultAccount.id}:queue/${name}`),
+ *     notificationArn: pulumi.all([defaultRegions, defaultAccount, defaultQueue.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:ess:${defaultRegions.regions?[0]?.id}:${defaultAccount.id}:queue/${name}`),
  * });
  * ```
  *
@@ -156,15 +156,15 @@ export interface NotificationState {
      * * account-id: the ID of your account.
      * * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
      */
-    readonly notificationArn?: pulumi.Input<string>;
+    notificationArn?: pulumi.Input<string>;
     /**
      * The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
      */
-    readonly notificationTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the Auto Scaling group.
      */
-    readonly scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string>;
 }
 
 /**
@@ -177,13 +177,13 @@ export interface NotificationArgs {
      * * account-id: the ID of your account.
      * * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
      */
-    readonly notificationArn: pulumi.Input<string>;
+    notificationArn: pulumi.Input<string>;
     /**
      * The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
      */
-    readonly notificationTypes: pulumi.Input<pulumi.Input<string>[]>;
+    notificationTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the Auto Scaling group.
      */
-    readonly scalingGroupId: pulumi.Input<string>;
+    scalingGroupId: pulumi.Input<string>;
 }

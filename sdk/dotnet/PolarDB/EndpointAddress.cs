@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
     ///             VswitchName = name,
     ///         });
     ///         var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new AliCloud.PolarDB.ClusterArgs
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///         var endpoint = new AliCloud.PolarDB.EndpointAddress("endpoint", new AliCloud.PolarDB.EndpointAddressArgs
     ///         {
     ///             DbClusterId = defaultCluster.Id,
-    ///             DbEndpointId = defaultEndpoints.Apply(defaultEndpoints =&gt; defaultEndpoints.Endpoints[0].DbEndpointId),
+    ///             DbEndpointId = defaultEndpoints.Apply(defaultEndpoints =&gt; defaultEndpoints.Endpoints?[0]?.DbEndpointId),
     ///             ConnectionPrefix = "testpolardbconn",
     ///             NetType = "Public",
     ///         });

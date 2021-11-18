@@ -4,6 +4,9 @@
 package dns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,80 @@ type GetAlidnsInstancesResult struct {
 	Lang         *string                      `pulumi:"lang"`
 	OutputFile   *string                      `pulumi:"outputFile"`
 	UserClientIp *string                      `pulumi:"userClientIp"`
+}
+
+func GetAlidnsInstancesOutput(ctx *pulumi.Context, args GetAlidnsInstancesOutputArgs, opts ...pulumi.InvokeOption) GetAlidnsInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAlidnsInstancesResult, error) {
+			args := v.(GetAlidnsInstancesArgs)
+			r, err := GetAlidnsInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetAlidnsInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getAlidnsInstances.
+type GetAlidnsInstancesOutputArgs struct {
+	// The type of domain.
+	DomainType pulumi.StringPtrInput `pulumi:"domainType"`
+	// A list of instance IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Language.
+	Lang       pulumi.StringPtrInput `pulumi:"lang"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The IP address of the client.
+	UserClientIp pulumi.StringPtrInput `pulumi:"userClientIp"`
+}
+
+func (GetAlidnsInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAlidnsInstances.
+type GetAlidnsInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsInstancesResult)(nil)).Elem()
+}
+
+func (o GetAlidnsInstancesResultOutput) ToGetAlidnsInstancesResultOutput() GetAlidnsInstancesResultOutput {
+	return o
+}
+
+func (o GetAlidnsInstancesResultOutput) ToGetAlidnsInstancesResultOutputWithContext(ctx context.Context) GetAlidnsInstancesResultOutput {
+	return o
+}
+
+func (o GetAlidnsInstancesResultOutput) DomainType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesResult) *string { return v.DomainType }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAlidnsInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of instance IDs.
+func (o GetAlidnsInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// A list of instances. Each element contains the following attributes:
+func (o GetAlidnsInstancesResultOutput) Instances() GetAlidnsInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesResult) []GetAlidnsInstancesInstance { return v.Instances }).(GetAlidnsInstancesInstanceArrayOutput)
+}
+
+func (o GetAlidnsInstancesResultOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlidnsInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlidnsInstancesResultOutput) UserClientIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesResult) *string { return v.UserClientIp }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAlidnsInstancesResultOutput{})
 }

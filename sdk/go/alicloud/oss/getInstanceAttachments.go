@@ -4,6 +4,9 @@
 package oss
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,78 @@ type GetInstanceAttachmentsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of vpc ids.
 	VpcIds []string `pulumi:"vpcIds"`
+}
+
+func GetInstanceAttachmentsOutput(ctx *pulumi.Context, args GetInstanceAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetInstanceAttachmentsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstanceAttachmentsResult, error) {
+			args := v.(GetInstanceAttachmentsArgs)
+			r, err := GetInstanceAttachments(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstanceAttachmentsResultOutput)
+}
+
+// A collection of arguments for invoking getInstanceAttachments.
+type GetInstanceAttachmentsOutputArgs struct {
+	// The name of OTS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// A regex string to filter results by vpc name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetInstanceAttachmentsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachmentsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstanceAttachments.
+type GetInstanceAttachmentsResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAttachmentsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachmentsResult)(nil)).Elem()
+}
+
+func (o GetInstanceAttachmentsResultOutput) ToGetInstanceAttachmentsResultOutput() GetInstanceAttachmentsResultOutput {
+	return o
+}
+
+func (o GetInstanceAttachmentsResultOutput) ToGetInstanceAttachmentsResultOutputWithContext(ctx context.Context) GetInstanceAttachmentsResultOutput {
+	return o
+}
+
+// A list of instance attachments. Each element contains the following attributes:
+func (o GetInstanceAttachmentsResultOutput) Attachments() GetInstanceAttachmentsAttachmentArrayOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsResult) []GetInstanceAttachmentsAttachment { return v.Attachments }).(GetInstanceAttachmentsAttachmentArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstanceAttachmentsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The instance name.
+func (o GetInstanceAttachmentsResultOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsResult) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceAttachmentsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of vpc names.
+func (o GetInstanceAttachmentsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstanceAttachmentsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of vpc ids.
+func (o GetInstanceAttachmentsResultOutput) VpcIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsResult) []string { return v.VpcIds }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstanceAttachmentsResultOutput{})
 }

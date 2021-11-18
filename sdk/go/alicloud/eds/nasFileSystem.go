@@ -245,7 +245,7 @@ type NasFileSystemArrayInput interface {
 type NasFileSystemArray []NasFileSystemInput
 
 func (NasFileSystemArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NasFileSystem)(nil))
+	return reflect.TypeOf((*[]*NasFileSystem)(nil)).Elem()
 }
 
 func (i NasFileSystemArray) ToNasFileSystemArrayOutput() NasFileSystemArrayOutput {
@@ -270,7 +270,7 @@ type NasFileSystemMapInput interface {
 type NasFileSystemMap map[string]NasFileSystemInput
 
 func (NasFileSystemMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NasFileSystem)(nil))
+	return reflect.TypeOf((*map[string]*NasFileSystem)(nil)).Elem()
 }
 
 func (i NasFileSystemMap) ToNasFileSystemMapOutput() NasFileSystemMapOutput {
@@ -281,9 +281,7 @@ func (i NasFileSystemMap) ToNasFileSystemMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NasFileSystemMapOutput)
 }
 
-type NasFileSystemOutput struct {
-	*pulumi.OutputState
-}
+type NasFileSystemOutput struct{ *pulumi.OutputState }
 
 func (NasFileSystemOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NasFileSystem)(nil))
@@ -302,14 +300,12 @@ func (o NasFileSystemOutput) ToNasFileSystemPtrOutput() NasFileSystemPtrOutput {
 }
 
 func (o NasFileSystemOutput) ToNasFileSystemPtrOutputWithContext(ctx context.Context) NasFileSystemPtrOutput {
-	return o.ApplyT(func(v NasFileSystem) *NasFileSystem {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NasFileSystem) *NasFileSystem {
 		return &v
 	}).(NasFileSystemPtrOutput)
 }
 
-type NasFileSystemPtrOutput struct {
-	*pulumi.OutputState
-}
+type NasFileSystemPtrOutput struct{ *pulumi.OutputState }
 
 func (NasFileSystemPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NasFileSystem)(nil))
@@ -321,6 +317,16 @@ func (o NasFileSystemPtrOutput) ToNasFileSystemPtrOutput() NasFileSystemPtrOutpu
 
 func (o NasFileSystemPtrOutput) ToNasFileSystemPtrOutputWithContext(ctx context.Context) NasFileSystemPtrOutput {
 	return o
+}
+
+func (o NasFileSystemPtrOutput) Elem() NasFileSystemOutput {
+	return o.ApplyT(func(v *NasFileSystem) NasFileSystem {
+		if v != nil {
+			return *v
+		}
+		var ret NasFileSystem
+		return ret
+	}).(NasFileSystemOutput)
 }
 
 type NasFileSystemArrayOutput struct{ *pulumi.OutputState }
@@ -364,6 +370,10 @@ func (o NasFileSystemMapOutput) MapIndex(k pulumi.StringInput) NasFileSystemOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NasFileSystemInput)(nil)).Elem(), &NasFileSystem{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NasFileSystemPtrInput)(nil)).Elem(), &NasFileSystem{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NasFileSystemArrayInput)(nil)).Elem(), NasFileSystemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NasFileSystemMapInput)(nil)).Elem(), NasFileSystemMap{})
 	pulumi.RegisterOutputType(NasFileSystemOutput{})
 	pulumi.RegisterOutputType(NasFileSystemPtrOutput{})
 	pulumi.RegisterOutputType(NasFileSystemArrayOutput{})

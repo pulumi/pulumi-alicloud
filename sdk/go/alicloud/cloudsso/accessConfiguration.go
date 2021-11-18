@@ -224,7 +224,7 @@ type AccessConfigurationArrayInput interface {
 type AccessConfigurationArray []AccessConfigurationInput
 
 func (AccessConfigurationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccessConfiguration)(nil))
+	return reflect.TypeOf((*[]*AccessConfiguration)(nil)).Elem()
 }
 
 func (i AccessConfigurationArray) ToAccessConfigurationArrayOutput() AccessConfigurationArrayOutput {
@@ -249,7 +249,7 @@ type AccessConfigurationMapInput interface {
 type AccessConfigurationMap map[string]AccessConfigurationInput
 
 func (AccessConfigurationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccessConfiguration)(nil))
+	return reflect.TypeOf((*map[string]*AccessConfiguration)(nil)).Elem()
 }
 
 func (i AccessConfigurationMap) ToAccessConfigurationMapOutput() AccessConfigurationMapOutput {
@@ -260,9 +260,7 @@ func (i AccessConfigurationMap) ToAccessConfigurationMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationMapOutput)
 }
 
-type AccessConfigurationOutput struct {
-	*pulumi.OutputState
-}
+type AccessConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessConfiguration)(nil))
@@ -281,14 +279,12 @@ func (o AccessConfigurationOutput) ToAccessConfigurationPtrOutput() AccessConfig
 }
 
 func (o AccessConfigurationOutput) ToAccessConfigurationPtrOutputWithContext(ctx context.Context) AccessConfigurationPtrOutput {
-	return o.ApplyT(func(v AccessConfiguration) *AccessConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessConfiguration) *AccessConfiguration {
 		return &v
 	}).(AccessConfigurationPtrOutput)
 }
 
-type AccessConfigurationPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccessConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessConfiguration)(nil))
@@ -300,6 +296,16 @@ func (o AccessConfigurationPtrOutput) ToAccessConfigurationPtrOutput() AccessCon
 
 func (o AccessConfigurationPtrOutput) ToAccessConfigurationPtrOutputWithContext(ctx context.Context) AccessConfigurationPtrOutput {
 	return o
+}
+
+func (o AccessConfigurationPtrOutput) Elem() AccessConfigurationOutput {
+	return o.ApplyT(func(v *AccessConfiguration) AccessConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AccessConfiguration
+		return ret
+	}).(AccessConfigurationOutput)
 }
 
 type AccessConfigurationArrayOutput struct{ *pulumi.OutputState }
@@ -343,6 +349,10 @@ func (o AccessConfigurationMapOutput) MapIndex(k pulumi.StringInput) AccessConfi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationInput)(nil)).Elem(), &AccessConfiguration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationPtrInput)(nil)).Elem(), &AccessConfiguration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationArrayInput)(nil)).Elem(), AccessConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationMapInput)(nil)).Elem(), AccessConfigurationMap{})
 	pulumi.RegisterOutputType(AccessConfigurationOutput{})
 	pulumi.RegisterOutputType(AccessConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AccessConfigurationArrayOutput{})

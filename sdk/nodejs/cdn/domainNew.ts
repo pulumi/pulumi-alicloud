@@ -159,35 +159,35 @@ export interface DomainNewState {
     /**
      * Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
      */
-    readonly cdnType?: pulumi.Input<string>;
+    cdnType?: pulumi.Input<string>;
     /**
      * Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
      */
-    readonly certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
+    certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
     /**
      * (Available in v1.90.0+) The CNAME of the CDN domain.
      */
-    readonly cname?: pulumi.Input<string>;
+    cname?: pulumi.Input<string>;
     /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * Resource group ID.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
      */
-    readonly scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
     /**
      * The source address list of the accelerated domain. Defaults to null. See Block Sources.
      */
-    readonly sources?: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -197,29 +197,29 @@ export interface DomainNewArgs {
     /**
      * Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
      */
-    readonly cdnType: pulumi.Input<string>;
+    cdnType: pulumi.Input<string>;
     /**
      * Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
      */
-    readonly certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
+    certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
     /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * Resource group ID.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
      */
-    readonly scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
     /**
      * The source address list of the accelerated domain. Defaults to null. See Block Sources.
      */
-    readonly sources: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
+    sources: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

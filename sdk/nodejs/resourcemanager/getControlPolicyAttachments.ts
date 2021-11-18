@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.resourcemanager.getControlPolicyAttachments({
  *     targetId: "example_value",
  * });
- * export const firstResourceManagerControlPolicyAttachmentId = example.then(example => example.attachments[0].id);
+ * export const firstResourceManagerControlPolicyAttachmentId = example.then(example => example.attachments?[0]?.id);
  * ```
  */
 export function getControlPolicyAttachments(args: GetControlPolicyAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetControlPolicyAttachmentsResult> {
@@ -47,16 +47,16 @@ export interface GetControlPolicyAttachmentsArgs {
     /**
      * The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
      */
-    readonly language?: string;
-    readonly outputFile?: string;
+    language?: string;
+    outputFile?: string;
     /**
      * The type of policy.
      */
-    readonly policyType?: string;
+    policyType?: string;
     /**
      * The Id of target.
      */
-    readonly targetId: string;
+    targetId: string;
 }
 
 /**
@@ -73,4 +73,27 @@ export interface GetControlPolicyAttachmentsResult {
     readonly outputFile?: string;
     readonly policyType?: string;
     readonly targetId: string;
+}
+
+export function getControlPolicyAttachmentsOutput(args: GetControlPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPolicyAttachmentsResult> {
+    return pulumi.output(args).apply(a => getControlPolicyAttachments(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getControlPolicyAttachments.
+ */
+export interface GetControlPolicyAttachmentsOutputArgs {
+    /**
+     * The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
+     */
+    language?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The type of policy.
+     */
+    policyType?: pulumi.Input<string>;
+    /**
+     * The Id of target.
+     */
+    targetId: pulumi.Input<string>;
 }

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.sae.getInstanceSpecifications({});
- * export const saeInstanceSpecificationId1 = ids.then(ids => ids.specifications[0].id);
+ * export const saeInstanceSpecificationId1 = ids.then(ids => ids.specifications?[0]?.id);
  * ```
  */
 export function getInstanceSpecifications(args?: GetInstanceSpecificationsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSpecificationsResult> {
@@ -44,8 +44,8 @@ export interface GetInstanceSpecificationsArgs {
     /**
      * A list of Instance Specification IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
 }
 
 /**
@@ -59,4 +59,19 @@ export interface GetInstanceSpecificationsResult {
     readonly ids: string[];
     readonly outputFile?: string;
     readonly specifications: outputs.sae.GetInstanceSpecificationsSpecification[];
+}
+
+export function getInstanceSpecificationsOutput(args?: GetInstanceSpecificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceSpecificationsResult> {
+    return pulumi.output(args).apply(a => getInstanceSpecifications(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceSpecifications.
+ */
+export interface GetInstanceSpecificationsOutputArgs {
+    /**
+     * A list of Instance Specification IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
 }

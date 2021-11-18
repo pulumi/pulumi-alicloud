@@ -130,35 +130,35 @@ export interface ServiceMeshState {
     /**
      * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
      */
-    readonly edition?: pulumi.Input<string>;
+    edition?: pulumi.Input<string>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The configuration of the Load Balancer. See the following `Block loadBalancer`.
      */
-    readonly loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer>;
     /**
      * The configuration of the Service grid. See the following `Block meshConfig`.
      */
-    readonly meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig>;
+    meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig>;
     /**
      * The network configuration of the Service grid. See the following `Block network`.
      */
-    readonly network?: pulumi.Input<inputs.servicemesh.ServiceMeshNetwork>;
+    network?: pulumi.Input<inputs.servicemesh.ServiceMeshNetwork>;
     /**
      * The name of the resource.
      */
-    readonly serviceMeshName?: pulumi.Input<string>;
+    serviceMeshName?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `running` or `initial`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -168,29 +168,29 @@ export interface ServiceMeshArgs {
     /**
      * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
      */
-    readonly edition?: pulumi.Input<string>;
+    edition?: pulumi.Input<string>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The configuration of the Load Balancer. See the following `Block loadBalancer`.
      */
-    readonly loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer>;
     /**
      * The configuration of the Service grid. See the following `Block meshConfig`.
      */
-    readonly meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig>;
+    meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig>;
     /**
      * The network configuration of the Service grid. See the following `Block network`.
      */
-    readonly network: pulumi.Input<inputs.servicemesh.ServiceMeshNetwork>;
+    network: pulumi.Input<inputs.servicemesh.ServiceMeshNetwork>;
     /**
      * The name of the resource.
      */
-    readonly serviceMeshName?: pulumi.Input<string>;
+    serviceMeshName?: pulumi.Input<string>;
     /**
      * The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }

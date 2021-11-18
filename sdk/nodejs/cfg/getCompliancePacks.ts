@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["cp-152a626622af00bc****"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstConfigCompliancePackId = example.then(example => example.packs[0].id);
+ * export const firstConfigCompliancePackId = example.then(example => example.packs?[0]?.id);
  * ```
  */
 export function getCompliancePacks(args?: GetCompliancePacksArgs, opts?: pulumi.InvokeOptions): Promise<GetCompliancePacksResult> {
@@ -50,20 +50,20 @@ export interface GetCompliancePacksArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Compliance Pack IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Compliance Pack name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -81,4 +81,31 @@ export interface GetCompliancePacksResult {
     readonly outputFile?: string;
     readonly packs: outputs.cfg.GetCompliancePacksPack[];
     readonly status?: string;
+}
+
+export function getCompliancePacksOutput(args?: GetCompliancePacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCompliancePacksResult> {
+    return pulumi.output(args).apply(a => getCompliancePacks(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCompliancePacks.
+ */
+export interface GetCompliancePacksOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Compliance Pack IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Compliance Pack name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
 }

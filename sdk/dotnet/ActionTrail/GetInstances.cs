@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
@@ -40,7 +41,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///         });
         ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
         ///         {
-        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
         ///             CidrBlock = "172.16.0.0/24",
         ///             VpcId = defaultNetwork.Id,
         ///         });
@@ -58,7 +59,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///             NameRegex = "alikafkaInstanceName",
         ///             OutputFile = "instances.txt",
         ///         }));
-        ///         this.FirstInstanceName = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances[0].Name);
+        ///         this.FirstInstanceName = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.Name);
         ///     }
         /// 
         ///     [Output("firstInstanceName")]
@@ -70,6 +71,66 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:actiontrail/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.59.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var instanceName = config.Get("instanceName") ?? "alikafkaInstanceName";
+        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "VSwitch",
+        ///         }));
+        ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/12",
+        ///         });
+        ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+        ///             CidrBlock = "172.16.0.0/24",
+        ///             VpcId = defaultNetwork.Id,
+        ///         });
+        ///         var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new AliCloud.AliKafka.InstanceArgs
+        ///         {
+        ///             DeployType = 4,
+        ///             DiskSize = 500,
+        ///             DiskType = 1,
+        ///             IoMax = 20,
+        ///             TopicQuota = 50,
+        ///             VswitchId = defaultSwitch.Id,
+        ///         });
+        ///         var instancesDs = Output.Create(AliCloud.ActionTrail.GetInstances.InvokeAsync(new AliCloud.ActionTrail.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "alikafkaInstanceName",
+        ///             OutputFile = "instances.txt",
+        ///         }));
+        ///         this.FirstInstanceName = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.Name);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceName")]
+        ///     public Output&lt;string&gt; FirstInstanceName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:actiontrail/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -97,6 +158,34 @@ namespace Pulumi.AliCloud.ActionTrail
         public string? OutputFile { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of instance IDs to filter results.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by the instance name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

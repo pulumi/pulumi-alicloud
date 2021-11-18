@@ -4,6 +4,9 @@
 package directmail
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,78 @@ type GetMailAddressesResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	Sendtype   *string  `pulumi:"sendtype"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetMailAddressesOutput(ctx *pulumi.Context, args GetMailAddressesOutputArgs, opts ...pulumi.InvokeOption) GetMailAddressesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetMailAddressesResult, error) {
+			args := v.(GetMailAddressesArgs)
+			r, err := GetMailAddresses(ctx, &args, opts...)
+			return *r, err
+		}).(GetMailAddressesResultOutput)
+}
+
+// A collection of arguments for invoking getMailAddresses.
+type GetMailAddressesOutputArgs struct {
+	// A list of Mail Address IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The key word about account email address.
+	KeyWord    pulumi.StringPtrInput `pulumi:"keyWord"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Account type.
+	Sendtype pulumi.StringPtrInput `pulumi:"sendtype"`
+	// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetMailAddressesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMailAddressesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMailAddresses.
+type GetMailAddressesResultOutput struct{ *pulumi.OutputState }
+
+func (GetMailAddressesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMailAddressesResult)(nil)).Elem()
+}
+
+func (o GetMailAddressesResultOutput) ToGetMailAddressesResultOutput() GetMailAddressesResultOutput {
+	return o
+}
+
+func (o GetMailAddressesResultOutput) ToGetMailAddressesResultOutputWithContext(ctx context.Context) GetMailAddressesResultOutput {
+	return o
+}
+
+func (o GetMailAddressesResultOutput) Addresses() GetMailAddressesAddressArrayOutput {
+	return o.ApplyT(func(v GetMailAddressesResult) []GetMailAddressesAddress { return v.Addresses }).(GetMailAddressesAddressArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetMailAddressesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMailAddressesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetMailAddressesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMailAddressesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetMailAddressesResultOutput) KeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMailAddressesResult) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMailAddressesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMailAddressesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMailAddressesResultOutput) Sendtype() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMailAddressesResult) *string { return v.Sendtype }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMailAddressesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMailAddressesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMailAddressesResultOutput{})
 }

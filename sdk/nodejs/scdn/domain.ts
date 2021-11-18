@@ -153,35 +153,35 @@ export interface DomainState {
     /**
      * from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
      */
-    readonly bizName?: pulumi.Input<string>;
+    bizName?: pulumi.Input<string>;
     /**
      * Certificate Information. See the following `Block certInfos`.
      */
-    readonly certInfos?: pulumi.Input<pulumi.Input<inputs.scdn.DomainCertInfo>[]>;
+    certInfos?: pulumi.Input<pulumi.Input<inputs.scdn.DomainCertInfo>[]>;
     /**
      * The health check url.
      */
-    readonly checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string>;
     /**
      * The name of domain.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * Whether to set certificate forcibly.
      */
-    readonly forceSet?: pulumi.Input<string>;
+    forceSet?: pulumi.Input<string>;
     /**
      * The resource group id.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * the Origin Server Information. See the following `Block sources`.
      */
-    readonly sources?: pulumi.Input<pulumi.Input<inputs.scdn.DomainSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.scdn.DomainSource>[]>;
     /**
      * The status of the resource. Valid values: `offline`, `online`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -191,33 +191,33 @@ export interface DomainArgs {
     /**
      * from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
      */
-    readonly bizName?: pulumi.Input<string>;
+    bizName?: pulumi.Input<string>;
     /**
      * Certificate Information. See the following `Block certInfos`.
      */
-    readonly certInfos?: pulumi.Input<pulumi.Input<inputs.scdn.DomainCertInfo>[]>;
+    certInfos?: pulumi.Input<pulumi.Input<inputs.scdn.DomainCertInfo>[]>;
     /**
      * The health check url.
      */
-    readonly checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string>;
     /**
      * The name of domain.
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * Whether to set certificate forcibly.
      */
-    readonly forceSet?: pulumi.Input<string>;
+    forceSet?: pulumi.Input<string>;
     /**
      * The resource group id.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * the Origin Server Information. See the following `Block sources`.
      */
-    readonly sources: pulumi.Input<pulumi.Input<inputs.scdn.DomainSource>[]>;
+    sources: pulumi.Input<pulumi.Input<inputs.scdn.DomainSource>[]>;
     /**
      * The status of the resource. Valid values: `offline`, `online`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

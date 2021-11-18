@@ -146,35 +146,35 @@ export interface SlbAttachmentState {
     /**
      * The ID of the applicaton to which you want to bind an SLB instance.
      */
-    readonly appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string>;
     /**
      * The listening port for the bound SLB instance.
      */
-    readonly listenerPort?: pulumi.Input<number>;
+    listenerPort?: pulumi.Input<number>;
     /**
      * The ID of the SLB instance that is going to be bound.
      */
-    readonly slbId?: pulumi.Input<string>;
+    slbId?: pulumi.Input<string>;
     /**
      * The IP address that is allocated to the bound SLB instance.
      */
-    readonly slbIp?: pulumi.Input<string>;
+    slbIp?: pulumi.Input<string>;
     /**
      * Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
      */
-    readonly slbStatus?: pulumi.Input<string>;
+    slbStatus?: pulumi.Input<string>;
     /**
      * The type of the bound SLB instance.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The ID of the virtual server (VServer) group associated with the intranet SLB instance.
      */
-    readonly vserverGroupId?: pulumi.Input<string>;
+    vserverGroupId?: pulumi.Input<string>;
     /**
      * VPC related vswitch ID.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -184,25 +184,25 @@ export interface SlbAttachmentArgs {
     /**
      * The ID of the applicaton to which you want to bind an SLB instance.
      */
-    readonly appId: pulumi.Input<string>;
+    appId: pulumi.Input<string>;
     /**
      * The listening port for the bound SLB instance.
      */
-    readonly listenerPort?: pulumi.Input<number>;
+    listenerPort?: pulumi.Input<number>;
     /**
      * The ID of the SLB instance that is going to be bound.
      */
-    readonly slbId: pulumi.Input<string>;
+    slbId: pulumi.Input<string>;
     /**
      * The IP address that is allocated to the bound SLB instance.
      */
-    readonly slbIp: pulumi.Input<string>;
+    slbIp: pulumi.Input<string>;
     /**
      * The type of the bound SLB instance.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * The ID of the virtual server (VServer) group associated with the intranet SLB instance.
      */
-    readonly vserverGroupId?: pulumi.Input<string>;
+    vserverGroupId?: pulumi.Input<string>;
 }

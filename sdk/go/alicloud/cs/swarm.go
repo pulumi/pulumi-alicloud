@@ -229,7 +229,7 @@ type SwarmArrayInput interface {
 type SwarmArray []SwarmInput
 
 func (SwarmArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Swarm)(nil))
+	return reflect.TypeOf((*[]*Swarm)(nil)).Elem()
 }
 
 func (i SwarmArray) ToSwarmArrayOutput() SwarmArrayOutput {
@@ -254,7 +254,7 @@ type SwarmMapInput interface {
 type SwarmMap map[string]SwarmInput
 
 func (SwarmMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Swarm)(nil))
+	return reflect.TypeOf((*map[string]*Swarm)(nil)).Elem()
 }
 
 func (i SwarmMap) ToSwarmMapOutput() SwarmMapOutput {
@@ -265,9 +265,7 @@ func (i SwarmMap) ToSwarmMapOutputWithContext(ctx context.Context) SwarmMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(SwarmMapOutput)
 }
 
-type SwarmOutput struct {
-	*pulumi.OutputState
-}
+type SwarmOutput struct{ *pulumi.OutputState }
 
 func (SwarmOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Swarm)(nil))
@@ -286,14 +284,12 @@ func (o SwarmOutput) ToSwarmPtrOutput() SwarmPtrOutput {
 }
 
 func (o SwarmOutput) ToSwarmPtrOutputWithContext(ctx context.Context) SwarmPtrOutput {
-	return o.ApplyT(func(v Swarm) *Swarm {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Swarm) *Swarm {
 		return &v
 	}).(SwarmPtrOutput)
 }
 
-type SwarmPtrOutput struct {
-	*pulumi.OutputState
-}
+type SwarmPtrOutput struct{ *pulumi.OutputState }
 
 func (SwarmPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Swarm)(nil))
@@ -305,6 +301,16 @@ func (o SwarmPtrOutput) ToSwarmPtrOutput() SwarmPtrOutput {
 
 func (o SwarmPtrOutput) ToSwarmPtrOutputWithContext(ctx context.Context) SwarmPtrOutput {
 	return o
+}
+
+func (o SwarmPtrOutput) Elem() SwarmOutput {
+	return o.ApplyT(func(v *Swarm) Swarm {
+		if v != nil {
+			return *v
+		}
+		var ret Swarm
+		return ret
+	}).(SwarmOutput)
 }
 
 type SwarmArrayOutput struct{ *pulumi.OutputState }
@@ -348,6 +354,10 @@ func (o SwarmMapOutput) MapIndex(k pulumi.StringInput) SwarmOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SwarmInput)(nil)).Elem(), &Swarm{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwarmPtrInput)(nil)).Elem(), &Swarm{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwarmArrayInput)(nil)).Elem(), SwarmArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwarmMapInput)(nil)).Elem(), SwarmMap{})
 	pulumi.RegisterOutputType(SwarmOutput{})
 	pulumi.RegisterOutputType(SwarmPtrOutput{})
 	pulumi.RegisterOutputType(SwarmArrayOutput{})

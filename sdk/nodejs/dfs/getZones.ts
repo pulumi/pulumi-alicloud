@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = pulumi.output(alicloud.dfs.getZones({ async: true }));
+ * const defaultZones = pulumi.output(alicloud.dfs.getZones());
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -39,7 +39,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -52,4 +52,15 @@ export interface GetZonesResult {
     readonly id: string;
     readonly outputFile?: string;
     readonly zones: outputs.dfs.GetZonesZone[];
+}
+
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply(a => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    outputFile?: pulumi.Input<string>;
 }

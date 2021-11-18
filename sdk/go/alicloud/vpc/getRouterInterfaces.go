@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -95,4 +98,123 @@ type GetRouterInterfacesResult struct {
 	Specification *string `pulumi:"specification"`
 	// Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
 	Status *string `pulumi:"status"`
+}
+
+func GetRouterInterfacesOutput(ctx *pulumi.Context, args GetRouterInterfacesOutputArgs, opts ...pulumi.InvokeOption) GetRouterInterfacesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRouterInterfacesResult, error) {
+			args := v.(GetRouterInterfacesArgs)
+			r, err := GetRouterInterfaces(ctx, &args, opts...)
+			return *r, err
+		}).(GetRouterInterfacesResultOutput)
+}
+
+// A collection of arguments for invoking getRouterInterfaces.
+type GetRouterInterfacesOutputArgs struct {
+	// A list of router interface IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string used to filter by router interface name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// ID of the peer router interface.
+	OppositeInterfaceId pulumi.StringPtrInput `pulumi:"oppositeInterfaceId"`
+	// Account ID of the owner of the peer router interface.
+	OppositeInterfaceOwnerId pulumi.StringPtrInput `pulumi:"oppositeInterfaceOwnerId"`
+	OutputFile               pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
+	// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// ID of the VRouter located in the local region.
+	RouterId pulumi.StringPtrInput `pulumi:"routerId"`
+	// Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
+	RouterType pulumi.StringPtrInput `pulumi:"routerType"`
+	// Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
+	Specification pulumi.StringPtrInput `pulumi:"specification"`
+	// Expected status. Valid values are `Active`, `Inactive` and `Idle`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetRouterInterfacesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterInterfacesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRouterInterfaces.
+type GetRouterInterfacesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRouterInterfacesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterInterfacesResult)(nil)).Elem()
+}
+
+func (o GetRouterInterfacesResultOutput) ToGetRouterInterfacesResultOutput() GetRouterInterfacesResultOutput {
+	return o
+}
+
+func (o GetRouterInterfacesResultOutput) ToGetRouterInterfacesResultOutputWithContext(ctx context.Context) GetRouterInterfacesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRouterInterfacesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of router interface IDs.
+func (o GetRouterInterfacesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// A list of router interfaces. Each element contains the following attributes:
+func (o GetRouterInterfacesResultOutput) Interfaces() GetRouterInterfacesInterfaceArrayOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) []GetRouterInterfacesInterface { return v.Interfaces }).(GetRouterInterfacesInterfaceArrayOutput)
+}
+
+func (o GetRouterInterfacesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of router interface names.
+func (o GetRouterInterfacesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// Peer router interface ID.
+func (o GetRouterInterfacesResultOutput) OppositeInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) *string { return v.OppositeInterfaceId }).(pulumi.StringPtrOutput)
+}
+
+// Account ID of the owner of the peer router interface.
+func (o GetRouterInterfacesResultOutput) OppositeInterfaceOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) *string { return v.OppositeInterfaceOwnerId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRouterInterfacesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// Router interface role. Possible values: `InitiatingSide` and `AcceptingSide`.
+func (o GetRouterInterfacesResultOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// ID of the VRouter located in the local region.
+func (o GetRouterInterfacesResultOutput) RouterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) *string { return v.RouterId }).(pulumi.StringPtrOutput)
+}
+
+// Router type in the local region. Possible values: `VRouter` and `VBR`.
+func (o GetRouterInterfacesResultOutput) RouterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) *string { return v.RouterType }).(pulumi.StringPtrOutput)
+}
+
+// Router interface specification. Possible values: `Small.1`, `Middle.1`, `Large.2`, ...etc.
+func (o GetRouterInterfacesResultOutput) Specification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) *string { return v.Specification }).(pulumi.StringPtrOutput)
+}
+
+// Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
+func (o GetRouterInterfacesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouterInterfacesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRouterInterfacesResultOutput{})
 }

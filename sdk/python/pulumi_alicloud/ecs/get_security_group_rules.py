@@ -13,6 +13,7 @@ __all__ = [
     'GetSecurityGroupRulesResult',
     'AwaitableGetSecurityGroupRulesResult',
     'get_security_group_rules',
+    'get_security_group_rules_output',
 ]
 
 @pulumi.output_type
@@ -153,9 +154,9 @@ def get_security_group_rules(direction: Optional[str] = None,
                              policy: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecurityGroupRulesResult:
     """
-    The `ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
+    The `ecs.get_security_group_rules` data source provides a collection of security permissions of a specific security group.
     Each collection item represents a single `ingress` or `egress` permission rule.
-    The ID of the security group can be provided via a variable or the result from the other data source `ecs.getSecurityGroups`.
+    The ID of the security group can be provided via a variable or the result from the other data source `ecs.get_security_groups`.
 
     ## Example Usage
 
@@ -207,3 +208,45 @@ def get_security_group_rules(direction: Optional[str] = None,
         output_file=__ret__.output_file,
         policy=__ret__.policy,
         rules=__ret__.rules)
+
+
+@_utilities.lift_output_func(get_security_group_rules)
+def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[str]]] = None,
+                                    group_id: Optional[pulumi.Input[str]] = None,
+                                    ip_protocol: Optional[pulumi.Input[Optional[str]]] = None,
+                                    nic_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    policy: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityGroupRulesResult]:
+    """
+    The `ecs.get_security_group_rules` data source provides a collection of security permissions of a specific security group.
+    Each collection item represents a single `ingress` or `egress` permission rule.
+    The ID of the security group can be provided via a variable or the result from the other data source `ecs.get_security_groups`.
+
+    ## Example Usage
+
+    The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    security_group_id = config.require_object("securityGroupId")
+    groups_ds = alicloud.ecs.get_security_groups(name_regex="api")
+    ingress_rules_ds = alicloud.ecs.get_security_group_rules(direction="ingress",
+        group_id=groups_ds.groups[0].id,
+        ip_protocol="tcp",
+        nic_type="internet")
+    # Pass port_range to the backend service
+    backend = alicloud.ecs.Instance("backend", user_data=f"config_service.sh --portrange={ingress_rules_ds.rules[0].port_range}")
+    ```
+
+
+    :param str direction: Authorization direction. Valid values are: `ingress` or `egress`.
+    :param str group_id: The ID of the security group that owns the rules.
+    :param str ip_protocol: The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
+    :param str nic_type: Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
+    :param str policy: Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
+    """
+    ...

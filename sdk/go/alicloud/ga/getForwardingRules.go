@@ -4,6 +4,9 @@
 package ga
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,78 @@ type GetForwardingRulesResult struct {
 	ListenerId string   `pulumi:"listenerId"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetForwardingRulesOutput(ctx *pulumi.Context, args GetForwardingRulesOutputArgs, opts ...pulumi.InvokeOption) GetForwardingRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetForwardingRulesResult, error) {
+			args := v.(GetForwardingRulesArgs)
+			r, err := GetForwardingRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetForwardingRulesResultOutput)
+}
+
+// A collection of arguments for invoking getForwardingRules.
+type GetForwardingRulesOutputArgs struct {
+	// The ID of the Global Accelerator instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// A list of Forwarding Rule IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The ID of the listener.
+	ListenerId pulumi.StringInput    `pulumi:"listenerId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the acceleration region. Valid values: `active`, `configuring`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetForwardingRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getForwardingRules.
+type GetForwardingRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesResult)(nil)).Elem()
+}
+
+func (o GetForwardingRulesResultOutput) ToGetForwardingRulesResultOutput() GetForwardingRulesResultOutput {
+	return o
+}
+
+func (o GetForwardingRulesResultOutput) ToGetForwardingRulesResultOutputWithContext(ctx context.Context) GetForwardingRulesResultOutput {
+	return o
+}
+
+func (o GetForwardingRulesResultOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesResult) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+func (o GetForwardingRulesResultOutput) ForwardingRules() GetForwardingRulesForwardingRuleArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesResult) []GetForwardingRulesForwardingRule { return v.ForwardingRules }).(GetForwardingRulesForwardingRuleArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetForwardingRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetForwardingRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetForwardingRulesResultOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesResult) string { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+func (o GetForwardingRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetForwardingRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetForwardingRulesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetForwardingRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetForwardingRulesResultOutput{})
 }

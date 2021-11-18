@@ -160,35 +160,35 @@ export interface IndustrialPidLoopState {
     /**
      * The Pid Loop Configuration.
      */
-    readonly pidLoopConfiguration?: pulumi.Input<string>;
+    pidLoopConfiguration?: pulumi.Input<string>;
     /**
      * The dcs type of Pid Loop. Valid values: `standard`.
      */
-    readonly pidLoopDcsType?: pulumi.Input<string>;
+    pidLoopDcsType?: pulumi.Input<string>;
     /**
      * The desc of Pid Loop.
      */
-    readonly pidLoopDesc?: pulumi.Input<string>;
+    pidLoopDesc?: pulumi.Input<string>;
     /**
      * Whether is crucial Pid Loop.
      */
-    readonly pidLoopIsCrucial?: pulumi.Input<boolean>;
+    pidLoopIsCrucial?: pulumi.Input<boolean>;
     /**
      * The name of Pid Loop.
      */
-    readonly pidLoopName?: pulumi.Input<string>;
+    pidLoopName?: pulumi.Input<string>;
     /**
      * The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
      */
-    readonly pidLoopType?: pulumi.Input<string>;
+    pidLoopType?: pulumi.Input<string>;
     /**
      * The pid project id.
      */
-    readonly pidProjectId?: pulumi.Input<string>;
+    pidProjectId?: pulumi.Input<string>;
     /**
      * The status of Pid Loop.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -198,29 +198,29 @@ export interface IndustrialPidLoopArgs {
     /**
      * The Pid Loop Configuration.
      */
-    readonly pidLoopConfiguration: pulumi.Input<string>;
+    pidLoopConfiguration: pulumi.Input<string>;
     /**
      * The dcs type of Pid Loop. Valid values: `standard`.
      */
-    readonly pidLoopDcsType: pulumi.Input<string>;
+    pidLoopDcsType: pulumi.Input<string>;
     /**
      * The desc of Pid Loop.
      */
-    readonly pidLoopDesc?: pulumi.Input<string>;
+    pidLoopDesc?: pulumi.Input<string>;
     /**
      * Whether is crucial Pid Loop.
      */
-    readonly pidLoopIsCrucial: pulumi.Input<boolean>;
+    pidLoopIsCrucial: pulumi.Input<boolean>;
     /**
      * The name of Pid Loop.
      */
-    readonly pidLoopName: pulumi.Input<string>;
+    pidLoopName: pulumi.Input<string>;
     /**
      * The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
      */
-    readonly pidLoopType: pulumi.Input<string>;
+    pidLoopType: pulumi.Input<string>;
     /**
      * The pid project id.
      */
-    readonly pidProjectId: pulumi.Input<string>;
+    pidProjectId: pulumi.Input<string>;
 }

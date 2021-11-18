@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *         "MASTER",
  *         "CORE",
  *     ],
- * }, { async: true }));
+ * }));
  *
  * export const firstInstanceType = defaultInstanceTypes.types[0].id;
  * ```
@@ -59,33 +59,33 @@ export interface GetInstanceTypesArgs {
     /**
      * The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
      */
-    readonly clusterType: string;
+    clusterType: string;
     /**
      * The destination resource of emr cluster instance
      */
-    readonly destinationResource: string;
+    destinationResource: string;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
-    readonly instanceChargeType: string;
+    instanceChargeType: string;
     /**
      * Filter the specific ecs instance type to create emr cluster.
      */
-    readonly instanceType?: string;
-    readonly outputFile?: string;
+    instanceType?: string;
+    outputFile?: string;
     /**
      * Whether the current storage disk is local or not.
      */
-    readonly supportLocalStorage?: boolean;
+    supportLocalStorage?: boolean;
     /**
      * The specific supported node type list.
      * Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
      */
-    readonly supportNodeTypes?: string[];
+    supportNodeTypes?: string[];
     /**
      * The supported resources of specific zoneId.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -115,4 +115,44 @@ export interface GetInstanceTypesResult {
      * The available zone id in Alibaba Cloud account
      */
     readonly zoneId?: string;
+}
+
+export function getInstanceTypesOutput(args: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
+    return pulumi.output(args).apply(a => getInstanceTypes(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceTypes.
+ */
+export interface GetInstanceTypesOutputArgs {
+    /**
+     * The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
+     */
+    clusterType: pulumi.Input<string>;
+    /**
+     * The destination resource of emr cluster instance
+     */
+    destinationResource: pulumi.Input<string>;
+    /**
+     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     */
+    instanceChargeType: pulumi.Input<string>;
+    /**
+     * Filter the specific ecs instance type to create emr cluster.
+     */
+    instanceType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Whether the current storage disk is local or not.
+     */
+    supportLocalStorage?: pulumi.Input<boolean>;
+    /**
+     * The specific supported node type list.
+     * Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
+     */
+    supportNodeTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The supported resources of specific zoneId.
+     */
+    zoneId?: pulumi.Input<string>;
 }

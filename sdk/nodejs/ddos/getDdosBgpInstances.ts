@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const instanceDdosBgpInstances = pulumi.output(alicloud.ddos.getDdosBgpInstances({
  *     nameRegex: "^ddosbgp",
- * }, { async: true }));
+ * }));
  *
  * export const instance = alicloud_ddosbgp_instances_instance.map(v => v.id);
  * ```
@@ -46,12 +46,12 @@ export interface GetDdosBgpInstancesArgs {
     /**
      * A list of instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by the instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -76,4 +76,23 @@ export interface GetDdosBgpInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getDdosBgpInstancesOutput(args?: GetDdosBgpInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosBgpInstancesResult> {
+    return pulumi.output(args).apply(a => getDdosBgpInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDdosBgpInstances.
+ */
+export interface GetDdosBgpInstancesOutputArgs {
+    /**
+     * A list of instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by the instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

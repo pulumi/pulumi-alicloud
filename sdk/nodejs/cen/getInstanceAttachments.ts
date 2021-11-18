@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(alicloud.cen.getInstanceAttachments({
  *     instanceId: "cen-o40h17ll9w********",
- * }, { async: true }));
+ * }));
  *
  * export const theFirstAttachmentedInstanceId = example.attachments[0].childInstanceId;
  * ```
@@ -47,20 +47,20 @@ export interface GetInstanceAttachmentsArgs {
     /**
      * The region to which the network to be queried belongs.
      */
-    readonly childInstanceRegionId?: string;
+    childInstanceRegionId?: string;
     /**
      * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
      */
-    readonly childInstanceType?: string;
+    childInstanceType?: string;
     /**
      * The ID of the CEN instance.
      */
-    readonly instanceId: string;
-    readonly outputFile?: string;
+    instanceId: string;
+    outputFile?: string;
     /**
      * The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -96,4 +96,31 @@ export interface GetInstanceAttachmentsResult {
      * The status of the network.
      */
     readonly status?: string;
+}
+
+export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
+    return pulumi.output(args).apply(a => getInstanceAttachments(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceAttachments.
+ */
+export interface GetInstanceAttachmentsOutputArgs {
+    /**
+     * The region to which the network to be queried belongs.
+     */
+    childInstanceRegionId?: pulumi.Input<string>;
+    /**
+     * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+     */
+    childInstanceType?: pulumi.Input<string>;
+    /**
+     * The ID of the CEN instance.
+     */
+    instanceId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
+     */
+    status?: pulumi.Input<string>;
 }

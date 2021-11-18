@@ -24,9 +24,9 @@ export function getMonitorGroupInstances(args: GetMonitorGroupInstancesArgs, opt
  * A collection of arguments for invoking getMonitorGroupInstances.
  */
 export interface GetMonitorGroupInstancesArgs {
-    readonly ids: string;
-    readonly keyword?: string;
-    readonly outputFile?: string;
+    ids: string;
+    keyword?: string;
+    outputFile?: string;
 }
 
 /**
@@ -41,4 +41,17 @@ export interface GetMonitorGroupInstancesResult {
     readonly instances: outputs.cms.GetMonitorGroupInstancesInstance[];
     readonly keyword?: string;
     readonly outputFile?: string;
+}
+
+export function getMonitorGroupInstancesOutput(args: GetMonitorGroupInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitorGroupInstancesResult> {
+    return pulumi.output(args).apply(a => getMonitorGroupInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMonitorGroupInstances.
+ */
+export interface GetMonitorGroupInstancesOutputArgs {
+    ids: pulumi.Input<string>;
+    keyword?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

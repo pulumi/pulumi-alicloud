@@ -13,6 +13,7 @@ __all__ = [
     'GetIngressesResult',
     'AwaitableGetIngressesResult',
     'get_ingresses',
+    'get_ingresses_output',
 ]
 
 @pulumi.output_type
@@ -121,3 +122,22 @@ def get_ingresses(enable_details: Optional[bool] = None,
         ingresses=__ret__.ingresses,
         namespace_id=__ret__.namespace_id,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_ingresses)
+def get_ingresses_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         namespace_id: Optional[pulumi.Input[str]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIngressesResult]:
+    """
+    This data source provides the Sae Ingresses of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.137.0+.
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Ingress IDs.
+    :param str namespace_id: The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+    """
+    ...

@@ -9,6 +9,38 @@ import * as utilities from "../utilities";
  * This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.expressconnect.getVirtualBorderRouters({});
+ * export const expressConnectVirtualBorderRouterId1 = ids.then(ids => ids.routers?[0]?.id);
+ * const nameRegex = alicloud.expressconnect.getVirtualBorderRouters({
+ *     nameRegex: "^my-VirtualBorderRouter",
+ * });
+ * export const expressConnectVirtualBorderRouterId2 = nameRegex.then(nameRegex => nameRegex.routers?[0]?.id);
+ * const filter = alicloud.expressconnect.getVirtualBorderRouters({
+ *     filters: [
+ *         {
+ *             key: "PhysicalConnectionId",
+ *             values: ["pc-xxxx1"],
+ *         },
+ *         {
+ *             key: "VbrId",
+ *             values: [
+ *                 "vbr-xxxx1",
+ *                 "vbr-xxxx2",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * export const expressConnectVirtualBorderRouterId3 = filter.then(filter => filter.routers?[0]?.id);
+ * ```
  */
 export function getVirtualBorderRouters(args?: GetVirtualBorderRoutersArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualBorderRoutersResult> {
     args = args || {};
@@ -35,20 +67,20 @@ export interface GetVirtualBorderRoutersArgs {
     /**
      * Custom filter block as described below.
      */
-    readonly filters?: inputs.expressconnect.GetVirtualBorderRoutersFilter[];
+    filters?: inputs.expressconnect.GetVirtualBorderRoutersFilter[];
     /**
      * A list of Virtual Border Router IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Virtual Border Router name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The VBR state.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -66,4 +98,31 @@ export interface GetVirtualBorderRoutersResult {
     readonly outputFile?: string;
     readonly routers: outputs.expressconnect.GetVirtualBorderRoutersRouter[];
     readonly status?: string;
+}
+
+export function getVirtualBorderRoutersOutput(args?: GetVirtualBorderRoutersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualBorderRoutersResult> {
+    return pulumi.output(args).apply(a => getVirtualBorderRouters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVirtualBorderRouters.
+ */
+export interface GetVirtualBorderRoutersOutputArgs {
+    /**
+     * Custom filter block as described below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.expressconnect.GetVirtualBorderRoutersFilterArgs>[]>;
+    /**
+     * A list of Virtual Border Router IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Virtual Border Router name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The VBR state.
+     */
+    status?: pulumi.Input<string>;
 }

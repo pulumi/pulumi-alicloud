@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetFlowlogsResult> InvokeAsync(GetFlowlogsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFlowlogsResult>("alicloud:cen/getFlowlogs:getFlowlogs", args ?? new GetFlowlogsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN flow logs available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.78.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Cen.GetFlowlogs.InvokeAsync(new AliCloud.Cen.GetFlowlogsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "flowlog-tig1xxxxx",
+        ///             },
+        ///             NameRegex = "^foo",
+        ///         }));
+        ///         this.FirstCenFlowlogId = data.Alicloud_cen_instances.Default.Flowlogs[0].Id;
+        ///     }
+        /// 
+        ///     [Output("firstCenFlowlogId")]
+        ///     public Output&lt;string&gt; FirstCenFlowlogId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFlowlogsResult> Invoke(GetFlowlogsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFlowlogsResult>("alicloud:cen/getFlowlogs:getFlowlogs", args ?? new GetFlowlogsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -107,6 +148,64 @@ namespace Pulumi.AliCloud.Cen
         public string? Status { get; set; }
 
         public GetFlowlogsArgs()
+        {
+        }
+    }
+
+    public sealed class GetFlowlogsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the CEN Instance.
+        /// </summary>
+        [Input("cenId")]
+        public Input<string>? CenId { get; set; }
+
+        /// <summary>
+        /// The description of flowlog.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of CEN flow log IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The name of the log store which is in the  `project_name` SLS project.
+        /// </summary>
+        [Input("logStoreName")]
+        public Input<string>? LogStoreName { get; set; }
+
+        /// <summary>
+        /// A regex string to filter CEN flow logs by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The name of the SLS project.
+        /// </summary>
+        [Input("projectName")]
+        public Input<string>? ProjectName { get; set; }
+
+        /// <summary>
+        /// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetFlowlogsInvokeArgs()
         {
         }
     }

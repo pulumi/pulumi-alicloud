@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.ddos.getDdosCooDomainResources({
  *     ids: ["tftestacc1234.abc"],
  * });
- * export const firstDdoscooDomainResourceId = example.then(example => example.resources[0].id);
+ * export const firstDdoscooDomainResourceId = example.then(example => example.resources?[0]?.id);
  * ```
  */
 export function getDdosCooDomainResources(args?: GetDdosCooDomainResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooDomainResourcesResult> {
@@ -48,16 +48,16 @@ export interface GetDdosCooDomainResourcesArgs {
     /**
      * A list of Domain Resource IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A list ID of instance that you want to associate.
      */
-    readonly instanceIds?: string[];
-    readonly outputFile?: string;
+    instanceIds?: string[];
+    outputFile?: string;
     /**
      * Match the pattern.
      */
-    readonly queryDomainPattern?: string;
+    queryDomainPattern?: string;
 }
 
 /**
@@ -73,4 +73,27 @@ export interface GetDdosCooDomainResourcesResult {
     readonly outputFile?: string;
     readonly queryDomainPattern?: string;
     readonly resources: outputs.ddos.GetDdosCooDomainResourcesResource[];
+}
+
+export function getDdosCooDomainResourcesOutput(args?: GetDdosCooDomainResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooDomainResourcesResult> {
+    return pulumi.output(args).apply(a => getDdosCooDomainResources(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDdosCooDomainResources.
+ */
+export interface GetDdosCooDomainResourcesOutputArgs {
+    /**
+     * A list of Domain Resource IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list ID of instance that you want to associate.
+     */
+    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Match the pattern.
+     */
+    queryDomainPattern?: pulumi.Input<string>;
 }

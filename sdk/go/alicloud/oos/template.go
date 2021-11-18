@@ -31,9 +31,9 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := oos.NewTemplate(ctx, "example", &oos.TemplateArgs{
 // 			Content: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"FormatVersion\": \"OOS-2019-06-01\",\n", "    \"Description\": \"Update Describe instances of given status\",\n", "    \"Parameters\":{\n", "      \"Status\":{\n", "        \"Type\": \"String\",\n", "        \"Description\": \"(Required) The status of the Ecs instance.\"\n", "      }\n", "    },\n", "    \"Tasks\": [\n", "      {\n", "        \"Properties\" :{\n", "          \"Parameters\":{\n", "            \"Status\": \"{{ Status }}\"\n", "          },\n", "          \"API\": \"DescribeInstances\",\n", "          \"Service\": \"Ecs\"\n", "        },\n", "        \"Name\": \"foo\",\n", "        \"Action\": \"ACS::ExecuteApi\"\n", "      }]\n", "  }\n", "  \n")),
-// 			Tags: pulumi.StringMap{
-// 				"Created": pulumi.String("TF"),
-// 				"For":     pulumi.String("acceptance Test"),
+// 			Tags: pulumi.AnyMap{
+// 				"Created": pulumi.Any("TF"),
+// 				"For":     pulumi.Any("acceptance Test"),
 // 			},
 // 			TemplateName: pulumi.String("test-name"),
 // 			VersionName:  pulumi.String("test"),
@@ -291,7 +291,7 @@ type TemplateArrayInput interface {
 type TemplateArray []TemplateInput
 
 func (TemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Template)(nil))
+	return reflect.TypeOf((*[]*Template)(nil)).Elem()
 }
 
 func (i TemplateArray) ToTemplateArrayOutput() TemplateArrayOutput {
@@ -316,7 +316,7 @@ type TemplateMapInput interface {
 type TemplateMap map[string]TemplateInput
 
 func (TemplateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Template)(nil))
+	return reflect.TypeOf((*map[string]*Template)(nil)).Elem()
 }
 
 func (i TemplateMap) ToTemplateMapOutput() TemplateMapOutput {
@@ -327,9 +327,7 @@ func (i TemplateMap) ToTemplateMapOutputWithContext(ctx context.Context) Templat
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateMapOutput)
 }
 
-type TemplateOutput struct {
-	*pulumi.OutputState
-}
+type TemplateOutput struct{ *pulumi.OutputState }
 
 func (TemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Template)(nil))
@@ -348,14 +346,12 @@ func (o TemplateOutput) ToTemplatePtrOutput() TemplatePtrOutput {
 }
 
 func (o TemplateOutput) ToTemplatePtrOutputWithContext(ctx context.Context) TemplatePtrOutput {
-	return o.ApplyT(func(v Template) *Template {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Template) *Template {
 		return &v
 	}).(TemplatePtrOutput)
 }
 
-type TemplatePtrOutput struct {
-	*pulumi.OutputState
-}
+type TemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (TemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Template)(nil))
@@ -367,6 +363,16 @@ func (o TemplatePtrOutput) ToTemplatePtrOutput() TemplatePtrOutput {
 
 func (o TemplatePtrOutput) ToTemplatePtrOutputWithContext(ctx context.Context) TemplatePtrOutput {
 	return o
+}
+
+func (o TemplatePtrOutput) Elem() TemplateOutput {
+	return o.ApplyT(func(v *Template) Template {
+		if v != nil {
+			return *v
+		}
+		var ret Template
+		return ret
+	}).(TemplateOutput)
 }
 
 type TemplateArrayOutput struct{ *pulumi.OutputState }
@@ -410,6 +416,10 @@ func (o TemplateMapOutput) MapIndex(k pulumi.StringInput) TemplateOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateInput)(nil)).Elem(), &Template{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplatePtrInput)(nil)).Elem(), &Template{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateArrayInput)(nil)).Elem(), TemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateMapInput)(nil)).Elem(), TemplateMap{})
 	pulumi.RegisterOutputType(TemplateOutput{})
 	pulumi.RegisterOutputType(TemplatePtrOutput{})
 	pulumi.RegisterOutputType(TemplateArrayOutput{})

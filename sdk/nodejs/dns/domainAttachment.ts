@@ -90,11 +90,11 @@ export interface DomainAttachmentState {
     /**
      * The domain names bound to the DNS instance.
      */
-    readonly domainNames?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The id of the DNS instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
 }
 
 /**
@@ -104,9 +104,9 @@ export interface DomainAttachmentArgs {
     /**
      * The domain names bound to the DNS instance.
      */
-    readonly domainNames: pulumi.Input<pulumi.Input<string>[]>;
+    domainNames: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The id of the DNS instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
 }

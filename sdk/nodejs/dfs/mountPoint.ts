@@ -141,35 +141,35 @@ export interface MountPointState {
     /**
      * The ID of the Access Group.
      */
-    readonly accessGroupId?: pulumi.Input<string>;
+    accessGroupId?: pulumi.Input<string>;
     /**
      * The description of the Mount Point.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the File System.
      */
-    readonly fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string>;
     /**
      * The ID of the Mount Point.
      */
-    readonly mountPointId?: pulumi.Input<string>;
+    mountPointId?: pulumi.Input<string>;
     /**
      * The network type of the Mount Point. Valid values: `VPC`.
      */
-    readonly networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string>;
     /**
      * The status of the Mount Point. Valid values: `Active`, `Inactive`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The vpc id.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The vswitch id.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -179,29 +179,29 @@ export interface MountPointArgs {
     /**
      * The ID of the Access Group.
      */
-    readonly accessGroupId: pulumi.Input<string>;
+    accessGroupId: pulumi.Input<string>;
     /**
      * The description of the Mount Point.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the File System.
      */
-    readonly fileSystemId: pulumi.Input<string>;
+    fileSystemId: pulumi.Input<string>;
     /**
      * The network type of the Mount Point. Valid values: `VPC`.
      */
-    readonly networkType: pulumi.Input<string>;
+    networkType: pulumi.Input<string>;
     /**
      * The status of the Mount Point. Valid values: `Active`, `Inactive`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The vpc id.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
     /**
      * The vswitch id.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
 }

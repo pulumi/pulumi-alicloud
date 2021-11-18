@@ -113,29 +113,29 @@ export interface RouteTableState {
     /**
      * The description of the route table instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the route table.
      */
-    readonly routeTableName?: pulumi.Input<string>;
+    routeTableName?: pulumi.Input<string>;
     /**
      * (Available in v1.119.1+) The status of the route table.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The vpcId of the route table, the field can't be changed.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -145,23 +145,23 @@ export interface RouteTableArgs {
     /**
      * The description of the route table instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the route table.
      */
-    readonly routeTableName?: pulumi.Input<string>;
+    routeTableName?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The vpcId of the route table, the field can't be changed.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
 }

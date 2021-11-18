@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.quickbi.getUsers({
  *     ids: ["example_id"],
  * });
- * export const quickBiUserId1 = ids.then(ids => ids.users[0].id);
+ * export const quickBiUserId1 = ids.then(ids => ids.users?[0]?.id);
  * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
@@ -48,16 +48,16 @@ export interface GetUsersArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of User IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The keywords of the nicknames or usernames of the members of the organization.
      */
-    readonly keyword?: string;
-    readonly outputFile?: string;
+    keyword?: string;
+    outputFile?: string;
 }
 
 /**
@@ -73,4 +73,27 @@ export interface GetUsersResult {
     readonly keyword?: string;
     readonly outputFile?: string;
     readonly users: outputs.quickbi.GetUsersUser[];
+}
+
+export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+    return pulumi.output(args).apply(a => getUsers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUsers.
+ */
+export interface GetUsersOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of User IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The keywords of the nicknames or usernames of the members of the organization.
+     */
+    keyword?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

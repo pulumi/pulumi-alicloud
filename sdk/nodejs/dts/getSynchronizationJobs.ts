@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.dts.getSynchronizationJobs({});
- * export const dtsSynchronizationJobId1 = ids.then(ids => ids.jobs[0].id);
+ * export const dtsSynchronizationJobId1 = ids.then(ids => ids.jobs?[0]?.id);
  * ```
  */
 export function getSynchronizationJobs(args?: GetSynchronizationJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetSynchronizationJobsResult> {
@@ -44,20 +44,20 @@ export function getSynchronizationJobs(args?: GetSynchronizationJobsArgs, opts?:
  * A collection of arguments for invoking getSynchronizationJobs.
  */
 export interface GetSynchronizationJobsArgs {
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Synchronization Job IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by synchronization job name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -74,4 +74,28 @@ export interface GetSynchronizationJobsResult {
     readonly nameRegex?: string;
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getSynchronizationJobsOutput(args?: GetSynchronizationJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSynchronizationJobsResult> {
+    return pulumi.output(args).apply(a => getSynchronizationJobs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSynchronizationJobs.
+ */
+export interface GetSynchronizationJobsOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Synchronization Job IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by synchronization job name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+     */
+    status?: pulumi.Input<string>;
 }

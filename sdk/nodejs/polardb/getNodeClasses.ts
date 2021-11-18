@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "PolarDB",
  * });
  * const resourcesNodeClasses = resourcesZones.then(resourcesZones => alicloud.polardb.getNodeClasses({
- *     zoneId: resourcesZones.zones[0].id,
+ *     zoneId: resourcesZones.zones?[0]?.id,
  *     payType: "PostPaid",
  *     dbType: "MySQL",
  *     dbVersion: "5.6",
@@ -54,28 +54,28 @@ export interface GetNodeClassesArgs {
     /**
      * The PolarDB node class type by the user.
      */
-    readonly dbNodeClass?: string;
+    dbNodeClass?: string;
     /**
      * Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
      */
-    readonly dbType?: string;
+    dbType?: string;
     /**
      * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
      */
-    readonly dbVersion?: string;
-    readonly outputFile?: string;
+    dbVersion?: string;
+    outputFile?: string;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
      */
-    readonly payType: string;
+    payType: string;
     /**
      * The Region to launch the PolarDB cluster.
      */
-    readonly regionId?: string;
+    regionId?: string;
     /**
      * The Zone to launch the PolarDB cluster.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -103,4 +103,39 @@ export interface GetNodeClassesResult {
      * The Zone to launch the PolarDB cluster.
      */
     readonly zoneId?: string;
+}
+
+export function getNodeClassesOutput(args: GetNodeClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeClassesResult> {
+    return pulumi.output(args).apply(a => getNodeClasses(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNodeClasses.
+ */
+export interface GetNodeClassesOutputArgs {
+    /**
+     * The PolarDB node class type by the user.
+     */
+    dbNodeClass?: pulumi.Input<string>;
+    /**
+     * Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
+     */
+    dbType?: pulumi.Input<string>;
+    /**
+     * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
+     */
+    dbVersion?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
+     */
+    payType: pulumi.Input<string>;
+    /**
+     * The Region to launch the PolarDB cluster.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The Zone to launch the PolarDB cluster.
+     */
+    zoneId?: pulumi.Input<string>;
 }

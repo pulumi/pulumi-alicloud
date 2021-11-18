@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(alicloud.dns.getAlidnsDomainGroups({
  *     ids: ["c5ef2bc43064445787adf182af2****"],
- * }, { async: true }));
+ * }));
  *
  * export const firstDomainGroupId = example.groups[0].id;
  * ```
@@ -46,12 +46,12 @@ export interface GetAlidnsDomainGroupsArgs {
     /**
      * A list of instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by the domain group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -76,4 +76,23 @@ export interface GetAlidnsDomainGroupsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getAlidnsDomainGroupsOutput(args?: GetAlidnsDomainGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsDomainGroupsResult> {
+    return pulumi.output(args).apply(a => getAlidnsDomainGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlidnsDomainGroups.
+ */
+export interface GetAlidnsDomainGroupsOutputArgs {
+    /**
+     * A list of instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by the domain group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

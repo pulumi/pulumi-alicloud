@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const defaultInstance = new alicloud.gpdb.Instance("defaultInstance", {
  *     vswitchId: defaultSwitch.id,
@@ -144,23 +144,23 @@ export interface ConnectionState {
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.
      */
-    readonly connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string>;
     /**
      * Connection instance string.
      */
-    readonly connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string>;
     /**
      * The Id of instance that can run database.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The ip address of connection string.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * Internet connection port. Valid value: [3200-3999]. Default to 3306.
      */
-    readonly port?: pulumi.Input<string>;
+    port?: pulumi.Input<string>;
 }
 
 /**
@@ -170,13 +170,13 @@ export interface ConnectionArgs {
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.
      */
-    readonly connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string>;
     /**
      * The Id of instance that can run database.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Internet connection port. Valid value: [3200-3999]. Default to 3306.
      */
-    readonly port?: pulumi.Input<string>;
+    port?: pulumi.Input<string>;
 }

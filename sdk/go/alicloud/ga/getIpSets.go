@@ -4,6 +4,9 @@
 package ga
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,72 @@ type GetIpSetsResult struct {
 	OutputFile *string        `pulumi:"outputFile"`
 	Sets       []GetIpSetsSet `pulumi:"sets"`
 	Status     *string        `pulumi:"status"`
+}
+
+func GetIpSetsOutput(ctx *pulumi.Context, args GetIpSetsOutputArgs, opts ...pulumi.InvokeOption) GetIpSetsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetIpSetsResult, error) {
+			args := v.(GetIpSetsArgs)
+			r, err := GetIpSets(ctx, &args, opts...)
+			return *r, err
+		}).(GetIpSetsResultOutput)
+}
+
+// A collection of arguments for invoking getIpSets.
+type GetIpSetsOutputArgs struct {
+	// The ID of the Global Accelerator (GA) instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// A list of Ip Set IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The status of the acceleration region.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetIpSetsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpSetsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getIpSets.
+type GetIpSetsResultOutput struct{ *pulumi.OutputState }
+
+func (GetIpSetsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpSetsResult)(nil)).Elem()
+}
+
+func (o GetIpSetsResultOutput) ToGetIpSetsResultOutput() GetIpSetsResultOutput {
+	return o
+}
+
+func (o GetIpSetsResultOutput) ToGetIpSetsResultOutputWithContext(ctx context.Context) GetIpSetsResultOutput {
+	return o
+}
+
+func (o GetIpSetsResultOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpSetsResult) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIpSetsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpSetsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetIpSetsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpSetsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIpSetsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIpSetsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetIpSetsResultOutput) Sets() GetIpSetsSetArrayOutput {
+	return o.ApplyT(func(v GetIpSetsResult) []GetIpSetsSet { return v.Sets }).(GetIpSetsSetArrayOutput)
+}
+
+func (o GetIpSetsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIpSetsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIpSetsResultOutput{})
 }

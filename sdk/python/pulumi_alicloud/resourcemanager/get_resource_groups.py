@@ -13,6 +13,7 @@ __all__ = [
     'GetResourceGroupsResult',
     'AwaitableGetResourceGroupsResult',
     'get_resource_groups',
+    'get_resource_groups_output',
 ]
 
 @pulumi.output_type
@@ -166,3 +167,34 @@ def get_resource_groups(enable_details: Optional[bool] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_resource_groups)
+def get_resource_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               status: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceGroupsResult]:
+    """
+    This data source provides resource groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.84.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_resource_groups(name_regex="tftest")
+    pulumi.export("firstResourceGroupId", example.groups[0].id)
+    ```
+
+
+    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+    :param Sequence[str] ids: A list of resource group IDs.
+    :param str name_regex: A regex string to filter results by resource group name.
+    :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+    """
+    ...

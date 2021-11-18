@@ -174,63 +174,63 @@ export interface AlarmState {
     /**
      * The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
      */
-    readonly alarmActions?: pulumi.Input<pulumi.Input<string>[]>;
+    alarmActions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
      */
-    readonly cloudMonitorGroupId?: pulumi.Input<number>;
+    cloudMonitorGroupId?: pulumi.Input<number>;
     /**
      * The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
      */
-    readonly comparisonOperator?: pulumi.Input<string>;
+    comparisonOperator?: pulumi.Input<string>;
     /**
      * The description for the alarm.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
      */
-    readonly dimensions?: pulumi.Input<{[key: string]: any}>;
+    dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
      * Whether to enable specific ess alarm. Default to true.
      */
-    readonly enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean>;
     /**
      * The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
      */
-    readonly evaluationCount?: pulumi.Input<number>;
+    evaluationCount?: pulumi.Input<number>;
     /**
      * The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
      */
-    readonly metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string>;
     /**
      * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
      */
-    readonly metricType?: pulumi.Input<string>;
+    metricType?: pulumi.Input<string>;
     /**
      * The name for ess alarm.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
      */
-    readonly scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string>;
     /**
      * The state of specified alarm.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
      */
-    readonly statistics?: pulumi.Input<string>;
+    statistics?: pulumi.Input<string>;
     /**
      * The value against which the specified statistics is compared.
      */
-    readonly threshold?: pulumi.Input<string>;
+    threshold?: pulumi.Input<string>;
 }
 
 /**
@@ -240,57 +240,57 @@ export interface AlarmArgs {
     /**
      * The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
      */
-    readonly alarmActions: pulumi.Input<pulumi.Input<string>[]>;
+    alarmActions: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
      */
-    readonly cloudMonitorGroupId?: pulumi.Input<number>;
+    cloudMonitorGroupId?: pulumi.Input<number>;
     /**
      * The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
      */
-    readonly comparisonOperator?: pulumi.Input<string>;
+    comparisonOperator?: pulumi.Input<string>;
     /**
      * The description for the alarm.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
      */
-    readonly dimensions?: pulumi.Input<{[key: string]: any}>;
+    dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
      * Whether to enable specific ess alarm. Default to true.
      */
-    readonly enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean>;
     /**
      * The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
      */
-    readonly evaluationCount?: pulumi.Input<number>;
+    evaluationCount?: pulumi.Input<number>;
     /**
      * The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
      */
-    readonly metricName: pulumi.Input<string>;
+    metricName: pulumi.Input<string>;
     /**
      * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
      */
-    readonly metricType?: pulumi.Input<string>;
+    metricType?: pulumi.Input<string>;
     /**
      * The name for ess alarm.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
      */
-    readonly scalingGroupId: pulumi.Input<string>;
+    scalingGroupId: pulumi.Input<string>;
     /**
      * The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
      */
-    readonly statistics?: pulumi.Input<string>;
+    statistics?: pulumi.Input<string>;
     /**
      * The value against which the specified statistics is compared.
      */
-    readonly threshold: pulumi.Input<string>;
+    threshold: pulumi.Input<string>;
 }

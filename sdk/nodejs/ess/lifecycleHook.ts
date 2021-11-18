@@ -120,31 +120,31 @@ export interface LifecycleHookState {
     /**
      * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
      */
-    readonly defaultResult?: pulumi.Input<string>;
+    defaultResult?: pulumi.Input<string>;
     /**
      * Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
      */
-    readonly heartbeatTimeout?: pulumi.Input<number>;
+    heartbeatTimeout?: pulumi.Input<number>;
     /**
      * Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
      */
-    readonly lifecycleTransition?: pulumi.Input<string>;
+    lifecycleTransition?: pulumi.Input<string>;
     /**
      * The name of the lifecycle hook, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is lifecycle hook id.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Arn of notification target.
      */
-    readonly notificationArn?: pulumi.Input<string>;
+    notificationArn?: pulumi.Input<string>;
     /**
      * Additional information that you want to include when Auto Scaling sends a message to the notification target.
      */
-    readonly notificationMetadata?: pulumi.Input<string>;
+    notificationMetadata?: pulumi.Input<string>;
     /**
      * The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
      */
-    readonly scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string>;
 }
 
 /**
@@ -154,29 +154,29 @@ export interface LifecycleHookArgs {
     /**
      * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
      */
-    readonly defaultResult?: pulumi.Input<string>;
+    defaultResult?: pulumi.Input<string>;
     /**
      * Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
      */
-    readonly heartbeatTimeout?: pulumi.Input<number>;
+    heartbeatTimeout?: pulumi.Input<number>;
     /**
      * Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
      */
-    readonly lifecycleTransition: pulumi.Input<string>;
+    lifecycleTransition: pulumi.Input<string>;
     /**
      * The name of the lifecycle hook, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is lifecycle hook id.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Arn of notification target.
      */
-    readonly notificationArn?: pulumi.Input<string>;
+    notificationArn?: pulumi.Input<string>;
     /**
      * Additional information that you want to include when Auto Scaling sends a message to the notification target.
      */
-    readonly notificationMetadata?: pulumi.Input<string>;
+    notificationMetadata?: pulumi.Input<string>;
     /**
      * The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
      */
-    readonly scalingGroupId: pulumi.Input<string>;
+    scalingGroupId: pulumi.Input<string>;
 }

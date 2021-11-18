@@ -4,6 +4,9 @@
 package brain
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,78 @@ type GetIndustrialPidOrganizationsResult struct {
 	Organizations        []GetIndustrialPidOrganizationsOrganization `pulumi:"organizations"`
 	OutputFile           *string                                     `pulumi:"outputFile"`
 	ParentOrganizationId *string                                     `pulumi:"parentOrganizationId"`
+}
+
+func GetIndustrialPidOrganizationsOutput(ctx *pulumi.Context, args GetIndustrialPidOrganizationsOutputArgs, opts ...pulumi.InvokeOption) GetIndustrialPidOrganizationsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetIndustrialPidOrganizationsResult, error) {
+			args := v.(GetIndustrialPidOrganizationsArgs)
+			r, err := GetIndustrialPidOrganizations(ctx, &args, opts...)
+			return *r, err
+		}).(GetIndustrialPidOrganizationsResultOutput)
+}
+
+// A collection of arguments for invoking getIndustrialPidOrganizations.
+type GetIndustrialPidOrganizationsOutputArgs struct {
+	// A list of Pid Organization IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Pid Organization name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The parent organization id.
+	ParentOrganizationId pulumi.StringPtrInput `pulumi:"parentOrganizationId"`
+}
+
+func (GetIndustrialPidOrganizationsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndustrialPidOrganizationsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getIndustrialPidOrganizations.
+type GetIndustrialPidOrganizationsResultOutput struct{ *pulumi.OutputState }
+
+func (GetIndustrialPidOrganizationsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndustrialPidOrganizationsResult)(nil)).Elem()
+}
+
+func (o GetIndustrialPidOrganizationsResultOutput) ToGetIndustrialPidOrganizationsResultOutput() GetIndustrialPidOrganizationsResultOutput {
+	return o
+}
+
+func (o GetIndustrialPidOrganizationsResultOutput) ToGetIndustrialPidOrganizationsResultOutputWithContext(ctx context.Context) GetIndustrialPidOrganizationsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIndustrialPidOrganizationsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidOrganizationsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetIndustrialPidOrganizationsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIndustrialPidOrganizationsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIndustrialPidOrganizationsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIndustrialPidOrganizationsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetIndustrialPidOrganizationsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIndustrialPidOrganizationsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIndustrialPidOrganizationsResultOutput) Organizations() GetIndustrialPidOrganizationsOrganizationArrayOutput {
+	return o.ApplyT(func(v GetIndustrialPidOrganizationsResult) []GetIndustrialPidOrganizationsOrganization {
+		return v.Organizations
+	}).(GetIndustrialPidOrganizationsOrganizationArrayOutput)
+}
+
+func (o GetIndustrialPidOrganizationsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIndustrialPidOrganizationsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetIndustrialPidOrganizationsResultOutput) ParentOrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIndustrialPidOrganizationsResult) *string { return v.ParentOrganizationId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIndustrialPidOrganizationsResultOutput{})
 }

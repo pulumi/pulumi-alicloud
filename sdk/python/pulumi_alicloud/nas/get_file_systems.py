@@ -13,6 +13,7 @@ __all__ = [
     'GetFileSystemsResult',
     'AwaitableGetFileSystemsResult',
     'get_file_systems',
+    'get_file_systems_output',
 ]
 
 @pulumi.output_type
@@ -174,3 +175,39 @@ def get_file_systems(description_regex: Optional[str] = None,
         protocol_type=__ret__.protocol_type,
         storage_type=__ret__.storage_type,
         systems=__ret__.systems)
+
+
+@_utilities.lift_output_func(get_file_systems)
+def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            protocol_type: Optional[pulumi.Input[Optional[str]]] = None,
+                            storage_type: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFileSystemsResult]:
+    """
+    This data source provides FileSystems available to the user.
+
+    > **NOTE**: Available in 1.35.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    fs = alicloud.nas.get_file_systems(description_regex=alicloud_nas_file_system["foo"]["description"],
+        protocol_type="NFS")
+    pulumi.export("alicloudNasFileSystemsId", fs.systems[0].id)
+    ```
+
+
+    :param str description_regex: A regex string to filter the results by the ：FileSystem description.
+    :param Sequence[str] ids: A list of FileSystemId.
+    :param str protocol_type: The protocol type of the file system.
+           Valid values:
+           `NFS`,
+           `SMB` (Available when the `file_system_type` is `standard`).
+    :param str storage_type: The storage type of the file system.
+           * Valid values:
+    """
+    ...

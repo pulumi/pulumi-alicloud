@@ -13,6 +13,7 @@ __all__ = [
     'GetNasBackupPlansResult',
     'AwaitableGetNasBackupPlansResult',
     'get_nas_backup_plans',
+    'get_nas_backup_plans_output',
 ]
 
 @pulumi.output_type
@@ -156,3 +157,36 @@ def get_nas_backup_plans(file_system_id: Optional[str] = None,
         output_file=__ret__.output_file,
         plans=__ret__.plans,
         vault_id=__ret__.vault_id)
+
+
+@_utilities.lift_output_func(get_nas_backup_plans)
+def get_nas_backup_plans_output(file_system_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                vault_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNasBackupPlansResult]:
+    """
+    This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_nas_backup_plans(name_regex="^my-NasBackupPlan")
+    pulumi.export("hbrNasBackupPlanId", ids.plans[0].id)
+    ```
+
+
+    :param str file_system_id: The File System ID of Nas.
+    :param Sequence[str] ids: A list of NasBackupPlan IDs.
+    :param str name_regex: A regex string to filter results by NasBackupPlan name.
+    :param str vault_id: The ID of backup vault.
+    """
+    ...

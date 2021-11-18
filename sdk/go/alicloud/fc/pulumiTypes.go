@@ -103,7 +103,7 @@ func (o AliasRoutingConfigOutput) ToAliasRoutingConfigPtrOutput() AliasRoutingCo
 }
 
 func (o AliasRoutingConfigOutput) ToAliasRoutingConfigPtrOutputWithContext(ctx context.Context) AliasRoutingConfigPtrOutput {
-	return o.ApplyT(func(v AliasRoutingConfig) *AliasRoutingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AliasRoutingConfig) *AliasRoutingConfig {
 		return &v
 	}).(AliasRoutingConfigPtrOutput)
 }
@@ -128,7 +128,13 @@ func (o AliasRoutingConfigPtrOutput) ToAliasRoutingConfigPtrOutputWithContext(ct
 }
 
 func (o AliasRoutingConfigPtrOutput) Elem() AliasRoutingConfigOutput {
-	return o.ApplyT(func(v *AliasRoutingConfig) AliasRoutingConfig { return *v }).(AliasRoutingConfigOutput)
+	return o.ApplyT(func(v *AliasRoutingConfig) AliasRoutingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AliasRoutingConfig
+		return ret
+	}).(AliasRoutingConfigOutput)
 }
 
 // A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
@@ -242,7 +248,7 @@ func (o CustomDomainCertConfigOutput) ToCustomDomainCertConfigPtrOutput() Custom
 }
 
 func (o CustomDomainCertConfigOutput) ToCustomDomainCertConfigPtrOutputWithContext(ctx context.Context) CustomDomainCertConfigPtrOutput {
-	return o.ApplyT(func(v CustomDomainCertConfig) *CustomDomainCertConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDomainCertConfig) *CustomDomainCertConfig {
 		return &v
 	}).(CustomDomainCertConfigPtrOutput)
 }
@@ -277,7 +283,13 @@ func (o CustomDomainCertConfigPtrOutput) ToCustomDomainCertConfigPtrOutputWithCo
 }
 
 func (o CustomDomainCertConfigPtrOutput) Elem() CustomDomainCertConfigOutput {
-	return o.ApplyT(func(v *CustomDomainCertConfig) CustomDomainCertConfig { return *v }).(CustomDomainCertConfigOutput)
+	return o.ApplyT(func(v *CustomDomainCertConfig) CustomDomainCertConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CustomDomainCertConfig
+		return ret
+	}).(CustomDomainCertConfigOutput)
 }
 
 // The name of the certificate, used to distinguish different certificates.
@@ -537,7 +549,7 @@ func (o FunctionAsyncInvokeConfigDestinationConfigOutput) ToFunctionAsyncInvokeC
 }
 
 func (o FunctionAsyncInvokeConfigDestinationConfigOutput) ToFunctionAsyncInvokeConfigDestinationConfigPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
-	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfig) *FunctionAsyncInvokeConfigDestinationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionAsyncInvokeConfigDestinationConfig) *FunctionAsyncInvokeConfigDestinationConfig {
 		return &v
 	}).(FunctionAsyncInvokeConfigDestinationConfigPtrOutput)
 }
@@ -572,7 +584,11 @@ func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) ToFunctionAsyncInvo
 
 func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) Elem() FunctionAsyncInvokeConfigDestinationConfigOutput {
 	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfig) FunctionAsyncInvokeConfigDestinationConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FunctionAsyncInvokeConfigDestinationConfig
+		return ret
 	}).(FunctionAsyncInvokeConfigDestinationConfigOutput)
 }
 
@@ -689,7 +705,7 @@ func (o FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput) ToFunctionAsy
 }
 
 func (o FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
-	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfigOnFailure) *FunctionAsyncInvokeConfigDestinationConfigOnFailure {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionAsyncInvokeConfigDestinationConfigOnFailure) *FunctionAsyncInvokeConfigDestinationConfigOnFailure {
 		return &v
 	}).(FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
 }
@@ -715,7 +731,11 @@ func (o FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput) ToFunction
 
 func (o FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput) Elem() FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput {
 	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfigOnFailure) FunctionAsyncInvokeConfigDestinationConfigOnFailure {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FunctionAsyncInvokeConfigDestinationConfigOnFailure
+		return ret
 	}).(FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput)
 }
 
@@ -822,7 +842,7 @@ func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput) ToFunctionAsy
 }
 
 func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
-	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfigOnSuccess) *FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionAsyncInvokeConfigDestinationConfigOnSuccess) *FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
 		return &v
 	}).(FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput)
 }
@@ -848,7 +868,11 @@ func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) ToFunction
 
 func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) Elem() FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput {
 	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfigOnSuccess) FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FunctionAsyncInvokeConfigDestinationConfigOnSuccess
+		return ret
 	}).(FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput)
 }
 
@@ -963,7 +987,7 @@ func (o FunctionCustomContainerConfigOutput) ToFunctionCustomContainerConfigPtrO
 }
 
 func (o FunctionCustomContainerConfigOutput) ToFunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) FunctionCustomContainerConfigPtrOutput {
-	return o.ApplyT(func(v FunctionCustomContainerConfig) *FunctionCustomContainerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionCustomContainerConfig) *FunctionCustomContainerConfig {
 		return &v
 	}).(FunctionCustomContainerConfigPtrOutput)
 }
@@ -998,7 +1022,13 @@ func (o FunctionCustomContainerConfigPtrOutput) ToFunctionCustomContainerConfigP
 }
 
 func (o FunctionCustomContainerConfigPtrOutput) Elem() FunctionCustomContainerConfigOutput {
-	return o.ApplyT(func(v *FunctionCustomContainerConfig) FunctionCustomContainerConfig { return *v }).(FunctionCustomContainerConfigOutput)
+	return o.ApplyT(func(v *FunctionCustomContainerConfig) FunctionCustomContainerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionCustomContainerConfig
+		return ret
+	}).(FunctionCustomContainerConfigOutput)
 }
 
 // The args field specifies the arguments passed to the command.
@@ -1128,7 +1158,7 @@ func (o ServiceLogConfigOutput) ToServiceLogConfigPtrOutput() ServiceLogConfigPt
 }
 
 func (o ServiceLogConfigOutput) ToServiceLogConfigPtrOutputWithContext(ctx context.Context) ServiceLogConfigPtrOutput {
-	return o.ApplyT(func(v ServiceLogConfig) *ServiceLogConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceLogConfig) *ServiceLogConfig {
 		return &v
 	}).(ServiceLogConfigPtrOutput)
 }
@@ -1158,7 +1188,13 @@ func (o ServiceLogConfigPtrOutput) ToServiceLogConfigPtrOutputWithContext(ctx co
 }
 
 func (o ServiceLogConfigPtrOutput) Elem() ServiceLogConfigOutput {
-	return o.ApplyT(func(v *ServiceLogConfig) ServiceLogConfig { return *v }).(ServiceLogConfigOutput)
+	return o.ApplyT(func(v *ServiceLogConfig) ServiceLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceLogConfig
+		return ret
+	}).(ServiceLogConfigOutput)
 }
 
 // The log store name of Alicloud Simple Log Service.
@@ -1282,7 +1318,7 @@ func (o ServiceNasConfigOutput) ToServiceNasConfigPtrOutput() ServiceNasConfigPt
 }
 
 func (o ServiceNasConfigOutput) ToServiceNasConfigPtrOutputWithContext(ctx context.Context) ServiceNasConfigPtrOutput {
-	return o.ApplyT(func(v ServiceNasConfig) *ServiceNasConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceNasConfig) *ServiceNasConfig {
 		return &v
 	}).(ServiceNasConfigPtrOutput)
 }
@@ -1317,7 +1353,13 @@ func (o ServiceNasConfigPtrOutput) ToServiceNasConfigPtrOutputWithContext(ctx co
 }
 
 func (o ServiceNasConfigPtrOutput) Elem() ServiceNasConfigOutput {
-	return o.ApplyT(func(v *ServiceNasConfig) ServiceNasConfig { return *v }).(ServiceNasConfigOutput)
+	return o.ApplyT(func(v *ServiceNasConfig) ServiceNasConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceNasConfig
+		return ret
+	}).(ServiceNasConfigOutput)
 }
 
 // The group id of your NAS file system.
@@ -1555,7 +1597,7 @@ func (o ServiceVpcConfigOutput) ToServiceVpcConfigPtrOutput() ServiceVpcConfigPt
 }
 
 func (o ServiceVpcConfigOutput) ToServiceVpcConfigPtrOutputWithContext(ctx context.Context) ServiceVpcConfigPtrOutput {
-	return o.ApplyT(func(v ServiceVpcConfig) *ServiceVpcConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceVpcConfig) *ServiceVpcConfig {
 		return &v
 	}).(ServiceVpcConfigPtrOutput)
 }
@@ -1589,7 +1631,13 @@ func (o ServiceVpcConfigPtrOutput) ToServiceVpcConfigPtrOutputWithContext(ctx co
 }
 
 func (o ServiceVpcConfigPtrOutput) Elem() ServiceVpcConfigOutput {
-	return o.ApplyT(func(v *ServiceVpcConfig) ServiceVpcConfig { return *v }).(ServiceVpcConfigOutput)
+	return o.ApplyT(func(v *ServiceVpcConfig) ServiceVpcConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceVpcConfig
+		return ret
+	}).(ServiceVpcConfigOutput)
 }
 
 // A security group ID associated with the Function Compute Service.
@@ -2337,7 +2385,7 @@ func (o GetFunctionsFunctionCustomContainerConfigOutput) ToGetFunctionsFunctionC
 }
 
 func (o GetFunctionsFunctionCustomContainerConfigOutput) ToGetFunctionsFunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionCustomContainerConfigPtrOutput {
-	return o.ApplyT(func(v GetFunctionsFunctionCustomContainerConfig) *GetFunctionsFunctionCustomContainerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetFunctionsFunctionCustomContainerConfig) *GetFunctionsFunctionCustomContainerConfig {
 		return &v
 	}).(GetFunctionsFunctionCustomContainerConfigPtrOutput)
 }
@@ -2373,7 +2421,11 @@ func (o GetFunctionsFunctionCustomContainerConfigPtrOutput) ToGetFunctionsFuncti
 
 func (o GetFunctionsFunctionCustomContainerConfigPtrOutput) Elem() GetFunctionsFunctionCustomContainerConfigOutput {
 	return o.ApplyT(func(v *GetFunctionsFunctionCustomContainerConfig) GetFunctionsFunctionCustomContainerConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GetFunctionsFunctionCustomContainerConfig
+		return ret
 	}).(GetFunctionsFunctionCustomContainerConfigOutput)
 }
 
@@ -3150,6 +3202,48 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AliasRoutingConfigInput)(nil)).Elem(), AliasRoutingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AliasRoutingConfigPtrInput)(nil)).Elem(), AliasRoutingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainCertConfigInput)(nil)).Elem(), CustomDomainCertConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainCertConfigPtrInput)(nil)).Elem(), CustomDomainCertConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainRouteConfigInput)(nil)).Elem(), CustomDomainRouteConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainRouteConfigArrayInput)(nil)).Elem(), CustomDomainRouteConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfigInput)(nil)).Elem(), FunctionAsyncInvokeConfigDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfigPtrInput)(nil)).Elem(), FunctionAsyncInvokeConfigDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfigOnFailureInput)(nil)).Elem(), FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrInput)(nil)).Elem(), FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfigOnSuccessInput)(nil)).Elem(), FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrInput)(nil)).Elem(), FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionCustomContainerConfigInput)(nil)).Elem(), FunctionCustomContainerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionCustomContainerConfigPtrInput)(nil)).Elem(), FunctionCustomContainerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLogConfigInput)(nil)).Elem(), ServiceLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLogConfigPtrInput)(nil)).Elem(), ServiceLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNasConfigInput)(nil)).Elem(), ServiceNasConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNasConfigPtrInput)(nil)).Elem(), ServiceNasConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNasConfigMountPointInput)(nil)).Elem(), ServiceNasConfigMountPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNasConfigMountPointArrayInput)(nil)).Elem(), ServiceNasConfigMountPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceVpcConfigInput)(nil)).Elem(), ServiceVpcConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceVpcConfigPtrInput)(nil)).Elem(), ServiceVpcConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainInput)(nil)).Elem(), GetCustomDomainsDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainArrayInput)(nil)).Elem(), GetCustomDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainCertConfigInput)(nil)).Elem(), GetCustomDomainsDomainCertConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainRouteConfigInput)(nil)).Elem(), GetCustomDomainsDomainRouteConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainRouteConfigArrayInput)(nil)).Elem(), GetCustomDomainsDomainRouteConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionInput)(nil)).Elem(), GetFunctionsFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionArrayInput)(nil)).Elem(), GetFunctionsFunctionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionCustomContainerConfigInput)(nil)).Elem(), GetFunctionsFunctionCustomContainerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionCustomContainerConfigPtrInput)(nil)).Elem(), GetFunctionsFunctionCustomContainerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceInput)(nil)).Elem(), GetServicesServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceArrayInput)(nil)).Elem(), GetServicesServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceLogConfigInput)(nil)).Elem(), GetServicesServiceLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceNasConfigInput)(nil)).Elem(), GetServicesServiceNasConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceNasConfigMountPointInput)(nil)).Elem(), GetServicesServiceNasConfigMountPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceNasConfigMountPointArrayInput)(nil)).Elem(), GetServicesServiceNasConfigMountPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceVpcConfigInput)(nil)).Elem(), GetServicesServiceVpcConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggersTriggerInput)(nil)).Elem(), GetTriggersTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggersTriggerArrayInput)(nil)).Elem(), GetTriggersTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(AliasRoutingConfigOutput{})
 	pulumi.RegisterOutputType(AliasRoutingConfigPtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainCertConfigOutput{})

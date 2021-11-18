@@ -12,6 +12,7 @@ __all__ = [
     'GetServiceResult',
     'AwaitableGetServiceResult',
     'get_service',
+    'get_service_output',
 ]
 
 @pulumi.output_type
@@ -96,3 +97,28 @@ def get_service(enable: Optional[str] = None,
         enable=__ret__.enable,
         id=__ret__.id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    """
+    Using this data source can open KMS service automatically. If the service has been opened, it will return opened.
+
+    For information about KMS and how to use it, see [What is KMS](https://help.aliyun.com/document_detail/186020.html).
+
+    > **NOTE:** Available in v1.108.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.kms.get_service(enable="On")
+    ```
+
+
+    :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+    """
+    ...

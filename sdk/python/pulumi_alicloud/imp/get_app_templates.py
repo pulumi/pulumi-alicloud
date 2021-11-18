@@ -13,6 +13,7 @@ __all__ = [
     'GetAppTemplatesResult',
     'AwaitableGetAppTemplatesResult',
     'get_app_templates',
+    'get_app_templates_output',
 ]
 
 @pulumi.output_type
@@ -145,3 +146,36 @@ def get_app_templates(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         templates=__ret__.templates)
+
+
+@_utilities.lift_output_func(get_app_templates)
+def get_app_templates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             status: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppTemplatesResult]:
+    """
+    This data source provides the Imp App Templates of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.137.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.imp.get_app_templates()
+    pulumi.export("impAppTemplateId1", ids.templates[0].id)
+    name_regex = alicloud.imp.get_app_templates(name_regex="^my_AppTemplate")
+    pulumi.export("impAppTemplateId2", name_regex.templates[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of App Template IDs.
+    :param str name_regex: A regex string to filter results by App Template name.
+    :param str status: Application template usage status.
+    """
+    ...

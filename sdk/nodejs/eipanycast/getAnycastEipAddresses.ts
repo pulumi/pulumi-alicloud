@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstEipanycastAnycastEipAddressId = example.then(example => example.addresses[0].id);
+ * export const firstEipanycastAnycastEipAddressId = example.then(example => example.addresses?[0]?.id);
  * ```
  */
 export function getAnycastEipAddresses(args?: GetAnycastEipAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetAnycastEipAddressesResult> {
@@ -56,44 +56,44 @@ export interface GetAnycastEipAddressesArgs {
     /**
      * Anycast EIP instance name.
      */
-    readonly anycastEipAddressName?: string;
+    anycastEipAddressName?: string;
     /**
      * The bind instance ids.
      */
-    readonly bindInstanceIds?: string[];
+    bindInstanceIds?: string[];
     /**
      * The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
      */
-    readonly businessStatus?: string;
+    businessStatus?: string;
     /**
      * A list of Anycast Eip Address IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
      */
-    readonly internetChargeType?: string;
+    internetChargeType?: string;
     /**
      * Anycast EIP instance IP address.
      */
-    readonly ipAddress?: string;
+    ipAddress?: string;
     /**
      * A regex string to filter results by Anycast Eip Address name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
      */
-    readonly paymentType?: string;
+    paymentType?: string;
     /**
      * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
      */
-    readonly serviceLocation?: string;
+    serviceLocation?: string;
     /**
      * IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -117,4 +117,55 @@ export interface GetAnycastEipAddressesResult {
     readonly paymentType?: string;
     readonly serviceLocation?: string;
     readonly status?: string;
+}
+
+export function getAnycastEipAddressesOutput(args?: GetAnycastEipAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAnycastEipAddressesResult> {
+    return pulumi.output(args).apply(a => getAnycastEipAddresses(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAnycastEipAddresses.
+ */
+export interface GetAnycastEipAddressesOutputArgs {
+    /**
+     * Anycast EIP instance name.
+     */
+    anycastEipAddressName?: pulumi.Input<string>;
+    /**
+     * The bind instance ids.
+     */
+    bindInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
+     */
+    businessStatus?: pulumi.Input<string>;
+    /**
+     * A list of Anycast Eip Address IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
+     */
+    internetChargeType?: pulumi.Input<string>;
+    /**
+     * Anycast EIP instance IP address.
+     */
+    ipAddress?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Anycast Eip Address name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+     */
+    serviceLocation?: pulumi.Input<string>;
+    /**
+     * IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+     */
+    status?: pulumi.Input<string>;
 }

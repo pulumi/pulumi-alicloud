@@ -13,6 +13,7 @@ __all__ = [
     'GetAccountsResult',
     'AwaitableGetAccountsResult',
     'get_accounts',
+    'get_accounts_output',
 ]
 
 @pulumi.output_type
@@ -140,3 +141,32 @@ def get_accounts(enable_details: Optional[bool] = None,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_accounts)
+def get_accounts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
+    """
+    This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
+
+    > **NOTE:**  Available in 1.86.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.resourcemanager.get_accounts()
+    pulumi.export("firstAccountId", default.accounts[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of account IDs.
+    :param str status: The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+    """
+    ...

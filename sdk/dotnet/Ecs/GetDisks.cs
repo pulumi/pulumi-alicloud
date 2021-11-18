@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Ecs
     {
         public static Task<GetDisksResult> InvokeAsync(GetDisksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksArgs(), options.WithVersion());
+
+        public static Output<GetDisksResult> Invoke(GetDisksInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksInvokeArgs(), options.WithVersion());
     }
 
 
@@ -175,6 +179,169 @@ namespace Pulumi.AliCloud.Ecs
         public string? ZoneId { get; set; }
 
         public GetDisksArgs()
+        {
+        }
+    }
+
+    public sealed class GetDisksInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("additionalAttributes")]
+        private InputList<string>? _additionalAttributes;
+        public InputList<string> AdditionalAttributes
+        {
+            get => _additionalAttributes ?? (_additionalAttributes = new InputList<string>());
+            set => _additionalAttributes = value;
+        }
+
+        [Input("autoSnapshotPolicyId")]
+        public Input<string>? AutoSnapshotPolicyId { get; set; }
+
+        /// <summary>
+        /// Availability zone of the disk.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
+        [Input("deleteAutoSnapshot")]
+        public Input<bool>? DeleteAutoSnapshot { get; set; }
+
+        [Input("deleteWithInstance")]
+        public Input<bool>? DeleteWithInstance { get; set; }
+
+        [Input("diskName")]
+        public Input<string>? DiskName { get; set; }
+
+        [Input("diskType")]
+        public Input<string>? DiskType { get; set; }
+
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        [Input("enableAutoSnapshot")]
+        public Input<bool>? EnableAutoSnapshot { get; set; }
+
+        [Input("enableAutomatedSnapshotPolicy")]
+        public Input<bool>? EnableAutomatedSnapshotPolicy { get; set; }
+
+        [Input("enableShared")]
+        public Input<bool>? EnableShared { get; set; }
+
+        /// <summary>
+        /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+        /// </summary>
+        [Input("encrypted")]
+        public Input<string>? Encrypted { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of disks IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Filter the results by the specified ECS instance ID.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by disk name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("operationLocks")]
+        private InputList<Inputs.GetDisksOperationLockInputArgs>? _operationLocks;
+        public InputList<Inputs.GetDisksOperationLockInputArgs> OperationLocks
+        {
+            get => _operationLocks ?? (_operationLocks = new InputList<Inputs.GetDisksOperationLockInputArgs>());
+            set => _operationLocks = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        [Input("portable")]
+        public Input<bool>? Portable { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which the disk belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        /// </summary>
+        [Input("snapshotId")]
+        public Input<string>? SnapshotId { get; set; }
+
+        /// <summary>
+        /// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the disks. It must be in the format:
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var disksDs = Output.Create(AliCloud.Ecs.GetDisks.InvokeAsync(new AliCloud.Ecs.GetDisksArgs
+        ///         {
+        ///             Tags = 
+        ///             {
+        ///                 { "tagKey1", "tagValue1" },
+        ///                 { "tagKey2", "tagValue2" },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Disk type. Possible values: `system` and `data`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetDisksInvokeArgs()
         {
         }
     }

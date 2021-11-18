@@ -184,67 +184,67 @@ export interface ApiState {
     /**
      * The ID of the api of api gateway.
      */
-    readonly apiId?: pulumi.Input<string>;
+    apiId?: pulumi.Input<string>;
     /**
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      */
-    readonly authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string>;
     /**
      * constant_parameters defines the constant parameters of the api.
      */
-    readonly constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[]>;
+    constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[]>;
     /**
      * The description of Constant parameter.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * fc_service_config defines the config when serviceType selected 'FunctionCompute'.
      */
-    readonly fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig>;
+    fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig>;
     /**
      * Whether to prevent API replay attack. Default value: `false`.
      */
-    readonly forceNonceCheck?: pulumi.Input<boolean>;
+    forceNonceCheck?: pulumi.Input<boolean>;
     /**
      * The api gateway that the api belongs to. Defaults to null.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * http_service_config defines the config when serviceType selected 'HTTP'.
      */
-    readonly httpServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpServiceConfig>;
+    httpServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpServiceConfig>;
     /**
      * http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
      */
-    readonly httpVpcServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpVpcServiceConfig>;
+    httpVpcServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpVpcServiceConfig>;
     /**
      * http_service_config defines the config when serviceType selected 'MOCK'.
      */
-    readonly mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
+    mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
     /**
      * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Request_config defines how users can send requests to your API.
      */
-    readonly requestConfig?: pulumi.Input<inputs.apigateway.ApiRequestConfig>;
+    requestConfig?: pulumi.Input<inputs.apigateway.ApiRequestConfig>;
     /**
      * request_parameters defines the request parameters of the api.
      */
-    readonly requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[]>;
+    requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[]>;
     /**
      * The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
      */
-    readonly serviceType?: pulumi.Input<string>;
+    serviceType?: pulumi.Input<string>;
     /**
      * Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
      */
-    readonly stageNames?: pulumi.Input<pulumi.Input<string>[]>;
+    stageNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * system_parameters defines the system parameters of the api.
      */
-    readonly systemParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiSystemParameter>[]>;
+    systemParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiSystemParameter>[]>;
 }
 
 /**
@@ -254,61 +254,61 @@ export interface ApiArgs {
     /**
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      */
-    readonly authType: pulumi.Input<string>;
+    authType: pulumi.Input<string>;
     /**
      * constant_parameters defines the constant parameters of the api.
      */
-    readonly constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[]>;
+    constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[]>;
     /**
      * The description of Constant parameter.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * fc_service_config defines the config when serviceType selected 'FunctionCompute'.
      */
-    readonly fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig>;
+    fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig>;
     /**
      * Whether to prevent API replay attack. Default value: `false`.
      */
-    readonly forceNonceCheck?: pulumi.Input<boolean>;
+    forceNonceCheck?: pulumi.Input<boolean>;
     /**
      * The api gateway that the api belongs to. Defaults to null.
      */
-    readonly groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
     /**
      * http_service_config defines the config when serviceType selected 'HTTP'.
      */
-    readonly httpServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpServiceConfig>;
+    httpServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpServiceConfig>;
     /**
      * http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
      */
-    readonly httpVpcServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpVpcServiceConfig>;
+    httpVpcServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpVpcServiceConfig>;
     /**
      * http_service_config defines the config when serviceType selected 'MOCK'.
      */
-    readonly mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
+    mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
     /**
      * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Request_config defines how users can send requests to your API.
      */
-    readonly requestConfig: pulumi.Input<inputs.apigateway.ApiRequestConfig>;
+    requestConfig: pulumi.Input<inputs.apigateway.ApiRequestConfig>;
     /**
      * request_parameters defines the request parameters of the api.
      */
-    readonly requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[]>;
+    requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[]>;
     /**
      * The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
      */
-    readonly serviceType: pulumi.Input<string>;
+    serviceType: pulumi.Input<string>;
     /**
      * Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
      */
-    readonly stageNames?: pulumi.Input<pulumi.Input<string>[]>;
+    stageNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * system_parameters defines the system parameters of the api.
      */
-    readonly systemParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiSystemParameter>[]>;
+    systemParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiSystemParameter>[]>;
 }

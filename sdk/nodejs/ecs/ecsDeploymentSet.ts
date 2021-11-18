@@ -131,27 +131,27 @@ export interface EcsDeploymentSetState {
     /**
      * The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      */
-    readonly deploymentSetName?: pulumi.Input<string>;
+    deploymentSetName?: pulumi.Input<string>;
     /**
      * The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The deployment domain. Valid values: `Default`.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The deployment granularity. Valid values: `Host`.
      */
-    readonly granularity?: pulumi.Input<string>;
+    granularity?: pulumi.Input<string>;
     /**
      * The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
      */
-    readonly onUnableToRedeployFailedInstance?: pulumi.Input<string>;
+    onUnableToRedeployFailedInstance?: pulumi.Input<string>;
     /**
      * The deployment strategy. Valid values: `Availability`.
      */
-    readonly strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string>;
 }
 
 /**
@@ -161,25 +161,25 @@ export interface EcsDeploymentSetArgs {
     /**
      * The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      */
-    readonly deploymentSetName?: pulumi.Input<string>;
+    deploymentSetName?: pulumi.Input<string>;
     /**
      * The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The deployment domain. Valid values: `Default`.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The deployment granularity. Valid values: `Host`.
      */
-    readonly granularity?: pulumi.Input<string>;
+    granularity?: pulumi.Input<string>;
     /**
      * The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
      */
-    readonly onUnableToRedeployFailedInstance?: pulumi.Input<string>;
+    onUnableToRedeployFailedInstance?: pulumi.Input<string>;
     /**
      * The deployment strategy. Valid values: `Availability`.
      */
-    readonly strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string>;
 }

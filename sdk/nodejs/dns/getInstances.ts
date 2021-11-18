@@ -27,14 +27,14 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesArgs {
-    readonly domainType?: string;
+    domainType?: string;
     /**
      * A list of instance IDs.
      */
-    readonly ids?: string[];
-    readonly lang?: string;
-    readonly outputFile?: string;
-    readonly userClientIp?: string;
+    ids?: string[];
+    lang?: string;
+    outputFile?: string;
+    userClientIp?: string;
 }
 
 /**
@@ -57,4 +57,22 @@ export interface GetInstancesResult {
     readonly lang?: string;
     readonly outputFile?: string;
     readonly userClientIp?: string;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    domainType?: pulumi.Input<string>;
+    /**
+     * A list of instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    lang?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string>;
 }

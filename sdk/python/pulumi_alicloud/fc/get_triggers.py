@@ -13,6 +13,7 @@ __all__ = [
     'GetTriggersResult',
     'AwaitableGetTriggersResult',
     'get_triggers',
+    'get_triggers_output',
 ]
 
 @pulumi.output_type
@@ -163,3 +164,34 @@ def get_triggers(function_name: Optional[str] = None,
         output_file=__ret__.output_file,
         service_name=__ret__.service_name,
         triggers=__ret__.triggers)
+
+
+@_utilities.lift_output_func(get_triggers)
+def get_triggers_output(function_name: Optional[pulumi.Input[str]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        service_name: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTriggersResult]:
+    """
+    This data source provides the Function Compute triggers of the current Alibaba Cloud user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    fc_triggers_ds = alicloud.fc.get_triggers(function_name="sample_function",
+        name_regex="sample_fc_trigger",
+        service_name="sample_service")
+    pulumi.export("firstFcTriggerName", fc_triggers_ds.triggers[0].name)
+    ```
+
+
+    :param str function_name: FC function name.
+    :param Sequence[str] ids: - A list of FC triggers ids.
+    :param str name_regex: A regex string to filter results by FC trigger name.
+    :param str service_name: FC service name.
+    """
+    ...

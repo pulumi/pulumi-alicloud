@@ -14,6 +14,7 @@ __all__ = [
     'GetApplicationInfosResult',
     'AwaitableGetApplicationInfosResult',
     'get_application_infos',
+    'get_application_infos_output',
 ]
 
 @pulumi.output_type
@@ -175,3 +176,20 @@ def get_application_infos(dimensions: Optional[Sequence[pulumi.InputType['GetApp
         quota_action_code=__ret__.quota_action_code,
         quota_category=__ret__.quota_category,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_application_infos)
+def get_application_infos_output(dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetApplicationInfosDimensionArgs']]]]] = None,
+                                 enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                 ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                 key_word: Optional[pulumi.Input[Optional[str]]] = None,
+                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                 product_code: Optional[pulumi.Input[str]] = None,
+                                 quota_action_code: Optional[pulumi.Input[Optional[str]]] = None,
+                                 quota_category: Optional[pulumi.Input[Optional[str]]] = None,
+                                 status: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationInfosResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

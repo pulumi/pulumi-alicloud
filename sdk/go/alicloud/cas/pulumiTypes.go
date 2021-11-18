@@ -502,6 +502,10 @@ func (o GetServiceCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateInput)(nil)).Elem(), GetCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateArrayInput)(nil)).Elem(), GetCertificatesCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceCertificatesCertificateInput)(nil)).Elem(), GetServiceCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceCertificatesCertificateArrayInput)(nil)).Elem(), GetServiceCertificatesCertificateArray{})
 	pulumi.RegisterOutputType(GetCertificatesCertificateOutput{})
 	pulumi.RegisterOutputType(GetCertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceCertificatesCertificateOutput{})

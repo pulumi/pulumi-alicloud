@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Cen
         ///         {
         ///             InstanceId = "cen-o40h17ll9w********",
         ///         }));
-        ///         this.TheFirstAttachmentedInstanceId = example.Apply(example =&gt; example.Attachments[0].ChildInstanceId);
+        ///         this.TheFirstAttachmentedInstanceId = example.Apply(example =&gt; example.Attachments?[0]?.ChildInstanceId);
         ///     }
         /// 
         ///     [Output("theFirstAttachmentedInstanceId")]
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetInstanceAttachmentsResult> InvokeAsync(GetInstanceAttachmentsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentsResult>("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides Cen Instance Attachments of the current Alibaba Cloud User.
+        /// 
+        /// &gt; **NOTE:** Available in v1.97.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cen.GetInstanceAttachments.InvokeAsync(new AliCloud.Cen.GetInstanceAttachmentsArgs
+        ///         {
+        ///             InstanceId = "cen-o40h17ll9w********",
+        ///         }));
+        ///         this.TheFirstAttachmentedInstanceId = example.Apply(example =&gt; example.Attachments?[0]?.ChildInstanceId);
+        ///     }
+        /// 
+        ///     [Output("theFirstAttachmentedInstanceId")]
+        ///     public Output&lt;string&gt; TheFirstAttachmentedInstanceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceAttachmentsResult> Invoke(GetInstanceAttachmentsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceAttachmentsResult>("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -77,6 +112,40 @@ namespace Pulumi.AliCloud.Cen
         public string? Status { get; set; }
 
         public GetInstanceAttachmentsArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceAttachmentsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The region to which the network to be queried belongs.
+        /// </summary>
+        [Input("childInstanceRegionId")]
+        public Input<string>? ChildInstanceRegionId { get; set; }
+
+        /// <summary>
+        /// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+        /// </summary>
+        [Input("childInstanceType")]
+        public Input<string>? ChildInstanceType { get; set; }
+
+        /// <summary>
+        /// The ID of the CEN instance.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetInstanceAttachmentsInvokeArgs()
         {
         }
     }

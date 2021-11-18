@@ -13,6 +13,7 @@ __all__ = [
     'GetKeyVersionsResult',
     'AwaitableGetKeyVersionsResult',
     'get_key_versions',
+    'get_key_versions_output',
 ]
 
 @pulumi.output_type
@@ -128,3 +129,31 @@ def get_key_versions(ids: Optional[Sequence[str]] = None,
         key_id=__ret__.key_id,
         output_file=__ret__.output_file,
         versions=__ret__.versions)
+
+
+@_utilities.lift_output_func(get_key_versions)
+def get_key_versions_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            key_id: Optional[pulumi.Input[str]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyVersionsResult]:
+    """
+    This data source provides a list of KMS KeyVersions in an Alibaba Cloud account according to the specified filters.
+
+    > NOTE: Available in v1.85.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    alicloud_kms_key_versions_ds = alicloud.kms.get_key_versions(ids=["d89e8a53-b708-41aa-8c67-6873axxx"],
+        key_id="08438c-b4d5-4d05-928c-07b7xxxx")
+    pulumi.export("allVersions", alicloud_kms_key_versions_ds.versions)
+    ```
+
+
+    :param Sequence[str] ids: A list of KMS KeyVersion IDs.
+    :param str key_id: The id of kms key.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetEipAddressesResult',
     'AwaitableGetEipAddressesResult',
     'get_eip_addresses',
+    'get_eip_addresses_output',
 ]
 
 @pulumi.output_type
@@ -343,3 +344,62 @@ def get_eip_addresses(address_name: Optional[str] = None,
         segment_instance_id=__ret__.segment_instance_id,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_eip_addresses)
+def get_eip_addresses_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             associated_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             associated_instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                             dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
+                             enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             include_reservation_data: Optional[pulumi.Input[Optional[bool]]] = None,
+                             ip_address: Optional[pulumi.Input[Optional[str]]] = None,
+                             ip_addresses: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             isp: Optional[pulumi.Input[Optional[str]]] = None,
+                             lock_reason: Optional[pulumi.Input[Optional[str]]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             payment_type: Optional[pulumi.Input[Optional[str]]] = None,
+                             resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             segment_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             status: Optional[pulumi.Input[Optional[str]]] = None,
+                             tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEipAddressesResult]:
+    """
+    This data source provides the Eip Addresses of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.126.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ecs.get_eip_addresses(ids=["eip-bp1jvx5ki6c********"],
+        name_regex="the_resource_name")
+    pulumi.export("firstEipAddressId", example.addresses[0].id)
+    ```
+
+
+    :param str address_name: The name of the EIP.
+    :param str associated_instance_id: The associated instance id.
+    :param str associated_instance_type: The associated instance type.
+    :param bool dry_run: The dry run.
+    :param bool enable_details: Default to `tue`. Set it to `false` can hidden the `tags` to output.
+    :param Sequence[str] ids: A list of Address IDs.
+    :param bool include_reservation_data: The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+    :param str ip_address: The IP address of the EIP.
+    :param str isp: The Internet service provider (ISP).
+    :param str lock_reason: The lock reason.
+    :param str name_regex: A regex string to filter results by Address name.
+    :param str payment_type: The billing method of the EIP.
+    :param str resource_group_id: The ID of the resource group.
+    :param str segment_instance_id: The IDs of the contiguous EIPs.
+    :param str status: The status of the EIP.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    ...

@@ -268,7 +268,7 @@ type CommonBandwithPackageArrayInput interface {
 type CommonBandwithPackageArray []CommonBandwithPackageInput
 
 func (CommonBandwithPackageArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CommonBandwithPackage)(nil))
+	return reflect.TypeOf((*[]*CommonBandwithPackage)(nil)).Elem()
 }
 
 func (i CommonBandwithPackageArray) ToCommonBandwithPackageArrayOutput() CommonBandwithPackageArrayOutput {
@@ -293,7 +293,7 @@ type CommonBandwithPackageMapInput interface {
 type CommonBandwithPackageMap map[string]CommonBandwithPackageInput
 
 func (CommonBandwithPackageMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CommonBandwithPackage)(nil))
+	return reflect.TypeOf((*map[string]*CommonBandwithPackage)(nil)).Elem()
 }
 
 func (i CommonBandwithPackageMap) ToCommonBandwithPackageMapOutput() CommonBandwithPackageMapOutput {
@@ -304,9 +304,7 @@ func (i CommonBandwithPackageMap) ToCommonBandwithPackageMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageMapOutput)
 }
 
-type CommonBandwithPackageOutput struct {
-	*pulumi.OutputState
-}
+type CommonBandwithPackageOutput struct{ *pulumi.OutputState }
 
 func (CommonBandwithPackageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CommonBandwithPackage)(nil))
@@ -325,14 +323,12 @@ func (o CommonBandwithPackageOutput) ToCommonBandwithPackagePtrOutput() CommonBa
 }
 
 func (o CommonBandwithPackageOutput) ToCommonBandwithPackagePtrOutputWithContext(ctx context.Context) CommonBandwithPackagePtrOutput {
-	return o.ApplyT(func(v CommonBandwithPackage) *CommonBandwithPackage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonBandwithPackage) *CommonBandwithPackage {
 		return &v
 	}).(CommonBandwithPackagePtrOutput)
 }
 
-type CommonBandwithPackagePtrOutput struct {
-	*pulumi.OutputState
-}
+type CommonBandwithPackagePtrOutput struct{ *pulumi.OutputState }
 
 func (CommonBandwithPackagePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CommonBandwithPackage)(nil))
@@ -344,6 +340,16 @@ func (o CommonBandwithPackagePtrOutput) ToCommonBandwithPackagePtrOutput() Commo
 
 func (o CommonBandwithPackagePtrOutput) ToCommonBandwithPackagePtrOutputWithContext(ctx context.Context) CommonBandwithPackagePtrOutput {
 	return o
+}
+
+func (o CommonBandwithPackagePtrOutput) Elem() CommonBandwithPackageOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) CommonBandwithPackage {
+		if v != nil {
+			return *v
+		}
+		var ret CommonBandwithPackage
+		return ret
+	}).(CommonBandwithPackageOutput)
 }
 
 type CommonBandwithPackageArrayOutput struct{ *pulumi.OutputState }
@@ -387,6 +393,10 @@ func (o CommonBandwithPackageMapOutput) MapIndex(k pulumi.StringInput) CommonBan
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonBandwithPackageInput)(nil)).Elem(), &CommonBandwithPackage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonBandwithPackagePtrInput)(nil)).Elem(), &CommonBandwithPackage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonBandwithPackageArrayInput)(nil)).Elem(), CommonBandwithPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonBandwithPackageMapInput)(nil)).Elem(), CommonBandwithPackageMap{})
 	pulumi.RegisterOutputType(CommonBandwithPackageOutput{})
 	pulumi.RegisterOutputType(CommonBandwithPackagePtrOutput{})
 	pulumi.RegisterOutputType(CommonBandwithPackageArrayOutput{})

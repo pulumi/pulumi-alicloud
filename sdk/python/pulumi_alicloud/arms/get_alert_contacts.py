@@ -13,6 +13,7 @@ __all__ = [
     'GetAlertContactsResult',
     'AwaitableGetAlertContactsResult',
     'get_alert_contacts',
+    'get_alert_contacts_output',
 ]
 
 @pulumi.output_type
@@ -171,3 +172,40 @@ def get_alert_contacts(alert_contact_name: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         phone_num=__ret__.phone_num)
+
+
+@_utilities.lift_output_func(get_alert_contacts)
+def get_alert_contacts_output(alert_contact_name: Optional[pulumi.Input[Optional[str]]] = None,
+                              email: Optional[pulumi.Input[Optional[str]]] = None,
+                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              phone_num: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlertContactsResult]:
+    """
+    This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.129.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.arms.get_alert_contacts()
+    pulumi.export("armsAlertContactId1", ids.contacts[0].id)
+    name_regex = alicloud.arms.get_alert_contacts(name_regex="^my-AlertContact")
+    pulumi.export("armsAlertContactId2", name_regex.contacts[0].id)
+    ```
+
+
+    :param str alert_contact_name: The name of the alert contact.
+    :param str email: The email address of the alert contact.
+    :param Sequence[str] ids: A list of Alert Contact IDs.
+    :param str name_regex: A regex string to filter results by Alert Contact name.
+    :param str phone_num: The mobile number of the alert contact.
+    """
+    ...

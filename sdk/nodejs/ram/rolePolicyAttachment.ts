@@ -156,15 +156,15 @@ export interface RolePolicyAttachmentState {
     /**
      * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    readonly policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string>;
     /**
      * Type of the RAM policy. It must be `Custom` or `System`.
      */
-    readonly policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string>;
     /**
      * Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */
-    readonly roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string>;
 }
 
 /**
@@ -174,13 +174,13 @@ export interface RolePolicyAttachmentArgs {
     /**
      * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    readonly policyName: pulumi.Input<string>;
+    policyName: pulumi.Input<string>;
     /**
      * Type of the RAM policy. It must be `Custom` or `System`.
      */
-    readonly policyType: pulumi.Input<string>;
+    policyType: pulumi.Input<string>;
     /**
      * Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */
-    readonly roleName: pulumi.Input<string>;
+    roleName: pulumi.Input<string>;
 }

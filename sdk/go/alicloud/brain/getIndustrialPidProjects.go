@@ -4,6 +4,9 @@
 package brain
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,82 @@ type GetIndustrialPidProjectsResult struct {
 	PidOrganizationId *string                           `pulumi:"pidOrganizationId"`
 	PidProjectName    *string                           `pulumi:"pidProjectName"`
 	Projects          []GetIndustrialPidProjectsProject `pulumi:"projects"`
+}
+
+func GetIndustrialPidProjectsOutput(ctx *pulumi.Context, args GetIndustrialPidProjectsOutputArgs, opts ...pulumi.InvokeOption) GetIndustrialPidProjectsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetIndustrialPidProjectsResult, error) {
+			args := v.(GetIndustrialPidProjectsArgs)
+			r, err := GetIndustrialPidProjects(ctx, &args, opts...)
+			return *r, err
+		}).(GetIndustrialPidProjectsResultOutput)
+}
+
+// A collection of arguments for invoking getIndustrialPidProjects.
+type GetIndustrialPidProjectsOutputArgs struct {
+	// A list of Pid Project IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Pid Project name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of Pid Organization.
+	PidOrganizationId pulumi.StringPtrInput `pulumi:"pidOrganizationId"`
+	// The name of Pid Project.
+	PidProjectName pulumi.StringPtrInput `pulumi:"pidProjectName"`
+}
+
+func (GetIndustrialPidProjectsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndustrialPidProjectsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getIndustrialPidProjects.
+type GetIndustrialPidProjectsResultOutput struct{ *pulumi.OutputState }
+
+func (GetIndustrialPidProjectsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndustrialPidProjectsResult)(nil)).Elem()
+}
+
+func (o GetIndustrialPidProjectsResultOutput) ToGetIndustrialPidProjectsResultOutput() GetIndustrialPidProjectsResultOutput {
+	return o
+}
+
+func (o GetIndustrialPidProjectsResultOutput) ToGetIndustrialPidProjectsResultOutputWithContext(ctx context.Context) GetIndustrialPidProjectsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIndustrialPidProjectsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidProjectsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetIndustrialPidProjectsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIndustrialPidProjectsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIndustrialPidProjectsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIndustrialPidProjectsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetIndustrialPidProjectsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIndustrialPidProjectsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIndustrialPidProjectsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIndustrialPidProjectsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetIndustrialPidProjectsResultOutput) PidOrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIndustrialPidProjectsResult) *string { return v.PidOrganizationId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetIndustrialPidProjectsResultOutput) PidProjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIndustrialPidProjectsResult) *string { return v.PidProjectName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetIndustrialPidProjectsResultOutput) Projects() GetIndustrialPidProjectsProjectArrayOutput {
+	return o.ApplyT(func(v GetIndustrialPidProjectsResult) []GetIndustrialPidProjectsProject { return v.Projects }).(GetIndustrialPidProjectsProjectArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIndustrialPidProjectsResultOutput{})
 }

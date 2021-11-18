@@ -237,67 +237,67 @@ export interface EndpointGroupState {
     /**
      * The ID of the Global Accelerator instance to which the endpoint group will be added.
      */
-    readonly acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string>;
     /**
      * The description of the endpoint group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The endpointConfigurations of the endpoint group.
      */
-    readonly endpointConfigurations?: pulumi.Input<pulumi.Input<inputs.ga.EndpointGroupEndpointConfiguration>[]>;
+    endpointConfigurations?: pulumi.Input<pulumi.Input<inputs.ga.EndpointGroupEndpointConfiguration>[]>;
     /**
      * The ID of the region where the endpoint group is deployed.
      */
-    readonly endpointGroupRegion?: pulumi.Input<string>;
+    endpointGroupRegion?: pulumi.Input<string>;
     /**
      * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
      */
-    readonly endpointGroupType?: pulumi.Input<string>;
+    endpointGroupType?: pulumi.Input<string>;
     /**
      * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
      */
-    readonly endpointRequestProtocol?: pulumi.Input<string>;
+    endpointRequestProtocol?: pulumi.Input<string>;
     /**
      * The interval between two consecutive health checks. Unit: seconds.
      */
-    readonly healthCheckIntervalSeconds?: pulumi.Input<number>;
+    healthCheckIntervalSeconds?: pulumi.Input<number>;
     /**
      * The path specified as the destination of the targets for health checks.
      */
-    readonly healthCheckPath?: pulumi.Input<string>;
+    healthCheckPath?: pulumi.Input<string>;
     /**
      * The port that is used for health checks.
      */
-    readonly healthCheckPort?: pulumi.Input<number>;
+    healthCheckPort?: pulumi.Input<number>;
     /**
      * The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
      */
-    readonly healthCheckProtocol?: pulumi.Input<string>;
+    healthCheckProtocol?: pulumi.Input<string>;
     /**
      * The ID of the listener that is associated with the endpoint group.
      */
-    readonly listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string>;
     /**
      * The name of the endpoint group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Mapping between listening port and forwarding port of boarding point.
      */
-    readonly portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
+    portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
     /**
      * The status of the endpoint group.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
      */
-    readonly thresholdCount?: pulumi.Input<number>;
+    thresholdCount?: pulumi.Input<number>;
     /**
      * The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
      */
-    readonly trafficPercentage?: pulumi.Input<number>;
+    trafficPercentage?: pulumi.Input<number>;
 }
 
 /**
@@ -307,61 +307,61 @@ export interface EndpointGroupArgs {
     /**
      * The ID of the Global Accelerator instance to which the endpoint group will be added.
      */
-    readonly acceleratorId: pulumi.Input<string>;
+    acceleratorId: pulumi.Input<string>;
     /**
      * The description of the endpoint group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The endpointConfigurations of the endpoint group.
      */
-    readonly endpointConfigurations: pulumi.Input<pulumi.Input<inputs.ga.EndpointGroupEndpointConfiguration>[]>;
+    endpointConfigurations: pulumi.Input<pulumi.Input<inputs.ga.EndpointGroupEndpointConfiguration>[]>;
     /**
      * The ID of the region where the endpoint group is deployed.
      */
-    readonly endpointGroupRegion: pulumi.Input<string>;
+    endpointGroupRegion: pulumi.Input<string>;
     /**
      * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
      */
-    readonly endpointGroupType?: pulumi.Input<string>;
+    endpointGroupType?: pulumi.Input<string>;
     /**
      * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
      */
-    readonly endpointRequestProtocol?: pulumi.Input<string>;
+    endpointRequestProtocol?: pulumi.Input<string>;
     /**
      * The interval between two consecutive health checks. Unit: seconds.
      */
-    readonly healthCheckIntervalSeconds?: pulumi.Input<number>;
+    healthCheckIntervalSeconds?: pulumi.Input<number>;
     /**
      * The path specified as the destination of the targets for health checks.
      */
-    readonly healthCheckPath?: pulumi.Input<string>;
+    healthCheckPath?: pulumi.Input<string>;
     /**
      * The port that is used for health checks.
      */
-    readonly healthCheckPort?: pulumi.Input<number>;
+    healthCheckPort?: pulumi.Input<number>;
     /**
      * The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
      */
-    readonly healthCheckProtocol?: pulumi.Input<string>;
+    healthCheckProtocol?: pulumi.Input<string>;
     /**
      * The ID of the listener that is associated with the endpoint group.
      */
-    readonly listenerId: pulumi.Input<string>;
+    listenerId: pulumi.Input<string>;
     /**
      * The name of the endpoint group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Mapping between listening port and forwarding port of boarding point.
      */
-    readonly portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
+    portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
     /**
      * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
      */
-    readonly thresholdCount?: pulumi.Input<number>;
+    thresholdCount?: pulumi.Input<number>;
     /**
      * The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
      */
-    readonly trafficPercentage?: pulumi.Input<number>;
+    trafficPercentage?: pulumi.Input<number>;
 }

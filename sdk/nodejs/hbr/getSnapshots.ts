@@ -29,25 +29,25 @@ import * as utilities from "../utilities";
  * });
  * const ecsSnapshots = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getSnapshots({
  *     sourceType: "ECS_FILE",
- *     vaultId: defaultEcsBackupPlans.plans[0].vaultId,
- *     instanceId: defaultEcsBackupPlans1.plans[0].instanceId,
+ *     vaultId: defaultEcsBackupPlans.plans?[0]?.vaultId,
+ *     instanceId: defaultEcsBackupPlans1.plans?[0]?.instanceId,
  * }));
  * const ossSnapshots = Promise.all([defaultOssBackupPlans, defaultOssBackupPlans]).then(([defaultOssBackupPlans, defaultOssBackupPlans1]) => alicloud.hbr.getSnapshots({
  *     sourceType: "OSS",
- *     vaultId: defaultOssBackupPlans.plans[0].vaultId,
- *     bucket: defaultOssBackupPlans1.plans[0].bucket,
+ *     vaultId: defaultOssBackupPlans.plans?[0]?.vaultId,
+ *     bucket: defaultOssBackupPlans1.plans?[0]?.bucket,
  *     completeTime: "2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
  *     completeTimeChecker: "BETWEEN",
  * }));
  * const nasSnapshots = Promise.all([defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans]).then(([defaultNasBackupPlans, defaultNasBackupPlans1, defaultNasBackupPlans2]) => alicloud.hbr.getSnapshots({
  *     sourceType: "NAS",
- *     vaultId: defaultNasBackupPlans.plans[0].vaultId,
- *     fileSystemId: defaultNasBackupPlans1.plans[0].fileSystemId,
- *     createTime: defaultNasBackupPlans2.plans[0].createTime,
+ *     vaultId: defaultNasBackupPlans.plans?[0]?.vaultId,
+ *     fileSystemId: defaultNasBackupPlans1.plans?[0]?.fileSystemId,
+ *     createTime: defaultNasBackupPlans2.plans?[0]?.createTime,
  *     completeTime: "2021-08-23T14:17:15CST",
  *     completeTimeChecker: "GREATER_THAN_OR_EQUAL",
  * }));
- * export const hbrSnapshotId1 = nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots[0].id);
+ * export const hbrSnapshotId1 = nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?[0]?.id);
  * ```
  */
 export function getSnapshots(args: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
@@ -83,50 +83,50 @@ export interface GetSnapshotsArgs {
     /**
      * The name of OSS bucket.
      */
-    readonly bucket?: string;
+    bucket?: string;
     /**
      * The time when the snapshot completed. UNIX time in seconds.
      */
-    readonly completeTime?: string;
+    completeTime?: string;
     /**
      * Complete time filter operator. Optional values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
      */
-    readonly completeTimeChecker?: string;
+    completeTimeChecker?: string;
     /**
      * File System Creation Time of Nas. Unix Time Seconds.
      */
-    readonly createTime?: string;
+    createTime?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * The ID of NAS File system.
      */
-    readonly fileSystemId?: string;
+    fileSystemId?: string;
     /**
      * A list of Snapshot IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The ID of ECS instance.
      */
-    readonly instanceId?: string;
-    readonly limit?: number;
-    readonly outputFile?: string;
-    readonly query?: string;
+    instanceId?: string;
+    limit?: number;
+    outputFile?: string;
+    query?: string;
     /**
      * Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
      */
-    readonly sourceType: string;
+    sourceType: string;
     /**
      * The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The ID of Vault.
      */
-    readonly vaultId: string;
+    vaultId: string;
 }
 
 /**
@@ -152,4 +152,61 @@ export interface GetSnapshotsResult {
     readonly sourceType: string;
     readonly status?: string;
     readonly vaultId: string;
+}
+
+export function getSnapshotsOutput(args: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
+    return pulumi.output(args).apply(a => getSnapshots(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSnapshots.
+ */
+export interface GetSnapshotsOutputArgs {
+    /**
+     * The name of OSS bucket.
+     */
+    bucket?: pulumi.Input<string>;
+    /**
+     * The time when the snapshot completed. UNIX time in seconds.
+     */
+    completeTime?: pulumi.Input<string>;
+    /**
+     * Complete time filter operator. Optional values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
+     */
+    completeTimeChecker?: pulumi.Input<string>;
+    /**
+     * File System Creation Time of Nas. Unix Time Seconds.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * The ID of NAS File system.
+     */
+    fileSystemId?: pulumi.Input<string>;
+    /**
+     * A list of Snapshot IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of ECS instance.
+     */
+    instanceId?: pulumi.Input<string>;
+    limit?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string>;
+    query?: pulumi.Input<string>;
+    /**
+     * Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+     */
+    sourceType: pulumi.Input<string>;
+    /**
+     * The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The ID of Vault.
+     */
+    vaultId: pulumi.Input<string>;
 }

@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * const ids = alicloud.ecs.getEcsDeploymentSets({
  *     ids: ["example_id"],
  * });
- * export const ecsDeploymentSetId1 = ids.then(ids => ids.sets[0].id);
+ * export const ecsDeploymentSetId1 = ids.then(ids => ids.sets?[0]?.id);
  * const nameRegex = alicloud.ecs.getEcsDeploymentSets({
  *     nameRegex: "^my-DeploymentSet",
  * });
- * export const ecsDeploymentSetId2 = nameRegex.then(nameRegex => nameRegex.sets[0].id);
+ * export const ecsDeploymentSetId2 = nameRegex.then(nameRegex => nameRegex.sets?[0]?.id);
  * ```
  */
 export function getEcsDeploymentSets(args?: GetEcsDeploymentSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDeploymentSetsResult> {
@@ -53,20 +53,20 @@ export interface GetEcsDeploymentSetsArgs {
     /**
      * The name of the deployment set.
      */
-    readonly deploymentSetName?: string;
+    deploymentSetName?: string;
     /**
      * A list of Deployment Set IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Deployment Set name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The deployment strategy.
      */
-    readonly strategy?: string;
+    strategy?: string;
 }
 
 /**
@@ -84,4 +84,31 @@ export interface GetEcsDeploymentSetsResult {
     readonly outputFile?: string;
     readonly sets: outputs.ecs.GetEcsDeploymentSetsSet[];
     readonly strategy?: string;
+}
+
+export function getEcsDeploymentSetsOutput(args?: GetEcsDeploymentSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDeploymentSetsResult> {
+    return pulumi.output(args).apply(a => getEcsDeploymentSets(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEcsDeploymentSets.
+ */
+export interface GetEcsDeploymentSetsOutputArgs {
+    /**
+     * The name of the deployment set.
+     */
+    deploymentSetName?: pulumi.Input<string>;
+    /**
+     * A list of Deployment Set IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Deployment Set name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The deployment strategy.
+     */
+    strategy?: pulumi.Input<string>;
 }

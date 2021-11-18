@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstHavipId = example.then(example => example.havips[0].id);
+ * export const firstHavipId = example.then(example => example.havips?[0]?.id);
  * ```
  */
 export function getHavips(args?: GetHavipsArgs, opts?: pulumi.InvokeOptions): Promise<GetHavipsResult> {
@@ -49,16 +49,16 @@ export interface GetHavipsArgs {
     /**
      * A list of Ha Vip IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Ha Vip name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -75,4 +75,27 @@ export interface GetHavipsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getHavipsOutput(args?: GetHavipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHavipsResult> {
+    return pulumi.output(args).apply(a => getHavips(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHavips.
+ */
+export interface GetHavipsOutputArgs {
+    /**
+     * A list of Ha Vip IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Ha Vip name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status.
+     */
+    status?: pulumi.Input<string>;
 }

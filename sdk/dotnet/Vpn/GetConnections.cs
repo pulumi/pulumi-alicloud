@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpn
 {
@@ -45,6 +46,41 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public static Task<GetConnectionsResult> InvokeAsync(GetConnectionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:vpn/getConnections:getConnections", args ?? new GetConnectionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(AliCloud.Vpn.GetConnections.InvokeAsync(new AliCloud.Vpn.GetConnectionsArgs
+        ///         {
+        ///             CustomerGatewayId = "fake-cgw-id",
+        ///             Ids = 
+        ///             {
+        ///                 "fake-conn-id",
+        ///             },
+        ///             OutputFile = "/tmp/vpnconn",
+        ///             VpnGatewayId = "fake-vpn-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("alicloud:vpn/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -87,6 +123,49 @@ namespace Pulumi.AliCloud.Vpn
         public string? VpnGatewayId { get; set; }
 
         public GetConnectionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetConnectionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Use the VPN customer gateway ID as the search key.
+        /// </summary>
+        [Input("customerGatewayId")]
+        public Input<string>? CustomerGatewayId { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// IDs of the VPN connections.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string of VPN connection name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// Save the result to the file.
+        /// </summary>
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Use the VPN gateway ID as the search key.
+        /// </summary>
+        [Input("vpnGatewayId")]
+        public Input<string>? VpnGatewayId { get; set; }
+
+        public GetConnectionsInvokeArgs()
         {
         }
     }

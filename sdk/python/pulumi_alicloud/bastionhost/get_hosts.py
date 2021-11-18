@@ -13,6 +13,7 @@ __all__ = [
     'GetHostsResult',
     'AwaitableGetHostsResult',
     'get_hosts',
+    'get_hosts_output',
 ]
 
 @pulumi.output_type
@@ -241,3 +242,55 @@ def get_hosts(enable_details: Optional[bool] = None,
         source=__ret__.source,
         source_instance_id=__ret__.source_instance_id,
         source_instance_state=__ret__.source_instance_state)
+
+
+@_utilities.lift_output_func(get_hosts)
+def get_hosts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                     host_address: Optional[pulumi.Input[Optional[str]]] = None,
+                     host_name: Optional[pulumi.Input[Optional[str]]] = None,
+                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     instance_id: Optional[pulumi.Input[str]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     os_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     source: Optional[pulumi.Input[Optional[str]]] = None,
+                     source_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     source_instance_state: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostsResult]:
+    """
+    This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bastionhost.get_hosts(instance_id="example_value",
+        ids=[
+            "1",
+            "2",
+        ])
+    pulumi.export("bastionhostHostId1", ids.hosts[0].id)
+    name_regex = alicloud.bastionhost.get_hosts(instance_id="example_value",
+        name_regex="^my-Host")
+    pulumi.export("bastionhostHostId2", name_regex.hosts[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param str host_address: The host address.
+    :param str host_name: Specify the new create a host name of the supports up to 128 characters.
+    :param Sequence[str] ids: A list of Host IDs.
+    :param str instance_id: Specify the new create a host where the Bastion host ID of.
+    :param str name_regex: A regex string to filter results by Host name.
+    :param str os_type: Specify the new create the host's operating system. Valid values: Linux Windows.
+    :param str source: Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+    :param str source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID.
+    :param str source_instance_state: The source instance state.
+    """
+    ...

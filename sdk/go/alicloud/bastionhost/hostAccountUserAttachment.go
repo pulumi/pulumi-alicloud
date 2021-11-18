@@ -15,83 +15,6 @@ import (
 //
 // > **NOTE:** Available in v1.135.0+.
 //
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultHost, err := bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
-// 			InstanceId:         pulumi.String("bastionhost-cn-tl32bh0no30"),
-// 			HostName:           pulumi.Any(_var.Name),
-// 			ActiveAddressType:  pulumi.String("Private"),
-// 			HostPrivateAddress: pulumi.String("172.16.0.10"),
-// 			OsType:             pulumi.String("Linux"),
-// 			Source:             pulumi.String("Local"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var defaultHostAccount []*bastionhost.HostAccount
-// 		for key0, val0 := range 3 {
-// 			__res, err := bastionhost.NewHostAccount(ctx, fmt.Sprintf("defaultHostAccount-%v", key0), &bastionhost.HostAccountArgs{
-// 				InstanceId:      defaultHost.InstanceId,
-// 				HostAccountName: pulumi.String(fmt.Sprintf("%v%v", "example_value-", val0)),
-// 				HostId:          defaultHost.HostId,
-// 				ProtocolName:    pulumi.String("SSH"),
-// 				Password:        pulumi.String("YourPassword12345"),
-// 			})
-// 			if err != nil {
-// 				return err
-// 			}
-// 			defaultHostAccount = append(defaultHostAccount, __res)
-// 		}
-// 		defaultUser, err := bastionhost.NewUser(ctx, "defaultUser", &bastionhost.UserArgs{
-// 			InstanceId:        defaultHost.InstanceId,
-// 			MobileCountryCode: pulumi.String("CN"),
-// 			Mobile:            pulumi.String("13312345678"),
-// 			Password:          pulumi.String("YourPassword-123"),
-// 			Source:            pulumi.String("Local"),
-// 			UserName:          pulumi.String("my-local-user"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var splat0 pulumi.StringArray
-// 		for _, val0 := range defaultHostAccount {
-// 			splat0 = append(splat0, val0.HostAccountId)
-// 		}
-// 		_, err = bastionhost.NewHostAccountUserAttachment(ctx, "defaultHostAccountUserAttachment", &bastionhost.HostAccountUserAttachmentArgs{
-// 			InstanceId:     defaultHost.InstanceId,
-// 			UserId:         defaultUser.UserId,
-// 			HostId:         defaultHost.HostId,
-// 			HostAccountIds: toPulumiStringArray(splat0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// func toPulumiStringArray(arr []string) pulumi.StringArray {
-// 	var pulumiArr pulumi.StringArray
-// 	for _, v := range arr {
-// 		pulumiArr = append(pulumiArr, pulumi.String(v))
-// 	}
-// 	return pulumiArr
-// }
-// ```
-//
 // ## Import
 //
 // Bastion Host Host Account can be imported using the id, e.g.
@@ -267,7 +190,7 @@ type HostAccountUserAttachmentArrayInput interface {
 type HostAccountUserAttachmentArray []HostAccountUserAttachmentInput
 
 func (HostAccountUserAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HostAccountUserAttachment)(nil))
+	return reflect.TypeOf((*[]*HostAccountUserAttachment)(nil)).Elem()
 }
 
 func (i HostAccountUserAttachmentArray) ToHostAccountUserAttachmentArrayOutput() HostAccountUserAttachmentArrayOutput {
@@ -292,7 +215,7 @@ type HostAccountUserAttachmentMapInput interface {
 type HostAccountUserAttachmentMap map[string]HostAccountUserAttachmentInput
 
 func (HostAccountUserAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HostAccountUserAttachment)(nil))
+	return reflect.TypeOf((*map[string]*HostAccountUserAttachment)(nil)).Elem()
 }
 
 func (i HostAccountUserAttachmentMap) ToHostAccountUserAttachmentMapOutput() HostAccountUserAttachmentMapOutput {
@@ -303,9 +226,7 @@ func (i HostAccountUserAttachmentMap) ToHostAccountUserAttachmentMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountUserAttachmentMapOutput)
 }
 
-type HostAccountUserAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type HostAccountUserAttachmentOutput struct{ *pulumi.OutputState }
 
 func (HostAccountUserAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HostAccountUserAttachment)(nil))
@@ -324,14 +245,12 @@ func (o HostAccountUserAttachmentOutput) ToHostAccountUserAttachmentPtrOutput() 
 }
 
 func (o HostAccountUserAttachmentOutput) ToHostAccountUserAttachmentPtrOutputWithContext(ctx context.Context) HostAccountUserAttachmentPtrOutput {
-	return o.ApplyT(func(v HostAccountUserAttachment) *HostAccountUserAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostAccountUserAttachment) *HostAccountUserAttachment {
 		return &v
 	}).(HostAccountUserAttachmentPtrOutput)
 }
 
-type HostAccountUserAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type HostAccountUserAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (HostAccountUserAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HostAccountUserAttachment)(nil))
@@ -343,6 +262,16 @@ func (o HostAccountUserAttachmentPtrOutput) ToHostAccountUserAttachmentPtrOutput
 
 func (o HostAccountUserAttachmentPtrOutput) ToHostAccountUserAttachmentPtrOutputWithContext(ctx context.Context) HostAccountUserAttachmentPtrOutput {
 	return o
+}
+
+func (o HostAccountUserAttachmentPtrOutput) Elem() HostAccountUserAttachmentOutput {
+	return o.ApplyT(func(v *HostAccountUserAttachment) HostAccountUserAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret HostAccountUserAttachment
+		return ret
+	}).(HostAccountUserAttachmentOutput)
 }
 
 type HostAccountUserAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -386,6 +315,10 @@ func (o HostAccountUserAttachmentMapOutput) MapIndex(k pulumi.StringInput) HostA
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountUserAttachmentInput)(nil)).Elem(), &HostAccountUserAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountUserAttachmentPtrInput)(nil)).Elem(), &HostAccountUserAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountUserAttachmentArrayInput)(nil)).Elem(), HostAccountUserAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountUserAttachmentMapInput)(nil)).Elem(), HostAccountUserAttachmentMap{})
 	pulumi.RegisterOutputType(HostAccountUserAttachmentOutput{})
 	pulumi.RegisterOutputType(HostAccountUserAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(HostAccountUserAttachmentArrayOutput{})

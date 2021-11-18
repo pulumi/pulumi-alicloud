@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     vpcId: fooNetwork.id,
  *     vswitchName: "for-ots-instance",
  *     cidrBlock: "172.16.1.0/24",
- *     zoneId: fooZones.then(fooZones => fooZones.zones[0].id),
+ *     zoneId: fooZones.then(fooZones => fooZones.zones?[0]?.id),
  * });
  * const fooInstanceAttachment = new alicloud.ots.InstanceAttachment("fooInstanceAttachment", {
  *     instanceName: fooInstance.name,
@@ -131,19 +131,19 @@ export interface InstanceAttachmentState {
     /**
      * The name of the OTS instance.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The ID of attaching VPC to instance.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The name of attaching VPC to instance.
      */
-    readonly vpcName?: pulumi.Input<string>;
+    vpcName?: pulumi.Input<string>;
     /**
      * The ID of attaching VSwitch to instance.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -153,13 +153,13 @@ export interface InstanceAttachmentArgs {
     /**
      * The name of the OTS instance.
      */
-    readonly instanceName: pulumi.Input<string>;
+    instanceName: pulumi.Input<string>;
     /**
      * The name of attaching VPC to instance.
      */
-    readonly vpcName: pulumi.Input<string>;
+    vpcName: pulumi.Input<string>;
     /**
      * The ID of attaching VSwitch to instance.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
 }

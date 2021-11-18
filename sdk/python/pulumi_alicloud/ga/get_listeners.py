@@ -13,6 +13,7 @@ __all__ = [
     'GetListenersResult',
     'AwaitableGetListenersResult',
     'get_listeners',
+    'get_listeners_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,38 @@ def get_listeners(accelerator_id: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_listeners)
+def get_listeners_output(accelerator_id: Optional[pulumi.Input[str]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetListenersResult]:
+    """
+    This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.111.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ga.get_listeners(accelerator_id="example_value",
+        ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstGaListenerId", example.listeners[0].id)
+    ```
+
+
+    :param str accelerator_id: The accelerator id.
+    :param Sequence[str] ids: A list of Listener IDs.
+    :param str name_regex: A regex string to filter results by Listener name.
+    :param str status: The status of the listener.
+    """
+    ...

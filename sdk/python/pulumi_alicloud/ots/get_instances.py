@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -161,3 +162,40 @@ def get_instances(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    This data source provides the ots instances of the current Alibaba Cloud user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    instances_ds = alicloud.ots.get_instances(name_regex="sample-instance",
+        output_file="instances.txt")
+    pulumi.export("firstInstanceId", instances_ds.instances[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of instance IDs.
+    :param str name_regex: A regex string to filter results by instance name.
+    :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
+           ```python
+           import pulumi
+           import pulumi_alicloud as alicloud
+           
+           instances_ds = alicloud.ots.get_instances(tags={
+               "tagKey1": "tagValue1",
+               "tagKey2": "tagValue2",
+           })
+           ```
+    """
+    ...

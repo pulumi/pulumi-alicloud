@@ -13,6 +13,7 @@ __all__ = [
     'GetDbClustersResult',
     'AwaitableGetDbClustersResult',
     'get_db_clusters',
+    'get_db_clusters_output',
 ]
 
 @pulumi.output_type
@@ -156,3 +157,46 @@ def get_db_clusters(db_cluster_description: Optional[str] = None,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_db_clusters)
+def get_db_clusters_output(db_cluster_description: Optional[pulumi.Input[Optional[str]]] = None,
+                           enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                           ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                           status: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbClustersResult]:
+    """
+    This data source provides the Click House DBCluster of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+        db_cluster_version="20.3.10.75",
+        category="Basic",
+        db_cluster_class="S8",
+        db_cluster_network_type="vpc",
+        db_node_group_count=1,
+        payment_type="PayAsYouGo",
+        db_node_storage="500",
+        storage_type="cloud_essd",
+        vswitch_id="your_vswitch_id")
+    default_db_clusters = default_db_cluster.id.apply(lambda id: alicloud.clickhouse.get_db_clusters(ids=[id]))
+    pulumi.export("dbCluster", default_db_clusters.ids[0])
+    ```
+
+
+    :param str db_cluster_description: The DBCluster description.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of DBCluster IDs.
+    :param str status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetEventBusesResult',
     'AwaitableGetEventBusesResult',
     'get_event_buses',
+    'get_event_buses_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,38 @@ def get_event_buses(event_bus_type: Optional[str] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_event_buses)
+def get_event_buses_output(event_bus_type: Optional[pulumi.Input[Optional[str]]] = None,
+                           ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
+                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEventBusesResult]:
+    """
+    This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.129.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eventbridge.get_event_buses()
+    pulumi.export("eventBridgeEventBusId1", ids.buses[0].id)
+    name_regex = alicloud.eventbridge.get_event_buses(name_regex="^my-EventBus")
+    pulumi.export("eventBridgeEventBusId2", name_regex.buses[0].id)
+    ```
+
+
+    :param str event_bus_type: The event bus type.
+    :param Sequence[str] ids: A list of Event Bus IDs. Its element value is same as Event Bus Name.
+    :param str name_prefix: The name prefix.
+    :param str name_regex: A regex string to filter results by Event Bus name.
+    """
+    ...

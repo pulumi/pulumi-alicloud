@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             },
         ///             NameRegex = "tf-testAcc",
         ///         }));
-        ///         this.FirstEcsNetworkInterfaceId = example.Apply(example =&gt; example.Interfaces[0].Id);
+        ///         this.FirstEcsNetworkInterfaceId = example.Apply(example =&gt; example.Interfaces?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstEcsNetworkInterfaceId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetEcsNetworkInterfacesResult> InvokeAsync(GetEcsNetworkInterfacesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEcsNetworkInterfacesResult>("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args ?? new GetEcsNetworkInterfacesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.123.1+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ecs.GetEcsNetworkInterfaces.InvokeAsync(new AliCloud.Ecs.GetEcsNetworkInterfacesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "eni-abcd1234",
+        ///             },
+        ///             NameRegex = "tf-testAcc",
+        ///         }));
+        ///         this.FirstEcsNetworkInterfaceId = example.Apply(example =&gt; example.Interfaces?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEcsNetworkInterfaceId")]
+        ///     public Output&lt;string&gt; FirstEcsNetworkInterfaceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEcsNetworkInterfacesResult> Invoke(GetEcsNetworkInterfacesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEcsNetworkInterfacesResult>("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args ?? new GetEcsNetworkInterfacesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -161,6 +202,118 @@ namespace Pulumi.AliCloud.Ecs
         public string? VswitchId { get; set; }
 
         public GetEcsNetworkInterfacesArgs()
+        {
+        }
+    }
+
+    public sealed class GetEcsNetworkInterfacesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Network Interface IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The instance id.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// The network interface name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Network Interface name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// The network interface name.
+        /// </summary>
+        [Input("networkInterfaceName")]
+        public Input<string>? NetworkInterfaceName { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The primary private IP address of the ENI.
+        /// </summary>
+        [Input("primaryIpAddress")]
+        public Input<string>? PrimaryIpAddress { get; set; }
+
+        /// <summary>
+        /// The primary private IP address of the ENI.
+        /// </summary>
+        [Input("privateIp")]
+        public Input<string>? PrivateIp { get; set; }
+
+        /// <summary>
+        /// The resource group id.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The security group id.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// Whether the user of the elastic network card is a cloud product or a virtual vendor.
+        /// </summary>
+        [Input("serviceManaged")]
+        public Input<bool>? ServiceManaged { get; set; }
+
+        /// <summary>
+        /// The status of the ENI.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The type of the ENI.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// The Vpc Id.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The vswitch id.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        public GetEcsNetworkInterfacesInvokeArgs()
         {
         }
     }

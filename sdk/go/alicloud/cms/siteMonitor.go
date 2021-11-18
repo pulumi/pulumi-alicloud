@@ -261,7 +261,7 @@ type SiteMonitorArrayInput interface {
 type SiteMonitorArray []SiteMonitorInput
 
 func (SiteMonitorArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SiteMonitor)(nil))
+	return reflect.TypeOf((*[]*SiteMonitor)(nil)).Elem()
 }
 
 func (i SiteMonitorArray) ToSiteMonitorArrayOutput() SiteMonitorArrayOutput {
@@ -286,7 +286,7 @@ type SiteMonitorMapInput interface {
 type SiteMonitorMap map[string]SiteMonitorInput
 
 func (SiteMonitorMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SiteMonitor)(nil))
+	return reflect.TypeOf((*map[string]*SiteMonitor)(nil)).Elem()
 }
 
 func (i SiteMonitorMap) ToSiteMonitorMapOutput() SiteMonitorMapOutput {
@@ -297,9 +297,7 @@ func (i SiteMonitorMap) ToSiteMonitorMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorMapOutput)
 }
 
-type SiteMonitorOutput struct {
-	*pulumi.OutputState
-}
+type SiteMonitorOutput struct{ *pulumi.OutputState }
 
 func (SiteMonitorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SiteMonitor)(nil))
@@ -318,14 +316,12 @@ func (o SiteMonitorOutput) ToSiteMonitorPtrOutput() SiteMonitorPtrOutput {
 }
 
 func (o SiteMonitorOutput) ToSiteMonitorPtrOutputWithContext(ctx context.Context) SiteMonitorPtrOutput {
-	return o.ApplyT(func(v SiteMonitor) *SiteMonitor {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteMonitor) *SiteMonitor {
 		return &v
 	}).(SiteMonitorPtrOutput)
 }
 
-type SiteMonitorPtrOutput struct {
-	*pulumi.OutputState
-}
+type SiteMonitorPtrOutput struct{ *pulumi.OutputState }
 
 func (SiteMonitorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SiteMonitor)(nil))
@@ -337,6 +333,16 @@ func (o SiteMonitorPtrOutput) ToSiteMonitorPtrOutput() SiteMonitorPtrOutput {
 
 func (o SiteMonitorPtrOutput) ToSiteMonitorPtrOutputWithContext(ctx context.Context) SiteMonitorPtrOutput {
 	return o
+}
+
+func (o SiteMonitorPtrOutput) Elem() SiteMonitorOutput {
+	return o.ApplyT(func(v *SiteMonitor) SiteMonitor {
+		if v != nil {
+			return *v
+		}
+		var ret SiteMonitor
+		return ret
+	}).(SiteMonitorOutput)
 }
 
 type SiteMonitorArrayOutput struct{ *pulumi.OutputState }
@@ -380,6 +386,10 @@ func (o SiteMonitorMapOutput) MapIndex(k pulumi.StringInput) SiteMonitorOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorInput)(nil)).Elem(), &SiteMonitor{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorPtrInput)(nil)).Elem(), &SiteMonitor{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorArrayInput)(nil)).Elem(), SiteMonitorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorMapInput)(nil)).Elem(), SiteMonitorMap{})
 	pulumi.RegisterOutputType(SiteMonitorOutput{})
 	pulumi.RegisterOutputType(SiteMonitorPtrOutput{})
 	pulumi.RegisterOutputType(SiteMonitorArrayOutput{})

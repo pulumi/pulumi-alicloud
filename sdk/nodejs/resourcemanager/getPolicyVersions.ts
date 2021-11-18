@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const defaultPolicyVersions = pulumi.output(alicloud.resourcemanager.getPolicyVersions({
  *     policyName: "tftest",
  *     policyType: "Custom",
- * }, { async: true }));
+ * }));
  *
  * export const firstPolicyVersionId = defaultPolicyVersions.versions[0].id;
  * ```
@@ -48,20 +48,20 @@ export interface GetPolicyVersionsArgs {
     /**
      * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of policy version IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The name of the policy.
      */
-    readonly policyName: string;
+    policyName: string;
     /**
      * The type of the policy. Valid values:`Custom` and `System`.
      */
-    readonly policyType: string;
+    policyType: string;
 }
 
 /**
@@ -84,4 +84,31 @@ export interface GetPolicyVersionsResult {
      * A list of policy versions. Each element contains the following attributes:
      */
     readonly versions: outputs.resourcemanager.GetPolicyVersionsVersion[];
+}
+
+export function getPolicyVersionsOutput(args: GetPolicyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyVersionsResult> {
+    return pulumi.output(args).apply(a => getPolicyVersions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPolicyVersions.
+ */
+export interface GetPolicyVersionsOutputArgs {
+    /**
+     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of policy version IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The name of the policy.
+     */
+    policyName: pulumi.Input<string>;
+    /**
+     * The type of the policy. Valid values:`Custom` and `System`.
+     */
+    policyType: pulumi.Input<string>;
 }

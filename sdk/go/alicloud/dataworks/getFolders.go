@@ -4,6 +4,9 @@
 package dataworks
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,72 @@ type GetFoldersResult struct {
 	OutputFile       *string  `pulumi:"outputFile"`
 	ParentFolderPath string   `pulumi:"parentFolderPath"`
 	ProjectId        string   `pulumi:"projectId"`
+}
+
+func GetFoldersOutput(ctx *pulumi.Context, args GetFoldersOutputArgs, opts ...pulumi.InvokeOption) GetFoldersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetFoldersResult, error) {
+			args := v.(GetFoldersArgs)
+			r, err := GetFolders(ctx, &args, opts...)
+			return *r, err
+		}).(GetFoldersResultOutput)
+}
+
+// A collection of arguments for invoking getFolders.
+type GetFoldersOutputArgs struct {
+	// A list of Folder IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The parent folder path.
+	ParentFolderPath pulumi.StringInput `pulumi:"parentFolderPath"`
+	// The ID of the project.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetFoldersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFoldersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getFolders.
+type GetFoldersResultOutput struct{ *pulumi.OutputState }
+
+func (GetFoldersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFoldersResult)(nil)).Elem()
+}
+
+func (o GetFoldersResultOutput) ToGetFoldersResultOutput() GetFoldersResultOutput {
+	return o
+}
+
+func (o GetFoldersResultOutput) ToGetFoldersResultOutputWithContext(ctx context.Context) GetFoldersResultOutput {
+	return o
+}
+
+func (o GetFoldersResultOutput) Folders() GetFoldersFolderArrayOutput {
+	return o.ApplyT(func(v GetFoldersResult) []GetFoldersFolder { return v.Folders }).(GetFoldersFolderArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetFoldersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetFoldersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFoldersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFoldersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFoldersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetFoldersResultOutput) ParentFolderPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersResult) string { return v.ParentFolderPath }).(pulumi.StringOutput)
+}
+
+func (o GetFoldersResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetFoldersResultOutput{})
 }

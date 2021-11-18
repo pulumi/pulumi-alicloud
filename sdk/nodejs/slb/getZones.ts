@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Declare the data source
- * const zonesIds = pulumi.output(alicloud.slb.getZones({ async: true }));
+ * const zonesIds = pulumi.output(alicloud.slb.getZones());
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -44,16 +44,16 @@ export interface GetZonesArgs {
     /**
      * Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
      */
-    readonly availableSlbAddressIpVersion?: string;
+    availableSlbAddressIpVersion?: string;
     /**
      * Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
      */
-    readonly availableSlbAddressType?: string;
+    availableSlbAddressType?: string;
     /**
      * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
-    readonly outputFile?: string;
+    enableDetails?: boolean;
+    outputFile?: string;
 }
 
 /**
@@ -76,4 +76,27 @@ export interface GetZonesResult {
      * A list of availability zones. Each element contains the following attributes:
      */
     readonly zones: outputs.slb.GetZonesZone[];
+}
+
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply(a => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    /**
+     * Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+     */
+    availableSlbAddressIpVersion?: pulumi.Input<string>;
+    /**
+     * Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
+     */
+    availableSlbAddressType?: pulumi.Input<string>;
+    /**
+     * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    outputFile?: pulumi.Input<string>;
 }

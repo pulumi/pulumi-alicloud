@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ros
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ros
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstRosStackId = example.Apply(example =&gt; example.Stacks[0].Id);
+        ///         this.FirstRosStackId = example.Apply(example =&gt; example.Stacks?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstRosStackId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ros
         /// </summary>
         public static Task<GetStacksResult> InvokeAsync(GetStacksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStacksResult>("alicloud:ros/getStacks:getStacks", args ?? new GetStacksArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ros Stacks of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.106.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ros.GetStacks.InvokeAsync(new AliCloud.Ros.GetStacksArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstRosStackId = example.Apply(example =&gt; example.Stacks?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstRosStackId")]
+        ///     public Output&lt;string&gt; FirstRosStackId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetStacksResult> Invoke(GetStacksInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetStacksResult>("alicloud:ros/getStacks:getStacks", args ?? new GetStacksInvokeArgs(), options.WithVersion());
     }
 
 
@@ -119,6 +160,76 @@ namespace Pulumi.AliCloud.Ros
         }
 
         public GetStacksArgs()
+        {
+        }
+    }
+
+    public sealed class GetStacksInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Stack IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Stack name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Parent Stack Id.
+        /// </summary>
+        [Input("parentStackId")]
+        public Input<string>? ParentStackId { get; set; }
+
+        /// <summary>
+        /// The show nested stack.
+        /// </summary>
+        [Input("showNestedStack")]
+        public Input<bool>? ShowNestedStack { get; set; }
+
+        /// <summary>
+        /// Stack Name.
+        /// </summary>
+        [Input("stackName")]
+        public Input<string>? StackName { get; set; }
+
+        /// <summary>
+        /// The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetStacksInvokeArgs()
         {
         }
     }

@@ -132,6 +132,8 @@ func (o GetFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetFoldersFolderOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderInput)(nil)).Elem(), GetFoldersFolderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderArrayInput)(nil)).Elem(), GetFoldersFolderArray{})
 	pulumi.RegisterOutputType(GetFoldersFolderOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderArrayOutput{})
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetIndustrialPidLoopsResult',
     'AwaitableGetIndustrialPidLoopsResult',
     'get_industrial_pid_loops',
+    'get_industrial_pid_loops_output',
 ]
 
 @pulumi.output_type
@@ -183,3 +184,41 @@ def get_industrial_pid_loops(enable_details: Optional[bool] = None,
         pid_loop_name=__ret__.pid_loop_name,
         pid_project_id=__ret__.pid_project_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_industrial_pid_loops)
+def get_industrial_pid_loops_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    pid_loop_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                    pid_project_id: Optional[pulumi.Input[str]] = None,
+                                    status: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIndustrialPidLoopsResult]:
+    """
+    This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.117.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.brain.get_industrial_pid_loops(pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx",
+        ids=["742a3d4e-d8b0-47c8-xxxx-xxxx"],
+        name_regex="tf-testACC")
+    pulumi.export("firstBrainIndustrialPidLoopId", example.loops[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Pid Loop IDs.
+    :param str name_regex: A regex string to filter results by Pid Loop name.
+    :param str pid_loop_name: The name of Pid Loop.
+    :param str pid_project_id: The pid project id.
+    :param str status: The status of Pid Loop.
+    """
+    ...

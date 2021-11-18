@@ -99,19 +99,19 @@ export interface AppAttachmentState {
     /**
      * The apiId that app apply to access.
      */
-    readonly apiId?: pulumi.Input<string>;
+    apiId?: pulumi.Input<string>;
     /**
      * The app that apply to the authorization.
      */
-    readonly appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string>;
     /**
      * The group that the api belongs to.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * Stage that the app apply to access.
      */
-    readonly stageName?: pulumi.Input<string>;
+    stageName?: pulumi.Input<string>;
 }
 
 /**
@@ -121,17 +121,17 @@ export interface AppAttachmentArgs {
     /**
      * The apiId that app apply to access.
      */
-    readonly apiId: pulumi.Input<string>;
+    apiId: pulumi.Input<string>;
     /**
      * The app that apply to the authorization.
      */
-    readonly appId: pulumi.Input<string>;
+    appId: pulumi.Input<string>;
     /**
      * The group that the api belongs to.
      */
-    readonly groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
     /**
      * Stage that the app apply to access.
      */
-    readonly stageName: pulumi.Input<string>;
+    stageName: pulumi.Input<string>;
 }

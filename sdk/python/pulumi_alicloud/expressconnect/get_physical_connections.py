@@ -13,6 +13,7 @@ __all__ = [
     'GetPhysicalConnectionsResult',
     'AwaitableGetPhysicalConnectionsResult',
     'get_physical_connections',
+    'get_physical_connections_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,38 @@ def get_physical_connections(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_physical_connections)
+def get_physical_connections_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    include_reservation_data: Optional[pulumi.Input[Optional[bool]]] = None,
+                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    status: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPhysicalConnectionsResult]:
+    """
+    This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.expressconnect.get_physical_connections(ids=["pc-2345678"])
+    pulumi.export("expressConnectPhysicalConnectionId1", ids.connections[0].id)
+    name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^my-PhysicalConnection")
+    pulumi.export("expressConnectPhysicalConnectionId2", name_regex.connections[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Physical Connection IDs.
+    :param bool include_reservation_data: The include reservation data.
+    :param str name_regex: A regex string to filter results by Physical Connection name.
+    :param str status: Resources on Behalf of a State of the Resource Attribute Field.
+    """
+    ...

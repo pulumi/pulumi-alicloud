@@ -4,6 +4,9 @@
 package fc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,85 @@ type GetTriggersResult struct {
 	ServiceName string   `pulumi:"serviceName"`
 	// A list of FC triggers. Each element contains the following attributes:
 	Triggers []GetTriggersTrigger `pulumi:"triggers"`
+}
+
+func GetTriggersOutput(ctx *pulumi.Context, args GetTriggersOutputArgs, opts ...pulumi.InvokeOption) GetTriggersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTriggersResult, error) {
+			args := v.(GetTriggersArgs)
+			r, err := GetTriggers(ctx, &args, opts...)
+			return *r, err
+		}).(GetTriggersResultOutput)
+}
+
+// A collection of arguments for invoking getTriggers.
+type GetTriggersOutputArgs struct {
+	// FC function name.
+	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	// - A list of FC triggers ids.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by FC trigger name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// FC service name.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (GetTriggersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTriggers.
+type GetTriggersResultOutput struct{ *pulumi.OutputState }
+
+func (GetTriggersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggersResult)(nil)).Elem()
+}
+
+func (o GetTriggersResultOutput) ToGetTriggersResultOutput() GetTriggersResultOutput {
+	return o
+}
+
+func (o GetTriggersResultOutput) ToGetTriggersResultOutputWithContext(ctx context.Context) GetTriggersResultOutput {
+	return o
+}
+
+func (o GetTriggersResultOutput) FunctionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggersResult) string { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTriggersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of FC triggers ids.
+func (o GetTriggersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTriggersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of FC triggers names.
+func (o GetTriggersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTriggersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTriggersResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggersResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// A list of FC triggers. Each element contains the following attributes:
+func (o GetTriggersResultOutput) Triggers() GetTriggersTriggerArrayOutput {
+	return o.ApplyT(func(v GetTriggersResult) []GetTriggersTrigger { return v.Triggers }).(GetTriggersTriggerArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTriggersResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetTransitRouterServiceResult> InvokeAsync(GetTransitRouterServiceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterServiceResult>("alicloud:cen/getTransitRouterService:getTransitRouterService", args ?? new GetTransitRouterServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Using this data source can open CEN Transit Router Service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about CEN and how to use it, see [What is CEN](https://www.alibabacloud.com/help/en/doc-detail/59870.htm).
+        /// 
+        /// &gt; **NOTE:** Available in v1.139.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var open = Output.Create(AliCloud.Cen.GetTransitRouterService.InvokeAsync(new AliCloud.Cen.GetTransitRouterServiceArgs
+        ///         {
+        ///             Enable = "On",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTransitRouterServiceResult> Invoke(GetTransitRouterServiceInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTransitRouterServiceResult>("alicloud:cen/getTransitRouterService:getTransitRouterService", args ?? new GetTransitRouterServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -55,6 +89,19 @@ namespace Pulumi.AliCloud.Cen
         public string? Enable { get; set; }
 
         public GetTransitRouterServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransitRouterServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+        /// </summary>
+        [Input("enable")]
+        public Input<string>? Enable { get; set; }
+
+        public GetTransitRouterServiceInvokeArgs()
         {
         }
     }

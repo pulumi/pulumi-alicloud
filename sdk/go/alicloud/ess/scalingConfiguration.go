@@ -537,7 +537,7 @@ type ScalingConfigurationArrayInput interface {
 type ScalingConfigurationArray []ScalingConfigurationInput
 
 func (ScalingConfigurationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ScalingConfiguration)(nil))
+	return reflect.TypeOf((*[]*ScalingConfiguration)(nil)).Elem()
 }
 
 func (i ScalingConfigurationArray) ToScalingConfigurationArrayOutput() ScalingConfigurationArrayOutput {
@@ -562,7 +562,7 @@ type ScalingConfigurationMapInput interface {
 type ScalingConfigurationMap map[string]ScalingConfigurationInput
 
 func (ScalingConfigurationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ScalingConfiguration)(nil))
+	return reflect.TypeOf((*map[string]*ScalingConfiguration)(nil)).Elem()
 }
 
 func (i ScalingConfigurationMap) ToScalingConfigurationMapOutput() ScalingConfigurationMapOutput {
@@ -573,9 +573,7 @@ func (i ScalingConfigurationMap) ToScalingConfigurationMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationMapOutput)
 }
 
-type ScalingConfigurationOutput struct {
-	*pulumi.OutputState
-}
+type ScalingConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ScalingConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScalingConfiguration)(nil))
@@ -594,14 +592,12 @@ func (o ScalingConfigurationOutput) ToScalingConfigurationPtrOutput() ScalingCon
 }
 
 func (o ScalingConfigurationOutput) ToScalingConfigurationPtrOutputWithContext(ctx context.Context) ScalingConfigurationPtrOutput {
-	return o.ApplyT(func(v ScalingConfiguration) *ScalingConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScalingConfiguration) *ScalingConfiguration {
 		return &v
 	}).(ScalingConfigurationPtrOutput)
 }
 
-type ScalingConfigurationPtrOutput struct {
-	*pulumi.OutputState
-}
+type ScalingConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (ScalingConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ScalingConfiguration)(nil))
@@ -613,6 +609,16 @@ func (o ScalingConfigurationPtrOutput) ToScalingConfigurationPtrOutput() Scaling
 
 func (o ScalingConfigurationPtrOutput) ToScalingConfigurationPtrOutputWithContext(ctx context.Context) ScalingConfigurationPtrOutput {
 	return o
+}
+
+func (o ScalingConfigurationPtrOutput) Elem() ScalingConfigurationOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) ScalingConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ScalingConfiguration
+		return ret
+	}).(ScalingConfigurationOutput)
 }
 
 type ScalingConfigurationArrayOutput struct{ *pulumi.OutputState }
@@ -656,6 +662,10 @@ func (o ScalingConfigurationMapOutput) MapIndex(k pulumi.StringInput) ScalingCon
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInput)(nil)).Elem(), &ScalingConfiguration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationPtrInput)(nil)).Elem(), &ScalingConfiguration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationArrayInput)(nil)).Elem(), ScalingConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationMapInput)(nil)).Elem(), ScalingConfigurationMap{})
 	pulumi.RegisterOutputType(ScalingConfigurationOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationArrayOutput{})

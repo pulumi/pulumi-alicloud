@@ -93,15 +93,15 @@ export interface BackupPolicyState {
     /**
      * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
      */
-    readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Backup time, in the format of HH:mmZ- HH:mm Z
      */
-    readonly backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string>;
     /**
      * The id of ApsaraDB for Redis or Memcache intance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
 }
 
 /**
@@ -111,13 +111,13 @@ export interface BackupPolicyArgs {
     /**
      * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
      */
-    readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Backup time, in the format of HH:mmZ- HH:mm Z
      */
-    readonly backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string>;
     /**
      * The id of ApsaraDB for Redis or Memcache intance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
 }

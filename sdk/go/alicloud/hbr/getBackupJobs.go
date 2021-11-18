@@ -4,6 +4,9 @@
 package hbr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,4 +47,83 @@ type GetBackupJobsResult struct {
 	SortDirection *string            `pulumi:"sortDirection"`
 	SourceType    string             `pulumi:"sourceType"`
 	Status        *string            `pulumi:"status"`
+}
+
+func GetBackupJobsOutput(ctx *pulumi.Context, args GetBackupJobsOutputArgs, opts ...pulumi.InvokeOption) GetBackupJobsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetBackupJobsResult, error) {
+			args := v.(GetBackupJobsArgs)
+			r, err := GetBackupJobs(ctx, &args, opts...)
+			return *r, err
+		}).(GetBackupJobsResultOutput)
+}
+
+// A collection of arguments for invoking getBackupJobs.
+type GetBackupJobsOutputArgs struct {
+	Filters GetBackupJobsFilterArrayInput `pulumi:"filters"`
+	// A list of Backup Job IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The sort direction. Valid values: `ASCEND`, `DESCEND`.
+	SortDirection pulumi.StringPtrInput `pulumi:"sortDirection"`
+	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetBackupJobsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupJobsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getBackupJobs.
+type GetBackupJobsResultOutput struct{ *pulumi.OutputState }
+
+func (GetBackupJobsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupJobsResult)(nil)).Elem()
+}
+
+func (o GetBackupJobsResultOutput) ToGetBackupJobsResultOutput() GetBackupJobsResultOutput {
+	return o
+}
+
+func (o GetBackupJobsResultOutput) ToGetBackupJobsResultOutputWithContext(ctx context.Context) GetBackupJobsResultOutput {
+	return o
+}
+
+func (o GetBackupJobsResultOutput) Filters() GetBackupJobsFilterArrayOutput {
+	return o.ApplyT(func(v GetBackupJobsResult) []GetBackupJobsFilter { return v.Filters }).(GetBackupJobsFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBackupJobsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetBackupJobsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBackupJobsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBackupJobsResultOutput) Jobs() GetBackupJobsJobArrayOutput {
+	return o.ApplyT(func(v GetBackupJobsResult) []GetBackupJobsJob { return v.Jobs }).(GetBackupJobsJobArrayOutput)
+}
+
+func (o GetBackupJobsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBackupJobsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBackupJobsResultOutput) SortDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBackupJobsResult) *string { return v.SortDirection }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBackupJobsResultOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsResult) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+func (o GetBackupJobsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBackupJobsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBackupJobsResultOutput{})
 }

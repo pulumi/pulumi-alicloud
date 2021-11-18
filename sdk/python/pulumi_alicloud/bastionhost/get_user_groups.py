@@ -13,6 +13,7 @@ __all__ = [
     'GetUserGroupsResult',
     'AwaitableGetUserGroupsResult',
     'get_user_groups',
+    'get_user_groups_output',
 ]
 
 @pulumi.output_type
@@ -163,3 +164,43 @@ def get_user_groups(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         user_group_name=__ret__.user_group_name)
+
+
+@_utilities.lift_output_func(get_user_groups)
+def get_user_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           instance_id: Optional[pulumi.Input[str]] = None,
+                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                           user_group_name: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserGroupsResult]:
+    """
+    This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bastionhost.get_user_groups(instance_id="bastionhost-cn-xxxx",
+        ids=[
+            "1",
+            "2",
+        ])
+    pulumi.export("bastionhostUserGroupId1", ids.groups[0].id)
+    name_regex = alicloud.bastionhost.get_user_groups(instance_id="bastionhost-cn-xxxx",
+        name_regex="^my-UserGroup")
+    pulumi.export("bastionhostUserGroupId2", name_regex.groups[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of User Group self IDs.
+    :param str instance_id: Specify the New Group of the Bastion Host of Instance Id.
+    :param str name_regex: A regex string to filter results by User Group name.
+    :param str user_group_name: Specify the New Group Name. Supports up to 128 Characters.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetProjectsResult',
     'AwaitableGetProjectsResult',
     'get_projects',
+    'get_projects_output',
 ]
 
 @pulumi.output_type
@@ -131,3 +132,22 @@ def get_projects(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         projects=__ret__.projects,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_projects)
+def get_projects_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectsResult]:
+    """
+    This data source provides the Log Projects of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.126.0+.
+
+
+    :param Sequence[str] ids: A list of project IDs.
+    :param str name_regex: A regex string to filter results by project name.
+    :param str status: The status of project.
+    """
+    ...

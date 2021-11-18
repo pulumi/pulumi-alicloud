@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  *         "10",
  *     ],
  * });
- * export const bastionhostUserId1 = ids.then(ids => ids.users[0].id);
+ * export const bastionhostUserId1 = ids.then(ids => ids.users?[0]?.id);
  * const nameRegex = alicloud.bastionhost.getUsers({
  *     instanceId: "example_value",
  *     nameRegex: "^my-User",
  * });
- * export const bastionhostUserId2 = nameRegex.then(nameRegex => nameRegex.users[0].id);
+ * export const bastionhostUserId2 = nameRegex.then(nameRegex => nameRegex.users?[0]?.id);
  * ```
  */
 export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
@@ -62,40 +62,40 @@ export interface GetUsersArgs {
     /**
      * Specify the New Created the User's Display Name. Supports up to 128 Characters.
      */
-    readonly displayName?: string;
+    displayName?: string;
     /**
      * A list of User IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * You Want to Query the User the Bastion Host ID of.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * Specify the New of the User That Created a Different Mobile Phone Number from Your.
      */
-    readonly mobile?: string;
+    mobile?: string;
     /**
      * A regex string to filter results by User name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
      */
-    readonly source?: string;
+    source?: string;
     /**
      * Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
      */
-    readonly sourceUserId?: string;
+    sourceUserId?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
      */
-    readonly userName?: string;
+    userName?: string;
 }
 
 /**
@@ -118,4 +118,51 @@ export interface GetUsersResult {
     readonly status?: string;
     readonly userName?: string;
     readonly users: outputs.bastionhost.GetUsersUser[];
+}
+
+export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+    return pulumi.output(args).apply(a => getUsers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUsers.
+ */
+export interface GetUsersOutputArgs {
+    /**
+     * Specify the New Created the User's Display Name. Supports up to 128 Characters.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * A list of User IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * You Want to Query the User the Bastion Host ID of.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * Specify the New of the User That Created a Different Mobile Phone Number from Your.
+     */
+    mobile?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by User name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+     */
+    source?: pulumi.Input<string>;
+    /**
+     * Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+     */
+    sourceUserId?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+     */
+    userName?: pulumi.Input<string>;
 }

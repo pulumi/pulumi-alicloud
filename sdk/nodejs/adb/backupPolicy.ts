@@ -105,19 +105,19 @@ export interface BackupPolicyState {
     /**
      * Cluster backup retention days, Fixed for 7 days, not modified.
      */
-    readonly backupRetentionPeriod?: pulumi.Input<string>;
+    backupRetentionPeriod?: pulumi.Input<string>;
     /**
      * The Id of cluster that can run database.
      */
-    readonly dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string>;
     /**
      * ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
-    readonly preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
      */
-    readonly preferredBackupTime?: pulumi.Input<string>;
+    preferredBackupTime?: pulumi.Input<string>;
 }
 
 /**
@@ -127,13 +127,13 @@ export interface BackupPolicyArgs {
     /**
      * The Id of cluster that can run database.
      */
-    readonly dbClusterId: pulumi.Input<string>;
+    dbClusterId: pulumi.Input<string>;
     /**
      * ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
-    readonly preferredBackupPeriods: pulumi.Input<pulumi.Input<string>[]>;
+    preferredBackupPeriods: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
      */
-    readonly preferredBackupTime: pulumi.Input<string>;
+    preferredBackupTime: pulumi.Input<string>;
 }

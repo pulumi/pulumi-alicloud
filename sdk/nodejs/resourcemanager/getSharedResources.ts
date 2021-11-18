@@ -49,16 +49,16 @@ export interface GetSharedResourcesArgs {
     /**
      * A list of shared resource ID.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The resource share ID of resource manager.
      */
-    readonly resourceShareId?: string;
+    resourceShareId?: string;
     /**
      * The status of shared resource.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -74,4 +74,27 @@ export interface GetSharedResourcesResult {
     readonly resourceShareId?: string;
     readonly resources: outputs.resourcemanager.GetSharedResourcesResource[];
     readonly status?: string;
+}
+
+export function getSharedResourcesOutput(args?: GetSharedResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedResourcesResult> {
+    return pulumi.output(args).apply(a => getSharedResources(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSharedResources.
+ */
+export interface GetSharedResourcesOutputArgs {
+    /**
+     * A list of shared resource ID.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The resource share ID of resource manager.
+     */
+    resourceShareId?: pulumi.Input<string>;
+    /**
+     * The status of shared resource.
+     */
+    status?: pulumi.Input<string>;
 }

@@ -40,7 +40,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := creation
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -302,7 +302,7 @@ type ReadWriteSplittingConnectionArrayInput interface {
 type ReadWriteSplittingConnectionArray []ReadWriteSplittingConnectionInput
 
 func (ReadWriteSplittingConnectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ReadWriteSplittingConnection)(nil))
+	return reflect.TypeOf((*[]*ReadWriteSplittingConnection)(nil)).Elem()
 }
 
 func (i ReadWriteSplittingConnectionArray) ToReadWriteSplittingConnectionArrayOutput() ReadWriteSplittingConnectionArrayOutput {
@@ -327,7 +327,7 @@ type ReadWriteSplittingConnectionMapInput interface {
 type ReadWriteSplittingConnectionMap map[string]ReadWriteSplittingConnectionInput
 
 func (ReadWriteSplittingConnectionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ReadWriteSplittingConnection)(nil))
+	return reflect.TypeOf((*map[string]*ReadWriteSplittingConnection)(nil)).Elem()
 }
 
 func (i ReadWriteSplittingConnectionMap) ToReadWriteSplittingConnectionMapOutput() ReadWriteSplittingConnectionMapOutput {
@@ -338,9 +338,7 @@ func (i ReadWriteSplittingConnectionMap) ToReadWriteSplittingConnectionMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ReadWriteSplittingConnectionMapOutput)
 }
 
-type ReadWriteSplittingConnectionOutput struct {
-	*pulumi.OutputState
-}
+type ReadWriteSplittingConnectionOutput struct{ *pulumi.OutputState }
 
 func (ReadWriteSplittingConnectionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReadWriteSplittingConnection)(nil))
@@ -359,14 +357,12 @@ func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionPtrOut
 }
 
 func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionPtrOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionPtrOutput {
-	return o.ApplyT(func(v ReadWriteSplittingConnection) *ReadWriteSplittingConnection {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReadWriteSplittingConnection) *ReadWriteSplittingConnection {
 		return &v
 	}).(ReadWriteSplittingConnectionPtrOutput)
 }
 
-type ReadWriteSplittingConnectionPtrOutput struct {
-	*pulumi.OutputState
-}
+type ReadWriteSplittingConnectionPtrOutput struct{ *pulumi.OutputState }
 
 func (ReadWriteSplittingConnectionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ReadWriteSplittingConnection)(nil))
@@ -378,6 +374,16 @@ func (o ReadWriteSplittingConnectionPtrOutput) ToReadWriteSplittingConnectionPtr
 
 func (o ReadWriteSplittingConnectionPtrOutput) ToReadWriteSplittingConnectionPtrOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionPtrOutput {
 	return o
+}
+
+func (o ReadWriteSplittingConnectionPtrOutput) Elem() ReadWriteSplittingConnectionOutput {
+	return o.ApplyT(func(v *ReadWriteSplittingConnection) ReadWriteSplittingConnection {
+		if v != nil {
+			return *v
+		}
+		var ret ReadWriteSplittingConnection
+		return ret
+	}).(ReadWriteSplittingConnectionOutput)
 }
 
 type ReadWriteSplittingConnectionArrayOutput struct{ *pulumi.OutputState }
@@ -421,6 +427,10 @@ func (o ReadWriteSplittingConnectionMapOutput) MapIndex(k pulumi.StringInput) Re
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReadWriteSplittingConnectionInput)(nil)).Elem(), &ReadWriteSplittingConnection{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReadWriteSplittingConnectionPtrInput)(nil)).Elem(), &ReadWriteSplittingConnection{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReadWriteSplittingConnectionArrayInput)(nil)).Elem(), ReadWriteSplittingConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReadWriteSplittingConnectionMapInput)(nil)).Elem(), ReadWriteSplittingConnectionMap{})
 	pulumi.RegisterOutputType(ReadWriteSplittingConnectionOutput{})
 	pulumi.RegisterOutputType(ReadWriteSplittingConnectionPtrOutput{})
 	pulumi.RegisterOutputType(ReadWriteSplittingConnectionArrayOutput{})

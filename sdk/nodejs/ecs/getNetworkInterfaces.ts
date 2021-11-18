@@ -38,50 +38,50 @@ export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pul
  * A collection of arguments for invoking getNetworkInterfaces.
  */
 export interface GetNetworkInterfacesArgs {
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * ID of the instance that the ENI is attached to.
      */
-    readonly instanceId?: string;
+    instanceId?: string;
     /**
      * Name of the ENI.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
-    readonly name?: string;
-    readonly nameRegex?: string;
-    readonly networkInterfaceName?: string;
-    readonly outputFile?: string;
-    readonly primaryIpAddress?: string;
+    name?: string;
+    nameRegex?: string;
+    networkInterfaceName?: string;
+    outputFile?: string;
+    primaryIpAddress?: string;
     /**
      * Primary private IP of the ENI.
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
-    readonly privateIp?: string;
+    privateIp?: string;
     /**
      * The Id of resource group.
      */
-    readonly resourceGroupId?: string;
-    readonly securityGroupId?: string;
-    readonly serviceManaged?: boolean;
+    resourceGroupId?: string;
+    securityGroupId?: string;
+    serviceManaged?: boolean;
     /**
      * Current status of the ENI.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A map of tags assigned to the ENI.
      */
-    readonly tags?: {[key: string]: any};
-    readonly type?: string;
+    tags?: {[key: string]: any};
+    type?: string;
     /**
      * ID of the VPC that the ENI belongs to.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
     /**
      * ID of the VSwitch that the ENI is linked to.
      */
-    readonly vswitchId?: string;
+    vswitchId?: string;
 }
 
 /**
@@ -141,4 +141,58 @@ export interface GetNetworkInterfacesResult {
      * ID of the VSwitch that the ENI is linked to.
      */
     readonly vswitchId?: string;
+}
+
+export function getNetworkInterfacesOutput(args?: GetNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkInterfacesResult> {
+    return pulumi.output(args).apply(a => getNetworkInterfaces(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetworkInterfaces.
+ */
+export interface GetNetworkInterfacesOutputArgs {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the instance that the ENI is attached to.
+     */
+    instanceId?: pulumi.Input<string>;
+    /**
+     * Name of the ENI.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+     */
+    name?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string>;
+    networkInterfaceName?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    primaryIpAddress?: pulumi.Input<string>;
+    /**
+     * Primary private IP of the ENI.
+     *
+     * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
+     */
+    privateIp?: pulumi.Input<string>;
+    /**
+     * The Id of resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
+    serviceManaged?: pulumi.Input<boolean>;
+    /**
+     * Current status of the ENI.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the ENI.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    type?: pulumi.Input<string>;
+    /**
+     * ID of the VPC that the ENI belongs to.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * ID of the VSwitch that the ENI is linked to.
+     */
+    vswitchId?: pulumi.Input<string>;
 }

@@ -272,73 +272,73 @@ export interface ContainerGroupState {
     /**
      * The name of the container group.
      */
-    readonly containerGroupName?: pulumi.Input<string>;
+    containerGroupName?: pulumi.Input<string>;
     /**
      * The list of containers.
      */
-    readonly containers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainer>[]>;
+    containers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainer>[]>;
     /**
      * The amount of CPU resources allocated to the container.
      */
-    readonly cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number>;
     /**
      * The structure of dnsConfig.
      */
-    readonly dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
-    readonly eciSecurityContext?: pulumi.Input<inputs.eci.ContainerGroupEciSecurityContext>;
+    dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
+    eciSecurityContext?: pulumi.Input<inputs.eci.ContainerGroupEciSecurityContext>;
     /**
      * HostAliases.
      */
-    readonly hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[]>;
+    hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[]>;
     /**
      * The image registry credential. The details see Block `imageRegistryCredential`.
      */
-    readonly imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[]>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[]>;
     /**
      * The list of initContainers.
      */
-    readonly initContainers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainer>[]>;
+    initContainers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainer>[]>;
     /**
      * The type of the ECS instance.
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * The amount of memory resources allocated to the container.
      */
-    readonly memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number>;
     /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      */
-    readonly ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The restart policy of the container group. Default to `Always`.
      */
-    readonly restartPolicy?: pulumi.Input<string>;
+    restartPolicy?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * The status of container group.
      */
-    readonly status?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    status?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The list of volumes.
      */
-    readonly volumes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolume>[]>;
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -348,67 +348,67 @@ export interface ContainerGroupArgs {
     /**
      * The name of the container group.
      */
-    readonly containerGroupName: pulumi.Input<string>;
+    containerGroupName: pulumi.Input<string>;
     /**
      * The list of containers.
      */
-    readonly containers: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainer>[]>;
+    containers: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainer>[]>;
     /**
      * The amount of CPU resources allocated to the container.
      */
-    readonly cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number>;
     /**
      * The structure of dnsConfig.
      */
-    readonly dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
-    readonly eciSecurityContext?: pulumi.Input<inputs.eci.ContainerGroupEciSecurityContext>;
+    dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
+    eciSecurityContext?: pulumi.Input<inputs.eci.ContainerGroupEciSecurityContext>;
     /**
      * HostAliases.
      */
-    readonly hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[]>;
+    hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[]>;
     /**
      * The image registry credential. The details see Block `imageRegistryCredential`.
      */
-    readonly imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[]>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[]>;
     /**
      * The list of initContainers.
      */
-    readonly initContainers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainer>[]>;
+    initContainers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainer>[]>;
     /**
      * The type of the ECS instance.
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * The amount of memory resources allocated to the container.
      */
-    readonly memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number>;
     /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      */
-    readonly ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The restart policy of the container group. Default to `Always`.
      */
-    readonly restartPolicy?: pulumi.Input<string>;
+    restartPolicy?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      */
-    readonly securityGroupId: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    securityGroupId: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The list of volumes.
      */
-    readonly volumes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolume>[]>;
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
     /**
      * The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

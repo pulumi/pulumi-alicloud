@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const defaultSystemGroups = defaultSystemGroup.id.apply(id => alicloud.videosurveillance.getSystemGroups({
  *     ids: [id],
  * }));
- * export const vsGroup = defaultSystemGroups.ids[0];
+ * export const vsGroup = defaultSystemGroups.apply(defaultSystemGroups => defaultSystemGroups.ids?[0]);
  * ```
  */
 export function getSystemGroups(args?: GetSystemGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSystemGroupsResult> {
@@ -57,24 +57,24 @@ export interface GetSystemGroupsArgs {
     /**
      * A list of Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
      */
-    readonly inProtocol?: string;
+    inProtocol?: string;
     /**
      * The name.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * A regex string to filter results by Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status. Valid values: `on`,`off`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -93,4 +93,35 @@ export interface GetSystemGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getSystemGroupsOutput(args?: GetSystemGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSystemGroupsResult> {
+    return pulumi.output(args).apply(a => getSystemGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSystemGroups.
+ */
+export interface GetSystemGroupsOutputArgs {
+    /**
+     * A list of Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+     */
+    inProtocol?: pulumi.Input<string>;
+    /**
+     * The name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status. Valid values: `on`,`off`.
+     */
+    status?: pulumi.Input<string>;
 }

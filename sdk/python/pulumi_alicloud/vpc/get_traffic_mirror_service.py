@@ -12,6 +12,7 @@ __all__ = [
     'GetTrafficMirrorServiceResult',
     'AwaitableGetTrafficMirrorServiceResult',
     'get_traffic_mirror_service',
+    'get_traffic_mirror_service_output',
 ]
 
 @pulumi.output_type
@@ -96,3 +97,28 @@ def get_traffic_mirror_service(enable: Optional[str] = None,
         enable=__ret__.enable,
         id=__ret__.id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_traffic_mirror_service)
+def get_traffic_mirror_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrafficMirrorServiceResult]:
+    """
+    Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
+
+    For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/doc-detail/207513.htm).
+
+    > **NOTE:** Available in v1.141.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.vpc.get_traffic_mirror_service(enable="On")
+    ```
+
+
+    :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+    """
+    ...

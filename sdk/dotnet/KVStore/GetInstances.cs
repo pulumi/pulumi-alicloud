@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.KVStore
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.KVStore
         ///         {
         ///             NameRegex = "testname",
         ///         }));
-        ///         this.FirstInstanceName = @default.Apply(@default =&gt; @default.Instances[0].Name);
+        ///         this.FirstInstanceName = @default.Apply(@default =&gt; @default.Instances?[0]?.Name);
         ///     }
         /// 
         ///     [Output("firstInstanceName")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
+        /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.KVStore.GetInstances.InvokeAsync(new AliCloud.KVStore.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "testname",
+        ///         }));
+        ///         this.FirstInstanceName = @default.Apply(@default =&gt; @default.Instances?[0]?.Name);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceName")]
+        ///     public Output&lt;string&gt; FirstInstanceName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -178,6 +212,142 @@ namespace Pulumi.AliCloud.KVStore
         public string? ZoneId { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+        /// </summary>
+        [Input("architectureType")]
+        public Input<string>? ArchitectureType { get; set; }
+
+        /// <summary>
+        /// Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
+        /// </summary>
+        [Input("editionType")]
+        public Input<string>? EditionType { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+        /// </summary>
+        [Input("engineVersion")]
+        public Input<string>? EngineVersion { get; set; }
+
+        /// <summary>
+        /// The expiration status of the instance.
+        /// </summary>
+        [Input("expired")]
+        public Input<string>? Expired { get; set; }
+
+        /// <summary>
+        /// Whether to create a distributed cache.
+        /// </summary>
+        [Input("globalInstance")]
+        public Input<bool>? GlobalInstance { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of KVStore DBInstance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        /// </summary>
+        [Input("instanceClass")]
+        public Input<string>? InstanceClass { get; set; }
+
+        /// <summary>
+        /// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// A regex string to apply to the instance name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// The type of the network. Valid values: `CLASSIC`, `VPC`.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The payment type. Valid values: `PostPaid`, `PrePaid`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The name of the instance.
+        /// </summary>
+        [Input("searchKey")]
+        public Input<string>? SearchKey { get; set; }
+
+        /// <summary>
+        /// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Used to retrieve instances belong to specified VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the zone.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

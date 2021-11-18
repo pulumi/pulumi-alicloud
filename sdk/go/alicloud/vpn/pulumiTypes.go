@@ -1125,6 +1125,20 @@ func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatew
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIkeConfigInput)(nil)).Elem(), ConnectionIkeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIkeConfigArrayInput)(nil)).Elem(), ConnectionIkeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIpsecConfigInput)(nil)).Elem(), ConnectionIpsecConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIpsecConfigArrayInput)(nil)).Elem(), ConnectionIpsecConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionInput)(nil)).Elem(), GetConnectionsConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionArrayInput)(nil)).Elem(), GetConnectionsConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionIkeConfigInput)(nil)).Elem(), GetConnectionsConnectionIkeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionIkeConfigArrayInput)(nil)).Elem(), GetConnectionsConnectionIkeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionIpsecConfigInput)(nil)).Elem(), GetConnectionsConnectionIpsecConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionIpsecConfigArrayInput)(nil)).Elem(), GetConnectionsConnectionIpsecConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomerGatewaysGatewayInput)(nil)).Elem(), GetCustomerGatewaysGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomerGatewaysGatewayArrayInput)(nil)).Elem(), GetCustomerGatewaysGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayInput)(nil)).Elem(), GetGatewaysGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewaysGatewayArray{})
 	pulumi.RegisterOutputType(ConnectionIkeConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionIkeConfigArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionIpsecConfigOutput{})

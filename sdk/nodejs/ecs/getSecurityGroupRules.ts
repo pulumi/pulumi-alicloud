@@ -26,14 +26,14 @@ import * as utilities from "../utilities";
  * // Please note that the data source arguments must be enough to filter results to one security group.
  * const groupsDs = pulumi.output(alicloud.ecs.getSecurityGroups({
  *     nameRegex: "api",
- * }, { async: true }));
+ * }));
  * // Filter the security group rule by group
  * const ingressRulesDs = groupsDs.apply(groupsDs => alicloud.ecs.getSecurityGroupRules({
  *     direction: "ingress",
  *     groupId: groupsDs.groups[0].id,
  *     ipProtocol: "tcp",
  *     nicType: "internet",
- * }, { async: true }));
+ * }));
  * // Pass port_range to the backend service
  * const backend = new alicloud.ecs.Instance("backend", {
  *     userData: pulumi.interpolate`config_service.sh --portrange=${ingressRulesDs.rules[0].portRange}`,
@@ -65,24 +65,24 @@ export interface GetSecurityGroupRulesArgs {
     /**
      * Authorization direction. Valid values are: `ingress` or `egress`.
      */
-    readonly direction?: string;
+    direction?: string;
     /**
      * The ID of the security group that owns the rules.
      */
-    readonly groupId: string;
+    groupId: string;
     /**
      * The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
      */
-    readonly ipProtocol?: string;
+    ipProtocol?: string;
     /**
      * Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
      */
-    readonly nicType?: string;
-    readonly outputFile?: string;
+    nicType?: string;
+    outputFile?: string;
     /**
      * Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
      */
-    readonly policy?: string;
+    policy?: string;
 }
 
 /**
@@ -123,4 +123,35 @@ export interface GetSecurityGroupRulesResult {
      * A list of security group rules. Each element contains the following attributes:
      */
     readonly rules: outputs.ecs.GetSecurityGroupRulesRule[];
+}
+
+export function getSecurityGroupRulesOutput(args: GetSecurityGroupRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupRulesResult> {
+    return pulumi.output(args).apply(a => getSecurityGroupRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecurityGroupRules.
+ */
+export interface GetSecurityGroupRulesOutputArgs {
+    /**
+     * Authorization direction. Valid values are: `ingress` or `egress`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * The ID of the security group that owns the rules.
+     */
+    groupId: pulumi.Input<string>;
+    /**
+     * The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
+     */
+    ipProtocol?: pulumi.Input<string>;
+    /**
+     * Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
+     */
+    nicType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
+     */
+    policy?: pulumi.Input<string>;
 }

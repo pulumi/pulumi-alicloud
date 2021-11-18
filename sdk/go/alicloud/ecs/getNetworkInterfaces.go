@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,4 +86,158 @@ type GetNetworkInterfacesResult struct {
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the VSwitch that the ENI is linked to.
 	VswitchId *string `pulumi:"vswitchId"`
+}
+
+func GetNetworkInterfacesOutput(ctx *pulumi.Context, args GetNetworkInterfacesOutputArgs, opts ...pulumi.InvokeOption) GetNetworkInterfacesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNetworkInterfacesResult, error) {
+			args := v.(GetNetworkInterfacesArgs)
+			r, err := GetNetworkInterfaces(ctx, &args, opts...)
+			return *r, err
+		}).(GetNetworkInterfacesResultOutput)
+}
+
+// A collection of arguments for invoking getNetworkInterfaces.
+type GetNetworkInterfacesOutputArgs struct {
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// ID of the instance that the ENI is attached to.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// Name of the ENI.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+	Name                 pulumi.StringPtrInput `pulumi:"name"`
+	NameRegex            pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NetworkInterfaceName pulumi.StringPtrInput `pulumi:"networkInterfaceName"`
+	OutputFile           pulumi.StringPtrInput `pulumi:"outputFile"`
+	PrimaryIpAddress     pulumi.StringPtrInput `pulumi:"primaryIpAddress"`
+	// Primary private IP of the ENI.
+	//
+	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
+	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
+	// The Id of resource group.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	ServiceManaged  pulumi.BoolPtrInput   `pulumi:"serviceManaged"`
+	// Current status of the ENI.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A map of tags assigned to the ENI.
+	Tags pulumi.MapInput       `pulumi:"tags"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// ID of the VPC that the ENI belongs to.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// ID of the VSwitch that the ENI is linked to.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (GetNetworkInterfacesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkInterfacesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNetworkInterfaces.
+type GetNetworkInterfacesResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkInterfacesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkInterfacesResult)(nil)).Elem()
+}
+
+func (o GetNetworkInterfacesResultOutput) ToGetNetworkInterfacesResultOutput() GetNetworkInterfacesResultOutput {
+	return o
+}
+
+func (o GetNetworkInterfacesResultOutput) ToGetNetworkInterfacesResultOutputWithContext(ctx context.Context) GetNetworkInterfacesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNetworkInterfacesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkInterfacesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// ID of the instance that the ENI is attached to.
+func (o GetNetworkInterfacesResultOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// A list of ENIs. Each element contains the following attributes:
+func (o GetNetworkInterfacesResultOutput) Interfaces() GetNetworkInterfacesInterfaceArrayOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) []GetNetworkInterfacesInterface { return v.Interfaces }).(GetNetworkInterfacesInterfaceArrayOutput)
+}
+
+// Name of the ENI.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+func (o GetNetworkInterfacesResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkInterfacesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkInterfacesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNetworkInterfacesResultOutput) NetworkInterfaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.NetworkInterfaceName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkInterfacesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkInterfacesResultOutput) PrimaryIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.PrimaryIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Primary private IP of the ENI.
+//
+// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
+func (o GetNetworkInterfacesResultOutput) PrivateIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
+}
+
+// The Id of resource group.
+func (o GetNetworkInterfacesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkInterfacesResultOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkInterfacesResultOutput) ServiceManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *bool { return v.ServiceManaged }).(pulumi.BoolPtrOutput)
+}
+
+// Current status of the ENI.
+func (o GetNetworkInterfacesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A map of tags assigned to the ENI.
+func (o GetNetworkInterfacesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetNetworkInterfacesResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// ID of the VPC that the ENI belongs to.
+func (o GetNetworkInterfacesResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the VSwitch that the ENI is linked to.
+func (o GetNetworkInterfacesResultOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNetworkInterfacesResultOutput{})
 }

@@ -183,59 +183,59 @@ export interface StackGroupState {
     /**
      * The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
      */
-    readonly accountIds?: pulumi.Input<string>;
+    accountIds?: pulumi.Input<string>;
     /**
      * The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
      */
-    readonly administrationRoleName?: pulumi.Input<string>;
+    administrationRoleName?: pulumi.Input<string>;
     /**
      * The description of the stack group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
      */
-    readonly executionRoleName?: pulumi.Input<string>;
+    executionRoleName?: pulumi.Input<string>;
     /**
      * The description of the operation.
      */
-    readonly operationDescription?: pulumi.Input<string>;
+    operationDescription?: pulumi.Input<string>;
     /**
      * The operation settings, in JSON format.
      */
-    readonly operationPreferences?: pulumi.Input<string>;
+    operationPreferences?: pulumi.Input<string>;
     /**
      * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.ros.StackGroupParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.ros.StackGroupParameter>[]>;
     /**
      * The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
      */
-    readonly regionIds?: pulumi.Input<string>;
+    regionIds?: pulumi.Input<string>;
     /**
      * The id of Stack Group.
      */
-    readonly stackGroupId?: pulumi.Input<string>;
+    stackGroupId?: pulumi.Input<string>;
     /**
      * The name of the stack group. The name must be unique in a region.
      */
-    readonly stackGroupName?: pulumi.Input<string>;
+    stackGroupName?: pulumi.Input<string>;
     /**
      * The status of Stack Group.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
      */
-    readonly templateBody?: pulumi.Input<string>;
+    templateBody?: pulumi.Input<string>;
     /**
      * The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    readonly templateUrl?: pulumi.Input<string>;
+    templateUrl?: pulumi.Input<string>;
     /**
      * The version of the template.
      */
-    readonly templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string>;
 }
 
 /**
@@ -245,49 +245,49 @@ export interface StackGroupArgs {
     /**
      * The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
      */
-    readonly accountIds?: pulumi.Input<string>;
+    accountIds?: pulumi.Input<string>;
     /**
      * The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
      */
-    readonly administrationRoleName?: pulumi.Input<string>;
+    administrationRoleName?: pulumi.Input<string>;
     /**
      * The description of the stack group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
      */
-    readonly executionRoleName?: pulumi.Input<string>;
+    executionRoleName?: pulumi.Input<string>;
     /**
      * The description of the operation.
      */
-    readonly operationDescription?: pulumi.Input<string>;
+    operationDescription?: pulumi.Input<string>;
     /**
      * The operation settings, in JSON format.
      */
-    readonly operationPreferences?: pulumi.Input<string>;
+    operationPreferences?: pulumi.Input<string>;
     /**
      * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.ros.StackGroupParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.ros.StackGroupParameter>[]>;
     /**
      * The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
      */
-    readonly regionIds?: pulumi.Input<string>;
+    regionIds?: pulumi.Input<string>;
     /**
      * The name of the stack group. The name must be unique in a region.
      */
-    readonly stackGroupName: pulumi.Input<string>;
+    stackGroupName: pulumi.Input<string>;
     /**
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
      */
-    readonly templateBody?: pulumi.Input<string>;
+    templateBody?: pulumi.Input<string>;
     /**
      * The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    readonly templateUrl?: pulumi.Input<string>;
+    templateUrl?: pulumi.Input<string>;
     /**
      * The version of the template.
      */
-    readonly templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string>;
 }

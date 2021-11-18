@@ -62,13 +62,13 @@ namespace Pulumi.AliCloud.Cfg
     ///             },
     ///             RiskLevel = 1,
     ///             Description = name,
-    ///             ExcludeResourceIdsScope = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Ids[0]),
+    ///             ExcludeResourceIdsScope = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Ids?[0]),
     ///             InputParameters = 
     ///             {
     ///                 { "cpuCount", "4" },
     ///             },
     ///             RegionIdsScope = "cn-hangzhou",
-    ///             ResourceGroupIdsScope = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids[0]),
+    ///             ResourceGroupIdsScope = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids?[0]),
     ///             TagKeyScope = "tFTest",
     ///             TagValueScope = "forTF 123",
     ///         });

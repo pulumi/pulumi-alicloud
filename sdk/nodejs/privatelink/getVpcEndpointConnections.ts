@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     serviceId: "example_value",
  *     status: "Connected",
  * });
- * export const firstPrivatelinkVpcEndpointConnectionId = example.then(example => example.connections[0].id);
+ * export const firstPrivatelinkVpcEndpointConnectionId = example.then(example => example.connections?[0]?.id);
  * ```
  */
 export function getVpcEndpointConnections(args: GetVpcEndpointConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointConnectionsResult> {
@@ -49,20 +49,20 @@ export interface GetVpcEndpointConnectionsArgs {
     /**
      * The ID of the Vpc Endpoint.
      */
-    readonly endpointId?: string;
+    endpointId?: string;
     /**
      * The endpoint owner id.
      */
-    readonly endpointOwnerId?: number;
-    readonly outputFile?: string;
+    endpointOwnerId?: number;
+    outputFile?: string;
     /**
      * The ID of the Vpc Endpoint Service.
      */
-    readonly serviceId: string;
+    serviceId: string;
     /**
      * The status of Vpc Endpoint Connection.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -80,4 +80,31 @@ export interface GetVpcEndpointConnectionsResult {
     readonly outputFile?: string;
     readonly serviceId: string;
     readonly status?: string;
+}
+
+export function getVpcEndpointConnectionsOutput(args: GetVpcEndpointConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointConnectionsResult> {
+    return pulumi.output(args).apply(a => getVpcEndpointConnections(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcEndpointConnections.
+ */
+export interface GetVpcEndpointConnectionsOutputArgs {
+    /**
+     * The ID of the Vpc Endpoint.
+     */
+    endpointId?: pulumi.Input<string>;
+    /**
+     * The endpoint owner id.
+     */
+    endpointOwnerId?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the Vpc Endpoint Service.
+     */
+    serviceId: pulumi.Input<string>;
+    /**
+     * The status of Vpc Endpoint Connection.
+     */
+    status?: pulumi.Input<string>;
 }

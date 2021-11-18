@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["ca73b1e4fb0df7c935a5097a****"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstDirectMailReceiversId = example.then(example => example.receiverses[0].id);
+ * export const firstDirectMailReceiversId = example.then(example => example.receiverses?[0]?.id);
  * ```
  */
 export function getReceivers(args?: GetReceiversArgs, opts?: pulumi.InvokeOptions): Promise<GetReceiversResult> {
@@ -50,20 +50,20 @@ export interface GetReceiversArgs {
     /**
      * A list of Receivers IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The key word.
      */
-    readonly keyWord?: string;
+    keyWord?: string;
     /**
      * A regex string to filter results by Receivers name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: number;
+    status?: number;
 }
 
 /**
@@ -81,4 +81,31 @@ export interface GetReceiversResult {
     readonly outputFile?: string;
     readonly receiverses: outputs.directmail.GetReceiversReceiverse[];
     readonly status?: number;
+}
+
+export function getReceiversOutput(args?: GetReceiversOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReceiversResult> {
+    return pulumi.output(args).apply(a => getReceivers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getReceivers.
+ */
+export interface GetReceiversOutputArgs {
+    /**
+     * A list of Receivers IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The key word.
+     */
+    keyWord?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Receivers name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<number>;
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetUsersResult',
     'AwaitableGetUsersResult',
     'get_users',
+    'get_users_output',
 ]
 
 @pulumi.output_type
@@ -199,3 +200,57 @@ def get_users(directory_id: Optional[str] = None,
         provision_type=__ret__.provision_type,
         status=__ret__.status,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_users)
+def get_users_output(directory_id: Optional[pulumi.Input[str]] = None,
+                     enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     provision_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+    """
+    This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.140.0+.
+
+    > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_users(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoUserId1", ids.users[0].id)
+    name_regex = alicloud.cloudsso.get_users(directory_id="example_value",
+        name_regex="^my-User")
+    pulumi.export("cloudSsoUserId2", name_regex.users[0].id)
+    provision_type = alicloud.cloudsso.get_users(directory_id="example_value",
+        ids=["example_value-1"],
+        provision_type="Manual")
+    pulumi.export("cloudSsoUserId3", provision_type.users[0].id)
+    status = alicloud.cloudsso.get_users(directory_id="example_value",
+        ids=["example_value-1"],
+        status="Enabled")
+    pulumi.export("cloudSsoUserId4", status.users[0].id)
+    ```
+
+
+    :param str directory_id: The ID of the Directory.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of User IDs.
+    :param str name_regex: A regex string to filter results by User name.
+    :param str provision_type: ProvisionType.
+    :param str status: User status. Valid values: `Enabled` and `Disabled`.
+    """
+    ...

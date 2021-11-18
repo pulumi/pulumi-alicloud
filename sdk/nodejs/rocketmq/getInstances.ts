@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     ids: [id],
  *     nameRegex: name,
  *     outputFile: "instances.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstInstanceId = instancesDs.instances[0].instanceId;
  * ```
@@ -57,24 +57,24 @@ export interface GetInstancesArgs {
     /**
      * Default to `false`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of instance IDs to filter results.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by the instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
      */
-    readonly status?: number;
+    status?: number;
     /**
      * A map of tags assigned to the Ons instance.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -108,4 +108,35 @@ export interface GetInstancesResult {
      * A map of tags assigned to the Ons instance.
      */
     readonly tags?: {[key: string]: any};
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * Default to `false`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of instance IDs to filter results.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by the instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+     */
+    status?: pulumi.Input<number>;
+    /**
+     * A map of tags assigned to the Ons instance.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

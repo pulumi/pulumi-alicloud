@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.DatabaseGateway
 {
@@ -37,12 +38,12 @@ namespace Pulumi.AliCloud.DatabaseGateway
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.DatabaseGatewayGatewayId1 = ids.Apply(ids =&gt; ids.Gateways[0].Id);
+        ///         this.DatabaseGatewayGatewayId1 = ids.Apply(ids =&gt; ids.Gateways?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.DatabaseGateway.GetGateways.InvokeAsync(new AliCloud.DatabaseGateway.GetGatewaysArgs
         ///         {
         ///             NameRegex = "^my-Gateway",
         ///         }));
-        ///         this.DatabaseGatewayGatewayId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways[0].Id);
+        ///         this.DatabaseGatewayGatewayId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
         ///     }
         /// 
         ///     [Output("databaseGatewayGatewayId1")]
@@ -56,6 +57,52 @@ namespace Pulumi.AliCloud.DatabaseGateway
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(GetGatewaysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:databasegateway/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.DatabaseGateway.GetGateways.InvokeAsync(new AliCloud.DatabaseGateway.GetGatewaysArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.DatabaseGatewayGatewayId1 = ids.Apply(ids =&gt; ids.Gateways?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.DatabaseGateway.GetGateways.InvokeAsync(new AliCloud.DatabaseGateway.GetGatewaysArgs
+        ///         {
+        ///             NameRegex = "^my-Gateway",
+        ///         }));
+        ///         this.DatabaseGatewayGatewayId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("databaseGatewayGatewayId1")]
+        ///     public Output&lt;string&gt; DatabaseGatewayGatewayId1 { get; set; }
+        ///     [Output("databaseGatewayGatewayId2")]
+        ///     public Output&lt;string&gt; DatabaseGatewayGatewayId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:databasegateway/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithVersion());
     }
 
 
@@ -101,6 +148,52 @@ namespace Pulumi.AliCloud.DatabaseGateway
         public string? Status { get; set; }
 
         public GetGatewaysArgs()
+        {
+        }
+    }
+
+    public sealed class GetGatewaysInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Gateway IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Gateway name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The search key.
+        /// </summary>
+        [Input("searchKey")]
+        public Input<string>? SearchKey { get; set; }
+
+        /// <summary>
+        /// The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetGatewaysInvokeArgs()
         {
         }
     }

@@ -12,6 +12,7 @@ __all__ = [
     'GetProtocolsResult',
     'AwaitableGetProtocolsResult',
     'get_protocols',
+    'get_protocols_output',
 ]
 
 @pulumi.output_type
@@ -122,3 +123,32 @@ def get_protocols(output_file: Optional[str] = None,
         protocols=__ret__.protocols,
         type=__ret__.type,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_protocols)
+def get_protocols_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         type: Optional[pulumi.Input[str]] = None,
+                         zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProtocolsResult]:
+    """
+    Provide  a data source to retrieve the type of protocol used to create NAS file system.
+
+    > **NOTE:** Available in 1.42.0
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.nas.get_protocols(output_file="protocols.txt",
+        type="Performance",
+        zone_id="cn-beijing-e")
+    pulumi.export("nasProtocolsProtocol", default.protocols[0])
+    ```
+
+
+    :param str type: The file system type. Valid Values: `Performance` and `Capacity`.
+    :param str zone_id: String to filter results by zone id.
+    """
+    ...

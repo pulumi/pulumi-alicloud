@@ -105,19 +105,19 @@ export interface VpcAccessState {
     /**
      * ID of the instance in VPC (ECS/Server Load Balance).
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The name of the vpc authorization.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the port corresponding to the instance.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The vpc id of the vpc authorization.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -127,17 +127,17 @@ export interface VpcAccessArgs {
     /**
      * ID of the instance in VPC (ECS/Server Load Balance).
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The name of the vpc authorization.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the port corresponding to the instance.
      */
-    readonly port: pulumi.Input<number>;
+    port: pulumi.Input<number>;
     /**
      * The vpc id of the vpc authorization.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
 }

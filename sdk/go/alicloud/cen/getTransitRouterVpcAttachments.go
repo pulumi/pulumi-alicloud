@@ -4,6 +4,9 @@
 package cen
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,4 +48,83 @@ type GetTransitRouterVpcAttachmentsResult struct {
 	Status *string `pulumi:"status"`
 	// ID of the transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
+}
+
+func GetTransitRouterVpcAttachmentsOutput(ctx *pulumi.Context, args GetTransitRouterVpcAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterVpcAttachmentsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTransitRouterVpcAttachmentsResult, error) {
+			args := v.(GetTransitRouterVpcAttachmentsArgs)
+			r, err := GetTransitRouterVpcAttachments(ctx, &args, opts...)
+			return *r, err
+		}).(GetTransitRouterVpcAttachmentsResultOutput)
+}
+
+// A collection of arguments for invoking getTransitRouterVpcAttachments.
+type GetTransitRouterVpcAttachmentsOutputArgs struct {
+	// ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// A list of resource id. The element value is same as `transitRouterId`.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The transit router ID.
+	TransitRouterId pulumi.StringPtrInput `pulumi:"transitRouterId"`
+}
+
+func (GetTransitRouterVpcAttachmentsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterVpcAttachmentsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTransitRouterVpcAttachments.
+type GetTransitRouterVpcAttachmentsResultOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterVpcAttachmentsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterVpcAttachmentsResult)(nil)).Elem()
+}
+
+func (o GetTransitRouterVpcAttachmentsResultOutput) ToGetTransitRouterVpcAttachmentsResultOutput() GetTransitRouterVpcAttachmentsResultOutput {
+	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsResultOutput) ToGetTransitRouterVpcAttachmentsResultOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsResultOutput {
+	return o
+}
+
+// A list of CEN Transit Router VPC Attachments. Each element contains the following attributes:
+func (o GetTransitRouterVpcAttachmentsResultOutput) Attachments() GetTransitRouterVpcAttachmentsAttachmentArrayOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) []GetTransitRouterVpcAttachmentsAttachment {
+		return v.Attachments
+	}).(GetTransitRouterVpcAttachmentsAttachmentArrayOutput)
+}
+
+func (o GetTransitRouterVpcAttachmentsResultOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTransitRouterVpcAttachmentsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTransitRouterVpcAttachmentsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTransitRouterVpcAttachmentsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The status of the transit router attachment.
+func (o GetTransitRouterVpcAttachmentsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// ID of the transit router.
+func (o GetTransitRouterVpcAttachmentsResultOutput) TransitRouterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) *string { return v.TransitRouterId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTransitRouterVpcAttachmentsResultOutput{})
 }

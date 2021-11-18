@@ -138,31 +138,31 @@ export interface RuleState {
     /**
      * Specifies whether to precheck this request.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the listener to which the forwarding rule belongs.
      */
-    readonly listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string>;
     /**
      * The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The actions of the forwarding rules. See the following `Block ruleActions`.
      */
-    readonly ruleActions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleAction>[]>;
+    ruleActions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleAction>[]>;
     /**
      * The conditions of the forwarding rule. See the following `Block ruleConditions`.
      */
-    readonly ruleConditions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleCondition>[]>;
+    ruleConditions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleCondition>[]>;
     /**
      * The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      */
-    readonly ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string>;
     /**
      * The status of the resource.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -172,25 +172,25 @@ export interface RuleArgs {
     /**
      * Specifies whether to precheck this request.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the listener to which the forwarding rule belongs.
      */
-    readonly listenerId: pulumi.Input<string>;
+    listenerId: pulumi.Input<string>;
     /**
      * The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
      */
-    readonly priority: pulumi.Input<number>;
+    priority: pulumi.Input<number>;
     /**
      * The actions of the forwarding rules. See the following `Block ruleActions`.
      */
-    readonly ruleActions: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleAction>[]>;
+    ruleActions: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleAction>[]>;
     /**
      * The conditions of the forwarding rule. See the following `Block ruleConditions`.
      */
-    readonly ruleConditions: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleCondition>[]>;
+    ruleConditions: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleCondition>[]>;
     /**
      * The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      */
-    readonly ruleName: pulumi.Input<string>;
+    ruleName: pulumi.Input<string>;
 }

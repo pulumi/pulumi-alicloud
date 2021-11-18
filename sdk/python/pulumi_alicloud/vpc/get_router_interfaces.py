@@ -13,6 +13,7 @@ __all__ = [
     'GetRouterInterfacesResult',
     'AwaitableGetRouterInterfacesResult',
     'get_router_interfaces',
+    'get_router_interfaces_output',
 ]
 
 @pulumi.output_type
@@ -250,3 +251,45 @@ def get_router_interfaces(ids: Optional[Sequence[str]] = None,
         router_type=__ret__.router_type,
         specification=__ret__.specification,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_router_interfaces)
+def get_router_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opposite_interface_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opposite_interface_owner_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                 role: Optional[pulumi.Input[Optional[str]]] = None,
+                                 router_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 router_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                 specification: Optional[pulumi.Input[Optional[str]]] = None,
+                                 status: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterInterfacesResult]:
+    """
+    This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+    that connect VPCs together.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    router_interfaces_ds = alicloud.vpc.get_router_interfaces(name_regex="^testenv",
+        status="Active")
+    pulumi.export("firstRouterInterfaceId", router_interfaces_ds.interfaces[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of router interface IDs.
+    :param str name_regex: A regex string used to filter by router interface name.
+    :param str opposite_interface_id: ID of the peer router interface.
+    :param str opposite_interface_owner_id: Account ID of the owner of the peer router interface.
+    :param str role: Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+           `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+    :param str router_id: ID of the VRouter located in the local region.
+    :param str router_type: Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
+    :param str specification: Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
+    :param str status: Expected status. Valid values are `Active`, `Inactive` and `Idle`.
+    """
+    ...

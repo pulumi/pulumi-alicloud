@@ -94,20 +94,20 @@ export interface CiphertextState {
     /**
      * The ciphertext of the data key encrypted with the primary CMK version.
      */
-    readonly ciphertextBlob?: pulumi.Input<string>;
+    ciphertextBlob?: pulumi.Input<string>;
     /**
      * -
      * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
-    readonly encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The globally unique ID of the CMK.
      */
-    readonly keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string>;
     /**
      * The plaintext to be encrypted which must be encoded in Base64.
      */
-    readonly plaintext?: pulumi.Input<string>;
+    plaintext?: pulumi.Input<string>;
 }
 
 /**
@@ -118,13 +118,13 @@ export interface CiphertextArgs {
      * -
      * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
-    readonly encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The globally unique ID of the CMK.
      */
-    readonly keyId: pulumi.Input<string>;
+    keyId: pulumi.Input<string>;
     /**
      * The plaintext to be encrypted which must be encoded in Base64.
      */
-    readonly plaintext: pulumi.Input<string>;
+    plaintext: pulumi.Input<string>;
 }

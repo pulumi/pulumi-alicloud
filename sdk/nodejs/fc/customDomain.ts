@@ -182,35 +182,35 @@ export interface CustomDomainState {
     /**
      * The account id.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The api version of Function Compute.
      */
-    readonly apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string>;
     /**
      * The configuration of HTTPS certificate.
      */
-    readonly certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig>;
+    certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig>;
     /**
      * The date this resource was created.
      */
-    readonly createdTime?: pulumi.Input<string>;
+    createdTime?: pulumi.Input<string>;
     /**
      * The custom domain name. For example, "example.com".
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * The date this resource was last modified.
      */
-    readonly lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string>;
     /**
      * The protocol, `HTTP` or `HTTP,HTTPS`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The configuration of domain route, mapping the path and Function Compute function.
      */
-    readonly routeConfigs?: pulumi.Input<pulumi.Input<inputs.fc.CustomDomainRouteConfig>[]>;
+    routeConfigs?: pulumi.Input<pulumi.Input<inputs.fc.CustomDomainRouteConfig>[]>;
 }
 
 /**
@@ -220,17 +220,17 @@ export interface CustomDomainArgs {
     /**
      * The configuration of HTTPS certificate.
      */
-    readonly certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig>;
+    certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig>;
     /**
      * The custom domain name. For example, "example.com".
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * The protocol, `HTTP` or `HTTP,HTTPS`.
      */
-    readonly protocol: pulumi.Input<string>;
+    protocol: pulumi.Input<string>;
     /**
      * The configuration of domain route, mapping the path and Function Compute function.
      */
-    readonly routeConfigs?: pulumi.Input<pulumi.Input<inputs.fc.CustomDomainRouteConfig>[]>;
+    routeConfigs?: pulumi.Input<pulumi.Input<inputs.fc.CustomDomainRouteConfig>[]>;
 }

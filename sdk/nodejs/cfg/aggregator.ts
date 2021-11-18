@@ -135,23 +135,23 @@ export interface AggregatorState {
     /**
      * The information of account in aggregator.
      */
-    readonly aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[]>;
+    aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[]>;
     /**
      * The name of aggregator.
      */
-    readonly aggregatorName?: pulumi.Input<string>;
+    aggregatorName?: pulumi.Input<string>;
     /**
      * The type of aggregator. Valid values: `CUSTOM`, `RD`.
      */
-    readonly aggregatorType?: pulumi.Input<string>;
+    aggregatorType?: pulumi.Input<string>;
     /**
      * The description of aggregator.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The status of the resource.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -161,17 +161,17 @@ export interface AggregatorArgs {
     /**
      * The information of account in aggregator.
      */
-    readonly aggregatorAccounts: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[]>;
+    aggregatorAccounts: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[]>;
     /**
      * The name of aggregator.
      */
-    readonly aggregatorName: pulumi.Input<string>;
+    aggregatorName: pulumi.Input<string>;
     /**
      * The type of aggregator. Valid values: `CUSTOM`, `RD`.
      */
-    readonly aggregatorType?: pulumi.Input<string>;
+    aggregatorType?: pulumi.Input<string>;
     /**
      * The description of aggregator.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
 }

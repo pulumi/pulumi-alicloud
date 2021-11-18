@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     instanceId: "xxx",
  *     nameRegex: "alikafkaTopicName",
  *     outputFile: "topics.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstTopicName = topicsDs.topics[0].topic;
  * ```
@@ -44,12 +44,12 @@ export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getTopics.
  */
 export interface GetTopicsArgs {
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by the topic name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -71,4 +71,20 @@ export interface GetTopicsResult {
      * A list of topics. Each element contains the following attributes:
      */
     readonly topics: outputs.actiontrail.GetTopicsTopic[];
+}
+
+export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
+    return pulumi.output(args).apply(a => getTopics(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTopics.
+ */
+export interface GetTopicsOutputArgs {
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by the topic name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package dms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,4 +86,98 @@ type GetEnterpriseUsersResult struct {
 	Tid    *int    `pulumi:"tid"`
 	// A list of DMS Enterprise Users. Each element contains the following attributes:
 	Users []GetEnterpriseUsersUser `pulumi:"users"`
+}
+
+func GetEnterpriseUsersOutput(ctx *pulumi.Context, args GetEnterpriseUsersOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseUsersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEnterpriseUsersResult, error) {
+			args := v.(GetEnterpriseUsersArgs)
+			r, err := GetEnterpriseUsers(ctx, &args, opts...)
+			return *r, err
+		}).(GetEnterpriseUsersResultOutput)
+}
+
+// A collection of arguments for invoking getEnterpriseUsers.
+type GetEnterpriseUsersOutputArgs struct {
+	// A list of DMS Enterprise User IDs (UID).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter the results by the DMS Enterprise User nick_name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The role of the user to query.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// The keyword used to query users.
+	SearchKey pulumi.StringPtrInput `pulumi:"searchKey"`
+	// The status of the user.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The ID of the tenant in DMS Enterprise.
+	Tid pulumi.IntPtrInput `pulumi:"tid"`
+}
+
+func (GetEnterpriseUsersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseUsersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEnterpriseUsers.
+type GetEnterpriseUsersResultOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseUsersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseUsersResult)(nil)).Elem()
+}
+
+func (o GetEnterpriseUsersResultOutput) ToGetEnterpriseUsersResultOutput() GetEnterpriseUsersResultOutput {
+	return o
+}
+
+func (o GetEnterpriseUsersResultOutput) ToGetEnterpriseUsersResultOutputWithContext(ctx context.Context) GetEnterpriseUsersResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEnterpriseUsersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of DMS Enterprise User IDs (UID).
+func (o GetEnterpriseUsersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEnterpriseUsersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of DMS Enterprise User names.
+func (o GetEnterpriseUsersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEnterpriseUsersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnterpriseUsersResultOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersResult) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnterpriseUsersResultOutput) SearchKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersResult) *string { return v.SearchKey }).(pulumi.StringPtrOutput)
+}
+
+// The status of the user.
+func (o GetEnterpriseUsersResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnterpriseUsersResultOutput) Tid() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersResult) *int { return v.Tid }).(pulumi.IntPtrOutput)
+}
+
+// A list of DMS Enterprise Users. Each element contains the following attributes:
+func (o GetEnterpriseUsersResultOutput) Users() GetEnterpriseUsersUserArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersResult) []GetEnterpriseUsersUser { return v.Users }).(GetEnterpriseUsersUserArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEnterpriseUsersResultOutput{})
 }

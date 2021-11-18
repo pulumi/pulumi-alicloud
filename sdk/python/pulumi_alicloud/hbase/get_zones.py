@@ -13,6 +13,7 @@ __all__ = [
     'GetZonesResult',
     'AwaitableGetZonesResult',
     'get_zones',
+    'get_zones_output',
 ]
 
 @pulumi.output_type
@@ -107,3 +108,25 @@ def get_zones(output_file: Optional[str] = None,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_zones)
+def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+    """
+    This data source provides availability zones for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+
+    > **NOTE:** Available in v1.73.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.hbase.get_zones()
+    hbase = alicloud.hbase.Instance("hbase", zone_id=zones_ids.zones[0].id)
+    # Other properties...
+    ```
+    """
+    ...

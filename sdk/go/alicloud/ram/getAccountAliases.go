@@ -4,6 +4,9 @@
 package ram
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,4 +57,55 @@ type GetAccountAliasesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
+}
+
+func GetAccountAliasesOutput(ctx *pulumi.Context, args GetAccountAliasesOutputArgs, opts ...pulumi.InvokeOption) GetAccountAliasesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAccountAliasesResult, error) {
+			args := v.(GetAccountAliasesArgs)
+			r, err := GetAccountAliases(ctx, &args, opts...)
+			return *r, err
+		}).(GetAccountAliasesResultOutput)
+}
+
+// A collection of arguments for invoking getAccountAliases.
+type GetAccountAliasesOutputArgs struct {
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetAccountAliasesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAliasesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccountAliases.
+type GetAccountAliasesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccountAliasesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAliasesResult)(nil)).Elem()
+}
+
+func (o GetAccountAliasesResultOutput) ToGetAccountAliasesResultOutput() GetAccountAliasesResultOutput {
+	return o
+}
+
+func (o GetAccountAliasesResultOutput) ToGetAccountAliasesResultOutputWithContext(ctx context.Context) GetAccountAliasesResultOutput {
+	return o
+}
+
+// Alias of the account.
+func (o GetAccountAliasesResultOutput) AccountAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountAliasesResult) string { return v.AccountAlias }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccountAliasesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountAliasesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAccountAliasesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAliasesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccountAliasesResultOutput{})
 }

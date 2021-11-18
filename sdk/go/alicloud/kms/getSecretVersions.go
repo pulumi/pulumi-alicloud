@@ -4,6 +4,9 @@
 package kms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,87 @@ type GetSecretVersionsResult struct {
 	VersionStage *string `pulumi:"versionStage"`
 	// A list of KMS Secret Versions. Each element contains the following attributes:
 	Versions []GetSecretVersionsVersion `pulumi:"versions"`
+}
+
+func GetSecretVersionsOutput(ctx *pulumi.Context, args GetSecretVersionsOutputArgs, opts ...pulumi.InvokeOption) GetSecretVersionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSecretVersionsResult, error) {
+			args := v.(GetSecretVersionsArgs)
+			r, err := GetSecretVersions(ctx, &args, opts...)
+			return *r, err
+		}).(GetSecretVersionsResultOutput)
+}
+
+// A collection of arguments for invoking getSecretVersions.
+type GetSecretVersionsOutputArgs struct {
+	// Default to false and only output `secretName`, `versionId`, `versionStages`. Set it to true can output more details.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of KMS Secret Version ids.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Specifies whether to return deprecated secret versions. Default to `false`.
+	IncludeDeprecated pulumi.StringPtrInput `pulumi:"includeDeprecated"`
+	OutputFile        pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The name of the secret.
+	SecretName pulumi.StringInput `pulumi:"secretName"`
+	// The stage of the secret version.
+	VersionStage pulumi.StringPtrInput `pulumi:"versionStage"`
+}
+
+func (GetSecretVersionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretVersionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSecretVersions.
+type GetSecretVersionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSecretVersionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretVersionsResult)(nil)).Elem()
+}
+
+func (o GetSecretVersionsResultOutput) ToGetSecretVersionsResultOutput() GetSecretVersionsResultOutput {
+	return o
+}
+
+func (o GetSecretVersionsResultOutput) ToGetSecretVersionsResultOutputWithContext(ctx context.Context) GetSecretVersionsResultOutput {
+	return o
+}
+
+func (o GetSecretVersionsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSecretVersionsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSecretVersionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretVersionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of Kms Secret Version ids.
+func (o GetSecretVersionsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecretVersionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSecretVersionsResultOutput) IncludeDeprecated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretVersionsResult) *string { return v.IncludeDeprecated }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSecretVersionsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretVersionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The name of the secret.
+func (o GetSecretVersionsResultOutput) SecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretVersionsResult) string { return v.SecretName }).(pulumi.StringOutput)
+}
+
+func (o GetSecretVersionsResultOutput) VersionStage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretVersionsResult) *string { return v.VersionStage }).(pulumi.StringPtrOutput)
+}
+
+// A list of KMS Secret Versions. Each element contains the following attributes:
+func (o GetSecretVersionsResultOutput) Versions() GetSecretVersionsVersionArrayOutput {
+	return o.ApplyT(func(v GetSecretVersionsResult) []GetSecretVersionsVersion { return v.Versions }).(GetSecretVersionsVersionArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSecretVersionsResultOutput{})
 }

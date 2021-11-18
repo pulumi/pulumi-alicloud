@@ -13,6 +13,7 @@ __all__ = [
     'GetTlsCipherPoliciesResult',
     'AwaitableGetTlsCipherPoliciesResult',
     'get_tls_cipher_policies',
+    'get_tls_cipher_policies_output',
 ]
 
 @pulumi.output_type
@@ -174,3 +175,43 @@ def get_tls_cipher_policies(ids: Optional[Sequence[str]] = None,
         policies=__ret__.policies,
         status=__ret__.status,
         tls_cipher_policy_name=__ret__.tls_cipher_policy_name)
+
+
+@_utilities.lift_output_func(get_tls_cipher_policies)
+def get_tls_cipher_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                   include_listener: Optional[pulumi.Input[Optional[bool]]] = None,
+                                   name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                   status: Optional[pulumi.Input[Optional[str]]] = None,
+                                   tls_cipher_policy_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTlsCipherPoliciesResult]:
+    """
+    This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.slb.get_tls_cipher_policies(ids=[
+        "example_value-1",
+        "example_value-2",
+    ])
+    pulumi.export("slbTlsCipherPolicyId1", ids.policies[0].id)
+    name_regex = alicloud.slb.get_tls_cipher_policies(name_regex="^My-TlsCipherPolicy")
+    pulumi.export("slbTlsCipherPolicyId2", name_regex.policies[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Tls Cipher Policy IDs.
+    :param bool include_listener: The include listener.
+    :param str name_regex: A regex string to filter results by Tls Cipher Policy name.
+    :param str status: TLS policy instance state.
+    :param str tls_cipher_policy_name: TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+    """
+    ...

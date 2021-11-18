@@ -4,6 +4,9 @@
 package cr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,72 @@ type GetEndpointAclPoliciesResult struct {
 	InstanceId string                         `pulumi:"instanceId"`
 	OutputFile *string                        `pulumi:"outputFile"`
 	Policies   []GetEndpointAclPoliciesPolicy `pulumi:"policies"`
+}
+
+func GetEndpointAclPoliciesOutput(ctx *pulumi.Context, args GetEndpointAclPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetEndpointAclPoliciesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEndpointAclPoliciesResult, error) {
+			args := v.(GetEndpointAclPoliciesArgs)
+			r, err := GetEndpointAclPolicies(ctx, &args, opts...)
+			return *r, err
+		}).(GetEndpointAclPoliciesResultOutput)
+}
+
+// A collection of arguments for invoking getEndpointAclPolicies.
+type GetEndpointAclPoliciesOutputArgs struct {
+	// The type of endpoint.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// A list of Endpoint Acl Policy IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The ID of the CR Instance.
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetEndpointAclPoliciesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointAclPoliciesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEndpointAclPolicies.
+type GetEndpointAclPoliciesResultOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointAclPoliciesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointAclPoliciesResult)(nil)).Elem()
+}
+
+func (o GetEndpointAclPoliciesResultOutput) ToGetEndpointAclPoliciesResultOutput() GetEndpointAclPoliciesResultOutput {
+	return o
+}
+
+func (o GetEndpointAclPoliciesResultOutput) ToGetEndpointAclPoliciesResultOutputWithContext(ctx context.Context) GetEndpointAclPoliciesResultOutput {
+	return o
+}
+
+func (o GetEndpointAclPoliciesResultOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesResult) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEndpointAclPoliciesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEndpointAclPoliciesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEndpointAclPoliciesResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetEndpointAclPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEndpointAclPoliciesResultOutput) Policies() GetEndpointAclPoliciesPolicyArrayOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesResult) []GetEndpointAclPoliciesPolicy { return v.Policies }).(GetEndpointAclPoliciesPolicyArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEndpointAclPoliciesResultOutput{})
 }

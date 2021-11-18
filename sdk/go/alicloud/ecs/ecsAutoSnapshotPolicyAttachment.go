@@ -192,7 +192,7 @@ type EcsAutoSnapshotPolicyAttachmentArrayInput interface {
 type EcsAutoSnapshotPolicyAttachmentArray []EcsAutoSnapshotPolicyAttachmentInput
 
 func (EcsAutoSnapshotPolicyAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EcsAutoSnapshotPolicyAttachment)(nil))
+	return reflect.TypeOf((*[]*EcsAutoSnapshotPolicyAttachment)(nil)).Elem()
 }
 
 func (i EcsAutoSnapshotPolicyAttachmentArray) ToEcsAutoSnapshotPolicyAttachmentArrayOutput() EcsAutoSnapshotPolicyAttachmentArrayOutput {
@@ -217,7 +217,7 @@ type EcsAutoSnapshotPolicyAttachmentMapInput interface {
 type EcsAutoSnapshotPolicyAttachmentMap map[string]EcsAutoSnapshotPolicyAttachmentInput
 
 func (EcsAutoSnapshotPolicyAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EcsAutoSnapshotPolicyAttachment)(nil))
+	return reflect.TypeOf((*map[string]*EcsAutoSnapshotPolicyAttachment)(nil)).Elem()
 }
 
 func (i EcsAutoSnapshotPolicyAttachmentMap) ToEcsAutoSnapshotPolicyAttachmentMapOutput() EcsAutoSnapshotPolicyAttachmentMapOutput {
@@ -228,9 +228,7 @@ func (i EcsAutoSnapshotPolicyAttachmentMap) ToEcsAutoSnapshotPolicyAttachmentMap
 	return pulumi.ToOutputWithContext(ctx, i).(EcsAutoSnapshotPolicyAttachmentMapOutput)
 }
 
-type EcsAutoSnapshotPolicyAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type EcsAutoSnapshotPolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EcsAutoSnapshotPolicyAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EcsAutoSnapshotPolicyAttachment)(nil))
@@ -249,14 +247,12 @@ func (o EcsAutoSnapshotPolicyAttachmentOutput) ToEcsAutoSnapshotPolicyAttachment
 }
 
 func (o EcsAutoSnapshotPolicyAttachmentOutput) ToEcsAutoSnapshotPolicyAttachmentPtrOutputWithContext(ctx context.Context) EcsAutoSnapshotPolicyAttachmentPtrOutput {
-	return o.ApplyT(func(v EcsAutoSnapshotPolicyAttachment) *EcsAutoSnapshotPolicyAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsAutoSnapshotPolicyAttachment) *EcsAutoSnapshotPolicyAttachment {
 		return &v
 	}).(EcsAutoSnapshotPolicyAttachmentPtrOutput)
 }
 
-type EcsAutoSnapshotPolicyAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type EcsAutoSnapshotPolicyAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (EcsAutoSnapshotPolicyAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EcsAutoSnapshotPolicyAttachment)(nil))
@@ -268,6 +264,16 @@ func (o EcsAutoSnapshotPolicyAttachmentPtrOutput) ToEcsAutoSnapshotPolicyAttachm
 
 func (o EcsAutoSnapshotPolicyAttachmentPtrOutput) ToEcsAutoSnapshotPolicyAttachmentPtrOutputWithContext(ctx context.Context) EcsAutoSnapshotPolicyAttachmentPtrOutput {
 	return o
+}
+
+func (o EcsAutoSnapshotPolicyAttachmentPtrOutput) Elem() EcsAutoSnapshotPolicyAttachmentOutput {
+	return o.ApplyT(func(v *EcsAutoSnapshotPolicyAttachment) EcsAutoSnapshotPolicyAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret EcsAutoSnapshotPolicyAttachment
+		return ret
+	}).(EcsAutoSnapshotPolicyAttachmentOutput)
 }
 
 type EcsAutoSnapshotPolicyAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -311,6 +317,10 @@ func (o EcsAutoSnapshotPolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsAutoSnapshotPolicyAttachmentInput)(nil)).Elem(), &EcsAutoSnapshotPolicyAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsAutoSnapshotPolicyAttachmentPtrInput)(nil)).Elem(), &EcsAutoSnapshotPolicyAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsAutoSnapshotPolicyAttachmentArrayInput)(nil)).Elem(), EcsAutoSnapshotPolicyAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsAutoSnapshotPolicyAttachmentMapInput)(nil)).Elem(), EcsAutoSnapshotPolicyAttachmentMap{})
 	pulumi.RegisterOutputType(EcsAutoSnapshotPolicyAttachmentOutput{})
 	pulumi.RegisterOutputType(EcsAutoSnapshotPolicyAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(EcsAutoSnapshotPolicyAttachmentArrayOutput{})

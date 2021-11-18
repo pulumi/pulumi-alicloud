@@ -96,13 +96,13 @@ export interface NetworkInterfaceAttachmentState {
     /**
      * The instance ID to attach.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The ENI ID to attach.
      */
-    readonly networkInterfaceId?: pulumi.Input<string>;
-    readonly trunkNetworkInstanceId?: pulumi.Input<string>;
-    readonly waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
+    networkInterfaceId?: pulumi.Input<string>;
+    trunkNetworkInstanceId?: pulumi.Input<string>;
+    waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
 }
 
 /**
@@ -112,11 +112,11 @@ export interface NetworkInterfaceAttachmentArgs {
     /**
      * The instance ID to attach.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The ENI ID to attach.
      */
-    readonly networkInterfaceId: pulumi.Input<string>;
-    readonly trunkNetworkInstanceId?: pulumi.Input<string>;
-    readonly waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
+    networkInterfaceId: pulumi.Input<string>;
+    trunkNetworkInstanceId?: pulumi.Input<string>;
+    waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
 }

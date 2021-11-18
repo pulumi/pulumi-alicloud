@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["E2RY53-xxxx"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstEcsCommandId = example.then(example => example.commands[0].id);
+ * export const firstEcsCommandId = example.then(example => example.commands?[0]?.id);
  * ```
  */
 export function getCommands(args?: GetCommandsArgs, opts?: pulumi.InvokeOptions): Promise<GetCommandsResult> {
@@ -53,32 +53,32 @@ export interface GetCommandsArgs {
     /**
      * Public order provider.
      */
-    readonly commandProvider?: string;
+    commandProvider?: string;
     /**
      * The Base64-encoded content of the command.
      */
-    readonly contentEncoding?: string;
+    contentEncoding?: string;
     /**
      * The description of command.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * A list of Command IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The name of the command
      */
-    readonly name?: string;
+    name?: string;
     /**
      * A regex string to filter results by Command name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The command type.
      */
-    readonly type?: string;
+    type?: string;
 }
 
 /**
@@ -99,4 +99,43 @@ export interface GetCommandsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly type?: string;
+}
+
+export function getCommandsOutput(args?: GetCommandsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommandsResult> {
+    return pulumi.output(args).apply(a => getCommands(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCommands.
+ */
+export interface GetCommandsOutputArgs {
+    /**
+     * Public order provider.
+     */
+    commandProvider?: pulumi.Input<string>;
+    /**
+     * The Base64-encoded content of the command.
+     */
+    contentEncoding?: pulumi.Input<string>;
+    /**
+     * The description of command.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * A list of Command IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the command
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Command name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The command type.
+     */
+    type?: pulumi.Input<string>;
 }

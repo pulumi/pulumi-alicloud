@@ -13,6 +13,7 @@ __all__ = [
     'GetScheduledTasksResult',
     'AwaitableGetScheduledTasksResult',
     'get_scheduled_tasks',
+    'get_scheduled_tasks_output',
 ]
 
 @pulumi.output_type
@@ -167,3 +168,35 @@ def get_scheduled_tasks(ids: Optional[Sequence[str]] = None,
         scheduled_action=__ret__.scheduled_action,
         scheduled_task_id=__ret__.scheduled_task_id,
         tasks=__ret__.tasks)
+
+
+@_utilities.lift_output_func(get_scheduled_tasks)
+def get_scheduled_tasks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               scheduled_action: Optional[pulumi.Input[Optional[str]]] = None,
+                               scheduled_task_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScheduledTasksResult]:
+    """
+    This data source provides available scheduled task resources.
+
+    > **NOTE:** Available in 1.72.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_scheduled_tasks(name_regex="scheduled_task_name",
+        scheduled_task_id="scheduled_task_id")
+    pulumi.export("firstScheduledTask", ds.tasks[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of scheduled task IDs.
+    :param str name_regex: A regex string to filter resulting scheduled tasks by name.
+    :param str scheduled_action: The operation to be performed when a scheduled task is triggered.
+    :param str scheduled_task_id: The id of the scheduled task.
+    """
+    ...

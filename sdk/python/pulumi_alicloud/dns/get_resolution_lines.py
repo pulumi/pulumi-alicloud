@@ -13,6 +13,7 @@ __all__ = [
     'GetResolutionLinesResult',
     'AwaitableGetResolutionLinesResult',
     'get_resolution_lines',
+    'get_resolution_lines_output',
 ]
 
 @pulumi.output_type
@@ -179,3 +180,38 @@ def get_resolution_lines(domain_name: Optional[str] = None,
         lines=__ret__.lines,
         output_file=__ret__.output_file,
         user_client_ip=__ret__.user_client_ip)
+
+
+@_utilities.lift_output_func(get_resolution_lines)
+def get_resolution_lines_output(domain_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                lang: Optional[pulumi.Input[Optional[str]]] = None,
+                                line_codes: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                line_display_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                line_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                user_client_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResolutionLinesResult]:
+    """
+    This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.60.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resolution_lines_ds = alicloud.dns.get_resolution_lines(line_codes=["cn_unicom_shanxi"],
+        output_file="support_lines.txt")
+    pulumi.export("firstLineCode", resolution_lines_ds.lines[0].line_code)
+    ```
+
+
+    :param str domain_name: Domain Name.
+    :param str lang: language.
+    :param Sequence[str] line_codes: A list of lines codes.
+    :param Sequence[str] line_display_names: A list of line display names.
+    :param str user_client_ip: The ip of user client.
+    """
+    ...

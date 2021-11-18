@@ -13,6 +13,7 @@ __all__ = [
     'GetDeviceGroupsResult',
     'AwaitableGetDeviceGroupsResult',
     'get_device_groups',
+    'get_device_groups_output',
 ]
 
 @pulumi.output_type
@@ -172,3 +173,40 @@ def get_device_groups(enable_details: Optional[bool] = None,
         name_regex=__ret__.name_regex,
         output_file=__ret__.output_file,
         super_group_id=__ret__.super_group_id)
+
+
+@_utilities.lift_output_func(get_device_groups)
+def get_device_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                             group_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             iot_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             super_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceGroupsResult]:
+    """
+    This data source provides the Iot Device Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.iot.get_device_groups()
+    pulumi.export("iotDeviceGroupId1", ids.groups[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param str group_name: The GroupName of the device group.
+    :param Sequence[str] ids: A list of device group IDs.
+    :param str iot_instance_id: The id of the Iot Instance.
+    :param str name_regex: A regex string to filter CEN instances by name.
+    :param str super_group_id: The id of the SuperGroup.
+    """
+    ...

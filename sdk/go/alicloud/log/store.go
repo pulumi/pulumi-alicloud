@@ -230,7 +230,7 @@ type StoreArrayInput interface {
 type StoreArray []StoreInput
 
 func (StoreArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Store)(nil))
+	return reflect.TypeOf((*[]*Store)(nil)).Elem()
 }
 
 func (i StoreArray) ToStoreArrayOutput() StoreArrayOutput {
@@ -255,7 +255,7 @@ type StoreMapInput interface {
 type StoreMap map[string]StoreInput
 
 func (StoreMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Store)(nil))
+	return reflect.TypeOf((*map[string]*Store)(nil)).Elem()
 }
 
 func (i StoreMap) ToStoreMapOutput() StoreMapOutput {
@@ -266,9 +266,7 @@ func (i StoreMap) ToStoreMapOutputWithContext(ctx context.Context) StoreMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(StoreMapOutput)
 }
 
-type StoreOutput struct {
-	*pulumi.OutputState
-}
+type StoreOutput struct{ *pulumi.OutputState }
 
 func (StoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Store)(nil))
@@ -287,14 +285,12 @@ func (o StoreOutput) ToStorePtrOutput() StorePtrOutput {
 }
 
 func (o StoreOutput) ToStorePtrOutputWithContext(ctx context.Context) StorePtrOutput {
-	return o.ApplyT(func(v Store) *Store {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Store) *Store {
 		return &v
 	}).(StorePtrOutput)
 }
 
-type StorePtrOutput struct {
-	*pulumi.OutputState
-}
+type StorePtrOutput struct{ *pulumi.OutputState }
 
 func (StorePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Store)(nil))
@@ -306,6 +302,16 @@ func (o StorePtrOutput) ToStorePtrOutput() StorePtrOutput {
 
 func (o StorePtrOutput) ToStorePtrOutputWithContext(ctx context.Context) StorePtrOutput {
 	return o
+}
+
+func (o StorePtrOutput) Elem() StoreOutput {
+	return o.ApplyT(func(v *Store) Store {
+		if v != nil {
+			return *v
+		}
+		var ret Store
+		return ret
+	}).(StoreOutput)
 }
 
 type StoreArrayOutput struct{ *pulumi.OutputState }
@@ -349,6 +355,10 @@ func (o StoreMapOutput) MapIndex(k pulumi.StringInput) StoreOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreInput)(nil)).Elem(), &Store{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorePtrInput)(nil)).Elem(), &Store{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreArrayInput)(nil)).Elem(), StoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreMapInput)(nil)).Elem(), StoreMap{})
 	pulumi.RegisterOutputType(StoreOutput{})
 	pulumi.RegisterOutputType(StorePtrOutput{})
 	pulumi.RegisterOutputType(StoreArrayOutput{})

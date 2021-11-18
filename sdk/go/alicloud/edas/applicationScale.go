@@ -32,7 +32,7 @@ import (
 // 		_, err := edas.NewApplicationScale(ctx, "_default", &edas.ApplicationScaleArgs{
 // 			AppId:       pulumi.Any(_var.App_id),
 // 			DeployGroup: pulumi.Any(_var.Deploy_group),
-// 			EcuInfos:    _var.Ecu_info,
+// 			EcuInfos:    pulumi.Any(_var.Ecu_info),
 // 			ForceStatus: pulumi.Any(_var.Force_status),
 // 		})
 // 		if err != nil {
@@ -213,7 +213,7 @@ type ApplicationScaleArrayInput interface {
 type ApplicationScaleArray []ApplicationScaleInput
 
 func (ApplicationScaleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ApplicationScale)(nil))
+	return reflect.TypeOf((*[]*ApplicationScale)(nil)).Elem()
 }
 
 func (i ApplicationScaleArray) ToApplicationScaleArrayOutput() ApplicationScaleArrayOutput {
@@ -238,7 +238,7 @@ type ApplicationScaleMapInput interface {
 type ApplicationScaleMap map[string]ApplicationScaleInput
 
 func (ApplicationScaleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ApplicationScale)(nil))
+	return reflect.TypeOf((*map[string]*ApplicationScale)(nil)).Elem()
 }
 
 func (i ApplicationScaleMap) ToApplicationScaleMapOutput() ApplicationScaleMapOutput {
@@ -249,9 +249,7 @@ func (i ApplicationScaleMap) ToApplicationScaleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScaleMapOutput)
 }
 
-type ApplicationScaleOutput struct {
-	*pulumi.OutputState
-}
+type ApplicationScaleOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScaleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationScale)(nil))
@@ -270,14 +268,12 @@ func (o ApplicationScaleOutput) ToApplicationScalePtrOutput() ApplicationScalePt
 }
 
 func (o ApplicationScaleOutput) ToApplicationScalePtrOutputWithContext(ctx context.Context) ApplicationScalePtrOutput {
-	return o.ApplyT(func(v ApplicationScale) *ApplicationScale {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationScale) *ApplicationScale {
 		return &v
 	}).(ApplicationScalePtrOutput)
 }
 
-type ApplicationScalePtrOutput struct {
-	*pulumi.OutputState
-}
+type ApplicationScalePtrOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScalePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApplicationScale)(nil))
@@ -289,6 +285,16 @@ func (o ApplicationScalePtrOutput) ToApplicationScalePtrOutput() ApplicationScal
 
 func (o ApplicationScalePtrOutput) ToApplicationScalePtrOutputWithContext(ctx context.Context) ApplicationScalePtrOutput {
 	return o
+}
+
+func (o ApplicationScalePtrOutput) Elem() ApplicationScaleOutput {
+	return o.ApplyT(func(v *ApplicationScale) ApplicationScale {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationScale
+		return ret
+	}).(ApplicationScaleOutput)
 }
 
 type ApplicationScaleArrayOutput struct{ *pulumi.OutputState }
@@ -332,6 +338,10 @@ func (o ApplicationScaleMapOutput) MapIndex(k pulumi.StringInput) ApplicationSca
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScaleInput)(nil)).Elem(), &ApplicationScale{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalePtrInput)(nil)).Elem(), &ApplicationScale{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScaleArrayInput)(nil)).Elem(), ApplicationScaleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScaleMapInput)(nil)).Elem(), ApplicationScaleMap{})
 	pulumi.RegisterOutputType(ApplicationScaleOutput{})
 	pulumi.RegisterOutputType(ApplicationScalePtrOutput{})
 	pulumi.RegisterOutputType(ApplicationScaleArrayOutput{})

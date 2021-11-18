@@ -213,7 +213,7 @@ type MonitorGroupInstancesArrayInput interface {
 type MonitorGroupInstancesArray []MonitorGroupInstancesInput
 
 func (MonitorGroupInstancesArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MonitorGroupInstances)(nil))
+	return reflect.TypeOf((*[]*MonitorGroupInstances)(nil)).Elem()
 }
 
 func (i MonitorGroupInstancesArray) ToMonitorGroupInstancesArrayOutput() MonitorGroupInstancesArrayOutput {
@@ -238,7 +238,7 @@ type MonitorGroupInstancesMapInput interface {
 type MonitorGroupInstancesMap map[string]MonitorGroupInstancesInput
 
 func (MonitorGroupInstancesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MonitorGroupInstances)(nil))
+	return reflect.TypeOf((*map[string]*MonitorGroupInstances)(nil)).Elem()
 }
 
 func (i MonitorGroupInstancesMap) ToMonitorGroupInstancesMapOutput() MonitorGroupInstancesMapOutput {
@@ -249,9 +249,7 @@ func (i MonitorGroupInstancesMap) ToMonitorGroupInstancesMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupInstancesMapOutput)
 }
 
-type MonitorGroupInstancesOutput struct {
-	*pulumi.OutputState
-}
+type MonitorGroupInstancesOutput struct{ *pulumi.OutputState }
 
 func (MonitorGroupInstancesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MonitorGroupInstances)(nil))
@@ -270,14 +268,12 @@ func (o MonitorGroupInstancesOutput) ToMonitorGroupInstancesPtrOutput() MonitorG
 }
 
 func (o MonitorGroupInstancesOutput) ToMonitorGroupInstancesPtrOutputWithContext(ctx context.Context) MonitorGroupInstancesPtrOutput {
-	return o.ApplyT(func(v MonitorGroupInstances) *MonitorGroupInstances {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorGroupInstances) *MonitorGroupInstances {
 		return &v
 	}).(MonitorGroupInstancesPtrOutput)
 }
 
-type MonitorGroupInstancesPtrOutput struct {
-	*pulumi.OutputState
-}
+type MonitorGroupInstancesPtrOutput struct{ *pulumi.OutputState }
 
 func (MonitorGroupInstancesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MonitorGroupInstances)(nil))
@@ -289,6 +285,16 @@ func (o MonitorGroupInstancesPtrOutput) ToMonitorGroupInstancesPtrOutput() Monit
 
 func (o MonitorGroupInstancesPtrOutput) ToMonitorGroupInstancesPtrOutputWithContext(ctx context.Context) MonitorGroupInstancesPtrOutput {
 	return o
+}
+
+func (o MonitorGroupInstancesPtrOutput) Elem() MonitorGroupInstancesOutput {
+	return o.ApplyT(func(v *MonitorGroupInstances) MonitorGroupInstances {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorGroupInstances
+		return ret
+	}).(MonitorGroupInstancesOutput)
 }
 
 type MonitorGroupInstancesArrayOutput struct{ *pulumi.OutputState }
@@ -332,6 +338,10 @@ func (o MonitorGroupInstancesMapOutput) MapIndex(k pulumi.StringInput) MonitorGr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorGroupInstancesInput)(nil)).Elem(), &MonitorGroupInstances{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorGroupInstancesPtrInput)(nil)).Elem(), &MonitorGroupInstances{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorGroupInstancesArrayInput)(nil)).Elem(), MonitorGroupInstancesArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorGroupInstancesMapInput)(nil)).Elem(), MonitorGroupInstancesMap{})
 	pulumi.RegisterOutputType(MonitorGroupInstancesOutput{})
 	pulumi.RegisterOutputType(MonitorGroupInstancesPtrOutput{})
 	pulumi.RegisterOutputType(MonitorGroupInstancesArrayOutput{})

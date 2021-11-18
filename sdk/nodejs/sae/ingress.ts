@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
@@ -189,31 +189,31 @@ export interface IngressState {
     /**
      * Cert Id.
      */
-    readonly certId?: pulumi.Input<string>;
+    certId?: pulumi.Input<string>;
     /**
      * Default Rule.
      */
-    readonly defaultRule?: pulumi.Input<inputs.sae.IngressDefaultRule>;
+    defaultRule?: pulumi.Input<inputs.sae.IngressDefaultRule>;
     /**
      * Description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * SLB listening port.
      */
-    readonly listenerPort?: pulumi.Input<number>;
+    listenerPort?: pulumi.Input<number>;
     /**
      * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * Forwarding rules. Forward traffic to the specified application according to the domain name and path.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.sae.IngressRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.sae.IngressRule>[]>;
     /**
      * SLB ID.
      */
-    readonly slbId?: pulumi.Input<string>;
+    slbId?: pulumi.Input<string>;
 }
 
 /**
@@ -223,29 +223,29 @@ export interface IngressArgs {
     /**
      * Cert Id.
      */
-    readonly certId?: pulumi.Input<string>;
+    certId?: pulumi.Input<string>;
     /**
      * Default Rule.
      */
-    readonly defaultRule?: pulumi.Input<inputs.sae.IngressDefaultRule>;
+    defaultRule?: pulumi.Input<inputs.sae.IngressDefaultRule>;
     /**
      * Description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * SLB listening port.
      */
-    readonly listenerPort: pulumi.Input<number>;
+    listenerPort: pulumi.Input<number>;
     /**
      * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
-    readonly namespaceId: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
     /**
      * Forwarding rules. Forward traffic to the specified application according to the domain name and path.
      */
-    readonly rules: pulumi.Input<pulumi.Input<inputs.sae.IngressRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.sae.IngressRule>[]>;
     /**
      * SLB ID.
      */
-    readonly slbId: pulumi.Input<string>;
+    slbId: pulumi.Input<string>;
 }

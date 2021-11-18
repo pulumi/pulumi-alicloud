@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["d-artgdsvdvxxxx"],
  *     nameRegex: "tf-test",
  * });
- * export const firstEcsDiskId = example.then(example => example.disks[0].id);
+ * export const firstEcsDiskId = example.then(example => example.disks?[0]?.id);
  * ```
  */
 export function getEcsDisks(args?: GetEcsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDisksResult> {
@@ -72,111 +72,111 @@ export interface GetEcsDisksArgs {
     /**
      * Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
      */
-    readonly additionalAttributes?: string[];
+    additionalAttributes?: string[];
     /**
      * Query cloud disks based on the automatic snapshot policy ID.
      */
-    readonly autoSnapshotPolicyId?: string;
+    autoSnapshotPolicyId?: string;
     /**
      * Availability zone of the disk.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
-    readonly availabilityZone?: string;
+    availabilityZone?: string;
     /**
      * Disk category.
      */
-    readonly category?: string;
+    category?: string;
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released.
      */
-    readonly deleteAutoSnapshot?: boolean;
+    deleteAutoSnapshot?: boolean;
     /**
      * Indicates whether the disk is released together with the instance.
      */
-    readonly deleteWithInstance?: boolean;
+    deleteWithInstance?: boolean;
     /**
      * The disk name.
      */
-    readonly diskName?: string;
+    diskName?: string;
     /**
      * The disk type.
      */
-    readonly diskType?: string;
+    diskType?: string;
     /**
      * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
      * * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
      * * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
      */
-    readonly dryRun?: boolean;
+    dryRun?: boolean;
     /**
      * Whether the disk implements an automatic snapshot policy.
      */
-    readonly enableAutoSnapshot?: boolean;
+    enableAutoSnapshot?: boolean;
     /**
      * Whether the disk implements an automatic snapshot policy.
      */
-    readonly enableAutomatedSnapshotPolicy?: boolean;
+    enableAutomatedSnapshotPolicy?: boolean;
     /**
      * Whether it is shared block storage.
      */
-    readonly enableShared?: boolean;
+    enableShared?: boolean;
     /**
      * Indicate whether the disk is encrypted or not.
      */
-    readonly encrypted?: string;
+    encrypted?: string;
     /**
      * A list of Disk IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The instance ID of the disk mount.
      */
-    readonly instanceId?: string;
+    instanceId?: string;
     /**
      * The kms key id.
      */
-    readonly kmsKeyId?: string;
+    kmsKeyId?: string;
     /**
      * A regex string to filter results by Disk name.
      */
-    readonly nameRegex?: string;
-    readonly operationLocks?: inputs.ecs.GetEcsDisksOperationLock[];
-    readonly outputFile?: string;
+    nameRegex?: string;
+    operationLocks?: inputs.ecs.GetEcsDisksOperationLock[];
+    outputFile?: string;
     /**
      * Payment method for disk.
      */
-    readonly paymentType?: string;
+    paymentType?: string;
     /**
      * Whether the disk is unmountable.
      */
-    readonly portable?: boolean;
+    portable?: boolean;
     /**
      * The Id of resource group.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
      */
-    readonly snapshotId?: string;
+    snapshotId?: string;
     /**
      * Current status.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A map of tags assigned to the disk.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * Disk type.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
      */
-    readonly type?: string;
+    type?: string;
     /**
      * The zone id.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -222,4 +222,122 @@ export interface GetEcsDisksResult {
      */
     readonly type?: string;
     readonly zoneId?: string;
+}
+
+export function getEcsDisksOutput(args?: GetEcsDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDisksResult> {
+    return pulumi.output(args).apply(a => getEcsDisks(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEcsDisks.
+ */
+export interface GetEcsDisksOutputArgs {
+    /**
+     * Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
+     */
+    additionalAttributes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Query cloud disks based on the automatic snapshot policy ID.
+     */
+    autoSnapshotPolicyId?: pulumi.Input<string>;
+    /**
+     * Availability zone of the disk.
+     *
+     * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Disk category.
+     */
+    category?: pulumi.Input<string>;
+    /**
+     * Indicates whether the automatic snapshot is deleted when the disk is released.
+     */
+    deleteAutoSnapshot?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the disk is released together with the instance.
+     */
+    deleteWithInstance?: pulumi.Input<boolean>;
+    /**
+     * The disk name.
+     */
+    diskName?: pulumi.Input<string>;
+    /**
+     * The disk type.
+     */
+    diskType?: pulumi.Input<string>;
+    /**
+     * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
+     * * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
+     * * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * Whether the disk implements an automatic snapshot policy.
+     */
+    enableAutoSnapshot?: pulumi.Input<boolean>;
+    /**
+     * Whether the disk implements an automatic snapshot policy.
+     */
+    enableAutomatedSnapshotPolicy?: pulumi.Input<boolean>;
+    /**
+     * Whether it is shared block storage.
+     */
+    enableShared?: pulumi.Input<boolean>;
+    /**
+     * Indicate whether the disk is encrypted or not.
+     */
+    encrypted?: pulumi.Input<string>;
+    /**
+     * A list of Disk IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The instance ID of the disk mount.
+     */
+    instanceId?: pulumi.Input<string>;
+    /**
+     * The kms key id.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Disk name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetEcsDisksOperationLockArgs>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Payment method for disk.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * Whether the disk is unmountable.
+     */
+    portable?: pulumi.Input<boolean>;
+    /**
+     * The Id of resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     */
+    snapshotId?: pulumi.Input<string>;
+    /**
+     * Current status.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the disk.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Disk type.
+     *
+     * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The zone id.
+     */
+    zoneId?: pulumi.Input<string>;
 }

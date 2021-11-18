@@ -13,6 +13,7 @@ __all__ = [
     'GetSecurityPoliciesResult',
     'AwaitableGetSecurityPoliciesResult',
     'get_security_policies',
+    'get_security_policies_output',
 ]
 
 @pulumi.output_type
@@ -196,3 +197,43 @@ def get_security_policies(ids: Optional[Sequence[str]] = None,
         security_policy_name=__ret__.security_policy_name,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_security_policies)
+def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                 resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 security_policy_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                 security_policy_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                 status: Optional[pulumi.Input[Optional[str]]] = None,
+                                 tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityPoliciesResult]:
+    """
+    This data source provides the Alb Security Policies of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.130.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_security_policies()
+    pulumi.export("albSecurityPolicyId1", ids.policies[0].id)
+    name_regex = alicloud.alb.get_security_policies(name_regex="^my-SecurityPolicy")
+    pulumi.export("albSecurityPolicyId2", name_regex.policies[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Security Policy IDs.
+    :param str name_regex: A regex string to filter results by Security Policy name.
+    :param str resource_group_id: The ID of the resource group.
+    :param Sequence[str] security_policy_ids: The security policy ids.
+    :param str security_policy_name: The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+    :param str status: The status of the resource.
+    """
+    ...

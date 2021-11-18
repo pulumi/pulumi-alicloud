@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Oos
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Oos
         ///                 { "For", "template Test" },
         ///             },
         ///         }));
-        ///         this.FirstTemplateName = example.Apply(example =&gt; example.Templates[0].TemplateName);
+        ///         this.FirstTemplateName = example.Apply(example =&gt; example.Templates?[0]?.TemplateName);
         ///     }
         /// 
         ///     [Output("firstTemplateName")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         public static Task<GetTemplatesResult> InvokeAsync(GetTemplatesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTemplatesResult>("alicloud:oos/getTemplates:getTemplates", args ?? new GetTemplatesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
+        ///  
+        /// &gt; **NOTE:** Available in v1.92.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Oos.GetTemplates.InvokeAsync(new AliCloud.Oos.GetTemplatesArgs
+        ///         {
+        ///             HasTrigger = false,
+        ///             NameRegex = "test",
+        ///             ShareType = "Private",
+        ///             Tags = 
+        ///             {
+        ///                 { "Created", "TF" },
+        ///                 { "For", "template Test" },
+        ///             },
+        ///         }));
+        ///         this.FirstTemplateName = example.Apply(example =&gt; example.Templates?[0]?.TemplateName);
+        ///     }
+        /// 
+        ///     [Output("firstTemplateName")]
+        ///     public Output&lt;string&gt; FirstTemplateName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTemplatesResult> Invoke(GetTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTemplatesResult>("alicloud:oos/getTemplates:getTemplates", args ?? new GetTemplatesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -150,6 +192,106 @@ namespace Pulumi.AliCloud.Oos
         public string? TemplateType { get; set; }
 
         public GetTemplatesArgs()
+        {
+        }
+    }
+
+    public sealed class GetTemplatesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The category of template.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
+        /// <summary>
+        /// The creator of the template.
+        /// </summary>
+        [Input("createdBy")]
+        public Input<string>? CreatedBy { get; set; }
+
+        /// <summary>
+        /// The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
+        /// </summary>
+        [Input("createdDate")]
+        public Input<string>? CreatedDate { get; set; }
+
+        /// <summary>
+        /// Create a template whose time is greater than or equal to the specified time. The format is: YYYY-MM-DDThh:mm:ssZ.
+        /// </summary>
+        [Input("createdDateAfter")]
+        public Input<string>? CreatedDateAfter { get; set; }
+
+        /// <summary>
+        /// Is it triggered successfully.
+        /// </summary>
+        [Input("hasTrigger")]
+        public Input<bool>? HasTrigger { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of OOS Template ids. Each element in the list is same as template_name.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter the results by the template_name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The sharing type of the template. Valid values: `Private`, `Public`.
+        /// </summary>
+        [Input("shareType")]
+        public Input<string>? ShareType { get; set; }
+
+        /// <summary>
+        /// Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.
+        /// </summary>
+        [Input("sortField")]
+        public Input<string>? SortField { get; set; }
+
+        /// <summary>
+        /// Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`
+        /// </summary>
+        [Input("sortOrder")]
+        public Input<string>? SortOrder { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The format of the template. Valid values: `JSON`, `YAML`.
+        /// </summary>
+        [Input("templateFormat")]
+        public Input<string>? TemplateFormat { get; set; }
+
+        /// <summary>
+        /// The type of OOS Template.
+        /// </summary>
+        [Input("templateType")]
+        public Input<string>? TemplateType { get; set; }
+
+        public GetTemplatesInvokeArgs()
         {
         }
     }

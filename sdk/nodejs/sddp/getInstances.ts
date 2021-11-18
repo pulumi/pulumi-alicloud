@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.sddp.getInstances({});
- * export const sddpInstanceId = _default.then(_default => _default.instances[0]);
+ * export const sddpInstanceId = _default.then(_default => _default.instances?[0]);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -40,7 +40,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -53,4 +53,15 @@ export interface GetInstancesResult {
     readonly id: string;
     readonly instances: outputs.sddp.GetInstancesInstance[];
     readonly outputFile?: string;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    outputFile?: pulumi.Input<string>;
 }

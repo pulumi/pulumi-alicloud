@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.PolarDB
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.PolarDB
         ///         }));
         ///         var resourcesNodeClasses = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
         ///         {
-        ///             ZoneId = resourcesZones.Zones[0].Id,
+        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
         ///             PayType = "PostPaid",
         ///             DbType = "MySQL",
         ///             DbVersion = "5.6",
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public static Task<GetNodeClassesResult> InvokeAsync(GetNodeClassesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeClassesResult>("alicloud:polardb/getNodeClasses:getNodeClasses", args ?? new GetNodeClassesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.81.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "PolarDB",
+        ///         }));
+        ///         var resourcesNodeClasses = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
+        ///         {
+        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
+        ///             PayType = "PostPaid",
+        ///             DbType = "MySQL",
+        ///             DbVersion = "5.6",
+        ///         })));
+        ///         this.PolardbNodeClasses = resourcesNodeClasses.Apply(resourcesNodeClasses =&gt; resourcesNodeClasses.Classes);
+        ///     }
+        /// 
+        ///     [Output("polardbNodeClasses")]
+        ///     public Output&lt;string&gt; PolardbNodeClasses { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNodeClassesResult> Invoke(GetNodeClassesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodeClassesResult>("alicloud:polardb/getNodeClasses:getNodeClasses", args ?? new GetNodeClassesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -96,6 +138,52 @@ namespace Pulumi.AliCloud.PolarDB
         public string? ZoneId { get; set; }
 
         public GetNodeClassesArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodeClassesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The PolarDB node class type by the user.
+        /// </summary>
+        [Input("dbNodeClass")]
+        public Input<string>? DbNodeClass { get; set; }
+
+        /// <summary>
+        /// Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+        /// </summary>
+        [Input("dbType")]
+        public Input<string>? DbType { get; set; }
+
+        /// <summary>
+        /// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+        /// </summary>
+        [Input("dbVersion")]
+        public Input<string>? DbVersion { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
+        /// </summary>
+        [Input("payType", required: true)]
+        public Input<string> PayType { get; set; } = null!;
+
+        /// <summary>
+        /// The Region to launch the PolarDB cluster.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The Zone to launch the PolarDB cluster.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetNodeClassesInvokeArgs()
         {
         }
     }

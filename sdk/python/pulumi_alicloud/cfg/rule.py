@@ -640,7 +640,7 @@ class Rule(pulumi.CustomResource):
             config_rule_trigger_types="ConfigurationItemChangeNotification",
             description="ecs instances in vpc",
             input_parameters={
-                "vpc_ids": "vpc-uf6gksw4ctjd******",
+                "vpcIds": "vpc-uf6gksw4ctjd******",
             },
             resource_types_scopes=["ACS::ECS::Instance"],
             risk_level=1,
@@ -704,7 +704,7 @@ class Rule(pulumi.CustomResource):
             config_rule_trigger_types="ConfigurationItemChangeNotification",
             description="ecs instances in vpc",
             input_parameters={
-                "vpc_ids": "vpc-uf6gksw4ctjd******",
+                "vpcIds": "vpc-uf6gksw4ctjd******",
             },
             resource_types_scopes=["ACS::ECS::Instance"],
             risk_level=1,

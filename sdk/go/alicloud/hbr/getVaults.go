@@ -4,6 +4,9 @@
 package hbr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,82 @@ type GetVaultsResult struct {
 	Status     *string          `pulumi:"status"`
 	VaultType  *string          `pulumi:"vaultType"`
 	Vaults     []GetVaultsVault `pulumi:"vaults"`
+}
+
+func GetVaultsOutput(ctx *pulumi.Context, args GetVaultsOutputArgs, opts ...pulumi.InvokeOption) GetVaultsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetVaultsResult, error) {
+			args := v.(GetVaultsArgs)
+			r, err := GetVaults(ctx, &args, opts...)
+			return *r, err
+		}).(GetVaultsResultOutput)
+}
+
+// A collection of arguments for invoking getVaults.
+type GetVaultsOutputArgs struct {
+	// A list of Vault IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Vault name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The type of Vault. Valid values: `STANDARD`.
+	VaultType pulumi.StringPtrInput `pulumi:"vaultType"`
+}
+
+func (GetVaultsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVaultsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVaults.
+type GetVaultsResultOutput struct{ *pulumi.OutputState }
+
+func (GetVaultsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVaultsResult)(nil)).Elem()
+}
+
+func (o GetVaultsResultOutput) ToGetVaultsResultOutput() GetVaultsResultOutput {
+	return o
+}
+
+func (o GetVaultsResultOutput) ToGetVaultsResultOutputWithContext(ctx context.Context) GetVaultsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetVaultsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVaultsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVaultsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVaultsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVaultsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVaultsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVaultsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVaultsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVaultsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVaultsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVaultsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVaultsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVaultsResultOutput) VaultType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVaultsResult) *string { return v.VaultType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVaultsResultOutput) Vaults() GetVaultsVaultArrayOutput {
+	return o.ApplyT(func(v GetVaultsResult) []GetVaultsVault { return v.Vaults }).(GetVaultsVaultArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetVaultsResultOutput{})
 }

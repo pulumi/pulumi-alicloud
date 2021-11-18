@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.privatelink.getVpcEndpointZones({
  *     endpointId: "ep-gw8boxxxxx",
  * });
- * export const firstPrivatelinkVpcEndpointZoneId = example.then(example => example.zones[0].id);
+ * export const firstPrivatelinkVpcEndpointZoneId = example.then(example => example.zones?[0]?.id);
  * ```
  */
 export function getVpcEndpointZones(args: GetVpcEndpointZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointZonesResult> {
@@ -46,12 +46,12 @@ export interface GetVpcEndpointZonesArgs {
     /**
      * The ID of the Vpc Endpoint.
      */
-    readonly endpointId: string;
-    readonly outputFile?: string;
+    endpointId: string;
+    outputFile?: string;
     /**
      * The Status of Vpc Endpoint Zone..
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -67,4 +67,23 @@ export interface GetVpcEndpointZonesResult {
     readonly outputFile?: string;
     readonly status?: string;
     readonly zones: outputs.privatelink.GetVpcEndpointZonesZone[];
+}
+
+export function getVpcEndpointZonesOutput(args: GetVpcEndpointZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointZonesResult> {
+    return pulumi.output(args).apply(a => getVpcEndpointZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcEndpointZones.
+ */
+export interface GetVpcEndpointZonesOutputArgs {
+    /**
+     * The ID of the Vpc Endpoint.
+     */
+    endpointId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Status of Vpc Endpoint Zone..
+     */
+    status?: pulumi.Input<string>;
 }

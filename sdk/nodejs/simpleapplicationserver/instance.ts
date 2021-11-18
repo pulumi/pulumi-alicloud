@@ -147,43 +147,43 @@ export interface InstanceState {
     /**
      * Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
      */
-    readonly autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean>;
     /**
      * The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `autoRenew` is valid when the attribute is `true`.
      */
-    readonly autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
      */
-    readonly dataDiskSize?: pulumi.Input<number>;
+    dataDiskSize?: pulumi.Input<number>;
     /**
      * The ID of the image.  You can use the `alicloud.simpleapplicationserver.getImages` to query the available images in the specified region. The value must be an integral multiple of 20.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * The name of the simple application server.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The paymen type of the resource. Valid values: `Subscription`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The ID of the plan. You can use the `alicloud.simpleapplicationserver.getServerPlans`  to query all the plans provided by Simple Application Server in the specified region.
      */
-    readonly planId?: pulumi.Input<string>;
+    planId?: pulumi.Input<string>;
     /**
      * The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -193,41 +193,41 @@ export interface InstanceArgs {
     /**
      * Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
      */
-    readonly autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean>;
     /**
      * The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `autoRenew` is valid when the attribute is `true`.
      */
-    readonly autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
      */
-    readonly dataDiskSize?: pulumi.Input<number>;
+    dataDiskSize?: pulumi.Input<number>;
     /**
      * The ID of the image.  You can use the `alicloud.simpleapplicationserver.getImages` to query the available images in the specified region. The value must be an integral multiple of 20.
      */
-    readonly imageId: pulumi.Input<string>;
+    imageId: pulumi.Input<string>;
     /**
      * The name of the simple application server.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The paymen type of the resource. Valid values: `Subscription`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
      */
-    readonly period: pulumi.Input<number>;
+    period: pulumi.Input<number>;
     /**
      * The ID of the plan. You can use the `alicloud.simpleapplicationserver.getServerPlans`  to query all the plans provided by Simple Application Server in the specified region.
      */
-    readonly planId: pulumi.Input<string>;
+    planId: pulumi.Input<string>;
     /**
      * The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

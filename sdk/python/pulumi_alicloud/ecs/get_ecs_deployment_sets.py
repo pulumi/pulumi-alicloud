@@ -13,6 +13,7 @@ __all__ = [
     'GetEcsDeploymentSetsResult',
     'AwaitableGetEcsDeploymentSetsResult',
     'get_ecs_deployment_sets',
+    'get_ecs_deployment_sets_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,38 @@ def get_ecs_deployment_sets(deployment_set_name: Optional[str] = None,
         output_file=__ret__.output_file,
         sets=__ret__.sets,
         strategy=__ret__.strategy)
+
+
+@_utilities.lift_output_func(get_ecs_deployment_sets)
+def get_ecs_deployment_sets_output(deployment_set_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                   ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                   name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                   strategy: Optional[pulumi.Input[Optional[str]]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsDeploymentSetsResult]:
+    """
+    This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.140.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ecs.get_ecs_deployment_sets(ids=["example_id"])
+    pulumi.export("ecsDeploymentSetId1", ids.sets[0].id)
+    name_regex = alicloud.ecs.get_ecs_deployment_sets(name_regex="^my-DeploymentSet")
+    pulumi.export("ecsDeploymentSetId2", name_regex.sets[0].id)
+    ```
+
+
+    :param str deployment_set_name: The name of the deployment set.
+    :param Sequence[str] ids: A list of Deployment Set IDs.
+    :param str name_regex: A regex string to filter results by Deployment Set name.
+    :param str strategy: The deployment strategy.
+    """
+    ...

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Amqp
 {
@@ -40,14 +41,14 @@ namespace Pulumi.AliCloud.Amqp
         ///                 "my-Exchange-2",
         ///             },
         ///         }));
-        ///         this.AmqpExchangeId1 = ids.Apply(ids =&gt; ids.Exchanges[0].Id);
+        ///         this.AmqpExchangeId1 = ids.Apply(ids =&gt; ids.Exchanges?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Amqp.GetExchanges.InvokeAsync(new AliCloud.Amqp.GetExchangesArgs
         ///         {
         ///             InstanceId = "amqp-abc12345",
         ///             VirtualHostName = "my-VirtualHost",
         ///             NameRegex = "^my-Exchange",
         ///         }));
-        ///         this.AmqpExchangeId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Exchanges[0].Id);
+        ///         this.AmqpExchangeId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Exchanges?[0]?.Id);
         ///     }
         /// 
         ///     [Output("amqpExchangeId1")]
@@ -61,6 +62,57 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         public static Task<GetExchangesResult> InvokeAsync(GetExchangesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Amqp.GetExchanges.InvokeAsync(new AliCloud.Amqp.GetExchangesArgs
+        ///         {
+        ///             InstanceId = "amqp-abc12345",
+        ///             VirtualHostName = "my-VirtualHost",
+        ///             Ids = 
+        ///             {
+        ///                 "my-Exchange-1",
+        ///                 "my-Exchange-2",
+        ///             },
+        ///         }));
+        ///         this.AmqpExchangeId1 = ids.Apply(ids =&gt; ids.Exchanges?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Amqp.GetExchanges.InvokeAsync(new AliCloud.Amqp.GetExchangesArgs
+        ///         {
+        ///             InstanceId = "amqp-abc12345",
+        ///             VirtualHostName = "my-VirtualHost",
+        ///             NameRegex = "^my-Exchange",
+        ///         }));
+        ///         this.AmqpExchangeId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Exchanges?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("amqpExchangeId1")]
+        ///     public Output&lt;string&gt; AmqpExchangeId1 { get; set; }
+        ///     [Output("amqpExchangeId2")]
+        ///     public Output&lt;string&gt; AmqpExchangeId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetExchangesResult> Invoke(GetExchangesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -100,6 +152,46 @@ namespace Pulumi.AliCloud.Amqp
         public string VirtualHostName { get; set; } = null!;
 
         public GetExchangesArgs()
+        {
+        }
+    }
+
+    public sealed class GetExchangesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Exchange IDs. Its element value is same as Exchange Name.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by Exchange name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The name of virtual host where an exchange resides.
+        /// </summary>
+        [Input("virtualHostName", required: true)]
+        public Input<string> VirtualHostName { get; set; } = null!;
+
+        public GetExchangesInvokeArgs()
         {
         }
     }

@@ -14,6 +14,7 @@ __all__ = [
     'GetQuotaAlarmsResult',
     'AwaitableGetQuotaAlarmsResult',
     'get_quota_alarms',
+    'get_quota_alarms_output',
 ]
 
 @pulumi.output_type
@@ -197,3 +198,43 @@ def get_quota_alarms(enable_details: Optional[bool] = None,
         quota_action_code=__ret__.quota_action_code,
         quota_alarm_name=__ret__.quota_alarm_name,
         quota_dimensions=__ret__.quota_dimensions)
+
+
+@_utilities.lift_output_func(get_quota_alarms)
+def get_quota_alarms_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            product_code: Optional[pulumi.Input[Optional[str]]] = None,
+                            quota_action_code: Optional[pulumi.Input[Optional[str]]] = None,
+                            quota_alarm_name: Optional[pulumi.Input[Optional[str]]] = None,
+                            quota_dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetQuotaAlarmsQuotaDimensionArgs']]]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotaAlarmsResult]:
+    """
+    This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.116.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.quotas.get_quota_alarms(ids=["5VR90-421F886-81E9-xxx"],
+        name_regex="tf-testAcc")
+    pulumi.export("firstQuotasQuotaAlarmId", example.alarms[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Quota Alarm IDs.
+    :param str name_regex: A regex string to filter results by Quota Alarm name.
+    :param str product_code: The Product Code.
+    :param str quota_action_code: The Quota Action Code.
+    :param str quota_alarm_name: The name of Quota Alarm.
+    :param Sequence[pulumi.InputType['GetQuotaAlarmsQuotaDimensionArgs']] quota_dimensions: The Quota Dimensions.
+    """
+    ...

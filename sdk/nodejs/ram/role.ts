@@ -138,49 +138,49 @@ export interface RoleState {
     /**
      * The role arn.
      */
-    readonly arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string>;
     /**
      * Description of the RAM role. This name can have a string of 1 to 1024 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
      */
-    readonly document?: pulumi.Input<string>;
+    document?: pulumi.Input<string>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
      */
-    readonly maxSessionDuration?: pulumi.Input<number>;
+    maxSessionDuration?: pulumi.Input<number>;
     /**
      * Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
      *
      * @deprecated Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    readonly ramUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    ramUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role ID.
      */
-    readonly roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
      *
      * @deprecated Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    readonly services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
      *
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -190,39 +190,39 @@ export interface RoleArgs {
     /**
      * Description of the RAM role. This name can have a string of 1 to 1024 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
      */
-    readonly document?: pulumi.Input<string>;
+    document?: pulumi.Input<string>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
      */
-    readonly maxSessionDuration?: pulumi.Input<number>;
+    maxSessionDuration?: pulumi.Input<number>;
     /**
      * Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
      *
      * @deprecated Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    readonly ramUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    ramUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
      *
      * @deprecated Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    readonly services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
      *
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }

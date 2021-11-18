@@ -132,19 +132,19 @@ export interface ConfigMapState {
     /**
      * ConfigMap instance data.
      */
-    readonly data?: pulumi.Input<string>;
+    data?: pulumi.Input<string>;
     /**
      * The Description of ConfigMap.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ConfigMap instance name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -154,17 +154,17 @@ export interface ConfigMapArgs {
     /**
      * ConfigMap instance data.
      */
-    readonly data: pulumi.Input<string>;
+    data: pulumi.Input<string>;
     /**
      * The Description of ConfigMap.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ConfigMap instance name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
-    readonly namespaceId: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
 }

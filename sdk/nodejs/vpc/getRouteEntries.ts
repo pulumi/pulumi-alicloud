@@ -21,17 +21,17 @@ import * as utilities from "../utilities";
  *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
+ * }));
  * const defaultInstanceTypes = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: defaultZones.zones[0].id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
- * }, { async: true }));
+ * }));
  * const defaultImages = pulumi.output(alicloud.ecs.getImages({
  *     mostRecent: true,
  *     nameRegex: "^ubuntu_18.*64",
  *     owners: "system",
- * }, { async: true }));
+ * }));
  * const fooNetwork = new alicloud.vpc.Network("foo", {
  *     cidrBlock: "10.1.0.0/21",
  * });
@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  * });
  * const fooRouteEntries = fooRouteEntry.routeTableId.apply(routeTableId => alicloud.vpc.getRouteEntries({
  *     routeTableId: routeTableId,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteEntriesResult> {
@@ -104,20 +104,20 @@ export interface GetRouteEntriesArgs {
     /**
      * The destination CIDR block of the route entry.
      */
-    readonly cidrBlock?: string;
+    cidrBlock?: string;
     /**
      * The instance ID of the next hop.
      */
-    readonly instanceId?: string;
-    readonly outputFile?: string;
+    instanceId?: string;
+    outputFile?: string;
     /**
      * The ID of the router table to which the route entry belongs.
      */
-    readonly routeTableId: string;
+    routeTableId: string;
     /**
      * The type of the route entry.
      */
-    readonly type?: string;
+    type?: string;
 }
 
 /**
@@ -149,4 +149,31 @@ export interface GetRouteEntriesResult {
      * The type of the route entry.
      */
     readonly type?: string;
+}
+
+export function getRouteEntriesOutput(args: GetRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteEntriesResult> {
+    return pulumi.output(args).apply(a => getRouteEntries(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRouteEntries.
+ */
+export interface GetRouteEntriesOutputArgs {
+    /**
+     * The destination CIDR block of the route entry.
+     */
+    cidrBlock?: pulumi.Input<string>;
+    /**
+     * The instance ID of the next hop.
+     */
+    instanceId?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the router table to which the route entry belongs.
+     */
+    routeTableId: pulumi.Input<string>;
+    /**
+     * The type of the route entry.
+     */
+    type?: pulumi.Input<string>;
 }

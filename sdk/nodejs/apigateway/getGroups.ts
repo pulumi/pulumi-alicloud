@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const dataApigatway = pulumi.output(alicloud.apigateway.getGroups({
  *     outputFile: "outgroups",
- * }, { async: true }));
+ * }));
  *
  * export const firstGroupId = dataApigatway.groups[0].id;
  * ```
@@ -44,12 +44,12 @@ export interface GetGroupsArgs {
     /**
      * A list of api group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter api gateway groups by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -74,4 +74,23 @@ export interface GetGroupsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+    return pulumi.output(args).apply(a => getGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroups.
+ */
+export interface GetGroupsOutputArgs {
+    /**
+     * A list of api group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter api gateway groups by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

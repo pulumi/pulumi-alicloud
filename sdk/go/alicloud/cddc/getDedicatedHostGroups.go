@@ -4,6 +4,9 @@
 package cddc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,66 @@ type GetDedicatedHostGroupsResult struct {
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetDedicatedHostGroupsOutput(ctx *pulumi.Context, args GetDedicatedHostGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDedicatedHostGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDedicatedHostGroupsResult, error) {
+			args := v.(GetDedicatedHostGroupsArgs)
+			r, err := GetDedicatedHostGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetDedicatedHostGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getDedicatedHostGroups.
+type GetDedicatedHostGroupsOutputArgs struct {
+	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	// A list of Dedicated Host Group IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+}
+
+func (GetDedicatedHostGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDedicatedHostGroups.
+type GetDedicatedHostGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostGroupsResult)(nil)).Elem()
+}
+
+func (o GetDedicatedHostGroupsResultOutput) ToGetDedicatedHostGroupsResultOutput() GetDedicatedHostGroupsResultOutput {
+	return o
+}
+
+func (o GetDedicatedHostGroupsResultOutput) ToGetDedicatedHostGroupsResultOutputWithContext(ctx context.Context) GetDedicatedHostGroupsResultOutput {
+	return o
+}
+
+func (o GetDedicatedHostGroupsResultOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDedicatedHostGroupsResult) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDedicatedHostGroupsResultOutput) Groups() GetDedicatedHostGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostGroupsResult) []GetDedicatedHostGroupsGroup { return v.Groups }).(GetDedicatedHostGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDedicatedHostGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDedicatedHostGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDedicatedHostGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDedicatedHostGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDedicatedHostGroupsResultOutput{})
 }

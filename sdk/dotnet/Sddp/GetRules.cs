@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sddp
 {
@@ -57,6 +58,53 @@ namespace Pulumi.AliCloud.Sddp
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Sddp Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var defaultRule = new AliCloud.Sddp.Rule("defaultRule", new AliCloud.Sddp.RuleArgs
+        ///         {
+        ///             Category = 0,
+        ///             Content = "content",
+        ///             RuleName = "rule_name",
+        ///             RiskLevelId = "4",
+        ///             ProductCode = "ODPS",
+        ///         });
+        ///         var defaultRules = defaultRule.Id.Apply(id =&gt; AliCloud.Sddp.GetRules.InvokeAsync(new AliCloud.Sddp.GetRulesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 id,
+        ///             },
+        ///         }));
+        ///         this.SddpRuleId = defaultRules.Apply(defaultRules =&gt; defaultRules.Id);
+        ///     }
+        /// 
+        ///     [Output("sddpRuleId")]
+        ///     public Output&lt;string&gt; SddpRuleId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -141,6 +189,91 @@ namespace Pulumi.AliCloud.Sddp
         public int? WarnLevel { get; set; }
 
         public GetRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Sensitive Data Identification Rules for the Type of.
+        /// </summary>
+        [Input("category")]
+        public Input<int>? Category { get; set; }
+
+        /// <summary>
+        /// The Content Classification.
+        /// </summary>
+        [Input("contentCategory")]
+        public Input<string>? ContentCategory { get; set; }
+
+        /// <summary>
+        /// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+        /// </summary>
+        [Input("customType")]
+        public Input<int>? CustomType { get; set; }
+
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Rule IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The name of rule.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Rule name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Product ID.
+        /// </summary>
+        [Input("productId")]
+        public Input<string>? ProductId { get; set; }
+
+        /// <summary>
+        /// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+        /// </summary>
+        [Input("riskLevelId")]
+        public Input<string>? RiskLevelId { get; set; }
+
+        /// <summary>
+        /// Rule Type.
+        /// </summary>
+        [Input("ruleType")]
+        public Input<int>? RuleType { get; set; }
+
+        /// <summary>
+        /// Sensitive Data Identification Rules Detection State of.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The Level of Risk.
+        /// </summary>
+        [Input("warnLevel")]
+        public Input<int>? WarnLevel { get; set; }
+
+        public GetRulesInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
@@ -36,7 +37,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///             OutputFile = "saslAcls.txt",
         ///             Username = "username",
         ///         }));
-        ///         this.FirstSaslAclUsername = saslAclsDs.Apply(saslAclsDs =&gt; saslAclsDs.Acls[0].Username);
+        ///         this.FirstSaslAclUsername = saslAclsDs.Apply(saslAclsDs =&gt; saslAclsDs.Acls?[0]?.Username);
         ///     }
         /// 
         ///     [Output("firstSaslAclUsername")]
@@ -48,6 +49,44 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public static Task<GetSaslAclsResult> InvokeAsync(GetSaslAclsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSaslAclsResult>("alicloud:actiontrail/getSaslAcls:getSaslAcls", args ?? new GetSaslAclsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.66.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var saslAclsDs = Output.Create(AliCloud.ActionTrail.GetSaslAcls.InvokeAsync(new AliCloud.ActionTrail.GetSaslAclsArgs
+        ///         {
+        ///             AclResourceName = "testTopic",
+        ///             AclResourceType = "Topic",
+        ///             InstanceId = "xxx",
+        ///             OutputFile = "saslAcls.txt",
+        ///             Username = "username",
+        ///         }));
+        ///         this.FirstSaslAclUsername = saslAclsDs.Apply(saslAclsDs =&gt; saslAclsDs.Acls?[0]?.Username);
+        ///     }
+        /// 
+        ///     [Output("firstSaslAclUsername")]
+        ///     public Output&lt;string&gt; FirstSaslAclUsername { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSaslAclsResult> Invoke(GetSaslAclsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSaslAclsResult>("alicloud:actiontrail/getSaslAcls:getSaslAcls", args ?? new GetSaslAclsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +120,40 @@ namespace Pulumi.AliCloud.ActionTrail
         public string Username { get; set; } = null!;
 
         public GetSaslAclsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSaslAclsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Get results for the specified resource name.
+        /// </summary>
+        [Input("aclResourceName", required: true)]
+        public Input<string> AclResourceName { get; set; } = null!;
+
+        /// <summary>
+        /// Get results for the specified resource type.
+        /// </summary>
+        [Input("aclResourceType", required: true)]
+        public Input<string> AclResourceType { get; set; } = null!;
+
+        /// <summary>
+        /// ID of the ALIKAFKA Instance that owns the sasl acls.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Get results for the specified username.
+        /// </summary>
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
+
+        public GetSaslAclsInvokeArgs()
         {
         }
     }

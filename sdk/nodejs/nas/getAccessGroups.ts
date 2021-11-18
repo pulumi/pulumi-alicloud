@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     accessGroupType: "Classic",
  *     description: "tf-testAccAccessGroupsdatasource",
  * });
- * export const alicloudNasAccessGroupsId = example.then(example => example.groups[0].id);
+ * export const alicloudNasAccessGroupsId = example.then(example => example.groups?[0]?.id);
  * ```
  */
 export function getAccessGroups(args?: GetAccessGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessGroupsResult> {
@@ -52,34 +52,34 @@ export interface GetAccessGroupsArgs {
     /**
      * The name of access group.
      */
-    readonly accessGroupName?: string;
+    accessGroupName?: string;
     /**
      * Filter results by a specific AccessGroupType.
      */
-    readonly accessGroupType?: string;
+    accessGroupType?: string;
     /**
      * Filter results by a specific Description.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
      */
-    readonly fileSystemType?: string;
+    fileSystemType?: string;
     /**
      * A regex string to filter AccessGroups by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.
      */
-    readonly type?: string;
+    type?: string;
     /**
      * Specifies whether the time to return is in UTC. Valid values: true and false.
      */
-    readonly useutcDateTime?: boolean;
+    useutcDateTime?: boolean;
 }
 
 /**
@@ -124,4 +124,45 @@ export interface GetAccessGroupsResult {
      */
     readonly type?: string;
     readonly useutcDateTime?: boolean;
+}
+
+export function getAccessGroupsOutput(args?: GetAccessGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessGroupsResult> {
+    return pulumi.output(args).apply(a => getAccessGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccessGroups.
+ */
+export interface GetAccessGroupsOutputArgs {
+    /**
+     * The name of access group.
+     */
+    accessGroupName?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific AccessGroupType.
+     */
+    accessGroupType?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific Description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+     */
+    fileSystemType?: pulumi.Input<string>;
+    /**
+     * A regex string to filter AccessGroups by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
+     *
+     * @deprecated Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Specifies whether the time to return is in UTC. Valid values: true and false.
+     */
+    useutcDateTime?: pulumi.Input<boolean>;
 }

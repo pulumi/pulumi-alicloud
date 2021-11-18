@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ram
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ram
         ///             },
         ///             NameRegex = "tf-testAcc",
         ///         }));
-        ///         this.FirstRamSamlProviderId = example.Apply(example =&gt; example.Providers[0].Id);
+        ///         this.FirstRamSamlProviderId = example.Apply(example =&gt; example.Providers?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstRamSamlProviderId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public static Task<GetSamlProvidersResult> InvokeAsync(GetSamlProvidersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSamlProvidersResult>("alicloud:ram/getSamlProviders:getSamlProviders", args ?? new GetSamlProvidersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.114.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ram.GetSamlProviders.InvokeAsync(new AliCloud.Ram.GetSamlProvidersArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "samlProviderName",
+        ///             },
+        ///             NameRegex = "tf-testAcc",
+        ///         }));
+        ///         this.FirstRamSamlProviderId = example.Apply(example =&gt; example.Providers?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstRamSamlProviderId")]
+        ///     public Output&lt;string&gt; FirstRamSamlProviderId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSamlProvidersResult> Invoke(GetSamlProvidersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSamlProvidersResult>("alicloud:ram/getSamlProviders:getSamlProviders", args ?? new GetSamlProvidersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +124,40 @@ namespace Pulumi.AliCloud.Ram
         public string? OutputFile { get; set; }
 
         public GetSamlProvidersArgs()
+        {
+        }
+    }
+
+    public sealed class GetSamlProvidersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of SAML Provider IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by SAML Provider name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetSamlProvidersInvokeArgs()
         {
         }
     }

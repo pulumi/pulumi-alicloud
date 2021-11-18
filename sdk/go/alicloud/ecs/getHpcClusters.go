@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,70 @@ type GetHpcClustersResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetHpcClustersOutput(ctx *pulumi.Context, args GetHpcClustersOutputArgs, opts ...pulumi.InvokeOption) GetHpcClustersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetHpcClustersResult, error) {
+			args := v.(GetHpcClustersArgs)
+			r, err := GetHpcClusters(ctx, &args, opts...)
+			return *r, err
+		}).(GetHpcClustersResultOutput)
+}
+
+// A collection of arguments for invoking getHpcClusters.
+type GetHpcClustersOutputArgs struct {
+	// A list of Hpc Cluster IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Hpc Cluster name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetHpcClustersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHpcClustersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getHpcClusters.
+type GetHpcClustersResultOutput struct{ *pulumi.OutputState }
+
+func (GetHpcClustersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHpcClustersResult)(nil)).Elem()
+}
+
+func (o GetHpcClustersResultOutput) ToGetHpcClustersResultOutput() GetHpcClustersResultOutput {
+	return o
+}
+
+func (o GetHpcClustersResultOutput) ToGetHpcClustersResultOutputWithContext(ctx context.Context) GetHpcClustersResultOutput {
+	return o
+}
+
+func (o GetHpcClustersResultOutput) Clusters() GetHpcClustersClusterArrayOutput {
+	return o.ApplyT(func(v GetHpcClustersResult) []GetHpcClustersCluster { return v.Clusters }).(GetHpcClustersClusterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHpcClustersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHpcClustersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetHpcClustersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHpcClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetHpcClustersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHpcClustersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHpcClustersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHpcClustersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetHpcClustersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHpcClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHpcClustersResultOutput{})
 }

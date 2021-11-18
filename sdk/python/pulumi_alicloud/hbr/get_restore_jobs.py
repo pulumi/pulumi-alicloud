@@ -13,6 +13,7 @@ __all__ = [
     'GetRestoreJobsResult',
     'AwaitableGetRestoreJobsResult',
     'get_restore_jobs',
+    'get_restore_jobs_output',
 ]
 
 @pulumi.output_type
@@ -210,3 +211,46 @@ def get_restore_jobs(output_file: Optional[str] = None,
         target_file_system_ids=__ret__.target_file_system_ids,
         target_instance_ids=__ret__.target_instance_ids,
         vault_ids=__ret__.vault_ids)
+
+
+@_utilities.lift_output_func(get_restore_jobs)
+def get_restore_jobs_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            restore_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            restore_type: Optional[pulumi.Input[str]] = None,
+                            source_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            status: Optional[pulumi.Input[Optional[str]]] = None,
+                            target_buckets: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            target_file_system_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            target_instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            vault_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRestoreJobsResult]:
+    """
+    This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.133.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
+    default_restore_jobs = alicloud.hbr.get_restore_jobs(restore_type="ECS_FILE",
+        vault_ids=[default_ecs_backup_plans.plans[0].vault_id],
+        target_instance_ids=[default_ecs_backup_plans.plans[0].instance_id])
+    ```
+
+
+    :param Sequence[str] restore_ids: The ID of restore job.
+    :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+    :param Sequence[str] source_types: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+    :param str status: The status of restore job.
+    :param Sequence[str] target_buckets: The name of target ofo OSS bucket.
+    :param Sequence[str] target_file_system_ids: The ID of destination file system.
+    :param Sequence[str] target_instance_ids: The ID of target ECS instance.
+    :param Sequence[str] vault_ids: The ID of backup vault.
+    """
+    ...

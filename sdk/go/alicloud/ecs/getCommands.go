@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,4 +85,100 @@ type GetCommandsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Type       *string  `pulumi:"type"`
+}
+
+func GetCommandsOutput(ctx *pulumi.Context, args GetCommandsOutputArgs, opts ...pulumi.InvokeOption) GetCommandsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetCommandsResult, error) {
+			args := v.(GetCommandsArgs)
+			r, err := GetCommands(ctx, &args, opts...)
+			return *r, err
+		}).(GetCommandsResultOutput)
+}
+
+// A collection of arguments for invoking getCommands.
+type GetCommandsOutputArgs struct {
+	// Public order provider.
+	CommandProvider pulumi.StringPtrInput `pulumi:"commandProvider"`
+	// The Base64-encoded content of the command.
+	ContentEncoding pulumi.StringPtrInput `pulumi:"contentEncoding"`
+	// The description of command.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A list of Command IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The name of the command
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A regex string to filter results by Command name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The command type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetCommandsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCommandsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCommands.
+type GetCommandsResultOutput struct{ *pulumi.OutputState }
+
+func (GetCommandsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCommandsResult)(nil)).Elem()
+}
+
+func (o GetCommandsResultOutput) ToGetCommandsResultOutput() GetCommandsResultOutput {
+	return o
+}
+
+func (o GetCommandsResultOutput) ToGetCommandsResultOutputWithContext(ctx context.Context) GetCommandsResultOutput {
+	return o
+}
+
+func (o GetCommandsResultOutput) CommandProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommandsResult) *string { return v.CommandProvider }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCommandsResultOutput) Commands() GetCommandsCommandArrayOutput {
+	return o.ApplyT(func(v GetCommandsResult) []GetCommandsCommand { return v.Commands }).(GetCommandsCommandArrayOutput)
+}
+
+func (o GetCommandsResultOutput) ContentEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommandsResult) *string { return v.ContentEncoding }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCommandsResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommandsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCommandsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCommandsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCommandsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCommandsResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommandsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCommandsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommandsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCommandsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCommandsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCommandsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommandsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCommandsResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCommandsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCommandsResultOutput{})
 }

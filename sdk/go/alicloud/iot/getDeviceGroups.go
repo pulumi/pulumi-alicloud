@@ -4,6 +4,9 @@
 package iot
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,90 @@ type GetDeviceGroupsResult struct {
 	NameRegex     *string  `pulumi:"nameRegex"`
 	OutputFile    *string  `pulumi:"outputFile"`
 	SuperGroupId  *string  `pulumi:"superGroupId"`
+}
+
+func GetDeviceGroupsOutput(ctx *pulumi.Context, args GetDeviceGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDeviceGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDeviceGroupsResult, error) {
+			args := v.(GetDeviceGroupsArgs)
+			r, err := GetDeviceGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetDeviceGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getDeviceGroups.
+type GetDeviceGroupsOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// The GroupName of the device group.
+	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
+	// A list of device group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The id of the Iot Instance.
+	IotInstanceId pulumi.StringPtrInput `pulumi:"iotInstanceId"`
+	// A regex string to filter CEN instances by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The id of the SuperGroup.
+	SuperGroupId pulumi.StringPtrInput `pulumi:"superGroupId"`
+}
+
+func (GetDeviceGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDeviceGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDeviceGroups.
+type GetDeviceGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDeviceGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDeviceGroupsResult)(nil)).Elem()
+}
+
+func (o GetDeviceGroupsResultOutput) ToGetDeviceGroupsResultOutput() GetDeviceGroupsResultOutput {
+	return o
+}
+
+func (o GetDeviceGroupsResultOutput) ToGetDeviceGroupsResultOutputWithContext(ctx context.Context) GetDeviceGroupsResultOutput {
+	return o
+}
+
+func (o GetDeviceGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDeviceGroupsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetDeviceGroupsResultOutput) GroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDeviceGroupsResult) *string { return v.GroupName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDeviceGroupsResultOutput) Groups() GetDeviceGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetDeviceGroupsResult) []GetDeviceGroupsGroup { return v.Groups }).(GetDeviceGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDeviceGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDeviceGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDeviceGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDeviceGroupsResultOutput) IotInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDeviceGroupsResult) *string { return v.IotInstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDeviceGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDeviceGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDeviceGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDeviceGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDeviceGroupsResultOutput) SuperGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDeviceGroupsResult) *string { return v.SuperGroupId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDeviceGroupsResultOutput{})
 }

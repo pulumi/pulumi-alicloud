@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.alb.getSecurityPolicies({});
- * export const albSecurityPolicyId1 = ids.then(ids => ids.policies[0].id);
+ * export const albSecurityPolicyId1 = ids.then(ids => ids.policies?[0]?.id);
  * const nameRegex = alicloud.alb.getSecurityPolicies({
  *     nameRegex: "^my-SecurityPolicy",
  * });
- * export const albSecurityPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies[0].id);
+ * export const albSecurityPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?[0]?.id);
  * ```
  */
 export function getSecurityPolicies(args?: GetSecurityPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityPoliciesResult> {
@@ -54,29 +54,29 @@ export interface GetSecurityPoliciesArgs {
     /**
      * A list of Security Policy IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Security Policy name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The security policy ids.
      */
-    readonly securityPolicyIds?: string[];
+    securityPolicyIds?: string[];
     /**
      * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
-    readonly securityPolicyName?: string;
+    securityPolicyName?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    status?: string;
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -97,4 +97,40 @@ export interface GetSecurityPoliciesResult {
     readonly securityPolicyName?: string;
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getSecurityPoliciesOutput(args?: GetSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityPoliciesResult> {
+    return pulumi.output(args).apply(a => getSecurityPolicies(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecurityPolicies.
+ */
+export interface GetSecurityPoliciesOutputArgs {
+    /**
+     * A list of Security Policy IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Security Policy name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The security policy ids.
+     */
+    securityPolicyIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     */
+    securityPolicyName?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

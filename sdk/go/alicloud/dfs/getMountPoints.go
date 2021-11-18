@@ -4,6 +4,9 @@
 package dfs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,72 @@ type GetMountPointsResult struct {
 	OutputFile *string               `pulumi:"outputFile"`
 	Points     []GetMountPointsPoint `pulumi:"points"`
 	Status     *string               `pulumi:"status"`
+}
+
+func GetMountPointsOutput(ctx *pulumi.Context, args GetMountPointsOutputArgs, opts ...pulumi.InvokeOption) GetMountPointsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetMountPointsResult, error) {
+			args := v.(GetMountPointsArgs)
+			r, err := GetMountPoints(ctx, &args, opts...)
+			return *r, err
+		}).(GetMountPointsResultOutput)
+}
+
+// A collection of arguments for invoking getMountPoints.
+type GetMountPointsOutputArgs struct {
+	// The ID of the File System.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// A list of Mount Point IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetMountPointsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMountPointsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMountPoints.
+type GetMountPointsResultOutput struct{ *pulumi.OutputState }
+
+func (GetMountPointsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMountPointsResult)(nil)).Elem()
+}
+
+func (o GetMountPointsResultOutput) ToGetMountPointsResultOutput() GetMountPointsResultOutput {
+	return o
+}
+
+func (o GetMountPointsResultOutput) ToGetMountPointsResultOutputWithContext(ctx context.Context) GetMountPointsResultOutput {
+	return o
+}
+
+func (o GetMountPointsResultOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsResult) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetMountPointsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountPointsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetMountPointsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMountPointsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetMountPointsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMountPointsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMountPointsResultOutput) Points() GetMountPointsPointArrayOutput {
+	return o.ApplyT(func(v GetMountPointsResult) []GetMountPointsPoint { return v.Points }).(GetMountPointsPointArrayOutput)
+}
+
+func (o GetMountPointsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMountPointsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMountPointsResultOutput{})
 }

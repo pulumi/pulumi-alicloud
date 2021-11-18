@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Mns
 {
@@ -30,7 +31,7 @@ namespace Pulumi.AliCloud.Mns
         ///         {
         ///             NamePrefix = "tf-",
         ///         }));
-        ///         this.FirstTopicId = topics.Apply(topics =&gt; topics.Topics[0].Id);
+        ///         this.FirstTopicId = topics.Apply(topics =&gt; topics.Topics?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstTopicId")]
@@ -42,6 +43,38 @@ namespace Pulumi.AliCloud.Mns
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:mns/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var topics = Output.Create(AliCloud.Mns.GetTopics.InvokeAsync(new AliCloud.Mns.GetTopicsArgs
+        ///         {
+        ///             NamePrefix = "tf-",
+        ///         }));
+        ///         this.FirstTopicId = topics.Apply(topics =&gt; topics.Topics?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstTopicId")]
+        ///     public Output&lt;string&gt; FirstTopicId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTopicsResult> Invoke(GetTopicsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTopicsResult>("alicloud:mns/getTopics:getTopics", args ?? new GetTopicsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -57,6 +90,22 @@ namespace Pulumi.AliCloud.Mns
         public string? OutputFile { get; set; }
 
         public GetTopicsArgs()
+        {
+        }
+    }
+
+    public sealed class GetTopicsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A string to filter resulting topics by their name prefixs.
+        /// </summary>
+        [Input("namePrefix")]
+        public Input<string>? NamePrefix { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetTopicsInvokeArgs()
         {
         }
     }

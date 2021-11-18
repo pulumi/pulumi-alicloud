@@ -290,7 +290,7 @@ type PrometheusAlertRuleArrayInput interface {
 type PrometheusAlertRuleArray []PrometheusAlertRuleInput
 
 func (PrometheusAlertRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PrometheusAlertRule)(nil))
+	return reflect.TypeOf((*[]*PrometheusAlertRule)(nil)).Elem()
 }
 
 func (i PrometheusAlertRuleArray) ToPrometheusAlertRuleArrayOutput() PrometheusAlertRuleArrayOutput {
@@ -315,7 +315,7 @@ type PrometheusAlertRuleMapInput interface {
 type PrometheusAlertRuleMap map[string]PrometheusAlertRuleInput
 
 func (PrometheusAlertRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PrometheusAlertRule)(nil))
+	return reflect.TypeOf((*map[string]*PrometheusAlertRule)(nil)).Elem()
 }
 
 func (i PrometheusAlertRuleMap) ToPrometheusAlertRuleMapOutput() PrometheusAlertRuleMapOutput {
@@ -326,9 +326,7 @@ func (i PrometheusAlertRuleMap) ToPrometheusAlertRuleMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleMapOutput)
 }
 
-type PrometheusAlertRuleOutput struct {
-	*pulumi.OutputState
-}
+type PrometheusAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (PrometheusAlertRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PrometheusAlertRule)(nil))
@@ -347,14 +345,12 @@ func (o PrometheusAlertRuleOutput) ToPrometheusAlertRulePtrOutput() PrometheusAl
 }
 
 func (o PrometheusAlertRuleOutput) ToPrometheusAlertRulePtrOutputWithContext(ctx context.Context) PrometheusAlertRulePtrOutput {
-	return o.ApplyT(func(v PrometheusAlertRule) *PrometheusAlertRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrometheusAlertRule) *PrometheusAlertRule {
 		return &v
 	}).(PrometheusAlertRulePtrOutput)
 }
 
-type PrometheusAlertRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type PrometheusAlertRulePtrOutput struct{ *pulumi.OutputState }
 
 func (PrometheusAlertRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PrometheusAlertRule)(nil))
@@ -366,6 +362,16 @@ func (o PrometheusAlertRulePtrOutput) ToPrometheusAlertRulePtrOutput() Prometheu
 
 func (o PrometheusAlertRulePtrOutput) ToPrometheusAlertRulePtrOutputWithContext(ctx context.Context) PrometheusAlertRulePtrOutput {
 	return o
+}
+
+func (o PrometheusAlertRulePtrOutput) Elem() PrometheusAlertRuleOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) PrometheusAlertRule {
+		if v != nil {
+			return *v
+		}
+		var ret PrometheusAlertRule
+		return ret
+	}).(PrometheusAlertRuleOutput)
 }
 
 type PrometheusAlertRuleArrayOutput struct{ *pulumi.OutputState }
@@ -409,6 +415,10 @@ func (o PrometheusAlertRuleMapOutput) MapIndex(k pulumi.StringInput) PrometheusA
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleInput)(nil)).Elem(), &PrometheusAlertRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRulePtrInput)(nil)).Elem(), &PrometheusAlertRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleArrayInput)(nil)).Elem(), PrometheusAlertRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleMapInput)(nil)).Elem(), PrometheusAlertRuleMap{})
 	pulumi.RegisterOutputType(PrometheusAlertRuleOutput{})
 	pulumi.RegisterOutputType(PrometheusAlertRulePtrOutput{})
 	pulumi.RegisterOutputType(PrometheusAlertRuleArrayOutput{})

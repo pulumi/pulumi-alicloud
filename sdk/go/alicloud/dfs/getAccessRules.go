@@ -4,6 +4,9 @@
 package dfs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,66 @@ type GetAccessRulesResult struct {
 	Ids        []string             `pulumi:"ids"`
 	OutputFile *string              `pulumi:"outputFile"`
 	Rules      []GetAccessRulesRule `pulumi:"rules"`
+}
+
+func GetAccessRulesOutput(ctx *pulumi.Context, args GetAccessRulesOutputArgs, opts ...pulumi.InvokeOption) GetAccessRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAccessRulesResult, error) {
+			args := v.(GetAccessRulesArgs)
+			r, err := GetAccessRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetAccessRulesResultOutput)
+}
+
+// A collection of arguments for invoking getAccessRules.
+type GetAccessRulesOutputArgs struct {
+	// The resource ID of the Access Group.
+	AccessGroupId pulumi.StringInput `pulumi:"accessGroupId"`
+	// A list of Access Rule IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+}
+
+func (GetAccessRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccessRules.
+type GetAccessRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesResult)(nil)).Elem()
+}
+
+func (o GetAccessRulesResultOutput) ToGetAccessRulesResultOutput() GetAccessRulesResultOutput {
+	return o
+}
+
+func (o GetAccessRulesResultOutput) ToGetAccessRulesResultOutputWithContext(ctx context.Context) GetAccessRulesResultOutput {
+	return o
+}
+
+func (o GetAccessRulesResultOutput) AccessGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) string { return v.AccessGroupId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccessRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAccessRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAccessRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccessRulesResultOutput) Rules() GetAccessRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) []GetAccessRulesRule { return v.Rules }).(GetAccessRulesRuleArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccessRulesResultOutput{})
 }

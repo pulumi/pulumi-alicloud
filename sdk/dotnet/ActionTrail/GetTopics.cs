@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///             NameRegex = "alikafkaTopicName",
         ///             OutputFile = "topics.txt",
         ///         }));
-        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics[0].Topic);
+        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics?[0]?.Topic);
         ///     }
         /// 
         ///     [Output("firstTopicName")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:actiontrail/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.56.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var topicsDs = Output.Create(AliCloud.ActionTrail.GetTopics.InvokeAsync(new AliCloud.ActionTrail.GetTopicsArgs
+        ///         {
+        ///             InstanceId = "xxx",
+        ///             NameRegex = "alikafkaTopicName",
+        ///             OutputFile = "topics.txt",
+        ///         }));
+        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics?[0]?.Topic);
+        ///     }
+        /// 
+        ///     [Output("firstTopicName")]
+        ///     public Output&lt;string&gt; FirstTopicName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTopicsResult> Invoke(GetTopicsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTopicsResult>("alicloud:actiontrail/getTopics:getTopics", args ?? new GetTopicsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -64,6 +101,25 @@ namespace Pulumi.AliCloud.ActionTrail
         public string? OutputFile { get; set; }
 
         public GetTopicsArgs()
+        {
+        }
+    }
+
+    public sealed class GetTopicsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by the topic name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetTopicsInvokeArgs()
         {
         }
     }

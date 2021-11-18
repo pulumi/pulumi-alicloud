@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -15,9 +16,69 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
         /// 
         /// &gt; **NOTE:** Available in 1.126.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Cen.GetTransitRouters.InvokeAsync(new AliCloud.Cen.GetTransitRoutersArgs
+        ///         {
+        ///             CenId = "cen-id1",
+        ///         }));
+        ///         this.FirstTransitRoutersType = @default.Apply(@default =&gt; @default.TransitRouters?[0]?.Type);
+        ///     }
+        /// 
+        ///     [Output("firstTransitRoutersType")]
+        ///     public Output&lt;string&gt; FirstTransitRoutersType { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransitRoutersResult> InvokeAsync(GetTransitRoutersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransitRoutersResult>("alicloud:cen/getTransitRouters:getTransitRouters", args ?? new GetTransitRoutersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+        /// 
+        /// &gt; **NOTE:** Available in 1.126.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Cen.GetTransitRouters.InvokeAsync(new AliCloud.Cen.GetTransitRoutersArgs
+        ///         {
+        ///             CenId = "cen-id1",
+        ///         }));
+        ///         this.FirstTransitRoutersType = @default.Apply(@default =&gt; @default.TransitRouters?[0]?.Type);
+        ///     }
+        /// 
+        ///     [Output("firstTransitRoutersType")]
+        ///     public Output&lt;string&gt; FirstTransitRoutersType { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTransitRoutersResult> Invoke(GetTransitRoutersInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTransitRoutersResult>("alicloud:cen/getTransitRouters:getTransitRouters", args ?? new GetTransitRoutersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +121,49 @@ namespace Pulumi.AliCloud.Cen
         }
 
         public GetTransitRoutersArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransitRoutersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// ID of the CEN instance.
+        /// </summary>
+        [Input("cenId", required: true)]
+        public Input<string> CenId { get; set; } = null!;
+
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// ID of the transit router.
+        /// </summary>
+        [Input("transitRouterId", required: true)]
+        public Input<string> TransitRouterId { get; set; } = null!;
+
+        [Input("transitRouterIds")]
+        private InputList<string>? _transitRouterIds;
+
+        /// <summary>
+        /// A list of ID of the transit router.
+        /// </summary>
+        public InputList<string> TransitRouterIds
+        {
+            get => _transitRouterIds ?? (_transitRouterIds = new InputList<string>());
+            set => _transitRouterIds = value;
+        }
+
+        public GetTransitRoutersInvokeArgs()
         {
         }
     }

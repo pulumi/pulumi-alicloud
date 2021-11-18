@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  *
  * const default1 = pulumi.output(alicloud.clickhouse.getRegions({
  *     current: true,
- * }, { async: true }));
+ * }));
  * const default2 = pulumi.output(alicloud.clickhouse.getRegions({
  *     regionId: "cn-hangzhou",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
@@ -49,12 +49,12 @@ export interface GetRegionsArgs {
     /**
      * Set to true to match only the region configured in the provider. Default value: `true`.
      */
-    readonly current?: boolean;
-    readonly outputFile?: string;
+    current?: boolean;
+    outputFile?: string;
     /**
      * The Region ID.
      */
-    readonly regionId?: string;
+    regionId?: string;
 }
 
 /**
@@ -69,4 +69,23 @@ export interface GetRegionsResult {
     readonly outputFile?: string;
     readonly regionId?: string;
     readonly regions: outputs.clickhouse.GetRegionsRegion[];
+}
+
+export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
+    return pulumi.output(args).apply(a => getRegions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegions.
+ */
+export interface GetRegionsOutputArgs {
+    /**
+     * Set to true to match only the region configured in the provider. Default value: `true`.
+     */
+    current?: pulumi.Input<boolean>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Region ID.
+     */
+    regionId?: pulumi.Input<string>;
 }

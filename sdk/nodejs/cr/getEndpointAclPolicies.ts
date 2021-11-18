@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const crEndpointAclPolicyId1 = ids.then(ids => ids.policies[0].id);
+ * export const crEndpointAclPolicyId1 = ids.then(ids => ids.policies?[0]?.id);
  * ```
  */
 export function getEndpointAclPolicies(args: GetEndpointAclPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointAclPoliciesResult> {
@@ -52,16 +52,16 @@ export interface GetEndpointAclPoliciesArgs {
     /**
      * The type of endpoint.
      */
-    readonly endpointType: string;
+    endpointType: string;
     /**
      * A list of Endpoint Acl Policy IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The ID of the CR Instance.
      */
-    readonly instanceId: string;
-    readonly outputFile?: string;
+    instanceId: string;
+    outputFile?: string;
 }
 
 /**
@@ -77,4 +77,27 @@ export interface GetEndpointAclPoliciesResult {
     readonly instanceId: string;
     readonly outputFile?: string;
     readonly policies: outputs.cr.GetEndpointAclPoliciesPolicy[];
+}
+
+export function getEndpointAclPoliciesOutput(args: GetEndpointAclPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAclPoliciesResult> {
+    return pulumi.output(args).apply(a => getEndpointAclPolicies(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEndpointAclPolicies.
+ */
+export interface GetEndpointAclPoliciesOutputArgs {
+    /**
+     * The type of endpoint.
+     */
+    endpointType: pulumi.Input<string>;
+    /**
+     * A list of Endpoint Acl Policy IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the CR Instance.
+     */
+    instanceId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

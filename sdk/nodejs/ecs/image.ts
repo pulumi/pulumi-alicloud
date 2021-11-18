@@ -173,50 +173,50 @@ export interface ImageState {
     /**
      * Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
      */
-    readonly architecture?: pulumi.Input<string>;
-    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
+    architecture?: pulumi.Input<string>;
+    deleteAutoSnapshot?: pulumi.Input<boolean>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Description of the system with disks and snapshots under the image.
      */
-    readonly diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageDiskDeviceMapping>[]>;
+    diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageDiskDeviceMapping>[]>;
     /**
      * Indicates whether to force delete the custom image, Default is `false`. 
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
      */
-    readonly imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string>;
     /**
      * The instance ID.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
      */
-    readonly platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string>;
     /**
      * The ID of the enterprise resource group to which a custom image belongs
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Specifies a snapshot that is used to create a combined custom image.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * The tag value of an image. The value of N ranges from 1 to 20.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -226,48 +226,48 @@ export interface ImageArgs {
     /**
      * Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
      */
-    readonly architecture?: pulumi.Input<string>;
-    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
+    architecture?: pulumi.Input<string>;
+    deleteAutoSnapshot?: pulumi.Input<boolean>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Description of the system with disks and snapshots under the image.
      */
-    readonly diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageDiskDeviceMapping>[]>;
+    diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageDiskDeviceMapping>[]>;
     /**
      * Indicates whether to force delete the custom image, Default is `false`. 
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
      */
-    readonly imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string>;
     /**
      * The instance ID.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
      */
-    readonly platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string>;
     /**
      * The ID of the enterprise resource group to which a custom image belongs
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Specifies a snapshot that is used to create a combined custom image.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * The tag value of an image. The value of N ranges from 1 to 20.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

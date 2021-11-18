@@ -139,15 +139,15 @@ export interface NetworkGrantState {
     /**
      * The ID of the CCN instance.
      */
-    readonly ccnId?: pulumi.Input<string>;
+    ccnId?: pulumi.Input<string>;
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * The ID of the account to which the CEN instance belongs.
      */
-    readonly cenUid?: pulumi.Input<string>;
+    cenUid?: pulumi.Input<string>;
 }
 
 /**
@@ -157,13 +157,13 @@ export interface NetworkGrantArgs {
     /**
      * The ID of the CCN instance.
      */
-    readonly ccnId: pulumi.Input<string>;
+    ccnId: pulumi.Input<string>;
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId: pulumi.Input<string>;
+    cenId: pulumi.Input<string>;
     /**
      * The ID of the account to which the CEN instance belongs.
      */
-    readonly cenUid: pulumi.Input<string>;
+    cenUid: pulumi.Input<string>;
 }

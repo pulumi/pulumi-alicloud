@@ -4,6 +4,9 @@
 package drds
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,4 +50,82 @@ type GetInstancesResult struct {
 	// Deprecated: Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+}
+
+func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstancesResult, error) {
+			args := v.(GetInstancesArgs)
+			r, err := GetInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getInstances.
+type GetInstancesOutputArgs struct {
+	// A regex string to filter results by instance description.
+	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
+	// A list of DRDS instance IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.
+	//
+	// Deprecated: Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstances.
+type GetInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesResult)(nil)).Elem()
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutput() GetInstancesResultOutput {
+	return o
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx context.Context) GetInstancesResultOutput {
+	return o
+}
+
+func (o GetInstancesResultOutput) DescriptionRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.DescriptionRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of DRDS descriptions.
+func (o GetInstancesResultOutput) Descriptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.Descriptions }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of DRDS instance IDs.
+func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// A list of DRDS instances.
+func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
+}
+
+// Deprecated: Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.
+func (o GetInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstancesResultOutput{})
 }

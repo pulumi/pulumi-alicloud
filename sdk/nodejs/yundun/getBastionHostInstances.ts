@@ -26,10 +26,10 @@ export function getBastionHostInstances(args?: GetBastionHostInstancesArgs, opts
  * A collection of arguments for invoking getBastionHostInstances.
  */
 export interface GetBastionHostInstancesArgs {
-    readonly descriptionRegex?: string;
-    readonly ids?: string[];
-    readonly outputFile?: string;
-    readonly tags?: {[key: string]: any};
+    descriptionRegex?: string;
+    ids?: string[];
+    outputFile?: string;
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -46,4 +46,18 @@ export interface GetBastionHostInstancesResult {
     readonly instances: outputs.yundun.GetBastionHostInstancesInstance[];
     readonly outputFile?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getBastionHostInstancesOutput(args?: GetBastionHostInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBastionHostInstancesResult> {
+    return pulumi.output(args).apply(a => getBastionHostInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBastionHostInstances.
+ */
+export interface GetBastionHostInstancesOutputArgs {
+    descriptionRegex?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

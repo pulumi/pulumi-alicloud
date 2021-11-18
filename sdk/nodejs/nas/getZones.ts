@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = pulumi.output(alicloud.nas.getZones({ async: true }));
+ * const defaultZones = pulumi.output(alicloud.nas.getZones());
  *
  * export const alicloudNasZonesId = defaultZones.zones[0].zoneId;
  * ```
@@ -39,7 +39,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -55,4 +55,15 @@ export interface GetZonesResult {
      * A list of availability zone information collection.
      */
     readonly zones: outputs.nas.GetZonesZone[];
+}
+
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply(a => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    outputFile?: pulumi.Input<string>;
 }

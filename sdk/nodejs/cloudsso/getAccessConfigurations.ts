@@ -27,12 +27,12 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const cloudSsoAccessConfigurationId1 = ids.then(ids => ids.configurations[0].id);
+ * export const cloudSsoAccessConfigurationId1 = ids.then(ids => ids.configurations?[0]?.id);
  * const nameRegex = alicloud.cloudsso.getAccessConfigurations({
  *     directoryId: "example_value",
  *     nameRegex: "^my-AccessConfiguration",
  * });
- * export const cloudSsoAccessConfigurationId2 = nameRegex.then(nameRegex => nameRegex.configurations[0].id);
+ * export const cloudSsoAccessConfigurationId2 = nameRegex.then(nameRegex => nameRegex.configurations?[0]?.id);
  * ```
  */
 export function getAccessConfigurations(args: GetAccessConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessConfigurationsResult> {
@@ -59,20 +59,20 @@ export interface GetAccessConfigurationsArgs {
     /**
      * The ID of the Directory.
      */
-    readonly directoryId: string;
+    directoryId: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Access Configuration IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Access Configuration name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -90,4 +90,31 @@ export interface GetAccessConfigurationsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getAccessConfigurationsOutput(args: GetAccessConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessConfigurationsResult> {
+    return pulumi.output(args).apply(a => getAccessConfigurations(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccessConfigurations.
+ */
+export interface GetAccessConfigurationsOutputArgs {
+    /**
+     * The ID of the Directory.
+     */
+    directoryId: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Access Configuration IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Access Configuration name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package dns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,73 @@ type GetAlidnsDomainGroupsResult struct {
 	// A list of domain group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetAlidnsDomainGroupsOutput(ctx *pulumi.Context, args GetAlidnsDomainGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAlidnsDomainGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAlidnsDomainGroupsResult, error) {
+			args := v.(GetAlidnsDomainGroupsArgs)
+			r, err := GetAlidnsDomainGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetAlidnsDomainGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getAlidnsDomainGroups.
+type GetAlidnsDomainGroupsOutputArgs struct {
+	// A list of instance IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by the domain group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetAlidnsDomainGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsDomainGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAlidnsDomainGroups.
+type GetAlidnsDomainGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsDomainGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsDomainGroupsResult)(nil)).Elem()
+}
+
+func (o GetAlidnsDomainGroupsResultOutput) ToGetAlidnsDomainGroupsResultOutput() GetAlidnsDomainGroupsResultOutput {
+	return o
+}
+
+func (o GetAlidnsDomainGroupsResultOutput) ToGetAlidnsDomainGroupsResultOutputWithContext(ctx context.Context) GetAlidnsDomainGroupsResultOutput {
+	return o
+}
+
+// A list of instances. Each element contains the following attributes:
+func (o GetAlidnsDomainGroupsResultOutput) Groups() GetAlidnsDomainGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetAlidnsDomainGroupsResult) []GetAlidnsDomainGroupsGroup { return v.Groups }).(GetAlidnsDomainGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAlidnsDomainGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of instance IDs.
+func (o GetAlidnsDomainGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlidnsDomainGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlidnsDomainGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsDomainGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of domain group names.
+func (o GetAlidnsDomainGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlidnsDomainGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlidnsDomainGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsDomainGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAlidnsDomainGroupsResultOutput{})
 }

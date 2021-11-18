@@ -10,28 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ExpressConnect.Inputs
 {
 
-    public sealed class GetVirtualBorderRoutersFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetVirtualBorderRoutersFilterInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key of the field to filter by, as defined by
         /// [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
         /// </summary>
         [Input("key")]
-        public string? Key { get; set; }
+        public Input<string>? Key { get; set; }
 
         [Input("values")]
-        private List<string>? _values;
+        private InputList<string>? _values;
 
         /// <summary>
         /// Set of values that are accepted for the given field.
         /// </summary>
-        public List<string> Values
+        public InputList<string> Values
         {
-            get => _values ?? (_values = new List<string>());
+            get => _values ?? (_values = new InputList<string>());
             set => _values = value;
         }
 
-        public GetVirtualBorderRoutersFilterArgs()
+        public GetVirtualBorderRoutersFilterInputArgs()
         {
         }
     }

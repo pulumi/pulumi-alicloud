@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     nameRegex: topic,
  *     outputFile: "topics.txt",
  * }));
- * export const firstTopicName = topicsDs.topics[0].topicName;
+ * export const firstTopicName = topicsDs.apply(topicsDs => topicsDs.topics?[0]?.topicName);
  * ```
  */
 export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
@@ -59,24 +59,24 @@ export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getTopics.
  */
 export interface GetTopicsArgs {
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of topic IDs to filter results.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * ID of the ONS Instance that owns the topics.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by the topic name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * A map of tags assigned to the Ons instance.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -104,4 +104,32 @@ export interface GetTopicsResult {
      * A list of topics. Each element contains the following attributes:
      */
     readonly topics: outputs.rocketmq.GetTopicsTopic[];
+}
+
+export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
+    return pulumi.output(args).apply(a => getTopics(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTopics.
+ */
+export interface GetTopicsOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of topic IDs to filter results.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the ONS Instance that owns the topics.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by the topic name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the Ons instance.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

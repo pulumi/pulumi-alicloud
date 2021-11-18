@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -44,7 +45,7 @@ namespace Pulumi.AliCloud.Vpc
         ///             CidrBlock = "172.16.0.0/21",
         ///             VpcId = defaultNetwork.Id,
         ///             VswitchName = name,
-        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
         ///         });
         ///         var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new AliCloud.Vpc.NatGatewayArgs
         ///         {
@@ -82,6 +83,78 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetForwardEntriesResult> InvokeAsync(GetForwardEntriesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? new GetForwardEntriesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "forward-entry-config-example-name";
+        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "VSwitch",
+        ///         }));
+        ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/12",
+        ///             VpcName = name,
+        ///         });
+        ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/21",
+        ///             VpcId = defaultNetwork.Id,
+        ///             VswitchName = name,
+        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+        ///         });
+        ///         var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new AliCloud.Vpc.NatGatewayArgs
+        ///         {
+        ///             Specification = "Small",
+        ///             VpcId = defaultNetwork.Id,
+        ///         });
+        ///         var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new AliCloud.Ecs.EipAddressArgs
+        ///         {
+        ///             AddressName = name,
+        ///         });
+        ///         var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("defaultEipAssociation", new AliCloud.Ecs.EipAssociationArgs
+        ///         {
+        ///             AllocationId = defaultEipAddress.Id,
+        ///             InstanceId = defaultNatGateway.Id,
+        ///         });
+        ///         var defaultForwardEntry = new AliCloud.Vpc.ForwardEntry("defaultForwardEntry", new AliCloud.Vpc.ForwardEntryArgs
+        ///         {
+        ///             ExternalIp = defaultEipAddress.IpAddress,
+        ///             ExternalPort = "80",
+        ///             ForwardTableId = defaultNatGateway.ForwardTableIds,
+        ///             InternalIp = "172.16.0.3",
+        ///             InternalPort = "8080",
+        ///             IpProtocol = "tcp",
+        ///         });
+        ///         var defaultForwardEntries = defaultForwardEntry.ForwardTableId.Apply(forwardTableId =&gt; AliCloud.Vpc.GetForwardEntries.InvokeAsync(new AliCloud.Vpc.GetForwardEntriesArgs
+        ///         {
+        ///             ForwardTableId = forwardTableId,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetForwardEntriesResult> Invoke(GetForwardEntriesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? new GetForwardEntriesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -157,6 +230,82 @@ namespace Pulumi.AliCloud.Vpc
         public string? Status { get; set; }
 
         public GetForwardEntriesArgs()
+        {
+        }
+    }
+
+    public sealed class GetForwardEntriesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The public IP address.
+        /// </summary>
+        [Input("externalIp")]
+        public Input<string>? ExternalIp { get; set; }
+
+        /// <summary>
+        /// The public port.
+        /// </summary>
+        [Input("externalPort")]
+        public Input<string>? ExternalPort { get; set; }
+
+        /// <summary>
+        /// The name of forward entry.
+        /// </summary>
+        [Input("forwardEntryName")]
+        public Input<string>? ForwardEntryName { get; set; }
+
+        /// <summary>
+        /// The ID of the Forward table.
+        /// </summary>
+        [Input("forwardTableId", required: true)]
+        public Input<string> ForwardTableId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Forward Entries IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The private IP address.
+        /// </summary>
+        [Input("internalIp")]
+        public Input<string>? InternalIp { get; set; }
+
+        /// <summary>
+        /// The internal port.
+        /// </summary>
+        [Input("internalPort")]
+        public Input<string>? InternalPort { get; set; }
+
+        /// <summary>
+        /// The ip protocol. Valid values: `any`,`tcp` and `udp`.
+        /// </summary>
+        [Input("ipProtocol")]
+        public Input<string>? IpProtocol { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by forward entry name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetForwardEntriesInvokeArgs()
         {
         }
     }

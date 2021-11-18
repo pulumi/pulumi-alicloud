@@ -450,7 +450,7 @@ func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAut
 }
 
 func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityPtrOutput {
-	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *EdgeKubernetesCertificateAuthority {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeKubernetesCertificateAuthority) *EdgeKubernetesCertificateAuthority {
 		return &v
 	}).(EdgeKubernetesCertificateAuthorityPtrOutput)
 }
@@ -485,7 +485,13 @@ func (o EdgeKubernetesCertificateAuthorityPtrOutput) ToEdgeKubernetesCertificate
 }
 
 func (o EdgeKubernetesCertificateAuthorityPtrOutput) Elem() EdgeKubernetesCertificateAuthorityOutput {
-	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) EdgeKubernetesCertificateAuthority { return *v }).(EdgeKubernetesCertificateAuthorityOutput)
+	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) EdgeKubernetesCertificateAuthority {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeKubernetesCertificateAuthority
+		return ret
+	}).(EdgeKubernetesCertificateAuthorityOutput)
 }
 
 // The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -615,10 +621,11 @@ func (o EdgeKubernetesConnectionsOutput) ToEdgeKubernetesConnectionsPtrOutput() 
 }
 
 func (o EdgeKubernetesConnectionsOutput) ToEdgeKubernetesConnectionsPtrOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsPtrOutput {
-	return o.ApplyT(func(v EdgeKubernetesConnections) *EdgeKubernetesConnections {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeKubernetesConnections) *EdgeKubernetesConnections {
 		return &v
 	}).(EdgeKubernetesConnectionsPtrOutput)
 }
+
 func (o EdgeKubernetesConnectionsOutput) ApiServerInternet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
 }
@@ -650,7 +657,13 @@ func (o EdgeKubernetesConnectionsPtrOutput) ToEdgeKubernetesConnectionsPtrOutput
 }
 
 func (o EdgeKubernetesConnectionsPtrOutput) Elem() EdgeKubernetesConnectionsOutput {
-	return o.ApplyT(func(v *EdgeKubernetesConnections) EdgeKubernetesConnections { return *v }).(EdgeKubernetesConnectionsOutput)
+	return o.ApplyT(func(v *EdgeKubernetesConnections) EdgeKubernetesConnections {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeKubernetesConnections
+		return ret
+	}).(EdgeKubernetesConnectionsOutput)
 }
 
 func (o EdgeKubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtrOutput {
@@ -782,10 +795,11 @@ func (o EdgeKubernetesLogConfigOutput) ToEdgeKubernetesLogConfigPtrOutput() Edge
 }
 
 func (o EdgeKubernetesLogConfigOutput) ToEdgeKubernetesLogConfigPtrOutputWithContext(ctx context.Context) EdgeKubernetesLogConfigPtrOutput {
-	return o.ApplyT(func(v EdgeKubernetesLogConfig) *EdgeKubernetesLogConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeKubernetesLogConfig) *EdgeKubernetesLogConfig {
 		return &v
 	}).(EdgeKubernetesLogConfigPtrOutput)
 }
+
 func (o EdgeKubernetesLogConfigOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesLogConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -809,7 +823,13 @@ func (o EdgeKubernetesLogConfigPtrOutput) ToEdgeKubernetesLogConfigPtrOutputWith
 }
 
 func (o EdgeKubernetesLogConfigPtrOutput) Elem() EdgeKubernetesLogConfigOutput {
-	return o.ApplyT(func(v *EdgeKubernetesLogConfig) EdgeKubernetesLogConfig { return *v }).(EdgeKubernetesLogConfigOutput)
+	return o.ApplyT(func(v *EdgeKubernetesLogConfig) EdgeKubernetesLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeKubernetesLogConfig
+		return ret
+	}).(EdgeKubernetesLogConfigOutput)
 }
 
 func (o EdgeKubernetesLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
@@ -1421,7 +1441,7 @@ func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityPt
 }
 
 func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityPtrOutput {
-	return o.ApplyT(func(v KubernetesCertificateAuthority) *KubernetesCertificateAuthority {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesCertificateAuthority) *KubernetesCertificateAuthority {
 		return &v
 	}).(KubernetesCertificateAuthorityPtrOutput)
 }
@@ -1456,7 +1476,13 @@ func (o KubernetesCertificateAuthorityPtrOutput) ToKubernetesCertificateAuthorit
 }
 
 func (o KubernetesCertificateAuthorityPtrOutput) Elem() KubernetesCertificateAuthorityOutput {
-	return o.ApplyT(func(v *KubernetesCertificateAuthority) KubernetesCertificateAuthority { return *v }).(KubernetesCertificateAuthorityOutput)
+	return o.ApplyT(func(v *KubernetesCertificateAuthority) KubernetesCertificateAuthority {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesCertificateAuthority
+		return ret
+	}).(KubernetesCertificateAuthorityOutput)
 }
 
 // The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -1594,7 +1620,7 @@ func (o KubernetesConnectionsOutput) ToKubernetesConnectionsPtrOutput() Kubernet
 }
 
 func (o KubernetesConnectionsOutput) ToKubernetesConnectionsPtrOutputWithContext(ctx context.Context) KubernetesConnectionsPtrOutput {
-	return o.ApplyT(func(v KubernetesConnections) *KubernetesConnections {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesConnections) *KubernetesConnections {
 		return &v
 	}).(KubernetesConnectionsPtrOutput)
 }
@@ -1634,7 +1660,13 @@ func (o KubernetesConnectionsPtrOutput) ToKubernetesConnectionsPtrOutputWithCont
 }
 
 func (o KubernetesConnectionsPtrOutput) Elem() KubernetesConnectionsOutput {
-	return o.ApplyT(func(v *KubernetesConnections) KubernetesConnections { return *v }).(KubernetesConnectionsOutput)
+	return o.ApplyT(func(v *KubernetesConnections) KubernetesConnections {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesConnections
+		return ret
+	}).(KubernetesConnectionsOutput)
 }
 
 // API Server Internet endpoint.
@@ -2031,7 +2063,7 @@ func (o KubernetesRuntimeOutput) ToKubernetesRuntimePtrOutput() KubernetesRuntim
 }
 
 func (o KubernetesRuntimeOutput) ToKubernetesRuntimePtrOutputWithContext(ctx context.Context) KubernetesRuntimePtrOutput {
-	return o.ApplyT(func(v KubernetesRuntime) *KubernetesRuntime {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesRuntime) *KubernetesRuntime {
 		return &v
 	}).(KubernetesRuntimePtrOutput)
 }
@@ -2061,7 +2093,13 @@ func (o KubernetesRuntimePtrOutput) ToKubernetesRuntimePtrOutputWithContext(ctx 
 }
 
 func (o KubernetesRuntimePtrOutput) Elem() KubernetesRuntimeOutput {
-	return o.ApplyT(func(v *KubernetesRuntime) KubernetesRuntime { return *v }).(KubernetesRuntimeOutput)
+	return o.ApplyT(func(v *KubernetesRuntime) KubernetesRuntime {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesRuntime
+		return ret
+	}).(KubernetesRuntimeOutput)
 }
 
 // The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -2675,7 +2713,7 @@ func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertific
 }
 
 func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesCertificateAuthority) *ManagedKubernetesCertificateAuthority {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesCertificateAuthority) *ManagedKubernetesCertificateAuthority {
 		return &v
 	}).(ManagedKubernetesCertificateAuthorityPtrOutput)
 }
@@ -2710,7 +2748,13 @@ func (o ManagedKubernetesCertificateAuthorityPtrOutput) ToManagedKubernetesCerti
 }
 
 func (o ManagedKubernetesCertificateAuthorityPtrOutput) Elem() ManagedKubernetesCertificateAuthorityOutput {
-	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) ManagedKubernetesCertificateAuthority { return *v }).(ManagedKubernetesCertificateAuthorityOutput)
+	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) ManagedKubernetesCertificateAuthority {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesCertificateAuthority
+		return ret
+	}).(ManagedKubernetesCertificateAuthorityOutput)
 }
 
 // The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -2848,7 +2892,7 @@ func (o ManagedKubernetesConnectionsOutput) ToManagedKubernetesConnectionsPtrOut
 }
 
 func (o ManagedKubernetesConnectionsOutput) ToManagedKubernetesConnectionsPtrOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesConnections) *ManagedKubernetesConnections {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesConnections) *ManagedKubernetesConnections {
 		return &v
 	}).(ManagedKubernetesConnectionsPtrOutput)
 }
@@ -2888,7 +2932,13 @@ func (o ManagedKubernetesConnectionsPtrOutput) ToManagedKubernetesConnectionsPtr
 }
 
 func (o ManagedKubernetesConnectionsPtrOutput) Elem() ManagedKubernetesConnectionsOutput {
-	return o.ApplyT(func(v *ManagedKubernetesConnections) ManagedKubernetesConnections { return *v }).(ManagedKubernetesConnectionsOutput)
+	return o.ApplyT(func(v *ManagedKubernetesConnections) ManagedKubernetesConnections {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesConnections
+		return ret
+	}).(ManagedKubernetesConnectionsOutput)
 }
 
 // API Server Internet endpoint.
@@ -3036,7 +3086,7 @@ func (o ManagedKubernetesMaintenanceWindowOutput) ToManagedKubernetesMaintenance
 }
 
 func (o ManagedKubernetesMaintenanceWindowOutput) ToManagedKubernetesMaintenanceWindowPtrOutputWithContext(ctx context.Context) ManagedKubernetesMaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) *ManagedKubernetesMaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesMaintenanceWindow) *ManagedKubernetesMaintenanceWindow {
 		return &v
 	}).(ManagedKubernetesMaintenanceWindowPtrOutput)
 }
@@ -3076,7 +3126,13 @@ func (o ManagedKubernetesMaintenanceWindowPtrOutput) ToManagedKubernetesMaintena
 }
 
 func (o ManagedKubernetesMaintenanceWindowPtrOutput) Elem() ManagedKubernetesMaintenanceWindowOutput {
-	return o.ApplyT(func(v *ManagedKubernetesMaintenanceWindow) ManagedKubernetesMaintenanceWindow { return *v }).(ManagedKubernetesMaintenanceWindowOutput)
+	return o.ApplyT(func(v *ManagedKubernetesMaintenanceWindow) ManagedKubernetesMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesMaintenanceWindow
+		return ret
+	}).(ManagedKubernetesMaintenanceWindowOutput)
 }
 
 // The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
@@ -3216,7 +3272,7 @@ func (o ManagedKubernetesRuntimeOutput) ToManagedKubernetesRuntimePtrOutput() Ma
 }
 
 func (o ManagedKubernetesRuntimeOutput) ToManagedKubernetesRuntimePtrOutputWithContext(ctx context.Context) ManagedKubernetesRuntimePtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesRuntime) *ManagedKubernetesRuntime {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesRuntime) *ManagedKubernetesRuntime {
 		return &v
 	}).(ManagedKubernetesRuntimePtrOutput)
 }
@@ -3246,7 +3302,13 @@ func (o ManagedKubernetesRuntimePtrOutput) ToManagedKubernetesRuntimePtrOutputWi
 }
 
 func (o ManagedKubernetesRuntimePtrOutput) Elem() ManagedKubernetesRuntimeOutput {
-	return o.ApplyT(func(v *ManagedKubernetesRuntime) ManagedKubernetesRuntime { return *v }).(ManagedKubernetesRuntimeOutput)
+	return o.ApplyT(func(v *ManagedKubernetesRuntime) ManagedKubernetesRuntime {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesRuntime
+		return ret
+	}).(ManagedKubernetesRuntimeOutput)
 }
 
 // The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -4022,7 +4084,7 @@ func (o NodePoolManagementOutput) ToNodePoolManagementPtrOutput() NodePoolManage
 }
 
 func (o NodePoolManagementOutput) ToNodePoolManagementPtrOutputWithContext(ctx context.Context) NodePoolManagementPtrOutput {
-	return o.ApplyT(func(v NodePoolManagement) *NodePoolManagement {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolManagement) *NodePoolManagement {
 		return &v
 	}).(NodePoolManagementPtrOutput)
 }
@@ -4067,7 +4129,13 @@ func (o NodePoolManagementPtrOutput) ToNodePoolManagementPtrOutputWithContext(ct
 }
 
 func (o NodePoolManagementPtrOutput) Elem() NodePoolManagementOutput {
-	return o.ApplyT(func(v *NodePoolManagement) NodePoolManagement { return *v }).(NodePoolManagementOutput)
+	return o.ApplyT(func(v *NodePoolManagement) NodePoolManagement {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolManagement
+		return ret
+	}).(NodePoolManagementOutput)
 }
 
 // Whether automatic repair, Default to `false`.
@@ -4233,7 +4301,7 @@ func (o NodePoolScalingConfigOutput) ToNodePoolScalingConfigPtrOutput() NodePool
 }
 
 func (o NodePoolScalingConfigOutput) ToNodePoolScalingConfigPtrOutputWithContext(ctx context.Context) NodePoolScalingConfigPtrOutput {
-	return o.ApplyT(func(v NodePoolScalingConfig) *NodePoolScalingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolScalingConfig) *NodePoolScalingConfig {
 		return &v
 	}).(NodePoolScalingConfigPtrOutput)
 }
@@ -4283,7 +4351,13 @@ func (o NodePoolScalingConfigPtrOutput) ToNodePoolScalingConfigPtrOutputWithCont
 }
 
 func (o NodePoolScalingConfigPtrOutput) Elem() NodePoolScalingConfigOutput {
-	return o.ApplyT(func(v *NodePoolScalingConfig) NodePoolScalingConfig { return *v }).(NodePoolScalingConfigOutput)
+	return o.ApplyT(func(v *NodePoolScalingConfig) NodePoolScalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolScalingConfig
+		return ret
+	}).(NodePoolScalingConfigOutput)
 }
 
 // Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
@@ -7758,6 +7832,110 @@ func (o GetServerlessKubernetesClustersClusterConnectionsOutput) MasterPublicIp(
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationServiceInput)(nil)).Elem(), ApplicationServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationServiceArrayInput)(nil)).Elem(), ApplicationServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeInput)(nil)).Elem(), ClusterNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeArrayInput)(nil)).Elem(), ClusterNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesAddonInput)(nil)).Elem(), EdgeKubernetesAddonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesAddonArrayInput)(nil)).Elem(), EdgeKubernetesAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesCertificateAuthorityInput)(nil)).Elem(), EdgeKubernetesCertificateAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesCertificateAuthorityPtrInput)(nil)).Elem(), EdgeKubernetesCertificateAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesConnectionsInput)(nil)).Elem(), EdgeKubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesConnectionsPtrInput)(nil)).Elem(), EdgeKubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesLogConfigInput)(nil)).Elem(), EdgeKubernetesLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesLogConfigPtrInput)(nil)).Elem(), EdgeKubernetesLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerDataDiskInput)(nil)).Elem(), EdgeKubernetesWorkerDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerDataDiskArrayInput)(nil)).Elem(), EdgeKubernetesWorkerDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerNodeInput)(nil)).Elem(), EdgeKubernetesWorkerNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerNodeArrayInput)(nil)).Elem(), EdgeKubernetesWorkerNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAddonInput)(nil)).Elem(), KubernetesAddonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAddonArrayInput)(nil)).Elem(), KubernetesAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAutoscalerNodepoolInput)(nil)).Elem(), KubernetesAutoscalerNodepoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAutoscalerNodepoolArrayInput)(nil)).Elem(), KubernetesAutoscalerNodepoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesCertificateAuthorityInput)(nil)).Elem(), KubernetesCertificateAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesCertificateAuthorityPtrInput)(nil)).Elem(), KubernetesCertificateAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectionsInput)(nil)).Elem(), KubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectionsPtrInput)(nil)).Elem(), KubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesMasterNodeInput)(nil)).Elem(), KubernetesMasterNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesMasterNodeArrayInput)(nil)).Elem(), KubernetesMasterNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesPermissionPermissionInput)(nil)).Elem(), KubernetesPermissionPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesPermissionPermissionArrayInput)(nil)).Elem(), KubernetesPermissionPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesRuntimeInput)(nil)).Elem(), KubernetesRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesRuntimePtrInput)(nil)).Elem(), KubernetesRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesTaintInput)(nil)).Elem(), KubernetesTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesTaintArrayInput)(nil)).Elem(), KubernetesTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesWorkerDataDiskInput)(nil)).Elem(), KubernetesWorkerDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesWorkerDataDiskArrayInput)(nil)).Elem(), KubernetesWorkerDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesWorkerNodeInput)(nil)).Elem(), KubernetesWorkerNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesWorkerNodeArrayInput)(nil)).Elem(), KubernetesWorkerNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAddonInput)(nil)).Elem(), ManagedKubernetesAddonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAddonArrayInput)(nil)).Elem(), ManagedKubernetesAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityPtrInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsPtrInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMaintenanceWindowInput)(nil)).Elem(), ManagedKubernetesMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMaintenanceWindowPtrInput)(nil)).Elem(), ManagedKubernetesMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRuntimeInput)(nil)).Elem(), ManagedKubernetesRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRuntimePtrInput)(nil)).Elem(), ManagedKubernetesRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesTaintInput)(nil)).Elem(), ManagedKubernetesTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesTaintArrayInput)(nil)).Elem(), ManagedKubernetesTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesWorkerDataDiskInput)(nil)).Elem(), ManagedKubernetesWorkerDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesWorkerDataDiskArrayInput)(nil)).Elem(), ManagedKubernetesWorkerDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesWorkerNodeInput)(nil)).Elem(), ManagedKubernetesWorkerNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesWorkerNodeArrayInput)(nil)).Elem(), ManagedKubernetesWorkerNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskInput)(nil)).Elem(), NodePoolDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskArrayInput)(nil)).Elem(), NodePoolDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolLabelInput)(nil)).Elem(), NodePoolLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolLabelArrayInput)(nil)).Elem(), NodePoolLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementInput)(nil)).Elem(), NodePoolManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementPtrInput)(nil)).Elem(), NodePoolManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolScalingConfigInput)(nil)).Elem(), NodePoolScalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolScalingConfigPtrInput)(nil)).Elem(), NodePoolScalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolSpotPriceLimitInput)(nil)).Elem(), NodePoolSpotPriceLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolSpotPriceLimitArrayInput)(nil)).Elem(), NodePoolSpotPriceLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTaintInput)(nil)).Elem(), NodePoolTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTaintArrayInput)(nil)).Elem(), NodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesAddonInput)(nil)).Elem(), ServerlessKubernetesAddonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesAddonArrayInput)(nil)).Elem(), ServerlessKubernetesAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwarmNodeInput)(nil)).Elem(), SwarmNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwarmNodeArrayInput)(nil)).Elem(), SwarmNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterArrayInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterWorkerNodeInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterWorkerNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterWorkerNodeArrayInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterWorkerNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterInput)(nil)).Elem(), GetKubernetesClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterArrayInput)(nil)).Elem(), GetKubernetesClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetKubernetesClustersClusterConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterLogConfigInput)(nil)).Elem(), GetKubernetesClustersClusterLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterLogConfigArrayInput)(nil)).Elem(), GetKubernetesClustersClusterLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterMasterNodeInput)(nil)).Elem(), GetKubernetesClustersClusterMasterNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterMasterNodeArrayInput)(nil)).Elem(), GetKubernetesClustersClusterMasterNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterWorkerNodeInput)(nil)).Elem(), GetKubernetesClustersClusterWorkerNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterWorkerNodeArrayInput)(nil)).Elem(), GetKubernetesClustersClusterWorkerNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesPermissionPermissionInput)(nil)).Elem(), GetKubernetesPermissionPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesPermissionPermissionArrayInput)(nil)).Elem(), GetKubernetesPermissionPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterInput)(nil)).Elem(), GetManagedKubernetesClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterArrayInput)(nil)).Elem(), GetManagedKubernetesClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetManagedKubernetesClustersClusterConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterLogConfigInput)(nil)).Elem(), GetManagedKubernetesClustersClusterLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterLogConfigArrayInput)(nil)).Elem(), GetManagedKubernetesClustersClusterLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterWorkerNodeInput)(nil)).Elem(), GetManagedKubernetesClustersClusterWorkerNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterWorkerNodeArrayInput)(nil)).Elem(), GetManagedKubernetesClustersClusterWorkerNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseInstancesInstanceInput)(nil)).Elem(), GetRegistryEnterpriseInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseInstancesInstanceArrayInput)(nil)).Elem(), GetRegistryEnterpriseInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseNamespacesNamespaceInput)(nil)).Elem(), GetRegistryEnterpriseNamespacesNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseNamespacesNamespaceArrayInput)(nil)).Elem(), GetRegistryEnterpriseNamespacesNamespaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseReposRepoInput)(nil)).Elem(), GetRegistryEnterpriseReposRepoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseReposRepoArrayInput)(nil)).Elem(), GetRegistryEnterpriseReposRepoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseReposRepoTagInput)(nil)).Elem(), GetRegistryEnterpriseReposRepoTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseReposRepoTagArrayInput)(nil)).Elem(), GetRegistryEnterpriseReposRepoTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseSyncRulesRuleInput)(nil)).Elem(), GetRegistryEnterpriseSyncRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseSyncRulesRuleArrayInput)(nil)).Elem(), GetRegistryEnterpriseSyncRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterArrayInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterConnectionsArgs{})
 	pulumi.RegisterOutputType(ApplicationServiceOutput{})
 	pulumi.RegisterOutputType(ApplicationServiceArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeOutput{})

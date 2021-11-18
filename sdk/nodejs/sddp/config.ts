@@ -116,19 +116,19 @@ export interface ConfigState {
     /**
      * Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
      */
-    readonly code?: pulumi.Input<string>;
+    code?: pulumi.Input<string>;
     /**
      * Abnormal Alarm General Description of the Configuration Item.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly lang?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
      * * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
      * * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
      * * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -138,17 +138,17 @@ export interface ConfigArgs {
     /**
      * Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
      */
-    readonly code?: pulumi.Input<string>;
+    code?: pulumi.Input<string>;
     /**
      * Abnormal Alarm General Description of the Configuration Item.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly lang?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
      * * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
      * * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
      * * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }

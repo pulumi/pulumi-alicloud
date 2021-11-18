@@ -4,6 +4,9 @@
 package tsdb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,96 @@ type GetInstancesResult struct {
 	QueryStr   *string                `pulumi:"queryStr"`
 	Status     *string                `pulumi:"status"`
 	StatusList *string                `pulumi:"statusList"`
+}
+
+func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstancesResult, error) {
+			args := v.(GetInstancesArgs)
+			r, err := GetInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getInstances.
+type GetInstancesOutputArgs struct {
+	// The app key.
+	AppKey pulumi.StringPtrInput `pulumi:"appKey"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// The engine type of instance. Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
+	EngineType pulumi.StringPtrInput `pulumi:"engineType"`
+	// A list of Instance IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The query str.
+	QueryStr pulumi.StringPtrInput `pulumi:"queryStr"`
+	// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The status list.
+	StatusList pulumi.StringPtrInput `pulumi:"statusList"`
+}
+
+func (GetInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstances.
+type GetInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesResult)(nil)).Elem()
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutput() GetInstancesResultOutput {
+	return o
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx context.Context) GetInstancesResultOutput {
+	return o
+}
+
+func (o GetInstancesResultOutput) AppKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.AppKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetInstancesResultOutput) EngineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.EngineType }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
+}
+
+func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) QueryStr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.QueryStr }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) StatusList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.StatusList }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstancesResultOutput{})
 }

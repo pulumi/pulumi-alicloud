@@ -13,6 +13,7 @@ __all__ = [
     'GetNotificationsResult',
     'AwaitableGetNotificationsResult',
     'get_notifications',
+    'get_notifications_output',
 ]
 
 @pulumi.output_type
@@ -127,3 +128,30 @@ def get_notifications(ids: Optional[Sequence[str]] = None,
         notifications=__ret__.notifications,
         output_file=__ret__.output_file,
         scaling_group_id=__ret__.scaling_group_id)
+
+
+@_utilities.lift_output_func(get_notifications)
+def get_notifications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             scaling_group_id: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotificationsResult]:
+    """
+    This data source provides available notification resources.
+
+    > **NOTE:** Available in 1.72.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_notifications(scaling_group_id="scaling_group_id")
+    pulumi.export("firstNotification", ds.notifications[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of notification ids.
+    :param str scaling_group_id: Scaling group id the notifications belong to.
+    """
+    ...

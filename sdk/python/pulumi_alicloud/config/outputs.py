@@ -15,27 +15,6 @@ __all__ = [
 
 @pulumi.output_type
 class AssumeRole(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "roleArn":
-            suggest = "role_arn"
-        elif key == "sessionExpiration":
-            suggest = "session_expiration"
-        elif key == "sessionName":
-            suggest = "session_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AssumeRole. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AssumeRole.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AssumeRole.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  role_arn: str,
                  policy: Optional[str] = None,
@@ -72,31 +51,6 @@ class AssumeRole(dict):
 
 @pulumi.output_type
 class Endpoints(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "brainIndustrial":
-            suggest = "brain_industrial"
-        elif key == "dmsEnterprise":
-            suggest = "dms_enterprise"
-        elif key == "hcsSgw":
-            suggest = "hcs_sgw"
-        elif key == "rKvstore":
-            suggest = "r_kvstore"
-        elif key == "wafOpenapi":
-            suggest = "waf_openapi"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in Endpoints. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        Endpoints.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        Endpoints.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  acr: Optional[str] = None,
                  actiontrail: Optional[str] = None,

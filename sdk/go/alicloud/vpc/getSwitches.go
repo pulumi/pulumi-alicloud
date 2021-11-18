@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -124,4 +127,148 @@ type GetSwitchesResult struct {
 	Vswitches []GetSwitchesVswitch `pulumi:"vswitches"`
 	// ID of the availability zone where the VSwitch is located.
 	ZoneId *string `pulumi:"zoneId"`
+}
+
+func GetSwitchesOutput(ctx *pulumi.Context, args GetSwitchesOutputArgs, opts ...pulumi.InvokeOption) GetSwitchesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSwitchesResult, error) {
+			args := v.(GetSwitchesArgs)
+			r, err := GetSwitches(ctx, &args, opts...)
+			return *r, err
+		}).(GetSwitchesResultOutput)
+}
+
+// A collection of arguments for invoking getSwitches.
+type GetSwitchesOutputArgs struct {
+	// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
+	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
+	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
+	// A list of VSwitch IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Indicate whether the VSwitch is created by the system.
+	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
+	// A regex string to filter results by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Id of resource group which VSWitch belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The route table ID of the VSwitch.
+	RouteTableId pulumi.StringPtrInput `pulumi:"routeTableId"`
+	// The status of the VSwitch. Valid values: `Available` and `Pending`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// ID of the VPC that owns the VSwitch.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// The name of the VSwitch.
+	VswitchName pulumi.StringPtrInput `pulumi:"vswitchName"`
+	// The VSwitch owner id.
+	VswitchOwnerId pulumi.IntPtrInput `pulumi:"vswitchOwnerId"`
+	// The availability zone of the VSwitch.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (GetSwitchesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSwitchesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSwitches.
+type GetSwitchesResultOutput struct{ *pulumi.OutputState }
+
+func (GetSwitchesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSwitchesResult)(nil)).Elem()
+}
+
+func (o GetSwitchesResultOutput) ToGetSwitchesResultOutput() GetSwitchesResultOutput {
+	return o
+}
+
+func (o GetSwitchesResultOutput) ToGetSwitchesResultOutputWithContext(ctx context.Context) GetSwitchesResultOutput {
+	return o
+}
+
+// CIDR block of the VSwitch.
+func (o GetSwitchesResultOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSwitchesResultOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSwitchesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of VSwitch IDs.
+func (o GetSwitchesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSwitchesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// Whether the VSwitch is the default one in the region.
+func (o GetSwitchesResultOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetSwitchesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of VSwitch names.
+func (o GetSwitchesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSwitchesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSwitchesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The resource group ID of the VSwitch.
+func (o GetSwitchesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The route table ID of the VSwitch.
+func (o GetSwitchesResultOutput) RouteTableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *string { return v.RouteTableId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the VSwitch.
+func (o GetSwitchesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The Tags of the VSwitch.
+func (o GetSwitchesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSwitchesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// ID of the VPC that owns the VSwitch.
+func (o GetSwitchesResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the VSwitch.
+func (o GetSwitchesResultOutput) VswitchName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *string { return v.VswitchName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSwitchesResultOutput) VswitchOwnerId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *int { return v.VswitchOwnerId }).(pulumi.IntPtrOutput)
+}
+
+// A list of VSwitches. Each element contains the following attributes:
+func (o GetSwitchesResultOutput) Vswitches() GetSwitchesVswitchArrayOutput {
+	return o.ApplyT(func(v GetSwitchesResult) []GetSwitchesVswitch { return v.Vswitches }).(GetSwitchesVswitchArrayOutput)
+}
+
+// ID of the availability zone where the VSwitch is located.
+func (o GetSwitchesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSwitchesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSwitchesResultOutput{})
 }

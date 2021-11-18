@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -146,4 +149,221 @@ type GetEcsDisksResult struct {
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
 	Type   *string `pulumi:"type"`
 	ZoneId *string `pulumi:"zoneId"`
+}
+
+func GetEcsDisksOutput(ctx *pulumi.Context, args GetEcsDisksOutputArgs, opts ...pulumi.InvokeOption) GetEcsDisksResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEcsDisksResult, error) {
+			args := v.(GetEcsDisksArgs)
+			r, err := GetEcsDisks(ctx, &args, opts...)
+			return *r, err
+		}).(GetEcsDisksResultOutput)
+}
+
+// A collection of arguments for invoking getEcsDisks.
+type GetEcsDisksOutputArgs struct {
+	// Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
+	AdditionalAttributes pulumi.StringArrayInput `pulumi:"additionalAttributes"`
+	// Query cloud disks based on the automatic snapshot policy ID.
+	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
+	// Availability zone of the disk.
+	//
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// Disk category.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Indicates whether the automatic snapshot is deleted when the disk is released.
+	DeleteAutoSnapshot pulumi.BoolPtrInput `pulumi:"deleteAutoSnapshot"`
+	// Indicates whether the disk is released together with the instance.
+	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
+	// The disk name.
+	DiskName pulumi.StringPtrInput `pulumi:"diskName"`
+	// The disk type.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
+	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
+	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
+	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
+	// Whether the disk implements an automatic snapshot policy.
+	EnableAutoSnapshot pulumi.BoolPtrInput `pulumi:"enableAutoSnapshot"`
+	// Whether the disk implements an automatic snapshot policy.
+	EnableAutomatedSnapshotPolicy pulumi.BoolPtrInput `pulumi:"enableAutomatedSnapshotPolicy"`
+	// Whether it is shared block storage.
+	EnableShared pulumi.BoolPtrInput `pulumi:"enableShared"`
+	// Indicate whether the disk is encrypted or not.
+	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
+	// A list of Disk IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The instance ID of the disk mount.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// The kms key id.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// A regex string to filter results by Disk name.
+	NameRegex      pulumi.StringPtrInput              `pulumi:"nameRegex"`
+	OperationLocks GetEcsDisksOperationLockArrayInput `pulumi:"operationLocks"`
+	OutputFile     pulumi.StringPtrInput              `pulumi:"outputFile"`
+	// Payment method for disk.
+	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
+	// Whether the disk is unmountable.
+	Portable pulumi.BoolPtrInput `pulumi:"portable"`
+	// The Id of resource group.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	// Current status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A map of tags assigned to the disk.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Disk type.
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The zone id.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (GetEcsDisksOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDisksArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEcsDisks.
+type GetEcsDisksResultOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDisksResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDisksResult)(nil)).Elem()
+}
+
+func (o GetEcsDisksResultOutput) ToGetEcsDisksResultOutput() GetEcsDisksResultOutput {
+	return o
+}
+
+func (o GetEcsDisksResultOutput) ToGetEcsDisksResultOutputWithContext(ctx context.Context) GetEcsDisksResultOutput {
+	return o
+}
+
+func (o GetEcsDisksResultOutput) AdditionalAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) []string { return v.AdditionalAttributes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEcsDisksResultOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
+func (o GetEcsDisksResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) DeleteAutoSnapshot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.DeleteAutoSnapshot }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) DiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.DiskName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) Disks() GetEcsDisksDiskArrayOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) []GetEcsDisksDisk { return v.Disks }).(GetEcsDisksDiskArrayOutput)
+}
+
+func (o GetEcsDisksResultOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) EnableAutoSnapshot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.EnableAutoSnapshot }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) EnableAutomatedSnapshotPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.EnableAutomatedSnapshotPolicy }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) EnableShared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.EnableShared }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) Encrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEcsDisksResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEcsDisksResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEcsDisksResultOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEcsDisksResultOutput) OperationLocks() GetEcsDisksOperationLockArrayOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) []GetEcsDisksOperationLock { return v.OperationLocks }).(GetEcsDisksOperationLockArrayOutput)
+}
+
+func (o GetEcsDisksResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) PaymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) Portable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.Portable }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
+func (o GetEcsDisksResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEcsDisksResultOutput{})
 }

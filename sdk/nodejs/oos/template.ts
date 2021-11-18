@@ -217,67 +217,67 @@ export interface TemplateState {
     /**
      * When deleting a template, whether to delete its related executions. Default to `false`.
      */
-    readonly autoDeleteExecutions?: pulumi.Input<boolean>;
+    autoDeleteExecutions?: pulumi.Input<boolean>;
     /**
      * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
      */
-    readonly content?: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
     /**
      * The creator of the template.
      */
-    readonly createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string>;
     /**
      * The time when the template is created.
      */
-    readonly createdDate?: pulumi.Input<string>;
+    createdDate?: pulumi.Input<string>;
     /**
      * The description of the template.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Is it triggered successfully.
      */
-    readonly hasTrigger?: pulumi.Input<boolean>;
+    hasTrigger?: pulumi.Input<boolean>;
     /**
      * The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
      */
-    readonly shareType?: pulumi.Input<string>;
+    shareType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
      */
-    readonly templateFormat?: pulumi.Input<string>;
+    templateFormat?: pulumi.Input<string>;
     /**
      * The id of OOS Template.
      */
-    readonly templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string>;
     /**
      * The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
      */
-    readonly templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string>;
     /**
      * The type of OOS Template. `Automation` means the implementation of Alibaba Cloud API template, `Package` means represents a template for installing software.
      */
-    readonly templateType?: pulumi.Input<string>;
+    templateType?: pulumi.Input<string>;
     /**
      * The version of OOS Template.
      */
-    readonly templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string>;
     /**
      * The user who updated the template.
      */
-    readonly updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string>;
     /**
      * The time when the template was updated.
      */
-    readonly updatedDate?: pulumi.Input<string>;
+    updatedDate?: pulumi.Input<string>;
     /**
      * The name of template version.
      */
-    readonly versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string>;
 }
 
 /**
@@ -287,21 +287,21 @@ export interface TemplateArgs {
     /**
      * When deleting a template, whether to delete its related executions. Default to `false`.
      */
-    readonly autoDeleteExecutions?: pulumi.Input<boolean>;
+    autoDeleteExecutions?: pulumi.Input<boolean>;
     /**
      * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
      */
-    readonly content: pulumi.Input<string>;
+    content: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
      */
-    readonly templateName: pulumi.Input<string>;
+    templateName: pulumi.Input<string>;
     /**
      * The name of template version.
      */
-    readonly versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string>;
 }

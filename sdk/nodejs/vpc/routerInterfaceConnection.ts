@@ -170,20 +170,20 @@ export interface RouterInterfaceConnectionState {
     /**
      * One side router interface ID.
      */
-    readonly interfaceId?: pulumi.Input<string>;
+    interfaceId?: pulumi.Input<string>;
     /**
      * Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
      */
-    readonly oppositeInterfaceId?: pulumi.Input<string>;
-    readonly oppositeInterfaceOwnerId?: pulumi.Input<string>;
+    oppositeInterfaceId?: pulumi.Input<string>;
+    oppositeInterfaceOwnerId?: pulumi.Input<string>;
     /**
      * Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
-    readonly oppositeRouterId?: pulumi.Input<string>;
+    oppositeRouterId?: pulumi.Input<string>;
     /**
      * Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
-    readonly oppositeRouterType?: pulumi.Input<string>;
+    oppositeRouterType?: pulumi.Input<string>;
 }
 
 /**
@@ -193,18 +193,18 @@ export interface RouterInterfaceConnectionArgs {
     /**
      * One side router interface ID.
      */
-    readonly interfaceId: pulumi.Input<string>;
+    interfaceId: pulumi.Input<string>;
     /**
      * Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
      */
-    readonly oppositeInterfaceId: pulumi.Input<string>;
-    readonly oppositeInterfaceOwnerId?: pulumi.Input<string>;
+    oppositeInterfaceId: pulumi.Input<string>;
+    oppositeInterfaceOwnerId?: pulumi.Input<string>;
     /**
      * Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
-    readonly oppositeRouterId?: pulumi.Input<string>;
+    oppositeRouterId?: pulumi.Input<string>;
     /**
      * Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
-    readonly oppositeRouterType?: pulumi.Input<string>;
+    oppositeRouterType?: pulumi.Input<string>;
 }

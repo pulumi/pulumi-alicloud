@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ram
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Ram
         ///             PolicyName = "AliyunACSDefaultAccess",
         ///             PolicyType = "Custom",
         ///         }));
-        ///         this.FirstUserId = usersDs.Apply(usersDs =&gt; usersDs.Users[0].Id);
+        ///         this.FirstUserId = usersDs.Apply(usersDs =&gt; usersDs.Users?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstUserId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var usersDs = Output.Create(AliCloud.Ram.GetUsers.InvokeAsync(new AliCloud.Ram.GetUsersArgs
+        ///         {
+        ///             GroupName = "group1",
+        ///             NameRegex = "^user",
+        ///             OutputFile = "users.txt",
+        ///             PolicyName = "AliyunACSDefaultAccess",
+        ///             PolicyType = "Custom",
+        ///         }));
+        ///         this.FirstUserId = usersDs.Apply(usersDs =&gt; usersDs.Users?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstUserId")]
+        ///     public Output&lt;string&gt; FirstUserId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -91,6 +128,52 @@ namespace Pulumi.AliCloud.Ram
         public string? PolicyType { get; set; }
 
         public GetUsersArgs()
+        {
+        }
+    }
+
+    public sealed class GetUsersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Filter results by a specific group name. Returned users are in the specified group.
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// - A list of ram user IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter resulting users by their names.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
+        /// </summary>
+        [Input("policyName")]
+        public Input<string>? PolicyName { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
+
+        public GetUsersInvokeArgs()
         {
         }
     }

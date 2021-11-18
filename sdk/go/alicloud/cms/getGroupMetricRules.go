@@ -4,6 +4,9 @@
 package cms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,4 +91,112 @@ type GetGroupMetricRulesResult struct {
 	OutputFile *string                   `pulumi:"outputFile"`
 	Rules      []GetGroupMetricRulesRule `pulumi:"rules"`
 	Status     *string                   `pulumi:"status"`
+}
+
+func GetGroupMetricRulesOutput(ctx *pulumi.Context, args GetGroupMetricRulesOutputArgs, opts ...pulumi.InvokeOption) GetGroupMetricRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetGroupMetricRulesResult, error) {
+			args := v.(GetGroupMetricRulesArgs)
+			r, err := GetGroupMetricRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetGroupMetricRulesResultOutput)
+}
+
+// A collection of arguments for invoking getGroupMetricRules.
+type GetGroupMetricRulesOutputArgs struct {
+	// The dimensions that specify the resources to be associated with the alert rule.
+	Dimensions pulumi.StringPtrInput `pulumi:"dimensions"`
+	// Indicates whether the alert rule is enabled.
+	EnableState pulumi.BoolPtrInput `pulumi:"enableState"`
+	// The ID of the application group.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// The name of the alert rule.
+	GroupMetricRuleName pulumi.StringPtrInput `pulumi:"groupMetricRuleName"`
+	// A list of Group Metric Rule IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The name of the metric.
+	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
+	// A regex string to filter results by Group Metric Rule name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The namespace of the service.
+	Namespace  pulumi.StringPtrInput `pulumi:"namespace"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of Group Metric Rule..
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetGroupMetricRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGroupMetricRules.
+type GetGroupMetricRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMetricRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesResult)(nil)).Elem()
+}
+
+func (o GetGroupMetricRulesResultOutput) ToGetGroupMetricRulesResultOutput() GetGroupMetricRulesResultOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesResultOutput) ToGetGroupMetricRulesResultOutputWithContext(ctx context.Context) GetGroupMetricRulesResultOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesResultOutput) Dimensions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.Dimensions }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGroupMetricRulesResultOutput) EnableState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) *bool { return v.EnableState }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGroupMetricRulesResultOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGroupMetricRulesResultOutput) GroupMetricRuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.GroupMetricRuleName }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetGroupMetricRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetGroupMetricRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGroupMetricRulesResultOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGroupMetricRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGroupMetricRulesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGroupMetricRulesResultOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGroupMetricRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGroupMetricRulesResultOutput) Rules() GetGroupMetricRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) []GetGroupMetricRulesRule { return v.Rules }).(GetGroupMetricRulesRuleArrayOutput)
+}
+
+func (o GetGroupMetricRulesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetGroupMetricRulesResultOutput{})
 }

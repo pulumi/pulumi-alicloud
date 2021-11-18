@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -27,7 +28,7 @@ namespace Pulumi.AliCloud.Slb
         ///     public MyStack()
         ///     {
         ///         var sampleDs = Output.Create(AliCloud.Slb.GetAcls.InvokeAsync());
-        ///         this.FirstSlbAclId = sampleDs.Apply(sampleDs =&gt; sampleDs.Acls[0].Id);
+        ///         this.FirstSlbAclId = sampleDs.Apply(sampleDs =&gt; sampleDs.Acls?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstSlbAclId")]
@@ -54,6 +55,50 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the acls in the region.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetAcls.InvokeAsync());
+        ///         this.FirstSlbAclId = sampleDs.Apply(sampleDs =&gt; sampleDs.Acls?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbAclId")]
+        ///     public Output&lt;string&gt; FirstSlbAclId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Entry Block
+        /// 
+        /// The entry mapping supports the following:
+        /// 
+        /// * `entry`   - An IP addresses or CIDR blocks.
+        /// * `comment` - the comment of the entry.
+        /// 
+        /// ## Listener Block
+        /// 
+        /// The Listener mapping supports the following:
+        /// 
+        /// * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
+        /// * `frontend_port` - the listener port.
+        /// * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
+        /// * `acl_type`      - the type of acl (such as white/black).
+        /// </summary>
+        public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -99,6 +144,52 @@ namespace Pulumi.AliCloud.Slb
         }
 
         public GetAclsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAclsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of acls IDs to filter results.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by acl name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which acl belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetAclsInvokeArgs()
         {
         }
     }

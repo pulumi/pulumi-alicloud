@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceClassesResult',
     'AwaitableGetInstanceClassesResult',
     'get_instance_classes',
+    'get_instance_classes_output',
 ]
 
 @pulumi.output_type
@@ -308,3 +309,60 @@ def get_instance_classes(architecture: Optional[str] = None,
         sorted_by=__ret__.sorted_by,
         storage_type=__ret__.storage_type,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_instance_classes)
+def get_instance_classes_output(architecture: Optional[pulumi.Input[Optional[str]]] = None,
+                                edition_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                engine: Optional[pulumi.Input[Optional[str]]] = None,
+                                engine_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                node_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                package_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                performance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                product_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                series_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                shard_number: Optional[pulumi.Input[Optional[int]]] = None,
+                                sorted_by: Optional[pulumi.Input[Optional[str]]] = None,
+                                storage_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                zone_id: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceClassesResult]:
+    """
+    This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+
+    > **NOTE:** Available in v1.49.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resources_zones = alicloud.get_zones(available_resource_creation="KVStore")
+    resources_instance_classes = alicloud.kvstore.get_instance_classes(engine="Redis",
+        engine_version="5.0",
+        instance_charge_type="PrePaid",
+        output_file="./classes.txt",
+        zone_id=resources_zones.zones[0].id)
+    pulumi.export("firstKvstoreInstanceClass", resources_instance_classes.instance_classes)
+    ```
+
+
+    :param str architecture: The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+    :param str edition_type: The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+    :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+    :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+    :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
+    :param str node_type: The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+    :param str package_type: It has been deprecated from 1.68.0.
+    :param str performance_type: It has been deprecated from 1.68.0.
+    :param str series_type: The KVStore instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+    :param int shard_number: The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
+           * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+           * Local: an ApsaraDB for Redis instance with a local disk.
+           * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+    :param str storage_type: It has been deprecated from 1.68.0.
+    :param str zone_id: The Zone to launch the KVStore instance.
+    """
+    ...

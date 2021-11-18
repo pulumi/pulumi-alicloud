@@ -40,7 +40,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := creation
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -275,7 +275,7 @@ type AccountPrivilegeArrayInput interface {
 type AccountPrivilegeArray []AccountPrivilegeInput
 
 func (AccountPrivilegeArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccountPrivilege)(nil))
+	return reflect.TypeOf((*[]*AccountPrivilege)(nil)).Elem()
 }
 
 func (i AccountPrivilegeArray) ToAccountPrivilegeArrayOutput() AccountPrivilegeArrayOutput {
@@ -300,7 +300,7 @@ type AccountPrivilegeMapInput interface {
 type AccountPrivilegeMap map[string]AccountPrivilegeInput
 
 func (AccountPrivilegeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccountPrivilege)(nil))
+	return reflect.TypeOf((*map[string]*AccountPrivilege)(nil)).Elem()
 }
 
 func (i AccountPrivilegeMap) ToAccountPrivilegeMapOutput() AccountPrivilegeMapOutput {
@@ -311,9 +311,7 @@ func (i AccountPrivilegeMap) ToAccountPrivilegeMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegeMapOutput)
 }
 
-type AccountPrivilegeOutput struct {
-	*pulumi.OutputState
-}
+type AccountPrivilegeOutput struct{ *pulumi.OutputState }
 
 func (AccountPrivilegeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccountPrivilege)(nil))
@@ -332,14 +330,12 @@ func (o AccountPrivilegeOutput) ToAccountPrivilegePtrOutput() AccountPrivilegePt
 }
 
 func (o AccountPrivilegeOutput) ToAccountPrivilegePtrOutputWithContext(ctx context.Context) AccountPrivilegePtrOutput {
-	return o.ApplyT(func(v AccountPrivilege) *AccountPrivilege {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountPrivilege) *AccountPrivilege {
 		return &v
 	}).(AccountPrivilegePtrOutput)
 }
 
-type AccountPrivilegePtrOutput struct {
-	*pulumi.OutputState
-}
+type AccountPrivilegePtrOutput struct{ *pulumi.OutputState }
 
 func (AccountPrivilegePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccountPrivilege)(nil))
@@ -351,6 +347,16 @@ func (o AccountPrivilegePtrOutput) ToAccountPrivilegePtrOutput() AccountPrivileg
 
 func (o AccountPrivilegePtrOutput) ToAccountPrivilegePtrOutputWithContext(ctx context.Context) AccountPrivilegePtrOutput {
 	return o
+}
+
+func (o AccountPrivilegePtrOutput) Elem() AccountPrivilegeOutput {
+	return o.ApplyT(func(v *AccountPrivilege) AccountPrivilege {
+		if v != nil {
+			return *v
+		}
+		var ret AccountPrivilege
+		return ret
+	}).(AccountPrivilegeOutput)
 }
 
 type AccountPrivilegeArrayOutput struct{ *pulumi.OutputState }
@@ -394,6 +400,10 @@ func (o AccountPrivilegeMapOutput) MapIndex(k pulumi.StringInput) AccountPrivile
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPrivilegeInput)(nil)).Elem(), &AccountPrivilege{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPrivilegePtrInput)(nil)).Elem(), &AccountPrivilege{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPrivilegeArrayInput)(nil)).Elem(), AccountPrivilegeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPrivilegeMapInput)(nil)).Elem(), AccountPrivilegeMap{})
 	pulumi.RegisterOutputType(AccountPrivilegeOutput{})
 	pulumi.RegisterOutputType(AccountPrivilegePtrOutput{})
 	pulumi.RegisterOutputType(AccountPrivilegeArrayOutput{})

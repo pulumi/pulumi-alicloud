@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cms
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         public static Task<GetAlarmContactGroupsResult> InvokeAsync(GetAlarmContactGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmContactGroupsResult>("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args ?? new GetAlarmContactGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the CMS Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.101.0+.
+        /// </summary>
+        public static Output<GetAlarmContactGroupsResult> Invoke(GetAlarmContactGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlarmContactGroupsResult>("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args ?? new GetAlarmContactGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -45,6 +54,34 @@ namespace Pulumi.AliCloud.Cms
         public string? OutputFile { get; set; }
 
         public GetAlarmContactGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlarmContactGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Alarm Contact Group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Alarm Contact Group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetAlarmContactGroupsInvokeArgs()
         {
         }
     }

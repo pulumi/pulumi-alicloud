@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sae
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Sae
         ///         {
         ///             NameRegex = "^my-Namespace",
         ///         }));
-        ///         this.SaeNamespaceId = nameRegex.Apply(nameRegex =&gt; nameRegex.Namespaces[0].Id);
+        ///         this.SaeNamespaceId = nameRegex.Apply(nameRegex =&gt; nameRegex.Namespaces?[0]?.Id);
         ///     }
         /// 
         ///     [Output("saeNamespaceId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public static Task<GetNamespacesResult> InvokeAsync(GetNamespacesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:sae/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Sae Namespaces of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var nameRegex = Output.Create(AliCloud.Sae.GetNamespaces.InvokeAsync(new AliCloud.Sae.GetNamespacesArgs
+        ///         {
+        ///             NameRegex = "^my-Namespace",
+        ///         }));
+        ///         this.SaeNamespaceId = nameRegex.Apply(nameRegex =&gt; nameRegex.Namespaces?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("saeNamespaceId")]
+        ///     public Output&lt;string&gt; SaeNamespaceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNamespacesResult> Invoke(GetNamespacesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:sae/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -73,6 +110,34 @@ namespace Pulumi.AliCloud.Sae
         public string? OutputFile { get; set; }
 
         public GetNamespacesArgs()
+        {
+        }
+    }
+
+    public sealed class GetNamespacesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Namespace IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Namespace name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetNamespacesInvokeArgs()
         {
         }
     }

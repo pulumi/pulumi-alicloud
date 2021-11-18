@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ExpressConnect
 {
@@ -37,12 +38,12 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///                 "pc-2345678",
         ///             },
         ///         }));
-        ///         this.ExpressConnectPhysicalConnectionId1 = ids.Apply(ids =&gt; ids.Connections[0].Id);
+        ///         this.ExpressConnectPhysicalConnectionId1 = ids.Apply(ids =&gt; ids.Connections?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.ExpressConnect.GetPhysicalConnections.InvokeAsync(new AliCloud.ExpressConnect.GetPhysicalConnectionsArgs
         ///         {
         ///             NameRegex = "^my-PhysicalConnection",
         ///         }));
-        ///         this.ExpressConnectPhysicalConnectionId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Connections[0].Id);
+        ///         this.ExpressConnectPhysicalConnectionId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Connections?[0]?.Id);
         ///     }
         /// 
         ///     [Output("expressConnectPhysicalConnectionId1")]
@@ -56,6 +57,52 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         public static Task<GetPhysicalConnectionsResult> InvokeAsync(GetPhysicalConnectionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPhysicalConnectionsResult>("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args ?? new GetPhysicalConnectionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.ExpressConnect.GetPhysicalConnections.InvokeAsync(new AliCloud.ExpressConnect.GetPhysicalConnectionsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "pc-2345678",
+        ///             },
+        ///         }));
+        ///         this.ExpressConnectPhysicalConnectionId1 = ids.Apply(ids =&gt; ids.Connections?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.ExpressConnect.GetPhysicalConnections.InvokeAsync(new AliCloud.ExpressConnect.GetPhysicalConnectionsArgs
+        ///         {
+        ///             NameRegex = "^my-PhysicalConnection",
+        ///         }));
+        ///         this.ExpressConnectPhysicalConnectionId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Connections?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("expressConnectPhysicalConnectionId1")]
+        ///     public Output&lt;string&gt; ExpressConnectPhysicalConnectionId1 { get; set; }
+        ///     [Output("expressConnectPhysicalConnectionId2")]
+        ///     public Output&lt;string&gt; ExpressConnectPhysicalConnectionId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPhysicalConnectionsResult> Invoke(GetPhysicalConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPhysicalConnectionsResult>("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args ?? new GetPhysicalConnectionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -95,6 +142,46 @@ namespace Pulumi.AliCloud.ExpressConnect
         public string? Status { get; set; }
 
         public GetPhysicalConnectionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetPhysicalConnectionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Physical Connection IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The include reservation data.
+        /// </summary>
+        [Input("includeReservationData")]
+        public Input<bool>? IncludeReservationData { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Physical Connection name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Resources on Behalf of a State of the Resource Attribute Field.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetPhysicalConnectionsInvokeArgs()
         {
         }
     }

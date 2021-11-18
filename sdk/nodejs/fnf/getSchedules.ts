@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstFnfScheduleId = example.then(example => example.schedules[0].id);
+ * export const firstFnfScheduleId = example.then(example => example.schedules?[0]?.id);
  * ```
  */
 export function getSchedules(args: GetSchedulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSchedulesResult> {
@@ -50,20 +50,20 @@ export interface GetSchedulesArgs {
     /**
      * The name of the flow bound to the time-based schedule you want to create.
      */
-    readonly flowName: string;
+    flowName: string;
     /**
      * A list of Schedule IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The number of resource queries.
      */
-    readonly limit?: number;
+    limit?: number;
     /**
      * A regex string to filter results by Schedule name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -81,4 +81,31 @@ export interface GetSchedulesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly schedules: outputs.fnf.GetSchedulesSchedule[];
+}
+
+export function getSchedulesOutput(args: GetSchedulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchedulesResult> {
+    return pulumi.output(args).apply(a => getSchedules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSchedules.
+ */
+export interface GetSchedulesOutputArgs {
+    /**
+     * The name of the flow bound to the time-based schedule you want to create.
+     */
+    flowName: pulumi.Input<string>;
+    /**
+     * A list of Schedule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of resource queries.
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * A regex string to filter results by Schedule name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

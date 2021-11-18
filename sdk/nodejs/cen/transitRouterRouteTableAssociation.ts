@@ -106,19 +106,19 @@ export interface TransitRouterRouteTableAssociationState {
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The associating status of the network.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The ID the transit router attachment.
      */
-    readonly transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string>;
     /**
      * The ID of the transit router route table.
      */
-    readonly transitRouterRouteTableId?: pulumi.Input<string>;
+    transitRouterRouteTableId?: pulumi.Input<string>;
 }
 
 /**
@@ -128,13 +128,13 @@ export interface TransitRouterRouteTableAssociationArgs {
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID the transit router attachment.
      */
-    readonly transitRouterAttachmentId: pulumi.Input<string>;
+    transitRouterAttachmentId: pulumi.Input<string>;
     /**
      * The ID of the transit router route table.
      */
-    readonly transitRouterRouteTableId: pulumi.Input<string>;
+    transitRouterRouteTableId: pulumi.Input<string>;
 }

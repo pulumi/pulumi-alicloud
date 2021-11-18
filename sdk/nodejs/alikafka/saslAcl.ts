@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
  *     topicQuota: "50",
@@ -187,31 +187,31 @@ export interface SaslAclState {
     /**
      * Operation type for this acl. The operation type can only be "Write" and "Read".
      */
-    readonly aclOperationType?: pulumi.Input<string>;
+    aclOperationType?: pulumi.Input<string>;
     /**
      * Resource name for this acl. The resource name should be a topic or consumer group name.
      */
-    readonly aclResourceName?: pulumi.Input<string>;
+    aclResourceName?: pulumi.Input<string>;
     /**
      * Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
      */
-    readonly aclResourcePatternType?: pulumi.Input<string>;
+    aclResourcePatternType?: pulumi.Input<string>;
     /**
      * Resource type for this acl. The resource type can only be "Topic" and "Group".
      */
-    readonly aclResourceType?: pulumi.Input<string>;
+    aclResourceType?: pulumi.Input<string>;
     /**
      * The host of the acl.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -221,25 +221,25 @@ export interface SaslAclArgs {
     /**
      * Operation type for this acl. The operation type can only be "Write" and "Read".
      */
-    readonly aclOperationType: pulumi.Input<string>;
+    aclOperationType: pulumi.Input<string>;
     /**
      * Resource name for this acl. The resource name should be a topic or consumer group name.
      */
-    readonly aclResourceName: pulumi.Input<string>;
+    aclResourceName: pulumi.Input<string>;
     /**
      * Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
      */
-    readonly aclResourcePatternType: pulumi.Input<string>;
+    aclResourcePatternType: pulumi.Input<string>;
     /**
      * Resource type for this acl. The resource type can only be "Topic" and "Group".
      */
-    readonly aclResourceType: pulumi.Input<string>;
+    aclResourceType: pulumi.Input<string>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
      */
-    readonly username: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }

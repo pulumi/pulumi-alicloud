@@ -126,34 +126,34 @@ export interface DeliveryChannelState {
     /**
      * The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
      */
-    readonly deliveryChannelAssumeRoleArn?: pulumi.Input<string>;
+    deliveryChannelAssumeRoleArn?: pulumi.Input<string>;
     /**
      * The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
      */
-    readonly deliveryChannelCondition?: pulumi.Input<string>;
+    deliveryChannelCondition?: pulumi.Input<string>;
     /**
      * The name of the delivery channel.
      */
-    readonly deliveryChannelName?: pulumi.Input<string>;
+    deliveryChannelName?: pulumi.Input<string>;
     /**
      * - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
      * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
      * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
      * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      */
-    readonly deliveryChannelTargetArn?: pulumi.Input<string>;
+    deliveryChannelTargetArn?: pulumi.Input<string>;
     /**
      * - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
      */
-    readonly deliveryChannelType?: pulumi.Input<string>;
+    deliveryChannelType?: pulumi.Input<string>;
     /**
      * The description of the delivery method.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
      */
-    readonly status?: pulumi.Input<number>;
+    status?: pulumi.Input<number>;
 }
 
 /**
@@ -163,32 +163,32 @@ export interface DeliveryChannelArgs {
     /**
      * The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
      */
-    readonly deliveryChannelAssumeRoleArn: pulumi.Input<string>;
+    deliveryChannelAssumeRoleArn: pulumi.Input<string>;
     /**
      * The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
      */
-    readonly deliveryChannelCondition?: pulumi.Input<string>;
+    deliveryChannelCondition?: pulumi.Input<string>;
     /**
      * The name of the delivery channel.
      */
-    readonly deliveryChannelName?: pulumi.Input<string>;
+    deliveryChannelName?: pulumi.Input<string>;
     /**
      * - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
      * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
      * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
      * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      */
-    readonly deliveryChannelTargetArn: pulumi.Input<string>;
+    deliveryChannelTargetArn: pulumi.Input<string>;
     /**
      * - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
      */
-    readonly deliveryChannelType: pulumi.Input<string>;
+    deliveryChannelType: pulumi.Input<string>;
     /**
      * The description of the delivery method.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
      */
-    readonly status?: pulumi.Input<number>;
+    status?: pulumi.Input<number>;
 }
